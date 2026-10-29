@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/log.md","sha256":"7678621c945c81818d00674ca9748f594bac2b009ee251c33f307b006add42ad","translated_at":"2026-10-29T14:38:56.812Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/log.md","sha256":"7cb0097fc3ddc655a7de81b65e99c382ab3970e2768ff22bbb68880ff88ac629","translated_at":"2026-10-29T15:04:39.061Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0002
 title: Event Timeline Index
 type: log
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:37:33.663Z
+updated_at: 2026-10-29T15:03:31.989Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -15,7 +15,7 @@ tags: []
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/log.md`](../../../../knowledge/wiki/log.md). Source SHA-256: `7678621c945c81818d00674ca9748f594bac2b009ee251c33f307b006add42ad`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/log.md`](../../../../knowledge/wiki/log.md). Source SHA-256: `7cb0097fc3ddc655a7de81b65e99c382ab3970e2768ff22bbb68880ff88ac629`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="專案事件時間索引"></a>
@@ -410,4 +410,6 @@ The original `knowledge/events/*.json` files are immutable; this page is a rebui
 - 2026-10-29T14:20:34.312Z [ingest: Preserve actual merge / full quality / browser evidence and original-workspace R18 human feedback; public release remains unfinished](../../../../knowledge/events/e5da6639-539a-412c-9024-45dc6ae13ca0.json) — codex-root / architecture-review-resume-20261029
 - 2026-10-29T14:20:36.159Z [handoff: Safe merge and original-workspace full quality / 47 functional browser tests passed; preserve R18 human FPS failure and prepare a clean public snapshot](../../../../knowledge/events/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.json) — codex-root / architecture-review-resume-20261029
 - 2026-10-29T14:37:33.450Z [ingest: Repair four genuine historical receipt links in the public snapshot; preserve original bytes and test thresholds](../../../../knowledge/events/f6b37b7e-92eb-4f98-be61-361601b4348b.json) — codex-root / public-snapshot-validation-20261029
+- 2026-10-29T15:03:30.837Z [ingest: Clean public copy passed full quality and 47 functional browser tests; preserve original failures / human limits, with final publication gates pending actual execution](../../../../knowledge/events/a1a40dff-2918-4040-b816-6cfd116e0277.json) — codex-root / public-snapshot-validation-20261029
+- 2026-10-29T15:03:31.588Z [task.update: RLAB-TASK-0021 update](../../../../knowledge/events/5977387c-8d76-48cf-a360-6a0c38d6cbc9.json) — codex-root / architecture-review-resume-20261029
 <!-- wiki:generated:end -->

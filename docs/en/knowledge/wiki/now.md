@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"fdc3b6b78e2f9958c0589aedbe0917542aafe5f9d2199940a7b14468d80ba71e","translated_at":"2026-10-29T14:22:37.351Z","executor":"Codex","model_id":null,"links":"english-relative","publication_adaptation":{"kind":"mechanical_archive_link_and_source_metadata_adaptation","adapted_at":"2026-10-29T14:26:40.354Z","source_commit":"14da3d7fdcdb5dc73d69b6420238689e22f3846e","previous_source_sha256":"d7ccd0701244c7cdf1634d04dae47f16f841f7421626fa6c99d6d4509a2448e8","semantic_retranslation":false}} -->
+<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"92444ade4e16fcb1ea83a80fe1ea7dfc2e9d88f9ff659a153323d17b31cc6d6c","translated_at":"2026-10-29T15:04:39.055Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0003
 title: Current Project State
 type: state
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:20:36.194Z
+updated_at: 2026-10-29T15:03:28.849Z
 sources:
   - RLAB-SRC-0002
   - RLAB-SRC-0003
@@ -93,6 +93,7 @@ sources:
   - PUB-V1-SRC-0075-2abba450304c
   - V1-USER-TEST-20261029-R18
   - AR-POSTMERGE-9acff2894b15
+  - AR-PUBLIC-VALIDATION-7b2bc593a36d
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0011
@@ -110,21 +111,19 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `fdc3b6b78e2f9958c0589aedbe0917542aafe5f9d2199940a7b14468d80ba71e`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `92444ade4e16fcb1ea83a80fe1ea7dfc2e9d88f9ff659a153323d17b31cc6d6c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
-<!-- english-original-anchor --> <a id="架構研究已安全合併原區驗證通過準備乾淨公開快照"></a>
-# Architecture research safely merged and original-workspace validation passed; preparing a clean public snapshot
+<!-- english-original-anchor --> <a id="乾淨公開副本驗證通過最終掃描推送及ci待完成"></a>
+# Clean public-copy validation passed; final scanning, push, and CI remain unfinished
 
-Task0021 continues under the user's “Continue” instruction in this conversation. Research commit b10b78a25468b102bd36e02f21f74a3e15791900 was safely merged with no-ff into the original branch as 39f6c2ba50c2f64d0b30b93f49b7728f94a0116a. R18 human feedback added in the original workspace and this round's post-merge receipts were preserved unchanged in 86ffbdc485e7d6d8c86b235c19041d19c6451aa6. Original history, branches, and worktrees remain preserved.
+Task0021 continues the research, integration, and public-release work authorized by the user. Complete local history and the original branch remain preserved. The original and research integration checkpoint is 14da3d7fdcdb5dc73d69b6420238689e22f3846e; research b10b78a and history-preserving merge 39f6c2b have not been rewritten.
 
-The research and original workspaces each completed a full npm check with exit0; all 2295 original-workspace inputs were unchanged before and after. Current UI28 / linked8 / product4 / physics2 / storage5 functional suites passed; see the [post-merge receipts](../../../../artifacts/architecture-review-20261029/post-merge/browser-receipts.json). The first product run's 3 PASS / 1 FAIL and all prior failed or interrupted checks remain preserved. A successful repeat is not a reliability or performance pass.
+Public branch codex/public-snapshot-20261029 has independent root commit a2e38d0c2b0d0d3350581ae189232a9c390a21df, with no original commit ancestors. Fresh pinned npm ci succeeded at the root and for physics. The full npm check exited 0, with all 1913 checked inputs unchanged. Runtime987 and current UI28/linked8/product4/physics2/storage5 suites, plus the analytical benchmark, passed. See the [public-copy receipts](../../../../artifacts/architecture-review-20261029/public-validation/receipts.json).
 
-The legacy CI UI entry point was tested at an isolated address: 1 PASS / 1 FAIL / 11 NOT RUN. It failed an outdated visibility assertion for collapsed details. The research branch narrowly routes CI to the existing maintained UI / linked suites; linked uses installed Chromium in CI and retains Chrome locally. Product code, assertions, timeouts, and frozen acceptance were unchanged; independent review is saved.
+The public snapshot includes only reviewed source / documents / small receipts. Original bundles / PCM / SDKs / large traces are not published; historical archive URIs are explicitly local-only. Links to four old ignored test-results receipts were repaired using copies with their original hashes, without placeholders or relaxed oracles. English coverage is 331 originals / 306 translations / 9 shared raw files, with 0 missing / stale / errors.
 
-Publishing the original history remains BLOCKED because of large / prohibited artifacts. The user authorized a separate clean public snapshot. The empty orphan worktree has not been exported or pushed. Next steps are limited to metadata / English synchronization, saving an integration checkpoint, export using an exact allowlist, installing / validating a fresh copy, a full exact-ref scan, and the specified GitHub push / CI verification. See [integration status](../../../12-architecture-review/integration-state.json) for actual gates.
-
-R17 long-run FAIL and device / terms / root LICENSE limits remain. R18 below is the latest human status: FPS is a user-reported failure and downstream operations are BLOCKED; materials / reflections were not tested, volume and direct manipulation have issues, and the tested bundle / device are unknown. This round does not repair or resume the other product-development goal. The existing text below belongs to the user-feedback-record-20261029-r18 stage: “this chat's paused development goal” refers to that stage and does not cancel the user's continuation authorization for this Task0021 round.
+The final payload manifest must still be rebuilt from the actual staged tree, followed by primary and supplemental UTF16 / encoded-JSON scanning of the complete exact-commit history. Only then may the specified GitHub main be pushed and actual remote / CI results checked. An unperformed push is not a success. Source / numerical / device / performance and human-testing limits remain; R18 is user feedback, not reproduction or repair in this round. The original user-feedback-record-20261029-r18 record below remains preserved; its “paused development goal” refers to that product-recording stage and does not cancel continuation authorization for this Task0021 round.
 
 <!-- english-original-anchor --> <a id="2026-10-29真人回報第一人稱失敗限定第1至8節的未提及項目"></a>
 ## Human feedback on 2026-10-29: FPS failed; unmentioned items limited to sections 1–8

@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/index.md","sha256":"390f054f4818ed254ff557dfdc945478eb19170457bfc89f4e1c9c0dc3ae0b5c","translated_at":"2026-10-29T14:38:56.809Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/index.md","sha256":"53f67a8686ccd4c29b00987571aefda10c1ca150f1156c4353bd14b4b1df9e45","translated_at":"2026-10-29T15:04:39.059Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0001
 title: Knowledge Index
 type: index
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:37:33.725Z
+updated_at: 2026-10-29T15:03:32.230Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -17,7 +17,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/index.md`](../../../../knowledge/wiki/index.md). Source SHA-256: `390f054f4818ed254ff557dfdc945478eb19170457bfc89f4e1c9c0dc3ae0b5c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/index.md`](../../../../knowledge/wiki/index.md). Source SHA-256: `53f67a8686ccd4c29b00987571aefda10c1ca150f1156c4353bd14b4b1df9e45`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab-知識目錄"></a>
@@ -78,10 +78,10 @@ Official sources remain in docs/research/code; the Wiki synthesizes status, limi
 - [Handoff Entry Point](handoffs/index.md) — index / ACCEPTED / 2026-10-25T20:08:10.942Z
 - [Harness Actual Execution and Takeover History](history/agent-runs.md) — history / VERIFIED / 2026-10-26T18:07:51.540Z
 - [Project Evolution Baseline](history/bootstrap-and-phase2.md) — history / VERIFIED / 2026-10-26T15:49:35.117Z
-- [Event Timeline Index](log.md) — log / ACCEPTED / 2026-10-29T14:37:33.663Z
-- [Current Project State](now.md) — state / ACCEPTED / 2026-10-29T14:20:36.194Z
+- [Event Timeline Index](log.md) — log / ACCEPTED / 2026-10-29T15:03:31.989Z
+- [Current Project State](now.md) — state / ACCEPTED / 2026-10-29T15:03:28.849Z
 - [Acoustics and DSP Synthesis](research/acoustics-and-dsp.md) — research / VERIFIED / 2026-10-26T17:54:59.738Z
-- [Independent Worktree Architecture Research and Integration](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T14:37:32.386Z
+- [Independent Worktree Architecture Research and Integration](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T15:03:28.850Z
 - [Datasets and Rights Boundaries](research/datasets-and-rights.md) — research / VERIFIED / 2026-10-27T02:52:29.193Z
 - [Interactive Sound Design and Source Limits](research/interactive-sound-design.md) — research / VERIFIED / 2026-10-26T17:53:30.407Z
 - [Muse Model Quota and Prompt Research](research/muse-models-and-quota.md) — research / VERIFIED / 2026-10-26T15:49:44.460Z

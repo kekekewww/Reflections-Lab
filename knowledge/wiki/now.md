@@ -4,7 +4,7 @@ title: 目前專案狀態
 type: state
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:20:36.194Z
+updated_at: 2026-10-29T15:03:28.849Z
 sources:
   - RLAB-SRC-0002
   - RLAB-SRC-0003
@@ -92,6 +92,7 @@ sources:
   - PUB-V1-SRC-0075-2abba450304c
   - V1-USER-TEST-20261029-R18
   - AR-POSTMERGE-9acff2894b15
+  - AR-PUBLIC-VALIDATION-7b2bc593a36d
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0011
@@ -108,17 +109,15 @@ tags:
   - startup
 ---
 
-# 架構研究已安全合併，原區驗證通過；準備乾淨公開快照
+# 乾淨公開副本驗證通過；最終掃描、推送及CI待完成
 
-Task0021依本對話使用者「繼續」進行。研究commit b10b78a25468b102bd36e02f21f74a3e15791900已安全no-ff合併至原branch，merge為39f6c2ba50c2f64d0b30b93f49b7728f94a0116a；原區新增R18真人回報及本輪合併後收據原樣保存為86ffbdc485e7d6d8c86b235c19041d19c6451aa6。原歷史、branches及worktrees保留。
+Task0021持續執行使用者已授權的研究、整合與公開工作。本地完整歷史與原分支保留；原始及研究整合checkpoint為14da3d7fdcdb5dc73d69b6420238689e22f3846e，研究b10b78a與保留歷史的merge39f6c2b均未改寫。
 
-研究與原區各自完整npm check exit0，原區2295inputs前後一致；當前功能UI28／串接8／產品4／物理2／儲存5通過，見[合併後收據](../../artifacts/architecture-review-20261029/post-merge/browser-receipts.json)。首輪產品3PASS1FAIL、check歷次FAIL與中斷仍保存，不把重跑當成可靠性或效能通過。
+公開分支codex/public-snapshot-20261029為獨立root commit a2e38d0c2b0d0d3350581ae189232a9c390a21df，沒有原始提交祖先。全新鎖版npm ci（root與physics）成功，完整npm check exit0，1913受驗inputs不變；runtime987及當前UI28/linked8/product4/physics2/storage5、解析benchmark均通過。見[公開副本收據](../../artifacts/architecture-review-20261029/public-validation/receipts.json)。
 
-CI舊UI入口的獨立位址實測1PASS1FAIL11未跑，失敗為收合說明的過期可見斷言；研究分支已窄修路由到原本維護的UI/linked suites，linked在CI使用已安裝的Chromium，本地Chrome維持。產品、assertions、timeouts及固定驗收未改，獨立review已保存。
+公開snapshot只含審查後來源/文件/小型收據，原bundle/PCM/SDK/大型trace不公開；歷史archive URI明示本地專用。四份舊ignored test-results收據已用原hash副本修復連結，沒有placeholder或放寬oracle。English331原文/306譯本/9shared raw且0missing/stale/errors。
 
-公開原歷史仍BLOCKED（大型/禁止產物）；使用者已授權另建乾淨公開snapshot。空orphan尚未export或push。下一步只做metadata/英文同步、保存整合checkpoint、exact allowlist匯出、新副本安裝/驗證、完整exact-ref scan及指定GitHub推送/CI核對。實際Gate見[整合狀態](../../docs/12-architecture-review/integration-state.json)。
-
-R17長測FAIL與裝置/條款/root LICENSE等限制保留。最新真人狀態以下方R18為準：FPS為使用者回報失敗，下游操作BLOCKED；材質/反射未測，音量及直接操作有問題，實測bundle/device未知。本輪不修復或恢復另一個產品開發goal。下方是user-feedback-record-20261029-r18階段的既有紀錄，其中「本對話已暫停」指該階段，不取消本輪Task0021的使用者繼續授權。
+最終payload manifest仍需隨實際staged tree重建，再對完整exact commit history做primary與UTF16/編碼JSON補充掃描；之後才能push指定GitHub main並核對實際remote/CI。尚未push不標成功。來源/數值/裝置/性能及真人限制維持，R18是使用者回報而非本輪重現/修復。下方保留user-feedback-record-20261029-r18原紀錄；其「本對話暫停」指該產品紀錄階段，不取消本輪Task0021的繼續授權。
 
 ## 2026-10-29真人回報：第一人稱失敗，限定第1至8節的未提及項目
 

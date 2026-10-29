@@ -1,0 +1,71 @@
+
+> reflection-lab-preproduction@0.0.0 benchmark
+> node benchmarks/analytic/run.mjs
+
+{
+  "schemaVersion": "1.0.0",
+  "recordedAt": "2026-10-29T14:57:04.809Z",
+  "status": "MEASURED_LOCAL_ONLY",
+  "environment": {
+    "node": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpuModel": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "logicalCpus": 32,
+    "totalMemoryBytes": 33959825408
+  },
+  "configuration": {
+    "clock": "node:perf_hooks performance.now monotonic",
+    "warmupIterations": "min(2000, iterationsPerSample)",
+    "sampleCount": 20,
+    "seed": "none; deterministic parameter cycle i%10",
+    "concurrency": 1
+  },
+  "hashes": {
+    "fixtureSha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+    "kernelSha256": "45276bb94ea6c2c26084c7f2c18c7887a239d6514f923bbf6ed095d6010f50a5",
+    "lockfileSha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+  },
+  "results": [
+    {
+      "name": "direct-path",
+      "iterationsPerSample": 5000,
+      "samples": 20,
+      "unit": "ms/operation",
+      "median": 0.00008138000000000005,
+      "p95": 0.00020503999999999962,
+      "min": 0.0000747399999999999,
+      "max": 0.00025336,
+      "measuredScope": "isolated Node synchronous mathematical kernel, includes allocations; no UI/Worker/audio"
+    },
+    {
+      "name": "finite-order2-path",
+      "iterationsPerSample": 5000,
+      "samples": 20,
+      "unit": "ms/operation",
+      "median": 0.008750520000000006,
+      "p95": 0.009521500000000004,
+      "min": 0.007486399999999997,
+      "max": 0.00958832,
+      "measuredScope": "isolated Node synchronous mathematical kernel, includes allocations; no UI/Worker/audio"
+    },
+    {
+      "name": "edc-4096-samples",
+      "iterationsPerSample": 100,
+      "samples": 20,
+      "unit": "ms/operation",
+      "median": 0.3048050000000012,
+      "p95": 0.6983320000000003,
+      "min": 0.22344499999999926,
+      "max": 0.8921180000000004,
+      "measuredScope": "isolated Node synchronous mathematical kernel, includes allocations; no UI/Worker/audio"
+    }
+  ],
+  "sink": 985017.121207557,
+  "limitations": [
+    "Single machine, process, and run; JIT/thermal/OS load affect timings.",
+    "p95 is across per-batch average costs, not individual frame tail latency.",
+    "No browser/AudioWorklet/GPU/large scene/WASM acoustics measurements; performance targets remain unverified."
+  ]
+}

@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"7de1d9c3318738e13dbb11c0a90fe40febb996e54ffb44be3bbfde8a434264b8","translated_at":"2026-10-29T14:38:56.805Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"4302b22d9606477972f37b0835f9349068a3586fc22101981dbca81b10e5d57c","translated_at":"2026-10-29T15:04:39.057Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-ARCH-20261029
 title: Independent Worktree Architecture Research and Integration
@@ -51,6 +51,7 @@ sources:
   - AR-POSTMERGE-9acff2894b15
   - V1-USER-TEST-20261029-R18
   - PUBLIC-LINKS-c1b420a1efe7da81
+  - AR-PUBLIC-VALIDATION-7b2bc593a36d
 related_tasks:
   - RLAB-TASK-0021
 related_decisions:
@@ -60,11 +61,11 @@ tags:
   - P1
   - architecture
   - worktree
-updated_at: 2026-10-29T14:37:32.386Z
+updated_at: 2026-10-29T15:03:28.850Z
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `7de1d9c3318738e13dbb11c0a90fe40febb996e54ffb44be3bbfde8a434264b8`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `4302b22d9606477972f37b0835f9349068a3586fc22101981dbca81b10e5d57c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="獨立-worktree-架構研究與整合"></a>
@@ -77,3 +78,8 @@ Research b10b78a was safely merged with no-ff as 39f6c2b. The original workspace
 New [R18 feedback](../../../../11-v1/USER_TEST_FEEDBACK_20261029-r18.json) from the original workspace is preserved: inability to operate in FPS is a user-reported failure, blocking downstream FPS operations. Materials / reflections were not tested; volume / direct manipulation have issues; the tested bundle / device are unknown. Diagnose the input blocker first, then continue the recording hot path / performance. This round does not expand into product repairs.
 
 Nine-scenario cloud estimates are not capacity or spending commitments. Original history contains oversized / prohibited artifacts and cannot be pushed; the user authorized preserving all local history and creating a separate clean public snapshot. An exact public manifest, full scan, fresh-copy validation, and remote / CI checks remain actual gates; unperformed work is not PASS. Use the sole task [0021](../../../../../knowledge/tasks/RLAB-TASK-0021.json); actual status is in [integration-state](../../../../12-architecture-review/integration-state.json). The complete V1 remains unfinished.
+
+<!-- english-original-anchor --> <a id="乾淨公開副本已實跑驗證"></a>
+## Clean public copy has completed actual validation
+
+Exported from 14da, public root commit a2e38d0 has no original ancestors. Fresh npm ci/check, 47 functional browser tests, and the analytical benchmark passed; see the [receipts](../../../../../artifacts/architecture-review-20261029/public-validation/receipts.json). Four historical small-receipt links were repaired against genuine copies / hashes; complete original artifacts remain local-only. The final exact payload / full reachable-history scan / push / remote CI remain unfinished. This section does not establish successful publication or completion of the full V1.

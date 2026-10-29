@@ -4,7 +4,7 @@ title: 知識目錄
 type: index
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:37:33.725Z
+updated_at: 2026-10-29T15:03:32.230Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -72,10 +72,10 @@ tags:
 - [交接入口](handoffs/index.md) — index / ACCEPTED / 2026-10-25T20:08:10.942Z
 - [Harness實際執行與接手歷史](history/agent-runs.md) — history / VERIFIED / 2026-10-26T18:07:51.540Z
 - [專案演進基準](history/bootstrap-and-phase2.md) — history / VERIFIED / 2026-10-26T15:49:35.117Z
-- [事件時間索引](log.md) — log / ACCEPTED / 2026-10-29T14:37:33.663Z
-- [目前專案狀態](now.md) — state / ACCEPTED / 2026-10-29T14:20:36.194Z
+- [事件時間索引](log.md) — log / ACCEPTED / 2026-10-29T15:03:31.989Z
+- [目前專案狀態](now.md) — state / ACCEPTED / 2026-10-29T15:03:28.849Z
 - [聲學與DSP綜合知識](research/acoustics-and-dsp.md) — research / VERIFIED / 2026-10-26T17:54:59.738Z
-- [獨立Worktree架構研究與公開限制](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T14:37:32.386Z
+- [獨立Worktree架構研究與公開限制](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T15:03:28.850Z
 - [資料集與權利界線](research/datasets-and-rights.md) — research / VERIFIED / 2026-10-27T02:52:29.193Z
 - [互動聲音設計與來源限制](research/interactive-sound-design.md) — research / VERIFIED / 2026-10-26T17:53:30.407Z
 - [Muse模型額度與Prompt研究](research/muse-models-and-quota.md) — research / VERIFIED / 2026-10-26T15:49:44.460Z

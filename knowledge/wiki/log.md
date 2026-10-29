@@ -4,7 +4,7 @@ title: 事件時間索引
 type: log
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T14:37:33.663Z
+updated_at: 2026-10-29T15:03:31.989Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -404,4 +404,6 @@ tags: []
 - 2026-10-29T14:20:34.312Z [ingest: 保存實際合併/完整品質/browser證據與原區R18真人回報；公開仍未完成](../events/e5da6639-539a-412c-9024-45dc6ae13ca0.json) — codex-root / architecture-review-resume-20261029
 - 2026-10-29T14:20:36.159Z [handoff: 安全合併及原區全品質/47功能browser通過；保留R18真人FPS失敗，準備乾淨公開snapshot](../events/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.json) — codex-root / architecture-review-resume-20261029
 - 2026-10-29T14:37:33.450Z [ingest: 公開快照修復四份真實歷史收據連結；原bytes與測試門檻保留](../events/f6b37b7e-92eb-4f98-be61-361601b4348b.json) — codex-root / public-snapshot-validation-20261029
+- 2026-10-29T15:03:30.837Z [ingest: 乾淨公開副本完整品質與47功能browser通過；原FAIL/真人限制保留，最後公開Gate待實跑](../events/a1a40dff-2918-4040-b816-6cfd116e0277.json) — codex-root / public-snapshot-validation-20261029
+- 2026-10-29T15:03:31.588Z [task.update: RLAB-TASK-0021 update](../events/5977387c-8d76-48cf-a360-6a0c38d6cbc9.json) — codex-root / architecture-review-resume-20261029
 <!-- wiki:generated:end -->

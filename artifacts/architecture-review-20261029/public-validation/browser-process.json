@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "scope": "public",
+  "results": [
+    {
+      "name": "ui-build",
+      "command": [
+        "node",
+        "tests/browser/build-ui-preview.mjs"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:45:25.890Z",
+      "finished_at_utc": "2026-10-29T14:45:27.077Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-ui-build.log"
+    },
+    {
+      "name": "ui",
+      "command": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        ".cache/architecture-review/isolated-ui.config.ts"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:45:27.079Z",
+      "finished_at_utc": "2026-10-29T14:46:59.892Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-ui.log"
+    },
+    {
+      "name": "linked",
+      "command": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        ".cache/architecture-review/isolated-linked.config.ts"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:46:59.893Z",
+      "finished_at_utc": "2026-10-29T14:47:34.439Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-linked.log"
+    },
+    {
+      "name": "product-build",
+      "command": [
+        "node",
+        "tests/browser/build-product-preview.mjs"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:47:34.439Z",
+      "finished_at_utc": "2026-10-29T14:47:35.710Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-product-build.log"
+    },
+    {
+      "name": "product",
+      "command": [
+        "node",
+        "tests/browser/run-product-refined-v3.mjs"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:47:35.711Z",
+      "finished_at_utc": "2026-10-29T14:48:25.562Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-product.log"
+    },
+    {
+      "name": "physics",
+      "command": [
+        "node",
+        "tests/browser/run-physics-lifecycle.mjs",
+        "--evidence"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:48:25.563Z",
+      "finished_at_utc": "2026-10-29T14:48:54.236Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-physics.log"
+    },
+    {
+      "name": "storage",
+      "command": [
+        "node",
+        "tests/browser/run-storage.mjs",
+        "--evidence"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "started_at_utc": "2026-10-29T14:48:54.237Z",
+      "finished_at_utc": "2026-10-29T14:49:08.299Z",
+      "log": "D:\\Developing\\Reflections-Lab-public\\.cache\\architecture-review\\validation\\public-fresh-browser-storage.log"
+    }
+  ]
+}

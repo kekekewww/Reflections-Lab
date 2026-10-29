@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "reviewer": "Codex publication_audit with independent rights_inventory subreview",
+  "scope": "Bounded read-only preparation review of the exact P0 public ref; not a final publication or V1 acceptance signoff",
+  "public_root": "D:/Developing/Reflections-Lab-public",
+  "public_ref": "a2e38d0c2b0d0d3350581ae189232a9c390a21df",
+  "integrated_source_ref": "14da3d7fdcdb5dc73d69b6420238689e22f3846e",
+  "verdict": "SCOPED_PASS_FOR_P0_PREPARATION_WITH_FINAL_GATES_PENDING",
+  "methods": [
+    "git rev-list --parents <P0>; git ls-tree -r -l <P0>",
+    "Compare fixed-ref Git blob IDs and modes against integrated source for production, test source, schemas and selected package/CI configuration paths",
+    "git rev-list --objects <P0>; git cat-file --batch-check and read only P0 blobs using git cat-file --batch",
+    "Check included path SHA-256 and byte counts against the export-stage manifest, parse JSON receipts and inspect attachment structure",
+    "Check four repaired historical receipt copies against the published link-repair metadata and verify the new current source record",
+    "Independent subreview of retained third-party licenses, fixed Emil hashes, SDK/source metadata, known JSON attachments and two UTF-16 text receipts"
+  ],
+  "ancestry_and_tree": {
+    "reachable_commits": 1,
+    "parent_commits": [],
+    "original_history_is_not_an_ancestor": true,
+    "tracked_paths": 2358,
+    "tree_path_bytes": 46975087,
+    "reachable_objects": 2826,
+    "unique_blobs": 2323,
+    "unique_blob_bytes": 46305960,
+    "largest_blob_bytes": 3818645,
+    "files_over_10_MiB": 0,
+    "nonregular_git_modes": 0,
+    "forbidden_extension_paths": 0,
+    "sensitive_filename_paths": 0,
+    "node_modules_cache_dist_build_paths": 0,
+    "extension_scope": "No directly tracked PDF, WAV, PCM, MP3, FLAC, OGG, SOFA, WASM, DLL, LIB, A, SO, ZIP, GZIP, WebM, MP4, PNG, JPG or source-map paths. Small original favicon ICO/SVG retained separately."
+  },
+  "fixed_ref_byte_equivalence": {
+    "production_src_and_server": { "source_paths": 151, "public_paths": 151, "changed": 0, "omitted": 0, "unexpected": 0 },
+    "test_source": {
+      "source_paths": 337,
+      "public_paths": 337,
+      "changed": 0,
+      "omitted": 0,
+      "unexpected": 0,
+      "selection": "tests/ paths with .ts/.tsx/.mjs/.mts/.js/.json, excluding historical native-accessibility-evidence payloads"
+    },
+    "schemas": { "source_paths": 31, "public_paths": 31, "changed": 0, "omitted": 0, "unexpected": 0 },
+    "selected_package_and_ci_configuration": {
+      "paths": 8,
+      "changed": 0,
+      "selection": ["package.json", "package-lock.json", ".node-version", "vite.config.ts", "tsconfig.json", "eslint.config.mjs", ".github/workflows/validation.yml", "tests/browser/linked-workflow-v2.config.ts"]
+    },
+    "r18_direct_user_feedback": {
+      "path": "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+      "git_blob_equal": true,
+      "blob": "c390bd079145f36c8b4f80683e34a477675e51ef",
+      "scope": "Original user-reported FPS failure bytes preserved; automated tests do not override the report"
+    }
+  },
+  "export_manifest": {
+    "path": "docs/12-architecture-review/PUBLIC_SNAPSHOT_MANIFEST.json",
+    "bytes": 3818645,
+    "sha256": "a08fc484f41c7fec65c0433e427e9ff3653db44f45c59f261270be78859ea3b7",
+    "declared_stage": "EXPORT_STAGE_PRE_ENGLISH_FINALIZE_NOT_FINAL_PUBLIC_REF",
+    "included_records": 2355,
+    "included_paths_missing_from_tree": 0,
+    "tree_paths_not_listed_in_included": [
+      "docs/12-architecture-review/PUBLIC_SNAPSHOT_LINK_REPAIR.json",
+      "docs/12-architecture-review/PUBLIC_SNAPSHOT_MANIFEST.json",
+      "knowledge/events/f6b37b7e-92eb-4f98-be61-361601b4348b.json"
+    ],
+    "included_sha256_mismatches": 13,
+    "included_byte_count_mismatches": 10,
+    "mismatched_hash_paths": [
+      "docs/11-v1/REQUIREMENT_EVIDENCE_20261027.md",
+      "docs/en/11-v1/REQUIREMENT_EVIDENCE_20261027.md",
+      "docs/en/index.md",
+      "docs/en/knowledge/wiki/index.md",
+      "docs/en/knowledge/wiki/log.md",
+      "docs/en/knowledge/wiki/research/architecture-review-20261029.md",
+      "docs/en/knowledge/wiki/tasks.md",
+      "docs/en/manifest.json",
+      "docs/en/validation.json",
+      "knowledge/sources/manifest.json",
+      "knowledge/wiki/index.md",
+      "knowledge/wiki/log.md",
+      "knowledge/wiki/research/architecture-review-20261029.md"
+    ],
+    "disposition": "PREPARATION_REQUIRED: expected export-stage metadata is not a final exact-ref manifest. Root acknowledged regeneration before P1 and again after later completion metadata. Do not treat these declared pre-final hashes as current P0 hashes or change production/tests to hide the differences.",
+    "archive_online_download_available": false,
+    "archive_retrieval": "Original retained local Git archive required; omitted raw/bundle evidence is not reproducible from the public snapshot alone",
+    "overclaims": { "complete_v1": false, "performance_pass": false, "human_hearing_pass": false, "legal_approval": false }
+  },
+  "historical_receipt_link_repair": {
+    "path": "docs/12-architecture-review/PUBLIC_SNAPSHOT_LINK_REPAIR.json",
+    "sha256": "aea92044a77eb1124bf0442bd6f5e10fc89a4efa86ce1194299767f5101c255d",
+    "status": "MECHANICAL_REPAIR_NOT_NEW_TEST",
+    "receipt_copies": 4,
+    "present_and_matching_bytes_and_sha256": 4,
+    "new_source_id": "PUBLIC-LINKS-c1b420a1efe7da81",
+    "new_source_path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261027.md",
+    "new_source_sha256": "c1b420a1efe7da81c0b216f249d1433e351294e9a841523b06b639793c46e226",
+    "source_record_count": 1,
+    "snapshot_mode": "current",
+    "source_hash_matches_public_bytes": true,
+    "invented_supersession": false,
+    "new_test_or_download_claim_observed": false
+  },
+  "rights_subreview": {
+    "status": "NO_NEW_RIGHTS_BLOCKER_OBSERVED_WITHIN_BOUNDED_METHOD",
+    "steam_audio": "Only tracked README and manifest; no SDK cache/binary",
+    "emil_fixed_files_verified": 16,
+    "emil_hash_mismatches": 0,
+    "emil_rights": "Full MIT/copyright retained",
+    "root_license": "Still user-owned and not selected by the reviewer",
+    "source_records": 288,
+    "source_records_with_local_paths": 264,
+    "missing_local_source_paths": 0,
+    "unknown_license_records": 10,
+    "all_unknown_records_remote_only_with_null_local_path": true,
+    "remote_legal_terms_rechecked": false
+  },
+  "attachment_and_text_container_review": {
+    "public_artifact_paths": 411,
+    "public_artifact_extensions": { "json": 325, "md": 35, "mjs": 1, "tap": 12, "ts": 9, "txt": 29 },
+    "json_files_with_attachments": 21,
+    "attachment_nodes": 95,
+    "base64_bodies_decoded_as_application_json": 45,
+    "largest_decoded_body_bytes": 233911,
+    "path_only_attachment_nodes": 50,
+    "path_only_types": { "application/zip": 24, "image/png": 12, "text/markdown": 14 },
+    "binary_media_wasm_source_bundle_marker_findings_in_decoded_bodies": 0,
+    "raw_json_receipts": 15,
+    "raw_json_receipt_byte_range": [3096, 64494],
+    "raw_json_receipts_parseable": 15,
+    "all_json_parse_errors": 0,
+    "utf16_receipts": [
+      { "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/preview-cleanup.json", "bytes": 582, "sha256": "8b16db86912be8c6d8ad232575a2a31860792a79783148d0819ec89fe26f30ee", "classification": "UTF-16LE BOM parseable process-cleanup JSON text" },
+      { "path": "tests/audio-runtime/node-final-20261027.tap", "bytes": 47446, "sha256": "4ea4e0185bab3751ad6c593ba5f267e8007f57928956b75597abd81a1954de49", "classification": "UTF-16LE BOM TAP text with header and plan" }
+    ],
+    "utf16_decoded_text_controls_valid": true,
+    "credential_signature_coverage_of_decoded_containers": "NOT_RUN_BY_THIS_REVIEW: final scanner skips binary-header text and arbitrary base64; root was advised to supplement exact-P1 safety review with these identified text containers",
+    "not_exhaustive_recursive_payload_analysis": true
+  },
+  "final_gates_not_completed_by_this_reviewer": [
+    "Final P1 exact staged-tree manifest regeneration and proof of no unexpected included paths",
+    "Root full secret scan of the actual final public ref with complete persisted redacted JSON, including identified text-container coverage or explicit residual limits",
+    "Actual public fresh-clone/current browser results and final source stability receipts",
+    "Push, remote commit/file equality and actual CI completion"
+  ],
+  "execution_limits": {
+    "tests_run": [],
+    "root_scanner_rerun": false,
+    "original_history_content_scanned": false,
+    "public_files_modified": false,
+    "wiki_tasks_source_modified": false,
+    "unrelated_app_or_cache_material_read": false,
+    "secret_values_recorded": false,
+    "push_performed": false,
+    "root_fresh_check": "Root subsequently reported exit0 with 1913 stable inputs and runtime987/987; this reviewer did not run or independently read that test receipt",
+    "p0_scope_only": "A later P1/P2 ref or export manifest is not covered by this fixed-P0 review"
+  }
+}

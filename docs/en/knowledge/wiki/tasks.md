@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/tasks.md","sha256":"a669c31b82d245f7a91cacb72816f04aa250a5a0756a95d5f8ebfc236ef47c9f","translated_at":"2026-10-29T14:38:56.815Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/tasks.md","sha256":"a669c31b82d245f7a91cacb72816f04aa250a5a0756a95d5f8ebfc236ef47c9f","translated_at":"2026-10-29T15:04:39.064Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0006
 title: Task Index
