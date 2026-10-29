@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/index.md","sha256":"53f67a8686ccd4c29b00987571aefda10c1ca150f1156c4353bd14b4b1df9e45","translated_at":"2026-10-29T15:04:39.059Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/index.md","sha256":"ecc1e35ad8e6f924561fd3a5c0b94fb869dbcd2dafd10895c2ce198162d46c74","translated_at":"2026-10-29T15:35:51.322Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0001
 title: Knowledge Index
 type: index
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T15:03:32.230Z
+updated_at: 2026-10-29T15:35:00.513Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -17,7 +17,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/index.md`](../../../../knowledge/wiki/index.md). Source SHA-256: `53f67a8686ccd4c29b00987571aefda10c1ca150f1156c4353bd14b4b1df9e45`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/index.md`](../../../../knowledge/wiki/index.md). Source SHA-256: `ecc1e35ad8e6f924561fd3a5c0b94fb869dbcd2dafd10895c2ce198162d46c74`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab-知識目錄"></a>
@@ -67,6 +67,7 @@ Official sources remain in docs/research/code; the Wiki synthesizes status, limi
 - [r12 Official Projection and Dev Fixes: 931runtime/26Vite/physics2/storage5/product4 Passed, Overall Goal Still ACTIVE](handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md) — handoff / UNVERIFIED / 2026-10-27T23:16:40.462Z
 - [Sound Behavior Research Closed; Task0010 DONE, 0011 READY, Codex Leads, Official Product Not Yet Implemented](handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md) — handoff / UNVERIFIED / 2026-10-26T18:13:12.902Z
 - [Phase2 Preliminary Handoff: Tools and Specifications Integrated, Awaiting the Full Gate](handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md) — handoff / UNVERIFIED / 2026-10-25T20:13:19.825Z
+- [Research safely integrated and P1 published; GitHub files and both CI jobs passed, with R18 human FPS failure / performance limits retained](handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md) — handoff / UNVERIFIED / 2026-10-29T15:31:21.261Z
 - [User explicitly restarted; resume isolated validation and authorized integration/publication](handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md) — handoff / UNVERIFIED / 2026-10-29T13:26:30.930Z
 - [Phase3 Preliminary Handoff: 19 Commands Passed, User Confirmed Muse0, Actual Codex Takeover Validated, Awaiting New Agent Reading before Closure](handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md) — handoff / UNVERIFIED / 2026-10-26T16:00:05.249Z
 - [Product and Tool Sources Frozen; Individual391/150/100/155 Passed, New Native Qualification under Preparation](handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md) — handoff / UNVERIFIED / 2026-10-27T17:30:18.452Z
@@ -78,15 +79,15 @@ Official sources remain in docs/research/code; the Wiki synthesizes status, limi
 - [Handoff Entry Point](handoffs/index.md) — index / ACCEPTED / 2026-10-25T20:08:10.942Z
 - [Harness Actual Execution and Takeover History](history/agent-runs.md) — history / VERIFIED / 2026-10-26T18:07:51.540Z
 - [Project Evolution Baseline](history/bootstrap-and-phase2.md) — history / VERIFIED / 2026-10-26T15:49:35.117Z
-- [Event Timeline Index](log.md) — log / ACCEPTED / 2026-10-29T15:03:31.989Z
-- [Current Project State](now.md) — state / ACCEPTED / 2026-10-29T15:03:28.849Z
+- [Event Timeline Index](log.md) — log / ACCEPTED / 2026-10-29T15:35:00.414Z
+- [Current Project State](now.md) — state / ACCEPTED / 2026-10-29T15:31:21.256Z
 - [Acoustics and DSP Synthesis](research/acoustics-and-dsp.md) — research / VERIFIED / 2026-10-26T17:54:59.738Z
-- [Independent Worktree Architecture Research and Integration](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T15:03:28.850Z
+- [Independent Worktree Architecture Research and Integration](research/architecture-review-20261029.md) — research / ACCEPTED / 2026-10-29T15:31:18.987Z
 - [Datasets and Rights Boundaries](research/datasets-and-rights.md) — research / VERIFIED / 2026-10-27T02:52:29.193Z
 - [Interactive Sound Design and Source Limits](research/interactive-sound-design.md) — research / VERIFIED / 2026-10-26T17:53:30.407Z
 - [Muse Model Quota and Prompt Research](research/muse-models-and-quota.md) — research / VERIFIED / 2026-10-26T15:49:44.460Z
 - [Official Roadmap Guide](roadmap.md) — roadmap / ACCEPTED / 2026-10-29T05:38:39.565Z
-- [Task Index](tasks.md) — tasks / ACCEPTED / 2026-10-29T13:26:25.375Z
+- [Task Index](tasks.md) — tasks / ACCEPTED / 2026-10-29T15:35:00.435Z
 - [Design Engineering and Authoritative Specifications](ui-ux/design-engineering.md) — design / ACCEPTED / 2026-10-29T13:59:04.321Z
 - [FPS Grab Development and Acceptance Guide](ui-ux/fps-grab-review.md) — design / ACCEPTED / 2026-10-26T17:52:37.412Z
 - [Design Review History](ui-ux/review-history.md) — history / ACCEPTED / 2026-10-25T20:21:10.728Z

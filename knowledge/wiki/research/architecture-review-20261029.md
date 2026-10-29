@@ -51,6 +51,7 @@ sources:
   - V1-USER-TEST-20261029-R18
   - PUBLIC-LINKS-c1b420a1efe7da81
   - AR-PUBLIC-VALIDATION-7b2bc593a36d
+  - AR-PUBLISHED-P1-82d18d43092f
 related_tasks:
   - RLAB-TASK-0021
 related_decisions:
@@ -60,7 +61,7 @@ tags:
   - P1
   - architecture
   - worktree
-updated_at: 2026-10-29T15:03:28.850Z
+updated_at: 2026-10-29T15:31:18.987Z
 ---
 
 # 獨立 Worktree 架構研究與整合
@@ -77,3 +78,8 @@ updated_at: 2026-10-29T15:03:28.850Z
 ## 乾淨公開副本已實跑驗證
 
 由14da匯出，公開root commit a2e38d0無原始祖先；fresh npm ci/check及47功能browser與解析benchmark通過，見[收據](../../../artifacts/architecture-review-20261029/public-validation/receipts.json)。四份歷史小型收據連結按真正副本/hash修復；原完整產物仍僅本地。最後exact payload/完整reachable scan/push/remote CI仍未完成，不能以本段當成公開成功或完整V1完成。
+
+
+## P1已公開並核對遠端
+
+GitHub main已收到aae67e77，來源為14da整合snapshot；無原始祖先。完整掃描與精確manifest通過，remote2396檔0差異，GitHub validation/browser兩項CI實際成功，見[公開收據](../../../artifacts/architecture-review-20261029/publication/published-p1-receipts.json)。後續僅同步completion metadata並對該新ref再掃描/核對，不以P1預先核准新code。原始全部本地history保留；完整V1、人測及performance仍未完成。

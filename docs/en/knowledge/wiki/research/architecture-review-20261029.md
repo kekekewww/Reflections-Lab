@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"4302b22d9606477972f37b0835f9349068a3586fc22101981dbca81b10e5d57c","translated_at":"2026-10-29T15:04:39.057Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"67bc369a63cff48e333cd2934cae8d5c58af0168324ea9a39aa62139e14e2ccb","translated_at":"2026-10-29T15:32:51.541Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-ARCH-20261029
 title: Independent Worktree Architecture Research and Integration
@@ -52,6 +52,7 @@ sources:
   - V1-USER-TEST-20261029-R18
   - PUBLIC-LINKS-c1b420a1efe7da81
   - AR-PUBLIC-VALIDATION-7b2bc593a36d
+  - AR-PUBLISHED-P1-82d18d43092f
 related_tasks:
   - RLAB-TASK-0021
 related_decisions:
@@ -61,11 +62,11 @@ tags:
   - P1
   - architecture
   - worktree
-updated_at: 2026-10-29T15:03:28.850Z
+updated_at: 2026-10-29T15:31:18.987Z
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `4302b22d9606477972f37b0835f9349068a3586fc22101981dbca81b10e5d57c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `67bc369a63cff48e333cd2934cae8d5c58af0168324ea9a39aa62139e14e2ccb`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="獨立-worktree-架構研究與整合"></a>
@@ -83,3 +84,8 @@ Nine-scenario cloud estimates are not capacity or spending commitments. Original
 ## Clean public copy has completed actual validation
 
 Exported from 14da, public root commit a2e38d0 has no original ancestors. Fresh npm ci/check, 47 functional browser tests, and the analytical benchmark passed; see the [receipts](../../../../../artifacts/architecture-review-20261029/public-validation/receipts.json). Four historical small-receipt links were repaired against genuine copies / hashes; complete original artifacts remain local-only. The final exact payload / full reachable-history scan / push / remote CI remain unfinished. This section does not establish successful publication or completion of the full V1.
+
+<!-- english-original-anchor --> <a id="p1已公開並核對遠端"></a>
+## P1 published and checked against the remote
+
+GitHub main received aae67e77 from the 14da integration snapshot, with no original ancestors. The full scan and exact manifest passed; all 2396 remote files match with zero differences, and GitHub's validation / browser CI jobs actually succeeded. See the [publication receipts](../../../../../artifacts/architecture-review-20261029/publication/published-p1-receipts.json). Subsequent work only synchronizes completion metadata and rescans / verifies that new ref; P1 does not preapprove new code. All original local history remains preserved; the complete V1, human testing, and performance remain unfinished.

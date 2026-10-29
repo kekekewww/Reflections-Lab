@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "status": "PASS_FOR_PUBLICATION",
+  "audited_ref": "aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e",
+  "full_scan_raw_preserved": true,
+  "all_reachable_commits": 2,
+  "unique_blobs": 2376,
+  "blob_bytes": 53559655,
+  "candidate_count": 23,
+  "confirmed_credentials": 0,
+  "candidates": [
+    {
+      "blob": "2b3ecdeff7279da30f915f6411f35d152fac04d4",
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/diagnosis-summary.json",
+      "rule": "url-password",
+      "byte_offset": 8602,
+      "match_bytes": 24,
+      "value_sha256": "2897097508da069e44c6f1aea1b4b5b7f71bf01fc4fd4e51825ce7255762f629",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "false_positive_loopback_development_url",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "loopback_url_shape": true,
+        "fixture_path": false
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "8c3e6e28914660f39cad6a7c874ed2f05d4d202a",
+      "path": "experiments/dataset-fetch-spike/dataset-fetch.test.mjs",
+      "rule": "url-password",
+      "byte_offset": 7020,
+      "match_bytes": 20,
+      "value_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_negative_userinfo_fixture",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "loopback_url_shape": false,
+        "fixture_path": true
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "8f02df3b8d91ab92990bcc7a5eeb3e2d6773d6a0",
+      "path": "server/meta-live-payload-preview.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 1751,
+      "match_bytes": 26,
+      "value_sha256": "b025c80322000d1899f9cee4c33fd737108e050a8045b078c3e13ecb9d447a21",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_preview_non_secret_label",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "contains_review_marker": true,
+        "contains_preview_marker": true,
+        "contains_non_secret_marker": true,
+        "line": 47
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "8bd5d128dc7113f7ecfbb119a586eaab6f2f56d1",
+      "path": "tests/agents/harness.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 12734,
+      "match_bytes": 18,
+      "value_sha256": "d940ba9a9d48287a3069d68fdf292e82f88b74bd99b9d000845d32d971d91806",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "secret-bearing file content is hashed but never stored in snapshots",
+        "line": 318
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "8bd5d128dc7113f7ecfbb119a586eaab6f2f56d1",
+      "path": "tests/agents/harness.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 13165,
+      "match_bytes": 18,
+      "value_sha256": "d940ba9a9d48287a3069d68fdf292e82f88b74bd99b9d000845d32d971d91806",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "secret-bearing file content is hashed but never stored in snapshots",
+        "line": 326
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "1da740091cd193370688fcc47efae9b8ee136e6e",
+      "path": "tests/agents/process-runner.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4368,
+      "match_bytes": 22,
+      "value_sha256": "c9a299d954bbf091e83534b315ce7d88739e19bbdb7676abaa2b078dcd6216b3",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "redacts common secrets including tokens split across child writes",
+        "line": 113
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "1da740091cd193370688fcc47efae9b8ee136e6e",
+      "path": "tests/agents/process-runner.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4704,
+      "match_bytes": 10,
+      "value_sha256": "5580ea1aa719b52807b52b73846ec7bf1aabed97d82d2a739650c5de1c07e059",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "redacts common secrets including tokens split across child writes",
+        "line": 120
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "1da740091cd193370688fcc47efae9b8ee136e6e",
+      "path": "tests/agents/process-runner.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4732,
+      "match_bytes": 9,
+      "value_sha256": "e9a908447b0d33146f9df627772192620691677f3106b38118a4ec4598c16523",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "redacts common secrets including tokens split across child writes",
+        "line": 120
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "1da740091cd193370688fcc47efae9b8ee136e6e",
+      "path": "tests/agents/process-runner.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4764,
+      "match_bytes": 10,
+      "value_sha256": "e54b74eb9192b48055c48d2062bffdd23469ef7d70f960ff1293a47f86c8eba2",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "redacts common secrets including tokens split across child writes",
+        "line": 121
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "1da740091cd193370688fcc47efae9b8ee136e6e",
+      "path": "tests/agents/process-runner.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4792,
+      "match_bytes": 10,
+      "value_sha256": "e54b74eb9192b48055c48d2062bffdd23469ef7d70f960ff1293a47f86c8eba2",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "redacts common secrets including tokens split across child writes",
+        "line": 121
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 953,
+      "match_bytes": 8,
+      "value_sha256": "601d759f255f0cab5b45cf34f282835bd4d673c16d15d7686a606d57f5312d8a",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "strict credential files allow one named quoted assignment and never execute their contents",
+        "line": 20
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 991,
+      "match_bytes": 8,
+      "value_sha256": "601d759f255f0cab5b45cf34f282835bd4d673c16d15d7686a606d57f5312d8a",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "strict credential files allow one named quoted assignment and never execute their contents",
+        "line": 21
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 1016,
+      "match_bytes": 8,
+      "value_sha256": "eff6400e49e0996cec1173a293df63626fbcfbabde4c153890a62ba1dd50199a",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "strict credential files allow one named quoted assignment and never execute their contents",
+        "line": 21
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 1053,
+      "match_bytes": 18,
+      "value_sha256": "3d0d47754664dfacc97641a5ce024b627dd26be3c9ca93cb1591917be65dba19",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "strict credential files allow one named quoted assignment and never execute their contents",
+        "line": 22
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 1100,
+      "match_bytes": 23,
+      "value_sha256": "6dc994c9c111b0c7802f8d8bf63626acdc47eb46429dad0396c426a88c702019",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "strict credential files allow one named quoted assignment and never execute their contents",
+        "line": 23
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "5d81c36c44175af089db78a3132e08395d8fa943",
+      "path": "tests/ai-runtime/meta-key-loader.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 2680,
+      "match_bytes": 8,
+      "value_sha256": "601d759f255f0cab5b45cf34f282835bd4d673c16d15d7686a606d57f5312d8a",
+      "placeholder_hint": true,
+      "code_expression_hint": true,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "only an explicitly selected file is loaded, while errors and limits remain redacted",
+        "line": 56
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "f7027e1121ceb821a072435e23e65da1d5c99f01",
+      "path": "tests/ai-runtime/meta-live-budget.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 6012,
+      "match_bytes": 33,
+      "value_sha256": "8813acfc65fc1635b76d57030673f606c8235cc9940f867fe520c3f8019a1632",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "request summaries reject key material, raw prompts and policy changes before persistence",
+        "line": 154
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "f7027e1121ceb821a072435e23e65da1d5c99f01",
+      "path": "tests/ai-runtime/meta-live-budget.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 9277,
+      "match_bytes": 27,
+      "value_sha256": "eba562d10968801dccff1c01cc6e03d3a9bccee61187b5d61ceb96dc42459fc4",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "secret-shaped settlement metadata is rejected without persisting it in artifacts or snapshots",
+        "line": 230
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "ac5ad36d82780091fde1c5c526bf82d3d8c58697",
+      "path": "tests/ai-runtime/meta-live-validation.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 7487,
+      "match_bytes": 33,
+      "value_sha256": "5aab87ba3595c9a87d424d1d586fb4c6e99a15916625c49d7e71f1991c4a0f59",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "a body differing from the reviewed synthetic payload is blocked before reservation or remote dispatch",
+        "line": 199
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "df16724294534d0aac947b354df35902245bfab6",
+      "path": "tests/ai-runtime/sound-server.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 2976,
+      "match_bytes": 8,
+      "value_sha256": "c6c331958744bb3f00902fd3e507045e2fa152ea81b0f53f56299c6f8f0e82a2",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "Sound route rejects extra authority, invalid documents, and cross-origin requests before model transport",
+        "line": 87
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "df16724294534d0aac947b354df35902245bfab6",
+      "path": "tests/ai-runtime/sound-server.test.ts",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 4356,
+      "match_bytes": 22,
+      "value_sha256": "e7ae0f62da091c9ae58e591a7527c5576956cc4aed28fb6fb6b5a0eec898f848",
+      "placeholder_hint": true,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "Sound endpoint uses an actual function-call fixture and returns host-fixed proposal metadata",
+        "line": 126
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "7109fb03924a73fe43eab7a698596ac60ebda778",
+      "path": "tests/integration/schemas.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 3292,
+      "match_bytes": 10,
+      "value_sha256": "9d6ab5f3fc6d8e40faec01b06b0c0ce791abab24362e5880ddfacb9f449a5dee",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "scene schema rejects unknown property, negative mass and oversized budgets",
+        "line": 113
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    },
+    {
+      "blob": "7109fb03924a73fe43eab7a698596ac60ebda778",
+      "path": "tests/integration/schemas.test.mjs",
+      "rule": "literal-secret-assignment",
+      "byte_offset": 8102,
+      "match_bytes": 10,
+      "value_sha256": "9d6ab5f3fc6d8e40faec01b06b0c0ce791abab24362e5880ddfacb9f449a5dee",
+      "placeholder_hint": false,
+      "code_expression_hint": false,
+      "classification": "synthetic_test_fixture_or_test_source",
+      "confirmed_real_credential": false,
+      "review_details": {
+        "test_title": "AI request schema rejects invalid dimensions, mass, unknown fields/tools, transaction misuse",
+        "line": 214
+      },
+      "method": "Exact immutable blob/offset/value hash matches previously reviewed baseline; captured value re-extracted with published regex and rehashed now; values not recorded"
+    }
+  ],
+  "decoded_text": {
+    "utf16": 2,
+    "containers": 81,
+    "hits": 0,
+    "errors": 0,
+    "opaque_bodies": 0
+  },
+  "only_remaining_binary": "Approved original project icon, exact hash separately reviewed",
+  "manifest": {
+    "tracked_paths": 2396,
+    "listed_other_files": 2395,
+    "mismatches": 0
+  },
+  "public_ancestry": [
+    "aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e a2e38d0c2b0d0d3350581ae189232a9c390a21df",
+    "a2e38d0c2b0d0d3350581ae189232a9c390a21df"
+  ],
+  "original_ancestors_reachable": false,
+  "limits": [
+    "Rule-based audit plus immutable-candidate/manual rights review is bounded evidence, not an absolute security/legal proof",
+    "Complete V1/performance/human hearing not claimed; R18 FPS failure remains"
+  ]
+}

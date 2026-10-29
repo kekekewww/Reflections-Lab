@@ -8,7 +8,7 @@ The inventory includes all tracked and unignored project Markdown, including aut
 
 Each translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.
 
-Status: **STRUCTURAL_CHECKS_PASS**; 306/306 translated, 0 stale, 0 missing across 331 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
+Status: **STRUCTURAL_CHECKS_PASS**; 307/307 translated, 0 stale, 0 missing across 332 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
 
 ```powershell
 node scripts/validation/english-docs.mjs inventory
@@ -407,6 +407,7 @@ node scripts/validation/english-docs.mjs check
 | [`knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md`](../../knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md) | [English](knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md`](../../knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md) | [English](knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md`](../../knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md) | [English](knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md`](../../knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md) | [English](knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md`](../../knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md) | [English](knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md`](../../knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md) | [English](knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md`](../../knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md) | [English](knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md) | Translated snapshot |

@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"92444ade4e16fcb1ea83a80fe1ea7dfc2e9d88f9ff659a153323d17b31cc6d6c","translated_at":"2026-10-29T15:04:39.055Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"4b92db5aad487a35c7346aad4ea52dc404d1845467cb10e70e650c701028a216","translated_at":"2026-10-29T15:32:51.539Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0003
 title: Current Project State
 type: state
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T15:03:28.849Z
+updated_at: 2026-10-29T15:31:21.256Z
 sources:
   - RLAB-SRC-0002
   - RLAB-SRC-0003
@@ -94,6 +94,7 @@ sources:
   - V1-USER-TEST-20261029-R18
   - AR-POSTMERGE-9acff2894b15
   - AR-PUBLIC-VALIDATION-7b2bc593a36d
+  - AR-PUBLISHED-P1-82d18d43092f
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0011
@@ -111,19 +112,21 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `92444ade4e16fcb1ea83a80fe1ea7dfc2e9d88f9ff659a153323d17b31cc6d6c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `4b92db5aad487a35c7346aad4ea52dc404d1845467cb10e70e650c701028a216`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
-<!-- english-original-anchor --> <a id="乾淨公開副本驗證通過最終掃描推送及ci待完成"></a>
-# Clean public-copy validation passed; final scanning, push, and CI remain unfinished
+<!-- english-original-anchor --> <a id="架構研究已整合並公開p1遠端檔案與ci通過"></a>
+# Architecture research integrated and published; P1 remote files and CI passed
 
-Task0021 continues the research, integration, and public-release work authorized by the user. Complete local history and the original branch remain preserved. The original and research integration checkpoint is 14da3d7fdcdb5dc73d69b6420238689e22f3846e; research b10b78a and history-preserving merge 39f6c2b have not been rewritten.
+This Task0021 round has actual evidence for research, minimal architecture refinement, isolated validation, original-branch comparison, safe merge, and publication to the specified GitHub repository. All history / branches / worktrees for original baseline c210ca8, research b10b78a, merge 39f6c2b, and local integration 14da3d7 remain preserved. Original large / bundle / PCM / SDK history was not pushed.
 
-Public branch codex/public-snapshot-20261029 has independent root commit a2e38d0c2b0d0d3350581ae189232a9c390a21df, with no original commit ancestors. Fresh pinned npm ci succeeded at the root and for physics. The full npm check exited 0, with all 1913 checked inputs unchanged. Runtime987 and current UI28/linked8/product4/physics2/storage5 suites, plus the analytical benchmark, passed. See the [public-copy receipts](../../../../artifacts/architecture-review-20261029/public-validation/receipts.json).
+[GitHub main](https://github.com/kekekewww/Reflections-Lab) actually received public source commit aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e, whose parent is independent root a2e38d0, with no original ancestors. All 2396 remote files match their Git blobs / modes individually; README / AGENTS / Wiki / docs / schemas / tests / gitignore were checked. Both actual [CI jobs](https://github.com/kekekewww/Reflections-Lab/actions/runs/40900293835), validation and browser, succeeded. Local PASS was not substituted for remote results.
 
-The public snapshot includes only reviewed source / documents / small receipts. Original bundles / PCM / SDKs / large traces are not published; historical archive URIs are explicitly local-only. Links to four old ignored test-results receipts were repaired using copies with their original hashes, without placeholders or relaxed oracles. English coverage is 331 originals / 306 translations / 9 shared raw files, with 0 missing / stale / errors.
+The [publication receipts](../../../../artifacts/architecture-review-20261029/publication/published-p1-receipts.json) preserve the full reachable-P1 scan / finding classification / sources and CI. There are 2 commits, 2376 blobs, and 53,559,655 bytes. All 23 findings were confirmed against the same immutable blobs and extracted-value hashes as existing fixture / URL false positives, with 0 confirmed credentials. Supplemental checks of 2 UTF16 and 81 decoded-JSON containers found 0 hits / opaque containers / errors. The sole binary is the reviewed original favicon. The final list contains 2395 files plus itself, with zero hash / byte differences. This is a bounded rule scan and source review, not a guarantee for arbitrary encoding or legal approval.
 
-The final payload manifest must still be rebuilt from the actual staged tree, followed by primary and supplemental UTF16 / encoded-JSON scanning of the complete exact-commit history. Only then may the specified GitHub main be pushed and actual remote / CI results checked. An unperformed push is not a success. Source / numerical / device / performance and human-testing limits remain; R18 is user feedback, not reproduction or repair in this round. The original user-feedback-record-20261029-r18 record below remains preserved; its “paused development goal” refers to that product-recording stage and does not cancel continuation authorization for this Task0021 round.
+The research and original workspaces passed full checks and the current 47 functional browser tests. Public P0 passed fresh installation / check (1913 unchanged inputs, runtime987), 47 browser tests, and the analytical benchmark. Original failures / interruptions and the legacy CI entry-point diagnosis remain preserved. The CI routing correction did not change frozen assertions / tolerances or product source. Next, save completion records and validate the final metadata commit separately. This page refers to the actually completed P1; it invents no self or future commit SHA.
+
+The complete V1 remains unfinished. R18 human FPS failure / blocked downstream operations, untested materials and reflections, volume and direct-manipulation issues, R17 long-run FAIL, and device listening / eligibility / terms / root LICENSE limits remain unchanged. There were no new paid API calls, deployments, or product repairs. The next separate engineering task should first pin the tested version and diagnose the FPS blocker, preserving original acceptance and separating research / automated tests / human feedback. The original R18 record remains below; its product-goal pause does not cancel the user's authorization for this research-publication round.
 
 <!-- english-original-anchor --> <a id="2026-10-29真人回報第一人稱失敗限定第1至8節的未提及項目"></a>
 ## Human feedback on 2026-10-29: FPS failed; unmentioned items limited to sections 1–8

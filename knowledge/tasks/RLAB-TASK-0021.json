@@ -2,16 +2,9 @@
   "id": "RLAB-TASK-0021",
   "title": "獨立 Worktree 架構研究、整合與公開發佈",
   "description": "依 2026-10-29 使用者完整需求，在獨立 research worktree 保護既有 V1，完成研究、最小非破壞契約修正、獨立驗證、最新原分支比較、安全合併及指定 GitHub 公開發佈；公開歷史安全檢查為真正 gate，未完成不得 DONE。",
-  "status": "IN_PROGRESS",
+  "status": "DONE",
   "priority": "P0",
-  "owner": {
-    "agent": "codex-root",
-    "session": "architecture-review-resume-20261029",
-    "token": "9c12011a-3d3e-4a0d-bb4c-3142d27e9d89",
-    "claimed_at": "2026-10-29T13:26:22.134Z",
-    "heartbeat_at": "2026-10-29T13:26:22.134Z",
-    "lease_until": "2026-10-29T17:26:22.186Z"
-  },
+  "owner": null,
   "dependencies": [],
   "acceptance_criteria": [
     {
@@ -153,20 +146,53 @@
     {
       "id": "G9",
       "text": "即將公開的完整 reachable history 無秘密、禁用產物與未解重大發佈風險",
-      "verified": false,
-      "evidence": []
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/publication/p1-audit-classification.json",
+          "sha256": "43efd6c4a88b71b9277b9127427ce54a283746085af6767a79a477e1d4f3e6c2",
+          "result": "Full reachable exact P1 scan,23known false positives,0real/unresolved credentials,manifest0mismatch,original ancestry absent"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/publication-audit/public-p1-independent-review.json",
+          "sha256": "b92d3b467a4e7a9771ce0b46870b04bb6a4c338bcad3af88df499984257fece5",
+          "result": "Independent exact P1 source-publication review PASS with declared limits"
+        }
+      ]
     },
     {
       "id": "G10",
       "text": "實際推送 kekekewww/Reflections-Lab 並核對 remote commit/files/CI",
-      "verified": false,
-      "evidence": []
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/publication/published-p1-receipts.json",
+          "sha256": "82d18d43092ff905b392f84b47fdf416b0ec13c44116c2d3aee01f3da4274d65",
+          "result": "Actual P1 push main,2396remote files match and both actual GitHubCI jobs succeed"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/publication/p1-remote-verification.json",
+          "sha256": "44006810e100d27e02b4a878d23b8967b556606231afd13b8f727684dc7b1672",
+          "result": "Actual source/README/AGENTS/Wiki/schema/tests and remote CI verification PASS"
+        }
+      ]
     },
     {
       "id": "G12",
       "text": "既有 Wiki／source manifest／task／handoff 同步且如實記錄未完成 gates",
-      "verified": false,
-      "evidence": []
+      "verified": true,
+      "evidence": [
+        {
+          "path": "knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md",
+          "sha256": "dc55ff7c20e0b3f350f443edaa06d58248aad518c932c892f0a5a0d7c398a934",
+          "result": "Final source-publication handoff preserves all known limits and real proofs"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/publication/p1-closure-metadata-checks.json",
+          "sha256": "7bcf5fa9c095f58ea4a894dad4f9460570efb62a49c74c4139f93c5a45850ffc",
+          "result": "Wiki and full English check exit0 after final narrative/source synchronization"
+        }
+      ]
     }
   ],
   "relevant_files": [
@@ -254,10 +280,40 @@
       "path": "artifacts/architecture-review-20261029/public-validation/receipts.json",
       "sha256": "7b2bc593a36df0de4c4733abe1b5994a3316db3558af442e7586edbffcf02f4e",
       "result": "Fresh public P0 full check/47 current browser/analytic benchmark PASS; final ref audit/push/CI separate"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication/p1-audit-classification.json",
+      "sha256": "43efd6c4a88b71b9277b9127427ce54a283746085af6767a79a477e1d4f3e6c2",
+      "result": "Full reachable exact P1 scan,23known false positives,0real/unresolved credentials,manifest0mismatch,original ancestry absent"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication-audit/public-p1-independent-review.json",
+      "sha256": "b92d3b467a4e7a9771ce0b46870b04bb6a4c338bcad3af88df499984257fece5",
+      "result": "Independent exact P1 source-publication review PASS with declared limits"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication/published-p1-receipts.json",
+      "sha256": "82d18d43092ff905b392f84b47fdf416b0ec13c44116c2d3aee01f3da4274d65",
+      "result": "Actual P1 push main,2396remote files match and both actual GitHubCI jobs succeed"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication/p1-remote-verification.json",
+      "sha256": "44006810e100d27e02b4a878d23b8967b556606231afd13b8f727684dc7b1672",
+      "result": "Actual source/README/AGENTS/Wiki/schema/tests and remote CI verification PASS"
+    },
+    {
+      "path": "knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md",
+      "sha256": "dc55ff7c20e0b3f350f443edaa06d58248aad518c932c892f0a5a0d7c398a934",
+      "result": "Final source-publication handoff preserves all known limits and real proofs"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication/p1-closure-metadata-checks.json",
+      "sha256": "7bcf5fa9c095f58ea4a894dad4f9460570efb62a49c74c4139f93c5a45850ffc",
+      "result": "Wiki and full English check exit0 after final narrative/source synchronization"
     }
   ],
   "created_at": "2026-10-29T05:20:13.511Z",
-  "updated_at": "2026-10-29T15:03:31.561Z",
+  "updated_at": "2026-10-29T15:35:00.043Z",
   "blockers": [],
-  "last_summary": "公開P0 freshcheck/47browser/benchmark PASS；完整final-ref scan/push/CI待完成，R18真人FPSFAIL保留。"
+  "last_summary": "研究/最小修正/安全整合/乾淨P1公開/remote與雙CI實際通過；Wiki/英文/最終handoff同步。完成metadata另存新ref再掃描推送，不冒充完整V1/真人/效能完成。"
 }

@@ -4,7 +4,7 @@ title: 任務索引
 type: tasks
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T13:26:25.375Z
+updated_at: 2026-10-29T15:35:00.435Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -42,5 +42,5 @@ claim/heartbeat/release透過CLI，過期lease不自動搶鎖。跨機／worktre
 - [RLAB-TASK-0018: 聲學Worker與即時路由證據](../tasks/RLAB-TASK-0018.json) — DONE / P1 / 未認領
 - [RLAB-TASK-0019: 錄放與資產產品整合驗收](../tasks/RLAB-TASK-0019.json) — DONE / P1 / 未認領
 - [RLAB-TASK-0020: 瀏覽器／效能與完整乾淨啟動驗收](../tasks/RLAB-TASK-0020.json) — BLOCKED / P0 / 未認領
-- [RLAB-TASK-0021: 獨立 Worktree 架構研究、整合與公開發佈](../tasks/RLAB-TASK-0021.json) — IN_PROGRESS / P0 / codex-root
+- [RLAB-TASK-0021: 獨立 Worktree 架構研究、整合與公開發佈](../tasks/RLAB-TASK-0021.json) — DONE / P0 / 未認領
 <!-- wiki:generated:end -->

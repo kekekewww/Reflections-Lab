@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/tasks.md","sha256":"a669c31b82d245f7a91cacb72816f04aa250a5a0756a95d5f8ebfc236ef47c9f","translated_at":"2026-10-29T15:04:39.064Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/tasks.md","sha256":"bb4a06823d0227dfccb40d75f97e3c782f90a6a0aaae414586a639b722ef91b8","translated_at":"2026-10-29T15:35:51.328Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0006
 title: Task Index
 type: tasks
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T13:26:25.375Z
+updated_at: 2026-10-29T15:35:00.435Z
 sources:
   - RLAB-SRC-0002
 related_tasks: []
@@ -17,7 +17,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/tasks.md`](../../../../knowledge/wiki/tasks.md). Source SHA-256: `a669c31b82d245f7a91cacb72816f04aa250a5a0756a95d5f8ebfc236ef47c9f`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/tasks.md`](../../../../knowledge/wiki/tasks.md). Source SHA-256: `bb4a06823d0227dfccb40d75f97e3c782f90a6a0aaae414586a639b722ef91b8`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="任務與認領"></a>
@@ -48,5 +48,5 @@ Use the CLI for claim/heartbeat/release; do not automatically take over an expir
 - [RLAB-TASK-0018: Acoustic Worker and Real-Time Routing Evidence](../../../../knowledge/tasks/RLAB-TASK-0018.json) — DONE / P1 / Unclaimed
 - [RLAB-TASK-0019: Recording/Replay and Asset Product Integration Acceptance](../../../../knowledge/tasks/RLAB-TASK-0019.json) — DONE / P1 / Unclaimed
 - [RLAB-TASK-0020: Browser/Performance and Complete Clean Startup Acceptance](../../../../knowledge/tasks/RLAB-TASK-0020.json) — BLOCKED / P0 / Unclaimed
-- [RLAB-TASK-0021: Independent Worktree Architecture Research, Integration, and Public Release](../../../../knowledge/tasks/RLAB-TASK-0021.json) — IN_PROGRESS / P0 / codex-root
+- [RLAB-TASK-0021: Independent Worktree Architecture Research, Integration, and Public Release](../../../../knowledge/tasks/RLAB-TASK-0021.json) — DONE / P0 / Unclaimed
 <!-- wiki:generated:end -->

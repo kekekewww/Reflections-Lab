@@ -4,7 +4,7 @@ title: 目前專案狀態
 type: state
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T15:03:28.849Z
+updated_at: 2026-10-29T15:31:21.256Z
 sources:
   - RLAB-SRC-0002
   - RLAB-SRC-0003
@@ -93,6 +93,7 @@ sources:
   - V1-USER-TEST-20261029-R18
   - AR-POSTMERGE-9acff2894b15
   - AR-PUBLIC-VALIDATION-7b2bc593a36d
+  - AR-PUBLISHED-P1-82d18d43092f
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0011
@@ -109,15 +110,17 @@ tags:
   - startup
 ---
 
-# 乾淨公開副本驗證通過；最終掃描、推送及CI待完成
+# 架構研究已整合並公開；P1遠端檔案與CI通過
 
-Task0021持續執行使用者已授權的研究、整合與公開工作。本地完整歷史與原分支保留；原始及研究整合checkpoint為14da3d7fdcdb5dc73d69b6420238689e22f3846e，研究b10b78a與保留歷史的merge39f6c2b均未改寫。
+本輪Task0021的研究、最小架構微調、隔離驗證、原分支比較、安全合併與指定GitHub公開均有實際證據。原baseline c210ca8、研究b10b78a、merge39f6c2b、本地整合14da3d7的全部history/branches/worktrees保留；原大型/bundle/PCM/SDK歷史沒有推送。
 
-公開分支codex/public-snapshot-20261029為獨立root commit a2e38d0c2b0d0d3350581ae189232a9c390a21df，沒有原始提交祖先。全新鎖版npm ci（root與physics）成功，完整npm check exit0，1913受驗inputs不變；runtime987及當前UI28/linked8/product4/physics2/storage5、解析benchmark均通過。見[公開副本收據](../../artifacts/architecture-review-20261029/public-validation/receipts.json)。
+[GitHub main](https://github.com/kekekewww/Reflections-Lab)已實際收到公開source commit aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e，parent是獨立root a2e38d0，無原始祖先。遠端2396個檔案逐一Gitblob/mode吻合，README/AGENTS/Wiki/docs/schema/tests/gitignore均核對。兩項[實際CI工作](https://github.com/kekekewww/Reflections-Lab/actions/runs/40900293835)validation與browser均成功，沒有以本機PASS代替遠端結果。
 
-公開snapshot只含審查後來源/文件/小型收據，原bundle/PCM/SDK/大型trace不公開；歷史archive URI明示本地專用。四份舊ignored test-results收據已用原hash副本修復連結，沒有placeholder或放寬oracle。English331原文/306譯本/9shared raw且0missing/stale/errors。
+[公開收據](../../artifacts/architecture-review-20261029/publication/published-p1-receipts.json)保存完整可達P1掃描/命中分類/來源與CI。2commits、2376blobs、53,559,655B；23命中均按相同不可變blob與擷取值hash核為既有fixture/網址誤判，0確認憑證。2UTF16與81個解碼JSON容器補查0hit/opaque/error；唯一binary是已審原創favicon。最後清單2395檔加self，hash/bytes零差異。這是有界規則與來源審查，不是任意encoding或法律保證。
 
-最終payload manifest仍需隨實際staged tree重建，再對完整exact commit history做primary與UTF16/編碼JSON補充掃描；之後才能push指定GitHub main並核對實際remote/CI。尚未push不標成功。來源/數值/裝置/性能及真人限制維持，R18是使用者回報而非本輪重現/修復。下方保留user-feedback-record-20261029-r18原紀錄；其「本對話暫停」指該產品紀錄階段，不取消本輪Task0021的繼續授權。
+研究與原區full check及當前47功能browser通過；公開P0 fresh安裝/check（1913inputs穩定、runtime987）/47browser/解析benchmark通過。原FAIL/中斷及CI舊入口診斷保留，frozen assertions/tolerances與產品原始碼未因CI路由修正更動。接著只保存完成記錄並再驗證最終metadata提交；此頁引用已實際完成的P1，沒有捏造自身或未來commit SHA。
+
+完整V1仍未完成。R18真人FPS失敗/下游受阻、材質反射未測、音量與直接操作問題、R17長測FAIL、裝置聽測/資格/條款/root LICENSE限制不變；無新付費API、部署或產品修復。下一個獨立工程任務先固定實測版本並診斷FPS阻斷，需維持原驗收與研究/測試/真人範圍分開。下方保留R18原紀錄；其中產品goal暫停不取消本輪研究公開工作的使用者授權。
 
 ## 2026-10-29真人回報：第一人稱失敗，限定第1至8節的未提及項目
 
