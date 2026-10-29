@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28T08:17:44.328Z",
+  "authority": "ACTUAL_USER_REPORT",
+  "scope": "Basic manually observed default-scene behavior; no new automated validation",
+  "repositoryHeadAtRecording": "6aafa976c96c810027153eae214a47c0a2a4dd87",
+  "testedBuildIdentifier": "NOT_REPORTED_BY_USER",
+  "observations": {
+    "audibleOutput": "USER_REPORTED_PRESENT",
+    "audibleDirection": "USER_REPORTED_DISTINGUISHABLE",
+    "defaultScene": "USER_REPORTED_NORMAL_BASIC_EFFECTS",
+    "gravity": "USER_REPORTED_OBSERVED",
+    "rebound": "USER_REPORTED_OBSERVED",
+    "firstPerson": {
+      "status": "USER_REPORTED_UNUSABLE_BLOCKER",
+      "reportZh": "第一人稱完全無法操作，也無從操作。",
+      "rootCause": "NOT_DIAGNOSED",
+      "entryAndDiscoverability": "USER_REPORTED_UNUSABLE"
+    },
+    "ui": {
+      "reportZh": "整體混亂，說明文字過多且與使用者當前操作無關；版面比例奇怪、生硬，彈性控制不足。",
+      "layoutTolerance": "User accepts that initial-version layout polish can wait; this does not resolve the first-person blocker."
+    }
+  },
+  "deviceAndCoverage": {
+    "transducerUsedInThisRun": "UNKNOWN",
+    "actualOutputRoute": "UNKNOWN",
+    "interfaceOrDac": "UNKNOWN",
+    "volume": "UNKNOWN",
+    "sampleRate": "UNKNOWN",
+    "renderBlockSize": "UNKNOWN",
+    "browserVersion": "UNKNOWN",
+    "nativeZoom": "NOT_REPORTED",
+    "pointerLockAcquisition": "NOT_REPORTED",
+    "clickPopAndDropout": "NOT_REPORTED",
+    "pauseResumeHearing": "NOT_REPORTED",
+    "bothDevicesSeparately": "NOT_REPORTED"
+  },
+  "interpretation": {
+    "basicListening": "ACTUAL_USER_LISTENING_REPORT_EXISTS; narrower than full device-listening acceptance",
+    "physics": "Qualitative user observation only; not numerical accuracy validation",
+    "fps": "User-visible blocker; code entry exists but that does not prove reachability or working input",
+    "ui": "Usability defect to prioritize; avoid treating more instructions as the solution",
+    "formalAcceptance": "No frozen criterion changed or marked complete; prior formal matrix remains historical scope"
+  },
+  "readOnlySourceCheck": {
+    "entry": "src/ui/Viewport.tsx:139",
+    "input": "src/ui/viewport/useFPSInput.ts:226",
+    "finding": "Source declares a viewport toolbar entry and a Pointer Lock request. Missing canvas returns without feedback; this is a possible diagnostic path, not a reproduced cause. No live browser/source reproduction executed."
+  },
+  "recommendedOrderOnExplicitResume": [
+    "Diagnose and restore discoverable, working first-person entry, pointer control and movement end to end",
+    "Reduce default technical/provenance/explanation text; keep immediate actions and state, move detailed diagnostics to explicit disclosure",
+    "Improve panel proportions and resize/collapse behavior after the blocking interaction"
+  ],
+  "execution": {
+    "developmentGoal": "REMAINS_PAUSED",
+    "implementationChanges": 0,
+    "testsRun": 0,
+    "browsersLaunched": 0,
+    "agentsSpawned": 0,
+    "paidCalls": 0,
+    "automaticResume": false
+  }
+}

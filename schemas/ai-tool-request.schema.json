@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/ai-tool-request.schema.json",
+  "title": "Reflection Lab AI tool request v1",
+  "description": "Local validation schema, not a provider strict-output schema. Mutations only stage changes in a transaction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "requestId", "tool", "sceneId", "expectedSceneRevision", "transactionId", "arguments"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "requestId": {"$ref": "#/$defs/id"},
+    "tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory", "RunSimulation", "CaptureExperiment", "AnalyzeAcousticResults", "CompareExperiments", "PreviewSceneChanges"]},
+    "sceneId": {"$ref": "#/$defs/id"},
+    "expectedSceneRevision": {"type": "integer", "minimum": 0},
+    "transactionId": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+    "arguments": {"type": "object"}
+  },
+  "oneOf": [
+    {"properties": {"tool": {"const": "CreateScene"}, "arguments": {"$ref": "#/$defs/CreateScene"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "AddObject"}, "arguments": {"$ref": "#/$defs/AddObject"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "SetMaterial"}, "arguments": {"$ref": "#/$defs/SetMaterial"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "SetRigidBodyMode"}, "arguments": {"$ref": "#/$defs/SetRigidBodyMode"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "ConfigureSoundSource"}, "arguments": {"$ref": "#/$defs/ConfigureSoundSource"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "MoveListener"}, "arguments": {"$ref": "#/$defs/MoveListener"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "SetTrajectory"}, "arguments": {"$ref": "#/$defs/SetTrajectory"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "RunSimulation"}, "arguments": {"$ref": "#/$defs/RunSimulation"}, "transactionId": {"type": "null"}}},
+    {"properties": {"tool": {"const": "CaptureExperiment"}, "arguments": {"$ref": "#/$defs/CaptureExperiment"}, "transactionId": {"type": "null"}}},
+    {"properties": {"tool": {"const": "AnalyzeAcousticResults"}, "arguments": {"$ref": "#/$defs/AnalyzeAcousticResults"}, "transactionId": {"type": "null"}}},
+    {"properties": {"tool": {"const": "CompareExperiments"}, "arguments": {"$ref": "#/$defs/CompareExperiments"}, "transactionId": {"type": "null"}}},
+    {"properties": {"tool": {"const": "PreviewSceneChanges"}, "arguments": {"$ref": "#/$defs/PreviewSceneChanges"}, "transactionId": {"$ref": "#/$defs/id"}}}
+  ],
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z][a-z0-9._-]{0,63}$"},
+    "label": {"type": "string", "minLength": 1, "maxLength": 160},
+    "positionM": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "minimum": -200, "maximum": 200}},
+    "dimensionsM": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "minimum": 0.01, "maximum": 100}},
+    "quaternion": {"type": "array", "description": "[x,y,z,w]; domain validator checks norm and handedness.", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": -1, "maximum": 1}},
+    "mode": {"enum": ["dynamicGravity", "dynamicNoGravity", "fixed", "kinematic"]},
+    "metrics": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": {"enum": ["directArrivalTimeS", "rt60S", "edtS", "t20S", "t30S", "drrDb", "c50Db", "c80Db"]}},
+    "CreateScene": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label", "roomDimensionsM", "surfaceMaterialId", "seed"],
+      "properties": {"label": {"$ref": "#/$defs/label"}, "roomDimensionsM": {"$ref": "#/$defs/dimensionsM"}, "surfaceMaterialId": {"$ref": "#/$defs/id"}, "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295}}
+    },
+    "AddObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "label", "shape", "dimensionsM", "positionM", "orientationQuaternion", "materialId", "mode", "massKg"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "label": {"$ref": "#/$defs/label"}, "shape": {"enum": ["box", "sphere", "capsule"]}, "dimensionsM": {"$ref": "#/$defs/dimensionsM"}, "positionM": {"$ref": "#/$defs/positionM"}, "orientationQuaternion": {"$ref": "#/$defs/quaternion"}, "materialId": {"$ref": "#/$defs/id"}, "mode": {"$ref": "#/$defs/mode"}, "massKg": {"type": "number", "minimum": 0.001, "maximum": 10000}}
+    },
+    "SetMaterial": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "materialId", "materialRegistryRevision", "scope"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "materialId": {"$ref": "#/$defs/id"}, "materialRegistryRevision": {"type": "integer", "minimum": 0}, "scope": {"enum": ["acoustic", "physics", "both"]}}
+    },
+    "SetRigidBodyMode": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "mode", "velocityPolicy"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "mode": {"$ref": "#/$defs/mode"}, "velocityPolicy": {"enum": ["zero", "preserve", "restoreSnapshot"]}}
+    },
+    "ConfigureSoundSource": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sourceId", "objectId", "signalId", "mode", "gainDbfs", "referenceFrequencyHz"],
+      "properties": {"sourceId": {"$ref": "#/$defs/id"}, "objectId": {"$ref": "#/$defs/id"}, "signalId": {"$ref": "#/$defs/id"}, "mode": {"enum": ["continuous", "impact"]}, "gainDbfs": {"type": "number", "minimum": -80, "maximum": -6}, "referenceFrequencyHz": {"type": "number", "minimum": 20, "maximum": 20000}}
+    },
+    "MoveListener": {
+      "type": "object", "additionalProperties": false,
+      "required": ["listenerId", "positionM", "orientationQuaternion"],
+      "properties": {"listenerId": {"$ref": "#/$defs/id"}, "positionM": {"$ref": "#/$defs/positionM"}, "orientationQuaternion": {"$ref": "#/$defs/quaternion"}}
+    },
+    "SetTrajectory": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "interpolation", "samples"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "interpolation": {"enum": ["linearSlerp", "recordedTrace"]}, "samples": {"type": "array", "minItems": 2, "maxItems": 64, "items": {"type": "object", "additionalProperties": false, "required": ["timeS", "positionM", "orientationQuaternion"], "properties": {"timeS": {"type": "number", "minimum": 0, "maximum": 30}, "positionM": {"$ref": "#/$defs/positionM"}, "orientationQuaternion": {"$ref": "#/$defs/quaternion"}}}}}
+    },
+    "RunSimulation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["backendId", "durationS", "timeStepS", "seed", "replayTraceId", "maxReflectionOrder", "sampleRateHz"],
+      "properties": {"backendId": {"$ref": "#/$defs/id"}, "durationS": {"type": "number", "minimum": 0.1, "maximum": 30}, "timeStepS": {"enum": [0.008333333333333333, 0.016666666666666666]}, "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295}, "replayTraceId": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]}, "maxReflectionOrder": {"type": "integer", "minimum": 0, "maximum": 2}, "sampleRateHz": {"enum": [44100, 48000]}}
+    },
+    "CaptureExperiment": {
+      "type": "object", "additionalProperties": false, "required": ["runId", "label"],
+      "properties": {"runId": {"$ref": "#/$defs/id"}, "label": {"$ref": "#/$defs/label"}}
+    },
+    "AnalyzeAcousticResults": {
+      "type": "object", "additionalProperties": false, "required": ["runId", "metrics", "bandCentersHz"],
+      "properties": {"runId": {"$ref": "#/$defs/id"}, "metrics": {"$ref": "#/$defs/metrics"}, "bandCentersHz": {"type": "array", "minItems": 1, "maxItems": 6, "uniqueItems": true, "items": {"enum": [125, 250, 500, 1000, 2000, 4000]}}}
+    },
+    "CompareExperiments": {
+      "type": "object", "additionalProperties": false, "required": ["baselineExperimentId", "candidateExperimentId", "metrics", "requireMatchedMotionTrace"],
+      "properties": {"baselineExperimentId": {"$ref": "#/$defs/id"}, "candidateExperimentId": {"$ref": "#/$defs/id"}, "metrics": {"$ref": "#/$defs/metrics"}, "requireMatchedMotionTrace": {"const": true}}
+    },
+    "PreviewSceneChanges": {
+      "type": "object", "additionalProperties": false, "required": ["includeCollisionCheck", "includeAcousticCostEstimate"],
+      "properties": {"includeCollisionCheck": {"const": true}, "includeAcousticCostEstimate": {"const": true}}
+    }
+  }
+}

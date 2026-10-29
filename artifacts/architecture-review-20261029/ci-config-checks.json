@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "scope": "Follow-up CI routing and browser selection only; production and test assertions/timeouts unchanged",
+  "inputs": [
+    {
+      "path": ".github/workflows/validation.yml",
+      "sha256": "321be10d2cf18f91ef838fce8c6f194e9c9c8e4dcacf325b324313a000c75889"
+    },
+    {
+      "path": "tests/browser/linked-workflow-v2.config.ts",
+      "sha256": "77c7b48346d1f9a67b85f3381f98e74c5edc213d08f7f1c490699871a21e3057"
+    }
+  ],
+  "source_stable": true,
+  "commands": [
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "config-lint",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "tests/browser/linked-workflow-v2.config.ts"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "config-format",
+      "command": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        ".github/workflows/validation.yml",
+        "tests/browser/linked-workflow-v2.config.ts"
+      ],
+      "exit_code": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": ""
+    }
+  ],
+  "browser_selection_probe": {
+    "schema_version": 1,
+    "scope": "Browser selection only; assertions/timeouts unchanged; real CI execution still required",
+    "results": [
+      {
+        "ci": false,
+        "exit_code": 0,
+        "observed": {
+          "channel": "chrome",
+          "testMatch": [
+            "linked-workflow-v2.spec.ts",
+            "sound-diagnostics-refined-v3.spec.ts"
+          ],
+          "timeout": 60000,
+          "expectTimeout": 10000,
+          "workers": 1
+        }
+      },
+      {
+        "ci": true,
+        "exit_code": 0,
+        "observed": {
+          "channel": "bundledChromium",
+          "testMatch": [
+            "linked-workflow-v2.spec.ts",
+            "sound-diagnostics-refined-v3.spec.ts"
+          ],
+          "timeout": 60000,
+          "expectTimeout": 10000,
+          "workers": 1
+        }
+      }
+    ]
+  },
+  "remote_ci": "NOT_RUN; must verify actual push later"
+}

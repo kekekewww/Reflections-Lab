@@ -1,0 +1,73 @@
+import tseslint from "typescript-eslint";
+
+export default [
+  {
+    ignores: [
+      "node_modules/**",
+      ".cache/**",
+      "third_party/**",
+      "benchmarks/results/**",
+      "benchmarks/muse/results/**",
+      "experiments/physics-spike/**",
+      "experiments/sdk-smoke-tests/**",
+      "dist/**",
+      "playwright-report/**",
+      "test-results/**",
+    ],
+  },
+  {
+    files: [
+      "scripts/validation/**/*.mjs",
+      "scripts/wiki/**/*.mjs",
+      "scripts/agents/**/*.mjs",
+      "prompts/**/*.mjs",
+      "benchmarks/muse/**/*.mjs",
+      "scripts/setup/environment.mjs",
+      "scripts/setup/datasets.mjs",
+      "scripts/setup/emil-skills.mjs",
+      "scripts/setup/dependency-inventory.mjs",
+      "scripts/dev.mjs",
+      "experiments/dataset-fetch-spike/**/*.mjs",
+      "experiments/sound-behavior-spike/**/*.mjs",
+      "tests/**/*.mjs",
+      "benchmarks/analytic/**/*.mjs",
+      "experiments/dependency-smoke/**/*.mjs",
+    ],
+    languageOptions: { ecmaVersion: 2022, sourceType: "module" },
+    rules: {
+      "constructor-super": "error",
+      "no-constant-condition": "error",
+      "no-dupe-args": "error",
+      "no-dupe-keys": "error",
+      "no-duplicate-case": "error",
+      "no-unreachable": "error",
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "valid-typeof": "error",
+      eqeqeq: ["error", "always"],
+    },
+  },
+  {
+    files: [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "server/**/*.ts",
+      "tests/**/*.ts",
+      "vite.config.ts",
+      "playwright.config.ts",
+    ],
+    languageOptions: { parser: tseslint.parser, parserOptions: { ecmaFeatures: { jsx: true } } },
+    plugins: { "@typescript-eslint": tseslint.plugin },
+    rules: {
+      "no-dupe-args": "error",
+      "no-dupe-keys": "error",
+      "no-duplicate-case": "error",
+      "no-unreachable": "error",
+      "valid-typeof": "error",
+      eqeqeq: ["error", "always"],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
+      ],
+    },
+  },
+];

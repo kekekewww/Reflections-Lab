@@ -1,0 +1,2606 @@
+{
+  "schema_version": 1,
+  "kind": "CANONICAL_REQUIREMENT_EVIDENCE_AT_CAPTURED_CUTOFF",
+  "canonical_destination": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.md",
+  "created_at_utc": "2026-10-27T19:11:14.034Z",
+  "overall_v1_complete": false,
+  "requirements_sha256": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c",
+  "acceptance_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+  "criteria_and_priorities_unchanged": true,
+  "source_binding": {
+    "candidate_build_digest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+    "manifest_sha256": "c31a05cf470313cea8a7deccaafd0676f1e83f29b2b4b059ffebf74649a676f5",
+    "build_mode": "e2e",
+    "global_inputs": 1781,
+    "build_global_digest": "27db5891a51fa95e25fdc109f4242d4370f2ea559c593f5f281c798b74603764",
+    "ui_global_digest": "27db5891a51fa95e25fdc109f4242d4370f2ea559c593f5f281c798b74603764",
+    "native_global_record": {
+      "allGlobalStable": true,
+      "inputCount": 1781,
+      "beforeFile": "artifacts/v1/audio-prefix-native25-20261027173304441/global-source-before.json",
+      "finalAfterCleanupFile": "artifacts/v1/audio-prefix-irv2-20261027173404198/global-source-after-cleanup.json",
+      "sha256": "87fee0c726a6a62bad79ed43e46872878db37bc81021852d727bf117b820a451"
+    },
+    "current_product_hashes": {
+      "src/physics/physics-world.ts": "650233edc0ea91fb8bb164de5f3fbe44e1dbdf7c91fc4cf5873126c96995be6f",
+      "src/app/runtime.ts": "c3437ecd823ab32dad4b10e2b958824c1bf5ad187add9ac0625468fea99d97ed",
+      "src/audio/band-filter.ts": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+      "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+      "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc"
+    },
+    "historical_builds": [
+      "a699b0b4dbcb53227ec76124b782641ae2ba7685b76f03878e045feb311f5637",
+      "0eefc158d5d2ee1a2a9f75ec42340867c99373ec287dcb71d100a6f05bd86d1e"
+    ],
+    "latestCapturedWorkerGlobalInputs": 1822,
+    "latestCapturedWorkerGlobalStable": true,
+    "captureScope": "Counts refer to each named capture only; newREADME stamp applies onlyfutureguard, neverretroactivelyexpands1789profileproof."
+  },
+  "evidence": {
+    "NATIVE_CURRENT": {
+      "id": "NATIVE_CURRENT",
+      "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/sequential-qualification-receipt.json",
+      "sha256": "b90ff1ace3707131783238d8b2a6cf7924b07d4050c11c9229ae5822c6b1d2a1",
+      "scope": "Current prefix-f3e5 native25 PASS plus IRv2 threechecks/sixrenders/576000PCMbytes; actual retained closes0; global1781stable. Cached Chromium156.0.8078.4 only; not hearing/device/performance.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "NATIVE25_CURRENT": {
+      "id": "NATIVE25_CURRENT",
+      "path": "artifacts/v1/audio-prefix-native25-20261027173304441/wrapper-verification-v2.json",
+      "sha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+      "scope": "Original25 via prepared-staticV2;25uniquePASS; exact original oracles/timers, approved band delta and bundles stable; actual native close0.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "IRV2_CURRENT": {
+      "id": "IRV2_CURRENT",
+      "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/wrapper-verification-ir-v1.json",
+      "sha256": "02b41b5f8bc1a91bae72383e35eb93be56f86aef8a2a688c6b544205dfce245d",
+      "scope": "Explicit IRv2 despite legacy filename; threechecks/sixrenders; strict bounds unchanged; exact fresh25 receipt binding. IRv1 FAIL remains historical.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "BUILD_CURRENT": {
+      "id": "BUILD_CURRENT",
+      "path": "artifacts/v1/ui-current-fixed-build-20261027T173919314Z/proof-receipt.json",
+      "sha256": "ebbfb5b210b13ec29c5615b4cfa77e1cc6444c8b6ef93c2afd0698dd44f81eb7",
+      "scope": "Current E2E verification build, not production release. Exit0;170inputs/12bundles;1781globalinputs before/after equal.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "MANIFEST_CURRENT": {
+      "id": "MANIFEST_CURRENT",
+      "path": "artifacts/v1/ui-current-fixed-build-20261027T173919314Z/build-manifest.json",
+      "sha256": "c31a05cf470313cea8a7deccaafd0676f1e83f29b2b4b059ffebf74649a676f5",
+      "scope": "E2E mode; inputDigest028b16a8...; manifestc31a05cf... .",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "UI_CURRENT": {
+      "id": "UI_CURRENT",
+      "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+      "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b",
+      "scope": "Current headless UI27 PASS, no retries/skip/flaky;EN8/ZH13/diagnostic2/static2/admission2;1781stable. Separate visible native failures do not becomePASS.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PHYSICS_CURRENT": {
+      "id": "PHYSICS_CURRENT",
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027175511594/browser-verification.json",
+      "sha256": "7cd845e93e5dd27a81a0d6d364fd518faa7dea8499fc81082e9b6101ccbd6cd2",
+      "scope": "Current physics browser2 PASS;172sourcefiles stable; softwareANGLE functional evidence, not GPU performance.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PHYSICS_OPERATION": {
+      "id": "PHYSICS_OPERATION",
+      "path": "artifacts/v1/physics-current-operation-20261027T175652Z/operation-end.json",
+      "sha256": "ddaadca1975da6ed8eae0ba254b4ea72095ff73be96fedb9a273888752e4363f",
+      "scope": "Actual outer nativeexit0; fresh2PASS report; exact knownowned/directchildren0 and5176free.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "STORAGE_CURRENT": {
+      "id": "STORAGE_CURRENT",
+      "path": "artifacts/v1/storage-browser-20261027175746252/verification.json",
+      "sha256": "29f18fd3db5a2f894d2e5d61da72f76e8e2c42f972f0004691603d942989d3e7",
+      "scope": "Current nativeIndexedDB storage5PASS; fresh/complete/sourceStable/serverStopped; not full product UI or hearing.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "STORAGE_CLEANUP": {
+      "id": "STORAGE_CLEANUP",
+      "path": "artifacts/v1/storage-current-operation-20261027T175744Z/causal-cleanup-confirmation-end.json",
+      "sha256": "5f54f005b6a50530f37349849ac7f8ba1b87712823b4eb50db504b614a9d229f",
+      "scope": "Additive exact6knownowned/capturedancestry empty and5178free at18:01:37.844Z; original15stimeoutUNKNOWN preserved.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "ZOOM_CURRENT_1": {
+      "id": "ZOOM_CURRENT_1",
+      "path": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T17-40-46.993Z-5b71dbdb/summary.json",
+      "sha256": "491079ec01ea6f7bd16e91947beca9e664d8f8d7cd8fe47909c3196fa3b12458",
+      "scope": "Current rawFAIL before-baseline visibility gate, checks/gestureNOTRUN. No currentnative200 or320acceptancePASS.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "ZOOM_CURRENT_2": {
+      "id": "ZOOM_CURRENT_2",
+      "path": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T17-51-47.034Z-a63cdf0d/summary.json",
+      "sha256": "8f14c8580077a69f0beea5c09e37716cefdfb2d5508eae7a1344abd6c720af16",
+      "scope": "One separately authorized user-awake recheck, again rawFAIL/hidden beforebaseline andzeroacceptancechecks. No unchangedthirdretry.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "ZOOM_FAILURE_SEAL": {
+      "id": "ZOOM_FAILURE_SEAL",
+      "path": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T17-51-47.034Z-a63cdf0d/failure-seal.json",
+      "sha256": "4df5bd322696f1a504864d1ec488186fd4f6c76e8e00f33f02b8253494f922c6",
+      "scope": "Consistent infrastructurefailure; twoactualattempts, source/HTTP/script stable, cleanupretained. Does not establish desktoplock/Chromevisibilitycause or productlayoutdefect.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "UI_CANDIDATE": {
+      "id": "UI_CANDIDATE",
+      "path": "artifacts/v1/interpolated-transform-candidate-sourceend-20261027T171111837Z/EXPORT_RECEIPT.json",
+      "sha256": "91aa5a7be6c9e4430f969300d1cfec600ca1c0316c95aeba7ceca1694d7f6892",
+      "scope": "Current narrowrenderer/history DTO sourceend,391relatedregressions+independent7 percanonicalr9. Not complete900/fullcheck or browserprofile.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "AUDIO_CANDIDATE": {
+      "id": "AUDIO_CANDIDATE",
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603",
+      "scope": "Current exact8layoutprefixcache sourceend;31+119disjointaudioPASS150, strict/lint/format/review. No performancepercentageclaim.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PERFORMANCE_OBSERVER_CURRENT": {
+      "id": "PERFORMANCE_OBSERVER_CURRENT",
+      "path": "artifacts/v1/performance-interpolation-observer-sourceend-20261028.json",
+      "sha256": "6ad4b95dc2cf774887de10d127dde0f8afe1982a796b6b12b03c19d17396a902",
+      "scope": "Current fastinterpolationobserver sourceend;155Node/statictests, samegates/load. No new600measurement.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "CI_PRIOR": {
+      "id": "CI_PRIOR",
+      "path": "artifacts/v1/qualification-locked-offline-ci-20261027144405972/verification.json",
+      "sha256": "05409b50fe0e1a929667dfd0dfa3993ff1e5873dfa94b671588d072ccf76b9f9",
+      "scope": "Prior exactNode22.17.0/npm11.4.2 offlinecleanroot+spikeCI PASS. Reuse requires dependencybinding check; not currentfullcheck.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "NODE900_PRIOR": {
+      "id": "NODE900_PRIOR",
+      "path": "artifacts/v1/qualification-post-ci-explicit-node-20261027145219929/verification.json",
+      "sha256": "d2c439ab4e477f2454c4a805519ffd7492441fa46a313a11477050a3a29c54fe",
+      "scope": "Prior900scopedNodePASS before latestphysics/runtime/bandchanges; NOT currentcompletecheck.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "ZOOM_HISTORICAL": {
+      "id": "ZOOM_HISTORICAL",
+      "path": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T13-09-13.922Z-6ad461b3/independent-proof-audit.json",
+      "sha256": "babc5a01f183836851f1b0184e96de2c38c83dbbf20319b0203f318f52c3191d",
+      "scope": "Historical0eefnative2functionalPASS;200PNGcropped,320screenemulation; cannot rebind to028b.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "PERFORMANCE_FORMAL_HISTORY": {
+      "id": "PERFORMANCE_FORMAL_HISTORY",
+      "path": "artifacts/v1/browser-performance-20261027T131711449Z/verification.json",
+      "sha256": "aa05fc7ac8af17be68dd7e1778804fd5b169c34f7be4cf774fcd3da6c11e9dc6",
+      "scope": "Only completedformal600firsttrial;realCPU/cadence/loadFAIL andboundaryNOTRUN preserved;currentnewproductNOTRUN.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "PERFORMANCE_SMOKE_HISTORY": {
+      "id": "PERFORMANCE_SMOKE_HISTORY",
+      "path": "artifacts/v1/browser-performance-20261027T160813274Z/diagnostic-summary.json",
+      "sha256": "2e8f3fe20ed356559f07f9b27d3d16b6a9e2fbf452f80fc6e3191942194c2bda",
+      "scope": "Earlier10ssmoke actualFAIL/incompleteload; not currentsource or600acceptance.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "IRV1_HISTORY": {
+      "id": "IRV1_HISTORY",
+      "path": "artifacts/v1/audio-prepared-ir-v1-20261027155431842/qualification-receipt.json",
+      "sha256": "d56e179c94b55a7186985188b77bd71ae799d919ef6d13f55cf4c4a8fa638e2c",
+      "scope": "OriginalIRv1referenceA-B-AFAIL preserved; separatelydiagnosedinactivegaininitialization defect; v2 does not rewritev1.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "META_LIVE": {
+      "id": "META_LIVE",
+      "path": "research/v1/meta-live-validation-20261027-r3-minimal/summary.json",
+      "sha256": "81c7b8653386799d64c52307a87bde4652a78015b5773db23e9be82d72171ead",
+      "scope": "Actual Meta minimumsoundproposal/HostApply/local180tickartifact evidence; no newrequest, billingunknown; not liveScene/Meta-plannedRun/UIlive.",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "R9": {
+      "id": "R9",
+      "path": "docs/11-v1/SESSION_PROGRESS_20261028-r9.md",
+      "sha256": "9cdf8266e1262813e0143d0342f87c1653e4922334d9061fcc3e36fda47f127e",
+      "scope": "Frozenlastsourcecheckpoint; subsequentqualifiednative/UI/physics/storage receipts supersede only their matchingNOTRUN statements.",
+      "classification": "HISTORICAL_OR_PRIOR_SCOPE"
+    },
+    "H_Q": {
+      "id": "H_Q",
+      "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+      "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+    },
+    "H_QT": {
+      "id": "H_QT",
+      "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+      "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+    },
+    "H_UI": {
+      "id": "H_UI",
+      "path": "artifacts/v1/ui-post-race-functional-20261027T092244732Z/proof-receipt.json",
+      "sha256": "668af1516ce6156752f8f3f2d9da0583a9663e9fcda17a727f706982edd3cc7d",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 2bb bundle EN8+ZH13+diagnostics2+static-preview2+native-admission2=27; all 1667 validation inputs stable during capture. Later CSS repair requires current focused proof; archived result remains PASS."
+    },
+    "H_CH": {
+      "id": "H_CH",
+      "path": "artifacts/v1/audio-chromium-final-20261027082344120/acceptance-summary.json",
+      "sha256": "ab3ff6d4720435c6b4398e1185545b90c970c1bd188fa145cf7a7084b14b5ec3",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Real Chromium native AudioContext/OfflineAudioContext 25/25; 23 tracked inputs stable; not human/device listening or 600-second profile."
+    },
+    "H_FF": {
+      "id": "H_FF",
+      "path": "artifacts/v1/audio-firefox-final-20261027083454680/acceptance-summary.json",
+      "sha256": "b5090447333c4d40a5f27849a3ff131e3b1881cb454f32d67d7998cf07d28d3b",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Same audio source as Chromium:8 PASS/1 original energy FAIL/9 capability blocked/7 aggregate NOT RUN; original threshold unchanged."
+    },
+    "H_PHY": {
+      "id": "H_PHY",
+      "path": "artifacts/v1/physics-boundaries-20261027/combined-final/verification.json",
+      "sha256": "bb9755a7a92ce65e4c82a4e81fae50b1f1c10759e9bc5e32a94fc1787ba005e4",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Actual WASM matrix29+boundaries9=38/38; protected61 unchanged. Later source formatting/support fix is re-covered by current Q849."
+    },
+    "H_MOT": {
+      "id": "H_MOT",
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/verification.json",
+      "sha256": "5e76f522c14c30e21ef9068d7f06e8ffd4a32e5dbed3e6241668df8943e03ecb",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Raw motion/hysteresis67 plus independent29. Older source manifest drift is re-covered by Q849; do not reopen solved features."
+    },
+    "H_SUP": {
+      "id": "H_SUP",
+      "path": "artifacts/v1/support-anchor-20261027/final-receipt.json",
+      "sha256": "8842ceafb599154f9f0d1541358d0979d84a07978928137f45f06b0b68d723e8",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 RED/GREEN17+independent17+adjacent50, logical support contact source provenance fixed; 2 owned/10 evidence hashes current at spot audit."
+    },
+    "H_INT": {
+      "id": "H_INT",
+      "path": "artifacts/v1/integration-review-v7/verification.json",
+      "sha256": "b71d5e1f05206f82296559fd2575f868859fcd4a921ea961909bd843887099be",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Independent integration38+metric8=46; source-phase, recorder/A-B, replay ObjectView and onended repairs. Historical fulltree snapshot; Q849 current regressions."
+    },
+    "H_PROD": {
+      "id": "H_PROD",
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/verification.json",
+      "sha256": "39ca0ad023bf3d5823106c5da0ce1613d60e0c37b7f98b72de869d4cfdfacf6c",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Three clean fresh-context complete scene/throw/impact/native graph/capture/A-B/durable reload plus missing/wrong/right WAV relink fourth. Chinese22ca only, recoveries0/2/7 retained; no PCM waveform or hearing claim."
+    },
+    "H_DEL": {
+      "id": "H_DEL",
+      "path": "tests/acoustics-runtime/delivery-validation-manifest-20261027.json",
+      "sha256": "9b707b0e0852e3795c09564e021f06dfa07ef420c0d84b6e406d95f7605e4ccd",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 True Worker4/4+Node46; source bounds/backpressure/cancel/stale verified. Service handler p95 .8ms excludes native consumer; upcoming actual consumer profile pending."
+    },
+    "H_EN": {
+      "id": "H_EN",
+      "path": "docs/en/_reports/corpus-validation-20261027T091512784Z.json",
+      "sha256": "f733a26612683577aea9b30424ecd0f704c8f1b44d1c45ecdf728a71879c0ecc",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 243/243 required English translations; zero missing/stale/errors at09:15. Root source18/r4/new handoff/doc changes now require refresh."
+    },
+    "H_ZOOM": {
+      "id": "H_ZOOM",
+      "path": "artifacts/v1/native-zoom-reachability-2026-10-27T09-51-22.380Z-1c73b87a/summary.json",
+      "sha256": "88f8142aad5e5cecc0b1c2e4cad297e15c301ede72a595205439a274fa0ec8ee",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Both genuine CANVAS locks via browser protocol. 200% Exit partly outside and320CSS alternative control covered. Root narrow CSS repair pending, original failures preserved."
+    },
+    "H_STORE": {
+      "id": "H_STORE",
+      "path": "artifacts/v1/storage-browser-20261027025255775/verification.json",
+      "sha256": "2afe689d35293f564220eff5a20155c0e7fc222e8b60750e5b8473549044cf21",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 Native persistence API5/5. Broad source now changed; fresh storage5 planned for current binding; not full product UI E2E."
+    },
+    "H_META": {
+      "id": "H_META",
+      "path": "research/v1/meta-live-validation-20261027-r3-minimal/independent-live-review.json",
+      "sha256": "5210e5d32326b5ced30b25359882528e96ef371f7f3e4ad6d59b2a43bc4ac7dc",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_BUDGET": {
+      "id": "H_BUDGET",
+      "path": "research/v1/meta-live-budget-20261027.json",
+      "sha256": "7aff29999999c201ce3f1ff37e9aeda48e569be678038908b0c86db96ddf766c",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_CATALOG": {
+      "id": "H_CATALOG",
+      "path": "research/v1/meta-catalog-20261027T0131Z.json",
+      "sha256": "c3b4fef5a75d1d0aadab5ba4de9658fa7c2c9099ce20b7142ba7e477e3ddcdc4",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_NOTICES": {
+      "id": "H_NOTICES",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-0823-r3/manifest.json",
+      "sha256": "e54592d2af712510c4633a23e72fdae40c8c238a765d612ae670abb2e4e32146",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_NOTICE_REVIEW": {
+      "id": "H_NOTICE_REVIEW",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-0823-r3/independent-verification.json",
+      "sha256": "1175653eabcd068031ba754af44e5138fbffb62ece13ca5943256b807ade4233",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_HANDOFF": {
+      "id": "H_HANDOFF",
+      "path": "knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md",
+      "sha256": "69828a2fb407b2cdaf5fd46a53a8f01b6f4346c0ab69e2175a631aa53d5e73d6",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "H_R4": {
+      "id": "H_R4",
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027-r4.md",
+      "sha256": "d7f65067b8584f82df746935f527e7f1f0648bb1a4474b3b375082a7d844afa0",
+      "classification": "HISTORICAL_SPECIFIC_PROOF",
+      "scope": "原分項捕獲，不能直接當作最新完整check。 來源／權利與scope以原收據為準。"
+    },
+    "PRODUCT_CURRENT": {
+      "id": "PRODUCT_CURRENT",
+      "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+      "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+      "scope": "當前028b產品4/4 PASS；三個fresh browser contexts與獨立WAV重連案；非三次OS重開、非人工聽測。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PRODUCT_OPERATION": {
+      "id": "PRODUCT_OPERATION",
+      "path": "artifacts/v1/product-current-corrected-operation-20261027T181110Z/operation-end.json",
+      "sha256": "4d3e52508a3dbfddf07a4782e36554e776c1bdb697b2f75d0dd74fec28e34a16",
+      "scope": "實際retained child close0、當前產品source／bundle／harness gate與完整操作封存。ANSI gate失敗及小修補另留歷史。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "CROSS_CURRENT": {
+      "id": "CROSS_CURRENT",
+      "path": "artifacts/v1/audio-prefix-cross-webkit-20261027181436974/sequential-comparison-receipt.json",
+      "sha256": "32bb899fa485f5716833686aa53dcd0bc4b0eb4a0c309cf3e424ea4ebfc897a7",
+      "scope": "當前prefix-f3e5 Firefox157：8PASS／1原能量FAIL／9capabilityBLOCKED／7NOTRUN；WindowsWebKit27.2：25capabilityBLOCKED。不是Safari／全平台通過。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "HEARING_TOOL": {
+      "id": "HEARING_TOOL",
+      "path": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/promotion-seal.json",
+      "sha256": "e0f7afb96f08dfddd6a8a7d558255c740edb13a93187b06f2e3866b53f5b1b27",
+      "scope": "正式提升工具；47項獨立pure tests與AST／Worklet等價核對。不是native driver、block或hearing通過。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PROFILE_CURRENT": {
+      "id": "PROFILE_CURRENT",
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+      "scope": "當前628.935秒profile，1789來源前後一致、native/.NET exit0；實際數值FAIL、cadence／負載不完整、main occupancy NOTRUN；無epsilon或升格舊結果。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PROFILE_VERIFICATION": {
+      "id": "PROFILE_VERIFICATION",
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/verification.json",
+      "sha256": "c94eae28e4a84aa00d29ce69f5a3e09139e99569713a623a7abf96b095a873f6",
+      "scope": "原驗證輸出保留FAIL／UNVERIFIED／NOTRUN。程序0不是性能PASS。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PROFILE_CLEANUP": {
+      "id": "PROFILE_CLEANUP",
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/coordinator-cleanup-proof-v2.json",
+      "sha256": "2602c4fd4dac7507ef61a029f1d2ce4d55a7b954314d6f4a719ed3b6a2faade9",
+      "scope": "保留非空v2已知自有PID／直接子程序與5191清理證據；不使用原空序列化或干預重用PID。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PROFILE_REVIEW": {
+      "id": "PROFILE_REVIEW",
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+      "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+      "scope": "有界唯讀獨立結果解讀；ACO04功能與VAL04性能分離，原failure不改，不重parse大型trace或重跑。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "NATIVE_RECOVERY": {
+      "id": "NATIVE_RECOVERY",
+      "path": "artifacts/v1/native-surface-recovery-20261028.json",
+      "sha256": "1c4f207dda07f3f9da9d0848ea4cfd968f3f390a2735bd84e59fd05eb17daa48",
+      "scope": "Root記錄官方Node/CUA reset與reinitialize仍kernelassets os error3，均未到app操作；不是機器原生驗收或桌面鎖定原因證據。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "HEARING_SNAPSHOT": {
+      "id": "HEARING_SNAPSHOT",
+      "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+      "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+      "scope": "已結束的30分鐘manual session：完成170inputs／12bundles provenance preflight及arm。18:56:30單次status記capturedContexts0；全紀錄未見select／attach／nativeObservations／userReports，故NO_SELECTED_OR_MEASURED_APP_CONTEXT，sampleRate／block UNKNOWN、hearing NOTRUN。不能斷言整個30分鐘從未建立AudioContext。cleanup及browser protocol close成功；post-window status的單一host-command error保留，非device failure。",
+      "classification": "TERMINAL_SESSION_NO_SELECTED_OR_MEASURED_APP_CONTEXT"
+    },
+    "R10": {
+      "id": "R10",
+      "path": "docs/11-v1/SESSION_PROGRESS_20261028-r10.md",
+      "sha256": "fe27648c0648824fd9755c1221178b0ab016a79a9b017429680d5ba6f7f0fa48",
+      "scope": "最新已持久化checkpoint；後續僅本cache報表候選，完整V1未完成。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "WORKER_FUNCTIONAL": {
+      "id": "WORKER_FUNCTIONAL",
+      "path": "tests/acoustics-runtime/delivery-validation-manifest-20261027.json",
+      "sha256": "9b707b0e0852e3795c09564e021f06dfa07ef420c0d84b6e406d95f7605e4ccd",
+      "scope": "真Worker4＋Node46的identity／revision／stale／cancel／boundedqueue／capability契約證據。原service-only .8ms不等於nativeconsumer完整delivery；本輪只讀核對manifest列示輸入，沒有重跑。",
+      "classification": "PRIOR_EXECUTED_FUNCTIONAL_PROOF_WITH_LISTED_CURRENT_BINDINGS"
+    },
+    "WORKER_CURRENT": {
+      "id": "WORKER_CURRENT",
+      "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+      "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+      "scope": "當前Node46 native exit0；Playwright原四項實際全PASS/native0，其中原三functional為PASS子集。外層exit1保留：原欲選三案的grep錯配fulltitle prefix，屬FAIL_SELECTION_GUARD_NO_RETRY；不是OptionA成功或第四案NOTRUN。16份當前來源與1822全域前後一致；原生成profile204…已精確恢復、新25ec…另封存；第四短profile不替代正式600失敗。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "WORKER_SEAL": {
+      "id": "WORKER_SEAL",
+      "path": "artifacts/v1/worker-current-functional-20261027191925546/archive-seal.json",
+      "sha256": "f56fe454f2be105da14447a8e8ba8e31ad618d08e14f9c0d720d0c92fa340caf",
+      "scope": "保留selection失敗、實際functional三案PASS子集及精確舊artifact恢復；無重跑，current binding gap由實際測試及兩個unused import差異核對解除。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "README_GUARD": {
+      "id": "README_GUARD",
+      "path": "artifacts/v1/source-snapshot-root-readme-20261027191418854/source-end.json",
+      "sha256": "52b2cd0b639fc4cb48c5f66da56dbaf5ce39aef7c75dc15dd36b837c27ba1587",
+      "scope": "原source snapshot僅追加存在的root README.md／README.en.md；獨立7項PASS、protected61不變。僅補完整未來source stamp，既有1789 profile proof原範圍不改。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "PRODUCTION_CURRENT": {
+      "id": "PRODUCTION_CURRENT",
+      "path": "artifacts/v1/production-capture-20261027191028396/verification.json",
+      "sha256": "e47390ec83c9be8060e44754df191b98b55634758a9428ac4975e67703e92e7a",
+      "scope": "當前production candidate實際build-only PASS，12份輸出；不是release／整體V1批准。最後fullcheck重建後仍須byte確認。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "NOTICE_CURRENT": {
+      "id": "NOTICE_CURRENT",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/manifest.json",
+      "sha256": "b212580951e44aaf710761b112313dcefef06b3a4d107a6ed50049e60043cfdf",
+      "scope": "當前production候選的法定原文／bundle來源包；六項缺口及根LICENSE UNSELECTED保留。generator歷史capture標籤未改，另有實際candidate binding。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "NOTICE_BINDING": {
+      "id": "NOTICE_BINDING",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/production-candidate-binding.json",
+      "sha256": "45fa62253fcf25aebcf25f7cb31dfd7886f6a16ce40ad168584b5fa6f4318117",
+      "scope": "12份當前production bytes的分離顯式綁定；未抹除原generator標籤、來源缺口或取代最終fullcheck重建byte確認。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "HEARING_CLEANUP": {
+      "id": "HEARING_CLEANUP",
+      "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/preview-cleanup.json",
+      "sha256": "8b16db86912be8c6d8ad232575a2a31860792a79783148d0819ec89fe26f30ee",
+      "scope": "經verified identity確認preview Node13748及conhost37948已結束；Root保留session19928的.NET -1為明確停止preview，不能寫成preview自然exit0。瀏覽器100836另有protocolclose native0；無nativeprobe或hearing PASS。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    }
+  },
+  "requirement_rows": [
+    {
+      "id": "V1-SYS-01",
+      "priority": "P0",
+      "domain": "system",
+      "title": "可重現的正式Web app",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "乾淨npm ci後以明載dev命令開啟room/sphere；正式typecheck/build通過，保留原研究scripts。",
+        "新增依賴精確鎖版並記license/來源；不將spike或空頁宣稱正式app。"
+      ],
+      "evidence_methods": [
+        "新環境安裝、build stdout/exit、browser畫面與版本"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前Web、028b E2E建置、UI27／產品4與另一次12份production candidate實際build有直接證據；先前鎖版CI保留。",
+      "specific_limits": "production為build-only候選，NOTICE已另以12份bytes綁定但六項缺口保留；當前完整pinned check及重建byte確認尚待完成，不宣稱release。",
+      "evidence_ids": [
+        "BUILD_CURRENT",
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "CI_PRIOR",
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_NOTICES",
+        "PRODUCTION_CURRENT",
+        "NOTICE_BINDING"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_NOTICES"
+      ]
+    },
+    {
+      "id": "V1-SCN-01",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "Scene v1與domain正負例",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "SI、右手+Y/-Z、xyzw unit quaternion、ID唯一且跨參照合法；拒絕NaN/Infinity、重複ID、dangling refs、負mass、非法geometry。",
+        "僅box/sphere/capsule；sphere三維等直徑；256 objects/32 sources/一listener；dimensions0.01..100m、position±200m、mass0.001..10000kg。"
+      ],
+      "evidence_methods": [
+        "Schema與獨立literal domain負例；真host API"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "Scene schema／domain正負例的既有固定fixtures保留；當前UI與產品鏈直接使用正式Host。",
+      "specific_limits": "有限範圍負例與source上限不能推成任意場景；最新完整regression待跑。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT"
+      ]
+    },
+    {
+      "id": "V1-SCN-02",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "原子交易、revision與Undo",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "多操作任一失敗全部rollback；STALE_REVISION與UNKNOWN_ID明確拒絕。",
+        "輸入與既有scene不被mutation；commit/undo revision單調遞增，穩定ID不依array順序或engine handle。"
+      ],
+      "evidence_methods": [
+        "原有Scene acceptance獨立程序＋新增交易負例"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "既有原子transaction／rollback／Undo固定驗收保留；產品4及UI27檢查正式操作鏈。",
+      "specific_limits": "不能由外觀推論全部非法transaction；最新完整check與固定純Host驗收輸出待最後綁定。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT"
+      ]
+    },
+    {
+      "id": "V1-SCN-03",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "匯入/匯出、Reset與資源清理",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "roundtrip保留所有IDs、units、source/listener metadata；非法import保留舊scene。",
+        "pause不step；reset回目前document revision起點；重複reset/import/dispose不遺留world、queue、geometry/material或多重RAF。"
+      ],
+      "evidence_methods": [
+        "host roundtrip＋browser連續reset10次/資源計數"
+      ],
+      "status": "PASS",
+      "current_scope": "當前physics2的十次reset/import/dispose及產品fresh-context roundtrip／reload通過。",
+      "specific_limits": "資源計數限已儀器化world／queue／renderer項目；不宣稱全heap或全GPU零洩漏。",
+      "evidence_ids": [
+        "PHYSICS_CURRENT",
+        "PHYSICS_OPERATION",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_PROD",
+        "H_STORE"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PROD",
+        "H_STORE"
+      ]
+    },
+    {
+      "id": "V1-PHY-01",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "固定步與過載政策",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "fixedDt=1/60s；30/60/144Hz render不改固定步結果；render僅插值。",
+        "互動catch-up≤4且丟wall-time有telemetry；record/A-B過載pause、不丟simulation ticks。"
+      ],
+      "evidence_methods": [
+        "同初始state多render cadence比較＋過載trace"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "固定步／多cadence與過載原fixture、391相關回歸保留；當前profile實際記錄safe-overload／保留recording ticks。",
+      "specific_limits": "本輪有wall-time drop／錄製欠帳，不是連續有效動態負載或性能通過；最新完整check待跑。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "PROFILE_CURRENT",
+        "PHYSICS_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ]
+    },
+    {
+      "id": "V1-PHY-02",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "四body modes與切換",
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "pass_conditions": [
+        "真Rapier證明Gravity on/off保留速度、NoGravity仍受impulse/contact、Fixed不受力、Kinematic用next pose且trajectory有clearance驗證。",
+        "Lock/Unlock預設零速並還原原重力mode；切換清controllers/舊contacts且記discontinuity；delete/undo不沿用invalid handles。"
+      ],
+      "evidence_methods": [
+        "真WASM模式/切換矩陣＋browser操作"
+      ],
+      "status": "PASS",
+      "current_scope": "當前physics2正式Host與原四body-mode WASM矩陣、391回歸覆蓋模式與切換。",
+      "specific_limits": "功能證據不是速度目標或跨平台bitwise；窄DTO優化不能被寫成物理模型改變。",
+      "evidence_ids": [
+        "PHYSICS_CURRENT",
+        "UI_CANDIDATE",
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ]
+    },
+    {
+      "id": "V1-PHY-03",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "FPS角色碰撞與移動",
+      "task_ids": [],
+      "pass_conditions": [
+        "正立capsule角色、WASD對角正規化、wall/slope/doorway碰撞有效，camera不直接穿透位移。",
+        "Pointer lock成功後才接收視角輸入；具不鎖定的可用替代操作。"
+      ],
+      "evidence_methods": [
+        "真Rapier character cases＋browser鍵鼠/替代操作"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "角色wall／slope／doorway既有WASM邊界與當前UI非lock替代操作有證據。",
+      "specific_limits": "目前可見native Pointer Lock在前置hidden gate未進入驗收；舊0eef native PASS只屬歷史。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PHYSICS_CURRENT",
+        "ZOOM_FAILURE_SEAL",
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-PHY-04",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "有限且壁安全的抓取",
+      "task_ids": [],
+      "pass_conditions": [
+        "Dynamic模式、mass、gravity與collision groups不因Held改變；有限impulse/torque servo，target sweep+overlap排除自身但保留牆/玩家/其他物件。",
+        "受阻可落後且顯原因；不得parent到camera、teleport穿牆或以kinematic假扮Dynamic。"
+      ],
+      "evidence_methods": [
+        "0.1/1/5/20kg、薄牆/角落/堆疊/低FPS/NoGravity真WASM；記penetration/tracking/force saturation/blocked"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原重量／牆角／堆疊／低FPS／NoGravity抓取矩陣及391回歸保留；當前產品4實際抓投。",
+      "specific_limits": "fixture條件外不保證零穿透；最新完整check仍待最後source綁定。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ]
+    },
+    {
+      "id": "V1-PHY-05",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "Drop/Throw語意與去重",
+      "task_ids": [],
+      "pass_conditions": [
+        "Drop不新增impulse且保留當刻solver velocity與NoGravity；Throw解除controller後同tick施加一次有限COM impulse。",
+        "commandId重送不重複throw；速度/clearance/CCD有界；取得lock的click不會throw。"
+      ],
+      "evidence_methods": [
+        "明確intent事件＋WASM速度/impulse assertions＋browser lock click"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "既有COM throw／Drop／command去重WASM fixture與當前產品throw鏈通過。",
+      "specific_limits": "當前native acquisition click因visible preflight未進入；不能借舊bundle的lock通過補新版本。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "UI_CURRENT",
+        "ZOOM_FAILURE_SEAL",
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-PHY-06",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "Pause/focus與Listener還原",
+      "task_ids": [],
+      "pass_conditions": [
+        "Esc/blur/hidden清輸入並安全pause，取消未commit throw，保存Held/ghost且停止控制impulse；不得偷偷Drop或自動Resume。",
+        "Resume先重驗generation/collider/grip/clearance再ramp；editor camera不暗改Pinned Listener，退出FPS還原Pinned pose、velocity=0並記discontinuity。"
+      ],
+      "evidence_methods": [
+        "browser blur/visibility/lock/IME trace＋fixedstep controller/state assertions"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前UI27測focus／pause／替代輸入／Listener還原；相關391回歸保留generation與Held安全語義。",
+      "specific_limits": "OS鍵盤／IME及當前真native lock不是headless測試能取代。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "UI_CANDIDATE",
+        "ZOOM_FAILURE_SEAL",
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-BLD-01",
+      "priority": "P0",
+      "domain": "build",
+      "title": "Ghost/Staged/Active三階段",
+      "task_ids": [],
+      "pass_conditions": [
+        "Ghost無active body/source；Place在安全固定步重驗且原子建立Staged；等待geometry ack後顯式Enable，另行Resume。",
+        "surface support與shape query拒絕overlap；invalid/stale/racing occupancy/連點不留半物件、雙ID或意外聲源。"
+      ],
+      "evidence_methods": [
+        "browser placement＋document/body/source/revision counts＋WASM shape queries"
+      ],
+      "status": "PASS",
+      "current_scope": "當前UI27的Ghost→Staged→explicit Active／安全placement鏈、physics query及產品實驗操作通過。",
+      "specific_limits": "只涵蓋既定box/sphere/capsule與受測clearance；不推廣到任意mesh。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PHYSICS_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-EVT-01",
+      "priority": "P0",
+      "domain": "events",
+      "title": "可靠正規化物理事件",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "步後複製暫時contact值，以domain IDs/generation/episode記tick/sequence/materialPair/worldContact。",
+        "point velocity=vCOM+omega×r；local→world與collider normal方向正確；force N/impulse Ns不可混用，缺值為null。"
+      ],
+      "evidence_methods": [
+        "真Rapier多contact/旋轉/collider ordering fixtures與單位assertions"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "既有真Rapier contact/旋轉/v+ω×r/N與Ns分離的WASM證據、391回歸和當前產品impact鏈。",
+      "specific_limits": "未執行房間或真實接觸力校準；最新整體regression仍待跑。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "PHYSICS_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_SUP"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_SUP"
+      ]
+    },
+    {
+      "id": "V1-EVT-02",
+      "priority": "P0",
+      "domain": "events",
+      "title": "Impact去重與invalidations",
+      "task_ids": [
+        "RLAB-TASK-0012",
+        "RLAB-TASK-0013"
+      ],
+      "pass_conditions": [
+        "support/persistent contact不逐tick發impact；多點合理聚合、episode/cooldown/hysteresis有界。",
+        "mode/delete/teleport/replay invalidation不偽造bounce或新impact；audible voice drop不刪raw event trace。"
+      ],
+      "evidence_methods": [
+        "single impact/resting/microjitter/multiobject/held-wall/pause/mode/CCD fixtures"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原episode／去重／support anchor／mode invalidation回歸保留；當前產品不由UI偽造impact。",
+      "specific_limits": "已驗fixture不等於所有contact拓樸；native聲音drop與raw trace需繼續分開。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_MOT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_MOT"
+      ]
+    },
+    {
+      "id": "V1-SND-01",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "排序/去重與正交狀態",
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "pass_conditions": [
+        "event以tick/sequence定義排序；eventId重送不重播；shared profile每binding有獨立runtime state。",
+        "AlwaysOn在移動、Impact、Grab/Throw、NoGravity不中斷；Held/contact等維度可共存；Throw/Drop只來自成功interaction。"
+      ],
+      "evidence_methods": [
+        "固定golden event trace、同tick不同sequence、重送與多binding fixtures"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "既有golden event trace、binding隔離、去重與當前150音訊回歸／native25／產品4相互支撐。",
+      "specific_limits": "不把每項原golden測試說成此次新完整check；跨browser差異保留。",
+      "evidence_ids": [
+        "AUDIO_CANDIDATE",
+        "NATIVE_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-SND-02",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "有界映射與合法引用",
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "pass_conditions": [
+        "mapping/fade/cooldown具範圍/單位、curve嚴格x與clamp；effective enabled/overrides正確。",
+        "拒絕NaN/Infinity、missing asset/rule、stale scene/profile/binding revision；不eval任意JS。"
+      ],
+      "evidence_methods": [
+        "正負fixtures＋runtime極值/disabled override tests"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "既有range／curve／pin／revision負例與當前作者UI操作及150分項回歸保留。",
+      "specific_limits": "不支援任意JS、URL或自動放寬schema；最新完整check待最後綁定。",
+      "evidence_ids": [
+        "AUDIO_CANDIDATE",
+        "UI_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-SND-03",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "聲音預算與deterministic admission",
+      "task_ids": [
+        "RLAB-TASK-0011",
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "continuous與one-shot生命週期分離但共受有效預算；priority/stableID tie-break決定drop/steal並記原因。",
+        "instance/voice、active emitter、path/decoded-memory上限分別執行，超量不造成無界queue/allocation。"
+      ],
+      "evidence_methods": [
+        "event burst/over-cap/cleanup/同優先排序 fixtures及browser telemetry"
+      ],
+      "status": "PASS",
+      "current_scope": "當前native25、UI admission2及產品voice ledger檢查budget／drop／cleanup；150回歸保留排序。",
+      "specific_limits": "native admission與logical intent仍是不同紀錄；profile壓力路由254–256及95drops不能冒稱持續256current routes。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "PROFILE_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-SND-04",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "快照/epoch與決策重播",
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "pass_conditions": [
+        "pause不前進logical tick；reset/seek換epoch清舊dedup/deadline/schedule。",
+        "保存state重評同raw trace得相同logical decisions；不把AudioNode/Rapier object序列化。"
+      ],
+      "evidence_methods": [
+        "golden snapshot/resume/replay＋stale epoch負例"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原snapshot／epoch／raw decision重播fixtures與當前產品fresh reload／seek鏈有證據。",
+      "specific_limits": "PCM bitwise與跨機Rapier determinism不是本列已證範圍；最新完整check待跑。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "AUDIO_CANDIDATE",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_CH",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_CH",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-SND-05",
+      "priority": "P1",
+      "domain": "behavior",
+      "title": "接觸/有界latch/material pair layers",
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "pass_conditions": [
+        "rolling/sliding使用接觸與相對point速度/角速度、hysteresis且缺支撐資料回unknown，不能將平移都當rolling。",
+        "OnThrow-start/OnImpact-stop有界latch具stopOn/retrigger/deadline，不以WhileAirborne偷換；materialpair覆寫仍受finite generator與voice上限。"
+      ],
+      "evidence_methods": [
+        "rotating support/slip/held/mode/CCD/latch deadline/retrigger/layer trace tests"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原motion latch／rolling-sliding／materialpair層與raw trace分項證據保留，當前391／150相關回歸支撐。",
+      "specific_limits": "不宣稱creative sample為真實物體振動或房間改善；最新完整check待跑。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "AUDIO_CANDIDATE",
+        "H_Q",
+        "H_QT",
+        "H_MOT",
+        "H_PHY",
+        "H_SUP"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_MOT",
+        "H_PHY",
+        "H_SUP"
+      ]
+    },
+    {
+      "id": "V1-SND-06",
+      "priority": "P0",
+      "domain": "assets",
+      "title": "可信資產匯入/選擇與生成",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "asset ID/revision/SHA與權利/availability來自trusted registry，fixture-only不能當正式音檔；模型不提供任意path/URL。",
+        "可用sample/loop與簡單oscillator/envelope；持續實例保持playhead，新one-shot建立新source，decoded buffer可重用；creative內容不標Measured vibration。"
+      ],
+      "evidence_methods": [
+        "真音檔decode/playback與registry負例＋deterministic synth references"
+      ],
+      "status": "PASS",
+      "current_scope": "當前storage5＋產品4驗WAV保存、fresh reload、缺／錯檔拒絕及原檔relink保ID。",
+      "specific_limits": "權利仍依使用者提供資料；既有decoder／IndexedDB條件不代表無限quota或任意codec支援。",
+      "evidence_ids": [
+        "STORAGE_CURRENT",
+        "STORAGE_CLEANUP",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ]
+    },
+    {
+      "id": "V1-SND-07",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "安全手動作者與Apply/Undo",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "draft→validate→diff→pause/fade/drain→原子新revision/new epoch；derivedAssetPins與操作一起提交，inverse可Undo。",
+        "invalid/stale保留draft及舊配置；shared profile受影響bindings列明；不宣稱無縫retired-profile voices。"
+      ],
+      "evidence_methods": [
+        "domain transaction正負例＋browser Apply/Cancel/Undo"
+      ],
+      "status": "PASS",
+      "current_scope": "當前UI diagnostics／static-preview2與native25／IRv2／產品4證明分離時鐘及受控聲音鏈。",
+      "specific_limits": "preview只用真contact或受支援靜態條件，不當作正式run／IR／聽測；裝置仍未聽。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "NATIVE_CURRENT",
+        "IRV2_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_INT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_INT"
+      ]
+    },
+    {
+      "id": "V1-ACO-01",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "真direct path/occlusion",
+      "task_ids": [],
+      "pass_conditions": [
+        "產品solver以實際source/listener/geometry算t=r/c、1m reference pressure1/r與finite segment occlusion，r=0有明示拒絕/有來源的regularization。",
+        "source movement或blocker變更會更新真路徑，UI不能用裝飾線替代求解。"
+      ],
+      "evidence_methods": [
+        "3-4-5 literal fixture＋blocker cases＋browser真path inspector"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原direct／frequency-band／distance／air/material獨立reference與當前native／產品鏈保留。",
+      "specific_limits": "標示幾何／數值近似；不是wave solver、V5量測或一般mesh聲學保證。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_DEL",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_DEL",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-ACO-02",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "有限一階ISM反射與path identity",
+      "task_ids": [],
+      "pass_conditions": [
+        "反射點在finite polygon內，每段檢查blockers；first-order path帶真vertices/length/absolute delay/relative delay/arrival direction。",
+        "ID由source/listener/ordered surfaces/model決定，不含座標或rank；arrival指listener到倒數第二vertex。"
+      ],
+      "evidence_methods": [
+        "固定一階sqrt20、polygon外與反射blocker負例、1mm continuity；可與獨立reference比對"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原finite first-order image-source／finite polygon／stable path reference、真Worker及當前path產品操作有證據。",
+      "specific_limits": "只涵蓋受支援first-order靜態box/plane能力；IR不被說成具有individual paths。",
+      "evidence_ids": [
+        "WORKER_FUNCTIONAL",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ]
+    },
+    {
+      "id": "V1-ACO-03",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "材質/大氣/模型標籤",
+      "task_ids": [],
+      "pass_conditions": [
+        "每band A+R+T=1且finite/[0,1]；scattering只分配R，pressure magnitude依已宣告phase/impedance近似。",
+        "示範材質標Synthetic；air模型有來源/適用條件；gravity0不等vacuum，vacuum不消除mechanical collision；未驗ISO不得宣稱符合。"
+      ],
+      "evidence_methods": [
+        "band energy literal fixtures、air conversion、invalid material與medium tests"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原energy／A-R-T／scattering／band metadata固定reference保留；當前native25與IRv2驗實際graph。",
+      "specific_limits": "材質Measured/Derived/Tuned/Synthetic與頻率/安裝條件不變；沒有實體校準或獨立wave solver。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "IRV2_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_DEL",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_DEL",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-ACO-04",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "AcousticFrame與worker邊界",
+      "task_ids": [],
+      "pass_conditions": [
+        "frame含source/listener/revision/poseTick/solver版本與capabilities；stale或錯配frame不套用。",
+        "bounds/backpressure與取消有限；unsupported/空路徑/0/未完成分開，沒有IR/individual-path capability不捏造替代。"
+      ],
+      "evidence_methods": [
+        "真worker/message/queue/cancel/stale-frame tests與UI狀態"
+      ],
+      "status": "PASS",
+      "current_scope": "當前Worker identity／revision／stale／boundedqueue／backpressure／cancel／capability功能：Node46及實際原三functional子集PASS；當前16份來源穩定，舊solver binding gap已由實測與兩個unused import差異核對解除。",
+      "specific_limits": "原欲僅選三案，實際因grep fulltitle prefix錯配跑原四案且全PASS；外層selection guard仍FAIL/exit1，不宣稱OptionA成功或第四案NOTRUN。額外短profile與正式600 FAIL分開，未重跑／改原oracle。",
+      "evidence_ids": [
+        "WORKER_CURRENT",
+        "WORKER_SEAL",
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ]
+    },
+    {
+      "id": "V1-AUD-01",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "統一SourceGraph與一次處理",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "所有3D continuous/contact emission走同一Acoustic Core route，contact聲源用world contact而非固定COM。",
+        "同emission epoch加一次absolute propagation delay；1/r、air/material、HRTF與Doppler不重複；反射HRTF用最後segment apparent direction。"
+      ],
+      "evidence_methods": [
+        "真OfflineAudioContext impulse arrival/gain/direction/routing assertions＋browsergraph"
+      ],
+      "status": "PASS",
+      "current_scope": "當前prefix-f3e5 Chromium原25項native graph與產品鏈通過；IRv2六份native/reference renders。",
+      "specific_limits": "cached Chromium不是實際耳機／喇叭；Firefox能量原門檻FAIL、WebKit capability BLOCKED保留。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "NATIVE25_CURRENT",
+        "IRV2_CURRENT",
+        "CROSS_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_SUP",
+        "H_CH",
+        "H_FF",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_SUP",
+        "H_CH",
+        "H_FF",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-AUD-02",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "持續聲源與平滑更新",
+      "task_ids": [],
+      "pass_conditions": [
+        "抓取/碰撞/NoGravity不重建continuous source或重置phase；source/listener/path更新用穩定IDs且gain/delay平滑。",
+        "path birth/death/voice steal有audio-clock fade；callback不等AI/network/physics/geometry，不做無界allocation/log。"
+      ],
+      "evidence_methods": [
+        "真graph持續source identity/playhead、parameter ramps、burst/dispose tests"
+      ],
+      "status": "PASS",
+      "current_scope": "當前native25與IRv2驗source/cursor、target-bank／gate／ramp／連續更新；產品4保留native graph與事件鏈。",
+      "specific_limits": "相同IR重用保留convolution history，不宣稱舊冗餘重建附近PCM逐byte相同；非Worklet p99或聽感證據。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "IRV2_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-AUD-03",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "Pause/Resume音訊時間",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "Freeze-and-fade保留logical offsets/event cursor/pending arrivals，取消舊epoch；Resume重錨只排未到達事件一次。",
+        "seek/reset清舊排程；pause時audition另時鐘且排除run/metrics。"
+      ],
+      "evidence_methods": [
+        "OfflineAudioContext arrival/duplication tests＋browser pause/seek trace"
+      ],
+      "status": "PASS",
+      "current_scope": "當前native25的pause／restore／seek/cursor與產品reload/replay鏈有實際證據。",
+      "specific_limits": "尚未由Hi-x65或D3V觀察Pause/Resume click/pop；native-node結果不推成任意browser裝置行為。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "PRODUCT_CURRENT",
+        "CROSS_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_UI",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-AUD-04",
+      "priority": "P1",
+      "domain": "audio",
+      "title": "Raw/Simulated與基本reverb",
+      "task_ids": [],
+      "pass_conditions": [
+        "Raw/Simulated使用同asset/event/seed/playhead/gain，不改run；route crossfade用audio clock。",
+        "基本reverb明示perceptual approximation，IR是否含direct/distance/air/material/normalization可查；能量驗證不能被Convolver自動normalization掩蓋。"
+      ],
+      "evidence_methods": [
+        "真offline graph energy/arrival/normalization測試＋browser route切換"
+      ],
+      "status": "PASS",
+      "current_scope": "當前native25、IRv2與產品4的Raw/Simulated／reverb／energy鏈通過，normalization及近似標示保留。",
+      "specific_limits": "Firefox原energy strictFAIL不撤銷；聽測未跑，reverb為perceptual approximation。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "IRV2_CURRENT",
+        "PRODUCT_CURRENT",
+        "CROSS_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_FF",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_CH",
+        "H_FF",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-UX-01",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Workspace/Transport與資料權威",
+      "task_ids": [],
+      "pass_conditions": [
+        "Scene/Simulation/Analysis切換不Reset run/source/recording；Run/Pause/Resume/Reset語義不同，Reset保留已完成結果並標interrupted capture。",
+        "Scene Explorer/Library/Inspector/Transport/Monitor與精確數字入口可用，顯units/revision/tick與可操作error。"
+      ],
+      "evidence_methods": [
+        "真browser workflow U01–U08/command trace"
+      ],
+      "status": "PASS",
+      "current_scope": "當前028b EN8／ZH13加diagnostic／preview／admission共UI27通過，產品4使用正式作者與transport流程。",
+      "specific_limits": "headless流程不是OS鍵盤／IME或完整可及性證明；性能與native visibility另列。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-UX-02",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "共享選取與真資料可視化",
+      "task_ids": [],
+      "pass_conditions": [
+        "3D/table/Inspector共用stable object/path/event ID，排序/刪除/stale結果不誤選另一物件。",
+        "只畫solver產生的路徑，顯model/source/units/stale/revision；unsupported/empty/unavailable/0有區分。"
+      ],
+      "evidence_methods": [
+        "browser linked-selection＋stale frame/empty capability cases"
+      ],
+      "status": "PASS",
+      "current_scope": "當前UI27實際shared selection／path provenance／empty/stale資料與產品analysis鏈有證據。",
+      "specific_limits": "聲線只對應solver paths；不由有聲推成IR或V5，未支援數值仍Unavailable。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-UX-03",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "FPS輸入仲裁與安全退出",
+      "task_ids": [],
+      "pass_conditions": [
+        "pointer-lock acquisition click不Throw/Place；Esc/blur/hidden安全pause；Tab正常導覽且保留browser shortcuts。",
+        "input/contenteditable/中文IME擁有按鍵，keydown repeat不重複throw/fix/create；有非lock與非drag替代。"
+      ],
+      "evidence_methods": [
+        "browser composition/focus/keyboard/lock-denied/action-log測試"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前UI27檢查input arbitration／composition／blur／非lock替代操作，原安全input回歸保留。",
+      "specific_limits": "本輪native兩次在hidden gate前結束，actualgesture與PointerLock驗收未進入；不稱OS IME通過。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "ZOOM_FAILURE_SEAL",
+        "NATIVE_RECOVERY",
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-UX-04",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Sound Inspector作者/診斷",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "可新增/啟停規則、合法trigger/asset、gain/pitch/curve與preset/binding override；顯contact emitter與抑制/voice原因。",
+        "audition/3D preview/run分離；切選不無聲丟draft；error/stale/disabled有可操作說明；Apply/Undo與runtime版本一致。"
+      ],
+      "evidence_methods": [
+        "真browser規則編輯與audio/event/instance trace"
+      ],
+      "status": "PASS",
+      "current_scope": "當前UI diagnostics2／preview2／admission2及作者編輯Apply/Undo／產品實驗鏈通過。",
+      "specific_limits": "logical suppression不等於actual native admission；靜態preview與run/metrics分離，裝置聽感未知。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "NATIVE_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_SUP"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_SUP"
+      ]
+    },
+    {
+      "id": "V1-UX-05",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "可及性/reflow/motion",
+      "task_ids": [],
+      "pass_conditions": [
+        "native controls/visible focus/accessible names/dialog focus-return/keyboard操作可用；不逐tick aria-live刷屏。",
+        "200%及320CSSpx仍到達Mute/Pause/退出/表單；Reduced Motion不延後命令；tokens使用canonical值，不能以色彩/動畫作唯一狀態線索。"
+      ],
+      "evidence_methods": [
+        "真browser keyboard/dialog/zoom/reflow/reduced-motion/contrast檢查"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前headless UI keyboard/dialog/reflow/reduced-motion分項通過；兩次可見native測試raw FAIL，但acceptance均零項。",
+      "specific_limits": "200%／320CSS／真PointerLock當前NOTRUN；官方Node/CUA重設後仍在初始化oserror3。不能推斷桌面原因、抹去FAIL或做相同第三次盲重跑。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "ZOOM_CURRENT_1",
+        "ZOOM_CURRENT_2",
+        "ZOOM_FAILURE_SEAL",
+        "NATIVE_RECOVERY",
+        "H_UI",
+        "H_ZOOM"
+      ],
+      "historical_evidence_ids": [
+        "H_UI",
+        "H_ZOOM"
+      ]
+    },
+    {
+      "id": "V1-UX-06",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Monitor與音訊暴露狀態",
+      "task_ids": [],
+      "pass_conditions": [
+        "預設muted，經user gesture啟用；Mute/gain常駐，Mute不停止simulation。",
+        "blocked/error/source stop狀態分離；dBFS不宣稱SPL或耳機安全校準；事件有文字/視覺替代。"
+      ],
+      "evidence_methods": [
+        "browser autoplay/gesture/mute test與實際聲音狀態確認"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前UI gesture/mute/gain與產品native context狀態通過；專用聽測session完成provenance preflight及arm後已到期關閉。",
+      "specific_limits": "無selected／measured App context、無user聽感report；僅18:56:30 status見capturedContexts0，不能斷言全程未建立context。sampleRate／block／actualroute UNKNOWN，hearing NOTRUN；dBFS不是SPL。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "PRODUCT_CURRENT",
+        "HEARING_TOOL",
+        "HEARING_SNAPSHOT",
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_CH",
+        "HEARING_CLEANUP"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_UI",
+        "H_CH"
+      ]
+    },
+    {
+      "id": "V1-RPL-01",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "可追溯capture與finalization",
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "pass_conditions": [
+        "保存tick-indexed motion/velocity/listener/raw physics-player trace及分離behavior/audio decisions，連結scene/profile/assets/solver版本與hash。",
+        "final state flush/chunk count/hash正確；缺tick/重sequence/非法quaternion/unresolved refs拒絕；cancel/crash不得產生Captured incomplete manifest。"
+      ],
+      "evidence_methods": [
+        "真runtimecapture、格式破壞/取消/crash fixtures、序列化大小與quota量測"
+      ],
+      "status": "PASS",
+      "current_scope": "當前產品4 capture／raw motion／版本hash／finalization與storage5／relink有直接證據。",
+      "specific_limits": "profile另有safe-overload pause和retained debt，不能把該失敗錄製寫成有效連續600秒run。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "STORAGE_CURRENT",
+        "PROFILE_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_MOT",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_MOT",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-RPL-02",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "Authoritative replay與seek",
+      "task_ids": [],
+      "pass_conditions": [
+        "authoritative motion replay重用已保存motion/raw events，physics不重新決定路徑；listener/source時間序列一致。",
+        "pause/resume/seek/reset採新epoch與清楚tail政策，不重播impact；保留recorded-output與behavior重新評估模式差別。"
+      ],
+      "evidence_methods": [
+        "end-to-end record/replay/hash compare/audio event counts"
+      ],
+      "status": "PASS",
+      "current_scope": "當前產品fresh reload／authoritative replay／seek及原source phase／epoch回歸保留。",
+      "specific_limits": "僅本機受測capture；不保證跨平台Rapier bitwise，也不把re-evaluation當原native輸出重現。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "STORAGE_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ]
+    },
+    {
+      "id": "V1-RPL-03",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "Pinned resimulation證據",
+      "task_ids": [],
+      "pass_conditions": [
+        "同初始snapshot、同Rapier/WASM、seed/建立順序/fixedDt，120ticks重跑兩次同機比較state hashes/明示誤差。",
+        "同機通過不推論跨平台bitwise；fresh physics rerun使用新run/motion trace。"
+      ],
+      "evidence_methods": [
+        "真WASM兩次120tick snapshot regression"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原同WASM／seed／順序／fixedDt的兩次120tick pinned重模擬已留證；391相關物理回歸保留。",
+      "specific_limits": "最新完整check待最後source綁定；同機通過不推論跨平台bitwise。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY"
+      ]
+    },
+    {
+      "id": "V1-AB-01",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Acoustic A/B固定條件",
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "pass_conditions": [
+        "同motion/source signal/listener/geometry/seed/sampleRate/window/backend/solver/analysis，只更動宣告acoustic材料或propagation；不符合回INCOMPATIBLE。",
+        "保留原值、candidate−baseline、units/band/window/artifact；baseline0百分比unavailable；normalized listening不推絕對能量。"
+      ],
+      "evidence_methods": [
+        "真run manifests/hash守門與numeric delta負例"
+      ],
+      "status": "PASS",
+      "current_scope": "當前產品4保存固定motion/source/listener/geometry/seed/backend的acoustic B及raw delta／reload證據。",
+      "specific_limits": "材料是宣告自變項；normalized聆聽不推絕對energy；無PCM/RIR時不捏造RT60。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_PROD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_PROD"
+      ]
+    },
+    {
+      "id": "V1-AB-02",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Behavior A/B自變項",
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "pass_conditions": [
+        "固定motion/raw physicsEvent/listener/geometry/physics/solver/atmosphere/propagation，只允許宣告asset/generator/gain/pitch/profile變化，保留雙方hash。",
+        "behavior decision可不同，不把creative sample差異說成牆面RT改善；不支援時明示CAPABILITY_UNSUPPORTED，不能假完成比較。"
+      ],
+      "evidence_methods": [
+        "真authoritative replay兩組profiles＋比較metadata負例"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原authoritative motion/raw events與雙profile identity／固定條件負例、integration分項回歸保留。",
+      "specific_limits": "不能用acoustic B的產品案代替全部behavior B/A fixtures；最新完整check待跑。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "AUDIO_CANDIDATE",
+        "H_Q",
+        "H_QT",
+        "H_INT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT"
+      ]
+    },
+    {
+      "id": "V1-MET-01",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Grounded metrics與無資料拒絕",
+      "task_ids": [],
+      "pass_conditions": [
+        "只從solver/PCM/RIR artifacts產生支援metric，包含method/window/unit/band/provenance；Computed/Estimated/Measured/AI explanation分離。",
+        "不足decay或fit<3sample回null/reason；不從普通音樂或AI生成RT60/SPL；沒有V5不得標量測。"
+      ],
+      "evidence_methods": [
+        "獨立synthetic impulse/EDC/0.6s decay fixtures與artifact missing/tamper/insufficient-data負例"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原independent EDC／synthetic decay／缺資料與tamper拒絕證據，當前產品grounded結果鏈保留。",
+      "specific_limits": "只支援可追溯artifacts／窗／method；沒有V5或普通音樂估RT60的資格，最新完整check待跑。",
+      "evidence_ids": [
+        "PRODUCT_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT"
+      ]
+    },
+    {
+      "id": "V1-AI-01",
+      "priority": "P1",
+      "domain": "ai",
+      "title": "原12工具的安全host",
+      "task_ids": [],
+      "pass_conditions": [
+        "原tool enum不被暗改；scene提案只stage，host驗證schema/domain/revision/授權後preview，Apply/Cancel/Undo明確且idempotent。",
+        "RunSimulation queued≠完成；immutable input/run ledger/cancel/timeout有效；手動編輯不依賴API。"
+      ],
+      "evidence_methods": [
+        "OfflineFixtureProvider/recorded response標籤＋真hosttransaction/run tests"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原12工具Host、preview/Apply/Cancel/Undo與offline fixture安全負例保留；UI可手動操作。",
+      "specific_limits": "不新增付費呼叫；tool schema與Host能力分離，最新完整安全回歸待跑。",
+      "evidence_ids": [
+        "UI_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-AI-02",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "Behavior提案的安全host",
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "pass_conditions": [
+        "五種新operation與舊12enum分離；unknown/JS/URL/asset/trigger/stale generation拒絕；derived pins與操作原子提交且Undo。",
+        "proposal→preview/diff→user Apply→實際runtime artifact可追溯；模型沒有OS/shell/repo權限，不能自我批准。"
+      ],
+      "evidence_methods": [
+        "真host工具正負fixtures/duplicate proposal/shared-profile迁移/Undo"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "五種Sound operation／pins／原子proposal／Undo固定負例與已完成Meta sound slice保留。",
+      "specific_limits": "模型不能自我批准；不是Scene/behavior跨文檔通用transaction，最新完整check待跑。",
+      "evidence_ids": [
+        "META_LIVE",
+        "UI_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_META"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_META"
+      ]
+    },
+    {
+      "id": "V1-AI-03",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "Provider邊界、預算及錯誤",
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "pass_conditions": [
+        "strict provider schema adapter與本地AJV/domain分開；完整arguments後才stage，model text/no-tool/refusal/truncation有受控結果。",
+        "12turns/48calls/6runs/concurrency1/120s/session及token/runtime caps由host管理；預設付費0、不使用Muse額度；401/403/billing/429/outage分清且transient最多2retry。"
+      ],
+      "evidence_methods": [
+        "provider契約/fixture fault injection＋budget/cancel/unknown mutation result ledger tests"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原provider adapter／有限budget／cancel／401-403-429-billing-outage分辨及fixture fault injection保留。",
+      "specific_limits": "US$1授權3request slots已用盡，無新付費；剩餘credit及billing未知，最新完整check待跑。",
+      "evidence_ids": [
+        "META_LIVE",
+        "H_Q",
+        "H_QT",
+        "H_META",
+        "H_BUDGET",
+        "H_CATALOG"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_META",
+        "H_BUDGET",
+        "H_CATALOG"
+      ]
+    },
+    {
+      "id": "V1-AI-04",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "模型說明只引用真結果",
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "pass_conditions": [
+        "每個數字連到實際metricRecord/artifact，缺/竄改引用拒絕；AI不捏造asset、聲學量測、run成功或global optimum。",
+        "offline fixture/recorded/live來源清楚；模型故障仍可手動完成同一作者與實驗流程。"
+      ],
+      "evidence_methods": [
+        "artifact移除/改寫/錯誤誘導及人工fallback E2E"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原metric/artifact grounding／tamper拒絕、live與fixture來源標示及手動fallback保留。",
+      "specific_limits": "不把模型文字當真正數字／量測／global optimum；最新完整安全回歸待跑。",
+      "evidence_ids": [
+        "META_LIVE",
+        "UI_CURRENT",
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_META",
+        "H_UI"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_INT",
+        "H_META",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-AI-05",
+      "priority": "EXTERNAL_GATE",
+      "domain": "ai",
+      "title": "真Meta產品整合",
+      "task_ids": [
+        "RLAB-TASK-0007",
+        "RLAB-TASK-0014"
+      ],
+      "pass_conditions": [
+        "在帳號/模型/來源/明確有限預算核實後，保存實際Meta response/model ID、redacted tool trace、preview/Apply、真runtime run/results。",
+        "Codex開發、Mock、MuseCode CLI或其他模型輸出都不能解除此門檻；禁止自動充值/提高cap/換未授權帳號。"
+      ],
+      "evidence_methods": [
+        "授權真Meta端到端trace；無帳號/預算記BLOCKED或NOT RUN"
+      ],
+      "status": "PASS",
+      "current_scope": "既有實際Meta sound proposal→Host preview/Apply→本機180ticks／181frames及結果trace保留，Task0014AC02維持true。",
+      "specific_limits": "僅最小Sound slice；Scene live／Meta-planned Run／UI live另未執行。0新增paid calls；實際帳單未知。",
+      "evidence_ids": [
+        "META_LIVE",
+        "H_META",
+        "H_BUDGET",
+        "H_CATALOG"
+      ],
+      "historical_evidence_ids": [
+        "H_META",
+        "H_BUDGET",
+        "H_CATALOG"
+      ]
+    },
+    {
+      "id": "V1-VAL-01",
+      "priority": "P0",
+      "domain": "verification",
+      "title": "凍結驗收與獨立審查",
+      "task_ids": [],
+      "pass_conditions": [
+        "原tests/fixtures/reference/schema hash不因實作而變；如原驗收本身有缺陷，須獨立review與新version/理由，不能改expected/tolerance趕工。",
+        "獨立程序保留command/exit/stdout/stderr/version/hash；隔離review有重現缺陷、修復與複驗，不僅同模型自我宣告。"
+      ],
+      "evidence_methods": [
+        "protected hash比對＋原regression＋新產品tests＋隔離review"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "原61份保護驗收與最新分項391／150／100／155、native及獨立review證據保留；不以同模型自審代替。",
+      "specific_limits": "當前完整pinned check及最後source／protected快照尚待執行。README guard只補未來root README/EN stamp，7項PASS；原1789 profile proof範圍不被追溯改寫。本稿不是新測試。",
+      "evidence_ids": [
+        "UI_CANDIDATE",
+        "AUDIO_CANDIDATE",
+        "NATIVE_CURRENT",
+        "PROFILE_REVIEW",
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_SUP",
+        "H_INT",
+        "H_UI",
+        "README_GUARD",
+        "WORKER_CURRENT"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_PHY",
+        "H_SUP",
+        "H_INT",
+        "H_UI"
+      ]
+    },
+    {
+      "id": "V1-VAL-02",
+      "priority": "EVIDENCE_GATE",
+      "domain": "verification",
+      "title": "Browser/DSP/E2E與乾淨重開",
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "pass_conditions": [
+        "真browser驗證輸入/畫面/cleanup與產品鏈；真OfflineAudioContext驗arrival/energy/continuity/voice cleanup，不能以Node公式代替。",
+        "端到端scene→throw→impact→sound→capture→A/B可重現；三次乾淨重開演示保留失敗/console紀錄。"
+      ],
+      "evidence_methods": [
+        "browser artifacts、offline PCM分析、3次乾淨launch E2E"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前native25／IRv2／UI27／physics2／storage5／產品4分項PASS，產品包含三fresh contexts加WAV案。",
+      "specific_limits": "產品為三fresh contexts而非OS重開或人工聽測；30分鐘manual session已結束仍無hearing report，原Task0012AC03尚有人工門檻。當前完整check待跑。",
+      "evidence_ids": [
+        "NATIVE_CURRENT",
+        "UI_CURRENT",
+        "PHYSICS_OPERATION",
+        "STORAGE_CURRENT",
+        "PRODUCT_CURRENT",
+        "PRODUCT_OPERATION",
+        "H_UI",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ],
+      "historical_evidence_ids": [
+        "H_UI",
+        "H_CH",
+        "H_PROD",
+        "H_STORE"
+      ]
+    },
+    {
+      "id": "V1-VAL-03",
+      "priority": "EVIDENCE_GATE",
+      "domain": "verification",
+      "title": "實際裝置聽測與跨browser",
+      "task_ids": [],
+      "pass_conditions": [
+        "指定browser/OS/硬體/耳機/sampleRate/實際block，實際檢查click/pop、volume jump、moving position、dropout與Pause/Resume。",
+        "測不到的裝置/hearing/crossbrowser明示NOT RUN；不能由PCM有聲、碼審或UI流暢推PASS/V5/calibrated SPL。"
+      ],
+      "evidence_methods": [
+        "實際裝置紀錄與跨browser比較；無觀察者/裝置可驗時保留限制"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前Firefox/WebKit比較保留FAIL／capability BLOCKED；47項工具pure測試及真manual session的preflight／arm／cleanup已有證據。",
+      "specific_limits": "30分鐘session已結束，未記select／attach／nativeObservations／userReports；NO_SELECTED_OR_MEASURED_APP_CONTEXT，actualsampleRate／block UNKNOWN、hearing NOTRUN。單一post-window host-command error不是device failure，不以PCM或pure工具PASS推聽感。",
+      "evidence_ids": [
+        "CROSS_CURRENT",
+        "HEARING_TOOL",
+        "HEARING_SNAPSHOT",
+        "H_CH",
+        "H_FF",
+        "HEARING_CLEANUP"
+      ],
+      "historical_evidence_ids": [
+        "H_CH",
+        "H_FF"
+      ]
+    },
+    {
+      "id": "V1-VAL-04",
+      "priority": "EVIDENCE_GATE",
+      "domain": "performance",
+      "title": "正式性能profile與退階",
+      "task_ids": [],
+      "pass_conditions": [
+        "正式profile分別量測UI/physics/worker/delivery/audio，不用Node batch平均冒充frame tail或schema容量。",
+        "保存10min UI trace與硬體/viewport/scene/voice/paths版本；未量項仍TARGET/UNVERIFIED，降階顯示capability/stale與actual caps。"
+      ],
+      "evidence_methods": [
+        "canonical profile benchmark與telemetry；採native nodes時不冒稱AudioWorklet p99通過"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前正式長度profile實跑628.935秒；1789來源前後一致、native/.NET退出0、分項數值／硬體／退階與清理已保存。",
+      "specific_limits": "physics2.2ms、delivery3.9/14.4ms、UI17/18.9ms為原門檻FAIL；worker workload不完整、main occupancy NOTRUN。非連續有效600s，未改epsilon、未重bin，不自訂全TARGET必過或揭露FAIL即可結案。",
+      "evidence_ids": [
+        "PROFILE_CURRENT",
+        "PROFILE_VERIFICATION",
+        "PROFILE_CLEANUP",
+        "PROFILE_REVIEW",
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_QT",
+        "H_DEL"
+      ]
+    },
+    {
+      "id": "V1-OPS-01",
+      "priority": "P0",
+      "domain": "provenance",
+      "title": "Wiki/Task/交接/Git持久化",
+      "task_ids": [],
+      "pass_conditions": [
+        "沿用同一Task/Wiki：criteria實際有hash證據才DONE；claims釋放、來源版本/現況/限制/下一步更新。",
+        "保留未提交變更及舊證據，checkpoint/handoff帶真正commands/Git provenance；本地commit可恢復，不擅自push/deploy。"
+      ],
+      "evidence_methods": [
+        "wiki lint/status、task/evidence hashes、fresh handoff reader、git diff/log"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "r10 Source25、Now/handoff與sources26–28已由Root持久化；Task0006/0017/0019 DONE保留。",
+      "specific_limits": "最後Task／全英文freshness／fullcheck／handoff與本地Git仍未完成。README stamp guard已補未來來源範圍，既有profile證據保留；禁止push/deploy。",
+      "evidence_ids": [
+        "R10",
+        "H_Q",
+        "H_R4",
+        "H_HANDOFF",
+        "README_GUARD"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_R4",
+        "H_HANDOFF"
+      ]
+    },
+    {
+      "id": "V1-COM-01",
+      "priority": "EXTERNAL_GATE",
+      "domain": "compliance",
+      "title": "權利/規則/發布授權",
+      "task_ids": [],
+      "pass_conditions": [
+        "實際依賴/素材/音效/HRTF有license/version/hash/NOTICE；不複製EchoCanvas/Reflections核心或未授權商業資產。",
+        "codingagent公開條款UNSTATED、本人資格/登入後條款/提交欄位仍須核實；不代接受條款、部署、提交或決定根LICENSE。"
+      ],
+      "evidence_methods": [
+        "實際dependency/asset manifest與使用者外部確認；不以開發完成聲稱競賽合規"
+      ],
+      "status": "PARTIAL",
+      "current_scope": "當前production candidate已實際build並以12份輸出綁定最新NOTICE原文／bundle包；原scope與generator標籤保留。",
+      "specific_limits": "六項授權／來源缺口、rootLICENSE UNSELECTED／本人資格／登入條款／發布仍未代決。最後fullcheck rebuild必須確認12份bytes仍與綁定相同；不是release或法律批准。",
+      "evidence_ids": [
+        "PRODUCTION_CURRENT",
+        "NOTICE_CURRENT",
+        "NOTICE_BINDING",
+        "H_Q",
+        "H_NOTICES",
+        "H_NOTICE_REVIEW"
+      ],
+      "historical_evidence_ids": [
+        "H_Q",
+        "H_NOTICES",
+        "H_NOTICE_REVIEW"
+      ]
+    }
+  ],
+  "worker_binding_scope": "CLOSED by actualcurrentNode46 and actualoriginalthreefunctionalsubsetPASS inside unplannedfour. Prior15/16manifestmismatch retained as historical; current16/source stable. Unplanned4thshortprofile andouterselectionguardFAIL remain distinct fromformal600FAIL.",
+  "hearing_cutoff": {
+    "lastExportAt": "2026-10-27T19:22:45.124Z",
+    "finishedAt": "2026-10-27T19:22:44.329Z",
+    "nativeProbe": "NOT_RUN",
+    "actualBlock": "UNKNOWN",
+    "hearing": "NOT_RUN",
+    "userReportCount": 0,
+    "scope": "NO_SELECTED_OR_MEASURED_APP_CONTEXT",
+    "mutable": false,
+    "pointInTimeCapturedContexts": {
+      "at": "2026-10-27T18:56:30.079Z",
+      "value": 0
+    },
+    "contextEverCreatedAcrossSession": "UNOBSERVED_NOT_CLAIMED",
+    "nativeObservations": 0,
+    "browserOwnedPid": 100836,
+    "browserProtocolCloseExit": 0,
+    "driverExit": {
+      "value": 0,
+      "source": "Root retained driver process close observation"
+    },
+    "previewExit": {
+      "value": -1,
+      "source": "Root retained .NET preview session19928; explicit stop, not naturalexit0"
+    },
+    "soleHostCommandError": "Post-window status request after collection window closed; retained, notdevicefailure"
+  },
+  "status_summary": {
+    "PARTIAL": 33,
+    "PASS": 18
+  },
+  "tasks_unchanged": true,
+  "task_snapshots": [
+    {
+      "task_id": "RLAB-TASK-0006",
+      "path": "knowledge/tasks/RLAB-TASK-0006.json",
+      "sha256": "602265c85260952b577c862621b5904308b7da13f55569ce62aeba7a374d4bc7",
+      "status": "DONE",
+      "dependencies": [
+        "RLAB-TASK-0003",
+        "RLAB-TASK-0004",
+        "RLAB-TASK-0005"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "Scene roundtrip／非法輸入／revision/rollback通過",
+          "verified": true
+        },
+        {
+          "id": "AC-02",
+          "text": "固定步與四body modes有WASM及browser驗證",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0012",
+      "path": "knowledge/tasks/RLAB-TASK-0012.json",
+      "sha256": "52abace3e50c74186d1939b7ef5fdac5b7ce2295103c7abb79fe93dba3d05042",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "真physics事件→AudioEvent→contact/object emitter→同一acoustic route可重現",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "continuous不中斷，one-shot去重／預算、延遲/HRTF/距離不雙算",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "OfflineAudioContext／browser互動／聽測／清理與獨立驗證有證據",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0013",
+      "path": "knowledge/tasks/RLAB-TASK-0013.json",
+      "sha256": "7b800bc3b84fd170922b456261fbac68f1865e1771601e78ab03b0dfd0bdf083",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0012"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "接觸／互動正規化在corner/held/mode/pause/CCD等場景通過",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "有界latch與rolling/sliding狀態、materialpair/layer／trace可追溯",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "acoustic/behavior A/B依固定條件與自變項驗證；不把source變化當房間改善",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0014",
+      "path": "knowledge/tasks/RLAB-TASK-0014.json",
+      "sha256": "5fea53e436da4db958a323cf03d1f0296b694074d76d83665726fd1a7e4f74e4",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0012"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "host安全白名單／registrypins／revision／budget／undo及手動fallback通過",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "Task0007帳號／來源／明確預算核實，實際Meta proposal→合法behavior→run artifact有trace",
+          "verified": true
+        },
+        {
+          "id": "AC-03",
+          "text": "模型只解釋真實computed結果，缺asset／trigger／metric與API錯誤拒絕，live與fixture分清",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0015",
+      "path": "knowledge/tasks/RLAB-TASK-0015.json",
+      "sha256": "525cf07fbe9e5e64b9678defad19814b675d0d26d22ebca271d7596c15bc4e0c",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0013"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "明確價值／授權／domain能力與成本比較後才選Graph",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "typed allowlist／cycle／compiler／undo／debugger與聲學route驗證",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "不回退既有核心品質／科學標示，獨立benchmark與產品evidence",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0016",
+      "path": "knowledge/tasks/RLAB-TASK-0016.json",
+      "sha256": "33a12259d1d9c72d4d1f0a5241994ccabac9255200735482fad3bb3950d09aa1",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011",
+        "RLAB-TASK-0012",
+        "RLAB-TASK-0013",
+        "RLAB-TASK-0014",
+        "RLAB-TASK-0017",
+        "RLAB-TASK-0018",
+        "RLAB-TASK-0019",
+        "RLAB-TASK-0020"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "現有Roadmap第一版P0/P1具可執行功能與requirement-by-requirement證據，P2與外部限制明列",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "原回歸、新數值/physics/audio、browser/E2E與獨立審查通過；不以窄測試支撐整體完成",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "Wiki/ADR/status/limits、最新handoff與Git provenance一致，無Muse額度呼叫",
+          "verified": false
+        },
+        {
+          "id": "AC-04",
+          "text": "依使用者後續確認完成繁中／英文介面與所有專案文件英文版；EN01–06有真browser、原文／翻譯hash、完整性／連結／current-stale與獨立語義審查證據，工作與測試資料共用",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0017",
+      "path": "knowledge/tasks/RLAB-TASK-0017.json",
+      "sha256": "b692a3a6111f99790fa9170af7643547b901223f9609d8f5bb64be81799b8361",
+      "status": "DONE",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "依既定PHY/BLD/EVT驗收完成四模式、抓投重量／牆角／堆疊／低FPS矩陣、角色移動與真接觸bridge證據",
+          "verified": true
+        },
+        {
+          "id": "AC-02",
+          "text": "真browser鍵鼠／替代操作、focus／pause／Listener／Staged安全流程通過；未執行明列",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0018",
+      "path": "knowledge/tasks/RLAB-TASK-0018.json",
+      "sha256": "b089acef161bef632ad11f83828846b4c16a3e845961751027d8ef411a9745ef",
+      "status": "BACKLOG",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "既定direct／finite ISM／energy與metadata獨立reference測試通過，能力和近似明示",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "真Worker bounds/backpressure/cancel/stale與delivery實測；性能失敗保留原結果與固定門檻",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0019",
+      "path": "knowledge/tasks/RLAB-TASK-0019.json",
+      "sha256": "e5c38375603000e451042455fd4b40afa444286c07ff24387b7055fd1c292f98",
+      "status": "DONE",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "真capture／raw motion／版本hash／來源phase及acoustic或behavior A/B固定條件通過，未冒充IR或量測",
+          "verified": true
+        },
+        {
+          "id": "AC-02",
+          "text": "原WAV保存／fresh載入／缺檔拒絕與relink保ID、錄製保存重播／seek／匯出及Pinned120tick重模擬有直接證據",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "task_id": "RLAB-TASK-0020",
+      "path": "knowledge/tasks/RLAB-TASK-0020.json",
+      "sha256": "76144d71066b5d8b48e0fb09ad8fbdd76dc3888869803880d8842fb1f90c15e9",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "criteria": [
+        {
+          "id": "AC-01",
+          "text": "乾淨npm ci與完整check/build/regression、三次乾淨產品E2E、十次reset/import/dispose與當前來源hash證據",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "既定UI/accessibility/input／native audio／性能profile保留PASS/FAIL/NOT RUN及硬體資訊，不以Node或token代替畫面／DSP／聽測",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "新依賴license/source、requirement結果表及CI/可重現命令完整；外部Meta與人工門檻分開",
+          "verified": false
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Current fullpinnedcheck/finalrebuildbyteconfirmation/allEnglishfreshness/Gitpending; actualproductioncandidateNOTICEbinding exists withsixretainedgaps/rootLICENSEUNSELECTED.",
+    "No newgates/tolerance/Taskcriterion/dependency/status or original51conditionschanged.",
+    "Nativecurrenthiddenpreflightfailures and officialtoolsoserror3 remain, withnocauseinference.",
+    "Terminalmanualsession givesnoselected/measuredAppcontextorhearingreport; singlecapturedContexts0statusdoesnotprovecontextnevercreatedthroughoutsession.",
+    "ACO04currentfunctionalsubsetPASS doesnotconvertouterselectionguardFAILorunplannedshortprofileintointendedprotocolsuccess or formal600PASS."
+  ],
+  "completion": "BOUNDED_DRAFT_END_NO_RUNTIME_ACTIVITY",
+  "worker_binding_followup": {
+    "changedListedInput": "src/acoustics/solver.ts",
+    "original": "6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383",
+    "current": "9bda7efc5228a56be1d50c26ba30d42031c9321d9c251710523f0e9236f737a3",
+    "matches": 15,
+    "total": 16,
+    "testsRunByDraftAgent": 0,
+    "status": "CLOSED_WITH_CURRENT_EXECUTED_FUNCTIONAL_PROOF_AND_SCOPED_UNUSED_IMPORT_EQUIVALENCE"
+  },
+  "worker_prior_manifest_listed_bindings": [
+    {
+      "path": "src/app/acoustic-service.ts",
+      "recordedSha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647",
+      "currentSha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647",
+      "matches": true
+    },
+    {
+      "path": "src/app/acoustic-worker.ts",
+      "recordedSha256": "4ddb924b2a96ff31d2c6e3c1ee70bf092474e19b7e37aaecb6446eb885c7f13b",
+      "currentSha256": "4ddb924b2a96ff31d2c6e3c1ee70bf092474e19b7e37aaecb6446eb885c7f13b",
+      "matches": true
+    },
+    {
+      "path": "tests/app/acoustic-service.test.ts",
+      "recordedSha256": "a100d4ff8de690c7d84e843f0da69300484da38653fc1d214582e4131507dafd",
+      "currentSha256": "a100d4ff8de690c7d84e843f0da69300484da38653fc1d214582e4131507dafd",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/acoustic-delivery.spec.ts",
+      "recordedSha256": "4fd0a6d243c3471c5234bb719ae72a131e35f4122b46e39fca7206c3b4c34ac6",
+      "currentSha256": "4fd0a6d243c3471c5234bb719ae72a131e35f4122b46e39fca7206c3b4c34ac6",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/acoustic-delivery.config.ts",
+      "recordedSha256": "46e36c735ff4ce6720b852756b5c7877cd1f6a9dd1fcdeaff23feecb07b8febc",
+      "currentSha256": "46e36c735ff4ce6720b852756b5c7877cd1f6a9dd1fcdeaff23feecb07b8febc",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/run-acoustic-delivery.mjs",
+      "recordedSha256": "ba583bcc7523056f3fc12638879789cbf8e9a774dc69c48a24beb3600224225e",
+      "currentSha256": "ba583bcc7523056f3fc12638879789cbf8e9a774dc69c48a24beb3600224225e",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/build-acoustic-delivery.mjs",
+      "recordedSha256": "77f7d5f6fe544a04ed4ad0e011d6653de434d9a41d9ee6e7dbaa6a9e0d7cf48f",
+      "currentSha256": "77f7d5f6fe544a04ed4ad0e011d6653de434d9a41d9ee6e7dbaa6a9e0d7cf48f",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/acoustic-delivery-entry.ts",
+      "recordedSha256": "a8c97c4dc78d8dca781c2fb51ce1ef3f4724db240c4f45df37f5e78a827a3541",
+      "currentSha256": "a8c97c4dc78d8dca781c2fb51ce1ef3f4724db240c4f45df37f5e78a827a3541",
+      "matches": true
+    },
+    {
+      "path": "tests/browser/acoustic-delivery-harness.html",
+      "recordedSha256": "79adf70f6bb186615f46eaa3d0f89e944db3f7262846dcc5dd6e5930fb7bfa4c",
+      "currentSha256": "79adf70f6bb186615f46eaa3d0f89e944db3f7262846dcc5dd6e5930fb7bfa4c",
+      "matches": true
+    },
+    {
+      "path": "tests/app/acoustic-service.tsconfig.json",
+      "recordedSha256": "7141f30be138f76e83b649ead8b32a08392c9c376ffa6ce5e0262c4ceb045081",
+      "currentSha256": "7141f30be138f76e83b649ead8b32a08392c9c376ffa6ce5e0262c4ceb045081",
+      "matches": true
+    },
+    {
+      "path": "src/acoustics/index.ts",
+      "recordedSha256": "fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1",
+      "currentSha256": "fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1",
+      "matches": true
+    },
+    {
+      "path": "src/acoustics/solver.ts",
+      "recordedSha256": "6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383",
+      "currentSha256": "9bda7efc5228a56be1d50c26ba30d42031c9321d9c251710523f0e9236f737a3",
+      "matches": false
+    },
+    {
+      "path": "src/acoustics/geometry.ts",
+      "recordedSha256": "e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3",
+      "currentSha256": "e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3",
+      "matches": true
+    },
+    {
+      "path": "src/acoustics/types.ts",
+      "recordedSha256": "8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431",
+      "currentSha256": "8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431",
+      "matches": true
+    },
+    {
+      "path": "tests/acoustics-runtime/solver.test.ts",
+      "recordedSha256": "07bda057d7d92f32aaa0afae8ec56e40bcd1379f155b8d8a00bc81af32ab0fa0",
+      "currentSha256": "07bda057d7d92f32aaa0afae8ec56e40bcd1379f155b8d8a00bc81af32ab0fa0",
+      "matches": true
+    },
+    {
+      "path": "package-lock.json",
+      "recordedSha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+      "currentSha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+      "matches": true
+    }
+  ],
+  "worker_prior_manifest_listed_inputs_match": false,
+  "worker_binding_gap_closed": true,
+  "worker_current_functional_proof": {
+    "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+    "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+    "status": "CURRENT_FUNCTIONAL_SUBSET_PASS_SELECTION_PROTOCOL_FAIL_RETAINED",
+    "node46NativeExit": 0,
+    "playwrightActualFourNativeExit": 0,
+    "outerSelectionExit": 1,
+    "currentListed16Stable": true,
+    "global1822Stable": true,
+    "oldArtifactRestoredExact": true,
+    "noRetry": true
+  },
+  "production_candidate": {
+    "capture": {
+      "id": "PRODUCTION_CURRENT",
+      "path": "artifacts/v1/production-capture-20261027191028396/verification.json",
+      "sha256": "e47390ec83c9be8060e44754df191b98b55634758a9428ac4975e67703e92e7a",
+      "scope": "當前production candidate實際build-only PASS，12份輸出；不是release／整體V1批准。最後fullcheck重建後仍須byte確認。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "notice": {
+      "id": "NOTICE_CURRENT",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/manifest.json",
+      "sha256": "b212580951e44aaf710761b112313dcefef06b3a4d107a6ed50049e60043cfdf",
+      "scope": "當前production候選的法定原文／bundle來源包；六項缺口及根LICENSE UNSELECTED保留。generator歷史capture標籤未改，另有實際candidate binding。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "binding": {
+      "id": "NOTICE_BINDING",
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/production-candidate-binding.json",
+      "sha256": "45fa62253fcf25aebcf25f7cb31dfd7886f6a16ce40ad168584b5fa6f4318117",
+      "scope": "12份當前production bytes的分離顯式綁定；未抹除原generator標籤、來源缺口或取代最終fullcheck重建byte確認。",
+      "classification": "CURRENT_BOUNDED_PROOF"
+    },
+    "bundleCount": 12,
+    "unresolvedGaps": 6,
+    "rootLicense": "UNSELECTED",
+    "finalCheckByteConfirmation": "PENDING"
+  },
+  "refreshed_at_utc": "2026-10-27T19:29:23.831Z",
+  "refresh_scope": "Minimalcacheonly Worker/hearingterminal/productionNOTICE/READMEguard; noformalwrites/tests/build/npm/Git/browser/API.",
+  "publication": {
+    "sourceCandidateSha256": "8336296cbd844661d222a37e8d5c8986708871ccfaccf608d5c0affdd741b6a7",
+    "markdown": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.md",
+    "markdownSha256": "78e23ebf14e97d65aff570ca57692081ce5b93c37b194d397711694c9492da53",
+    "scope": "Projection of original51 requirements only; not a new Task system or current whole-V1 completion."
+  }
+}

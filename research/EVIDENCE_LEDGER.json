@@ -1,0 +1,2739 @@
+{
+  "schema_version": "1.0.0",
+  "review_date": "2026-10-29",
+  "language": "zh-TW",
+  "scope": "Reflection Lab preproduction research; literature and contracts are not completed product implementation.",
+  "status_semantics": {
+    "VERIFIED_DOC": "已查官方文件，不代表帳戶或runtime通過",
+    "VERIFIED_LITERATURE": "已查閱相關全文方法/限制，未重現原實驗",
+    "PARTIALLY_VERIFIED": "只有部分正文或摘要；限制保留",
+    "DERIVED_PENDING_TEST": "本庫有條件數學推導；相關V1/V2結果另查run artifact",
+    "PASS": "僅指定local technical spike在列明條件通過，不表示正式產品或科學量測合格",
+    "NOT_RUN": "該來源/主張在本ledger未宣告實作測試；其他runner結果另列",
+    "null_year": "未標發布年之動態文件，查閱年不得冒充發布年",
+    "validation_evidence": "個別解析或local smoke已跑的子案例另列；不將文獻存取或整體產品狀態升級。"
+  },
+  "sources": [
+    {
+      "id": "P01",
+      "title": "Image method for efficiently simulating small-room acoustics",
+      "authors": [
+        "Jont B. Allen",
+        "David A. Berkley"
+      ],
+      "year": 1979,
+      "url": "https://jontalle.web.engr.illinois.edu/Public/AllenBerkley79.pdf",
+      "doi": "10.1121/1.382599",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Indexed author PDF introductory/theory text; direct fetch 403",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P02",
+      "title": "Extension of the image model to arbitrary polyhedra",
+      "authors": [
+        "Jeffrey Borish"
+      ],
+      "year": 1984,
+      "url": "https://doi.org/10.1121/1.390983",
+      "doi": "10.1121/1.390983",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "METADATA_ONLY",
+      "evidence_locator": "DOI/title/authors checked against INIST; detailed original method not read",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P03",
+      "title": "A Beam Tracing Approach to Acoustic Modeling for Interactive Virtual Environments",
+      "authors": [
+        "Thomas Funkhouser",
+        "Ingrid Carlbom",
+        "Gary Elko",
+        "Gopal Pingali",
+        "Mohan Sondhi",
+        "Jim West"
+      ],
+      "year": 1998,
+      "url": "https://doi.org/10.1145/280814.280818",
+      "doi": "10.1145/280814.280818",
+      "publication_type": "peer_reviewed_conference",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "ACM record and indexed author PDF; direct PDF fetch 403",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P04",
+      "title": "Real-Time Acoustic Modeling for Distributed Virtual Environments",
+      "authors": [
+        "Thomas A. Funkhouser",
+        "Patrick Min",
+        "Ingrid Carlbom"
+      ],
+      "year": 1999,
+      "url": "https://pixl.cs.princeton.edu/gfx/pubs/Funkhouser_1999_RAM/index.php",
+      "doi": "10.1145/311535.311590",
+      "publication_type": "peer_reviewed_conference",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Author abstract / priority-driven and bidirectional beam algorithms",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P05",
+      "title": "Geometry Reduction in Room Acoustics Modeling",
+      "authors": [
+        "Samuel Siltanen",
+        "Tapio Lokki",
+        "Lauri Savioja",
+        "Claus Lynge Christensen"
+      ],
+      "year": 2008,
+      "url": "https://users.aalto.fi/~ktlokki/Publs/siltanen_aaua_2008.pdf",
+      "doi": "10.3813/AAA.918049",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections 1–4; octree reconstruction, ODEON comparisons, orientation and portal limitations",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P06",
+      "title": "Interactive Sound Rendering on Mobile Devices using Ray-Parameterized Reverberation Filters",
+      "authors": [
+        "Carl Schissler",
+        "Dinesh Manocha"
+      ],
+      "year": 2018,
+      "url": "https://arxiv.org/pdf/1803.00430",
+      "doi": null,
+      "publication_type": "preprint_arxiv_1803.00430v1",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections 2–4, 7–8 and supplemental 9–10; limitations at section8",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P07",
+      "title": "Natural Sounding Artificial Reverberation",
+      "authors": [
+        "Manfred R. Schroeder"
+      ],
+      "year": 1962,
+      "url": "https://hajim.rochester.edu/ece/sites/zduan/teaching/ece472/reading/Schroeder_1962.pdf",
+      "doi": null,
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "JAES10(3)219–223; comb/allpass equations1–15",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P08",
+      "title": "New Method of Measuring Reverberation Time",
+      "authors": [
+        "Manfred R. Schroeder"
+      ],
+      "year": 1965,
+      "url": "https://labrosa.ee.columbia.edu/~dpwe/papers/Schro65-reverb.pdf",
+      "doi": "10.1121/1.1909343",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Indexed abstract/introduction/theory beginning; direct fetch timeout",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P09",
+      "title": "Digital Delay Networks for Designing Artificial Reverberators",
+      "authors": [
+        "Jean-Marc Jot",
+        "Antoine Chaigne"
+      ],
+      "year": 1991,
+      "url": "https://aes2.org/publications/elibrary-page/?id=5663",
+      "doi": null,
+      "publication_type": "conference_paper_AES3030",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official AES abstract; subscriber full text not obtained",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P10",
+      "title": "On Lossless Feedback Delay Networks",
+      "authors": [
+        "Sebastian J. Schlecht",
+        "Emanuel A. P. Habets"
+      ],
+      "year": 2016,
+      "url": "https://arxiv.org/pdf/1606.07729",
+      "doi": null,
+      "publication_type": "preprint_arxiv_1606.07729v1",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "SectionsII–III; equations1–15, counterexamples, unitary sufficient condition",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "P11",
+      "title": "Splitting the Unit Delay—Tools for Fractional Delay Filter Design",
+      "authors": [
+        "Timo I. Laakso",
+        "Vesa Välimäki",
+        "Matti Karjalainen",
+        "Unto K. Laine"
+      ],
+      "year": 1996,
+      "url": "https://research.aalto.fi/en/publications/splitting-the-unit-delay-tools-for-fractional-delay-filter-design/",
+      "doi": "10.1109/79.482137",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "METADATA_ONLY",
+      "evidence_locator": "Aalto official bibliographic record; no filter-performance chart verified",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S01",
+      "title": "ISO 9613-1:1993 Atmospheric absorption",
+      "authors": [
+        "ISO"
+      ],
+      "year": 1993,
+      "url": "https://www.iso.org/standard/17426.html",
+      "doi": null,
+      "publication_type": "international_standard",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official scope and meteorological variables; complete standard not obtained",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S02",
+      "title": "ISO 354:2003 Reverberation-room absorption measurement",
+      "authors": [
+        "ISO"
+      ],
+      "year": 2003,
+      "url": "https://www.iso.org/standard/34545.html",
+      "doi": null,
+      "publication_type": "international_standard",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official scope; weakly damped resonators excluded",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S03",
+      "title": "ISO 10534-2:2023 Impedance-tube two-microphone technique",
+      "authors": [
+        "ISO"
+      ],
+      "year": 2023,
+      "url": "https://www.iso.org/standard/81294.html",
+      "doi": null,
+      "publication_type": "international_standard",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official scope / locally reacting condition; corrected version2025-08",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S04",
+      "title": "ISO 17497-1:2004 Random-incidence scattering coefficient",
+      "authors": [
+        "ISO"
+      ],
+      "year": 2004,
+      "url": "https://www.iso.org/standard/31397.html",
+      "doi": null,
+      "publication_type": "international_standard",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official scope; spatial uniformity not characterized; amendment2014",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S05",
+      "title": "ISO 3382-1:2009 Room acoustic parameters / performance spaces",
+      "authors": [
+        "ISO"
+      ],
+      "year": 2009,
+      "url": "https://www.iso.org/standard/40979.html",
+      "doi": null,
+      "publication_type": "international_standard",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official measurement/report scope; no complete compliance procedure obtained",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T01",
+      "title": "Speed of Sound Derivation",
+      "authors": [
+        "NASA Glenn Research Center",
+        "Tom Benson (editor)"
+      ],
+      "year": 2021,
+      "url": "https://www.grc.nasa.gov/www/k-12/BGP/snddrv.html",
+      "doi": null,
+      "publication_type": "official_technical_education",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Equations1–10; small perturbation/isentropic ideal gas; last updated2021-05-13",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T02",
+      "title": "University Physics Volume1 Section17.7 The Doppler Effect",
+      "authors": [
+        "Samuel J. Ling",
+        "Jeff Sanny",
+        "William Moebs",
+        "OpenStax"
+      ],
+      "year": 2016,
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-7-the-doppler-effect",
+      "doi": null,
+      "publication_type": "official_textbook",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Equations17.18–17.20 and moving wavefront derivation",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T03",
+      "title": "pyroomacoustics Simulation and Control Parameters",
+      "authors": [
+        "LCAV / pyroomacoustics contributors"
+      ],
+      "year": null,
+      "url": "https://pyroomacoustics.readthedocs.io/en/pypi-release/pyroomacoustics.parameters.html",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "0.10.0 docs Material.energy_absorption, fractional delays, Physics",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T04",
+      "title": "pyroomacoustics Room Simulation",
+      "authors": [
+        "LCAV / pyroomacoustics contributors"
+      ],
+      "year": null,
+      "url": "https://pyroomacoustics.readthedocs.io/en/pypi-release/pyroomacoustics.room.html",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "0.10.0 docs ISM, hybrid warning, old absorption warning, fractional-delay offset",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW01",
+      "title": "FoleyAutomatic: Physically-based Sound Effects for Interactive Simulation and Animation",
+      "authors": [
+        "Kees van den Doel",
+        "Paul G. Kry",
+        "Dinesh K. Pai"
+      ],
+      "year": 2001,
+      "url": "https://www.cs.ubc.ca/labs/lci/papers/docs2001/van-foleyautomatic.pdf",
+      "doi": "10.1145/383259.383322",
+      "publication_type": "peer_reviewed_conference",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections2–5; modes and impact/sliding/rolling excitation; informal quality comparison",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW02",
+      "title": "Synthesizing Sounds from Physically Based Motion",
+      "authors": [
+        "James F. O’Brien",
+        "Perry R. Cook",
+        "Georg Essl"
+      ],
+      "year": 2001,
+      "url": "https://jamesobrien.com/papers/Obrien-SSF-2001-08/Obrien-SSF-2001-08.pdf",
+      "doi": "10.1145/383259.383321",
+      "publication_type": "peer_reviewed_conference",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections3–5; solid FEM, approximate surface radiation, no reflection/diffraction",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW03",
+      "title": "Toward High-Quality Modal Contact Sound",
+      "authors": [
+        "Changxi Zheng",
+        "Doug L. James"
+      ],
+      "year": 2011,
+      "url": "https://www.cs.cornell.edu/projects/Sound/mc/",
+      "doi": "10.1145/1964921.1964933",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Author project and indexed PDF sections1–2/Fig3; PDF exceeds fetch limit",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW04",
+      "title": "Revisiting Implicit Finite Difference Schemes for 3-D Room Acoustics Simulations on GPU",
+      "authors": [
+        "Brian Hamilton",
+        "Stefan Bilbao",
+        "Craig J. Webb"
+      ],
+      "year": 2014,
+      "url": "https://www.dafx.de/paper-archive/2014/dafx14_brian_hamilton_revisiting_implicit_finit.pdf",
+      "doi": null,
+      "publication_type": "peer_reviewed_conference",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections2–9 and Appendix; implicit27-point/Jacobi/dispersion/finite precision",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW05",
+      "title": "Finite Volume Time Domain Room Acoustics Simulation under General Impedance Boundary Conditions",
+      "authors": [
+        "Stefan Bilbao",
+        "Brian Hamilton",
+        "Jonathan Botts",
+        "Lauri Savioja"
+      ],
+      "year": 2016,
+      "url": "https://research.aalto.fi/en/publications/finite-volume-time-domain-room-acoustics-simulation-under-general/",
+      "doi": "10.1109/TASLP.2015.2500018",
+      "publication_type": "peer_reviewed_journal",
+      "access_level": "ABSTRACT_ONLY",
+      "evidence_locator": "Official publication abstract; manuscript timeout/403; detailed boundary formula unverified",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW06",
+      "title": "Fast multipole accelerated boundary element methods for room acoustics",
+      "authors": [
+        "Nail A. Gumerov",
+        "Ramani Duraiswami"
+      ],
+      "year": 2021,
+      "url": "https://arxiv.org/html/2103.16073v1",
+      "doi": null,
+      "publication_type": "preprint_arxiv_2103.16073v1",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Sections2–4; Helmholtz/FMM/GMRES; section4.1 differing boundary models",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "CW07",
+      "title": "A Review of Finite Element Methods for Room Acoustics",
+      "authors": [
+        "Albert G. Prinn"
+      ],
+      "year": 2023,
+      "url": "https://www.mdpi.com/2624-599X/5/2/22",
+      "doi": "10.3390/acoustics5020022",
+      "publication_type": "peer_reviewed_review",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Indexed publisher XML method passages; direct open429",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T05",
+      "title": "University Physics Volume1 Section9.2 Impulse and Collisions",
+      "authors": [
+        "OpenStax"
+      ],
+      "year": 2016,
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions",
+      "doi": null,
+      "publication_type": "official_textbook",
+      "access_level": "FULL_TEXT_REVIEWED",
+      "evidence_locator": "Impulse as time integral of force and momentum change",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "T06",
+      "title": "Applied Mechanics ImpulseMomentum",
+      "authors": [
+        "Jönköping University"
+      ],
+      "year": null,
+      "url": "https://mechanics.ju.se/Kinetics/ImpulseMomentum.html",
+      "doi": null,
+      "publication_type": "official_technical_education",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Restitution/impulse momentum; year unknown",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D01",
+      "title": "pyroomacoustics reference implementation",
+      "authors": [
+        "LCAV / contributors"
+      ],
+      "year": null,
+      "url": "https://github.com/LCAV/pyroomacoustics",
+      "doi": null,
+      "publication_type": "official_repository",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "MIT LICENSE; synthetic solver not measured data",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D02",
+      "title": "SADIE II Database",
+      "authors": [
+        "University of York SADIE project"
+      ],
+      "year": null,
+      "url": "https://www.york.ac.uk/sadie-project/database.html",
+      "doi": null,
+      "publication_type": "official_dataset_page",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Official indexed database body: Apache2.0 WAV/SOFA; direct open403",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D03",
+      "title": "BRAS v3",
+      "authors": [
+        "TU Berlin / BRAS authors"
+      ],
+      "year": null,
+      "url": "https://depositonce.tu-berlin.de/items/38410727-febb-4769-8002-9c710ba393c4/full",
+      "doi": "10.14279/depositonce-6726.3",
+      "publication_type": "official_dataset_record",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "CC BY-SA4.0; 7 reference scenes vs4 uncertain complex scenes",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D04",
+      "title": "Acoustic screen absorption / reflection / impedance data",
+      "authors": [
+        "Gaborit et al."
+      ],
+      "year": 2019,
+      "url": "https://zenodo.org/records/3967083",
+      "doi": null,
+      "publication_type": "official_dataset_record",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "CC BY stated/version not displayed;44.44mm tube,[4,4520]Hz sweep",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D05",
+      "title": "dEchorate v1",
+      "authors": [
+        "dEchorate authors"
+      ],
+      "year": 2021,
+      "url": "https://zenodo.org/records/4626590",
+      "doi": "10.5281/zenodo.4626590",
+      "publication_type": "official_dataset_record",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Record rights field blank; dataset LICENSE UNKNOWN, code MIT separately",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D06",
+      "title": "RealImpact",
+      "authors": [
+        "Samuel P. Clarke et al."
+      ],
+      "year": null,
+      "url": "https://samuelpclarke.com/realimpact/",
+      "doi": null,
+      "publication_type": "official_project_page",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Contact force/position/mic metadata; code MIT does not establish external audio license",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D07",
+      "title": "OpenAIR",
+      "authors": [
+        "University of York OpenAIR"
+      ],
+      "year": null,
+      "url": "https://www.york.ac.uk/physics-engineering-technology/research/communication-technologies/projects/open-acoustic-impulse-response-library/",
+      "doi": null,
+      "publication_type": "official_dataset_portal",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Official project page; individual dataset portal timed out; license per IR remains UNKNOWN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D08",
+      "title": "OpenSLR SLR26 Simulated Room Impulse Response Database",
+      "authors": [
+        "OpenSLR / corpus authors"
+      ],
+      "year": null,
+      "url": "https://www.openslr.org/26/",
+      "doi": null,
+      "publication_type": "official_dataset_page",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Apache2.0;8/16k synthetic RIR; not measured truth",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "D09",
+      "title": "RIEC HRTF Database",
+      "authors": [
+        "RIEC Tohoku University"
+      ],
+      "year": null,
+      "url": "https://www.riec.tohoku.ac.jp/pub/hrtf/",
+      "doi": null,
+      "publication_type": "official_dataset_page",
+      "access_level": "PARTIAL_TEXT",
+      "evidence_locator": "Official indexed restrictions; commercial/modified redistribution not blanket allowed",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "WEB-AUDIO-2021",
+      "title": "Web Audio API W3C Recommendation",
+      "authors": [
+        "W3C"
+      ],
+      "year": 2021,
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "doi": null,
+      "publication_type": "web_standard",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Stable2021 recommendation; current /TR/webaudio may be working draft",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-DETERMINISM",
+      "title": "Rapier JavaScript determinism",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/docs/user_guides/javascript/determinism/",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Input, initial state, versions and cross-platform determinism conditions; root-reviewed",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "META-OVERVIEW",
+      "title": "Build with Meta Model API and Muse Code",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/overview",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "At a glance / Muse Wonder preview",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-MODELS",
+      "title": "Models",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/models",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Muse Wonder availability / Muse Spark / List models via API",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-PROTOCOLS",
+      "title": "Choosing an API",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/protocols",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "At a glance + Responses API",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-TOOLS",
+      "title": "Tool calling",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/tool-calling",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "How it works / tool_choice / max_tool_calls / streaming / Strict tool schemas",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-STRUCTURED",
+      "title": "Structured output",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/structured-output",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Enforce strict mode / Stay within schema constraints",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-IMAGE",
+      "title": "Image understanding",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/image-understanding",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Input and output",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-VIDEO",
+      "title": "Video and audio understanding",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/video-understanding",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Supported media",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-PRICING",
+      "title": "Pricing and rate limits",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Model pricing / Rate limits / Retry on429",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-DATA",
+      "title": "Meta Model API Data Commitments",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/legal/commitments",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Standard Services / Discounted Services / Data Retention",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "META-ZDR",
+      "title": "Does Model API support Zero Data Retention",
+      "authors": [
+        "Meta"
+      ],
+      "year": null,
+      "url": "https://dev.meta.ai/help/policies-and-privacy/zero-data-retention",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Qualified accounts / Which features unavailable",
+      "review_date": "2026-10-26",
+      "reviewed_by": "meta_ai"
+    },
+    {
+      "id": "S-SDK-RELEASE-481",
+      "title": "Steam Audio v4.8.1 Release and official asset metadata",
+      "authors": [
+        "ValveSoftware"
+      ],
+      "year": 2026,
+      "url": "https://github.com/ValveSoftware/steam-audio/releases/tag/v4.8.1",
+      "doi": null,
+      "publication_type": "official SDK release",
+      "access_level": "official full release metadata; archive downloaded and SHA256 verified",
+      "evidence_locator": "steamaudio_4.8.1.zip; expanded_assets/v4.8.1; manifest.json; 181171027 bytes",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-HEADER-481",
+      "title": "Steam Audio C API phonon.h v4.8.1",
+      "authors": [
+        "Valve Corporation"
+      ],
+      "year": 2026,
+      "url": "https://github.com/ValveSoftware/steam-audio/blob/v4.8.1/core/src/core/phonon.h",
+      "doi": null,
+      "publication_type": "official API header",
+      "access_level": "full header from verified official SDK archive",
+      "evidence_locator": "include/phonon.h SHA256 cfab67684fe1ed75a16bb9bccb81c31276b6fb3bad904073407db900045229e7; IPLMaterial, IPLSimulationOutputs, IPLPathingVisualizationCallback, IPLImpulseResponse, IPLReconstructor",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-SIM-API",
+      "title": "Steam Audio C API Simulation",
+      "authors": [
+        "Valve Corporation"
+      ],
+      "year": null,
+      "url": "https://valvesoftware.github.io/steam-audio/doc/capi/simulation.html",
+      "doi": null,
+      "publication_type": "official technical documentation",
+      "access_level": "full public documentation",
+      "evidence_locator": "IPLSimulationOutputs; IPLSimulationSharedInputs.pathingVisCallback; iplSimulatorRunDirect/RunReflections/Commit",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-SCENE-API",
+      "title": "Steam Audio C API Scene",
+      "authors": [
+        "Valve Corporation"
+      ],
+      "year": null,
+      "url": "https://valvesoftware.github.io/steam-audio/doc/capi/scene.html",
+      "doi": null,
+      "publication_type": "official technical documentation",
+      "access_level": "full public documentation",
+      "evidence_locator": "IPLMaterial: 400Hz/2.5kHz/15kHz, absorption/scattering/transmission semantics; IPLInstancedMesh",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-LICENSE-481",
+      "title": "Steam Audio LICENSE and third-party notices v4.8.1",
+      "authors": [
+        "Valve Corporation",
+        "respective third-party copyright holders"
+      ],
+      "year": 2026,
+      "url": "https://github.com/ValveSoftware/steam-audio/blob/v4.8.1/core/THIRDPARTY.md",
+      "doi": null,
+      "publication_type": "official licensing terms",
+      "access_level": "full source terms and verified archive THIRDPARTY.md",
+      "evidence_locator": "root LICENSE.md Apache-2.0; TRADEMARK_RIGHTS.md; core/THIRDPARTY.md including Intel IPP and CIPIC; SDK_LICENSE.md",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-CMAKE-481",
+      "title": "Steam Audio core CMakeLists v4.8.1",
+      "authors": [
+        "ValveSoftware"
+      ],
+      "year": 2026,
+      "url": "https://github.com/ValveSoftware/steam-audio/blob/v4.8.1/core/CMakeLists.txt",
+      "doi": null,
+      "publication_type": "official build configuration",
+      "access_level": "full tagged source; actual binary archive inspected",
+      "evidence_locator": "Emscripten/WASM and SIMD handling; SDK lib/wasm/libphonon.a 7082068 bytes SHA256 a3811b5da2bc5000449148b994c95285f53ba3a3470d2bb6f5f1e8cafbb0634d",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "S-SDK-NATIVE-SMOKE",
+      "title": "Reflection Lab Steam Audio 4.8.1 Windows x64 native C smoke results",
+      "authors": [
+        "Reflection Lab research bootstrap"
+      ],
+      "year": 2026,
+      "url": "experiments/sdk-smoke-tests/results/native-win64-2026-10-26.json",
+      "doi": null,
+      "publication_type": "executed local technical spike",
+      "access_level": "local source and full numeric result",
+      "evidence_locator": "2026-10-25T19:05:46.1187836Z; smoke.c SHA256 a45f8300ac40e079ec9fa20228a4295c96881d36eed7db2b6653e1c5c58476b7; JSON SHA256 c8bfeffa9f303fde2d6974a5ba3d8a6ca9fb86dd1f114cdedeac53b5156fddc2; stdout SHA256 7195c1e4aaaec23d12bd5f21daf635205c752bff5c8a83b8017be7105acb54cf",
+      "review_date": "2026-10-26",
+      "artifact_path": "experiments/sdk-smoke-tests/results/native-win64-2026-10-26.json"
+    },
+    {
+      "id": "T07",
+      "title": "SOFA Spatially Oriented Format for Acoustics",
+      "authors": [
+        "SOFA conventions contributors"
+      ],
+      "year": null,
+      "url": "https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)",
+      "doi": null,
+      "publication_type": "official_format_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "SOFA purpose HRTF/BRIR/SRIR and AES69; specific conventions govern fields",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-BODY",
+      "title": "Rapier rigid bodies",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/docs/user_guides/javascript/rigid_bodies/",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Rigid-body type / Gravity / Forces and impulses",
+      "review_date": "2026-10-26",
+      "reviewed_by": "physics_design"
+    },
+    {
+      "id": "RAPIER-FORCE-EVENT",
+      "title": "TempContactForceEvent",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/javascript3d/classes/TempContactForceEvent.html",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "totalForce / totalForceMagnitude / maxForceMagnitude; local0.21.0 d.ts inspected",
+      "review_date": "2026-10-26",
+      "reviewed_by": "physics_design"
+    },
+    {
+      "id": "RAPIER-MANIFOLD",
+      "title": "TempContactManifold",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/javascript3d/classes/TempContactManifold.html",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "contactImpulse/localContactPoint1/numContacts vs numSolverContacts/solverContactPoint",
+      "review_date": "2026-10-26",
+      "reviewed_by": "physics_design"
+    },
+    {
+      "id": "RAPIER-KCC",
+      "title": "Rapier Character Controller",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/docs/user_guides/javascript/character_controller/",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Setup / usage / translation-only warning / caller applies corrected displacement",
+      "review_date": "2026-10-26",
+      "reviewed_by": "physics_design"
+    },
+    {
+      "id": "RAPIER-CCD",
+      "title": "Rapier Continuous Collision Detection",
+      "authors": [
+        "Dimforge"
+      ],
+      "year": null,
+      "url": "https://rapier.rs/docs/user_guides/javascript/rigid_body_ccd/",
+      "doi": null,
+      "publication_type": "official_documentation",
+      "access_level": "OFFICIAL_DOCUMENTATION",
+      "evidence_locator": "Dynamic CCD / limitations / two CCD bodies may tunnel",
+      "review_date": "2026-10-26",
+      "reviewed_by": "physics_design"
+    },
+    {
+      "id": "RAPIER-LOCAL-SMOKE",
+      "title": "Reflection Lab Rapier0.21.0 Windows x64 technical smoke",
+      "authors": [
+        "Reflection Lab research bootstrap"
+      ],
+      "year": 2026,
+      "url": "experiments/physics-spike/results/rapier-win64-20261025T192231997Z.json",
+      "artifact_path": "experiments/physics-spike/results/rapier-win64-20261025T192231997Z.json",
+      "doi": null,
+      "publication_type": "executed local technical spike",
+      "access_level": "LOCAL_ARTIFACT_REVIEWED",
+      "evidence_locator": "Immutable schema2 result; executedAt=2026-10-25T19:22:31.997Z; 6/6 PASS; node=v22.17.0; h=0.016666666666666666; SHA256 bd84d577e09cbfe7155422d4e9d8c23cb17a179fcf70eba66f3652cefc998e9f; source/lock/ESM/WASM and npm integrity in archive provenance",
+      "review_date": "2026-10-26",
+      "sha256": "bd84d577e09cbfe7155422d4e9d8c23cb17a179fcf70eba66f3652cefc998e9f"
+    },
+    {
+      "id": "SB-AUD-S01",
+      "title": "Web Audio API Recommendation 2021",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "version": "REC-2021-06-17",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.117Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_SPEC",
+      "authors": [
+        "W3C Web Audio Working Group"
+      ],
+      "year": 2021,
+      "publication_type": "web_standard",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "READ_ACTUAL_SPEC"
+    },
+    {
+      "id": "SB-AUD-S02",
+      "title": "Web Audio API1.1 Working Draft",
+      "url": "https://www.w3.org/TR/webaudio/",
+      "version": "WD-2026-09-22",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_SPEC; NOT UNIVERSAL_BROWSER_CAPABILITY",
+      "authors": [
+        "W3C Web Audio Working Group"
+      ],
+      "year": null,
+      "publication_type": "official_api_documentation",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "READ_ACTUAL_SPEC; NOT UNIVERSAL_BROWSER_CAPABILITY"
+    },
+    {
+      "id": "SB-AUD-S03",
+      "title": "AudioBufferSourceNode API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode",
+      "version": "web-reviewed-2026-10-27",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_API",
+      "authors": [
+        "Mozilla MDN contributors"
+      ],
+      "year": null,
+      "publication_type": "official_api_documentation",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "READ_ACTUAL_API"
+    },
+    {
+      "id": "SB-AUD-S04",
+      "title": "AudioWorkletProcessor process",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/process",
+      "version": "web-reviewed-2026-10-27",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_API",
+      "authors": [
+        "Mozilla MDN contributors"
+      ],
+      "year": null,
+      "publication_type": "official_api_documentation",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "READ_ACTUAL_API"
+    },
+    {
+      "id": "AR-S01",
+      "title": "CUSTOM_ACOUSTIC_CORE_RESEARCH",
+      "url": "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "sha256": "efc3d1546515361902da061f00d27705203e1678828fdf558af742365744d1ae",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S02",
+      "title": "PHYSICS_AND_MOTION_RESEARCH",
+      "url": "docs/12-architecture-review/PHYSICS_AND_MOTION_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/PHYSICS_AND_MOTION_RESEARCH.md",
+      "sha256": "461e799f18a050ac495e26538896df8c6d10c5fac2309c5b6cf2573d2c7049f1",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S03",
+      "title": "SOUND_BEHAVIOR_RESEARCH",
+      "url": "docs/12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md",
+      "sha256": "5b7944dd25c9c27faf271047719086a25c090bf90ae6c433b8c31b4609737213",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S04",
+      "title": "RECORDING_AND_REPLAY_RESEARCH",
+      "url": "docs/12-architecture-review/RECORDING_AND_REPLAY_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/RECORDING_AND_REPLAY_RESEARCH.md",
+      "sha256": "c2bb01b07b90573012b5bc2010121e8860a910e1a91a5bfbea0b6e200dd5a014",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S05",
+      "title": "OFFLINE_RENDERING_RESEARCH",
+      "url": "docs/12-architecture-review/OFFLINE_RENDERING_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/OFFLINE_RENDERING_RESEARCH.md",
+      "sha256": "889a59520b8ff61c47474e8d9092f10e06bfa8952d864091a3189ca0af19bb21",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S06",
+      "title": "ADM_EXPORT_RESEARCH",
+      "url": "docs/12-architecture-review/ADM_EXPORT_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/ADM_EXPORT_RESEARCH.md",
+      "sha256": "91824af97ff836d23667ae1c0700c4b3d9b48b2a46b35f50391bfc9a33123913",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S07",
+      "title": "BROWSER_PERFORMANCE_RESEARCH",
+      "url": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "artifact_path": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "sha256": "a86516222eb39f8cf8e12be54cd54731a2524c07e6855ef86fab55387748969c",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S08",
+      "title": "HYBRID_CLOUD_ARCHITECTURE",
+      "url": "docs/12-architecture-review/HYBRID_CLOUD_ARCHITECTURE.md",
+      "artifact_path": "docs/12-architecture-review/HYBRID_CLOUD_ARCHITECTURE.md",
+      "sha256": "5159261047f91c8891df0d0be33c7b2b130ecfa7b9412ae4d934e8f5960a9d1a",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S09",
+      "title": "CLOUD_COST_MODEL",
+      "url": "docs/12-architecture-review/CLOUD_COST_MODEL.md",
+      "artifact_path": "docs/12-architecture-review/CLOUD_COST_MODEL.md",
+      "sha256": "f0e33962013575b5071932d434638ab5fe269a9a1899344921a34b7afae6ca5d",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S10",
+      "title": "MUSE_AGENT_ARCHITECTURE",
+      "url": "docs/12-architecture-review/MUSE_AGENT_ARCHITECTURE.md",
+      "artifact_path": "docs/12-architecture-review/MUSE_AGENT_ARCHITECTURE.md",
+      "sha256": "47a3bd249c296190d37335839b06f93ad7e4a3759faa75d60938a43fbffead18",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S11",
+      "title": "UI_UX_REVIEW",
+      "url": "docs/12-architecture-review/UI_UX_REVIEW.md",
+      "artifact_path": "docs/12-architecture-review/UI_UX_REVIEW.md",
+      "sha256": "4ce9a17b56715b6f9ae4343ee90488edbfc458714587dc9150514b410371e526",
+      "authors": [
+        "Codex research subagents; root integration"
+      ],
+      "year": 2026,
+      "publication_type": "repository_research_and_code_review",
+      "access_level": "LOCAL_FULL_REPORT_PRIMARY_LINKS",
+      "evidence_locator": "Report sections contain exact code/test paths, official URLs, review dates and scope limits",
+      "review_date": "2026-10-29",
+      "license": "PROJECT_RIGHTS_UNSPECIFIED; linked third-party material not redistributed",
+      "trust": "REVIEWED_CODE_AND_PRIMARY_SOURCE_SYNTHESIS"
+    },
+    {
+      "id": "AR-S12",
+      "title": "GitHub repository file size limits",
+      "url": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+      "authors": [
+        "GitHub"
+      ],
+      "year": null,
+      "publication_type": "official_documentation_or_author_idea",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "Read original page on 2026-10-29; short paraphrase only",
+      "review_date": "2026-10-29",
+      "version": "web-reviewed-2026-10-29",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "license": "Metadata/short paraphrase and source URL only"
+    },
+    {
+      "id": "AR-S13",
+      "title": "Git worktree documentation",
+      "url": "https://git-scm.com/docs/git-worktree",
+      "authors": [
+        "Git project"
+      ],
+      "year": null,
+      "publication_type": "official_documentation_or_author_idea",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "Read original page on 2026-10-29; short paraphrase only",
+      "review_date": "2026-10-29",
+      "version": "web-reviewed-2026-10-29",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "license": "Metadata/short paraphrase and source URL only"
+    },
+    {
+      "id": "AR-S14",
+      "title": "LLM Wiki pattern",
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+      "authors": [
+        "Andrej Karpathy"
+      ],
+      "year": null,
+      "publication_type": "official_documentation_or_author_idea",
+      "access_level": "PRIMARY_TEXT",
+      "evidence_locator": "Read original page on 2026-10-29; short paraphrase only",
+      "review_date": "2026-10-29",
+      "version": "web-reviewed-2026-10-29",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "license": "Metadata/short paraphrase and source URL only"
+    }
+  ],
+  "claims": [
+    {
+      "id": "ACO-001",
+      "claim": "3D點源自由場壓力隨1/r，到達時間為r/c；能量隨1/r²。",
+      "source_ids": [
+        "P01",
+        "CW06"
+      ],
+      "evidence_type": "LITERATURE_AND_ANALYTIC_DERIVATION",
+      "applicable_conditions": "均勻靜止介質、小擾動、點源遠場；輸入正規化明確",
+      "verification_status": "PARTIALLY_VERIFIED",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "P01僅部分正文；本案解析幾何尚非真實房間量測",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "free-field-3-4-5",
+            "impulse-arrival"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "ACO-002",
+      "claim": "有限平面反射必須驗證鏡像交點位於polygon內、各實際線段可見、法向與端點合法。",
+      "source_ids": [
+        "P02",
+        "P05"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION_AND_LITERATURE",
+      "applicable_conditions": "鏡面高頻近似、靜態有限平面；明確單雙面與epsilon",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "P02僅書目；實作不能以無限平面交點取代有限面測試",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "finite-first-reflection",
+            "finite-second-reflection",
+            "finite-polygon-rejection",
+            "direct-segment-occlusion",
+            "reflected-segment-occlusion"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "ACO-003",
+      "claim": "多階鏡像由有序反射面遞迴鏡射並從receiver逆序回溯，再測每段遮擋。",
+      "source_ids": [
+        "P01",
+        "P05"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION_AND_LITERATURE",
+      "applicable_conditions": "固定平面反射序列；每個bounce須通過有限面與可見性驗證",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "共平面、凹面與重複面需要顯式處理",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "finite-second-reflection"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "ACO-004",
+      "claim": "樸素image候選隨反射order組合成長；beam/BVH/energy/time budgets降低搜尋但不保證無漏路徑。",
+      "source_ids": [
+        "P03",
+        "P04",
+        "P05"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "geometric acoustics；BVH交點加速與image樹剪枝為不同層",
+      "verification_status": "DOCUMENT_SUPPORTED",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "P03部分正文/P04摘要；舊機器計時不可外推",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "ACO-005",
+      "claim": "有序穩定surface IDs作path identity、birth/death gain ramps、ranking hysteresis為本案待測連續性設計。",
+      "source_ids": [
+        "P06"
+      ],
+      "evidence_type": "ENGINEERING_INFERENCE",
+      "applicable_conditions": "保存raw path與rendered params；靜態房間動態端點；callback不計算幾何",
+      "verification_status": "PROPOSED_PENDING_DSP_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "不是宣稱P06實作相同identity；平滑會增加lag",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "MAT-001",
+      "claim": "被動界面一致能流正規化採A+R+T=1；Rspec=(1-s)R,Rdiff=sR；同介質對應條件|r|=sqrt(R)。",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "T03"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "同頻帶同入射條件；A耗散、T穿透、s為已反射能量中漫散射比例",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "不是把不同標準量到的表觀值直接互換；阻抗相位不能由吸收數字推回",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "energy-bands"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "MAT-002",
+      "claim": "pyroomacoustics現行Material.energy_absorption為能量係數，deprecated absorption曾用不同定義。",
+      "source_ids": [
+        "T03",
+        "T04"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "查閱0.10.0文件；固定比較版本與bands",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "不推定其他engine absorption同義",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "MAT-003",
+      "claim": "阻抗管正入射與混響室量測情境不同；局部反應條件影響由正入射估diffuse-incidence。",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence_type": "OFFICIAL_STANDARD_SCOPE",
+      "applicable_conditions": "保留厚度、backing、mounting、incidence、頻率與method",
+      "verification_status": "VERIFIED_SCOPE",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "標準全文未取得；未宣告量測合規",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "MAT-004",
+      "claim": "random-incidence scattering表示偏離鏡面反射，不表徵散射空間均勻性。",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence_type": "OFFICIAL_STANDARD_SCOPE",
+      "applicable_conditions": "ISO17497-1 scope；未讀完整程序",
+      "verification_status": "VERIFIED_SCOPE",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "不能等同direction distribution或diffusion uniformity",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AIR-001",
+      "claim": "已給定alpha[dB/m]時壓力gain=10^(-alpha*d/20)，energy gain=10^(-alpha*d/10)。",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "alpha由已驗證實作或明記Synthetic輸入；d以m",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "只驗證dB換算，不等於ISO9613係數公式已驗證",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "air-db-pressure-conversion"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "AIR-002",
+      "claim": "retarded-time方程tr-te=|r(tr)-s(te)|/c微分得fo/fs=(c-vr·n)/(c-vs·n)。",
+      "source_ids": [
+        "T02"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "靜止均勻介質、亞音速直接路徑；n從發射聲源指向接收listener",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "向量形式為本案獨立推導；不套移動反射面／超音速",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "doppler-approaching"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "AIR-003",
+      "claim": "固定組成理想氣體小擾動聲速c=sqrt(gamma*R_specific*T_K)。",
+      "source_ids": [
+        "T01"
+      ],
+      "evidence_type": "OFFICIAL_TECHNICAL_DERIVATION",
+      "applicable_conditions": "等熵、理想氣體、Kelvin及specific gas constant；濕度組成另建模",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "research/theory/ACOUSTIC_THEORY.md"
+      ],
+      "limitations": "固定343m/s fixture是Synthetic，非實測環境值",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DSP-001",
+      "claim": "EDC可由RIR平方反向累加，dB歸一化使用10log10(E/E0)。",
+      "source_ids": [
+        "P08"
+      ],
+      "evidence_type": "LITERATURE_AND_ANALYTIC_DERIVATION",
+      "applicable_conditions": "固定LTI場景；明確band filtering、noise floor、tail truncation與time zero",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "P08部分正文；synthetic tail只驗證metric算法",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "backward-edc",
+            "synthetic-exponential-decay"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "DSP-002",
+      "claim": "本案metric contract：EDT0..-10,T20-5..-25,T30-5..-35dB回歸後外推60dB；資料不足應拒算。",
+      "source_ids": [
+        "S05",
+        "P08"
+      ],
+      "evidence_type": "PROJECT_METRIC_CONTRACT",
+      "applicable_conditions": "保存fit區間、斜率與quality；需足夠SNR及decay range",
+      "verification_status": "SPECIFIED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "未取得完整ISO3382，不宣稱ISO認證或完整合規",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "synthetic-exponential-decay"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "DSP-003",
+      "claim": "unitary feedback matrix可作任意正整數延遲的lossless FDN原型；只驗A eigenvalues不足以保證delay網路穩定。",
+      "source_ids": [
+        "P10"
+      ],
+      "evidence_type": "MATHEMATICAL_PAPER",
+      "applicable_conditions": "固定線性FDN、正整數delays；damping/filters與時變係數另驗證",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "尚未重算論文反例或實作FDN；無損不等於BIBO穩定",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DSP-004",
+      "claim": "低解析度ray能量IR可驅動參數式late reverb；不能保留sample級相位或完整IR細節。",
+      "source_ids": [
+        "P06"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "early／late及direction representation分開；平滑lag與低頻限制明示",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "論文desktop/mobile性能不是本案benchmark",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DSP-005",
+      "claim": "pyroomacoustics fractional-delay RIR有全域濾波延遲；V3到達時間比較需報告offset與filtering。",
+      "source_ids": [
+        "T03",
+        "T04"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "查閱0.10.0；frac_delay_length//2 samples；固定fs及設定",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "不可把DSP群延遲當額外物理距離",
+      "validation_level": "V3",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DSP-006",
+      "claim": "dBFS不能未經壓力與播放鏈校準就稱dB SPL；propagation/DSP/device latency應分欄。",
+      "source_ids": [
+        "WEB-AUDIO-2021",
+        "T04"
+      ],
+      "evidence_type": "ENGINEERING_AND_UNIT_ANALYSIS",
+      "applicable_conditions": "source／HRTF／gain正規化與device chain明確；SPL參考20µPa",
+      "verification_status": "SPECIFIED_PENDING_CALIBRATION",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "沒有實體校準或裝置round-trip量測",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DSP-007",
+      "claim": "linear fractional interpolation的高頻幅值不是1；時變delay與外加pitch shift須避免重複Doppler。",
+      "source_ids": [
+        "T02",
+        "T03"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "H=e^-jwN[(1-mu)+mu*e^-jw]；bandlimited input；buffer界限",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "P11只書目，不用其未讀性能表支持結論",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "COL-01",
+      "claim": "低速dynamics資料與audio-rate接觸激發應分離，impact/sliding/rolling需要不同excitation。",
+      "source_ids": [
+        "CW01"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "小振幅模態、粗糙度與接觸力近似",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "非完整first-principles；原作者品質比較非正式",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "COL-02",
+      "claim": "剛體motion本身不含高頻彈性振動；solid FEM與近似radiation是另外的建模層。",
+      "source_ids": [
+        "CW02"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "小擾動空氣聲學；表面輻射近似忽略room reflection/diffraction",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "尚未執行作者solver，不把normal surface velocity直接稱完整聲場",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "COL-03",
+      "claim": "直接以剛體contact impulse激發modal filters會受接觸時空不一致與jitter影響。",
+      "source_ids": [
+        "CW03"
+      ],
+      "evidence_type": "PARTIAL_LITERATURE",
+      "applicable_conditions": "coupled modal contact屬高品質離線研究；sample去重只是工程fallback",
+      "verification_status": "PARTIALLY_VERIFIED",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "完整數值表與實作未取得",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "PHY-01",
+      "claim": "J=integral F dt=Delta momentum，N·s與N不同；j/dt只提供平均力。",
+      "source_ids": [
+        "T05"
+      ],
+      "evidence_type": "OFFICIAL_TEXTBOOK_AND_DIMENSIONAL_ANALYSIS",
+      "applicable_conditions": "接觸時間窗明確，不能從單一impulse還原force waveform",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "引擎事件欄位還須依版本查核",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "PHY-02",
+      "claim": "單點無摩擦恢復係數模型可推central impulse及DeltaE=0.5*meff*(1-e²)*vn²，後者不等於聲能。",
+      "source_ids": [
+        "T06",
+        "CW01"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "法向從A到B，approaching vn<0；含正確effective inverse mass；多點接觸另解",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "不可用簡式覆寫多接觸engine solver結果",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "PHY-03",
+      "claim": "標準均勻cubic7-point explicit FDTD CFL<=1/sqrt(3)；固定解析度fmax倍增約8倍memory、16倍updates。",
+      "source_ids": [
+        "CW04"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "固定volume/time、每波長點數/Courant比例；只適用指定stencil漸近估算",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "不是implicit27-point條件或本機benchmark",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "PHY-04",
+      "claim": "NoGravityDynamic在無其他力/damping/contact時維持慣性；Fixed與Kinematic不能混同。",
+      "source_ids": [
+        "T05",
+        "RAPIER-DETERMINISM"
+      ],
+      "evidence_type": "PROJECT_PHYSICS_CONTRACT",
+      "applicable_conditions": "fixed timestep、初始速度與external force明確；body mode和音訊生命週期分離",
+      "verification_status": "SPECIFIED_PENDING_ENGINE_EVIDENCE",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "官方Rapier engine spike由physics docs另提供",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "WAVE-001",
+      "claim": "剛性Neumann shoebox模態頻率f=c/2*sqrt((nx/Lx)²+(ny/Ly)²+(nz/Lz)²)。",
+      "source_ids": [
+        "CW04",
+        "CW06"
+      ],
+      "evidence_type": "ANALYTIC_DERIVATION",
+      "applicable_conditions": "均勻c、硬牆、正整數維度；nx,ny,nz非負且排除全0",
+      "verification_status": "DERIVED_PENDING_TEST",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "源／接收點可能位於節點；有限阻抗不適用原式",
+      "validation_level": "V1",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26",
+      "validation_evidence": [
+        {
+          "artifact_path": "benchmarks/results/validation-local.json",
+          "fixture_manifest": "benchmarks/fixtures/analytical.json",
+          "fixture_ids": [
+            "shoebox-axial-mode"
+          ],
+          "command": "npm test",
+          "scope": "isolated analytical reference kernels and synthetic RIR metrics",
+          "status": "PASS_ISOLATED_SUBCASES",
+          "observed_recorded_at": "2026-10-25T19:21:32.743Z",
+          "does_not_establish": "No paper solver reproduction, independent solver agreement, full ISO air coefficient calculation, product audio processing, browser runtime, real-room accuracy or listening result."
+        }
+      ]
+    },
+    {
+      "id": "WAV-01",
+      "claim": "implicit27-point FDTD每步Jacobi sparse solve；穩定、數值色散、有限精度需分別檢查。",
+      "source_ids": [
+        "CW04"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "原文指定stencil/boundary/hardware；不外推現代browser/GPU",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "未編譯CUDA／重跑paper solver",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "WAV-02",
+      "claim": "一般局部反應阻抗FVTD使用數值能量分析，boundary geometry會影響modal decay。",
+      "source_ids": [
+        "CW05"
+      ],
+      "evidence_type": "ABSTRACT_SCOPE",
+      "applicable_conditions": "局部反應阻抗；精確邊界離散公式未取得",
+      "verification_status": "PARTIALLY_VERIFIED",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "不得把摘要當已逐式核實",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "WAV-03",
+      "claim": "BEM/ISM差值若入射角／阻抗邊界假設不一致，不能全當數值誤差。",
+      "source_ids": [
+        "CW06"
+      ],
+      "evidence_type": "LITERATURE",
+      "applicable_conditions": "固定均勻線性介質、對齊boundary/source/frequency/time truncation",
+      "verification_status": "VERIFIED_LITERATURE",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "未執行FMMBEM；preprint版來源標記保留",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "WAV-04",
+      "claim": "FEM適合波主導低頻問題，但仍需網格收斂與可信boundary，複雜模型不自動更準。",
+      "source_ids": [
+        "CW07"
+      ],
+      "evidence_type": "PARTIAL_REVIEW_AND_ENGINEERING_INFERENCE",
+      "applicable_conditions": "明確mesh/order/tolerance；不要把綜述二手實驗當自行驗證",
+      "verification_status": "PARTIALLY_VERIFIED",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "全文429；完整引用實驗未核實",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-001",
+      "claim": "pyroomacoustics程式為MIT；適合作V3獨立合成參考，非量測ground truth。",
+      "source_ids": [
+        "D01",
+        "T04"
+      ],
+      "evidence_type": "OFFICIAL_LICENSE_AND_DOC",
+      "applicable_conditions": "固定release/seed/normalization/filter/delay；保留MIT notices",
+      "verification_status": "VERIFIED_LICENSE_SCOPE",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "本次未取得或執行solver",
+      "validation_level": "V3",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-002",
+      "claim": "SADIE II官方索引明列Apache2.0及HRIR/BRIR WAV44.1/48/96kHz與SOFA。",
+      "source_ids": [
+        "D02"
+      ],
+      "evidence_type": "OFFICIAL_DATASET_INDEX",
+      "applicable_conditions": "確認下載檔對應version及license；保留notices",
+      "verification_status": "VERIFIED_INDEX",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "直接page403；無檔案下載或BRIR測試",
+      "validation_level": "V5",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-003",
+      "claim": "BRAS v3為CC BY-SA4.0，reference scenes與不確定度較大的complex rooms不能一律稱直接真值。",
+      "source_ids": [
+        "D03"
+      ],
+      "evidence_type": "OFFICIAL_DATASET_RECORD",
+      "applicable_conditions": "依scene可用metadata定test範圍；演繹結果與共享義務另記",
+      "verification_status": "VERIFIED_LICENSE_SCOPE",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "未下載或重現量測",
+      "validation_level": "V5",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-004",
+      "claim": "Gaborit acoustic-screen資料含absorption/complex reflection/normalized impedance；頁面CC BY但版本未顯示。",
+      "source_ids": [
+        "D04"
+      ],
+      "evidence_type": "OFFICIAL_DATASET_RECORD",
+      "applicable_conditions": "44.44mm tube sweep[4,4520]Hz；metadata含環境；下載前保留原始rights",
+      "verification_status": "VERIFIED_LICENSE_FAMILY_VERSION_UNKNOWN",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "不能擅填CC BY4.0；未下載測試",
+      "validation_level": "V5",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-005",
+      "claim": "dEchorate資料授權UNKNOWN、RealImpact外部audio授權UNKNOWN，code MIT不授權外部資料。",
+      "source_ids": [
+        "D05",
+        "D06"
+      ],
+      "evidence_type": "OFFICIAL_RECORD_AND_LICENSE_GAP",
+      "applicable_conditions": "只保存索引與原創摘要；未確認前不下載入Git或散布",
+      "verification_status": "LICENSE_UNKNOWN",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "需補原始資料license檔或權利人清楚條款",
+      "validation_level": "V5",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "DATA-006",
+      "claim": "OpenAIR逐IR查license；RIEC限制不能當競賽通用許可；SLR26 synthetic RIR不是measured。",
+      "source_ids": [
+        "D07",
+        "D08",
+        "D09"
+      ],
+      "evidence_type": "OFFICIAL_DATASET_SCOPE",
+      "applicable_conditions": "個別record/version/rights優先；不得以portal開放推定授權",
+      "verification_status": "PARTIALLY_VERIFIED",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "limitations": "OpenAIR個別素材仍UNKNOWN；未下載",
+      "validation_level": "V5",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "ARCH-001",
+      "claim": "Web Audio的規格與callback設計需固定版本；主thread或AI不得阻塞音訊處理。",
+      "source_ids": [
+        "WEB-AUDIO-2021"
+      ],
+      "evidence_type": "OFFICIAL_STANDARD_AND_ENGINEERING_CONTRACT",
+      "applicable_conditions": "使用穩定2021Recommendation作基準；確認當前browser支援另測",
+      "verification_status": "DOCUMENT_SUPPORTED",
+      "related_implementation": [
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "尚未執行browser AudioWorklet或裝置latency benchmark",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "EXP-001",
+      "claim": "只錄keyboard/mouse不能保證跨平台replay；需保存初態、versions、fixed dt、seeds、state／event trace。",
+      "source_ids": [
+        "RAPIER-DETERMINISM"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION_AND_ENGINEERING_INFERENCE",
+      "applicable_conditions": "固定engine build及初始資料順序；以已記錄transform trace作acoustic A/B參考",
+      "verification_status": "DOCUMENT_SUPPORTED",
+      "related_implementation": [
+        "research/theory/PHYSICS_THEORY.md"
+      ],
+      "limitations": "跨機器可重現性需獨立測試",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-001",
+      "claim": "Meta Model API文件base URL為https://api.meta.ai/v1，Bearer MODEL_API_KEY。",
+      "source_ids": [
+        "META-OVERVIEW"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "只供server-side adapter；不得提交或輸出secret",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-002",
+      "claim": "官方文件列muse-spark-1.3/1.2/1.1及muse-wonder-1.0；Wonder為preview。",
+      "source_ids": [
+        "META-OVERVIEW",
+        "META-MODELS"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "文件能力清單不等於帳戶可用；每次部署重查",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-003",
+      "claim": "文件列Spark/Wonder文字、圖片、影片、音訊、PDF輸入至文字，context1,048,576；Wonder Full不提供Model API，Wonder韓國不可用。",
+      "source_ids": [
+        "META-MODELS"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "不推定台灣帳戶／模型有實際存取；context不是應用預算",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-004",
+      "claim": "Responses支援reasoning continuity；Chat Completions不跨回合保留reasoning。",
+      "source_ids": [
+        "META-PROTOCOLS"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "依選定protocol保存歷史；實際帳戶端到端行為未測",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-005",
+      "claim": "函式由host執行，tool_choice目前僅auto；max_tool_calls不限制開發者function迴圈；串流參數完成後才執行。",
+      "source_ids": [
+        "META-TOOLS"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "可信executor另設操作白名單、迴圈／費用／資源上限及domain validation",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-006",
+      "claim": "Provider strict schema要求object root、所有properties required、每個object additionalProperties:false；不支援oneOf/allOf，root不得anyOf，深度10／properties5000，拒絕recursive refs。",
+      "source_ids": [
+        "META-STRUCTURED",
+        "META-TOOLS"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "provider schema與本地domain union分離；function strict flag不是domain或執行安全保證",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-007",
+      "claim": "媒體理解輸出是語意文字，不能由此當成經校準SPL/RIR／材料量測來源。",
+      "source_ids": [
+        "META-IMAGE",
+        "META-VIDEO"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION_AND_ENGINEERING_INFERENCE",
+      "applicable_conditions": "前半文件能力、後半工程適用性判斷；數值由確定性solver／measurement提供",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-008",
+      "claim": "公開Spark Standard input/cache/output為1.25/0.15/4.25美元每M tokens；Wonder為4/0.20/20；Standard公開3000RPM/4MTPM，per team per model。",
+      "source_ids": [
+        "META-PRICING"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "僅2026-10-26官方頁，不是帳戶配額或費用保證；應用需較低hard budget",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-009",
+      "claim": "Standard Content不用訓練；Discounted Content可供訓練／改善；不訓練不等於不保留，retention依Terms/Privacy。",
+      "source_ids": [
+        "META-DATA"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "Content與其他帳戶Customer Data分開；不發明通用保留天數",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "AI-010",
+      "claim": "ZDR需合格帳戶由Meta另啟用；不支援stateful/background/files/websearch/Contributor，仍有保留例外。",
+      "source_ids": [
+        "META-ZDR"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "本帳戶ZDR未確認；不能把Standard等同ZDR",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/08-ai/META_MODEL_RESEARCH.md",
+        "schemas/ai-provider-config.schema.json"
+      ],
+      "limitations": "帳戶、推論、實際配額、費用與端到端API均NOT RUN；動態文件發布前重查。",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "SDK-01",
+      "claim": "2026-10-26 官方最新穩定 C API release 為 4.8.1；下載 ZIP SHA256 與發布者 digest 相符。",
+      "source_ids": [
+        "S-SDK-RELEASE-481"
+      ],
+      "evidence_type": "official release metadata plus local cryptographic checksum",
+      "applicable_conditions": "Pinned v4.8.1 C API ZIP, checked date only",
+      "verification_status": "VERIFIED",
+      "related_implementation": [
+        "third_party/steam-audio/manifest.json",
+        "scripts/setup/steam-audio.ps1"
+      ],
+      "limitations": "Latest may change after the review date; checksum establishes artifact identity, not scientific accuracy.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "SDK-02",
+      "claim": "Windows x64 上以 GCC 15.2.0 編譯之 C 測試成功執行場景、材質、direct、parametric/convolution reflections 與三次釋放／重建生命週期。",
+      "source_ids": [
+        "S-SDK-NATIVE-SMOKE"
+      ],
+      "evidence_type": "executed native C API test",
+      "applicable_conditions": "1 source, 14 triangles, 4096 rays, 8 bounces, 2 threads, order1, 0.25s, 48kHz/512 samples; Windows NT 10.0.26200",
+      "verification_status": "PASS",
+      "related_implementation": [
+        "experiments/sdk-smoke-tests/smoke.c",
+        "experiments/sdk-smoke-tests/run.ps1",
+        "docs/03-sdk/SDK_VALIDATION.md"
+      ],
+      "limitations": "Not a calibrated acoustic validation, leak test, HRTF/listening test, production audio integration, or statistical performance benchmark.",
+      "review_date": "2026-10-26",
+      "validation_level": "V4",
+      "test_status": "PASS"
+    },
+    {
+      "id": "SDK-03",
+      "claim": "公開 IPLSimulationOutputs 沒有個別鏡面反射點序列、面序列或穩定 reflection Path ID；反射音場與可檢視鏡面路徑是不同能力。",
+      "source_ids": [
+        "S-SDK-HEADER-481",
+        "S-SDK-SIM-API"
+      ],
+      "evidence_type": "public API structure inspection",
+      "applicable_conditions": "Steam Audio 4.8.1 public C API, not private engine internals",
+      "verification_status": "API_INSPECTED",
+      "related_implementation": [
+        "docs/03-sdk/STEAM_AUDIO_RESEARCH.md"
+      ],
+      "limitations": "Does not assert the solver has no internal rays; custom ray-tracer callbacks are not an ordered public reflection path contract.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "SDK-04",
+      "claim": "IPLPathingVisualizationCallback 提供 probe 間 pathing 線段，不能將它標示為個別鏡面反射。",
+      "source_ids": [
+        "S-SDK-HEADER-481",
+        "S-SDK-SIM-API"
+      ],
+      "evidence_type": "official callback signature and semantics",
+      "applicable_conditions": "iplSimulatorRunPathing; baked probe navigation representation",
+      "verification_status": "API_INSPECTED_NOT_EXECUTED",
+      "related_implementation": [
+        "docs/03-sdk/STEAM_AUDIO_RESEARCH.md"
+      ],
+      "limitations": "No pathing runtime or baking test executed.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "id": "SDK-05",
+      "claim": "官方 4.8.1 ZIP 內含 WASM 靜態庫並有 Emscripten source build 支援，但本機未完成瀏覽器連結／執行。",
+      "source_ids": [
+        "S-SDK-RELEASE-481",
+        "S-SDK-CMAKE-481"
+      ],
+      "evidence_type": "downloaded archive and official source inspection",
+      "applicable_conditions": "lib/wasm/libphonon.a; toolchain/dependencies/browser adapter still required",
+      "verification_status": "ARTIFACT_INSPECTED_BROWSER_NOT_RUN",
+      "related_implementation": [
+        "docs/03-sdk/INTEGRATION_COMPARISON.md"
+      ],
+      "limitations": "No emcc on this machine; archive presence does not prove complete linking, threads, AudioWorklet, or browser performance.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN"
+    },
+    {
+      "id": "SDK-06",
+      "claim": "IPLImpulseResponse/IPLEnergyField/IPLReconstructor 與 probe extraction 為公開 API；即時 IPLReflectionEffectIR 仍是不同的 opaque 型別。",
+      "source_ids": [
+        "S-SDK-HEADER-481"
+      ],
+      "evidence_type": "public type and function inspection",
+      "applicable_conditions": "4.8.1; baked energy extraction/reconstruction versus runtime reflection effect pipeline",
+      "verification_status": "API_INSPECTED",
+      "related_implementation": [
+        "docs/03-sdk/STEAM_AUDIO_RESEARCH.md",
+        "experiments/sdk-smoke-tests/smoke.c"
+      ],
+      "limitations": "Only runtime effect Dirac rendering was executed; baked raw extraction/reconstruction not run. No unsafe handle casts permitted.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "SDK-07",
+      "claim": "預設 IPLMaterial 三頻帶中心為 400Hz、2.5kHz、15kHz；absorption 是吸收能量比例、scattering 是反射能量中散射比例、transmission 僅用於 direct occlusion。",
+      "source_ids": [
+        "S-SDK-HEADER-481",
+        "S-SDK-SCENE-API"
+      ],
+      "evidence_type": "official material field definitions",
+      "applicable_conditions": "Official three-band SDK; not experimental octave-band source rebuild",
+      "verification_status": "API_INSPECTED",
+      "related_implementation": [
+        "docs/03-sdk/STEAM_AUDIO_RESEARCH.md"
+      ],
+      "limitations": "These bands are not arbitrary octave centers. Mapping measured data requires documented derivation; SDK output EQ coefficients should not be conflated with pressure reflection coefficients.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "SDK-08",
+      "claim": "Steam Audio code 為 Apache-2.0，但官方 binary 包含個別第三方條款，不能將整包宣告為 Apache-only。",
+      "source_ids": [
+        "S-SDK-LICENSE-481",
+        "S-SDK-RELEASE-481"
+      ],
+      "evidence_type": "full official licensing terms and package notice scan",
+      "applicable_conditions": "Pinned source and downloaded C API distribution; actual final linked inventory controls redistribution obligations",
+      "verification_status": "LICENSE_REVIEWED_LOCAL_USE_ONLY",
+      "related_implementation": [
+        "docs/03-sdk/SDK_LICENSE.md"
+      ],
+      "limitations": "Not legal advice or hackathon permission. No separate LICENSE/NOTICE filename in scanned ZIP; future redistribution must still include applicable license and notices.",
+      "review_date": "2026-10-26",
+      "validation_level": "V0",
+      "test_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "DATA-007",
+      "claim": "SOFA為HRTF/BRIR/SRIR格式與metadata規約，不是資料授權；convention、座標、Data.Delay與取樣率須核對。",
+      "source_ids": [
+        "T07",
+        "D02"
+      ],
+      "evidence_type": "OFFICIAL_FORMAT_DOCUMENTATION_AND_IMPORT_CONTRACT",
+      "applicable_conditions": "只依所選SOFAConventions版本解讀；不可假設所有檔都是SimpleFreeFieldHRIR",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "research/datasets/DATASET_CATALOG.md",
+        "research/theory/DSP_MODELS.md"
+      ],
+      "limitations": "尚未取得SOFA檔或執行importer；個別資料license獨立查核",
+      "validation_level": "V2",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-001",
+      "claim": "Rapier分dynamic/fixed/kinematic，gravity scale與force/impulse語意不同；addForce持續至重設。",
+      "source_ids": [
+        "RAPIER-BODY",
+        "RAPIER-LOCAL-SMOKE"
+      ],
+      "evidence_type": "DOCS_AND_EXECUTED_SUBCASE",
+      "applicable_conditions": "dynamic正質量／慣性；local smoke只指定場景與固定0.21.0",
+      "verification_status": "DOCS_AND_LOCAL_SUBCASE_VERIFIED",
+      "related_implementation": [
+        "docs/04-physics/PHYSICS_ARCHITECTURE.md",
+        "docs/04-physics/OBJECT_STATES.md"
+      ],
+      "limitations": "完整mode切換歷史政策仍由應用定義；不能視為production互動已測",
+      "validation_level": "V1",
+      "test_status": "PASS_SUBCASE",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-002",
+      "claim": "TempContactForceEvent提供forces，沒有native contact impulse欄位。",
+      "source_ids": [
+        "RAPIER-FORCE-EVENT",
+        "RAPIER-LOCAL-SMOKE"
+      ],
+      "evidence_type": "OFFICIAL_API_AND_LOCAL_PACKAGE",
+      "applicable_conditions": "公開API與實際0.21.0 d.ts；同步callback內複製數據",
+      "verification_status": "API_AND_LOCAL_SUBCASE_VERIFIED",
+      "related_implementation": [
+        "docs/04-physics/PHYSICS_AUDIO_EVENTS.md"
+      ],
+      "limitations": "force不可不經時間尺度當作N·s；該event不還原真實force waveform",
+      "validation_level": "V1",
+      "test_status": "PASS_SUBCASE",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-003",
+      "claim": "contactImpulse(i)為geometric-contact索引；solverContactPoint(j)為獨立solver-contact索引與world point，不假設一對一。",
+      "source_ids": [
+        "RAPIER-MANIFOLD",
+        "RAPIER-LOCAL-SMOKE"
+      ],
+      "evidence_type": "OFFICIAL_API_AND_LOCAL_SMOKE",
+      "applicable_conditions": "numContacts與numSolverContacts各自檢查；保留flipped／pair order",
+      "verification_status": "API_AND_LOCAL_SUBCASE_VERIFIED",
+      "related_implementation": [
+        "docs/04-physics/PHYSICS_AUDIO_EVENTS.md"
+      ],
+      "limitations": "單點smoke不能證明任意manifold映射；Temp物件不可跨frame保留",
+      "validation_level": "V1",
+      "test_status": "PASS_SUBCASE",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-004",
+      "claim": "KinematicCharacterController處理平移碰撞修正；caller負責套用corrected motion，未提供通用旋轉角色運動。",
+      "source_ids": [
+        "RAPIER-KCC"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "camera orientation與body displacement分離；gravity由應用處理",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/04-physics/FPS_INTERACTION_SPEC.md"
+      ],
+      "limitations": "browser/FPS/台階斜坡互動NOT RUN",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-005",
+      "claim": "CCD不是不穿透保證；官方列兩個CCD動體仍可能tunnel。",
+      "source_ids": [
+        "RAPIER-CCD"
+      ],
+      "evidence_type": "OFFICIAL_DOCUMENTATION",
+      "applicable_conditions": "固定0.21.0本地package對照現行guide；薄牆高速旋轉需stress test",
+      "verification_status": "VERIFIED_DOC",
+      "related_implementation": [
+        "docs/04-physics/PHYSICS_ARCHITECTURE.md"
+      ],
+      "limitations": "runtime CCD壓力測試NOT RUN，不宣告絕對collision-safe",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "RAPIER-006",
+      "claim": "隔離Rapier0.21.0 Node/Windows x64 smoke六項通過：freefall、zeroG、Fixed切換、force persistence、contact API、空場景spring anchor。",
+      "source_ids": [
+        "RAPIER-LOCAL-SMOKE"
+      ],
+      "evidence_type": "EXECUTED_LOCAL_TECHNICAL_SPIKE",
+      "applicable_conditions": "Nodev22.17.0, Windowsx64, h=0.016666666666666666; archived run 2026-10-25T19:22:31.997Z",
+      "verification_status": "PASS",
+      "related_implementation": [
+        "experiments/physics-spike/smoke.mjs",
+        "experiments/physics-spike/results/rapier-win64-20261025T192231997Z.json",
+        "experiments/physics-spike/README.md"
+      ],
+      "limitations": "production grab/FPS/browser/CCD/audio與跨平台重播均NOT RUN；resting support非零impulse不等於audible onset",
+      "validation_level": "V1",
+      "test_status": "PASS",
+      "review_date": "2026-10-26"
+    },
+    {
+      "id": "SB-AUD-C01",
+      "claim": "Continuous logical instance與decoded buffer可重用，但AudioBufferSourceNode不能二次start，新的one-shot需要新的source。",
+      "source_ids": [
+        "SB-AUD-S01",
+        "SB-AUD-S03"
+      ],
+      "evidence_type": "PRIMARY_SPEC_REVIEW",
+      "applicable_conditions": "Web Audio sample source lifecycle；不代表播放器已實作",
+      "verification_status": "DOC_VERIFIED",
+      "related_implementation": [
+        "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md"
+      ],
+      "limitations": "沒有browser/loop click-pop/latency測試",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-27"
+    },
+    {
+      "id": "SB-AUD-C02",
+      "claim": "callback讀取實際block長度且不等待physics/AI/network；128-frame為現有benchmark設定，新WD不當跨browser保證。",
+      "source_ids": [
+        "SB-AUD-S02",
+        "SB-AUD-S04"
+      ],
+      "evidence_type": "PRIMARY_DOC_AND_ENGINEERING_BOUNDARY",
+      "applicable_conditions": "本專案Web Audio control/audio clock分離",
+      "verification_status": "DOC_VERIFIED",
+      "related_implementation": [
+        "docs/02-architecture/AUDIO_RUNTIME.md"
+      ],
+      "limitations": "AudioWorklet/device測試NOTRUN；nonblocking限制為本專案工程規範",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-27"
+    },
+    {
+      "id": "AR-C01",
+      "claim": "Solver與AudioRoute共用5秒最大propagation budget；超過設定早拒絕而非先回audio無法接受frame。",
+      "source_ids": [
+        "AR-S01"
+      ],
+      "evidence_type": "CODE_AND_BOUNDARY_TESTS",
+      "applicable_conditions": "限定maxPropagationSeconds設定，不改預設2秒與Scene schema",
+      "verification_status": "SCOPED_TESTED",
+      "related_implementation": [
+        "src/acoustics/limits.ts",
+        "src/acoustics/solver.ts",
+        "src/audio/routes.ts",
+        "tests/acoustics-runtime/propagation-limit.test.ts"
+      ],
+      "limitations": "不是更長傳播或實房間聲學驗證",
+      "validation_level": "V1",
+      "test_status": "6_NEW_TESTS_PASS",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C02",
+      "claim": "一般live聲學使用Worker，錄製onTick仍同步求解；Physics accumulator目前由main RAF推進。",
+      "source_ids": [
+        "AR-S07"
+      ],
+      "evidence_type": "VERIFIED_CODE_REVIEW",
+      "applicable_conditions": "c210基準與本輪未改該執行路徑",
+      "verification_status": "CODE_VERIFIED",
+      "related_implementation": [
+        "src/app/bootstrap.ts",
+        "src/app/runtime.ts",
+        "src/app/acoustic-service.ts"
+      ],
+      "limitations": "不是worker獨立時鐘或性能PASS；R17原FAIL保留",
+      "validation_level": "V0",
+      "test_status": "RUNTIME_PROFILE_NOT_RERUN",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C03",
+      "claim": "RenderJob與RenderBackend僅portable types-only seam，尚無完整take mix/stems renderer。",
+      "source_ids": [
+        "AR-S04",
+        "AR-S05"
+      ],
+      "evidence_type": "IMPLEMENTED_TYPE_CONTRACT_AND_PROPOSED_DESIGN",
+      "applicable_conditions": "既有RecordingArtifact refs，無第二套錄製格式",
+      "verification_status": "CODE_VERIFIED_DESIGN_PROPOSED",
+      "related_implementation": [
+        "src/audio/render-contract.ts"
+      ],
+      "limitations": "沒有runtime validator/backend、WAV/stems/ADM輸出成功宣稱",
+      "validation_level": "V0",
+      "test_status": "TYPECHECK_ONLY",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C04",
+      "claim": "聲源stems隔離需保留原物理世界、事件與admission；非線性總線下stems相加不保證等於fullmix。",
+      "source_ids": [
+        "AR-S04",
+        "AR-S05"
+      ],
+      "evidence_type": "ENGINEERING_DESIGN",
+      "applicable_conditions": "同錄製take與明示tap/graph policy",
+      "verification_status": "PROPOSED_DESIGN",
+      "related_implementation": [
+        "src/audio/render-contract.ts"
+      ],
+      "limitations": "未實作renderer與stem-isolation oracle",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C05",
+      "claim": "Client-first雲端九情境估算明示duty、AI tokens、儲存/egress與job資源；不構成10000同時使用者容量保證。",
+      "source_ids": [
+        "AR-S08",
+        "AR-S09"
+      ],
+      "evidence_type": "ENGINEERING_ESTIMATE",
+      "applicable_conditions": "2026-10-29查價、USD、共享免費額度假設、AI provider rate symbolic",
+      "verification_status": "ESTIMATE_MODEL_CHECKED",
+      "related_implementation": [
+        "scripts/validation/cloud-cost-model.mjs",
+        "docs/12-architecture-review/cloud-cost-scenarios.json"
+      ],
+      "limitations": "未部署、未量測供應商容量，未含所有費用／稅／商業支出",
+      "validation_level": "V0",
+      "test_status": "OFFLINE_SELF_TEST_PASS",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C06",
+      "claim": "一般ADM/BW64資料模型與Dolby Atmos指定交付profile不同，需分別validator與相容性驗證。",
+      "source_ids": [
+        "AR-S06"
+      ],
+      "evidence_type": "PRIMARY_STANDARD_AND_DOC_REVIEW",
+      "applicable_conditions": "ITU/EBU官方metadata與可讀文件，無受限全文再散布",
+      "verification_status": "DOC_REVIEWED",
+      "related_implementation": [
+        "docs/12-architecture-review/ADM_EXPORT_RESEARCH.md"
+      ],
+      "limitations": "ADM serializer/DAW/Dolby tests全部NOT RUN",
+      "validation_level": "V0",
+      "test_status": "NOT_RUN",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C07",
+      "claim": "本機Meta Host/Origin與記憶體reserve不能等同雲端session auth/跨重啟durable多用戶quota。",
+      "source_ids": [
+        "AR-S10"
+      ],
+      "evidence_type": "VERIFIED_CODE_AND_SECURITY_DESIGN",
+      "applicable_conditions": "現有loopback app/provider及cost0 default",
+      "verification_status": "CODE_VERIFIED",
+      "related_implementation": [
+        "server/app.ts",
+        "server/meta-provider.ts"
+      ],
+      "limitations": "歷史最小live不證明fresh full-product/live billing；無新付費",
+      "validation_level": "V0",
+      "test_status": "NO_NEW_LIVE_CALL",
+      "review_date": "2026-10-29"
+    },
+    {
+      "id": "AR-C08",
+      "claim": "GitHub普通Git拒絕大於100MiB檔案；祖先中的禁用產物不會因最新tree刪除而免於push。",
+      "source_ids": [
+        "AR-S12",
+        "AR-S13"
+      ],
+      "evidence_type": "OFFICIAL_DOC_AND_GIT_REACHABILITY",
+      "applicable_conditions": "本輪指定公開repository與完整原歷史",
+      "verification_status": "DOC_VERIFIED",
+      "related_implementation": [
+        "scripts/validation/publication-audit.mjs"
+      ],
+      "limitations": "具體history掃描結果另見PUBLICATION_AUDIT，不自動授權rewrite/LFS",
+      "validation_level": "V0",
+      "test_status": "HISTORY_AUDIT_SEPARATE",
+      "review_date": "2026-10-29"
+    }
+  ]
+}

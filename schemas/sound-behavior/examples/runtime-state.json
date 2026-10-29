@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "experiment.fixture",
+  "runEpoch": "epoch.001",
+  "sceneRevision": 4,
+  "documentId": "behavior.document",
+  "documentRevision": 0,
+  "tick": 30,
+  "sequence": 2,
+  "bindings": [
+    {
+      "bindingId": "binding.ball",
+      "activeRuleIds": ["rule.always", "rule.flight"],
+      "cooldowns": [
+        {
+          "ruleId": "rule.impact",
+          "rearmAtTick": 35
+        }
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "instanceId": "voice.always",
+      "bindingId": "binding.ball",
+      "profileId": "profile.creative-ball",
+      "profileRevision": 1,
+      "ruleId": "rule.always",
+      "objectId": "object.ball",
+      "generation": 1,
+      "kind": "continuous",
+      "playbackState": "playing",
+      "startedAtTick": 0,
+      "playheadSeconds": 0.5,
+      "randomSeed": 1,
+      "gainLinear": 0.5,
+      "pitchSemitones": 0,
+      "positionMetres": [0, 1, 0]
+    }
+  ],
+  "processedEventIds": ["event.impact.30"],
+  "randomSeed": 1,
+  "fixedDtSeconds": 0.016666666666666666
+}

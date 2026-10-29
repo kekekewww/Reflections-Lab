@@ -1,0 +1,146 @@
+{
+  "id": "RLAB-TASK-0019",
+  "title": "錄放與資產產品整合驗收",
+  "description": "沿用凍結第一版51項驗收的證據切片；不另建任務系統、不取代原0006/0011–0014 criteria。先前分檔實作由Task0006協調，本Task統整完整跨模組驗收。 已依固定criteria完成當前0eef功能驗收；完整第一版、原生縮放、性能與人工聽測另列。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0006",
+    "RLAB-TASK-0011"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "真capture／raw motion／版本hash／來源phase及acoustic或behavior A/B固定條件通過，未冒充IR或量測",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/integration-review-v7/verification.json",
+          "sha256": "b71d5e1f05206f82296559fd2575f868859fcd4a921ea961909bd843887099be",
+          "result": "PASS; Independent integration38+metric8=46; source-phase, recorder/A-B, replay ObjectView and onended repairs. Historical fulltree snapshot; Q849 current regressions."
+        },
+        {
+          "path": "artifacts/v1/motion-hysteresis-validation-20261027/verification.json",
+          "sha256": "5e76f522c14c30e21ef9068d7f06e8ffd4a32e5dbed3e6241668df8943e03ecb",
+          "result": "PASS; Raw motion/hysteresis67 plus independent29. Older source manifest drift is re-covered by Q849; do not reopen solved features."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/verification.json",
+          "sha256": "39ca0ad023bf3d5823106c5da0ce1613d60e0c37b7f98b72de869d4cfdfacf6c",
+          "result": "PASS_HISTORICAL_BUNDLE; Three clean fresh-context complete scene/throw/impact/native graph/capture/A-B/durable reload plus missing/wrong/right WAV relink fourth. Chinese22ca only, recoveries0/2/7 retained; no PCM waveform or hearing claim."
+        },
+        {
+          "path": "artifacts/v1/storage-browser-20261027124706133/verification.json",
+          "sha256": "1abb590f86156492a1820cc0610b9e0951fe2d1b3523ab914c5f20b597f62863",
+          "result": "PASS5/5 realIndexedDB/reload/conflict/tamper/caps/builtin data; sourceStable1677 and cleanup; no hearing/model claim"
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T125130Z/verification.json",
+          "sha256": "712c694a90e2af56c14866de562835ba1ed813a15d1c162e0fd2f4aa96c331a6",
+          "result": "PASS4/4 actualthrow/impact/nativegraph/capture/acousticB/durable reload/replay and empty-store exactWAV relink; source/bundle/harness current0eef stable;3cleancontexts underoneChrome, not3OSprocesses/hearing/Meta"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "原WAV保存／fresh載入／缺檔拒絕與relink保ID、錄製保存重播／seek／匯出及Pinned120tick重模擬有直接證據",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/storage-browser-20261027025255775/verification.json",
+          "sha256": "2afe689d35293f564220eff5a20155c0e7fc222e8b60750e5b8473549044cf21",
+          "result": "PASS_HISTORICAL; Native persistence API5/5. Broad source now changed; fresh storage5 planned for current binding; not full product UI E2E."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/verification.json",
+          "sha256": "39ca0ad023bf3d5823106c5da0ce1613d60e0c37b7f98b72de869d4cfdfacf6c",
+          "result": "PASS_HISTORICAL_BUNDLE; Three clean fresh-context complete scene/throw/impact/native graph/capture/A-B/durable reload plus missing/wrong/right WAV relink fourth. Chinese22ca only, recoveries0/2/7 retained; no PCM waveform or hearing claim."
+        },
+        {
+          "path": "artifacts/v1/storage-browser-20261027124706133/verification.json",
+          "sha256": "1abb590f86156492a1820cc0610b9e0951fe2d1b3523ab914c5f20b597f62863",
+          "result": "PASS5/5 realIndexedDB/reload/conflict/tamper/caps/builtin data; sourceStable1677 and cleanup; no hearing/model claim"
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T125130Z/verification.json",
+          "sha256": "712c694a90e2af56c14866de562835ba1ed813a15d1c162e0fd2f4aa96c331a6",
+          "result": "PASS4/4 actualthrow/impact/nativegraph/capture/acousticB/durable reload/replay and empty-store exactWAV relink; source/bundle/harness current0eef stable;3cleancontexts underoneChrome, not3OSprocesses/hearing/Meta"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "src/experiments",
+    "src/persistence",
+    "src/app/recording-host.ts",
+    "src/app/replay-audio.ts",
+    "tests/experiment-runtime",
+    "tests/browser"
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+      "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+      "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+      "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+      "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+    },
+    {
+      "path": "artifacts/v1/integration-review-v7/verification.json",
+      "sha256": "b71d5e1f05206f82296559fd2575f868859fcd4a921ea961909bd843887099be",
+      "result": "PASS; Independent integration38+metric8=46; source-phase, recorder/A-B, replay ObjectView and onended repairs. Historical fulltree snapshot; Q849 current regressions."
+    },
+    {
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/verification.json",
+      "sha256": "5e76f522c14c30e21ef9068d7f06e8ffd4a32e5dbed3e6241668df8943e03ecb",
+      "result": "PASS; Raw motion/hysteresis67 plus independent29. Older source manifest drift is re-covered by Q849; do not reopen solved features."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/verification.json",
+      "sha256": "39ca0ad023bf3d5823106c5da0ce1613d60e0c37b7f98b72de869d4cfdfacf6c",
+      "result": "PASS_HISTORICAL_BUNDLE; Three clean fresh-context complete scene/throw/impact/native graph/capture/A-B/durable reload plus missing/wrong/right WAV relink fourth. Chinese22ca only, recoveries0/2/7 retained; no PCM waveform or hearing claim."
+    },
+    {
+      "path": "artifacts/v1/storage-browser-20261027124706133/verification.json",
+      "sha256": "1abb590f86156492a1820cc0610b9e0951fe2d1b3523ab914c5f20b597f62863",
+      "result": "PASS5/5 realIndexedDB/reload/conflict/tamper/caps/builtin data; sourceStable1677 and cleanup; no hearing/model claim"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T125130Z/verification.json",
+      "sha256": "712c694a90e2af56c14866de562835ba1ed813a15d1c162e0fd2f4aa96c331a6",
+      "result": "PASS4/4 actualthrow/impact/nativegraph/capture/acousticB/durable reload/replay and empty-store exactWAV relink; source/bundle/harness current0eef stable;3cleancontexts underoneChrome, not3OSprocesses/hearing/Meta"
+    },
+    {
+      "path": "artifacts/v1/storage-browser-20261027025255775/verification.json",
+      "sha256": "2afe689d35293f564220eff5a20155c0e7fc222e8b60750e5b8473549044cf21",
+      "result": "PASS_HISTORICAL; Native persistence API5/5. Broad source now changed; fresh storage5 planned for current binding; not full product UI E2E."
+    }
+  ],
+  "created_at": "2026-10-27T01:20:34.717Z",
+  "updated_at": "2026-10-27T12:57:45.342Z",
+  "last_summary": "原criteria/dependencies未改；當前UI27/physics2/storage5/product4分別直接驗證，完成本Task範圍，不代表整體V1。"
+}

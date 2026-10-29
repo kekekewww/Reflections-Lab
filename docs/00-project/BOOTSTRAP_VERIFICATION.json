@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordedAtUtc": "2026-10-25T19:29:56.973508+00:00",
+  "scope": "preproduction; product/browser/account not verified",
+  "validationRun": {
+    "status": "PASS",
+    "commands": 11,
+    "artifact": "benchmarks/results/validation-local.json",
+    "sha256": "62e41825013f6fddd06403b04e1c2763b40d45ab7ec04cc5a0f40762d52e96b0"
+  },
+  "coreTests": {
+    "pass": 30,
+    "fail": 0
+  },
+  "rapierSmoke": {
+    "pass": 6,
+    "fail": 0
+  },
+  "datasetMockTests": {
+    "total": 18,
+    "pass": 17,
+    "fail": 0,
+    "skip": 1,
+    "skipReason": "junction fixture EPERM; junction guard runtime NOT RUN"
+  },
+  "sdkNativeFinalConfirmation": {
+    "cyclesPass": 3,
+    "artifact": "experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.json",
+    "sha256": "3070771bd8785cd0df6e2161ad4344e2ec991a14295e24825efdaf917709ac74"
+  },
+  "skillsOfficialValidator": {
+    "pass": 8,
+    "dependency": "PyYAML 6.0.3 isolated cache",
+    "script": "scripts/setup/validate-skills.ps1"
+  },
+  "research": {
+    "sources": 64,
+    "claims": 64,
+    "declaredFixtures": 13
+  },
+  "requiredDocumentPaths": {
+    "present": 44,
+    "missing": []
+  },
+  "finalLocalMarkdownTargets": {
+    "pass": 116,
+    "documents": 79
+  },
+  "gitExcludedBinaryCheck": {
+    "unignoredThirdPartyBinaries": []
+  },
+  "limitedSecretPatternCheck": {
+    "matches": [],
+    "limitation": "Pattern check is not comprehensive secret audit"
+  },
+  "qualityGates": {
+    "research": "PARTIAL",
+    "licensing": "PARTIAL",
+    "sdk": "PASS",
+    "physics": "PARTIAL",
+    "acoustics": "PARTIAL",
+    "uxSpecification": "PASS",
+    "agentHarness": "PASS",
+    "reproducibility": "PARTIAL"
+  },
+  "notRun": [
+    "live Meta API/account access",
+    "browser/render/audio/AudioWorklet",
+    "production FPS/grab stability",
+    "remote CI",
+    "V3 independent solver",
+    "V5 real-world/perceptual",
+    "real dataset acquisition"
+  ],
+  "git": {
+    "branch": "main",
+    "commits": 0,
+    "remote": null,
+    "push": false
+  }
+}

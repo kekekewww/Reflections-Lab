@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "requestId": "analytic-floor-fixture",
+  "sourceId": "source-fixture",
+  "listenerId": "listener-fixture",
+  "sceneRevision": 0,
+  "geometryRevision": 0,
+  "poseTick": 0,
+  "backendId": "isolated-analytic-fixture",
+  "backendVersion": "1.0.0",
+  "capabilities": ["directParameters", "individualReflectionPaths"],
+  "modelClass": "analytical",
+  "directDelayS": 0.011661807580174927,
+  "bandCentersHz": [500, 1000],
+  "gainQuantity": "pressureRatio",
+  "paths": [
+    {
+      "id": "source-fixture-listener-fixture-floor",
+      "sourceId": "source-fixture",
+      "listenerId": "listener-fixture",
+      "surfaceIds": ["floor"],
+      "order": 1,
+      "verticesM": [
+        [1, 1, 0],
+        [3, 0, 0],
+        [5, 1, 0]
+      ],
+      "lengthM": 4.47213595499958,
+      "absoluteDelayS": 0.013038297244896734,
+      "relativeDelayS": 0.0013764896647218065,
+      "arrivalDirection": [-0.8944271909999159, -0.4472135954999579, 0],
+      "bandGains": [0.18708286933869706, 0.1414213562373095]
+    }
+  ],
+  "pathAvailability": "available",
+  "impulseResponseArtifactId": null,
+  "stale": false,
+  "limitations": [
+    "Derived one-floor fixture, synthetic energy reflection fractions 0.7/0.4 at 500/1000Hz; pressure gain sqrt(R)/length with 1m reference; not measured or a product backend result."
+  ]
+}

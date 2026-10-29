@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: versioned document, logical event, snapshot and proposal compile and validate without runtime claims
+ok 1 - versioned document, logical event, snapshot and proposal compile and validate without runtime claims
+  ---
+  duration_ms: 407.6873
+  type: 'test'
+  ...
+# Subtest: unsupported versions, arbitrary scripts, graph payloads and unbounded rules fail schema
+ok 2 - unsupported versions, arbitrary scripts, graph payloads and unbounded rules fail schema
+  ---
+  duration_ms: 9.6249
+  type: 'test'
+  ...
+# Subtest: host registry rejects invented, stale, missing and unapproved assets; fixture is never product ready
+ok 3 - host registry rejects invented, stale, missing and unapproved assets; fixture is never product ready
+  ---
+  duration_ms: 14.5789
+  type: 'test'
+  ...
+# Subtest: profile sharing and object overrides retain stable IDs and exact revisions
+ok 4 - profile sharing and object overrides retain stable IDs and exact revisions
+  ---
+  duration_ms: 3.3875
+  type: 'test'
+  ...
+# Subtest: duplicate IDs, stale generations, unknown materials and invalid pair override targets fail
+ok 5 - duplicate IDs, stale generations, unknown materials and invalid pair override targets fail
+  ---
+  duration_ms: 4.6174
+  type: 'test'
+  ...
+# Subtest: declarative mapping rejects unavailable trigger metrics, duplicate target, unsorted curve and unsafe numbers
+ok 6 - declarative mapping rejects unavailable trigger metrics, duplicate target, unsorted curve and unsafe numbers
+  ---
+  duration_ms: 4.5411
+  type: 'test'
+  ...
+# Subtest: contact sounds must use contact source; continuous/discrete sample loop semantics cannot be confused
+ok 7 - contact sounds must use contact source; continuous/discrete sample loop semantics cannot be confused
+  ---
+  duration_ms: 4.1078
+  type: 'test'
+  ...
+# Subtest: events enforce emission identity, physics clock and contact location rather than body center
+ok 8 - events enforce emission identity, physics clock and contact location rather than body center
+  ---
+  duration_ms: 8.329
+  type: 'test'
+  ...
+# Subtest: runtime checkpoints reject unknown rules, duplicate instances and event IDs, and budget overflow
+ok 9 - runtime checkpoints reject unknown rules, duplicate instances and event IDs, and budget overflow
+  ---
+  duration_ms: 5.9671
+  type: 'test'
+  ...
+# Subtest: AI proposals enforce revisions, complete typed replacement, no arbitrary patch, and no scene changes
+ok 10 - AI proposals enforce revisions, complete typed replacement, no arbitrary patch, and no scene changes
+  ---
+  duration_ms: 7.1634
+  type: 'test'
+  ...
+# Subtest: proposal deletion cannot strand bindings and rejected multi-op proposal never mutates input
+ok 11 - proposal deletion cannot strand bindings and rejected multi-op proposal never mutates input
+  ---
+  duration_ms: 3.9936
+  type: 'test'
+  ...
+# Subtest: bounded throw latch is explicit and cannot be confused with airborne or an unbounded one-shot
+ok 12 - bounded throw latch is explicit and cannot be confused with airborne or an unbounded one-shot
+  ---
+  duration_ms: 4.6023
+  type: 'test'
+  ...
+# Subtest: runtime active rules and physical contact participants must refer to valid domain records
+ok 13 - runtime active rules and physical contact participants must refer to valid domain records
+  ---
+  duration_ms: 2.7641
+  type: 'test'
+  ...
+# Subtest: proposal schema capacity cannot bypass the stricter host mutation budget
+ok 14 - proposal schema capacity cannot bypass the stricter host mutation budget
+  ---
+  duration_ms: 5.1171
+  type: 'test'
+  ...
+# Subtest: behavior A/B allows declared asset changes without pretending its source hash is fixed
+ok 15 - behavior A/B allows declared asset changes without pretending its source hash is fixed
+  ---
+  duration_ms: 8.2398
+  type: 'test'
+  ...
+# Subtest: acoustic A/B fixes source generation while behavior A/B fixes propagation and declares changed inputs
+ok 16 - acoustic A/B fixes source generation while behavior A/B fixes propagation and declares changed inputs
+  ---
+  duration_ms: 2.621
+  type: 'test'
+  ...
+# Subtest: binding and per-rule effective enabled flags gate committed events and checkpoint active instances
+ok 17 - binding and per-rule effective enabled flags gate committed events and checkpoint active instances
+  ---
+  duration_ms: 2.9458
+  type: 'test'
+  ...
+# Subtest: plain discrete oscillator requires a finite one-shot duration; expired latched voice may only fade or stop
+ok 18 - plain discrete oscillator requires a finite one-shot duration; expired latched voice may only fade or stop
+  ---
+  duration_ms: 3.0932
+  type: 'test'
+  ...
+# Subtest: known host asset selection derives document pins without granting model catalog authority
+ok 19 - known host asset selection derives document pins without granting model catalog authority
+  ---
+  duration_ms: 2.585
+  type: 'test'
+  ...
+# Subtest: contact colliders must belong to their known participant objects
+ok 20 - contact colliders must belong to their known participant objects
+  ---
+  duration_ms: 1.9381
+  type: 'test'
+  ...
+# Subtest: material pair selected generator cannot bypass finite oscillator one-shot lifetime
+ok 21 - material pair selected generator cannot bypass finite oscillator one-shot lifetime
+  ---
+  duration_ms: 1.7164
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1203.6169

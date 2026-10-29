@@ -1,0 +1,61 @@
+{
+  "stage": "EXPORTEND",
+  "createdAt": "2026-10-27T16:57:08.533Z",
+  "archiveDirectory": "artifacts/v1/history-dto-candidate-sourceend-20261027T165707544Z",
+  "executor": {
+    "name": "Codex",
+    "exactModel": null
+  },
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "14c22c4df3484fe354878aec6d83b30593f9173236927396b00e397b386062dc",
+    "bytes": 39982,
+    "payloadFileCount": 65,
+    "payloadBytes": 600607
+  },
+  "sourceEndReceipt": {
+    "path": "payload/cache/v1/ui-perf-diagnosis/history-dto-candidate/receipt.json",
+    "sha256": "79ed750837085886e727cc3c02ab2ff4dccc09ad1e443790d4c23fec5dbcda33"
+  },
+  "ownershipRelease": {
+    "status": "SOURCEEND_ACCEPTED_BY_ROOT_PHYSICS_OWNERSHIP_RELEASED",
+    "remainingWork": "No work remains in this agent scope. Stop after export. Full V1 qualification remains coordinator-owned."
+  },
+  "recovery": [
+    {
+      "restorePath": "src/physics/physics-world.ts",
+      "preimage": "payload/cache/v1/ui-perf-diagnosis/history-dto-candidate/physics-world.preimage.ts.raw",
+      "postimage": "payload/cache/v1/ui-perf-diagnosis/history-dto-candidate/physics-world.postimage.ts.raw"
+    },
+    {
+      "restorePath": "tests/physics/history-projection.test.ts",
+      "snapshot": "payload/cache/v1/ui-perf-diagnosis/history-dto-candidate/history-projection.final.test.ts.raw"
+    },
+    {
+      "restorePath": "tests/physics/fixtures/history-fixed-step-reference.mjs",
+      "snapshot": "payload/cache/v1/ui-perf-diagnosis/history-dto-candidate/history-fixed-step-reference.final.mjs.raw"
+    },
+    {
+      "restorePath": "tests/physics/fixtures/contact-projection-reference.mjs",
+      "snapshot": "payload/tests/physics/fixtures/contact-projection-reference.mjs.raw"
+    }
+  ],
+  "reproduction": "Restore a .raw snapshot by copying its exact bytes to the original path specified by the mapping; preserve current work first. Commands, native exits and limitations are retained verbatim in the archived sourceEND/call-count receipts. No commands were rerun during this export.",
+  "existingOutcomes": {
+    "baselineRed": "Expected three failures / one frozen reference pass, exit1",
+    "green": "4/4 exit0",
+    "relevantRegressions": "384/384 exit0",
+    "independentFinal": "4/4 exit0",
+    "strictLintFormat": "PASS exit0",
+    "exactCount": "Full poses 900→700; 200 small history projections; full snapshot350, publish205, behavior.snapshot205 and fixed cadence unchanged."
+  },
+  "preciseLimits": [
+    "Node22.17.0 deterministic 105-object/100-dynamic/101-binding/301-rule fixture; 320 total fixedticks including120 warmup.",
+    "Four retained representative snapshots plus four reference copies, source before/after inventories and disposal proof are existing evidence.",
+    "Original bootstrap failure and Root known-PID/exact-filename absence proof are preserved; no global process absence is claimed.",
+    "Timing is noisy Node-only; no browser,React,GPU,native WebAudio or canonical performance PASS.",
+    "No tests, new benchmark, browser, build, source write, docs/Wiki change, Git or process action occurred during export."
+  ],
+  "originalInputsPreserved": true,
+  "copiedBytesVerified": true
+}

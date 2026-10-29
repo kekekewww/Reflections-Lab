@@ -1,0 +1,44 @@
+{
+    "scope":  "Replay ObjectView projection while the underlying live Rapier body is paused",
+    "outcome":  "RED: captured nonzero velocity is replaced by sleeping live body zero velocity",
+    "command":  {
+                    "command":  "node --import tsx --test --test-name-pattern \"Replay ObjectView uses\" tests/app/integration-regressions.test.ts",
+                    "cwd":  "D:\\Developing\\Meta Hack",
+                    "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                    "exitCode":  1,
+                    "startedAt":  "2026-10-27T02:51:47.6997213+00:00",
+                    "completedAt":  "2026-10-27T02:51:50.4011848+00:00",
+                    "durationMs":  2545,
+                    "stdout":  "replay-objectview-red.stdout.txt",
+                    "stderr":  "replay-objectview-red.stderr.txt",
+                    "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                },
+    "gitHead":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "sourceBefore":  "red-source-before.json",
+    "sourceAfter":  "red-source-after.json",
+    "sourceCount":  146,
+    "sourceUnchanged":  true,
+    "changed":  [
+
+                ],
+    "modelCalls":  0,
+    "browserRun":  false,
+    "physics":  "Actual Rapier, bounded unrecorded warmup to real sleep",
+    "expectedRecordedVelocity":  [
+                                     0,
+                                     -0.16350001096725464,
+                                     0
+                                 ],
+    "actualDisplayedVelocity":  [
+                                    0,
+                                    0,
+                                    0
+                                ],
+    "recordedSleeping":  false,
+    "liveSleeping":  true,
+    "notClaimed":  [
+                       "root runtime edited",
+                       "whole suite rerun",
+                       "browser evidence"
+                   ]
+}

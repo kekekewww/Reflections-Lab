@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/ai-provider-config.schema.json",
+  "title": "Reflection Lab AI provider gate and application budgets v1",
+  "description": "Host configuration only. Model-supplied settings must never enable live access or raise budgets. No secret values.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "provider", "networkEnabled", "modelId", "verificationStatus", "verifiedAt", "verificationArtifactId", "dataMode", "capabilities", "budgets"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "provider": {"enum": ["offlineFixture", "metaModelApi"]},
+    "networkEnabled": {"type": "boolean"},
+    "modelId": {"type": ["string", "null"], "minLength": 1, "maxLength": 128, "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "verificationStatus": {"enum": ["notRun", "verified", "failed", "expired"]},
+    "verifiedAt": {"type": ["string", "null"], "format": "date-time"},
+    "verificationArtifactId": {"anyOf": [{"$ref": "ai-tool-request.schema.json#/$defs/id"}, {"type": "null"}]},
+    "dataMode": {"enum": ["offline", "standard", "contributor"]},
+    "capabilities": {"type": "object", "additionalProperties": false, "required": ["functionTools", "strictStructuredOutputs", "imageInput", "audioInput", "videoInput"], "properties": {"functionTools": {"type": "boolean"}, "strictStructuredOutputs": {"type": "boolean"}, "imageInput": {"type": "boolean"}, "audioInput": {"type": "boolean"}, "videoInput": {"type": "boolean"}}},
+    "budgets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maxAgentTurns", "maxToolCalls", "maxConcurrentSimulations", "maxSimulations", "maxWallTimeMs", "maxInputTokens", "maxOutputTokens", "maxEstimatedCostUsd", "maxRetries"],
+      "properties": {"maxAgentTurns": {"type": "integer", "minimum": 1, "maximum": 12}, "maxToolCalls": {"type": "integer", "minimum": 1, "maximum": 48}, "maxConcurrentSimulations": {"const": 1}, "maxSimulations": {"type": "integer", "minimum": 0, "maximum": 6}, "maxWallTimeMs": {"type": "integer", "minimum": 1000, "maximum": 120000}, "maxInputTokens": {"type": "integer", "minimum": 1, "maximum": 32000}, "maxOutputTokens": {"type": "integer", "minimum": 1, "maximum": 4000}, "maxEstimatedCostUsd": {"type": "number", "minimum": 0, "maximum": 1}, "maxRetries": {"type": "integer", "minimum": 0, "maximum": 2}}
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"provider": {"const": "offlineFixture"}}}, "then": {"properties": {"networkEnabled": {"const": false}, "modelId": {"type": "null"}, "dataMode": {"const": "offline"}, "verificationStatus": {"const": "notRun"}, "verifiedAt": {"type": "null"}, "verificationArtifactId": {"type": "null"}, "budgets": {"type": "object", "properties": {"maxEstimatedCostUsd": {"const": 0}}}}}},
+    {"if": {"properties": {"provider": {"const": "metaModelApi"}, "networkEnabled": {"const": true}}}, "then": {"properties": {"modelId": {"type": "string"}, "verificationStatus": {"const": "verified"}, "verifiedAt": {"type": "string"}, "verificationArtifactId": {"type": "string"}, "dataMode": {"const": "standard"}, "capabilities": {"type": "object", "properties": {"functionTools": {"const": true}, "strictStructuredOutputs": {"const": true}}}}}},
+    {"if": {"properties": {"provider": {"const": "metaModelApi"}, "verificationStatus": {"enum": ["notRun", "failed", "expired"]}}}, "then": {"properties": {"networkEnabled": {"const": false}}}}
+  ]
+}

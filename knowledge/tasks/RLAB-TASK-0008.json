@@ -1,0 +1,194 @@
+{
+  "id": "RLAB-TASK-0008",
+  "title": "Phase3開發Harness與自動Executor接手",
+  "description": "Codex統籌、Muse優先實作、固定驗收與有界故障接手；只建開發基礎設施與Runtime契約，不啟動正式產品。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0003",
+    "RLAB-TASK-0004",
+    "RLAB-TASK-0005"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "官方能力與錯誤研究、版本/help及無付費CLI證據，Live限制明示",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "research/agents/muse-cli-observation.json",
+          "sha256": "86c7a8a9da31abd05e443b91624e17481827b3e52dfa731fb6418cb348939ab8",
+          "result": "Actual installed CLI version/help/echo; no inference; usage transient"
+        },
+        {
+          "path": "research/agents/quota-source-metadata.json",
+          "sha256": "0f5cd1a9ea06a43d877fbce53fd6be613c647624f4d125e11cad4aa6362b9371",
+          "result": "Official docs reviewed, quota types distinct; unknown live values preserved"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "可執行Harness固定驗收、部分修改接手、互斥、預算與12情境測試通過",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase3-validation-20261026-final.json",
+          "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+          "result": "19/19 exit0; agents75, prompts12, core32, Wiki53+1skip, design14"
+        },
+        {
+          "path": "artifacts/phase3-user-zero-muse/export.json",
+          "sha256": "6034f2dcb009cea309a76bfe0445cbf19f44094873647d10f077d0f404cf4af5",
+          "result": "USER_CONFIRMED zero Muse -> attempts0 -> current Codex -> protected independent PASS"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "Prompts、四類雙策略離線評測、Skills與產品Meta API分離契約通過驗證",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase3-validation-20261026-final.json",
+          "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+          "result": "19/19 exit0; agents75, prompts12, core32, Wiki53+1skip, design14"
+        },
+        {
+          "path": "artifacts/phase3-project-skill-validation.txt",
+          "sha256": "df41f93ecc3dc747c72d1c50b0b08c6cfb389ad7e961c03dce74bb38a6b84d68",
+          "result": "15 official project formats PASS; 8 upstream pinned bytes separately"
+        },
+        {
+          "path": "benchmarks/muse/results/skills-2026-10-26.json",
+          "sha256": "28c91ad674c7042b67af1735071f247db0fb83d814b5434f013fdd5d0791f295",
+          "result": "5 new skills actual Muse/Codex validations"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "原回歸與新驗證、獨立審查、Wiki/Git provenance/handoff與Gate A-I完整記錄",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/phase3-fresh-handoff-receipt.json",
+          "sha256": "4cd507994d3304fcf4a8127a24855f19ed621bee82ea21e9f5af0ad2096b4833",
+          "result": "Fresh receiving agent actual PASS; completed resume no-op and all proof hashes matched"
+        },
+        {
+          "path": "benchmarks/results/phase3-validation-20261026-final.json",
+          "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+          "result": "19/19 exit0; agents75, prompts12, core32, Wiki53+1skip, design14"
+        },
+        {
+          "path": "docs/09-agents/INDEPENDENT_REVIEW.md",
+          "sha256": "1b2bcf8d4b7d259b1ab8801603f6c6bf9e32cd3b347f13cdee7d5ad518f9b2d3",
+          "result": "No unresolved P1/P2 in offline/current-Codex scope; live limits explicit"
+        },
+        {
+          "path": "artifacts/phase3-git-byte-check.json",
+          "sha256": "af98549f11a2a4b75abc266e55805334a8d3cb6436c05af61f65b6ccce674c42",
+          "result": "996 worktree/index raw bytes identical; initial local snapshot038d83d"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/00-project/PHASE3_REQUEST.md",
+    "docs/09-agents/",
+    "scripts/agents/",
+    "schemas/agents/",
+    "tests/agents/",
+    "prompts/",
+    "benchmarks/muse/"
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/results/phase3-validation-20261026-final.json",
+      "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+      "result": "19/19 exit0; agents75, prompts12, core32, Wiki53+1skip, design14"
+    },
+    {
+      "path": "artifacts/phase3-fresh-handoff-receipt.json",
+      "sha256": "4cd507994d3304fcf4a8127a24855f19ed621bee82ea21e9f5af0ad2096b4833",
+      "result": "Fresh receiving agent actual PASS; completed resume no-op and all proof hashes matched"
+    }
+  ],
+  "created_at": "2026-10-26T08:00:00+08:00",
+  "updated_at": "2026-10-26T16:07:42.540Z",
+  "agent_execution": {
+    "run_id": "469191b9-3b56-4eb1-a94e-7db11d605f4f",
+    "run_state": "COMPLETED",
+    "preferred_executor": "MUSE",
+    "actual_executor": "CODEX",
+    "previous_executor": "MUSE",
+    "fallback_reason": "QUOTA_EXHAUSTED",
+    "model": null,
+    "cli_version": null,
+    "last_successful_checkpoint": "c5a70d2f-c266-4e02-b639-e698c9039959",
+    "git_revision": null,
+    "modified_files": [
+      "answer.mjs"
+    ],
+    "completed_acceptance_criteria": [
+      "AC-ANSWER"
+    ],
+    "remaining_work": [],
+    "verification_evidence": [
+      {
+        "path": "artifacts/agent-runs/runs/469191b9-3b56-4eb1-a94e-7db11d605f4f/verification/36b679e8-6f5e-4215-94f4-479f6a99f3a3.json",
+        "sha256": "999586a4d2ca5ed168ab39200b70843858d7decb38f825126399fa22842a8309",
+        "result": "PASS",
+        "command": "independent-node-runner"
+      }
+    ],
+    "resource_usage": {
+      "started_at_ms": 1793029782114,
+      "attempts": 0,
+      "elapsed_ms": 252.83139999999997,
+      "reserved_usd": 0,
+      "cost_usd": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cached_tokens": null,
+      "tool_calls": null,
+      "remaining_quota": null,
+      "observations": {
+        "MUSE": {
+          "status": "exhausted",
+          "remaining": 0,
+          "evidence": [
+            {
+              "description": "USER_CONFIRMED 2026-10-26: 目前沒有任何Muse額度可以使用; development Muse only, not a product Meta API balance observation",
+              "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+              "recorded_at": "2026-10-26T15:46:23.634Z"
+            }
+          ]
+        },
+        "CODEX": {
+          "status": "available",
+          "remaining": 93,
+          "evidence": [
+            {
+              "description": "Codex app get_usage_limits read-only observation: weekly10080min used7percent/remaining93percent, snapshot2026-10-26; secondary unknown; no account IDs/credits persisted",
+              "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+              "recorded_at": "2026-10-26T15:47:00.592Z"
+            }
+          ]
+        },
+        "META_API": {
+          "status": "unknown",
+          "remaining": null,
+          "evidence": [],
+          "live_tests": "NOT RUN"
+        }
+      }
+    },
+    "run_state_path": "artifacts/phase3-user-zero-muse/wiki-patch.state.json",
+    "run_state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+    "updated_at": "2026-10-26T15:50:02.216Z"
+  },
+  "last_summary": "Offline/current-Codex engineering completed; all19gatePASS and fresh handoff PASS. Live Muse/process limits remain separate Task0009 BLOCKED; userMuse0 retained."
+}

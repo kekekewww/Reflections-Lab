@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-27T03:31:07.061Z",
+  "auditor": "/root/v1_experiment_tools",
+  "mode": "Independent raw archive arithmetic; no browser, API or model calls",
+  "status": "EXACT_STOP_DIAGNOSTIC_POPULATION_DEFECT_CONFIRMED",
+  "criteria": [
+    "V1-AB-01",
+    "V1-MET-01"
+  ],
+  "inputs": {
+    "recording": {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/recording.json",
+      "fileSha256": "439b168e791ec02c68e5cd97ebb044a20698c7bf5f4154c2d9f682d676917611",
+      "artifactSha256": "816cd283828f3cc33610421fbb1cde8b59a2d539ec98fccd70b2c9d01d1a8253",
+      "independentCanonicalArtifactSha256": "816cd283828f3cc33610421fbb1cde8b59a2d539ec98fccd70b2c9d01d1a8253"
+    },
+    "evidence": {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/evidence.json",
+      "fileSha256": "43f56f1c6fc0eec1ca75a6cf5338b4a71fd2eeead57c7cb8267d93f337cb9738"
+    }
+  },
+  "window": {
+    "startTick": 4,
+    "endTick": 84,
+    "fixedDtS": 0.016666666666666666,
+    "frameCount": 81
+  },
+  "independentArithmetic": {
+    "allCapturedDirectRoutes": {
+      "count": 118,
+      "meanSeconds": 0.01592289576547707
+    },
+    "playingSourceDirectRoutes": {
+      "count": 116,
+      "meanSeconds": 0.016036576002133818
+    },
+    "excluded": [
+      {
+        "tick": 25,
+        "sourceId": "voice.2cbd393a1064438a",
+        "playbackState": "fading",
+        "stopEvent": true,
+        "delayS": 0.007288626970483854
+      },
+      {
+        "tick": 39,
+        "sourceId": "voice.cb7a65207e7ced68",
+        "playbackState": "fading",
+        "stopEvent": true,
+        "delayS": 0.011370257108287698
+      }
+    ],
+    "predictedOldDeltaSeconds": 0.0001136802366567477,
+    "reportedOldDeltaSeconds": 0.0001136802366567477,
+    "residualSeconds": 0
+  },
+  "currentCollector": {
+    "metric": {
+      "id": "meanDirectDelay",
+      "label": "平均直達聲到達時間",
+      "value": 0.016036576002133818,
+      "unit": "s",
+      "evidenceClass": "Computed",
+      "method": "Arithmetic mean across available order-0 (tick, logical playing source) queries; post-step playing state, excludes stop/fading diagnostics; v2",
+      "status": "available",
+      "reason": null,
+      "population": {
+        "kind": "logicalPlayingSourceQueries",
+        "policyVersion": "post-step-playing-v1",
+        "eligibleQueryCount": 116,
+        "excludedNonPlayingQueryCount": 2,
+        "invalidAcousticQueryCount": 0,
+        "backendDeclarationMismatchQueryCount": 0,
+        "missingEligibilityFrameCount": 0,
+        "bandCenterHz": null,
+        "window": {
+          "startTick": 4,
+          "endTick": 84,
+          "fixedDtS": 0.016666666666666666
+        },
+        "sampleCount": 116
+      }
+    },
+    "samples": {
+      "kind": "logicalPlayingSourceQueries",
+      "policyVersion": "post-step-playing-v1",
+      "eligibleQueryCount": 116,
+      "excludedNonPlayingQueryCount": 2,
+      "invalidAcousticQueryCount": 0,
+      "backendDeclarationMismatchQueryCount": 0,
+      "missingEligibilityFrameCount": 0,
+      "bandCenterHz": null,
+      "window": {
+        "startTick": 4,
+        "endTick": 84,
+        "fixedDtS": 0.016666666666666666
+      }
+    },
+    "currentMinusIndependentMeanSeconds": 0
+  },
+  "sourceHashes": {
+    "src/experiments/metrics.ts": "8010efee1946cfe0dba145f18e9a8b0815c756c54d47a4199419e77023d9a8fb",
+    "src/experiments/comparison.ts": "2a720949162535227077e666b8403063c760334ea2c66266db97d462c89662f0",
+    "src/experiments/types.ts": "cad712e7d960962581853319e2dfc147f12a426537850a4b0f42bd6c82dafb9d",
+    "src/app/experiment-tools.ts": "ce705c90ecbdc0e579ed4b69aac04f60aa5add5f1384781040c0fbe9dfd99434"
+  },
+  "limits": [
+    "Raw B was not persisted in this historical diagnostic archive; B source-query population is inferred from the actual processor policy plus exact old displayed delta, not claimed as independently read raw B.",
+    "The archived run used a retained old frozen bundle; this audit does not establish final current-source browser/E2E acceptance.",
+    "All values are Computed geometric propagation/query means, not native PCM energy, human hearing, calibrated SPL or Meta live evidence.",
+    "Current collector uses stable semantic sample ordering; the reported current-vs-independent arithmetic difference retains any floating summation roundoff without widening a frozen numerical tolerance."
+  ]
+}

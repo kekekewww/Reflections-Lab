@@ -1,0 +1,752 @@
+{
+  "schema_version": 1,
+  "review_id": "final-refresh-independent-corpus",
+  "reviewed_at_utc": "2026-10-27T19:45:48.803Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_validator",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent documentation currentness, command, coverage and hash reviewer"
+  },
+  "status": "PASS_SCOPED_DOCUMENTATION_CORPUS",
+  "scope": {
+    "authorization": "FINALDOCSGO followed by CORPUS_READY; sources, prose, manifest and group reviews frozen",
+    "default_current_full_inventory": true,
+    "whole_corpus_semantic_rereview": false,
+    "changed_source_pairs": 22,
+    "authored_english_guide": 1,
+    "all_group_review_ENDs_received": true,
+    "product_completion_claim": false
+  },
+  "summary": {
+    "originals": 277,
+    "markdown_files_inventoried": 285,
+    "authored_artifact_documents": 15,
+    "shared_raw_evidence": 8,
+    "translations_required": 258,
+    "translated": 258,
+    "original_english": 18,
+    "existing_english_companions": 1,
+    "missing": 0,
+    "stale": 0,
+    "errors": 0,
+    "warnings": 15
+  },
+  "commands": [
+    {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "exit_code": 0,
+      "node": "v22.17.0",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "started_at": "2026-10-27T19:40:20.198Z",
+      "duration_ms": 466.7535,
+      "tests": 31,
+      "passes": 31,
+      "failures": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194020197Z/unit.stdout.txt",
+        "sha256": "933a9af9231ee4d0761f826ce264d3b5ba869c61534884ecbc3903dfc3ac78ff",
+        "bytes": 6997
+      },
+      "stderr": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194020197Z/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": "node scripts/validation/english-docs.mjs check",
+      "args": [
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "spawn_error": null,
+      "started_at": "2026-10-27T19:43:22.490Z",
+      "duration_ms": 637.5634,
+      "stdout": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/english-check.stdout.txt",
+        "sha256": "27495d257d11e449ccaabce30bae768fab0eea0cd058bfaa57a7b2a8eada25c0",
+        "bytes": 270
+      },
+      "stderr": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/english-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "{\"status\":\"PASS\",\"originals\":277,\"markdown_files_inventoried\":285,\"authored_artifact_documents\":15,\"shared_raw_evidence\":8,\"translations_required\":258,\"translated\":258,\"original_english\":18,\"existing_english_companions\":1,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":15}\n",
+      "stderr_text": ""
+    },
+    {
+      "command": "node scripts/validation/docs.mjs",
+      "args": [
+        "scripts/validation/docs.mjs"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "spawn_error": null,
+      "started_at": "2026-10-27T19:43:22.495Z",
+      "duration_ms": 418.3062,
+      "stdout": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/maintained-links.stdout.txt",
+        "sha256": "b0b27ea5a9d0246d2fff9f9286146bf50ef08b4e120f3bb27beab8230a9ca8a8",
+        "bytes": 1932
+      },
+      "stderr": {
+        "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/maintained-links.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "PASS Markdown local targets: 4855 links in 550 documents; fenced code/external URLs/anchors excluded.\nScope: maintained Markdown; exact raw byte snapshot directories under root artifacts (source-before/source-after/sources/tested-bundle) excluded from link checking; run SHA proof checks are separate.\nExcluded raw byte snapshots (24): artifacts/v1/audio-prefix-irv2-preflight-20261027172840/prepared-ir-static-v1/sources, artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources, artifacts/v1/audio-prepared-ir-static-v1-preflight-20261027155118424/prepared-ir-static-v1/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources, artifacts/v1/gravity-toggle-review-v1/sources, artifacts/v1/integration-review-v3/sources, artifacts/v1/integration-review-v4/sources, artifacts/v1/integration-review-v5/sources, artifacts/v1/integration-review-v6/sources, artifacts/v1/integration-review-v7/sources, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-before, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-before, artifacts/v1/physics-boundaries-20261027/combined-final/source-after, artifacts/v1/physics-boundaries-20261027/combined-final/source-before, artifacts/v1/physics-boundaries-20261027/combined-v1/source-after, artifacts/v1/physics-boundaries-20261027/combined-v1/source-before, artifacts/v1/product-e2e-chrome-20261027T021924Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T024059Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T033616Z/tested-bundle, artifacts/v1/product-final-build-20261027T124914444Z/tested-bundle, artifacts/v1/replay-objectview-review-v1/sources.\n",
+      "stderr_text": ""
+    }
+  ],
+  "evidence": {
+    "unit_tests": {
+      "path": ".cache/v1/english-final-refresh/independent/20261027T194020197Z/unit-result.json",
+      "sha256": "75b0b52cb4954b652d0e7feef7828c30e65a2bf108c6da1c7b6ea7bdaa433b9d",
+      "bytes": 18264
+    },
+    "current_corpus_checks": {
+      "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/corpus-checks.json",
+      "sha256": "54d8624c49d6558b5c61fc4c552d78878d491acf6d8a0be38657ee307dda17ae",
+      "bytes": 303296
+    },
+    "changed_review_coverage": {
+      "path": ".cache/v1/english-final-refresh/independent/coverage-preflight.json",
+      "sha256": "862e4dd4e1248d4b59e4773ef2c362f5ca42ca80192de9f84d68da785151408f",
+      "bytes": 128924
+    },
+    "independent_mechanical_sanity": {
+      "path": ".cache/v1/english-final-refresh/independent/mechanical-sanity.json",
+      "sha256": "26043f5a07b13f74b0c72323d171ba036dd69da1f937040b17012f68dd927024",
+      "bytes": 10632
+    },
+    "coordinator_mechanical_proof": {
+      "path": "docs/en/_reports/final-refresh-mechanical-20261027T194313997Z.json",
+      "sha256": "f7a5a610d35b8068399a679dd21e71c125bc0f7f623e657feeea1d77081bcb68",
+      "bytes": 24097
+    },
+    "raw_pin_review_epoch": {
+      "path": "docs/en/_reports/frozen-history-pin-independent.json",
+      "sha256": "7887862240c546ed0a85664de91950d3de69119393b0b1d86f61f58ad2d1f7e0",
+      "bytes": 22497
+    },
+    "frozen_source_inventory": {
+      "path": ".cache/v1/english-final-refresh/inventory.json",
+      "sha256": "ab36ecffb70edaf32564d1535e8610668fe51c4204d8c3a76636c7183d12d026",
+      "bytes": 9328
+    },
+    "reviewed_target_inventory": {
+      "path": ".cache/v1/english-final-refresh/reviewed-targets.json",
+      "sha256": "01c703b9c9048dfe9a94d8d5636f516d0661e7dd0c59178da480b08867e01ccd",
+      "bytes": 12529
+    },
+    "manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "93814cb3fb9d1f7cc946e2271b52b495a2e6b3bd089741cbf09f205bd209925f",
+      "bytes": 203588
+    },
+    "validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "93814cb3fb9d1f7cc946e2271b52b495a2e6b3bd089741cbf09f205bd209925f",
+      "bytes": 203588
+    },
+    "source_inventory": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "2877ab45b07cbaed595de65a8e42fcd5ab904a151eb4b44cb4ba55772ce5e95a",
+      "bytes": 98753
+    },
+    "index": {
+      "path": "docs/en/index.md",
+      "sha256": "9f21f161d1f832b54ceb3031870778648102dd04cad085330d2624c3493679c2",
+      "bytes": 55974
+    }
+  },
+  "inventory_audit": {
+    "command": "git ls-files --cached --others --exclude-standard -z",
+    "exit_code": 0,
+    "stderr": "",
+    "actual_markdown_count": 285,
+    "declared_markdown_count": 285,
+    "exact_paths_match": true,
+    "missing_from_manifest": [],
+    "extra_in_manifest": [],
+    "path_list": {
+      "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/git-listed-paths.z",
+      "sha256": "2022d1ceaae6bba43a04465792881cfd1695337808f68ee27c5c8a1210397e06"
+    },
+    "source_inventory_matches_manifest": true
+  },
+  "source_and_translation_hash_audit": {
+    "status": "PASS",
+    "original_rows": 277,
+    "all_source_and_target_bytes_and_markers_match": true,
+    "scope_complete": true,
+    "inventory_strategy": "git_tracked_and_unignored",
+    "full_per_file_rows": {
+      "path": ".cache/v1/english-final-refresh/independent/20261027T194322483Z/corpus-checks.json",
+      "sha256": "54d8624c49d6558b5c61fc4c552d78878d491acf6d8a0be38657ee307dda17ae",
+      "bytes": 303296
+    }
+  },
+  "changed_review_coverage": {
+    "status": "PASS_COVERAGE_AND_PINS",
+    "counts": {
+      "group_reports": 8,
+      "group_rows": 21,
+      "readme_separate_review_rows": 1,
+      "combined_rows": 22,
+      "combined_unique_sources": 22,
+      "pending": 0,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0,
+      "defects": 0
+    },
+    "report_pins": [
+      {
+        "path": "docs/en/_reports/final-refresh-operations.json",
+        "actual_sha256": "f8b42ddba05311c9bc4492d3e2220a44228947f686c5b610ff084994cb09183a",
+        "recorded_sha256": "f8b42ddba05311c9bc4492d3e2220a44228947f686c5b610ff084994cb09183a",
+        "sha256_matches": true,
+        "rows": 3,
+        "completed_at": "2026-10-27T19:38:33.9763251Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-compliance-toolchain.json",
+        "actual_sha256": "c9926fa668cd46ef3c44dcbe718c509778b0820adfead4f69d85abe05233647e",
+        "recorded_sha256": "c9926fa668cd46ef3c44dcbe718c509778b0820adfead4f69d85abe05233647e",
+        "sha256_matches": true,
+        "rows": 2,
+        "completed_at": "2026-10-27T19:38:28.810459Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-physics-performance.json",
+        "actual_sha256": "59d5ad9608865ef5646a2ec7f58f5de3505ceb425959073816b3c2e46f5aab4c",
+        "recorded_sha256": "59d5ad9608865ef5646a2ec7f58f5de3505ceb425959073816b3c2e46f5aab4c",
+        "sha256_matches": true,
+        "rows": 3,
+        "completed_at": "2026-10-27T19:37:38.752Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-checkpoints-r9-r10.json",
+        "actual_sha256": "6402b36f1eae91bda30ccb66b632f9fc2ea9b6e1cb0bffb3b88ab9ade1101374",
+        "recorded_sha256": "6402b36f1eae91bda30ccb66b632f9fc2ea9b6e1cb0bffb3b88ab9ade1101374",
+        "sha256_matches": true,
+        "rows": 2,
+        "completed_at": "2026-10-27T19:38:15.3019744Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-handoffs-r9-r10.json",
+        "actual_sha256": "edb384c85308bc0a00c4629d4463a79f104071388c8f2f12e815e4fb8edc626d",
+        "recorded_sha256": "edb384c85308bc0a00c4629d4463a79f104071388c8f2f12e815e4fb8edc626d",
+        "sha256_matches": true,
+        "rows": 2,
+        "completed_at": "2026-10-27T19:36:51.662Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-wiki-core.json",
+        "actual_sha256": "47a23781973b9f310cfedfb1039d69fd4ada8a501f35151b11772c263ed2c8e4",
+        "recorded_sha256": "47a23781973b9f310cfedfb1039d69fd4ada8a501f35151b11772c263ed2c8e4",
+        "sha256_matches": true,
+        "rows": 4,
+        "completed_at": "2026-10-27T19:39:36.969154Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-wiki-features.json",
+        "actual_sha256": "dd1973261e83e4d111eec2a6723a6a4c9c94ac27b9c221270e265f735dc47590",
+        "recorded_sha256": "dd1973261e83e4d111eec2a6723a6a4c9c94ac27b9c221270e265f735dc47590",
+        "sha256_matches": true,
+        "rows": 4,
+        "completed_at": "2026-10-27T19:38:27.025269Z"
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-requirements-r4.json",
+        "actual_sha256": "be24bc3388a614473f6e0ce5b8b1815eac3b60e149f3a87db9c144b8709e9728",
+        "recorded_sha256": "be24bc3388a614473f6e0ce5b8b1815eac3b60e149f3a87db9c144b8709e9728",
+        "sha256_matches": true,
+        "rows": 1,
+        "completed_at": "2026-10-27T19:41:00.150532Z"
+      },
+      {
+        "path": ".cache/v1/english-final-refresh/guide/independent-review.json",
+        "actual_sha256": "29504116ac8681c7ab7c859cd630e897cbe997950dc794e9924aa2a8ec57b4bd",
+        "recorded_sha256": "29504116ac8681c7ab7c859cd630e897cbe997950dc794e9924aa2a8ec57b4bd",
+        "sha256_matches": true
+      },
+      {
+        "path": ".cache/v1/english-final-refresh/guide/document-inspection.json",
+        "actual_sha256": "441d4e8841fd6ca301ee713ad74251ff98a82aa4a6f3b013d79436218357a137",
+        "recorded_sha256": "441d4e8841fd6ca301ee713ad74251ff98a82aa4a6f3b013d79436218357a137",
+        "sha256_matches": true
+      }
+    ],
+    "source_pairs": [
+      {
+        "source": "README.md",
+        "target": "README.en.md",
+        "source_sha256": "324374e118807e50bcaeb07086c1b3edd23458464009264f1331344b9550bd6b",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/README.md",
+        "reviewed_target_sha256": "03d120307da8e2054fa3c698e5e6b6d59cd61a6a9aa6fa054559fadb0973018b",
+        "final_target_sha256": "be26bb4ef366750b18cfad78bec30550abcdfba449e8e9fb002f9d3f97ce7e3a",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "target": "docs/en/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "source_sha256": "a1dc0936cf7b600f6999c93527812279a36f7e2c599df2ea5d7fd988e50c47e5",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "reviewed_target_sha256": "9be039ba3fc13aa7d6003b7f36897d737db2cabab9682e1b337bb2352d9b626d",
+        "final_target_sha256": "3d12b0eae7e9ccd0ee5bc020620268af375cd1cf70638d8843bf45d5d2cedb3b",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "target": "docs/en/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "source_sha256": "06d79f97b98d49eaf89a6f094c83f15cca7fc10193f161c35289bbcc49b8f160",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "reviewed_target_sha256": "d424a9c1f546e67326aea81cf85269321c0c6ad68990eccddbce5502f47e9897",
+        "final_target_sha256": "b5b768571c14520d5ea0fb0c89adfd03aa8274512aa8b7532be0c8f131514267",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/06-validation/PERFORMANCE_BUDGET.md",
+        "target": "docs/en/06-validation/PERFORMANCE_BUDGET.md",
+        "source_sha256": "79c677121bd74284b1be1266ad0ba1622e226e212ea631ca644fdf84e3551452",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/06-validation/PERFORMANCE_BUDGET.md",
+        "reviewed_target_sha256": "618663d1bce187befaf9de5616ae04ccf1d097d04f9312d5d4ad480c1539583e",
+        "final_target_sha256": "7f6a777977ce609d2053619e0f420136366bc273adb20341e31113374d91aa0a",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/11-v1/BROWSER_PERFORMANCE.md",
+        "target": "docs/en/11-v1/BROWSER_PERFORMANCE.md",
+        "source_sha256": "26f2f03a4e00df403e7da324f01d39fa216d53680d273ac34699670cba61cd43",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/11-v1/BROWSER_PERFORMANCE.md",
+        "reviewed_target_sha256": "80211f85ba0836b4eaf9f449cca65c41b65afd5e4b119a1c8a216fdc1feb3788",
+        "final_target_sha256": "a50417996e9478bb118e6250f8360beaa19be2f5ddd4e5571a203b48a15b9f32",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/11-v1/PHYSICS_ACCEPTANCE.md",
+        "target": "docs/en/11-v1/PHYSICS_ACCEPTANCE.md",
+        "source_sha256": "65eb5d1a2422b3bd75fc319e51ca4c7bc68f36bfd8dad4aa5139c522dabccc5e",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/11-v1/PHYSICS_ACCEPTANCE.md",
+        "reviewed_target_sha256": "888c8c9ac32a625a67ff61c0ac2b50ff6db36154582406bf35b19946ad684619",
+        "final_target_sha256": "69c51be91b28a92d54838e489983a1e6c3fdb909eb1ace6e5b8127356abb41b7",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.md",
+        "target": "docs/en/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.md",
+        "source_sha256": "78e23ebf14e97d65aff570ca57692081ce5b93c37b194d397711694c9492da53",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.md",
+        "reviewed_target_sha256": "0b11d40bb20832a652769e3e841f2b698fabff92786f55787a9fc74cde7979df",
+        "final_target_sha256": "1a29267e6e452f9c0d9c0aa94ea4068b31e6c5eb3475ddf001a93e66269c4cb5",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r10.md",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261028-r10.md",
+        "source_sha256": "fe27648c0648824fd9755c1221178b0ab016a79a9b017429680d5ba6f7f0fa48",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/11-v1/SESSION_PROGRESS_20261028-r10.md",
+        "reviewed_target_sha256": "809ec05e5a2598306ba45ea4aa21da62b537fece9e9f97c1dbe01fd3285085ba",
+        "final_target_sha256": "d42b7ae71e530334fda72d16f3f0d94177732a74b8a70281a0aebbef2a668d9d",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r9.md",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261028-r9.md",
+        "source_sha256": "9cdf8266e1262813e0143d0342f87c1653e4922334d9061fcc3e36fda47f127e",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/11-v1/SESSION_PROGRESS_20261028-r9.md",
+        "reviewed_target_sha256": "925802a0d7ceb128021269f1ea917e8b599bccaea1789004ac07f135d9904446",
+        "final_target_sha256": "f09e466a35b2737f0993726c37234bf63bce9fb40e5c0620bb95c24aa7a80fb5",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/IMPLEMENTATION_STATUS.md",
+        "target": "docs/en/IMPLEMENTATION_STATUS.md",
+        "source_sha256": "375a058607b762320ce526ce48a8ca6f78b774f6e6d61804f256d12c7dcb3d27",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/IMPLEMENTATION_STATUS.md",
+        "reviewed_target_sha256": "5cc531db7bdbce13f2052898f1278df32277f77932b579f94f963a59372d1cb7",
+        "final_target_sha256": "8cb3703aaa098f577c730c8ef14f85afa3715f188236f18fd56f30cb30b558b8",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/KNOWN_LIMITATIONS.md",
+        "target": "docs/en/KNOWN_LIMITATIONS.md",
+        "source_sha256": "cdd94a1593fea67c85cd65e33a212bd8ef1e28f1da0540afa4533443013b0370",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/KNOWN_LIMITATIONS.md",
+        "reviewed_target_sha256": "214110f7f483ce3710d869a483244d065f7eb91a56cc7116dcfc0a2128baae97",
+        "final_target_sha256": "495d39d0e7fed2ffbb966895a41cd820debfe938b7a473e49c6d12af311ce571",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "docs/NEXT_ENGINEERING_TASK.md",
+        "target": "docs/en/NEXT_ENGINEERING_TASK.md",
+        "source_sha256": "a440e60fc4f206f7d893109526a95621a6c14be6842147973a55e5e02c754c28",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/docs/NEXT_ENGINEERING_TASK.md",
+        "reviewed_target_sha256": "b7ab0ed8803856cf72516709904b0caab090f909fa34459d71a07301a077ecca",
+        "final_target_sha256": "bc944e910b7035a399668a3bfa1c3333bb77791a385b764e354820645120c4c0",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/experiments/record-replay.md",
+        "target": "docs/en/knowledge/wiki/experiments/record-replay.md",
+        "source_sha256": "dfe9270f9f3fa18f2339203bda45875b1d53859f49022c984564a33303439e42",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/experiments/record-replay.md",
+        "reviewed_target_sha256": "7194773f9aab0174d4b473fbf7eba4d2e105b43ffd4458d69ab608eda52c53d9",
+        "final_target_sha256": "512ad1d95238211d9e89bf329b4f657a3c630f7a75aecc62218e9825a1a7adc2",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/features/interactive-sandbox.md",
+        "target": "docs/en/knowledge/wiki/features/interactive-sandbox.md",
+        "source_sha256": "e756752fefe8f6d724d78aeeda1a4d77069fe57c081d68f3ae31ed865acccfaa",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/features/interactive-sandbox.md",
+        "reviewed_target_sha256": "a86cec88062972c9c676b91fed96e56a91a818caa51b2f895b95204224d8c52b",
+        "final_target_sha256": "4539ec39193fba18ebc81d65243e6b539cb349a78e47e0a45a7c39f1186acf8d",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/features/meta-agent.md",
+        "target": "docs/en/knowledge/wiki/features/meta-agent.md",
+        "source_sha256": "127a6dd986d8644a8beafad8e32cad6ad0d5ce29e63a34e4db8ff00ceda92993",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/features/meta-agent.md",
+        "reviewed_target_sha256": "ba6ec0cbe95a02260eeed151f00df97c9e3eed697fba5f6382309305aaf390a7",
+        "final_target_sha256": "01124ebac2125bd616c813c397eada0105e009be8e0a5f502a5334ae31f5861d",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/features/sound-behaviors.md",
+        "target": "docs/en/knowledge/wiki/features/sound-behaviors.md",
+        "source_sha256": "028a616d1c8b0ac772cbe8e91da288154ebefa90358a14e1ac0071f46cd4aa46",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/features/sound-behaviors.md",
+        "reviewed_target_sha256": "1a8b4fefc09fc8b0eb779f37ddbd184dada3fd3d1c99ff34914804c10ae295b7",
+        "final_target_sha256": "32b4b8258951eca4f461fc6afbcf1a673bf85e38bd4a3e5db638efa347c30957",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md",
+        "target": "docs/en/knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md",
+        "source_sha256": "df146616cba371b2e3ead0a9b207f8a55a55364d1fe629c56f66ccaebea770b8",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md",
+        "reviewed_target_sha256": "3cc8512afddf1bea6f0974b7ea26a63c5d37893c8e7085999ce1f0ea49ac46a8",
+        "final_target_sha256": "84f87e92fe97602a52d01b2f88feb6f07de47d890a24316e7d94a3ed60f8d71e",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md",
+        "target": "docs/en/knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md",
+        "source_sha256": "fc01320be96a1350be3a9bd732819faae640ab678474f4aa58185a05cfdd2831",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md",
+        "reviewed_target_sha256": "c10fe8ca18d6f8445c8fa16985fa45b43b64311e2799d2a5bd2094f04807d4de",
+        "final_target_sha256": "1ad0d04e6c72acf9a4785876d12769cc6f1c2b05733b6ed8de952123f1ca1303",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "target": "docs/en/knowledge/wiki/index.md",
+        "source_sha256": "2779ceba22f999db26ed8c1dc470f96dbf5cbe75193a7d75f6d7df52ca2f0440",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/index.md",
+        "reviewed_target_sha256": "fc4b9b487263c06ef939d535625b3b10d6c66f99eb5aefd0dabe895879641696",
+        "final_target_sha256": "0fe65873d7ab95acb1e4a578b93d8c37028d520541091739911a0dcd70715859",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "target": "docs/en/knowledge/wiki/log.md",
+        "source_sha256": "7fd5a9142748bb04e0a4ca1f443698cea8604b8ac089511e5748f22ee0dfb41c",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/log.md",
+        "reviewed_target_sha256": "a66aad62e130796a947234f9936d2ed4075665437d1163e1f9303c19a5940b46",
+        "final_target_sha256": "f2821099c75d0b5e26c6dcf1124ea77477453a84f1dc0ee3e212f7b710889eba",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "target": "docs/en/knowledge/wiki/now.md",
+        "source_sha256": "93ccc9f0fe1e336870154e893910dadb363153d0bf37a05ad5bbe9789ff64acd",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/now.md",
+        "reviewed_target_sha256": "6aabddcc0510013b2a20e3326591e02931963bfa0f242fa300093c091d0dc45a",
+        "final_target_sha256": "9493d1ca0bd0f456e438bd6bc33259c8ca341ca592c2834855edb939e57d2fa4",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      },
+      {
+        "source": "knowledge/wiki/tasks.md",
+        "target": "docs/en/knowledge/wiki/tasks.md",
+        "source_sha256": "5788eb7d6bb7222d1bb9e77a91b3b05f24adad3a90f5bee461b8c3e9aaf94efd",
+        "source_snapshot": ".cache/v1/english-final-refresh/sources/knowledge/wiki/tasks.md",
+        "reviewed_target_sha256": "2e1a19e1bc732c6423424edc1594f1d3b08cff87d49c97707568b7fdb2759311",
+        "final_target_sha256": "9a4026ca7c90ca99690d4965a26ed9b84263c64df3734a4bb7c0e328c07058f5",
+        "status": "CURRENT_AND_REVIEW_CARRY_FORWARD_VERIFIED"
+      }
+    ],
+    "authored_guide": {
+      "path": "docs/11-v1/USER_GUIDE.en.md",
+      "sha256": "a324a731c9e7efdb3a0b091ab0720e9e045eef006aeb385cad80bb2bbbb56477",
+      "status": "UNCHANGED_SINCE_INDEPENDENT_GUIDE_REVIEW",
+      "classification": "original English; not a fabricated Chinese translation pair"
+    },
+    "semantic_scope_qualification": "The eight group reports cover21 changed translation pairs; the separate README review completes the exact22-source union. This audit verifies declared review coverage, frozen/current source pins, raw reviewed English snapshots and final mechanical carry-forward. It does not newly read every unchanged historical translation semantically. The log retains156 previously reviewed labels/prose and independently reviews43 added events (199 total); this is not a new full199-event semantic reread.",
+    "historical_scope": "Previously reviewed unchanged corpus and ten frozen-history promotions are retained under their prior evidence; no broad redo is claimed."
+  },
+  "mechanical_finalization": {
+    "status": "PASS_EXACT_DOCUMENTED_MECHANICAL_TRANSFORM",
+    "pairs": 22,
+    "body_and_metadata_replay": "All22 final bodies equal pinned reviewed bodies after only local-link mapping, generated notice/anchor removal and the documented notice frontmatter separator rule; provenance metadata changes only links=english-relative.",
+    "frontmatter_separator_normalization_only": [
+      "knowledge/wiki/log.md"
+    ],
+    "comparison_setup_note": "Initial stricter comparison found one extra blank line after log frontmatter in the reviewed snapshot. The existing notice formatter normalizes that separator; this comparison explicitly models it without changing any document or wording.",
+    "independent_rule_sanity": "The production notice() frontmatter branch retains the frontmatter block, inserts one separator newline, and removes leading blank separator whitespace from the following body. This is restricted to the frontmatter/body boundary. It does not normalize interior prose, code, formulas, or arbitrary whitespace.",
+    "method_limit": "The independent replay uses the existing rewriteLinks helper whose frozen implementation was exercised by all31 English tests; it is a mechanical post-review preservation check, not an independent CommonMark implementation or new semantic rereview.",
+    "no_raw_byte_equality_claim_across_generated_wrappers": true
+  },
+  "shared_raw_evidence": {
+    "status": "PASS",
+    "count": 8,
+    "baseline_epoch": "Existing5 plus exact registered3; all8 match the independent31-test reviewer epoch",
+    "metadata_and_classifications_unchanged": true,
+    "source_and_receipt_pins_exact": true,
+    "records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        },
+        "independent_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        },
+        "independent_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        },
+        "independent_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "independent_source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "independent_source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        },
+        "independent_source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        },
+        "independent_source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        },
+        "independent_source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_pin_matches": true,
+        "metadata_unchanged_from_reviewed_epoch": true,
+        "evidence_pin_matches": true
+      }
+    ],
+    "meaning": "Immutable source/failure-context provenance remains shared; these records do not establish product/build/native success."
+  },
+  "warnings": {
+    "count": 15,
+    "unchanged_from_initial_frozen_audit": true,
+    "records": [
+      {
+        "source": "third_party/emil-skills.README.md",
+        "warnings": [
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/emil-design-eng/SKILL.md",
+            "target": "third_party/skills/emil-design-eng/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate/SKILL.md",
+            "target": "third_party/skills/animate/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate-expo/SKILL.md",
+            "target": "third_party/skills/animate-expo/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/review-animations/SKILL.md",
+            "target": "third_party/skills/review-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/improve-animations/SKILL.md",
+            "target": "third_party/skills/improve-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/find-animation-opportunities/SKILL.md",
+            "target": "third_party/skills/find-animation-opportunities/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-performance/SKILL.md",
+            "target": "third_party/skills/animation-performance/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-vocabulary/SKILL.md",
+            "target": "third_party/skills/animation-vocabulary/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/apple-design/SKILL.md",
+            "target": "third_party/skills/apple-design/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/write-swift/SKILL.md",
+            "target": "third_party/skills/write-swift/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/pick-ui-library/SKILL.md",
+            "target": "third_party/skills/pick-ui-library/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/prototype/SKILL.md",
+            "target": "third_party/skills/prototype/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/mobile-native/SKILL.md",
+            "target": "third_party/skills/mobile-native/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/break-ui/SKILL.md",
+            "target": "third_party/skills/break-ui/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/ask-sonner/SKILL.md",
+            "target": "third_party/skills/ask-sonner/SKILL.md"
+          }
+        ]
+      }
+    ],
+    "scope": "Retained upstream/original-document link warnings; no missing/stale/error is hidden by this statement."
+  },
+  "read_only_evidence": {
+    "unit_input_hashes_stable": true,
+    "full_check_input_hashes_stable": true,
+    "full_check_snapshot_files": 584,
+    "root_git_index_and_HEAD_bytes_stable": true,
+    "final_seal_matches_post_check_snapshot": true,
+    "final_seal_sha256": "d968e843e7dae05125961ec3995a49e819cf3b8d084c081e9e2298cbcbe92eae",
+    "continuous_monitor": false,
+    "reviewer_production_source_or_translation_mutations": false,
+    "Root_Git_mutations": false,
+    "reviewer_writes": "Only the authorized independent cache evidence and this final report"
+  },
+  "findings": [],
+  "limitations": [
+    "Documentation structure/currentness/hash and maintained local-link checks do not prove every sentence of the complete historical corpus.",
+    "No new product, physics/acoustic science, legal, external-rights, live-model, performance or hearing acceptance is claimed.",
+    "Remote URL availability and renderer-specific anchor identity remain outside these checks.",
+    "The maintained-document local-link check excludes24 raw snapshot directories; the separate English inventory retains exactly8 evidence-pinned raw Markdown exclusions.",
+    "Before/after hashes cannot detect reverted interim writes; source writers were frozen for this audit.",
+    "npm CI, build, browser, API/model, native/device/hearing tests, full npm check and Root Git mutations were NOT RUN."
+  ],
+  "all_filesystem_and_process_IO_end_after_this_report": true
+}

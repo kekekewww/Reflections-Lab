@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T15:41:58.8407900+00:00",
+  "status": "PASS",
+  "validation_mode": "MOCK_MUSE_TRIGGER_AND_ACTUAL_CURRENT_CODEX_IMPLEMENTATION",
+  "run_id": "b5b55f2a-4e54-4424-954c-a97e98d8dd91",
+  "task_id": "HARNESS-SMOKE",
+  "wiki_task_id": "RLAB-TASK-0008",
+  "goal_id": "goal-harness-smoke",
+  "milestone_id": "milestone-harness-smoke",
+  "muse_failure": "MOCK_QUOTA_EXHAUSTED",
+  "muse_live": "NOT RUN",
+  "codex_execution_mode": "CURRENT_ORCHESTRATOR",
+  "codex_model": null,
+  "codex_cli_version": null,
+  "codex_model_note": "Current chat model/version not exposed; installed CLI 0.163.0 was not invoked for implementation",
+  "codex_change": "Inspected handoff and existing preserved=40; appended answer=preserved+2 using apply_patch",
+  "original_partial_preserved": true,
+  "independent_acceptance": "examples/agents/acceptance.mjs",
+  "acceptance_sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+  "verification_evidence": [
+    {
+      "id": "de89baa9-d963-420e-b402-31c6ea1e1497",
+      "path": "runs/b5b55f2a-4e54-4424-954c-a97e98d8dd91/verification/de89baa9-d963-420e-b402-31c6ea1e1497.json",
+      "sha256": "fb066346e1d8438e9f87dfa3b3334b2027be07584255076f09fe36cdbb9c8024",
+      "status": "PASS",
+      "authority": "independent-node-runner"
+    }
+  ],
+  "final_status": "COMPLETED",
+  "git_revision": null,
+  "immutable_wiki_patch": "artifacts/phase3-current-codex/wiki-patch.json",
+  "wiki_task_update_exit": 0,
+  "commands": [
+    {
+      "command": "init with MUSE-only mock plan",
+      "exit_code": 0
+    },
+    {
+      "command": "run --runner mock",
+      "exit_code": 2
+    },
+    {
+      "command": "acknowledge actual handoff hash",
+      "exit_code": 0
+    },
+    {
+      "command": "verify original independent acceptance",
+      "exit_code": 0
+    },
+    {
+      "command": "export-wiki + agent-projection + wiki task update",
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "Mock quota does not prove actual subscription exhaustion",
+    "No paid Muse/Meta model invocation",
+    "Deterministic fixture does not prove product/browser/physics/audio behavior"
+  ]
+}

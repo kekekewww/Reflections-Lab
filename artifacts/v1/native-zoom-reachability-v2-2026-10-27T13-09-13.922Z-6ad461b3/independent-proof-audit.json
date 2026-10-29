@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27T13:15:40.993Z",
+  "status": "PASS_WITH_VISUAL_LIMITATION",
+  "strictSuiteStatus": "PASS",
+  "receiptConsistency": "PASS",
+  "scope": "Independent read-only receipt/source-hash/geometry/control/cleanup audit of the completed single V2 run; additive limitation seal only",
+  "summary": {
+    "path": "summary.json",
+    "sha256": "7b5566e7ea7c761423b5f57fe9191a763b4a47405cae08b6c63b46569fa6e1b8"
+  },
+  "inputDigest": "0eefc158d5d2ee1a2a9f75ec42340867c99373ec287dcb71d100a6f05bd86d1e",
+  "manifestSha256": "f6c4553e68bc5e396e178deb8518cb2cb5f32c875851aaab1ba7d4e747adaee8",
+  "method": "BROWSER_PROTOCOL_GESTURE",
+  "notOSKeyboard": true,
+  "cases": [
+    {
+      "mode": "native200",
+      "status": "PASS",
+      "actualVisibilityGates": 3,
+      "controlsReached": 14,
+      "functionalChecks": 5,
+      "apiZoomBefore": 1,
+      "apiZoomAfter": 2,
+      "dprBefore": 1,
+      "dprAfter": 2,
+      "cssWidthBefore": 1424,
+      "cssWidthAfter": 712,
+      "sameNativeWindow": true,
+      "visualViewportScale": 1,
+      "cssZoom": 1,
+      "nativeCanvasPointerLock": true,
+      "trustedFocusedActiveGesture": true,
+      "listenerExitRestored": true,
+      "restoredApiZoom": 1,
+      "restoredDpr": 1,
+      "restoredCssWidth": 1424,
+      "ownedPid": 90764,
+      "processExited": true
+    },
+    {
+      "mode": "css320",
+      "status": "PASS",
+      "actualVisibilityGates": 3,
+      "controlsReached": 14,
+      "functionalChecks": 5,
+      "nativeApiZoom": 1,
+      "dpr": 1,
+      "cssViewport": [
+        320,
+        568
+      ],
+      "class": "CSS viewport override at native100; separate from native200",
+      "nativeCanvasPointerLock": true,
+      "trustedFocusedActiveGesture": true,
+      "listenerExitRestored": true,
+      "restoredApiZoom": 1,
+      "restoredDpr": 1,
+      "restoredCssWidth": 1424,
+      "ownedPid": 82536,
+      "processExited": true
+    }
+  ],
+  "provenance": {
+    "beforeAfterScriptBindings": 7,
+    "rawSourceSnapshots": 7,
+    "rawSourceHashesMatch": true,
+    "allScriptHashesStable": true,
+    "protectedOriginalScriptsUnchanged": 4,
+    "localFilesStablePerCase": 181,
+    "appInputFiles": 169,
+    "bundleFiles": 12,
+    "httpBundleFilesStableBeforeAfterPerCase": 12,
+    "originalAssertionsAndTolerancesPreserved": true
+  },
+  "cleanup": {
+    "exactOwnedPidAudit": "owned-process-audit.json",
+    "ownedBrowserPidsAbsent": [
+      90764,
+      82536
+    ],
+    "forcedKills": 0,
+    "previewLeftUntouchedByRunner": 4608,
+    "coordinatorReportedPreviewClosedAfterNativeEnd": true,
+    "additionalProcessQueriesDuringSeal": 0
+  },
+  "errors": {
+    "page": 0,
+    "console": 0,
+    "http": 0,
+    "blockedOutbound": 0
+  },
+  "independentReview": {
+    "agent": "/root/v1_native_accessibility/native_test_review",
+    "kind": "Read-only audit of existing JSON/raw-source hashes and two existing PNGs",
+    "materialReceiptInconsistencies": 0,
+    "native200ScreenshotLimitationConfirmed": true
+  },
+  "limitations": [
+    "native200 PNGs are 712x424 at actual CSS viewport712x424 and DPR2; observed bitmap shows the enlarged top-left crop and does not fully visually corroborate the Exit control. Functional native DOM geometry, trusted activation, actual Exit action and Listener state evidence remain separately recorded PASS. No screenshot or receipt was repaired or replaced.",
+    "css320 PNG visibly shows the focused Exit control. This mode is a CSS viewport override at native100, not native200.",
+    "css320 restoration proves API1/DPR1/viewport dimensions; emulated screen dimensions do not return to the original native screen values.",
+    "No OS keyboard, native browser-menu operation, OS IME, screen reader, human hearing, hardware performance or overall V1 completion claim."
+  ],
+  "historicalFailuresPreserved": true,
+  "retries": 0,
+  "cuaCalls": 0,
+  "osKeyboardCalls": 0,
+  "finalization": "Only the existing summary JSON was read to hash it and this new additive JSON was written. No commands, browser, source, tests or process operations occurred during this seal."
+}

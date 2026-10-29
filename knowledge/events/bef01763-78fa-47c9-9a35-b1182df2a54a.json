@@ -1,0 +1,152 @@
+{
+  "id": "bef01763-78fa-47c9-9a35-b1182df2a54a",
+  "type": "handoff",
+  "created_at": "2026-10-26T18:13:12.865Z",
+  "agent": "codex-root",
+  "session": "sound-behavior-20261027",
+  "summary": "Sound Behavior研究結案；Task0010 DONE、0011 READY，Codex主導，正式產品尚未實作",
+  "task_id": "RLAB-TASK-0010",
+  "details": {
+    "agent": "codex-root",
+    "session": "sound-behavior-20261027",
+    "task_id": "RLAB-TASK-0010",
+    "summary": "Sound Behavior研究結案；Task0010 DONE、0011 READY，Codex主導，正式產品尚未實作",
+    "completed": [
+      "Codex primary ADR013, optional MuseCode no model dispatch; oldhistory retained",
+      "Event Rules+orthogonalstates+Inspector; Physics/content/propagation separated",
+      "21contract+13policy+3WASM PASS; aggregate22capabilitiesPASS afterdoc-link-onlyrepair",
+      "Independent review P2s fixed; originalScene/Experiment/12AIenum unchanged",
+      "Wiki sources/synthesis/goals/decisions/roadmap updated; Task0011–0015 stable dependencies created",
+      "Task0010全四項帶證據驗收已完成且owner釋放；Task0011 READY；Wiki166sources，歷史24hash warnings保留"
+    ],
+    "commands": [
+      {
+        "command": "node scripts/validation/run-all.mjs --output benchmarks/results/phase3-sound-behavior-20261027-final.json",
+        "result": "20PASS,2linkgatesFAIL retained",
+        "exit_code": 1
+      },
+      {
+        "command": "node scripts/validation/docs.mjs; node scripts/wiki/cli.mjs lint --format json",
+        "result": "BothPASS after oneWiki relative-linkrepair; no testedcode changed",
+        "exit_code": 0
+      },
+      {
+        "command": "scripts/setup/validate-skills.ps1 bundledPython",
+        "result": "15projectofficialformatPASS;8Emilbytesseparate",
+        "exit_code": 0
+      }
+    ],
+    "evidence": [
+      {
+        "path": "benchmarks/results/sound-behavior-validation-20261027.json",
+        "sha256": "4b9839aa22bb015b6fde993e59d80f6fd5d615ac046b480d69e9fa4ebf24d4d3",
+        "result": "PASS documented scope; product audio/browser/Meta NOT RUN"
+      },
+      {
+        "path": "docs/10-sound-behaviors/INDEPENDENT_REVIEW.md",
+        "sha256": "09bfa748810d2b468e8954b8261789f9ae0027b635b9338e7a8165e951d7df8c",
+        "result": "PASS documented scope; product audio/browser/Meta NOT RUN"
+      },
+      {
+        "path": "experiments/sound-behavior-spike/physics-validation-final-2026-10-27.json",
+        "sha256": "a7786170f8b7d19464bba698e3a0dbf122d18620f185891cef55a0d59be55296",
+        "result": "PASS documented scope; product audio/browser/Meta NOT RUN"
+      },
+      {
+        "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md",
+        "sha256": "ecd8214327e3752b62d2c26875416b7a1659e36baedeaa9ffc2a72060fc18843",
+        "result": "PASS documented scope; product audio/browser/Meta NOT RUN"
+      }
+    ],
+    "modified_files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "b89a89bc3eda034a1eba310a8540218a961b2f3af1da2c1fd529c6d4206a80a8",
+        "state": "present"
+      },
+      {
+        "path": "docs/02-architecture/adr/013-codex-primary-development.md",
+        "sha256": "90f324096a0509b54c1ca3e90bf6224c92d25552d8906f34fbecc9e178293fc7",
+        "state": "present"
+      },
+      {
+        "path": "docs/02-architecture/adr/014-sound-behavior-system.md",
+        "sha256": "e530e565ae60a311f840d92baf9ff93b2430f1d28022698484e418a875d3d910",
+        "state": "present"
+      },
+      {
+        "path": "schemas/sound-behavior/behavior-document.schema.json",
+        "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+        "state": "present"
+      },
+      {
+        "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+        "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+        "state": "present"
+      },
+      {
+        "path": "schemas/sound-behavior/types.ts",
+        "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+        "state": "present"
+      },
+      {
+        "path": "scripts/validation/sound-behavior.mjs",
+        "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+        "state": "present"
+      },
+      {
+        "path": "experiments/sound-behavior-spike/physics-policy.mjs",
+        "sha256": "c7ec6f5a1bd6f1ca3970e36ead6151e941d6ab68b4dfc8619db0bd5a76dc0a7b",
+        "state": "present"
+      },
+      {
+        "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md",
+        "sha256": "ecd8214327e3752b62d2c26875416b7a1659e36baedeaa9ffc2a72060fc18843",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/tasks/RLAB-TASK-0010.json",
+        "sha256": "b8e9208c4d83df24b012268ec4652cd7b1f03c2f247d2bc9bf95fc0bf1119fed",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/tasks/RLAB-TASK-0011.json",
+        "sha256": "e5e68ea81ff898569cbb954d7cf72531af1c79788d2d1a3f3042ff6d03450dc8",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/tasks/RLAB-TASK-0009.json",
+        "sha256": "01e3582e2420e9e572135861245cdd990ce5fcfba9801ad9703cb2da9bb077c4",
+        "state": "present"
+      },
+      {
+        "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+        "sha256": "86dbe18573ac3f8969b6934c10b1245e1c8aa03d98be873fdd3bf2c65d0deaa9",
+        "state": "present"
+      }
+    ],
+    "risks": [
+      "Product evaluator/SourceGraph/Inspector/Apply/Undo/Meta live notimplemented",
+      "Browser/OfflineAudioContext/HRTF/click-pop/hearing/performance/replay NOTRUN",
+      "Currentdraftnotretired-profilemultiversion; safeApplypause/fade/drain/newrevision/epoch",
+      "PubliccodingagentclausesUNSTATED, details/submitloginrestricted; noeligibility/termsacceptance"
+    ],
+    "next_steps": [
+      "下一正式工作Task0011：純TypeScript Audio Event Runtime；可與Scene/Physics0006平行。此handoff不授權啟動產品實作。",
+      "Task0012最小SourceGraph/AlwaysOn/OnImpact/Inspector依賴0006與0011；0013再補互動與enhancements。",
+      "Task0014保留產品Meta真工具整合與Task0007外部live gate；Codex開發不代替Meta證據。",
+      "最後Git commit收錄本handoff、實際file manifest與FINAL_STATE；無push。新Session先讀Now、最新handoff與Task0011，不重做研究。"
+    ],
+    "now": {
+      "expected_hash": "11661578610e990b71ebd8874ea041b53807366a07ea82aa12bf33dd1da7711e",
+      "body": "# 現在的Reflection Lab\n\n2026-10-27 Sound Behavior研究／架構整合完成，Task0010 DONE、claims已釋放；正式產品仍未實作。**Codex主導開發，MuseCode Optional**，ADR-013取代舊強制Muse優先，舊Harness與Phase3證據保留。Muse0額度仍不派模型，產品Meta API獨立UNKNOWN／live NOTRUN。Task0009舊mandatoryLiveHarness已CANCELLED，不是驗證通過，也不解除Task0007產品帳號／資格。\n\n[Sound Behavior報告](../../docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md)：EventRules＋正交states＋Inspector，Graph/modal P2；Physics/content/propagation分層，所有3D聲音走同一SourceGraph，contact anchor不一律COM，delay/distance/HRTF只一次。Schema v1與AI工具只是外接draft，既有Scene/Experiment v1和12AIenum不變。\n\n[整合證據](../../benchmarks/results/sound-behavior-validation-20261027.json)22項能力PASS（20初跑＋2項Wiki相對連結修復後PASS，原FAIL保留）；21contracts＋13policy=34/34，真Rapier API3/3。保留core32／OptionalHarness75／prompts12／design14回歸，Wiki53+1skip；15自有Skills格式與8Emilbytes分開PASS。獨立review問題已修正，沒有以放寬驗收製造成功。\n\n[下一M0 Task0011](../tasks/RLAB-TASK-0011.json)已READY但未實作：純TS Audio Event Runtime可與Scene/Physics0006平行。Task0012最小3D/audio/Inspector依賴兩者；0013互動/rolling/latch/A-B、0014產品Meta真工具、0015Graph advanced P2。本次不啟動這些產品工作。v1 Apply需pause/fade/drain＋新revision/epoch，還沒有無縫retired-profile voices。\n\n[功能](features/sound-behaviors.md)／[研究](research/interactive-sound-design.md)／[驗證](experiments/sound-behavior-validation.md)；正式設計／physics／audio／science仍在各領域docs。Browser/OfflineAudioContext/click-pop/HRTF/hearing/performance/完整replay/Meta live均NOTRUN。公開codingagent條款UNSTATED，登入後完整細則無法獨立核實，不代接受條款。\n\nGit分支codex/sound-behavior-research，基線914cfc7保留歷史，本次結案紀錄依實際git log，無push。新Agent讀最新handoff與真正task/status，不重做研究、不依舊Phase3角色自動切回Muse，不把draft/spike宣稱成正式功能。\n"
+    },
+    "git": {
+      "branch": "codex/sound-behavior-research",
+      "head": "914cfc742e7e575a09272fba5738d20c3fd5e3b7",
+      "status": "M .agents/skills/agent-orchestration/SKILL.md\n M .agents/skills/codex-verification/SKILL.md\n M .agents/skills/muse-implementation/SKILL.md\n M .agents/skills/spatial-audio-dsp/SKILL.md\n M AGENTS.md\n M README.md\n M docs/01-compliance/HACKATHON_RULES.md\n M docs/02-architecture/ADR_INDEX.md\n M docs/02-architecture/ARCHITECTURE.md\n M docs/02-architecture/AUDIO_RUNTIME.md\n M docs/02-architecture/adr/012-development-harness.md\n M docs/04-physics/PHYSICS_AUDIO_EVENTS.md\n M docs/07-experiments/AB_COMPARISON.md\n M docs/07-experiments/RECORD_REPLAY.md\n M docs/08-ai/AI_EXPERIMENT_AGENT.md\n M docs/09-agents/CODEX_MUSE_ORCHESTRATION.md\n M docs/09-agents/FAILOVER_POLICY.md\n M docs/09-agents/MODEL_ROUTING.md\n M docs/09-agents/MULTI_AGENT_ARCHITECTURE.md\n M docs/IMPLEMENTATION_STATUS.md\n M docs/KNOWN_LIMITATIONS.md\n M docs/NEXT_ENGINEERING_TASK.md\n M docs/ROADMAP.md\n M eslint.config.mjs\n M experiments/physics-spike/results.json\n M knowledge/sources/manifest.json\n M knowledge/tasks/RLAB-TASK-0006.json\n M knowledge/tasks/RLAB-TASK-0009.json\n M knowledge/wiki/architecture/development-agents.md\n M knowledge/wiki/architecture/runtime-and-contracts.md\n M knowledge/wiki/blockers/open-questions.md\n M knowledge/wiki/concepts/evidence-levels.md\n M knowledge/wiki/decisions/index.md\n M knowledge/wiki/experiments/physics-and-benchmarks.md\n M knowledge/wiki/experiments/record-replay.md\n M knowledge/wiki/features/interactive-sandbox.md\n M knowledge/wiki/features/meta-agent.md\n M knowledge/wiki/goals.md\n M knowledge/wiki/history/agent-runs.md\n M knowledge/wiki/index.md\n M knowledge/wiki/log.md\n M knowledge/wiki/now.md\n M knowledge/wiki/research/acoustics-and-dsp.md\n M knowledge/wiki/roadmap.md\n M knowledge/wiki/tasks.md\n M knowledge/wiki/ui-ux/design-engineering.md\n M knowledge/wiki/ui-ux/fps-grab-review.md\n M package.json\n M research/EVIDENCE_LEDGER.json\n M scripts/validation/run-all.mjs\n M tsconfig.json\n?? .prettierignore\n?? benchmarks/muse/results/offline-2026-10-26T17-58-20-861Z.json\n?? benchmarks/results/phase3-sound-behavior-20261027-final.json\n?? benchmarks/results/sound-behavior-validation-20261027.json\n?? docs/00-project/SOUND_BEHAVIOR_FILE_MANIFEST.md\n?? docs/00-project/SOUND_BEHAVIOR_REQUEST.md\n?? docs/02-architecture/adr/013-codex-primary-development.md\n?? docs/02-architecture/adr/014-sound-behavior-system.md\n?? docs/05-ux/SOUND_BEHAVIOR_UX.md\n?? docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md\n?? docs/10-sound-behaviors/BEHAVIOR_SCHEMA.md\n?? docs/10-sound-behaviors/EVENT_MODEL.md\n?? docs/10-sound-behaviors/FINAL_STATE.json\n?? docs/10-sound-behaviors/INDEPENDENT_REVIEW.md\n?? docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md\n?? docs/10-sound-behaviors/PHYSICS_AUDIO_BRIDGE.md\n?? docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md\n?? docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md\n?? docs/10-sound-behaviors/SOUND_BEHAVIOR_RESEARCH.md\n?? docs/10-sound-behaviors/SOUND_BEHAVIOR_VALIDATION.md\n?? docs/10-sound-behaviors/TASK_POLICY_UPDATE.json\n?? docs/superpowers/plans/2026-10-27-sound-behavior.md\n?? experiments/sound-behavior-spike/physics-policy.mjs\n?? experiments/sound-behavior-spike/physics-policy.test.mjs\n?? experiments/sound-behavior-spike/physics-probe.mjs\n?? experiments/sound-behavior-spike/physics-results-2026-10-26T17-23-43-200Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-26T17-24-46-117Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-26T17-57-48-990Z.json\n?? experiments/sound-behavior-spike/physics-validation-2026-10-27.json\n?? experiments/sound-behavior-spike/physics-validation-final-2026-10-27.json\n?? experiments/sound-behavior-spike/skills-validation-20261027.txt\n?? knowledge/events/02853085-b8d0-4037-932b-79afd49b330d.json\n?? knowledge/events/08fc2a5a-81ef-4630-8de8-d18f7157f69b.json\n?? knowledge/events/0ad7b64d-a6e3-4afe-b83d-7909b9ef427c.json\n?? knowledge/events/0fd07344-2b04-4218-8ea5-dc2284580abf.json\n?? knowledge/events/120ced74-9585-4473-885b-e77c161c92ba.json\n?? knowledge/events/15c9248a-a94c-4fa4-adeb-8a2869df81ee.json\n?? knowledge/events/16f7182b-3bd3-45af-a6c6-92facc94cdfe.json\n?? knowledge/events/1ab6d9da-2d4d-4f69-892f-1baea3564869.json\n?? knowledge/events/1bd7b2d5-3e18-4bbb-851f-853ef49d834a.json\n?? knowledge/events/1bdc1f19-6e4e-42c7-9a16-4541145f9365.json\n?? knowledge/events/200e37b6-f8f4-41fe-8529-8f9aac664039.json\n?? knowledge/events/20b627f0-3547-407a-bb21-355274951ec5.json\n?? knowledge/events/27d54680-9ca0-4171-828a-68742e13d3b1.json\n?? knowledge/events/29dbf704-421f-49bf-a689-bae9e233a1e2.json\n?? knowledge/events/2fbc750e-7117-455b-90c5-ab277dc2c0e2.json\n?? knowledge/events/3f0da990-2f9c-4927-b742-f2abb7d6c555.json\n?? knowledge/events/42f6a408-6ed5-405e-882b-965a0adc259b.json\n?? knowledge/events/43814940-dd3c-4e20-8ad9-c4b6ca10fdc0.json\n?? knowledge/events/5076381c-6537-45df-ac20-72a07849de2e.json\n?? knowledge/events/52786161-0f63-470e-a5e6-fc5ce9247f58.json\n?? knowledge/events/52ad18fc-f104-4307-895e-1c4544d5d8c1.json\n?? knowledge/events/64320b60-6a2e-4785-9cee-26fdf69c7a7c.json\n?? knowledge/events/73b035f3-cc24-46ea-830f-b715b9df5d4a.json\n?? knowledge/events/760eeb44-8399-40b9-9d80-44212726b36c.json\n?? knowledge/events/77ee6975-27ca-4a00-b085-24823acd20c6.json\n?? knowledge/events/7a86ad37-c477-48a2-8780-10009380ba53.json\n?? knowledge/events/83679785-93c1-4574-8918-97d3e0981489.json\n?? knowledge/events/85e78c7c-4f84-4f79-a0f6-1ee444d52da2.json\n?? knowledge/events/88517dc5-8033-4f94-a270-181fd463cd9e.json\n?? knowledge/events/89a75745-dfa3-43f0-8bc4-88b542445cf4.json\n?? knowledge/events/8ba23622-30dc-479a-981e-dfd83a7d870a.json\n?? knowledge/events/8c3175bd-9d93-4f7d-96ee-e46f844013b3.json\n?? knowledge/events/91461e3f-b6c2-4b2e-be27-bde4026d7028.json\n?? knowledge/events/92a0f2f4-83d3-4090-9a75-ec5fb6a5a0e7.json\n?? knowledge/events/9ec82fac-5db7-4dfe-9679-3442e137caf8.json\n?? knowledge/events/9fa6658b-5185-46f7-b529-3f41d79a606d.json\n?? knowledge/events/a60227ad-fae5-4a41-9239-ce0392d66aea.json\n?? knowledge/events/b1df5491-eba0-4dee-839b-7e8d347787f5.json\n?? knowledge/events/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.json\n?? knowledge/events/b879f726-cbe1-421b-961d-1899489cc7fa.json\n?? knowledge/events/b942f9e2-fb2e-443c-8690-580c463a01c1.json\n?? knowledge/events/bdd75cb7-0f0c-4855-8500-6991df3a2a20.json\n?? knowledge/events/c1501559-1357-4a73-901a-cb7c87ce362c.json\n?? knowledge/events/c2f5b794-6204-477c-9ecc-22e08a421ee1.json\n?? knowledge/events/c4c56467-369d-415b-948d-686472de9a09.json\n?? knowledge/events/c9e94c5f-945c-41e6-8863-f68b05c43258.json\n?? knowledge/events/d39fe28d-ae0f-40d5-8483-0b55503528b0.json\n?? knowledge/events/d5946f77-fa86-4bcd-b9cc-a0cc1554aff7.json\n?? knowledge/events/dda90c89-e37a-4404-a199-7aadff5f52b4.json\n?? knowledge/events/e3f43d94-2095-4bc7-8314-d257d28459f2.json\n?? knowledge/events/e8185fbe-fac3-444c-822d-17dcee2f796e.json\n?? knowledge/events/e96fbda9-7b63-4347-9ca0-02ba7e2bd2fd.json\n?? knowledge/events/ec8a8f84-2008-4818-8a02-813f35aea9fe.json\n?? knowledge/events/f258d7fb-7595-4348-b281-7c0274f55cdb.json\n?? knowledge/events/f8ea56cf-f0a6-42ff-81d6-dfe10e595082.json\n?? knowledge/events/ff2050c1-6cfd-46f0-bb73-4fe8cfb31d1f.json\n?? knowledge/tasks/RLAB-TASK-0010.json\n?? knowledge/tasks/RLAB-TASK-0011.json\n?? knowledge/tasks/RLAB-TASK-0012.json\n?? knowledge/tasks/RLAB-TASK-0013.json\n?? knowledge/tasks/RLAB-TASK-0014.json\n?? knowledge/tasks/RLAB-TASK-0015.json\n?? knowledge/transactions/00052a5d-fb82-4d55-8011-4297f763f970.json\n?? knowledge/transactions/12404176-b610-41e0-9cd6-72147c4ee7af.json\n?? knowledge/transactions/1421d3c1-fc62-49eb-9baa-8a5645c68784.json\n?? knowledge/transactions/162e5b41-fb30-4ed7-b925-8c1aa4caba59.json\n?? knowledge/transactions/1ecf6344-4253-4d01-ba36-eeac6103e1f5.json\n?? knowledge/transactions/212195f6-c7fb-4a4e-b94f-0e0eacdd0dea.json\n?? knowledge/transactions/22fc509b-85c1-4f76-9d83-6a08a12f9272.json\n?? knowledge/transactions/2562f0d6-57c2-498b-bc9d-c548d3ed44d9.json\n?? knowledge/transactions/258e05f0-8099-43d6-a7bc-74d27d702e70.json\n?? knowledge/transactions/2ab97bae-00e6-43a0-ad84-f083ce04f0c1.json\n?? knowledge/transactions/30b151e0-5cde-45b7-817c-40f6ca63a388.json\n?? knowledge/transactions/315029a8-3659-49a3-aa2a-13f182b9759a.json\n?? knowledge/transactions/343d5dcd-d64c-4d6a-8e33-f2db36d22cef.json\n?? knowledge/transactions/3787c1f9-fced-4008-9e0c-5d2d98d9ad9f.json\n?? knowledge/transactions/43c5ce5a-ad6b-444d-8d7d-1c10e305a2d6.json\n?? knowledge/transactions/48516932-c3f4-4368-a2a8-29239b102135.json\n?? knowledge/transactions/4bf85602-58e1-4483-8729-5a0a8dcdaa77.json\n?? knowledge/transactions/4d528b09-fde8-45fa-afcb-db6fb6a943e9.json\n?? knowledge/transactions/54710a10-c5fa-4d28-bada-c37e2235a5a4.json\n?? knowledge/transactions/56a00ca9-26db-4f83-a585-4d31ff24f95c.json\n?? knowledge/transactions/573cc3ea-7345-4437-86de-f7f37f61bd9e.json\n?? knowledge/transactions/57dd1d84-306d-460b-b7aa-82614f2e9c26.json\n?? knowledge/transactions/5dfb42da-a612-4716-a5ea-9eb76c474a7c.json\n?? knowledge/transactions/69f91442-a687-4948-a58d-c55f2330fb9e.json\n?? knowledge/transactions/6e69514d-5aa7-4a5b-abfa-e7b21166aca6.json\n?? knowledge/transactions/6f6d7d68-e613-40c4-9bcd-36e8406430d7.json\n?? knowledge/transactions/7035f554-c062-41a5-8b9d-e79d4b58147f.json\n?? knowledge/transactions/7c6f02a1-9b26-479e-8aee-ffc77feb9423.json\n?? knowledge/transactions/7cef9a40-4b0a-4df5-bf69-6da438b43d38.json\n?? knowledge/transactions/829260b0-230e-4335-85d2-eb29aaa53412.json\n?? knowledge/transactions/8649fdb4-0f26-4233-bb01-d8e3b0c29073.json\n?? knowledge/transactions/8a6de8a0-4a3e-4aad-8ab7-5fcd63a74656.json\n?? knowledge/transactions/8f49a58a-26a3-48ce-8fbb-2edc1aa277da.json\n?? knowledge/transactions/945500d0-3d5c-47b3-89a7-d6395863d1f0.json\n?? knowledge/transactions/9689f0cd-5948-433c-b743-0fa84b235a16.json\n?? knowledge/transactions/96d588c2-4167-478e-bd18-d202cdacfb12.json\n?? knowledge/transactions/9ec9906b-597b-4915-8b57-cef7dcbb9451.json\n?? knowledge/transactions/a056ddae-7982-4267-8292-f636c561bf24.json\n?? knowledge/transactions/a10b3820-3f36-445a-b506-62a6313a7dc2.json\n?? knowledge/transactions/a42fdf81-919b-46f2-85f5-a672ab70af2f.json\n?? knowledge/transactions/a6a3d86e-c8c7-4d3e-ad3b-ac6ac16ff2b0.json\n?? knowledge/transactions/af9b6c00-6755-4e12-9238-1643e06ca360.json\n?? knowledge/transactions/b61adae3-cc84-42b0-ab33-3026d0250875.json\n?? knowledge/transactions/b9cbc7df-2517-4eb5-95ca-78294236bd04.json\n?? knowledge/transactions/bd3856e4-8e9e-4628-a062-d8564af94ef5.json\n?? knowledge/transactions/bffd5527-981e-4b0d-820e-c4f8229335fe.json\n?? knowledge/transactions/c3765f33-ddbb-4072-a48d-7c30b2074a5b.json\n?? knowledge/transactions/c4e30823-60fc-4568-a088-52c95ea62b96.json\n?? knowledge/transactions/c8502e8c-a47b-4ee2-84c5-deada86ff1c7.json\n?? knowledge/transactions/cd1a9950-038b-4c70-b909-d9fde33ef2d8.json\n?? knowledge/transactions/d0d48537-e1cb-4124-ae57-8be7f243e845.json\n?? knowledge/transactions/e5eb4b62-01ac-4d36-bfe0-640cffe2f129.json\n?? knowledge/transactions/e9bc12fb-1c67-4edd-8eb2-6c8706ca96de.json\n?? knowledge/transactions/f20bc4c9-740b-4aa7-a1f1-1d22a81d4ae9.json\n?? knowledge/transactions/f3adc207-76e3-4d71-8b83-feff6b9ef4d8.json\n?? knowledge/transactions/fe9141ae-72d5-40c5-aac6-4d56e3646c25.json\n?? knowledge/transactions/fec1ed04-c420-4f20-8465-b9d4bb30d156.json\n?? knowledge/wiki/experiments/sound-behavior-validation.md\n?? knowledge/wiki/features/sound-behaviors.md\n?? knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md\n?? knowledge/wiki/research/interactive-sound-design.md\n?? research/sound-behaviors/ai-rules-sources.json\n?? research/sound-behaviors/audio-sources.json\n?? research/sound-behaviors/middleware-sources.json\n?? research/sound-behaviors/physics-sources.json\n?? research/sound-behaviors/ux-sources.json\n?? schemas/sound-behavior/behavior-document.schema.json\n?? schemas/sound-behavior/examples/asset-descriptor.json\n?? schemas/sound-behavior/examples/audio-event.json\n?? schemas/sound-behavior/examples/comparison.json\n?? schemas/sound-behavior/examples/context.json\n?? schemas/sound-behavior/examples/document.json\n?? schemas/sound-behavior/examples/proposal.json\n?? schemas/sound-behavior/examples/runtime-state.json\n?? schemas/sound-behavior/sound-behavior-ai.schema.json\n?? schemas/sound-behavior/types.ts\n?? scripts/validation/sound-behavior.mjs\n?? tests/sound-behaviors/contracts.test.mjs\n?? tests/sound-behaviors/format-output.txt\n?? tests/sound-behaviors/latest-fixture-output.json\n?? tests/sound-behaviors/latest-test-output.txt",
+      "worktree": "D:\\Developing\\Meta Hack"
+    },
+    "execution_note": "命令與結果由操作者提供；檔案 hash 與 Git 狀態由工具現場取得。"
+  }
+}

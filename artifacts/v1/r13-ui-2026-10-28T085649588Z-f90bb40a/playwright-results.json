@@ -1,0 +1,998 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      ".cache/v1/r13-browser.config.ts"
+    ],
+    "configFile": "D:\\Developing\\Meta Hack\\.cache\\v1\\r13-browser.config.ts",
+    "rootDir": "D:/Developing/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Developing/Meta Hack/artifacts/v1/r13-ui-2026-10-28T085649588Z-f90bb40a/cases",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Developing/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "ui-refined-v2.spec.ts",
+          "ui-locale-refined-v2.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "snapshotDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": [
+          "ui-refined-v2.spec.ts",
+          "ui-locale-refined-v2.spec.ts"
+        ],
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5183",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": [
+              "--use-gl=angle",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a/playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-locale-refined-v2.spec.ts",
+      "file": "ui-locale-refined-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EN-01 visible native choice defaults to zh-TW and persists English across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5175,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:56:55.582Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "public-icon-http-verification.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJwYXRoIjogIi9mYXZpY29uLnN2ZyIsCiAgICAic3RhdHVzIjogMjAwLAogICAgImNvbnRlbnRUeXBlIjogImltYWdlL3N2Zyt4bWwiLAogICAgImJ5dGVzIjogNDE2LAogICAgInNvdXJjZVNoYTI1NiI6ICJhNzE4ZWM2YzQ1MGZhNTQxMDY5ZmIyNTRjZWUzMmQxMDllOTEwZmE2MTVkMWEyNGJlMzQ2ZmFlYjBjMTYxMDc0IiwKICAgICJidWlsZElucHV0U2hhMjU2IjogImE3MThlYzZjNDUwZmE1NDEwNjlmYjI1NGNlZTMyZDEwOWU5MTBmYTYxNWQxYTI0YmUzNDZmYWViMGMxNjEwNzQiLAogICAgImJ1bmRsZVNoYTI1NiI6ICJhNzE4ZWM2YzQ1MGZhNTQxMDY5ZmIyNTRjZWUzMmQxMDllOTEwZmE2MTVkMWEyNGJlMzQ2ZmFlYjBjMTYxMDc0IiwKICAgICJyZXNwb25zZVNoYTI1NiI6ICJhNzE4ZWM2YzQ1MGZhNTQxMDY5ZmIyNTRjZWUzMmQxMDllOTEwZmE2MTVkMWEyNGJlMzQ2ZmFlYjBjMTYxMDc0IgogIH0sCiAgewogICAgInBhdGgiOiAiL2Zhdmljb24uaWNvIiwKICAgICJzdGF0dXMiOiAyMDAsCiAgICAiY29udGVudFR5cGUiOiAiaW1hZ2UveC1pY29uIiwKICAgICJieXRlcyI6IDU0MzAsCiAgICAic291cmNlU2hhMjU2IjogImE1NGY0OWZlNWNhNzAzNjQyZWM4ZWZjZWRmNjBhYWFjYTQyZDAwZTBhOTU3N2RiNGNlNTAzZDhlM2I0Y2MwMjgiLAogICAgImJ1aWxkSW5wdXRTaGEyNTYiOiAiYTU0ZjQ5ZmU1Y2E3MDM2NDJlYzhlZmNlZGY2MGFhYWNhNDJkMDBlMGE5NTc3ZGI0Y2U1MDNkOGUzYjRjYzAyOCIsCiAgICAiYnVuZGxlU2hhMjU2IjogImE1NGY0OWZlNWNhNzAzNjQyZWM4ZWZjZWRmNjBhYWFjYTQyZDAwZTBhOTU3N2RiNGNlNTAzZDhlM2I0Y2MwMjgiLAogICAgInJlc3BvbnNlU2hhMjU2IjogImE1NGY0OWZlNWNhNzAzNjQyZWM4ZWZjZWRmNjBhYWFjYTQyZDAwZTBhOTU3N2RiNGNlNTAzZDhlM2I0Y2MwMjgiCiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-78b6b53c32c9b5a4d478",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "EN-01 an invalid stored locale safely uses the explicit zh-TW default",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2339,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:01.023Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-4830dfeb36e7ba9cfbab",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 312,
+          "column": 1
+        },
+        {
+          "title": "EN-01 denied preference storage cannot prevent startup or language changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3922,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:03.381Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-10f0020bc3ecee530912",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 323,
+          "column": 1
+        },
+        {
+          "title": "EN-02 English controls, dialogs, known diagnostics and offline preview remain functional without model calls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5367,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:07.335Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-5f27dd1f988b21976ed4",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 350,
+          "column": 1
+        },
+        {
+          "title": "EN-02 an unmapped failed action preserves its code and visibly labels the original diagnostic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3021,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:12.726Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-58f63d1c7ebc8a8df165",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 478,
+          "column": 1
+        },
+        {
+          "title": "EN-03 language focus preserves valid and invalid raw drafts without scene commands",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:15.767Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "paused-draft-invariance.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lUnVudGltZSI6IHRydWUsCiAgInNhbWVXb3JsZCI6IHRydWUsCiAgInNhbWVDYW52YXMiOiB0cnVlLAogICJzYW1lQXVkaW9FbmdpbmUiOiB0cnVlLAogICJzYW1lQXVkaW9Db250ZXh0IjogdHJ1ZSwKICAic2FtZUNvbnRpbnVvdXNTb3VyY2VzIjogdHJ1ZSwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMCwKICAic2FtZURvY3VtZW50cyI6IHRydWUsCiAgInNhbWVSdW5JZCI6IHRydWUsCiAgInNhbWVSdW5FcG9jaCI6IHRydWUsCiAgImluaXRpYWxUaWNrIjogMCwKICAiY3VycmVudFRpY2siOiAwLAogICJpbml0aWFsQXVkaW9UaW1lIjogbnVsbCwKICAiY3VycmVudEF1ZGlvVGltZSI6IG51bGwsCiAgImRpc3BhdGNoZXMiOiBbXQp9"
+                    },
+                    {
+                      "name": "locale-runtime-observation.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbml0aWFsVGljayI6IDAsCiAgImN1cnJlbnRUaWNrIjogMCwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMCwKICAiZGlzcGF0Y2hlcyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-baaa36ec2153a248454d",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 510,
+          "column": 1
+        },
+        {
+          "title": "EN-03 natural running clocks advance while language keeps actual context and continuous native sources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4791,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:20.045Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "running-native-identity.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lUnVudGltZSI6IHRydWUsCiAgInNhbWVXb3JsZCI6IHRydWUsCiAgInNhbWVDYW52YXMiOiB0cnVlLAogICJzYW1lQXVkaW9FbmdpbmUiOiB0cnVlLAogICJzYW1lQXVkaW9Db250ZXh0IjogdHJ1ZSwKICAic2FtZUNvbnRpbnVvdXNTb3VyY2VzIjogdHJ1ZSwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMSwKICAic2FtZURvY3VtZW50cyI6IHRydWUsCiAgInNhbWVSdW5JZCI6IHRydWUsCiAgInNhbWVSdW5FcG9jaCI6IHRydWUsCiAgImluaXRpYWxUaWNrIjogMTUsCiAgImN1cnJlbnRUaWNrIjogMzAsCiAgImluaXRpYWxBdWRpb1RpbWUiOiAwLjY5MDY2NjY2NjY2NjY2NjcsCiAgImN1cnJlbnRBdWRpb1RpbWUiOiAxLjM4MTMzMzMzMzMzMzMzMzMsCiAgImRpc3BhdGNoZXMiOiBbXQp9"
+                    },
+                    {
+                      "name": "locale-runtime-observation.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbml0aWFsVGljayI6IDE1LAogICJjdXJyZW50VGljayI6IDM3LAogICJjb250aW51b3VzVm9pY2VzT2JzZXJ2ZWQiOiAxLAogICJkaXNwYXRjaGVzIjogW10KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-634df0c4d906770171f8",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 559,
+          "column": 1
+        },
+        {
+          "title": "EN-04 English desktop and 320px retain readable forms, visible monitoring and keyboard alternatives",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:24.864Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27163984908129fd6d6a-a076a71b8d5b4d642ac2",
+          "file": "ui-locale-refined-v2.spec.ts",
+          "line": 652,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-refined-v2.spec.ts",
+      "file": "ui-refined-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real workspace renders three panels and keeps collapsed splitters out of focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3480,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:29.786Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-50226860b0d273ce6af5",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "atmosphere controls change real solver paths and preserve gravity settings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2968,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:33.278Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-1fa4351e1e803bd0ae3d",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "synthetic perceptual reverb is explicit and raw reference stays selectable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:36.264Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-22795ffee23adbe461b6",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "actual pointer lock has explicit Enter resume, Tab exit and no acquisition throw",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:40.166Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "input-event-order.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ0eXBlIjogImZvY3VzaW4iLAogICAgInRpbWUiOiAxNTA2LjEwMDAwMDAwMTQ5MDEsCiAgICAiY29kZSI6IG51bGwsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIkJVVFRPTiIsCiAgICAidGFyZ2V0TGFiZWwiOiAi6YCy5YWl56ys5LiA5Lq656ixIiwKICAgICJhY3RpdmUiOiAiQlVUVE9OIiwKICAgICJhY3RpdmVMYWJlbCI6ICLpgLLlhaXnrKzkuIDkurrnqLEiLAogICAgImxvY2siOiBudWxsCiAgfSwKICB7CiAgICAidHlwZSI6ICJibHVyIiwKICAgICJ0aW1lIjogMTUwNi44MDAwMDAwMDA3NDUsCiAgICAiY29kZSI6IG51bGwsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIkJVVFRPTiIsCiAgICAidGFyZ2V0TGFiZWwiOiAi6YCy5YWl56ys5LiA5Lq656ixIiwKICAgICJhY3RpdmUiOiAiQk9EWSIsCiAgICAiYWN0aXZlTGFiZWwiOiAiXG4gICAg6Lez6Iez5Li76KaB5bel5L2c5Y2AUkVGTEVDVElPTkxBQuiBsumfs+ihjOeCuuWvpumpl1NjZW5lIHJldiAwIMK3IOacrOapn+WwiOahiDAx5bu656uL5aC05pmvMDLkupLli5Xlr6bpqZcwM+aqoumpl+avlOi8g+S7i+mdouiqnuiogCAvIEludGVyZiIsCiAgICAibG9jayI6IG51bGwKICB9LAogIHsKICAgICJ0eXBlIjogImZvY3VzaW4iLAogICAgInRpbWUiOiAxNTA3LAogICAgImNvZGUiOiBudWxsLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJDQU5WQVMiLAogICAgInRhcmdldExhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogbnVsbAogIH0sCiAgewogICAgInR5cGUiOiAia2V5ZG93biIsCiAgICAidGltZSI6IDE1NjguODAwMDAwMDAwNzQ1LAogICAgImNvZGUiOiAiRW50ZXIiLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJDQU5WQVMiLAogICAgInRhcmdldExhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogIkNBTlZBUyIKICB9LAogIHsKICAgICJ0eXBlIjogImtleXVwIiwKICAgICJ0aW1lIjogMTU4OS4xMDAwMDAwMDE0OTAxLAogICAgImNvZGUiOiAiRW50ZXIiLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJDQU5WQVMiLAogICAgInRhcmdldExhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogIkNBTlZBUyIKICB9LAogIHsKICAgICJ0eXBlIjogInBvaW50ZXJsb2NrY2hhbmdlIiwKICAgICJ0aW1lIjogMTY0NC44MDAwMDAwMDA3NDUsCiAgICAiY29kZSI6IG51bGwsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogIkNBTlZBUyIKICB9LAogIHsKICAgICJ0eXBlIjogImtleWRvd24iLAogICAgInRpbWUiOiAyMTY3LAogICAgImNvZGUiOiAiRW50ZXIiLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJDQU5WQVMiLAogICAgInRhcmdldExhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogIkNBTlZBUyIKICB9LAogIHsKICAgICJ0eXBlIjogImtleXVwIiwKICAgICJ0aW1lIjogMjE3Ni4zOTk5OTk5OTg1MSwKICAgICJjb2RlIjogIkVudGVyIiwKICAgICJ0cnVzdGVkIjogdHJ1ZSwKICAgICJ0YXJnZXQiOiAiQ0FOVkFTIiwKICAgICJ0YXJnZXRMYWJlbCI6ICLmraTngI/opr3lmajmnKrmj5DkvpsgV2ViR0zvvJvoq4vkvb/nlKjnianku7bmuIXllq7oiIfmlbjlgLzmjqfliLbjgIIiLAogICAgImFjdGl2ZSI6ICJDQU5WQVMiLAogICAgImFjdGl2ZUxhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAibG9jayI6ICJDQU5WQVMiCiAgfSwKICB7CiAgICAidHlwZSI6ICJrZXlkb3duIiwKICAgICJ0aW1lIjogMjIxNS4zMDAwMDAwMDA3NDUsCiAgICAiY29kZSI6ICJFbnRlciIsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIkNBTlZBUyIsCiAgICAidGFyZ2V0TGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJhY3RpdmUiOiAiQ0FOVkFTIiwKICAgICJhY3RpdmVMYWJlbCI6ICLmraTngI/opr3lmajmnKrmj5DkvpsgV2ViR0zvvJvoq4vkvb/nlKjnianku7bmuIXllq7oiIfmlbjlgLzmjqfliLbjgIIiLAogICAgImxvY2siOiAiQ0FOVkFTIgogIH0sCiAgewogICAgInR5cGUiOiAia2V5dXAiLAogICAgInRpbWUiOiAyMzE5LjEwMDAwMDAwMTQ5LAogICAgImNvZGUiOiAiRW50ZXIiLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJDQU5WQVMiLAogICAgInRhcmdldExhYmVsIjogIuatpOeAj+imveWZqOacquaPkOS+myBXZWJHTO+8m+iri+S9v+eUqOeJqeS7tua4heWWruiIh+aVuOWAvOaOp+WItuOAgiIsCiAgICAiYWN0aXZlIjogIkNBTlZBUyIsCiAgICAiYWN0aXZlTGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJsb2NrIjogIkNBTlZBUyIKICB9LAogIHsKICAgICJ0eXBlIjogImtleWRvd24iLAogICAgInRpbWUiOiAyNDI0LjE5OTk5OTk5OTI1NSwKICAgICJjb2RlIjogIlRhYiIsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIkNBTlZBUyIsCiAgICAidGFyZ2V0TGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJhY3RpdmUiOiAiQ0FOVkFTIiwKICAgICJhY3RpdmVMYWJlbCI6ICLmraTngI/opr3lmajmnKrmj5DkvpsgV2ViR0zvvJvoq4vkvb/nlKjnianku7bmuIXllq7oiIfmlbjlgLzmjqfliLbjgIIiLAogICAgImxvY2siOiAiQ0FOVkFTIgogIH0sCiAgewogICAgInR5cGUiOiAiYmx1ciIsCiAgICAidGltZSI6IDI0NTYuODk5OTk5OTk4NTEsCiAgICAiY29kZSI6IG51bGwsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIkNBTlZBUyIsCiAgICAidGFyZ2V0TGFiZWwiOiAi5q2k54CP6Ka95Zmo5pyq5o+Q5L6bIFdlYkdM77yb6KuL5L2/55So54mp5Lu25riF5Zau6IiH5pW45YC85o6n5Yi244CCIiwKICAgICJhY3RpdmUiOiAiQk9EWSIsCiAgICAiYWN0aXZlTGFiZWwiOiAiXG4gICAg6Lez6Iez5Li76KaB5bel5L2c5Y2AUkVGTEVDVElPTkxBQuiBsumfs+ihjOeCuuWvpumpl1NjZW5lIHJldiAwIMK3IOacrOapn+WwiOahiDAx5bu656uL5aC05pmvMDLkupLli5Xlr6bpqZcwM+aqoumpl+avlOi8g+S7i+mdouiqnuiogCAvIEludGVyZiIsCiAgICAibG9jayI6IG51bGwKICB9LAogIHsKICAgICJ0eXBlIjogImZvY3VzaW4iLAogICAgInRpbWUiOiAyNDU3Ljg5OTk5OTk5ODUxLAogICAgImNvZGUiOiBudWxsLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJJTlBVVCIsCiAgICAidGFyZ2V0TGFiZWwiOiAiIiwKICAgICJhY3RpdmUiOiAiSU5QVVQiLAogICAgImFjdGl2ZUxhYmVsIjogIiIsCiAgICAibG9jayI6IG51bGwKICB9LAogIHsKICAgICJ0eXBlIjogInBvaW50ZXJsb2NrY2hhbmdlIiwKICAgICJ0aW1lIjogMjUxMC4xMDAwMDAwMDE0OSwKICAgICJjb2RlIjogbnVsbCwKICAgICJ0cnVzdGVkIjogdHJ1ZSwKICAgICJhY3RpdmUiOiAiSU5QVVQiLAogICAgImFjdGl2ZUxhYmVsIjogIiIsCiAgICAibG9jayI6IG51bGwKICB9LAogIHsKICAgICJ0eXBlIjogImtleXVwIiwKICAgICJ0aW1lIjogMjc2NC42MDAwMDAwMDE0OSwKICAgICJjb2RlIjogIlRhYiIsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIklOUFVUIiwKICAgICJ0YXJnZXRMYWJlbCI6ICIiLAogICAgImFjdGl2ZSI6ICJJTlBVVCIsCiAgICAiYWN0aXZlTGFiZWwiOiAiIiwKICAgICJsb2NrIjogbnVsbAogIH0sCiAgewogICAgInR5cGUiOiAiYmx1ciIsCiAgICAidGltZSI6IDMxNTkuODk5OTk5OTk4NTEsCiAgICAiY29kZSI6IG51bGwsCiAgICAidHJ1c3RlZCI6IHRydWUsCiAgICAidGFyZ2V0IjogIklOUFVUIiwKICAgICJ0YXJnZXRMYWJlbCI6ICIiLAogICAgImFjdGl2ZSI6ICJCT0RZIiwKICAgICJhY3RpdmVMYWJlbCI6ICJcbiAgICDot7Poh7PkuLvopoHlt6XkvZzljYBSRUZMRUNUSU9OTEFC6IGy6Z+z6KGM54K65a+m6amXU2NlbmUgcmV2IDAgwrcg5pys5qmf5bCI5qGIMDHlu7rnq4vloLTmma8wMuS6kuWLleWvpumplzAz5qqi6amX5q+U6LyD5LuL6Z2i6Kqe6KiAIC8gSW50ZXJmIiwKICAgICJsb2NrIjogbnVsbAogIH0sCiAgewogICAgInR5cGUiOiAiZm9jdXNpbiIsCiAgICAidGltZSI6IDMxNjAuMzAwMDAwMDAwNzQ1LAogICAgImNvZGUiOiBudWxsLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJCVVRUT04iLAogICAgInRhcmdldExhYmVsIjogIuKMgyIsCiAgICAiYWN0aXZlIjogIkJVVFRPTiIsCiAgICAiYWN0aXZlTGFiZWwiOiAi4oyDIiwKICAgICJsb2NrIjogbnVsbAogIH0sCiAgewogICAgInR5cGUiOiAiYmx1ciIsCiAgICAidGltZSI6IDMyMzEuMTk5OTk5OTk5MjU1LAogICAgImNvZGUiOiBudWxsLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJCVVRUT04iLAogICAgInRhcmdldExhYmVsIjogIuKMhCIsCiAgICAiYWN0aXZlIjogIkJPRFkiLAogICAgImFjdGl2ZUxhYmVsIjogIlxuICAgIOi3s+iHs+S4u+imgeW3peS9nOWNgFJFRkxFQ1RJT05MQULogbLpn7PooYzngrrlr6bpqZdTY2VuZSByZXYgMCDCtyDmnKzmqZ/lsIjmoYgwMeW7uueri+WgtOaZrzAy5LqS5YuV5a+m6amXMDPmqqLpqZfmr5TovIPku4vpnaLoqp7oqIAgLyBJbnRlcmYiLAogICAgImxvY2siOiBudWxsCiAgfSwKICB7CiAgICAidHlwZSI6ICJmb2N1c2luIiwKICAgICJ0aW1lIjogMzIzMS41LAogICAgImNvZGUiOiBudWxsLAogICAgInRydXN0ZWQiOiB0cnVlLAogICAgInRhcmdldCI6ICJJTlBVVCIsCiAgICAidGFyZ2V0TGFiZWwiOiAiIiwKICAgICJhY3RpdmUiOiAiSU5QVVQiLAogICAgImFjdGl2ZUxhYmVsIjogIiIsCiAgICAibG9jayI6IG51bGwKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-4193ecd44a552650157e",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 89,
+          "column": 1
+        },
+        {
+          "title": "explicit alternative controls move the actual listener and enable a staged object",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:44.094Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-535927705099a6b48e82",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "320 CSS px and reduced motion keep transport, monitor and forms reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3728,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:54.242Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-a6c0a446dc1e0b739799",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "audio import advertises only the preflighted WAV formats",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2377,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:57:57.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-cebc701bab938281ebb9",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "AI defaults offline and selecting a blocked Meta gate never proposes a model request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3186,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:58:00.379Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-82a5d731884417b3cb69",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 227,
+          "column": 1
+        },
+        {
+          "title": "project JSON stays a local review draft until explicit Apply",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12817,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts:284:76",
+                    "location": {
+                      "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                      "column": 76,
+                      "line": 284
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 282 |\u001b[39m test(\u001b[32m\"project JSON stays a local review draft until explicit Apply\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }\u001b[33m,\u001b[39m info) \u001b[33m=>\u001b[39m {\n \u001b[90m 283 |\u001b[39m   \u001b[36mawait\u001b[39m openWorkspace(page)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 284 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"匯出已封存錄製\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeDisabled()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 285 |\u001b[39m   \u001b[36mconst\u001b[39m originalName \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\".project-name strong\"\u001b[39m)\u001b[33m.\u001b[39minnerText()\u001b[33m;\u001b[39m\n \u001b[90m 286 |\u001b[39m   \u001b[36mconst\u001b[39m downloaded \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mwaitForEvent(\u001b[32m\"download\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 287 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"匯出專案\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                        "column": 76,
+                        "line": 284
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n\n\n  282 | test(\"project JSON stays a local review draft until explicit Apply\", async ({ page }, info) => {\n  283 |   await openWorkspace(page);\n> 284 |   await expect(page.getByRole(\"button\", { name: \"匯出已封存錄製\", exact: true })).toBeDisabled();\n      |                                                                            ^\n  285 |   const originalName = await page.locator(\".project-name strong\").innerText();\n  286 |   const downloaded = page.waitForEvent(\"download\");\n  287 |   await page.getByRole(\"button\", { name: \"匯出專案\", exact: true }).click();\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts:284:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:58:03.583Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-project-JSON-2db83--draft-until-explicit-Apply\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-project-JSON-2db83--draft-until-explicit-Apply\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-project-JSON-2db83--draft-until-explicit-Apply\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                    "column": 76,
+                    "line": 284
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-eda29faad021c198b6cf",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 282,
+          "column": 1
+        },
+        {
+          "title": "completed recording exports a separate raw RecordingArtifact JSON",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16302,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts:369:33",
+                    "location": {
+                      "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                      "column": 33,
+                      "line": 369
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 367 |\u001b[39m     \u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 368 |\u001b[39m   \u001b[36mconst\u001b[39m exportRecording \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"匯出已封存錄製\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 369 |\u001b[39m   \u001b[36mawait\u001b[39m expect(exportRecording)\u001b[33m.\u001b[39mtoBeDisabled()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 370 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"● 開始錄製\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 371 |\u001b[39m   \u001b[36mawait\u001b[39m expect(exportRecording)\u001b[33m.\u001b[39mtoBeDisabled()\u001b[33m;\u001b[39m\n \u001b[90m 372 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\".run-status .subtle.mono\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveText(\u001b[32m\"tick 0\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                        "column": 33,
+                        "line": 369
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '匯出已封存錄製', exact: true })\nExpected: disabled\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: '匯出已封存錄製', exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '匯出已封存錄製', exact: true })\u001b[22m\n\n\n  367 |     .click();\n  368 |   const exportRecording = page.getByRole(\"button\", { name: \"匯出已封存錄製\", exact: true });\n> 369 |   await expect(exportRecording).toBeDisabled();\n      |                                 ^\n  370 |   await page.getByRole(\"button\", { name: \"● 開始錄製\", exact: true }).click();\n  371 |   await expect(exportRecording).toBeDisabled();\n  372 |   await expect(page.locator(\".run-status .subtle.mono\")).not.toHaveText(\"tick 0\");\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts:369:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:58:18.965Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-completed-re-cfb13--raw-RecordingArtifact-JSON\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-completed-re-cfb13--raw-RecordingArtifact-JSON\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-completed-re-cfb13--raw-RecordingArtifact-JSON\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                    "column": 33,
+                    "line": 369
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-8a32a70b4e0220e33c9b",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 359,
+          "column": 1
+        },
+        {
+          "title": "reset seals an interrupted recording for export while replay remains unavailable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 47996,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts",
+                        "column": 67,
+                        "line": 398
+                      },
+                      "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '● 開始錄製', exact: true })\u001b[22m\n\n\n  396 |     .getByRole(\"button\", { name: \"場景\", exact: true })\n  397 |     .click();\n> 398 |   await page.getByRole(\"button\", { name: \"● 開始錄製\", exact: true }).click();\n      |                                                                   ^\n  399 |   await expect(page.locator(\".run-status .subtle.mono\")).not.toHaveText(\"tick 0\");\n  400 |   await page.getByRole(\"button\", { name: \"重設\", exact: true }).click();\n  401 |   await expect(page.locator(\".run-status .subtle.mono\")).toHaveText(\"tick 0\");\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui-refined-v2.spec.ts:398:67"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:58:37.233Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-reset-seals--88c67--replay-remains-unavailable\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-reset-seals--88c67--replay-remains-unavailable\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r13-ui-2026-10-28T085649588Z-f90bb40a\\cases\\ui-refined-v2-reset-seals--88c67--replay-remains-unavailable\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-aa15cf19a56e2dbf9721",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 389,
+          "column": 1
+        },
+        {
+          "title": "rule drafts survive selection and rejected transactions until actual acknowledgement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10388,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:59:28.279Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-0efde8d4246c98881bc1",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 416,
+          "column": 1
+        },
+        {
+          "title": "nonlinear curve and object override Apply/Clear/Undo retain source playback intent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:59:38.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df8ba1e058f87e107e54-c0d97061143eeb341a1c",
+          "file": "ui-refined-v2.spec.ts",
+          "line": 502,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T08:56:54.251Z",
+    "duration": 177537.437,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

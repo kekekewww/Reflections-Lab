@@ -1,0 +1,59 @@
+
+[WebServer] (node:49500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:22508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/13] tests\browser\ui.spec.ts:22:1 › real workspace renders three panels and keeps collapsed splitters out of focus
+[2/13] tests\browser\ui.spec.ts:39:1 › atmosphere controls change real solver paths and preserve gravity settings
+  1) tests\browser\ui.spec.ts:39:1 › atmosphere controls change real solver paths and preserve gravity settings 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  getByText('真空不取消機械碰撞')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" getByText('真空不取消機械碰撞') with timeout 10000ms
+      - waiting for getByText('真空不取消機械碰撞')
+        23 × locator resolved to <p class="micro-copy">真空不取消機械碰撞；此模型未涵蓋固體傳聲。無重力不等於真空。</p>
+           - unexpected value "hidden"
+
+
+      46 |   await expect(medium).toHaveValue("vacuum");
+      47 |   await expect(page.locator(".viewport-legend")).toContainText("0/0");
+    > 48 |   await expect(page.getByText("真空不取消機械碰撞", { exact: false })).toBeVisible();
+         |                                                               ^
+      49 |   await medium.selectOption("air");
+      50 |   await expect(medium).toHaveValue("air");
+      51 |   await expect(page.locator(".viewport-legend")).not.toContainText("0/0");
+        at D:\Developing\Meta Hack\tests\browser\ui.spec.ts:48:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\architecture-legacy\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\architecture-legacy\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\architecture-legacy\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\architecture-legacy\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  1 failed
+    tests\browser\ui.spec.ts:39:1 › atmosphere controls change real solver paths and preserve gravity settings 
+  11 did not run
+  1 passed (18.2s)
+  1 error was not a part of any test, see above for details

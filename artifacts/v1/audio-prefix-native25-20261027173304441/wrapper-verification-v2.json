@@ -1,0 +1,177 @@
+{
+  "version": "ORIGINAL25_VIA_PREPARED_STATIC_V2",
+  "baselineProfile": "prefix-f3e5",
+  "baseline": {
+    "id": "prefix-f3e5",
+    "baselineId": "audio-prefix-f3e5",
+    "recordPath": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+    "recordSha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2",
+    "legacyBaseline": {
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/verification.json",
+      "sha256": "968e56921ee0c4b8f0f67b57f61fd70bfe79cc346d96ff8cf0aa9dd98aa2f78a"
+    },
+    "approvedDelta": [
+      {
+        "path": "src/audio/band-filter.ts",
+        "from": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+        "to": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+      }
+    ],
+    "approvalEvidence": {
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603"
+    }
+  },
+  "status": "PASS",
+  "exitCode": 0,
+  "startedAt": "2026-10-27T17:33:06.534Z",
+  "endedAt": "2026-10-27T17:33:10.349Z",
+  "browserLaunched": true,
+  "original25Passed": true,
+  "nativeProcessPassed": true,
+  "originalStatus": "PASS",
+  "originalVerificationSha256": "0f7bca55a4308e8fa804685c122e578e3a444f19063d6155d500c2eece2f18d6",
+  "actualChild": {
+    "pid": 78560,
+    "file": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "file:///D:/Developing/Meta%20Hack/.cache/v1/audio-qualification-observer.mjs",
+      "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prefix-native25-20261027173304441\\original-driver-v2.mjs",
+      "--run",
+      "--engines",
+      "chromium",
+      "--output",
+      "artifacts\\v1\\audio-prefix-native25-20261027173304441"
+    ],
+    "spawnedAt": "2026-10-27T17:33:06.970Z"
+  },
+  "actualClose": {
+    "exitCode": 0,
+    "signal": null,
+    "observedAt": "2026-10-27T17:33:09.915Z",
+    "provenance": "Retained Node ChildProcess close event"
+  },
+  "browserProcess": {
+    "at": "2026-10-27T17:33:07.582Z",
+    "monotonicMs": 588.7844,
+    "pid": 78560,
+    "event": "owned-browser-server-process",
+    "browserPid": 47932,
+    "spawnfile": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+  },
+  "retainedExitMatches": true,
+  "originalSources": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "sourcesAfter": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "source23Stable": true,
+  "supplementalSources": {
+    "tests/audio-runtime/run-prepared-native-v2.mjs": "660b4a0f788f111456575a77516be69b718ac3cd414e816cc7811da19c74fa09",
+    "tests/audio-runtime/prepared-static-fixture-v2.mjs": "d6acb640f0f034863daf7ab79273ac41c4ab980961a29932bd3ad40f5afef1a7",
+    "tests/audio-runtime/prepared-native-v2.test.mjs": "7a5d53c63cde0179d7f98dd499a5d0dd7100cac741b38a520fc712844f391624",
+    ".cache/v1/audio-qualification-observer.mjs": "238d9f60b20eee83aa5eb82a03baaef41850d0c130cba3f5fdba82c8b13043c5",
+    "scripts/agents/process-runner.mjs": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+    "tsconfig.json": "82c8716843ec8d1b788cc3ba86270ec71f68b0c2e29bf89f0dad5f7e1fbece3b"
+  },
+  "supplementalSourcesAfter": {
+    "tests/audio-runtime/run-prepared-native-v2.mjs": "660b4a0f788f111456575a77516be69b718ac3cd414e816cc7811da19c74fa09",
+    "tests/audio-runtime/prepared-static-fixture-v2.mjs": "d6acb640f0f034863daf7ab79273ac41c4ab980961a29932bd3ad40f5afef1a7",
+    "tests/audio-runtime/prepared-native-v2.test.mjs": "7a5d53c63cde0179d7f98dd499a5d0dd7100cac741b38a520fc712844f391624",
+    ".cache/v1/audio-qualification-observer.mjs": "238d9f60b20eee83aa5eb82a03baaef41850d0c130cba3f5fdba82c8b13043c5",
+    "scripts/agents/process-runner.mjs": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+    "tsconfig.json": "82c8716843ec8d1b788cc3ba86270ec71f68b0c2e29bf89f0dad5f7e1fbece3b"
+  },
+  "manifestPath": "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prefix-native25-preflight-20261027172830\\prepared-static-v2\\manifest.json",
+  "manifestSha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2",
+  "manifestSha256After": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2",
+  "bundlesAndManifestStable": true,
+  "executable": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+  "executableSha256": "f77d8e27c8db1e4ac0399459a00e0c97bb9417adc393474cabaffebe2314ecb0",
+  "executableSha256After": "f77d8e27c8db1e4ac0399459a00e0c97bb9417adc393474cabaffebe2314ecb0",
+  "conformance": {
+    "conformant": true,
+    "originalSha256": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc",
+    "generatedSha256": "3db5140aed8e75d9ddb165c50946ecc70dc792a94ecf81804b2553f6c0d7529a",
+    "replacementCounts": {
+      "root": 1,
+      "configImport": 1,
+      "reportImport": 1,
+      "createServerImport": 1
+    },
+    "normalizedAstSha256": "bc4509c7e2bd4ee876d7a3a8d014441832b84b076934da0c482e593f8a6beed0"
+  },
+  "preparationProcess": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\tests\\audio-runtime\\prepared-static-fixture-v2.mjs",
+      "--build-worker",
+      "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prefix-native25-preflight-20261027172830\\prepared-static-v2\\build-spec.json"
+    ],
+    "timeoutMs": 60000,
+    "nativeExitProvenance": "Retained Node ChildProcess close event via runProcess",
+    "exit_code": 0,
+    "signal": null,
+    "timed_out": false,
+    "cancelled": false,
+    "process_stopped": true,
+    "stdout": "{\"status\":\"PREPARED_STATIC_V2\",\"buildWorkerPid\":62732,\"entries\":7,\"actualBuildInputCount\":16,\"esbuildVersion\":\"0.28.2\"}\n",
+    "stderr": "",
+    "duration_ms": 660.0407,
+    "output_limit": false,
+    "spawn_error": null,
+    "stop_scope": "direct_process",
+    "process_tree_stopped": null
+  },
+  "errors": [],
+  "limitations": [
+    "Prepared static transport only; original stage order/deadlines/oracles retained",
+    "No original Firefox FAIL is overturned; no App/hearing/device/Worklet/API acceptance"
+  ]
+}

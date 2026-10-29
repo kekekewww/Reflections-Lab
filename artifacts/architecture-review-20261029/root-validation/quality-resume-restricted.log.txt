@@ -1,0 +1,4089 @@
+
+> reflection-lab-preproduction@0.0.0 check
+> npm run check:research && npm run test:runtime && npm run build && npm run validate:licenses && npm run validate:english
+
+
+> reflection-lab-preproduction@0.0.0 check:research
+> npm run environment:check && npm test && npm run test:agents && npm run test:prompts && npm run test:wiki && npm run test:design && npm run test:sound-behaviors && npm run validate:sound-behaviors && npm run smoke:sound-physics && npm run smoke:dependencies && npm run test:physics && npm run test:datasets && npm run validate:research && npm run validate:schemas && npm run validate:docs && npm run validate:wiki && npm run validate:skills && npm run validate:design && npm run typecheck && npm run lint && npm run format:check
+
+
+> reflection-lab-preproduction@0.0.0 environment:check
+> node scripts/setup/environment.mjs --strict
+
+{
+  "schemaVersion": "1.0.0",
+  "capturedAtUtc": "2026-10-29T13:29:43.856Z",
+  "scope": "preproduction-environment-inspection",
+  "status": "PASS",
+  "strict": true,
+  "tools": {
+    "node": {
+      "expected": "22.17.0",
+      "actual": "22.17.0",
+      "required": true,
+      "status": "PASS"
+    },
+    "npm": {
+      "expected": "11.4.2",
+      "actual": "11.4.2",
+      "required": true,
+      "status": "PASS"
+    },
+    "python": {
+      "expected": "3.12.11",
+      "actual": "3.12.11",
+      "required": false,
+      "status": "PASS"
+    }
+  },
+  "operatingSystem": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "architecture": "x64",
+    "processArchitecture": "x64"
+  },
+  "hardware": {
+    "cpuModels": [
+      "13th Gen Intel(R) Core(TM) i9-13980HX"
+    ],
+    "logicalCpuCount": 32,
+    "totalMemoryBytes": 33959825408
+  },
+  "runtimeVersions": {
+    "node": "22.17.0",
+    "acorn": "8.14.1",
+    "ada": "2.9.2",
+    "amaro": "0.4.1",
+    "ares": "1.34.5",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.0.16",
+    "simdjson": "3.12.3",
+    "simdutf": "6.4.2",
+    "sqlite": "3.50.0",
+    "tz": "2025b",
+    "undici": "6.21.2",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.21",
+    "v8": "12.4.254.21-node.26",
+    "zlib": "1.3.0.1-motley-780819f",
+    "zstd": "1.5.7"
+  },
+  "limitations": [
+    "Version agreement does not establish scientific or product correctness.",
+    "Python is optional for the Node validation suite and does not fail strict mode.",
+    "No environment-variable values, host name, user name, or credentials are recorded."
+  ]
+}
+
+> reflection-lab-preproduction@0.0.0 test
+> node --test tests/acoustics/*.test.mjs tests/integration/*.test.mjs
+
+TAP version 13
+# Subtest: free-field-3-4-5 [DERIVED]
+ok 1 - free-field-3-4-5 [DERIVED]
+  ---
+  duration_ms: 1.8559
+  type: 'test'
+  ...
+# Subtest: finite-first-reflection [DERIVED]
+ok 2 - finite-first-reflection [DERIVED]
+  ---
+  duration_ms: 1.4248
+  type: 'test'
+  ...
+# Subtest: finite-second-reflection [DERIVED]
+ok 3 - finite-second-reflection [DERIVED]
+  ---
+  duration_ms: 0.3623
+  type: 'test'
+  ...
+# Subtest: finite-polygon-rejection [DERIVED]
+ok 4 - finite-polygon-rejection [DERIVED]
+  ---
+  duration_ms: 0.2027
+  type: 'test'
+  ...
+# Subtest: direct-segment-occlusion [DERIVED]
+ok 5 - direct-segment-occlusion [DERIVED]
+  ---
+  duration_ms: 0.2206
+  type: 'test'
+  ...
+# Subtest: reflected-segment-occlusion [DERIVED]
+ok 6 - reflected-segment-occlusion [DERIVED]
+  ---
+  duration_ms: 1.5341
+  type: 'test'
+  ...
+# Subtest: energy-bands [SYNTHETIC]
+ok 7 - energy-bands [SYNTHETIC]
+  ---
+  duration_ms: 0.8341
+  type: 'test'
+  ...
+# Subtest: air-db-pressure-conversion [SYNTHETIC]
+ok 8 - air-db-pressure-conversion [SYNTHETIC]
+  ---
+  duration_ms: 0.6231
+  type: 'test'
+  ...
+# Subtest: doppler-approaching [DERIVED]
+ok 9 - doppler-approaching [DERIVED]
+  ---
+  duration_ms: 0.511
+  type: 'test'
+  ...
+# Subtest: shoebox-axial-mode [DERIVED]
+ok 10 - shoebox-axial-mode [DERIVED]
+  ---
+  duration_ms: 1.2139
+  type: 'test'
+  ...
+# Subtest: impulse-arrival [DERIVED]
+ok 11 - impulse-arrival [DERIVED]
+  ---
+  duration_ms: 2.3625
+  type: 'test'
+  ...
+# Subtest: backward-edc [SYNTHETIC]
+ok 12 - backward-edc [SYNTHETIC]
+  ---
+  duration_ms: 0.302
+  type: 'test'
+  ...
+# Subtest: synthetic-exponential-decay [SYNTHETIC]
+ok 13 - synthetic-exponential-decay [SYNTHETIC]
+  ---
+  duration_ms: 19.5134
+  type: 'test'
+  ...
+# Subtest: stationary and equal uniform velocities have Doppler ratio 1
+ok 14 - stationary and equal uniform velocities have Doppler ratio 1
+  ---
+  duration_ms: 0.2372
+  type: 'test'
+  ...
+# Subtest: material, air, mode and propagation reject invalid domains
+ok 15 - material, air, mode and propagation reject invalid domains
+  ---
+  duration_ms: 1.0465
+  type: 'test'
+  ...
+# Subtest: finite reflection continuity, path identity, birth/death and dynamic occlusion
+ok 16 - finite reflection continuity, path identity, birth/death and dynamic occlusion
+  ---
+  duration_ms: 0.4881
+  type: 'test'
+  ...
+# Subtest: RIR silence and insufficient decay range do not produce a reported RT60
+ok 17 - RIR silence and insufficient decay range do not produce a reported RT60
+  ---
+  duration_ms: 0.2188
+  type: 'test'
+  ...
+# Subtest: repository schema gate compiles all four agent contracts alongside original schemas
+ok 18 - repository schema gate compiles all four agent contracts alongside original schemas
+  ---
+  duration_ms: 774.9106
+  type: 'test'
+  ...
+# Subtest: raw artifact snapshots retain source-relative links and copied bytes
+ok 19 - raw artifact snapshots retain source-relative links and copied bytes
+  ---
+  duration_ms: 711.4777
+  type: 'test'
+  ...
+# Subtest: a missing canonical document target fails
+ok 20 - a missing canonical document target fails
+  ---
+  duration_ms: 163.7778
+  type: 'test'
+  ...
+# Subtest: snapshot directory names outside root artifacts remain checked
+ok 21 - snapshot directory names outside root artifacts remain checked
+  ---
+  duration_ms: 553.5372
+  type: 'test'
+  ...
+# Subtest: artifact report READMEs and similarly named directories remain checked
+ok 22 - artifact report READMEs and similarly named directories remain checked
+  ---
+  duration_ms: 145.9811
+  type: 'test'
+  ...
+# Subtest: normal valid relative Markdown links pass
+ok 23 - normal valid relative Markdown links pass
+  ---
+  duration_ms: 390.9155
+  type: 'test'
+  ...
+# Subtest: malformed local URL encoding still fails
+ok 24 - malformed local URL encoding still fails
+  ---
+  duration_ms: 111.5914
+  type: 'test'
+  ...
+# Subtest: only exact registered browser contexts with their pinned reports are excluded
+ok 25 - only exact registered browser contexts with their pinned reports are excluded
+  ---
+  duration_ms: 33.1458
+  type: 'test'
+  ...
+# Subtest: context and report edits or missing reports fail closed for both captures
+ok 26 - context and report edits or missing reports fail closed for both captures
+  ---
+  duration_ms: 507.8577
+  type: 'test'
+  ...
+# Subtest: unregistered authored and copied lookalike files remain in scope
+ok 27 - unregistered authored and copied lookalike files remain in scope
+  ---
+  duration_ms: 26.9535
+  type: 'test'
+  ...
+# Subtest: moving only the source path while preserving context and original report never inherits its pin
+ok 28 - moving only the source path while preserving context and original report never inherits its pin
+  ---
+  duration_ms: 29.5626
+  type: 'test'
+  ...
+# Subtest: documentation inventory excludes generated mirrors and shared non-Markdown data
+ok 29 - documentation inventory excludes generated mirrors and shared non-Markdown data
+  ---
+  duration_ms: 19.8489
+  type: 'test'
+  ...
+# Subtest: missing and stale translations cannot pass coverage
+ok 30 - missing and stale translations cannot pass coverage
+  ---
+  duration_ms: 50.3999
+  type: 'test'
+  ...
+# Subtest: lost quota comparison operators and modified code are rejected
+ok 31 - lost quota comparison operators and modified code are rejected
+  ---
+  duration_ms: 39.6266
+  type: 'test'
+  ...
+# Subtest: link rewriting uses English Markdown, shares raw results, and leaves code unchanged
+ok 32 - link rewriting uses English Markdown, shares raw results, and leaves code unchanged
+  ---
+  duration_ms: 15.5497
+  type: 'test'
+  ...
+# Subtest: recorded English hashes detect prose tampering and check mode does not write files
+ok 33 - recorded English hashes detect prose tampering and check mode does not write files
+  ---
+  duration_ms: 376.2811
+  type: 'test'
+  ...
+# Subtest: an English README companion must contain the complete original sections
+ok 34 - an English README companion must contain the complete original sections
+  ---
+  duration_ms: 22.5395
+  type: 'test'
+  ...
+# Subtest: repeated finalization is idempotent for translated pages and shared-data links
+ok 35 - repeated finalization is idempotent for translated pages and shared-data links
+  ---
+  duration_ms: 41.6235
+  type: 'test'
+  ...
+# Subtest: inline technical examples are preserved while backtick-labelled navigation is rewritten
+ok 36 - inline technical examples are preserved while backtick-labelled navigation is rewritten
+  ---
+  duration_ms: 0.7817
+  type: 'test'
+  ...
+# Subtest: untranslated Chinese prose cannot pass by retaining a valid provenance marker
+ok 37 - untranslated Chinese prose cannot pass by retaining a valid provenance marker
+  ---
+  duration_ms: 15.478
+  type: 'test'
+  ...
+# Subtest: Windows separators and percent-encoded separators cannot validate an outside-workspace link
+ok 38 - Windows separators and percent-encoded separators cannot validate an outside-workspace link
+  ---
+  duration_ms: 15.1582
+  type: 'test'
+  ...
+# Subtest: an .en.md filename cannot exempt untranslated prose from coverage
+ok 39 - an .en.md filename cannot exempt untranslated prose from coverage
+  ---
+  duration_ms: 18.5467
+  type: 'test'
+  ...
+# Subtest: encoded filenames keep spaces and hash characters inside the path
+ok 40 - encoded filenames keep spaces and hash characters inside the path
+  ---
+  duration_ms: 0.3073
+  type: 'test'
+  ...
+# Subtest: escaped or mismatched backtick runs do not hide actual navigation
+ok 41 - escaped or mismatched backtick runs do not hide actual navigation
+  ---
+  duration_ms: 0.5523
+  type: 'test'
+  ...
+# Subtest: unsupported nested image-link destinations cannot silently pass coverage
+ok 42 - unsupported nested image-link destinations cannot silently pass coverage
+  ---
+  duration_ms: 47.7326
+  type: 'test'
+  ...
+# Subtest: authored artifact narratives require English coverage even inside snapshot-named directories
+ok 43 - authored artifact narratives require English coverage even inside snapshot-named directories
+  ---
+  duration_ms: 24.3984
+  type: 'test'
+  ...
+# Subtest: only exact source-copy bytes or independently pinned capture bytes are shared raw
+ok 44 - only exact source-copy bytes or independently pinned capture bytes are shared raw
+  ---
+  duration_ms: 46.2137
+  type: 'test'
+  ...
+# Subtest: generated failure contexts require both standard structure and a recorded attachment
+ok 45 - generated failure contexts require both standard structure and a recorded attachment
+  ---
+  duration_ms: 68.8089
+  type: 'test'
+  ...
+# Subtest: authored lower-level headings and prose after generated source remain in English scope
+ok 46 - authored lower-level headings and prose after generated source remain in English scope
+  ---
+  duration_ms: 175.8424
+  type: 'test'
+  ...
+# Subtest: raw evidence bytes and capture evidence hashes remain checked after finalization
+ok 47 - raw evidence bytes and capture evidence hashes remain checked after finalization
+  ---
+  duration_ms: 312.9436
+  type: 'test'
+  ...
+# Subtest: new raw evidence and reclassified evidence cannot silently leave the recorded inventory
+ok 48 - new raw evidence and reclassified evidence cannot silently leave the recorded inventory
+  ---
+  duration_ms: 66.3505
+  type: 'test'
+  ...
+# Subtest: Git inventory includes unignored and tracked artifact narratives without reading ignored private Markdown
+ok 49 - Git inventory includes unignored and tracked artifact narratives without reading ignored private Markdown
+  ---
+  duration_ms: 635.8192
+  type: 'test'
+  ...
+# Subtest: prepared source receipt 1 remains raw after canonical changes
+ok 50 - prepared source receipt 1 remains raw after canonical changes
+  ---
+  duration_ms: 17.1114
+  type: 'test'
+  ...
+# Subtest: prepared source receipt 2 remains raw after canonical changes
+ok 51 - prepared source receipt 2 remains raw after canonical changes
+  ---
+  duration_ms: 16.8295
+  type: 'test'
+  ...
+# Subtest: prepared source receipt 3 remains raw after canonical changes
+ok 52 - prepared source receipt 3 remains raw after canonical changes
+  ---
+  duration_ms: 16.1236
+  type: 'test'
+  ...
+# Subtest: prepared source pins reject altered copied bytes before the canonical shortcut
+ok 53 - prepared source pins reject altered copied bytes before the canonical shortcut
+  ---
+  duration_ms: 21.8766
+  type: 'test'
+  ...
+# Subtest: prepared source pins reject changed receipt bytes despite matching canonical bytes
+ok 54 - prepared source pins reject changed receipt bytes despite matching canonical bytes
+  ---
+  duration_ms: 17.0855
+  type: 'test'
+  ...
+# Subtest: prepared source pins require their own receipt and exact source-map key
+ok 55 - prepared source pins require their own receipt and exact source-map key
+  ---
+  duration_ms: 28.9319
+  type: 'test'
+  ...
+# Subtest: prepared source receipt exceptions never hide adjacent authored Markdown
+ok 56 - prepared source receipt exceptions never hide adjacent authored Markdown
+  ---
+  duration_ms: 22.6283
+  type: 'test'
+  ...
+# Subtest: selected source finalization never enumerates Git or writes full corpus artifacts
+ok 57 - selected source finalization never enumerates Git or writes full corpus artifacts
+  ---
+  duration_ms: 23.0163
+  type: 'test'
+  ...
+# Subtest: selected source checks do not report unselected manifest entries removed
+ok 58 - selected source checks do not report unselected manifest entries removed
+  ---
+  duration_ms: 37.0511
+  type: 'test'
+  ...
+# Subtest: selected source paths reject escapes, aliases, duplicates and English mirrors
+ok 59 - selected source paths reject escapes, aliases, duplicates and English mirrors
+  ---
+  duration_ms: 10.7669
+  type: 'test'
+  ...
+# Subtest: R17 source and report are the unchanged actual ready !== unavailable browser failure
+ok 60 - R17 source and report are the unchanged actual ready !== unavailable browser failure
+  ---
+  duration_ms: 8.7328
+  type: 'test'
+  ...
+# Subtest: only the exact R17 context and report pair is shared raw browser evidence
+ok 61 - only the exact R17 context and report pair is shared raw browser evidence
+  ---
+  duration_ms: 73.3402
+  type: 'test'
+  ...
+# Subtest: changed R17 context bytes and appended authored prose remain in English scope
+ok 62 - changed R17 context bytes and appended authored prose remain in English scope
+  ---
+  duration_ms: 405.5059
+  type: 'test'
+  ...
+# Subtest: missing R17 report cannot exempt the captured context
+ok 63 - missing R17 report cannot exempt the captured context
+  ---
+  duration_ms: 20.3216
+  type: 'test'
+  ...
+# Subtest: changed R17 report bytes fail even when its recorded attachment is retained
+ok 64 - changed R17 report bytes fail even when its recorded attachment is retained
+  ---
+  duration_ms: 27.8237
+  type: 'test'
+  ...
+# Subtest: R17 report with a changed attachment or missing suite structure cannot exempt context
+ok 65 - R17 report with a changed attachment or missing suite structure cannot exempt context
+  ---
+  duration_ms: 49.9423
+  type: 'test'
+  ...
+# Subtest: identical R17 capture at a moved proofs path has no raw-evidence exemption
+ok 66 - identical R17 capture at a moved proofs path has no raw-evidence exemption
+  ---
+  duration_ms: 19.4292
+  type: 'test'
+  ...
+# Subtest: the R17 exact pin never hides adjacent authored artifact Markdown
+ok 67 - the R17 exact pin never hides adjacent authored artifact Markdown
+  ---
+  duration_ms: 52.2073
+  type: 'test'
+  ...
+# Subtest: performance workload gates are importable without starting the browser runner
+ok 68 - performance workload gates are importable without starting the browser runner
+  ---
+  duration_ms: 2.75
+  type: 'test'
+  ...
+# Subtest: valid acoustic evidence covers both the product path cap and the 256-path stress graph
+ok 69 - valid acoustic evidence covers both the product path cap and the 256-path stress graph
+  ---
+  duration_ms: 600.8688
+  type: 'test'
+  ...
+# Subtest: a missing observable delivery cannot pass on known-stage sums
+ok 70 - a missing observable delivery cannot pass on known-stage sums
+  ---
+  duration_ms: 594.0021
+  type: 'test'
+  ...
+# Subtest: delivery for a different request cannot time the current native frame
+ok 71 - delivery for a different request cannot time the current native frame
+  ---
+  duration_ms: 247.6693
+  type: 'test'
+  ...
+# Subtest: a fabricated delivery duration cannot omit part of the observed interval
+ok 72 - a fabricated delivery duration cannot omit part of the observed interval
+  ---
+  duration_ms: 598.1277
+  type: 'test'
+  ...
+# Subtest: a changed source matrix cannot pass the eight-source acoustic profile
+ok 73 - a changed source matrix cannot pass the eight-source acoustic profile
+  ---
+  duration_ms: 620.1851
+  type: 'test'
+  ...
+# Subtest: a changed surface matrix cannot pass the 32-surface acoustic profile
+ok 74 - a changed surface matrix cannot pass the 32-surface acoustic profile
+  ---
+  duration_ms: 638.4146
+  type: 'test'
+  ...
+# Subtest: an unsupported reflection order cannot pass the first-order acoustic profile
+ok 75 - an unsupported reflection order cannot pass the first-order acoustic profile
+  ---
+  duration_ms: 658.3408
+  type: 'test'
+  ...
+# Subtest: a slower configured cadence cannot pass the 20Hz acoustic profile
+ok 76 - a slower configured cadence cannot pass the 20Hz acoustic profile
+  ---
+  duration_ms: 578.9377
+  type: 'test'
+  ...
+# Subtest: disabled native audio cannot pass by retaining old graph counters
+ok 77 - disabled native audio cannot pass by retaining old graph counters
+  ---
+  duration_ms: 811.2751
+  type: 'test'
+  ...
+# Subtest: paused native audio cannot pass by retaining current route counts
+ok 78 - paused native audio cannot pass by retaining current route counts
+  ---
+  duration_ms: 329.9874
+  type: 'test'
+  ...
+# Subtest: pending native voices invalidate the active graph workload
+ok 79 - pending native voices invalidate the active graph workload
+  ---
+  duration_ms: 805.1942
+  type: 'test'
+  ...
+# Subtest: frozen native voices cannot hide behind eight current voices
+ok 80 - frozen native voices cannot hide behind eight current voices
+  ---
+  duration_ms: 781.3006
+  type: 'test'
+  ...
+# Subtest: frozen native arrivals cannot hide behind complete current routes
+ok 81 - frozen native arrivals cannot hide behind complete current routes
+  ---
+  duration_ms: 730.7714
+  type: 'test'
+  ...
+# Subtest: draining native audio cannot pass as a stable graph workload
+ok 82 - draining native audio cannot pass as a stable graph workload
+  ---
+  duration_ms: 674.156
+  type: 'test'
+  ...
+# Subtest: a changed per-voice native budget cannot pass the requested path cap
+ok 83 - a changed per-voice native budget cannot pass the requested path cap
+  ---
+  duration_ms: 718.9033
+  type: 'test'
+  ...
+# Subtest: a changed total native budget cannot pass the 256-route stress profile
+ok 84 - a changed total native budget cannot pass the 256-route stress profile
+  ---
+  duration_ms: 430.5412
+  type: 'test'
+  ...
+# Subtest: empty acoustic samples cannot pass vacuously
+ok 85 - empty acoustic samples cannot pass vacuously
+  ---
+  duration_ms: 49.7076
+  type: 'test'
+  ...
+# Subtest: a short measured acoustic run cannot pass the full sample gate
+ok 86 - a short measured acoustic run cannot pass the full sample gate
+  ---
+  duration_ms: 842.1715
+  type: 'test'
+  ...
+# Subtest: duplicate admitted source IDs cannot substitute for eight distinct sources
+ok 87 - duplicate admitted source IDs cannot substitute for eight distinct sources
+  ---
+  duration_ms: 591.8231
+  type: 'test'
+  ...
+# Subtest: a rejected native voice cannot satisfy the source workload
+ok 88 - a rejected native voice cannot satisfy the source workload
+  ---
+  duration_ms: 803.7637
+  type: 'test'
+  ...
+# Subtest: retired routes cannot pad the requested current route count
+ok 89 - retired routes cannot pad the requested current route count
+  ---
+  duration_ms: 36.4661
+  type: 'test'
+  ...
+# Subtest: eight aggregate voices cannot hide a duplicate current source
+ok 90 - eight aggregate voices cannot hide a duplicate current source
+  ---
+  duration_ms: 31.4512
+  type: 'test'
+  ...
+# Subtest: extra native voices invalidate the exact eight-voice profile
+ok 91 - extra native voices invalidate the exact eight-voice profile
+  ---
+  duration_ms: 866.8219
+  type: 'test'
+  ...
+# Subtest: stopped sources cannot count as current native voices
+ok 92 - stopped sources cannot count as current native voices
+  ---
+  duration_ms: 20.3522
+  type: 'test'
+  ...
+# Subtest: disconnected current routes do not satisfy graph load
+ok 93 - disconnected current routes do not satisfy graph load
+  ---
+  duration_ms: 24.6995
+  type: 'test'
+  ...
+# Subtest: internal arrival voices cannot replace the eight original voices
+ok 94 - internal arrival voices cannot replace the eight original voices
+  ---
+  duration_ms: 23.2233
+  type: 'test'
+  ...
+# Subtest: the current route set must match the latest desired path identities
+ok 95 - the current route set must match the latest desired path identities
+  ---
+  duration_ms: 22.6955
+  type: 'test'
+  ...
+# Subtest: duplicate path IDs cannot pad the per-voice path budget
+ok 96 - duplicate path IDs cannot pad the per-voice path budget
+  ---
+  duration_ms: 27.7985
+  type: 'test'
+  ...
+# Subtest: equal path IDs from an old pose tick are stale evidence
+ok 97 - equal path IDs from an old pose tick are stale evidence
+  ---
+  duration_ms: 28.7397
+  type: 'test'
+  ...
+# Subtest: an old cached request cannot pass by keeping its path count
+ok 98 - an old cached request cannot pass by keeping its path count
+  ---
+  duration_ms: 117.0098
+  type: 'test'
+  ...
+# Subtest: aggregate route totals must reconcile with current voices
+ok 99 - aggregate route totals must reconcile with current voices
+  ---
+  duration_ms: 256.7531
+  type: 'test'
+  ...
+# Subtest: a suspended native audio context invalidates native graph timing
+ok 100 - a suspended native audio context invalidates native graph timing
+  ---
+  duration_ms: 471.5893
+  type: 'test'
+  ...
+# Subtest: a frozen audio clock cannot establish native rendering
+ok 101 - a frozen audio clock cannot establish native rendering
+  ---
+  duration_ms: 686.5841
+  type: 'test'
+  ...
+# Subtest: only successful native starts satisfy the admission evidence
+ok 102 - only successful native starts satisfy the admission evidence
+  ---
+  duration_ms: 708.4379
+  type: 'test'
+  ...
+# Subtest: native graph errors invalidate otherwise complete path counts
+ok 103 - native graph errors invalidate otherwise complete path counts
+  ---
+  duration_ms: 691.9964
+  type: 'test'
+  ...
+# Subtest: a synchronous fallback cannot pass the module Worker profile
+ok 104 - a synchronous fallback cannot pass the module Worker profile
+  ---
+  duration_ms: 968.6839
+  type: 'test'
+  ...
+# Subtest: a numeric completion beyond its 50ms window cannot hide behind a false flag
+ok 105 - a numeric completion beyond its 50ms window cannot hide behind a false flag
+  ---
+  duration_ms: 805.6133
+  type: 'test'
+  ...
+# Subtest: nonfinite cadence timestamps are invalid evidence
+ok 106 - nonfinite cadence timestamps are invalid evidence
+  ---
+  duration_ms: 791.196
+  type: 'test'
+  ...
+# Subtest: new droppedVoices invalidates graph load even with matching route counts
+ok 107 - new droppedVoices invalidates graph load even with matching route counts
+  ---
+  duration_ms: 859.1699
+  type: 'test'
+  ...
+# Subtest: new stolenVoices invalidates graph load even with matching route counts
+ok 108 - new stolenVoices invalidates graph load even with matching route counts
+  ---
+  duration_ms: 724.6216
+  type: 'test'
+  ...
+# Subtest: new droppedPaths invalidates graph load even with matching route counts
+ok 109 - new droppedPaths invalidates graph load even with matching route counts
+  ---
+  duration_ms: 1211.2525
+  type: 'test'
+  ...
+# Subtest: new staleFrames invalidates graph load even with matching route counts
+ok 110 - new staleFrames invalidates graph load even with matching route counts
+  ---
+  duration_ms: 782.5956
+  type: 'test'
+  ...
+# Subtest: warmup drops remain failures even when the measurement baseline hides them
+ok 111 - warmup drops remain failures even when the measurement baseline hides them
+  ---
+  duration_ms: 596.7194
+  type: 'test'
+  ...
+# Subtest: late-event telemetry remains a retained fact rather than an invented drop threshold
+ok 112 - late-event telemetry remains a retained fact rather than an invented drop threshold
+  ---
+  duration_ms: 718.8249
+  type: 'test'
+  ...
+# Subtest: a reused dirty engine cannot pass by treating existing losses as its baseline
+ok 113 - a reused dirty engine cannot pass by treating existing losses as its baseline
+  ---
+  duration_ms: 428.9685
+  type: 'test'
+  ...
+# Subtest: full physics evidence validates the exact fixed-step stress profile
+ok 114 - full physics evidence validates the exact fixed-step stress profile
+  ---
+  duration_ms: 3.1869
+  type: 'test'
+  ...
+# Subtest: a smaller physics scene cannot pass the 256-body gate
+ok 115 - a smaller physics scene cannot pass the 256-body gate
+  ---
+  duration_ms: 1.3003
+  type: 'test'
+  ...
+# Subtest: a missing CCD subset cannot pass the CCD profile
+ok 116 - a missing CCD subset cannot pass the CCD profile
+  ---
+  duration_ms: 1.1289
+  type: 'test'
+  ...
+# Subtest: a changed fixed step cannot pass the 60Hz physics profile
+ok 117 - a changed fixed step cannot pass the 60Hz physics profile
+  ---
+  duration_ms: 1.0659
+  type: 'test'
+  ...
+# Subtest: a short physics measurement cannot pass the full profile
+ok 118 - a short physics measurement cannot pass the full profile
+  ---
+  duration_ms: 0.7399
+  type: 'test'
+  ...
+# Subtest: mismatched physics arrays cannot conceal missing samples
+ok 119 - mismatched physics arrays cannot conceal missing samples
+  ---
+  duration_ms: 0.7282
+  type: 'test'
+  ...
+# Subtest: five catch-up steps violate the four-step ceiling
+ok 120 - five catch-up steps violate the four-step ceiling
+  ---
+  duration_ms: 1.0436
+  type: 'test'
+  ...
+# Subtest: sleeping bodies cannot count as the all-awake stress profile
+ok 121 - sleeping bodies cannot count as the all-awake stress profile
+  ---
+  duration_ms: 0.9609
+  type: 'test'
+  ...
+# Subtest: no contacts cannot pass the declared contact workload
+ok 122 - no contacts cannot pass the declared contact workload
+  ---
+  duration_ms: 1.2702
+  type: 'test'
+  ...
+# Subtest: nonfinite physics samples cannot pass by being filtered out
+ok 123 - nonfinite physics samples cannot pass by being filtered out
+  ---
+  duration_ms: 0.778
+  type: 'test'
+  ...
+# Subtest: valid UI evidence retains genuine warmup and three captured windows
+ok 124 - valid UI evidence retains genuine warmup and three captured windows
+  ---
+  duration_ms: 3.0635
+  type: 'test'
+  ...
+# Subtest: capture cannot include a tick from before its explicit start request
+ok 125 - capture cannot include a tick from before its explicit start request
+  ---
+  duration_ms: 0.6159
+  type: 'test'
+  ...
+# Subtest: post-await capture clocks cannot admit ticks produced after the stop request
+ok 126 - post-await capture clocks cannot admit ticks produced after the stop request
+  ---
+  duration_ms: 0.6407
+  type: 'test'
+  ...
+# Subtest: recording overrun cannot pass after the simulation catches back up
+ok 127 - recording overrun cannot pass after the simulation catches back up
+  ---
+  duration_ms: 0.4545
+  type: 'test'
+  ...
+# Subtest: recording accumulator debt cannot hide behind zero dropped wall time
+ok 128 - recording accumulator debt cannot hide behind zero dropped wall time
+  ---
+  duration_ms: 0.5695
+  type: 'test'
+  ...
+# Subtest: a raw paused advance cannot hide between running RAF samples
+ok 129 - a raw paused advance cannot hide between running RAF samples
+  ---
+  duration_ms: 0.4141
+  type: 'test'
+  ...
+# Subtest: capture-local overruns invalidate a captured artifact
+ok 130 - capture-local overruns invalidate a captured artifact
+  ---
+  duration_ms: 0.4786
+  type: 'test'
+  ...
+# Subtest: capture-local pauses remain failures despite successful sealing
+ok 131 - capture-local pauses remain failures despite successful sealing
+  ---
+  duration_ms: 0.4355
+  type: 'test'
+  ...
+# Subtest: a missing capture window cannot pass by counting action logs
+ok 132 - a missing capture window cannot pass by counting action logs
+  ---
+  duration_ms: 0.5202
+  type: 'test'
+  ...
+# Subtest: zero-frame captures cannot count as completed windows
+ok 133 - zero-frame captures cannot count as completed windows
+  ---
+  duration_ms: 0.3579
+  type: 'test'
+  ...
+# Subtest: reversed artifact ticks cannot count as a captured interval
+ok 134 - reversed artifact ticks cannot count as a captured interval
+  ---
+  duration_ms: 0.275
+  type: 'test'
+  ...
+# Subtest: an unverified capture hash cannot count as reviewable evidence
+ok 135 - an unverified capture hash cannot count as reviewable evidence
+  ---
+  duration_ms: 0.2412
+  type: 'test'
+  ...
+# Subtest: empty advance evidence cannot vacuously prove no overruns
+ok 136 - empty advance evidence cannot vacuously prove no overruns
+  ---
+  duration_ms: 0.2438
+  type: 'test'
+  ...
+# Subtest: cold idle time cannot masquerade as active ten-second warmup
+ok 137 - cold idle time cannot masquerade as active ten-second warmup
+  ---
+  duration_ms: 0.241
+  type: 'test'
+  ...
+# Subtest: a short warmup cannot pass the ten-second gate
+ok 138 - a short warmup cannot pass the ten-second gate
+  ---
+  duration_ms: 0.2827
+  type: 'test'
+  ...
+# Subtest: a frozen warmup audio clock cannot prove native graph warmup
+ok 139 - a frozen warmup audio clock cannot prove native graph warmup
+  ---
+  duration_ms: 0.2333
+  type: 'test'
+  ...
+# Subtest: no warmup native starts cannot be repaired by measured-phase starts
+ok 140 - no warmup native starts cannot be repaired by measured-phase starts
+  ---
+  duration_ms: 0.2444
+  type: 'test'
+  ...
+# Subtest: a warmup overrun is retained rather than hidden by measured success
+ok 141 - a warmup overrun is retained rather than hidden by measured success
+  ---
+  duration_ms: 0.2638
+  type: 'test'
+  ...
+# Subtest: truncated telemetry cannot pass the complete UI gate
+ok 142 - truncated telemetry cannot pass the complete UI gate
+  ---
+  duration_ms: 0.2516
+  type: 'test'
+  ...
+# Subtest: a runtime action error invalidates the requested workload
+ok 143 - a runtime action error invalidates the requested workload
+  ---
+  duration_ms: 0.3276
+  type: 'test'
+  ...
+# Subtest: no accepted throw cannot pass the grab-and-throw workload
+ok 144 - no accepted throw cannot pass the grab-and-throw workload
+  ---
+  duration_ms: 0.3021
+  type: 'test'
+  ...
+# Subtest: insufficient logical ticks cannot pass a full wall-clock run
+ok 145 - insufficient logical ticks cannot pass a full wall-clock run
+  ---
+  duration_ms: 0.2551
+  type: 'test'
+  ...
+# Subtest: page errors invalidate otherwise healthy UI evidence
+ok 146 - page errors invalidate otherwise healthy UI evidence
+  ---
+  duration_ms: 0.3321
+  type: 'test'
+  ...
+# Subtest: incomplete trace coverage invalidates otherwise healthy UI evidence
+ok 147 - incomplete trace coverage invalidates otherwise healthy UI evidence
+  ---
+  duration_ms: 0.4022
+  type: 'test'
+  ...
+# Subtest: a short trace duration cannot pass a requested ten-minute UI run
+ok 148 - a short trace duration cannot pass a requested ten-minute UI run
+  ---
+  duration_ms: 0.2921
+  type: 'test'
+  ...
+# Subtest: frame bins include both exact marker edges without losing task occupancy
+ok 149 - frame bins include both exact marker edges without losing task occupancy
+  ---
+  duration_ms: 2.029
+  type: 'test'
+  ...
+# Subtest: native RAF timestamps at marker edges are not duplicated into zero-width bins
+ok 150 - native RAF timestamps at marker edges are not duplicated into zero-width bins
+  ---
+  duration_ms: 0.3396
+  type: 'test'
+  ...
+# Subtest: compressed trace retains both partial edge bins and unions overlapping native tasks once
+ok 151 - compressed trace retains both partial edge bins and unions overlapping native tasks once
+  ---
+  duration_ms: 125.471
+  type: 'test'
+  ...
+# Subtest: another renderer's task cannot fill idle intervals on the marker renderer
+ok 152 - another renderer's task cannot fill idle intervals on the marker renderer
+  ---
+  duration_ms: 20.9981
+  type: 'test'
+  ...
+# Subtest: missing RAF evidence cannot establish frame coverage
+ok 153 - missing RAF evidence cannot establish frame coverage
+  ---
+  duration_ms: 0.5344
+  type: 'test'
+  ...
+# Subtest: single RAF evidence cannot establish frame coverage
+ok 154 - single RAF evidence cannot establish frame coverage
+  ---
+  duration_ms: 0.2203
+  type: 'test'
+  ...
+# Subtest: duplicate RAF timestamps cannot establish frame coverage
+ok 155 - duplicate RAF timestamps cannot establish frame coverage
+  ---
+  duration_ms: 0.1361
+  type: 'test'
+  ...
+# Subtest: decreasing RAF timestamps cannot establish frame coverage
+ok 156 - decreasing RAF timestamps cannot establish frame coverage
+  ---
+  duration_ms: 0.1436
+  type: 'test'
+  ...
+# Subtest: nonfinite RAF timestamps cannot establish frame coverage
+ok 157 - nonfinite RAF timestamps cannot establish frame coverage
+  ---
+  duration_ms: 0.1899
+  type: 'test'
+  ...
+# Subtest: RAF before the begin marker cannot establish frame coverage
+ok 158 - RAF before the begin marker cannot establish frame coverage
+  ---
+  duration_ms: 0.2075
+  type: 'test'
+  ...
+# Subtest: RAF after the end marker cannot establish frame coverage
+ok 159 - RAF after the end marker cannot establish frame coverage
+  ---
+  duration_ms: 0.139
+  type: 'test'
+  ...
+# Subtest: metric keeps strict p95 thresholds without fabricating missing observations
+ok 160 - metric keeps strict p95 thresholds without fabricating missing observations
+  ---
+  duration_ms: 0.8497
+  type: 'test'
+  ...
+# Subtest: observable delivery includes receive work, the await handoff and synchronous native consumers
+ok 161 - observable delivery includes receive work, the await handoff and synchronous native consumers
+  ---
+  duration_ms: 1.6479
+  type: 'test'
+  ...
+# Subtest: a solve failure restores the exact receive method and preserves the error
+ok 162 - a solve failure restores the exact receive method and preserves the error
+  ---
+  duration_ms: 1.2886
+  type: 'test'
+  ...
+# Subtest: a consumer failure restores the exact receive method and preserves the error
+ok 163 - a consumer failure restores the exact receive method and preserves the error
+  ---
+  duration_ms: 0.2652
+  type: 'test'
+  ...
+# Subtest: a batch mismatch cannot become timing evidence for the requested native delivery
+ok 164 - a batch mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.3816
+  type: 'test'
+  ...
+# Subtest: a port mismatch cannot become timing evidence for the requested native delivery
+ok 165 - a port mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.2173
+  type: 'test'
+  ...
+# Subtest: a pendingIdentity mismatch cannot become timing evidence for the requested native delivery
+ok 166 - a pendingIdentity mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.2355
+  type: 'test'
+  ...
+# Subtest: a pendingSource mismatch cannot become timing evidence for the requested native delivery
+ok 167 - a pendingSource mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.2255
+  type: 'test'
+  ...
+# Subtest: a pendingPose mismatch cannot become timing evidence for the requested native delivery
+ok 168 - a pendingPose mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.224
+  type: 'test'
+  ...
+# Subtest: a solutionIdentity mismatch cannot become timing evidence for the requested native delivery
+ok 169 - a solutionIdentity mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.663
+  type: 'test'
+  ...
+# Subtest: a solutionRequest mismatch cannot become timing evidence for the requested native delivery
+ok 170 - a solutionRequest mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.4224
+  type: 'test'
+  ...
+# Subtest: a solutionSource mismatch cannot become timing evidence for the requested native delivery
+ok 171 - a solutionSource mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.2762
+  type: 'test'
+  ...
+# Subtest: a noReceive mismatch cannot become timing evidence for the requested native delivery
+ok 172 - a noReceive mismatch cannot become timing evidence for the requested native delivery
+  ---
+  duration_ms: 0.1761
+  type: 'test'
+  ...
+# Subtest: invalid clock timing is rejected and the receive seam is restored
+ok 173 - invalid clock timing is rejected and the receive seam is restored
+  ---
+  duration_ms: 0.4659
+  type: 'test'
+  ...
+# Subtest: invalid nonfiniteClock timing is rejected and the receive seam is restored
+ok 174 - invalid nonfiniteClock timing is rejected and the receive seam is restored
+  ---
+  duration_ms: 0.2229
+  type: 'test'
+  ...
+# Subtest: invalid asyncConsumer timing is rejected and the receive seam is restored
+ok 175 - invalid asyncConsumer timing is rejected and the receive seam is restored
+  ---
+  duration_ms: 0.175
+  type: 'test'
+  ...
+# Subtest: an unrelated reply before the matching batch cannot move the delivery boundary
+ok 176 - an unrelated reply before the matching batch cannot move the delivery boundary
+  ---
+  duration_ms: 0.3067
+  type: 'test'
+  ...
+# Subtest: boundary-v2 proves a leading RAF belongs to the current callback collection
+ok 177 - boundary-v2 proves a leading RAF belongs to the current callback collection
+  ---
+  duration_ms: 0.6049
+  type: 'test'
+  ...
+# Subtest: boundary-v2 cannot fall back to legacy containment when its supplied schema is invalid
+ok 178 - boundary-v2 cannot fall back to legacy containment when its supplied schema is invalid
+  ---
+  duration_ms: 0.2356
+  type: 'test'
+  ...
+# Subtest: boundary-v2 requires full callback proof even for contained frames and malformed supplied windows
+ok 179 - boundary-v2 requires full callback proof even for contained frames and malformed supplied windows
+  ---
+  duration_ms: 0.2793
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects missing collection window as proof for an outside-leading RAF timestamp
+ok 180 - boundary-v2 rejects missing collection window as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.2524
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects unsupported collection schema as proof for an outside-leading RAF timestamp
+ok 181 - boundary-v2 rejects unsupported collection schema as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1605
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects missing collection window ID as proof for an outside-leading RAF timestamp
+ok 182 - boundary-v2 rejects missing collection window ID as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1763
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a different collection window ID as proof for an outside-leading RAF timestamp
+ok 183 - boundary-v2 rejects a different collection window ID as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.2381
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a collection window beginning outside the actual marker as proof for an outside-leading RAF timestamp
+ok 184 - boundary-v2 rejects a collection window beginning outside the actual marker as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1791
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a collection window ending outside the actual marker as proof for an outside-leading RAF timestamp
+ok 185 - boundary-v2 rejects a collection window ending outside the actual marker as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1508
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a missing callback collection ID as proof for an outside-leading RAF timestamp
+ok 186 - boundary-v2 rejects a missing callback collection ID as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.157
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a callback from a different collection as proof for an outside-leading RAF timestamp
+ok 187 - boundary-v2 rejects a callback from a different collection as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.153
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects missing membership proof on an interior callback as proof for an outside-leading RAF timestamp
+ok 188 - boundary-v2 rejects missing membership proof on an interior callback as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1529
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a callback observed before collection began as proof for an outside-leading RAF timestamp
+ok 189 - boundary-v2 rejects a callback observed before collection began as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.191
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a callback observed after collection ended as proof for an outside-leading RAF timestamp
+ok 190 - boundary-v2 rejects a callback observed after collection ended as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.157
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a native timestamp from after its callback observation as proof for an outside-leading RAF timestamp
+ok 191 - boundary-v2 rejects a native timestamp from after its callback observation as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.14
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a trailing future native timestamp as proof for an outside-leading RAF timestamp
+ok 192 - boundary-v2 rejects a trailing future native timestamp as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1458
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects duplicate raw leading timestamps as proof for an outside-leading RAF timestamp
+ok 193 - boundary-v2 rejects duplicate raw leading timestamps as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1663
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects descending raw native timestamps as proof for an outside-leading RAF timestamp
+ok 194 - boundary-v2 rejects descending raw native timestamps as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.2591
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a nonfinite raw native timestamp as proof for an outside-leading RAF timestamp
+ok 195 - boundary-v2 rejects a nonfinite raw native timestamp as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1911
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects a nonfinite callback observation as proof for an outside-leading RAF timestamp
+ok 196 - boundary-v2 rejects a nonfinite callback observation as proof for an outside-leading RAF timestamp
+  ---
+  duration_ms: 0.1639
+  type: 'test'
+  ...
+# Subtest: boundary-v2 keeps long cross-edge task occupancy and cannot turn a failed main-thread budget into PASS
+ok 197 - boundary-v2 keeps long cross-edge task occupancy and cannot turn a failed main-thread budget into PASS
+  ---
+  duration_ms: 50.3398
+  type: 'test'
+  ...
+# Subtest: boundary-v2 aligns two clock anchors while retaining native microsecond occupancy
+ok 198 - boundary-v2 aligns two clock anchors while retaining native microsecond occupancy
+  ---
+  duration_ms: 15.7493
+  type: 'test'
+  ...
+# Subtest: physics-maintenance exposes the bounded actual fixture maintenance function
+ok 199 - physics-maintenance exposes the bounded actual fixture maintenance function
+  ---
+  duration_ms: 2.7917
+  type: 'test'
+  ...
+# Subtest: physics-maintenance wakes all 255 sleeping bodies on a non-pulse step and leaves the fixed body untouched
+ok 200 - physics-maintenance wakes all 255 sleeping bodies on a non-pulse step and leaves the fixed body untouched
+  ---
+  duration_ms: 5.2128
+  type: 'test'
+  ...
+# Subtest: physics-maintenance preserves the original pulse cadence and vectors at steps zero and thirty
+ok 201 - physics-maintenance preserves the original pulse cadence and vectors at steps zero and thirty
+  ---
+  duration_ms: 6.3204
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a missing dynamic record before applying any pulse
+ok 202 - physics-maintenance rejects a missing dynamic record before applying any pulse
+  ---
+  duration_ms: 3.143
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects an unexpected record replacing a known stress ID before applying any pulse
+ok 203 - physics-maintenance rejects an unexpected record replacing a known stress ID before applying any pulse
+  ---
+  duration_ms: 3.0414
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a stress record authored as fixed before applying any pulse
+ok 204 - physics-maintenance rejects a stress record authored as fixed before applying any pulse
+  ---
+  duration_ms: 2.9118
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a native body that is not dynamic before applying any pulse
+ok 205 - physics-maintenance rejects a native body that is not dynamic before applying any pulse
+  ---
+  duration_ms: 2.3191
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a missing wakeUp API before applying any pulse
+ok 206 - physics-maintenance rejects a missing wakeUp API before applying any pulse
+  ---
+  duration_ms: 2.2112
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a missing sleeping-state API before applying any pulse
+ok 207 - physics-maintenance rejects a missing sleeping-state API before applying any pulse
+  ---
+  duration_ms: 2.2701
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a nonboolean native sleeping state before applying any pulse
+ok 208 - physics-maintenance rejects a nonboolean native sleeping state before applying any pulse
+  ---
+  duration_ms: 2.1102
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects two stable IDs referring to one native body before applying any pulse
+ok 209 - physics-maintenance rejects two stable IDs referring to one native body before applying any pulse
+  ---
+  duration_ms: 2.6577
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a nonfixed extra body before applying any pulse
+ok 210 - physics-maintenance rejects a nonfixed extra body before applying any pulse
+  ---
+  duration_ms: 2.5766
+  type: 'test'
+  ...
+# Subtest: physics-maintenance rejects a no-op native wake instead of fabricating awake telemetry
+ok 211 - physics-maintenance rejects a no-op native wake instead of fabricating awake telemetry
+  ---
+  duration_ms: 3.0454
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects foreign marker names even on the same renderer thread
+ok 212 - boundary-v2 rejects foreign marker names even on the same renderer thread
+  ---
+  duration_ms: 13.2018
+  type: 'test'
+  ...
+# Subtest: boundary-v2 rejects an end marker from a different renderer thread
+ok 213 - boundary-v2 rejects an end marker from a different renderer thread
+  ---
+  duration_ms: 12.2009
+  type: 'test'
+  ...
+# Subtest: interpolation-observer exposes the actual fast-method instrumentation helper
+ok 214 - interpolation-observer exposes the actual fast-method instrumentation helper
+  ---
+  duration_ms: 2.1971
+  type: 'test'
+  ...
+# Subtest: interpolation-observer UI guard rejects legacy-only counts even when aggregate accounting is nonzero
+ok 215 - interpolation-observer UI guard rejects legacy-only counts even when aggregate accounting is nonzero
+  ---
+  duration_ms: 0.3534
+  type: 'test'
+  ...
+# Subtest: interpolation-observer counts the fast route and preserves receiver, arguments and returned identities
+ok 216 - interpolation-observer counts the fast route and preserves receiver, arguments and returned identities
+  ---
+  duration_ms: 2.5375
+  type: 'test'
+  ...
+# Subtest: interpolation-observer rejects a missing or nonfunction fast route before mutating the legacy route
+ok 217 - interpolation-observer rejects a missing or nonfunction fast route before mutating the legacy route
+  ---
+  duration_ms: 2.1292
+  type: 'test'
+  ...
+# Subtest: interpolation-observer delegates without accounting while measurement is disabled
+ok 218 - interpolation-observer delegates without accounting while measurement is disabled
+  ---
+  duration_ms: 2.0237
+  type: 'test'
+  ...
+# Subtest: interpolation-observer records inclusive nested methods but only one outer aggregate interval
+ok 219 - interpolation-observer records inclusive nested methods but only one outer aggregate interval
+  ---
+  duration_ms: 1.9739
+  type: 'test'
+  ...
+# Subtest: interpolation-observer preserves nested errors and restores depth for the next successful fast call
+ok 220 - interpolation-observer preserves nested errors and restores depth for the next successful fast call
+  ---
+  duration_ms: 2.1803
+  type: 'test'
+  ...
+# Subtest: interpolation-observer UI guard rejects missing, failed or inconsistent fast-method accounting
+ok 221 - interpolation-observer UI guard rejects missing, failed or inconsistent fast-method accounting
+  ---
+  duration_ms: 1.2258
+  type: 'test'
+  ...
+# Subtest: interpolation-observer accepts successful zero-ms timing under clock quantization
+ok 222 - interpolation-observer accepts successful zero-ms timing under clock quantization
+  ---
+  duration_ms: 2.2551
+  type: 'test'
+  ...
+# Subtest: positive literal/native interval oracle is [8, 10, 4] ms
+ok 223 - positive literal/native interval oracle is [8, 10, 4] ms
+  ---
+  duration_ms: 7.3302
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-wrong-category
+ok 224 - controlled UNVERIFIED: valid-task-plus-wrong-category
+  ---
+  duration_ms: 1.2027
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-malformed-category
+ok 225 - controlled UNVERIFIED: valid-task-plus-malformed-category
+  ---
+  duration_ms: 1.3468
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-unsupported-phase
+ok 226 - controlled UNVERIFIED: valid-task-plus-unsupported-phase
+  ---
+  duration_ms: 3.7089
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-negative-duration
+ok 227 - controlled UNVERIFIED: valid-task-plus-negative-duration
+  ---
+  duration_ms: 0.288
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-nonfinite-ts
+ok 228 - controlled UNVERIFIED: valid-task-plus-nonfinite-ts
+  ---
+  duration_ms: 0.2186
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-missing-duration
+ok 229 - controlled UNVERIFIED: valid-task-plus-missing-duration
+  ---
+  duration_ms: 0.2065
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-overflow-end
+ok 230 - controlled UNVERIFIED: valid-task-plus-overflow-end
+  ---
+  duration_ms: 0.464
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-string-duration
+ok 231 - controlled UNVERIFIED: valid-task-plus-string-duration
+  ---
+  duration_ms: 0.4239
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-task-plus-null-duration
+ok 232 - controlled UNVERIFIED: valid-task-plus-null-duration
+  ---
+  duration_ms: 0.3552
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: outside-window-malformed-task-not-hidden
+ok 233 - controlled UNVERIFIED: outside-window-malformed-task-not-hidden
+  ---
+  duration_ms: 0.1469
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: unknown-task-thread-not-excluded
+ok 234 - controlled UNVERIFIED: unknown-task-thread-not-excluded
+  ---
+  duration_ms: 0.0804
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: null-event
+ok 235 - controlled UNVERIFIED: null-event
+  ---
+  duration_ms: 0.0371
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: event-name-null
+ok 236 - controlled UNVERIFIED: event-name-null
+  ---
+  duration_ms: 0.0354
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: event-name-cap
+ok 237 - controlled UNVERIFIED: event-name-cap
+  ---
+  duration_ms: 0.0411
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: unknown-method
+ok 238 - controlled UNVERIFIED: unknown-method
+  ---
+  duration_ms: 0.0301
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: null-proof
+ok 239 - controlled UNVERIFIED: null-proof
+  ---
+  duration_ms: 0.026
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: raw-array-type
+ok 240 - controlled UNVERIFIED: raw-array-type
+  ---
+  duration_ms: 0.0283
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: null-raw-row
+ok 241 - controlled UNVERIFIED: null-raw-row
+  ---
+  duration_ms: 0.0278
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: raw-timestamp-string-coercion
+ok 242 - controlled UNVERIFIED: raw-timestamp-string-coercion
+  ---
+  duration_ms: 0.0592
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: observed-now-string-coercion
+ok 243 - controlled UNVERIFIED: observed-now-string-coercion
+  ---
+  duration_ms: 0.0521
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: unknown-trace-loss
+ok 244 - controlled UNVERIFIED: unknown-trace-loss
+  ---
+  duration_ms: 0.0602
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: trace-loss
+ok 245 - controlled UNVERIFIED: trace-loss
+  ---
+  duration_ms: 0.0523
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: unclosed-trace
+ok 246 - controlled UNVERIFIED: unclosed-trace
+  ---
+  duration_ms: 0.0502
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: navigation-loader-swap
+ok 247 - controlled UNVERIFIED: navigation-loader-swap
+  ---
+  duration_ms: 0.0581
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: document-id-type
+ok 248 - controlled UNVERIFIED: document-id-type
+  ---
+  duration_ms: 0.1021
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: document-url-cap
+ok 249 - controlled UNVERIFIED: document-url-cap
+  ---
+  duration_ms: 0.0575
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: missing-renderer-metadata
+ok 250 - controlled UNVERIFIED: missing-renderer-metadata
+  ---
+  duration_ms: 0.058
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: conflicting-renderer-metadata
+ok 251 - controlled UNVERIFIED: conflicting-renderer-metadata
+  ---
+  duration_ms: 0.0563
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: missing-physical-calltime
+ok 252 - controlled UNVERIFIED: missing-physical-calltime
+  ---
+  duration_ms: 0.065
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: mark-ts-not-physical-fallback
+ok 253 - controlled UNVERIFIED: mark-ts-not-physical-fallback
+  ---
+  duration_ms: 0.0625
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: physical-calltime-one-us-before-fire
+ok 254 - controlled UNVERIFIED: physical-calltime-one-us-before-fire
+  ---
+  duration_ms: 0.0603
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: physical-calltime-one-us-after-fire
+ok 255 - controlled UNVERIFIED: physical-calltime-one-us-after-fire
+  ---
+  duration_ms: 0.0555
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: wrong-fire-category
+ok 256 - controlled UNVERIFIED: wrong-fire-category
+  ---
+  duration_ms: 0.0537
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: wrong-fire-document
+ok 257 - controlled UNVERIFIED: wrong-fire-document
+  ---
+  duration_ms: 1.3523
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: duplicate-fire
+ok 258 - controlled UNVERIFIED: duplicate-fire
+  ---
+  duration_ms: 0.1392
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: valid-fire-plus-unknown-identity
+ok 259 - controlled UNVERIFIED: valid-fire-plus-unknown-identity
+  ---
+  duration_ms: 0.0757
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: duplicate-proof-mark
+ok 260 - controlled UNVERIFIED: duplicate-proof-mark
+  ---
+  duration_ms: 0.0602
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: foreign-mark
+ok 261 - controlled UNVERIFIED: foreign-mark
+  ---
+  duration_ms: 0.0544
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: wrong-raw-bits
+ok 262 - controlled UNVERIFIED: wrong-raw-bits
+  ---
+  duration_ms: 0.0816
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: wrong-observed-bits
+ok 263 - controlled UNVERIFIED: wrong-observed-bits
+  ---
+  duration_ms: 0.0569
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: raw-after-final-window
+ok 264 - controlled UNVERIFIED: raw-after-final-window
+  ---
+  duration_ms: 0.1705
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: string-callback-group-ordinal
+ok 265 - controlled UNVERIFIED: string-callback-group-ordinal
+  ---
+  duration_ms: 0.0768
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: raw-raf-group-count
+ok 266 - controlled UNVERIFIED: raw-raf-group-count
+  ---
+  duration_ms: 0.0605
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: collector-droppedProofs
+ok 267 - controlled UNVERIFIED: collector-droppedProofs
+  ---
+  duration_ms: 0.0517
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: collector-droppedCallbacks
+ok 268 - controlled UNVERIFIED: collector-droppedCallbacks
+  ---
+  duration_ms: 0.0509
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: collector-capHits
+ok 269 - controlled UNVERIFIED: collector-capHits
+  ---
+  duration_ms: 0.0551
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: collector-samplesAfterClose
+ok 270 - controlled UNVERIFIED: collector-samplesAfterClose
+  ---
+  duration_ms: 0.0524
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: collector-clearedMarks
+ok 271 - controlled UNVERIFIED: collector-clearedMarks
+  ---
+  duration_ms: 0.0516
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: missing-counter
+ok 272 - controlled UNVERIFIED: missing-counter
+  ---
+  duration_ms: 0.0586
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: unsupported-expanded-caps
+ok 273 - controlled UNVERIFIED: unsupported-expanded-caps
+  ---
+  duration_ms: 0.0518
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: not-closed
+ok 274 - controlled UNVERIFIED: not-closed
+  ---
+  duration_ms: 0.0494
+  type: 'test'
+  ...
+# Subtest: controlled UNVERIFIED: missing-present-request-category
+ok 275 - controlled UNVERIFIED: missing-present-request-category
+  ---
+  duration_ms: 0.0675
+  type: 'test'
+  ...
+# Subtest: explicit different thread task exclusion does not validate its irrelevant task schema
+ok 276 - explicit different thread task exclusion does not validate its irrelevant task schema
+  ---
+  duration_ms: 0.164
+  type: 'test'
+  ...
+# Subtest: event cap is checked before filtering; exact cap remains eligible
+ok 277 - event cap is checked before filtering; exact cap remains eligible
+  ---
+  duration_ms: 0.1402
+  type: 'test'
+  ...
+# Subtest: physical callTime exact fire boundaries are inclusive
+ok 278 - physical callTime exact fire boundaries are inclusive
+  ---
+  duration_ms: 0.3195
+  type: 'test'
+  ...
+# Subtest: exact raw inversion stays diagnostic under positive native identity; no epsilon
+ok 279 - exact raw inversion stays diagnostic under positive native identity; no epsilon
+  ---
+  duration_ms: 0.2371
+  type: 'test'
+  ...
+# Subtest: native 50000us coverage edge passes exactly; edge+1 fails numeric completeness
+ok 280 - native 50000us coverage edge passes exactly; edge+1 fails numeric completeness
+  ---
+  duration_ms: 0.4393
+  type: 'test'
+  ...
+# Subtest: old/new binary64 bins and occupancy are bit exact on original eligible literal
+ok 281 - old/new binary64 bins and occupancy are bit exact on original eligible literal
+  ---
+  duration_ms: 1073.0478
+  type: 'test'
+  ...
+# Subtest: collector twins share one proof; actual handles/raw bits retained and closed samples rejected
+ok 282 - collector twins share one proof; actual handles/raw bits retained and closed samples rejected
+  ---
+  duration_ms: 2.1413
+  type: 'test'
+  ...
+# Subtest: register-cancel-register reuse and boundary cap+1 are visible
+ok 283 - register-cancel-register reuse and boundary cap+1 are visible
+  ---
+  duration_ms: 0.4933
+  type: 'test'
+  ...
+# Subtest: inherited wrapper preserves argument bits, returned handles, cancel, invoke-once, all callback timing, restoration
+ok 284 - inherited wrapper preserves argument bits, returned handles, cancel, invoke-once, all callback timing, restoration
+  ---
+  duration_ms: 5.036
+  type: 'test'
+  ...
+# Subtest: owned startup failures at each stage close all acquired resources and preserve errors
+ok 285 - owned startup failures at each stage close all acquired resources and preserve errors
+  ---
+  duration_ms: 2.781
+  type: 'test'
+  ...
+# Subtest: never-settling startup cleanup is bounded and does not skip preview
+ok 286 - never-settling startup cleanup is bounded and does not skip preview
+  ---
+  duration_ms: 7.8852
+  type: 'test'
+  ...
+# Subtest: stream and buffer preserve same numeric output, identity, context and full event count
+ok 287 - stream and buffer preserve same numeric output, identity, context and full event count
+  ---
+  duration_ms: 31.2372
+  type: 'test'
+  ...
+# Subtest: stream rejects foreign primitive before filtering
+ok 288 - stream rejects foreign primitive before filtering
+  ---
+  duration_ms: 21.3769
+  type: 'test'
+  ...
+# Subtest: stream rejects foreign bad name before filtering
+ok 289 - stream rejects foreign bad name before filtering
+  ---
+  duration_ms: 24.977
+  type: 'test'
+  ...
+# Subtest: stream rejects foreign long name before filtering
+ok 290 - stream rejects foreign long name before filtering
+  ---
+  duration_ms: 32.1522
+  type: 'test'
+  ...
+# Subtest: stream validates malformed task outside window
+ok 291 - stream validates malformed task outside window
+  ---
+  duration_ms: 46.3387
+  type: 'test'
+  ...
+# Subtest: only exact formal or bounded short caps accepted
+ok 292 - only exact formal or bounded short caps accepted
+  ---
+  duration_ms: 3.0408
+  type: 'test'
+  ...
+# Subtest: formal opt in fixes workload, default short remains bounded
+ok 293 - formal opt in fixes workload, default short remains bounded
+  ---
+  duration_ms: 2.7953
+  type: 'test'
+  ...
+# Subtest: invalid cli --seconds 600
+ok 294 - invalid cli --seconds 600
+  ---
+  duration_ms: 1.0309
+  type: 'test'
+  ...
+# Subtest: invalid cli --formal-600 --phase ui
+ok 295 - invalid cli --formal-600 --phase ui
+  ---
+  duration_ms: 0.6743
+  type: 'test'
+  ...
+# Subtest: invalid cli --formal-600 --seconds 599
+ok 296 - invalid cli --formal-600 --seconds 599
+  ---
+  duration_ms: 0.8346
+  type: 'test'
+  ...
+# Subtest: invalid cli --bogus 1
+ok 297 - invalid cli --bogus 1
+  ---
+  duration_ms: 1.0363
+  type: 'test'
+  ...
+# Subtest: invalid cli --phase
+ok 298 - invalid cli --phase
+  ---
+  duration_ms: 0.9172
+  type: 'test'
+  ...
+# Subtest: invalid cli --seconds 20 --seconds 20
+ok 299 - invalid cli --seconds 20 --seconds 20
+  ---
+  duration_ms: 0.609
+  type: 'test'
+  ...
+# Subtest: invalid cli --formal-600 --formal-600
+ok 300 - invalid cli --formal-600 --formal-600
+  ---
+  duration_ms: 1.5245
+  type: 'test'
+  ...
+# Subtest: matches JSON.parse with escaped delimiters, nested metadata, primitives and UTF-8
+ok 301 - matches JSON.parse with escaped delimiters, nested metadata, primitives and UTF-8
+  ---
+  duration_ms: 202.8537
+  type: 'test'
+  ...
+# Subtest: handles decoder and framing boundaries
+ok 302 - handles decoder and framing boundaries
+  ---
+  duration_ms: 65.6695
+  type: 'test'
+  ...
+# Subtest: rejects malformed entire document and duplicate traceEvents
+ok 303 - rejects malformed entire document and duplicate traceEvents
+  ---
+  duration_ms: 129.1206
+  type: 'test'
+  ...
+# Subtest: resource caps fail closed and clean up
+ok 304 - resource caps fail closed and clean up
+  ---
+  duration_ms: 52.3188
+  type: 'test'
+  ...
+# Subtest: rejects nested malformed values, trailing values, callback errors and promises
+ok 305 - rejects nested malformed values, trailing values, callback errors and promises
+  ---
+  duration_ms: 42.9889
+  type: 'test'
+  ...
+# Subtest: reproducible 1 MiB and 10 MiB parity smoke
+ok 306 - reproducible 1 MiB and 10 MiB parity smoke
+  ---
+  duration_ms: 1454.6997
+  type: 'test'
+  ...
+# 1056097 bytes, 7385 events, 57 ms, max token 142 bytes
+# 10559734 bytes, 73844 events, 533 ms, max token 142 bytes
+# Subtest: bounded raw checkpoint matches JSON and its hash
+ok 307 - bounded raw checkpoint matches JSON and its hash
+  ---
+  duration_ms: 48.9112
+  type: 'test'
+  ...
+# Subtest: checkpoint rejects raw cap
+ok 308 - checkpoint rejects raw cap
+  ---
+  duration_ms: 6.9593
+  type: 'test'
+  ...
+# Subtest: checkpoint completes before stop and success
+ok 309 - checkpoint completes before stop and success
+  ---
+  duration_ms: 0.7221
+  type: 'test'
+  ...
+# Subtest: checkpoint and stop errors preserved and stop attempted
+ok 310 - checkpoint and stop errors preserved and stop attempted
+  ---
+  duration_ms: 0.3386
+  type: 'test'
+  ...
+# Subtest: stop failure preserves checkpoint and observes late completion rejection
+ok 311 - stop failure preserves checkpoint and observes late completion rejection
+  ---
+  duration_ms: 0.8414
+  type: 'test'
+  ...
+# Subtest: timeout rejects even if completion remains pending and late rejection is observed
+ok 312 - timeout rejects even if completion remains pending and late rejection is observed
+  ---
+  duration_ms: 4.7539
+  type: 'test'
+  ...
+# Subtest: completion failure remains primary after successful checkpoint and stop
+ok 313 - completion failure remains primary after successful checkpoint and stop
+  ---
+  duration_ms: 0.3362
+  type: 'test'
+  ...
+# Subtest: checkpoint preserves thrown null
+ok 314 - checkpoint preserves thrown null
+  ---
+  duration_ms: 0.2838
+  type: 'test'
+  ...
+# Subtest: stop preserves thrown null
+ok 315 - stop preserves thrown null
+  ---
+  duration_ms: 0.1397
+  type: 'test'
+  ...
+# Subtest: completion preserves thrown null
+ok 316 - completion preserves thrown null
+  ---
+  duration_ms: 0.101
+  type: 'test'
+  ...
+# Subtest: checkpoint preserves thrown undefined
+ok 317 - checkpoint preserves thrown undefined
+  ---
+  duration_ms: 0.2174
+  type: 'test'
+  ...
+# Subtest: stop preserves thrown undefined
+ok 318 - stop preserves thrown undefined
+  ---
+  duration_ms: 0.1355
+  type: 'test'
+  ...
+# Subtest: completion preserves thrown undefined
+ok 319 - completion preserves thrown undefined
+  ---
+  duration_ms: 0.1019
+  type: 'test'
+  ...
+# Subtest: checkpoint preserves thrown false
+ok 320 - checkpoint preserves thrown false
+  ---
+  duration_ms: 0.1153
+  type: 'test'
+  ...
+# Subtest: stop preserves thrown false
+ok 321 - stop preserves thrown false
+  ---
+  duration_ms: 0.0956
+  type: 'test'
+  ...
+# Subtest: completion preserves thrown false
+ok 322 - completion preserves thrown false
+  ---
+  duration_ms: 0.1053
+  type: 'test'
+  ...
+# Subtest: checkpoint preserves thrown 0
+ok 323 - checkpoint preserves thrown 0
+  ---
+  duration_ms: 0.1469
+  type: 'test'
+  ...
+# Subtest: stop preserves thrown 0
+ok 324 - stop preserves thrown 0
+  ---
+  duration_ms: 0.1117
+  type: 'test'
+  ...
+# Subtest: completion preserves thrown 0
+ok 325 - completion preserves thrown 0
+  ---
+  duration_ms: 0.0987
+  type: 'test'
+  ...
+# Subtest: checkpoint preserves thrown 
+ok 326 - checkpoint preserves thrown 
+  ---
+  duration_ms: 0.1029
+  type: 'test'
+  ...
+# Subtest: stop preserves thrown 
+ok 327 - stop preserves thrown 
+  ---
+  duration_ms: 0.0958
+  type: 'test'
+  ...
+# Subtest: completion preserves thrown 
+ok 328 - completion preserves thrown 
+  ---
+  duration_ms: 0.1634
+  type: 'test'
+  ...
+# Subtest: simultaneous falsy checkpoint and stop failures remain ordered
+ok 329 - simultaneous falsy checkpoint and stop failures remain ordered
+  ---
+  duration_ms: 0.3619
+  type: 'test'
+  ...
+# Subtest: open failure rejects cleanly and settles file stream
+ok 330 - open failure rejects cleanly and settles file stream
+  ---
+  duration_ms: 5.8387
+  type: 'test'
+  ...
+# Subtest: write failure is observed and stream closes before rejection
+ok 331 - write failure is observed and stream closes before rejection
+  ---
+  duration_ms: 1.1964
+  type: 'test'
+  ...
+# Subtest: cap failure waits for delayed destroy error and close without losing primary
+ok 332 - cap failure waits for delayed destroy error and close without losing primary
+  ---
+  duration_ms: 0.8458
+  type: 'test'
+  ...
+# Subtest: pending stop is bounded even when completion already arrives
+ok 333 - pending stop is bounded even when completion already arrives
+  ---
+  duration_ms: 20.613
+  type: 'test'
+  ...
+# Subtest: slow successful stop and completion are both awaited
+ok 334 - slow successful stop and completion are both awaited
+  ---
+  duration_ms: 6.9698
+  type: 'test'
+  ...
+# Subtest: fault with falsy value rejects even with pending stop
+ok 335 - fault with falsy value rejects even with pending stop
+  ---
+  duration_ms: 0.3546
+  type: 'test'
+  ...
+# Subtest: completion rejection interrupts hung stop and late stop rejection observed
+ok 336 - completion rejection interrupts hung stop and late stop rejection observed
+  ---
+  duration_ms: 0.7987
+  type: 'test'
+  ...
+# Subtest: timeout observes late completion and stop rejections
+ok 337 - timeout observes late completion and stop rejections
+  ---
+  duration_ms: 26.5634
+  type: 'test'
+  ...
+# Subtest: observer records actual event once and removes owned listeners before cleanup
+ok 338 - observer records actual event once and removes owned listeners before cleanup
+  ---
+  duration_ms: 0.8055
+  type: 'test'
+  ...
+# Subtest: checkpoint failure still invokes hung stop exactly once and remains primary
+ok 339 - checkpoint failure still invokes hung stop exactly once and remains primary
+  ---
+  duration_ms: 27.9526
+  type: 'test'
+  ...
+# Subtest: formal wrapper plan single child fixed bounds and unique nested output
+ok 340 - formal wrapper plan single child fixed bounds and unique nested output
+  ---
+  duration_ms: 0.3947
+  type: 'test'
+  ...
+# Subtest: short wrapper has bounded timeout
+ok 341 - short wrapper has bounded timeout
+  ---
+  duration_ms: 0.1359
+  type: 'test'
+  ...
+# Subtest: wrapper rejects --unknown x
+ok 342 - wrapper rejects --unknown x
+  ---
+  duration_ms: 0.251
+  type: 'test'
+  ...
+# Subtest: wrapper rejects --output a --output b --executable-path chrome
+ok 343 - wrapper rejects --output a --output b --executable-path chrome
+  ---
+  duration_ms: 0.1011
+  type: 'test'
+  ...
+# Subtest: wrapper rejects --output
+ok 344 - wrapper rejects --output
+  ---
+  duration_ms: 0.0768
+  type: 'test'
+  ...
+# Subtest: wrapper rejects --seconds 600 --executable-path chrome
+ok 345 - wrapper rejects --seconds 600 --executable-path chrome
+  ---
+  duration_ms: 0.0736
+  type: 'test'
+  ...
+# Subtest: wrapper rejects --formal-600 --phase ui --executable-path chrome
+ok 346 - wrapper rejects --formal-600 --phase ui --executable-path chrome
+  ---
+  duration_ms: 0.0723
+  type: 'test'
+  ...
+# Subtest: wrapper rejects missing executable
+ok 347 - wrapper rejects missing executable
+  ---
+  duration_ms: 0.0794
+  type: 'test'
+  ...
+# Subtest: wrapper rejects recursive child or wrong node
+ok 348 - wrapper rejects recursive child or wrong node
+  ---
+  duration_ms: 0.2317
+  type: 'test'
+  ...
+# Subtest: late trace stream fault overrides measured status while preserving error
+ok 349 - late trace stream fault overrides measured status while preserving error
+  ---
+  duration_ms: 0.2564
+  type: 'test'
+  ...
+# Subtest: normal cleanup after dispose creates no lifecycle fault
+ok 350 - normal cleanup after dispose creates no lifecycle fault
+  ---
+  duration_ms: 0.2263
+  type: 'test'
+  ...
+# Subtest: existing output parent is never overwritten or launched
+ok 351 - existing output parent is never overwritten or launched
+  ---
+  duration_ms: 5.3253
+  type: 'test'
+  ...
+# Subtest: formal kernel text differs only in name and declared cap
+ok 352 - formal kernel text differs only in name and declared cap
+  ---
+  duration_ms: 3.1175
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity empty
+ok 353 - formal literal bit parity empty
+  ---
+  duration_ms: 1.194
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity fractional-full
+ok 354 - formal literal bit parity fractional-full
+  ---
+  duration_ms: 0.4855
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity outside-touch-only
+ok 355 - formal literal bit parity outside-touch-only
+  ---
+  duration_ms: 0.2661
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity nested-duplicate-zero
+ok 356 - formal literal bit parity nested-duplicate-zero
+  ---
+  duration_ms: 0.27
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity overlap
+ok 357 - formal literal bit parity overlap
+  ---
+  duration_ms: 0.5003
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity touching
+ok 358 - formal literal bit parity touching
+  ---
+  duration_ms: 0.226
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity two-sided-clip
+ok 359 - formal literal bit parity two-sided-clip
+  ---
+  duration_ms: 0.22
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity sub-microsecond
+ok 360 - formal literal bit parity sub-microsecond
+  ---
+  duration_ms: 0.1928
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity mapping-order-divergence
+ok 361 - formal literal bit parity mapping-order-divergence
+  ---
+  duration_ms: 0.2243
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity per-component-division-order
+ok 362 - formal literal bit parity per-component-division-order
+  ---
+  duration_ms: 0.159
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity fractional-origin-dyadic-ratio
+ok 363 - formal literal bit parity fractional-origin-dyadic-ratio
+  ---
+  duration_ms: 0.2604
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity original-coverage-exact-50000
+ok 364 - formal literal bit parity original-coverage-exact-50000
+  ---
+  duration_ms: 0.1385
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity original-coverage-outside-50000
+ok 365 - formal literal bit parity original-coverage-outside-50000
+  ---
+  duration_ms: 0.112
+  type: 'test'
+  ...
+# Subtest: formal literal bit parity original-coverage-subtraction-rounding
+ok 366 - formal literal bit parity original-coverage-subtraction-rounding
+  ---
+  duration_ms: 0.1094
+  type: 'test'
+  ...
+# Subtest: formal negative parity raw-NaN
+ok 367 - formal negative parity raw-NaN
+  ---
+  duration_ms: 0.1796
+  type: 'test'
+  ...
+# Subtest: formal negative parity raw-Infinity
+ok 368 - formal negative parity raw-Infinity
+  ---
+  duration_ms: 0.0851
+  type: 'test'
+  ...
+# Subtest: formal negative parity begin-Infinity
+ok 369 - formal negative parity begin-Infinity
+  ---
+  duration_ms: 0.079
+  type: 'test'
+  ...
+# Subtest: formal negative parity task-NaN
+ok 370 - formal negative parity task-NaN
+  ---
+  duration_ms: 0.1016
+  type: 'test'
+  ...
+# Subtest: formal negative parity task-Infinity
+ok 371 - formal negative parity task-Infinity
+  ---
+  duration_ms: 0.0849
+  type: 'test'
+  ...
+# Subtest: formal negative parity outside-negative-duration
+ok 372 - formal negative parity outside-negative-duration
+  ---
+  duration_ms: 0.0857
+  type: 'test'
+  ...
+# Subtest: formal negative parity finite-task-end-overflow
+ok 373 - formal negative parity finite-task-end-overflow
+  ---
+  duration_ms: 0.0805
+  type: 'test'
+  ...
+# Subtest: formal negative parity finite-anchor-span-overflow
+ok 374 - formal negative parity finite-anchor-span-overflow
+  ---
+  duration_ms: 0.0951
+  type: 'test'
+  ...
+# Subtest: formal negative parity zero-duration-window
+ok 375 - formal negative parity zero-duration-window
+  ---
+  duration_ms: 0.0797
+  type: 'test'
+  ...
+# Subtest: formal negative parity reversed-native-window
+ok 376 - formal negative parity reversed-native-window
+  ---
+  duration_ms: 0.0884
+  type: 'test'
+  ...
+# Subtest: formal negative parity duplicate-raw
+ok 377 - formal negative parity duplicate-raw
+  ---
+  duration_ms: 0.0741
+  type: 'test'
+  ...
+# Subtest: formal negative parity reversed-raw
+ok 378 - formal negative parity reversed-raw
+  ---
+  duration_ms: 0.0743
+  type: 'test'
+  ...
+# Subtest: formal negative parity raw-one-ulp-outside
+ok 379 - formal negative parity raw-one-ulp-outside
+  ---
+  duration_ms: 0.0763
+  type: 'test'
+  ...
+# Subtest: formal negative parity duration-mismatch
+ok 380 - formal negative parity duration-mismatch
+  ---
+  duration_ms: 0.0742
+  type: 'test'
+  ...
+# Subtest: formal negative parity task-string
+ok 381 - formal negative parity task-string
+  ---
+  duration_ms: 0.0887
+  type: 'test'
+  ...
+# Subtest: 200001 duplicate overlap tasks formal union exact and short rejects
+ok 382 - 200001 duplicate overlap tasks formal union exact and short rejects
+  ---
+  duration_ms: 478.0985
+  type: 'test'
+  ...
+# Subtest: formal cap rejects 2000001 sparse tasks before traversal
+ok 383 - formal cap rejects 2000001 sparse tasks before traversal
+  ---
+  duration_ms: 7.5324
+  type: 'test'
+  ...
+# Subtest: formal validates malformed and overflow tasks outside window
+ok 384 - formal validates malformed and overflow tasks outside window
+  ---
+  duration_ms: 0.47
+  type: 'test'
+  ...
+# Subtest: formal streaming sibling retains short analysis semantics for small inputs
+ok 385 - formal streaming sibling retains short analysis semantics for small inputs
+  ---
+  duration_ms: 27.1372
+  type: 'test'
+  ...
+# Subtest: plan has one bounded worker and distinct paths
+ok 386 - plan has one bounded worker and distinct paths
+  ---
+  duration_ms: 1.2772
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments 
+ok 387 - reject invalid path or arguments 
+  ---
+  duration_ms: 0.1608
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/a/native
+ok 388 - reject invalid path or arguments --capture artifacts/v1/a/native
+  ---
+  duration_ms: 0.0923
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/capture/native --output artifacts/v1/reanalysis --output artifacts/v1/b
+ok 389 - reject invalid path or arguments --capture artifacts/v1/capture/native --output artifacts/v1/reanalysis --output artifacts/v1/b
+  ---
+  duration_ms: 0.084
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/capture/native --output artifacts/v1/reanalysis --unknown x
+ok 390 - reject invalid path or arguments --capture artifacts/v1/capture/native --output artifacts/v1/reanalysis --unknown x
+  ---
+  duration_ms: 0.0818
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/a/native --output artifacts/v1/a/native/sub
+ok 391 - reject invalid path or arguments --capture artifacts/v1/a/native --output artifacts/v1/a/native/sub
+  ---
+  duration_ms: 0.1526
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/a/native --output artifacts/v1/a
+ok 392 - reject invalid path or arguments --capture artifacts/v1/a/native --output artifacts/v1/a
+  ---
+  duration_ms: 0.1578
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture outside/native --output artifacts/v1/o
+ok 393 - reject invalid path or arguments --capture outside/native --output artifacts/v1/o
+  ---
+  duration_ms: 0.1061
+  type: 'test'
+  ...
+# Subtest: reject invalid path or arguments --capture artifacts/v1/a/not-native --output artifacts/v1/o
+ok 394 - reject invalid path or arguments --capture artifacts/v1/a/not-native --output artifacts/v1/o
+  ---
+  duration_ms: 0.1132
+  type: 'test'
+  ...
+# Subtest: reject worker recursion and wrong node
+ok 395 - reject worker recursion and wrong node
+  ---
+  duration_ms: 0.3613
+  type: 'test'
+  ...
+# Subtest: verified inputs and explicit context pass
+ok 396 - verified inputs and explicit context pass
+  ---
+  duration_ms: 0.9034
+  type: 'test'
+  ...
+# Subtest: tampered ui.raw.json rejected
+ok 397 - tampered ui.raw.json rejected
+  ---
+  duration_ms: 0.2536
+  type: 'test'
+  ...
+# Subtest: tampered ui.trace.json.gz rejected
+ok 398 - tampered ui.trace.json.gz rejected
+  ---
+  duration_ms: 0.1276
+  type: 'test'
+  ...
+# Subtest: tampered ui.trace-analysis.json rejected
+ok 399 - tampered ui.trace-analysis.json rejected
+  ---
+  duration_ms: 0.1323
+  type: 'test'
+  ...
+# Subtest: raw byte count mismatch rejected
+ok 400 - raw byte count mismatch rejected
+  ---
+  duration_ms: 0.1859
+  type: 'test'
+  ...
+# Subtest: missing context traceDataLoss rejected
+ok 401 - missing context traceDataLoss rejected
+  ---
+  duration_ms: 0.2009
+  type: 'test'
+  ...
+# Subtest: missing context traceStreamClosed rejected
+ok 402 - missing context traceStreamClosed rejected
+  ---
+  duration_ms: 0.1698
+  type: 'test'
+  ...
+# Subtest: missing context documentBefore rejected
+ok 403 - missing context documentBefore rejected
+  ---
+  duration_ms: 0.1002
+  type: 'test'
+  ...
+# Subtest: missing context documentAfter rejected
+ok 404 - missing context documentAfter rejected
+  ---
+  duration_ms: 0.099
+  type: 'test'
+  ...
+# Subtest: original INPUT_CAP result required
+ok 405 - original INPUT_CAP result required
+  ---
+  duration_ms: 0.1811
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: compressed and decompressed exact bytes accepted; cap+1 invalidates
+ok 406 - trace resource bounds: compressed and decompressed exact bytes accepted; cap+1 invalidates
+  ---
+  duration_ms: 19.7323
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: event and every native task candidate caps precede filtering
+ok 407 - trace resource bounds: event and every native task candidate caps precede filtering
+  ---
+  duration_ms: 0.6079
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: expanded or malformed cap contracts cannot enlarge supported evidence
+ok 408 - trace resource bounds: expanded or malformed cap contracts cannot enlarge supported evidence
+  ---
+  duration_ms: 0.3532
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: truncated-gzip controlled UNVERIFIED without stream rejection leak
+ok 409 - trace resource bounds: truncated-gzip controlled UNVERIFIED without stream rejection leak
+  ---
+  duration_ms: 9.0538
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: malformed-json controlled UNVERIFIED without stream rejection leak
+ok 410 - trace resource bounds: malformed-json controlled UNVERIFIED without stream rejection leak
+  ---
+  duration_ms: 8.843
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: invalid-utf8 controlled UNVERIFIED without stream rejection leak
+ok 411 - trace resource bounds: invalid-utf8 controlled UNVERIFIED without stream rejection leak
+  ---
+  duration_ms: 7.6953
+  type: 'test'
+  ...
+# Subtest: trace resource bounds: nonobject-event controlled UNVERIFIED without stream rejection leak
+ok 412 - trace resource bounds: nonobject-event controlled UNVERIFIED without stream rejection leak
+  ---
+  duration_ms: 7.6563
+  type: 'test'
+  ...
+# Subtest: collector receipt-byte bound rejects the whole receipt and retains explicit loss instead of silently truncating
+ok 413 - collector receipt-byte bound rejects the whole receipt and retains explicit loss instead of silently truncating
+  ---
+  duration_ms: 0.4798
+  type: 'test'
+  ...
+# Subtest: runner cleanup: synchronous retained native exit is observed before kill with no timer/listener leak
+ok 414 - runner cleanup: synchronous retained native exit is observed before kill with no timer/listener leak
+  ---
+  duration_ms: 0.6525
+  type: 'test'
+  ...
+# Subtest: runner cleanup: retained process timeout is bounded and removes settlement listeners
+ok 415 - runner cleanup: retained process timeout is bounded and removes settlement listeners
+  ---
+  duration_ms: 0.2774
+  type: 'test'
+  ...
+# Subtest: runner cleanup: exited owned process is never killed or looked up by PID
+ok 416 - runner cleanup: exited owned process is never killed or looked up by PID
+  ---
+  duration_ms: 0.1343
+  type: 'test'
+  ...
+# Subtest: runner cleanup: startup primary and browser cleanup failure retained while preview is still closed
+ok 417 - runner cleanup: startup primary and browser cleanup failure retained while preview is still closed
+  ---
+  duration_ms: 0.5017
+  type: 'test'
+  ...
+# Subtest: runner cleanup: browser close never settling is bounded and later preview cleanup still runs
+ok 418 - runner cleanup: browser close never settling is bounded and later preview cleanup still runs
+  ---
+  duration_ms: 28.0615
+  type: 'test'
+  ...
+# Subtest: runner cleanup: trace read primary plus IO.close failure are both preserved
+ok 419 - runner cleanup: trace read primary plus IO.close failure are both preserved
+  ---
+  duration_ms: 0.838
+  type: 'test'
+  ...
+# Subtest: runner cleanup: stream errors observed before first write and error/close listeners detached after close
+ok 420 - runner cleanup: stream errors observed before first write and error/close listeners detached after close
+  ---
+  duration_ms: 0.352
+  type: 'test'
+  ...
+# Subtest: runner cleanup: trace byte cap exact boundary passes and cap+1 rejects without growing output
+ok 421 - runner cleanup: trace byte cap exact boundary passes and cap+1 rejects without growing output
+  ---
+  duration_ms: 0.4212
+  type: 'test'
+  ...
+# Subtest: runner cleanup: watchdog promise rejection is observed and retained without async event throw
+ok 422 - runner cleanup: watchdog promise rejection is observed and retained without async event throw
+  ---
+  duration_ms: 0.3075
+  type: 'test'
+  ...
+# Subtest: runner guards: preview/console/receipt style captures bound count, bytes and oversized single entries
+ok 423 - runner guards: preview/console/receipt style captures bound count, bytes and oversized single entries
+  ---
+  duration_ms: 0.3287
+  type: 'test'
+  ...
+# Subtest: runner guards: asynchronous capture producers cannot throw into the event loop
+ok 424 - runner guards: asynchronous capture producers cannot throw into the event loop
+  ---
+  duration_ms: 0.1801
+  type: 'test'
+  ...
+# Subtest: runner ownership helper is wired at actual runner call sites once introduced
+ok 425 - runner ownership helper is wired at actual runner call sites once introduced
+  ---
+  duration_ms: 0.125
+  type: 'test'
+  ...
+# Subtest: runner and wired helper pass existing scoped no-undef policy inside this same bounded bundle
+ok 426 - runner and wired helper pass existing scoped no-undef policy inside this same bounded bundle
+  ---
+  duration_ms: 17381.8154
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects absent
+ok 427 - CLOSED_WINDOW pending record rejects absent
+  ---
+  duration_ms: 0.9513
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects null
+ok 428 - CLOSED_WINDOW pending record rejects null
+  ---
+  duration_ms: 1.8934
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects empty
+ok 429 - CLOSED_WINDOW pending record rejects empty
+  ---
+  duration_ms: 0.1571
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects zero
+ok 430 - CLOSED_WINDOW pending record rejects zero
+  ---
+  duration_ms: 0.1362
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects string
+ok 431 - CLOSED_WINDOW pending record rejects string
+  ---
+  duration_ms: 0.3289
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects array
+ok 432 - CLOSED_WINDOW pending record rejects array
+  ---
+  duration_ms: 0.1262
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending record rejects boolean
+ok 433 - CLOSED_WINDOW pending record rejects boolean
+  ---
+  duration_ms: 0.0946
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects absent
+ok 434 - CLOSED_WINDOW scriptBusy rejects absent
+  ---
+  duration_ms: 0.1476
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects null
+ok 435 - CLOSED_WINDOW scriptBusy rejects null
+  ---
+  duration_ms: 0.0835
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects zero
+ok 436 - CLOSED_WINDOW scriptBusy rejects zero
+  ---
+  duration_ms: 0.1181
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects stringfalse
+ok 437 - CLOSED_WINDOW scriptBusy rejects stringfalse
+  ---
+  duration_ms: 0.0749
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects emptystring
+ok 438 - CLOSED_WINDOW scriptBusy rejects emptystring
+  ---
+  duration_ms: 0.0666
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW scriptBusy rejects true
+ok 439 - CLOSED_WINDOW scriptBusy rejects true
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects absent
+ok 440 - CLOSED_WINDOW runtimeBusy rejects absent
+  ---
+  duration_ms: 0.0706
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects null
+ok 441 - CLOSED_WINDOW runtimeBusy rejects null
+  ---
+  duration_ms: 0.0647
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects zero
+ok 442 - CLOSED_WINDOW runtimeBusy rejects zero
+  ---
+  duration_ms: 0.0652
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects stringfalse
+ok 443 - CLOSED_WINDOW runtimeBusy rejects stringfalse
+  ---
+  duration_ms: 0.0781
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects emptystring
+ok 444 - CLOSED_WINDOW runtimeBusy rejects emptystring
+  ---
+  duration_ms: 0.0718
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW runtimeBusy rejects true
+ok 445 - CLOSED_WINDOW runtimeBusy rejects true
+  ---
+  duration_ms: 0.0732
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects absent
+ok 446 - CLOSED_WINDOW recorderPending rejects absent
+  ---
+  duration_ms: 0.0646
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects null
+ok 447 - CLOSED_WINDOW recorderPending rejects null
+  ---
+  duration_ms: 0.0789
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects zero
+ok 448 - CLOSED_WINDOW recorderPending rejects zero
+  ---
+  duration_ms: 0.0689
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects stringfalse
+ok 449 - CLOSED_WINDOW recorderPending rejects stringfalse
+  ---
+  duration_ms: 0.0608
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects emptystring
+ok 450 - CLOSED_WINDOW recorderPending rejects emptystring
+  ---
+  duration_ms: 0.0613
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW recorderPending rejects true
+ok 451 - CLOSED_WINDOW recorderPending rejects true
+  ---
+  duration_ms: 0.0828
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects absent
+ok 452 - CLOSED_WINDOW pending timestamp rejects absent
+  ---
+  duration_ms: 0.117
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects null
+ok 453 - CLOSED_WINDOW pending timestamp rejects null
+  ---
+  duration_ms: 0.069
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects string
+ok 454 - CLOSED_WINDOW pending timestamp rejects string
+  ---
+  duration_ms: 0.0662
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects nan
+ok 455 - CLOSED_WINDOW pending timestamp rejects nan
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects infinite
+ok 456 - CLOSED_WINDOW pending timestamp rejects infinite
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW pending timestamp rejects wrong
+ok 457 - CLOSED_WINDOW pending timestamp rejects wrong
+  ---
+  duration_ms: 0.0678
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW collection end rejects null
+ok 458 - CLOSED_WINDOW collection end rejects null
+  ---
+  duration_ms: 0.1137
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW collection end rejects string
+ok 459 - CLOSED_WINDOW collection end rejects string
+  ---
+  duration_ms: 0.0635
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW collection end rejects nan
+ok 460 - CLOSED_WINDOW collection end rejects nan
+  ---
+  duration_ms: 0.118
+  type: 'test'
+  ...
+# Subtest: CLOSED_WINDOW collection end rejects infinite
+ok 461 - CLOSED_WINDOW collection end rejects infinite
+  ---
+  duration_ms: 0.0654
+  type: 'test'
+  ...
+# Subtest: capture completion rejects absent
+ok 462 - capture completion rejects absent
+  ---
+  duration_ms: 0.1154
+  type: 'test'
+  ...
+# Subtest: capture completion rejects null
+ok 463 - capture completion rejects null
+  ---
+  duration_ms: 0.0744
+  type: 'test'
+  ...
+# Subtest: capture completion rejects string
+ok 464 - capture completion rejects string
+  ---
+  duration_ms: 0.0618
+  type: 'test'
+  ...
+# Subtest: capture completion rejects nan
+ok 465 - capture completion rejects nan
+  ---
+  duration_ms: 0.0651
+  type: 'test'
+  ...
+# Subtest: capture completion rejects infinite
+ok 466 - capture completion rejects infinite
+  ---
+  duration_ms: 0.0641
+  type: 'test'
+  ...
+# Subtest: capture completion rejects late
+ok 467 - capture completion rejects late
+  ---
+  duration_ms: 0.066
+  type: 'test'
+  ...
+# Subtest: current runner accepts strong positive after trace flush
+ok 468 - current runner accepts strong positive after trace flush
+  ---
+  duration_ms: 1.29
+  type: 'test'
+  ...
+# Subtest: current runner never treats missing-marker as legacy
+ok 469 - current runner never treats missing-marker as legacy
+  ---
+  duration_ms: 0.2948
+  type: 'test'
+  ...
+# Subtest: current runner never treats null-marker as legacy
+ok 470 - current runner never treats null-marker as legacy
+  ---
+  duration_ms: 0.2091
+  type: 'test'
+  ...
+# Subtest: current runner never treats empty-marker as legacy
+ok 471 - current runner never treats empty-marker as legacy
+  ---
+  duration_ms: 0.3027
+  type: 'test'
+  ...
+# Subtest: current runner never treats wrong-marker as legacy
+ok 472 - current runner never treats wrong-marker as legacy
+  ---
+  duration_ms: 0.2198
+  type: 'test'
+  ...
+# Subtest: current runner never treats missing-pending as legacy
+ok 473 - current runner never treats missing-pending as legacy
+  ---
+  duration_ms: 0.2858
+  type: 'test'
+  ...
+# Subtest: current runner never treats empty-pending as legacy
+ok 474 - current runner never treats empty-pending as legacy
+  ---
+  duration_ms: 0.202
+  type: 'test'
+  ...
+# Subtest: current runner never treats string-flag as legacy
+ok 475 - current runner never treats string-flag as legacy
+  ---
+  duration_ms: 0.1957
+  type: 'test'
+  ...
+# Subtest: explicit historical evaluator compatibility remains available without current marker
+ok 476 - explicit historical evaluator compatibility remains available without current marker
+  ---
+  duration_ms: 0.4137
+  type: 'test'
+  ...
+# Subtest: ordered nested AggregateError and cause survive a durable round trip; message/stack stay compatible
+ok 477 - ordered nested AggregateError and cause survive a durable round trip; message/stack stay compatible
+  ---
+  duration_ms: 1.4349
+  type: 'test'
+  ...
+# Subtest: falsy thrown primitives are distinguishable and JSON safe
+ok 478 - falsy thrown primitives are distinguishable and JSON safe
+  ---
+  duration_ms: 0.8702
+  type: 'test'
+  ...
+# Subtest: hostile getters, revoked proxies and toString never escape or execute coercion
+ok 479 - hostile getters, revoked proxies and toString never escape or execute coercion
+  ---
+  duration_ms: 0.6415
+  type: 'test'
+  ...
+# Subtest: cycles, depth, node, string and total UTF-8 byte limits have explicit diagnostics
+ok 480 - cycles, depth, node, string and total UTF-8 byte limits have explicit diagnostics
+  ---
+  duration_ms: 2.1103
+  type: 'test'
+  ...
+# Subtest: actual source-extracted runner preserves thrown identities and all durable causes across simultaneous failures
+ok 481 - actual source-extracted runner preserves thrown identities and all durable causes across simultaneous failures
+  ---
+  duration_ms: 16.0739
+  type: 'test'
+  ...
+# Subtest: actual longtask observer stores nested native-like attribution as exact plain JSON fields
+ok 482 - actual longtask observer stores nested native-like attribution as exact plain JSON fields
+  ---
+  duration_ms: 0.5874
+  type: 'test'
+  ...
+# Subtest: actual longtask observer output can be included in closed-window structuredClone
+ok 483 - actual longtask observer output can be included in closed-window structuredClone
+  ---
+  duration_ms: 0.2797
+  type: 'test'
+  ...
+# Subtest: actual longtask observer detaches caller-owned longtask and attribution before later mutation
+ok 484 - actual longtask observer detaches caller-owned longtask and attribution before later mutation
+  ---
+  duration_ms: 0.1891
+  type: 'test'
+  ...
+# Subtest: actual longtask observer retains time identity and every attribution metadata field
+ok 485 - actual longtask observer retains time identity and every attribution metadata field
+  ---
+  duration_ms: 0.2081
+  type: 'test'
+  ...
+# Subtest: observer register exception invalidates proof and still delegates actual work exactly once
+ok 486 - observer register exception invalidates proof and still delegates actual work exactly once
+  ---
+  duration_ms: 1.9306
+  type: 'test'
+  ...
+# Subtest: observer callback exception invalidates proof and still delegates actual work exactly once
+ok 487 - observer callback exception invalidates proof and still delegates actual work exactly once
+  ---
+  duration_ms: 0.2431
+  type: 'test'
+  ...
+# Subtest: cancel observer exception still invokes native cancel exactly once with exact handle and return value
+ok 488 - cancel observer exception still invokes native cancel exactly once with exact handle and return value
+  ---
+  duration_ms: 0.3322
+  type: 'test'
+  ...
+# Subtest: callback cap and failed proof mark never drop original callbacks or change raw bits
+ok 489 - callback cap and failed proof mark never drop original callbacks or change raw bits
+  ---
+  duration_ms: 0.7524
+  type: 'test'
+  ...
+# Subtest: original callback error remains primary and observer is restored after the original CPU finally bracket
+ok 490 - original callback error remains primary and observer is restored after the original CPU finally bracket
+  ---
+  duration_ms: 0.5243
+  type: 'test'
+  ...
+# Subtest: original callback plus foreign observer ownership failure preserves both errors without overwriting foreign RAF
+ok 491 - original callback plus foreign observer ownership failure preserves both errors without overwriting foreign RAF
+  ---
+  duration_ms: 0.4187
+  type: 'test'
+  ...
+# Subtest: normal finish closes collector, cancels owned scripted handle, disconnects, disposes and restores
+ok 492 - normal finish closes collector, cancels owned scripted handle, disconnects, disposes and restores
+  ---
+  duration_ms: 3.9995
+  type: 'test'
+  ...
+# Subtest: finish failure from app dispose restores exact globals and preserves the original error
+ok 493 - finish failure from app dispose restores exact globals and preserves the original error
+  ---
+  duration_ms: 0.8794
+  type: 'test'
+  ...
+# Subtest: finish failure from page collect restores exact globals and preserves the original error
+ok 494 - finish failure from page collect restores exact globals and preserves the original error
+  ---
+  duration_ms: 0.3266
+  type: 'test'
+  ...
+# Subtest: finish failure from end boundary restores exact globals and preserves the original error
+ok 495 - finish failure from end boundary restores exact globals and preserves the original error
+  ---
+  duration_ms: 0.2312
+  type: 'test'
+  ...
+# Subtest: finish failure from pause dispatch restores exact globals and preserves the original error
+ok 496 - finish failure from pause dispatch restores exact globals and preserves the original error
+  ---
+  duration_ms: 0.5395
+  type: 'test'
+  ...
+# Subtest: explicit collection abort restores globals, closes proof and preserves supplied AbortError
+ok 497 - explicit collection abort restores globals, closes proof and preserves supplied AbortError
+  ---
+  duration_ms: 0.3162
+  type: 'test'
+  ...
+# Subtest: collect error and every cleanup failure are retained while remaining cleanup and restoration are attempted
+ok 498 - collect error and every cleanup failure are retained while remaining cleanup and restoration are attempted
+  ---
+  duration_ms: 0.3851
+  type: 'test'
+  ...
+# Subtest: pending native callback after closed window delegates but adds no new eligibility or illegal-record count
+ok 499 - pending native callback after closed window delegates but adds no new eligibility or illegal-record count
+  ---
+  duration_ms: 0.532
+  type: 'test'
+  ...
+# Subtest: restoration refuses to overwrite a foreign replacement and preserves ownership error
+ok 500 - restoration refuses to overwrite a foreign replacement and preserves ownership error
+  ---
+  duration_ms: 0.6513
+  type: 'test'
+  ...
+# Subtest: collector pending, frame, proof, callback and mark caps are exact boundaries with visible cap+1 loss
+ok 501 - collector pending, frame, proof, callback and mark caps are exact boundaries with visible cap+1 loss
+  ---
+  duration_ms: 0.3165
+  type: 'test'
+  ...
+# Subtest: ASCII mark-name byte and character budgets pass exactly and fail cap-minus-one without retained growth
+ok 502 - ASCII mark-name byte and character budgets pass exactly and fail cap-minus-one without retained growth
+  ---
+  duration_ms: 0.3284
+  type: 'test'
+  ...
+# Subtest: collector rejects unbounded, missing, nonfinite and nonpositive cap configuration before retaining data
+ok 503 - collector rejects unbounded, missing, nonfinite and nonpositive cap configuration before retaining data
+  ---
+  duration_ms: 0.3976
+  type: 'test'
+  ...
+# Subtest: precollection registrations are bounded and their cap loss survives collection begin
+ok 504 - precollection registrations are bounded and their cap loss survives collection begin
+  ---
+  duration_ms: 0.1531
+  type: 'test'
+  ...
+# Subtest: qualified thread instant is counted but never enters span numeric input
+ok 505 - qualified thread instant is counted but never enters span numeric input
+  ---
+  duration_ms: 0.6337
+  type: 'test'
+  ...
+# Subtest: malformed instant scope fails closed
+ok 506 - malformed instant scope fails closed
+  ---
+  duration_ms: 0.2272
+  type: 'test'
+  ...
+# Subtest: malformed instant category fails closed
+ok 507 - malformed instant category fails closed
+  ---
+  duration_ms: 0.1822
+  type: 'test'
+  ...
+# Subtest: malformed instant duration fails closed
+ok 508 - malformed instant duration fails closed
+  ---
+  duration_ms: 0.2301
+  type: 'test'
+  ...
+# Subtest: malformed instant ts fails closed
+ok 509 - malformed instant ts fails closed
+  ---
+  duration_ms: 0.199
+  type: 'test'
+  ...
+# Subtest: malformed instant file fails closed
+ok 510 - malformed instant file fails closed
+  ---
+  duration_ms: 0.1822
+  type: 'test'
+  ...
+# Subtest: malformed instant func fails closed
+ok 511 - malformed instant func fails closed
+  ---
+  duration_ms: 0.2284
+  type: 'test'
+  ...
+# Subtest: malformed instant line fails closed
+ok 512 - malformed instant line fails closed
+  ---
+  duration_ms: 0.1784
+  type: 'test'
+  ...
+# Subtest: malformed instant identity fails closed
+ok 513 - malformed instant identity fails closed
+  ---
+  duration_ms: 0.175
+  type: 'test'
+  ...
+# Subtest: malformed instant phase fails closed
+ok 514 - malformed instant phase fails closed
+  ---
+  duration_ms: 0.184
+  type: 'test'
+  ...
+# Subtest: malformed instant name fails closed
+ok 515 - malformed instant name fails closed
+  ---
+  duration_ms: 0.2017
+  type: 'test'
+  ...
+# Subtest: malformed span outside window remains rejected alongside valid instant
+ok 516 - malformed span outside window remains rejected alongside valid instant
+  ---
+  duration_ms: 0.1896
+  type: 'test'
+  ...
+# Subtest: warmup callback retires pending handle without creating measured proof
+ok 517 - warmup callback retires pending handle without creating measured proof
+  ---
+  duration_ms: 0.4196
+  type: 'test'
+  ...
+# Subtest: explicit falsy abort preserves exact thrown value null
+ok 518 - explicit falsy abort preserves exact thrown value null
+  ---
+  duration_ms: 0.2756
+  type: 'test'
+  ...
+# Subtest: explicit falsy abort preserves exact thrown value undefined
+ok 519 - explicit falsy abort preserves exact thrown value undefined
+  ---
+  duration_ms: 0.1483
+  type: 'test'
+  ...
+# Subtest: explicit falsy abort preserves exact thrown value false
+ok 520 - explicit falsy abort preserves exact thrown value false
+  ---
+  duration_ms: 0.1407
+  type: 'test'
+  ...
+# Subtest: explicit falsy abort preserves exact thrown value 0
+ok 521 - explicit falsy abort preserves exact thrown value 0
+  ---
+  duration_ms: 0.1269
+  type: 'test'
+  ...
+# Subtest: explicit falsy abort preserves exact thrown value 
+ok 522 - explicit falsy abort preserves exact thrown value 
+  ---
+  duration_ms: 0.1218
+  type: 'test'
+  ...
+# Subtest: close endMark error cleans once and finish preserves exact error identity
+ok 523 - close endMark error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.3471
+  type: 'test'
+  ...
+# Subtest: close collect error cleans once and finish preserves exact error identity
+ok 524 - close collect error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.2002
+  type: 'test'
+  ...
+# Subtest: close cancel error cleans once and finish preserves exact error identity
+ok 525 - close cancel error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.337
+  type: 'test'
+  ...
+# Subtest: close disconnect error cleans once and finish preserves exact error identity
+ok 526 - close disconnect error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.351
+  type: 'test'
+  ...
+# Subtest: close recorderView error cleans once and finish preserves exact error identity
+ok 527 - close recorderView error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.2123
+  type: 'test'
+  ...
+# Subtest: close snapshot error cleans once and finish preserves exact error identity
+ok 528 - close snapshot error cleans once and finish preserves exact error identity
+  ---
+  duration_ms: 0.1986
+  type: 'test'
+  ...
+# Subtest: close collection failure plus cancellation/disposal/disconnect failure preserves every exact error
+ok 529 - close collection failure plus cancellation/disposal/disconnect failure preserves every exact error
+  ---
+  duration_ms: 0.4181
+  type: 'test'
+  ...
+# Subtest: closed original frame/proof boundary survives recorder completion after 5s without backfill
+ok 530 - closed original frame/proof boundary survives recorder completion after 5s without backfill
+  ---
+  duration_ms: 42.5539
+  type: 'test'
+  ...
+# Subtest: closed original frame/proof boundary survives runtime completion after 5s without backfill
+ok 531 - closed original frame/proof boundary survives runtime completion after 5s without backfill
+  ---
+  duration_ms: 57.1857
+  type: 'test'
+  ...
+# Subtest: closed original frame/proof boundary survives script completion after 5s without backfill
+ok 532 - closed original frame/proof boundary survives script completion after 5s without backfill
+  ---
+  duration_ms: 213.1803
+  type: 'test'
+  ...
+# Subtest: runner close failure still finishes cleanup and preserves primary through trace
+ok 533 - runner close failure still finishes cleanup and preserves primary through trace
+  ---
+  duration_ms: 61.164
+  type: 'test'
+  ...
+# Subtest: runner write failure still finishes cleanup and preserves primary through trace
+ok 534 - runner write failure still finishes cleanup and preserves primary through trace
+  ---
+  duration_ms: 42.9895
+  type: 'test'
+  ...
+# Subtest: runner checkpoints pending raw before timeout and attempts trace; stop failure=false
+ok 535 - runner checkpoints pending raw before timeout and attempts trace; stop failure=false
+  ---
+  duration_ms: 1193.9772
+  type: 'test'
+  ...
+# Subtest: runner checkpoints pending raw before timeout and attempts trace; stop failure=true
+ok 536 - runner checkpoints pending raw before timeout and attempts trace; stop failure=true
+  ---
+  duration_ms: 1966.1758
+  type: 'test'
+  ...
+# Subtest: late completion remains workload failure even after successful tail drain
+ok 537 - late completion remains workload failure even after successful tail drain
+  ---
+  duration_ms: 40.9887
+  type: 'test'
+  ...
+# Subtest: entire tail shares single 135s deadline: pause-never
+ok 538 - entire tail shares single 135s deadline: pause-never
+  ---
+  duration_ms: 1.4504
+  type: 'test'
+  ...
+# Subtest: entire tail shares single 135s deadline: record-stop-never
+ok 539 - entire tail shares single 135s deadline: record-stop-never
+  ---
+  duration_ms: 0.8082
+  type: 'test'
+  ...
+# Subtest: entire tail shares single 135s deadline: busy100s-pause60s
+ok 540 - entire tail shares single 135s deadline: busy100s-pause60s
+  ---
+  duration_ms: 901.1288
+  type: 'test'
+  ...
+# Subtest: entire tail shares single 135s deadline: late-pause-reject
+ok 541 - entire tail shares single 135s deadline: late-pause-reject
+  ---
+  duration_ms: 12.1204
+  type: 'test'
+  ...
+# Subtest: tail preserves initial-drain runtime error before a resolved pause clears it
+ok 542 - tail preserves initial-drain runtime error before a resolved pause clears it
+  ---
+  duration_ms: 33.58
+  type: 'test'
+  ...
+# Subtest: tail rejects a resolved pause dispatch that publishes a new runtime error
+ok 543 - tail rejects a resolved pause dispatch that publishes a new runtime error
+  ---
+  duration_ms: 0.8087
+  type: 'test'
+  ...
+# Subtest: same preexisting runtime error permits drain and saves late action/capture only in sidecar
+ok 544 - same preexisting runtime error permits drain and saves late action/capture only in sidecar
+  ---
+  duration_ms: 32.3023
+  type: 'test'
+  ...
+# Subtest: reference source pins, fixed fixture counts, and original V2 source remain immutable
+ok 545 - reference source pins, fixed fixture counts, and original V2 source remain immutable
+  ---
+  duration_ms: 7.3263
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: empty
+ok 546 - candidate vs independent ordered binary64: empty
+  ---
+  duration_ms: 2.8976
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: fractional-full
+ok 547 - candidate vs independent ordered binary64: fractional-full
+  ---
+  duration_ms: 1.8812
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: outside-touch-only
+ok 548 - candidate vs independent ordered binary64: outside-touch-only
+  ---
+  duration_ms: 1.3396
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: nested-duplicate-zero
+ok 549 - candidate vs independent ordered binary64: nested-duplicate-zero
+  ---
+  duration_ms: 1.7192
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: overlap
+ok 550 - candidate vs independent ordered binary64: overlap
+  ---
+  duration_ms: 1.4439
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: touching
+ok 551 - candidate vs independent ordered binary64: touching
+  ---
+  duration_ms: 1.457
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: two-sided-clip
+ok 552 - candidate vs independent ordered binary64: two-sided-clip
+  ---
+  duration_ms: 1.3713
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: sub-microsecond
+ok 553 - candidate vs independent ordered binary64: sub-microsecond
+  ---
+  duration_ms: 14.6082
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: mapping-order-divergence
+ok 554 - candidate vs independent ordered binary64: mapping-order-divergence
+  ---
+  duration_ms: 0.9082
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: per-component-division-order
+ok 555 - candidate vs independent ordered binary64: per-component-division-order
+  ---
+  duration_ms: 1.1348
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: fractional-origin-dyadic-ratio
+ok 556 - candidate vs independent ordered binary64: fractional-origin-dyadic-ratio
+  ---
+  duration_ms: 1.4576
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: original-coverage-exact-50000
+ok 557 - candidate vs independent ordered binary64: original-coverage-exact-50000
+  ---
+  duration_ms: 0.5991
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: original-coverage-outside-50000
+ok 558 - candidate vs independent ordered binary64: original-coverage-outside-50000
+  ---
+  duration_ms: 0.5619
+  type: 'test'
+  ...
+# Subtest: candidate vs independent ordered binary64: original-coverage-subtraction-rounding
+ok 559 - candidate vs independent ordered binary64: original-coverage-subtraction-rounding
+  ---
+  duration_ms: 0.5558
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: raw-NaN
+ok 560 - controlled numeric rejection before unchanged math: raw-NaN
+  ---
+  duration_ms: 0.4657
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: raw-Infinity
+ok 561 - controlled numeric rejection before unchanged math: raw-Infinity
+  ---
+  duration_ms: 0.1427
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: begin-Infinity
+ok 562 - controlled numeric rejection before unchanged math: begin-Infinity
+  ---
+  duration_ms: 0.1874
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: task-NaN
+ok 563 - controlled numeric rejection before unchanged math: task-NaN
+  ---
+  duration_ms: 0.1858
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: task-Infinity
+ok 564 - controlled numeric rejection before unchanged math: task-Infinity
+  ---
+  duration_ms: 0.3018
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: outside-negative-duration
+ok 565 - controlled numeric rejection before unchanged math: outside-negative-duration
+  ---
+  duration_ms: 0.2507
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: finite-task-end-overflow
+ok 566 - controlled numeric rejection before unchanged math: finite-task-end-overflow
+  ---
+  duration_ms: 0.1994
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: finite-anchor-span-overflow
+ok 567 - controlled numeric rejection before unchanged math: finite-anchor-span-overflow
+  ---
+  duration_ms: 0.2168
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: zero-duration-window
+ok 568 - controlled numeric rejection before unchanged math: zero-duration-window
+  ---
+  duration_ms: 0.2108
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: reversed-native-window
+ok 569 - controlled numeric rejection before unchanged math: reversed-native-window
+  ---
+  duration_ms: 0.2103
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: duplicate-raw
+ok 570 - controlled numeric rejection before unchanged math: duplicate-raw
+  ---
+  duration_ms: 0.1542
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: reversed-raw
+ok 571 - controlled numeric rejection before unchanged math: reversed-raw
+  ---
+  duration_ms: 0.1912
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: raw-one-ulp-outside
+ok 572 - controlled numeric rejection before unchanged math: raw-one-ulp-outside
+  ---
+  duration_ms: 0.1387
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: duration-mismatch
+ok 573 - controlled numeric rejection before unchanged math: duration-mismatch
+  ---
+  duration_ms: 0.1962
+  type: 'test'
+  ...
+# Subtest: controlled numeric rejection before unchanged math: task-string
+ok 574 - controlled numeric rejection before unchanged math: task-string
+  ---
+  duration_ms: 0.1808
+  type: 'test'
+  ...
+# Subtest: exact raw-frame cap plus one is rejected before bins or task computation
+ok 575 - exact raw-frame cap plus one is rejected before bins or task computation
+  ---
+  duration_ms: 28.164
+  type: 'test'
+  ...
+# Subtest: exact native-task cap plus one is rejected before valid-task filtering
+ok 576 - exact native-task cap plus one is rejected before valid-task filtering
+  ---
+  duration_ms: 369.8573
+  type: 'test'
+  ...
+# Subtest: actual candidate full-cap 90000 raw and 200000 tasks matches independent closed form
+ok 577 - actual candidate full-cap 90000 raw and 200000 tasks matches independent closed form
+  ---
+  duration_ms: 1060.0477
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: empty
+ok 578 - actual immutable V2 ordered-bit comparison: empty
+  ---
+  duration_ms: 17.7086
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: fractional-full
+ok 579 - actual immutable V2 ordered-bit comparison: fractional-full
+  ---
+  duration_ms: 8.5839
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: outside-touch-only
+ok 580 - actual immutable V2 ordered-bit comparison: outside-touch-only
+  ---
+  duration_ms: 8.7863
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: nested-duplicate-zero
+ok 581 - actual immutable V2 ordered-bit comparison: nested-duplicate-zero
+  ---
+  duration_ms: 7.8774
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: overlap
+ok 582 - actual immutable V2 ordered-bit comparison: overlap
+  ---
+  duration_ms: 8.4645
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: touching
+ok 583 - actual immutable V2 ordered-bit comparison: touching
+  ---
+  duration_ms: 25.641
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: two-sided-clip
+ok 584 - actual immutable V2 ordered-bit comparison: two-sided-clip
+  ---
+  duration_ms: 7.6255
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: sub-microsecond
+ok 585 - actual immutable V2 ordered-bit comparison: sub-microsecond
+  ---
+  duration_ms: 6.7022
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: mapping-order-divergence
+ok 586 - actual immutable V2 ordered-bit comparison: mapping-order-divergence
+  ---
+  duration_ms: 24.3879
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: per-component-division-order
+ok 587 - actual immutable V2 ordered-bit comparison: per-component-division-order
+  ---
+  duration_ms: 7.6607
+  type: 'test'
+  ...
+# Subtest: actual immutable V2 ordered-bit comparison: fractional-origin-dyadic-ratio
+ok 588 - actual immutable V2 ordered-bit comparison: fractional-origin-dyadic-ratio
+  ---
+  duration_ms: 8.3011
+  type: 'test'
+  ...
+# Subtest: mapping-order divergence retains distinct mathematical and ordered answers
+ok 589 - mapping-order divergence retains distinct mathematical and ordered answers
+  ---
+  duration_ms: 0.711
+  type: 'test'
+  ...
+# Subtest: per-component /1000 then ordered sum is not reassociated into total/1000
+ok 590 - per-component /1000 then ordered sum is not reassociated into total/1000
+  ---
+  duration_ms: 0.5741
+  type: 'test'
+  ...
+# Subtest: RED reproduction: old click succeeds but old held wait never retries unaccepted Grab
+ok 591 - RED reproduction: old click succeeds but old held wait never retries unaccepted Grab
+  ---
+  duration_ms: 149.5254
+  type: 'test'
+  ...
+# Subtest: GREEN lost first click: explicit recovery then second accepted Grab
+ok 592 - GREEN lost first click: explicit recovery then second accepted Grab
+  ---
+  duration_ms: 13.1776
+  type: 'test'
+  ...
+# Subtest: already held: no click and no recovery
+ok 593 - already held: no click and no recovery
+  ---
+  duration_ms: 9.7319
+  type: 'test'
+  ...
+# Subtest: first accepted Grab: exactly one click
+ok 594 - first accepted Grab: exactly one click
+  ---
+  duration_ms: 10.2488
+  type: 'test'
+  ...
+# Subtest: accepted Grab published on next tick: wait acknowledgement without duplicate input
+ok 595 - accepted Grab published on next tick: wait acknowledgement without duplicate input
+  ---
+  duration_ms: 8.4096
+  type: 'test'
+  ...
+# Subtest: accepted grip then pause before published tick: resume and observe next tick without duplicate
+ok 596 - accepted grip then pause before published tick: resume and observe next tick without duplicate
+  ---
+  duration_ms: 10.3336
+  type: 'test'
+  ...
+# Subtest: historical OnGrab with unheld target fails precondition before any input
+ok 597 - historical OnGrab with unheld target fails precondition before any input
+  ---
+  duration_ms: 11.2515
+  type: 'test'
+  ...
+# Subtest: unaccepted pause without post-resume tick fails closed without duplicate input
+ok 598 - unaccepted pause without post-resume tick fails closed without duplicate input
+  ---
+  duration_ms: 18.3626
+  type: 'test'
+  ...
+# Subtest: missing observed tick fails closed without input
+ok 599 - missing observed tick fails closed without input
+  ---
+  duration_ms: 8.6874
+  type: 'test'
+  ...
+# Subtest: never accepted: finite three input attempts
+ok 600 - never accepted: finite three input attempts
+  ---
+  duration_ms: 11.1397
+  type: 'test'
+  ...
+# Subtest: shared global eight recovery cap cannot reset
+ok 601 - shared global eight recovery cap cannot reset
+  ---
+  duration_ms: 10.9659
+  type: 'test'
+  ...
+# Subtest: seventh prior recovery permits only one more before global refusal
+ok 602 - seventh prior recovery permits only one more before global refusal
+  ---
+  duration_ms: 17.5351
+  type: 'test'
+  ...
+# Subtest: accepted event with missing held refuses duplicate
+ok 603 - accepted event with missing held refuses duplicate
+  ---
+  duration_ms: 12.5442
+  type: 'test'
+  ...
+# Subtest: aim miss without overrun refuses blind retry
+ok 604 - aim miss without overrun refuses blind retry
+  ---
+  duration_ms: 15.4447
+  type: 'test'
+  ...
+# Subtest: busy runtime is observed before first click
+ok 605 - busy runtime is observed before first click
+  ---
+  duration_ms: 26.5679
+  type: 'test'
+  ...
+# Subtest: permanently busy runtime is bounded without input
+ok 606 - permanently busy runtime is bounded without input
+  ---
+  duration_ms: 282.99
+  type: 'test'
+  ...
+# Subtest: v3 preserves every v2 byte outside insertion and one Grab call
+ok 607 - v3 preserves every v2 byte outside insertion and one Grab call
+  ---
+  duration_ms: 1.6237
+  type: 'test'
+  ...
+# Subtest: accepted grip plus overload before next tick must publish acknowledgement after resume without a duplicate Grab input
+ok 608 - accepted grip plus overload before next tick must publish acknowledgement after resume without a duplicate Grab input
+  ---
+  duration_ms: 70.6698
+  type: 'test'
+  ...
+# Subtest: genuinely unaccepted input plus overload must observe a resumed tick before its bounded retry
+ok 609 - genuinely unaccepted input plus overload must observe a resumed tick before its bounded retry
+  ---
+  duration_ms: 22.0813
+  type: 'test'
+  ...
+# Subtest: historical OnGrab cannot acknowledge a new input: scope new event IDs or explicitly refuse the fixture precondition
+ok 610 - historical OnGrab cannot acknowledge a new input: scope new event IDs or explicitly refuse the fixture precondition
+  ---
+  duration_ms: 15.7384
+  type: 'test'
+  ...
+# Subtest: Node 22 builtin accepts the exact observed 77-byte ANSI banner without altering raw output
+ok 611 - Node 22 builtin accepts the exact observed 77-byte ANSI banner without altering raw output
+  ---
+  duration_ms: 38.8564
+  type: 'test'
+  ...
+# Subtest: plain readiness and an ANSI banner split across appended log chunks reach the original GET
+ok 612 - plain readiness and an ANSI banner split across appended log chunks reach the original GET
+  ---
+  duration_ms: 17.6304
+  type: 'test'
+  ...
+# Subtest: different port never bypasses the unchanged 100 x 100 ms banner gate
+ok 613 - different port never bypasses the unchanged 100 x 100 ms banner gate
+  ---
+  duration_ms: 15.8213
+  type: 'test'
+  ...
+# Subtest: different host never bypasses the unchanged 100 x 100 ms banner gate
+ok 614 - different host never bypasses the unchanged 100 x 100 ms banner gate
+  ---
+  duration_ms: 8.1551
+  type: 'test'
+  ...
+# Subtest: incomplete URL never bypasses the unchanged 100 x 100 ms banner gate
+ok 615 - incomplete URL never bypasses the unchanged 100 x 100 ms banner gate
+  ---
+  duration_ms: 12.0962
+  type: 'test'
+  ...
+# Subtest: missing readiness never bypasses the unchanged 100 x 100 ms banner gate
+ok 616 - missing readiness never bypasses the unchanged 100 x 100 ms banner gate
+  ---
+  duration_ms: 6.9179
+  type: 'test'
+  ...
+# Subtest: reordered fragments never bypasses the unchanged 100 x 100 ms banner gate
+ok 617 - reordered fragments never bypasses the unchanged 100 x 100 ms banner gate
+  ---
+  duration_ms: 5.2806
+  type: 'test'
+  ...
+# Subtest: spawn error wins over a valid ANSI banner before any readiness request
+ok 618 - spawn error wins over a valid ANSI banner before any readiness request
+  ---
+  duration_ms: 2.0696
+  type: 'test'
+  ...
+# Subtest: exited process wins over a valid ANSI banner before any readiness request
+ok 619 - exited process wins over a valid ANSI banner before any readiness request
+  ---
+  duration_ms: 2.854
+  type: 'test'
+  ...
+# Subtest: terminated process wins over a valid ANSI banner before any readiness request
+ok 620 - terminated process wins over a valid ANSI banner before any readiness request
+  ---
+  duration_ms: 2.6807
+  type: 'test'
+  ...
+# Subtest: a matching banner still rejects HTTP bytes that differ from the frozen index hash
+ok 621 - a matching banner still rejects HTTP bytes that differ from the frozen index hash
+  ---
+  duration_ms: 2.4174
+  type: 'test'
+  ...
+# Subtest: research validator accepts complete synthetic metadata, rejects broken traceability
+ok 622 - research validator accepts complete synthetic metadata, rejects broken traceability
+  ---
+  duration_ms: 9.7931
+  type: 'test'
+  ...
+# Subtest: repository Draft2020-12 schemas compile and product synthetic examples pass
+ok 623 - repository Draft2020-12 schemas compile and product synthetic examples pass
+  ---
+  duration_ms: 14.9981
+  type: 'test'
+  ...
+# Subtest: scene schema rejects unknown property, negative mass and oversized budgets
+ok 624 - scene schema rejects unknown property, negative mass and oversized budgets
+  ---
+  duration_ms: 7.782
+  type: 'test'
+  ...
+# Subtest: test-only scene domain rejects zero quaternion, duplicate IDs and dangling object
+ok 625 - test-only scene domain rejects zero quaternion, duplicate IDs and dangling object
+  ---
+  duration_ms: 7.5977
+  type: 'test'
+  ...
+# Subtest: test-only material domain rejects nonconservation and unordered bands
+ok 626 - test-only material domain rejects nonconservation and unordered bands
+  ---
+  duration_ms: 2.0448
+  type: 'test'
+  ...
+# Subtest: test-only backend domain rejects unsupported individual reflection paths
+ok 627 - test-only backend domain rejects unsupported individual reflection paths
+  ---
+  duration_ms: 1.9226
+  type: 'test'
+  ...
+# Subtest: nonempty analytical frame has unambiguous pair, pressure bands, arrival and delays
+ok 628 - nonempty analytical frame has unambiguous pair, pressure bands, arrival and delays
+  ---
+  duration_ms: 8.1802
+  type: 'test'
+  ...
+# Subtest: all twelve declared AI tools accept bounded synthetic requests
+ok 629 - all twelve declared AI tools accept bounded synthetic requests
+  ---
+  duration_ms: 21.38
+  type: 'test'
+  ...
+# Subtest: AI request schema rejects invalid dimensions, mass, unknown fields/tools, transaction misuse
+ok 630 - AI request schema rejects invalid dimensions, mass, unknown fields/tools, transaction misuse
+  ---
+  duration_ms: 2.0398
+  type: 'test'
+  ...
+# Subtest: offline AI provider schema rejects network access and nonzero cost
+ok 631 - offline AI provider schema rejects network access and nonzero cost
+  ---
+  duration_ms: 4.6555
+  type: 'test'
+  ...
+# Subtest: AI result schema represents insufficient RIR decay as null with limitations
+ok 632 - AI result schema represents insufficient RIR decay as null with limitations
+  ---
+  duration_ms: 12.9623
+  type: 'test'
+  ...
+# Subtest: staged transaction requires snapshot/digests for applied state
+ok 633 - staged transaction requires snapshot/digests for applied state
+  ---
+  duration_ms: 6.3792
+  type: 'test'
+  ...
+# Subtest: synthetic experiment manifest hashes exact fixture bytes; domain rejects invalid UTC
+ok 634 - synthetic experiment manifest hashes exact fixture bytes; domain rejects invalid UTC
+  ---
+  duration_ms: 74.6061
+  type: 'test'
+  ...
+# Subtest: snapshot fixtures without optional root READMEs still work
+ok 635 - snapshot fixtures without optional root READMEs still work
+  ---
+  duration_ms: 173.8607
+  type: 'test'
+  ...
+# Subtest: both root READMEs have exact raw-byte hashes and unique sorted paths
+ok 636 - both root READMEs have exact raw-byte hashes and unique sorted paths
+  ---
+  duration_ms: 353.024
+  type: 'test'
+  ...
+# Subtest: README.md byte edits and deletion invalidate the validation stamp
+ok 637 - README.md byte edits and deletion invalidate the validation stamp
+  ---
+  duration_ms: 322.5419
+  type: 'test'
+  ...
+# Subtest: README.en.md byte edits and deletion invalidate the validation stamp
+ok 638 - README.en.md byte edits and deletion invalidate the validation stamp
+  ---
+  duration_ms: 170.9931
+  type: 'test'
+  ...
+# Subtest: adding either root README after an initial capture invalidates the stamp
+ok 639 - adding either root README after an initial capture invalidates the stamp
+  ---
+  duration_ms: 411.6835
+  type: 'test'
+  ...
+# Subtest: validation stamps executable helpers, CSS, configs and fixed JSON inputs and detects mutations
+ok 640 - validation stamps executable helpers, CSS, configs and fixed JSON inputs and detects mutations
+  ---
+  duration_ms: 1490.7795
+  type: 'test'
+  ...
+# Subtest: known generated result writes do not conceal changes to test sources
+ok 641 - known generated result writes do not conceal changes to test sources
+  ---
+  duration_ms: 644.0783
+  type: 'test'
+  ...
+# Subtest: validation reports use fresh Phase3 paths and cannot overwrite previous phase evidence
+ok 642 - validation reports use fresh Phase3 paths and cannot overwrite previous phase evidence
+  ---
+  duration_ms: 5.9367
+  type: 'test'
+  ...
+# Subtest: main: resolve the actual dev config and preserve its runtime contract
+    # Subtest: dependency discovery is explicitly limited to the application HTML
+    ok 1 - dependency discovery is explicitly limited to the application HTML
+      ---
+      duration_ms: 1.7862
+      type: 'test'
+      ...
+    # Subtest: loopback port, build target, and executor-specific settings remain intact
+    ok 2 - loopback port, build target, and executor-specific settings remain intact
+      ---
+      duration_ms: 0.4972
+      type: 'test'
+      ...
+    1..2
+ok 643 - main: resolve the actual dev config and preserve its runtime contract
+  ---
+  duration_ms: 687.0521
+  type: 'test'
+  ...
+# Subtest: main: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+not ok 644 - main: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+  ---
+  duration_ms: 741.9022
+  type: 'test'
+  location: 'C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\integration\\vite-dev-policy.test.mjs:230:3'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:13510:13
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async exerciseFixture (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:175:24)
+    async TestContext.<anonymous> (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:236:22)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: physics: resolve the actual dev config and preserve its runtime contract
+    # Subtest: dependency discovery is explicitly limited to the application HTML
+    ok 1 - dependency discovery is explicitly limited to the application HTML
+      ---
+      duration_ms: 0.1909
+      type: 'test'
+      ...
+    # Subtest: loopback port, build target, and executor-specific settings remain intact
+    ok 2 - loopback port, build target, and executor-specific settings remain intact
+      ---
+      duration_ms: 0.2557
+      type: 'test'
+      ...
+    1..2
+ok 645 - physics: resolve the actual dev config and preserve its runtime contract
+  ---
+  duration_ms: 67.5779
+  type: 'test'
+  ...
+# Subtest: physics: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+not ok 646 - physics: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+  ---
+  duration_ms: 1106.1088
+  type: 'test'
+  location: 'C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\integration\\vite-dev-policy.test.mjs:230:3'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:13510:13
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async exerciseFixture (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:175:24)
+    async TestContext.<anonymous> (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:236:22)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: persistence: resolve the actual dev config and preserve its runtime contract
+    # Subtest: dependency discovery is explicitly limited to the application HTML
+    ok 1 - dependency discovery is explicitly limited to the application HTML
+      ---
+      duration_ms: 0.2929
+      type: 'test'
+      ...
+    # Subtest: loopback port, build target, and executor-specific settings remain intact
+    ok 2 - loopback port, build target, and executor-specific settings remain intact
+      ---
+      duration_ms: 0.0931
+      type: 'test'
+      ...
+    1..2
+ok 647 - persistence: resolve the actual dev config and preserve its runtime contract
+  ---
+  duration_ms: 75.9809
+  type: 'test'
+  ...
+# Subtest: persistence: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+not ok 648 - persistence: real optimizer excludes ignored extension HTML and HTTP denies fake credentials
+  ---
+  duration_ms: 208.6371
+  type: 'test'
+  location: 'C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\integration\\vite-dev-policy.test.mjs:230:3'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:13510:13
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async exerciseFixture (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:175:24)
+    async TestContext.<anonymous> (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:236:22)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: positive control: Vite's default HTML inference reaches the ignored fake extension
+not ok 649 - positive control: Vite's default HTML inference reaches the ignored fake extension
+  ---
+  duration_ms: 362.3791
+  type: 'test'
+  location: 'C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\integration\\vite-dev-policy.test.mjs:266:1'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:13510:13
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async exerciseFixture (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:175:24)
+    async TestContext.<anonymous> (file:///C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta%20Hack/tests/integration/vite-dev-policy.test.mjs:272:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the installed Vite API version used by the regression is recorded
+ok 650 - the installed Vite API version used by the regression is recorded
+  ---
+  duration_ms: 1.3224
+  type: 'test'
+  ...
+1..650
+# tests 656
+# suites 0
+# pass 652
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 38063.629

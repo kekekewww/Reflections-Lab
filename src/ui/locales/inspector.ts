@@ -1,0 +1,170 @@
+import type { MessageCatalog } from "../locale-types.js";
+
+export const inspectorMessages = {
+  "inspector.moreDetails": { "zh-TW": "詳細資訊", en: "Details" },
+  "inspector.title": { "zh-TW": "檢查器", en: "Inspector" },
+  "inspector.aria": { "zh-TW": "屬性檢查器", en: "Property inspector" },
+  "inspector.notProvided": { "zh-TW": "未提供", en: "Not provided" },
+  "inspector.sourceNotProvided": { "zh-TW": "來源未提供", en: "Source not provided" },
+  "inspector.rotation": { "zh-TW": "旋轉", en: "Rotation" },
+  "inspector.rotationAxis": { "zh-TW": "旋轉 {axis}", en: "Rotation {axis}" },
+  "inspector.position": { "zh-TW": "位置", en: "Position" },
+  "inspector.dimensions": { "zh-TW": "尺寸", en: "Dimensions" },
+  "inspector.bodyMode.dynamicGravity": {
+    "zh-TW": "Dynamic · 受重力",
+    en: "Dynamic · gravity enabled",
+  },
+  "inspector.bodyMode.dynamicNoGravity": {
+    "zh-TW": "Dynamic · 無重力",
+    en: "Dynamic · no gravity",
+  },
+  "inspector.bodyMode.fixed": { "zh-TW": "Fixed · 固定", en: "Fixed · immovable" },
+  "inspector.bodyMode.kinematic": {
+    "zh-TW": "Kinematic · 指定運動",
+    en: "Kinematic · prescribed motion",
+  },
+  "inspector.behaviors": { "zh-TW": "Sound Behaviors", en: "Sound behaviors" },
+  "inspector.ruleCount": { "zh-TW": "{count} 規則", en: "{count} rules" },
+  "inspector.behaviorDescription": {
+    "zh-TW": "聲音內容自由設定；所有場景聲源仍經統一聲學傳播。",
+    en: "Author sound content freely; every scene source still uses the shared acoustic propagation chain.",
+  },
+  "inspector.classification": { "zh-TW": "分類", en: "Classification" },
+  "inspector.classification.creative": {
+    "zh-TW": "Creative · 創意分類",
+    en: "Creative · creative category",
+  },
+  "inspector.classification.physical": {
+    "zh-TW": "Physical-inspired · 材質啟發分類",
+    en: "Physical-inspired · material-inspired category",
+  },
+  "inspector.classification.hybrid": {
+    "zh-TW": "Hybrid · 混合分類",
+    en: "Hybrid · hybrid category",
+  },
+  "inspector.classification.procedural": {
+    "zh-TW": "Procedural · 程序音分類",
+    en: "Procedural · procedural category",
+  },
+  "inspector.classificationHelp": {
+    "zh-TW":
+      "分類記錄設計意圖，不會自動把材質轉成振動求解或替換既有音色。規則設定影響此物件，必要時建立局部 profile；只有曲線變更時會保留物件覆寫，其他規則變更會合併目前覆寫為局部設定。",
+    en: "Classification records design intent. It does not turn materials into a vibration solver or replace existing timbres. Rule edits affect this object and create a local profile when needed. Curve-only edits preserve object overrides; other rule edits merge current overrides into the local settings.",
+  },
+  "inspector.authoringMetadataMissing": {
+    "zh-TW": "綁定或版本資料未提供，無法安全套用聲音行為。",
+    en: "Binding or revision metadata is missing; sound behavior edits cannot be safely applied.",
+  },
+  "inspector.noBehaviors": {
+    "zh-TW": "尚未配置行為。新增持續發聲或互動事件。",
+    en: "No behaviors configured. Add continuous sound or an interaction event.",
+  },
+  "inspector.newTrigger": { "zh-TW": "新增行為觸發條件", en: "New behavior trigger" },
+  "inspector.unsupportedSuffix": { "zh-TW": "（未支援）", en: " (unsupported)" },
+  "inspector.addRule": { "zh-TW": "新增", en: "Add" },
+  "inspector.physicalInspiredHelp": {
+    "zh-TW": "Physical-inspired 是音色設計，不是物體振動求解。碰撞聲依實際 contact 定位。",
+    en: "Physical-inspired describes timbre design, not a body vibration solver. Impact sounds use the actual contact position.",
+  },
+  "inspector.unsupportedTriggers": {
+    "zh-TW": "OnBounce／OnEnterZone／OnExitZone 尚未由目前物理 bridge 提供，新增選項已停用。",
+    en: "The current physics bridge does not provide OnBounce, OnEnterZone, or OnExitZone; these options are disabled.",
+  },
+  "inspector.savedDraftsAria": {
+    "zh-TW": "保留的聲音行為草稿",
+    en: "Retained sound behavior drafts",
+  },
+  "inspector.savedDrafts": {
+    "zh-TW": "已保留 {count} 份未套用行為草稿；切換物件不會遺失。",
+    en: "{count} unapplied behavior drafts retained; switching objects keeps them.",
+  },
+  "inspector.discardAllDrafts": {
+    "zh-TW": "放棄本專案所有行為草稿",
+    en: "Discard all behavior drafts for this project",
+  },
+  "inspector.runningEditGuard": {
+    "zh-TW": "運算中；結構設定暫停後編輯。",
+    en: "Simulation is running; pause to edit structural settings.",
+  },
+  "inspector.pause": { "zh-TW": "暫停", en: "Pause" },
+  "inspector.duplicate": { "zh-TW": "複製", en: "Duplicate" },
+  "inspector.remove": { "zh-TW": "刪除", en: "Delete" },
+  "inspector.transform": { "zh-TW": "Transform", en: "Transform" },
+  "inspector.authorSettings": { "zh-TW": "作者設定", en: "Authored settings" },
+  "inspector.authorPoseHelp": {
+    "zh-TW": "運算中顯示作者起始設定；即時位置由物理引擎提供。",
+    en: "During simulation, these are the authored initial settings; the physics engine provides live poses.",
+  },
+  "inspector.rigidBody": { "zh-TW": "剛體物理", en: "Rigid body physics" },
+  "inspector.bodyModeLabel": { "zh-TW": "Body Mode", en: "Body mode" },
+  "inspector.bodyModeAria": { "zh-TW": "剛體模式", en: "Rigid body mode" },
+  "inspector.mass": { "zh-TW": "質量", en: "Mass" },
+  "inspector.friction": { "zh-TW": "摩擦係數", en: "Friction coefficient" },
+  "inspector.restitution": { "zh-TW": "恢復係數", en: "Restitution coefficient" },
+  "inspector.speed": { "zh-TW": "速度", en: "Speed" },
+  "inspector.noGravityHelp": {
+    "zh-TW": "無重力仍為 Dynamic；不代表真空。",
+    en: "A body without gravity is still Dynamic; this does not imply a vacuum.",
+  },
+  "inspector.acousticMaterial": { "zh-TW": "聲學材質", en: "Acoustic material" },
+  "inspector.surfaceMaterial": { "zh-TW": "表面材質", en: "Surface material" },
+  "inspector.acousticRole": { "zh-TW": "聲學角色", en: "Acoustic role" },
+  "inspector.acousticRole.none": {
+    "zh-TW": "不參與幾何聲學",
+    en: "Exclude from geometric acoustics",
+  },
+  "inspector.acousticRole.staticSurface": {
+    "zh-TW": "靜態反射表面",
+    en: "Static reflecting surface",
+  },
+  "inspector.acousticRole.dynamicOccluder": { "zh-TW": "動態遮蔽物", en: "Dynamic occluder" },
+  "inspector.acousticRole.dynamicReflector": {
+    "zh-TW": "動態反射面（依後端能力）",
+    en: "Dynamic reflector (subject to backend support)",
+  },
+  "inspector.material.hard": { "zh-TW": "硬質表面 · Synthetic", en: "Hard surface · Synthetic" },
+  "inspector.material.soft": {
+    "zh-TW": "吸音表面 · Synthetic",
+    en: "Absorptive surface · Synthetic",
+  },
+  "inspector.material.wood": { "zh-TW": "木質示範 · Synthetic", en: "Wood example · Synthetic" },
+  "inspector.material.metal": { "zh-TW": "金屬示範 · Synthetic", en: "Metal example · Synthetic" },
+  "inspector.audioListener": { "zh-TW": "Audio Listener", en: "Audio listener" },
+  "inspector.receiverPosition": { "zh-TW": "接收位置", en: "Receiver position" },
+  "inspector.fpsFollow": { "zh-TW": "FPS 跟隨", en: "Following FPS" },
+  "inspector.independent": { "zh-TW": "獨立", en: "Independent" },
+  "inspector.listenerPoseHelp": {
+    "zh-TW": "觀察相機與 Listener 分開；移動視角不改實驗接收位置。",
+    en: "The observer camera and Listener are separate; moving the view does not change the experiment receiver position.",
+  },
+  "inspector.environment": { "zh-TW": "環境與聲學核心", en: "Environment and acoustic core" },
+  "inspector.backend": { "zh-TW": "後端", en: "Backend" },
+  "inspector.medium": { "zh-TW": "介質", en: "Medium" },
+  "inspector.propagationMedium": { "zh-TW": "傳播介質", en: "Propagation medium" },
+  "inspector.medium.air": { "zh-TW": "Air · 空氣", en: "Air" },
+  "inspector.medium.vacuum": {
+    "zh-TW": "Vacuum · 無空氣傳播",
+    en: "Vacuum · no airborne propagation",
+  },
+  "inspector.airTemperature": { "zh-TW": "空氣溫度", en: "Air temperature" },
+  "inspector.vacuumHelp": {
+    "zh-TW": "真空不取消機械碰撞；此模型未涵蓋固體傳聲。無重力不等於真空。",
+    en: "Mechanical collisions remain in a vacuum; this model does not cover structure-borne sound. No gravity does not mean vacuum.",
+  },
+  "inspector.speedOfSound": { "zh-TW": "聲速", en: "Speed of sound" },
+  "inspector.acousticState.ready": { "zh-TW": "ready", en: "Ready" },
+  "inspector.acousticState.idle": { "zh-TW": "尚無結果", en: "No result" },
+  "inspector.acousticState.empty": { "zh-TW": "已求解 · 無路徑", en: "Computed · No paths" },
+  "inspector.acousticState.unavailable": {
+    "zh-TW": "空氣聲傳播不可用",
+    en: "Airborne sound unavailable",
+  },
+  "inspector.acousticState.pending": { "zh-TW": "pending", en: "Pending" },
+  "inspector.acousticState.stale": { "zh-TW": "stale", en: "Stale" },
+  "inspector.acousticState.unsupported": { "zh-TW": "unsupported", en: "Unsupported" },
+  "inspector.acousticState.error": { "zh-TW": "error", en: "Error" },
+  "inspector.selectObjectHelp": {
+    "zh-TW": "選取場景物件，編輯物理與聲音行為。",
+    en: "Select a scene object to edit its physics and sound behaviors.",
+  },
+} as const satisfies MessageCatalog;

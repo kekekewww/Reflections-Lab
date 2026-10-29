@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27T01:30:52.820Z",
+  "scope": "CATALOG_ACCESS_ONLY",
+  "catalogArtifact": "research/v1/meta-catalog-20261027T0131Z.json",
+  "authorization": "使用者提供指定本機API key檔並授權一次模型目錄GET；未授權本次執行任何推論。",
+  "actualCatalogRequests": 1,
+  "actualInferenceRequests": 0,
+  "actualCostUsd": null,
+  "verifiedRemainingCreditUsd": null,
+  "productionProviderBudgetChanged": false,
+  "sources": [
+    {
+      "id": "V1-META-CATALOG-SRC-01",
+      "title": "Meta Model API — Authentication",
+      "url": "https://dev.meta.ai/docs/authentication",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "claims": [
+        "官方API key格式為LLM_<numeric_id>_<secret>，以Authorization Bearer傳送。",
+        "一般API使用MODEL_API_KEY；META_MODEL_API_KEY為本專案相容別名，不能宣稱為官方新增變數。",
+        "憑證只在server記憶體使用，不向瀏覽器傳遞、不進入模型context或證據檔。"
+      ]
+    },
+    {
+      "id": "V1-META-CATALOG-SRC-02",
+      "title": "Meta Model API — List models",
+      "url": "https://dev.meta.ai/docs/api-reference/models/list-models",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "claims": [
+        "目錄為GET https://api.meta.ai/v1/models，可選client query；本次沒有傳client或任何推論body。",
+        "本機probe固定GET、redirect:error、無retry、10秒期限與256KiB回應上限。",
+        "一次目錄成功僅證明該憑證當時能存取模型目錄。"
+      ]
+    },
+    {
+      "id": "V1-META-CATALOG-SRC-03",
+      "title": "Meta Model API — Models schemas",
+      "url": "https://dev.meta.ai/docs/api-reference/models/schemas",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "claims": [
+        "目錄envelope為object:list與data array；model含id、object:model、created、owned_by，metadata可選。",
+        "安全證據只保留白名單model IDs、HTTP狀態、可得request ID與時間，不保留raw body、headers、metadata或任何key內容。",
+        "此schema未提供剩餘credits或帳單扣款欄位；相關值維持null。"
+      ]
+    },
+    {
+      "id": "V1-META-CATALOG-SRC-04",
+      "title": "Meta Model API — Pricing and rate limits",
+      "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "publishedUsdPerMillionTokens": {
+        "museSparkStandard": { "input": 1.25, "cachedInput": 0.15, "output": 4.25 },
+        "museSparkContributor": { "input": 0.1, "cachedInput": 0.002, "output": 0.2 },
+        "museWonderStandard": { "input": 4, "cachedInput": 0.2, "output": 20 }
+      },
+      "limitations": [
+        "公開費率不是本帳號餘額、實際扣款或推論授權。",
+        "Contributor是不同model IDs與資料使用模式，本次未切換。",
+        "未送出任何token-priced inference，不以模型目錄200宣稱strict tool calling、Scene/Sound live流程或計費已驗證。"
+      ]
+    }
+  ],
+  "limits": [
+    "僅一次catalog GET通過；Chat Completions、Sound function calls、付費推論仍NOT RUN。",
+    "不讀取或推斷Muse Code訂閱憑證，不把使用者回報的訂閱／API credits當成已驗證餘額。",
+    "未儲存官方頁面全文或固定頁面hash；null代表未取得固定版本。",
+    "未改環境變數、既有server程序、網路enable旗標或預設零預算。"
+  ]
+}

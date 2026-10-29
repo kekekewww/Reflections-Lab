@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "classification": "AUTHORED_SYNTHETIC_FIXTURE_ONLY",
+  "createdAt": "2026-10-27T02:13:38.294Z",
+  "endpoint": "https://api.meta.ai/v1/chat/completions",
+  "method": "POST",
+  "model": "muse-spark-1.3",
+  "dataMode": "standard",
+  "validationScope": "sound-only",
+  "reasoningEffort": "minimal",
+  "executionOrder": [
+    "sound",
+    "host-explicit-fixed60-run"
+  ],
+  "unrequestedBodies": [
+    "scene",
+    "run"
+  ],
+  "repairBasis": "Both HTTP 400 receipts and US$0.50 reservations preserved; confirmed remote uniqueItems rejection; no automatic retry",
+  "reviewedPayloads": {
+    "sound": {
+      "sha256": "8e1a1f494b83e276dc44247f93e85c30254fca91c89dc509c6ffb8775950db88",
+      "bytes": 15309
+    },
+    "scene": {
+      "sha256": "a1c62457956c9137c288e68e87d067254c6751a6c8f37db2e7f86481e99d4905",
+      "bytes": 11951
+    },
+    "run": {
+      "sha256": "7e008e7a35f225e2496bd86ec6e6afee346589bc966b078e5d185ad99031f57f",
+      "bytes": 11867
+    }
+  },
+  "sourceFunctions": [
+    "src/app/defaults.ts:createDefaultScene",
+    "src/app/defaults.ts:createDefaultBehaviors",
+    "src/app/defaults.ts:DEFAULT_MATERIALS",
+    "server/meta-live-fixture.ts:fixed prompts and oscillator registry",
+    "src/ai/scene-adapter.ts:deterministic approved sphere candidate"
+  ],
+  "filesystemInputsToPrompts": [],
+  "privateProjectInputs": [],
+  "sampleAssets": [],
+  "inferenceRequests": 0,
+  "networkRequests": 0,
+  "authorizationBasis": [
+    "User explicitly requested product Meta live validation",
+    "User supplied a dedicated Meta API key file for server-only Authorization",
+    "User explicitly approved this validation TOTAL spend cap US$1"
+  ],
+  "restrictions": [
+    "Only the ignored user-selected credential file is read for the Authorization header; never prompt content",
+    "No filesystem, shell, repository or credential tools are advertised",
+    "Only fixed official Meta endpoint; redirect:error; Standard model only",
+    "At most three paid requests; persistent shared US$1 ledger; US$0.25 reserved before each; max_completion_tokens1000",
+    "Actual send bytes/SHA-256 must match these reviewed synthetic bodies before reserving or dispatching",
+    "Any model-derived scene deviation causes subsequent payload mismatch and stops that network request",
+    "Catalog proof and budget ledger are read only as control metadata; never prompt inputs"
+  ]
+}

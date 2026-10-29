@@ -1,0 +1,55 @@
+{
+  "command": "node --import tsx --test --test-name-pattern=\"unlock clearance\" tests/physics/v1-matrix.test.ts",
+  "startedAt": "2026-10-27T01:51:37.531Z",
+  "finishedAt": "2026-10-27T01:51:38.923Z",
+  "exitCode": 1,
+  "sourceStable": true,
+  "files": [
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "4a08eff92f08970fa5bb7b2db89a87be3f12a93d0e751dc8e8fc7003365f769c"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "path": "tests/physics/v1-matrix.test.ts",
+      "sha256": "48b6141b4f9dd824da6911d4457d300e6def4f641bea1b684497139ba58cf11b"
+    },
+    {
+      "path": "docs/04-physics/OBJECT_STATES.md",
+      "sha256": "e74507a63520ba51ed47a5c2e2120ce798c0a895b17b4de2e71101f3904db801"
+    }
+  ],
+  "afterFiles": [
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "4a08eff92f08970fa5bb7b2db89a87be3f12a93d0e751dc8e8fc7003365f769c"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "path": "tests/physics/v1-matrix.test.ts",
+      "sha256": "48b6141b4f9dd824da6911d4457d300e6def4f641bea1b684497139ba58cf11b"
+    },
+    {
+      "path": "docs/04-physics/OBJECT_STATES.md",
+      "sha256": "e74507a63520ba51ed47a5c2e2120ce798c0a895b17b4de2e71101f3904db801"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/unlock-clearance-red/stdout.tap",
+      "sha256": "22fb24d3f23bde16662d880d245c9cd037640a087501a54ea5c6e82df2070138"
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/unlock-clearance-red/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "expected": "reject Fixed→Dynamic while actual target shape overlaps a neighbor; retain saved gravity mode for retry",
+  "observed": "mode transaction count increments3 instead of staying2"
+}

@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL",
+  "scope": "New native200 strict and 320CSS reachability receipts; historical failures unchanged",
+  "runnerVersion": 2,
+  "gestureMethod": "BROWSER_PROTOCOL_GESTURE",
+  "notOSKeyboard": true,
+  "protectedOriginals": [
+    {
+      "path": "tests/browser/native-accessibility-reachability.mjs",
+      "sha256": "606135b2481f6fbbd0f2336038e5f01e18d03cef66d520aa1d830f8e8bdd46bb"
+    },
+    {
+      "path": "tests/browser/native-accessibility-external-browser.mjs",
+      "sha256": "119603b7ede08a9178c56896329994bc5b18e8f7e85cfe90ec1bc778e7e0efd7"
+    },
+    {
+      "path": "tests/browser/native-accessibility-extension/manifest.json",
+      "sha256": "74a668fa48104f5cdbde3ebee6498b316560dd599a7fef1c69326e208f4b27cc"
+    },
+    {
+      "path": "tests/browser/native-accessibility-extension/native-accessibility-zoom-worker.js",
+      "sha256": "79efbdf1cefa6c83175fb0a7593fa1f9135d992d2e1d633c86d7238787bc23ff"
+    }
+  ],
+  "startedAt": "2026-10-27T17:51:47.035Z",
+  "platform": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "arch": "x64",
+    "node": "v22.17.0"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-reachability-v2.mjs",
+    "--base-url",
+    "http://127.0.0.1:5174",
+    "--manifest",
+    "test-results/ui-preview-build.json",
+    "--preview-pid",
+    "64352",
+    "--strategy",
+    "tabs-api",
+    "--mode",
+    "both"
+  ],
+  "manifestSha256": "c31a05cf470313cea8a7deccaafd0676f1e83f29b2b4b059ffebf74649a676f5",
+  "inputDigest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+  "scriptHashes": [
+    {
+      "path": "tests\\browser\\native-accessibility-reachability-v2.mjs",
+      "sha256": "360c3601eccb4f18a8c4c5076d6f260c007ccfe72235893415ff67657834eb89"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-window-preflight.mjs",
+      "sha256": "a653942f1032b0c6e28f1d74b31367ca3d81144fe5f2447fe09429adc00315bb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-window-preflight.test.mjs",
+      "sha256": "87ac68216af21f58624b0d99a8537e658b5de5ff903219cbad06149747824afb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-reachability.mjs",
+      "sha256": "606135b2481f6fbbd0f2336038e5f01e18d03cef66d520aa1d830f8e8bdd46bb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-external-browser.mjs",
+      "sha256": "119603b7ede08a9178c56896329994bc5b18e8f7e85cfe90ec1bc778e7e0efd7"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-extension\\manifest.json",
+      "sha256": "74a668fa48104f5cdbde3ebee6498b316560dd599a7fef1c69326e208f4b27cc"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-extension\\native-accessibility-zoom-worker.js",
+      "sha256": "79efbdf1cefa6c83175fb0a7593fa1f9135d992d2e1d633c86d7238787bc23ff"
+    }
+  ],
+  "cases": [
+    {
+      "mode": "native200",
+      "status": "FAIL",
+      "reachabilityStatus": "FAIL",
+      "nativeLock": null,
+      "verification": "artifacts\\v1\\native-zoom-reachability-v2-2026-10-27T17-51-47.034Z-a63cdf0d\\native200\\verification.json",
+      "cleanup": {
+        "ownedPid": 77388,
+        "startedAt": "2026-10-27T17:51:58.679Z",
+        "finishedAt": "2026-10-27T17:51:58.966Z",
+        "protocolCloseAttempted": true,
+        "protocolCloseError": null,
+        "clientCloseAttempted": true,
+        "clientCloseError": null,
+        "forcedKillAttempted": false,
+        "forcedKillError": null,
+        "ownedProcessExited": true,
+        "exit": {
+          "code": 0,
+          "signal": null
+        },
+        "profileRetained": true,
+        "stderrTail": "[77388:59756:1028/015148.474:ERROR:sandbox\\policy\\win\\sandbox_win.cc:805] Sandbox cannot access executable C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe. Check filesystem permissions are valid. See https://bit.ly/31yqMJR.: 存取被拒。 (0x5)\r\n\r\nDevTools listening on ws://127.0.0.1:58927/devtools/browser/3ea59377-af44-41d2-98cb-9babd504897d\r\n[77388:7408:1028/015148.668:ERROR:content\\browser\\network_service_instance_impl.cc:652] Network service crashed or was terminated, restarting service.\r\n"
+      }
+    },
+    {
+      "mode": "css320",
+      "status": "FAIL",
+      "reachabilityStatus": "FAIL",
+      "nativeLock": null,
+      "verification": "artifacts\\v1\\native-zoom-reachability-v2-2026-10-27T17-51-47.034Z-a63cdf0d\\css320\\verification.json",
+      "cleanup": {
+        "ownedPid": 72988,
+        "startedAt": "2026-10-27T17:52:11.120Z",
+        "finishedAt": "2026-10-27T17:52:11.484Z",
+        "protocolCloseAttempted": true,
+        "protocolCloseError": null,
+        "clientCloseAttempted": true,
+        "clientCloseError": null,
+        "forcedKillAttempted": false,
+        "forcedKillError": null,
+        "ownedProcessExited": true,
+        "exit": {
+          "code": 0,
+          "signal": null
+        },
+        "profileRetained": true,
+        "stderrTail": "[72988:32716:1028/015201.032:ERROR:sandbox\\policy\\win\\sandbox_win.cc:805] Sandbox cannot access executable C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe. Check filesystem permissions are valid. See https://bit.ly/31yqMJR.: 存取被拒。 (0x5)\r\n\r\nDevTools listening on ws://127.0.0.1:59681/devtools/browser/7830c9bd-a3f9-427d-bea5-5f8e7a99b10e\r\n[72988:57120:1028/015201.201:ERROR:content\\browser\\network_service_instance_impl.cc:652] Network service crashed or was terminated, restarting service.\r\n"
+      }
+    }
+  ],
+  "limitations": [
+    "No OS IME, screen reader, hearing or overall V1 completion claim.",
+    "Only localhost Reflection Lab is navigated; paid/model requests are blocked and would fail the case."
+  ],
+  "scriptHashesAfter": [
+    {
+      "path": "tests\\browser\\native-accessibility-reachability-v2.mjs",
+      "sha256": "360c3601eccb4f18a8c4c5076d6f260c007ccfe72235893415ff67657834eb89"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-window-preflight.mjs",
+      "sha256": "a653942f1032b0c6e28f1d74b31367ca3d81144fe5f2447fe09429adc00315bb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-window-preflight.test.mjs",
+      "sha256": "87ac68216af21f58624b0d99a8537e658b5de5ff903219cbad06149747824afb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-reachability.mjs",
+      "sha256": "606135b2481f6fbbd0f2336038e5f01e18d03cef66d520aa1d830f8e8bdd46bb"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-external-browser.mjs",
+      "sha256": "119603b7ede08a9178c56896329994bc5b18e8f7e85cfe90ec1bc778e7e0efd7"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-extension\\manifest.json",
+      "sha256": "74a668fa48104f5cdbde3ebee6498b316560dd599a7fef1c69326e208f4b27cc"
+    },
+    {
+      "path": "tests\\browser\\native-accessibility-extension\\native-accessibility-zoom-worker.js",
+      "sha256": "79efbdf1cefa6c83175fb0a7593fa1f9135d992d2e1d633c86d7238787bc23ff"
+    }
+  ],
+  "finishedAt": "2026-10-27T17:52:12.271Z"
+}

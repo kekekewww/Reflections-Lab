@@ -1,0 +1,169 @@
+{
+  "status": "FAIL",
+  "classification": "REFERENCE_INITIALIZATION_CONTROL_STATE_DEFECT_CONFIRMED",
+  "createdAt": "2026-10-27T16:06:17.048Z",
+  "version": "NATIVE_IR_STATE_VIA_PREPARED_STATIC_V1",
+  "actualNode": {
+    "pid": 99468,
+    "file": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prepared-ir-v1-20261027155431842\\original-ir-driver-v1.mjs",
+      "--run",
+      "--output",
+      "artifacts\\v1\\audio-prepared-ir-v1-20261027155431842"
+    ],
+    "spawnedAt": "2026-10-27T15:54:43.406Z"
+  },
+  "retainedClose": {
+    "exitCode": 1,
+    "signal": null,
+    "observedAt": "2026-10-27T15:54:46.636Z",
+    "provenance": "Retained Node ChildProcess close event"
+  },
+  "nativeChecks": [
+    {
+      "id": "native-identical-ir-impulse-tail",
+      "pass": true,
+      "channels": [
+        {
+          "channelIndex": 0,
+          "finite": true,
+          "rmsError": 0,
+          "maximumError": 0,
+          "referenceEnergy": 0.40819613454624826,
+          "referenceTailEnergyAfterSwitch": 0.40819613350548506
+        },
+        {
+          "channelIndex": 1,
+          "finite": true,
+          "rmsError": 0,
+          "maximumError": 0,
+          "referenceEnergy": 0.40819613454624826,
+          "referenceTailEnergyAfterSwitch": 0.40819613350548506
+        }
+      ],
+      "scheduleCorrect": true,
+      "bufferStateCorrect": true
+    },
+    {
+      "id": "native-identical-ir-continuous-tone-scale-20ms",
+      "pass": true,
+      "channels": [
+        {
+          "channelIndex": 0,
+          "finite": true,
+          "rmsError": 0,
+          "maximumError": 0,
+          "referenceEnergy": 92.50773570601015,
+          "referenceTailEnergyAfterSwitch": 0.4022705862844371
+        },
+        {
+          "channelIndex": 1,
+          "finite": true,
+          "rmsError": 0,
+          "maximumError": 0,
+          "referenceEnergy": 92.50773570601015,
+          "referenceTailEnergyAfterSwitch": 0.4022705862844371
+        }
+      ],
+      "scheduleCorrect": true,
+      "bufferStateCorrect": true
+    },
+    {
+      "id": "native-changed-ir-bank-reverse",
+      "pass": false,
+      "channels": [
+        {
+          "channelIndex": 0,
+          "finite": true,
+          "rmsError": 0.028180324598435457,
+          "maximumError": 0.24689234048128128,
+          "referenceEnergy": 93.64102835294861,
+          "referenceTailEnergyAfterSwitch": 3.420262533640196
+        },
+        {
+          "channelIndex": 1,
+          "finite": true,
+          "rmsError": 0.028180324598435457,
+          "maximumError": 0.24689234048128128,
+          "referenceEnergy": 93.64102835294861,
+          "referenceTailEnergyAfterSwitch": 3.420262533640196
+        }
+      ],
+      "scheduleCorrect": true,
+      "bufferStateCorrect": true
+    }
+  ],
+  "rawPcmComplete": true,
+  "rawPcmBytes": 576000,
+  "sourceStable": true,
+  "globalSource": {
+    "createdAt": "2026-10-27T15:56:26.762Z",
+    "beforeCount": 1752,
+    "afterCount": 1752,
+    "sourceStable": true,
+    "changedInputs": []
+  },
+  "cleanup": {
+    "observedAt": "2026-10-27T15:56:35.0076478Z",
+    "ownedPids": [
+      99468,
+      61112,
+      63752,
+      86104
+    ],
+    "ownedPidAndDirectChildSurvivors": [],
+    "ownedProcessCount": 0,
+    "globalInventoryRun": false,
+    "scope": "Exact known IR native/browser/preparation PIDs and direct children only; runner context/browser/static-server close alsoverified"
+  },
+  "strictOraclesUnchanged": {
+    "maxAbsLessThan": 0.00001,
+    "rmsLessThan": 0.001,
+    "checkCount": 3,
+    "renderCount": 6,
+    "channels": 2,
+    "framesPerRender": 12000
+  },
+  "conformance": {
+    "command": "node --test tests/audio-runtime/prepared-ir-v1.test.mjs",
+    "pass": 30,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "nativeExit": 0,
+    "durableTap": "conformance/stdout.tap",
+    "twoIndependentReviews": "No blockers in prepared method/source/metafile/oracle-lock audit"
+  },
+  "cause": {
+    "summary": "Reference initializes inactive bank with scheduledzero only; its native held value remains1 while unpulled. Adopted production/preimage explicitly sets intrinsiczero and fades0→1. Direct getter diagnostic confirms difference; existingPCM matches independent 0→1 adopted model within8.65e-8, reference matches immediatefullB model within1.03e-7.",
+    "diagnostic": "artifacts/v1/audio-gain-getter-diagnostic-20261027160249209/causal-receipt.json",
+    "diagnosticSha256": "f78181f9b4c68195e34c837e79b3a76f53c220c90f1f31c79026dfabbf20443b",
+    "independentReview": "Confirmed reference state/initialization defect; no demonstrated production/FIR bug",
+    "minimalFutureProposal": "Separate versioned reference with intrinsic gain initialization matching frozen route constructor; unchanged fixed kernels, schedule,3checks/6renders and strict thresholds. NOT IMPLEMENTED; Root deferred until after diagnostic smoke."
+  },
+  "qualificationClearance": false,
+  "limitations": [
+    "IRv1 numericalFAIL remainsFAIL; no oracle rewritten or tolerance relaxed",
+    "Getterprobe is MEASURED, not qualificationPASS",
+    "No product/formal/oracle/source edits after failure; no additionalnativeIR trial",
+    "No hearing/device/performance/SPL/Worklet or completeV1 claim"
+  ],
+  "hashes": {
+    "wrapper-verification-ir-v1.json": "b82575bd0d645b4d3d130c510abfe651ff98f4d9eb97c2ad5f10bcd6b7638f92",
+    "verification.json": "dbd173b13c5af8ab226b602ce477a54e4ba4fd4007b28752cf56863614ff52a3",
+    "reference-result.json": "b95cbbcfb6b69c94d1908f3eaea4971ab77727134d7ff1a60bc95afb5820dd67",
+    "actual-node-start.json": "90c8881944e4f7e38c801ada24dfd288e0311aab743127a4a4c229857839e8e5",
+    "actual-node-close.json": "0d2a29fcf18a4fafc0e11343633efcb4b33085a852a1907c64197ebe4ec1a004",
+    "actual-process-result-ir-v1.json": "01d27108ca290b34fc745a223b8a85488c0f98887f4a635371f7fe39cb925424",
+    "driver-conformance-ir-v1.json": "165d3ddc5efaabb8a29ddd33da705bbbeaf4d1a6d9d81347f53a5ba3fcba65e8",
+    "global-source-proof.json": "c919d7b0aed836bd06fa40c3c210d5acd5c4b1cb2a4420a5d7d65dd526f1b8d0",
+    "global-source-before.json": "573097020b69bb174ee4174be7ba7c76d2eb4c7cce0562c603ba0b80c54c170c",
+    "global-source-after.json": "573097020b69bb174ee4174be7ba7c76d2eb4c7cce0562c603ba0b80c54c170c",
+    "process-cleanup.json": "9e359ca62b866ed85c996eae6fe1d63f79da3d084dc2fc090fd68d69d1cf10a8",
+    "read-only-fade-diagnostic.json": "e2ebeee4ccaffad906081045a8bd9d610966acca2b981d9bec68fb1aeb62fd0a",
+    "route-preimage-constructor-proof.json": "278f08041f6fc2b79f149f733db623e000c61de5775da4eb08aa924c52669a93",
+    "conformance/stdout.tap": "29c35d899c51d0476102e5bbf5e63cb99098a2f499dc35863b4b7353913ad60f",
+    "conformance/process-result.json": "4e7dd4226da178c44ffdfabe7b6cf915497ee330a5c1030c90e05bad2a16a661"
+  }
+}

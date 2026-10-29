@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordedAt": "2026-10-25T19:27:13.561Z",
+  "status": "PASS",
+  "scope": "local isolated bootstrap validation; no product/browser/real-room correctness claim",
+  "node": "v22.17.0",
+  "hashes": {
+    "packageLock": "ff7713793b3e1ab8e9d966bbd68ca4a9e084987b85fffec8b4cd072df32b62ab",
+    "analyticalFixtures": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+    "analyticalKernel": "45276bb94ea6c2c26084c7f2c18c7887a239d6514f923bbf6ed095d6010f50a5",
+    "evidenceLedger": "4f7c2a9e962f891519aa97f493ff4db4ecae3c203aa2412428b0978d7d7be633",
+    "physicsSmoke": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+    "physicsLock": "33e30676831f0b6d769855183ca812f903d0e4f5875519fd199fce8f48c035b7",
+    "datasetAcquisition": "abc38b49c69c1db175c511ea4ab8a0acfd7e2e7a4b7368559b7f3315f2844295",
+    "datasetAcquisitionTests": "527be1be0e8897672a5a3305b2bf5681602bfed601d62e821e2c786700f8da77",
+    "schemas": {
+      "acoustic-frame.schema.json": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "ai-provider-config.schema.json": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "ai-scene-change-set.schema.json": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "ai-tool-request.schema.json": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "ai-tool-result.schema.json": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "experiment.schema.json": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "material.schema.json": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "scene.schema.json": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd"
+    }
+  },
+  "steps": [
+    {
+      "command": "npm run environment:check",
+      "startedAt": "2026-10-25T19:27:02.228Z",
+      "durationMs": 1061.6187,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 environment:check\n> node scripts/setup/environment.mjs --strict\n\n{\n  \"schemaVersion\": \"1.0.0\",\n  \"capturedAtUtc\": \"2026-10-25T19:27:03.197Z\",\n  \"scope\": \"preproduction-environment-inspection\",\n  \"status\": \"PASS\",\n  \"strict\": true,\n  \"tools\": {\n    \"node\": {\n      \"expected\": \"22.17.0\",\n      \"actual\": \"22.17.0\",\n      \"required\": true,\n      \"status\": \"PASS\"\n    },\n    \"npm\": {\n      \"expected\": \"11.4.2\",\n      \"actual\": \"11.4.2\",\n      \"required\": true,\n      \"status\": \"PASS\"\n    },\n    \"python\": {\n      \"expected\": \"3.12.11\",\n      \"actual\": \"3.12.11\",\n      \"required\": false,\n      \"status\": \"PASS\"\n    }\n  },\n  \"operatingSystem\": {\n    \"platform\": \"win32\",\n    \"release\": \"10.0.26200\",\n    \"architecture\": \"x64\",\n    \"processArchitecture\": \"x64\"\n  },\n  \"hardware\": {\n    \"cpuModels\": [\n      \"13th Gen Intel(R) Core(TM) i9-13980HX\"\n    ],\n    \"logicalCpuCount\": 32,\n    \"totalMemoryBytes\": 33959825408\n  },\n  \"runtimeVersions\": {\n    \"node\": \"22.17.0\",\n    \"acorn\": \"8.14.1\",\n    \"ada\": \"2.9.2\",\n    \"amaro\": \"0.4.1\",\n    \"ares\": \"1.34.5\",\n    \"brotli\": \"1.1.0\",\n    \"cjs_module_lexer\": \"2.1.0\",\n    \"cldr\": \"47.0\",\n    \"icu\": \"77.1\",\n    \"llhttp\": \"9.3.0\",\n    \"modules\": \"127\",\n    \"napi\": \"10\",\n    \"nbytes\": \"0.1.1\",\n    \"ncrypto\": \"0.0.1\",\n    \"nghttp2\": \"1.64.0\",\n    \"openssl\": \"3.0.16\",\n    \"simdjson\": \"3.12.3\",\n    \"simdutf\": \"6.4.2\",\n    \"sqlite\": \"3.50.0\",\n    \"tz\": \"2025b\",\n    \"undici\": \"6.21.2\",\n    \"unicode\": \"16.0\",\n    \"uv\": \"1.51.0\",\n    \"uvwasi\": \"0.0.21\",\n    \"v8\": \"12.4.254.21-node.26\",\n    \"zlib\": \"1.3.0.1-motley-780819f\",\n    \"zstd\": \"1.5.7\"\n  },\n  \"limitations\": [\n    \"Version agreement does not establish scientific or product correctness.\",\n    \"Python is optional for the Node validation suite and does not fail strict mode.\",\n    \"No environment-variable values, host name, user name, or credentials are recorded.\"\n  ]\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run test",
+      "startedAt": "2026-10-25T19:27:03.292Z",
+      "durationMs": 934.1475,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 test\n> node --test tests/acoustics/*.test.mjs tests/integration/*.test.mjs\n\nTAP version 13\n# Subtest: free-field-3-4-5 [DERIVED]\nok 1 - free-field-3-4-5 [DERIVED]\n  ---\n  duration_ms: 0.9735\n  type: 'test'\n  ...\n# Subtest: finite-first-reflection [DERIVED]\nok 2 - finite-first-reflection [DERIVED]\n  ---\n  duration_ms: 0.4525\n  type: 'test'\n  ...\n# Subtest: finite-second-reflection [DERIVED]\nok 3 - finite-second-reflection [DERIVED]\n  ---\n  duration_ms: 0.1819\n  type: 'test'\n  ...\n# Subtest: finite-polygon-rejection [DERIVED]\nok 4 - finite-polygon-rejection [DERIVED]\n  ---\n  duration_ms: 0.1085\n  type: 'test'\n  ...\n# Subtest: direct-segment-occlusion [DERIVED]\nok 5 - direct-segment-occlusion [DERIVED]\n  ---\n  duration_ms: 0.1154\n  type: 'test'\n  ...\n# Subtest: reflected-segment-occlusion [DERIVED]\nok 6 - reflected-segment-occlusion [DERIVED]\n  ---\n  duration_ms: 0.5637\n  type: 'test'\n  ...\n# Subtest: energy-bands [SYNTHETIC]\nok 7 - energy-bands [SYNTHETIC]\n  ---\n  duration_ms: 0.2706\n  type: 'test'\n  ...\n# Subtest: air-db-pressure-conversion [SYNTHETIC]\nok 8 - air-db-pressure-conversion [SYNTHETIC]\n  ---\n  duration_ms: 0.1564\n  type: 'test'\n  ...\n# Subtest: doppler-approaching [DERIVED]\nok 9 - doppler-approaching [DERIVED]\n  ---\n  duration_ms: 0.2358\n  type: 'test'\n  ...\n# Subtest: shoebox-axial-mode [DERIVED]\nok 10 - shoebox-axial-mode [DERIVED]\n  ---\n  duration_ms: 0.3229\n  type: 'test'\n  ...\n# Subtest: impulse-arrival [DERIVED]\nok 11 - impulse-arrival [DERIVED]\n  ---\n  duration_ms: 0.5949\n  type: 'test'\n  ...\n# Subtest: backward-edc [SYNTHETIC]\nok 12 - backward-edc [SYNTHETIC]\n  ---\n  duration_ms: 0.1331\n  type: 'test'\n  ...\n# Subtest: synthetic-exponential-decay [SYNTHETIC]\nok 13 - synthetic-exponential-decay [SYNTHETIC]\n  ---\n  duration_ms: 8.7978\n  type: 'test'\n  ...\n# Subtest: stationary and equal uniform velocities have Doppler ratio 1\nok 14 - stationary and equal uniform velocities have Doppler ratio 1\n  ---\n  duration_ms: 0.1136\n  type: 'test'\n  ...\n# Subtest: material, air, mode and propagation reject invalid domains\nok 15 - material, air, mode and propagation reject invalid domains\n  ---\n  duration_ms: 0.4834\n  type: 'test'\n  ...\n# Subtest: finite reflection continuity, path identity, birth/death and dynamic occlusion\nok 16 - finite reflection continuity, path identity, birth/death and dynamic occlusion\n  ---\n  duration_ms: 0.2397\n  type: 'test'\n  ...\n# Subtest: RIR silence and insufficient decay range do not produce a reported RT60\nok 17 - RIR silence and insufficient decay range do not produce a reported RT60\n  ---\n  duration_ms: 0.1031\n  type: 'test'\n  ...\n# Subtest: research validator accepts complete synthetic metadata, rejects broken traceability\nok 18 - research validator accepts complete synthetic metadata, rejects broken traceability\n  ---\n  duration_ms: 2.5697\n  type: 'test'\n  ...\n# Subtest: all eight Draft2020-12 schemas compile and repository synthetic examples pass\nok 19 - all eight Draft2020-12 schemas compile and repository synthetic examples pass\n  ---\n  duration_ms: 4.6447\n  type: 'test'\n  ...\n# Subtest: scene schema rejects unknown property, negative mass and oversized budgets\nok 20 - scene schema rejects unknown property, negative mass and oversized budgets\n  ---\n  duration_ms: 1.6337\n  type: 'test'\n  ...\n# Subtest: test-only scene domain rejects zero quaternion, duplicate IDs and dangling object\nok 21 - test-only scene domain rejects zero quaternion, duplicate IDs and dangling object\n  ---\n  duration_ms: 0.906\n  type: 'test'\n  ...\n# Subtest: test-only material domain rejects nonconservation and unordered bands\nok 22 - test-only material domain rejects nonconservation and unordered bands\n  ---\n  duration_ms: 0.3418\n  type: 'test'\n  ...\n# Subtest: test-only backend domain rejects unsupported individual reflection paths\nok 23 - test-only backend domain rejects unsupported individual reflection paths\n  ---\n  duration_ms: 0.3035\n  type: 'test'\n  ...\n# Subtest: nonempty analytical frame has unambiguous pair, pressure bands, arrival and delays\nok 24 - nonempty analytical frame has unambiguous pair, pressure bands, arrival and delays\n  ---\n  duration_ms: 3.008\n  type: 'test'\n  ...\n# Subtest: all twelve declared AI tools accept bounded synthetic requests\nok 25 - all twelve declared AI tools accept bounded synthetic requests\n  ---\n  duration_ms: 6.3663\n  type: 'test'\n  ...\n# Subtest: AI request schema rejects invalid dimensions, mass, unknown fields/tools, transaction misuse\nok 26 - AI request schema rejects invalid dimensions, mass, unknown fields/tools, transaction misuse\n  ---\n  duration_ms: 0.6596\n  type: 'test'\n  ...\n# Subtest: offline AI provider schema rejects network access and nonzero cost\nok 27 - offline AI provider schema rejects network access and nonzero cost\n  ---\n  duration_ms: 1.629\n  type: 'test'\n  ...\n# Subtest: AI result schema represents insufficient RIR decay as null with limitations\nok 28 - AI result schema represents insufficient RIR decay as null with limitations\n  ---\n  duration_ms: 2.7205\n  type: 'test'\n  ...\n# Subtest: staged transaction requires snapshot/digests for applied state\nok 29 - staged transaction requires snapshot/digests for applied state\n  ---\n  duration_ms: 1.0034\n  type: 'test'\n  ...\n# Subtest: synthetic experiment manifest hashes exact fixture bytes; domain rejects invalid UTC\nok 30 - synthetic experiment manifest hashes exact fixture bytes; domain rejects invalid UTC\n  ---\n  duration_ms: 2.0429\n  type: 'test'\n  ...\n1..30\n# tests 30\n# suites 0\n# pass 30\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 339.4308\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run smoke:dependencies",
+      "startedAt": "2026-10-25T19:27:04.226Z",
+      "durationMs": 640.0951000000002,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 smoke:dependencies\n> node experiments/dependency-smoke/smoke.mjs\n\n{\n  \"status\": \"PASS\",\n  \"scope\": \"Node import + Three mathematical ray + Rapier WASM initialize/free only; no browser/render/audio claim\",\n  \"node\": \"v22.17.0\",\n  \"three\": \"0.186.1\",\n  \"threeRevision\": \"186\",\n  \"rapier\": \"0.21.0\"\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run test:physics",
+      "startedAt": "2026-10-25T19:27:04.867Z",
+      "durationMs": 1466.0599000000002,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 test:physics\n> node experiments/physics-spike/smoke.mjs\n\nPASS freefall_matches_analytic_velocity_and_bounded_position_error\nPASS dynamic_zero_gravity_retains_inertia\nPASS fixed_ignores_impulse_then_explicit_dynamic_restore_moves\nPASS impulse_is_instantaneous_and_addForce_persists_until_reset\nPASS collision_force_and_solved_contact_impulse_are_separate_apis\nPASS spring_joint_to_position_kinematic_anchor_api_smoke\nPASS: 6 checks, @dimforge/rapier3d-compat 0.21.0, dt=0.016666666666666666s\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run test:datasets",
+      "startedAt": "2026-10-25T19:27:06.333Z",
+      "durationMs": 854.7204999999994,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 test:datasets\n> node --test experiments/dataset-fetch-spike/dataset-fetch.test.mjs\n\nTAP version 13\n# Subtest: CLI parses explicit opt-in, manifest path and rejects unknown/duplicate options\nok 1 - CLI parses explicit opt-in, manifest path and rejects unknown/duplicate options\n  ---\n  duration_ms: 2.6275\n  type: 'test'\n  ...\n# Subtest: real UNKNOWN example reports BLOCKED in both modes without invoking fetch\nok 2 - real UNKNOWN example reports BLOCKED in both modes without invoking fetch\n  ---\n  duration_ms: 10.233\n  type: 'test'\n  ...\n# Subtest: verified dry-run validates the plan without fetch or filesystem creation\nok 3 - verified dry-run validates the plan without fetch or filesystem creation\n  ---\n  duration_ms: 4.9948\n  type: 'test'\n  ...\n# Subtest: UNKNOWN, REFUSED and page-only license never acquire, even with complete pins\nok 4 - UNKNOWN, REFUSED and page-only license never acquire, even with complete pins\n  ---\n  duration_ms: 4.0181\n  type: 'test'\n  ...\n# Subtest: VERIFIED metadata still requires exact file license evidence, size, hash and subset\nok 5 - VERIFIED metadata still requires exact file license evidence, size, hash and subset\n  ---\n  duration_ms: 1.7571\n  type: 'test'\n  ...\n# Subtest: paths reject traversal, absolute/drive/ADS paths and Windows reserved filenames\nok 6 - paths reject traversal, absolute/drive/ADS paths and Windows reserved filenames\n  ---\n  duration_ms: 6.5444\n  type: 'test'\n  ...\n# Subtest: download URLs reject HTTP, nonallowlist/lookalike hosts, userinfo, query and fragments\nok 7 - download URLs reject HTTP, nonallowlist/lookalike hosts, userinfo, query and fragments\n  ---\n  duration_ms: 2.5815\n  type: 'test'\n  ...\n# Subtest: size/hash/shape inputs reject unsafe numbers, missing fields and incorrect hashes\nok 8 - size/hash/shape inputs reject unsafe numbers, missing fields and incorrect hashes\n  ---\n  duration_ms: 3.705\n  type: 'test'\n  ...\n# Subtest: opt-in streams synthetic bytes, verifies SHA and publishes a reusable cache\nok 9 - opt-in streams synthetic bytes, verifies SHA and publishes a reusable cache\n  ---\n  duration_ms: 39.7641\n  type: 'test'\n  ...\n# Subtest: wrong hash cannot publish and removes temporary bytes\nok 10 - wrong hash cannot publish and removes temporary bytes\n  ---\n  duration_ms: 4.0611\n  type: 'test'\n  ...\n# Subtest: missing/lying Content-Length cannot bypass streaming cap or exact final size\nok 11 - missing/lying Content-Length cannot bypass streaming cap or exact final size\n  ---\n  duration_ms: 9.909\n  type: 'test'\n  ...\n# Subtest: incorrect Content-Length fails before cache creation\nok 12 - incorrect Content-Length fails before cache creation\n  ---\n  duration_ms: 2.1361\n  type: 'test'\n  ...\n# Subtest: redirect to unapproved host or HTTP is rejected before a second request\nok 13 - redirect to unapproved host or HTTP is rejected before a second request\n  ---\n  duration_ms: 3.6623\n  type: 'test'\n  ...\n# Subtest: allowlisted relative redirect is checked and redirect loops have a fixed limit\nok 14 - allowlisted relative redirect is checked and redirect loops have a fixed limit\n  ---\n  duration_ms: 6.9673\n  type: 'test'\n  ...\n# Subtest: corrupt existing cache is retained and refused without downloading\nok 15 - corrupt existing cache is retained and refused without downloading\n  ---\n  duration_ms: 3.7747\n  type: 'test'\n  ...\n# Subtest: preexisting junction cannot move cache output outside its expected directory\nok 16 - preexisting junction cannot move cache output outside its expected directory # SKIP NOT RUN: 本機 sandbox 不允許建立 symlink/junction fixture。\n  ---\n  duration_ms: 1.4584\n  type: 'test'\n  ...\n# Subtest: destination race never overwrites another writer\nok 17 - destination race never overwrites another writer\n  ---\n  duration_ms: 6.4069\n  type: 'test'\n  ...\n# Subtest: unsupported encoding and HTTP failures do not publish\nok 18 - unsupported encoding and HTTP failures do not publish\n  ---\n  duration_ms: 2.4132\n  type: 'test'\n  ...\n1..18\n# tests 18\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 1\n# todo 0\n# duration_ms 313.5846\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run validate:research",
+      "startedAt": "2026-10-25T19:27:07.188Z",
+      "durationMs": 594.9706999999999,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 validate:research\n> node scripts/validation/research-index.mjs\n\nPASS research metadata: 64 sources, 64 claims, 13 fixture references. Source content/license verification remains the research ledger's review task.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run validate:schemas",
+      "startedAt": "2026-10-25T19:27:07.783Z",
+      "durationMs": 686.8116,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 validate:schemas\n> node scripts/validation/schemas.mjs\n\nPASS AJV Draft2020-12: compiled 8 schemas; 3 repository examples passed schema and test-only domain checks. Run npm test for positive/negative contract fixtures.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run validate:docs",
+      "startedAt": "2026-10-25T19:27:08.470Z",
+      "durationMs": 649.8193000000001,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 validate:docs\n> node scripts/validation/docs.mjs\n\nPASS Markdown local targets: 111 links in 79 documents; fenced code/external URLs/anchors excluded.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run typecheck",
+      "startedAt": "2026-10-25T19:27:09.120Z",
+      "durationMs": 1195.0731000000005,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 typecheck\n> tsc --noEmit\n\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run lint",
+      "startedAt": "2026-10-25T19:27:10.315Z",
+      "durationMs": 1865.3028000000004,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 lint\n> eslint .\n\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "command": "npm run format:check",
+      "startedAt": "2026-10-25T19:27:12.181Z",
+      "durationMs": 1379.6707999999999,
+      "exitCode": 0,
+      "stdout": "\n> reflection-lab-preproduction@0.0.0 format:check\n> prettier --check package.json tsconfig.json eslint.config.mjs .prettierrc.json scripts/validation scripts/setup/environment.mjs scripts/setup/datasets.mjs tests benchmarks/analytic benchmarks/fixtures experiments/dependency-smoke experiments/dataset-fetch-spike research/datasets/acquisition-manifest.example.json docs/06-validation .github/workflows\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "",
+      "error": null
+    }
+  ]
+}

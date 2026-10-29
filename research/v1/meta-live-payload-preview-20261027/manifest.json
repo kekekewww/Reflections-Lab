@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "classification": "AUTHORED_SYNTHETIC_FIXTURE_ONLY",
+  "createdAt": "2026-10-27T01:51:00.998Z",
+  "endpoint": "https://api.meta.ai/v1/chat/completions",
+  "method": "POST",
+  "model": "muse-spark-1.3",
+  "dataMode": "standard",
+  "reviewedPayloads": {
+    "sound": {
+      "sha256": "6c5db0f41035bf9f3162a4b0424c4bc4f89d5126b9f2348219b7437aae4e3d8f",
+      "bytes": 15299
+    },
+    "scene": {
+      "sha256": "1dd811bf45e98eefb9da7d7630f7945fed8eb31124c2b86a855476af8ad6b825",
+      "bytes": 11979
+    },
+    "run": {
+      "sha256": "883a8064a086ff1bfa529784be73126bd147583abd49994c3af3a27af4174792",
+      "bytes": 12236
+    }
+  },
+  "sourceFunctions": [
+    "src/app/defaults.ts:createDefaultScene",
+    "src/app/defaults.ts:createDefaultBehaviors",
+    "src/app/defaults.ts:DEFAULT_MATERIALS",
+    "server/meta-live-fixture.ts:fixed prompts and oscillator registry",
+    "src/ai/scene-adapter.ts:deterministic approved sphere candidate"
+  ],
+  "filesystemInputsToPrompts": [],
+  "privateProjectInputs": [],
+  "sampleAssets": [],
+  "inferenceRequests": 0,
+  "networkRequests": 0,
+  "authorizationBasis": [
+    "User explicitly requested product Meta live validation",
+    "User supplied a dedicated Meta API key file for server-only Authorization",
+    "User explicitly approved this validation TOTAL spend cap US$1"
+  ],
+  "restrictions": [
+    "Only the ignored user-selected credential file is read for the Authorization header; never prompt content",
+    "No filesystem, shell, repository or credential tools are advertised",
+    "Only fixed official Meta endpoint; redirect:error; Standard model only",
+    "At most three paid requests; persistent shared US$1 ledger; US$0.25 reserved before each; max_completion_tokens1000",
+    "Actual send bytes/SHA-256 must match these reviewed synthetic bodies before reserving or dispatching",
+    "Any model-derived scene deviation causes subsequent payload mismatch and stops that network request",
+    "Catalog proof and budget ledger are read only as control metadata; never prompt inputs"
+  ]
+}

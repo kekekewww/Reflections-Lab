@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "1.0.0",
+  "scope": "Isolated analytical fixtures; all coefficients and RIRs are synthetic or derived, never measured",
+  "coordinateSystem": "right-handed, Y-up, meters",
+  "surfaces": {
+    "floor": {
+      "id": "floor",
+      "point": [0, 0, 0],
+      "normal": [0, 1, 0],
+      "vertices": [
+        [-10, 0, -10],
+        [-10, 0, 10],
+        [10, 0, 10],
+        [10, 0, -10]
+      ]
+    },
+    "wall": {
+      "id": "wall",
+      "point": [0, 0, 0],
+      "normal": [1, 0, 0],
+      "vertices": [
+        [0, 0, -10],
+        [0, 10, -10],
+        [0, 10, 10],
+        [0, 0, 10]
+      ]
+    },
+    "blocker": {
+      "id": "blocker",
+      "point": [2, 0, 0],
+      "normal": [1, 0, 0],
+      "vertices": [
+        [2, 0, -1],
+        [2, 2, -1],
+        [2, 2, 1],
+        [2, 0, 1]
+      ]
+    }
+  },
+  "fixtures": [
+    {
+      "id": "free-field-3-4-5",
+      "kind": "direct",
+      "evidenceType": "DERIVED",
+      "input": { "source": [0, 0, 0], "receiver": [3, 4, 0], "c": 343 },
+      "units": {
+        "position": "m",
+        "c": "m/s",
+        "delay": "s",
+        "pressureRatio": "dimensionless, reference 1m"
+      },
+      "expected": { "distance": 5, "delaySeconds": 0.014577259475218658, "pressureRatio": 0.2 },
+      "referenceClaimIds": ["ACO-001"],
+      "tolerance": {
+        "absolute": 1e-12,
+        "explanation": "double precision algebra only; excludes calibrated SPL"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "finite-first-reflection",
+      "kind": "reflection",
+      "evidenceType": "DERIVED",
+      "input": { "source": [1, 1, 0], "receiver": [5, 1, 0], "surfaces": ["floor"] },
+      "units": { "position": "m", "distance": "m" },
+      "expected": { "hits": [[3, 0, 0]], "distance": 4.47213595499958 },
+      "referenceClaimIds": ["ACO-002"],
+      "tolerance": {
+        "absolute": 1e-10,
+        "explanation": "image point (- equivalent floor mirror), analytic sqrt20"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "finite-second-reflection",
+      "kind": "reflection",
+      "evidenceType": "DERIVED",
+      "input": { "source": [1, 1, 0], "receiver": [3, 2, 0], "surfaces": ["wall", "floor"] },
+      "units": { "position": "m", "distance": "m" },
+      "expected": {
+        "hits": [
+          [0, 0.25, 0],
+          [0.3333333333333333, 0, 0]
+        ],
+        "distance": 5
+      },
+      "referenceClaimIds": ["ACO-002", "ACO-003"],
+      "tolerance": {
+        "absolute": 1e-10,
+        "explanation": "successive images (-1,1,0),(-1,-1,0); 3-4-5 image distance"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "finite-polygon-rejection",
+      "kind": "reflection-rejected",
+      "evidenceType": "DERIVED",
+      "input": { "source": [1, 1, 0], "receiver": [50, 1, 0], "surfaces": ["floor"] },
+      "units": { "position": "m" },
+      "expected": { "path": null },
+      "referenceClaimIds": ["ACO-002"],
+      "tolerance": {
+        "absolute": 1e-9,
+        "explanation": "infinite-plane hit x25.5 lies outside finite x[-10,10] polygon"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "direct-segment-occlusion",
+      "kind": "occlusion",
+      "evidenceType": "DERIVED",
+      "input": { "source": [1, 1, 0], "receiver": [5, 1, 0], "blockers": ["blocker"] },
+      "units": { "position": "m" },
+      "expected": { "blocked": true },
+      "referenceClaimIds": ["ACO-002"],
+      "tolerance": {
+        "absolute": 1e-9,
+        "explanation": "interior segment intersects rectangle at (2,1,0)"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "reflected-segment-occlusion",
+      "kind": "reflection-rejected",
+      "evidenceType": "DERIVED",
+      "input": {
+        "source": [1, 1, 0],
+        "receiver": [5, 1, 0],
+        "surfaces": ["floor"],
+        "blockers": ["blocker"]
+      },
+      "units": { "position": "m" },
+      "expected": { "path": null },
+      "referenceClaimIds": ["ACO-002"],
+      "tolerance": {
+        "absolute": 1e-9,
+        "explanation": "first physical segment hits blocker at (2,0.5,0)"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "energy-bands",
+      "kind": "material",
+      "evidenceType": "SYNTHETIC",
+      "input": {
+        "bands": [
+          { "reflection": 0.7, "transmission": 0.1, "absorption": 0.2 },
+          { "reflection": 0.4, "transmission": 0.2, "absorption": 0.4 }
+        ]
+      },
+      "units": {
+        "coefficients": "energy fraction",
+        "pressureMagnitude": "dimensionless equal-medium magnitude"
+      },
+      "expected": { "reflectedPressureMagnitudes": [0.8366600265340756, 0.6324555320336759] },
+      "referenceClaimIds": ["MAT-001"],
+      "tolerance": {
+        "absolute": 1e-12,
+        "explanation": "sqrt energy is magnitude; phase/impedance/angle not modeled"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "air-db-pressure-conversion",
+      "kind": "air",
+      "evidenceType": "SYNTHETIC",
+      "input": { "alphaDbPerMeter": 0.1, "distanceMeters": 10 },
+      "units": { "alphaDbPerMeter": "dB/m", "distanceMeters": "m" },
+      "expected": { "pressureRatio": 0.8912509381337456 },
+      "referenceClaimIds": ["AIR-001"],
+      "tolerance": {
+        "absolute": 1e-12,
+        "explanation": "synthetic 1dB conversion, not an ISO9613-1 alpha reference value"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "doppler-approaching",
+      "kind": "doppler",
+      "evidenceType": "DERIVED",
+      "input": {
+        "frequencyHz": 1000,
+        "c": 343,
+        "sourceVelocity": [10, 0, 0],
+        "receiverVelocity": [0, 0, 0],
+        "direction": [1, 0, 0]
+      },
+      "units": {
+        "frequencyHz": "Hz",
+        "velocity": "m/s",
+        "direction": "unit vector source-to-listener at emission"
+      },
+      "expected": { "frequencyHz": 1030.03003003003 },
+      "referenceClaimIds": ["AIR-002"],
+      "tolerance": {
+        "absolute": 1e-9,
+        "explanation": "uniform subsonic radial motion; not arbitrary trajectory retarded-time solver"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "shoebox-axial-mode",
+      "kind": "mode",
+      "evidenceType": "DERIVED",
+      "input": { "dimensionsMeters": [5, 4, 3], "order": [1, 0, 0], "c": 343 },
+      "units": {
+        "dimensionsMeters": "m",
+        "order": "nonnegative integer triple",
+        "frequencyHz": "Hz"
+      },
+      "expected": { "frequencyHz": 34.3 },
+      "referenceClaimIds": ["WAVE-001"],
+      "tolerance": {
+        "absolute": 1e-10,
+        "explanation": "rigid rectangular Neumann room; no damping or FEM validation"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "impulse-arrival",
+      "kind": "arrival",
+      "evidenceType": "DERIVED",
+      "input": { "distances": [3.43, 6.86], "c": 343, "sampleRate": 48000 },
+      "units": {
+        "distances": "m",
+        "c": "m/s",
+        "sampleRate": "Hz",
+        "arrivalSamples": "integer samples"
+      },
+      "expected": { "arrivalSamples": [480, 960] },
+      "referenceClaimIds": ["ACO-001"],
+      "tolerance": {
+        "absolute": 0,
+        "explanation": "nearest integer; arbitrary delays have at most 0.5/sampleRate quantization error"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "backward-edc",
+      "kind": "edc",
+      "evidenceType": "SYNTHETIC",
+      "input": { "samples": [1, 0, 0.5, 0] },
+      "units": { "samples": "arbitrary linear pressure", "edc": "dB normalized energy" },
+      "expected": { "edcDb": [0, -6.9897000433601875, -6.9897000433601875, null] },
+      "referenceClaimIds": ["DSP-001"],
+      "tolerance": {
+        "absolute": 1e-10,
+        "explanation": "null encodes negative infinity for zero remaining energy"
+      },
+      "reproduction": "npm test"
+    },
+    {
+      "id": "synthetic-exponential-decay",
+      "kind": "decay",
+      "evidenceType": "SYNTHETIC",
+      "input": {
+        "rt60Seconds": 0.6,
+        "sampleRate": 8000,
+        "durationSeconds": 2,
+        "fitRangesDb": [
+          [0, -10],
+          [-5, -25],
+          [-5, -35]
+        ]
+      },
+      "units": { "time": "s", "sampleRate": "Hz", "fitRangesDb": "dB normalized energy" },
+      "expected": { "rt60Seconds": 0.6 },
+      "referenceClaimIds": ["DSP-001", "DSP-002"],
+      "tolerance": {
+        "absolute": 0.00005,
+        "explanation": "finite synthetic exponential truncation; not noise compensated measured-room ISO conformity"
+      },
+      "reproduction": "npm test"
+    }
+  ]
+}

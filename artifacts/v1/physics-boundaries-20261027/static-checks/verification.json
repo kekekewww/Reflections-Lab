@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "name": "project-typecheck",
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "startedAt": "2026-10-27T06:10:22.416Z",
+      "finishedAt": "2026-10-27T06:10:27.443Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "deadlineMs": 55000
+    },
+    {
+      "name": "new-test-typecheck",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --types node --lib ES2022,DOM,DOM.Iterable tests/physics/v1-boundaries.test.ts",
+      "startedAt": "2026-10-27T06:10:27.444Z",
+      "finishedAt": "2026-10-27T06:10:28.733Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "deadlineMs": 55000
+    },
+    {
+      "name": "new-test-lint",
+      "command": "node node_modules/eslint/bin/eslint.js tests/physics/v1-boundaries.test.ts",
+      "startedAt": "2026-10-27T06:10:28.733Z",
+      "finishedAt": "2026-10-27T06:10:30.497Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "deadlineMs": 55000
+    },
+    {
+      "name": "new-test-format",
+      "command": "node node_modules/prettier/bin/prettier.cjs --check tests/physics/v1-boundaries.test.ts",
+      "startedAt": "2026-10-27T06:10:30.497Z",
+      "finishedAt": "2026-10-27T06:10:30.805Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "deadlineMs": 55000
+    }
+  ]
+}

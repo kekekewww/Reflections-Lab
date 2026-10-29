@@ -1,0 +1,881 @@
+{
+  "schema_version": 1,
+  "task_id": "RLAB-TASK-0021",
+  "review_kind": "Independent read-only additive receipt review after frozen Markdown report",
+  "reviewer": {
+    "executor": "Codex independent agent",
+    "model_id": null,
+    "child_review": "Read-only cost_publication_review receipt integrity check; no tests executed by child during additive review"
+  },
+  "baseline": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "worktree": "C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta Hack",
+  "canonical_review": {
+    "path": "docs/12-architecture-review/INDEPENDENT_REVIEW.md",
+    "sha256": "01edad2688037da63dd3297a7eb3580191af6fa696487d441e3fedc6af4a84f4",
+    "unchanged": true
+  },
+  "english_review": {
+    "path": "docs/en/12-architecture-review/INDEPENDENT_REVIEW.md",
+    "sha256": "773381559b721b46b602ba43243f8c6b1c51f53b36f88accd5799d45561ab424",
+    "note": "Root English finalization added structural metadata/anchors after initial report; canonical content hash unchanged."
+  },
+  "reviewer_actions": {
+    "product_edits": false,
+    "old_test_or_schema_edits": false,
+    "shared_wiki_edits": false,
+    "full_check_or_browser_rerun": false,
+    "original_workspace_write": false,
+    "git_commit_or_merge_or_push": false,
+    "only_additive_output": "artifacts/architecture-review-20261029/independent-final.json"
+  },
+  "first_quality_run": {
+    "status": "FAIL",
+    "exit_code": 1,
+    "completed_stages": {
+      "general": 668,
+      "agents": 82,
+      "prompts": 12,
+      "wiki": {
+        "tests": 54,
+        "pass": 53,
+        "fail": 1
+      }
+    },
+    "failure": {
+      "test": "repeating read-only status and lint does not mutate events or page bytes",
+      "path": "tests/wiki/wiki.test.mjs",
+      "line": 481,
+      "code": "RECOVERY_REQUIRED",
+      "os_error": "EPERM",
+      "operation": "rename fixture transaction .tmp to .json",
+      "root_cause": "UNKNOWN; actual filesystem operation failure; no attribution to OS load/antivirus or the propagation change is proven"
+    },
+    "historical_failure_retained": true,
+    "source_snapshot": {
+      "inputs_before": 2258,
+      "inputs_after": 2258,
+      "changed": [],
+      "removed": [],
+      "stable": true
+    },
+    "remaining_stages_after_failure": "NOT RUN in this first invocation; later full repeat reviewed separately"
+  },
+  "unchanged_single_case_repeat": {
+    "status": "PASS",
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "receipt": ".cache/architecture-review/validation/wiki-rename-recheck.log",
+    "note": "Does not erase first failure or alone establish full-check completion"
+  },
+  "independent_source_check": {
+    "checked_at_utc": "2026-10-29T05:47:30.9642623Z",
+    "inputs": 2258,
+    "changed": [],
+    "missing": [],
+    "stable": true,
+    "method": "Independently hashed each path in root check-inputs-before.json and compared against recorded SHA-256"
+  },
+  "browser_receipt_review": {
+    "scoped_cases_status": "PASS",
+    "current_pass_counts": {
+      "physics": 2,
+      "storage": 5,
+      "ui_fps": 28,
+      "linked": 8,
+      "product_repeat": 4
+    },
+    "first_product_run": {
+      "status": "FAIL",
+      "pass": 3,
+      "fail": 1,
+      "artifact_directory": "artifacts/v1/product-e2e-chrome-20261029T052845Z",
+      "failure": "Explicit capture recovery budget exhausted (8)",
+      "source_and_bundle_stable": true,
+      "archive_result_hash_valid": true,
+      "cleanup": "PASS_ZERO_REMAINING",
+      "retained": true
+    },
+    "product_repeat": {
+      "status": "PASS",
+      "pass": 4,
+      "fail": 0,
+      "retries": 0,
+      "artifact_directory": "artifacts/v1/product-e2e-chrome-20261029T053133Z",
+      "same_original_test_config_budget": true,
+      "source_matches_build_at_start": true,
+      "source_stable_during_run": true,
+      "bundle_matches_build_at_start": true,
+      "bundle_stable_during_run": true,
+      "harness_stable_during_run": true,
+      "archive_result_hash_valid": true,
+      "cleanup": "PASS_ZERO_REMAINING"
+    },
+    "product_and_ui_build": {
+      "digest": "6f0c168a3110d9601a7502ab2359be47df73efdded536cb8065570ed43392fe4",
+      "inputs": 177,
+      "bundle_files": 14,
+      "all_current_hashes_match": true,
+      "product_inputs_before_after_equal": true,
+      "source_stable_during_build": true
+    },
+    "physics": {
+      "tests": 2,
+      "fresh_report": true,
+      "suite_complete": true,
+      "source_stable": true,
+      "source_hashes_before_after_equal": 179,
+      "current_source_hashes_match": 179,
+      "artifact_hashes_verified": 6,
+      "cleanup": "owned Vite stopped; cleanup accepted; root exit observed"
+    },
+    "storage": {
+      "tests": 5,
+      "fresh_report": true,
+      "suite_complete": true,
+      "source_stable": true,
+      "source_hashes_before_after_equal": 2250,
+      "artifact_hashes_verified": 5,
+      "cleanup": "Playwright and Vite cleanup accepted; afterAudit.remaining=[]",
+      "current_differences": {
+        "count": 28,
+        "classification": "22 docs/en paths and 6 knowledge paths changed after browser run; all documentation/source metadata",
+        "knowledge_paths": [
+          "knowledge/sources/manifest.json",
+          "knowledge/wiki/architecture/runtime-and-contracts.md",
+          "knowledge/wiki/goals.md",
+          "knowledge/wiki/index.md",
+          "knowledge/wiki/log.md",
+          "knowledge/wiki/roadmap.md"
+        ],
+        "no_mismatch_in": [
+          "src",
+          "server",
+          "tests",
+          "schemas",
+          "node_modules",
+          "package.json",
+          "package-lock.json"
+        ]
+      }
+    },
+    "ui_and_linked": {
+      "tests": 36,
+      "errors": [],
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "limits": "No product-runner-style complete per-run process-tree and before/after source/bundle receipts for these two suites; do not equate their assurance level"
+    },
+    "repeatability_status": "PARTIAL",
+    "limits": [
+      "Framework flaky=0 means no within-run retry recovery, not universal reliability across launches.",
+      "Headless/muted controlled browser evidence does not establish human listening, physical keyboard/IME usability, AudioWorklet deadlines, normal laptop capacity or 600-second performance PASS."
+    ]
+  },
+  "benchmark": {
+    "status": "PASS",
+    "exit_code": 0,
+    "scope": "Isolated Node synchronous mathematical kernel microbenchmark only",
+    "measured_scope_status": "MEASURED_LOCAL_ONLY",
+    "environment": {
+      "node": "v22.17.0",
+      "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+      "logical_cpus": 32,
+      "total_memory_bytes": 33959825408
+    },
+    "p95_ms_per_operation": {
+      "direct-path": 0.0003480000000000004,
+      "finite-order2-path": 0.03961307999999999,
+      "edc-4096-samples": 0.5593259999999964
+    },
+    "limits": "p95 across batch averages, not individual frame tail latency; no browser/AudioWorklet/GPU/large scene/WASM acoustic evidence"
+  },
+  "findings": [
+    {
+      "id": "IR-P2-WORKLET",
+      "priority": "P2",
+      "status": "RESOLVED",
+      "description": "Incorrect implemented optional Worklet lane and nonexistent controller path corrected to native Web Audio implemented/custom Worklet planned"
+    },
+    {
+      "id": "IR-QUALITY-RENAME",
+      "status": "RETAINED",
+      "description": "First full-check fixture transaction rename EPERM failure retained; source/test/standard not changed for repeat"
+    },
+    {
+      "id": "IR-PRODUCT-CAPTURE",
+      "status": "RETAINED",
+      "description": "First clean-launch capture recovery exhausted original eight attempts; later unchanged repeat passed, no universal reliability claim"
+    },
+    {
+      "id": "IR-FORMAT-COST",
+      "priority": "P2",
+      "status": "RESOLVED",
+      "path": "scripts/validation/cloud-cost-model.mjs",
+      "description": "Added calculator fails unchanged repository format:check; complete quality command exits 1 and downstream stages did not run",
+      "resolution": "Exact Prettier-only transformation of reviewed original; independent self-test and format check pass; all nine calculator outputs byte-identical."
+    }
+  ],
+  "publication": {
+    "original_full_history": {
+      "status": "BLOCKED",
+      "reason": "Three >100 MiB blobs and excluded build/cache/archive ancestors; latest-tree deletion does not remove original history"
+    },
+    "original_full_content_raw_receipt_review": {
+      "status": "PARTIAL",
+      "reason": "Original full JSON stdout was not retained; later transcripts and 99 targeted candidate classifications do not become original raw full scan"
+    },
+    "targeted_candidate_classification": {
+      "status": "REVIEWED",
+      "summary_sha256": "e06e5192e3d799ba606c00809dd05aa7b91257106421a1f3d2fcdcb530a59ac5",
+      "classification_sha256": "f26b4bad6a7be019e8b88462d0ad2ef454bd8eed6ebec7e83176baf572c5a692",
+      "blobs": 102,
+      "bytes": 464583578,
+      "candidates": 99,
+      "rule_counts": {
+        "meta-token": 58,
+        "url-password": 20,
+        "literal-secret-assignment": 21
+      }
+    },
+    "clean_snapshot": {
+      "user_authorized": true,
+      "status": "NOT RUN by this reviewer",
+      "required_before_push": [
+        "Exact allowlist and actual public HEAD",
+        "No original baseline ancestors",
+        "Fresh-clone verification preserving scientific and acceptance limits",
+        "Full scan of actual public ref with original redacted raw JSON retained",
+        "Final remote comparison and safe non-force publication"
+      ]
+    }
+  },
+  "remaining_gates": [
+    "Final latest-original/research/merge-base comparison and clean original state immediately before merge",
+    "Actual no-ff local merge plus applicable post-merge validation",
+    "Final clean public snapshot audit and fresh-clone checks",
+    "Actual safe push and remote HEAD/files/CI verification",
+    "Wiki/task/handoff integration by designated single writer",
+    "Existing V1 human input/hearing, R17 negative performance and external/root-LICENSE eligibility/terms limits remain separate"
+  ],
+  "quality_repeat": {
+    "status": "FAIL",
+    "exit_code": 1,
+    "finished_at_utc": "2026-10-29T05:52:27.7158467Z",
+    "wiki_rename_probe_exit_code": 0,
+    "failure": {
+      "stage": "format:check",
+      "command": "prettier --check ...",
+      "path": "scripts/validation/cloud-cost-model.mjs",
+      "message": "Code style issues found in the above file. Run Prettier with --write to fix.",
+      "category": "Required quality gate failure in newly added cost tool"
+    },
+    "wiki_original_case": "Passed during full repeat; earlier EPERM failure retained",
+    "remaining_stages": "runtime, build, validate:licenses, validate:english NOT RUN by this second complete command after format failure",
+    "required_repair": "Integrator formats only the named new script, retains before/after hashes and semantic diff, reruns cost self-test and the required complete quality gate; independent reviewer checks the actual diff/receipts without altering standards."
+  },
+  "status": {
+    "narrow_runtime_and_render_contract": "PASS",
+    "cost_tool_format_gate": "PASS",
+    "complete_research_worktree_quality": "PASS",
+    "browser_scoped_cases": "PASS",
+    "cross_run_reliability": "PARTIAL",
+    "merge_ready": "PASS",
+    "original_full_history_publication": "BLOCKED",
+    "authorized_clean_snapshot_publication": "NOT RUN by this reviewer",
+    "complete_task": "PARTIAL",
+    "complete_V1": "PARTIAL"
+  },
+  "scope_note": "Scoped research npm run check and functional browser source reconciliation PASS; reviewed candidate is ready for safe local merge subject to fresh Git/candidate checks. Earlier failed/interrupted runs remain intact. Actual merge/post-merge, authorized clean public snapshot, publication and remote verification are NOT RUN in this review. Original full-history public push BLOCKED; complete V1 remains PARTIAL. Frozen Markdown was not edited.",
+  "recorded_at_utc": "2026-10-29T13:46:26.5107506Z",
+  "receipts": [
+    {
+      "sha256": "a33f29d6994b3150f137dedb79eb1218919997e7939a434cb39a2d0aca64d090",
+      "path": ".cache/architecture-review/validation/quality-process.json",
+      "bytes": 91
+    },
+    {
+      "sha256": "9949065401658e576e8692286751cd6ab2d95e39507df66a88d8922dc4908608",
+      "path": ".cache/architecture-review/validation/quality-repeat-process.json",
+      "bytes": 97
+    },
+    {
+      "sha256": "108501b2ece8e940c2a07e8fbf3ad5814afe210f18248650cf679b4e2002dc16",
+      "path": ".cache/architecture-review/validation/check.log",
+      "bytes": 175365
+    },
+    {
+      "sha256": "6a6127586e89084972f20ef8538886ca5f5b1b082c950f37512cfb059782e658",
+      "path": ".cache/architecture-review/validation/check-repeat.log",
+      "bytes": 211796
+    },
+    {
+      "sha256": "db88963a3ad3fb251b15330e21fb0a92f2767a60903637ed57afff192d4adb83",
+      "path": ".cache/architecture-review/validation/check-source-stability.json",
+      "bytes": 103
+    },
+    {
+      "sha256": "ad9f90626bbcb89535be82466f56d9429c7653ce52d0975613fd266e58ab20c2",
+      "path": ".cache/architecture-review/validation/check-inputs-before.json",
+      "bytes": 312650
+    },
+    {
+      "sha256": "b740c15a2ce16cb5219b27e3ee7c82bb0842625e3ddf737fb806b78593e469ec",
+      "path": ".cache/architecture-review/validation/wiki-rename-recheck.log",
+      "bytes": 350
+    },
+    {
+      "sha256": "07c79f9c863c7483e9de42120d30e037fc8ccc87f36dc5b6a170288c867a463e",
+      "path": ".cache/architecture-review/validation/benchmark.log",
+      "bytes": 2532
+    },
+    {
+      "sha256": "291c4c43bdb0398c6d9204e876bf3cce3975af0e856bfad4800be83151b1246b",
+      "path": ".cache/architecture-review/validation/browser-process.json",
+      "bytes": 136
+    },
+    {
+      "sha256": "b2b4684567bd8f8506ea826b8edcc5d3cd2918340ecb04c742362713b909ec04",
+      "path": ".cache/architecture-review/validation/physics.log",
+      "bytes": 843
+    },
+    {
+      "sha256": "4115fec7dd60aec9cbbf2b747cfbac31037296774e1f93a647841e3653b0b7d8",
+      "path": ".cache/architecture-review/validation/storage.log",
+      "bytes": 1162
+    },
+    {
+      "sha256": "088f348b55ec38e9e663317d10d47ce455d84847b40456e5f5a4d9ed2b057fa0",
+      "path": ".cache/architecture-review/validation/ui-build.log",
+      "bytes": 1383
+    },
+    {
+      "sha256": "72054631c596c69844a8756a6c8f6623ca0a793349d11d5d836029e2ca633e39",
+      "path": ".cache/architecture-review/validation/ui.log",
+      "bytes": 4183
+    },
+    {
+      "sha256": "1c85a3a8e206ec7be7a46a1e479c7ad168b10bec2dca0a65b221680acc55eea5",
+      "path": ".cache/architecture-review/validation/linked.log",
+      "bytes": 1682
+    },
+    {
+      "sha256": "7903fffe52abcdff60d55189351a7924881824861b07a111d517a2bd555c6d48",
+      "path": ".cache/architecture-review/validation/product-process.json",
+      "bytes": 97
+    },
+    {
+      "sha256": "4aed5f0de0fe30fbced245fdf6b7c51743e89403cf1df48f2a0b50d7dddde8f1",
+      "path": ".cache/architecture-review/validation/product.log",
+      "bytes": 4652
+    },
+    {
+      "sha256": "2f55a5d9975565e7fb755fd98749fccaa0c2aae557cf4e804f01c09955f0e5c6",
+      "path": ".cache/architecture-review/validation/product-repeat-process.json",
+      "bytes": 152
+    },
+    {
+      "sha256": "35efb30234a7d2082d500ea30bb3a60dbb9dd1447523b5668f2051853ad4fc72",
+      "path": ".cache/architecture-review/validation/product-repeat.log",
+      "bytes": 2465
+    },
+    {
+      "sha256": "4abbc3256a285850861f9f0d78a90edc7ab11c4c64cdbedba5b495ddcdbe0930",
+      "path": "artifacts/v1/product-e2e-chrome-20261029T052845Z/verification.json",
+      "bytes": 8080
+    },
+    {
+      "sha256": "153350d8ec77dd5d2b0df7404c344c2ed48c914f6ad31ac45d79f675b34481e8",
+      "path": "artifacts/v1/product-e2e-chrome-20261029T052845Z/results.json",
+      "bytes": 17105
+    },
+    {
+      "sha256": "f9733c0c67fd9f23438f543acd186d75c83a91e59425992da05a51ae1f1f09b8",
+      "path": "artifacts/v1/product-e2e-chrome-20261029T053133Z/verification.json",
+      "bytes": 6223
+    },
+    {
+      "sha256": "0df0dec9ed0451d605b1303d29a49c57b31edad02b97b86467bc0796216d5c91",
+      "path": "artifacts/v1/product-e2e-chrome-20261029T053133Z/results.json",
+      "bytes": 10092
+    },
+    {
+      "sha256": "bc153818c938b040a494c497fa6661f80333d3aa13b8fd1e94ae76af6a15d18c",
+      "path": "artifacts/v1/physics-acceptance-20261029/browser-20261029053339654/browser-verification.json",
+      "bytes": 53034
+    },
+    {
+      "sha256": "29ab8b317c64ae6d1cd99134d3e38995574d562359f114f1703f95ae461563b0",
+      "path": "artifacts/v1/storage-browser-20261029053516634/verification.json",
+      "bytes": 744014
+    },
+    {
+      "sha256": "e06e5192e3d799ba606c00809dd05aa7b91257106421a1f3d2fcdcb530a59ac5",
+      "path": "artifacts/architecture-review-20261029/publication-audit/summary.json",
+      "bytes": 3739
+    },
+    {
+      "sha256": "f26b4bad6a7be019e8b88462d0ad2ef454bd8eed6ebec7e83176baf572c5a692",
+      "path": "artifacts/architecture-review-20261029/publication-audit/candidate-classification.json",
+      "bytes": 58992
+    }
+  ],
+  "research_head_at_write": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "original_head_at_write": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "original_status_at_write": "",
+  "cost_tool_format_repair": {
+    "status": "PASS",
+    "before_path": ".cache/architecture-review/cloud-cost-model.before-format.mjs",
+    "before_sha256": "f8510ce37800b24cc4e160ba3c5819dc45678a7ca1456ee810b0283d5b4c2408",
+    "after_path": "scripts/validation/cloud-cost-model.mjs",
+    "after_sha256": "56e210d33a366d7f3de4e2426d27c6e44f0737c7962cbb8ffd5ad357906dba0e",
+    "independent_checks": {
+      "prettier_format_before_with_current_config_equals_current_bytes": true,
+      "self_test_exit_code": 0,
+      "format_check_exit_code": 0,
+      "output_rows": 9,
+      "before_after_parsed_results_identical": true,
+      "before_after_stdout_bytes_identical": true,
+      "output_sha256": "fec44b97fb77d82bc046dc42bf7e10f42d514be74b0111a7058beb6d58d9b77e"
+    }
+  },
+  "third_quality_attempt": {
+    "final_stage_without_result": "validate:english",
+    "pre_pause_independent_source_check": {
+      "stable": true,
+      "checked_at_utc": "2026-10-29T05:57:34.8413379Z",
+      "changed": [],
+      "inputs": 2264,
+      "missing": []
+    },
+    "reason": "USER_PAUSED; no final process/exit receipt",
+    "completed_test_summaries": {
+      "agents": 82,
+      "datasets": 18,
+      "design": 14,
+      "wiki": 54,
+      "sound_behaviors": 34,
+      "prompts": 12,
+      "general": 668,
+      "runtime": {
+        "tests": 987,
+        "pass": 987,
+        "todo": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "fail": 0
+      }
+    },
+    "exit_code": null,
+    "status": "INTERRUPTED",
+    "license_inventory_scope": "Lock metadata plus installed license artifacts, not legal or bundle-completeness approval",
+    "log": ".cache/architecture-review/validation/check-final.log",
+    "overall_pass_inferred": false,
+    "completed_later_stages": [
+      "format:check",
+      "build",
+      "validate:licenses"
+    ]
+  },
+  "resumption_review": {
+    "previous_addendum_sha256": "136145b6aa034d7946c263d5eb485da532b41efce7314c67224545c53e6493d5",
+    "english_mirror_unchanged": true,
+    "pause_handoff": "knowledge/wiki/handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md",
+    "authority": "Root relayed explicit user continue; USER_PAUSED is revoked for resumed work",
+    "pause_receipt": "artifacts/architecture-review-20261029/USER_PAUSE_20261029.json",
+    "current_product_and_tool_hashes_equal_last_review": true,
+    "original_workspace": {
+      "root": "D:/Developing/Meta Hack",
+      "status_porcelain": "",
+      "head": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+      "branch": "codex/sound-behavior-research",
+      "method": "Escalated read-only Git audit after ordinary read was denied by changed workspace boundary"
+    },
+    "canonical_markdown_unchanged": true,
+    "research_head": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+    "research_branch": "research/architecture-review-20261029",
+    "new_gate_receipts": "Await root notification; no busy polling or test rerun by reviewer",
+    "reviewed_at_utc": "2026-10-29T13:26:39.1912073Z",
+    "observed_metadata_limitation": "At initial resume read Task0021/now still recorded USER_PAUSED and integration-state retained earlier NOT_RUN/IN_PROGRESS test fields; root owns their resynchronization"
+  },
+  "resume_additional_receipts": [
+    {
+      "path": "knowledge/wiki/handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md",
+      "bytes": 2352,
+      "sha256": "dce2a472e2364a9485f649079e7a0206d6ab1749970af7c453f32b888caa3d0d"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/USER_PAUSE_20261029.json",
+      "bytes": 15951,
+      "sha256": "d6659dfe2cf17192db37f96e5fc2eef63aaf114b26fc453fce6e0afef3449878"
+    },
+    {
+      "path": ".cache/architecture-review/validation/check-final.log",
+      "bytes": 457918,
+      "sha256": "533fc56a343cd8b55560143f3c0c8ae71895d2522848f83d98260eeb9bdc7efc"
+    },
+    {
+      "path": ".cache/architecture-review/validation/check-final-before.json",
+      "bytes": 313544,
+      "sha256": "05b93b18d7b2b997aab7c564772f8c317f0e7f775ad394bec1a604f01c6e0983"
+    }
+  ],
+  "resumed_network_diagnosis": {
+    "status": "PASS",
+    "scope": "Receipt integrity, unchanged source and failure localization; not full-suite acceptance",
+    "restricted_full_run": {
+      "status": "FAIL",
+      "exit_code": 1,
+      "started_at_utc": "2026-10-29T13:29:26.35Z",
+      "finished_at_utc": "2026-10-29T13:30:30.723Z",
+      "tests": 656,
+      "pass": 652,
+      "fail": 4,
+      "source_inputs": 2295,
+      "source_stable": true,
+      "changed_input_paths": [],
+      "downstream_quality_stages": "NOT RUN by this invocation after npm test failed"
+    },
+    "allowed_isolated_vite_probe": {
+      "status": "PASS",
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "scope": "Node/Vite fixture only; no browser or real credentials",
+      "no_source_test_or_config_edits": true
+    },
+    "independent_source_comparison": {
+      "checked_at_utc": "2026-10-29T13:32:50.884Z",
+      "restricted_before_inputs": 2295,
+      "allowed_complete_run_before_inputs": 2295,
+      "snapshots_deep_equal": true,
+      "snapshot_sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218",
+      "current_inputs_match": 2295,
+      "changed": [],
+      "missing": [],
+      "test_path": "tests/integration/vite-dev-policy.test.mjs",
+      "test_sha256": "d7795b5eeb283dcb6022f50e08581ca3c31e45c5eb75df0e57f3aa26557dd47c"
+    },
+    "failure_localization": {
+      "test_path": "tests/integration/vite-dev-policy.test.mjs",
+      "listen_line": 160,
+      "optimizer_initialization_lines": "166-173",
+      "first_fetch_line": 175,
+      "security_assertion_line": 241,
+      "restricted_error": "TypeError: fetch failed",
+      "restricted_fixture_state": "Four servers obtained ports and initialized optimizers; no ordinary/credential HTTP result was recorded; all finally blocks closed servers and reported listening=false",
+      "allowed_fixture_state": "All four obtained ordinary HTTP 200 and fake credential HTTP 403 without fixture sentinel disclosure; all servers closed",
+      "restricted_log_failure_lines": [
+        3966,
+        4003,
+        4040,
+        4058
+      ],
+      "restricted_log_summary_line": 4082,
+      "nested_count_difference": "Restricted656 versus complete668: three real-optimizer parent fixtures fail before creating their four nested checks each (test lines236-261); 12 child tests were never created, not removed or relaxed."
+    },
+    "inference": {
+      "status": "PARTIAL",
+      "supported_statement": "The local HTTP failure is execution-environment-sensitive; the same-source isolated run with local networking allowed passed, supporting an environment-restriction inference.",
+      "not_proven": "Sole causation by permissions; no socket errno or Error.cause was logged, and the comparison also changes full-suite versus isolated-file concurrency/load."
+    },
+    "full_allowed_run": {
+      "label": "check-resumed-local-network",
+      "status": "PASS",
+      "note": "Independently read complete command exit0 and all final stages; same 2295 input snapshot. Isolated probe was not substituted.",
+      "process_receipt": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-process.json"
+    },
+    "fixture_receipts": [
+      {
+        "path": ".cache/v1/vite-dev-policy-tests-20261028/fixture-run-s2ibwZ/fixture-evidence.json",
+        "bytes": 7138,
+        "sha256": "aaafe4fea2588acdcc2fe65c77815e4789c7572eaddc4600c89a9d768e9501e8"
+      },
+      {
+        "path": ".cache/v1/vite-dev-policy-tests-20261028/fixture-run-wx4NuO/fixture-evidence.json",
+        "bytes": 11186,
+        "sha256": "7ce19f63f381f6f9633020933308eefdcd87776d1de1bad28c2ea3661e51f96e"
+      }
+    ],
+    "child_review": "Read-only cost_publication_review confirmed receipt hashes, HTTP-stage failure and cautious attribution; no tests were rerun by either reviewer for this diagnosis."
+  },
+  "resumed_network_receipts": [
+    {
+      "sha256": "1494174951144dd2e470758d6240401d5b411919aeb9c0cf6dc21c4d49a52455",
+      "bytes": 136768,
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-resume-restricted.log.txt"
+    },
+    {
+      "sha256": "2a2b37178a1aad6c05037dd55fb067b7797b4cc26a38cb4ab697e0d091c8cd19",
+      "bytes": 502,
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-resume-restricted-process.json"
+    },
+    {
+      "sha256": "be07a3ad3161f4bfed0bc81bee4790479972ed471e88115d10211b471f465acc",
+      "bytes": 5845,
+      "path": "artifacts/architecture-review-20261029/root-validation/vite-loopback-allowed.log.txt"
+    },
+    {
+      "sha256": "8aef6c8030b0151c8d6ce0ce50add2548e58ec3da7ea853bce2fff583bb23437",
+      "bytes": 1125,
+      "path": "artifacts/architecture-review-20261029/root-validation/resume-network-diagnosis.json"
+    },
+    {
+      "sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218",
+      "bytes": 318047,
+      "path": ".cache/architecture-review/validation/check-resumed-before.json"
+    },
+    {
+      "sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218",
+      "bytes": 318047,
+      "path": ".cache/architecture-review/validation/check-resumed-local-network-before.json"
+    }
+  ],
+  "last_completed_complete_command_status": "PASS",
+  "research_gate": {
+    "status": "PASS",
+    "scope": "Research-worktree engineering regression only; not complete V1, merge execution or publication",
+    "command": "npm run check",
+    "execution_environment": "Local networking allowed via authorized escalated execution; same source/tests/configuration as restricted run",
+    "started_at_utc": "2026-10-29T13:31:16.966Z",
+    "finished_at_utc": "2026-10-29T13:41:11.979Z",
+    "exit_code": 0,
+    "signal": null,
+    "source_stability": {
+      "inputs": 2295,
+      "changed_input_paths": [],
+      "stable_during_run": true,
+      "input_manifest_sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218"
+    },
+    "suites": {
+      "general": {
+        "tests": 668,
+        "pass": 668,
+        "fail": 0,
+        "skipped": 0
+      },
+      "agents": {
+        "tests": 82,
+        "pass": 82,
+        "fail": 0,
+        "skipped": 0
+      },
+      "prompts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "skipped": 0
+      },
+      "wiki": {
+        "tests": 54,
+        "pass": 54,
+        "fail": 0,
+        "skipped": 0
+      },
+      "design": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "skipped": 0
+      },
+      "sound_behaviors": {
+        "tests": 34,
+        "pass": 34,
+        "fail": 0,
+        "skipped": 0
+      },
+      "datasets": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "skipped": 0
+      },
+      "runtime": {
+        "tests": 987,
+        "pass": 987,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "completed_additional_gates": [
+      "environment:check",
+      "validate:sound-behaviors",
+      "smoke:sound-physics",
+      "smoke:dependencies",
+      "test:physics",
+      "validate:research",
+      "validate:schemas",
+      "validate:docs",
+      "validate:wiki",
+      "validate:skills",
+      "validate:design",
+      "typecheck",
+      "lint",
+      "format:check",
+      "build",
+      "validate:licenses",
+      "validate:english"
+    ],
+    "licenses": {
+      "status": "PASS",
+      "scope": "Lock metadata plus installed license artifacts where snapshot platform matches; not legal or bundle-completeness approval",
+      "lock_packages": 199,
+      "installed": 149,
+      "omitted_optional": 50
+    },
+    "english": {
+      "status": "PASS",
+      "originals": 329,
+      "translated": 304,
+      "missing": 0,
+      "stale": 0,
+      "errors": 0,
+      "warnings": 15,
+      "scope": "Structural/hash/link verification, not proof of full translation semantic fidelity"
+    },
+    "independent_receipt_integrity": {
+      "status": "PASS",
+      "files_checked": 3,
+      "all_recorded_bytes_and_sha256_match": true,
+      "process_sha256": "9f844a8558499ddcae05bd770d327af7161fc0de98e7b76b499ba744bcd16ca3",
+      "log_sha256": "37a5b3806cb4f2a60c6fbce0b137632d63a2c8086810bbc5b84969c76265ed94",
+      "inputs_sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218",
+      "receipts_sha256": "3a681c6188120123fc8baae038872032068bdca9eacf10990c292087f7354553"
+    },
+    "independent_current_source_check": {
+      "checked_at_utc": "2026-10-29T13:42:58.703Z",
+      "inputs": 2295,
+      "unchanged": 2294,
+      "missing": [],
+      "changed": [
+        {
+          "path": "docs/12-architecture-review/integration-state.json",
+          "expected": "84ad0fc9ffcf816a357b31bfec2422929e5eb352c199bffbcd68e23824ad00a2",
+          "actual": "e005a41dcb9d50ffb9db3299bb213e73fc00e7c4b403c2638c97c9a4b70e2c17",
+          "classification": "Root post-gate machine result update, read independently; no runtime/test/tool/configuration change"
+        }
+      ],
+      "note": "Do not claim all current metadata still equals the run snapshot. Root separately owns task criteria and generated English result synchronization."
+    },
+    "previous_failures_and_interruption_retained": true,
+    "no_test_standard_or_budget_change_to_obtain_pass": true,
+    "limitations": [
+      "Earlier Wiki rename failure and first product capture failure remain reliability evidence.",
+      "Interrupted third attempt has no inferred overall PASS.",
+      "R17 long-run performance FAIL, physical FPS/IME and device hearing NOT RUN remain separate.",
+      "No custom Worklet, renderer, stems, ADM, cloud deployment or paid/live evidence was added."
+    ]
+  },
+  "local_merge_readiness": {
+    "status": "PASS",
+    "meaning": "Reviewed research changes are ready for a safe local commit/merge; actual merge and post-merge validation have NOT RUN",
+    "original": {
+      "root": "D:/Developing/Meta Hack",
+      "branch": "codex/sound-behavior-research",
+      "head": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+      "status_porcelain": "",
+      "commits_since_baseline": 0
+    },
+    "research": {
+      "branch": "research/architecture-review-20261029",
+      "head_at_audit": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+      "candidate_uncommitted": true
+    },
+    "merge_base": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+    "independent_latest_git_check": "Original branch clean and unchanged; branch refs and merge base read independently after complete quality receipt",
+    "pre_merge_comparison_receipt": "artifacts/architecture-review-20261029/pre-merge-comparison.json",
+    "protected_scope": "No baseline test/fixture/acceptance, schema, dependency, lint-ignore, server or unrelated runtime changes; only additive boundary test and reviewed narrow product changes",
+    "required_before_actual_merge": [
+      "Finalize only declared machine/task/generated-English result metadata and its appropriate checks",
+      "Commit the reviewed candidate without new product/test/tool changes",
+      "Recheck latest original branch and clean state immediately before no-ff merge",
+      "Preserve both histories and perform applicable post-merge validation"
+    ],
+    "actual_merge": "NOT_RUN",
+    "post_merge_validation": "NOT_RUN",
+    "publication_implication": "None; original full-history public push remains BLOCKED and authorized clean snapshot requires its own exact-ref audit/fresh-clone/remote checks"
+  },
+  "final_browser_source_reconciliation": {
+    "status": "PASS",
+    "scope": "Reuse of source-pinned functional browser receipts after same-code complete research check",
+    "product_and_ui_build_inputs": 177,
+    "inputs_all_match_final_quality_manifest": true,
+    "current_bundle_files_per_build": 14,
+    "current_bundle_hashes_all_match": true,
+    "shared_digest": "6f0c168a3110d9601a7502ab2359be47df73efdded536cb8065570ed43392fe4",
+    "storage_snapshot_vs_final_quality": {
+      "old_inputs": 2250,
+      "different_entries": 34,
+      "prefix_counts": {
+        "docs": 23,
+        "knowledge": 10,
+        "scripts": 1
+      },
+      "only_script_difference": {
+        "path": "scripts/validation/cloud-cost-model.mjs",
+        "before_sha256": "f8510ce37800b24cc4e160ba3c5819dc45678a7ca1456ee810b0283d5b4c2408",
+        "after_sha256": "56e210d33a366d7f3de4e2426d27c6e44f0737c7962cbb8ffd5ad357906dba0e",
+        "classification": "Independently verified format-only; all nine outputs byte-identical"
+      },
+      "no_difference_in": [
+        "src",
+        "server",
+        "tests",
+        "schemas",
+        "package.json",
+        "package-lock.json"
+      ]
+    },
+    "retained_first_product": {
+      "pass": 3,
+      "fail": 1
+    },
+    "unchanged_product_repeat": {
+      "pass": 4,
+      "fail": 0
+    },
+    "current_scoped_counts": {
+      "physics": 2,
+      "storage": 5,
+      "ui_fps": 28,
+      "linked": 8,
+      "product_repeat": 4
+    },
+    "limits": "Does not establish universal reliability, native hearing, AudioWorklet deadlines, normal laptop capacity or R17 performance PASS"
+  },
+  "previous_addendum_sha256": "3fe795fdd1769fcd1be0b1b4598debe1a6b40e58ecc8ed8471c35ac011a6d9b0",
+  "final_research_gate_receipts": [
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-process.json",
+      "bytes": 516,
+      "sha256": "9f844a8558499ddcae05bd770d327af7161fc0de98e7b76b499ba744bcd16ca3"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass.log.txt",
+      "bytes": 446189,
+      "sha256": "37a5b3806cb4f2a60c6fbce0b137632d63a2c8086810bbc5b84969c76265ed94"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-inputs.json",
+      "bytes": 318047,
+      "sha256": "1e76352e329666e682508b1c976785273c08bc8d7cf98eebfa120131e2b48218"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-receipts.json",
+      "bytes": 900,
+      "sha256": "3a681c6188120123fc8baae038872032068bdca9eacf10990c292087f7354553"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/pre-merge-comparison.json",
+      "bytes": 1135,
+      "sha256": "2e8acba5a75fd1b0668bf0c715bb74f20935118ef2da31469e72f4cd318e33ab"
+    }
+  ],
+  "frozen": true,
+  "frozen_at_utc": "2026-10-29T13:46:26.5081826Z",
+  "freeze_scope": "Independent research-gate and safe-local-merge readiness verdict is frozen. Root must not rewrite reviewer judgments. New product/test/tool changes or later public-ref review require an explicit new additive review; declared machine/task/generated-English result updates remain root-owned."
+}

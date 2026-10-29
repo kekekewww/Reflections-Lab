@@ -1,0 +1,39 @@
+{
+  "id": "RLAB-TASK-0001",
+  "title": "Phase1研究與驗證基礎",
+  "description": "回溯建立的研究任務紀錄；不把建檔時間當成產品完成時間。原需求44文件、27核心來源、64claims與限定解析契約證據；真實量測未做。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "原階段研究與限定本地驗證有完整機讀結果，未宣稱產品完成",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase1-validation-preserved.json",
+          "sha256": "62e41825013f6fddd06403b04e1c2763b40d45ab7ec04cc5a0f40762d52e96b0",
+          "command": "npm run validate:all (Phase1 preserved run)",
+          "result": "PASS: 11 commands, core tests30; scope limited to stored artifact"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/BOOTSTRAP_REPORT.md",
+    "research/EVIDENCE_LEDGER.json",
+    "benchmarks/results/phase1-validation-preserved.json"
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/results/phase1-validation-preserved.json",
+      "sha256": "62e41825013f6fddd06403b04e1c2763b40d45ab7ec04cc5a0f40762d52e96b0",
+      "command": "npm run validate:all (Phase1 preserved run)",
+      "result": "PASS: 11 commands, core tests30; scope limited to stored artifact"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-25T19:49:07.702518+00:00"
+}

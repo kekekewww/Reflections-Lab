@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-27T01:02:14.524Z",
+  "executor": "Codex; no Muse or model API used",
+  "git_head": "2662bc8ee3976280c5c14f619ff798570f035f14",
+  "code_state": "uncommitted workspace files; hashes identify tested bytes",
+  "environment": {
+    "node": "22.17.0",
+    "npm": "11.4.2 observed",
+    "native_browser": "Chromium156 / Windows; native fixture sample rate48000Hz"
+  },
+  "commands": [
+    {
+      "command": "node --import tsx --test tests/audio-runtime/*.test.ts",
+      "exit_code": 0,
+      "result": "99/99 PASS",
+      "artifact": "tests/audio-runtime/node-final-20261027.tap"
+    },
+    {
+      "command": "TypeScript strict + noUncheckedIndexedAccess + exactOptionalPropertyTypes for every src/audio and tests/audio-runtime .ts file",
+      "exit_code": 0,
+      "result": "PASS; tool execution observed"
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/audio tests/audio-runtime",
+      "exit_code": 0,
+      "result": "PASS; tool execution observed"
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/audio tests/audio-runtime",
+      "exit_code": 0,
+      "result": "PASS; tool execution observed"
+    },
+    {
+      "command": "Isolated native HTML harness; baseline/pause/late/continuity/restore/WAV exports",
+      "result": "25/25 PASS",
+      "artifact": "tests/audio-runtime/native-audio-bank-verified-20261027.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/audio/assets.ts",
+      "sha256": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677"
+    },
+    {
+      "path": "src/audio/band-filter.ts",
+      "sha256": "dedfed098eb37e4e4d82dcc76450c3c33fdd3edc8b0b1baaa2db56fa413f4e12"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "sha256": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "0b6c537253ce24a127a36c5d75285926f3a8b806398b9ef13f88d696ec1655a7"
+    },
+    {
+      "path": "src/audio/index.ts",
+      "sha256": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571"
+    },
+    {
+      "path": "src/audio/late-reverb.ts",
+      "sha256": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209"
+    },
+    {
+      "path": "src/audio/routes.ts",
+      "sha256": "d0e89221fe136f517d8d4d56bde8f87b17831e71f6c015c8b4fff90d2604618a"
+    },
+    {
+      "path": "src/audio/types.ts",
+      "sha256": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc"
+    },
+    {
+      "path": "src/audio/wav.ts",
+      "sha256": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b"
+    },
+    {
+      "path": "tests/audio-runtime/asset-bank.test.ts",
+      "sha256": "ab15bf715837b8ea73b92b88af97c3d3cf4426fc41b1366ea3e2c9bc89f57d0d"
+    },
+    {
+      "path": "tests/audio-runtime/asset-bounds.test.ts",
+      "sha256": "fee0d0c9d8d081778d3b7b9cea666c2e9f468eb21e474e4e2a224058217a516d"
+    },
+    {
+      "path": "tests/audio-runtime/band-filter.test.ts",
+      "sha256": "d161e89ea8e3bf0d7b40730e4a420cbd0e99923fa0fb7b59b83e8ffe0144f9c6"
+    },
+    {
+      "path": "tests/audio-runtime/browser.ts",
+      "sha256": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd"
+    },
+    {
+      "path": "tests/audio-runtime/engine.test.ts",
+      "sha256": "d702ff8f38d6bb0e14397c3ac849f3debc317df4aa9b7f03fcd16291899e3a0b"
+    },
+    {
+      "path": "tests/audio-runtime/fake-context.ts",
+      "sha256": "b57296893595d8fbf5f786847654ce9264a5bd4c30cfa58897ebf18ebd25a389"
+    },
+    {
+      "path": "tests/audio-runtime/late-reverb.test.ts",
+      "sha256": "7a84197787d87d2fe5507b61e66de3f810bdedba663bb7d660eb027328e6afba"
+    },
+    {
+      "path": "tests/audio-runtime/native-continuity.ts",
+      "sha256": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de"
+    },
+    {
+      "path": "tests/audio-runtime/native-pause.ts",
+      "sha256": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155"
+    },
+    {
+      "path": "tests/audio-runtime/native-restore.ts",
+      "sha256": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30"
+    },
+    {
+      "path": "tests/audio-runtime/native-reverb.ts",
+      "sha256": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72"
+    },
+    {
+      "path": "tests/audio-runtime/native-wave.ts",
+      "sha256": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9"
+    },
+    {
+      "path": "tests/audio-runtime/pause-regressions.test.ts",
+      "sha256": "b16e5c285bbe4ffcdcc67ad140f14a6be178d14bdc50c10f69d987e3163dea74"
+    },
+    {
+      "path": "tests/audio-runtime/restore-cursor.test.ts",
+      "sha256": "6bfeddd65a14c78dfe8da47c61e3bf2a61de7f2e072000cbb9e6006680a0f0cd"
+    },
+    {
+      "path": "tests/audio-runtime/review.test.ts",
+      "sha256": "c9244e6e32c49ee2649cca7f1e250c9174df0425dcbd16e9111b258fbb829a18"
+    },
+    {
+      "path": "tests/audio-runtime/wav-preflight.test.ts",
+      "sha256": "cb277b40b5715288574f79dd5a8cf1365b5442e3d555c37bfc684a74d0ab4e78"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tests/audio-runtime/native-audio-bank-verified-20261027.json",
+      "sha256": "e209f3d51628d1eb8a5ddc15b125b5e84701fc7e096f3862a274981e166a1b28"
+    },
+    {
+      "path": "tests/audio-runtime/native-audio-bank-verified-20261027.json.raw",
+      "sha256": "43aa05116061a53d81ab52fcebaf8c4874a9a08fc7afc3087586d50ec5fba8f3"
+    },
+    {
+      "path": "tests/audio-runtime/node-final-20261027.tap",
+      "sha256": "4ea4e0185bab3751ad6c593ba5f267e8007f57928956b75597abd81a1954de49"
+    },
+    {
+      "path": "tests/audio-runtime/README.md",
+      "sha256": "a169d07fcf1ffa08b8aba7f654613efaaebaddb47724ba0c4eeda90d5616bd4b"
+    },
+    {
+      "path": "tests/audio-runtime/capture-results.mjs",
+      "sha256": "8f1b1cc28f79c617f65ec609d98ba45bdfd9ede129e48f4fd43733a0582e533b"
+    }
+  ],
+  "limitations": [
+    "Native fixtures verify renderer/DSP, not room geometry or measurements",
+    "Synthetic/perceptual late IR is not measured RT60 or an individual solver ray",
+    "Cursor is epoch-mapped authored-rate history, not a hardware read pointer; missing historic automation uses declared approximation",
+    "No seamless pause/seek waveform or filter-state claim",
+    "V3 independent room solver comparison not run in this slice",
+    "V4 long realtime capacity/device profiling/Worklet underrun NOT RUN",
+    "V5 hearing/headphone/end-to-end latency/SPL/real-room measurement NOT RUN",
+    "WAV preflight bounds inputs/frames/PCM reservations; native decoder internal resident peak not measured"
+  ]
+}

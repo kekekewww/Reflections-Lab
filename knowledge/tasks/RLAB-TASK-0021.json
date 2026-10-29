@@ -1,0 +1,253 @@
+{
+  "id": "RLAB-TASK-0021",
+  "title": "獨立 Worktree 架構研究、整合與公開發佈",
+  "description": "依 2026-10-29 使用者完整需求，在獨立 research worktree 保護既有 V1，完成研究、最小非破壞契約修正、獨立驗證、最新原分支比較、安全合併及指定 GitHub 公開發佈；公開歷史安全檢查為真正 gate，未完成不得 DONE。",
+  "status": "IN_PROGRESS",
+  "priority": "P0",
+  "owner": {
+    "agent": "codex-root",
+    "session": "architecture-review-resume-20261029",
+    "token": "9c12011a-3d3e-4a0d-bb4c-3142d27e9d89",
+    "claimed_at": "2026-10-29T13:26:22.134Z",
+    "heartbeat_at": "2026-10-29T13:26:22.134Z",
+    "lease_until": "2026-10-29T17:26:22.186Z"
+  },
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "G0",
+      "text": "原始 Repository／baseline／既有第一版及 Wiki 盤點保存",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/12-architecture-review/baseline.json",
+          "sha256": "22a6ca1a52c47c69c870d082ad002b473415983c8cc671b48ca7bfb96a14f6aa",
+          "result": "Actual original baseline/repository/environment inventory"
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "text": "建立完整獨立 research worktree 且原工作區無研究改動",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/12-architecture-review/baseline.json",
+          "sha256": "22a6ca1a52c47c69c870d082ad002b473415983c8cc671b48ca7bfb96a14f6aa",
+          "result": "Native managed worktree setup and separate dependency installations recorded"
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "text": "科學、物理、聲音、錄放、ADM、UI、Meta 與來源研究完成",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "research/EVIDENCE_LEDGER.json",
+          "sha256": "04ac869d71038c31e4b13724f6e9433b7c3d634d580678630473df3a15ae178f",
+          "result": "Research sources and explicitly scoped claims; no empirical full-room claim"
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "text": "Browser／cloud 架構及可重算成本模型完成",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/root-validation/cloud-cost-process.json",
+          "sha256": "cbb53069e6578d48a75176d5ca307c6b63807331350cf1133c089702993cc85b",
+          "result": "Offline nine-scenario calculator/selftest exit0; no real spend/capacity claim"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/root-validation/cloud-cost-output.json",
+          "sha256": "fec44b97fb77d82bc046dc42bf7e10f42d514be74b0111a7058beb6d58d9b77e",
+          "result": "Actual deterministic nine-scenario outputs"
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "text": "必要 Category A/B 微調；無全面重構或資料 migration",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/acoustics-propagation/summary.json",
+          "sha256": "62baa8bd6661d407e38b538fffd092691bc0be9811b30aef29fdf2ec5f84ae78",
+          "result": "Boundary RED/GREEN6 tests and minimal5s validation change; types-only render seam independently checked"
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "text": "鎖版安裝、check/build、benchmark、schema/Wiki/英文、相關 E2E 與隔離 review 實跑",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-process.json",
+          "sha256": "9f844a8558499ddcae05bd770d327af7161fc0de98e7b76b499ba744bcd16ca3",
+          "result": "npm run check exit0,2295inputs unchanged"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/independent-final.json",
+          "sha256": "6f8ff5367f5bdac040e6eaed2daf1df783605ec3274c5a28fde4258b7712b6ce",
+          "result": "Independent research quality and local merge readiness PASS; publication separate"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/root-validation/browser-process.json",
+          "sha256": "291c4c43bdb0398c6d9204e876bf3cce3975af0e856bfad4800be83151b1246b",
+          "result": "Scoped physics2/storage5/UI28/linked8 PASS; product3/1 first,4/0 repeat retained"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/root-validation/benchmark.log.txt",
+          "sha256": "07c79f9c863c7483e9de42120d30e037fc8ccc87f36dc5b6a170288c867a463e",
+          "result": "Actual offline analytic benchmark exit0; not long-run browser performance"
+        }
+      ]
+    },
+    {
+      "id": "G7",
+      "text": "比較最新原 branch、merge-base、兩邊變更及相容性",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/pre-merge-comparison.json",
+          "sha256": "2e8acba5a75fd1b0668bf0c715bb74f20935118ef2da31469e72f4cd318e33ab",
+          "result": "Latest original clean c210, no advanced commits, unchanged existing tests/dependencies/schemas/acceptance; additive new test"
+        }
+      ]
+    },
+    {
+      "id": "G8",
+      "text": "安全 merge 回原 branch 並通過整合驗證",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/architecture-review-20261029/merge-commit.json",
+          "sha256": "170380356ad70ac3fb6d80038b496e4e7330a62a58a902f34c06e9d26bb64e4f",
+          "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/post-merge/quality-receipts.json",
+          "sha256": "90124ad76ce3ce22f353caa2293b01d1db91292f620aff875ab82798ca92e249",
+          "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/post-merge/browser-receipts.json",
+          "sha256": "9acff2894b15ec14323658362a64eda55a7a7560b5d77e742adb4557875db9b1",
+          "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+        },
+        {
+          "path": "artifacts/architecture-review-20261029/ci-route-change-review.json",
+          "sha256": "d82427a7a4c083b44970a1cea6d8f53577385b05c296587c4509ed2504d86ebc",
+          "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "G9",
+      "text": "即將公開的完整 reachable history 無秘密、禁用產物與未解重大發佈風險",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "G10",
+      "text": "實際推送 kekekewww/Reflections-Lab 並核對 remote commit/files/CI",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "G12",
+      "text": "既有 Wiki／source manifest／task／handoff 同步且如實記錄未完成 gates",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "docs/00-project/ARCHITECTURE_REVIEW_REQUEST.md",
+    "docs/12-architecture-review/ARCHITECTURE_REVIEW.md",
+    "docs/12-architecture-review/INTEGRATION_REPORT.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/12-architecture-review/baseline.json",
+      "sha256": "22a6ca1a52c47c69c870d082ad002b473415983c8cc671b48ca7bfb96a14f6aa",
+      "result": "Actual original baseline/repository/environment inventory"
+    },
+    {
+      "path": "docs/12-architecture-review/baseline.json",
+      "sha256": "22a6ca1a52c47c69c870d082ad002b473415983c8cc671b48ca7bfb96a14f6aa",
+      "result": "Native managed worktree setup and separate dependency installations recorded"
+    },
+    {
+      "path": "research/EVIDENCE_LEDGER.json",
+      "sha256": "04ac869d71038c31e4b13724f6e9433b7c3d634d580678630473df3a15ae178f",
+      "result": "Research sources and explicitly scoped claims; no empirical full-room claim"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/cloud-cost-process.json",
+      "sha256": "cbb53069e6578d48a75176d5ca307c6b63807331350cf1133c089702993cc85b",
+      "result": "Offline nine-scenario calculator/selftest exit0; no real spend/capacity claim"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/cloud-cost-output.json",
+      "sha256": "fec44b97fb77d82bc046dc42bf7e10f42d514be74b0111a7058beb6d58d9b77e",
+      "result": "Actual deterministic nine-scenario outputs"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/summary.json",
+      "sha256": "62baa8bd6661d407e38b538fffd092691bc0be9811b30aef29fdf2ec5f84ae78",
+      "result": "Boundary RED/GREEN6 tests and minimal5s validation change; types-only render seam independently checked"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-process.json",
+      "sha256": "9f844a8558499ddcae05bd770d327af7161fc0de98e7b76b499ba744bcd16ca3",
+      "result": "npm run check exit0,2295inputs unchanged"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/independent-final.json",
+      "sha256": "6f8ff5367f5bdac040e6eaed2daf1df783605ec3274c5a28fde4258b7712b6ce",
+      "result": "Independent research quality and local merge readiness PASS; publication separate"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/browser-process.json",
+      "sha256": "291c4c43bdb0398c6d9204e876bf3cce3975af0e856bfad4800be83151b1246b",
+      "result": "Scoped physics2/storage5/UI28/linked8 PASS; product3/1 first,4/0 repeat retained"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/root-validation/benchmark.log.txt",
+      "sha256": "07c79f9c863c7483e9de42120d30e037fc8ccc87f36dc5b6a170288c867a463e",
+      "result": "Actual offline analytic benchmark exit0; not long-run browser performance"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/pre-merge-comparison.json",
+      "sha256": "2e8acba5a75fd1b0668bf0c715bb74f20935118ef2da31469e72f4cd318e33ab",
+      "result": "Latest original clean c210, no advanced commits, unchanged existing tests/dependencies/schemas/acceptance; additive new test"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/merge-commit.json",
+      "sha256": "170380356ad70ac3fb6d80038b496e4e7330a62a58a902f34c06e9d26bb64e4f",
+      "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/post-merge/quality-receipts.json",
+      "sha256": "90124ad76ce3ce22f353caa2293b01d1db91292f620aff875ab82798ca92e249",
+      "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/post-merge/browser-receipts.json",
+      "sha256": "9acff2894b15ec14323658362a64eda55a7a7560b5d77e742adb4557875db9b1",
+      "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/ci-route-change-review.json",
+      "sha256": "d82427a7a4c083b44970a1cea6d8f53577385b05c296587c4509ed2504d86ebc",
+      "result": "Actual preserved local merge/full quality/current browser evidence; CI route review is static and later remote CI remains NOT_RUN"
+    }
+  ],
+  "created_at": "2026-10-29T05:20:13.511Z",
+  "updated_at": "2026-10-29T14:19:12.435Z",
+  "blockers": [],
+  "last_summary": "已安全no-ff合併、原區full check及當前47項browser PASS；保留R18真人FPS失敗與原FAIL。CI路由窄修已隔離review，乾淨公開snapshot仍待實跑/scan/push。"
+}

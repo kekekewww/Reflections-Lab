@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_CHINESE_FOUR_CASE_FUNCTIONAL_SUITE",
+  "startedAt": "2026-10-27T03:36:16.852Z",
+  "completedAt": "2026-10-27T03:38:09.631Z",
+  "inputDigest": "22ca0c47490f3fc4e73e400cbd9d795b072c61e8e0dad6fa746955f0e9739d5a",
+  "effectiveEnvironment": {
+    "PRODUCT_BROWSER_CHANNEL": "chrome",
+    "PRODUCT_OBSERVER_PROFILE": "light",
+    "PRODUCT_GPU_PROFILE": "default"
+  },
+  "results": {
+    "startTime": "2026-10-27T03:36:17.993Z",
+    "duration": 108244.87,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "ownedProcessAudit": {
+    "checkedAt": "2026-10-27T03:38:09.5374827Z",
+    "remaining": [],
+    "roots": [
+      61584,
+      86528,
+      67452
+    ],
+    "status": "PASS_ZERO_REMAINING"
+  },
+  "exactBundleFilesVerified": 10,
+  "launches": [
+    {
+      "launch": 1,
+      "browserDevice": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 32,
+        "widthCssPx": 1440,
+        "heightCssPx": 1000,
+        "devicePixelRatio": 1,
+        "webglVendor": "Google Inc. (NVIDIA)",
+        "webglRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "artifact": {
+        "startTick": 7,
+        "endTick": 88,
+        "frameCount": 82,
+        "artifactSha256": "bbcd600a977c80ae6934e14e6f081705296d2bbf37d15ac92bcd11258fe0e8dc",
+        "canonicalHashVerified": true,
+        "contiguousUniformEpoch": true,
+        "initialTickBound": true,
+        "acceptedGrab": 1,
+        "acceptedThrow": 1,
+        "restoredHashMatches": true
+      },
+      "candidate": {
+        "artifactSha256": "3ecce6853ea8b75c72850ab5f6f8eb282ca476283c1e861778507dfd38af768b",
+        "canonicalHashVerified": true
+      },
+      "explicitRecoveries": 0,
+      "comparisonMatched": true,
+      "directMetric": {
+        "a": 0.015927414118987158,
+        "b": 0.015927414118987158,
+        "delta": 0,
+        "id": "meanDirectDelay",
+        "label": "平均直達聲到達時間",
+        "method": "Arithmetic mean across available order-0 (tick, logical playing source) queries; post-step playing state, excludes stop/fading diagnostics; v2",
+        "percentDelta": 0,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 115,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 115,
+            "window": {
+              "endTick": 88,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 7
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 115,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 115,
+            "window": {
+              "endTick": 88,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 7
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "s"
+      },
+      "pathEnergyMetric": {
+        "a": 0.10898794422167307,
+        "b": 0.10470732967962851,
+        "delta": -0.004280614542044564,
+        "id": "meanPathEnergy",
+        "label": "平均路徑壓力比平方總和",
+        "method": "Mean_queries(sum_returned_paths(mean_actual_frame_bands(pressureGain²))); post-step logical playing source queries; excludes stop/fading diagnostics; available empty-path sums are zero; excludes authored gain, pitch, waveform and PCM; not rendered energy or SPL; v2",
+        "percentDelta": -3.92760371123078,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 115,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 115,
+            "window": {
+              "endTick": 88,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 7
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 115,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 115,
+            "window": {
+              "endTick": 88,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 7
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "ratio"
+      },
+      "captureTimings": {
+        "advanceCostMs": {
+          "count": 53,
+          "p50": 6.299999982118607,
+          "p95": 33.69999998807907,
+          "max": 41.10000002384186
+        },
+        "bridgeAndCaptureTickCostMs": {
+          "count": 82,
+          "p50": 3.100000023841858,
+          "p95": 9.599999994039536,
+          "max": 11.699999988079071
+        },
+        "activeRafGapMs": {
+          "count": 53,
+          "p50": 16.699999999999818,
+          "p95": 50,
+          "max": 66.80000000000018
+        },
+        "maxCatchUpTicksObserved": 4
+      },
+      "pageErrors": [],
+      "modelRequests": [],
+      "rawArtifactHashes": {
+        "recording.json": "449cbc91514acab5b727a10b0118a4377377f36bea1aa4efc2cb561d705ce30c",
+        "recording-candidate.json": "e428062010f2fe9f4d6f82e31a6dabcc0ea4f76627556f0351cec5cc355e20c7",
+        "comparison.json": "d0bd36fb2f8522d5a3c9f99b482b18d742295e9ea3a39e3942058c3dee2def8a",
+        "evidence.json": "0bcc93c428c8a490363e6968b242e3eb4b57d1051fe4fe0c87c3edc60700d4f8",
+        "console.json": "d13ff029cdda2226d13e5b7f0ee82929d8b123d2b9ee99f9f046d2c2159ade09"
+      }
+    },
+    {
+      "launch": 2,
+      "browserDevice": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 32,
+        "widthCssPx": 1440,
+        "heightCssPx": 1000,
+        "devicePixelRatio": 1,
+        "webglVendor": "Google Inc. (NVIDIA)",
+        "webglRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "artifact": {
+        "startTick": 4,
+        "endTick": 109,
+        "frameCount": 106,
+        "artifactSha256": "76c9504fc1bd96f75ba1d02f342d55aabc83a72ef85cd4b2bd65186be25f49a3",
+        "canonicalHashVerified": true,
+        "contiguousUniformEpoch": true,
+        "initialTickBound": true,
+        "acceptedGrab": 1,
+        "acceptedThrow": 1,
+        "restoredHashMatches": true
+      },
+      "candidate": {
+        "artifactSha256": "7b09f0d70ee812219e8b264028d4fc3e18e9a3f520aaacd638bd9e647c0d6ee2",
+        "canonicalHashVerified": true
+      },
+      "explicitRecoveries": 2,
+      "comparisonMatched": true,
+      "directMetric": {
+        "a": 0.01653857330169884,
+        "b": 0.01653857330169884,
+        "delta": 0,
+        "id": "meanDirectDelay",
+        "label": "平均直達聲到達時間",
+        "method": "Arithmetic mean across available order-0 (tick, logical playing source) queries; post-step playing state, excludes stop/fading diagnostics; v2",
+        "percentDelta": 0,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 144,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 144,
+            "window": {
+              "endTick": 109,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 144,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 144,
+            "window": {
+              "endTick": 109,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "s"
+      },
+      "pathEnergyMetric": {
+        "a": 0.10122095288395105,
+        "b": 0.0969711854910634,
+        "delta": -0.0042497673928876545,
+        "id": "meanPathEnergy",
+        "label": "平均路徑壓力比平方總和",
+        "method": "Mean_queries(sum_returned_paths(mean_actual_frame_bands(pressureGain²))); post-step logical playing source queries; excludes stop/fading diagnostics; available empty-path sums are zero; excludes authored gain, pitch, waveform and PCM; not rendered energy or SPL; v2",
+        "percentDelta": -4.198505617468328,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 144,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 144,
+            "window": {
+              "endTick": 109,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 144,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 144,
+            "window": {
+              "endTick": 109,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "ratio"
+      },
+      "captureTimings": {
+        "advanceCostMs": {
+          "count": 84,
+          "p50": 4.5,
+          "p95": 32.79999998211861,
+          "max": 131.2999999821186
+        },
+        "bridgeAndCaptureTickCostMs": {
+          "count": 109,
+          "p50": 3.199999988079071,
+          "p95": 15.900000005960464,
+          "max": 31.80000001192093
+        },
+        "activeRafGapMs": {
+          "count": 84,
+          "p50": 16.700000000000728,
+          "p95": 50.100000000000364,
+          "max": 166.30000000000018
+        },
+        "maxCatchUpTicksObserved": 4
+      },
+      "pageErrors": [],
+      "modelRequests": [],
+      "rawArtifactHashes": {
+        "recording.json": "6779dcf70d156cc2309161c527d17fecb5731102d49a11980dd221daaca0935c",
+        "recording-candidate.json": "327fcf907a6b12f4fa98e2549849a2b114708652335f7ca50d10448d1b969845",
+        "comparison.json": "0097be05bdcb9ad8febd535118fe3f8163eb756d0a237de82d315abf90a3abb5",
+        "evidence.json": "513c550bd4333761c604ca5e4479e122c86e40d30b435093bffd64a3ce68c00c",
+        "console.json": "d13ff029cdda2226d13e5b7f0ee82929d8b123d2b9ee99f9f046d2c2159ade09"
+      }
+    },
+    {
+      "launch": 3,
+      "browserDevice": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 32,
+        "widthCssPx": 1440,
+        "heightCssPx": 1000,
+        "devicePixelRatio": 1,
+        "webglVendor": "Google Inc. (NVIDIA)",
+        "webglRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "artifact": {
+        "startTick": 4,
+        "endTick": 119,
+        "frameCount": 116,
+        "artifactSha256": "68c18a9001acbef01e4e621eaf83d0132c22b5cec92da3bde40ea1435400433d",
+        "canonicalHashVerified": true,
+        "contiguousUniformEpoch": true,
+        "initialTickBound": true,
+        "acceptedGrab": 1,
+        "acceptedThrow": 1,
+        "restoredHashMatches": true
+      },
+      "candidate": {
+        "artifactSha256": "b9841f39fc14eb23f89c9abec9d5c0993735ce37ff29e64f0b44352ba18d8d91",
+        "canonicalHashVerified": true
+      },
+      "explicitRecoveries": 7,
+      "comparisonMatched": true,
+      "directMetric": {
+        "a": 0.016548975401493426,
+        "b": 0.016548975401493426,
+        "delta": 0,
+        "id": "meanDirectDelay",
+        "label": "平均直達聲到達時間",
+        "method": "Arithmetic mean across available order-0 (tick, logical playing source) queries; post-step playing state, excludes stop/fading diagnostics; v2",
+        "percentDelta": 0,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 152,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 152,
+            "window": {
+              "endTick": 119,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 152,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 152,
+            "window": {
+              "endTick": 119,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "s"
+      },
+      "pathEnergyMetric": {
+        "a": 0.10032721560398646,
+        "b": 0.09597300972567469,
+        "delta": -0.00435420587831177,
+        "id": "meanPathEnergy",
+        "label": "平均路徑壓力比平方總和",
+        "method": "Mean_queries(sum_returned_paths(mean_actual_frame_bands(pressureGain²))); post-step logical playing source queries; excludes stop/fading diagnostics; available empty-path sums are zero; excludes authored gain, pitch, waveform and PCM; not rendered energy or SPL; v2",
+        "percentDelta": -4.340004705700971,
+        "population": {
+          "a": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 152,
+            "excludedNonPlayingQueryCount": 2,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 152,
+            "window": {
+              "endTick": 119,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "b": {
+            "backendDeclarationMismatchQueryCount": 0,
+            "bandCenterHz": null,
+            "eligibleQueryCount": 152,
+            "excludedNonPlayingQueryCount": 0,
+            "invalidAcousticQueryCount": 0,
+            "kind": "logicalPlayingSourceQueries",
+            "missingEligibilityFrameCount": 0,
+            "policyVersion": "post-step-playing-v1",
+            "sampleCount": 152,
+            "window": {
+              "endTick": 119,
+              "fixedDtS": 0.016666666666666666,
+              "startTick": 4
+            }
+          },
+          "compatible": true
+        },
+        "reason": null,
+        "unit": "ratio"
+      },
+      "captureTimings": {
+        "advanceCostMs": {
+          "count": 77,
+          "p50": 6.0999999940395355,
+          "p95": 50.599999994039536,
+          "max": 162.30000001192093
+        },
+        "bridgeAndCaptureTickCostMs": {
+          "count": 116,
+          "p50": 3.5,
+          "p95": 21.19999998807907,
+          "max": 34.19999998807907
+        },
+        "activeRafGapMs": {
+          "count": 77,
+          "p50": 16.700000000000728,
+          "p95": 83.29999999999927,
+          "max": 233.30000000000018
+        },
+        "maxCatchUpTicksObserved": 4
+      },
+      "pageErrors": [],
+      "modelRequests": [],
+      "rawArtifactHashes": {
+        "recording.json": "43c1e119f7132432b07b4252f35c4eae2665e96861df6c3df27a75f753219c18",
+        "recording-candidate.json": "904b60cae1aa0e763383b79f86b9168004939e6c7a25daa0bd22b99f8100ef41",
+        "comparison.json": "79fe44b61b83c2d04aaa630d55a78b00b54e3e5e18e62602bce2b7ae591505a1",
+        "evidence.json": "68f6b100c24fa0d784c51813a7f6b2b39d71393e3bd1e0e808128e8acfcea919",
+        "console.json": "d13ff029cdda2226d13e5b7f0ee82929d8b123d2b9ee99f9f046d2c2159ade09"
+      }
+    }
+  ],
+  "relink": {
+    "originalWavHash": "235d44fbedac9e915beb597ddcf5f208da7e5d9ccab2d1a330f0fe96ba781f3d",
+    "assetId": "asset.3a5ef226-407b-4c55-a682-d2ac522825fd",
+    "separateBrowserContext": true,
+    "initialRejection": "ASSET_REQUIRED_MISSING: Import the original WAV, then apply this project again: asset.3a5ef226-407b-4c55-a682-d2ac522825fd",
+    "nativeHardwareContextCount": 0,
+    "restoredReady": true,
+    "pageErrors": [],
+    "consoleEntries": [
+      {
+        "page": "source",
+        "type": "warning",
+        "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      },
+      {
+        "page": "source",
+        "type": "warning",
+        "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+      },
+      {
+        "page": "target",
+        "type": "warning",
+        "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      },
+      {
+        "page": "target",
+        "type": "warning",
+        "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+      }
+    ],
+    "modelRequests": [],
+    "note": "Actual product import and native OfflineAudioContext/IndexedDB; raw recordings are not synthesized from metadata."
+  },
+  "limitations": [
+    "Three clean browser contexts share one browser worker; not three browser-process restarts",
+    "Native API graph/clock evidence is not human hearing, captured device PCM or AudioWorklet deadline proof",
+    "Short capture timings are diagnostics, not the canonical600s UI performance profile",
+    "This is the fixed Chinese baseline before English source changes; original SwiftShader/instrumented failures remain preserved"
+  ]
+}

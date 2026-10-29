@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1.0.0",
+  "policy": {
+    "budgetUsd": 1,
+    "maxPaidRequests": 3,
+    "reservePerRequestUsd": 0.25,
+    "maxCompletionTokens": 1000,
+    "modelId": "muse-spark-1.3",
+    "dataMode": "standard",
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+  },
+  "createdAt": "2026-10-27T01:54:48.314Z",
+  "updatedAt": "2026-10-27T02:18:09.064Z",
+  "attempts": [
+    {
+      "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+      "phase": "sound",
+      "reservedAt": "2026-10-27T01:54:48.365Z",
+      "settledAt": "2026-10-27T01:54:49.389Z",
+      "reservedUsd": 0.25,
+      "requestSummary": {
+        "modelId": "muse-spark-1.3",
+        "maxCompletionTokens": 1000,
+        "inputBytes": 15299,
+        "payloadSha256": "6c5db0f41035bf9f3162a4b0424c4bc4f89d5126b9f2348219b7437aae4e3d8f",
+        "toolNames": [
+          "ProposeSoundBehavior"
+        ]
+      },
+      "status": "failed",
+      "httpStatus": 400,
+      "responseId": null,
+      "modelId": null,
+      "usage": null,
+      "estimatedCostUsd": null,
+      "validationError": "MISSING_RESPONSE_METADATA",
+      "actualBillingCostUsd": null
+    },
+    {
+      "attemptId": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+      "phase": "scene",
+      "reservedAt": "2026-10-27T02:07:15.640Z",
+      "settledAt": "2026-10-27T02:07:15.940Z",
+      "reservedUsd": 0.25,
+      "requestSummary": {
+        "modelId": "muse-spark-1.3",
+        "maxCompletionTokens": 1000,
+        "inputBytes": 11979,
+        "payloadSha256": "1dd811bf45e98eefb9da7d7630f7945fed8eb31124c2b86a855476af8ad6b825",
+        "toolNames": [
+          "CreateScene",
+          "AddObject",
+          "SetMaterial",
+          "SetRigidBodyMode",
+          "ConfigureSoundSource",
+          "MoveListener",
+          "SetTrajectory",
+          "RunSimulation",
+          "CaptureExperiment",
+          "AnalyzeAcousticResults",
+          "CompareExperiments"
+        ]
+      },
+      "status": "failed",
+      "httpStatus": 400,
+      "responseId": null,
+      "modelId": null,
+      "usage": null,
+      "estimatedCostUsd": null,
+      "validationError": "HTTP_400_REQUEST_REJECTED",
+      "actualBillingCostUsd": null
+    },
+    {
+      "attemptId": "meta-live-60764027-f894-4967-9cfc-b40ba6cb7a70",
+      "phase": "sound",
+      "reservedAt": "2026-10-27T02:18:06.911Z",
+      "settledAt": "2026-10-27T02:18:09.064Z",
+      "reservedUsd": 0.25,
+      "requestSummary": {
+        "modelId": "muse-spark-1.3",
+        "maxCompletionTokens": 1000,
+        "inputBytes": 15309,
+        "payloadSha256": "8e1a1f494b83e276dc44247f93e85c30254fca91c89dc509c6ffb8775950db88",
+        "toolNames": [
+          "ProposeSoundBehavior"
+        ]
+      },
+      "status": "completed",
+      "httpStatus": 200,
+      "responseId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+      "modelId": "muse-spark-1.3",
+      "usage": {
+        "promptTokens": 4968,
+        "completionTokens": 262,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 83
+      },
+      "estimatedCostUsd": 0.0073235,
+      "validationError": null,
+      "actualBillingCostUsd": null
+    }
+  ],
+  "actualBillingCostUsd": null,
+  "remainingCreditUsd": null,
+  "reconciliations": [
+    {
+      "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+      "kind": "HTTP_400_REQUEST_REJECTION",
+      "reason": "Root authorized bounded repair of known HTTP 400 request rejection; original diagnostic unavailable; retain unknown billing and original reservation.",
+      "safeAuthorizationRef": "ROOT-20261027-HTTP400-REPAIR",
+      "createdAt": "2026-10-27T02:06:48.044Z"
+    },
+    {
+      "attemptId": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+      "kind": "HTTP_400_REQUEST_REJECTION",
+      "reason": "Root authorized final Sound-only repair after confirmed remote uniqueItems rejection; original local uniqueness validation retained; preserve both unknown bills and reservations.",
+      "safeAuthorizationRef": "ROOT-20261027-UNIQUEITEMS-REPAIR",
+      "createdAt": "2026-10-27T02:17:12.563Z"
+    }
+  ]
+}

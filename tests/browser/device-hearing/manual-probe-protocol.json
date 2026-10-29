@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "status": "PROMOTED_DEVICE_OBSERVATION_PREPARATION_RUNTIME_NOT_RUN",
+  "runtimeOwner": "Root coordinator; no invocation before GO after all qualification/runtime slots finish",
+  "driver": "tests/browser/device-hearing/manual-probe-driver.mjs",
+  "frozenHelper": "tests/browser/device-hearing/hearing-probe.mjs",
+  "binding": "tests/browser/device-hearing/binding.json",
+  "scope": "Qualified frozen-build provenance/device observation only. OverallV1, UI, hearing and actual-block PASS are separate and unclaimed.",
+  "expectedBundle": {
+    "manifest": "artifacts/v1/ui-current-fixed-build-20261027T173919314Z/build-manifest.json",
+    "manifestSha256": "c31a05cf470313cea8a7deccaafd0676f1e83f29b2b4b059ffebf74649a676f5",
+    "mode": "e2e",
+    "inputDigest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+    "inputCount": 170,
+    "bundleCount": 12,
+    "buildStartedAt": "2026-10-27T17:39:21.406Z",
+    "buildCompletedAt": "2026-10-27T17:39:23.907Z",
+    "rebuiltManifest": "test-results/ui-preview-build.json",
+    "permittedTimestampDifferences": ["buildStartedAt", "buildCompletedAt"],
+    "meaning": "Instrumented validation build; not a production uninstrumented/hearing/performance proof"
+  },
+  "existingEvidenceReusedWithoutRerun": {
+    "syntheticTestFile": "tests/browser/device-hearing/hearing-probe.synthetic.test.mjs",
+    "syntheticTestsSha256": "f22c7934f7fdbf0c78ff3dee637a7094af241ea3c5e97973ebefb37bc9f42495",
+    "result": "Historical original18 PASS remains raw archived evidence. Current permanent-path results are recorded only in binding.promotionVerification receipt.",
+    "independentReceipt": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/raw-receipts/independent-review.json",
+    "independentReceiptSha256": "ca93bc279d3f9738432c3d79fb3d33e6db960d4220170f2895b3100bca745611",
+    "helperSha256": "18b2f6677f52bdfe8dfa41e5e0a13c2503f56a9b1a93c6e4be07a2b50f7841e0",
+    "exactWorkletUtf8Sha256": "79faea329835d31b5462c2c0e22d1391532fd2ef542b375e95d3691ae4dbd1db",
+    "driverValidation": "Original cache driver had scoped static/pure11 evidence. This adapted permanent-layout driver/binding requires fresh authorized new-path verification after PROMOTEGO; none executed here. Full driver/browser/native/hearing NOT_RUN.",
+    "originalDriverReceipt": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/raw-receipts/manual-driver-independent-review.json",
+    "originalDriverReceiptSha256": "0cf2be89008b5c5a18b9f765280cec3d2dbe0bc28e9c90ea772ea547a2582a87",
+    "focusedPureTests": "tests/browser/device-hearing/manual-driver.pure.test.mjs",
+    "additionalBindingTests": "tests/browser/device-hearing/manual-binding.pure.test.mjs",
+    "additionalBindingTestsStatus": "Current permanent-path result is recorded only in binding.promotionVerification receipt; this protocol makes no test PASS claim.",
+    "frozen18Rerun": false,
+    "originalSyntheticTestsSha256": "36a9fafaad67705876b481bebe5163ef4b5241e75f3697ad65765817ae23516d",
+    "originalHelperSha256": "0221b1bf8dcd3c2185126b8a516da7f254eba2a6147d8a48081bcd91d4ee8fcf"
+  },
+  "hardware": {
+    "userReportedHeadphones": "Austrian Audio Hi-x65",
+    "userReportedSpeakers": "ADAM Audio D3V",
+    "actualRoute": null,
+    "interfaceOrDac": null,
+    "hearing": "NOT_RUN",
+    "rule": "Names identify user-reported transducers only. User must separately report selected OS/browser output route, interface/DAC, device volume and actual observed hearing. Driver never calls setSinkId or infers route from names."
+  },
+  "invocationAfterCoordinatorGOOnly": {
+    "powerShellTemplate": "node 'tests/browser/device-hearing/manual-probe-driver.mjs' --go --binding 'tests/browser/device-hearing/binding.json' --base-url 'http://127.0.0.1:5174' --preview-pid ROOT_OWNED_PREVIEW_PID --browser-executable 'ROOT_KNOWN_CHROME_EXE_ABSOLUTE_PATH'",
+    "prerequisites": "Root PROMOTEGO, actual permanent-path static/pure verification recorded in binding.promotionVerification, then separate Root runtimeGO. Cache candidate is not executable from its deeper staging directory and has no authority to claim promotion verification.",
+    "placeholders": "Root fills the known owned preview PID and already-known Chrome executable path. Driver starts no preview and performs no process inventory.",
+    "runtimeScope": "One new dedicated visible native Chrome/profile, one owned blank page navigated to the exact existing localhost preview. No existing user tab attached, no parallel browsers. Run separate sequential fresh sessions for Hi-x65 and D3V if user chooses both.",
+    "preflight": "Require trusted e2e028b archive SHA c31a, frozen helper/test/Worklet and archived receipt hashes plus actual new-path promotion review. Read rebuilt manifest separately; permit only buildStartedAt/buildCompletedAt values to differ. Require exact key sets,170unique inputs/12unique bundle paths+hashes, entry metadata/order, recomputed inputDigest and every other field strict. Record both actual SHAs/timestamps. Verify each current local input/bundle byte and actual HTTP root '/' against frozen index.html plus every asset. Fulfill actual browser HTTP GET/HEAD only from private verified buffers; no filesystem/preview/API fallback. Reject queries/external/unlisted requests; only same-origin first-party Blob code may continue. Refuse mismatch, absent hook or capability.",
+    "bounds": "15s HTTP preverification,8MiB per asset/64MiB total frozen bytes,256 actual HTTP requests,64 total input command lines,4096 raw bytes per line in one preallocated buffer (reject overflow before writing),16 probe snapshots,1s port reply timeout,30min collection window. Driver adds no audible test tone."
+  },
+  "protocol": [
+    {
+      "stage": "VISIBLE_APP_READY",
+      "coordinator": "Wait for WAITING_USER_VISIBLE_APP. Confirm user sees this exact owned localhost window and fresh default room. User reports actual route/volume and begins at low physical volume. Keep app ready/paused; avoid preview/audition buttons throughout session.",
+      "jsonLine": {
+        "command": "arm"
+      },
+      "expected": "ok:true; no native context constructed before arm. Failure requires fresh session, not guessed context selection."
+    },
+    {
+      "stage": "USER_ENABLE_LISTENING",
+      "userAction": "Click Enable listening / 啟用聆聽 while app remains ready/paused. Only after enable, adjust Monitor gain / 監聽音量 visibly if desired; gain changes before engine creation are ineffective. This user action creates/enables the real main App AudioContext.",
+      "jsonLine": {
+        "command": "select"
+      },
+      "expected": "Same captured native object must equal window.__reflectionLab.audio.context on the same runtime and engine; enabled=true, native state=running, sole context. Actual block remains UNKNOWN. Static-preview/dry-audition or extra context refuses."
+    },
+    {
+      "stage": "ATTACH_SILENT_PROBE",
+      "jsonLine": {
+        "command": "attach"
+      },
+      "expected": "Only owned zero ConstantSource -> silent mono AudioWorklet -> zero Gain -> same context destination. Existing sourcegraph nodes/connections/monitor/context lifecycle unchanged. Actual block still UNKNOWN until callback arrives."
+    },
+    {
+      "stage": "USER_RUN_BASELINE",
+      "userAction": "Click Start simulation / 開始運算, or Resume simulation / 繼續運算. Default speaker AlwaysOn is220Hz/-24dBFS authored content; wait for initial ball impacts to settle. Confirm by actual hearing whether sustained tone is present; UI voices and probe callbacks do not prove hearing. Keep late reverb at default disabled for initial pass.",
+      "jsonLine": {
+        "command": "snapshot",
+        "label": "baseline-running-simulated"
+      },
+      "expected": "Record exact actual output-length histogram, count/frames, same-context sampleRate/state, browser latency estimates, changed callback count since prior snapshot and passive App view. No128-frame assumption."
+    },
+    {
+      "stage": "USER_COMPARISONS",
+      "userAction": "Visibly switch Raw reference / Raw參考 and Simulated; explicitly Pause and Resume a few times. For moving Listener enter first person, enable controls without pointer lock, explicitly Resume, then use bounded movement/view buttons. Observe actual Listener movement and actual heard continuity/direction. Editor orbit alone does not move Listener. Raw/Simulated ordinary level differences are expected; no invented level matching.",
+      "jsonLineExamples": [
+        {
+          "command": "snapshot",
+          "label": "raw-running"
+        },
+        {
+          "command": "snapshot",
+          "label": "simulated-running"
+        },
+        {
+          "command": "snapshot",
+          "label": "paused-native-context-may-still-render"
+        },
+        {
+          "command": "snapshot",
+          "label": "resumed-running"
+        },
+        {
+          "command": "snapshot",
+          "label": "listener-moved"
+        }
+      ],
+      "expected": "Snapshots are cumulative since attachment; callback delta indicates whether new native callbacks occurred between snapshots. Pause may leave native context running and silent; that is separate from actual audible Pause/Resume judgment."
+    },
+    {
+      "stage": "ACTUAL_USER_REPORT",
+      "coordinator": "Transcribe the actual user's report, preserving not-heard/unsure and observations. Hardware-only reports do not change hearing NOT_RUN. Do not invent fields or PASS from UI/PCM/callbacks.",
+      "jsonLineTemplate": {
+        "command": "report",
+        "providedBy": "actual-user",
+        "hardware": "USER_ACTUAL_TRANSDUCER",
+        "actualRoute": "USER_CONFIRMED_OS_BROWSER_OUTPUT_OR_UNKNOWN",
+        "interfaceOrDac": "USER_REPORT_OR_UNKNOWN",
+        "osVersion": "USER_REPORT_OR_UNKNOWN",
+        "deviceVolume": "USER_REPORT_OR_UNKNOWN",
+        "monitorGain": "USER_OBSERVED_GAIN",
+        "mode": "RAW_OR_SIMULATED",
+        "heard": "USER_YES_NO_UNSURE",
+        "clickPop": "USER_OBSERVATION_OR_NOT_CHECKED",
+        "volumeJump": "USER_OBSERVATION_OR_NOT_CHECKED",
+        "movingPosition": "USER_OBSERVATION_OR_NOT_CHECKED",
+        "dropout": "USER_OBSERVATION_OR_NOT_CHECKED",
+        "pauseResume": "USER_OBSERVATION_OR_NOT_CHECKED",
+        "duration": "ACTUAL_DURATION_OR_UNKNOWN"
+      }
+    },
+    {
+      "stage": "EXPORT",
+      "jsonLine": {
+        "command": "export"
+      },
+      "expected": "Writes only artifacts/v1/device-hearing-session-<UTCSTAMP>/collection.json with both manifest SHAs/timestamps, frozen provenance, native callback observations separate from browser estimates/user reports, errors and final byte recheck. Owned Chrome profile stays under ignored test-results/device-hearing-profiles/. No PCM or device-route capture is implied."
+    },
+    {
+      "stage": "USER_STOP_AND_PROBE_CLEANUP",
+      "userAction": "User visibly Mute monitor / 靜音監聽 and Pause / 暫停 before changing physical route or ending, unless they explicitly choose to continue using the App. Probe cleanup itself does not mute/pause or close the App context.",
+      "jsonLine": {
+        "command": "cleanup"
+      },
+      "expected": "Stops/disconnects owned three nodes, closes owned ports, revokes owned Blob and restores constructor. If ok:false, preserve errors and retry cleanup; never replace cleanup with maincontext.close/suspend/resume or monitor changes."
+    },
+    {
+      "stage": "EXPLICIT_BROWSER_DISPOSITION",
+      "coordinator": "Obtain the user's preference before keeping the owned tab for further use. Finish command has no default browser disposition. Root remains attached and owns recovery/close; no preview process is stopped by this driver.",
+      "closeOwnedBrowser": {
+        "command": "finish",
+        "browser": "close"
+      },
+      "keepTabOnlyIfUserExplicitlyRequests": {
+        "command": "finish",
+        "browser": "keep"
+      },
+      "closeKeptBrowserOnlyWhenExplicitlyAuthorized": {
+        "command": "close-browser"
+      },
+      "expected": "Finish first cleans probe and exports. keep leaves user tab and main App untouched with driver idle attached; close terminates only the dedicated owned browser. Ctrl+C/30min expiry attempts probe cleanup+export, does not silently close user tab; Root must recover and choose explicit disposition."
+    }
+  ],
+  "invalidations": [
+    "Navigation/reload, lost page or main runtime/engine/context replacement invalidates collection; preserve prior observations with failure and start a fresh session.",
+    "Extra native contexts/static preview/dry audition refuse identity; never choose by sampleRate/name/order alone.",
+    "No callback, no AudioWorklet, pending/suspended enable, closed context, timeout, malformed reply or cleanup failure never becomes a live block/hearing PASS.",
+    "A historical valid histogram is historical callback evidence only; record its timestamp/state and do not claim current rendering if later collection failed."
+  ],
+  "completionMeaning": "Permanent-layout candidate preparation only. No promotion or new-path tests executed. Binding's qualified scope is frozen-build provenance for later device observation, never overallV1/UI/hearing PASS. Full driver/native/browser/hearing NOT_RUN and actual block UNKNOWN. Historical18/11/raw receipts retain their original source/path scope.",
+  "sourceDerivation": "Normal permanent formatting derivatives preserve original AST/assertions and Worklet UTF8; all original candidate bytes retained in preparation artifact. ca93/0cf2 remain historical original-byte scope.",
+  "currentPermanentSourceHashes": {
+    "helper": "18b2f6677f52bdfe8dfa41e5e0a13c2503f56a9b1a93c6e4be07a2b50f7841e0",
+    "helper18Test": "f22c7934f7fdbf0c78ff3dee637a7094af241ea3c5e97973ebefb37bc9f42495",
+    "focused11Test": "05beb402c649a07393efc922e7f788df2b326dc7e623da82aaea9725cefbdc63",
+    "bindingTests": "46b37a96def08882fb2c9da0cde0e2477eaa863cc170cba6e23adc3505d29e8d",
+    "driver": "ed6c2e2f1961044cf51f4e4a3e79391a16732ae83d91f4e79be2282ec305b363"
+  }
+}

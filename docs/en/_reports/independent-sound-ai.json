@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "review_id": "independent-sound-ai",
+  "review_date": "2026-10-27",
+  "reviewer": "Codex isolated semantic reviewer /root/v1_english_docs/review_sound_ai",
+  "status": "PASS",
+  "scope": "Full source-to-English semantic comparison of the nine files listed below, including all sections, tables, conditions, statuses, numerical bounds, and limitations. This is not a review of all 226 documents.",
+  "counts": { "reviewed": 9, "semantic_pass": 9, "blocked": 0, "open_blockers": 0, "resolved_findings": 1 },
+  "method": [
+    "Read all canonical and English content for the nine assigned files; compare meaning rather than relying on translation markers or heading counts.",
+    "AI and agent-policy files reviewed directly; the four Sound Behavior files were fully compared by nested read-only reviewer /root/v1_english_docs/review_sound_ai/sound_review.",
+    "Compute SHA-256 from actual file bytes and validate every English source marker against the actual canonical path and source SHA.",
+    "Compare fenced code blocks verbatim with line endings normalized; code fences are intentionally not translated.",
+    "Treat source-relative links as pending parent rewrite, excluded from this semantic review."
+  ],
+  "mechanical_checks": {
+    "source_markers_matching": "9/9",
+    "headings_source_and_english": "53/53; structural observation only, not semantic proof",
+    "fenced_blocks_verbatim": "6/6, line endings normalized only"
+  },
+  "findings": [
+    {
+      "id": "EN-SOUND-AI-001",
+      "severity": "BLOCKER",
+      "status": "RESOLVED",
+      "source_path": "docs/09-agents/QUOTA_RESEARCH.md",
+      "source_line": 27,
+      "english_path": "docs/en/09-agents/QUOTA_RESEARCH.md",
+      "english_line": 28,
+      "source_text": "Muse 型別化 `quota`，或有效、未過期的 window／weekly usedPercent ≥100",
+      "english_text": "Muse typed `quota`, or valid, unexpired window / weekly usedPercent ?100",
+      "impact": "The comparison operator defining subscription exhaustion is lost. The English text no longer states that the observed usage must be at least 100 percent.",
+      "exact_fix": "Replace `usedPercent ?100` with `usedPercent >=100` (or `usedPercent ≥100`), preserving the valid/unexpired conditions.",
+      "english_sha256_at_detection": "b3945c2acbd60e92ae511eb342d0b11729ed4f2457441344f4f9cee9126a9389",
+      "resolution": "Parent translator restored `usedPercent ≥100`. The reviewer re-read the complete repaired English file against the canonical source and confirmed the threshold and all other content remain equivalent.",
+      "english_sha256_after_recheck": "8089d5bf26541cef9bc7f57efd55baaa12f79ece3b5a48299f182c5a99267213"
+    }
+  ],
+  "files": [
+    {
+      "source_path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+      "english_path": "docs/en/08-ai/AI_EXPERIMENT_AGENT.md",
+      "source_sha256": "6add2576282095d2300fbd054595fe3c0ae6cdd76e1e305bc80c14c0b5f91d8e",
+      "english_sha256": "7c7d5ea5103d7cca8fb725325ad07474624bd0cfd77099134389daf96436a1b4",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All seven headings and body content: untrusted planner/trusted host, immutable baseline and replay limitations, unavailable values, evidence provenance, paired delta and acoustic versus behavior A/B, state transitions, cancellation acknowledgement, exact resource/session limits, NOT RUN/provider boundaries, and separate Codex development/Meta product roles."
+    },
+    {
+      "source_path": "docs/08-ai/AI_TOOL_SCHEMAS.md",
+      "english_path": "docs/en/08-ai/AI_TOOL_SCHEMAS.md",
+      "source_sha256": "48eb330d7c2f30dd544d61bd1dc75d0657569985696f1a0a9fd8db9c6340602f",
+      "english_sha256": "c734849cd3c2fc35fcd8c0e99c134e9cfb7471e7c73d1b122fdf3420a66d94f7",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All seven headings and body content: 11 original versus 12 extended tools, all twelve argument/bound rows, staged host transactions, complete dimensions and unit/range bounds, material mappings, provider strict-subset limits, terminal states and retries/idempotency, null usage and result provenance, exact scoped offline PASS counts versus NOT RUN integration."
+    },
+    {
+      "source_path": "docs/08-ai/META_MODEL_RESEARCH.md",
+      "english_path": "docs/en/08-ai/META_MODEL_RESEARCH.md",
+      "source_sha256": "f4b24f202b187897623b356f3d0b38950243167419b1a11d82f451aeb16d5f63",
+      "english_sha256": "b3c4a4098fa5c6ba2067e24d1f04acb80b43e4a7747fb88d021d0b7edc339a53",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All five headings and body content: dated 2026-10-26 documentary claims AI-001 through AI-010, model/region/account caveats, context and strict-schema bounds, dated prices/rate limits and estimate-only cost, training versus retention/ZDR conditions, future provider interface, ordered live enablement gates, offline fallback labels, and NOT RUN distinctions."
+    },
+    {
+      "source_path": "docs/09-agents/FAILOVER_POLICY.md",
+      "english_path": "docs/en/09-agents/FAILOVER_POLICY.md",
+      "source_sha256": "0bd84b30308d54b57dfbb3967541e05a54e144c400b0629106a7f71d602a40b5",
+      "english_sha256": "20bf6e3708258c1d9b2c3c5d8e040cecf582f5a6c7ad1b23c773f3ec21f63283",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All three headings and body content: current 2026-10-27 Codex-led/optional Muse banner and preserved historical Muse-preferred profile, all error categories and bounded strategies, writer-release takeover ordering, budget defaults/unknown values, no automatic spend/account changes, operator observations versus live queries, and development/product/live/mock separation."
+    },
+    {
+      "source_path": "docs/09-agents/QUOTA_RESEARCH.md",
+      "english_path": "docs/en/09-agents/QUOTA_RESEARCH.md",
+      "source_sha256": "286348d7bce2553c18388572008ad7d9ca1820a86290852e9eab24863140c3b8",
+      "english_sha256": "8089d5bf26541cef9bc7f57efd55baaa12f79ece3b5a48299f182c5a99267213",
+      "marker_matches": true,
+      "status": "PASS",
+      "finding_ids": ["EN-SOUND-AI-001"],
+      "coverage": "All five headings and body content reviewed and re-read after the sole detected defect was repaired. The exhaustion threshold now preserves >=100. Subscription/API/Codex resource separation, 1.4.13 capability boundaries, unknown failed usage, open quota enum, schema versus live evidence, exact schema hashes, milliseconds versus seconds, error/retry categories, and mock versus live NOT RUN boundaries preserve the source."
+    },
+    {
+      "source_path": "docs/10-sound-behaviors/BEHAVIOR_SCHEMA.md",
+      "english_path": "docs/en/10-sound-behaviors/BEHAVIOR_SCHEMA.md",
+      "source_sha256": "2e2d3287eedd9c5e3215d28100937ee618a98b11f3c34f802429b0a813a0a3ea",
+      "english_sha256": "f3a01519f85d7fb5a143dee0a5c39bf4ba02907f12d1c11b4a50180f5bdda6ef",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All nine headings and body content: draft/version/status, enabled gating and cleanup, UNKNOWN classification, bounded latch and one-shot stop, every mapping range and curve condition, amplitude versus power/SPL, trusted catalog, transaction revision/atomicity, fixture-only validation, and acoustic versus behavior A/B."
+    },
+    {
+      "source_path": "docs/10-sound-behaviors/EVENT_MODEL.md",
+      "english_path": "docs/en/10-sound-behaviors/EVENT_MODEL.md",
+      "source_sha256": "0beab8cf0f08cc774a2ab33c0cf7d43042aef2fd238c918f607ee3c8d5997d41",
+      "english_sha256": "7e61d62c8fec96b1eb4b7965d431e9c09a1158a85fd2633d72b7e0b93a98ac01",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All five headings and body content: orthogonal states, valid nonsensor support, moving-platform/zero-gravity conditions, throw versus speed, impact versus support force, bounce evidence, one-onset/cooldown, raw versus emission traces, pause/resume, and 13/13 fixture PASS versus production NOT RUN."
+    },
+    {
+      "source_path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+      "english_path": "docs/en/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+      "source_sha256": "6c8f4fa5efe3b45357a0b0f3f6a1e1f2119b9b39100fbe617cfd5e86bc2e5087",
+      "english_sha256": "0ab67ac1986c7c22aa2c5de7197855b01a547b93cec26ddc5b7acd0f9c013d8c",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All seven headings and body content: accepted architecture versus pending product, P1/P2 scope, per-binding state, no propagation bypass, once-only HRTF/delay/attenuation, vacuum semantics, scientific/creative labels, independent clock domains, and test limitations."
+    },
+    {
+      "source_path": "docs/10-sound-behaviors/PHYSICS_AUDIO_BRIDGE.md",
+      "english_path": "docs/en/10-sound-behaviors/PHYSICS_AUDIO_BRIDGE.md",
+      "source_sha256": "e029fae4bf3b8d97e67f46fd387f634d6d0d0c7c94674d310255048b95a4a1ff",
+      "english_sha256": "0af74a871d129a2ce2ebce521e697dfef7b308fa511e5c4b47c6702e4b765694",
+      "marker_matches": true,
+      "status": "PASS",
+      "coverage": "All five headings and body content: pinned Rapier 0.21.0/API limits, contact and quaternion normalization, point-velocity cross-product signs, Derived approximations versus vibration energy/SPL, scoped 13/13 and 3/3 results and historical artifacts, NOT RUN gates, and rotating-support RESTING/UNCLASSIFIED classification."
+    }
+  ],
+  "limits": [
+    "This report records translation equivalence at the file hashes above; it does not establish that dated source implementation or provider claims are current.",
+    "Source-relative link rewriting and link-target validation are excluded and remain with the parent translator.",
+    "No translations or canonical documents were edited by this reviewer; only this report pair was written.",
+    "No browser, build, API, model, Git, Wiki CLI/mutation, runtime, science benchmark, or hearing validation was performed. These are NOT RUN in this review.",
+    "Any later English edit changes the recorded snapshot; recheck changed text and regenerate hashes before treating this as a review of that later revision.",
+    "No claim is made that all 226 English documents have been semantically verified."
+  ]
+}

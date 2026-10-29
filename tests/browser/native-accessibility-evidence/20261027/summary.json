@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "finalizedAt": "2026-10-27T06:06:55.512Z",
+  "status": "PARTIAL_WITH_RETAINED_FAILURES",
+  "frozenInputDigest": "9ae2ca2eb7508be78a0fcfa96ef99e1543189a644b6f3c1057d10d3c78664176",
+  "manifestSha256": "10d1fcb0f8b3514b03c1793ea32095bc6a192e84af8bf6e5fa215af9e0cd3839",
+  "sourceStability": {
+    "before": "zero input/bundle hash mismatches",
+    "afterCheckedAt": "2026-10-27T06:04:58Z",
+    "after": "zero input/bundle hash mismatches before NATIVEEND; later root resource repair is outside this run"
+  },
+  "commands": [
+    "node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 5174 --strictPort --outDir test-results/ui-preview-dist",
+    "node tests/browser/native-accessibility-automatic.mjs http://127.0.0.1:5174 test-results/ui-preview-build.json",
+    "node node_modules/@playwright/test/cli.js test --config tests/browser/native-accessibility.config.ts",
+    "node node_modules/@playwright/test/cli.js test --config tests/browser/native-accessibility-cdp-composition.config.ts",
+    "node tests/browser/native-accessibility-menu.mjs http://127.0.0.1:5174 test-results/ui-preview-build.json"
+  ],
+  "inputs": {
+    "source": "test-results/native-accessibility-browser-results.json",
+    "sourceSha256": "d84231fe9138195e2d5c0b4db743df36e730028ab827d70a7ea25428a7ba91b3",
+    "stats": {
+      "startTime": "2026-10-27T06:00:55.119Z",
+      "duration": 42580.821,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "composition boundary fixture releases actual pointer lock, pauses and preserves Unicode text ownership",
+        "status": "passed",
+        "durationMs": 6469,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-1-0-composition-evidence.json",
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-1-0-native-browser-process.json"
+        ]
+      },
+      {
+        "title": "contenteditable owns actual browser keys and modal Escape returns focus",
+        "status": "passed",
+        "durationMs": 7124,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-2-0-contenteditable-focus-evidence.json",
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-2-0-native-browser-process.json"
+        ]
+      },
+      {
+        "title": "repeated trusted E keydown does not toggle grab into drop",
+        "status": "passed",
+        "durationMs": 7615,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-3-0-repeat-evidence.json",
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-3-0-native-browser-process.json"
+        ]
+      },
+      {
+        "title": "native tab visibility loss pauses a moving locked player and never automatically resumes",
+        "status": "passed",
+        "durationMs": 7941,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-4-0-visibility-evidence.json",
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-4-0-native-browser-process.json"
+        ]
+      },
+      {
+        "title": "real Chrome rejects pointer lock without transient activation and alternative controls remain available",
+        "status": "passed",
+        "durationMs": 12669,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-5-0-native-denial-evidence.json",
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-5-0-native-browser-process.json"
+        ]
+      }
+    ]
+  },
+  "initialInputs": {
+    "source": "test-results/native-accessibility/inputs-initial-20261027/results.json",
+    "sourceSha256": "0071fbe620066608ff748bf025b125b0f8b6ffb2c5239beddd374bc2dca8df50",
+    "stats": {
+      "startTime": "2026-10-27T05:52:42.987Z",
+      "duration": 47192.526000000005,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "composition boundary fixture releases actual pointer lock, pauses and preserves Unicode text ownership",
+        "status": "passed",
+        "durationMs": 4036,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-1-0-composition-evidence.json"
+        ]
+      },
+      {
+        "title": "contenteditable owns actual browser keys and modal Escape returns focus",
+        "status": "passed",
+        "durationMs": 6023,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-2-0-contenteditable-focus-evidence.json"
+        ]
+      },
+      {
+        "title": "repeated trusted E keydown does not toggle grab into drop",
+        "status": "passed",
+        "durationMs": 6801,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-3-0-repeat-evidence.json"
+        ]
+      },
+      {
+        "title": "native tab visibility loss pauses a moving locked player and never automatically resumes",
+        "status": "failed",
+        "durationMs": 14853,
+        "errors": [
+          {
+            "location": {
+              "file": "D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility.cases.ts",
+              "column": 65,
+              "line": 257
+            },
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  255 |   await other.goto(\"about:blank\");\n  256 |   await other.bringToFront();\n> 257 |   await expect.poll(() => page.evaluate(() => document.hidden)).toBe(true);\n      |                                                                 ^\n  258 |   await expect.poll(async () => (await snapshot(page)).simulationState).toBe(\"paused\");\n  259 |   const stopped = await snapshot(page);\n  260 |   await page.bringToFront();\n    at D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility.cases.ts:257:65"
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "title": "real Chrome rejects pointer lock without transient activation and alternative controls remain available",
+        "status": "passed",
+        "durationMs": 11905,
+        "errors": [],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-5-0-native-denial-evidence.json"
+        ]
+      }
+    ]
+  },
+  "composition": {
+    "source": "test-results/native-accessibility/cdp-composition-initial-20261027/results.json",
+    "sourceSha256": "e1ec4956aee217e4e708ac9b1666e74a74b4da71bb9eeebfce3d7727c4e9484c",
+    "stats": {
+      "startTime": "2026-10-27T05:57:01.878Z",
+      "duration": 5965.897,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "CDP browser IME candidate update, commit and cancel preserve app input ownership",
+        "status": "failed",
+        "durationMs": 4766,
+        "errors": [
+          {
+            "location": {
+              "file": "D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-cdp-composition.cases.ts",
+              "column": 60,
+              "line": 237
+            },
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  235 |     expect(capture.truncated).toBe(false);\n  236 |     const compositions = capture.events.filter((event) => event.type.startsWith(\"composition\"));\n> 237 |     expect(compositions.every((event) => event.isTrusted)).toBe(true);\n      |                                                            ^\n  238 |     expect(compositions.filter((event) => event.type === \"compositionstart\")).toHaveLength(2);\n  239 |     expect(compositions.filter((event) => event.type === \"compositionend\")).toHaveLength(2);\n  240 |     evidence.events = capture.events;\n    at D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-cdp-composition.cases.ts:237:60"
+          }
+        ],
+        "attachments": [
+          "tests\\browser\\native-accessibility-evidence\\20261027\\cdp-composition\\case-1-0-cdp-browser-composition-evidence.json"
+        ]
+      }
+    ]
+  },
+  "zooms": [
+    {
+      "stamp": "2026-10-27T05-51-39.324Z",
+      "status": "FAIL",
+      "browserVersion": "156.0.8078.4",
+      "checks": [
+        {
+          "id": "native200-monitor-tab",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-pause-keyboard",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-dialog-escape-focus-return",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-form-reachable",
+          "status": "PASS"
+        }
+      ],
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"CANVAS\"\nReceived: undefined\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (D:\\Developing\\Meta Hack\\node_modules\\playwright-core\\lib\\coreBundle.js:9282:17)\n    at callMatcherAsStep (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13316:57)\n    at Object.toBe (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13308:23)\n    at verifyNative200 (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:278:86)\n    at async runAutomaticZoom (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:408:5)\n    at async file:///D:/Developing/Meta%20Hack/tests/browser/native-accessibility-automatic.mjs:6:18",
+      "nativeZoomAuthority": {
+        "kind": "ChromeTabsAutomaticAPI",
+        "tabId": 1625709588,
+        "settings": {
+          "defaultZoomFactor": 1,
+          "mode": "automatic",
+          "scope": "per-tab"
+        },
+        "beforeZoom": 1,
+        "afterZoom": 2,
+        "workerURL": "chrome-extension://eiaoimapnajlhakfdlemgoacpdkpmopm/native-accessibility-zoom-worker.js",
+        "source": "https://developer.chrome.com/docs/extensions/reference/api/tabs"
+      },
+      "baseline": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 1424,
+        "innerHeight": 905,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 1,
+        "visualViewportScale": 1,
+        "screenWidth": 800,
+        "screenHeight": 600,
+        "documentWidth": 1424,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      },
+      "zoom200": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 712,
+        "innerHeight": 452,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 2,
+        "visualViewportScale": 1,
+        "screenWidth": 800,
+        "screenHeight": 600,
+        "documentWidth": 712,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      }
+    },
+    {
+      "stamp": "2026-10-27T05-54-10.330Z",
+      "status": "FAIL",
+      "browserVersion": "156.0.8078.4",
+      "checks": [
+        {
+          "id": "native200-monitor-tab",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-pause-keyboard",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-dialog-escape-focus-return",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-form-reachable",
+          "status": "PASS"
+        }
+      ],
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"CANVAS\"\nReceived: undefined\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (D:\\Developing\\Meta Hack\\node_modules\\playwright-core\\lib\\coreBundle.js:9282:17)\n    at callMatcherAsStep (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13316:57)\n    at Object.toBe (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13308:23)\n    at verifyNative200 (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:284:86)\n    at async runAutomaticZoom (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:421:5)\n    at async file:///D:/Developing/Meta%20Hack/tests/browser/native-accessibility-automatic.mjs:6:18",
+      "nativeZoomAuthority": {
+        "kind": "ChromeTabsAutomaticAPI",
+        "tabId": 88994195,
+        "settings": {
+          "defaultZoomFactor": 1,
+          "mode": "automatic",
+          "scope": "per-tab"
+        },
+        "beforeZoom": 1,
+        "afterZoom": 2,
+        "workerURL": "chrome-extension://eiaoimapnajlhakfdlemgoacpdkpmopm/native-accessibility-zoom-worker.js",
+        "source": "https://developer.chrome.com/docs/extensions/reference/api/tabs"
+      },
+      "baseline": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 1424,
+        "innerHeight": 905,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 1,
+        "visualViewportScale": 1,
+        "screenWidth": 1920,
+        "screenHeight": 1080,
+        "documentWidth": 1424,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      },
+      "zoom200": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 712,
+        "innerHeight": 452,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 2,
+        "visualViewportScale": 1,
+        "screenWidth": 1920,
+        "screenHeight": 1080,
+        "documentWidth": 712,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      }
+    },
+    {
+      "stamp": "2026-10-27T06-01-44.449Z",
+      "status": "FAIL",
+      "browserVersion": "156.0.8078.4",
+      "checks": [
+        {
+          "id": "native200-monitor-tab",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-pause-keyboard",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-dialog-escape-focus-return",
+          "status": "PASS"
+        },
+        {
+          "id": "native200-form-reachable",
+          "status": "PASS"
+        }
+      ],
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"CANVAS\"\nReceived: undefined\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (D:\\Developing\\Meta Hack\\node_modules\\playwright-core\\lib\\coreBundle.js:9282:17)\n    at callMatcherAsStep (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13316:57)\n    at Object.toBe (D:\\Developing\\Meta Hack\\node_modules\\playwright\\lib\\matchers\\expect.js:13308:23)\n    at verifyNative200 (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:280:86)\n    at async runAutomaticZoom (D:\\Developing\\Meta Hack\\tests\\browser\\native-accessibility-runner.mjs:422:5)\n    at async file:///D:/Developing/Meta%20Hack/tests/browser/native-accessibility-automatic.mjs:6:18",
+      "nativeZoomAuthority": {
+        "kind": "ChromeTabsAutomaticAPI",
+        "tabId": 84335951,
+        "settings": {
+          "defaultZoomFactor": 1,
+          "mode": "automatic",
+          "scope": "per-tab"
+        },
+        "beforeZoom": 1,
+        "afterZoom": 2,
+        "workerURL": "chrome-extension://eiaoimapnajlhakfdlemgoacpdkpmopm/native-accessibility-zoom-worker.js",
+        "source": "https://developer.chrome.com/docs/extensions/reference/api/tabs"
+      },
+      "baseline": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 1424,
+        "innerHeight": 905,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 1,
+        "visualViewportScale": 1,
+        "screenWidth": 1920,
+        "screenHeight": 1080,
+        "documentWidth": 1424,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      },
+      "zoom200": {
+        "url": "http://127.0.0.1:5174/",
+        "innerWidth": 712,
+        "innerHeight": 452,
+        "outerWidth": 1440,
+        "outerHeight": 1000,
+        "devicePixelRatio": 2,
+        "visualViewportScale": 1,
+        "screenWidth": 1920,
+        "screenHeight": 1080,
+        "documentWidth": 712,
+        "cssRootZoom": "1",
+        "cssBodyZoom": "1",
+        "bodyTransform": "none"
+      },
+      "cleanup": {
+        "ownedPid": 100888,
+        "startedAt": "2026-10-27T06:01:56.444Z",
+        "finishedAt": "2026-10-27T06:01:56.921Z",
+        "protocolCloseAttempted": true,
+        "protocolCloseError": null,
+        "clientCloseAttempted": true,
+        "clientCloseError": null,
+        "forcedKillAttempted": false,
+        "forcedKillError": null,
+        "ownedProcessExited": true,
+        "exit": {
+          "code": 0,
+          "signal": null
+        },
+        "profileRetained": true,
+        "stderrTail": "[100888:5144:1027/140145.148:ERROR:sandbox\\policy\\win\\sandbox_win.cc:805] Sandbox cannot access executable C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe. Check filesystem permissions are valid. See https://bit.ly/31yqMJR.: 存取被拒。 (0x5)\r\n\r\nDevTools listening on ws://127.0.0.1:57922/devtools/browser/a1273246-e2b0-4d62-9a39-5322746887ec\r\n[100888:21480:1027/140145.614:ERROR:content\\browser\\network_service_instance_impl.cc:652] Network service crashed or was terminated, restarting service.\r\n"
+      }
+    }
+  ],
+  "nativeMenu": {
+    "status": "NOT_RUN",
+    "harnessResult": "FAIL/explicit abort",
+    "reason": "Computer-use list_apps/list_windows exposed no task Chrome window; no native zoom action was sent. Helper windowsHide:true is a possible fixture cause; not yet validated."
+  },
+  "limitations": [
+    "Automatic zoom API/DPR/viewport and four keyboard criteria are observed, but overall zoom suite remains FAIL at native Pointer Lock and favicon.ico404 is also retained without filtering.",
+    "CDP native-widget start/update/input events were trusted and actual commit/cancel values passed, but both compositionend events were isTrusted:false. The strict case remains FAIL; it is not OS IME evidence.",
+    "OS IME candidate window, screen reader and human hearing tests are NOT_RUN.",
+    "Native browser input evidence does not prove complete V1, numerical physics/acoustic accuracy, real GPU performance, or live Meta output."
+  ],
+  "stored": [
+    {
+      "source": "test-results/native-accessibility-browser-results.json#composition-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-1-0-composition-evidence.json",
+      "sha256": "066823271fbafab3ded2708035ee2eeea2de7a013a5a38f993533f248e16d48c"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-browser-process.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-1-0-native-browser-process.json",
+      "sha256": "794c66b071d50aee944d5d1cd4b9a4e76b1b041d6f821eab053fc18292384dbf"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#contenteditable-focus-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-2-0-contenteditable-focus-evidence.json",
+      "sha256": "70e02dce88eb4ced2344d1998d12ea34164fb0a251507b37c4157e5fb8106c87"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-browser-process.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-2-0-native-browser-process.json",
+      "sha256": "ad657fe796feac4408547ec06b58f740401a848611aa5c99a89e81eb904b9899"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#repeat-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-3-0-repeat-evidence.json",
+      "sha256": "35d7002d30c5945ac5be514ec726b2024819ff8471a3fd43884add2deefd3f5b"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-browser-process.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-3-0-native-browser-process.json",
+      "sha256": "558705cc873f989168b8e7d76c4832fffb57cf9753fac95272351e3f101a091b"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#visibility-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-4-0-visibility-evidence.json",
+      "sha256": "e1ae61afc125372e3ae3dee173e266f39cbed76e2614d27ef98c0942c139ffef"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-browser-process.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-4-0-native-browser-process.json",
+      "sha256": "18df1d12b851614fe471cd98c092175406c5b784c3975f46467bb19d2bc0cbbf"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-denial-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-5-0-native-denial-evidence.json",
+      "sha256": "52707a8ca5a892d4c5aa2c930d5ceca023ec4ad7c7403ba899e13e17fb4df267"
+    },
+    {
+      "source": "test-results/native-accessibility-browser-results.json#native-browser-process.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-pass\\case-5-0-native-browser-process.json",
+      "sha256": "9f62568330381854303d47f2507461624cf91e3cdda6e539ad614b3adf110275"
+    },
+    {
+      "source": "test-results/native-accessibility/inputs-initial-20261027/results.json#composition-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-1-0-composition-evidence.json",
+      "sha256": "c1070cdb3c36b68280c48f92e860bf419c87a98bc542dbcde547c57cb9406e45"
+    },
+    {
+      "source": "test-results/native-accessibility/inputs-initial-20261027/results.json#contenteditable-focus-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-2-0-contenteditable-focus-evidence.json",
+      "sha256": "4bc9cb804692ceafb3ebf55c3409494a1b212954f70d30d25f681c053c32d07a"
+    },
+    {
+      "source": "test-results/native-accessibility/inputs-initial-20261027/results.json#repeat-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-3-0-repeat-evidence.json",
+      "sha256": "82f58e243e79b2c9a2446e69c231c60a7acc301c9564194f86ebe059fb288646"
+    },
+    {
+      "source": "test-results/native-accessibility/inputs-initial-20261027/results.json#native-denial-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\inputs-initial\\case-5-0-native-denial-evidence.json",
+      "sha256": "46d3a648a3d4181db5c3856683e108f3f8428812f9543568faef226818f3d419"
+    },
+    {
+      "source": "test-results/native-accessibility/cdp-composition-initial-20261027/results.json#cdp-browser-composition-evidence.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\cdp-composition\\case-1-0-cdp-browser-composition-evidence.json",
+      "sha256": "78936e85383e047a2485e37ddd87fda25bc498de149e4324506504b3ce762017"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T05-51-39.324Z/verification.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T05-51-39.324Z\\verification.json",
+      "sha256": "3400179a15e9c8a26a2635d6268f095776be6f4cf182ba309b0b50a312812216"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T05-51-39.324Z/baseline-page.png",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T05-51-39.324Z\\baseline-page.png",
+      "sha256": "bff1339edcaf169f98a9868428beeec0b1a296e9f1718c2356c18afaa927e284"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T05-54-10.330Z/verification.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T05-54-10.330Z\\verification.json",
+      "sha256": "d8101bb8bcd1e3a7a00cbe70915dd6671c515326f2a7509fa0fd72e792343828"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T05-54-10.330Z/baseline-page.png",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T05-54-10.330Z\\baseline-page.png",
+      "sha256": "949c108d55730d346c89e4a32f487a14747d83a0800230bd8f5cdc9152e0f076"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T05-54-10.330Z/failure-page.png",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T05-54-10.330Z\\failure-page.png",
+      "sha256": "1cf121539b4ab34c7d8a9269732affd275b15bbed02b789ae70c3717f6dca8d1"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T06-01-44.449Z/verification.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T06-01-44.449Z\\verification.json",
+      "sha256": "34b86af3158a897c6cd7ea68506ccf5d781739980bd99e2bf309e97442fcffa9"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T06-01-44.449Z/baseline-page.png",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T06-01-44.449Z\\baseline-page.png",
+      "sha256": "dec9110f1417e4bf327693f5ff28676927e3e53028645c3d9d8086f331d59255"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T06-01-44.449Z/failure-page.png",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\zoom-2026-10-27T06-01-44.449Z\\failure-page.png",
+      "sha256": "31b0a373e676807cf5dfe5cb3a614b8e094811c00dcbca3da9bd442eaafc380c"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T06-01-44.449Z/frozen-build-manifest.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\frozen-build-manifest.json",
+      "sha256": "10d1fcb0f8b3514b03c1793ea32095bc6a192e84af8bf6e5fa215af9e0cd3839"
+    },
+    {
+      "source": "test-results/native-accessibility/process-cleanup.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\process-cleanup.json",
+      "sha256": "2d025d118450cc8a923c6b6ae94b2b3fd4fd5503619e59c3162bcfed0e50ddaf"
+    },
+    {
+      "source": "test-results/native-accessibility/tabs-capability.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\tabs-capability.json",
+      "sha256": "cf5de99ed112745a99f705fb9759826e6f8d559b78d15625f46926bd66722688"
+    },
+    {
+      "source": "test-results/native-accessibility/tabs-capability-native-focus.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\tabs-capability-native-focus.json",
+      "sha256": "52fa39826925cc0081846f9600d016b6cc52b13b60a198e625896f7ba4b8b47b"
+    },
+    {
+      "source": "test-results/native-accessibility/extension-capability.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\extension-capability.json",
+      "sha256": "035c4020b7c64fe785564ca44499327dd0b4fee5dccad5ae8d1ca083854257f7"
+    },
+    {
+      "source": "test-results/native-accessibility/2026-10-27T06-03-14.367Z/verification.json",
+      "path": "tests\\browser\\native-accessibility-evidence\\20261027\\native-menu-unavailable.json",
+      "sha256": "b9bbf03d8e8ea5736adf34c1df34928ad2ecd8b1b1d1117196bfeec8bbb8dd65"
+    }
+  ]
+}

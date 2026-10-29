@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 2,
+  "executedAt": "2026-10-25T19:22:31.997Z",
+  "node": "v22.17.0",
+  "platform": "win32",
+  "arch": "x64",
+  "package": {
+    "name": "@dimforge/rapier3d-compat",
+    "version": "0.21.0",
+    "license": "Apache-2.0"
+  },
+  "provenance": {
+    "hashAlgorithm": "SHA-256",
+    "script": {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "sha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "byteLength": 14105
+    },
+    "lockfile": {
+      "path": "experiments/physics-spike/package-lock.json",
+      "sha256": "33e30676831f0b6d769855183ca812f903d0e4f5875519fd199fce8f48c035b7",
+      "byteLength": 631
+    },
+    "packageSource": {
+      "resolved": "https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.21.0.tgz",
+      "npmIntegrity": "sha512-tCl1HPGwOhn5aCQbgqWbOH+Nx/5fnr3IPAnzQuR7zIhC/raqi2yxC6LhvZqjdI2El5hQgY5RDAwDrAjAi2FdPA==",
+      "integrityMeaning": "npm tarball source integrity from the installed lockfile; not the SHA-256 of an unpacked file"
+    },
+    "runtimeEntry": {
+      "path": "experiments/physics-spike/node_modules/@dimforge/rapier3d-compat/dist/rapier.mjs",
+      "sha256": "02dc6a4e2fffc013bab08fbb44fa68f501d8303615e9afe4c7d89ad4eedda0d0",
+      "byteLength": 4340292
+    },
+    "wasm": {
+      "shippedArtifact": {
+        "path": "experiments/physics-spike/node_modules/@dimforge/rapier3d-compat/dist/rapier_wasm3d_bg.wasm",
+        "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+        "byteLength": 3082103
+      },
+      "embeddedPayload": {
+        "containerPath": "experiments/physics-spike/node_modules/@dimforge/rapier3d-compat/dist/rapier.mjs",
+        "encoding": "base64",
+        "identification": "Unique base64 token decoding to WebAssembly magic and version 1; compared byte-for-byte with the shipped .wasm file",
+        "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+        "byteLength": 3082103,
+        "matchesShippedArtifact": true
+      }
+    }
+  },
+  "archivalSnapshot": {
+    "path": "experiments/physics-spike/results/rapier-win64-20261025T192231997Z.json",
+    "writePolicy": "Exclusive create (wx); existing snapshots are never overwritten by this script"
+  },
+  "timestepSeconds": 0.016666666666666666,
+  "checks": [
+    {
+      "name": "freefall_matches_analytic_velocity_and_bounded_position_error",
+      "status": "PASS",
+      "actual": {
+        "y": 8.763531684875488,
+        "vy": -4.904996395111084
+      },
+      "expected": {
+        "y": 8.77375,
+        "vy": -4.905
+      },
+      "tolerance": {
+        "yMetres": 0.05,
+        "vyMetresPerSecond": 0.001
+      }
+    },
+    {
+      "name": "dynamic_zero_gravity_retains_inertia",
+      "status": "PASS",
+      "gravityScaleRestored": 1,
+      "actual": {
+        "position": {
+          "x": 3.000011682510376,
+          "y": 8.763531684875488,
+          "z": 0
+        },
+        "velocity": {
+          "x": 2,
+          "y": -4.904996395111084,
+          "z": 0
+        }
+      },
+      "tolerance": {
+        "yMetresBeforeRestore": 0.00001,
+        "vxMetresPerSecond": 0.00001,
+        "restoredVyMetresPerSecond": 0.001
+      }
+    },
+    {
+      "name": "fixed_ignores_impulse_then_explicit_dynamic_restore_moves",
+      "status": "PASS",
+      "actual": {
+        "position": {
+          "x": 1.9999984502792358,
+          "y": 5,
+          "z": 0
+        },
+        "velocity": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "sleeping": false,
+        "bodyType": 0
+      },
+      "policy": "Explicitly chose zero velocity at Fixed entry and explicit 2 m/s at Dynamic restore; engine history is not treated as a restore policy."
+    },
+    {
+      "name": "impulse_is_instantaneous_and_addForce_persists_until_reset",
+      "status": "PASS",
+      "massKg": 2,
+      "impulseNs": 12,
+      "forceN": 12,
+      "afterHalfSecond": {
+        "impulseVx": 6,
+        "forceVx": 3.000002384185791
+      },
+      "afterOneSecond": {
+        "impulseVx": 6,
+        "forceVx": 6.000013828277588
+      },
+      "afterResetVx": 6.000013828277588,
+      "toleranceVxMetresPerSecond": 0.0001
+    },
+    {
+      "name": "collision_force_and_solved_contact_impulse_are_separate_apis",
+      "status": "PASS",
+      "collisionEvents": [
+        {
+          "tick": 30,
+          "a": 0,
+          "b": 5e-324,
+          "started": true
+        }
+      ],
+      "forceSamples": [
+        {
+          "tick": 30,
+          "totalForce": {
+            "x": 0,
+            "y": 304.1097412109375,
+            "z": 0
+          },
+          "totalForceMagnitudeN": 304.1097412109375,
+          "maxForceMagnitudeN": 304.1097412109375,
+          "hasContactImpulseField": false
+        },
+        {
+          "tick": 31,
+          "totalForce": {
+            "x": 0,
+            "y": 9.8100004196167,
+            "z": 0
+          },
+          "totalForceMagnitudeN": 9.8100004196167,
+          "maxForceMagnitudeN": 9.8100004196167,
+          "hasContactImpulseField": false
+        },
+        {
+          "tick": 32,
+          "totalForce": {
+            "x": 0,
+            "y": 9.8100004196167,
+            "z": 0
+          },
+          "totalForceMagnitudeN": 9.8100004196167,
+          "maxForceMagnitudeN": 9.8100004196167,
+          "hasContactImpulseField": false
+        },
+        {
+          "tick": 33,
+          "totalForce": {
+            "x": 0,
+            "y": 9.8100004196167,
+            "z": 0
+          },
+          "totalForceMagnitudeN": 9.8100004196167,
+          "maxForceMagnitudeN": 9.8100004196167,
+          "hasContactImpulseField": false
+        }
+      ],
+      "contactSamples": [
+        {
+          "tick": 30,
+          "flipped": true,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "normalImpulseNs": 5.068496227264404,
+          "localContactPoint1": {
+            "x": 0,
+            "y": 0.09999999403953552,
+            "z": 0
+          },
+          "localContactPoint2": {
+            "x": 0,
+            "y": -0.25,
+            "z": 0
+          },
+          "solverContactPoint": {
+            "x": 0,
+            "y": -0.000006817281246185303,
+            "z": 0
+          }
+        },
+        {
+          "tick": 31,
+          "flipped": true,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "normalImpulseNs": 0.16350001096725464,
+          "localContactPoint1": {
+            "x": 0,
+            "y": 0.09999999403953552,
+            "z": 0
+          },
+          "localContactPoint2": {
+            "x": 0,
+            "y": -0.25,
+            "z": 0
+          },
+          "solverContactPoint": {
+            "x": 0,
+            "y": -0.00001385807991027832,
+            "z": 0
+          }
+        },
+        {
+          "tick": 32,
+          "flipped": true,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "normalImpulseNs": 0.16350001096725464,
+          "localContactPoint1": {
+            "x": 0,
+            "y": 0.09999999403953552,
+            "z": 0
+          },
+          "localContactPoint2": {
+            "x": 0,
+            "y": -0.25,
+            "z": 0
+          },
+          "solverContactPoint": {
+            "x": 0,
+            "y": -0.000019103288650512695,
+            "z": 0
+          }
+        },
+        {
+          "tick": 33,
+          "flipped": true,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "normalImpulseNs": 0.16350001096725464,
+          "localContactPoint1": {
+            "x": 0,
+            "y": 0.09999999403953552,
+            "z": 0
+          },
+          "localContactPoint2": {
+            "x": 0,
+            "y": -0.25,
+            "z": 0
+          },
+          "solverContactPoint": {
+            "x": 0,
+            "y": -0.000023014843463897705,
+            "z": 0
+          }
+        }
+      ],
+      "finalY": 0.24993106722831726,
+      "evidence": "contactImpulse(i) reads geometric contact index; solverContactPoint(i) uses a distinct solver-contact index. This smoke does not assume a one-to-one index mapping."
+    },
+    {
+      "name": "spring_joint_to_position_kinematic_anchor_api_smoke",
+      "status": "PASS",
+      "jointType": 6,
+      "massKg": 1,
+      "spring": {
+        "restLengthMetres": 0,
+        "stiffnessNPerMetre": 40,
+        "dampingNsPerMetre": 8
+      },
+      "finalX": 1.9999947547912598,
+      "maxAbsX": 2.145874500274658,
+      "toleranceMetres": 0.05,
+      "limitation": "No wall, gravity, orientation constraint, force cap, mass-ratio sweep or FPS target discontinuity is tested; this does not establish a collision-safe production grab."
+    }
+  ],
+  "limitations": [
+    "Node.js CPU/WASM smoke only; no browser, pointer lock, audio, FPS camera or interaction UX was run.",
+    "No production grab, wall-safe target clamp, rotation servo, throw, CCD stress or mass-range tuning is implemented.",
+    "Results show this pinned build on this machine; no cross-platform deterministic replay guarantee is established.",
+    "Force-event and manifold samples are copied inside their callbacks; temporary Rapier objects are never retained."
+  ],
+  "status": "PASS"
+}

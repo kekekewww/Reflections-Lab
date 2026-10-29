@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "id": "phase3-fresh-handoff-receipt",
+  "recorded_at": "2026-10-26T16:05:03.416Z",
+  "timezone": "Asia/Taipei",
+  "reader": "codex-fresh-receiving-agent",
+  "parent_task": "/root/phase3_handoff_receiver",
+  "result": "PASS",
+  "scope": "Fresh-context handoff recovery and completed-run integrity; no broad test rerun or product/live validation",
+  "startup_order": [
+    "knowledge/schema.md",
+    "knowledge/wiki/index.md",
+    "knowledge/wiki/now.md",
+    "knowledge/tasks/RLAB-TASK-0008.json",
+    "knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md"
+  ],
+  "resolved_latest_handoff": {
+    "path": "knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md",
+    "updated_at": "2026-10-26T16:00:05.249Z",
+    "sha256": "9c8cd86da5b41fd362c1c88504f2a1aa2805a2bfd3f9b1224588cd642e9386dd",
+    "selection": "Latest type=handoff timestamp from generated knowledge/wiki/index.md"
+  },
+  "recovered": {
+    "project_stage": "research/preproduction, Phase3 development Harness; formal product not implemented",
+    "wiki_task_id": "RLAB-TASK-0008",
+    "wiki_task_status": "IN_PROGRESS",
+    "runner_task_id": "HARNESS-SMOKE",
+    "goal_id": "goal-harness-smoke",
+    "milestone_id": "milestone-harness-smoke",
+    "run_id": "469191b9-3b56-4eb1-a94e-7db11d605f4f",
+    "run_status": "COMPLETED",
+    "session_goal_observation": {
+      "goal": null,
+      "remainingTokens": null,
+      "completionBudgetReport": null
+    },
+    "preferred_executor": "MUSE",
+    "actual_executor": "CODEX",
+    "previous_executor": "MUSE",
+    "fallback_reason": "QUOTA_EXHAUSTED",
+    "resource_observations": {
+      "MUSE": {
+        "status": "exhausted",
+        "remaining": 0,
+        "evidence": [
+          {
+            "description": "USER_CONFIRMED 2026-10-26: 目前沒有任何Muse額度可以使用; development Muse only, not a product Meta API balance observation",
+            "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+            "recorded_at": "2026-10-26T15:46:23.634Z"
+          }
+        ]
+      },
+      "CODEX": {
+        "status": "available",
+        "remaining": 93,
+        "evidence": [
+          {
+            "description": "Codex app get_usage_limits read-only observation: weekly10080min used7percent/remaining93percent, snapshot2026-10-26; secondary unknown; no account IDs/credits persisted",
+            "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+            "recorded_at": "2026-10-26T15:47:00.592Z"
+          }
+        ]
+      },
+      "META_API": {
+        "status": "unknown",
+        "remaining": null,
+        "evidence": [],
+        "live_tests": "NOT RUN"
+      }
+    },
+    "resource_usage": {
+      "started_at_ms": 1793029782114,
+      "attempts": 0,
+      "elapsed_ms": 252.83139999999997,
+      "reserved_usd": 0,
+      "cost_usd": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cached_tokens": null,
+      "tool_calls": null,
+      "remaining_quota": null
+    },
+    "model_provenance": [
+      {
+        "attempt": null,
+        "executor": "CODEX",
+        "model": null,
+        "cli_version": null,
+        "execution_mode": "CURRENT_ORCHESTRATOR",
+        "validation_mode": "LIVE_NOT_RUN",
+        "recorded_at": "2026-10-26T15:49:44.631Z",
+        "limitation": "Installed Codex CLI version does not establish the running app session model/version or token usage"
+      }
+    ],
+    "completed_acceptance_criteria": [
+      "AC-ANSWER"
+    ],
+    "remaining_runner_work": [],
+    "last_successful_checkpoint": {
+      "id": "c5a70d2f-c266-4e02-b639-e698c9039959",
+      "path": "runs/469191b9-3b56-4eb1-a94e-7db11d605f4f/checkpoints/c5a70d2f-c266-4e02-b639-e698c9039959.json",
+      "sha256": "eecda58b9c440bf149f42f2812702873e3247fb51af0ee959ca2f394a2367a11",
+      "reason": "after-verification"
+    },
+    "last_independent_verification": {
+      "path": "artifacts/agent-runs/runs/469191b9-3b56-4eb1-a94e-7db11d605f4f/verification/36b679e8-6f5e-4215-94f4-479f6a99f3a3.json",
+      "id": "36b679e8-6f5e-4215-94f4-479f6a99f3a3",
+      "recorded_at": "2026-10-26T15:50:02.196Z",
+      "authority": "independent-node-runner",
+      "status": "PASS",
+      "validation_mode": "LIVE_NOT_RUN",
+      "results": [
+        {
+          "acceptance_id": "AC-ANSWER",
+          "command": [
+            "C:\\Program Files\\nodejs\\node.exe",
+            "D:\\Developing\\Meta Hack\\examples\\agents\\acceptance.mjs",
+            "D:\\Developing\\Meta Hack\\.cache\\phase3\\user-zero-muse-workspace"
+          ],
+          "exit_code": 0,
+          "signal": null,
+          "timed_out": false,
+          "cancelled": false,
+          "process_stopped": true,
+          "stdout": "PASS independent reference answer=42\n",
+          "stderr": "",
+          "duration_ms": 252.83139999999997,
+          "output_limit": false,
+          "spawn_error": null,
+          "stop_scope": "direct_process",
+          "process_tree_stopped": null,
+          "status": "PASS"
+        }
+      ],
+      "limitations": [
+        "Deterministic subprocess verification; no live model provenance inferred",
+        "Acceptance scripts must list imported reference helpers in protected_files",
+        "Cooperative locks and hashes do not enforce OS permissions"
+      ]
+    }
+  },
+  "integrity": {
+    "current_state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+    "pinned_state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+    "task_expected_pinned_state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+    "verifier_sha256": "999586a4d2ca5ed168ab39200b70843858d7decb38f825126399fa22842a8309",
+    "task_expected_verifier_sha256": "999586a4d2ca5ed168ab39200b70843858d7decb38f825126399fa22842a8309",
+    "acceptance_sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+    "expected_acceptance_sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+    "computed_contract_sha256": "cc86a48112d6334a7019159cd2ae87ea74ea631d66435da3dfaf9be3b83e11dd",
+    "expected_contract_sha256": "cc86a48112d6334a7019159cd2ae87ea74ea631d66435da3dfaf9be3b83e11dd",
+    "fixture_sha256": "5a514135c7cc54414e42198fbed31ba55bd4648e8f174490596fe96d908cb6ac",
+    "fixture_content": "// Implemented by the current Codex orchestrator after confirmed Muse quota exhaustion.\nexport const answer = 42;\n",
+    "last_checkpoint_sha256": "eecda58b9c440bf149f42f2812702873e3247fb51af0ee959ca2f394a2367a11",
+    "expected_last_checkpoint_sha256": "eecda58b9c440bf149f42f2812702873e3247fb51af0ee959ca2f394a2367a11"
+  },
+  "integrity_pass": true,
+  "handoff_file_hash_checks": [
+    {
+      "path": "scripts/agents/engine.mjs",
+      "expected_sha256": "9d809b08e02247216cc1a62c3bd725e3f05bdf2b7e8446b917070933b0370ae8",
+      "actual_sha256": "9d809b08e02247216cc1a62c3bd725e3f05bdf2b7e8446b917070933b0370ae8",
+      "matches": true
+    },
+    {
+      "path": "scripts/agents/process-runner.mjs",
+      "expected_sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+      "actual_sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+      "matches": true
+    },
+    {
+      "path": "scripts/agents/context-pack.mjs",
+      "expected_sha256": "316686fed91dd35875662c9ec362dc8ea4ed8f94802522b7b68cde1a1086f133",
+      "actual_sha256": "316686fed91dd35875662c9ec362dc8ea4ed8f94802522b7b68cde1a1086f133",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "expected_sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "actual_sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "expected_sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "actual_sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "matches": true
+    },
+    {
+      "path": "scripts/wiki/agent-projection.mjs",
+      "expected_sha256": "faf8ed9669ff17b575d8b15ae5375bceba24e774978659274df31598b5eb8ef4",
+      "actual_sha256": "faf8ed9669ff17b575d8b15ae5375bceba24e774978659274df31598b5eb8ef4",
+      "matches": true
+    },
+    {
+      "path": "docs/09-agents/PHASE3_REPORT.md",
+      "expected_sha256": "aee37b179259e7e849a1a81a7ff9c1e96c9e395d5df861fa6510547675ee70bd",
+      "actual_sha256": "e881ca4a50c09903bafcd296e31696b8a937ed755aa66672787d4553abfc6293",
+      "matches": false
+    },
+    {
+      "path": "docs/09-agents/INDEPENDENT_REVIEW.md",
+      "expected_sha256": "1b2bcf8d4b7d259b1ab8801603f6c6bf9e32cd3b347f13cdee7d5ad518f9b2d3",
+      "actual_sha256": "1b2bcf8d4b7d259b1ab8801603f6c6bf9e32cd3b347f13cdee7d5ad518f9b2d3",
+      "matches": true
+    },
+    {
+      "path": "AGENTS.md",
+      "expected_sha256": "fcccd14c3aab997af6b8d3a5f501cf508ede36db1b11ddfd6ae84c5937899266",
+      "actual_sha256": "fcccd14c3aab997af6b8d3a5f501cf508ede36db1b11ddfd6ae84c5937899266",
+      "matches": true
+    },
+    {
+      "path": "benchmarks/results/phase3-validation-20261026-final.json",
+      "expected_sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+      "actual_sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+      "matches": true
+    },
+    {
+      "path": "artifacts/phase3-user-zero-muse/export.json",
+      "expected_sha256": "6034f2dcb009cea309a76bfe0445cbf19f44094873647d10f077d0f404cf4af5",
+      "actual_sha256": "6034f2dcb009cea309a76bfe0445cbf19f44094873647d10f077d0f404cf4af5",
+      "matches": true
+    },
+    {
+      "path": "docs/09-agents/INDEPENDENT_REVIEW.md",
+      "expected_sha256": "1b2bcf8d4b7d259b1ab8801603f6c6bf9e32cd3b347f13cdee7d5ad518f9b2d3",
+      "actual_sha256": "1b2bcf8d4b7d259b1ab8801603f6c6bf9e32cd3b347f13cdee7d5ad518f9b2d3",
+      "matches": true
+    }
+  ],
+  "gate_artifact": {
+    "path": "benchmarks/results/phase3-validation-20261026-final.json",
+    "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+    "result": "19/19 commands exit0; raw artifact independently read, not rerun",
+    "scope_note": "Suite counts overlap and are not a unique total test count"
+  },
+  "completed_resume_probe": {
+    "command": "node scripts/agents/cli.mjs resume --run 469191b9-3b56-4eb1-a94e-7db11d605f4f --control artifacts/agent-runs --runner muse",
+    "precondition": {
+      "status": "COMPLETED",
+      "current_validation": {
+        "valid": true,
+        "reason": "UNCHANGED_CHECKPOINT_AND_EVIDENCE"
+      }
+    },
+    "exit_code": 0,
+    "before": {
+      "revision": 11,
+      "attempts": 0,
+      "state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+      "events": 11,
+      "files": 18
+    },
+    "after": {
+      "status": "COMPLETED",
+      "revision": 11,
+      "attempts": 0,
+      "state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+      "events": 11,
+      "files": 18
+    },
+    "no_dispatch_evidence": "Unchanged saved state hash, attempts, revision, event/file counts; completed branch returns before dispatch",
+    "cli_output_note": "Resume emits projection without revision/resources. First diagnostic compared missing stdout properties; direct saved-state reread corrected the comparison and confirmed unchanged counters."
+  },
+  "actual_commands": [
+    {
+      "command": "node scripts/agents/cli.mjs status --run 469191b9-3b56-4eb1-a94e-7db11d605f4f --control artifacts/agent-runs",
+      "exit_code": 0,
+      "result": "COMPLETED; current_validation.valid=true; UNCHANGED_CHECKPOINT_AND_EVIDENCE"
+    },
+    {
+      "command": "npm run wiki -- status",
+      "exit_code": 0,
+      "result": "ok=true; task0008 IN_PROGRESS; task0006 BACKLOG; task0007/task0009 BLOCKED; conflicts=[]; pending_transactions=[]; writer=null"
+    },
+    {
+      "command": "functions.get_goal({})",
+      "result": {
+        "goal": null,
+        "remainingTokens": null,
+        "completionBudgetReport": null
+      }
+    },
+    {
+      "command": "Targeted Get-Content/Get-FileHash for pinned state, fixture, protected acceptance, verifier and checkpoint",
+      "exit_code": 0,
+      "result": "All pinned state/contract/acceptance/verifier/checkpoint hashes matched; fixture exports42"
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "038d83d8d42bdf1174f131cd98d2c563ced0c031",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "codex/phase3-agent-failover",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "stdout": "M docs/09-agents/PHASE3_REPORT.md\n M knowledge/wiki/index.md\n M knowledge/wiki/log.md\n M knowledge/wiki/now.md\n?? artifacts/phase3-project-skill-validation.txt\n?? docs/00-project/PHASE3_FILE_MANIFEST.md\n?? docs/09-agents/FINAL_STATE.json\n?? docs/09-agents/VALIDATION_SUMMARY.json\n?? knowledge/events/dddd64a7-7e89-40db-95cc-5537daed88f5.json\n?? knowledge/transactions/78145909-58f2-4e3e-92d1-03f40b776f75.json\n?? knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md",
+      "stderr": ""
+    }
+  ],
+  "diagnostics": [
+    {
+      "command": "rg -n ... scripts/agents/hash.mjs",
+      "exit_code": 1,
+      "result": "Optional guessed helper file absent; engine showed actual helper is store.mjs"
+    },
+    {
+      "command": "Get-Content scripts/agents/io.mjs",
+      "exit_code": 1,
+      "result": "Optional guessed helper file absent; actual store.mjs then read successfully"
+    }
+  ],
+  "completed_vs_remaining": {
+    "completed": [
+      "Phase3 offline Harness controls, bounded repair/failover fixtures, prompts and contracts",
+      "Recorded full19-command gate exit0",
+      "Actual current-Codex isolated fixture plus fixed independent Node acceptance PASS",
+      "Fresh reader recovered task/goal/milestone/resources and verified completed run integrity"
+    ],
+    "remaining": [
+      "Root closes Wiki Task0008 using evidence and finalizes report/Now/handoff",
+      "Task0006 formal product remains BACKLOG; do not launch without next authorization",
+      "Task0007 external eligibility/account and Task0009 live/process isolation remain BLOCKED"
+    ]
+  },
+  "next_authorized_action": "Root records this receipt, synchronizes final report/Now/handoff and closes Task0008 for its offline/current-Codex scope. Do not dispatch Muse or Meta models.",
+  "observed_limits": [
+    "MUSE exhausted0 is latest human confirmation; no Muse model dispatch authorized",
+    "CODEX remaining93 is a historical2026-10-26 observation, not a refreshed account balance",
+    "META_API remains UNKNOWN/null; live tests NOT RUN; paid ceilings0",
+    "No claim of live Muse quota-stop wire, recovery/session resume, model edit, nonzero cost ceiling or arbitrary process-tree containment",
+    "Independent acceptance proves isolated answer42 fixture only, not product physics/acoustics/UI/browser/audio/hearing",
+    "Current Git HEAD exists; historical run Git revision null is preserved as observed history",
+    "Raw gate was read, not rerun; remote CI NOT RUN"
+  ],
+  "concurrent_owner_changes": [
+    {
+      "path": "docs/09-agents/PHASE3_REPORT.md",
+      "note": "Root finalization changed report after historical handoff snapshot. Historical handoff hash aee37b...e70bd remains a snapshot; current hash is recorded in handoff_file_hash_checks. This expected concurrent documentation change is not a run integrity failure. Initial report wording still required final record synchronization; parent was notified."
+    }
+  ],
+  "write_scope": [
+    "artifacts/phase3-fresh-handoff-receipt.json"
+  ],
+  "prohibited_actions_performed": false,
+  "paid_or_product_model_calls": 0,
+  "node_version": "v22.17.0"
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-27",
+  "sources": [
+    {
+      "id": "SB-AUD-S01",
+      "title": "Web Audio API Recommendation 2021",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "version": "REC-2021-06-17",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.117Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_SPEC"
+    },
+    {
+      "id": "SB-AUD-S02",
+      "title": "Web Audio API1.1 Working Draft",
+      "url": "https://www.w3.org/TR/webaudio/",
+      "version": "WD-2026-09-22",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_SPEC; NOT UNIVERSAL_BROWSER_CAPABILITY"
+    },
+    {
+      "id": "SB-AUD-S03",
+      "title": "AudioBufferSourceNode API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode",
+      "version": "web-reviewed-2026-10-27",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_API"
+    },
+    {
+      "id": "SB-AUD-S04",
+      "title": "AudioWorkletProcessor process",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/process",
+      "version": "web-reviewed-2026-10-27",
+      "review_date": "2026-10-27",
+      "acquired_at": "2026-10-26T17:31:24.119Z",
+      "license": "Official documentation; metadata/short paraphrase only; no third-party source redistribution",
+      "trust": "PRIMARY_DOC_REVIEWED",
+      "sha256": null,
+      "hash_status": "REMOTE_BYTES_NOT_ACQUIRED",
+      "access": "READ_ACTUAL_API"
+    }
+  ],
+  "claims": [
+    {
+      "id": "SB-AUD-C01",
+      "claim": "已停止的BufferSource不能重start；重用decoded buffer與logical instance，continuous loop不因控制更新重建",
+      "source_ids": [
+        "SB-AUD-S01",
+        "SB-AUD-S03"
+      ],
+      "status": "SPEC_REVIEWED; PRODUCT_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "SB-AUD-C02",
+      "claim": "AudioWorklet依實際block長度處理，不把128固定跨所有設備；新WD能力不等於通用browser支援",
+      "source_ids": [
+        "SB-AUD-S02",
+        "SB-AUD-S04"
+      ],
+      "status": "DOC_REVIEWED; DEVICE_TEST_NOT_RUN"
+    },
+    {
+      "id": "SB-AUD-C03",
+      "claim": "同一發聲經既有SourceGraph，distance/HRTF/delay只計一次，behavior不旁路；是本專案工程契約",
+      "source_ids": [
+        "SB-AUD-S01"
+      ],
+      "status": "ENGINEERING_DECISION; ROUTING_NOT_RUN"
+    }
+  ],
+  "limits": [
+    "No browser audio graph, audio scheduling, hearing or performance proof",
+    "No paid models or sound assets acquired",
+    "Architecture decisions are not normative guarantees from vendor documentation"
+  ]
+}

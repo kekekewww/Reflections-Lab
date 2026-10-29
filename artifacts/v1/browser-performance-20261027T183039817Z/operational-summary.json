@@ -1,0 +1,898 @@
+{
+  "schemaVersion": 1,
+  "status": "MEASURED_WITH_INCOMPLETE_ACOUSTIC_WORKLOAD",
+  "command": "node tests/browser/performance-profile.mjs --phase all --seconds 600",
+  "singleCurrentTrial": true,
+  "sourceStableDuringRun": true,
+  "bundleStableDuringRun": true,
+  "globalSource": {
+    "count": 1789,
+    "stable": true,
+    "proof": "global-source-proof.json"
+  },
+  "nativeProcess": {
+    "runnerPID": 23876,
+    "creationUtc": "2026-10-27T18:30:39.4838294Z",
+    "actualExit": 0,
+    "dotNetExit": 0,
+    "rawNativeExit": 0,
+    "readersAgree": true,
+    "nativeWaitStatus": 0,
+    "safeHandlePinned": true,
+    "timedOut": false,
+    "errors": []
+  },
+  "cleanup": {
+    "runner": {
+      "browserConnected": false,
+      "previewExitCode": null,
+      "previewSignalCode": "SIGTERM",
+      "errors": []
+    },
+    "coordinatorProof": "coordinator-cleanup-proof-v2.json",
+    "coordinatorProofSha256": "2602c4fd4dac7507ef61a029f1d2ce4d55a7b954314d6f4a719ed3b6a2faade9",
+    "limit": "Uses the non-empty v2 coordinator exact-current-PID/port proof; original empty failed serialization is not evidence."
+  },
+  "physics": {
+    "workloadValidity": {
+      "exactBodyProfile": true,
+      "fixedStepAndWarmup": true,
+      "completeSamples": true,
+      "awakeDynamicLoad": true,
+      "allDynamicBodiesContacted": true,
+      "observedContactLoad": true,
+      "boundedCatchup": true
+    },
+    "minAwake": 255,
+    "actualCCD": 64,
+    "contactsMin": 1317,
+    "contactsMax": 1441
+  },
+  "acoustics": [
+    {
+      "id": "productDefault",
+      "measuredBatches": 600,
+      "warmupBatches": 20,
+      "deadlineMisses": 6,
+      "currentRoutesMin": 64,
+      "currentRoutesMax": 64,
+      "aggregatePathsMin": 64,
+      "aggregatePathsMax": 65,
+      "droppedPaths": {
+        "warmup": 0,
+        "measured": 0
+      },
+      "budget": {
+        "maxVoices": 24,
+        "maxSources": 32,
+        "maxSourceFrames": 64,
+        "maxPathsPerVoice": 8,
+        "maxTotalPaths": 96,
+        "maxDecodedBytes": 67108864,
+        "maxAssetDurationSeconds": 120,
+        "maxAssetChannels": 2,
+        "maxPendingEvents": 256,
+        "maxAssets": 64,
+        "maxConcurrentDecodes": 2,
+        "maxLateSends": 16,
+        "maxLateReverbBytes": 4194304
+      }
+    },
+    {
+      "id": "stress256",
+      "measuredBatches": 600,
+      "warmupBatches": 20,
+      "deadlineMisses": 31,
+      "currentRoutesMin": 254,
+      "currentRoutesMax": 256,
+      "aggregatePathsMin": 256,
+      "aggregatePathsMax": 256,
+      "droppedPaths": {
+        "warmup": 9,
+        "measured": 95
+      },
+      "budget": {
+        "maxVoices": 24,
+        "maxSources": 32,
+        "maxSourceFrames": 64,
+        "maxPathsPerVoice": 32,
+        "maxTotalPaths": 256,
+        "maxDecodedBytes": 67108864,
+        "maxAssetDurationSeconds": 120,
+        "maxAssetChannels": 2,
+        "maxPendingEvents": 256,
+        "maxAssets": 64,
+        "maxConcurrentDecodes": 2,
+        "maxLateSends": 16,
+        "maxLateReverbBytes": 4194304
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "id": "physics.nativeWasmStep",
+      "count": 3000,
+      "p50": 1.100000023841858,
+      "p95": 2.199999988079071,
+      "p99": 3.5,
+      "max": 8.399999976158142,
+      "status": "FAIL",
+      "thresholdP95LessThan": 2
+    },
+    {
+      "id": "physics.completeFixedTickWithCopies",
+      "count": 3000,
+      "p50": 6.300000011920929,
+      "p95": 12.5,
+      "p99": 21.19999998807907,
+      "max": 55.60000002384186,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "physics.wakeMaintenance",
+      "count": 3000,
+      "p50": 0,
+      "p95": 0.10000002384185791,
+      "p99": 0.10000002384185791,
+      "max": 0.20000004768371582,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "physics.loadSetup",
+      "count": 3000,
+      "p50": 0.30000001192092896,
+      "p95": 0.6000000238418579,
+      "p99": 1,
+      "max": 2,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "physics.measuredStepIncludingLoadSetup",
+      "count": 3000,
+      "p50": 6.600000023841858,
+      "p95": 13,
+      "p99": 22.100000023841858,
+      "max": 57.5,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "acoustic.productDefault.workerCompute",
+      "count": 600,
+      "p50": 2.5,
+      "p95": 6.800000011920929,
+      "p99": 15.100000023841858,
+      "max": 67.89999997615814,
+      "status": "UNVERIFIED",
+      "thresholdP95LessThan": 20
+    },
+    {
+      "id": "acoustic.productDefault.serviceDelivery",
+      "count": 600,
+      "p50": 0.2999999523162842,
+      "p95": 0.699999988079071,
+      "p99": 1.399999976158142,
+      "max": 7.800000011920929,
+      "status": "UNVERIFIED",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "acoustic.productDefault.actualAudioConsumers",
+      "count": 600,
+      "p50": 1,
+      "p95": 2.900000035762787,
+      "p99": 5.900000035762787,
+      "max": 29.19999998807907,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "acoustic.productDefault.combinedDelivery",
+      "count": 600,
+      "p50": 1.300000011920929,
+      "p95": 3.699999988079071,
+      "p99": 6.799999952316284,
+      "max": 37,
+      "status": "FAIL",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "acoustic.productDefault.roundTrip",
+      "count": 600,
+      "p50": 3.399999976158142,
+      "p95": 8.899999976158142,
+      "p99": 19.69999998807907,
+      "max": 90.39999997615814,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "acoustic.productDefault.receiveThroughNativeConsumers",
+      "count": 600,
+      "p50": 1.399999976158142,
+      "p95": 3.899999976158142,
+      "p99": 7.400000035762787,
+      "max": 39.90000003576279,
+      "status": "FAIL",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "acoustic.stress256.workerCompute",
+      "count": 600,
+      "p50": 2.899999976158142,
+      "p95": 9.5,
+      "p99": 16.19999998807907,
+      "max": 85.30000001192093,
+      "status": "UNVERIFIED",
+      "thresholdP95LessThan": 20
+    },
+    {
+      "id": "acoustic.stress256.serviceDelivery",
+      "count": 600,
+      "p50": 0.8999999761581421,
+      "p95": 2.5,
+      "p99": 4.800000011920929,
+      "max": 19.69999998807907,
+      "status": "FAIL",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "acoustic.stress256.actualAudioConsumers",
+      "count": 600,
+      "p50": 4,
+      "p95": 11.800000011920929,
+      "p99": 24.299999952316284,
+      "max": 90,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "acoustic.stress256.combinedDelivery",
+      "count": 600,
+      "p50": 4.899999976158142,
+      "p95": 14.199999928474426,
+      "p99": 29.80000001192093,
+      "max": 109.69999998807907,
+      "status": "FAIL",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "acoustic.stress256.roundTrip",
+      "count": 600,
+      "p50": 5.400000035762787,
+      "p95": 17.80000001192093,
+      "p99": 29,
+      "max": 138.30000001192093,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "acoustic.stress256.receiveThroughNativeConsumers",
+      "count": 600,
+      "p50": 5,
+      "p95": 14.399999976158142,
+      "p99": 30.400000035762787,
+      "max": 111.69999998807907,
+      "status": "FAIL",
+      "thresholdP95LessThan": 1
+    },
+    {
+      "id": "ui.frameInterval",
+      "count": 31294,
+      "p50": 16.699999999953434,
+      "p95": 17,
+      "p99": 66.5,
+      "max": 47849.20000000007,
+      "status": "FAIL",
+      "thresholdP95LessThan": 16.67
+    },
+    {
+      "id": "ui.allRafCallbackCPU",
+      "count": 31295,
+      "p50": 8,
+      "p95": 18.899999976158142,
+      "p99": 43.19999998807907,
+      "max": 373.19999998807907,
+      "status": "FAIL",
+      "thresholdP95LessThan": 4
+    },
+    {
+      "id": "ui.advanceCPU",
+      "count": 31295,
+      "p50": 6,
+      "p95": 15.100000023841858,
+      "p99": 37.90000003576279,
+      "max": 364.0999999642372,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.poseLookupCPUPerFrame",
+      "count": 31295,
+      "p50": 0.3999999761581421,
+      "p95": 1.0000000596046448,
+      "p99": 1.699999988079071,
+      "max": 19.999999940395355,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.nativePhysicsStep",
+      "count": 33355,
+      "p50": 0.10000002384185791,
+      "p95": 0.30000001192092896,
+      "p99": 0.5,
+      "max": 3.299999952316284,
+      "status": "PASS",
+      "thresholdP95LessThan": 2
+    },
+    {
+      "id": "ui.physicsFixedStepInternal",
+      "count": 33355,
+      "p50": 2,
+      "p95": 4.399999976158142,
+      "p99": 8.300000011920929,
+      "max": 71.39999997615814,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.behaviorAndRecordingTick",
+      "count": 33355,
+      "p50": 1.300000011920929,
+      "p95": 3.100000023841858,
+      "p99": 6.099999964237213,
+      "max": 57.200000047683716,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.captureTick",
+      "count": 78,
+      "p50": 7.400000035762787,
+      "p95": 15.399999976158142,
+      "p99": 18.599999964237213,
+      "max": 18.599999964237213,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.cachedInterpolation",
+      "count": 31040,
+      "p50": 0.10000002384185791,
+      "p95": 0.20000004768371582,
+      "p99": 0.3999999761581421,
+      "max": 7.300000011920929,
+      "status": "MEASURED",
+      "thresholdP95LessThan": null
+    },
+    {
+      "id": "ui.rendererMainTaskOccupancyPerFrame",
+      "count": 0,
+      "p50": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "status": "NOT_RUN",
+      "thresholdP95LessThan": 4
+    }
+  ],
+  "ui": {
+    "sampleMilliseconds": 628935,
+    "frameCount": 31295,
+    "tickDelta": 33355,
+    "pausedFrames": 255,
+    "pausedAdvances": 258,
+    "overruns": 201,
+    "droppedWallTimeSeconds": 14.483333333333366,
+    "workloadValidity": {
+      "actual600Seconds": false,
+      "finiteOrderedFrames": true,
+      "frameCollectionMembership": false,
+      "actualInterpolationObserved": true,
+      "noSampleTruncation": true,
+      "noRuntimeOrScriptErrors": true,
+      "uninterruptedSimulation": false,
+      "fixedTickProgress": false,
+      "noDroppedWallTime": false,
+      "noOverrunOrRecordingDebt": false,
+      "acceptedGrabAndThrow": true,
+      "periodicCaptureCompleted": false,
+      "captureTickSamples": true,
+      "nativeGraphStarted": true,
+      "genuineRunningWarmup": false
+    },
+    "interpolationObservation": {
+      "requiredMethod": "interpolatedTransforms",
+      "observedMethods": [
+        "interpolatedTransforms",
+        "interpolatedPoses"
+      ],
+      "calls": 31040,
+      "successfulCalls": 31040,
+      "failedCalls": 0,
+      "byMethod": {
+        "interpolatedTransforms": {
+          "calls": 31040,
+          "successfulCalls": 31040,
+          "failedCalls": 0
+        },
+        "interpolatedPoses": {
+          "calls": 0,
+          "successfulCalls": 0,
+          "failedCalls": 0
+        }
+      },
+      "aggregateScope": "Outermost method intervals only; per-method durations are inclusive and must not be summed"
+    },
+    "trace": {
+      "dataLoss": false,
+      "markerIdentity": true,
+      "markedDurationMs": 628935.004,
+      "complete": false
+    },
+    "membership": {
+      "collectionWindowBoundsMatch": true,
+      "rawFiniteStrict": true,
+      "failedFrameCount": 106,
+      "predicateFailureCounts": {
+        "wrongCollectionId": 0,
+        "observedNonFinite": 0,
+        "observedBeforeBegin": 0,
+        "observedAfterEnd": 0,
+        "nativeAfterObserved": 106
+      },
+      "nativeMinusObservedMs": {
+        "min": -72.69999998807907,
+        "max": 2.3865140974521637e-8
+      },
+      "observedMinusBeginMinimumMs": 0.7000000476837158,
+      "observedMinusEndMaximumMs": -33.299999952316284,
+      "examples": [
+        {
+          "index": 765,
+          "nativeTimestamp": 126281.9,
+          "callbackObservedAtPerformanceMs": 126281.89999997616,
+          "nativeMinusObservedMs": 2.3836037144064903e-8,
+          "observedMinusBeginMs": 18782.5,
+          "observedMinusEndMs": -610152.5,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1000,
+          "nativeTimestamp": 132381.7,
+          "callbackObservedAtPerformanceMs": 132381.69999998808,
+          "nativeMinusObservedMs": 1.1932570487260818e-8,
+          "observedMinusBeginMs": 24882.30000001192,
+          "observedMinusEndMs": -604052.6999999881,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1297,
+          "nativeTimestamp": 139064.9,
+          "callbackObservedAtPerformanceMs": 139064.89999997616,
+          "nativeMinusObservedMs": 2.3836037144064903e-8,
+          "observedMinusBeginMs": 31565.5,
+          "observedMinusEndMs": -597369.5,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1317,
+          "nativeTimestamp": 139698.2,
+          "callbackObservedAtPerformanceMs": 139698.19999998808,
+          "nativeMinusObservedMs": 1.1932570487260818e-8,
+          "observedMinusBeginMs": 32198.80000001192,
+          "observedMinusEndMs": -596736.1999999881,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1393,
+          "nativeTimestamp": 140964.9,
+          "callbackObservedAtPerformanceMs": 140964.89999997616,
+          "nativeMinusObservedMs": 2.3836037144064903e-8,
+          "observedMinusBeginMs": 33465.5,
+          "observedMinusEndMs": -595469.5,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1410,
+          "nativeTimestamp": 141248.2,
+          "callbackObservedAtPerformanceMs": 141248.19999998808,
+          "nativeMinusObservedMs": 1.1932570487260818e-8,
+          "observedMinusBeginMs": 33748.80000001192,
+          "observedMinusEndMs": -595186.1999999881,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1419,
+          "nativeTimestamp": 141398.2,
+          "callbackObservedAtPerformanceMs": 141398.19999998808,
+          "nativeMinusObservedMs": 1.1932570487260818e-8,
+          "observedMinusBeginMs": 33898.80000001192,
+          "observedMinusEndMs": -595036.1999999881,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        },
+        {
+          "index": 1553,
+          "nativeTimestamp": 143748.2,
+          "callbackObservedAtPerformanceMs": 143748.19999998808,
+          "nativeMinusObservedMs": 1.1932570487260818e-8,
+          "observedMinusBeginMs": 36248.80000001192,
+          "observedMinusEndMs": -592686.1999999881,
+          "failedPredicates": [
+            "nativeAfterObserved"
+          ]
+        }
+      ],
+      "noRelaxationOrRebin": true
+    },
+    "pauseEvidence": {
+      "pauseTransitions": [
+        {
+          "phase": "measured",
+          "captureIndex": 0,
+          "tick": 1111,
+          "beforeAtMs": 10176.5,
+          "afterAtMs": 10264,
+          "durationMs": 87.5,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 0.03300000000000074,
+          "steps": 4,
+          "overrun": true
+        },
+        {
+          "phase": "measured",
+          "captureIndex": 1,
+          "tick": 17644,
+          "beforeAtMs": 300202.10000002384,
+          "afterAtMs": 300261.2000000477,
+          "durationMs": 59.10000002384186,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 0.04426666666668433,
+          "steps": 4,
+          "overrun": true
+        },
+        {
+          "phase": "measured",
+          "captureIndex": 2,
+          "tick": 33943,
+          "beforeAtMs": 628901.7000000477,
+          "afterAtMs": 628922.6000000238,
+          "durationMs": 20.899999976158142,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 47.78846666666676,
+          "steps": 4,
+          "overrun": true
+        }
+      ],
+      "resumeActions": [
+        {
+          "phase": "warmup",
+          "beforeAtMs": 0.19999998807907104,
+          "afterAtMs": 7.100000023841858,
+          "durationMs": 6.900000035762787,
+          "beforeReason": "作者編輯：暫停並清理舊聲音",
+          "tick": 0
+        },
+        {
+          "phase": "measured",
+          "beforeAtMs": 15068.200000047684,
+          "afterAtMs": 15095.600000023842,
+          "durationMs": 27.399999976158142,
+          "beforeReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "tick": 1111
+        },
+        {
+          "phase": "measured",
+          "beforeAtMs": 306063.8000000119,
+          "afterAtMs": 306074.60000002384,
+          "durationMs": 10.800000011920929,
+          "beforeReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "tick": 17644
+        }
+      ],
+      "durationBounds": [
+        {
+          "phase": "measured",
+          "captureIndex": 0,
+          "tick": 1111,
+          "beforeAtMs": 10176.5,
+          "afterAtMs": 10264,
+          "durationMs": 87.5,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 0.03300000000000074,
+          "steps": 4,
+          "overrun": true,
+          "nextObservedResume": {
+            "phase": "measured",
+            "beforeAtMs": 15068.200000047684,
+            "afterAtMs": 15095.600000023842,
+            "durationMs": 27.399999976158142,
+            "beforeReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+            "tick": 1111
+          },
+          "pausedWallDurationLowerBoundMs": 4804.200000047684,
+          "pausedWallDurationUpperBoundMs": 4919.100000023842,
+          "rightCensored": false,
+          "uncertainty": "Pause occurs inside the recorded advance interval; resume inside the logged action interval. Exact intra-call pause instant was not instrumented. Raw intervals retained, no fabricated exact duration."
+        },
+        {
+          "phase": "measured",
+          "captureIndex": 1,
+          "tick": 17644,
+          "beforeAtMs": 300202.10000002384,
+          "afterAtMs": 300261.2000000477,
+          "durationMs": 59.10000002384186,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 0.04426666666668433,
+          "steps": 4,
+          "overrun": true,
+          "nextObservedResume": {
+            "phase": "measured",
+            "beforeAtMs": 306063.8000000119,
+            "afterAtMs": 306074.60000002384,
+            "durationMs": 10.800000011920929,
+            "beforeReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+            "tick": 17644
+          },
+          "pausedWallDurationLowerBoundMs": 5802.599999964237,
+          "pausedWallDurationUpperBoundMs": 5872.5,
+          "rightCensored": false,
+          "uncertainty": "Pause occurs inside the recorded advance interval; resume inside the logged action interval. Exact intra-call pause instant was not instrumented. Raw intervals retained, no fabricated exact duration."
+        },
+        {
+          "phase": "measured",
+          "captureIndex": 2,
+          "tick": 33943,
+          "beforeAtMs": 628901.7000000477,
+          "afterAtMs": 628922.6000000238,
+          "durationMs": 20.899999976158142,
+          "reason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "mode": "recording",
+          "accumulatorSeconds": 47.78846666666676,
+          "steps": 4,
+          "overrun": true,
+          "nextObservedResume": null,
+          "pausedWallDurationLowerBoundMs": 0,
+          "pausedWallDurationUpperBoundMs": 33.299999952316284,
+          "rightCensored": true,
+          "uncertainty": "Pause occurs inside the recorded advance interval; resume inside the logged action interval. Exact intra-call pause instant was not instrumented. Raw intervals retained, no fabricated exact duration."
+        }
+      ],
+      "pausedPresentationIntervalsProxyMs": 10599.60000000005,
+      "proxyLimit": "Sum of intervals following frames observed paused, clipped to collection; not exact pause wall-time.",
+      "measuredEndClock": {
+        "atMs": 628935,
+        "tick": 33943,
+        "clockMode": "recording",
+        "accumulatorSeconds": 47.78846666666676,
+        "paused": true,
+        "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+        "error": "",
+        "recordingState": "finalized",
+        "totalDroppedWallTimeSeconds": 14.8166666666667
+      }
+    },
+    "captures": [
+      {
+        "index": 0,
+        "scheduledAtMs": 10000,
+        "requested": {
+          "atMs": 10028.100000023842,
+          "tick": 1103,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 0.016333333333334043,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "idle",
+          "totalDroppedWallTimeSeconds": 1.7833333333333334
+        },
+        "start": {
+          "atMs": 10038.5,
+          "tick": 1103,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.016333333333334043,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 1.7833333333333334
+        },
+        "end": {
+          "atMs": 12275.800000011921,
+          "tick": 1111,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 0.03300000000000074,
+          "paused": true,
+          "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "error": "",
+          "recordingState": "finalized",
+          "totalDroppedWallTimeSeconds": 1.7833333333333334
+        },
+        "artifact": {
+          "sha256": "232015a2619b1c41be568e8d4122662c94a91612f8d0f5814b60e81ac9f7ca21",
+          "status": "captured",
+          "frameCount": 8,
+          "startTick": 1104,
+          "endTick": 1111,
+          "traceBytes": 1563771
+        },
+        "beforeStop": {
+          "atMs": 11243.800000011921,
+          "tick": 1111,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.03300000000000074,
+          "paused": true,
+          "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 1.7833333333333334
+        },
+        "advanceCount": 49,
+        "overrunCount": 1,
+        "pausedAdvanceCount": 47,
+        "maxAccumulatorSeconds": 0.03300000000000074
+      },
+      {
+        "index": 1,
+        "scheduledAtMs": 300000,
+        "requested": {
+          "atMs": 300080,
+          "tick": 17636,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 0.010999999999982711,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "finalized",
+          "totalDroppedWallTimeSeconds": 11.36666666666668
+        },
+        "start": {
+          "atMs": 300098.90000003576,
+          "tick": 17636,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.010999999999982711,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 11.36666666666668
+        },
+        "end": {
+          "atMs": 305449.8000000119,
+          "tick": 17644,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 0.04426666666668433,
+          "paused": true,
+          "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "error": "",
+          "recordingState": "finalized",
+          "totalDroppedWallTimeSeconds": 11.36666666666668
+        },
+        "artifact": {
+          "sha256": "8b4793b69728c505fb03f8e498752ae9334854632c10ff3566f79150930cc8cb",
+          "status": "captured",
+          "frameCount": 8,
+          "startTick": 17637,
+          "endTick": 17644,
+          "traceBytes": 2215690
+        },
+        "beforeStop": {
+          "atMs": 301113,
+          "tick": 17644,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.04426666666668433,
+          "paused": true,
+          "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 11.36666666666668
+        },
+        "advanceCount": 56,
+        "overrunCount": 1,
+        "pausedAdvanceCount": 55,
+        "maxAccumulatorSeconds": 0.04426666666668433
+      },
+      {
+        "index": 2,
+        "scheduledAtMs": 580000,
+        "requested": {
+          "atMs": 580010.8000000119,
+          "tick": 33877,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 0.005866666666666152,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "finalized",
+          "totalDroppedWallTimeSeconds": 14.8166666666667
+        },
+        "start": {
+          "atMs": 580018.8000000119,
+          "tick": 33877,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.005866666666666152,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 14.8166666666667
+        },
+        "end": {
+          "atMs": 628970.8000000119,
+          "tick": 33943,
+          "clockMode": "interactive",
+          "accumulatorSeconds": 47.78846666666676,
+          "paused": true,
+          "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+          "error": "",
+          "recordingState": "finalized",
+          "totalDroppedWallTimeSeconds": 14.8166666666667
+        },
+        "artifact": {
+          "sha256": "7e76bca110bc117e63be8d26a49e3c4e3bc776c5e164890de96454318cd17935",
+          "status": "captured",
+          "frameCount": 62,
+          "startTick": 33878,
+          "endTick": 33939,
+          "traceBytes": 18539198
+        },
+        "beforeStop": {
+          "atMs": 581085.5,
+          "tick": 33939,
+          "clockMode": "recording",
+          "accumulatorSeconds": 0.005933333333356099,
+          "paused": false,
+          "pauseReason": "",
+          "error": "",
+          "recordingState": "recording",
+          "totalDroppedWallTimeSeconds": 14.8166666666667
+        },
+        "advanceCount": 60,
+        "overrunCount": 1,
+        "pausedAdvanceCount": 1,
+        "maxAccumulatorSeconds": 47.78846666666676
+      }
+    ],
+    "warmup": {
+      "durationMs": 10010.699999988079,
+      "tickDelta": 579,
+      "overruns": 7,
+      "droppedWallSeconds": 0.33333333333333337
+    }
+  },
+  "limitations": [
+    "No human hearing, calibrated SPL, device acoustic latency or dropout observation.",
+    "The product uses native Web Audio nodes; actual AudioWorklet 48kHz/128-frame p99 deadline remains NOT RUN.",
+    "CDP tracing and method wrappers add measurement overhead; this local instrumented setup does not establish cross-device capacity.",
+    "Long trace duration does not establish uninterrupted active UI workload. Original membership predicate failure remains NOT_RUN; no tolerance, membership relaxation or offline rebin.",
+    "No performance improvement or root-cause claim from between-run timing differences.",
+    "Original failed formal/diagnostic evidence and old native-exit UNKNOWN untouched.",
+    "No persistent node_repl/CUA kernel used by this agent; analysis child exits after durable export."
+  ],
+  "noSourceEdits": true,
+  "noRetry": true
+}

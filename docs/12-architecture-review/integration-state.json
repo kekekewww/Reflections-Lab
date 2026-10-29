@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "updated_at_utc": "2026-10-29T14:15:49.508Z",
+  "status": "IN_PROGRESS",
+  "original_branch": "codex/sound-behavior-research",
+  "baseline_commit": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "research_branch": "research/architecture-review-20261029",
+  "research_commit": "b10b78a25468b102bd36e02f21f74a3e15791900",
+  "merge_commit": "39f6c2ba50c2f64d0b30b93f49b7728f94a0116a",
+  "publication": {
+    "target": "https://github.com/kekekewww/Reflections-Lab.git",
+    "original_history_status": "BLOCKED",
+    "clean_snapshot_authorized": true,
+    "snapshot_commit": null,
+    "remote_commit": null,
+    "push": "NOT_RUN",
+    "ci": "NOT_RUN"
+  },
+  "tests": {
+    "dependency_installation": "PASS",
+    "new_boundary_tests": {
+      "pass": 6,
+      "fail": 0
+    },
+    "product_first": {
+      "pass": 3,
+      "fail": 1,
+      "source_stable": true,
+      "bundle_stable": true
+    },
+    "product_repeat": {
+      "pass": 4,
+      "fail": 0,
+      "source_stable": true,
+      "bundle_stable": true
+    },
+    "full_check": {
+      "status": "PASS",
+      "command": "npm run check",
+      "exit_code": 0,
+      "source_inputs": 2295,
+      "changed": 0,
+      "receipt": "artifacts/architecture-review-20261029/root-validation/quality-research-pass-process.json",
+      "general": 668,
+      "agents": 82,
+      "prompts": 12,
+      "wiki": 54,
+      "design": 14,
+      "sound_behaviors": 34,
+      "runtime": 987,
+      "english": {
+        "originals": 329,
+        "translations": 304,
+        "missing": 0,
+        "stale": 0,
+        "errors": 0
+      }
+    },
+    "browser_remaining": {
+      "physics": {
+        "pass": 2,
+        "fail": 0
+      },
+      "storage": {
+        "pass": 5,
+        "fail": 0
+      },
+      "ui": {
+        "pass": 28,
+        "fail": 0
+      },
+      "linked": {
+        "pass": 8,
+        "fail": 0
+      },
+      "scope": "Actual source/bundle-pinned functional browser checks; no new performance or physical/hearing claim",
+      "receipt": "artifacts/architecture-review-20261029/root-validation/browser-process.json"
+    },
+    "post_merge": {
+      "status": "PASS",
+      "command": "npm run check",
+      "tested_commit": "39f6c2ba50c2f64d0b30b93f49b7728f94a0116a",
+      "exit_code": 0,
+      "source_inputs": 2295,
+      "changed": 0,
+      "receipt": "artifacts/architecture-review-20261029/post-merge/quality-receipts.json",
+      "browser": {
+        "status": "PASS",
+        "ui": 28,
+        "linked": 8,
+        "product": 4,
+        "physics": 2,
+        "storage": 5,
+        "receipt": "artifacts/architecture-review-20261029/post-merge/browser-receipts.json"
+      }
+    },
+    "prior_attempts": [
+      {
+        "status": "FAIL",
+        "scope": "Wiki fixture rename EPERM",
+        "source_stable": true
+      },
+      {
+        "status": "FAIL",
+        "scope": "New cost model formatting; format-only correction independently checked"
+      },
+      {
+        "status": "INTERRUPTED_BY_USER",
+        "scope": "No final exit receipt; no full PASS inferred"
+      },
+      {
+        "status": "FAIL",
+        "scope": "Restricted run local fetch failures;652pass/4fail;2295source stable",
+        "receipt": "artifacts/architecture-review-20261029/root-validation/quality-resume-restricted-process.json"
+      }
+    ],
+    "benchmark": {
+      "status": "PASS",
+      "scope": "Analytic baseline, not browser long-run performance",
+      "receipt": "artifacts/architecture-review-20261029/root-validation/benchmark.log.txt"
+    }
+  },
+  "gates": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "PASS",
+    "G7": "PASS",
+    "G8": "PASS",
+    "G9": "NOT_RUN",
+    "G10": "NOT_RUN",
+    "G11": "NOT_RUN",
+    "G12": "NOT_RUN"
+  },
+  "limits": [
+    "R17 performance FAIL retained",
+    "No new paid/live/cloud calls",
+    "Custom AudioWorklet not implemented",
+    "R18 user reports FPS inability to move/interact; downstream FPS operations BLOCKED; default volume too low and direct manipulation unintuitive; tested bundle/device unknown",
+    "Materials/reflections not manually tested; device hearing/IME/long-run performance and legal/root license limits unresolved"
+  ],
+  "pre_merge_comparison": "artifacts/architecture-review-20261029/pre-merge-comparison.json",
+  "review_note": "Actual no-ff merge and original-worktree full quality/current browser checks PASS; concurrent original R18 feedback preserved exactly; public snapshot not yet exported or pushed",
+  "independent_review": {
+    "status": "PASS_FOR_LOCAL_MERGE",
+    "path": "artifacts/architecture-review-20261029/independent-final.json",
+    "sha256": "6f8ff5367f5bdac040e6eaed2daf1df783605ec3274c5a28fde4258b7712b6ce",
+    "limits": "Original full-history public push remains BLOCKED; clean public snapshot not yet exported/validated/scanned/pushed"
+  },
+  "merge_receipt": "artifacts/architecture-review-20261029/merge-commit.json",
+  "ci_routing_repair": {
+    "status": "LOCAL_VALIDATED",
+    "legacy_diagnostic": {
+      "pass": 1,
+      "fail": 1,
+      "not_run": 11,
+      "scope": "Original suite on isolated own preview; failed at outdated closed-details expectation"
+    },
+    "unchanged": [
+      "Product source",
+      "Original legacy test source",
+      "Refined/linked test assertions and timeouts",
+      "Frozen acceptance and benchmark oracles"
+    ],
+    "changes": [
+      "Workflow explicitly builds preview then runs maintained ui-refined-v2 and linked-workflow-v2 suites",
+      "Linked browser config uses bundled Chromium when CI is set; local Chrome unchanged"
+    ],
+    "checks": {
+      "yaml_and_config_format": "PASS",
+      "config_lint": "PASS",
+      "local_and_ci_channel_probe": "PASS",
+      "typecheck": "PASS"
+    },
+    "independent_review": "artifacts/architecture-review-20261029/ci-route-change-review.json",
+    "actual_remote_ci": "NOT_RUN"
+  },
+  "integrated_source_checkpoint": "86ffbdc485e7d6d8c86b235c19041d19c6451aa6",
+  "latest_human_feedback": {
+    "source": "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+    "authority": "DIRECT_USER_REPORT",
+    "fps": "FAILED_USER_REPORT",
+    "fps_dependent_operations": "BLOCKED_NOT_TESTED",
+    "material_and_reflections": "NOT_TESTED",
+    "volume_and_direct_manipulation": "USER_REPORTED_ISSUES",
+    "actual_tested_bundle": "UNKNOWN_NOT_CAPTURED",
+    "not_overridden_by_automatic_tests": true,
+    "fixes_this_task": "NOT_STARTED; engineering publication task only"
+  }
+}

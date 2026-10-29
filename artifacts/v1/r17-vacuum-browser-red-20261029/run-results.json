@@ -1,0 +1,213 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/browser/linked-workflow-v2.config.ts",
+      "--grep",
+      "real unavailable propagation"
+    ],
+    "configFile": "D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.config.ts",
+    "rootDir": "D:/Developing/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Developing/Meta Hack/artifacts/v1/r17-vacuum-browser-red-20261029/proofs",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Developing/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "linked-workflow-v2.spec.ts",
+          "sound-diagnostics-refined-v3.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "snapshotDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": [
+          "linked-workflow-v2.spec.ts",
+          "sound-diagnostics-refined-v3.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5296",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "on",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": [
+              "--use-gl=angle",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--mute-audio"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r17-vacuum-browser-red-20261029\\run-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --outDir test-results/ui-preview-dist --host 127.0.0.1 --port 5296 --strictPort",
+      "cwd": "D:\\Developing\\Meta Hack\\",
+      "url": "http://127.0.0.1:5296",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "linked-workflow-v2.spec.ts",
+      "file": "linked-workflow-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real unavailable propagation preserves path identity and null metrics with its actual reason",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8659,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"unavailable\"\u001b[39m\nReceived: \u001b[31m\"ready\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"unavailable\"\u001b[39m\nReceived: \u001b[31m\"ready\"\u001b[39m\n    at D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts:179:49",
+                    "location": {
+                      "file": "D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts",
+                      "column": 49,
+                      "line": 179
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 177 |\u001b[39m   )\u001b[33m;\u001b[39m\n \u001b[90m 178 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\".path-table\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 179 |\u001b[39m   expect((\u001b[36mawait\u001b[39m snapshot(page))\u001b[33m.\u001b[39macoustic\u001b[33m.\u001b[39mstate)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"unavailable\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 180 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\".paths-panel\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[35m/vacuum/i\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 181 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\".paths-panel\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"No paths to display yet\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 182 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\".evidence-tag\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Computed\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts",
+                        "column": 49,
+                        "line": 179
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"unavailable\"\u001b[39m\nReceived: \u001b[31m\"ready\"\u001b[39m\n\n  177 |   );\n  178 |   await expect(page.locator(\".path-table\")).toHaveCount(0);\n> 179 |   expect((await snapshot(page)).acoustic.state).toBe(\"unavailable\");\n      |                                                 ^\n  180 |   await expect(page.locator(\".paths-panel\")).toContainText(/vacuum/i);\n  181 |   await expect(page.locator(\".paths-panel\")).not.toContainText(\"No paths to display yet\");\n  182 |   await expect(page.locator(\".evidence-tag\")).not.toContainText(\"Computed\");\n    at D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts:179:49"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:44.063Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts",
+                    "column": 49,
+                    "line": 179
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "dcb41c559148e7de4d59-fdcf8e7fed28aaea75d5",
+          "file": "linked-workflow-v2.spec.ts",
+          "line": 166,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T18:06:39.824Z",
+    "duration": 18001.727,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

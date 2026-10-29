@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALIFIED_BUILD_PROVENANCE_ONLY",
+  "scope": "Frozen qualified-build provenance for later device observation only. This is not overallV1, UI, hearing, actual render-block, SPL or runtime-driver PASS.",
+  "candidateState": "PROMOTED_PERMANENT_DERIVATIVES_RUNTIME_NOT_RUN",
+  "preparation": {
+    "artifactIndexPath": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/index.json",
+    "helperReview": {
+      "path": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/raw-receipts/independent-review.json",
+      "sha256": "ca93bc279d3f9738432c3d79fb3d33e6db960d4220170f2895b3100bca745611"
+    },
+    "originalDriverReview": {
+      "path": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/raw-receipts/manual-driver-independent-review.json",
+      "sha256": "0cf2be89008b5c5a18b9f765280cec3d2dbe0bc28e9c90ea772ea547a2582a87",
+      "scope": "Original cache driver8348 source; not the adapted permanent driver."
+    }
+  },
+  "promotionVerification": {
+    "status": "PASS_STATIC_AND_PURE_HOST_SCOPE",
+    "receiptPath": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/promotion-review.json",
+    "receiptSha256": "3a4e7bf5e07c873f5e2e19272d7b9ed84e0e66e3de08ff1893088334f21425ce",
+    "driverSha256": "ed6c2e2f1961044cf51f4e4a3e79391a16732ae83d91f4e79be2282ec305b363",
+    "protocolSha256": "0bccbdea89bc15063f8893ddd89f24113d10aca271e3db2e680932732b09f18f",
+    "rule": "Root fills actual new-path static/pure review hashes only after authorized promotion/verification. Driver refuses launch while this status is not PASS_STATIC_AND_PURE_HOST_SCOPE."
+  },
+  "trustedBuild": {
+    "manifestPath": "artifacts/v1/ui-current-fixed-build-20261027T173919314Z/build-manifest.json",
+    "manifestSha256": "c31a05cf470313cea8a7deccaafd0676f1e83f29b2b4b059ffebf74649a676f5",
+    "inputDigest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+    "inputCount": 170,
+    "bundleCount": 12,
+    "rebuiltManifestPath": "test-results/ui-preview-build.json",
+    "permittedTimestampDifferences": ["buildStartedAt", "buildCompletedAt"],
+    "trustedBuildStartedAt": "2026-10-27T17:39:21.406Z",
+    "trustedBuildCompletedAt": "2026-10-27T17:39:23.907Z",
+    "comparison": "Trust archived exact SHA; permit only these two timestamp value differences in rebuilt candidate, with every other key/value/entry/order strict and current local/HTTP bytes checked. Record both actual manifest SHAs and timestamp pairs."
+  },
+  "nativeProbe": "NOT_RUN",
+  "actualBlock": "UNKNOWN",
+  "hearing": "NOT_RUN",
+  "browserDriver": "NOT_RUN",
+  "userReportedHardwareOnly": {
+    "headphones": "Austrian Audio Hi-x65",
+    "speakers": "ADAM Audio D3V",
+    "actualRoute": null
+  },
+  "currentSourceDerivation": "Normal permanent formatting derivatives preserve original AST/assertions and Worklet UTF8; all original candidate bytes retained in preparation artifact. ca93/0cf2 remain historical original-byte scope."
+}

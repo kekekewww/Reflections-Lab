@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "checkedAt": "2026-10-27T02:10:05.000Z",
+  "scope": "PROVIDER_WIRE_ONLY_WITH_ORIGINAL_LOCAL_VALIDATION",
+  "originalSchemasChanged": false,
+  "originalSceneEnumCount": 12,
+  "originalSoundOperationCount": 5,
+  "confirmedRemoteRejection": {
+    "artifact": "../meta-live-validation-20261027-r2/transport-1.json",
+    "httpStatus": 400,
+    "type": "invalid_request_error",
+    "param": "parameters",
+    "keyword": "uniqueItems",
+    "requestId": "aa8048df-b5c5-4a44-be34-475873e9dd09",
+    "responseId": null,
+    "usage": null,
+    "actualBillingCostUsd": null
+  },
+  "repair": {
+    "omittedRemoteKeywords": ["uniqueItems"],
+    "reason": "實際服務明確拒絕此關鍵字；僅遠端廣告移除，原始 AJV 與 domain 仍拒絕重複資料。",
+    "localRejectionRegressions": [
+      "Scene AnalyzeAcousticResults metrics 與 bandCentersHz 重複",
+      "Scene CompareExperiments metrics 重複",
+      "Sound RuleLifecycle.stopOn 重複",
+      "Sound 重複 profile/binding/rule domain ID"
+    ],
+    "nullableRestoration": "仍只移除原始 optional 屬性的 null；required null、未知欄位、oneOf 歧義仍拒絕。"
+  },
+  "remainingWireKeywords": [
+    "$defs", "$ref", "type", "properties", "required", "additionalProperties",
+    "anyOf", "const", "enum", "items", "minItems", "maxItems", "minLength",
+    "maxLength", "minimum", "maximum", "pattern", "description"
+  ],
+  "publishedStrictChecks": {
+    "rootPlainObject": true,
+    "allPropertiesRequired": true,
+    "additionalPropertiesFalse": true,
+    "noOneOfOrAllOf": true,
+    "acyclicReferences": true,
+    "soundMaximumContainerDepth": 10,
+    "sceneMaximumContainerDepth": 4,
+    "withinPublishedPropertyEnumStringAndExpansionLimits": true
+  },
+  "documentationLimit": "目前官方頁沒有逐項列出所有 bounds/pattern 關鍵字的支援情形，且公開 strict 規則未提 uniqueItems。保留其餘限制，不推定完整相容；最後一次實際請求仍可能揭露另一個 provider 限制。",
+  "sources": [
+    {"url": "https://dev.meta.ai/docs/structured-output", "scope": "strict 子集、ref、深度及大小限制", "contentHash": null},
+    {"url": "https://dev.meta.ai/docs/tool-calling", "scope": "Chat function wrapper、auto、parallel_tool_calls:false", "contentHash": null},
+    {"url": "https://dev.meta.ai/docs/protocols/chat-completions", "scope": "developer role、max_completion_tokens", "contentHash": null},
+    {"url": "https://dev.meta.ai/docs/error-handling", "scope": "typed validation error 格式", "contentHash": null},
+    {"url": "https://dev.meta.ai/docs/pricing-rate-limits", "scope": "Spark Standard input 1.25/output 4.25 USD per million tokens", "contentHash": null}
+  ],
+  "finalExecutionPlan": {
+    "validationScope": "sound-only",
+    "totalAuthorizedUsd": 1,
+    "maxPaidRequestsAcrossAllExecutions": 3,
+    "existingFailedRequests": 2,
+    "existingReservedUsd": 0.5,
+    "remainingPaidRequests": 1,
+    "nextReservationUsd": 0.25,
+    "maxCompletionTokens": 1000,
+    "modelId": "muse-spark-1.3",
+    "dataMode": "standard",
+    "automaticRetries": 0,
+    "sceneLive": "NOT_RUN",
+    "successEvidenceRequired": "真實 response/model ID、usage、單一已驗證 Sound function call、可信 Host Apply、本機 60Hz 三秒 180 tick artifact",
+    "remainingCreditUsd": null,
+    "actualBillingCostUsd": null
+  }
+}

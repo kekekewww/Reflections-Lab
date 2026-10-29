@@ -1,0 +1,150 @@
+{
+  "status": "SOURCEEND_NODE_EQUIVALENCE_ONLY",
+  "createdAt": "2026-10-27T17:02:33.290Z",
+  "sourceFrozen": true,
+  "approvedProductionChange": "src/audio/band-filter.ts only: exact positive finite owned-layout prefix cache",
+  "audioSourceHashes": {
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b"
+  },
+  "unexpectedOtherAudioChanges": [],
+  "ce7012PreimageSha256": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+  "ownerProofSha256": "ed03a23b16782b2630017c980db27e4d5dd05476defb218980b9b1b33867815c",
+  "checks": {
+    "red": {
+      "exitCode": 1,
+      "path": ".cache/v1/audio-layout-prefix-red.tap",
+      "tests": 6,
+      "failed": 3,
+      "passed": 3
+    },
+    "bandAndPrefixGreen": {
+      "passed": 31,
+      "exitCode": 0,
+      "failed": 0,
+      "tests": 31,
+      "path": ".cache/v1/audio-layout-prefix-green.tap",
+      "skipped": 0
+    },
+    "otherAudioRegressions": {
+      "passed": 119,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0,
+      "command": "node --import tsx --test <all audio-runtime *.test.ts except band-filter*.test.ts>",
+      "tap": "audio-prefix-other-regressions.tap"
+    },
+    "totalDisjointAudioCases": 150,
+    "strictAllAudioTsExitCode": 0,
+    "scopedEslintExitCode": 0,
+    "scopedPrettierExitCode": 0
+  },
+  "reference": {
+    "frozenOriginalGoldenCases": 30,
+    "independentDirectDftRetained": true,
+    "fullKeyAndKernelCases": 34
+  },
+  "operationCounts": {
+    "classification": "Exact DataView encoding operation count, not walltime/profile target",
+    "warmSevenBand": 7,
+    "coldSevenBand": 17
+  },
+  "bounds": {
+    "maxEntries": 8,
+    "maxFrequencyValues": 256,
+    "note": "11.5KiB numeric+UTF16 payload; bounded array/object headers and slots separately, not totalheap claim",
+    "explicitPayloadBytes": 11776,
+    "rateAndTapNumbersPerEntry": 2,
+    "maxPrefixUtf16CharsPerEntry": 600
+  },
+  "unchanged": [
+    "Input snapshot and validation precede lookup",
+    "Exact normalized-gain IEEE754 bits and signed zero",
+    "Existing full response key bytes",
+    "Kernel arithmetic/order, output ownership and fresh scale",
+    "512 response entries and 1MiB response payload cap",
+    "Raw route gate/JSON and all AudioParam automation"
+  ],
+  "independentReviews": [
+    {
+      "ranTests": false,
+      "agent": "/root/v1_audio_finish/fir_cost_probe/memo_review",
+      "blockingFindings": 0,
+      "sourceSha256": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+    },
+    {
+      "agent": "/root/v1_audio_finish/audio_review",
+      "sourceSha256": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+      "blockingFindings": 0,
+      "ranTests": false,
+      "notes": "Full key/kernel/validation/ownership/8LRU and34immutable reference fixtures reviewed; reentry constructor-churn may precede outerprefix lookup but no corresponding private snapshot/string defect found"
+    }
+  ],
+  "copied": [
+    {
+      "source": ".cache/v1/audio-layout-prefix-proof-20261027T165939798Z.json",
+      "archive": "audio-layout-prefix-proof-20261027T165939798Z.json",
+      "sha256": "ed03a23b16782b2630017c980db27e4d5dd05476defb218980b9b1b33867815c"
+    },
+    {
+      "source": ".cache/v1/audio-layout-prefix-preimage-ce7012.ts",
+      "archive": "audio-layout-prefix-preimage-ce7012.ts",
+      "sha256": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a"
+    },
+    {
+      "source": ".cache/v1/audio-layout-prefix.patch",
+      "archive": "audio-layout-prefix.patch",
+      "sha256": "172b7f3aed379ae71987be65eec5783510a4b9c685755ab67d3273b25e0403c7"
+    },
+    {
+      "source": ".cache/v1/generate-audio-layout-prefix-reference.mts",
+      "archive": "generate-audio-layout-prefix-reference.mts",
+      "sha256": "6adbc89ac185bf456eb32f043738fa3314b9cb55293a6e25d1f78105fc88b531"
+    },
+    {
+      "source": ".cache/v1/audio-layout-prefix-red.tap",
+      "archive": "audio-layout-prefix-red.tap",
+      "sha256": "f179a7127b7af8845b98ab29be9cbf9030b27ac88cd8e45ccd03ceeee7db181b"
+    },
+    {
+      "source": ".cache/v1/audio-layout-prefix-green.tap",
+      "archive": "audio-layout-prefix-green.tap",
+      "sha256": "b0bf9604bbaaffe32ea6cbcfb5a586529d88b262b7b4ba0e001905ea6ae53356"
+    },
+    {
+      "source": ".cache/v1/audio-prefix-other-regressions.tap",
+      "archive": "audio-prefix-other-regressions.tap",
+      "sha256": "fdcd0c6aa2c723a313a70323d60348d0d7a53cbce8c4e6181c2932bc251a4bbd"
+    },
+    {
+      "source": "src/audio/band-filter.ts",
+      "archive": "band-filter.ts.source.txt",
+      "sha256": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+    },
+    {
+      "source": "tests/audio-runtime/band-filter-prefix.test.ts",
+      "archive": "band-filter-prefix.test.ts.source.txt",
+      "sha256": "1b04dd0b5dd843559a83ec58db62ea57cdb204574ceeff0aeb79607ebfb293f6"
+    },
+    {
+      "source": "tests/audio-runtime/band-filter-prefix-reference.json",
+      "archive": "band-filter-prefix-reference.json.source.txt",
+      "sha256": "230b0b500f735f875cfbeed7297ac8dd1d684276b874328896714a90b858f4cd"
+    }
+  ],
+  "limitations": [
+    "No native/browser/performance rerun or fresh performance PASS claim",
+    "Warm17→7 is an encoding operation count only, not walltime or total delivery reduction",
+    "Prior IRv1 reference-initialization FAIL remains preserved; revised oracle and wrapperbaseline updates are separate later work",
+    "No raw routeJSON gate, frameclone, validation, AudioParam automation, budgets, profilecadence or otherproductionfile changed"
+  ],
+  "writersHeld": true
+}

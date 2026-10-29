@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED",
+  "requiredStates": ["Default", "Hover", "Focus", "Active", "Disabled", "Loading", "Error"],
+  "commonStates": {
+    "Default": "可讀名稱、目前值與操作範圍；不依顏色／tooltip 才能理解",
+    "Hover": "fine pointer 才顯 hover；可用操作以靜態邊界／文字提示，touch 不殘留 hover",
+    "Focus": "focus-visible ring 不被裁切；Tab 可到達；焦點變化不送 FPS command",
+    "Active": "pointerdown／Enter／Space 的已接收回饋；每個 command ID 最多提交一次",
+    "Disabled": "停用具可讀理由；不送命令；必要時外部說明可聚焦，禁用本體遵循 primitive",
+    "Loading": "標明工作與取消／重試能力；保留尺寸、輸入及 command ID；不重複建立",
+    "Error": "保留原輸入／最後穩定結果；欄位關聯訊息、具體復原入口；不靜默 reset"
+  },
+  "asyncStates": ["idle", "loading", "ready", "empty", "stale", "error", "unsupported"],
+  "extensions": {
+    "Selected": "stable SelectionRef＋外框／文字；與 hover/active 分開",
+    "Recording": "可讀記錄種類、長度與 gap；不等於音訊設備正在播放",
+    "Paused": "pause cause＋明示 Resume；保留 run/tick/interaction snapshot",
+    "Simulating": "run/tick 與 backend freshness；不以動效充作計算進度"
+  },
+  "profiles": {
+    "action": {
+      "keyboard": "Enter/Space 啟動一次；原生 button 或可及 primitive；disabled 不提交",
+      "active": "不以等待動畫結束才執行；可撤銷命令走 domain transaction"
+    },
+    "input": {
+      "keyboard": "Tab 導覽；Enter commit／Esc cancel；IME 完成前不提交；原生文字 Undo",
+      "active": "drag 一段為一筆 Undo；invalid local edit 不覆寫 committed value"
+    },
+    "selection": {
+      "keyboard": "依 tree/list/table pattern 使用方向鍵；排序不改 stable ID；提供明示動作",
+      "active": "hover 不搶 selection；結果 stale/unsupported 不能當 empty/0"
+    },
+    "viewport": {
+      "keyboard": "有 DOM 列表／數字操作替代；pointer lock 需明示手勢，Esc/blur 清輸入",
+      "active": "Default/Hover/Focus/Active 指 viewport 控制與 DOM 替代；非替每個 3D 點建立 DOM 焦點"
+    },
+    "disclosure": {
+      "keyboard": "Enter/Space 開 metadata；Esc 關閉且回 trigger；badge 非互動時不進 Tab",
+      "active": "Loading/Error 描述的是來源或載入 metadata；不以 badge 本身假裝可修復 backend"
+    }
+  },
+  "components": [
+    {
+      "id": "ProjectBar",
+      "profile": "action",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "SimulationTransport",
+      "profile": "action",
+      "extensions": ["Paused", "Simulating"]
+    },
+    {
+      "id": "SceneExplorer",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "ObjectLibrary",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "Viewport",
+      "profile": "viewport",
+      "extensions": ["Selected", "Paused", "Simulating"]
+    },
+    {
+      "id": "TransformInspector",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "PhysicsInspector",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "SoundEmitterInspector",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "AcousticSurfaceInspector",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "ListenerInspector",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "FPSHud",
+      "profile": "viewport",
+      "extensions": ["Selected", "Paused", "Simulating"]
+    },
+    {
+      "id": "EventTimeline",
+      "profile": "selection",
+      "extensions": ["Selected", "Recording", "Paused"]
+    },
+    {
+      "id": "AcousticLayerPanel",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "PathTableInspector",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "IRMetricsDock",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "ComparisonPanel",
+      "profile": "selection",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "MonitorStrip",
+      "profile": "action",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "AICommandPalette",
+      "profile": "input",
+      "extensions": ["Selected"]
+    },
+    {
+      "id": "StatusEvidenceBadge",
+      "profile": "disclosure",
+      "extensions": ["Selected"]
+    }
+  ]
+}

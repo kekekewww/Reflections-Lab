@@ -1,0 +1,96 @@
+{
+  "run_id": "469191b9-3b56-4eb1-a94e-7db11d605f4f",
+  "task_id": "HARNESS-SMOKE",
+  "wiki_task_id": "RLAB-TASK-0008",
+  "goal_id": "goal-harness-smoke",
+  "milestone_id": "milestone-harness-smoke",
+  "run_state": "COMPLETED",
+  "preferred_executor": "MUSE",
+  "actual_executor": "CODEX",
+  "previous_executor": "MUSE",
+  "fallback_reason": "QUOTA_EXHAUSTED",
+  "model_cli_versions": {
+    "MUSE": null,
+    "CODEX": null
+  },
+  "last_successful_checkpoint": {
+    "id": "c5a70d2f-c266-4e02-b639-e698c9039959",
+    "path": "runs/469191b9-3b56-4eb1-a94e-7db11d605f4f/checkpoints/c5a70d2f-c266-4e02-b639-e698c9039959.json",
+    "sha256": "eecda58b9c440bf149f42f2812702873e3247fb51af0ee959ca2f394a2367a11",
+    "reason": "after-verification"
+  },
+  "git_revision": null,
+  "modified_files": [
+    "answer.mjs"
+  ],
+  "completed_acceptance_criteria": [
+    "AC-ANSWER"
+  ],
+  "remaining_work": [],
+  "verification_evidence": [
+    {
+      "id": "36b679e8-6f5e-4215-94f4-479f6a99f3a3",
+      "path": "runs/469191b9-3b56-4eb1-a94e-7db11d605f4f/verification/36b679e8-6f5e-4215-94f4-479f6a99f3a3.json",
+      "sha256": "999586a4d2ca5ed168ab39200b70843858d7decb38f825126399fa22842a8309",
+      "status": "PASS",
+      "authority": "independent-node-runner"
+    }
+  ],
+  "resource_usage": {
+    "started_at_ms": 1793029782114,
+    "attempts": 0,
+    "elapsed_ms": 252.83139999999997,
+    "reserved_usd": 0,
+    "cost_usd": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_tokens": null,
+    "tool_calls": null,
+    "remaining_quota": null
+  },
+  "resource_status": {
+    "MUSE": {
+      "status": "exhausted",
+      "remaining": 0,
+      "evidence": [
+        {
+          "description": "USER_CONFIRMED 2026-10-26: 目前沒有任何Muse額度可以使用; development Muse only, not a product Meta API balance observation",
+          "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+          "recorded_at": "2026-10-26T15:46:23.634Z"
+        }
+      ]
+    },
+    "CODEX": {
+      "status": "available",
+      "remaining": 93,
+      "evidence": [
+        {
+          "description": "Codex app get_usage_limits read-only observation: weekly10080min used7percent/remaining93percent, snapshot2026-10-26; secondary unknown; no account IDs/credits persisted",
+          "mode": "CONFIRMED_OPERATOR_OBSERVATION",
+          "recorded_at": "2026-10-26T15:47:00.592Z"
+        }
+      ]
+    },
+    "META_API": {
+      "status": "unknown",
+      "remaining": null,
+      "evidence": [],
+      "live_tests": "NOT RUN"
+    }
+  },
+  "product_runtime": {
+    "status": "unknown",
+    "remaining": null,
+    "evidence": [],
+    "live_tests": "NOT RUN"
+  },
+  "validation_mode": "LIVE_NOT_RUN",
+  "run_state_path": "D:\\Developing\\Meta Hack\\artifacts\\agent-runs\\runs\\469191b9-3b56-4eb1-a94e-7db11d605f4f\\state.json",
+  "run_state_sha256": "4c2d991c59a6ad4e6ab11699f3a4593c78ff5c5763074d6e15ee9d7fa871ab1b",
+  "updated_at": "2026-10-26T15:50:02.216Z",
+  "limitations": [
+    "Projection only; Wiki task JSON remains task authority",
+    "No model quota inferred from token estimates",
+    "Live Meta tests stay BLOCKED/NOT RUN until actual evidence"
+  ]
+}

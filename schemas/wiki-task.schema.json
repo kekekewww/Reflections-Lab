@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/wiki-task.schema.json",
+  "title": "Wiki task record",
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "command": { "type": "string" },
+        "result": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "status",
+    "priority",
+    "owner",
+    "dependencies",
+    "acceptance_criteria",
+    "relevant_files",
+    "evidence",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "status": { "enum": ["BACKLOG", "READY", "IN_PROGRESS", "BLOCKED", "DONE", "CANCELLED"] },
+    "priority": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+    "owner": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["agent", "session", "token", "claimed_at", "heartbeat_at", "lease_until"],
+          "properties": {
+            "agent": { "type": "string", "minLength": 1 },
+            "session": { "type": "string", "minLength": 1 },
+            "token": { "type": "string", "minLength": 1 },
+            "claimed_at": { "type": "string", "format": "date-time" },
+            "heartbeat_at": { "type": "string", "format": "date-time" },
+            "lease_until": { "type": "string", "format": "date-time" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "dependencies": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "verified", "evidence"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "text": { "type": "string", "minLength": 1 },
+          "verified": { "type": "boolean" },
+          "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "relevant_files": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "agent_execution": {
+      "description": "Harness run 的有證據投影；不取代本 task 的 status／acceptance authority。",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id", "run_state", "preferred_executor", "actual_executor", "previous_executor",
+        "fallback_reason", "model", "cli_version", "last_successful_checkpoint", "git_revision",
+        "modified_files", "completed_acceptance_criteria", "remaining_work", "verification_evidence",
+        "resource_usage", "run_state_path", "run_state_sha256", "updated_at"
+      ],
+      "properties": {
+        "run_id": { "type": "string", "minLength": 1 },
+        "run_state": { "enum": ["PENDING", "ASSIGNED_MUSE", "RUNNING_MUSE", "MUSE_QUOTA_EXHAUSTED", "HANDOFF_PENDING", "ASSIGNED_CODEX", "RUNNING_CODEX", "VERIFYING", "REPAIR_REQUIRED", "COMPLETED", "BLOCKED"] },
+        "preferred_executor": { "const": "MUSE" },
+        "actual_executor": { "enum": ["MUSE", "CODEX", null] },
+        "previous_executor": { "enum": ["MUSE", "CODEX", null] },
+        "fallback_reason": { "type": ["string", "null"] },
+        "model": { "type": ["string", "null"] },
+        "cli_version": { "type": ["string", "null"] },
+        "last_successful_checkpoint": { "type": ["string", "null"] },
+        "git_revision": { "type": ["string", "null"] },
+        "modified_files": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "completed_acceptance_criteria": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "remaining_work": { "type": "array", "items": { "type": "string" } },
+        "verification_evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "resource_usage": { "type": "object" },
+        "run_state_path": { "type": "string", "minLength": 1 },
+        "run_state_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,1188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json",
+  "title": "Sound Behavior declarative draft; no runtime execution",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "documentId": {
+      "$ref": "#/$defs/Id"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SoundAssetReference"
+      },
+      "minItems": 0,
+      "maxItems": 256
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SoundBehaviorProfile"
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BehaviorBinding"
+      },
+      "minItems": 0,
+      "maxItems": 256
+    }
+  },
+  "required": ["schemaVersion", "documentId", "revision", "assets", "profiles", "bindings"],
+  "additionalProperties": false,
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "maxLength": 128
+    },
+    "Sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "Vec3": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": -1000000,
+        "maximum": 1000000
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "SoundAssetReference": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "sha256": {
+          "$ref": "#/$defs/Sha256"
+        }
+      },
+      "required": ["assetId", "revision", "sha256"],
+      "additionalProperties": false
+    },
+    "SoundTrigger": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "continuous"
+            },
+            "type": {
+              "enum": [
+                "AlwaysOn",
+                "WhileMoving",
+                "WhileAirborne",
+                "WhileRolling",
+                "WhileSliding",
+                "WhileSpinning",
+                "WhileHeld"
+              ]
+            }
+          },
+          "required": ["kind", "type"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "discrete"
+            },
+            "type": {
+              "enum": [
+                "OnGrab",
+                "OnRelease",
+                "OnThrow",
+                "OnDrop",
+                "OnImpact",
+                "OnBounce",
+                "OnStartMoving",
+                "OnStopMoving",
+                "OnEnterZone",
+                "OnExitZone",
+                "OnSleep",
+                "OnWake"
+              ]
+            }
+          },
+          "required": ["kind", "type"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TriggerCondition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "metric"
+            },
+            "input": {
+              "enum": [
+                "sourceSpeedMetresPerSecond",
+                "angularSpeedRadiansPerSecond",
+                "normalImpulseNewtonSeconds",
+                "closingSpeedMetresPerSecond",
+                "tangentSpeedMetresPerSecond",
+                "slipSpeedMetresPerSecond",
+                "contactSupportForceNewtons"
+              ]
+            },
+            "operator": {
+              "enum": ["gt", "gte", "lt", "lte"]
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000
+            }
+          },
+          "required": ["kind", "input", "operator", "value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "state"
+            },
+            "state": {
+              "enum": ["held", "airborne", "moving", "sleeping", "rolling", "sliding"]
+            },
+            "equals": {
+              "type": "boolean"
+            }
+          },
+          "required": ["kind", "state", "equals"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "materialPair"
+            },
+            "materialA": {
+              "$ref": "#/$defs/Id"
+            },
+            "materialB": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": ["kind", "materialA", "materialB"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ParameterMapping": {
+      "type": "object",
+      "properties": {
+        "mappingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "input": {
+          "enum": [
+            "sourceSpeedMetresPerSecond",
+            "angularSpeedRadiansPerSecond",
+            "normalImpulseNewtonSeconds",
+            "closingSpeedMetresPerSecond",
+            "tangentSpeedMetresPerSecond",
+            "slipSpeedMetresPerSecond",
+            "contactSupportForceNewtons"
+          ]
+        },
+        "target": {
+          "enum": ["gainLinear", "pitchSemitones", "filterCutoffHz"]
+        },
+        "inputMin": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "inputMax": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "outputMin": {
+          "type": "number",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "outputMax": {
+          "type": "number",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "curve": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": ["x", "y"],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 16
+        },
+        "interpolation": {
+          "enum": ["linear", "step"]
+        },
+        "clamp": {
+          "const": true
+        },
+        "smoothingSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "mappingId",
+        "input",
+        "target",
+        "inputMin",
+        "inputMax",
+        "outputMin",
+        "outputMax",
+        "curve",
+        "interpolation",
+        "clamp",
+        "smoothingSeconds"
+      ],
+      "additionalProperties": false
+    },
+    "SoundGenerator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "sample"
+            },
+            "asset": {
+              "$ref": "#/$defs/SoundAssetReference"
+            },
+            "loop": {
+              "type": "boolean"
+            },
+            "startOffsetSeconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 600
+            }
+          },
+          "required": ["kind", "asset", "loop", "startOffsetSeconds"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "oscillator"
+            },
+            "waveform": {
+              "enum": ["sine", "triangle", "square", "sawtooth"]
+            },
+            "frequencyHz": {
+              "type": "number",
+              "minimum": 20,
+              "maximum": 20000
+            }
+          },
+          "required": ["kind", "waveform", "frequencyHz"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SpatialEmitter": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "attachment": {
+              "const": "object"
+            },
+            "offsetMetres": {
+              "$ref": "#/$defs/Vec3"
+            }
+          },
+          "required": ["attachment", "offsetMetres"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "attachment": {
+              "const": "contact"
+            },
+            "aggregation": {
+              "enum": ["impulseWeighted", "representative"]
+            }
+          },
+          "required": ["attachment", "aggregation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "attachment": {
+              "const": "zone"
+            },
+            "zoneId": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": ["attachment", "zoneId"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "attachment": {
+              "const": "fixed"
+            },
+            "positionMetres": {
+              "$ref": "#/$defs/Vec3"
+            }
+          },
+          "required": ["attachment", "positionMetres"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SoundBehaviorRule": {
+      "type": "object",
+      "properties": {
+        "ruleId": {
+          "$ref": "#/$defs/Id"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "trigger": {
+          "$ref": "#/$defs/SoundTrigger"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TriggerCondition"
+          },
+          "minItems": 0,
+          "maxItems": 8
+        },
+        "generator": {
+          "$ref": "#/$defs/SoundGenerator"
+        },
+        "emitter": {
+          "$ref": "#/$defs/SpatialEmitter"
+        },
+        "gainLinear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "pitchSemitones": {
+          "type": "number",
+          "minimum": -24,
+          "maximum": 24
+        },
+        "fadeInSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "fadeOutSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "cooldownSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "voiceLimit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "layerGroup": {
+          "$ref": "#/$defs/Id"
+        },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ParameterMapping"
+          },
+          "minItems": 0,
+          "maxItems": 8
+        },
+        "lifecycle": {
+          "$ref": "#/$defs/RuleLifecycle"
+        },
+        "oneShotDurationSeconds": {
+          "type": "number",
+          "minimum": 0.005,
+          "maximum": 30
+        }
+      },
+      "required": [
+        "ruleId",
+        "enabled",
+        "trigger",
+        "conditions",
+        "generator",
+        "emitter",
+        "gainLinear",
+        "pitchSemitones",
+        "fadeInSeconds",
+        "fadeOutSeconds",
+        "cooldownSeconds",
+        "priority",
+        "voiceLimit",
+        "layerGroup",
+        "mappings"
+      ],
+      "additionalProperties": false
+    },
+    "MaterialPairOverride": {
+      "type": "object",
+      "properties": {
+        "overrideId": {
+          "$ref": "#/$defs/Id"
+        },
+        "ruleId": {
+          "$ref": "#/$defs/Id"
+        },
+        "materialA": {
+          "$ref": "#/$defs/Id"
+        },
+        "materialB": {
+          "$ref": "#/$defs/Id"
+        },
+        "generator": {
+          "$ref": "#/$defs/SoundGenerator"
+        }
+      },
+      "required": ["overrideId", "ruleId", "materialA", "materialB", "generator"],
+      "additionalProperties": false
+    },
+    "SoundBehaviorProfile": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "presetKind": {
+          "enum": ["physical", "creative", "hybrid", "procedural"]
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SoundBehaviorRule"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "materialPairOverrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MaterialPairOverride"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      },
+      "required": ["profileId", "revision", "name", "presetKind", "rules", "materialPairOverrides"],
+      "additionalProperties": false
+    },
+    "RuleOverride": {
+      "type": "object",
+      "properties": {
+        "ruleId": {
+          "$ref": "#/$defs/Id"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "gainLinear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "pitchSemitones": {
+          "type": "number",
+          "minimum": -24,
+          "maximum": 24
+        }
+      },
+      "required": ["ruleId"],
+      "additionalProperties": false
+    },
+    "BehaviorBinding": {
+      "type": "object",
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "objectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "objectGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "profileId": {
+          "$ref": "#/$defs/Id"
+        },
+        "profileRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuleOverride"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "bindingId",
+        "objectId",
+        "objectGeneration",
+        "profileId",
+        "profileRevision",
+        "enabled",
+        "overrides"
+      ],
+      "additionalProperties": false
+    },
+    "ContactData": {
+      "type": "object",
+      "properties": {
+        "pairKey": {
+          "$ref": "#/$defs/Id"
+        },
+        "episodeId": {
+          "$ref": "#/$defs/Id"
+        },
+        "objectA": {
+          "$ref": "#/$defs/Id"
+        },
+        "objectB": {
+          "$ref": "#/$defs/Id"
+        },
+        "colliderA": {
+          "$ref": "#/$defs/Id"
+        },
+        "colliderB": {
+          "$ref": "#/$defs/Id"
+        },
+        "materialA": {
+          "$ref": "#/$defs/Id"
+        },
+        "materialB": {
+          "$ref": "#/$defs/Id"
+        },
+        "pointWorldMetres": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "normalAtoB": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "normalImpulseNewtonSeconds": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "impulseMethod": {
+          "enum": ["RapierContactImpulse", "ForceDtEstimate", "Unavailable"]
+        },
+        "closingSpeedMetresPerSecond": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tangentSpeedMetresPerSecond": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "velocityMethod": {
+          "enum": ["PreStepRigidBodyEstimate", "PostSolveSample", "Unavailable"]
+        }
+      },
+      "required": [
+        "pairKey",
+        "episodeId",
+        "objectA",
+        "objectB",
+        "colliderA",
+        "colliderB",
+        "materialA",
+        "materialB",
+        "pointWorldMetres",
+        "normalAtoB",
+        "normalImpulseNewtonSeconds",
+        "impulseMethod",
+        "closingSpeedMetresPerSecond",
+        "tangentSpeedMetresPerSecond",
+        "velocityMethod"
+      ],
+      "additionalProperties": false
+    },
+    "AudioEvent": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "$ref": "#/$defs/Id"
+        },
+        "experimentId": {
+          "$ref": "#/$defs/Id"
+        },
+        "runEpoch": {
+          "$ref": "#/$defs/Id"
+        },
+        "sceneRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "simulationTimeSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "fixedDtSeconds": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "objectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "profileId": {
+          "$ref": "#/$defs/Id"
+        },
+        "profileRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "ruleId": {
+          "$ref": "#/$defs/Id"
+        },
+        "trigger": {
+          "$ref": "#/$defs/SoundTrigger"
+        },
+        "instanceId": {
+          "$ref": "#/$defs/Id"
+        },
+        "action": {
+          "enum": ["start", "update", "stop"]
+        },
+        "positionMetres": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "gainLinear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "pitchSemitones": {
+          "type": "number",
+          "minimum": -24,
+          "maximum": 24
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactData"
+        },
+        "parentPhysicsEventId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "eventId",
+        "experimentId",
+        "runEpoch",
+        "sceneRevision",
+        "tick",
+        "simulationTimeSeconds",
+        "fixedDtSeconds",
+        "sequence",
+        "objectId",
+        "generation",
+        "bindingId",
+        "profileId",
+        "profileRevision",
+        "ruleId",
+        "trigger",
+        "instanceId",
+        "action",
+        "positionMetres",
+        "gainLinear",
+        "pitchSemitones"
+      ],
+      "additionalProperties": false
+    },
+    "SoundInstance": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "$ref": "#/$defs/Id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "profileId": {
+          "$ref": "#/$defs/Id"
+        },
+        "profileRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "ruleId": {
+          "$ref": "#/$defs/Id"
+        },
+        "objectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "kind": {
+          "enum": ["continuous", "oneShot"]
+        },
+        "playbackState": {
+          "enum": ["scheduled", "playing", "fading", "stopped"]
+        },
+        "startedAtTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "playheadSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "randomSeed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "gainLinear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "pitchSemitones": {
+          "type": "number",
+          "minimum": -24,
+          "maximum": 24
+        },
+        "positionMetres": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "latch": {
+          "$ref": "#/$defs/LatchRuntimeState"
+        }
+      },
+      "required": [
+        "instanceId",
+        "bindingId",
+        "profileId",
+        "profileRevision",
+        "ruleId",
+        "objectId",
+        "generation",
+        "kind",
+        "playbackState",
+        "startedAtTick",
+        "playheadSeconds",
+        "randomSeed",
+        "gainLinear",
+        "pitchSemitones",
+        "positionMetres"
+      ],
+      "additionalProperties": false
+    },
+    "BindingRuntimeState": {
+      "type": "object",
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "activeRuleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "cooldowns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ruleId": {
+                "$ref": "#/$defs/Id"
+              },
+              "rearmAtTick": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              }
+            },
+            "required": ["ruleId", "rearmAtTick"],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      },
+      "required": ["bindingId", "activeRuleIds", "cooldowns"],
+      "additionalProperties": false
+    },
+    "BehaviorRuntimeState": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "experimentId": {
+          "$ref": "#/$defs/Id"
+        },
+        "runEpoch": {
+          "$ref": "#/$defs/Id"
+        },
+        "sceneRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "documentId": {
+          "$ref": "#/$defs/Id"
+        },
+        "documentRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BindingRuntimeState"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SoundInstance"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "processedEventIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 4096,
+          "uniqueItems": true
+        },
+        "randomSeed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "fixedDtSeconds": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "experimentId",
+        "runEpoch",
+        "sceneRevision",
+        "documentId",
+        "documentRevision",
+        "tick",
+        "sequence",
+        "bindings",
+        "instances",
+        "processedEventIds",
+        "randomSeed",
+        "fixedDtSeconds"
+      ],
+      "additionalProperties": false
+    },
+    "ComparisonRun": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "$ref": "#/$defs/Id"
+        },
+        "sceneGeometryHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "physicsConfigHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "motionTraceHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "physicsEventTraceHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "listenerTraceHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "solverConfigHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "atmosphereHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "propagationMaterialHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "profileHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "assetManifestHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "generatorConfigHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "sourceSignalHash": {
+          "$ref": "#/$defs/Sha256"
+        }
+      },
+      "required": [
+        "runId",
+        "sceneGeometryHash",
+        "physicsConfigHash",
+        "motionTraceHash",
+        "physicsEventTraceHash",
+        "listenerTraceHash",
+        "solverConfigHash",
+        "atmosphereHash",
+        "propagationMaterialHash",
+        "profileHash",
+        "assetManifestHash",
+        "generatorConfigHash",
+        "sourceSignalHash"
+      ],
+      "additionalProperties": false
+    },
+    "SoundBehaviorComparison": {
+      "type": "object",
+      "properties": {
+        "comparisonKind": {
+          "enum": ["acoustic", "behavior"]
+        },
+        "independentVariables": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "acousticMaterial",
+              "sourceAsset",
+              "generator",
+              "gainMapping",
+              "pitchMapping",
+              "behaviorProfile"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "runA": {
+          "$ref": "#/$defs/ComparisonRun"
+        },
+        "runB": {
+          "$ref": "#/$defs/ComparisonRun"
+        }
+      },
+      "required": ["comparisonKind", "independentVariables", "runA", "runB"],
+      "additionalProperties": false
+    },
+    "RuleLifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "stopOn", "retriggerPolicy", "maxDurationSeconds"],
+      "properties": {
+        "mode": {
+          "const": "latched"
+        },
+        "stopOn": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "OnGrab",
+              "OnRelease",
+              "OnThrow",
+              "OnDrop",
+              "OnImpact",
+              "OnBounce",
+              "OnStartMoving",
+              "OnStopMoving",
+              "OnEnterZone",
+              "OnExitZone",
+              "OnSleep",
+              "OnWake"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "retriggerPolicy": {
+          "enum": ["ignore", "restart"]
+        },
+        "maxDurationSeconds": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 600
+        }
+      }
+    },
+    "LatchRuntimeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startEventId", "deadlineTick", "retriggerCount"],
+      "properties": {
+        "startEventId": {
+          "$ref": "#/$defs/Id"
+        },
+        "deadlineTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "retriggerCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      }
+    }
+  }
+}

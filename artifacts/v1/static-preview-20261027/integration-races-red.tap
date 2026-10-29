@@ -1,0 +1,53 @@
+TAP version 13
+# Subtest: immediate Stop and blur cancel scene-preview preflight before any late source starts
+not ok 1 - immediate Stop and blur cancel scene-preview preflight before any late source starts
+  ---
+  duration_ms: 134.1055
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\static-preview-integration.test.ts:1:6437'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be strictly unequal to:
+    
+    'playing'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'playing'
+  actual: 'playing'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\static-preview-integration.test.ts:206:14)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a selected raw physics contact resolves the requested layer rather than another matching rule
+not ok 2 - a selected raw physics contact resolves the requested layer rather than another matching rule
+  ---
+  duration_ms: 329.1992
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\static-preview-integration.test.ts:1:6965'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'idle' !== 'playing'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'playing'
+  actual: 'idle'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\static-preview-integration.test.ts:224:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2080.6066

@@ -1,0 +1,69 @@
+{
+  "owner": null,
+  "evidence": [
+    {
+      "path": "artifacts/v1/m0-validation-20261027.json",
+      "sha256": "c36f695430b78732f11de79b375dc31932af7fc9802925da099b489f145ca567",
+      "result": "PASS 40 domain+20 safe authoring tests; protected original acceptance hashes unchanged; only M0 scope"
+    }
+  ],
+  "created_at": "2026-10-26T17:39:30.474Z",
+  "updated_at": "2026-10-27T00:40:49.889Z",
+  "id": "RLAB-TASK-0011",
+  "title": "M0 Audio Event Runtime",
+  "description": "純TypeScript event/rule/instance/voice-intent及trace；可用fixture與SceneHost平行，尚未實作",
+  "status": "DONE",
+  "priority": "P0",
+  "dependencies": [
+    "RLAB-TASK-0010"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "正規化事件排序、去重、正交continuous／one-shot狀態通過固定fixtures",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/m0-validation-20261027.json",
+          "sha256": "c36f695430b78732f11de79b375dc31932af7fc9802925da099b489f145ca567",
+          "result": "PASS 40 domain+20 safe authoring tests; protected original acceptance hashes unchanged; only M0 scope"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "bounded mappings／cooldown／voice admission及無效revision／asset明確拒絕",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/m0-validation-20261027.json",
+          "sha256": "c36f695430b78732f11de79b375dc31932af7fc9802925da099b489f145ca567",
+          "result": "PASS 40 domain+20 safe authoring tests; protected original acceptance hashes unchanged; only M0 scope"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "snapshot／epoch／replay deterministic決策trace與獨立review；不宣稱已播放audio",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/m0-validation-20261027.json",
+          "sha256": "c36f695430b78732f11de79b375dc31932af7fc9802925da099b489f145ca567",
+          "result": "PASS 40 domain+20 safe authoring tests; protected original acceptance hashes unchanged; only M0 scope"
+        },
+        {
+          "path": "artifacts/v1/m0-independent-domain-review.json",
+          "sha256": "5184357c07ba47ccccf98ab6679b5dd8bce0dc0f65c32965ed3f3528d2a1d20a",
+          "result": "Independent domain tests and fixed validation in separate process PASS; browser/audio not in scope"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+    "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+    "docs/10-sound-behaviors/SOUND_BEHAVIOR_VALIDATION.md"
+  ],
+  "last_summary": "M0 domain implementation complete: 40 independent runtime tests,20 safe-authoring tests; separate domain review retained; v1 full product still in progress"
+}

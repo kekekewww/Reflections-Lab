@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "36b679e8-6f5e-4215-94f4-479f6a99f3a3",
+  "task_id": "HARNESS-SMOKE",
+  "run_id": "469191b9-3b56-4eb1-a94e-7db11d605f4f",
+  "authority": "independent-node-runner",
+  "validation_mode": "LIVE_NOT_RUN",
+  "recorded_at": "2026-10-26T15:50:02.196Z",
+  "status": "PASS",
+  "acceptance_hashes": {
+    "examples/agents/acceptance.mjs": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6"
+  },
+  "results": [
+    {
+      "acceptance_id": "AC-ANSWER",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Developing\\Meta Hack\\examples\\agents\\acceptance.mjs",
+        "D:\\Developing\\Meta Hack\\.cache\\phase3\\user-zero-muse-workspace"
+      ],
+      "exit_code": 0,
+      "signal": null,
+      "timed_out": false,
+      "cancelled": false,
+      "process_stopped": true,
+      "stdout": "PASS independent reference answer=42\n",
+      "stderr": "",
+      "duration_ms": 252.83139999999997,
+      "output_limit": false,
+      "spawn_error": null,
+      "stop_scope": "direct_process",
+      "process_tree_stopped": null,
+      "status": "PASS"
+    }
+  ],
+  "git_revision": null,
+  "limitations": [
+    "Deterministic subprocess verification; no live model provenance inferred",
+    "Acceptance scripts must list imported reference helpers in protected_files",
+    "Cooperative locks and hashes do not enforce OS permissions"
+  ]
+}

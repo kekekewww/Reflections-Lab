@@ -1,0 +1,884 @@
+{
+  "id": "RLAB-TASK-0020",
+  "title": "瀏覽器／效能與完整乾淨啟動驗收",
+  "description": "沿用凍結第一版51項驗收的證據切片；不另建任務系統、不取代原0006/0011–0014 criteria。先前分檔實作由Task0006協調，本Task統整完整跨模組驗收。",
+  "status": "BLOCKED",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0006",
+    "RLAB-TASK-0011"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "乾淨npm ci與完整check/build/regression、三次乾淨產品E2E、十次reset/import/dispose與當前來源hash證據",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/qualification-locked-offline-ci-20261027144405972/verification.json",
+          "sha256": "05409b50fe0e1a929667dfd0dfa3993ff1e5873dfa94b671588d072ccf76b9f9",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+          "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+          "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/product-current-corrected-operation-20261027T181110Z/operation-end.json",
+          "sha256": "4d3e52508a3dbfddf07a4782e36554e776c1bdb697b2f75d0dd74fec28e34a16",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027175511594/browser-verification.json",
+          "sha256": "7cd845e93e5dd27a81a0d6d364fd518faa7dea8499fc81082e9b6101ccbd6cd2",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/physics-current-operation-20261027T175652Z/operation-end.json",
+          "sha256": "ddaadca1975da6ed8eae0ba254b4ea72095ff73be96fedb9a273888752e4363f",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/storage-browser-20261027175746252/verification.json",
+          "sha256": "29f18fd3db5a2f894d2e5d61da72f76e8e2c42f972f0004691603d942989d3e7",
+          "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        },
+        {
+          "path": "artifacts/v1/active-rule-integration-20261028/current-functional-summary.json",
+          "sha256": "a5f81ccd8267f076ca7720ad57bcacc7810f2cf768de1772948dcab802719b3f",
+          "result": "Current931runtime/devpolicy26/physics2/storage5/product4 scopedPASS; UI27same12localbundle derivative, no newUIexecution/all12HTTP. Independentprocedures/reviews and source/protected/cleanup receipts retained. Fullcheck/English/localGit pending at this publication cutoff."
+        },
+        {
+          "path": "artifacts/v1/active-rule-production-20261028/current-verification-r2/verification.json",
+          "sha256": "f44e37f0db2165a9f67c1944bdf261c81fc606b87c72a25c7f944c226fb07277",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/vite-dev-policy-repair-20261028/sealed-red-green/manifest.json",
+          "sha256": "f5b0197e246888126baea388398f1fca324e4b387f968bdd95457fc5968b5fad",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/ui-active-rule-current-20261027T222013338Z/proof-receipt.json",
+          "sha256": "116d35606481e3e304b90b2fee3240f23bf6542f836320f637aba0a57e508407",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/physics2-independent-file-review-20261027T225427312Z-r2/verification.json",
+          "sha256": "dc048fd935017fa73aa9e392afd47f2b56dbdb9ff347181292958a268e43a428",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/storage5-independent-file-review-20261027T225814856Z/verification.json",
+          "sha256": "85d4f0054753a3412f5230206ffe49d68740e00fdc66668d565b8b9a3aa9b452",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/product4-build-independent-file-review-20261027T230526601Z/verification.json",
+          "sha256": "0d1c9fbc2af988e860adc1cd2b319fb86dc15db12bd20b1bc15691d1dbe2d5f4",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/current-build-guarded-20261027225733263/portable-build-receipt.json",
+          "sha256": "00d7495b645f26a7cfc9bc62ea4a4c4613d96c7df97e46bb708eec44d54cacf5",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/current-build-guarded-20261027225733263/optional-ui-bundle-byte-binding.json",
+          "sha256": "d35127c520db4f84c19b230687523e6be7e01741305352c6e3cc00442a46773f",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/production-active-rule-build-20261028/verification.json",
+          "sha256": "100eeecc4286d39f8b3a48b09332b0b202a028f8e002564e1e3e928091f1d71c",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/bundle-notice-current-qualification-r12-20261028/qualification-seal.json",
+          "sha256": "d7ac4a9be0a54ea3a1de43e9765438f03e7031d7b076af5d0d8c5a8eda80d91a",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/audio-active-rule-lineage-20261028/assessment.json",
+          "sha256": "bed8191cf87120d7e9a5efe5c6500d9482fe9e4f7ececf773ee374105dac2839",
+          "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+        },
+        {
+          "path": "artifacts/v1/active-rule-integration-20261028/full-quality-followup.json",
+          "sha256": "73910aefadfb6aaf8ee5e56f70535e8017a03e6378c6ee7f5dee315be036eb98",
+          "result": "Actualfullpinnedcheck/runtime931/offlinebenchmarkPASS/source1960stable/protected61; Englishcurrent285/266atcapturedcutoff; newmetadatafinaldelta/Gitpending."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027233315217/verification.json",
+          "sha256": "316fac81b46d1740fa266b2148c0181ac2fbe0194c97854a66014cb716368431",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        },
+        {
+          "path": "artifacts/v1/bundle-notice-pack-20261028-active-rule-r12/fullcheck-production-byte-confirmation-r12-q2.json",
+          "sha256": "7d951e7779768f92920f2b597a105fbeaf88b97929fc62ca29ff6070cd427aaf",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        },
+        {
+          "path": "artifacts/v1/git-child-context-repair-20261028/summary.json",
+          "sha256": "dcb20245ae8e16882fe815eefe98de3f3fffb58404283ce7a1fc1a8394146be0",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        },
+        {
+          "path": "docs/en/_reports/active-rule-r12-current-corpus-20261027T232305093Z.json",
+          "sha256": "288de67905a483a6482d433b5a6091a075fa38b3d1da54ec502755f13e6b349c",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        },
+        {
+          "path": "docs/en/_reports/active-rule-r12-independent-corpus-20261027T232257494Z.json",
+          "sha256": "925c0c4552fcdc0613e9608e4cf7cd205408232a3fbf05f625e69e4675740f7e",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        },
+        {
+          "path": "artifacts/v1/native-interactive-preview-20261027T231605525Z-2069948e/proof-receipt.json",
+          "sha256": "5dc07e74f7f36a9166dc769da51e3176cf5d0375bad0d51681ff489b9a04bff6",
+          "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "既定UI/accessibility/input／native audio／性能profile保留PASS/FAIL/NOT RUN及硬體資訊，不以Node或token代替畫面／DSP／聽測",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+          "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/audio-prefix-native25-20261027173304441/wrapper-verification-v2.json",
+          "sha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/sequential-qualification-receipt.json",
+          "sha256": "b90ff1ace3707131783238d8b2a6cf7924b07d4050c11c9229ae5822c6b1d2a1",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+          "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+          "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/native-visibility-rca-20261028.json",
+          "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+          "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+          "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "新依賴license/source、requirement結果表及CI/可重現命令完整；外部Meta與人工門檻分開",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+        },
+        {
+          "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.json",
+          "sha256": "b676166556d7e5a55bf87416991c3d098cca4566b6bece04a1947d6c5ab9186f",
+          "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+        },
+        {
+          "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/production-candidate-binding.json",
+          "sha256": "45fa62253fcf25aebcf25f7cb31dfd7886f6a16ce40ad168584b5fa6f4318117",
+          "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+        },
+        {
+          "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation.json",
+          "sha256": "1976fc0330ab4b54b6ce22ddd46f1c3cb818e10e229efe4be8a99620f5bb0bb8",
+          "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+        },
+        {
+          "path": "artifacts/v1/tooling-license-recovery-20261028/summary.json",
+          "sha256": "6718e5ac218de63c741538f42d36a21cd6de11a115d406d32e59c6466e729071",
+          "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/11-v1/ACCEPTANCE.md",
+    "tests/browser",
+    "scripts/validation",
+    "docs/01-compliance/V1_THIRD_PARTY_NOTICES.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027-r6.md",
+      "result": "Progress/failure checkpoint; fullgoal unfinished",
+      "sha256": "4190531a15de4a58903ab3a03d9149c37360f796ee39a67f53da15e5cac4819f"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T131711449Z/verification.json",
+      "result": "FORMAL600 firsttrial FAILED/UNVERIFIED; actualCPU/cadence/load failures andtraceboundaryNOTRUN preserved",
+      "sha256": "aa05fc7ac8af17be68dd7e1778804fd5b169c34f7be4cf774fcd3da6c11e9dc6"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T131711449Z/cleanup-proof.json",
+      "result": "Knownroot/directchildren0 and5191free; not global-machine process claim",
+      "sha256": "dce33838d6c81a7815535975acd11dbbf8b115845095bc4d060aeef11f101d18"
+    },
+    {
+      "path": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T13-09-13.922Z-6ad461b3/independent-proof-audit.json",
+      "result": "PASS_WITH_VISUAL_LIMITATION actualnative200+css320 functional2/2;200PNGCROPPED/OSkeyboard+hearingexcluded",
+      "sha256": "babc5a01f183836851f1b0184e96de2c38c83dbbf20319b0203f318f52c3191d"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027-r7.md",
+      "result": "Progress r7; full goal unfinished; prepared-static V2 not yet run",
+      "sha256": "a77a7f48ceeb1a4d8c03a5631a4825cae43a47b02f325441076a9be30e43a9fe"
+    },
+    {
+      "path": "artifacts/v1/qualification-locked-offline-ci-20261027144405972/verification.json",
+      "result": "Pinned Node22.17.0/npm11.4.2 offline CI root+spike PASS; locks unchanged",
+      "sha256": "05409b50fe0e1a929667dfd0dfa3993ff1e5873dfa94b671588d072ccf76b9f9"
+    },
+    {
+      "path": "artifacts/v1/qualification-post-ci-explicit-node-20261027145219929/verification.json",
+      "result": "Post-CI typecheck/lint/runtime900 PASS; actual exits0/source1734stable",
+      "sha256": "d2c439ab4e477f2454c4a805519ffd7492441fa46a313a11477050a3a29c54fe"
+    },
+    {
+      "path": "artifacts/v1/ui-qualification-fixed-build-20261027T145717497Z/proof-receipt.json",
+      "result": "Fresh a699 build PASS_ONLY; no browser/native/performance assertion",
+      "sha256": "8e9138eac16cf8bcd4c6fbbbe94c11e2519a5f4d4b1ab4a428ee83b2f478301a"
+    },
+    {
+      "path": "artifacts/v1/ui-performance-candidate-sourceend-20261027T143736524Z/EXPORT_RECEIPT.json",
+      "result": "UI performance candidate source/reference/RED-GREEN/review exported; no formal profile PASS",
+      "sha256": "e29af423f2d6230a2880c514d7b8efda0ec0650750a3b878ed0af02f8acd9f64"
+    },
+    {
+      "path": "artifacts/v1/audio-delivery-candidate-sourceend-20261027143309508/sourceend-proof.json",
+      "result": "Audio exact filter memo/target-bank reuse Node/reference validated; native pending",
+      "sha256": "8a8e2ff28e5baa70a6f84527fc9a464db833388fc88a737b22b894b359fa8303"
+    },
+    {
+      "path": "artifacts/v1/performance-boundary-awake-sourceend-20261027.json",
+      "result": "Boundary/awake harness146 Node PASS+staticreview; no new profile",
+      "sha256": "9d38cfcdb4152193e3b103d23ceb94f1853fc9b5b787e5c00bcd2aca9de23523"
+    },
+    {
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/diagnosis-summary.json",
+      "result": "18 PASS/7 NOT RUN; prepare17.731s exceeds original15s; all14HTTP200 late; actual native exit1; cleanup retained",
+      "sha256": "ad0e6aac387dc8b5ef6397b6e410843bee8b6c78b9494375a433012bc643ec73"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261028-r8.md",
+      "result": "Progress r8; full goal unfinished; no product/oracle edits after smoke",
+      "sha256": "a9acb526977a2675bd31a72d20b26c1b7bfe3489069a6eb9da0af118d0409d1e"
+    },
+    {
+      "path": "artifacts/v1/audio-prepared-native-v2-20261027154159861/qualification-receipt.json",
+      "result": "Original25 nativePASS/current9audio; actualclose0/source23+supplement6+global1749 stable/known0",
+      "sha256": "00d7c4e6f7f0d3cd9b61253bfcbe3f807095d545647a53d737e19ada164e3ebb"
+    },
+    {
+      "path": "artifacts/v1/audio-prepared-ir-v1-20261027155431842/qualification-receipt.json",
+      "result": "IRv1 raw2PASS1FAIL retained; 6renders576000PCM complete; strict bounds unchanged",
+      "sha256": "d56e179c94b55a7186985188b77bd71ae799d919ef6d13f55cf4c4a8fa638e2c"
+    },
+    {
+      "path": "artifacts/v1/audio-gain-getter-diagnostic-20261027160249209/causal-receipt.json",
+      "result": "Independent existingPCM model+actualnative getter confirm reference inactivebank initialization defect; product unchanged/refV2 pending",
+      "sha256": "f78181f9b4c68195e34c837e79b3a76f53c220c90f1f31c79026dfabbf20443b"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T160813274Z/verification.json",
+      "result": "SMOKE_ONLY actual10s/120/20; source/bundle stable; valid boundaries/awake but performanceFAIL and workload gaps; not600",
+      "sha256": "2fbcf175034e3361b0669bd27a8880ae6bfaa7dc35f45631d7897c5c4b0550dc"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T160813274Z/diagnostic-summary.json",
+      "result": "Post-close distributions; actualretainednative/.NET0 agree; IRv1FAIL/refV2pending; no rerun",
+      "sha256": "2e8f3fe20ed356559f07f9b27d3d16b6a9e2fbf452f80fc6e3191942194c2bda"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T160813274Z/cleanup-proof.json",
+      "result": "Known51808/directchildren0 and5191FREE; no global process inventory",
+      "sha256": "6653eaa2bb27453674bc73097437ce708d1cc2d18c1e220cd7040c9442acf39f"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261028-r9.md",
+      "result": "Progress r9; complete goal unfinished; current product native/browser/profile pending",
+      "sha256": "9cdf8266e1262813e0143d0342f87c1653e4922334d9061fcc3e36fda47f127e"
+    },
+    {
+      "path": "artifacts/v1/history-dto-candidate-sourceend-20261027T165707544Z/EXPORT_RECEIPT.json",
+      "result": "Exact detached private history; RED/GREEN,384+independent4 PASS; fullposes900→700 Node count proof only",
+      "sha256": "3dad620b0a692927ccc888895f658c2ff747a9424272e1dfea75b0b1f2246c8a"
+    },
+    {
+      "path": "artifacts/v1/interpolated-transform-candidate-sourceend-20261027T171111837Z/EXPORT_RECEIPT.json",
+      "result": "Narrow renderer transforms; full public interpolation body unchanged;391+independent7 PASS; fullposes700→550 Node only",
+      "sha256": "91aa5a7be6c9e4430f969300d1cfec600ca1c0316c95aeba7ceca1694d7f6892"
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "result": "Exact layout prefix8cache;150audio PASS,34fullkey/kernel refs+oldgoldens; currentbandf3e5, no native perf claim",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603"
+    },
+    {
+      "path": "artifacts/v1/audio-control-diagnostic-20261027164252008/control-stage-receipt.json",
+      "result": "Measured40batch causal diagnostic/currentChrome; observer restores; no new p95PASS or cachehit inference",
+      "sha256": "0ad4191cacfc6ae871c30eb50ea4d82bbe0d07311c98838ef57bdf22af5b6e6e"
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+      "result": "ROOT SOURCE APPROVAL ONLY: exact23 map, onlyce7012→f3e5 delta; not native validation",
+      "sha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2"
+    },
+    {
+      "path": "artifacts/v1/audio-requal-utility-sourceend-20261027172620604/sourceend-receipt.json",
+      "result": "Sixutility files100conformance PASS+scopedchecks/review; v1immutable and v2strictmetadata/initonly; no native yet",
+      "sha256": "f966623731561532cb3c81c2f58d28fbb348336221142b8b4f455b9f6169576a"
+    },
+    {
+      "path": "artifacts/v1/performance-interpolation-observer-final-20261028.json",
+      "result": "Independent155PASS incloriginal146; actualfastmethod accounted, missing/legacyonly failclosed; thresholds unchanged",
+      "sha256": "70006a6062568ecf118a2a5051151f3902729335c6710c85dbdea16be516a85a"
+    },
+    {
+      "path": "artifacts/v1/performance-interpolation-observer-sourceend-20261028.json",
+      "result": "Observer source/preimages/checks exported; no browser/profile or oldtrace rebin",
+      "sha256": "6ad4b95dc2cf774887de10d127dde0f8afe1982a796b6b12b03c19d17396a902"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261028-r10.md",
+      "result": "Current checkpoint: functional scoped PASS; profile FAIL/incomplete and manual/external gates remain",
+      "sha256": "fe27648c0648824fd9755c1221178b0ab016a79a9b017429680d5ba6f7f0fa48"
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/sequential-qualification-receipt.json",
+      "result": "Current original25 native PASS + IRv2 3PASS/6renders exact PCM; actual closes retained",
+      "sha256": "b90ff1ace3707131783238d8b2a6cf7924b07d4050c11c9229ae5822c6b1d2a1"
+    },
+    {
+      "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+      "result": "Current028b headless UI27 PASS; not native desktop/hearing",
+      "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b"
+    },
+    {
+      "path": "artifacts/v1/physics-current-operation-20261027T175652Z/operation-end.json",
+      "result": "Current physics2 browser PASS and known cleanup",
+      "sha256": "ddaadca1975da6ed8eae0ba254b4ea72095ff73be96fedb9a273888752e4363f"
+    },
+    {
+      "path": "artifacts/v1/storage-current-operation-20261027T175744Z/causal-cleanup-confirmation-end.json",
+      "result": "Current storage5 PASS; bounded causal cleanup after original audit timeout",
+      "sha256": "5f54f005b6a50530f37349849ac7f8ba1b87712823b4eb50db504b614a9d229f"
+    },
+    {
+      "path": "artifacts/v1/product-current-corrected-operation-20261027T181110Z/operation-end.json",
+      "result": "Current product4 PASS; three fresh contexts plus WAV relink, not OS relaunch/hearing",
+      "sha256": "4d3e52508a3dbfddf07a4782e36554e776c1bdb697b2f75d0dd74fec28e34a16"
+    },
+    {
+      "path": "artifacts/v1/product-preview-readiness-independent-20261027T180956888Z/verification.json",
+      "result": "Independent 11PASS, ANSI readiness-only correction; original wait/HTTP/hash/oracles retained",
+      "sha256": "3ac75702aa4d53428f2baf1163f0dd2a1ced27f0fe6e538c8e44be93ead90cec"
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-cross-webkit-20261027181436974/sequential-comparison-receipt.json",
+      "result": "Current FF8PASS1FAIL9BLOCKED7NOTRUN; WindowsWebKit25BLOCKED, no tolerance change",
+      "sha256": "32bb899fa485f5716833686aa53dcd0bc4b0eb4a0c309cf3e424ea4ebfc897a7"
+    },
+    {
+      "path": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/promotion-seal.json",
+      "result": "Formal tool47 pure PASS+semantic equivalence; no device/block/hearing PASS",
+      "sha256": "e0f7afb96f08dfddd6a8a7d558255c740edb13a93187b06f2e3866b53f5b1b27"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "result": "Formal current profile FAIL/incomplete; actual native/.NET0 not performance success",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/global-source-proof.json",
+      "result": "1789 captured source files before/after exact; no later-source assumption",
+      "sha256": "91a243aab9928731c682b98dc3b06326f4eb3fdfbf517ac728cb715c29e7df9a"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/coordinator-cleanup-proof-v2.json",
+      "result": "Exact current23876/children absent and5191free; old PID reuse not killed",
+      "sha256": "2602c4fd4dac7507ef61a029f1d2ce4d55a7b954314d6f4a719ed3b6a2faade9"
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+      "result": "Bounded independent interpretation; raw timestamp comparison no harness epoch transform; no epsilon/rebin/result upgrade",
+      "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100"
+    },
+    {
+      "path": "artifacts/v1/native-visibility-rca-20261028.json",
+      "result": "Two current visible preflight failures; actual cause undetermined; native checks not run",
+      "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002"
+    },
+    {
+      "path": "artifacts/v1/native-surface-recovery-20261028.json",
+      "result": "Root observed official reset/reinitialize failure before app operation; not product/lock evidence",
+      "sha256": "1c4f207dda07f3f9da9d0848ea4cfd968f3f390a2735bd84e59fd05eb17daa48"
+    },
+    {
+      "path": "artifacts/v1/qualification-locked-offline-ci-20261027144405972/verification.json",
+      "sha256": "05409b50fe0e1a929667dfd0dfa3993ff1e5873dfa94b671588d072ccf76b9f9",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+      "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+      "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/product-current-corrected-operation-20261027T181110Z/operation-end.json",
+      "sha256": "4d3e52508a3dbfddf07a4782e36554e776c1bdb697b2f75d0dd74fec28e34a16",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027175511594/browser-verification.json",
+      "sha256": "7cd845e93e5dd27a81a0d6d364fd518faa7dea8499fc81082e9b6101ccbd6cd2",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/physics-current-operation-20261027T175652Z/operation-end.json",
+      "sha256": "ddaadca1975da6ed8eae0ba254b4ea72095ff73be96fedb9a273888752e4363f",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/storage-browser-20261027175746252/verification.json",
+      "sha256": "29f18fd3db5a2f894d2e5d61da72f76e8e2c42f972f0004691603d942989d3e7",
+      "result": "Actual locked offline clean root/spike npm ci receipts are reused only because exact five dependency inputs match. Current explicit Node22.17/npm11.4.2 full check/build/regression and offline benchmark exit0;1844 source hashes stable,61 protected files stable, runtime917/917. Actual current product4 includes three clean contexts; physics2 includes ten lifecycle/reset/import/dispose cycles. No new reinstall is implied; no OS reboot is claimed. Product browser freshness, build inputs and source scopes remain their captured ones."
+    },
+    {
+      "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+      "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+      "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+    },
+    {
+      "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+      "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-native25-20261027173304441/wrapper-verification-v2.json",
+      "sha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/sequential-qualification-receipt.json",
+      "sha256": "b90ff1ace3707131783238d8b2a6cf7924b07d4050c11c9229ae5822c6b1d2a1",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+      "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/native-visibility-rca-20261028.json",
+      "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+      "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+      "result": "Literal criterion asks to retain PASS/FAIL/NOT_RUN and hardware/environment information. Current UI27/native25/performance receipts do so, separately preserving native visible checks NOT_RUN, cross-browser limits and real hearing NOT_RUN/actual block UNKNOWN. Evidence reporting is fulfilled while required product gates stay open. Do not equate recording this criterion true with UI/native/hearing/performance overall PASS, or use Node/token checks as device/visual evidence. VAL03/04 and Task12AC03 remain incomplete."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.json",
+      "sha256": "b676166556d7e5a55bf87416991c3d098cca4566b6bece04a1947d6c5ab9186f",
+      "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/production-candidate-binding.json",
+      "sha256": "45fa62253fcf25aebcf25f7cb31dfd7886f6a16ce40ad168584b5fa6f4318117",
+      "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation.json",
+      "sha256": "1976fc0330ab4b54b6ce22ddd46f1c3cb818e10e229efe4be8a99620f5bb0bb8",
+      "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+    },
+    {
+      "path": "artifacts/v1/tooling-license-recovery-20261028/summary.json",
+      "sha256": "6718e5ac218de63c741538f42d36a21cd6de11a115d406d32e59c6466e729071",
+      "result": "Reproducible commands, CI/local execution evidence, requirement table and external/manual separation exist; dependency license/source completeness is not established. Current NOTICE binding retains six explicit source/text closure gaps and root LICENSE is unselected. Supplemental recovered candidates do not automatically resolve the formal gaps. Fulfilled subset: exact12 production bytes still match bound candidate after fullcheck;173 legal payloads retained. Remaining six license/source gaps need exact evidence or explicit source-authority resolution, without inventing release approval."
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r11-20261028/git-and-qualified-provenance.json",
+      "result": "Actual localaec0604+clean capture+3591committedpaths and independentfreshreceiver support scopedOPS01/Task16AC03; no futurehash invented.",
+      "sha256": "3783ed129b14bf7724ae0cdcd481a1d2fa4c7f572c78c3567a2144c401f8ebd2"
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r11-20261028/fresh-receiver.json",
+      "result": "Fresh independenthandoffPASS and literalprovenanceclosure supported; originalunfinishedgates retained.",
+      "sha256": "8565b1c0338c0180d791ec62ace687dd553d92709d60abcaee34f079eedc0391"
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027213004429/verification.json",
+      "result": "Actual finalpostEnglishdelta fullcheck917/offlinebenchmarkPASS; source1884/protected61 stable; no device/performance/live claim.",
+      "sha256": "8b3a25f8ed5437bcb20f7423397082fde0b9ce5cf3457a742bef601bc6e9ff5d"
+    },
+    {
+      "path": "docs/en/_reports/delta-r11-current-corpus-20261027T212950525Z.json",
+      "result": "Captured261/261mirrors allcurrent/0errors with31tests/5926links; laterfollowupdelta must refresh.",
+      "sha256": "577b9ba1499c656fde77caf5d42ebd3a76621396641b05cf7d2885a36211d728"
+    },
+    {
+      "path": "docs/en/_reports/delta-r11-independent-corpus-20261027T212939977Z.json",
+      "result": "Independent261-mirror currentness/fidelity/carryforward auditPASS; oldreports unchanged.",
+      "sha256": "c6f56602db6f68f8a3c2285d77becd7ae7e2863440ff54d3227e5831804a6126"
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation-r11.json",
+      "result": "All12 fullcheck-rebuilt production files match NOTICEcandidate; sixrights/sourcegaps notclosed.",
+      "sha256": "cd6641b51a5577c38e1d87bf6f0452d42188f22b0b73b3ebd1ff8251f27a5b85"
+    },
+    {
+      "path": "artifacts/v1/active-rule-projection-candidate-r2-20261028/followup-summary.json",
+      "sha256": "5716e15fdf529bcadba7f2cbd2d262b9aa76066f9beff4f598cc4b4d0cfd1307",
+      "result": "R2 isolatedunappliedcandidate actual14PASS/native0, executionpinsstable and independentwhole-outputreview; operationcounts only, no production/performanceclaim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-projection-candidate-r2-20261028/candidate/candidate-r2-receipt.json",
+      "sha256": "0dabb615fbf1a5185a5861913fdb88751f6a2453bfb43f8e5cb5f6a608486ece",
+      "result": "R2 isolatedunappliedcandidate actual14PASS/native0, executionpinsstable and independentwhole-outputreview; operationcounts only, no production/performanceclaim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-projection-candidate-r2-20261028/independent-result-review.json",
+      "sha256": "0b726437c9d6bd703dd30366771930ce3096125d8b5bd5f7378ad8a91059adc2",
+      "result": "R2 isolatedunappliedcandidate actual14PASS/native0, executionpinsstable and independentwhole-outputreview; operationcounts only, no production/performanceclaim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-projection-candidate-r2-20261028/archive-manifest.json",
+      "sha256": "cb33cfc6f8d74a4ef6a5ec1f9f03bd7c75ada2e45805aea31a3354a806ab977a",
+      "result": "R2 isolatedunappliedcandidate actual14PASS/native0, executionpinsstable and independentwhole-outputreview; operationcounts only, no production/performanceclaim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/implementation-summary.json",
+      "sha256": "222660e0d0f0e99ff539d0d58fd19c49eface4a2239dfe769e1268df5a4401af",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/current-verification-r2/verification.json",
+      "sha256": "f44e37f0db2165a9f67c1944bdf261c81fc606b87c72a25c7f944c226fb07277",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/independent-implementation-review.json",
+      "sha256": "d535061a4dbe9f06a33bfb7a39684e837af08b39a88dd8522f44aea8f9901174",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/formal-red-green/unit-red-r1.result.json",
+      "sha256": "83329c46814e96d1372d11b7077fb0e8c20c0ad464eb78a17976c3308ec2c693",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/formal-red-green/formal-green-r1.result.json",
+      "sha256": "49b471ec412e04c4925d2a3bf7a3e6ca8aa7a15142ca77653e3637959fb44803",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/format-derivative.json",
+      "sha256": "96a5f75b6655d3d488d224c502b10e3bd3b2b06b18fb42b969486a2fc8b570d8",
+      "result": "Actualreadonlyprojectionimplemented;12expectedRED→54GREEN pluscurrentformatted931runtime/typecheck/format/scopedlintPASS. Fullsnapshotbody/protectedacceptance retained. Currentbrowser/build/fullquality/performance not implied."
+    },
+    {
+      "path": "artifacts/v1/active-rule-integration-20261028/current-functional-summary.json",
+      "sha256": "a5f81ccd8267f076ca7720ad57bcacc7810f2cf768de1772948dcab802719b3f",
+      "result": "Current931runtime/devpolicy26/physics2/storage5/product4 scopedPASS; UI27same12localbundle derivative, no newUIexecution/all12HTTP. Independentprocedures/reviews and source/protected/cleanup receipts retained. Fullcheck/English/localGit pending at this publication cutoff."
+    },
+    {
+      "path": "artifacts/v1/active-rule-production-20261028/current-verification-r2/verification.json",
+      "sha256": "f44e37f0db2165a9f67c1944bdf261c81fc606b87c72a25c7f944c226fb07277",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/vite-dev-policy-repair-20261028/sealed-red-green/manifest.json",
+      "sha256": "f5b0197e246888126baea388398f1fca324e4b387f968bdd95457fc5968b5fad",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/ui-active-rule-current-20261027T222013338Z/proof-receipt.json",
+      "sha256": "116d35606481e3e304b90b2fee3240f23bf6542f836320f637aba0a57e508407",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/physics2-independent-file-review-20261027T225427312Z-r2/verification.json",
+      "sha256": "dc048fd935017fa73aa9e392afd47f2b56dbdb9ff347181292958a268e43a428",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/storage5-independent-file-review-20261027T225814856Z/verification.json",
+      "sha256": "85d4f0054753a3412f5230206ffe49d68740e00fdc66668d565b8b9a3aa9b452",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/product4-build-independent-file-review-20261027T230526601Z/verification.json",
+      "sha256": "0d1c9fbc2af988e860adc1cd2b319fb86dc15db12bd20b1bc15691d1dbe2d5f4",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/current-build-guarded-20261027225733263/portable-build-receipt.json",
+      "sha256": "00d7495b645f26a7cfc9bc62ea4a4c4613d96c7df97e46bb708eec44d54cacf5",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/current-build-guarded-20261027225733263/optional-ui-bundle-byte-binding.json",
+      "sha256": "d35127c520db4f84c19b230687523e6be7e01741305352c6e3cc00442a46773f",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/production-active-rule-build-20261028/verification.json",
+      "sha256": "100eeecc4286d39f8b3a48b09332b0b202a028f8e002564e1e3e928091f1d71c",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-current-qualification-r12-20261028/qualification-seal.json",
+      "sha256": "d7ac4a9be0a54ea3a1de43e9765438f03e7031d7b076af5d0d8c5a8eda80d91a",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/audio-active-rule-lineage-20261028/assessment.json",
+      "sha256": "bed8191cf87120d7e9a5efe5c6500d9482fe9e4f7ececf773ee374105dac2839",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-integration-20261028/trace-pilot/review/r3-actual-complete-review-20261027T230952Z.json",
+      "sha256": "84d414edb202ec35bb52962fca645bea2a57c722604c9afea3607cc0c35c8dd1",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-integration-20261028/method-followup/assessment.json",
+      "sha256": "02c2f332f25179359b5c11f3dad5b23253592d15f504b11d6cfe665784ed415f",
+      "result": "See current-functional-summary.json for exact per-artifact scope; no globalV1/performance/hearing/legal claim."
+    },
+    {
+      "path": "artifacts/v1/active-rule-integration-20261028/full-quality-followup.json",
+      "sha256": "73910aefadfb6aaf8ee5e56f70535e8017a03e6378c6ee7f5dee315be036eb98",
+      "result": "Actualfullpinnedcheck/runtime931/offlinebenchmarkPASS/source1960stable/protected61; Englishcurrent285/266atcapturedcutoff; newmetadatafinaldelta/Gitpending."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027233315217/verification.json",
+      "sha256": "316fac81b46d1740fa266b2148c0181ac2fbe0194c97854a66014cb716368431",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261028-active-rule-r12/fullcheck-production-byte-confirmation-r12-q2.json",
+      "sha256": "7d951e7779768f92920f2b597a105fbeaf88b97929fc62ca29ff6070cd427aaf",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "artifacts/v1/git-child-context-repair-20261028/summary.json",
+      "sha256": "dcb20245ae8e16882fe815eefe98de3f3fffb58404283ce7a1fc1a8394146be0",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "docs/en/_reports/active-rule-r12-current-corpus-20261027T232305093Z.json",
+      "sha256": "288de67905a483a6482d433b5a6091a075fa38b3d1da54ec502755f13e6b349c",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "docs/en/_reports/active-rule-r12-independent-corpus-20261027T232257494Z.json",
+      "sha256": "925c0c4552fcdc0613e9608e4cf7cd205408232a3fbf05f625e69e4675740f7e",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "artifacts/v1/native-interactive-preview-20261027T231605525Z-2069948e/proof-receipt.json",
+      "sha256": "5dc07e74f7f36a9166dc769da51e3176cf5d0375bad0d51681ff489b9a04bff6",
+      "result": "Exact scope in full-quality-followup.json; no native/hearing/performance/rights/wholeV1upgrade."
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r12-20261028/checkpoint-and-next-phase.json",
+      "sha256": "85225eab42e5bd188f3ccd0589df75a7c155ce9529a8ba408eb16364e4b74d98",
+      "result": "Scopedactualcheckpoint/userdeferral/UNPROMOTEDcandidate evidence; overallV1notcomplete."
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r12-20261028/manual-test-deferral.json",
+      "sha256": "f117b55e9886a068aba31f382d19155e0265789000a41e3e99ad8f2b386d735e",
+      "result": "Scopedactualcheckpoint/userdeferral/UNPROMOTEDcandidate evidence; overallV1notcomplete."
+    },
+    {
+      "path": "artifacts/v1/performance-v3-candidate-prep-20261028/normalization-and-r2/manifest.json",
+      "sha256": "45d7df98573c810c007634352249ed00c72ee1ac25736bf366217b100140601f",
+      "result": "Scopedactualcheckpoint/userdeferral/UNPROMOTEDcandidate evidence; overallV1notcomplete."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027235901798/verification.json",
+      "sha256": "2b5a4cddb2c0ba830ce3e1f29bc11d7e427aee5e7d8aee584e3ffef5db838abe",
+      "result": "Scopedactualcheckpoint/userdeferral/UNPROMOTEDcandidate evidence; overallV1notcomplete."
+    },
+    {
+      "path": "artifacts/v1/user-requested-pause-20261028/pause-record.json",
+      "sha256": "99fd9887c7fd5ff3f6404da8333e36e3dfdc76bf911ebe0345a767dbe99ad370",
+      "result": "Explicit user-requested pause; manual tests NOT RUN; partial engineering unpromoted."
+    },
+    {
+      "path": "artifacts/v1/user-requested-pause-20261028/USER_TEST_CHECKLIST.md",
+      "sha256": "6fe8aa22971b5734db626adfb01fb674aa466b0ce5efc633bcb22eea358fa6c4",
+      "result": "Explicit user-requested pause; manual tests NOT RUN; partial engineering unpromoted."
+    },
+    {
+      "path": "artifacts/v1/user-requested-pause-20261028/performance-r3-partial.json",
+      "sha256": "1d9b353862f7c6ddb7eeb735d166920024d79a69e547ef7356a2aa19e24ba013",
+      "result": "Explicit user-requested pause; manual tests NOT RUN; partial engineering unpromoted."
+    },
+    {
+      "path": "artifacts/v1/user-requested-pause-20261028/hearing-binding-r12-partial.json",
+      "sha256": "ebd3c66597fd3a858f87a424003f24a5b9d0aadd30dcf5c679f1cea5a80cb821",
+      "result": "Explicit user-requested pause; manual tests NOT RUN; partial engineering unpromoted."
+    },
+    {
+      "path": "artifacts/v1/user-requested-pause-20261028/mark-lifecycle-r4-last-pure.json",
+      "sha256": "d79f3177936c33f10b97c2f81c02d08a8dee562e2d06d71974f5592bbb6ae91d",
+      "result": "Explicit user-requested pause; manual tests NOT RUN; partial engineering unpromoted."
+    },
+    {
+      "path": "artifacts/v1/r13-integration-milestone-20261028/milestone.json",
+      "sha256": "43341087f7858f4be1ea28d025d5a29147b37218d95452d8e3865e33368500fb",
+      "result": "Scoped actual R13 automatic evidence; native desktop/hardware/formal600/overallV1 still incomplete."
+    },
+    {
+      "path": "artifacts/v1/r13-runtime-2026-10-28T085136744Z-dc19b600/verification.json",
+      "sha256": "e48f221af61334de66e18c62444212913c34efe22b1bb76e69df4e80c7371085",
+      "result": "Scoped actual R13 automatic evidence; native desktop/hardware/formal600/overallV1 still incomplete."
+    },
+    {
+      "path": "artifacts/v1/r13-fps-2026-10-28T085255383Z-802582cc/verification.json",
+      "sha256": "df858cfb5dfcc1722836e7afce2975b295356729a84b68028aebb84a7e1e9fe1",
+      "result": "Scoped actual R13 automatic evidence; native desktop/hardware/formal600/overallV1 still incomplete."
+    },
+    {
+      "path": "artifacts/v1/r13-ui-2026-10-28T091518446Z-d08a0fae/verification.json",
+      "sha256": "b9086b5f75b7f93329f5c4e765b2fe175d069bdf618401a564d9ca938508de5e",
+      "result": "Scoped actual R13 automatic evidence; native desktop/hardware/formal600/overallV1 still incomplete."
+    },
+    {
+      "path": "artifacts/v1/r13-product-2026-10-28T091915816Z-7448159f/verification.json",
+      "sha256": "41bd0aa056801a19771119dd18f09e7fa1ff93bef2325093186844bc7267a2b8",
+      "result": "Scoped actual R13 automatic evidence; native desktop/hardware/formal600/overallV1 still incomplete."
+    },
+    {
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/verification.json",
+      "sha256": "583c6959dd36db24b92bd52a3683dd038285e4f8501b937d1dae4efe3f0ee16e",
+      "result": "Scoped current R14 checkpoint/rootfault16/no-audio12 evidence with formalFAIL/wholecheck pending; original acceptance flags unchanged, not hearing/fullV1 PASS."
+    },
+    {
+      "path": "artifacts/v1/r14-formal-progress-20261028/verification.json",
+      "sha256": "e5c2490d572c75647f270ae7f50e302e889ff9e43039a9d1719dd545ecd3e121",
+      "result": "Root C1 quality PASS, complete formal trace/same-data numeric analysis; performance/workload FAIL and hearing NOT_RUN. Original criteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r15-progress-20261028/verification.json",
+      "sha256": "518d463053602835998d57e4ff0d54918ce3cdaabc1c620c6e339ac9ffada57c",
+      "result": "Current960/28/4 andR4noaudioPASS; oldformalFAIL, newfullcheck/formal/NOTICEpending. Criteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r15-quality-delivery-20261028/verification.json",
+      "sha256": "7f7723339ffd25198140246cc1162ff8ad0b8dd7afd9d4ab3af11dde053afbd1",
+      "result": "Fullcheck2181stable/PASS inclruntime961, protected61, finalweb14/copies274 Rootmatched; remainingformal/currentmatrix/browser/upstream/human limits unchanged."
+    },
+    {
+      "path": "artifacts/v1/r16-formal-failure-20261029/verification.json",
+      "sha256": "b1a47181dc2333e931325283b4085b49e2e556cc543b0b12c157c572cf38db53",
+      "result": "C2formalFAILED5secquiescence/noUIraw/trace; sourceStable/cleanupgood. Fresh25/IRv2/physics/storage/3browserlaunchesPASS; originalcriteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r16-metrology-progress-20261029/verification.json",
+      "sha256": "04ea71e6fef8701312c817f8e2bf66fda012651751a53bc2b673e9adbed72779",
+      "result": "R16 metrology/root640/independent9 PASS; real20sec raw/tail/trace saved, workload incomplete/performance FAIL; product174 unchanged. Originalcriteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r17-current-state-20261029/verification.json",
+      "sha256": "f324b9192d277dbffc7594c76dba6b90cb5cbcbe86a2d0864f9e140a2a73845b",
+      "result": "Rootlinked8/originalUI28 PASS; first2product4 PASS, third3/4 capture8recoveryFAIL retained. VacuumComputedstatebug underfix; R5pure29/closure approved but noaudio/hearingNOT_RUN. Criteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r17-integration-progress-20261029/verification.json",
+      "sha256": "99c4a53c4aa12d55cfcde1e69bee6df374de541ba2f27539d44733f9cead9bfe",
+      "result": "Root32/20/new8/originalUI28/product4/R6pure30+noaudio PASS; extra2ndproduct4PASS/3rd3of4FAIL OnImpact8 retained. Current175/14; formal/fullcheck pending, criteria unchanged."
+    },
+    {
+      "path": "artifacts/v1/r17-full-check-2026-10-28T184930416Z-6c1c4c0d/verification.json",
+      "sha256": "d2fbe54d68fc98f0a18d903cfdd8ce2b6440b610cd4533b844c5d42cac518c64",
+      "result": "Actual full npm check PASS:668/82/12/54/14/34/18/981;2267inputs stable; TS/lint/format/build/license/English279 current PASS,15warnings retained. Native/browser/hearing/formal separate. Original criteria unchanged."
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261029-r17.json",
+      "sha256": "d600735378cf1b17328e95ce01110261d4713cdffcf5c12143c33566122d72ef",
+      "result": "Root51/102literal scopes; fullcheck and currentbrowser PASS, complete600negative evidence accepted onlymeasurement scope; human originalcriteria remain NOTRUN, originalperformanceFAIL retained."
+    }
+  ],
+  "created_at": "2026-10-27T01:20:34.717Z",
+  "updated_at": "2026-10-28T19:32:18.177Z",
+  "last_summary": "R17工程與原條件範圍已判讀；等待正常100%實體操作／裝置聽測與本人權利確認。性能FAIL保留，完整V1未完成。",
+  "blockers": [
+    "等待真人正常100%／FPS與Hi-x65／D3V裝置聽測；本人資格、條款與rootLICENSE依各任務範圍確認。原criterion未放寬。"
+  ]
+}

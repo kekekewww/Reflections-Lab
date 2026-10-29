@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: app controls: default offline authoring does not fetch or imply Meta inference
+ok 1 - app controls: default offline authoring does not fetch or imply Meta inference
+  ---
+  duration_ms: 148.1861
+  type: 'test'
+  ...
+# Subtest: app controls: zero-budget provider refresh uses status only and blocked submit never falls back to inference
+ok 2 - app controls: zero-budget provider refresh uses status only and blocked submit never falls back to inference
+  ---
+  duration_ms: 35.0086
+  type: 'test'
+  ...
+# Subtest: app controls: changing provider cancels the previous unapproved proposal
+ok 3 - app controls: changing provider cancels the previous unapproved proposal
+  ---
+  duration_ms: 24.214
+  type: 'test'
+  ...
+# Subtest: app controls: failed status lookup stays blocked and never submits a proposal
+ok 4 - app controls: failed status lookup stays blocked and never submits a proposal
+  ---
+  duration_ms: 15.5119
+  type: 'test'
+  ...
+# Subtest: app controls: contradictory zero-budget READY status is rejected before proposal submission
+ok 5 - app controls: contradictory zero-budget READY status is rejected before proposal submission
+  ---
+  duration_ms: 27.7293
+  type: 'test'
+  ...
+# Subtest: app controls: rejected or input actions cannot release another pending transaction lease
+ok 6 - app controls: rejected or input actions cannot release another pending transaction lease
+  ---
+  duration_ms: 48.9769
+  type: 'test'
+  ...
+# Subtest: app controls: import action swaps validated project state and malformed input preserves the running world
+ok 7 - app controls: import action swaps validated project state and malformed input preserves the running world
+  ---
+  duration_ms: 267.9606
+  type: 'test'
+  ...
+# Subtest: app controls: export recording downloads the full verifiable raw artifact
+ok 8 - app controls: export recording downloads the full verifiable raw artifact
+  ---
+  duration_ms: 170.4675
+  type: 'test'
+  ...
+# Subtest: app controls: a fresh runtime reloads trusted asset bytes and a verifiable recording from the shared local store
+ok 9 - app controls: a fresh runtime reloads trusted asset bytes and a verifiable recording from the shared local store
+  ---
+  duration_ms: 338.9601
+  type: 'test'
+  ...
+# Subtest: app controls: Scene source proposal commits and undoes its audible Behavior sidecar atomically
+ok 10 - app controls: Scene source proposal commits and undoes its audible Behavior sidecar atomically
+  ---
+  duration_ms: 82.7767
+  type: 'test'
+  ...
+# Subtest: app controls: missing original asset bytes reject atomically and reimport reconnects the original pin
+ok 11 - app controls: missing original asset bytes reject atomically and reimport reconnects the original pin
+  ---
+  duration_ms: 37.2935
+  type: 'test'
+  ...
+# Subtest: app controls: object labels and source reference frequency survive undo, save and fresh load without entering Scene v1
+ok 12 - app controls: object labels and source reference frequency survive undo, save and fresh load without entering Scene v1
+  ---
+  duration_ms: 98.6263
+  type: 'test'
+  ...
+# Subtest: integration: invalid author edits keep running state and do not create undo history
+ok 13 - integration: invalid author edits keep running state and do not create undo history
+  ---
+  duration_ms: 402.1941
+  type: 'test'
+  ...
+# Subtest: integration: author undo and redo retain object IDs with monotonically increasing revisions
+ok 14 - integration: author undo and redo retain object IDs with monotonically increasing revisions
+  ---
+  duration_ms: 57.3952
+  type: 'test'
+  ...
+# Subtest: integration: geometry replacement, reset and undo keep behavior generation pins usable
+ok 15 - integration: geometry replacement, reset and undo keep behavior generation pins usable
+  ---
+  duration_ms: 70.9603
+  type: 'test'
+  ...
+# Subtest: integration: workspace navigation preserves the running simulation and recording
+ok 16 - integration: workspace navigation preserves the running simulation and recording
+  ---
+  duration_ms: 246.0854
+  type: 'test'
+  ...
+# Subtest: integration: replay starts on captured content and advances authoritative pose and time
+ok 17 - integration: replay starts on captured content and advances authoritative pose and time
+  ---
+  duration_ms: 443.3404
+  type: 'test'
+  ...
+# Subtest: integration: seek uses time relative to the capture even when recording starts late
+ok 18 - integration: seek uses time relative to the capture even when recording starts late
+  ---
+  duration_ms: 430.8684
+  type: 'test'
+  ...
+# Subtest: integration: real sound proposal stages without mutation and Apply/Undo update the live host
+ok 19 - integration: real sound proposal stages without mutation and Apply/Undo update the live host
+  ---
+  duration_ms: 259.6447
+  type: 'test'
+  ...
+# Subtest: integration: AI RunSimulation returns a bounded result backed by actual solver steps and a persisted artifact
+ok 20 - integration: AI RunSimulation returns a bounded result backed by actual solver steps and a persisted artifact
+  ---
+  duration_ms: 7401.1843
+  type: 'test'
+  ...
+# Subtest: integration: pause during replay freezes the replay cursor until explicit resume
+ok 21 - integration: pause during replay freezes the replay cursor until explicit resume
+  ---
+  duration_ms: 487.4202
+  type: 'test'
+  ...
+# Subtest: integration: leaving FPS restores the authored pinned listener rather than committing the head pose
+ok 22 - integration: leaving FPS restores the authored pinned listener rather than committing the head pose
+  ---
+  duration_ms: 87.0232
+  type: 'test'
+  ...
+# Subtest: integration: completed capture remains traceable in the exported project manifest
+ok 23 - integration: completed capture remains traceable in the exported project manifest
+  ---
+  duration_ms: 128.7496
+  type: 'test'
+  ...
+# Subtest: integration: behavior B reevaluates A raw trace with the changed rules instead of copying A decisions
+ok 24 - integration: behavior B reevaluates A raw trace with the changed rules instead of copying A decisions
+  ---
+  duration_ms: 1947.6801
+  type: 'test'
+  ...
+# Subtest: integration: captured impact acoustics use the event contact emitter at the same authoritative tick
+ok 25 - integration: captured impact acoustics use the event contact emitter at the same authoritative tick
+  ---
+  duration_ms: 1053.8081
+  type: 'test'
+  ...
+# Subtest: integration: late-start acoustic B preserves already active continuous content state
+ok 26 - integration: late-start acoustic B preserves already active continuous content state
+  ---
+  duration_ms: 397.518
+  type: 'test'
+  ...
+# Subtest: integration control graph: enabling audio while paused never starts a run or duplicate continuous event
+ok 27 - integration control graph: enabling audio while paused never starts a run or duplicate continuous event
+  ---
+  duration_ms: 165.4392
+  type: 'test'
+  ...
+# Subtest: integration control graph: audio listener follows the authoritative pinned position and orientation
+ok 28 - integration control graph: audio listener follows the authoritative pinned position and orientation
+  ---
+  duration_ms: 93.9843
+  type: 'test'
+  ...
+# Subtest: integration control graph: enabling audio again preserves imported trusted assets for authoring
+ok 29 - integration control graph: enabling audio again preserves imported trusted assets for authoring
+  ---
+  duration_ms: 111.4582
+  type: 'test'
+  ...
+# Subtest: integration control graph: recorded-output replay schedules captured content after draining live voices
+ok 30 - integration control graph: recorded-output replay schedules captured content after draining live voices
+  ---
+  duration_ms: 308.0283
+  type: 'test'
+  ...
+# Subtest: integration control graph: stopping replay restores the suspended live instance and source cursor on Run
+ok 31 - integration control graph: stopping replay restores the suspended live instance and source cursor on Run
+  ---
+  duration_ms: 514.6043
+  type: 'test'
+  ...
+# Subtest: integration control graph: acoustic B preserves true AudioEngine cursor fields instead of logical playhead
+ok 32 - integration control graph: acoustic B preserves true AudioEngine cursor fields instead of logical playhead
+  ---
+  duration_ms: 299.0558
+  type: 'test'
+  ...
+# Subtest: integration: unsupported second-order tool request preserves the real host failure without invented artifacts
+ok 33 - integration: unsupported second-order tool request preserves the real host failure without invented artifacts
+  ---
+  duration_ms: 27.281
+  type: 'test'
+  ...
+# Subtest: integration control graph: native onended cannot rewrite a recorded logical one-shot before its fixed-tick expiry
+ok 34 - integration control graph: native onended cannot rewrite a recorded logical one-shot before its fixed-tick expiry
+  ---
+  duration_ms: 3731.1766
+  type: 'test'
+  ...
+# Subtest: integration control graph: gravity-only toggles preserve physical momentum and the same AlwaysOn native source phase
+ok 35 - integration control graph: gravity-only toggles preserve physical momentum and the same AlwaysOn native source phase
+  ---
+  duration_ms: 499.0834
+  type: 'test'
+  ...
+# Subtest: integration: Replay ObjectView uses captured velocity and sleep state while the live world stays untouched
+ok 36 - integration: Replay ObjectView uses captured velocity and sleep state while the live world stays untouched
+  ---
+  duration_ms: 402.7612
+  type: 'test'
+  ...
+# Subtest: integration: legacy Replay ObjectView omits unavailable or malformed state instead of falling back to live values
+ok 37 - integration: legacy Replay ObjectView omits unavailable or malformed state instead of falling back to live values
+  ---
+  duration_ms: 581
+  type: 'test'
+  ...
+# Subtest: integration: Replay ObjectView shows the captured Held state after the live object was dropped
+ok 38 - integration: Replay ObjectView shows the captured Held state after the live object was dropped
+  ---
+  duration_ms: 156.6997
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22014.8267

@@ -1,0 +1,1120 @@
+TAP version 13
+# Subtest: solver rejects 5.000000001s propagation configuration before audio admission
+ok 1 - solver rejects 5.000000001s propagation configuration before audio admission
+  ---
+  duration_ms: 8.7372
+  type: 'test'
+  ...
+# Subtest: solver rejects 10s propagation configuration before audio admission
+ok 2 - solver rejects 10s propagation configuration before audio admission
+  ---
+  duration_ms: 0.8931
+  type: 'test'
+  ...
+# Subtest: solver accepts the supported 0.001s configuration
+ok 3 - solver accepts the supported 0.001s configuration
+  ---
+  duration_ms: 5.386
+  type: 'test'
+  ...
+# Subtest: solver accepts the supported 5s configuration
+ok 4 - solver accepts the supported 5s configuration
+  ---
+  duration_ms: 1.8334
+  type: 'test'
+  ...
+# Subtest: a path at the five-second boundary remains renderable
+ok 5 - a path at the five-second boundary remains renderable
+  ---
+  duration_ms: 4.5289
+  type: 'test'
+  ...
+# Subtest: a path beyond five seconds is dropped with explicit incomplete-budget diagnostics
+ok 6 - a path beyond five seconds is dropped with explicit incomplete-budget diagnostics
+  ---
+  duration_ms: 6.9351
+  type: 'test'
+  ...
+# Subtest: ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25
+ok 7 - ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25
+  ---
+  duration_ms: 4.7054
+  type: 'test'
+  ...
+# Subtest: ACO-001: doubling distance halves pressure and quarters energy
+ok 8 - ACO-001: doubling distance halves pressure and quarters energy
+  ---
+  duration_ms: 1.0391
+  type: 'test'
+  ...
+# Subtest: ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction
+ok 9 - ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction
+  ---
+  duration_ms: 2.7119
+  type: 'test'
+  ...
+# Subtest: ACO-002: an infinite-plane intersection outside finite polygon is rejected
+ok 10 - ACO-002: an infinite-plane intersection outside finite polygon is rejected
+  ---
+  duration_ms: 0.7006
+  type: 'test'
+  ...
+# Subtest: a reflection cannot connect opposite sides of a zero-thickness reflector
+ok 11 - a reflection cannot connect opposite sides of a zero-thickness reflector
+  ---
+  duration_ms: 0.4339
+  type: 'test'
+  ...
+# Subtest: flipping a two-sided surface normal preserves the finite reflection geometry and identity
+ok 12 - flipping a two-sided surface normal preserves the finite reflection geometry and identity
+  ---
+  duration_ms: 0.972
+  type: 'test'
+  ...
+# Subtest: ACO-002: visibility rejects a reflection blocked on its real first segment
+ok 13 - ACO-002: visibility rejects a reflection blocked on its real first segment
+  ---
+  duration_ms: 0.827
+  type: 'test'
+  ...
+# Subtest: direct occlusion removes the direct acoustic path and names its actual blocker
+ok 14 - direct occlusion removes the direct acoustic path and names its actual blocker
+  ---
+  duration_ms: 0.4695
+  type: 'test'
+  ...
+# Subtest: path identity survives source motion and request/revision/tick changes
+ok 15 - path identity survives source motion and request/revision/tick changes
+  ---
+  duration_ms: 1.7571
+  type: 'test'
+  ...
+# Subtest: AIR-001: explicit synthetic dB/m is applied once as a pressure factor
+ok 16 - AIR-001: explicit synthetic dB/m is applied once as a pressure factor
+  ---
+  duration_ms: 0.7279
+  type: 'test'
+  ...
+# Subtest: AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model
+ok 17 - AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model
+  ---
+  duration_ms: 0.7775
+  type: 'test'
+  ...
+# Subtest: MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption
+ok 18 - MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption
+  ---
+  duration_ms: 0.4182
+  type: 'test'
+  ...
+# Subtest: vacuum has no airborne acoustic paths while leaving mechanical scene data untouched
+ok 19 - vacuum has no airborne acoustic paths while leaving mechanical scene data untouched
+  ---
+  duration_ms: 0.5811
+  type: 'test'
+  ...
+# Subtest: RT60/DRR/C50 and impulse response remain unavailable without a validated response
+ok 20 - RT60/DRR/C50 and impulse response remain unavailable without a validated response
+  ---
+  duration_ms: 0.2966
+  type: 'test'
+  ...
+# Subtest: plain returned frame conforms to the original unchanged AcousticFrame v1 schema
+ok 21 - plain returned frame conforms to the original unchanged AcousticFrame v1 schema
+  ---
+  duration_ms: 373.0673
+  type: 'test'
+  ...
+# Subtest: solver does not mutate frozen request/geometry/material arrays
+ok 22 - solver does not mutate frozen request/geometry/material arrays
+  ---
+  duration_ms: 2.8402
+  type: 'test'
+  ...
+# Subtest: rejects singular, nonfinite, negative, nonconserving, and misaligned domains
+ok 23 - rejects singular, nonfinite, negative, nonconserving, and misaligned domains
+  ---
+  duration_ms: 5.3591
+  type: 'test'
+  ...
+# Subtest: rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity
+ok 24 - rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity
+  ---
+  duration_ms: 2.7118
+  type: 'test'
+  ...
+# Subtest: bounded path selection never returns more than its declared admission limit
+ok 25 - bounded path selection never returns more than its declared admission limit
+  ---
+  duration_ms: 2.107
+  type: 'test'
+  ...
+# Subtest: segment budget is strict and fails closed rather than emitting an unchecked path
+ok 26 - segment budget is strict and fails closed rather than emitting an unchecked path
+  ---
+  duration_ms: 1.6581
+  type: 'test'
+  ...
+# Subtest: invalid budget values cannot bypass bounded work
+ok 27 - invalid budget values cannot bypass bounded work
+  ---
+  duration_ms: 1.251
+  type: 'test'
+  ...
+# Subtest: untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected
+ok 28 - untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected
+  ---
+  duration_ms: 1.6864
+  type: 'test'
+  ...
+# Subtest: oriented box surfaces preserve exact 90-degree Y rotation and stable face identity
+ok 29 - oriented box surfaces preserve exact 90-degree Y rotation and stable face identity
+  ---
+  duration_ms: 4.3704
+  type: 'test'
+  ...
+# Subtest: dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections
+ok 30 - dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections
+  ---
+  duration_ms: 3.8559
+  type: 'test'
+  ...
+# Subtest: accepted near-unit surface normal is normalized before reflection geometry
+ok 31 - accepted near-unit surface normal is normalized before reflection geometry
+  ---
+  duration_ms: 1.3653
+  type: 'test'
+  ...
+# Subtest: sparse material bands cannot silently become unity-gain reflection coefficients
+ok 32 - sparse material bands cannot silently become unity-gain reflection coefficients
+  ---
+  duration_ms: 0.6791
+  type: 'test'
+  ...
+# Subtest: sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors
+ok 33 - sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors
+  ---
+  duration_ms: 1.0667
+  type: 'test'
+  ...
+# Subtest: nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them
+ok 34 - nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them
+  ---
+  duration_ms: 1.2323
+  type: 'test'
+  ...
+# Subtest: 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs
+ok 35 - 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs
+  ---
+  duration_ms: 4.0132
+  type: 'test'
+  ...
+# Subtest: bank replacement and getters work before a hardware context is created
+ok 36 - bank replacement and getters work before a hardware context is created
+  ---
+  duration_ms: 3.9253
+  type: 'test'
+  ...
+# Subtest: the first lazy enable preserves a preloaded bank and its buffer identity
+ok 37 - the first lazy enable preserves a preloaded bank and its buffer identity
+  ---
+  duration_ms: 6.158
+  type: 'test'
+  ...
+# Subtest: whole-bank validation rejects invalid later entries without committing a valid prefix
+ok 38 - whole-bank validation rejects invalid later entries without committing a valid prefix
+  ---
+  duration_ms: 26.1565
+  type: 'test'
+  ...
+# Subtest: duplicate, aggregate-memory and count violations preserve the previous complete bank
+ok 39 - duplicate, aggregate-memory and count violations preserve the previous complete bank
+  ---
+  duration_ms: 2.068
+  type: 'test'
+  ...
+# Subtest: the store replace operation is atomic and removes old entries only after complete validation
+ok 40 - the store replace operation is atomic and removes old entries only after complete validation
+  ---
+  duration_ms: 0.7531
+  type: 'test'
+  ...
+# Subtest: the store cannot replace a bank whose current asset is still pinned
+ok 41 - the store cannot replace a bank whose current asset is still pinned
+  ---
+  duration_ms: 0.4522
+  type: 'test'
+  ...
+# Subtest: a active voice blocks whole-bank replacement until its epoch is drained
+ok 42 - a active voice blocks whole-bank replacement until its epoch is drained
+  ---
+  duration_ms: 127.6363
+  type: 'test'
+  ...
+# Subtest: a retiring voice blocks whole-bank replacement until its epoch is drained
+ok 43 - a retiring voice blocks whole-bank replacement until its epoch is drained
+  ---
+  duration_ms: 169.8146
+  type: 'test'
+  ...
+# Subtest: a pending voice blocks whole-bank replacement until its epoch is drained
+ok 44 - a pending voice blocks whole-bank replacement until its epoch is drained
+  ---
+  duration_ms: 95.0239
+  type: 'test'
+  ...
+# Subtest: a frozen voice blocks whole-bank replacement until its epoch is drained
+ok 45 - a frozen voice blocks whole-bank replacement until its epoch is drained
+  ---
+  duration_ms: 85.4373
+  type: 'test'
+  ...
+# Subtest: an active generator that uses no bank asset still blocks the global bank transaction
+ok 46 - an active generator that uses no bank asset still blocks the global bank transaction
+  ---
+  duration_ms: 1.3358
+  type: 'test'
+  ...
+# Subtest: an actual in-flight decode blocks replacement without cancelling or partially changing either bank
+ok 47 - an actual in-flight decode blocks replacement without cancelling or partially changing either bank
+  ---
+  duration_ms: 7.2857
+  type: 'test'
+  ...
+# Subtest: an immediate built-in generation request blocks replacement until its hashes and registration settle
+ok 48 - an immediate built-in generation request blocks replacement until its hashes and registration settle
+  ---
+  duration_ms: 22.1884
+  type: 'test'
+  ...
+# Subtest: clearing during built-in hashing cancels that generation and cannot refill the cleared bank
+ok 49 - clearing during built-in hashing cancels that generation and cannot refill the cleared bank
+  ---
+  duration_ms: 16.1456
+  type: 'test'
+  ...
+# Subtest: the asset count cap rejects a new asset while allowing an unused replacement at the cap
+ok 50 - the asset count cap rejects a new asset while allowing an unused replacement at the cap
+  ---
+  duration_ms: 6.5057
+  type: 'test'
+  ...
+# Subtest: a pending sample pins its decoded asset until logical cancellation
+ok 51 - a pending sample pins its decoded asset until logical cancellation
+  ---
+  duration_ms: 60.7073
+  type: 'test'
+  ...
+# Subtest: a frozen sample pins its decoded asset until logical cancellation
+ok 52 - a frozen sample pins its decoded asset until logical cancellation
+  ---
+  duration_ms: 43.6801
+  type: 'test'
+  ...
+# Subtest: concurrent native decode admission is bounded before allocating another decoded result
+ok 53 - concurrent native decode admission is bounded before allocating another decoded result
+  ---
+  duration_ms: 22.3282
+  type: 'test'
+  ...
+# Subtest: a failed native decode releases its concurrency slot without registering a partial asset
+ok 54 - a failed native decode releases its concurrency slot without registering a partial asset
+  ---
+  duration_ms: 3.3234
+  type: 'test'
+  ...
+# Subtest: clearing an asset store cancels old results while keeping outstanding native work bounded
+ok 55 - clearing an asset store cancels old results while keeping outstanding native work bounded
+  ---
+  duration_ms: 5.2112
+  type: 'test'
+  ...
+# Subtest: disposing an engine prevents an already-running decode from restoring its asset registry
+ok 56 - disposing an engine prevents an already-running decode from restoring its asset registry
+  ---
+  duration_ms: 5.308
+  type: 'test'
+  ...
+# Subtest: a warm fixed layout does not repeat logarithms, FFT trigonometry or Hann design for changing gains
+ok 57 - a warm fixed layout does not repeat logarithms, FFT trigonometry or Hann design for changing gains
+  ---
+  duration_ms: 25.7661
+  type: 'test'
+  ...
+# Subtest: warm layout reuse avoids repeated large typed work buffers while retaining a distinct output per call
+ok 58 - warm layout reuse avoids repeated large typed work buffers while retaining a distinct output per call
+  ---
+  duration_ms: 14.6281
+  type: 'test'
+  ...
+# Subtest: every frozen preoptimization kernel remains byte-identical across layouts, zeros and finite extremes
+ok 59 - every frozen preoptimization kernel remains byte-identical across layouts, zeros and finite extremes
+  ---
+  duration_ms: 43.5882
+  type: 'test'
+  ...
+# Subtest: planned operators agree with an independent direct inverse-DFT reference without changing original tolerances
+ok 60 - planned operators agree with an independent direct inverse-DFT reference without changing original tolerances
+  ---
+  duration_ms: 31.6051
+  type: 'test'
+  ...
+# Subtest: retained outputs and caller-owned layout arrays cannot alias cached plans or later results
+ok 61 - retained outputs and caller-owned layout arrays cannot alias cached plans or later results
+  ---
+  duration_ms: 0.7944
+  type: 'test'
+  ...
+# Subtest: reentrant output allocation cannot corrupt an outer calculation or retained nested result
+ok 62 - reentrant output allocation cannot corrupt an outer calculation or retained nested result
+  ---
+  duration_ms: 0.7867
+  type: 'test'
+  ...
+# Subtest: a reentrant caller-input read cannot change the validated response snapshot
+ok 63 - a reentrant caller-input read cannot change the validated response snapshot
+  ---
+  duration_ms: 1.005
+  type: 'test'
+  ...
+# Subtest: layout plans are bounded and evicted rather than retaining every authoring layout
+ok 64 - layout plans are bounded and evicted rather than retaining every authoring layout
+  ---
+  duration_ms: 236.3645
+  type: 'test'
+  ...
+# Subtest: an exact normalized-response hit skips transform work but returns fresh ownership and current scale
+ok 65 - an exact normalized-response hit skips transform work but returns fresh ownership and current scale
+  ---
+  duration_ms: 236.8824
+  type: 'test'
+  ...
+# Subtest: response keys distinguish every exact normalized bit, signed zero and layout influence
+ok 66 - response keys distinguish every exact normalized bit, signed zero and layout influence
+  ---
+  duration_ms: 1007.8359
+  type: 'test'
+  ...
+# Subtest: response LRU refreshes hits and deterministically evicts at 512 entries
+ok 67 - response LRU refreshes hits and deterministically evicts at 512 entries
+  ---
+  duration_ms: 30159.4978
+  type: 'test'
+  ...
+# Subtest: the 1 MiB key-plus-kernel payload bound evicts large responses before the entry cap
+ok 68 - the 1 MiB key-plus-kernel payload bound evicts large responses before the entry cap
+  ---
+  duration_ms: 16376.0055
+  type: 'test'
+  ...
+# Subtest: actual scratch-use reentrancy preserves both in-progress and nested kernels
+ok 69 - actual scratch-use reentrancy preserves both in-progress and nested kernels
+  ---
+  duration_ms: 350.3996
+  type: 'test'
+  ...
+# Subtest: hit and same-key miss reentrancy cannot expose cached arrays or corrupt later ownership
+ok 70 - hit and same-key miss reentrancy cannot expose cached arrays or corrupt later ownership
+  ---
+  duration_ms: 200.6957
+  type: 'test'
+  ...
+# Subtest: failed private-copy allocation never inserts an incomplete response
+ok 71 - failed private-copy allocation never inserts an incomplete response
+  ---
+  duration_ms: 93.4329
+  type: 'test'
+  ...
+# Subtest: invalid values are still rejected after a valid layout was cached
+ok 72 - invalid values are still rejected after a valid layout was cached
+  ---
+  duration_ms: 2.7102
+  type: 'test'
+  ...
+# Subtest: a warm seven-band layout encodes only seven normalized values instead of seventeen
+ok 73 - a warm seven-band layout encodes only seven normalized values instead of seventeen
+  ---
+  duration_ms: 60.1097
+  type: 'test'
+  ...
+# Subtest: complete response-key bytes and kernels match the immutable ce7012 preimage fixtures
+ok 74 - complete response-key bytes and kernels match the immutable ce7012 preimage fixtures
+  ---
+  duration_ms: 111.4418
+  type: 'test'
+  ...
+# Subtest: the eight-entry layout-prefix LRU refreshes hits and evicts the untouched ninth layout
+ok 75 - the eight-entry layout-prefix LRU refreshes hits and evicts the untouched ninth layout
+  ---
+  duration_ms: 298.7732
+  type: 'test'
+  ...
+# Subtest: prefix reuse keeps caller inputs private, supports typed arrays and ignores extra fields
+ok 76 - prefix reuse keeps caller inputs private, supports typed arrays and ignores extra fields
+  ---
+  duration_ms: 45.005
+  type: 'test'
+  ...
+# Subtest: invalid values fail before a cached-prefix lookup or encoding
+ok 77 - invalid values fail before a cached-prefix lookup or encoding
+  ---
+  duration_ms: 13.8863
+  type: 'test'
+  ...
+# Subtest: getter and constructor reentry can evict layouts without changing an outer key or kernel
+ok 78 - getter and constructor reentry can evict layouts without changing an outer key or kernel
+  ---
+  duration_ms: 30.8547
+  type: 'test'
+  ...
+# Subtest: uniform pressure ratios use an exact gain route with no FIR or algorithmic group delay
+ok 79 - uniform pressure ratios use an exact gain route with no FIR or algorithmic group delay
+  ---
+  duration_ms: 5.9188
+  type: 'test'
+  ...
+# Subtest: nonuniform response has bounded odd length and a symmetric linear-phase kernel
+ok 80 - nonuniform response has bounded odd length and a symmetric linear-phase kernel
+  ---
+  duration_ms: 29.1505
+  type: 'test'
+  ...
+# Subtest: broad band target amplitudes are approximated by an independently evaluated complex response
+ok 81 - broad band target amplitudes are approximated by an independently evaluated complex response
+  ---
+  duration_ms: 0.9086
+  type: 'test'
+  ...
+# Subtest: frequency interpolation is logarithmic and linear-phase delay remains explicit
+ok 82 - frequency interpolation is logarithmic and linear-phase delay remains explicit
+  ---
+  duration_ms: 3.1895
+  type: 'test'
+  ...
+# Subtest: normalization records the pressure scale without silently normalizing target DC to unity
+ok 83 - normalization records the pressure scale without silently normalizing target DC to unity
+  ---
+  duration_ms: 2.9921
+  type: 'test'
+  ...
+# Subtest: zero bands remain a finite attenuation approximation rather than a zero gain normalization error
+ok 84 - zero bands remain a finite attenuation approximation rather than a zero gain normalization error
+  ---
+  duration_ms: 1.7736
+  type: 'test'
+  ...
+# Subtest: independent dense-DTFT oracle bounds one declared broad-band fixture without claiming arbitrary octave precision
+ok 85 - independent dense-DTFT oracle bounds one declared broad-band fixture without claiming arbitrary octave precision
+  ---
+  duration_ms: 19.6357
+  type: 'test'
+  ...
+# Subtest: invalid frequency, gain and shape inputs fail explicitly before allocation
+ok 86 - invalid frequency, gain and shape inputs fail explicitly before allocation
+  ---
+  duration_ms: 0.9358
+  type: 'test'
+  ...
+# Subtest: tap budgets are bounded and cannot be bypassed with noninteger or nonfinite values
+ok 87 - tap budgets are bounded and cannot be bypassed with noninteger or nonfinite values
+  ---
+  duration_ms: 7.9922
+  type: 'test'
+  ...
+# Subtest: versioned native reference has nine fixed bounded graphs
+ok 88 - versioned native reference has nine fixed bounded graphs
+  ---
+  duration_ms: 1.5702
+  type: 'test'
+  ...
+# Subtest: representable sample delays retain one impulse and equalpower energy
+ok 89 - representable sample delays retain one impulse and equalpower energy
+  ---
+  duration_ms: 16.381
+  type: 'test'
+  ...
+# Subtest: Float32 75ms delay predicts the main and adjacent samples before native observation
+ok 90 - Float32 75ms delay predicts the main and adjacent samples before native observation
+  ---
+  duration_ms: 22.9929
+  type: 'test'
+  ...
+# Subtest: independent two-path arithmetic explains the stored signature without changing its failed oracle
+ok 91 - independent two-path arithmetic explains the stored signature without changing its failed oracle
+  ---
+  duration_ms: 2.368
+  type: 'test'
+  ...
+# Subtest: simulated direct/reflection routes each apply delay and HRTF once with distance rolloff disabled
+ok 92 - simulated direct/reflection routes each apply delay and HRTF once with distance rolloff disabled
+  ---
+  duration_ms: 21.6108
+  type: 'test'
+  ...
+# Subtest: continuous parameter and path updates keep the running generator node
+ok 93 - continuous parameter and path updates keep the running generator node
+  ---
+  duration_ms: 2.5148
+  type: 'test'
+  ...
+# Subtest: independent sample one-shots use fresh BufferSource nodes and the same registered decoded buffer
+ok 94 - independent sample one-shots use fresh BufferSource nodes and the same registered decoded buffer
+  ---
+  duration_ms: 3.7787
+  type: 'test'
+  ...
+# Subtest: voice admission rejects lower priority then steals only the lowest priority voice
+ok 95 - voice admission rejects lower priority then steals only the lowest priority voice
+  ---
+  duration_ms: 2.2135
+  type: 'test'
+  ...
+# Subtest: stale and regressing acoustic frames cannot change an active route
+ok 96 - stale and regressing acoustic frames cannot change an active route
+  ---
+  duration_ms: 1.2124
+  type: 'test'
+  ...
+# Subtest: audio epoch schedules emission time once; propagation remains solely in the path DelayNode
+ok 97 - audio epoch schedules emission time once; propagation remains solely in the path DelayNode
+  ---
+  duration_ms: 1.0133
+  type: 'test'
+  ...
+# Subtest: late emission is counted and scheduled at current audio time rather than in the past
+ok 98 - late emission is counted and scheduled at current audio time rather than in the past
+  ---
+  duration_ms: 0.6491
+  type: 'test'
+  ...
+# Subtest: path budget is enforced independently of voice count
+ok 99 - path budget is enforced independently of voice count
+  ---
+  duration_ms: 0.6567
+  type: 'test'
+  ...
+# Subtest: decoded asset memory cap is enforced before admitting a new buffer
+ok 100 - decoded asset memory cap is enforced before admitting a new buffer
+  ---
+  duration_ms: 1.2161
+  type: 'test'
+  ...
+# Subtest: invalid nonfinite controls fail explicitly rather than reaching AudioParam
+ok 101 - invalid nonfinite controls fail explicitly rather than reaching AudioParam
+  ---
+  duration_ms: 1.0205
+  type: 'test'
+  ...
+# Subtest: muted/raw/simulated monitoring is explicit and does not recreate generators
+ok 102 - muted/raw/simulated monitoring is explicit and does not recreate generators
+  ---
+  duration_ms: 0.8449
+  type: 'test'
+  ...
+# Subtest: dispose releases voices and graph connections
+ok 103 - dispose releases voices and graph connections
+  ---
+  duration_ms: 0.5243
+  type: 'test'
+  ...
+# Subtest: IR-state reference pins the pre-run fixture version, source hash and authored response layouts
+ok 104 - IR-state reference pins the pre-run fixture version, source hash and authored response layouts
+  ---
+  duration_ms: 4.026
+  type: 'test'
+  ...
+# Subtest: fixed response A agrees with an independent inverse DFT and Hann oracle within 1e-7
+ok 105 - fixed response A agrees with an independent inverse DFT and Hann oracle within 1e-7
+  ---
+  duration_ms: 286.4745
+  type: 'test'
+  ...
+# Subtest: live response A retains every fixed Float32 byte, scale and group delay
+ok 106 - live response A retains every fixed Float32 byte, scale and group delay
+  ---
+  duration_ms: 28.603
+  type: 'test'
+  ...
+# Subtest: response A scaled by two keeps the fixed normalized bytes with fresh retained ownership
+ok 107 - response A scaled by two keeps the fixed normalized bytes with fresh retained ownership
+  ---
+  duration_ms: 3.5768
+  type: 'test'
+  ...
+# Subtest: fixed response B agrees with an independent inverse DFT and Hann oracle within 1e-7
+ok 108 - fixed response B agrees with an independent inverse DFT and Hann oracle within 1e-7
+  ---
+  duration_ms: 10.0622
+  type: 'test'
+  ...
+# Subtest: live response B retains every fixed Float32 byte, scale and group delay
+ok 109 - live response B retains every fixed Float32 byte, scale and group delay
+  ---
+  duration_ms: 2.9754
+  type: 'test'
+  ...
+# Subtest: response B scaled by two keeps the fixed normalized bytes with fresh retained ownership
+ok 110 - response B scaled by two keeps the fixed normalized bytes with fresh retained ownership
+  ---
+  duration_ms: 0.9405
+  type: 'test'
+  ...
+# Subtest: each literal-word decode owns fresh Float32 storage and cannot mutate a later fixed response
+ok 111 - each literal-word decode owns fresh Float32 storage and cannot mutate a later fixed response
+  ---
+  duration_ms: 0.8831
+  type: 'test'
+  ...
+# Subtest: unknown runtime fixture names fail explicitly
+ok 112 - unknown runtime fixture names fail explicitly
+  ---
+  duration_ms: 1.7703
+  type: 'test'
+  ...
+# Subtest: synthetic late IR is deterministic mono unit-energy content with no immediate direct impulse
+ok 113 - synthetic late IR is deterministic mono unit-energy content with no immediate direct impulse
+  ---
+  duration_ms: 24.8903
+  type: 'test'
+  ...
+# Subtest: late IR bounds and the independent two-bank memory budget reject atomically
+ok 114 - late IR bounds and the independent two-bank memory budget reject atomically
+  ---
+  duration_ms: 1.9924
+  type: 'test'
+  ...
+# Subtest: the complete uint32 seed range includes a deterministic zero seed
+ok 115 - the complete uint32 seed range includes a deterministic zero seed
+  ---
+  duration_ms: 0.7103
+  type: 'test'
+  ...
+# Subtest: coalescing a pending IR back to the active IR cannot later apply an obsolete seed
+ok 116 - coalescing a pending IR back to the active IR cannot later apply an obsolete seed
+  ---
+  duration_ms: 43.2843
+  type: 'test'
+  ...
+# Subtest: an immediate IR update supersedes an older pending update after its crossfade has elapsed
+ok 117 - an immediate IR update supersedes an older pending update after its crossfade has elapsed
+  ---
+  duration_ms: 44.8871
+  type: 'test'
+  ...
+# Subtest: clearing the late tail replaces convolution state while retaining immutable IR buffers
+ok 118 - clearing the late tail replaces convolution state while retaining immutable IR buffers
+  ---
+  duration_ms: 1.0729
+  type: 'test'
+  ...
+# Subtest: dispose releases the retained late IR buffers and graph connections
+ok 119 - dispose releases the retained late IR buffers and graph connections
+  ---
+  duration_ms: 0.8914
+  type: 'test'
+  ...
+# Subtest: late sends use one actual solver arrival route before synthetic convolution
+ok 120 - late sends use one actual solver arrival route before synthetic convolution
+  ---
+  duration_ms: 9.9923
+  type: 'test'
+  ...
+# Subtest: late send caps remain independent of logical voice admission and total path caps
+ok 121 - late send caps remain independent of logical voice admission and total path caps
+  ---
+  duration_ms: 4.4372
+  type: 'test'
+  ...
+# Subtest: an unavailable solver frame cannot create a substitute late arrival
+ok 122 - an unavailable solver frame cannot create a substitute late arrival
+  ---
+  duration_ms: 2.3182
+  type: 'test'
+  ...
+# Subtest: restored early-arrival segments do not regenerate the synthetic tail once per reflected path
+ok 123 - restored early-arrival segments do not regenerate the synthetic tail once per reflected path
+  ---
+  duration_ms: 107.7403
+  type: 'test'
+  ...
+# Subtest: pause keeps the device clock running and restores a sample cursor without wall-time drift
+ok 124 - pause keeps the device clock running and restores a sample cursor without wall-time drift
+  ---
+  duration_ms: 70.1568
+  type: 'test'
+  ...
+# Subtest: stopping a future emission while paused prevents its admission on resume
+ok 125 - stopping a future emission while paused prevents its admission on resume
+  ---
+  duration_ms: 110.7228
+  type: 'test'
+  ...
+# Subtest: an ended sample retains its unarrived path content across pause without repeating its event
+ok 126 - an ended sample retains its unarrived path content across pause without repeating its event
+  ---
+  duration_ms: 182.8055
+  type: 'test'
+  ...
+# Subtest: stopping a frozen voice removes both its continuation and unarrived path segments
+ok 127 - stopping a frozen voice removes both its continuation and unarrived path segments
+  ---
+  duration_ms: 62.4831
+  type: 'test'
+  ...
+# Subtest: pausing while an old same-ID generation retires preserves the current generation
+ok 128 - pausing while an old same-ID generation retires preserves the current generation
+  ---
+  duration_ms: 44.5464
+  type: 'test'
+  ...
+# Subtest: cache pressure cannot evict frame references pinned by pending and frozen voices
+ok 129 - cache pressure cannot evict frame references pinned by pending and frozen voices
+  ---
+  duration_ms: 34.1122
+  type: 'test'
+  ...
+# Subtest: a second pause preserves an arrival whose logical source has already ended
+ok 130 - a second pause preserves an arrival whose logical source has already ended
+  ---
+  duration_ms: 148.4624
+  type: 'test'
+  ...
+# Subtest: a finite sample shorter than its authored attack schedules a reachable envelope peak
+ok 131 - a finite sample shorter than its authored attack schedules a reachable envelope peak
+  ---
+  duration_ms: 20.7829
+  type: 'test'
+  ...
+# Subtest: unique completed one-shots release frame cache entries under a small source budget
+ok 132 - unique completed one-shots release frame cache entries under a small source budget
+  ---
+  duration_ms: 452.0062
+  type: 'test'
+  ...
+# Subtest: cursor restore applies an authored sample offset separately from a constant-pitch playhead
+ok 133 - cursor restore applies an authored sample offset separately from a constant-pitch playhead
+  ---
+  duration_ms: 33.478
+  type: 'test'
+  ...
+# Subtest: cursor restore keeps main propagation delay and pending-arrival remaining delay distinct
+ok 134 - cursor restore keeps main propagation delay and pending-arrival remaining delay distinct
+  ---
+  duration_ms: 4.8463
+  type: 'test'
+  ...
+# Subtest: an ended one-shot whose final arrival was heard creates no source and repeats no callback
+ok 135 - an ended one-shot whose final arrival was heard creates no source and repeats no callback
+  ---
+  duration_ms: 1.7276
+  type: 'test'
+  ...
+# Subtest: an ended but unarrived one-shot restores only its tail through the acoustic route
+ok 136 - an ended but unarrived one-shot restores only its tail through the acoustic route
+  ---
+  duration_ms: 2.3666
+  type: 'test'
+  ...
+# Subtest: duplicate cursor restoration rejects without allocating another generation or pending segment
+ok 137 - duplicate cursor restoration rejects without allocating another generation or pending segment
+  ---
+  duration_ms: 2.787
+  type: 'test'
+  ...
+# Subtest: duplicate arrival-only restoration cannot replay the same ended logical event twice
+ok 138 - duplicate arrival-only restoration cannot replay the same ended logical event twice
+  ---
+  duration_ms: 2.4556
+  type: 'test'
+  ...
+# Subtest: restored main sources obey the ordinary voice cap without replacing an equal-priority source
+ok 139 - restored main sources obey the ordinary voice cap without replacing an equal-priority source
+  ---
+  duration_ms: 2.7576
+  type: 'test'
+  ...
+# Subtest: ended arrival-only restorations obey the pending-event cap independently of active voices
+ok 140 - ended arrival-only restorations obey the pending-event cap independently of active voices
+  ---
+  duration_ms: 4.7263
+  type: 'test'
+  ...
+# Subtest: an ended-tail restore cannot bypass stale-frame admission without a cached valid frame
+ok 141 - an ended-tail restore cannot bypass stale-frame admission without a cached valid frame
+  ---
+  duration_ms: 1.4357
+  type: 'test'
+  ...
+# Subtest: an exhausted path budget rejects an arrival-only restore before allocating an inaudible source
+ok 142 - an exhausted path budget rejects an arrival-only restore before allocating an inaudible source
+  ---
+  duration_ms: 2.0217
+  type: 'test'
+  ...
+# Subtest: a finite one-shot cursor cannot request an indefinite native loop
+ok 143 - a finite one-shot cursor cannot request an indefinite native loop
+  ---
+  duration_ms: 0.6024
+  type: 'test'
+  ...
+# Subtest: an explicit original emission end clips restored history before any post-stop content
+ok 144 - an explicit original emission end clips restored history before any post-stop content
+  ---
+  duration_ms: 0.9132
+  type: 'test'
+  ...
+# Subtest: a retiring finite source exposes its final cursor while its acoustic arrivals are pending
+ok 145 - a retiring finite source exposes its final cursor while its acoustic arrivals are pending
+  ---
+  duration_ms: 13.4609
+  type: 'test'
+  ...
+# Subtest: a frozen ended source retains the same original emission-end metadata
+ok 146 - a frozen ended source retains the same original emission-end metadata
+  ---
+  duration_ms: 34.1557
+  type: 'test'
+  ...
+# Subtest: cursor getters carry integrated playhead and original elapsed time across restore and pause
+ok 147 - cursor getters carry integrated playhead and original elapsed time across restore and pause
+  ---
+  duration_ms: 37.2274
+  type: 'test'
+  ...
+# Subtest: valid submillisecond restore remainders and arrival segments retain their exact backend duration
+ok 148 - valid submillisecond restore remainders and arrival segments retain their exact backend duration
+  ---
+  duration_ms: 1.6003
+  type: 'test'
+  ...
+# Subtest: retiring instance cleanup cannot remove a new generation with the same instance ID
+ok 149 - retiring instance cleanup cannot remove a new generation with the same instance ID
+  ---
+  duration_ms: 66.4147
+  type: 'test'
+  ...
+# Subtest: lazy context creation preserves monitor and mute controls selected before enable
+ok 150 - lazy context creation preserves monitor and mute controls selected before enable
+  ---
+  duration_ms: 3.2535
+  type: 'test'
+  ...
+# Subtest: invalid frequency-band frames fail atomically before replacing active route data
+ok 151 - invalid frequency-band frames fail atomically before replacing active route data
+  ---
+  duration_ms: 2.3305
+  type: 'test'
+  ...
+# Subtest: replacing an in-use decoded asset cannot bypass the decoded memory budget
+ok 152 - replacing an in-use decoded asset cannot bypass the decoded memory budget
+  ---
+  duration_ms: 1.6502
+  type: 'test'
+  ...
+# Subtest: invalid compound voice update cannot partially change gain before rejecting its filter
+ok 153 - invalid compound voice update cannot partially change gain before rejecting its filter
+  ---
+  duration_ms: 1.2853
+  type: 'test'
+  ...
+# Subtest: a one-shot sample loop requires an explicit finite duration
+ok 154 - a one-shot sample loop requires an explicit finite duration
+  ---
+  duration_ms: 1.0998
+  type: 'test'
+  ...
+# Subtest: zero authored attack does not silently discard a first-sample impulse
+ok 155 - zero authored attack does not silently discard a first-sample impulse
+  ---
+  duration_ms: 1.4462
+  type: 'test'
+  ...
+# Subtest: drain while paused clears voices and route caches while preserving decoded assets
+ok 156 - drain while paused clears voices and route caches while preserving decoded assets
+  ---
+  duration_ms: 87.4138
+  type: 'test'
+  ...
+# Subtest: pause preserves future logical emissions and resume schedules them once in the new epoch
+ok 157 - pause preserves future logical emissions and resume schedules them once in the new epoch
+  ---
+  duration_ms: 65.4504
+  type: 'test'
+  ...
+# Subtest: scalar-only uniform identity updates keep one native IR upload while retaining ramps
+ok 158 - scalar-only uniform identity updates keep one native IR upload while retaining ramps
+  ---
+  duration_ms: 9.5693
+  type: 'test'
+  ...
+# Subtest: scalar-only nonuniform FIR updates keep one native IR upload while retaining ramps
+ok 159 - scalar-only nonuniform FIR updates keep one native IR upload while retaining ramps
+  ---
+  duration_ms: 274.4538
+  type: 'test'
+  ...
+# Subtest: reused IR still accepts the original20ms scale ramp and gates in-progress changes
+ok 160 - reused IR still accepts the original20ms scale ramp and gates in-progress changes
+  ---
+  duration_ms: 6.4218
+  type: 'test'
+  ...
+# Subtest: A to B to A compares the active TARGET IR, never the completed retiring bank
+ok 161 - A to B to A compares the active TARGET IR, never the completed retiring bank
+  ---
+  duration_ms: 5.4006
+  type: 'test'
+  ...
+# Subtest: same targetB with changed scale cleans retiringA without swapping back
+ok 162 - same targetB with changed scale cleans retiringA without swapping back
+  ---
+  duration_ms: 1.7947
+  type: 'test'
+  ...
+# Subtest: a small but byte-distinct response is not hidden by an epsilon or quantized key
+ok 163 - a small but byte-distinct response is not hidden by an epsilon or quantized key
+  ---
+  duration_ms: 2.7682
+  type: 'test'
+  ...
+# Subtest: identity reuse survives a changed exact band layout and a silent scale
+ok 164 - identity reuse survives a changed exact band layout and a silent scale
+  ---
+  duration_ms: 0.8984
+  type: 'test'
+  ...
+# Subtest: arrival fade and retirement/disconnect retain their existing audio-clock commands
+ok 165 - arrival fade and retirement/disconnect retain their existing audio-clock commands
+  ---
+  duration_ms: 1.7434
+  type: 'test'
+  ...
+# Subtest: static preview uses independent native control graph with solver delay and HRTF once
+ok 166 - static preview uses independent native control graph with solver delay and HRTF once
+  ---
+  duration_ms: 365.534
+  type: 'test'
+  ...
+# Subtest: mute/gain/raw monitoring forward without restarting preview or changing emission parameters
+ok 167 - mute/gain/raw monitoring forward without restarting preview or changing emission parameters
+  ---
+  duration_ms: 14.3123
+  type: 'test'
+  ...
+# Subtest: stopping during asynchronous device enable cancels every late voice start
+ok 168 - stopping during asynchronous device enable cancels every late voice start
+  ---
+  duration_ms: 8.8582
+  type: 'test'
+  ...
+# Subtest: sample preview copies the exact accepted asset version and missing bytes refuse explicitly
+ok 169 - sample preview copies the exact accepted asset version and missing bytes refuse explicitly
+  ---
+  duration_ms: 11.0764
+  type: 'test'
+  ...
+# Subtest: rapid replacement bounds independent live voices and disposed host cannot restart
+ok 170 - rapid replacement bounds independent live voices and disposed host cannot restart
+  ---
+  duration_ms: 14.6788
+  type: 'test'
+  ...
+# Subtest: bounded preview reserves a late-send slot after eight individual control-graph paths
+ok 171 - bounded preview reserves a late-send slot after eight individual control-graph paths
+  ---
+  duration_ms: 31.0019
+  type: 'test'
+  ...
+# Subtest: disposed reverb preview creates no nodes when its pending fade drain resolves
+ok 172 - disposed reverb preview creates no nodes when its pending fade drain resolves
+  ---
+  duration_ms: 57.9824
+  type: 'test'
+  ...
+# Subtest: dry audition stop cancels pending enable and disconnects a started independent source
+ok 173 - dry audition stop cancels pending enable and disconnects a started independent source
+  ---
+  duration_ms: 62.362
+  type: 'test'
+  ...
+# Subtest: PCM8/16/24/32 and normalized float32 expose bounded source metadata
+ok 174 - PCM8/16/24/32 and normalized float32 expose bounded source metadata
+  ---
+  duration_ms: 3.3287
+  type: 'test'
+  ...
+# Subtest: fmt18 with zero extension and correctly padded metadata chunks remain accepted
+ok 175 - fmt18 with zero extension and correctly padded metadata chunks remain accepted
+  ---
+  duration_ms: 0.5226
+  type: 'test'
+  ...
+# Subtest: RIFF size, chunk truncation, alignment and empty-data errors fail explicitly
+ok 176 - RIFF size, chunk truncation, alignment and empty-data errors fail explicitly
+  ---
+  duration_ms: 1.5857
+  type: 'test'
+  ...
+# Subtest: duplicate fmt/data chunks and excessive metadata chunks cannot hide another payload
+ok 177 - duplicate fmt/data chunks and excessive metadata chunks cannot hide another payload
+  ---
+  duration_ms: 1.0911
+  type: 'test'
+  ...
+# Subtest: compressed and unsupported sample encodings are rejected as unavailable capabilities
+ok 178 - compressed and unsupported sample encodings are rejected as unavailable capabilities
+  ---
+  duration_ms: 0.6183
+  type: 'test'
+  ...
+# Subtest: channel, sample-rate, duration and predicted PCM bounds apply before decoding
+ok 179 - channel, sample-rate, duration and predicted PCM bounds apply before decoding
+  ---
+  duration_ms: 0.638
+  type: 'test'
+  ...
+# Subtest: native resampling output is reserved rather than trusting a smaller source sample count
+ok 180 - native resampling output is reserved rather than trusting a smaller source sample count
+  ---
+  duration_ms: 0.5596
+  type: 'test'
+  ...
+# Subtest: float32 WAV samples must be finite and normalized before native decode
+ok 181 - float32 WAV samples must be finite and normalized before native decode
+  ---
+  duration_ms: 0.5506
+  type: 'test'
+  ...
+# Subtest: malformed, compressed and oversized PCM imports never reach the native decoder
+ok 182 - malformed, compressed and oversized PCM imports never reach the native decoder
+  ---
+  duration_ms: 1.4687
+  type: 'test'
+  ...
+# Subtest: in-flight PCM reservations reject another native allocation before its decode begins
+ok 183 - in-flight PCM reservations reject another native allocation before its decode begins
+  ---
+  duration_ms: 26.7483
+  type: 'test'
+  ...
+# Subtest: direct registration cannot spend PCM memory reserved by an outstanding native decode
+ok 184 - direct registration cannot spend PCM memory reserved by an outstanding native decode
+  ---
+  duration_ms: 1.4459
+  type: 'test'
+  ...
+# Subtest: native output inconsistent with preflight metadata is rejected without a partial registry entry
+ok 185 - native output inconsistent with preflight metadata is rejected without a partial registry entry
+  ---
+  duration_ms: 1.6967
+  type: 'test'
+  ...
+1..185
+# tests 185
+# suites 0
+# pass 185
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 50492.0647

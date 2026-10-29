@@ -1,0 +1,111 @@
+{
+  "checkedAt": "2026-10-27T06:57:29.892Z",
+  "status": "LINT_FORMAT_REPAIR_PASS_WITH_PREEXISTING_REGRESSION_FAILURE",
+  "writeOwnershipReleased": true,
+  "changes": "Two unused import specifiers removed; seven loose null checks rewritten as explicit strict null-or-undefined unions; six additional files only formatted by local Prettier 3.6.2.",
+  "verification": {
+    "path": "artifacts/v1/lint-repair-20261027/run-20261027T065502400Z/verification.json",
+    "sha256": "443cc4eef3649de8fcc659d140959f23dfa2e1f7ddf35e8532faa19d044674c8",
+    "unchangedResult": "FAIL"
+  },
+  "checks": [
+    {
+      "label": "lint",
+      "exitCode": 0
+    },
+    {
+      "label": "format",
+      "exitCode": 0
+    },
+    {
+      "label": "typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "scoped-typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "relevant-tests",
+      "exitCode": 1
+    }
+  ],
+  "relevantTests": {
+    "pass": 61,
+    "fail": 1,
+    "skipped": 0,
+    "total": 62
+  },
+  "preexistingFailure": {
+    "title": "producer support contact stays the continuous anchor when a stronger impact occurs elsewhere",
+    "actualContactMetres": [
+      -0.55,
+      0.35,
+      0
+    ],
+    "expectedContactMetres": [
+      -0.8,
+      0,
+      0
+    ],
+    "reproducedFromPreimage": true,
+    "proof": {
+      "path": "artifacts/v1/lint-repair-20261027/run-20261027T065502400Z/preimage-reproduction.json",
+      "sha256": "17110a50be8e7eb2c6a2978810f54b3d06f4db8e8c1a340af5338170c000e117"
+    },
+    "disposition": "Preserved failure and handed to root; no out-of-scope product fix or assertion weakening."
+  },
+  "independentReview": {
+    "path": "artifacts/v1/lint-repair-20261027/run-20261027T065502400Z/independent-review.json",
+    "sha256": "fd82227c796e6cac2ab0b7b59584dba4c3b794ae9b661bd24838baaec0758c62"
+  },
+  "historicalEvidence": "Existing raw evidence and previous proof hashes were not changed. Archives preserve the prior test source byte version. New postimage hashes identify formatting/assertion syntax changes explicitly.",
+  "protectedCount": 61,
+  "protectedUnchanged": true,
+  "current": [
+    {
+      "path": "src/acoustics/solver.ts",
+      "sha256": "9bda7efc5228a56be1d50c26ba30d42031c9321d9c251710523f0e9236f737a3",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tests/app/defaults.test.ts",
+      "sha256": "168e381bb13c554a7c7a32691cc76f12d539e30640307746bc1724bb50b2e6db",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "82c8716843ec8d1b788cc3ba86270ec71f68b0c2e29bf89f0dad5f7e1fbece3b",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "e2b887ba675a756339b24c1877d2ed70dcc191505aba9559ca71a2f6b7302b88",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tests/agents-store/atomic-rename.test.mjs",
+      "sha256": "0a851b9cea1295482400b9e2533c6806eaa654d6070b327c08434f133297a710",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tests/app/runtime.test.ts",
+      "sha256": "3186fda7b655fa1569d520d157f4a91668f777ef008b933d77d0e068a23c39e5",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tests/experiment-runtime/host-review.test.ts",
+      "sha256": "32fa236bac0abd8af31f4b472f8a224cc25e67f976978d5104a45e113568e54a",
+      "matchesReviewedPostimage": true
+    },
+    {
+      "path": "tests/physics/contact-emission.test.ts",
+      "sha256": "7076d00f0f62e9ccba817707dced0d797f704cb05f277c79b4b863bd75237931",
+      "matchesReviewedPostimage": true
+    }
+  ],
+  "notRun": [
+    "Full npm run check; root owns next run",
+    "Browser, server, network, model, Git, hearing or performance operations"
+  ]
+}

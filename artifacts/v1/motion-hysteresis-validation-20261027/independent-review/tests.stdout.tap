@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+ok 1 - impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+  ---
+  duration_ms: 576.9454
+  type: 'test'
+  ...
+# Subtest: moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+ok 2 - moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+  ---
+  duration_ms: 555.5561
+  type: 'test'
+  ...
+# Subtest: snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+ok 3 - snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+  ---
+  duration_ms: 1.5882
+  type: 'test'
+  ...
+# Subtest: spinning has radian-per-second hysteresis independent of linear speed
+ok 4 - spinning has radian-per-second hysteresis independent of linear speed
+  ---
+  duration_ms: 1.408
+  type: 'test'
+  ...
+# Subtest: actual supported sphere retains rolling/sliding through the slip band and transitions without both
+ok 5 - actual supported sphere retains rolling/sliding through the slip band and transitions without both
+  ---
+  duration_ms: 54.4395
+  type: 'test'
+  ...
+# Subtest: normal-axis spin plus slow contact translation cannot be mislabeled rolling
+ok 6 - normal-axis spin plus slow contact translation cannot be mislabeled rolling
+  ---
+  duration_ms: 22.9513
+  type: 'test'
+  ...
+# Subtest: a fixed support does not become a sliding object when a dynamic sphere scrapes it
+ok 7 - a fixed support does not become a sliding object when a dynamic sphere scrapes it
+  ---
+  duration_ms: 19.9963
+  type: 'test'
+  ...
+# Subtest: a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+ok 8 - a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+  ---
+  duration_ms: 26.1363
+  type: 'test'
+  ...
+# Subtest: held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+ok 9 - held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+  ---
+  duration_ms: 3.2677
+  type: 'test'
+  ...
+# Subtest: reset, replacement and remove/re-add start fresh bounded generation state
+ok 10 - reset, replacement and remove/re-add start fresh bounded generation state
+  ---
+  duration_ms: 3.9519
+  type: 'test'
+  ...
+# Subtest: paused construction, fixed 60Hz freefall, reset and disposed lifetime
+ok 11 - paused construction, fixed 60Hz freefall, reset and disposed lifetime
+  ---
+  duration_ms: 557.3813
+  type: 'test'
+  ...
+# Subtest: four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+ok 12 - four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+  ---
+  duration_ms: 24.4233
+  type: 'test'
+  ...
+# Subtest: one falling sphere emits one impact at real contact, while support does not repeat impacts
+ok 13 - one falling sphere emits one impact at real contact, while support does not repeat impacts
+  ---
+  duration_ms: 72.0393
+  type: 'test'
+  ...
+# Subtest: mode-change invalidation recovers resting support without inventing a second impact
+ok 14 - mode-change invalidation recovers resting support without inventing a second impact
+  ---
+  duration_ms: 32.4921
+  type: 'test'
+  ...
+# Subtest: grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 15 - grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 7.0211
+  type: 'test'
+  ...
+# Subtest: grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 16 - grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 2.8614
+  type: 'test'
+  ...
+# Subtest: grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+ok 17 - grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 4.5134
+  type: 'test'
+  ...
+# Subtest: grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+ok 18 - grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 5.0214
+  type: 'test'
+  ...
+# Subtest: held target behind wall is clamped without penetrating or teleporting object
+ok 19 - held target behind wall is clamped without penetrating or teleporting object
+  ---
+  duration_ms: 347.5144
+  type: 'test'
+  ...
+# Subtest: NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+ok 20 - NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+  ---
+  duration_ms: 8.1838
+  type: 'test'
+  ...
+# Subtest: ray returns first blocking wall rather than a grabbable sphere behind it
+ok 21 - ray returns first blocking wall rather than a grabbable sphere behind it
+  ---
+  duration_ms: 7.5641
+  type: 'test'
+  ...
+# Subtest: placement uses actual shape clearance, staged body stays inactive until enabled
+ok 22 - placement uses actual shape clearance, staged body stays inactive until enabled
+  ---
+  duration_ms: 15.4571
+  type: 'test'
+  ...
+# Subtest: scene application validates before mutation, requires pause and preserves unedited solver poses
+ok 23 - scene application validates before mutation, requires pause and preserves unedited solver poses
+  ---
+  duration_ms: 10.3518
+  type: 'test'
+  ...
+# Subtest: interpolation is bounded and snapshot mutations cannot write solver state
+ok 24 - interpolation is bounded and snapshot mutations cannot write solver state
+  ---
+  duration_ms: 3.8906
+  type: 'test'
+  ...
+# Subtest: 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+ok 25 - 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+  ---
+  duration_ms: 47.9818
+  type: 'test'
+  ...
+# Subtest: throwing step observer pauses safely after committing exactly the already-solved tick
+ok 26 - throwing step observer pauses safely after committing exactly the already-solved tick
+  ---
+  duration_ms: 1.1184
+  type: 'test'
+  ...
+# Subtest: invalid kinematic orientation rejects the entire target without leaving a pending translation
+ok 27 - invalid kinematic orientation rejects the entire target without leaving a pending translation
+  ---
+  duration_ms: 0.731
+  type: 'test'
+  ...
+# Subtest: held geometry replacement cannot resume an old generation grip without explicit release
+ok 28 - held geometry replacement cannot resume an old generation grip without explicit release
+  ---
+  duration_ms: 3.0039
+  type: 'test'
+  ...
+# Subtest: editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+ok 29 - editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+  ---
+  duration_ms: 88.2839
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5504.5367

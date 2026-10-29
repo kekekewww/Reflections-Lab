@@ -1,0 +1,82 @@
+{
+  "id": "117efd63-cca1-486e-8061-b379685543bb",
+  "type": "handoff",
+  "created_at": "2026-10-29T14:01:10.437Z",
+  "agent": "codex-root",
+  "session": "user-feedback-record-20261029-r18",
+  "summary": "供Claude Code接手：真人FPS失敗、預設音量過小及直接操作UX問題；僅記錄未修復",
+  "task_id": "RLAB-TASK-0020",
+  "details": {
+    "agent": "codex-root",
+    "session": "user-feedback-record-20261029-r18",
+    "task_id": "RLAB-TASK-0020",
+    "summary": "供Claude Code接手：真人FPS失敗、預設音量過小及直接操作UX問題；僅記錄未修復",
+    "completed": [
+      "使用者原始回報與1至8節有限範圍已保存JSON來源",
+      "Now／互動沙盒／設計Wiki已接回最新真人失敗與未驗項目",
+      "Task0012／0020原狀態BLOCKED且無owner，原criteria及成功證據未擴大；Task0021未變更"
+    ],
+    "commands": [
+      {
+        "command": "Wiki ingest source and pages (dry-run then apply)",
+        "result": "Direct user feedback recorded, original criteria unchanged"
+      },
+      {
+        "command": "Wiki task claim for existing BLOCKED task",
+        "result": "TASK_STATE rejected; no owner acquired, no blocked state bypassed, TaskJSON retained; feedback associated through source/Wiki and this task-linked handoff"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+        "sha256": "4d3d3fccf295d49c2095f14ec0e679cb92af90b034f16f4717f40fbc66e2842e",
+        "result": "USER_REPORT: FPS failed; dependent tests blocked; material/reflection not tested; lowdefaultvolume/directmanipulation UX issues. Independent unmentioned1–8 onlynoissuereported, allothersunverified."
+      }
+    ],
+    "risks": [
+      "第一人稱無法移動／操作，根因UNKNOWN，未重現或修復",
+      "材質／反射與後續FPS相關測試不能標成功",
+      "預設音量及直接場景操作問題尚未處理",
+      "第9節之後未驗；舊自動測試不能代替這次真人結果",
+      "此回合只紀錄，本對話goal仍paused；其他既有研究／整合工作狀態保留"
+    ],
+    "next_steps": [
+      "Claude Code接手時先重現第一人稱完全不能操作，再針對根因修復",
+      "處理場景直接選取／拖曳／縮放及預設音量體驗",
+      "修復後重測受阻項；材質反射及第9節後需實際測試才可標成功"
+    ],
+    "modified_files": [
+      {
+        "path": "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+        "sha256": "4d3d3fccf295d49c2095f14ec0e679cb92af90b034f16f4717f40fbc66e2842e",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/wiki/now.md",
+        "sha256": "2d4232fb8774ae2f628323723c144e9803850af4d08ffd7b126743f2145e4632",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/wiki/features/interactive-sandbox.md",
+        "sha256": "6f7f99969218f40922a9c7460bf92e586200916a850ef3ebff572fa67bd56e63",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/wiki/ui-ux/design-engineering.md",
+        "sha256": "0205bcd268716316ab9aa3e027651b27ed995cbd14994be49a330f22d9f6d23e",
+        "state": "present"
+      }
+    ],
+    "now": {
+      "expected_hash": "2d4232fb8774ae2f628323723c144e9803850af4d08ffd7b126743f2145e4632",
+      "body": "# 使用者已要求繼續：完成研究驗證、整合與乾淨公開快照\n\n2026-10-29使用者明確說「繼續」，解除本輪USER_PAUSED；Task0021重新claim且IN_PROGRESS。原暫停與失敗證據保留，見[暫停交接](handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md)。\n\n原工作區D:/Developing/Meta Hack仍為codex/sound-behavior-research／c210ca882ca8503b322c28884bf1e9f6e9fe126d且clean；研究在隔離worktree，尚無新commit、merge或push。研究與雙語文件及最小共享5秒propagation limit／types-only RenderBackend已保存。先同步記錄及完整check，保持獨立review。\n\n完整check前兩次失敗（Wiki fixture rename EPERM、成本工具格式）及第三次使用者中斷均保留；第三次沒有final exit，不能當PASS。Browser physics2/storage5/UI28/linked8 PASS；product首3PASS1FAIL、相同條件重跑4PASS。這些是功能範圍證據，沒有取代效能或聽測。\n\n使用者已授權保留全部本地history、另建乾淨公開snapshot；D:/Developing/Reflections-Lab-public仍空orphan，publication指向指定GitHub，尚未export/push。完成研究commit、最新原branch比較、安全merge與整合測試後，才export、驗證、完整掃描及推送公開ref。\n\n原V1之R17性能FAIL、100%真人FPS/IME、Hi-x65/D3V聽測與本人資格/條款/root LICENSE限制不變；200%已移除必要gate。完整V1仍未完成。\n\n## 2026-10-29真人回報：第一人稱失敗，限定第1至8節的未提及項目\n\n[原始回報與範圍紀錄](../../docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json)：進入第一人稱後無法移動或操作，是使用者回報的阻斷問題，根因尚未診斷。後續第一人稱相關操作（含抓投、建造及FPS聽測）均BLOCKED／未能測試。材質與反射明示NOT TESTED，不標成功。預設聲音太小；場景無法直接點選選取、拖曳及縮放等，控制不直覺，均保留為待處理回報。\n\n依使用者明確規則，僅第1至8節未提及且未受上述失敗／排除影響的項目記為「使用者回報未發現問題」；不是整批PASS、獨立重現、科學或裝置驗證。第9節錄放、第10節A/B、第11節儲存匯入匯出、第12節離線助手及其他範圍不標正確完成。實測bundle／裝置路徑／DAC／音量未提供，保持UNKNOWN。舊自動測試證據保留，不能覆蓋這次真人失敗。\n\n本次只紀錄，未修程式、未啟動測試、未恢復本對話已暫停的開發goal；Task0021的既有研究／整合狀態不變。恢復產品工程時，先調查第一人稱阻斷，再處理直接操作與預設音量；不能再只把FPS列為等待首次真人測試。\n"
+    },
+    "git": {
+      "branch": "codex/sound-behavior-research",
+      "head": "39f6c2ba50c2f64d0b30b93f49b7728f94a0116a",
+      "status": "M experiments/physics-spike/results.json\n M knowledge/sources/manifest.json\n M knowledge/wiki/features/interactive-sandbox.md\n M knowledge/wiki/index.md\n M knowledge/wiki/log.md\n M knowledge/wiki/now.md\n M knowledge/wiki/ui-ux/design-engineering.md\n?? artifacts/architecture-review-20261029/post-merge/ci-legacy-build.log.txt\n?? artifacts/architecture-review-20261029/post-merge/ci-legacy-process.json\n?? artifacts/architecture-review-20261029/post-merge/ci-legacy-results.json\n?? artifacts/architecture-review-20261029/post-merge/ci-legacy-ui.log.txt\n?? artifacts/architecture-review-20261029/post-merge/quality-inputs.json\n?? artifacts/architecture-review-20261029/post-merge/quality-process.json\n?? artifacts/architecture-review-20261029/post-merge/quality-receipts.json\n?? artifacts/architecture-review-20261029/post-merge/quality.log.txt\n?? docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-29T13-52-02-231Z.json\n?? knowledge/events/b1660ba4-765a-483b-a762-31231f536885.json\n?? knowledge/transactions/1d5104cb-bb69-49fe-bd2e-1d6ca0e825ef.json",
+      "worktree": "D:\\Developing\\Meta Hack"
+    },
+    "execution_note": "命令與結果由操作者提供；檔案 hash 與 Git 狀態由工具現場取得。"
+  }
+}

@@ -1,0 +1,240 @@
+{
+    "schemaVersion":  "1.0.0",
+    "reviewer":  "codex-v1_integration_review",
+    "scope":  "Independent Node runtime/control integration, Replay saved-state/legacy/held projections; this run predates the later A/B metric fix",
+    "createdAt":  "2026-10-27T03:12:12.4912377+00:00",
+    "gitHead":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "worktreeDirty":  true,
+    "nodeVersion":  "v22.17.0",
+    "npmVersion":  "11.4.2",
+    "commands":  [
+                     {
+                         "command":  "node --import tsx --test --test-name-pattern \"legacy Replay ObjectView|captured Held state|Replay ObjectView uses\" tests/app/integration-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:06:27.0836878+00:00",
+                         "completedAt":  "2026-10-27T03:06:29.1926102+00:00",
+                         "durationMs":  2061,
+                         "stdout":  "replay-state-branches.stdout.txt",
+                         "stderr":  "replay-state-branches.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node --import tsx --test tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:08:14.6358158+00:00",
+                         "completedAt":  "2026-10-27T03:08:30.8844998+00:00",
+                         "durationMs":  16101,
+                         "stdout":  "owned-suites.stdout.txt",
+                         "stderr":  "owned-suites.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:07:20.9739728+00:00",
+                         "completedAt":  "2026-10-27T03:07:32.9531754+00:00",
+                         "durationMs":  11802,
+                         "stdout":  "typecheck.stdout.txt",
+                         "stderr":  "typecheck.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/eslint/bin/eslint.js tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:07:20.6698981+00:00",
+                         "completedAt":  "2026-10-27T03:07:23.0889996+00:00",
+                         "durationMs":  2351,
+                         "stdout":  "lint.stdout.txt",
+                         "stderr":  "lint.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/prettier/bin/prettier.cjs --check tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:07:20.0504339+00:00",
+                         "completedAt":  "2026-10-27T03:07:20.6925288+00:00",
+                         "durationMs":  582,
+                         "stdout":  "format.stdout.txt",
+                         "stderr":  "format.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     }
+                 ],
+    "ownedTests":  {
+                       "tests":  38,
+                       "pass":  38,
+                       "fail":  0,
+                       "skipped":  0,
+                       "cancelled":  0,
+                       "todo":  0
+                   },
+    "sourceCheck":  {
+                        "beforeCount":  146,
+                        "afterCount":  146,
+                        "unchanged":  true,
+                        "changed":  [
+
+                                    ],
+                        "beforeManifest":  "source-before.json",
+                        "afterManifest":  "source-after.json"
+                    },
+    "sourceCopies":  [
+                         {
+                             "path":  "tests/app/integration-regressions.test.ts",
+                             "copy":  "sources/tests/app/integration-regressions.test.ts",
+                             "sha256":  "b13fcabb46bd30cd2533ea1b7b2f5126c0694e7014d6d0efffc39a1f9c03b2a7",
+                             "matchesCurrent":  true,
+                             "byteLength":  57496
+                         },
+                         {
+                             "path":  "tests/app/app-control-regressions.test.ts",
+                             "copy":  "sources/tests/app/app-control-regressions.test.ts",
+                             "sha256":  "c42d81b97452d910449fbd2741d5f9fc7308c5578b624a602d2abaaf0cc11d38",
+                             "matchesCurrent":  true,
+                             "byteLength":  25865
+                         }
+                     ],
+    "artifacts":  [
+                      {
+                          "path":  "format.command.json",
+                          "sha256":  "393c8745f2f2f015eeb6c442c9eca5dc48be88f620b9846c50754ff1b470991c",
+                          "byteLength":  589
+                      },
+                      {
+                          "path":  "format.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "format.stdout.txt",
+                          "sha256":  "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+                          "byteLength":  66
+                      },
+                      {
+                          "path":  "lint.command.json",
+                          "sha256":  "fddb50e784769b4af441544530c2e7817020c003f63f5093daff454d4aa59553",
+                          "byteLength":  573
+                      },
+                      {
+                          "path":  "lint.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "lint.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "owned-suites.command.json",
+                          "sha256":  "60a4015f75da6d31a75c2e23c6d4afab473b923de20f969f057bfe70ab1a1114",
+                          "byteLength":  576
+                      },
+                      {
+                          "path":  "owned-suites.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "owned-suites.stdout.txt",
+                          "sha256":  "052b9cb4d967140e0b37ea48c707a4bc5393e6193b2fd61107558404312c8f9d",
+                          "byteLength":  10094
+                      },
+                      {
+                          "path":  "replay-state-branches.command.json",
+                          "sha256":  "54de98931986ee4846780c8ebddface3f7420dc5f9fec7876bdb429a09508da0",
+                          "byteLength":  643
+                      },
+                      {
+                          "path":  "replay-state-branches.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "replay-state-branches.stdout.txt",
+                          "sha256":  "3f26281fc399e33325e182156c226bfcc44b047206c73a0cfa13904a23a14e09",
+                          "byteLength":  956
+                      },
+                      {
+                          "path":  "source-after.json",
+                          "sha256":  "284959b8f4905d3413fb3840442725179505eb24fec724a5129b5328949dfa0c",
+                          "byteLength":  22120
+                      },
+                      {
+                          "path":  "source-before.json",
+                          "sha256":  "284959b8f4905d3413fb3840442725179505eb24fec724a5129b5328949dfa0c",
+                          "byteLength":  22120
+                      },
+                      {
+                          "path":  "sources/tests/app/app-control-regressions.test.ts",
+                          "sha256":  "c42d81b97452d910449fbd2741d5f9fc7308c5578b624a602d2abaaf0cc11d38",
+                          "byteLength":  25865
+                      },
+                      {
+                          "path":  "sources/tests/app/integration-regressions.test.ts",
+                          "sha256":  "b13fcabb46bd30cd2533ea1b7b2f5126c0694e7014d6d0efffc39a1f9c03b2a7",
+                          "byteLength":  57496
+                      },
+                      {
+                          "path":  "typecheck.command.json",
+                          "sha256":  "c3c308a2c6044f6dd268f9684730c1162f32ec1a1fd82e8f872f22e6832dc32d",
+                          "byteLength":  522
+                      },
+                      {
+                          "path":  "typecheck.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "typecheck.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      }
+                  ],
+    "crossEvidence":  [
+                          {
+                              "path":  "../gravity-toggle-review-v1/red-verification.json",
+                              "sha256":  "5c2f067b5dee2b27f185858da359cc5370342722e55fe14a02911a08112c2630"
+                          },
+                          {
+                              "path":  "../gravity-toggle-review-v1/green-verification.json",
+                              "sha256":  "df1d1a293db7d9d6450b741e55caf1e29d188cfcd155b0487fbf61152942ca18"
+                          },
+                          {
+                              "path":  "../replay-objectview-review-v1/red-verification.json",
+                              "sha256":  "360755530e6d4afade212eaf34318e406e35f5ade70b8f890f33f06ba3ace938"
+                          },
+                          {
+                              "path":  "../replay-objectview-review-v1/green-verification.json",
+                              "sha256":  "8b3de05d3262e904ed46a3371829b59c9c18d89edb50dfe63cbb9c6e9c2c70ff"
+                          },
+                          {
+                              "path":  "../integration-review-source-copies-20261027.json",
+                              "sha256":  "580593952a346bceedc37c366169597075c36ebb0ba99120af975e435b9eea6b"
+                          }
+                      ],
+    "notRun":  [
+                   "Browser product workflows",
+                   "Native OfflineAudioContext/DSP in this reviewer run",
+                   "Hardware PCM pointer/waveform measurement",
+                   "Device hearing",
+                   "10-minute performance",
+                   "Real Meta/provider API"
+               ],
+    "modelCalls":  0,
+    "sourceEditsByReviewer":  [
+                                  "tests/app/integration-regressions.test.ts",
+                                  "tests/app/app-control-regressions.test.ts",
+                                  "docs/11-v1/INTEGRATION_REVIEW.md"
+                              ],
+    "limitation":  "Only regression source bytes are archived by this reviewer. Historical runtime implementation hashes alone are not a reconstructable checkout; Root owns Git checkpoint. No product-wide completion claim. Later A/B route-metric defect is outside the positive assertions of these 38 tests and remains a separate repair/gate."
+}

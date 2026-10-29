@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "review_id": "provenance-r6-independent-corpus",
+  "reviewed_at_utc": "2026-10-27T21:54:45.765Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_validator",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent current documentation and bounded Source36 provenance delta verifier"
+  },
+  "status": "PASS_SCOPED_PROVENANCE_R6_DOCUMENTATION_DELTA",
+  "scope": {
+    "authorization": "Final CORPUS_READY Source36 with all canonical/prose/group/manifest writers ended",
+    "current_complete_inventory_checked": true,
+    "changed_pairs": 6,
+    "new_pairs": 3,
+    "refreshed_existing_pairs": 3,
+    "unselected_prior_entries": 277,
+    "review_groups": 3,
+    "old_report_count": 74,
+    "whole_corpus_new_semantic_rereview": false,
+    "product_completion_claim": false
+  },
+  "summary": {
+    "originals": 283,
+    "markdown_files_inventoried": 291,
+    "authored_artifact_documents": 15,
+    "shared_raw_evidence": 8,
+    "translations_required": 264,
+    "translated": 264,
+    "original_english": 18,
+    "existing_english_companions": 1,
+    "missing": 0,
+    "stale": 0,
+    "errors": 0,
+    "warnings": 15
+  },
+  "evidence": {
+    "independent_unit_tests": {
+      "path": ".cache/v1/english-provenance-r6/independent/20261027T214313888Z/unit-result.json",
+      "sha256": "e822d9e71f44b7f29143f50274d147a066782f93d50c1a2010b25d0258d654af",
+      "bytes": 4185
+    },
+    "independent_current_full_audit": {
+      "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/full-audit.json",
+      "sha256": "993fd07e6010e98f399f1dc19761551cf7e2b090873f566bb1288c1e557d223d",
+      "bytes": 444489
+    },
+    "independent_review_union": {
+      "path": ".cache/v1/english-provenance-r6/independent/coverage-final-source36.json",
+      "sha256": "bfbf15dc3e92efc4ffc2a7fc5be15f5e2c775fba9ade57cdb40668ffaf89a4d7",
+      "bytes": 43793
+    },
+    "frozen_source_inventory": {
+      "path": ".cache/v1/english-provenance-r6-final/inventory.json",
+      "sha256": "c4adcce5fcd8e6db4214f40a885e5553f589c5965601a08e33938d6934c5285c",
+      "bytes": 154369
+    },
+    "reviewed_target_capture": {
+      "path": ".cache/v1/english-provenance-r6-final/reviewed-targets.json",
+      "sha256": "c5ebcd2a6cc29f408ee0268719fb56395eeff23693224acb7e4e94a0834d8756",
+      "bytes": 4331
+    },
+    "preexisting_report_pins": {
+      "path": ".cache/v1/english-provenance-r6-final/preexisting-report-pins.json",
+      "sha256": "189827fb14098f7904659d641aaf02b2d2cffc89588e6dc482fe082e3dc8eac9",
+      "bytes": 13616
+    },
+    "coordinator_mechanical_proof": {
+      "path": "docs/en/_reports/provenance-r6-mechanical-20261027T215258261Z.json",
+      "sha256": "d2dae1f0694745d15c4802052694172338353d3399805445963f0de25f161d38",
+      "bytes": 14098
+    },
+    "manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "f067874a6395213ba459d774e9a0b93dcc844265638d654fd03675fd363698a8",
+      "bytes": 207890
+    },
+    "validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "f067874a6395213ba459d774e9a0b93dcc844265638d654fd03675fd363698a8",
+      "bytes": 207890
+    },
+    "source_inventory": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "25f371ba62240f9d4e97e614741702ff0b6bf575d5e8c350bfbe084f6912bee2",
+      "bytes": 100861
+    },
+    "index": {
+      "path": "docs/en/index.md",
+      "sha256": "abd8b51a18f930ae90b9d62053fefb79775b4c618994cfbe60032a7170c8af15",
+      "bytes": 57225
+    }
+  },
+  "commands": [
+    {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "node": "v22.17.0",
+      "started_at": "2026-10-27T21:43:13.889Z",
+      "duration_ms": 434.3058,
+      "exit_code": 0,
+      "tests": 31,
+      "passes": 31,
+      "failures": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T214313888Z/unit.stdout.txt",
+        "sha256": "03b7f63a07dd8cd3b034f3e0b25f6d42c27def0f19ff95c10b0e291ec834029e",
+        "bytes": 7003
+      },
+      "stderr": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T214313888Z/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "currentness": "Fresh independent run at this task start; checker/test hashes remain exact at the final Source36 seal. No additional unit execution is invented."
+    },
+    {
+      "command": "node scripts/validation/english-docs.mjs check",
+      "args": [
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "started_at": "2026-10-27T21:53:59.707Z",
+      "duration_ms": 618.3512000000001,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/english-check.stdout.txt",
+        "sha256": "c77e0abc92248a36223e2194427a9407c9c855852777072f1725537b40589780",
+        "bytes": 270
+      },
+      "stderr": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/english-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "{\"status\":\"PASS\",\"originals\":283,\"markdown_files_inventoried\":291,\"authored_artifact_documents\":15,\"shared_raw_evidence\":8,\"translations_required\":264,\"translated\":264,\"original_english\":18,\"existing_english_companions\":1,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":15}\n",
+      "stderr_text": ""
+    },
+    {
+      "command": "node scripts/validation/docs.mjs",
+      "args": [
+        "scripts/validation/docs.mjs"
+      ],
+      "started_at": "2026-10-27T21:53:59.712Z",
+      "duration_ms": 435.27139999999997,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/maintained-links.stdout.txt",
+        "sha256": "d2731c9c22211b81113bd61d149648efb589bb2f64c37cc9d8f91f5717533060",
+        "bytes": 1932
+      },
+      "stderr": {
+        "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/maintained-links.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "PASS Markdown local targets: 5993 links in 562 documents; fenced code/external URLs/anchors excluded.\nScope: maintained Markdown; exact raw byte snapshot directories under root artifacts (source-before/source-after/sources/tested-bundle) excluded from link checking; run SHA proof checks are separate.\nExcluded raw byte snapshots (24): artifacts/v1/audio-prefix-irv2-preflight-20261027172840/prepared-ir-static-v1/sources, artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources, artifacts/v1/audio-prepared-ir-static-v1-preflight-20261027155118424/prepared-ir-static-v1/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources, artifacts/v1/gravity-toggle-review-v1/sources, artifacts/v1/integration-review-v3/sources, artifacts/v1/integration-review-v4/sources, artifacts/v1/integration-review-v5/sources, artifacts/v1/integration-review-v6/sources, artifacts/v1/integration-review-v7/sources, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-before, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-before, artifacts/v1/physics-boundaries-20261027/combined-final/source-after, artifacts/v1/physics-boundaries-20261027/combined-final/source-before, artifacts/v1/physics-boundaries-20261027/combined-v1/source-after, artifacts/v1/physics-boundaries-20261027/combined-v1/source-before, artifacts/v1/product-e2e-chrome-20261027T021924Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T024059Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T033616Z/tested-bundle, artifacts/v1/product-final-build-20261027T124914444Z/tested-bundle, artifacts/v1/replay-objectview-review-v1/sources.\n",
+      "stderr_text": ""
+    }
+  ],
+  "inventory_audit": {
+    "command": "git ls-files --cached --others --exclude-standard -z",
+    "exit_code": 0,
+    "stderr": "",
+    "regular_markdown_count": 291,
+    "exact_paths_match": true,
+    "source_inventory_matches": true,
+    "missing": [],
+    "extra": []
+  },
+  "source_target_hash_audit": {
+    "status": "PASS",
+    "source_rows": 283,
+    "all_current_source_target_bytes_and_markers_exact": true,
+    "frozen_delta_rows": [
+      {
+        "source": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r6.md",
+        "target": "docs/en/11-v1/REQUIREMENT_EVIDENCE_20261028-r6.md",
+        "expected_sha256": "2ace37babbb8a179d02ab54f638bc41ffc4467af26a639fdad72d901861261a9",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r6.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md",
+        "target": "docs/en/knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md",
+        "expected_sha256": "54c33f087c195b2446259440fa89742319ec5e8035a96bc5935440a54aadf696",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md",
+        "target": "docs/en/knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md",
+        "expected_sha256": "765dd78aac1e6e60f2035fdabc609384a5a4c826c0dc7cce996c925890d49948",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "target": "docs/en/knowledge/wiki/index.md",
+        "expected_sha256": "0c6f3634d6ef4461524a59ef4cbfa64bea97a3b2b4aaaba0e35b706071e9e373",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/knowledge/wiki/index.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "target": "docs/en/knowledge/wiki/log.md",
+        "expected_sha256": "f700c6f5b12a42fa66449fe52d23483ea9d7f145ce9d6e6351c51217d216f940",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/knowledge/wiki/log.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "target": "docs/en/knowledge/wiki/now.md",
+        "expected_sha256": "5b75272936a071b29aeae56cf6773f1dc6c9b6fcbf3432a610b0ef14cca60dd2",
+        "snapshot": ".cache/v1/english-provenance-r6-final/sources/knowledge/wiki/now.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      }
+    ],
+    "prior_rows_retained_byteexact": 277,
+    "prior_entries_bound_to_previous_pinned_independent_per_file_audit": true,
+    "full_per_file_evidence": {
+      "path": ".cache/v1/english-provenance-r6/independent/20261027T215359700Z/full-audit.json",
+      "sha256": "993fd07e6010e98f399f1dc19761551cf7e2b090873f566bb1288c1e557d223d",
+      "bytes": 444489
+    }
+  },
+  "semantic_review_coverage": {
+    "status": "PASS_COVERAGE_AND_PINS",
+    "counts": {
+      "group_reports": 3,
+      "group_rows": 6,
+      "combined_unique_sources": 6,
+      "retained_preR2_pairs": 2,
+      "current_source36_wiki_pairs": 3,
+      "current_source36_handoff_pairs": 1,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0,
+      "defects": 0
+    },
+    "report_pins": [
+      {
+        "path": "docs/en/_reports/provenance-r6-source36-wiki-core-review.json",
+        "expected_sha256": "cd9978fa8220da585c822a1db56615d1f05f0799373ddc8714f4b77779622e4c",
+        "actual_sha256": "cd9978fa8220da585c822a1db56615d1f05f0799373ddc8714f4b77779622e4c",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/provenance-r6-note-handoff-review.json",
+        "expected_sha256": "fc6a192b43a51c3454cecef1335eb6dccbe9a2114f89cfc3fa4336ff3bdb05c1",
+        "actual_sha256": "fc6a192b43a51c3454cecef1335eb6dccbe9a2114f89cfc3fa4336ff3bdb05c1",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/provenance-r6-source36-handoff-review.json",
+        "expected_sha256": "29ba1303913b1470a28cb77a5c48eda292465c4fc5eb7288669b97d17956c89b",
+        "actual_sha256": "29ba1303913b1470a28cb77a5c48eda292465c4fc5eb7288669b97d17956c89b",
+        "matches": true
+      }
+    ],
+    "exact_union_rows": 6,
+    "missing": 0,
+    "extra": 0,
+    "duplicates": 0,
+    "defects": 0,
+    "all_current_stage_and_raw_review_snapshot_pins_match": true,
+    "scope_qualification": "Three disjoint group reports cover exactly six source pairs. The initial r6 OPS note and419ef922 handoff retain their valid pre-R2 historical cutoff. The final Wiki three pages and new a2deec12 handoff bind the Source36 follow-up. This audit checks declared semantic coverage and exact byte/provenance bindings rather than newly re-reading all unchanged history semantically.",
+    "retained_boundaries": [
+      "Now retains3924 prior bytes with the reviewed new tail.",
+      "Index retains48 prior rows and reviews one new row.",
+      "Log retains216 whole prior rows and reviews four new rows."
+    ],
+    "no_broad_51_requirement_retranslation": true
+  },
+  "mechanical_preservation": {
+    "status": "PASS_EXACT_DOCUMENTED_MECHANICAL_TRANSFORM",
+    "proof": {
+      "path": "docs/en/_reports/provenance-r6-mechanical-20261027T215258261Z.json",
+      "sha256": "d2dae1f0694745d15c4802052694172338353d3399805445963f0de25f161d38"
+    },
+    "rows": [
+      {
+        "source": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r6.md",
+        "reviewed_target_sha256": "ca0318fd5e4101f2fab4159128ee4d37c943b8f8b5f368d622cdc01f0f4e2e1a",
+        "final_target_sha256": "16cd061ef8db3f25738048b50effecc1103ffd484a8ee44bb835d2414d664897",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md",
+        "reviewed_target_sha256": "6ec80c7e3ddfbc88c865b31dbe7937fb6e2e115f8c8d4537cb75d5633950eb2e",
+        "final_target_sha256": "bd43bf565a37f08b3294b36969d1692fc185581e027fb2ed91215ddeae5882c8",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md",
+        "reviewed_target_sha256": "8920d843685fbe6ef3586a7f0a9cced89d9df7e6abe443a66dd6f342c86a8505",
+        "final_target_sha256": "d2d738191f6c2f0c2ef441e620006de1d63d167742c1a6548f3fecbb2d2ed32e",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "reviewed_target_sha256": "a6bd61a48dbacdb4e503bb39eabca22f3e8086ade97c216361521203bdb8bed3",
+        "final_target_sha256": "b2b61e20cdf860064afd367927b9ba03a132d967ba69831e34a44641b4b2cb14",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "reviewed_target_sha256": "d2cc3b30124c2e4857717124b793599c928d0feb0a41d7a2f2442a04700f99f1",
+        "final_target_sha256": "4c2ffd6117c799523824ad0fe640202e6a956190e45400d9304830cf900c36a7",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "reviewed_target_sha256": "4243585720589cdd0d0792caf42ce13794b835653b40675c71d2d0dc40c90154",
+        "final_target_sha256": "89d8617e58b77435bafc786504ccba5c0f65bdfd657772bc3382fd3f767eaa81",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      }
+    ],
+    "normalization_scope": [
+      "knowledge/wiki/log.md"
+    ],
+    "method": "Only deterministic local-link mapping, generated notice/anchor handling and the existing frontmatter separator rule; metadata changes only links=english-relative.",
+    "limit": "Replay uses the frozen rewriteLinks helper independently tested31/31; not an independent CommonMark implementation or broad semantic reread.",
+    "no_raw_byte_equality_claim_across_generated_wrappers": true
+  },
+  "prior_reports_preserved": {
+    "status": "PASS",
+    "count": 74,
+    "all_byteexact": true,
+    "preserved_receipts": [
+      {
+        "path": "docs/en/_reports/delta-r11-current-corpus-20261027T212950525Z.json",
+        "sha256": "577b9ba1499c656fde77caf5d42ebd3a76621396641b05cf7d2885a36211d728",
+        "bytes": 211388
+      },
+      {
+        "path": "docs/en/_reports/delta-r11-independent-corpus-20261027T212939977Z.json",
+        "sha256": "c6f56602db6f68f8a3c2285d77becd7ae7e2863440ff54d3227e5831804a6126",
+        "bytes": 43385
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-independent-corpus.json",
+        "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+        "bytes": 42390
+      }
+    ],
+    "old_reports_were_not_overwritten": true
+  },
+  "shared_raw_evidence": {
+    "status": "PASS",
+    "count": 8,
+    "all_source_and_receipt_pins_exact": true,
+    "metadata_and_classifications_deep_equal_prior_reviewed_epoch": true,
+    "records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      }
+    ],
+    "qualification": "Source/failure-context provenance is not build/native/product success."
+  },
+  "warnings": {
+    "count": 15,
+    "unchanged_from_prior_current_corpus": true,
+    "records": [
+      {
+        "source": "third_party/emil-skills.README.md",
+        "warnings": [
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/emil-design-eng/SKILL.md",
+            "target": "third_party/skills/emil-design-eng/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate/SKILL.md",
+            "target": "third_party/skills/animate/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate-expo/SKILL.md",
+            "target": "third_party/skills/animate-expo/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/review-animations/SKILL.md",
+            "target": "third_party/skills/review-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/improve-animations/SKILL.md",
+            "target": "third_party/skills/improve-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/find-animation-opportunities/SKILL.md",
+            "target": "third_party/skills/find-animation-opportunities/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-performance/SKILL.md",
+            "target": "third_party/skills/animation-performance/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-vocabulary/SKILL.md",
+            "target": "third_party/skills/animation-vocabulary/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/apple-design/SKILL.md",
+            "target": "third_party/skills/apple-design/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/write-swift/SKILL.md",
+            "target": "third_party/skills/write-swift/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/pick-ui-library/SKILL.md",
+            "target": "third_party/skills/pick-ui-library/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/prototype/SKILL.md",
+            "target": "third_party/skills/prototype/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/mobile-native/SKILL.md",
+            "target": "third_party/skills/mobile-native/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/break-ui/SKILL.md",
+            "target": "third_party/skills/break-ui/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/ask-sonner/SKILL.md",
+            "target": "third_party/skills/ask-sonner/SKILL.md"
+          }
+        ]
+      }
+    ]
+  },
+  "new_Root_Git_seal": {
+    "HEAD_text": "ref: refs/heads/codex/sound-behavior-research",
+    "commit": "aec0604b4a2e139ca2b6324ab2be92cf92a4e100",
+    "paths": [
+      ".git/index",
+      ".git/HEAD",
+      ".git/refs/heads/codex/sound-behavior-research"
+    ],
+    "stable": true,
+    "qualification": "The authorized Root aec0604 commit happened after the preceding task ended. This task establishes a new current seal and does not misclassify the legitimate prior Git-state change as drift. Reviewer used only read-only Git inventory enumeration."
+  },
+  "source_stability": {
+    "unit_inputs_stable": true,
+    "current_full_check_inputs_stable": true,
+    "sealed_inputs": 665,
+    "final_seal_matches_post_check_snapshot": true,
+    "final_seal_sha256": "9f508a4b2e1cf2e7eef25772f404e116f1875e2b9f6c1beafe8d431feb97b8f4",
+    "continuous_monitor": false,
+    "reviewer_production_Wiki_task_or_Git_mutations": false,
+    "reviewer_writes": "Only authorized independent cache evidence and this new uniquely named report"
+  },
+  "product_boundary": "The reviewed documents keep the cache-only candidateR2 repair UNAPPLIED, isolated14/native0 scope, unavailable FPS/audio values and worker false conditions qualified. Earlier pre-R2 native1/pending statements remain historical. This documentation audit does not upgrade native, hearing, performance, legal or overall release gates.",
+  "findings": [],
+  "limitations": [
+    "Current documentation structure/currentness/hash/link and bounded review provenance evidence does not establish complete first-version product acceptance.",
+    "Unchanged prior semantic reviews are reused; no new whole-history semantic review, scientific/legal endorsement or full51-row translation is claimed.",
+    "Remote URL availability and renderer-specific anchors remain outside the checks.",
+    "Maintained-link checking excludes raw snapshot directories; the exact eight shared raw Markdown files receive separate source/evidence pin checks.",
+    "Before/after seals do not continuously monitor for reverted interim edits; writers were frozen.",
+    "npm CI, build, browser, native/device/hearing, API/model, full npm check, Root Wiki/task writes and Root Git mutations were NOT RUN."
+  ],
+  "all_filesystem_and_process_IO_end_after_this_report": true
+}

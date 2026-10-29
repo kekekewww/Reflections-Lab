@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29T05:26:22.3004188Z",
+  "reviewBaseline": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "actualCommitAfterChanges": null,
+  "executor": "Codex",
+  "modelId": null,
+  "scope": "Category B: reject solver configurations beyond existing 5s audio propagation window; no Scene migration, original oracle or tolerance change",
+  "productionChange": {
+    "sharedLimitSeconds": 5,
+    "defaultSolverWindowSeconds": 2,
+    "failureCode": "INVALID_BUDGET",
+    "configurationClamping": false
+  },
+  "tdd": {
+    "red": {
+      "exitCode": 1,
+      "tests": 6,
+      "pass": 4,
+      "fail": 2,
+      "expectedFailure": "Missing expected exception for 5.000000001 and 10 seconds; no pre-edit source hash captured"
+    },
+    "green": {
+      "exitCode": 0,
+      "tests": 6,
+      "pass": 6,
+      "fail": 0
+    }
+  },
+  "verification": [
+    {
+      "command": "node --import tsx --test tests/acoustics-runtime/*.test.ts tests/audio-runtime/*.test.ts",
+      "exitCode": 0,
+      "pass": 185,
+      "scope": "Domain/control graph only, no native rendering"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "pass": 668
+    },
+    {
+      "command": "node --import tsx artifacts/architecture-review-20261029/acoustics-propagation/rigid-transform-probe.mjs",
+      "exitCode": 0,
+      "cases": 100,
+      "tolerance": 1E-10,
+      "scope": "Synthetic closed-form first-order rigid-transform numerical probe"
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/acoustics/limits.ts src/acoustics/solver.ts src/audio/routes.ts tests/acoustics-runtime/propagation-limit.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/acoustics/limits.ts src/acoustics/solver.ts src/audio/routes.ts tests/acoustics-runtime/propagation-limit.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "validateEnglishDocs(process.cwd(), {sourcePaths: [two canonical architecture-review reports]})",
+      "status": "PASS",
+      "translations": 2,
+      "missing": 0,
+      "stale": 0,
+      "errors": 0,
+      "warnings": 0,
+      "scope": "Selected-source structural/hash/link validation only; full corpus finalization reserved for root"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/acoustics/limits.ts",
+      "sha256": "91713abae3b371eff19499040c51488b9c0a35418fbcfef742c2a9688a04fa17"
+    },
+    {
+      "path": "src/acoustics/solver.ts",
+      "sha256": "81bf485d565cbe15ddacf944130346b55c4048c1cc54dfd4e7ff7b5f7eda83d4"
+    },
+    {
+      "path": "src/audio/routes.ts",
+      "sha256": "72f8fda5726a29c45ddeabc60f65087f7e9cf5f619de887ef152b28ae90b8a1d"
+    },
+    {
+      "path": "tests/acoustics-runtime/propagation-limit.test.ts",
+      "sha256": "58a27fa3e9db1ca126d4774b66670cf0ef12fae97b7ccc7307937570bcb9cd1e"
+    },
+    {
+      "path": "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "sha256": "efc3d1546515361902da061f00d27705203e1678828fdf558af742365744d1ae"
+    },
+    {
+      "path": "docs/12-architecture-review/ADM_EXPORT_RESEARCH.md",
+      "sha256": "91824af97ff836d23667ae1c0700c4b3d9b48b2a46b35f50391bfc9a33123913"
+    },
+    {
+      "path": "docs/en/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "sha256": "897b97734715586aec54525bf860d8bee16241796b4a1c916b8d9735613a46d7"
+    },
+    {
+      "path": "docs/en/12-architecture-review/ADM_EXPORT_RESEARCH.md",
+      "sha256": "3040aa9ef353efcc63b14a6ddab9b1c33a4a595b753a553e98c62398ec4b4e4a"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/red.tap",
+      "sha256": "7fa2e57434e3db2176d29a212b9e3796111fbb45a571a4542cd4b52344f0428e"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/green.tap",
+      "sha256": "6280b31c33586fa5ee0ea9b165abd21d286dc420368c76badc76e60884da9b14"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/targeted.tap",
+      "sha256": "d894eb1850f081549630c5bf4ea7f4da232747826491881f7593d6eb4c02e472"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/typecheck.txt",
+      "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/project-tests.tap",
+      "sha256": "3dff64812332545fa85c8290a0f7538479899d66fcce44085f78851293518703"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/format.txt",
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/rigid-transform-probe.mjs",
+      "sha256": "1ae8c1be3c81cf22c01d4db10c86100aef490f383f78cce354e252ee832a8cc4"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/acoustics-propagation/rigid-transform-result.json",
+      "sha256": "425cefae96d679c0ab3878ed1be66aa959e4d8dfe11fb9228e5352bf0dfce174"
+    }
+  ],
+  "notRun": [
+    "Full npm run check by this agent; root integration pending",
+    "New native audio/browser rendering",
+    "ADM serializer/export/independent renderer/DAW compatibility",
+    "Real-time capacity/Worklet/device latency/hearing/real room"
+  ],
+  "limits": [
+    "Current-source hashes describe post-fix files; RED receipt is historical expected failure",
+    "No new dependency, paid API, Git operation, commit, deployment or push by this agent",
+    "Research/profile proposals are not implemented features"
+  ]
+}

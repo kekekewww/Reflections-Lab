@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "P0-01-scene-host-slice",
+  "wiki_task_id": "RLAB-TASK-0006",
+  "goal_id": "goal-p0-01-scene-host",
+  "milestone_id": "P0-01",
+  "title": "下一個正式 Milestone 的可執行 Scene host 第一切片",
+  "objective": "在明確授權後，只於隔離工作區建立 src/scene-host.mjs，通過既有 SceneSpec 的匯入匯出、domain 驗證、revision 前置條件、原子 command 與 inverse 驗收。這不是整個 P0-01 的完成證據。",
+  "preferred_executor": "MUSE",
+  "fallback_executor": "CODEX",
+  "allowed_files": ["src/scene-host.mjs"],
+  "scope": [
+    "同步 pure API：createScene(initial) 回 detached validated SceneSpec；serializeScene(scene) 回 JSON string；deserializeScene(text) 回 detached validated SceneSpec。",
+    "applyCommand(scene, {expectedSceneRevision, operations:[{type:'SetTransform',objectId,positionM,orientationQuaternion}]}) 回 {scene,inverse}；輸入不變、已提交 revision 加一、undo 再加一。",
+    "STALE_REVISION 與 UNKNOWN_ID 使用 Error.code；其他 schema/domain 非法輸入必須拒絕。",
+    "這是獨立 host API 驗收橋接；未啟動正式產品、不能將此切片通過映射為 Wiki Task0006 DONE。"
+  ],
+  "out_of_scope": [
+    "瀏覽器與正式 Three/R3F UI",
+    "Rapier world 與固定步／四模式",
+    "FPS 與抓取",
+    "聲學與音訊求解",
+    "Meta API live integration",
+    "新增依賴、付費或 Git commit/push"
+  ],
+  "relevant_files": [
+    "AGENTS.md",
+    "docs/NEXT_ENGINEERING_TASK.md",
+    "docs/02-architecture/DATA_CONTRACTS.md",
+    "schemas/scene.schema.json",
+    "schemas/examples/scene.json",
+    "examples/agents/scene-host-acceptance.mjs",
+    "knowledge/wiki/handoffs/fd1a594d-8ead-4b52-aba6-89dcced0eb77.md"
+  ],
+  "architecture_refs": [
+    "docs/02-architecture/DATA_CONTRACTS.md",
+    "docs/02-architecture/adr/007-scene-material.md",
+    "docs/02-architecture/adr/011-web-core-and-rendering.md"
+  ],
+  "skill_refs": [
+    ".agents/skills/agent-orchestration/SKILL.md",
+    ".agents/skills/codex-verification/SKILL.md"
+  ],
+  "allowed_operations": [
+    "只讀相關規格",
+    "只修改隔離工作區 src/scene-host.mjs",
+    "保留現有修改並回報未完成事項"
+  ],
+  "forbidden_operations": [
+    "修改驗收程式或參考 fixture",
+    "降低 SceneSpec 限制或刪除 source/listener metadata",
+    "依賴 array index 或 engine handle 作持久 ID",
+    "未授權付費、Git push 或部署"
+  ],
+  "model_profile": "preferred-muse-under-confirmed-budget",
+  "expected_deliverables": [
+    "src/scene-host.mjs",
+    "原驗收命令的獨立結果與 Git／checkpoint provenance；其餘 P0-01 維持未完成"
+  ],
+  "acceptance": [
+    {
+      "id": "AC-SCENE-HOST",
+      "script": "examples/agents/scene-host-acceptance.mjs",
+      "args": []
+    }
+  ],
+  "protected_files": [
+    "schemas/scene.schema.json",
+    "schemas/examples/scene.json",
+    "scripts/validation/domain-checks.mjs",
+    "package-lock.json"
+  ],
+  "remaining_work": [
+    "Scene host 第一切片尚未實作；Wiki Task0006 為 BACKLOG",
+    "第一切片通過後仍需另行實作／驗證 Rapier、Three/R3F、browser 與完整 P0-01 驗收"
+  ],
+  "completed_acceptance_criteria": [],
+  "policy": {
+    "max_attempts": 8,
+    "max_repairs": 3,
+    "max_rate_retries": 2,
+    "backoff_ms": 1000,
+    "max_backoff_ms": 30000,
+    "max_elapsed_ms": 300000,
+    "timeout_ms": 60000,
+    "max_output_bytes": 1048576,
+    "development": {
+      "max_paid_usd": 0,
+      "max_model_steps": 30
+    },
+    "product_runtime": {
+      "max_paid_usd": 0
+    }
+  }
+}

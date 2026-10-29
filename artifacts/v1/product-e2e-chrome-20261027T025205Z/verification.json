@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "browserSelection": "chrome",
+  "observerProfile": "light",
+  "browserEngine": "chromium",
+  "browserChannel": "chrome",
+  "startedAt": "2026-10-27T02:52:05.342Z",
+  "completedAt": "2026-10-27T02:52:34.084Z",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "tests/browser/product-e2e.config.ts",
+    "--global-timeout",
+    "240000",
+    "--grep",
+    "clean launch 1"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "runError": null,
+  "ownedProcesses": {
+    "runnerPid": 60880,
+    "previewPid": 53628,
+    "playwrightPid": 64824,
+    "previewCommand": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/vite/bin/vite.js",
+      "preview",
+      "--outDir",
+      "test-results/product-preview-dist",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "5190",
+      "--strictPort"
+    ],
+    "testCommand": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "tests/browser/product-e2e.config.ts",
+      "--global-timeout",
+      "240000",
+      "--grep",
+      "clean launch 1"
+    ],
+    "cleanup": [
+      {
+        "label": "playwright",
+        "pid": 64824,
+        "alreadyExited": true
+      },
+      {
+        "label": "preview",
+        "pid": 53628,
+        "exited": true,
+        "exitCode": null,
+        "signalCode": "SIGTERM"
+      }
+    ],
+    "nativeLaunchedPids": [
+      39848
+    ],
+    "treeAudit": {
+      "checkedAt": "2026-10-27T02:52:34.0003909Z",
+      "remaining": [],
+      "roots": [
+        53628,
+        64824,
+        39848
+      ],
+      "status": "PASS_ZERO_REMAINING"
+    }
+  },
+  "buildInputDigest": "77ccfece6abdcdb927a23b46087ecbd30707bace1821d43f6c215eee07f5cdec",
+  "sourceMatchesBuildAtStart": false,
+  "sourceStableDuringRun": true,
+  "bundleMatchesBuildAtStart": true,
+  "bundleStableDuringRun": true,
+  "harnessBefore": [
+    {
+      "path": "tests/browser/build-product-preview.mjs",
+      "sha256": "3a920a4b90ca85966ffb67ee6df0cfdc76ac4881ad6d3fd388fd8d4fdc345a42"
+    },
+    {
+      "path": "tests/browser/product-e2e.config.ts",
+      "sha256": "3fa8d50e9424728ddafafaeab3c7ee8d8b0e5074b6faa35f8088afd18db8f266"
+    },
+    {
+      "path": "tests/browser/product-e2e.spec.ts",
+      "sha256": "acaa1c33d3423ec5c063f5fd0a0894527fd207d4f3a4ef54577765ceb9279f53"
+    },
+    {
+      "path": "tests/browser/run-product-e2e.mjs",
+      "sha256": "a3fad5f613b78b79e6042a58a4fcbcdac8dbcff65778c710b4b256ea55239ef7"
+    }
+  ],
+  "harnessAfter": [
+    {
+      "path": "tests/browser/build-product-preview.mjs",
+      "sha256": "3a920a4b90ca85966ffb67ee6df0cfdc76ac4881ad6d3fd388fd8d4fdc345a42"
+    },
+    {
+      "path": "tests/browser/product-e2e.config.ts",
+      "sha256": "3fa8d50e9424728ddafafaeab3c7ee8d8b0e5074b6faa35f8088afd18db8f266"
+    },
+    {
+      "path": "tests/browser/product-e2e.spec.ts",
+      "sha256": "acaa1c33d3423ec5c063f5fd0a0894527fd207d4f3a4ef54577765ceb9279f53"
+    },
+    {
+      "path": "tests/browser/run-product-e2e.mjs",
+      "sha256": "a3fad5f613b78b79e6042a58a4fcbcdac8dbcff65778c710b4b256ea55239ef7"
+    }
+  ],
+  "harnessStableDuringRun": true,
+  "host": {
+    "node": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "cpuCount": 32,
+    "memoryBytes": 33959825408
+  },
+  "resultsPath": "test-results/product-e2e/results.json",
+  "limitations": [
+    "Fixed e2e-mode native product bundle, isolated local preview; direct runtime action coverage is labelled in each case.",
+    "No model inference. No hardware hearing, SPL calibration or AudioWorklet deadline claim."
+  ],
+  "testResults": {
+    "path": "test-results/product-e2e/results.json",
+    "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766",
+    "stats": {
+      "startTime": "2026-10-27T02:52:06.481Z",
+      "duration": 25385.112,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "fresh": true
+  },
+  "archiveDirectory": "artifacts/v1/product-e2e-chrome-20261027T025205Z"
+}

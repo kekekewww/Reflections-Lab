@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-27T01:22:26.319Z",
+  "sources": {
+    "src/app/acoustic-service.ts": "798ebd0f68cd279dee595823284d646149531dacf798f258e381fe7dd0ccc023",
+    "src/app/acoustic-worker.ts": "4ddb924b2a96ff31d2c6e3c1ee70bf092474e19b7e37aaecb6446eb885c7f13b",
+    "tests/app/acoustic-service.test.ts": "902c225d5c60be68703493ca159b07c852f1ac9567129ca3edc09e21ef93a4bd",
+    "tests/browser/acoustic-delivery.spec.ts": "1f9fa1965ee4ff374f8b9a098465797647e9f60c1247d165bb2bebb1fae6116c",
+    "tests/browser/acoustic-delivery.config.ts": "ab194609ff1d7aa5311af6a95e04b4666bc4b660fdb9167271b4510e60e51dbf",
+    "tests/browser/run-acoustic-delivery.mjs": "3a816d7a6017146caefead6704da76ee0699f021b1d862ccc71334c0de52afba",
+    "tests/app/acoustic-service.tsconfig.json": "7141f30be138f76e83b649ead8b32a08392c9c376ffa6ce5e0262c4ceb045081",
+    "src/acoustics/index.ts": "fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1",
+    "src/acoustics/solver.ts": "6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383",
+    "src/acoustics/geometry.ts": "e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3",
+    "src/acoustics/types.ts": "8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431",
+    "tests/acoustics-runtime/solver.test.ts": "07bda057d7d92f32aaa0afae8ec56e40bcd1379f155b8d8a00bc81af32ab0fa0",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+  },
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "strict",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tests/app/acoustic-service.tsconfig.json",
+        "--noEmit"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "node",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/app/acoustic-service.test.ts",
+        "tests/acoustics-runtime/solver.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "tests/browser/acoustic-delivery.config.ts"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "exitCode": 1,
+  "serverExitCode": null,
+  "serverSignalCode": "SIGTERM",
+  "serverLog": "\n  VITE v8.3.5  ready in 232 ms\n\n  ➜  Local:   http://127.0.0.1:5187/\n上午9:22:19 [vite] (client) page reload tests/browser/performance-fixture.html\n",
+  "artifacts": {
+    "tests/acoustics-runtime/delivery-browser-20261027.json": "79d6459a89f9d837d373a58b6320c70f05e55f250a59c021b89909b1d0148665",
+    "tests/acoustics-runtime/delivery-evidence-20261027/strict.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/acoustics-runtime/delivery-evidence-20261027/strict.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/acoustics-runtime/delivery-evidence-20261027/node.stdout.txt": "3f0bff8af80d02b4d18dcbf12eb1180f9222ee2f7f521976a20b0ee392e3e339",
+    "tests/acoustics-runtime/delivery-evidence-20261027/node.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/acoustics-runtime/delivery-evidence-20261027/browser.stdout.txt": "55ce7a2b16e8f103812947d40303c35084b2691139e3ed32bb62402d17119948",
+    "tests/acoustics-runtime/delivery-evidence-20261027/browser.stderr.txt": "78e2c653631af7def3c26512f5f12da2ad35e58a2065cac624fd948362fd2d39"
+  },
+  "limitations": [
+    "Node transport cases are mock fault injection; browser profile uses real native Workers.",
+    "Order1 profile only; no order2 or whole-product 10-minute/audio/hearing validation."
+  ]
+}

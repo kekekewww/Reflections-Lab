@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-26T20:55:27.770Z",
+  "agent": "/root/v1_behavior_runtime/behavior_tests",
+  "scope": "Pure TypeScript domain runtime, normalized synthetic fixtures, and frozen audio-event validator in separate plain Node subprocess. No AudioNode/browser/hearing/physics-normalizer/Meta live claim.",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "tests/audio-behavior/runtime.test.ts"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 1405,
+  "stdout": "TAP version 13\n# Subtest: AlwaysOn survives motion, held state and independent impact one-shots\nok 1 - AlwaysOn survives motion, held state and independent impact one-shots\n  ---\n  duration_ms: 11.5256\n  type: 'test'\n  ...\n# Subtest: duplicate normalized event IDs do not replay a one-shot\nok 2 - duplicate normalized event IDs do not replay a one-shot\n  ---\n  duration_ms: 1.0499\n  type: 'test'\n  ...\n# Subtest: out-of-order inputs are processed by tick and sequence\nok 3 - out-of-order inputs are processed by tick and sequence\n  ---\n  duration_ms: 1.7528\n  type: 'test'\n  ...\n# Subtest: shared profile bindings maintain separate continuous instances and state\nok 4 - shared profile bindings maintain separate continuous instances and state\n  ---\n  duration_ms: 1.0554\n  type: 'test'\n  ...\n# Subtest: binding and rule enabled overrides gate emission\nok 5 - binding and rule enabled overrides gate emission\n  ---\n  duration_ms: 1.9908\n  type: 'test'\n  ...\n# Subtest: unknown state does not satisfy a false state condition\nok 6 - unknown state does not satisfy a false state condition\n  ---\n  duration_ms: 0.9416\n  type: 'test'\n  ...\n# Subtest: missing metrics are not silently replaced with zero\nok 7 - missing metrics are not silently replaced with zero\n  ---\n  duration_ms: 1.7733\n  type: 'test'\n  ...\n# Subtest: piecewise mapping interpolates, steps, and clamps explicit ranges\nok 8 - piecewise mapping interpolates, steps, and clamps explicit ranges\n  ---\n  duration_ms: 0.6867\n  type: 'test'\n  ...\n# Subtest: cooldown uses ceil(seconds / fixedDt), independent of skipped render frames\nok 9 - cooldown uses ceil(seconds / fixedDt), independent of skipped render frames\n  ---\n  duration_ms: 1.4031\n  type: 'test'\n  ...\n# Subtest: global and per-object caps hold through a burst with deterministic output\nok 10 - global and per-object caps hold through a burst with deterministic output\n  ---\n  duration_ms: 1.5968\n  type: 'test'\n  ...\n# Subtest: pause neither advances the logical clock nor manufactures moving/release edges\nok 11 - pause neither advances the logical clock nor manufactures moving/release edges\n  ---\n  duration_ms: 0.7219\n  type: 'test'\n  ...\n# Subtest: snapshot restore produces the same subsequent event and voice decisions\nok 12 - snapshot restore produces the same subsequent event and voice decisions\n  ---\n  duration_ms: 3.9576\n  type: 'test'\n  ...\n# Subtest: reset starts a new epoch and permits the same raw event ID exactly once\nok 13 - reset starts a new epoch and permits the same raw event ID exactly once\n  ---\n  duration_ms: 0.6542\n  type: 'test'\n  ...\n# Subtest: accepted Throw starts a bounded latch; impact stops it and airborne does not rearm it\nok 14 - accepted Throw starts a bounded latch; impact stops it and airborne does not rearm it\n  ---\n  duration_ms: 1.6851\n  type: 'test'\n  ...\n# Subtest: latch timeout stops at its deadline, not after an unbounded loop\nok 15 - latch timeout stops at its deadline, not after an unbounded loop\n  ---\n  duration_ms: 0.5294\n  type: 'test'\n  ...\n# Subtest: speed and an unaccepted input cannot masquerade as Throw\nok 16 - speed and an unaccepted input cannot masquerade as Throw\n  ---\n  duration_ms: 0.2791\n  type: 'test'\n  ...\n# Subtest: stale scene/profile/object references and unavailable assets are rejected\nok 17 - stale scene/profile/object references and unavailable assets are rejected\n  ---\n  duration_ms: 0.8721\n  type: 'test'\n  ...\n# Subtest: a stopped continuous instance fades and is cleaned without restarting\nok 18 - a stopped continuous instance fades and is cleaned without restarting\n  ---\n  duration_ms: 0.4599\n  type: 'test'\n  ...\n# Subtest: sample/oscillator lifetime is finite and malformed mappings are rejected\nok 19 - sample/oscillator lifetime is finite and malformed mappings are rejected\n  ---\n  duration_ms: 0.4898\n  type: 'test'\n  ...\n# Subtest: material-pair selection changes the selected generator while retaining contact provenance\nok 20 - material-pair selection changes the selected generator while retaining contact provenance\n  ---\n  duration_ms: 0.739\n  type: 'test'\n  ...\n# Subtest: object attachment offsets follow the object's quaternion transform\nok 21 - object attachment offsets follow the object's quaternion transform\n  ---\n  duration_ms: 0.3443\n  type: 'test'\n  ...\n# Subtest: preview and staged objects never create active emissions\nok 22 - preview and staged objects never create active emissions\n  ---\n  duration_ms: 0.396\n  type: 'test'\n  ...\n# Subtest: invalid frame values are rejected atomically without advancing state\nok 23 - invalid frame values are rejected atomically without advancing state\n  ---\n  duration_ms: 0.5461\n  type: 'test'\n  ...\n# Subtest: restore rejects corrupted checkpoint revisions and nonfinite values\nok 24 - restore rejects corrupted checkpoint revisions and nonfinite values\n  ---\n  duration_ms: 0.4799\n  type: 'test'\n  ...\n# Subtest: a latched object-attached source follows the object without restarting\nok 25 - a latched object-attached source follows the object without restarting\n  ---\n  duration_ms: 0.4862\n  type: 'test'\n  ...\n# Subtest: restore cannot remove a one-shot deadline or inject an unvalidated generator\nok 26 - restore cannot remove a one-shot deadline or inject an unvalidated generator\n  ---\n  duration_ms: 0.8813\n  type: 'test'\n  ...\n# Subtest: bounded recent-ID eviction cannot replay an older input in the same tick\nok 27 - bounded recent-ID eviction cannot replay an older input in the same tick\n  ---\n  duration_ms: 0.6813\n  type: 'test'\n  ...\n# Subtest: document replacement requires a new epoch and cannot reuse old emission identities\nok 28 - document replacement requires a new epoch and cannot reuse old emission identities\n  ---\n  duration_ms: 0.7985\n  type: 'test'\n  ...\n# Subtest: restore closes instance object and profile identity against its binding\nok 29 - restore closes instance object and profile identity against its binding\n  ---\n  duration_ms: 0.7821\n  type: 'test'\n  ...\n# Subtest: restore requires latch provenance for a latched rule\nok 30 - restore requires latch provenance for a latched rule\n  ---\n  duration_ms: 0.5228\n  type: 'test'\n  ...\n# Subtest: restoring a wrapper cannot clear document replacement's new-epoch requirement\nok 31 - restoring a wrapper cannot clear document replacement's new-epoch requirement\n  ---\n  duration_ms: 0.3448\n  type: 'test'\n  ...\n# Subtest: a live continuous voice fades when a required mapping metric becomes unknown\nok 32 - a live continuous voice fades when a required mapping metric becomes unknown\n  ---\n  duration_ms: 0.5651\n  type: 'test'\n  ...\n# Subtest: WhileAirborne is not satisfied while Held even if the producer's airborne flag is true\nok 33 - WhileAirborne is not satisfied while Held even if the producer's airborne flag is true\n  ---\n  duration_ms: 0.2128\n  type: 'test'\n  ...\n# Subtest: unknown contact provenance methods are rejected even without a contact-subscribing rule\nok 34 - unknown contact provenance methods are rejected even without a contact-subscribing rule\n  ---\n  duration_ms: 0.2601\n  type: 'test'\n  ...\n# Subtest: an object-attached one-shot follows its source for its finite lifetime\nok 35 - an object-attached one-shot follows its source for its finite lifetime\n  ---\n  duration_ms: 0.5077\n  type: 'test'\n  ...\n# Subtest: all committed start, update, and stop emissions pass the frozen audio-event domain validator\nok 36 - all committed start, update, and stop emissions pass the frozen audio-event domain validator\n  ---\n  duration_ms: 510.6038\n  type: 'test'\n  ...\n# Subtest: all normalized inputs require a known producer source\nok 37 - all normalized inputs require a known producer source\n  ---\n  duration_ms: 0.3794\n  type: 'test'\n  ...\n# Subtest: authoring can retain unavailable asset descriptors while activation remains strict\nok 38 - authoring can retain unavailable asset descriptors while activation remains strict\n  ---\n  duration_ms: 0.56\n  type: 'test'\n  ...\n# Subtest: authoring retains mapping bounds and finite material-pair oscillator requirements\nok 39 - authoring retains mapping bounds and finite material-pair oscillator requirements\n  ---\n  duration_ms: 0.7993\n  type: 'test'\n  ...\n# Subtest: equal-priority mixed-case identity ties use codepoint order independent of input arrays\nok 40 - equal-priority mixed-case identity ties use codepoint order independent of input arrays\n  ---\n  duration_ms: 0.6026\n  type: 'test'\n  ...\n1..40\n# tests 40\n# suites 0\n# pass 40\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1222.3771\n",
+  "stderr": "",
+  "files": [
+    {
+      "path": "src/audio-behavior/index.ts",
+      "sha256": "d8044cb3e9d1e8616a0f8c243db9846efd243a3fdc49f341aa6f11a9b9589cb5",
+      "unchanged": true
+    },
+    {
+      "path": "src/audio-behavior/profile-registry.ts",
+      "sha256": "be480ced4dc072cb693c12091c096806720a774bded8789182f96ca46ee515e3",
+      "unchanged": true
+    },
+    {
+      "path": "src/audio-behavior/runtime-state.ts",
+      "sha256": "2d3143038c9154c78bd8a88ec7afd1b310803044a1f60b054f29261239b48cbe",
+      "unchanged": true
+    },
+    {
+      "path": "src/audio-behavior/trace.ts",
+      "sha256": "ec0901a082b25713117c66a94c0161b722d0e1191100e48d1eb9629fae930fde",
+      "unchanged": true
+    },
+    {
+      "path": "src/audio-behavior/types.ts",
+      "sha256": "db99877445eb2c51fb0c7a12acc97884b58cf7cce511796271c9b84be713158c",
+      "unchanged": true
+    },
+    {
+      "path": "src/audio-behavior/voice-admission.ts",
+      "sha256": "8f934412b2113d206dcb4ec3a77142953d9e98153ea91ef4c3ee75af3fc3d76f",
+      "unchanged": true
+    },
+    {
+      "path": "tests/audio-behavior/fixtures.ts",
+      "sha256": "3f83d8d237c13c41bf4e86fc971d354e9743505878653d599cba6e80640aaf5f",
+      "unchanged": true
+    },
+    {
+      "path": "tests/audio-behavior/runtime.test.ts",
+      "sha256": "59f1b4c09c74e7c1f900876d900ac0613e7a59eb20e4459527cdfb2a72c6ebca",
+      "unchanged": true
+    }
+  ],
+  "historicalRuns": "Initial24:23PASS/1mapping clampFAIL; then28PASS;6newnarrowPASS; TSX dynamic validator import later cancelled after repeated live polls, plainNode import PASS; migrated cross-validator to bounded independent plainNode,5narrowPASS. No assertions loosened.",
+  "status": "PASS"
+}

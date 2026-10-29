@@ -1,0 +1,158 @@
+{
+  "at": "2026-10-28T16:20:39.664Z",
+  "goal": "ACTIVE",
+  "pauseConditionMet": false,
+  "productGit": "266979e159bc7c200b01c15a415fbf860fc39936",
+  "formal": {
+    "status": "FAILED",
+    "reason": "PROFILE_SCRIPT_DID_NOT_QUIESCE",
+    "uiProgress": {
+      "elapsedMs": 600008.5,
+      "frames": 33761,
+      "tick": 34393,
+      "state": "paused",
+      "error": "",
+      "audio": {
+        "enabled": true,
+        "muted": true,
+        "paused": true,
+        "monitorMode": "raw",
+        "monitorGain": 0.18,
+        "activeVoices": 0,
+        "activeSources": 1,
+        "cachedSourceFrames": 2,
+        "activePaths": 0,
+        "retiringVoices": 0,
+        "pendingVoices": 0,
+        "frozenVoices": 1,
+        "frozenArrivals": 3,
+        "draining": false,
+        "droppedVoices": 0,
+        "stolenVoices": 0,
+        "droppedPaths": 0,
+        "staleFrames": 0,
+        "lateEvents": 45,
+        "decodedBytes": 336000,
+        "assetCount": 3,
+        "sampleRate": 48000,
+        "contextState": "running",
+        "baseLatencySeconds": 0.01,
+        "outputLatencySeconds": 0.04,
+        "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+        "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+        "maximumBandFilterGroupDelaySeconds": 0.0013333333333333333,
+        "nativeHrtfAndLimiterLatencySeconds": null,
+        "pauseBoundaryAudioSeconds": 512.5319999999999,
+        "pauseClockSkewSeconds": -38.55600000000004,
+        "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+        "lastError": null,
+        "budget": {
+          "maxVoices": 24,
+          "maxSources": 32,
+          "maxSourceFrames": 64,
+          "maxPathsPerVoice": 8,
+          "maxTotalPaths": 96,
+          "maxDecodedBytes": 67108864,
+          "maxAssetDurationSeconds": 120,
+          "maxAssetChannels": 2,
+          "maxPendingEvents": 256,
+          "maxAssets": 64,
+          "maxConcurrentDecodes": 2,
+          "maxLateSends": 16,
+          "maxLateReverbBytes": 4194304
+        },
+        "lateReverb": {
+          "enabled": false,
+          "decaySeconds": 1.2,
+          "wetGain": 0.12,
+          "seed": 1,
+          "model": "Synthetic/perceptual approximation",
+          "irIncludesDirect": false,
+          "convolverNormalize": false,
+          "irEnergyNormalization": "explicit unit energy",
+          "decodedBytes": 0,
+          "activeSends": 0,
+          "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+        }
+      }
+    },
+    "actualUiMeasurementOccurred": true,
+    "uiRaw": "NOT_SAVED",
+    "nativeTrace": "NOT_SAVED",
+    "sourceStable": true,
+    "processStopped": true,
+    "cleanupErrors": 0,
+    "pendingOperationCause": "UNKNOWN: old data lacks script/runtime/recorder pending diagnostics. Worker time is a hypothesis, not established cause."
+  },
+  "repairPlan": {
+    "productChanges": false,
+    "original600Boundary": "MUST_REMAIN_UNCHANGED",
+    "preserveOriginalWindowFirst": true,
+    "tail": "Separate bounded drain, never backfill original measured window",
+    "pendingOrLateCapture": "Workload incomplete even if later succeeds",
+    "rawOrTraceFailure": "Preserve original errors and independent incomplete records, never PASS"
+  },
+  "additionalEvidence": {
+    "threeFreshBrowserProcesses": true,
+    "physicsBrowserAndStorage": "PASS",
+    "nativeOriginal25": "PASS",
+    "IRv2": "PASS; full PCM; same-source fresh25-qualified",
+    "FirefoxOriginalStrict": "FAIL retained",
+    "humanHearing": "NOT_RUN"
+  },
+  "modelPolicy": {
+    "userQuote": "之後可以使用sol 子代理。",
+    "newSubagentsMayUse": "gpt-6.1-sol",
+    "existingTerraTasks": "Continue existing work without restart",
+    "finalAuthority": "Root"
+  },
+  "evidence": [
+    {
+      "path": "artifacts/v1/r15-formal-c2-20261028/process.json",
+      "sha256": "d8ece1ce2a1f50ef0151bb86e77a754e27bb4742b12e45f1231e50decfff63a0"
+    },
+    {
+      "path": "artifacts/v1/r15-formal-c2-20261028/native/verification.json",
+      "sha256": "a7fd7dc89f4f75bf021e198f16506d12a88624d03e460c5fe00c89834149c96d"
+    },
+    {
+      "path": "artifacts/v1/r15-formal-c2-20261028/native/physics.raw.json",
+      "sha256": "2f90a7bf9ad1520f68a2afaade56e2cac4469cf4ec0380cec6d0bce927f052a3"
+    },
+    {
+      "path": "artifacts/v1/r15-formal-c2-20261028/native/acoustic-productDefault.raw.json",
+      "sha256": "00ea94e233f85bebc83d795183d39091e61e7debc14febfde69dcf36613b2704"
+    },
+    {
+      "path": "artifacts/v1/r15-formal-c2-20261028/native/acoustic-stress256.raw.json",
+      "sha256": "00111ab371189cb5744a67ae6b8ae91af94221bbc05d6f625d0071618ccece20"
+    },
+    {
+      "path": "artifacts/v1/r15-clean-product-launches-20261028/launch-cleanliness-verification.json",
+      "sha256": "6e3a8ec32df65c876d86b3983c1c4710bc1ac5dd13b73dcc488298541670bb70"
+    },
+    {
+      "path": "artifacts/v1/r15-physics-storage-20261028/verification.json",
+      "sha256": "8d1a0d578aeb4c519350acd9fbe11bafe0a84d478b4de5eb47384ccd54d675d6"
+    },
+    {
+      "path": "artifacts/v1/r15-native-revalidation-retry-20261028/wrapper-verification-v2.json",
+      "sha256": "eb9c858b98d8a197904fb72af6b9176f50ee563c72d5584a2a71fb912de4f5e0"
+    },
+    {
+      "path": "artifacts/v1/r15-irv2-revalidation-20261028/wrapper-verification-ir-v1.json",
+      "sha256": "4c7bd7d31dc93f61df3ffa77be9ea54d2b4c6f4883ea48fc48298cac12059c2c"
+    },
+    {
+      "path": "artifacts/v1/r16-formal-failure-20261029/periodic-progress.raw.json",
+      "sha256": "9b58037e4a3e2167cc7e9b8ccc09bc19bafea39d8087d2f1eb02ac7c1c81e21c"
+    },
+    {
+      "path": "artifacts/v1/r16-formal-failure-20261029/quiescence-diagnosis.raw.json",
+      "sha256": "f8cfe07dbec17553876c0e370eb052a77f9678b7b519d446c90ab9ea1087e62e"
+    }
+  ],
+  "paidCalls": 0,
+  "MuseCalls": 0,
+  "overallV1Complete": false
+}

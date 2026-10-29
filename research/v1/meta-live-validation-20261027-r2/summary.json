@@ -1,0 +1,563 @@
+{
+  "status": "INCOMPLETE",
+  "soundPassed": false,
+  "scenePassed": false,
+  "runPassed": false,
+  "metaRun": false,
+  "runPlanner": "HOST_EXPLICIT_FIXED60",
+  "paidRequests": 1,
+  "paidRequestsThisExecution": 1,
+  "totalPaidRequests": 2,
+  "model": "muse-spark-1.3",
+  "dataMode": "standard",
+  "scene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "document": {
+    "schemaVersion": "1.0.0",
+    "documentId": "behavior.reflection-lab",
+    "revision": 0,
+    "assets": [],
+    "profiles": [
+      {
+        "profileId": "profile.continuous-tone",
+        "revision": 1,
+        "name": "持續測試音 · 程序音色",
+        "presetKind": "procedural",
+        "rules": [
+          {
+            "ruleId": "rule.always",
+            "enabled": true,
+            "trigger": {
+              "kind": "continuous",
+              "type": "AlwaysOn"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 220
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0,
+            "priority": 40,
+            "voiceLimit": 1,
+            "layerGroup": "layer.rule.always",
+            "mappings": []
+          }
+        ],
+        "materialPairOverrides": []
+      },
+      {
+        "profileId": "profile.interactive-tone",
+        "revision": 1,
+        "name": "互動創意音色 · 非真實振動",
+        "presetKind": "creative",
+        "rules": [
+          {
+            "ruleId": "rule.impact",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnImpact"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 440
+            },
+            "emitter": {
+              "attachment": "contact",
+              "aggregation": "impulseWeighted"
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 80,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.impact",
+            "mappings": [
+              {
+                "mappingId": "mapping.impact-gain",
+                "input": "closingSpeedMetresPerSecond",
+                "target": "gainLinear",
+                "inputMin": 0,
+                "inputMax": 10,
+                "outputMin": 0.025,
+                "outputMax": 0.25,
+                "curve": [
+                  {
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ],
+                "interpolation": "linear",
+                "clamp": true,
+                "smoothingSeconds": 0.015
+              }
+            ],
+            "oneShotDurationSeconds": 0.22
+          },
+          {
+            "ruleId": "rule.grab",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnGrab"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 110
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 40,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.grab",
+            "mappings": [],
+            "oneShotDurationSeconds": 0.22
+          },
+          {
+            "ruleId": "rule.throw",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnThrow"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 330
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 40,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.throw",
+            "mappings": [],
+            "oneShotDurationSeconds": 0.22
+          }
+        ],
+        "materialPairOverrides": []
+      }
+    ],
+    "bindings": [
+      {
+        "bindingId": "binding.interactive.ball",
+        "objectId": "ball",
+        "objectGeneration": 1,
+        "profileId": "profile.interactive-tone",
+        "profileRevision": 1,
+        "enabled": true,
+        "overrides": []
+      },
+      {
+        "bindingId": "binding.continuous.speaker",
+        "objectId": "speaker",
+        "objectGeneration": 1,
+        "profileId": "profile.continuous-tone",
+        "profileRevision": 1,
+        "enabled": true,
+        "overrides": [
+          {
+            "ruleId": "rule.always",
+            "gainLinear": 0.06309573444801933
+          }
+        ]
+      }
+    ]
+  },
+  "audit": {
+    "scene": [],
+    "sound": []
+  },
+  "experimentLedger": [],
+  "transport": [
+    {
+      "attempt": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+      "phase": "scene",
+      "httpStatus": 400,
+      "responseId": null,
+      "modelId": null,
+      "usage": null,
+      "finishReason": null,
+      "toolCallNames": [],
+      "toolCallIds": [],
+      "requestId": "aa8048df-b5c5-4a44-be34-475873e9dd09",
+      "diagnostic": {
+        "kind": "TYPED_PROVIDER_ERROR",
+        "code": null,
+        "type": "invalid_request_error",
+        "param": "parameters",
+        "message": "JSON schema keyword `uniqueItems` is not supported for structured outputs"
+      }
+    }
+  ],
+  "productPlans": [
+    {
+      "phase": "scene",
+      "route": "/api/agent/propose",
+      "httpStatus": 400,
+      "value": {
+        "error": {
+          "code": "PROVIDER_REQUEST_FAILED",
+          "message": "Meta HTTP 400 request rejected; diagnostic saved.",
+          "retryable": false,
+          "fieldPaths": []
+        }
+      }
+    }
+  ],
+  "phaseResults": [
+    {
+      "phase": "scene",
+      "attempt": 1,
+      "preview": {
+        "mode": "unavailable",
+        "status": "error",
+        "message": "PROVIDER_REQUEST_FAILED：Meta HTTP 400 request rejected; diagnostic saved.",
+        "canApply": false
+      },
+      "beforeSceneRevision": 0,
+      "beforeBehaviorRevision": 0
+    }
+  ],
+  "budget": {
+    "schemaVersion": "1.0.0",
+    "policy": {
+      "budgetUsd": 1,
+      "maxPaidRequests": 3,
+      "reservePerRequestUsd": 0.25,
+      "maxCompletionTokens": 1000,
+      "modelId": "muse-spark-1.3",
+      "dataMode": "standard",
+      "inputUsdPerMillionTokens": 1.25,
+      "outputUsdPerMillionTokens": 4.25,
+      "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+    },
+    "createdAt": "2026-10-27T01:54:48.314Z",
+    "updatedAt": "2026-10-27T02:07:15.940Z",
+    "attempts": [
+      {
+        "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+        "phase": "sound",
+        "reservedAt": "2026-10-27T01:54:48.365Z",
+        "settledAt": "2026-10-27T01:54:49.389Z",
+        "reservedUsd": 0.25,
+        "requestSummary": {
+          "modelId": "muse-spark-1.3",
+          "maxCompletionTokens": 1000,
+          "inputBytes": 15299,
+          "payloadSha256": "6c5db0f41035bf9f3162a4b0424c4bc4f89d5126b9f2348219b7437aae4e3d8f",
+          "toolNames": [
+            "ProposeSoundBehavior"
+          ]
+        },
+        "status": "failed",
+        "httpStatus": 400,
+        "responseId": null,
+        "modelId": null,
+        "usage": null,
+        "estimatedCostUsd": null,
+        "validationError": "MISSING_RESPONSE_METADATA",
+        "actualBillingCostUsd": null
+      },
+      {
+        "attemptId": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+        "phase": "scene",
+        "reservedAt": "2026-10-27T02:07:15.640Z",
+        "settledAt": "2026-10-27T02:07:15.940Z",
+        "reservedUsd": 0.25,
+        "requestSummary": {
+          "modelId": "muse-spark-1.3",
+          "maxCompletionTokens": 1000,
+          "inputBytes": 11979,
+          "payloadSha256": "1dd811bf45e98eefb9da7d7630f7945fed8eb31124c2b86a855476af8ad6b825",
+          "toolNames": [
+            "CreateScene",
+            "AddObject",
+            "SetMaterial",
+            "SetRigidBodyMode",
+            "ConfigureSoundSource",
+            "MoveListener",
+            "SetTrajectory",
+            "RunSimulation",
+            "CaptureExperiment",
+            "AnalyzeAcousticResults",
+            "CompareExperiments"
+          ]
+        },
+        "status": "failed",
+        "httpStatus": 400,
+        "responseId": null,
+        "modelId": null,
+        "usage": null,
+        "estimatedCostUsd": null,
+        "validationError": "HTTP_400_REQUEST_REJECTED",
+        "actualBillingCostUsd": null
+      }
+    ],
+    "actualBillingCostUsd": null,
+    "remainingCreditUsd": null,
+    "reconciliations": [
+      {
+        "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+        "kind": "HTTP_400_REQUEST_REJECTION",
+        "reason": "Root authorized bounded repair of known HTTP 400 request rejection; original diagnostic unavailable; retain unknown billing and original reservation.",
+        "safeAuthorizationRef": "ROOT-20261027-HTTP400-REPAIR",
+        "createdAt": "2026-10-27T02:06:48.044Z"
+      }
+    ],
+    "reservedUsd": 0.5,
+    "unreservedAuthorizedUsd": 0.5,
+    "remainingRequestSlots": 1,
+    "blockedReason": "HTTP_400_REQUEST_REJECTED"
+  },
+  "remainingCreditUsd": null,
+  "actualBillingCostUsd": null,
+  "browser": "NOT_RUN",
+  "hearing": "NOT_RUN",
+  "physicalMeasurement": "NOT_RUN"
+}

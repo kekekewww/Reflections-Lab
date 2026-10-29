@@ -1,0 +1,412 @@
+TAP version 13
+# Subtest: actual lock confirmation gates FPS input; blur freezes ticks and clears latched movement
+ok 1 - actual lock confirmation gates FPS input; blur freezes ticks and clears latched movement
+  ---
+  duration_ms: 351.4944
+  type: 'test'
+  ...
+# Subtest: ordinary pause preserves actual lock and Held while clearing controls; explicit Resume needs no second lock event
+ok 2 - ordinary pause preserves actual lock and Held while clearing controls; explicit Resume needs no second lock event
+  ---
+  duration_ms: 48.8532
+  type: 'test'
+  ...
+# Subtest: ordinary pause preserves alternative input and the exact uncommitted ghost without activating it
+ok 3 - ordinary pause preserves alternative input and the exact uncommitted ghost without activating it
+  ---
+  duration_ms: 3.849
+  type: 'test'
+  ...
+# Subtest: explicit alternative input enables real FPS controls without claiming browser lock or auto-resuming
+ok 4 - explicit alternative input enables real FPS controls without claiming browser lock or auto-resuming
+  ---
+  duration_ms: 11.8417
+  type: 'test'
+  ...
+# Subtest: alternative input keeps Held on blur and blocks held keys until a fresh release after explicit Resume
+ok 5 - alternative input keeps Held on blur and blocks held keys until a fresh release after explicit Resume
+  ---
+  duration_ms: 10.4178
+  type: 'test'
+  ...
+# Subtest: E key edges grab/drop exactly once and NoGravity drop preserves current velocity
+ok 6 - E key edges grab/drop exactly once and NoGravity drop preserves current velocity
+  ---
+  duration_ms: 8.36
+  type: 'test'
+  ...
+# Subtest: pointer-lock acquisition click cannot throw; a subsequent press emits one finite throw
+ok 7 - pointer-lock acquisition click cannot throw; a subsequent press emits one finite throw
+  ---
+  duration_ms: 2.8243
+  type: 'test'
+  ...
+# Subtest: first blocking wall prevents selecting and grabbing a dynamic body behind it
+ok 8 - first blocking wall prevents selecting and grabbing a dynamic body behind it
+  ---
+  duration_ms: 2.3167
+  type: 'test'
+  ...
+# Subtest: Held freeze preserves the same body; resume is explicit and build switching is rejected
+ok 9 - Held freeze preserves the same body; resume is explicit and build switching is rejected
+  ---
+  duration_ms: 5.0188
+  type: 'test'
+  ...
+# Subtest: rotating Held body does not rotate the camera and produces normalized finite targets
+ok 10 - rotating Held body does not rotate the camera and produces normalized finite targets
+  ---
+  duration_ms: 9.6054
+  type: 'test'
+  ...
+# Subtest: resume rejects a saved Held generation after collider geometry was rebuilt
+ok 11 - resume rejects a saved Held generation after collider geometry was rebuilt
+  ---
+  duration_ms: 4.0623
+  type: 'test'
+  ...
+# Subtest: Build commits one disabled fixed staged body and requires matching geometry acknowledgement before enable
+ok 12 - Build commits one disabled fixed staged body and requires matching geometry acknowledgement before enable
+  ---
+  duration_ms: 3.8172
+  type: 'test'
+  ...
+# Subtest: invalid player-overlapping ghost cannot mutate the scene, and cancel affects only preview
+ok 13 - invalid player-overlapping ghost cannot mutate the scene, and cancel affects only preview
+  ---
+  duration_ms: 4.584
+  type: 'test'
+  ...
+# Subtest: pending placement rejects duplicate input; stale geometry acknowledgement cannot enable a staged body
+ok 14 - pending placement rejects duplicate input; stale geometry acknowledgement cannot enable a staged body
+  ---
+  duration_ms: 3.199
+  type: 'test'
+  ...
+# Subtest: pending placement cannot be canceled halfway; a completed staged cancel removes exactly one disabled body
+ok 15 - pending placement cannot be canceled halfway; a completed staged cancel removes exactly one disabled body
+  ---
+  duration_ms: 2894.103
+  type: 'test'
+  ...
+# Subtest: Freeze Held clears the saved lease and Unlock restores its exact prior gravity mode before explicit Resume
+ok 16 - Freeze Held clears the saved lease and Unlock restores its exact prior gravity mode before explicit Resume
+  ---
+  duration_ms: 17.7941
+  type: 'test'
+  ...
+# Subtest: Unlock cannot reuse a previous body's gravity mode after the same stable ID is removed and rebuilt
+ok 17 - Unlock cannot reuse a previous body's gravity mode after the same stable ID is removed and rebuilt
+  ---
+  duration_ms: 5.3551
+  type: 'test'
+  ...
+# Subtest: a key pressed while inactive must be released before it can become a fresh action after Resume
+ok 18 - a key pressed while inactive must be released before it can become a fresh action after Resume
+  ---
+  duration_ms: 1.6802
+  type: 'test'
+  ...
+# Subtest: physical keys held through suspension cannot resume movement or drop the saved Held body
+ok 19 - physical keys held through suspension cannot resume movement or drop the saved Held body
+  ---
+  duration_ms: 25.5247
+  type: 'test'
+  ...
+# Subtest: a failed asynchronous geometry acknowledgement keeps one disabled staged object and remains recoverable
+ok 20 - a failed asynchronous geometry acknowledgement keeps one disabled staged object and remains recoverable
+  ---
+  duration_ms: 5.2583
+  type: 'test'
+  ...
+# Subtest: an injected physics Resume failure leaves the host suspended and the real world paused
+ok 21 - an injected physics Resume failure leaves the host suspended and the real world paused
+  ---
+  duration_ms: 1.7814
+  type: 'test'
+  ...
+# Subtest: a removed Gentle Place support cancels the pending placement without silently dropping Held
+ok 22 - a removed Gentle Place support cancels the pending placement without silently dropping Held
+  ---
+  duration_ms: 144.3052
+  type: 'test'
+  ...
+# Subtest: capsule falls to a real floor and reports a bounded eye height
+ok 23 - capsule falls to a real floor and reports a bounded eye height
+  ---
+  duration_ms: 319.5006
+  type: 'test'
+  ...
+# Subtest: wall stops the capsule instead of moving the camera through the collider
+ok 24 - wall stops the capsule instead of moving the camera through the collider
+  ---
+  duration_ms: 186.7971
+  type: 'test'
+  ...
+# Subtest: diagonal input does not exceed 2m/s and yaw preserves -Z forward
+ok 25 - diagonal input does not exceed 2m/s and yaw preserves -Z forward
+  ---
+  duration_ms: 19.4553
+  type: 'test'
+  ...
+# Subtest: sprint is bounded at 3.5m/s and invalid input cannot schedule movement
+ok 26 - sprint is bounded at 3.5m/s and invalid input cannot schedule movement
+  ---
+  duration_ms: 10.711
+  type: 'test'
+  ...
+# Subtest: blocked spawn/reset is rejected atomically and disposal releases the capsule
+ok 27 - blocked spawn/reset is rejected atomically and disposal releases the capsule
+  ---
+  duration_ms: 2.5657
+  type: 'test'
+  ...
+# Subtest: new world queries cannot move the capsule into an unprimed wall or floor
+ok 28 - new world queries cannot move the capsule into an unprimed wall or floor
+  ---
+  duration_ms: 2.4191
+  type: 'test'
+  ...
+# Subtest: newly committed obstacles are guarded before their first broad-phase update
+ok 29 - newly committed obstacles are guarded before their first broad-phase update
+  ---
+  duration_ms: 1.2288
+  type: 'test'
+  ...
+# Subtest: impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+ok 30 - impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+  ---
+  duration_ms: 385.3989
+  type: 'test'
+  ...
+# Subtest: 30, 60 and 144 Hz rendering each execute 600 identical fixed steps in ten seconds
+ok 31 - 30, 60 and 144 Hz rendering each execute 600 identical fixed steps in ten seconds
+  ---
+  duration_ms: 29.8264
+  type: 'test'
+  ...
+# Subtest: initial pause and explicit pause freeze ticks and do not accumulate paused wall time
+ok 32 - initial pause and explicit pause freeze ticks and do not accumulate paused wall time
+  ---
+  duration_ms: 0.969
+  type: 'test'
+  ...
+# Subtest: interactive catch-up is bounded and reports discarded wall time without skipping ticks
+ok 33 - interactive catch-up is bounded and reports discarded wall time without skipping ticks
+  ---
+  duration_ms: 0.9487
+  type: 'test'
+  ...
+# Subtest: recording overload pauses with backlog intact and explicit resume can drain it
+ok 34 - recording overload pauses with backlog intact and explicit resume can drain it
+  ---
+  duration_ms: 1.8406
+  type: 'test'
+  ...
+# Subtest: reset returns the clock to a paused initial epoch
+ok 35 - reset returns the clock to a paused initial epoch
+  ---
+  duration_ms: 1.8869
+  type: 'test'
+  ...
+# Subtest: invalid clock configuration and wall deltas are rejected
+ok 36 - invalid clock configuration and wall deltas are rejected
+  ---
+  duration_ms: 5.3502
+  type: 'test'
+  ...
+# Subtest: a failed physics callback does not commit that tick or consume its pending time
+ok 37 - a failed physics callback does not commit that tick or consume its pending time
+  ---
+  duration_ms: 1.9164
+  type: 'test'
+  ...
+# Subtest: a custom 120 Hz fixed step remains independent of 60 Hz rendering
+ok 38 - a custom 120 Hz fixed step remains independent of 60 Hz rendering
+  ---
+  duration_ms: 1.1264
+  type: 'test'
+  ...
+# Subtest: pause requested at a physics boundary stops catch-up and preserves pending time
+ok 39 - pause requested at a physics boundary stops catch-up and preserves pending time
+  ---
+  duration_ms: 1.2177
+  type: 'test'
+  ...
+# Subtest: moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+ok 40 - moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+  ---
+  duration_ms: 322.8236
+  type: 'test'
+  ...
+# Subtest: snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+ok 41 - snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+  ---
+  duration_ms: 3.1732
+  type: 'test'
+  ...
+# Subtest: spinning has radian-per-second hysteresis independent of linear speed
+ok 42 - spinning has radian-per-second hysteresis independent of linear speed
+  ---
+  duration_ms: 2.1587
+  type: 'test'
+  ...
+# Subtest: actual supported sphere retains rolling/sliding through the slip band and transitions without both
+ok 43 - actual supported sphere retains rolling/sliding through the slip band and transitions without both
+  ---
+  duration_ms: 72.6434
+  type: 'test'
+  ...
+# Subtest: normal-axis spin plus slow contact translation cannot be mislabeled rolling
+ok 44 - normal-axis spin plus slow contact translation cannot be mislabeled rolling
+  ---
+  duration_ms: 23.4256
+  type: 'test'
+  ...
+# Subtest: a fixed support does not become a sliding object when a dynamic sphere scrapes it
+ok 45 - a fixed support does not become a sliding object when a dynamic sphere scrapes it
+  ---
+  duration_ms: 14.7858
+  type: 'test'
+  ...
+# Subtest: a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+ok 46 - a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+  ---
+  duration_ms: 17.3206
+  type: 'test'
+  ...
+# Subtest: held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+ok 47 - held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+  ---
+  duration_ms: 5.052
+  type: 'test'
+  ...
+# Subtest: reset, replacement and remove/re-add start fresh bounded generation state
+ok 48 - reset, replacement and remove/re-add start fresh bounded generation state
+  ---
+  duration_ms: 6.7666
+  type: 'test'
+  ...
+# Subtest: paused construction, fixed 60Hz freefall, reset and disposed lifetime
+ok 49 - paused construction, fixed 60Hz freefall, reset and disposed lifetime
+  ---
+  duration_ms: 330.9078
+  type: 'test'
+  ...
+# Subtest: four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+ok 50 - four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+  ---
+  duration_ms: 33.0241
+  type: 'test'
+  ...
+# Subtest: one falling sphere emits one impact at real contact, while support does not repeat impacts
+ok 51 - one falling sphere emits one impact at real contact, while support does not repeat impacts
+  ---
+  duration_ms: 61.5292
+  type: 'test'
+  ...
+# Subtest: mode-change invalidation recovers resting support without inventing a second impact
+ok 52 - mode-change invalidation recovers resting support without inventing a second impact
+  ---
+  duration_ms: 30.7029
+  type: 'test'
+  ...
+# Subtest: grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 53 - grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 13.3742
+  type: 'test'
+  ...
+# Subtest: grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 54 - grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 5.8466
+  type: 'test'
+  ...
+# Subtest: grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+ok 55 - grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 3.5631
+  type: 'test'
+  ...
+# Subtest: grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+ok 56 - grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 2.6034
+  type: 'test'
+  ...
+# Subtest: held target behind wall is clamped without penetrating or teleporting object
+ok 57 - held target behind wall is clamped without penetrating or teleporting object
+  ---
+  duration_ms: 23.2271
+  type: 'test'
+  ...
+# Subtest: NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+ok 58 - NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+  ---
+  duration_ms: 1.7209
+  type: 'test'
+  ...
+# Subtest: ray returns first blocking wall rather than a grabbable sphere behind it
+ok 59 - ray returns first blocking wall rather than a grabbable sphere behind it
+  ---
+  duration_ms: 1.8417
+  type: 'test'
+  ...
+# Subtest: placement uses actual shape clearance, staged body stays inactive until enabled
+ok 60 - placement uses actual shape clearance, staged body stays inactive until enabled
+  ---
+  duration_ms: 5.3081
+  type: 'test'
+  ...
+# Subtest: scene application validates before mutation, requires pause and preserves unedited solver poses
+ok 61 - scene application validates before mutation, requires pause and preserves unedited solver poses
+  ---
+  duration_ms: 4.8026
+  type: 'test'
+  ...
+# Subtest: interpolation is bounded and snapshot mutations cannot write solver state
+ok 62 - interpolation is bounded and snapshot mutations cannot write solver state
+  ---
+  duration_ms: 1.3874
+  type: 'test'
+  ...
+# Subtest: 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+ok 63 - 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+  ---
+  duration_ms: 30.1907
+  type: 'test'
+  ...
+# Subtest: throwing step observer pauses safely after committing exactly the already-solved tick
+ok 64 - throwing step observer pauses safely after committing exactly the already-solved tick
+  ---
+  duration_ms: 0.8558
+  type: 'test'
+  ...
+# Subtest: invalid kinematic orientation rejects the entire target without leaving a pending translation
+ok 65 - invalid kinematic orientation rejects the entire target without leaving a pending translation
+  ---
+  duration_ms: 1.0004
+  type: 'test'
+  ...
+# Subtest: held geometry replacement cannot resume an old generation grip without explicit release
+ok 66 - held geometry replacement cannot resume an old generation grip without explicit release
+  ---
+  duration_ms: 2.4013
+  type: 'test'
+  ...
+# Subtest: editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+ok 67 - editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+  ---
+  duration_ms: 322.8967
+  type: 'test'
+  ...
+1..67
+# tests 67
+# suites 0
+# pass 67
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5477.343

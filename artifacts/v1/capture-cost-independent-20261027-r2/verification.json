@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "scope": "Independent Node ownership/boundary and preserved old-recorder exact artifact equivalence; no browser/performance/audio device claim",
+  "startedSource": [
+    {
+      "path": "src/app/acoustic-input.ts",
+      "sha256": "03b2e94840a50914a4cc3133a72402198e6bebec46806dac0df7b1c52b1fb9c1"
+    },
+    {
+      "path": "src/experiments/hash.ts",
+      "sha256": "5f8f0796c0e86a1dd3054c4ea48dc912e3b0902d2dab58de7689acb474c91f35"
+    },
+    {
+      "path": "src/experiments/recorder.ts",
+      "sha256": "9c931e5de65b16134c74d7b2d3c0d126e269b9e7ad20773df09dd4003f7d9c77"
+    },
+    {
+      "path": "tests/app/acoustic-input-ownership.test.ts",
+      "sha256": "8e6c997248823ded89f199372db6f5916ca8b127855f276ed8576de46eb0e080"
+    },
+    {
+      "path": "tests/experiment-runtime/recorder-canonical-equivalence.test.ts",
+      "sha256": "0ec81787117760c88392ce4773d65f7d60c39168e36526053a4dbe13441ae378"
+    }
+  ],
+  "endedSource": [
+    {
+      "path": "src/app/acoustic-input.ts",
+      "sha256": "03b2e94840a50914a4cc3133a72402198e6bebec46806dac0df7b1c52b1fb9c1"
+    },
+    {
+      "path": "src/experiments/hash.ts",
+      "sha256": "5f8f0796c0e86a1dd3054c4ea48dc912e3b0902d2dab58de7689acb474c91f35"
+    },
+    {
+      "path": "src/experiments/recorder.ts",
+      "sha256": "9c931e5de65b16134c74d7b2d3c0d126e269b9e7ad20773df09dd4003f7d9c77"
+    },
+    {
+      "path": "tests/app/acoustic-input-ownership.test.ts",
+      "sha256": "8e6c997248823ded89f199372db6f5916ca8b127855f276ed8576de46eb0e080"
+    },
+    {
+      "path": "tests/experiment-runtime/recorder-canonical-equivalence.test.ts",
+      "sha256": "0ec81787117760c88392ce4773d65f7d60c39168e36526053a4dbe13441ae378"
+    }
+  ],
+  "sourceStable": true,
+  "results": [
+    {
+      "name": "tests",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/app/acoustic-input-ownership.test.ts",
+        "tests/experiment-runtime/recorder-canonical-equivalence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "strict",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--strict",
+        "--skipLibCheck",
+        "--target",
+        "ES2022",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--esModuleInterop",
+        "--resolveJsonModule",
+        "--types",
+        "node",
+        "tests/app/acoustic-input-ownership.test.ts",
+        "tests/experiment-runtime/recorder-canonical-equivalence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "tests/app/acoustic-input-ownership.test.ts",
+        "tests/experiment-runtime/recorder-canonical-equivalence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "format",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "tests/app/acoustic-input-ownership.test.ts",
+        "tests/experiment-runtime/recorder-canonical-equivalence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ]
+}

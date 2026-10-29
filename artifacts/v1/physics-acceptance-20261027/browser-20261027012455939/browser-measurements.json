@@ -1,0 +1,5713 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-27T01:25:37.764Z",
+  "measurements": [
+    {
+      "requirement": [
+        "V1-PHY-01",
+        "V1-PHY-02",
+        "RLAB-TASK-0006.AC-02"
+      ],
+      "sourceHashes": [
+        {
+          "path": "src/physics/physics-world.ts",
+          "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+        },
+        {
+          "path": "src/physics/fixed-clock.ts",
+          "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+        },
+        {
+          "path": "src/scene/validate-scene.ts",
+          "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+        }
+      ],
+      "sourceStable": true,
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "method": "actual browser-hosted PhysicsWorld methods, not Inspector click coverage",
+      "result": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "initial": {
+          "tick": 0,
+          "simulationTimeSeconds": 0,
+          "fixedDtSeconds": 0.016666666666666666,
+          "sceneRevision": 0,
+          "epoch": 0,
+          "paused": true,
+          "poses": [
+            {
+              "objectId": "driven",
+              "generation": 1,
+              "positionMetres": [
+                9,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "kinematic",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "gravity",
+              "generation": 1,
+              "positionMetres": [
+                0,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicGravity",
+              "sleeping": false,
+              "moving": false,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "inertial",
+              "generation": 1,
+              "positionMetres": [
+                3,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicNoGravity",
+              "sleeping": false,
+              "moving": false,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "locked",
+              "generation": 1,
+              "positionMetres": [
+                6,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "wall",
+              "generation": 1,
+              "positionMetres": [
+                9.350000381469727,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            }
+          ],
+          "events": [],
+          "heldObjectId": null,
+          "grabDiagnostics": null,
+          "player": null
+        },
+        "first": {
+          "tick": 1,
+          "simulationTimeSeconds": 0.016666666666666666,
+          "fixedDtSeconds": 0.016666666666666666,
+          "sceneRevision": 0,
+          "epoch": 0,
+          "paused": false,
+          "poses": [
+            {
+              "objectId": "driven",
+              "generation": 1,
+              "positionMetres": [
+                9.050000190734863,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                3.0000112056732178,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "kinematic",
+              "sleeping": false,
+              "moving": true,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "gravity",
+              "generation": 1,
+              "positionMetres": [
+                0,
+                4.998296737670898,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                -0.16350001096725464,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicGravity",
+              "sleeping": false,
+              "moving": true,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "inertial",
+              "generation": 1,
+              "positionMetres": [
+                3.0333337783813477,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0.0016666667070239782,
+                0,
+                0.9999986886978149
+              ],
+              "linearVelocityMetresPerSecond": [
+                2,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0.2000000923871994,
+                0
+              ],
+              "mode": "dynamicNoGravity",
+              "sleeping": false,
+              "moving": true,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": true,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "locked",
+              "generation": 1,
+              "positionMetres": [
+                6,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            },
+            {
+              "objectId": "wall",
+              "generation": 1,
+              "positionMetres": [
+                9.350000381469727,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": true
+            }
+          ],
+          "events": [
+            {
+              "type": "OnStartMoving",
+              "objectId": "driven",
+              "source": "state",
+              "accepted": true,
+              "eventId": "phys-0-1-0",
+              "tick": 1,
+              "sequence": 0,
+              "sceneRevision": 0,
+              "simulationTimeSeconds": 0.016666666666666666,
+              "fixedDtSeconds": 0.016666666666666666,
+              "generation": 1,
+              "positionMetres": [
+                9.050000190734863,
+                5,
+                0
+              ]
+            },
+            {
+              "type": "OnStartMoving",
+              "objectId": "gravity",
+              "source": "state",
+              "accepted": true,
+              "eventId": "phys-0-1-1",
+              "tick": 1,
+              "sequence": 1,
+              "sceneRevision": 0,
+              "simulationTimeSeconds": 0.016666666666666666,
+              "fixedDtSeconds": 0.016666666666666666,
+              "generation": 1,
+              "positionMetres": [
+                0,
+                4.998296737670898,
+                0
+              ]
+            },
+            {
+              "type": "OnStartMoving",
+              "objectId": "inertial",
+              "source": "state",
+              "accepted": true,
+              "eventId": "phys-0-1-2",
+              "tick": 1,
+              "sequence": 2,
+              "sceneRevision": 0,
+              "simulationTimeSeconds": 0.016666666666666666,
+              "fixedDtSeconds": 0.016666666666666666,
+              "generation": 1,
+              "positionMetres": [
+                3.0333337783813477,
+                5,
+                0
+              ]
+            }
+          ],
+          "heldObjectId": null,
+          "grabDiagnostics": null,
+          "player": null
+        },
+        "impulseVelocity": [
+          3,
+          0,
+          0
+        ],
+        "beforeGravityOn": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.0333337783813477,
+            5,
+            0
+          ],
+          "rotation": [
+            0,
+            0.0016666667070239782,
+            0,
+            0.9999986886978149
+          ],
+          "linearVelocityMetresPerSecond": [
+            3,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0.2000000923871994,
+            0
+          ],
+          "mode": "dynamicNoGravity",
+          "sleeping": false,
+          "moving": true,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": true,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "afterGravityOn": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.0333337783813477,
+            5,
+            0
+          ],
+          "rotation": [
+            0,
+            0.0016666667070239782,
+            0,
+            0.9999986886978149
+          ],
+          "linearVelocityMetresPerSecond": [
+            3,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0.2000000923871994,
+            0
+          ],
+          "mode": "dynamicGravity",
+          "sleeping": false,
+          "moving": true,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": true,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "beforeGravityOff": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.083333969116211,
+            4.998296737670898,
+            0
+          ],
+          "rotation": [
+            0,
+            0.003333329688757658,
+            0,
+            0.9999945163726807
+          ],
+          "linearVelocityMetresPerSecond": [
+            3,
+            -0.16350001096725464,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0.20000025629997253,
+            0
+          ],
+          "mode": "dynamicGravity",
+          "sleeping": false,
+          "moving": true,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": true,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "afterGravityOff": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.083333969116211,
+            4.998296737670898,
+            0
+          ],
+          "rotation": [
+            0,
+            0.003333329688757658,
+            0,
+            0.9999945163726807
+          ],
+          "linearVelocityMetresPerSecond": [
+            3,
+            -0.16350001096725464,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0.20000025629997253,
+            0
+          ],
+          "mode": "dynamicNoGravity",
+          "sleeping": false,
+          "moving": true,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": true,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "afterNoGravityStep": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.133334159851074,
+            4.995571136474609,
+            0
+          ],
+          "rotation": [
+            0,
+            0.00499998452141881,
+            0,
+            0.9999874830245972
+          ],
+          "linearVelocityMetresPerSecond": [
+            3,
+            -0.16350001096725464,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0.20000040531158447,
+            0
+          ],
+          "mode": "dynamicNoGravity",
+          "sleeping": false,
+          "moving": true,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": true,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "locked": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.133334159851074,
+            4.995571136474609,
+            0
+          ],
+          "rotation": [
+            0,
+            0.00499998452141881,
+            0,
+            0.9999874830245972
+          ],
+          "linearVelocityMetresPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "mode": "fixed",
+          "sleeping": false,
+          "moving": false,
+          "airborne": false,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": false,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "lockedAfterImpulse": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.133334159851074,
+            4.995571136474609,
+            0
+          ],
+          "rotation": [
+            0,
+            0.00499998452141881,
+            0,
+            0.9999874830245972
+          ],
+          "linearVelocityMetresPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "mode": "fixed",
+          "sleeping": false,
+          "moving": false,
+          "airborne": false,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": false,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "unlocked": {
+          "objectId": "inertial",
+          "generation": 1,
+          "positionMetres": [
+            3.133334159851074,
+            4.995571136474609,
+            0
+          ],
+          "rotation": [
+            0,
+            0.00499998452141881,
+            0,
+            0.9999874830245972
+          ],
+          "linearVelocityMetresPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "mode": "dynamicNoGravity",
+          "sleeping": false,
+          "moving": false,
+          "airborne": true,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": false,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": true
+        },
+        "blockedCode": "KINEMATIC_BLOCKED",
+        "beforeBlockedStep": {
+          "objectId": "driven",
+          "generation": 1,
+          "positionMetres": [
+            9.200000762939453,
+            5,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "linearVelocityMetresPerSecond": [
+            3.0000112056732178,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "mode": "kinematic",
+          "sleeping": false,
+          "moving": true,
+          "airborne": false,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": false,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": false
+        },
+        "afterBlockedStep": {
+          "objectId": "driven",
+          "generation": 1,
+          "positionMetres": [
+            9.200000762939453,
+            5,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "linearVelocityMetresPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "angularVelocityRadiansPerSecond": [
+            0,
+            0,
+            0
+          ],
+          "mode": "kinematic",
+          "sleeping": false,
+          "moving": true,
+          "airborne": false,
+          "held": false,
+          "rolling": null,
+          "sliding": false,
+          "spinning": false,
+          "enabled": true,
+          "lifecycle": "active",
+          "discontinuity": false
+        },
+        "paused": {
+          "tick": 8,
+          "simulationTimeSeconds": 0.13333333333333333,
+          "fixedDtSeconds": 0.016666666666666666,
+          "sceneRevision": 0,
+          "epoch": 0,
+          "paused": true,
+          "poses": [
+            {
+              "objectId": "driven",
+              "generation": 1,
+              "positionMetres": [
+                9.200000762939453,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "kinematic",
+              "sleeping": false,
+              "moving": true,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "gravity",
+              "generation": 1,
+              "positionMetres": [
+                0,
+                4.9100751876831055,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                -1.3079999685287476,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicGravity",
+              "sleeping": false,
+              "moving": true,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "inertial",
+              "generation": 1,
+              "positionMetres": [
+                3.133334159851074,
+                4.995571136474609,
+                0
+              ],
+              "rotation": [
+                0,
+                0.00499998452141881,
+                0,
+                0.9999874830245972
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicNoGravity",
+              "sleeping": false,
+              "moving": false,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "locked",
+              "generation": 1,
+              "positionMetres": [
+                6,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "wall",
+              "generation": 1,
+              "positionMetres": [
+                9.350000381469727,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            }
+          ],
+          "events": [],
+          "heldObjectId": null,
+          "grabDiagnostics": null,
+          "player": null
+        },
+        "pausedAfter": {
+          "tick": 8,
+          "simulationTimeSeconds": 0.13333333333333333,
+          "fixedDtSeconds": 0.016666666666666666,
+          "sceneRevision": 0,
+          "epoch": 0,
+          "paused": true,
+          "poses": [
+            {
+              "objectId": "driven",
+              "generation": 1,
+              "positionMetres": [
+                9.200000762939453,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "kinematic",
+              "sleeping": false,
+              "moving": true,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "gravity",
+              "generation": 1,
+              "positionMetres": [
+                0,
+                4.9100751876831055,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                -1.3079999685287476,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicGravity",
+              "sleeping": false,
+              "moving": true,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "inertial",
+              "generation": 1,
+              "positionMetres": [
+                3.133334159851074,
+                4.995571136474609,
+                0
+              ],
+              "rotation": [
+                0,
+                0.00499998452141881,
+                0,
+                0.9999874830245972
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "dynamicNoGravity",
+              "sleeping": false,
+              "moving": false,
+              "airborne": true,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "locked",
+              "generation": 1,
+              "positionMetres": [
+                6,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            },
+            {
+              "objectId": "wall",
+              "generation": 1,
+              "positionMetres": [
+                9.350000381469727,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "linearVelocityMetresPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "angularVelocityRadiansPerSecond": [
+                0,
+                0,
+                0
+              ],
+              "mode": "fixed",
+              "sleeping": false,
+              "moving": false,
+              "airborne": false,
+              "held": false,
+              "rolling": null,
+              "sliding": false,
+              "spinning": false,
+              "enabled": true,
+              "lifecycle": "active",
+              "discontinuity": false
+            }
+          ],
+          "events": [],
+          "heldObjectId": null,
+          "grabDiagnostics": null,
+          "player": null
+        },
+        "pausedAdvanceSteps": 0
+      }
+    },
+    {
+      "requirement": "V1-SCN-03",
+      "sourceHashes": [
+        {
+          "path": "src/physics/physics-world.ts",
+          "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+        },
+        {
+          "path": "src/physics/fixed-clock.ts",
+          "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+        },
+        {
+          "path": "src/scene/validate-scene.ts",
+          "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+        },
+        {
+          "path": "src/app/bootstrap.ts",
+          "sha256": "aaca41bff814096c72bc957800304595c6b07d38eeab6a965c9f1e104666eb0f"
+        },
+        {
+          "path": "src/app/runtime.ts",
+          "sha256": "2251967f03fc81ba138fa89b8d2a180bea7374259d4fed3fe34e1387bf3a114f"
+        },
+        {
+          "path": "src/main.tsx",
+          "sha256": "ae7b9736512e3248057ae6bdb98c52aa0f46b0c2d8401774864bbba199f4dad4"
+        },
+        {
+          "path": "src/app/acoustic-service.ts",
+          "sha256": "fe04b87dbf709cc8084f5927decbb243a06a655d631e8b78c875d686d72ce5e2"
+        },
+        {
+          "path": "src/ui/Viewport.tsx",
+          "sha256": "8263c17ce441a90daad17967678f57ed8530cb823d64162ba6115eb483025e52"
+        },
+        {
+          "path": "src/ui/viewport/CameraRig.tsx",
+          "sha256": "265a7deabe38dfe5987dfef1a572e7486f0a9a83781d605ad14907e704b56f39"
+        },
+        {
+          "path": "src/ui/styles.css",
+          "sha256": "0db046725ef11bf3701205a188dc71eb00f7b95c598d84811378221a1e3819f0"
+        },
+        {
+          "path": "src/ui/viewport/SceneEntities.tsx",
+          "sha256": "3578fe342e6e1ec66804f8602d9eb5332680a6a7a503f8305ba4d4a657760933"
+        }
+      ],
+      "sourceStable": true,
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "method": "real React/R3F app via production bootstrap; transparent native RAF/Worker/WebGL and Rapier free instrumentation",
+      "result": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "baseline": {
+          "liveWorlds": 1,
+          "liveQueues": 1,
+          "liveWorkers": 1,
+          "pendingRaf": 2,
+          "canvasCount": 1,
+          "globalListeners": [
+            {
+              "target": "document",
+              "type": "pointerlockchange",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keydown",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keyup",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "mousemove",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "wheel",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "blur",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "keydown",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keydown",
+              "capture": true
+            },
+            {
+              "target": "window",
+              "type": "keydown",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "keyup",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "blur",
+              "capture": false
+            }
+          ],
+          "contexts": [
+            {
+              "lost": false,
+              "resources": {
+                "Buffer": 69,
+                "Texture": 7,
+                "Program": 6,
+                "Shader": 0,
+                "Framebuffer": 4,
+                "Renderbuffer": 0,
+                "VertexArray": 27
+              }
+            }
+          ],
+          "counts": {
+            "createdWorlds": 1,
+            "freedWorlds": 0,
+            "createdQueues": 1,
+            "freedQueues": 0,
+            "workerCreated": 1,
+            "workerTerminated": 0,
+            "rafCallbacks": 5
+          }
+        },
+        "cycles": [
+          {
+            "index": 0,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 59,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 22
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 2,
+                "freedWorlds": 1,
+                "createdQueues": 2,
+                "freedQueues": 1,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 25
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 3,
+                "freedWorlds": 2,
+                "createdQueues": 3,
+                "freedQueues": 2,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 29
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 1,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 80,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 32
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 4,
+                "freedWorlds": 3,
+                "createdQueues": 4,
+                "freedQueues": 3,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 33
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 5,
+                "freedWorlds": 4,
+                "createdQueues": 5,
+                "freedQueues": 4,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 35
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 2,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 60,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 22
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 6,
+                "freedWorlds": 5,
+                "createdQueues": 6,
+                "freedQueues": 5,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 43
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 7,
+                "freedWorlds": 6,
+                "createdQueues": 7,
+                "freedQueues": 6,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 49
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 3,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 44,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 18
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 8,
+                "freedWorlds": 7,
+                "createdQueues": 8,
+                "freedQueues": 7,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 57
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 9,
+                "freedWorlds": 8,
+                "createdQueues": 9,
+                "freedQueues": 8,
+                "workerCreated": 2,
+                "workerTerminated": 1,
+                "rafCallbacks": 63
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 4,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 44,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 18
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 10,
+                "freedWorlds": 9,
+                "createdQueues": 10,
+                "freedQueues": 9,
+                "workerCreated": 3,
+                "workerTerminated": 2,
+                "rafCallbacks": 73
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 11,
+                "freedWorlds": 10,
+                "createdQueues": 11,
+                "freedQueues": 10,
+                "workerCreated": 3,
+                "workerTerminated": 2,
+                "rafCallbacks": 79
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 5,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 102,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 35
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 12,
+                "freedWorlds": 11,
+                "createdQueues": 12,
+                "freedQueues": 11,
+                "workerCreated": 3,
+                "workerTerminated": 2,
+                "rafCallbacks": 89
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 80,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 32
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 13,
+                "freedWorlds": 12,
+                "createdQueues": 13,
+                "freedQueues": 12,
+                "workerCreated": 4,
+                "workerTerminated": 3,
+                "rafCallbacks": 97
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 6,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 14,
+                "freedWorlds": 13,
+                "createdQueues": 14,
+                "freedQueues": 13,
+                "workerCreated": 4,
+                "workerTerminated": 3,
+                "rafCallbacks": 103
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 15,
+                "freedWorlds": 14,
+                "createdQueues": 15,
+                "freedQueues": 14,
+                "workerCreated": 4,
+                "workerTerminated": 3,
+                "rafCallbacks": 107
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 7,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 16,
+                "freedWorlds": 15,
+                "createdQueues": 16,
+                "freedQueues": 15,
+                "workerCreated": 5,
+                "workerTerminated": 4,
+                "rafCallbacks": 117
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 17,
+                "freedWorlds": 16,
+                "createdQueues": 17,
+                "freedQueues": 16,
+                "workerCreated": 5,
+                "workerTerminated": 4,
+                "rafCallbacks": 123
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 8,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 18,
+                "freedWorlds": 17,
+                "createdQueues": 18,
+                "freedQueues": 17,
+                "workerCreated": 6,
+                "workerTerminated": 5,
+                "rafCallbacks": 139
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 60,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 22
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 19,
+                "freedWorlds": 18,
+                "createdQueues": 19,
+                "freedQueues": 18,
+                "workerCreated": 7,
+                "workerTerminated": 6,
+                "rafCallbacks": 147
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          },
+          {
+            "index": 9,
+            "afterReset": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 20,
+                "freedWorlds": 19,
+                "createdQueues": 20,
+                "freedQueues": 19,
+                "workerCreated": 7,
+                "workerTerminated": 6,
+                "rafCallbacks": 153
+              }
+            },
+            "afterImport": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 21,
+                "freedWorlds": 20,
+                "createdQueues": 21,
+                "freedQueues": 20,
+                "workerCreated": 7,
+                "workerTerminated": 6,
+                "rafCallbacks": 159
+              }
+            },
+            "error": "",
+            "revision": 0,
+            "resetTick": 0,
+            "roundtripPreserved": true
+          }
+        ],
+        "beforeDispose": {
+          "liveWorlds": 1,
+          "liveQueues": 1,
+          "liveWorkers": 1,
+          "pendingRaf": 2,
+          "canvasCount": 1,
+          "globalListeners": [
+            {
+              "target": "document",
+              "type": "pointerlockchange",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keydown",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keyup",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "mousemove",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "wheel",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "blur",
+              "capture": false
+            },
+            {
+              "target": "document",
+              "type": "keydown",
+              "capture": true
+            },
+            {
+              "target": "window",
+              "type": "keydown",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "keyup",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "blur",
+              "capture": false
+            },
+            {
+              "target": "window",
+              "type": "keydown",
+              "capture": false
+            }
+          ],
+          "contexts": [
+            {
+              "lost": false,
+              "resources": {
+                "Buffer": 70,
+                "Texture": 7,
+                "Program": 6,
+                "Shader": 0,
+                "Framebuffer": 4,
+                "Renderbuffer": 0,
+                "VertexArray": 27
+              }
+            }
+          ],
+          "counts": {
+            "createdWorlds": 21,
+            "freedWorlds": 20,
+            "createdQueues": 21,
+            "freedQueues": 20,
+            "workerCreated": 7,
+            "workerTerminated": 6,
+            "rafCallbacks": 159
+          }
+        },
+        "disposed": {
+          "liveWorlds": 0,
+          "liveQueues": 0,
+          "liveWorkers": 0,
+          "pendingRaf": 0,
+          "canvasCount": 0,
+          "globalListeners": [],
+          "contexts": [
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            },
+            {
+              "lost": true,
+              "resources": {
+                "Buffer": 0,
+                "Texture": 0,
+                "Program": 0,
+                "Shader": 0,
+                "Framebuffer": 0,
+                "Renderbuffer": 0,
+                "VertexArray": 0
+              }
+            }
+          ],
+          "counts": {
+            "createdWorlds": 48,
+            "freedWorlds": 48,
+            "createdQueues": 48,
+            "freedQueues": 48,
+            "workerCreated": 18,
+            "workerTerminated": 18,
+            "rafCallbacks": 343
+          }
+        },
+        "callbacksAtDispose": 343,
+        "callbacksAfterWait": 343,
+        "htmlAfterDispose": "",
+        "illegalImportError": "JSON_INVALID: Project JSON could not be parsed",
+        "illegalImportPreserved": true,
+        "teardownCycles": [
+          {
+            "index": 0,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 27
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 21,
+                "freedWorlds": 20,
+                "createdQueues": 21,
+                "freedQueues": 20,
+                "workerCreated": 7,
+                "workerTerminated": 6,
+                "rafCallbacks": 159
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 21,
+                "freedWorlds": 21,
+                "createdQueues": 21,
+                "freedQueues": 21,
+                "workerCreated": 7,
+                "workerTerminated": 7,
+                "rafCallbacks": 160
+              }
+            }
+          },
+          {
+            "index": 1,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 60,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 23
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 24,
+                "freedWorlds": 23,
+                "createdQueues": 24,
+                "freedQueues": 23,
+                "workerCreated": 9,
+                "workerTerminated": 8,
+                "rafCallbacks": 180
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 24,
+                "freedWorlds": 24,
+                "createdQueues": 24,
+                "freedQueues": 24,
+                "workerCreated": 9,
+                "workerTerminated": 9,
+                "rafCallbacks": 181
+              }
+            }
+          },
+          {
+            "index": 2,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 96,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 37
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 27,
+                "freedWorlds": 26,
+                "createdQueues": 27,
+                "freedQueues": 26,
+                "workerCreated": 10,
+                "workerTerminated": 9,
+                "rafCallbacks": 201
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 27,
+                "freedWorlds": 27,
+                "createdQueues": 27,
+                "freedQueues": 27,
+                "workerCreated": 10,
+                "workerTerminated": 10,
+                "rafCallbacks": 202
+              }
+            }
+          },
+          {
+            "index": 3,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 102,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 36
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 30,
+                "freedWorlds": 29,
+                "createdQueues": 30,
+                "freedQueues": 29,
+                "workerCreated": 11,
+                "workerTerminated": 10,
+                "rafCallbacks": 219
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 30,
+                "freedWorlds": 30,
+                "createdQueues": 30,
+                "freedQueues": 30,
+                "workerCreated": 11,
+                "workerTerminated": 11,
+                "rafCallbacks": 220
+              }
+            }
+          },
+          {
+            "index": 4,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 86,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 32
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 33,
+                "freedWorlds": 32,
+                "createdQueues": 33,
+                "freedQueues": 32,
+                "workerCreated": 13,
+                "workerTerminated": 12,
+                "rafCallbacks": 236
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 33,
+                "freedWorlds": 33,
+                "createdQueues": 33,
+                "freedQueues": 33,
+                "workerCreated": 13,
+                "workerTerminated": 13,
+                "rafCallbacks": 237
+              }
+            }
+          },
+          {
+            "index": 5,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 60,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 23
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 36,
+                "freedWorlds": 35,
+                "createdQueues": 36,
+                "freedQueues": 35,
+                "workerCreated": 14,
+                "workerTerminated": 13,
+                "rafCallbacks": 254
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 36,
+                "freedWorlds": 36,
+                "createdQueues": 36,
+                "freedQueues": 36,
+                "workerCreated": 14,
+                "workerTerminated": 14,
+                "rafCallbacks": 255
+              }
+            }
+          },
+          {
+            "index": 6,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 28
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 39,
+                "freedWorlds": 38,
+                "createdQueues": 39,
+                "freedQueues": 38,
+                "workerCreated": 15,
+                "workerTerminated": 14,
+                "rafCallbacks": 278
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 39,
+                "freedWorlds": 39,
+                "createdQueues": 39,
+                "freedQueues": 39,
+                "workerCreated": 15,
+                "workerTerminated": 15,
+                "rafCallbacks": 279
+              }
+            }
+          },
+          {
+            "index": 7,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 102,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 36
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 42,
+                "freedWorlds": 41,
+                "createdQueues": 42,
+                "freedQueues": 41,
+                "workerCreated": 16,
+                "workerTerminated": 15,
+                "rafCallbacks": 302
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 42,
+                "freedWorlds": 42,
+                "createdQueues": 42,
+                "freedQueues": 42,
+                "workerCreated": 16,
+                "workerTerminated": 16,
+                "rafCallbacks": 303
+              }
+            }
+          },
+          {
+            "index": 8,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 60,
+                    "Texture": 7,
+                    "Program": 5,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 23
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 45,
+                "freedWorlds": 44,
+                "createdQueues": 45,
+                "freedQueues": 44,
+                "workerCreated": 17,
+                "workerTerminated": 16,
+                "rafCallbacks": 327
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 45,
+                "freedWorlds": 45,
+                "createdQueues": 45,
+                "freedQueues": 45,
+                "workerCreated": 17,
+                "workerTerminated": 17,
+                "rafCallbacks": 328
+              }
+            }
+          },
+          {
+            "index": 9,
+            "mounted": {
+              "liveWorlds": 1,
+              "liveQueues": 1,
+              "liveWorkers": 1,
+              "pendingRaf": 2,
+              "canvasCount": 1,
+              "globalListeners": [
+                {
+                  "target": "document",
+                  "type": "pointerlockchange",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "mousemove",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "wheel",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "document",
+                  "type": "keydown",
+                  "capture": true
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keyup",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "blur",
+                  "capture": false
+                },
+                {
+                  "target": "window",
+                  "type": "keydown",
+                  "capture": false
+                }
+              ],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": false,
+                  "resources": {
+                    "Buffer": 70,
+                    "Texture": 7,
+                    "Program": 6,
+                    "Shader": 0,
+                    "Framebuffer": 4,
+                    "Renderbuffer": 0,
+                    "VertexArray": 28
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 48,
+                "freedWorlds": 47,
+                "createdQueues": 48,
+                "freedQueues": 47,
+                "workerCreated": 18,
+                "workerTerminated": 17,
+                "rafCallbacks": 342
+              }
+            },
+            "disposed": {
+              "liveWorlds": 0,
+              "liveQueues": 0,
+              "liveWorkers": 0,
+              "pendingRaf": 0,
+              "canvasCount": 0,
+              "globalListeners": [],
+              "contexts": [
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                },
+                {
+                  "lost": true,
+                  "resources": {
+                    "Buffer": 0,
+                    "Texture": 0,
+                    "Program": 0,
+                    "Shader": 0,
+                    "Framebuffer": 0,
+                    "Renderbuffer": 0,
+                    "VertexArray": 0
+                  }
+                }
+              ],
+              "counts": {
+                "createdWorlds": 48,
+                "freedWorlds": 48,
+                "createdQueues": 48,
+                "freedQueues": 48,
+                "workerCreated": 18,
+                "workerTerminated": 18,
+                "rafCallbacks": 343
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Chrome on this machine; not a cross-browser proof",
+    "graphics exercised via software ANGLE/SwiftShader",
+    "no human hearing or audio-device deadline evidence"
+  ]
+}

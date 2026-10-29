@@ -1,0 +1,118 @@
+{
+    "schemaVersion":  "1.0.0",
+    "reviewer":  "codex-v1_integration_review",
+    "scope":  "Independent Node runtime/control integration including gravity-only continuity; no product-wide completion claim",
+    "createdAt":  "2026-10-27T02:34:59.3228310+00:00",
+    "gitHead":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "worktreeDirty":  true,
+    "nodeVersion":  "v22.17.0",
+    "npmVersion":  "11.4.2",
+    "commands":  [
+                     {
+                         "command":  "node --import tsx --test tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T02:33:53.6464888+00:00",
+                         "completedAt":  "2026-10-27T02:34:14.2175487+00:00",
+                         "durationMs":  20426,
+                         "stdout":  "owned-suites.stdout.txt",
+                         "stderr":  "owned-suites.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T02:33:53.9994601+00:00",
+                         "completedAt":  "2026-10-27T02:34:07.4949236+00:00",
+                         "durationMs":  13330,
+                         "stdout":  "typecheck.stdout.txt",
+                         "stderr":  "typecheck.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     }
+                 ],
+    "ownedTests":  {
+                       "total":  35,
+                       "passed":  35,
+                       "failed":  0
+                   },
+    "sourceCheck":  {
+                        "beforeCount":  146,
+                        "afterCount":  146,
+                        "unchanged":  true,
+                        "changed":  [
+
+                                    ],
+                        "beforeManifest":  "source-before.json",
+                        "afterManifest":  "source-after.json"
+                    },
+    "artifacts":  [
+                      {
+                          "path":  "owned-suites.command.json",
+                          "sha256":  "8330be9f82af7a2301bf364bdbfd01e4e6a3eb2ce811ff8f99e75a04830fdf9a",
+                          "byteLength":  576
+                      },
+                      {
+                          "path":  "owned-suites.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "owned-suites.stdout.txt",
+                          "sha256":  "0e7def57963cf2642c57b7b3019363e0f7c2d64e7b77f6dbd30298c3edaedab3",
+                          "byteLength":  9256
+                      },
+                      {
+                          "path":  "source-after.json",
+                          "sha256":  "aa4e1f0546b404ed208fbb02bee0e0c93b692247989484658afafc991e3912bb",
+                          "byteLength":  22127
+                      },
+                      {
+                          "path":  "source-before.json",
+                          "sha256":  "aa4e1f0546b404ed208fbb02bee0e0c93b692247989484658afafc991e3912bb",
+                          "byteLength":  22127
+                      },
+                      {
+                          "path":  "typecheck.command.json",
+                          "sha256":  "adcaabfecb1520268f6676326d7215f0dacb434e49229abdc08bc639c78c9916",
+                          "byteLength":  522
+                      },
+                      {
+                          "path":  "typecheck.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "typecheck.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      }
+                  ],
+    "crossEvidence":  [
+                          {
+                              "path":  "../gravity-toggle-review-v1/red-verification.json",
+                              "sha256":  "5c2f067b5dee2b27f185858da359cc5370342722e55fe14a02911a08112c2630"
+                          },
+                          {
+                              "path":  "../gravity-toggle-review-v1/green-verification.json",
+                              "sha256":  "df1d1a293db7d9d6450b741e55caf1e29d188cfcd155b0487fbf61152942ca18"
+                          }
+                      ],
+    "notRun":  [
+                   "Browser product workflows",
+                   "Native OfflineAudioContext/DSP in this reviewer run",
+                   "Hardware PCM pointer/waveform measurement",
+                   "Device hearing",
+                   "10-minute performance",
+                   "Real Meta/provider API"
+               ],
+    "modelCalls":  0,
+    "sourceEditsByReviewer":  [
+                                  "tests/app/integration-regressions.test.ts",
+                                  "tests/app/app-control-regressions.test.ts",
+                                  "docs/11-v1/INTEGRATION_REVIEW.md"
+                              ],
+    "note":  "Same gravity-only test and expected values used for RED and GREEN. FakeAudioContext control graph + actual AudioEngine and Rapier; not hardware phase/hearing evidence. Prior v3 proof retained."
+}

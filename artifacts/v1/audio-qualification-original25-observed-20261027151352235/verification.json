@@ -1,0 +1,3544 @@
+{
+  "requestedEngines": [
+    "chromium"
+  ],
+  "expectedChecks": 25,
+  "passedChecks": 18,
+  "status": "ERROR",
+  "exitCode": 1,
+  "createdAt": "2026-10-27T15:14:34.372Z",
+  "browserLaunched": true,
+  "runnerError": null,
+  "interrupted": false,
+  "sourceStable": true,
+  "sourcesBefore": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "sourcesAfter": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "engines": [
+    {
+      "engine": "chromium",
+      "cache": {
+        "engine": "chromium",
+        "executablePath": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe",
+        "executableExists": true,
+        "manifestRevision": "1248",
+        "manifestVersion": "156.0.8078.4"
+      },
+      "actualVersion": "156.0.8078.4",
+      "suites": [
+        {
+          "suite": "baseline",
+          "module": "/tests/audio-runtime/browser.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": {
+            "name": "HarnessTimeoutError",
+            "message": "original suite import and preparation exceeded 15000ms",
+            "stack": "HarnessTimeoutError: original suite import and preparation exceeded 15000ms\n    at Timeout.<anonymous> (file:///D:/Developing/Meta%20Hack/tests/audio-runtime/run-cross-engine.mjs:131:25)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"
+          },
+          "status": "ERROR",
+          "classification": "HARNESS_TIMEOUT",
+          "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred",
+          "cases": [
+            {
+              "id": "native-delay-arrivals-once",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-pressure-gain-once-and-no-convolver-normalization",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-dispose-resource-accounting",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-continuous-generator-survives-parameter-and-impact-updates",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-independent-voice-path-and-decoded-memory-budgets",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-bounded-burst-finite-output",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            },
+            {
+              "id": "native-hrtf-renders-finite-nonzero-output",
+              "status": "NOT_RUN_SUITE_EXCEPTION",
+              "reason": "Suite exceeded its bounded wall-clock deadline; no numerical result is inferred"
+            }
+          ]
+        },
+        {
+          "suite": "pause",
+          "module": "/tests/audio-runtime/native-pause.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.5013333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.12
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.5013333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.12,
+                "endTime": 0.12
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.5013333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.30133333333333334
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.30133333333333334
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "resume",
+                "context": "AudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [
+              {
+                "state": "closed",
+                "currentTime": 0.14133333333333334,
+                "resumePending": false
+              }
+            ],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.5013333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.5013333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.5013333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.30133333333333334,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.30133333333333334,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "AudioContext",
+                "state": "closed",
+                "currentTime": 0.14133333333333334,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-ended-emission-unarrived-impulse-restored-once",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true
+                  },
+                  "logicalPause": 0.10133333333333333,
+                  "frozen": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": true,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 1,
+                    "frozenArrivals": 1,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "peaks": [
+                    12480
+                  ],
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 1,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "expectedSample": 12480
+                }
+              },
+              {
+                "id": "native-heard-impact-not-reemitted",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true
+                  },
+                  "logicalPause": 0.12,
+                  "frozen": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": true,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 1,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.13999999999999999,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "peaks": [
+                    4080
+                  ],
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 0,
+                    "cachedSourceFrames": 0,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.13999999999999999,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "expectedSample": 4080
+                }
+              },
+              {
+                "id": "native-future-emission-rescheduled-once",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true
+                  },
+                  "logicalPause": 0.10133333333333333,
+                  "frozen": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": true,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 1,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "peaks": [
+                    11280
+                  ],
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 1,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "expectedSample": 11280
+                }
+              },
+              {
+                "id": "native-sample-cursor-preserved-across-pause",
+                "pass": true,
+                "evidence": {
+                  "logicalPause": 0.10133333333333333,
+                  "rmsError": 4.299957825308863e-9,
+                  "maximumError": 7.430712378742044e-9,
+                  "sampleRate": 48000,
+                  "oracle": "sourceTime literal ramp",
+                  "tolerance": 0.000041666666666666665,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "raw",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 192000,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-oscillator-cursor-preserved-across-pause",
+                "pass": true,
+                "evidence": {
+                  "logicalPause": 0.10133333333333333,
+                  "rmsError": 0.000004669769620530505,
+                  "maximumError": 0.000010647675351187214,
+                  "sampleRate": 48000,
+                  "oracle": "sin(2*pi*443*sourceTime)",
+                  "tolerance": 0.001,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "raw",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 192000,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                    "pauseClockSkewSeconds": 0,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-paused-run-keeps-device-clock-running",
+                "pass": true,
+                "evidence": {
+                  "before": 0.050666666666666665,
+                  "after": 0.14133333333333334,
+                  "state": "running",
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": true,
+                    "paused": true,
+                    "monitorMode": "simulated",
+                    "monitorGain": 0.5,
+                    "activeVoices": 0,
+                    "activeSources": 0,
+                    "cachedSourceFrames": 0,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "running",
+                    "baseLatencySeconds": 0.01,
+                    "outputLatencySeconds": 0.04,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": 0.052000000000000005,
+                    "pauseClockSkewSeconds": 0.032,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+            "limitations": [
+              "20ms interrupted boundary; no seamless waveform or filter-state continuation claim",
+              "Late path segments use latest solver path and content parameters; no retarded moving-history model",
+              "Sine/ramp cursor fixtures only; other oscillator harmonics and rapid authored pitch/filter histories need wider characterization",
+              "No hearing, headphone, device latency, or realtime capacity certification"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-ended-emission-unarrived-impulse-restored-once",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true
+                },
+                "logicalPause": 0.10133333333333333,
+                "frozen": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": true,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 1,
+                  "frozenArrivals": 1,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "peaks": [
+                  12480
+                ],
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 1,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "expectedSample": 12480
+              }
+            },
+            {
+              "id": "native-heard-impact-not-reemitted",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true
+                },
+                "logicalPause": 0.12,
+                "frozen": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": true,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 1,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.13999999999999999,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "peaks": [
+                  4080
+                ],
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 0,
+                  "cachedSourceFrames": 0,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.13999999999999999,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "expectedSample": 4080
+              }
+            },
+            {
+              "id": "native-future-emission-rescheduled-once",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true
+                },
+                "logicalPause": 0.10133333333333333,
+                "frozen": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": true,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 1,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "peaks": [
+                  11280
+                ],
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 1,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "expectedSample": 11280
+              }
+            },
+            {
+              "id": "native-sample-cursor-preserved-across-pause",
+              "status": "PASS",
+              "evidence": {
+                "logicalPause": 0.10133333333333333,
+                "rmsError": 4.299957825308863e-9,
+                "maximumError": 7.430712378742044e-9,
+                "sampleRate": 48000,
+                "oracle": "sourceTime literal ramp",
+                "tolerance": 0.000041666666666666665,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "raw",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 192000,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-oscillator-cursor-preserved-across-pause",
+              "status": "PASS",
+              "evidence": {
+                "logicalPause": 0.10133333333333333,
+                "rmsError": 0.000004669769620530505,
+                "maximumError": 0.000010647675351187214,
+                "sampleRate": 48000,
+                "oracle": "sin(2*pi*443*sourceTime)",
+                "tolerance": 0.001,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "raw",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 192000,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.12133333333333333,
+                  "pauseClockSkewSeconds": 0,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-paused-run-keeps-device-clock-running",
+              "status": "PASS",
+              "evidence": {
+                "before": 0.050666666666666665,
+                "after": 0.14133333333333334,
+                "state": "running",
+                "telemetry": {
+                  "enabled": true,
+                  "muted": true,
+                  "paused": true,
+                  "monitorMode": "simulated",
+                  "monitorGain": 0.5,
+                  "activeVoices": 0,
+                  "activeSources": 0,
+                  "cachedSourceFrames": 0,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "running",
+                  "baseLatencySeconds": 0.01,
+                  "outputLatencySeconds": 0.04,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": 0.052000000000000005,
+                  "pauseClockSkewSeconds": 0.032,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "suite": "late",
+          "module": "/tests/audio-runtime/native-reverb.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.6
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.5013333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.2,
+                "endTime": 0.2
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 16
+                },
+                "endTime": 0
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.6,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.5013333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-synthetic-late-IR-explicit-unit-energy-no-auto-normalization",
+                "pass": true,
+                "evidence": {
+                  "directEnergy": 0.24999999144286456,
+                  "expectedDirectEnergy": 0.25,
+                  "lateEnergy": 0.062499985378537466,
+                  "expectedLateEnergy": 0.0625,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 2,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": true,
+                      "decaySeconds": 0.3,
+                      "wetGain": 0.5,
+                      "seed": 7,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 57600,
+                      "activeSends": 1,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-late-tail-starts-after-real-solver-path-and-30ms-synthetic-onset",
+                "pass": true,
+                "evidence": {
+                  "pathDelaySeconds": 0.025,
+                  "emissionSeconds": 0.05,
+                  "assetImpulseOffsetSeconds": 0.01,
+                  "syntheticOnsetSeconds": 0.03,
+                  "gapEnergy": 6.758465296592804e-16,
+                  "tailEnergy": 0.0611096148725425
+                }
+              },
+              {
+                "id": "native-late-bank-crossfade-bounded-finite-and-source-preserving",
+                "pass": true,
+                "evidence": {
+                  "transition": 0.2,
+                  "largestDelta": 0.010365687310695648,
+                  "scope": "Measured sample delta; no universal click/pop threshold adopted",
+                  "during": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 2,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": true,
+                      "decaySeconds": 0.4,
+                      "wetGain": 0.3,
+                      "seed": 9,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 115200,
+                      "activeSends": 1,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "tailEnergy": 1156.0731952280837
+                }
+              },
+              {
+                "id": "native-original-WAV-import-real-decode-and-trusted-hash-playback",
+                "pass": true,
+                "evidence": {
+                  "asset": {
+                    "name": "Original encoded PCM16 impulse",
+                    "origin": "imported",
+                    "license": "ORIGINAL_TEST_WAV",
+                    "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                    "assetId": "decoded-wav",
+                    "revision": 1,
+                    "durationSeconds": 0.01,
+                    "sampleRate": 48000,
+                    "channels": 1,
+                    "decodedBytes": 1920
+                  },
+                  "admission": {
+                    "accepted": true
+                  },
+                  "peakAt": 3840,
+                  "expectedPeakAt": 3840,
+                  "peak": 0.3535533845424652,
+                  "decodedEnergy": 0.24999999144286456
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+            "limitations": [
+              "Synthetic/perceptual IR, no measured or computed room RT60 claim",
+              "Late bus is not an individual solver path and exports no rays",
+              "Finite native fixtures do not certify hearing, realtime capacity, clicks or device latency"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-synthetic-late-IR-explicit-unit-energy-no-auto-normalization",
+              "status": "PASS",
+              "evidence": {
+                "directEnergy": 0.24999999144286456,
+                "expectedDirectEnergy": 0.25,
+                "lateEnergy": 0.062499985378537466,
+                "expectedLateEnergy": 0.0625,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 2,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": true,
+                    "decaySeconds": 0.3,
+                    "wetGain": 0.5,
+                    "seed": 7,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 57600,
+                    "activeSends": 1,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-late-tail-starts-after-real-solver-path-and-30ms-synthetic-onset",
+              "status": "PASS",
+              "evidence": {
+                "pathDelaySeconds": 0.025,
+                "emissionSeconds": 0.05,
+                "assetImpulseOffsetSeconds": 0.01,
+                "syntheticOnsetSeconds": 0.03,
+                "gapEnergy": 6.758465296592804e-16,
+                "tailEnergy": 0.0611096148725425
+              }
+            },
+            {
+              "id": "native-late-bank-crossfade-bounded-finite-and-source-preserving",
+              "status": "PASS",
+              "evidence": {
+                "transition": 0.2,
+                "largestDelta": 0.010365687310695648,
+                "scope": "Measured sample delta; no universal click/pop threshold adopted",
+                "during": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 2,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": true,
+                    "decaySeconds": 0.4,
+                    "wetGain": 0.3,
+                    "seed": 9,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 115200,
+                    "activeSends": 1,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "tailEnergy": 1156.0731952280837
+              }
+            },
+            {
+              "id": "native-original-WAV-import-real-decode-and-trusted-hash-playback",
+              "status": "PASS",
+              "evidence": {
+                "asset": {
+                  "name": "Original encoded PCM16 impulse",
+                  "origin": "imported",
+                  "license": "ORIGINAL_TEST_WAV",
+                  "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                  "assetId": "decoded-wav",
+                  "revision": 1,
+                  "durationSeconds": 0.01,
+                  "sampleRate": 48000,
+                  "channels": 1,
+                  "decodedBytes": 1920
+                },
+                "admission": {
+                  "accepted": true
+                },
+                "peakAt": 3840,
+                "expectedPeakAt": 3840,
+                "peak": 0.3535533845424652,
+                "decodedEnergy": 0.24999999144286456
+              }
+            }
+          ]
+        },
+        {
+          "suite": "continuity",
+          "module": "/tests/audio-runtime/native-continuity.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.352
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.2,
+                "endTime": 0.2
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.352,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-delayed-path-birth-and-death-follow-audio-clock-fades",
+                "pass": true,
+                "evidence": {
+                  "birth": 0.10133333333333333,
+                  "arrival": 0.12633333333333333,
+                  "death": 0.2,
+                  "rmsError": 0.00001341593847476842,
+                  "oracle": "sin(2*pi*1000*(t-.025))*clamp(min((t-arrival)/.02,1-(t-death)/.02),0,1)",
+                  "rmsTolerance": 0.001,
+                  "afterDeathEnergy": 0,
+                  "maxDelta": 0.09229680616954283,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "regions": {
+                    "before": {
+                      "error": 0,
+                      "count": 1200,
+                      "energy": 0
+                    },
+                    "birth": {
+                      "error": 7.052247730259122e-8,
+                      "count": 960,
+                      "energy": 161.27720610233368
+                    },
+                    "steady": {
+                      "error": 9.527415402292228e-7,
+                      "count": 2576,
+                      "energy": 1286.7296974725787
+                    },
+                    "death": {
+                      "error": 1.7473215120497114e-7,
+                      "count": 960,
+                      "energy": 159.9848785369413
+                    },
+                    "after": {
+                      "error": 3.845431920053351e-57,
+                      "count": 960,
+                      "energy": 0
+                    }
+                  }
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+            "limitations": [
+              "One literal delayed sine fixture; no universal click/pop threshold adopted",
+              "No hearing or realtime performance certification"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-delayed-path-birth-and-death-follow-audio-clock-fades",
+              "status": "PASS",
+              "evidence": {
+                "birth": 0.10133333333333333,
+                "arrival": 0.12633333333333333,
+                "death": 0.2,
+                "rmsError": 0.00001341593847476842,
+                "oracle": "sin(2*pi*1000*(t-.025))*clamp(min((t-arrival)/.02,1-(t-death)/.02),0,1)",
+                "rmsTolerance": 0.001,
+                "afterDeathEnergy": 0,
+                "maxDelta": 0.09229680616954283,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "regions": {
+                  "before": {
+                    "error": 0,
+                    "count": 1200,
+                    "energy": 0
+                  },
+                  "birth": {
+                    "error": 7.052247730259122e-8,
+                    "count": 960,
+                    "energy": 161.27720610233368
+                  },
+                  "steady": {
+                    "error": 9.527415402292228e-7,
+                    "count": 2576,
+                    "energy": 1286.7296974725787
+                  },
+                  "death": {
+                    "error": 1.7473215120497114e-7,
+                    "count": 960,
+                    "energy": 159.9848785369413
+                  },
+                  "after": {
+                    "error": 3.845431920053351e-57,
+                    "count": 960,
+                    "energy": 0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "suite": "restore",
+          "module": "/tests/audio-runtime/native-restore.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.3333333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.3333333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.3333333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.2,
+                "endTime": 0.2
+              },
+              {
+                "method": "suspend",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.25066666666666665
+              },
+              {
+                "method": "resume",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0.10133333333333333,
+                "endTime": 0.10133333333333333
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.3333333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.3333333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.3333333333333333,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.25066666666666665,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-seek-restores-authored-offset-once-and-existing-propagation-pipeline",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true
+                  },
+                  "duplicate": {
+                    "accepted": false,
+                    "reason": "RESTORE_ALREADY_APPLIED"
+                  },
+                  "rmsError": 2.1046434712233098e-8,
+                  "tolerance": 0.000041666666666666665,
+                  "earlyEnergy": 75.57549931985636,
+                  "oracle": "authored .1 + sourceCursor .4 - pathDelay .025 + t",
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 2,
+                    "retiringVoices": 1,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 1,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 192000,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": "RESTORE_ALREADY_APPLIED",
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-seek-ended-heard-impact-stays-heard",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true,
+                    "reason": "RESTORED_PENDING_OR_ALREADY_COMPLETE"
+                  },
+                  "peaks": [],
+                  "expectedSample": null,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 0,
+                    "cachedSourceFrames": 0,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-seek-ended-unarrived-impact-arrives-once",
+                "pass": true,
+                "evidence": {
+                  "admission": {
+                    "accepted": true,
+                    "reason": "RESTORED_PENDING_OR_ALREADY_COMPLETE"
+                  },
+                  "peaks": [
+                    5280
+                  ],
+                  "expectedSample": 5280,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 1,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 3840,
+                    "assetCount": 1,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-capture-source-cursor-integrates-authored-pitch-ramp",
+                "pass": true,
+                "evidence": {
+                  "t1": 0.10133333333333333,
+                  "t2": 0.2,
+                  "saved": {
+                    "playheadSeconds": 0.27866666666666673,
+                    "elapsedSinceEmissionSeconds": 0.19,
+                    "remainingDurationSeconds": null
+                  },
+                  "expectedSourceSeconds": 0.2786666666666667,
+                  "tolerance": 0.000020833333333333333
+                }
+              },
+              {
+                "id": "native-pause-captured-cursor-restores-without-fade-age-inflation",
+                "pass": true,
+                "evidence": {
+                  "pauseTime": 0.10133333333333333,
+                  "logicalAge": 0.09133333333333334,
+                  "pausedCursor": {
+                    "playheadSeconds": 0.09133333333333334,
+                    "elapsedSinceEmissionSeconds": 0.09133333333333334,
+                    "remainingDurationSeconds": null
+                  },
+                  "restored": {
+                    "accepted": true
+                  },
+                  "rmsError": 5.941202046530271e-9,
+                  "tolerance": 0.000041666666666666665,
+                  "cutoff": "20ms heard cutoff does not advance source cursor or logical age"
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+            "limitations": [
+              "Current source cursor follows bounded authored pitch-ramp history and epoch mapping; not a hardware read pointer",
+              "Restore pending history uses latest pitch/content/path approximation when earlier automation is absent",
+              "No seamless seek waveform/filter-state, hearing, or realtime capacity certification"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-seek-restores-authored-offset-once-and-existing-propagation-pipeline",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true
+                },
+                "duplicate": {
+                  "accepted": false,
+                  "reason": "RESTORE_ALREADY_APPLIED"
+                },
+                "rmsError": 2.1046434712233098e-8,
+                "tolerance": 0.000041666666666666665,
+                "earlyEnergy": 75.57549931985636,
+                "oracle": "authored .1 + sourceCursor .4 - pathDelay .025 + t",
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 2,
+                  "retiringVoices": 1,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 1,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 192000,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": "RESTORE_ALREADY_APPLIED",
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-seek-ended-heard-impact-stays-heard",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true,
+                  "reason": "RESTORED_PENDING_OR_ALREADY_COMPLETE"
+                },
+                "peaks": [],
+                "expectedSample": null,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 0,
+                  "cachedSourceFrames": 0,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-seek-ended-unarrived-impact-arrives-once",
+              "status": "PASS",
+              "evidence": {
+                "admission": {
+                  "accepted": true,
+                  "reason": "RESTORED_PENDING_OR_ALREADY_COMPLETE"
+                },
+                "peaks": [
+                  5280
+                ],
+                "expectedSample": 5280,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 1,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 3840,
+                  "assetCount": 1,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-capture-source-cursor-integrates-authored-pitch-ramp",
+              "status": "PASS",
+              "evidence": {
+                "t1": 0.10133333333333333,
+                "t2": 0.2,
+                "saved": {
+                  "playheadSeconds": 0.27866666666666673,
+                  "elapsedSinceEmissionSeconds": 0.19,
+                  "remainingDurationSeconds": null
+                },
+                "expectedSourceSeconds": 0.2786666666666667,
+                "tolerance": 0.000020833333333333333
+              }
+            },
+            {
+              "id": "native-pause-captured-cursor-restores-without-fade-age-inflation",
+              "status": "PASS",
+              "evidence": {
+                "pauseTime": 0.10133333333333333,
+                "logicalAge": 0.09133333333333334,
+                "pausedCursor": {
+                  "playheadSeconds": 0.09133333333333334,
+                  "elapsedSinceEmissionSeconds": 0.09133333333333334,
+                  "remainingDurationSeconds": null
+                },
+                "restored": {
+                  "accepted": true
+                },
+                "rmsError": 5.941202046530271e-9,
+                "tolerance": 0.000041666666666666665,
+                "cutoff": "20ms heard cutoff does not advance source cursor or logical age"
+              }
+            }
+          ]
+        },
+        {
+          "suite": "wave",
+          "module": "/tests/audio-runtime/native-wave.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": true,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": true,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 8
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 16
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 24
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 32
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 3,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 32
+                },
+                "endTime": 0
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 1
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 8000,
+                  "bits": 16
+                },
+                "endTime": 0
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 1,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-supported-PCM8-16-24-32-and-normalized-float32-WAV-decode",
+                "pass": true,
+                "evidence": {
+                  "decodeCalls": 5,
+                  "results": [
+                    {
+                      "bits": 8,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-8",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "3c7a5df23f3ee3cfb63c284b0bc8fb9070eb7615fb873be5bbf656a60a26f34d",
+                        "assetId": "wav-pcm-8",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 16,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-16",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                        "assetId": "wav-pcm-16",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 24,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-24",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "aa8d51ef95f0b947253385c62d0591b29fc6b9b831ec702087d206348fd5de04",
+                        "assetId": "wav-pcm-24",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 32,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-32",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "916f715ed3062517b128c370b6c7727890a1aacc23fc700f3e3ab09d0940714a",
+                        "assetId": "wav-pcm-32",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 32,
+                      "float": true,
+                      "asset": {
+                        "name": "wav-float-32",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "f2f49e59c3babca9c9b7fc0613567fefd398e1a39a0abdb6e5f7f51481e132c9",
+                        "assetId": "wav-float-32",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    }
+                  ],
+                  "peaks": [
+                    3840,
+                    11040,
+                    18240,
+                    25440,
+                    32640
+                  ],
+                  "expected": [
+                    3840,
+                    11040,
+                    18240,
+                    25440,
+                    32640
+                  ]
+                }
+              },
+              {
+                "id": "native-WAV-resample-reservation-and-unsupported-format-preflight",
+                "pass": true,
+                "evidence": {
+                  "resampled": {
+                    "name": "Original8kWAV",
+                    "origin": "imported",
+                    "license": "ORIGINAL_TEST_WAV",
+                    "sha256": "e75988fb5c3898c0bc032f83f7e3fa2700fd0f42425f8d96d0a06cf8d59de570",
+                    "assetId": "resampled",
+                    "revision": 1,
+                    "durationSeconds": 0.01,
+                    "sampleRate": 48000,
+                    "channels": 1,
+                    "decodedBytes": 1920
+                  },
+                  "decodeCallsBeforeRejects": 1,
+                  "decodeCallsAfterRejects": 1,
+                  "memoryCode": "DECODED_MEMORY_BUDGET",
+                  "compressedCode": "WAV_CAPABILITY_UNSUPPORTED"
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+            "limitations": [
+              "V1onlyuncompressedRIFF/WAVEPCM8/16/24/32 andnormalizedfinitefloat32; compressed/extensible formats explicitlyunsupported",
+              "Metadata/chunk/PCMreservationsboundacceptednativework; internalbrowserdecoderresidentpeaknotmeasured",
+              "No bundled third-party codec, hearing or realtime capacity certification"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-supported-PCM8-16-24-32-and-normalized-float32-WAV-decode",
+              "status": "PASS",
+              "evidence": {
+                "decodeCalls": 5,
+                "results": [
+                  {
+                    "bits": 8,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-8",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "3c7a5df23f3ee3cfb63c284b0bc8fb9070eb7615fb873be5bbf656a60a26f34d",
+                      "assetId": "wav-pcm-8",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 16,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-16",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                      "assetId": "wav-pcm-16",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 24,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-24",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "aa8d51ef95f0b947253385c62d0591b29fc6b9b831ec702087d206348fd5de04",
+                      "assetId": "wav-pcm-24",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 32,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-32",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "916f715ed3062517b128c370b6c7727890a1aacc23fc700f3e3ab09d0940714a",
+                      "assetId": "wav-pcm-32",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 32,
+                    "float": true,
+                    "asset": {
+                      "name": "wav-float-32",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "f2f49e59c3babca9c9b7fc0613567fefd398e1a39a0abdb6e5f7f51481e132c9",
+                      "assetId": "wav-float-32",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  }
+                ],
+                "peaks": [
+                  3840,
+                  11040,
+                  18240,
+                  25440,
+                  32640
+                ],
+                "expected": [
+                  3840,
+                  11040,
+                  18240,
+                  25440,
+                  32640
+                ]
+              }
+            },
+            {
+              "id": "native-WAV-resample-reservation-and-unsupported-format-preflight",
+              "status": "PASS",
+              "evidence": {
+                "resampled": {
+                  "name": "Original8kWAV",
+                  "origin": "imported",
+                  "license": "ORIGINAL_TEST_WAV",
+                  "sha256": "e75988fb5c3898c0bc032f83f7e3fa2700fd0f42425f8d96d0a06cf8d59de570",
+                  "assetId": "resampled",
+                  "revision": 1,
+                  "durationSeconds": 0.01,
+                  "sampleRate": 48000,
+                  "channels": 1,
+                  "decodedBytes": 1920
+                },
+                "decodeCallsBeforeRejects": 1,
+                "decodeCallsAfterRejects": 1,
+                "memoryCode": "DECODED_MEMORY_BUDGET",
+                "compressedCode": "WAV_CAPABILITY_UNSUPPORTED"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "browser",
+      "pid": 87368,
+      "method": "close",
+      "ok": true
+    },
+    {
+      "resource": "source-server",
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "All original numeric thresholds and fixture decisions are unchanged",
+    "Missing APIs block affected checks; unrelated checks inside an unchanged aggregate may remain NOT_RUN_AGGREGATE_DEPENDENCY",
+    "Native resume timeout with observed suspended context is environment-blocked, not a passing DSP result",
+    "No hearing/headphone/device-latency/SPL or AudioWorklet/real-time capacity claim"
+  ]
+}

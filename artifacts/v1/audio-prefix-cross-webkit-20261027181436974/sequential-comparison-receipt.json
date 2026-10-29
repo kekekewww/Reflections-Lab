@@ -1,0 +1,66 @@
+{
+  "status": "COMPARISON_COMPLETED_WITH_NUMERICAL_FAIL_AND_CAPABILITY_BLOCKS",
+  "createdAt": "2026-10-27T18:16:49.271Z",
+  "wholeGlobalStable": true,
+  "globalInputCount": 1782,
+  "summaries": [
+    {
+      "engine": "firefox",
+      "status": "FAIL",
+      "counts": {
+        "PASS": 8,
+        "FAIL": 1,
+        "BLOCKED_CAPABILITY": 9,
+        "NOT_RUN_AGGREGATE_DEPENDENCY": 7
+      },
+      "nativeExitCode": 1,
+      "nativeClose": {
+        "exitCode": 1,
+        "signal": null,
+        "observedAt": "2026-10-27T18:13:47.270Z",
+        "provenance": "Retained native Node ChildProcess close event"
+      },
+      "captureIntegrity": true,
+      "ownedProcessCount": 0,
+      "path": "artifacts/v1/audio-prefix-cross-firefox-20261027181341084/comparison-receipt.json",
+      "sha256": "2f1ad42f2140a246cc61c9ad1810fdc518417c7c7a74bd5eac9c5560c2c0d401"
+    },
+    {
+      "engine": "webkit",
+      "status": "BLOCKED",
+      "counts": {
+        "BLOCKED_CAPABILITY": 25
+      },
+      "nativeExitCode": 2,
+      "nativeClose": {
+        "exitCode": 2,
+        "signal": null,
+        "observedAt": "2026-10-27T18:14:39.673Z",
+        "provenance": "Retained native Node ChildProcess close event"
+      },
+      "captureIntegrity": true,
+      "ownedProcessCount": 0,
+      "path": "artifacts/v1/audio-prefix-cross-webkit-20261027181436974/comparison-receipt.json",
+      "sha256": "b3e06ad445f22b7de2d37707c253ab935711d0a67b84445872bad3eb47d5f70e"
+    }
+  ],
+  "sourceCopies": {
+    "run-cross-prepared-comparison.mjs": "7d2ad8dd6edccaeb6568b9af6bbd0a0b33dba7a528d53d3154b525d857d90be1",
+    "audio-cross-prepared-observer.mjs": "0f2c9354efe2b0495ab06adb49fbbd7cce89c3adae4515e101542805eac91a05",
+    "audio-cross-observer-preimage-238d.mjs": "238d9f60b20eee83aa5eb82a03baaef41850d0c130cba3f5fdba82c8b13043c5",
+    "audio-cross-observer-derivation.json": "fb23bdfa8bd4ea9a41090fc56b692cfea064f91d4d8b6bb449cb7d473b7f1c76",
+    "audio-cross-prepared-readiness.json": "d6b6ede171410750351a0e8191fc0f8ce689a7ba93a9f63213360280c77e366e"
+  },
+  "review": {
+    "status": "NO_BLOCKERS_REPORTED",
+    "reviewer": "/root/v1_audio_finish/audio_review",
+    "scope": "Independent bounded read-only calculation over actual current Firefox/WebKit comparison artifacts, no rerun",
+    "integrity": "Verified source23 equals registered Root281 map with sole band CE-to-F3 delta; utility6/cacheproof3 before/after and current hashes match; observer exact3 substitutions, driver3db/manifest585b plus7bundles14hashes match. Raw six suite files equal embedded six suites/25 unique IDs. Global pairs each1782 identical; actual spawnfile/fixed executable hashes and recorded ownedPID counts0.",
+    "firefox": "Exact8 PASS/1 FAIL/9 BLOCKED_CAPABILITY/7 NOT_RUN_AGGREGATE_DEPENDENCY. Energy absolute error0.000030517564487853033 exceeds unchanged0.00001 predicate; browser.ts predicate unchanged. Actual native70336 retained close1/browser101536. AudioContext and liveResume true; offlineSuspend false. This does not prove live pause unsupported.",
+    "webkit": "Exact25 BLOCKED_CAPABILITY, missing AudioContext/OfflineAudioContext/nativeNodes. Actual native42364 retained close2/browser56584. Scope is the cached Windows Playwright WebKit27.2 build.",
+    "outcomes": "Both captureIntegrity true and runnerError/suite errors null. Original native exits1/2 and FAIL/BLOCKED/NOTRUN classifications retained.",
+    "execution": "One bounded artifact JSON/hash audit exited0; no source/docs/artifact writes, tests/browser/server/build rerun or performance/hearing claim. Redundant child review is not a gate."
+  },
+  "allOwnedNativeBrowserWorkloadsEnded": true,
+  "scope": "Current registered prefix-f3e5, immutable original25 generated static driver and585b manifest; original strict results retained"
+}

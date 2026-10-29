@@ -1,0 +1,40 @@
+{
+  "id": "RLAB-TASK-0002",
+  "title": "Steam Audio原生隔離可行性",
+  "description": "回溯索引原生context/scene/direct/reflections/release與重初始化；沒有browser或逐條specular paths支援宣稱。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "原生三cycle有固定結果與source/DLL/SDK hashes",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.json",
+          "sha256": "3070771bd8785cd0df6e2161ad4344e2ec991a14295e24825efdaf917709ac74",
+          "command": "./experiments/sdk-smoke-tests/run.ps1",
+          "result": "PASS: three native cycles; Windows x64 only"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/03-sdk/SDK_VALIDATION.md",
+    "experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.json"
+  ],
+  "evidence": [
+    {
+      "path": "experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.json",
+      "sha256": "3070771bd8785cd0df6e2161ad4344e2ec991a14295e24825efdaf917709ac74",
+      "command": "./experiments/sdk-smoke-tests/run.ps1",
+      "result": "PASS: three native cycles; Windows x64 only"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-25T19:49:07.702518+00:00"
+}

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "review_kind": "bounded_read_only_static_ci_route_review",
+  "reviewer": {
+    "executor": "Codex",
+    "agent": "publication_ci_review",
+    "model_id": null
+  },
+  "recorded_at_utc": "2026-10-29T13:58:33.919Z",
+  "observed_commit": "39f6c2ba50c2f64d0b30b93f49b7728f94a0116a",
+  "scope": "Existing CI browser entry point versus maintained UI suites and current disclosure DOM; no test/network/history scan executed",
+  "status": "STATIC_MISMATCH_CONFIRMED_RUNTIME_REPRODUCTION_NOT_RUN",
+  "runtime_tests": "NOT_RUN",
+  "mutations": {
+    "product": false,
+    "tests": false,
+    "workflow": false,
+    "other_sources": false,
+    "this_evidence_file_only": true
+  },
+  "sources": [
+    {
+      "path": ".github/workflows/validation.yml",
+      "sha256": "616934bd5f30567ccea45d96fbb0fea8fa03ce41a966765935c0e0c56b2a30eb"
+    },
+    {
+      "path": "package.json",
+      "sha256": "207b86fc9acc5a8945c726688ef6e280c645fc3779e5646da09a4ad6c0d89414"
+    },
+    {
+      "path": "tests/browser/ui-preview.config.ts",
+      "sha256": "1842313a880ede0df8a9dd07a82cbf7424dfb984621be8955cc874c4a40aad48"
+    },
+    {
+      "path": "tests/browser/ui-refined-v2.config.ts",
+      "sha256": "eb5c170f80a34c59b15ea13007397050125a8f5bcc2665b306c1ad7d55a53a2d"
+    },
+    {
+      "path": "tests/browser/linked-workflow-v2.config.ts",
+      "sha256": "207f7e7eb15b853b9430fc1d298f4f247add052d87f2a092b3d3d3eab7f51a22"
+    },
+    {
+      "path": "tests/browser/ui.spec.ts",
+      "sha256": "a547c1a50744765c131246a6e4a801db079e0a0cb8bc5b4fe49c3b1221b37dad"
+    },
+    {
+      "path": "tests/browser/ui-refined-v2.spec.ts",
+      "sha256": "4b76aa9c1cfda4c031db58e3a74a1bf0e2d1ea07d2ec7b49793541f6bb7e50b8"
+    },
+    {
+      "path": "src/ui/SceneExplorer.tsx",
+      "sha256": "0f28e2eca7c77a6b12c07dfa83d61582dbbf4fd2ed09d3e7503472348039fff7"
+    },
+    {
+      "path": "src/ui/Inspector.tsx",
+      "sha256": "a41d06251b010d3593fdbf3d637003bd36beb3ef4ca5cd4359dc402ada0ca9d8"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "48608036f3bf07c52a2ff9874c9f1a86cece703a2c0918853bf1f1aa4809564a"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CI-ROUTE-01",
+      "priority": "P1",
+      "title": "CI browser job dispatches a legacy UI suite incompatible with current disclosures",
+      "entry_chain": [
+        {
+          "path": ".github/workflows/validation.yml",
+          "line": 30,
+          "value": "npm run test:browser:ui"
+        },
+        {
+          "path": "package.json",
+          "line": 51,
+          "value": "build-ui-preview.mjs then playwright test --config tests/browser/ui-preview.config.ts"
+        },
+        {
+          "path": "tests/browser/ui-preview.config.ts",
+          "line": 9,
+          "value": "testMatch: ui.spec.ts"
+        }
+      ],
+      "conditions": [
+        {
+          "legacy_assertion": {
+            "path": "tests/browser/ui.spec.ts",
+            "line": 48,
+            "condition": "Vacuum help must be visible without expanding its disclosure"
+          },
+          "current_dom": {
+            "path": "src/ui/Inspector.tsx",
+            "line": 1083,
+            "condition": "Vacuum help is inside details.inspector-help without open attribute; paragraph at line1085"
+          },
+          "maintained_flow": {
+            "path": "tests/browser/ui-refined-v2.spec.ts",
+            "line": 48,
+            "condition": "Find matching inspector-help and click summary before visibility assertion at line53"
+          }
+        },
+        {
+          "legacy_assertion": {
+            "path": "tests/browser/ui.spec.ts",
+            "line": 212,
+            "condition": "WAV import help must be visible without expanding its disclosure"
+          },
+          "current_dom": {
+            "path": "src/ui/SceneExplorer.tsx",
+            "line": 155,
+            "condition": "details.import-details has no open attribute; import help paragraph is at line198"
+          },
+          "maintained_flow": {
+            "path": "tests/browser/ui-refined-v2.spec.ts",
+            "line": 221,
+            "condition": "Click import-details summary before visibility assertion at line223"
+          }
+        },
+        {
+          "legacy_assertion": {
+            "path": "tests/browser/ui.spec.ts",
+            "lines": [
+              52,
+              428,
+              432,
+              451
+            ],
+            "condition": "Object button accessible name must equal ball ball 動態"
+          },
+          "current_dom": {
+            "path": "src/ui/SceneExplorer.tsx",
+            "line": 90,
+            "condition": "Object row renders one name/id label and mode text; title carries the ID"
+          },
+          "maintained_flow": {
+            "path": "tests/browser/ui-refined-v2.spec.ts",
+            "line": 58,
+            "condition": "Select ball 動態 filtered by child title=ball"
+          }
+        }
+      ],
+      "expected_effect": "Existing browser CI entry is expected to fail against current UI on both local Chrome and CI Chromium; this is a static inference, not an executed failure receipt",
+      "recommended_followup": "Preserve an actual legacy-entry reproduction, then route CI to existing ui-refined-v2 and linked-workflow-v2 configurations. Preserve legacy and frozen tests and assertions; do not change the product to satisfy stale selectors."
+    }
+  ],
+  "bounded_platform_checks": [
+    {
+      "path": "playwright.config.ts",
+      "line": 14,
+      "result": "CI omits channel=chrome so workflow-installed Playwright Chromium is selected"
+    },
+    {
+      "path": ".github/workflows/validation.yml",
+      "line": 16,
+      "result": "Validation job installs nested experiments/physics-spike dependencies before npm run check"
+    },
+    {
+      "path": ".github/workflows/validation.yml",
+      "line": 29,
+      "result": "Browser job installs Chromium with dependencies before invoking suites"
+    },
+    {
+      "path": "tests/browser/run-storage.mjs",
+      "line": 189,
+      "result": "Non-Windows branch uses owned detached process groups; no unconditional PowerShell dependency found in Linux cleanup path"
+    },
+    {
+      "path": ".gitattributes",
+      "line": 1,
+      "result": "Repository byte-preservation rules and explicit LF skill rules exist; no source normalization performed in this review"
+    }
+  ],
+  "limits": [
+    "No fresh Linux checkout or browser run performed by this reviewer.",
+    "No claim that publication payload or remote CI passes.",
+    "No complete source/import closure review beyond the relevant CI entry and platform branches.",
+    "Root owns workflow decisions, actual execution, source synchronization, and task/Wiki updates."
+  ]
+}

@@ -1,0 +1,68 @@
+# Sound Behavior Research & Architecture Integration
+
+查核與整合：2026-10-27（Asia/Taipei）。本次研究、架構／資料草案與隔離風險驗證已完成；**正式Sound Behavior runtime／UI／AudioGraph與產品Meta整合尚未實作**。
+
+## 建議與八個核心問題
+
+| 問題 | 架構建議／界線 |
+| --- | --- |
+| 值得成為核心嗎？ | 是，核心是可解釋事件＋自由音色＋統一傳播＋可追溯實驗；不是首創events或重建DAW。 |
+| 要改Physics或Acoustic Core嗎？ | 保留求解器及clock，新增標準化event/state bridge與Behavior→emitter入口；Scene v1／舊12AIenum不暗中改版。 |
+| Rules、FSM或Graph？ | 宣告式Event Rules＋正交State Machine／有界latch，Inspector優先，Graph P2。 |
+| 必須自製什麼？ | episode／去重／狀態分類、Profile/binding/override、有限mapping與voice admission、統一路由host、trace／A/B／preview/undo。 |
+| 可直接重用什麼？ | Rapier事件／manifold／point velocity、Web Audio buffer/loop/oscillator/gain/filter/automation、現有AJV；不加入FMOD/Wwise等強制runtime。 |
+| 競賽創新展示？ | 同motion/contact trace換Physical-inspired／Creative聲音，檢視rule/asset/contact emitter，仍經相同聲學傳播，再做明示自變項A/B。這是展示建議，非新穎性認證。 |
+| Muse Agent如何實質參與？ | Meta Model API產生白名單proposal→trusted registry/domain→preview/apply/undo→真實run/results；只解釋有artifact的數字。開發Codex不代替這段。 |
+| 合理MVP邊界？ | 先M0純事件runtime，再AlwaysOn＋OnImpact／basic asset/gain/pitch／統一SourceGraph／Inspector。Grab/Throw/Airborne依互動前置解鎖，Rolling/latch/materialpairs/timeline P1，Graph/modal P2。 |
+
+## 文件與直接證據
+
+- [成熟工具研究](SOUND_BEHAVIOR_RESEARCH.md)：18筆primary sources；FMOD2.04／MetaSounds原文可讀，Wwise現行help403僅舊官方headers，SoundParticles分SP2/SP3查核；未採SDK／商業素材。
+- [事件模型](EVENT_MODEL.md)／[Physics bridge](PHYSICS_AUDIO_BRIDGE.md)：7 continuous＋12 discrete IDs，throw不是速度閾值，rolling要相對接觸點速度／角速度，force與impulse不同。
+- [版本化Schema](BEHAVIOR_SCHEMA.md)與[驗證](SOUND_BEHAVIOR_VALIDATION.md)：12類型、AI草案、有限lifecycle、asset pins／revisions／A/B兩種protocol，未實作host。
+- [聲音分層架構](SOUND_BEHAVIOR_ARCHITECTURE.md)、[UX Inspector](../05-ux/SOUND_BEHAVIOR_UX.md)、[產品Muse工具](../08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md)，各維持單一正式維護位置。
+- [ADR-013](../02-architecture/adr/013-codex-primary-development.md)：Codex主導、MuseCode選用；[ADR-014](../02-architecture/adr/014-sound-behavior-system.md)：Sound Behavior分層。舊ADR012／Phase3結果保留。
+- [風險登錄](../KNOWN_LIMITATIONS.md)、[Roadmap](../ROADMAP.md)、[下一M0](NEXT_AUDIO_MILESTONE.md)，task IDs 0011–0015與Scene/Physics0006建立明確依賴；本次不啟動這些產品任務。
+
+公開競賽waiver重新閱讀，頁尾為2026-10-25；Codex等Coding Agents條文仍UNSTATED（不能推成明確允許或禁止）。Meta產品整合需實質功能，25%評分不提供已公開量化最低門檻；完整details/submit導向登入。[規則重查](../01-compliance/HACKATHON_RULES.md)保留歷史與未知條款。
+
+## 已知驗證限制
+
+Draft合法、Node fixtures與真Rapier API probe不代表產品callback／renderer正確。Browser、OfflineAudioContext、HRTF／arrival／click-pop、underrun／裝置、實際authoring UX、完整replay與Meta live皆NOT RUN。gravity0不是vacuum，sample音色不是真實振動，dBFS不是dB SPL。效能數字仍沿用既有TARGET／UNVERIFIED，不從middleware行銷或spike推產品容量。
+
+## 可用的研究命令
+
+```powershell
+npm run validate:sound-behaviors
+npm run test:sound-behaviors
+npm run smoke:sound-physics
+```
+
+目前最大的前置是Scene/Physics host與Audio Event Runtime，不是Graph。下一正式可指派工作為Task0011，完整驗收見[NEXT_AUDIO_MILESTONE](NEXT_AUDIO_MILESTONE.md)。
+
+## 真正執行的驗證
+
+總結證據：[整合驗收](../../benchmarks/results/sound-behavior-validation-20261027.json)。22項驗收能力全部通過：初跑20項PASS，另外兩項在修正一條Wiki相對連結後，以同一docs／Wiki驗證器重跑PASS；程式、tests與原驗收沒有改動。包含失敗stdout的[原始22命令run](../../benchmarks/results/phase3-sound-behavior-20261027-final.json)保留，不改寫成PASS；aggregate核對6個新schema／validator／spike來源hash與原run一致。
+
+| 執行範圍 | 結果／可宣稱範圍 |
+| --- | --- |
+| Sound contracts/domain | **21/21 PASS**；5組CLI fixtures，僅draft validation |
+| Physics policy | **13/13 PASS**；Derived/Tuned隔離fixtures，含旋轉支撐面／缺資料／finite caps／episode邊界；Bounce僅文件定義，正式evaluator NOT RUN |
+| 真Rapier0.21.0 WASM | **3/3 PASS**；point velocity、多contact world anchor、sensor events；不是完整產品collision audio |
+| 新sound測試合計 | **34/34 PASS**；未混入browser或聽測宣稱 |
+| 保留回歸 | core32、Optional Harness75、prompt12、design14 PASS；Wiki53PASS/1junctionSKIP、datasets17PASS/1SKIP；原Rapier6PASS |
+| 工具／來源 | 19schemas compile、strictTS、lint／format、研究Ledger68sources/66claims；修正後docs/Wiki0error |
+| Skills | 全15自有Skills官方格式PASS；8Emil固定bytes另驗。沒有模型推論 |
+
+[獨立審查](INDEPENDENT_REVIEW.md)重現並複核修正：停用binding/rule覆寫、expired latch、一般及material override oscillator無界one-shot、trusted asset pin closure、contact collider identity、rotating support與缺資料分類。沒有待修P1/P2；這是draft／隔離範圍，仍不等於產品host與音訊驗收。
+
+Asset fixtures均明示FIXTURE_ONLY；真音檔／解碼／聲壓／音質／latency沒有從假hash推造。v1只驗目前revision，作者Apply需pause→fade/drain→原子新revision→newrunEpoch，尚未支援retired-profile voices無縫共存。
+
+## 對既有專案的實際修改
+
+- 新ADR013／014；AGENTS與相關Skills改Codex主導，舊Harness文件加Optional／supersession，原Phase3歷史保留。Task0009取消強制Live Harness目標，不是驗證通過，也不解除產品Meta帳號Task0007。
+- 沿用Physics／Acoustic／Audio clock與contracts，新增事件／作者資料層；原Scene v1、Experiment v1及12個AI工具enum保持。既有Audio／RecordReplay／A/B／AI規格加明確接口與新舊模式界線。
+- Roadmap與風險登錄加入前置依賴：Task0011 M0可與0006平行，0012做最小垂直整合，0013 enhancement、0014產品Meta實質工具、0015Graph/modal P2。
+- Wiki使用同一sources/tasks/events/index，更新現況／目標／決策／相關綜合頁與交接，不建立另一套記憶或任務系統。
+
+完整新增／修改清單見[檔案清單](../00-project/SOUND_BEHAVIOR_FILE_MANIFEST.md)。實際Git revision與最後handoff以[Now](../../knowledge/wiki/now.md)及Git為準；沒有推送、部署、接受條款或啟動正式產品。

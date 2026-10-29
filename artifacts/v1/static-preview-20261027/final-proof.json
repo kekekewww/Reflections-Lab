@@ -1,0 +1,187 @@
+{
+  "redArtifactsRetained": [
+    "drain-regression-red.tap",
+    "integration-races-red.tap"
+  ],
+  "browserCasesPrepared": 2,
+  "museCalls": 0,
+  "actualExecutor": "Codex",
+  "independentUi": {
+    "status": "SCOPED_STATIC_APPROVAL",
+    "reviewedHashesMatchCurrent": true
+  },
+  "newBilingualKeys": 34,
+  "gitHead": "e6b898c30193e8cd9e5ef9ddc2f1e6bcb8aee313",
+  "sourceManifest": "artifacts/v1/static-preview-20261027/final-source-manifest.json",
+  "sources": [
+    {
+      "bytes": 17276,
+      "path": "src/app/static-preview.ts",
+      "sha256": "f9ecedb160b8c797ca95c9a0c8165d2b6713c1b36d689f4713e2f411611ce2a6"
+    },
+    {
+      "bytes": 91558,
+      "path": "src/app/runtime.ts",
+      "sha256": "de364f6c4cef1ccb22ac4d8986f539f779820ca104c93848282f21d9837278e9"
+    },
+    {
+      "bytes": 59172,
+      "path": "src/audio/engine.ts",
+      "sha256": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc"
+    },
+    {
+      "bytes": 9734,
+      "path": "src/ui/contracts.ts",
+      "sha256": "e157ee2334a4360fa72cc8e7cbe60f6bfdc3aa5cc8832a5bca3a7cd08ef315c3"
+    },
+    {
+      "bytes": 11726,
+      "path": "src/ui/RuleCard.tsx",
+      "sha256": "60f773e12e7adfd014063343044347fde51db9de69445e9cc308effc60a36a0d"
+    },
+    {
+      "bytes": 38850,
+      "path": "src/ui/Inspector.tsx",
+      "sha256": "0f78bab743fe89fc75e54cd96a047e63e73d6ec9a29107accddbf71e311cbfcf"
+    },
+    {
+      "bytes": 6095,
+      "path": "src/ui/locales/preview.ts",
+      "sha256": "a40619928eff01988f5956ada707ad13e071b82d50c0abbdc6e500cd66174b5a"
+    },
+    {
+      "bytes": 927,
+      "path": "src/ui/locales/index.ts",
+      "sha256": "abc0d0fc97c470f1f61faf6b4f90d6d77ae4f2699fc4892e9aa5074ff4bd4a89"
+    },
+    {
+      "bytes": 9479,
+      "path": "tests/app/static-preview.test.ts",
+      "sha256": "c07b4ab49cdd87c4a2e332f44edb7698fc789711a444c3503a3b1947e1b9d85f"
+    },
+    {
+      "bytes": 10427,
+      "path": "tests/app/static-preview-integration.test.ts",
+      "sha256": "a1ffa80fe4cdf115f82d8b0d0575641b4e26746bf34f9c7f1117003e89d5abab"
+    },
+    {
+      "bytes": 12461,
+      "path": "tests/audio-runtime/static-preview.test.ts",
+      "sha256": "b01bbb26600812351a6cb4598eeb738f9e7aa6f0471dd62f2e50ef6e036d3a96"
+    },
+    {
+      "bytes": 11197,
+      "path": "tests/browser/static-preview.spec.ts",
+      "sha256": "cf32a1033280086800f4efed629275f37d30392b49a65f501f30d79155c8f5ab"
+    },
+    {
+      "bytes": 408,
+      "path": "tests/browser/static-preview.config.ts",
+      "sha256": "3a5a3366825d2e32f4c17fa4fd0b556f08d73e4e7c4c0f17fc9842b9a05acdca"
+    }
+  ],
+  "liveApiCalls": 0,
+  "sourceFrozen": true,
+  "result": "SCOPED_NODE_AND_STATIC_PASS",
+  "generatedAtUtc": "2026-10-27T07:35:20.7607541Z",
+  "schemaVersion": 1,
+  "notRun": [
+    "Browser execution/native input and visual static preview",
+    "Static preview rendered PCM",
+    "Device/headphone hearing",
+    "Performance profile",
+    "Full V1 acceptance"
+  ],
+  "browserCommandForRoot": "npx playwright test --config tests/browser/static-preview.config.ts",
+  "sourceStable": true,
+  "sourceCount": 13,
+  "commands": [
+    {
+      "skipped": 0,
+      "artifact": "final-node-green.tap",
+      "command": "node --import tsx --test tests/app/static-preview.test.ts tests/app/static-preview-integration.test.ts tests/audio-runtime/static-preview.test.ts tests/audio-runtime/engine.test.ts tests/audio-runtime/pause-regressions.test.ts tests/audio-runtime/late-reverb.test.ts tests/audio-runtime/asset-bank.test.ts tests/app/behavior-diagnostics.test.ts tests/app/app-control-regressions.test.ts tests/app/runtime.test.ts src/ui/locale-model.test.ts",
+      "exitCode": 0,
+      "tests": 92,
+      "failed": 0,
+      "passed": 92
+    },
+    {
+      "artifact": "final-eslint.txt",
+      "command": "npx eslint src/app/static-preview.ts src/app/runtime.ts src/audio/engine.ts src/ui/contracts.ts src/ui/RuleCard.tsx src/ui/Inspector.tsx src/ui/locales/preview.ts src/ui/locales/index.ts tests/app/static-preview.test.ts tests/app/static-preview-integration.test.ts tests/audio-runtime/static-preview.test.ts tests/browser/static-preview.spec.ts tests/browser/static-preview.config.ts",
+      "exitCode": 0
+    },
+    {
+      "artifact": "final-format.txt",
+      "command": "npx prettier --check src/app/static-preview.ts src/app/runtime.ts src/audio/engine.ts src/ui/contracts.ts src/ui/RuleCard.tsx src/ui/Inspector.tsx src/ui/locales/preview.ts src/ui/locales/index.ts tests/app/static-preview.test.ts tests/app/static-preview-integration.test.ts tests/audio-runtime/static-preview.test.ts tests/browser/static-preview.spec.ts tests/browser/static-preview.config.ts",
+      "exitCode": 0
+    },
+    {
+      "artifact": "final-typecheck.txt",
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "npx tsc --noEmit --pretty false --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --target ES2022 --module NodeNext --moduleResolution NodeNext --jsx react-jsx --resolveJsonModule --types node src/vite-env.d.ts tests/app/static-preview.test.ts tests/app/static-preview-integration.test.ts tests/audio-runtime/static-preview.test.ts tests/browser/static-preview.spec.ts tests/browser/static-preview.config.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/setup/emil-skills.mjs --check",
+      "exitCode": 0,
+      "result": "fixed upstream skill hashes match"
+    },
+    {
+      "command": "node scripts/setup/emil-skills.mjs --standards",
+      "exitCode": 0,
+      "result": "STATIC TOKENS/STANDARDS ONLY"
+    }
+  ],
+  "independentRuntime": {
+    "status": "APPROVED_LIMITED_SCOPE",
+    "reviewedHashesMatchCurrent": true,
+    "passed": 22,
+    "tests": 22
+  },
+  "requirementsScope": "Original UX04 static scene acoustic preview, raw audition pause/stop guard, immutable provenance; no overall V1 completion",
+  "evidence": [
+    {
+      "sha256": "4a34c7ab7f7d19b79341e341b215bd531193b423b48e7990c15b29e74a5228ba",
+      "path": "artifacts/v1/static-preview-20261027/README.md"
+    },
+    {
+      "sha256": "14509f0663ba1984cab1b78c4345f45441448d1df2c13c847dab355c301b606b",
+      "path": "artifacts/v1/static-preview-20261027/final-source-manifest.json"
+    },
+    {
+      "sha256": "51730fed57dbdb73d82fe3b41481451c7ecbafbf6984bb4d6343b77cfdc416ef",
+      "path": "artifacts/v1/static-preview-20261027/final-node-green.tap"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "artifacts/v1/static-preview-20261027/final-eslint.txt"
+    },
+    {
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "path": "artifacts/v1/static-preview-20261027/final-format.txt"
+    },
+    {
+      "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "path": "artifacts/v1/static-preview-20261027/final-typecheck.txt"
+    },
+    {
+      "sha256": "e338591392aa0a0cec3d81a5df472da3ab6171a216a07eefea54d6555763f672",
+      "path": "artifacts/v1/static-preview-20261027/drain-regression-red.tap"
+    },
+    {
+      "sha256": "33fb8673fed22ada9a9f37376807f8fa1de4dc3dd00a8919dba11e3d29df5513",
+      "path": "artifacts/v1/static-preview-20261027/integration-races-red.tap"
+    },
+    {
+      "sha256": "63b64d3a03b8137dd6d9256009efeb08da6af74c000388a82679d31eb587cab6",
+      "path": "artifacts/v1/static-preview-20261027/independent-runtime-review.json"
+    },
+    {
+      "sha256": "56ce9ca9511e28e7035d1536d63839cd714a6dcc5228379f9370f6a0eeb57c1f",
+      "path": "artifacts/v1/static-preview-20261027/independent-ui-review.json"
+    }
+  ]
+}

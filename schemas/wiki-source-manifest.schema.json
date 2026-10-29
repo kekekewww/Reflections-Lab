@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/wiki-source-manifest.schema.json",
+  "title": "Wiki source manifest",
+  "type": "object",
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "path",
+          "version",
+          "sha256",
+          "license",
+          "trust",
+          "acquired_at",
+          "wiki_pages"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "path": { "type": ["string", "null"] },
+          "url": { "type": "string", "format": "uri" },
+          "version": { "type": "string", "minLength": 1 },
+          "sha256": {
+            "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^[a-f0-9]{64}$" }]
+          },
+          "license": { "type": "string", "minLength": 1 },
+          "trust": { "type": "string", "minLength": 1 },
+          "acquired_at": { "type": "string", "format": "date-time" },
+          "wiki_pages": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "remote_only": { "type": "boolean" },
+          "snapshot_mode": { "enum": ["current", "historical"] },
+          "supersedes": { "type": "array", "items": { "type": "string" } }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "path": { "type": "null" } }, "required": ["path"] },
+            "then": {
+              "required": ["url", "remote_only"],
+              "properties": {
+                "url": { "type": "string", "format": "uri" },
+                "remote_only": { "const": true }
+              }
+            },
+            "else": {
+              "properties": { "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } }
+            }
+          }
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

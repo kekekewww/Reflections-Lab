@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/ai-tool-result.schema.json",
+  "title": "Reflection Lab trusted tool result v1",
+  "description": "Only trusted host/solver produces this result. A model-generated object passing this schema is not evidence.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "requestId", "state", "runId", "sceneRevision", "artifactIds", "metrics", "error", "usage", "explanation"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "requestId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+    "state": {"enum": ["queued", "running", "succeeded", "failed", "cancelRequested", "canceled", "timedOut", "budgetExceeded"]},
+    "runId": {"anyOf": [{"$ref": "ai-tool-request.schema.json#/$defs/id"}, {"type": "null"}]},
+    "sceneRevision": {"type": "integer", "minimum": 0},
+    "artifactIds": {"type": "array", "maxItems": 32, "uniqueItems": true, "items": {"$ref": "ai-tool-request.schema.json#/$defs/id"}},
+    "metrics": {"type": "array", "maxItems": 96, "items": {"$ref": "#/$defs/metric"}},
+    "error": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/error"}]},
+    "usage": {
+      "type": "object", "additionalProperties": false, "required": ["wallTimeMs", "solverSteps", "inputTokens", "outputTokens", "estimatedCostUsd", "actualCostUsd"],
+      "properties": {"wallTimeMs": {"type": "number", "minimum": 0}, "solverSteps": {"type": "integer", "minimum": 0}, "inputTokens": {"type": ["integer", "null"], "minimum": 0}, "outputTokens": {"type": ["integer", "null"], "minimum": 0}, "estimatedCostUsd": {"type": "number", "minimum": 0}, "actualCostUsd": {"type": ["number", "null"], "minimum": 0}}
+    },
+    "explanation": {"anyOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["provenance", "text", "metricReferences", "limitations"], "properties": {"provenance": {"const": "ai_generated_explanation"}, "text": {"type": "string", "minLength": 1, "maxLength": 8000}, "metricReferences": {"type": "array", "maxItems": 96, "uniqueItems": true, "items": {"$ref": "ai-tool-request.schema.json#/$defs/id"}}, "limitations": {"type": "array", "maxItems": 16, "items": {"type": "string", "maxLength": 500}}}}]}
+  },
+  "allOf": [
+    {"if": {"properties": {"state": {"const": "succeeded"}}}, "then": {"properties": {"error": {"type": "null"}}}},
+    {"if": {"properties": {"state": {"enum": ["failed", "timedOut", "budgetExceeded"]}}}, "then": {"properties": {"error": {"$ref": "#/$defs/error"}, "metrics": {"type": "array", "maxItems": 0}}}},
+    {"if": {"properties": {"state": {"enum": ["queued", "running", "cancelRequested", "canceled"]}}}, "then": {"properties": {"metrics": {"type": "array", "maxItems": 0}, "explanation": {"type": "null"}}}}
+  ],
+  "$defs": {
+    "metric": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metricRecordId", "metricId", "bandCenterHz", "value", "unit", "availability", "provenance", "evidenceArtifactId", "runId", "methodId", "backendVersion", "materialRevision", "validationLevel", "limitations"],
+      "properties": {
+        "metricRecordId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+        "metricId": {"enum": ["directArrivalTimeS", "rt60S", "edtS", "t20S", "t30S", "drrDb", "c50Db", "c80Db"]},
+        "bandCenterHz": {"type": ["integer", "null"], "enum": [125, 250, 500, 1000, 2000, 4000, null]},
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["s", "dB_ratio"]},
+        "availability": {"enum": ["available", "insufficientDecay", "unsupported", "invalidInput", "missingCalibration", "missingArtifact"]},
+        "provenance": {"enum": ["measured", "computed", "estimated"]},
+        "evidenceArtifactId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+        "runId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+        "methodId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+        "backendVersion": {"type": "string", "minLength": 1, "maxLength": 128},
+        "materialRevision": {"type": "integer", "minimum": 0},
+        "validationLevel": {"enum": ["V0", "V1", "V2", "V3", "V4", "V5"]},
+        "limitations": {"type": "array", "maxItems": 16, "items": {"type": "string", "minLength": 1, "maxLength": 500}}
+      },
+      "allOf": [
+        {"if": {"properties": {"availability": {"const": "available"}}}, "then": {"properties": {"value": {"type": "number"}}}, "else": {"properties": {"value": {"type": "null"}, "limitations": {"type": "array", "minItems": 1}}}},
+        {"if": {"properties": {"metricId": {"enum": ["directArrivalTimeS", "rt60S", "edtS", "t20S", "t30S"]}}}, "then": {"properties": {"unit": {"const": "s"}, "value": {"type": ["number", "null"], "minimum": 0}}}, "else": {"properties": {"unit": {"const": "dB_ratio"}}}}
+      ]
+    },
+    "error": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "message", "retryable", "fieldPaths", "retryAfterMs", "detailsArtifactId"],
+      "properties": {
+        "code": {"enum": ["SCHEMA_INVALID", "DOMAIN_INVALID", "UNKNOWN_ID", "REVISION_CONFLICT", "POLICY_DENIED", "PREVIEW_REQUIRED", "APPROVAL_REQUIRED", "PROVIDER_UNVERIFIED", "MODEL_UNAVAILABLE", "CAPABILITY_UNSUPPORTED", "QUOTA_EXCEEDED", "BUDGET_EXCEEDED", "TIMEOUT", "CANCELED", "SOLVER_FAILED", "INSUFFICIENT_DATA", "INCOMPATIBLE_EXPERIMENTS", "INTERNAL_ERROR"]},
+        "message": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "retryable": {"type": "boolean"},
+        "fieldPaths": {"type": "array", "maxItems": 32, "items": {"type": "string", "maxLength": 256}},
+        "retryAfterMs": {"type": ["integer", "null"], "minimum": 0, "maximum": 60000},
+        "detailsArtifactId": {"anyOf": [{"$ref": "ai-tool-request.schema.json#/$defs/id"}, {"type": "null"}]}
+      }
+    }
+  }
+}

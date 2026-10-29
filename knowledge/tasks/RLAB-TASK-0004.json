@@ -1,0 +1,74 @@
+{
+  "id": "RLAB-TASK-0004",
+  "title": "固定Emil Skills與設計工程標準",
+  "description": "保留既有UX操作／唯一權威，安裝8個固定來源Skills，tokens/states/motion/stress/performance可檢查；無產品視覺測試。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "上游來源完整性與安裝dryrun／restore有測試",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase2-validation-local.json",
+          "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+          "command": "npm run validate:all",
+          "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+        },
+        {
+          "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+          "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+          "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+          "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "tokens／states與設計標準有靜態正負驗證且未冒充browser",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase2-validation-local.json",
+          "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+          "command": "npm run validate:all",
+          "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+        },
+        {
+          "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+          "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+          "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+          "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/05-ux/DESIGN_TOKENS.json",
+    "docs/05-ux/DESIGN_SYSTEM.md",
+    "third_party/emil-skills.manifest.json",
+    "tests/design/"
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/results/phase2-validation-local.json",
+      "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+      "command": "npm run validate:all",
+      "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+    },
+    {
+      "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+      "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+      "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+      "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-25T20:20:13.159Z",
+  "last_summary": "Criteria closed only after actual16gate and independenthandoff evidence verification"
+}

@@ -1,0 +1,173 @@
+{
+  "executor": "Codex /root/v1_interaction_finish",
+  "captured_at": "2026-10-27T01:58:59.390Z",
+  "node": "v22.17.0",
+  "supersedes": "tests/interaction-runtime/evidence-20261027-v2/verification.json",
+  "scope": "InteractionHost real Rapier WASM; unlock actual-pose clearance checked before preparation and at trusted atomic apply boundary; preserves fixed/zero/memento on refusal; async CAS/removal/observer outcomes",
+  "tests": {
+    "total": 28,
+    "pass": 28,
+    "fail": 0
+  },
+  "independent_matrix_unlock": {
+    "total": 1,
+    "pass": 1,
+    "fail": 0
+  },
+  "source_stable_during_checks": true,
+  "results": [
+    {
+      "command": "node --import tsx --test tests/interaction-runtime/host.test.ts tests/interaction-runtime/unlock-clearance.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/host.tap",
+      "sha256": "bb9005d2bd75c77283268e70ed9c9b2ff5f046cac90dd21007b848f8c78501a3"
+    },
+    {
+      "command": "node --import tsx --test \"--test-name-pattern=unlock clearance\" tests/physics/v1-matrix.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/matrix-unlock.tap",
+      "sha256": "dfb60ca5410f3438dc7cf0c895abed34830ce3de4c1e6adc5223c8ea60ff1aee"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/interaction tests/interaction-runtime/host.test.ts tests/interaction-runtime/unlock-clearance.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/interaction tests/interaction-runtime/host.test.ts tests/interaction-runtime/unlock-clearance.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/format.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --module NodeNext --moduleResolution NodeNext --target ES2022 --lib ES2022,DOM --types node tests/interaction-runtime/unlock-clearance.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/strict-new-test.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "captured_from_tool_chunk": "d845f9"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/interaction/index.ts",
+      "sha256": "0c1f8fcab6e39ff367665fb44e97fa141013048d9d2e6e93873e9432775d700e"
+    },
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "e99da87a2228623226fd52c382307d5c2077c67b7468b5ed13b9dde07d1a41bd"
+    },
+    {
+      "path": "src/interaction/math.ts",
+      "sha256": "69f9af88645ae417a3f7828b669acf03d8bef0175843858f3c61c5380490a9d6"
+    },
+    {
+      "path": "src/interaction/types.ts",
+      "sha256": "c390fb3a0557b82591789d58c2bb713dcb4cd5a0a89cb59aa21b60ea56cfe352"
+    },
+    {
+      "path": "src/physics/character-motor.ts",
+      "sha256": "5e3d29d2e0d71c6ae0b4a87f3bb944bd123ebe0402220e574859421fddd4a8f9"
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+    },
+    {
+      "path": "src/physics/index.ts",
+      "sha256": "098845b1ed89e3321e938d34a07b62eff2c7f944ad9960c59aca00d12330318b"
+    },
+    {
+      "path": "src/physics/math.ts",
+      "sha256": "a498fcf1dc3faa5061483fd09cb1e9218d9376f92ec1c8c8d14f0486315dfe35"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "path": "src/physics/types.ts",
+      "sha256": "f2b76de5d89b400cb200be739e43d036708401ebc83d75e0cfcf0d822b4c58c6"
+    },
+    {
+      "path": "src/scene/commands.ts",
+      "sha256": "8bc0423eb9c83ac22794ff34a4dea3f64b093722e7571daa8173a023e2f34bd7"
+    },
+    {
+      "path": "src/scene/errors.ts",
+      "sha256": "971bc6a250e93a221dd4fe47b9a05ecf05a100e48b4b56ae1b987756f8331fe3"
+    },
+    {
+      "path": "src/scene/index.ts",
+      "sha256": "5d3ac854c7a1e999aff75efd27dba7c1a1f96fd44a4cfa2ea850c7d97ebb17e9"
+    },
+    {
+      "path": "src/scene/scene-host.ts",
+      "sha256": "3445209bedb437d2f5b598698523c0fc0c171380989ec7be96655098c9ecaf99"
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sha256": "04c8756b364fef6de36cd5de5dbe8738ea3d09f8b57cb8b45db961bf1bbfce84"
+    },
+    {
+      "path": "src/scene/validate-scene.ts",
+      "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "5e25cafe029b40a57728bf9c63d21afab6fb31fcab76f93b379702ee19cbfa36"
+    },
+    {
+      "path": "tests/interaction-runtime/host.test.ts",
+      "sha256": "f05b3a3b887c8fdd72e238c02ccd031883807c301ca32eef293cdf06912e529c"
+    },
+    {
+      "path": "tests/interaction-runtime/unlock-clearance.test.ts",
+      "sha256": "fe457213d1849069d0b33f62a8a5241942ab425ffec45bff52fe049fcf4c237f"
+    },
+    {
+      "path": "tests/physics/v1-matrix.test.ts",
+      "sha256": "48b6141b4f9dd824da6911d4457d300e6def4f641bea1b684497139ba58cf11b"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "Codex /root/v1_interaction_finish/review_interaction",
+    "status": "PASS",
+    "reported_tests": "28/28 true Rapier WASM",
+    "checks": [
+      "ESLint",
+      "Prettier",
+      "source/state-transition review",
+      "actual root trusted guard forwarding and atomic boundary inspection"
+    ],
+    "reviewed_change": "Actual-pose Unlock clearance guarded before preparation and again synchronously at apply boundary; no compensating mutation; accurate committed postprocessing failure notice; removed target returns conflict",
+    "reported_hashes": {
+      "src/interaction/interaction-host.ts": "e99da87a2228623226fd52c382307d5c2077c67b7468b5ed13b9dde07d1a41bd",
+      "src/interaction/types.ts": "c390fb3a0557b82591789d58c2bb713dcb4cd5a0a89cb59aa21b60ea56cfe352",
+      "tests/interaction-runtime/host.test.ts": "f05b3a3b887c8fdd72e238c02ccd031883807c301ca32eef293cdf06912e529c",
+      "tests/interaction-runtime/unlock-clearance.test.ts": "fe457213d1849069d0b33f62a8a5241942ab425ffec45bff52fe049fcf4c237f"
+    }
+  },
+  "limitations": [
+    "Browser Pointer Lock, DOM focus/IME and UI wiring are outside this evidence scope.",
+    "Adapters must honor the trusted local guard after all asynchronous preparation and final revision check, before any history/document/physics mutation; actual root wiring was reviewed.",
+    "A post-commit observer failure leaves the already validated mode applied and simulation paused, with an explicit committed-but-postprocessing-failed notice; no rollback is claimed.",
+    "Arbitrary external body-mode roundtrips while a fixed restore record exists are not observable without a dedicated mode revision; known replaced/rebuilt generations are rejected."
+  ],
+  "out_of_scope_findings": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --module NodeNext --moduleResolution NodeNext --target ES2022 --lib ES2022,DOM --types node tests/interaction-runtime/host.test.ts tests/interaction-runtime/unlock-clearance.test.ts",
+      "exit_code": 1,
+      "log": "tests/interaction-runtime/evidence-20261027-v3/strict-legacy-test-finding.log",
+      "sha256": "30e74db846facd2babd50531dbd2d930c84d8fe7b77bf8352e9c1ad76b117953",
+      "captured_from_tool_chunk": "992cb7",
+      "note": "Existing host.test.ts line126 infers number[] from a spread tuple, so initial[2] is possibly undefined under noUncheckedIndexedAccess. The project tsconfig does not include these runtime tests. Root notified; this repair did not edit that previously frozen test file."
+    }
+  ]
+}

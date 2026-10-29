@@ -1,0 +1,834 @@
+{
+  "schema_version": 1,
+  "review_id": "delta-r11-independent-corpus",
+  "reviewed_at_utc": "2026-10-27T21:29:39.977Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_validator",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent targeted documentation delta and current whole-inventory verifier"
+  },
+  "status": "PASS_SCOPED_R11_DOCUMENTATION_DELTA",
+  "scope": {
+    "authorization": "Final CORPUS_READY after the isolated README captured-count clarification; all14 source pairs and independent review ENDs frozen",
+    "current_default_inventory_complete": true,
+    "changed_pairs": 14,
+    "new_pairs": 3,
+    "refreshed_prior_pairs": 11,
+    "retained_previous_entries": 265,
+    "refreshed_original_English_aliases": 1,
+    "whole_corpus_new_semantic_review": false,
+    "product_completion_claim": false
+  },
+  "summary": {
+    "originals": 280,
+    "markdown_files_inventoried": 288,
+    "authored_artifact_documents": 15,
+    "shared_raw_evidence": 8,
+    "translations_required": 261,
+    "translated": 261,
+    "original_english": 18,
+    "existing_english_companions": 1,
+    "missing": 0,
+    "stale": 0,
+    "errors": 0,
+    "warnings": 15
+  },
+  "evidence": {
+    "independent_unit_tests": {
+      "path": ".cache/v1/english-delta-r11/independent/20261027T212145111Z/unit-result.json",
+      "sha256": "ede515aebdad418f2b6058eb7bad85b33245dbbbf1856eca3f1f7e033178cae0",
+      "bytes": 3189
+    },
+    "independent_current_full_checks": {
+      "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/full-checks.json",
+      "sha256": "9f3c357fa56a74058b5cd66eadd8e2979bd135b0ca5f06a59c80c7c95267759e",
+      "bytes": 435297
+    },
+    "independent_review_union": {
+      "path": ".cache/v1/english-delta-r11/independent/coverage-readme-clarified.json",
+      "sha256": "358707205bf95bfdd128e22f0fea31066ca92c7bcf7328e0685dfc76cf4ecfb0",
+      "bytes": 98131
+    },
+    "independent_mechanical_replay": {
+      "path": ".cache/v1/english-delta-r11/independent/mechanical-sanity-final.json",
+      "sha256": "5f2af681e13fe9ff39927d709aee6c26c0638bf801ae21c9fdf001cefab69698",
+      "bytes": 9150
+    },
+    "final_delta_inventory": {
+      "path": ".cache/v1/english-delta-r11-readme-clarification/inventory.json",
+      "sha256": "4017b5682e69db8f108820f4be69f01296109dbfa8daa15f94ad0392b3b95eb8",
+      "bytes": 101386
+    },
+    "final_reviewed_target_capture": {
+      "path": ".cache/v1/english-delta-r11-readme-clarification/reviewed-targets.json",
+      "sha256": "ca4303bec01c22d84d0c987b2db4fae49a2935278e1a22189eff8968f9d92fec",
+      "bytes": 9121
+    },
+    "final_coordinator_mechanical": {
+      "path": "docs/en/_reports/delta-r11-mechanical-20261027T212637781Z.json",
+      "sha256": "d1eca648ca9b3797e286eb49c435a33cc5de64a515b51d674d1b6a8953bcba8e",
+      "bytes": 21274
+    },
+    "preserved_intermediate_mechanical": {
+      "path": "docs/en/_reports/delta-r11-mechanical-20261027T212426882Z.json",
+      "sha256": "6231d248139c9e8b8723668b8012a4536ffd168f6653e0edd7e93f1bc6f613d0",
+      "bytes": 21231
+    },
+    "preexisting_report_pins": {
+      "path": ".cache/v1/english-delta-r11/preexisting-report-pins.json",
+      "sha256": "3e64be76ee5e5984f816e67119374b833b60371185c3f264cfd9cd36c69dbad3",
+      "bytes": 11499
+    },
+    "protected_prior_independent_report": {
+      "path": "docs/en/_reports/final-refresh-independent-corpus.json",
+      "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+      "bytes": 42390
+    },
+    "current_manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "75f42908950f875227890aaf7eb0e23cbcd5d4483266ec802f6fcbc59826eccc",
+      "bytes": 205720
+    },
+    "current_validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "75f42908950f875227890aaf7eb0e23cbcd5d4483266ec802f6fcbc59826eccc",
+      "bytes": 205720
+    },
+    "current_source_inventory": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "7969cae9222ea7b0dfcd39b43f7fc7b37f252e8ce9de0647a32644c5f2d23c67",
+      "bytes": 99786
+    },
+    "current_index": {
+      "path": "docs/en/index.md",
+      "sha256": "1f597abee0c3eebc888457d2cd13b112891a672c09a1a1ca4ade87df384459a1",
+      "bytes": 56563
+    }
+  },
+  "commands": [
+    {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "node": "v22.17.0",
+      "started_at": "2026-10-27T21:21:45.112Z",
+      "duration_ms": 610.6835,
+      "exit_code": 0,
+      "tests": 31,
+      "passes": 31,
+      "failures": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212145111Z/unit.stdout.txt",
+        "sha256": "18a62370e64bd34b214f60d72a3897135221af0e23c15dfacc109bdebe064d4c",
+        "bytes": 7000
+      },
+      "stderr": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212145111Z/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "currentness": "Executed independently before the README-only clarification; checker and tests match the final sealed source hashes, so no duplicate unit run is claimed."
+    },
+    {
+      "command": "node scripts/validation/english-docs.mjs check",
+      "args": [
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "started_at": "2026-10-27T21:27:44.442Z",
+      "duration_ms": 648.3115,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/english-check.stdout.txt",
+        "sha256": "0885e0f5434439ff24a26700afd22a2b6f0c934161d59c09b08227f6b21850bc",
+        "bytes": 270
+      },
+      "stderr": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/english-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "{\"status\":\"PASS\",\"originals\":280,\"markdown_files_inventoried\":288,\"authored_artifact_documents\":15,\"shared_raw_evidence\":8,\"translations_required\":261,\"translated\":261,\"original_english\":18,\"existing_english_companions\":1,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":15}\n",
+      "stderr_text": ""
+    },
+    {
+      "command": "node scripts/validation/docs.mjs",
+      "args": [
+        "scripts/validation/docs.mjs"
+      ],
+      "started_at": "2026-10-27T21:27:44.447Z",
+      "duration_ms": 438.4814,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/maintained-links.stdout.txt",
+        "sha256": "0939a8c9355772b68dd62b021cb3bb31eceb78eb803d972582b7ef31d40f7f95",
+        "bytes": 1932
+      },
+      "stderr": {
+        "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/maintained-links.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "PASS Markdown local targets: 5926 links in 556 documents; fenced code/external URLs/anchors excluded.\nScope: maintained Markdown; exact raw byte snapshot directories under root artifacts (source-before/source-after/sources/tested-bundle) excluded from link checking; run SHA proof checks are separate.\nExcluded raw byte snapshots (24): artifacts/v1/audio-prefix-irv2-preflight-20261027172840/prepared-ir-static-v1/sources, artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources, artifacts/v1/audio-prepared-ir-static-v1-preflight-20261027155118424/prepared-ir-static-v1/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources, artifacts/v1/gravity-toggle-review-v1/sources, artifacts/v1/integration-review-v3/sources, artifacts/v1/integration-review-v4/sources, artifacts/v1/integration-review-v5/sources, artifacts/v1/integration-review-v6/sources, artifacts/v1/integration-review-v7/sources, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-before, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-before, artifacts/v1/physics-boundaries-20261027/combined-final/source-after, artifacts/v1/physics-boundaries-20261027/combined-final/source-before, artifacts/v1/physics-boundaries-20261027/combined-v1/source-after, artifacts/v1/physics-boundaries-20261027/combined-v1/source-before, artifacts/v1/product-e2e-chrome-20261027T021924Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T024059Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T033616Z/tested-bundle, artifacts/v1/product-final-build-20261027T124914444Z/tested-bundle, artifacts/v1/replay-objectview-review-v1/sources.\n",
+      "stderr_text": ""
+    }
+  ],
+  "inventory_audit": {
+    "command": "git ls-files --cached --others --exclude-standard -z",
+    "exit_code": 0,
+    "stderr": "",
+    "regular_markdown_count": 288,
+    "exact_paths_match": true,
+    "missing": [],
+    "extra": [],
+    "source_inventory_matches": true
+  },
+  "source_target_hash_audit": {
+    "status": "PASS",
+    "current_original_rows": 280,
+    "all_source_and_target_bytes_and_markers_match": true,
+    "current_delta_frozen_sources": [
+      {
+        "source": "README.md",
+        "target": "README.en.md",
+        "expected_sha256": "ac9e982de2ada7061be73cb51905db52981fb1ce532abd6a84ed89a98a0169d8",
+        "snapshot": ".cache/v1/english-delta-r11-readme-clarification/sources/README.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r5.md",
+        "target": "docs/en/11-v1/REQUIREMENT_EVIDENCE_20261028-r5.md",
+        "expected_sha256": "c98899d8a92855beb85cd546cfb3e72bc730c144918e6da234522363891413a9",
+        "snapshot": ".cache/v1/english-delta-r11/sources/docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r5.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r11.md",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261028-r11.md",
+        "expected_sha256": "2fdbd801da4def413887bb87a034d2e63471810e6599e70c0f5c9f7d2ed7ce8e",
+        "snapshot": ".cache/v1/english-delta-r11/sources/docs/11-v1/SESSION_PROGRESS_20261028-r11.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/IMPLEMENTATION_STATUS.md",
+        "target": "docs/en/IMPLEMENTATION_STATUS.md",
+        "expected_sha256": "068eb91d62558d0fb64f27b7d1f9e4d1261ab8d4ee782290c53260b3829b0283",
+        "snapshot": ".cache/v1/english-delta-r11/sources/docs/IMPLEMENTATION_STATUS.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/KNOWN_LIMITATIONS.md",
+        "target": "docs/en/KNOWN_LIMITATIONS.md",
+        "expected_sha256": "e4ebb159be6fa16a3738b7d2604d62d01d0c6ff0f1a33a226d2f58e3126b7b48",
+        "snapshot": ".cache/v1/english-delta-r11/sources/docs/KNOWN_LIMITATIONS.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/experiments/record-replay.md",
+        "target": "docs/en/knowledge/wiki/experiments/record-replay.md",
+        "expected_sha256": "3031055544d272699e1fc859ef46b5dd21502548def14be0eb8735a8855b4f84",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/experiments/record-replay.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/features/interactive-sandbox.md",
+        "target": "docs/en/knowledge/wiki/features/interactive-sandbox.md",
+        "expected_sha256": "f89291a60a3a572b2020826383928a43694e21d2731edcd2aefac8dcb988645d",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/features/interactive-sandbox.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/features/meta-agent.md",
+        "target": "docs/en/knowledge/wiki/features/meta-agent.md",
+        "expected_sha256": "4f7bfdb0143c72e5c23c69bedee3c5abdd1f829515250e6099f5badd02599d4f",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/features/meta-agent.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/features/sound-behaviors.md",
+        "target": "docs/en/knowledge/wiki/features/sound-behaviors.md",
+        "expected_sha256": "019a0d9509ad8c77a5b449cb00d5e4d27973d5f83cb791a40fa353629d0febf8",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/features/sound-behaviors.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md",
+        "target": "docs/en/knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md",
+        "expected_sha256": "77e881da2cc483c37537f26eb9dc87027697f559d026b43052f4237e6c0f93bb",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "target": "docs/en/knowledge/wiki/index.md",
+        "expected_sha256": "1dcf6ca711de1bda4947fb18ce8db10350aea1fd44ed52e107eef5e3c55a5f40",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/index.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "target": "docs/en/knowledge/wiki/log.md",
+        "expected_sha256": "f0aa15338dea6602ab7e6ee38b48a0e9806dbadd94da9031a46bd64ee0a788c6",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/log.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "target": "docs/en/knowledge/wiki/now.md",
+        "expected_sha256": "7b30bc1a5ad4377c7e561266a35d54b1a302c98baed25227c093947bb980c949",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/now.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/tasks.md",
+        "target": "docs/en/knowledge/wiki/tasks.md",
+        "expected_sha256": "a35f813b764d28b9c8eb15842115b88be7388f75a5a93eca9e8919b76bbd3c87",
+        "snapshot": ".cache/v1/english-delta-r11/sources/knowledge/wiki/tasks.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      }
+    ],
+    "retained_source_and_target_rows": 265,
+    "retained_all_byteexact": true,
+    "previous_entries_bound_to_prior_pinned_independent_per_file_audit": true,
+    "refreshed_original_English_aliases": [
+      {
+        "source": "README.en.md",
+        "target": "README.en.md",
+        "source_sha256": "be26bb4ef366750b18cfad78bec30550abcdfba449e8e9fb002f9d3f97ce7e3a",
+        "target_sha256": "be26bb4ef366750b18cfad78bec30550abcdfba449e8e9fb002f9d3f97ce7e3a",
+        "current_sha256": "f5986f654e619796e2a4eac4c34b2177af5974d2849186f1337207e98f1331bd",
+        "reason": "Same reviewed README companion target; refreshed alias is expected."
+      }
+    ],
+    "alias_qualification": "README.en.md is both the reviewed README companion target and one original-English inventory row. Its refreshed hash comes from that same reviewed file and is not an unselected prose change.",
+    "full_rows_receipt": {
+      "path": ".cache/v1/english-delta-r11/independent/20261027T212744435Z/full-checks.json",
+      "sha256": "9f3c357fa56a74058b5cd66eadd8e2979bd135b0ca5f06a59c80c7c95267759e",
+      "bytes": 435297
+    }
+  },
+  "changed_semantic_review_coverage": {
+    "status": "PASS_COVERAGE_AND_PINS",
+    "counts": {
+      "group_reports": 5,
+      "group_rows": 13,
+      "clarified_readme_rows": 1,
+      "combined_unique_sources": 14,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0,
+      "defects": 0,
+      "other_raw_snapshots_reused_byteexact": 13
+    },
+    "report_pins": [
+      {
+        "path": "docs/en/_reports/delta-r11-operations-review.json",
+        "expected_sha256": "a73f0119832292aea149bde215ef45dc478aca53425b8a82c8bb970f50ddff9c",
+        "actual_sha256": "a73f0119832292aea149bde215ef45dc478aca53425b8a82c8bb970f50ddff9c",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/delta-r11-wiki-features-review.json",
+        "expected_sha256": "f65ca5bc69cfbf6950c7d9760f49b166da3ac79c034903706663eb63d6530e82",
+        "actual_sha256": "f65ca5bc69cfbf6950c7d9760f49b166da3ac79c034903706663eb63d6530e82",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/delta-r11-wiki-core-review.json",
+        "expected_sha256": "a28f3c52bee3ba1fd1aaca0679e0572721ed70e2b5df51f644db2e95da84b291",
+        "actual_sha256": "a28f3c52bee3ba1fd1aaca0679e0572721ed70e2b5df51f644db2e95da84b291",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/delta-r11-checkpoint-handoff-review.json",
+        "expected_sha256": "4b7bdbd0ead628efe5a0b101eb486be71480e43dffa25f2ea7a6f972a9229f85",
+        "actual_sha256": "4b7bdbd0ead628efe5a0b101eb486be71480e43dffa25f2ea7a6f972a9229f85",
+        "matches": true
+      },
+      {
+        "path": "docs/en/_reports/delta-r11-requirements-r5-review.json",
+        "expected_sha256": "e9262765c819ccdeb6c13fe807522c400e995cf0b858abaf5f24bf75b3067482",
+        "actual_sha256": "e9262765c819ccdeb6c13fe807522c400e995cf0b858abaf5f24bf75b3067482",
+        "matches": true
+      },
+      {
+        "path": ".cache/v1/english-delta-r11-readme-clarification/guide/document-inspection-clarification-1.json",
+        "expected_sha256": "1f67fdba59701c32764c74485d2b68e6cceded18bda02f31c0a9005723a7bbed",
+        "actual_sha256": "1f67fdba59701c32764c74485d2b68e6cceded18bda02f31c0a9005723a7bbed",
+        "matches": true
+      },
+      {
+        "path": ".cache/v1/english-delta-r11-readme-clarification/guide/independent-review-clarification-1.json",
+        "expected_sha256": "459af101452bd4989ae3a644fcb6c8a904b980390dc2add0d9925b1bf6020bda",
+        "actual_sha256": "459af101452bd4989ae3a644fcb6c8a904b980390dc2add0d9925b1bf6020bda",
+        "matches": true
+      }
+    ],
+    "all14_current_stage_source_and_reviewed_raw_target_pins_match": true,
+    "other13_raw_review_records_reused_byteexact": true,
+    "qualification": "Five disjoint group reports cover13 pairs; the new clarified-README independent review completes the exact14-source union. Coverage and hash bindings are independently checked here; prior unchanged semantic reviews are reused without a broad whole-corpus semantic reread.",
+    "log_scope": "199 previously reviewed events retained plus12 new events independently reviewed; this is not a new semantic reread of all211 events.",
+    "requirements_matrix_scope": "All51 evidence rows and prefix/footer reviewed;46 changed prose cells reviewed,107 unchanged previously reviewed cells reused. This is not a claim of a new semantic rewrite of every retained cell."
+  },
+  "README_clarification": {
+    "current_source_sha256": "ac9e982de2ada7061be73cb51905db52981fb1ce532abd6a84ed89a98a0169d8",
+    "current_reviewed_target_sha256": "f5986f654e619796e2a4eac4c34b2177af5974d2849186f1337207e98f1331bd",
+    "source": "README.md",
+    "target": "README.en.md",
+    "new_isolated_cache": ".cache/v1/english-delta-r11-readme-clarification",
+    "superseded_r11_source_sha256": "8a6f41c2a5f798e9a7a8c0fc57703c2f3156bd567c11bfed30a32cf65096e294",
+    "original13_other_review_snapshots_retained": true,
+    "intermediate_evidence_preserved": true,
+    "qualification": "The initial r11 finalize/mechanical capture preceded the factual README clarification and remains historical evidence. This final receipt uses only the adjusted current README pin."
+  },
+  "mechanical_carry_forward": {
+    "status": "PASS_EXACT_DOCUMENTED_MECHANICAL_TRANSFORM",
+    "pairs": 14,
+    "rows": [
+      {
+        "source": "README.md",
+        "source_sha256": "ac9e982de2ada7061be73cb51905db52981fb1ce532abd6a84ed89a98a0169d8",
+        "reviewed_target_sha256": "f5986f654e619796e2a4eac4c34b2177af5974d2849186f1337207e98f1331bd",
+        "final_target_sha256": "f5986f654e619796e2a4eac4c34b2177af5974d2849186f1337207e98f1331bd",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": false
+      },
+      {
+        "source": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r5.md",
+        "source_sha256": "c98899d8a92855beb85cd546cfb3e72bc730c144918e6da234522363891413a9",
+        "reviewed_target_sha256": "c49a44594769fdcf0cd0139310e9837718552e3da5ac9009426dcd8adee92122",
+        "final_target_sha256": "15e679e2bdc891af0a1071ce4d7eee271dbfd13789b0fe61a0bbf6b5f616171d",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r11.md",
+        "source_sha256": "2fdbd801da4def413887bb87a034d2e63471810e6599e70c0f5c9f7d2ed7ce8e",
+        "reviewed_target_sha256": "0d5e914f84e56f4090b5ac9e86ff78f78ea4982bc276fd01b942b99945de22d3",
+        "final_target_sha256": "bec534e6cb98b4dbf2a992cab299c3d27cd7b0ddf04c39db38c7fca6f6194b34",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "docs/IMPLEMENTATION_STATUS.md",
+        "source_sha256": "068eb91d62558d0fb64f27b7d1f9e4d1261ab8d4ee782290c53260b3829b0283",
+        "reviewed_target_sha256": "0f98856f56da770b5df426f1ed036e451f0ded841e8f7a7eafc5117fe8c4179f",
+        "final_target_sha256": "e7039c3e83caf3a17e2133a52b69182c6565dcc62f244dbfc95f076859f1ed47",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "docs/KNOWN_LIMITATIONS.md",
+        "source_sha256": "e4ebb159be6fa16a3738b7d2604d62d01d0c6ff0f1a33a226d2f58e3126b7b48",
+        "reviewed_target_sha256": "caf66efcdb9006cff512a04ce2385374c0f210618a7095231c3d53d51998ba45",
+        "final_target_sha256": "4fc50a498dc9b76ed3967f34d8c5b8c187eb930e39501e0eb084bdff221cab04",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/experiments/record-replay.md",
+        "source_sha256": "3031055544d272699e1fc859ef46b5dd21502548def14be0eb8735a8855b4f84",
+        "reviewed_target_sha256": "1d27e6cc28972df98dbcc85763131ed72d5d42a93e790f2fe13bbb8b85c952a7",
+        "final_target_sha256": "50193bd9d08435ea051b15a7117f4fd4ce4da8e9efe14c6f68cb1171beca3e01",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/features/interactive-sandbox.md",
+        "source_sha256": "f89291a60a3a572b2020826383928a43694e21d2731edcd2aefac8dcb988645d",
+        "reviewed_target_sha256": "4e33fcfc87833091dac6b9090b8c2f093c7d16cab61ff46f6a5bcfa717e40b01",
+        "final_target_sha256": "2e9f7ff14d9b73f1ddd1aa54c135f10e533368c6ec63aeff9101d99e41bb0290",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/features/meta-agent.md",
+        "source_sha256": "4f7bfdb0143c72e5c23c69bedee3c5abdd1f829515250e6099f5badd02599d4f",
+        "reviewed_target_sha256": "7f58bf8ca3eda45736e2e4eaebdc14a0cc19147407878798ecaf6e15c4e2b442",
+        "final_target_sha256": "e5edd4aa6f00a2a66229131f5f727e8c1f85e8e28345765467231a1279d1c458",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/features/sound-behaviors.md",
+        "source_sha256": "019a0d9509ad8c77a5b449cb00d5e4d27973d5f83cb791a40fa353629d0febf8",
+        "reviewed_target_sha256": "5c6514ba4179674fdb1b687dbb101a088d0217129069c0e5ccb4347081d74b18",
+        "final_target_sha256": "e721976d297962f538e349b920b90b48be06c0c51927519889d0621da5f8a021",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md",
+        "source_sha256": "77e881da2cc483c37537f26eb9dc87027697f559d026b43052f4237e6c0f93bb",
+        "reviewed_target_sha256": "0503fed401e7d4827465925617d0d5ea8c1562e603647c8ece89edfd65f916a0",
+        "final_target_sha256": "94037f21d9fc77952a301a65dfd32a29c56f109169b394f63a963884e67a5a5f",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "source_sha256": "1dcf6ca711de1bda4947fb18ce8db10350aea1fd44ed52e107eef5e3c55a5f40",
+        "reviewed_target_sha256": "a9e637bf6508f6fec3bcbad83e4e1bf13f91d24abfb51f85b450ccd27664b55c",
+        "final_target_sha256": "45e9a56de28650f46f8c8632d09631f2bebd2a2934f6fb0c9ed88a56401a19dd",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "source_sha256": "f0aa15338dea6602ab7e6ee38b48a0e9806dbadd94da9031a46bd64ee0a788c6",
+        "reviewed_target_sha256": "a4b0a75436d4d8feced5e6730f87368cc4de9203b50faeb57c902f053c8587c3",
+        "final_target_sha256": "d9de2862857563bd0516ab95b767bd6dc7b63ecf767623d3b621b78e871f697e",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": true,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "source_sha256": "7b30bc1a5ad4377c7e561266a35d54b1a302c98baed25227c093947bb980c949",
+        "reviewed_target_sha256": "8f31dcdb218ed8645c9870cbd117c0b520096a4a9cee937587b16792da6881f0",
+        "final_target_sha256": "1ea11e97c088e6982f1748c2080e14c8664debd425017fff738268eebe010044",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      },
+      {
+        "source": "knowledge/wiki/tasks.md",
+        "source_sha256": "a35f813b764d28b9c8eb15842115b88be7388f75a5a93eca9e8919b76bbd3c87",
+        "reviewed_target_sha256": "cc1776fc591ac157c276f1f7faf503bee164de2a73d8d9b931aa9350351c7aea",
+        "final_target_sha256": "181a2f9e0a2127ae87c8d17127a35ecbc4f5745548bc634da4d02cc45386e102",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false,
+        "reviewed_capture_record_reused_byteexact": true
+      }
+    ],
+    "normalization_scope": [
+      "knowledge/wiki/log.md"
+    ],
+    "rule_sanity": "Production notice() inserts one newline after a frontmatter block and removes leading separator blank whitespace from its body. This bounded boundary rule, generated notices/anchors and deterministic local-link mapping are the only permitted transformations; interior prose/code/formula whitespace is not normalized.",
+    "method_limit": "Replay uses the frozen rewriteLinks helper verified by independent31tests; this is post-review mechanical preservation, not an independent CommonMark parser or whole-corpus semantic rereview.",
+    "guide": {
+      "path": "docs/11-v1/USER_GUIDE.en.md",
+      "sha256": "a324a731c9e7efdb3a0b091ab0720e9e045eef006aeb385cad80bb2bbbb56477",
+      "bytes": 19098,
+      "unchanged": true
+    },
+    "no_raw_byte_equality_claim_across_generated_wrappers": true
+  },
+  "prior_reports_preserved": {
+    "status": "PASS",
+    "preexisting_reports": 63,
+    "all_byteexact": true,
+    "protected_old_report": {
+      "path": "docs/en/_reports/final-refresh-independent-corpus.json",
+      "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+      "unchanged": true,
+      "not_overwritten": true
+    },
+    "intermediate_r11_capture": {
+      "path": "docs/en/_reports/delta-r11-mechanical-20261027T212426882Z.json",
+      "sha256": "6231d248139c9e8b8723668b8012a4536ffd168f6653e0edd7e93f1bc6f613d0",
+      "bytes": 21231
+    }
+  },
+  "shared_raw_evidence": {
+    "status": "PASS",
+    "count": 8,
+    "all_source_and_receipt_pins_exact": true,
+    "metadata_and_classifications_unchanged_from_prior_reviewed_epoch": true,
+    "records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        },
+        "actual_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        },
+        "actual_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        },
+        "actual_source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "actual_source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "actual_source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        },
+        "actual_source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        },
+        "actual_source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        },
+        "actual_source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      }
+    ],
+    "qualification": "Captured source/failure-context provenance stays shared and does not imply build/native/product success."
+  },
+  "warnings": {
+    "count": 15,
+    "unchanged": true,
+    "records": [
+      {
+        "source": "third_party/emil-skills.README.md",
+        "warnings": [
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/emil-design-eng/SKILL.md",
+            "target": "third_party/skills/emil-design-eng/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate/SKILL.md",
+            "target": "third_party/skills/animate/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate-expo/SKILL.md",
+            "target": "third_party/skills/animate-expo/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/review-animations/SKILL.md",
+            "target": "third_party/skills/review-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/improve-animations/SKILL.md",
+            "target": "third_party/skills/improve-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/find-animation-opportunities/SKILL.md",
+            "target": "third_party/skills/find-animation-opportunities/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-performance/SKILL.md",
+            "target": "third_party/skills/animation-performance/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-vocabulary/SKILL.md",
+            "target": "third_party/skills/animation-vocabulary/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/apple-design/SKILL.md",
+            "target": "third_party/skills/apple-design/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/write-swift/SKILL.md",
+            "target": "third_party/skills/write-swift/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/pick-ui-library/SKILL.md",
+            "target": "third_party/skills/pick-ui-library/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/prototype/SKILL.md",
+            "target": "third_party/skills/prototype/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/mobile-native/SKILL.md",
+            "target": "third_party/skills/mobile-native/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/break-ui/SKILL.md",
+            "target": "third_party/skills/break-ui/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/ask-sonner/SKILL.md",
+            "target": "third_party/skills/ask-sonner/SKILL.md"
+          }
+        ]
+      }
+    ],
+    "qualification": "Inherited original/upstream link warnings remain disclosed; zero missing/stale/errors refers to the current structural gate."
+  },
+  "source_stability": {
+    "unit_code_and_protected_inputs_stable": true,
+    "current_full_check_inputs_stable": true,
+    "sealed_inputs": 662,
+    "final_seal_matches_post_check_snapshot": true,
+    "final_seal_sha256": "7306dad7d2fa4aaf5220d125c1c5034ad713249288601187597a634008149a31",
+    "Root_Git_index_and_HEAD_bytes_stable": true,
+    "old_report_exact_pin_preserved": true,
+    "continuous_monitor": false,
+    "production_mutations_by_reviewer": false,
+    "reviewer_writes": "Only authorized r11 independent cache evidence and this new uniquely named report"
+  },
+  "findings": [],
+  "limitations": [
+    "This is current documentation coverage/currentness/link/hash and targeted semantic-review provenance evidence, not overall first-version acceptance.",
+    "No new scientific, physics/acoustic numerical, product, legal/external-rights, performance, live-model, or hearing validation is claimed.",
+    "Remote URL availability and renderer-specific anchors are outside the checks.",
+    "Maintained-document local links exclude raw snapshot directories; exact eight shared raw Markdown records receive separate source/receipt pin checks.",
+    "Before/after hashes cannot detect reverted interim edits; formal source writers were frozen for this audit.",
+    "npm CI, build, browser, native/device/hearing, API/model, full npm check, Root Wiki writes and Root Git mutations were NOT RUN."
+  ],
+  "all_filesystem_and_process_IO_end_after_this_report": true
+}

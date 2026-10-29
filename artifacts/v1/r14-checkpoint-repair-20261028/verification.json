@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-28T10:42:19.757Z",
+  "goal": "ACTIVE",
+  "pauseConditionMet": false,
+  "userScope": "Normal100% required; native200 gate explicitly removed, historical acceptance retained",
+  "formalAttempt": {
+    "status": "FAILED",
+    "reason": "CDP_TRACE_FLUSH_TIMEOUT at60sec",
+    "physicsIterations": 3000,
+    "acousticIterationsEach": 600,
+    "uiProgressSamples": 20,
+    "lastProgress": {
+      "elapsedMs": 632834,
+      "frames": 22784,
+      "tick": 29069,
+      "state": "running"
+    },
+    "uiRaw": "NOT_SAVED_BEFORE_TRACE_TIMEOUT_IN_OLD_VERSION",
+    "trace": "NOT_RETRIEVED",
+    "process": "Exit1,stopped,outer sixcontrolhashes stable; browser disconnected/previewSIGTERM/no cleanup errors. No complete performance PASS."
+  },
+  "repair": {
+    "rawCheckpoint": "Incremental<=256MiB beforeTracing.end,recordsSHA/bytes; formalflush180sec/short60sec",
+    "falsyErrorRegression": "Root frozen16 RED16FAIL -> Root samecontract GREEN16PASS; exact original rawthrown values preserved",
+    "streamErrors": "3 additional open/write/lateerror cases plus original345 +frozen16 =364 tests PASS per executor; fullRoot check pending"
+  },
+  "shortAfterRepair": {
+    "path": "artifacts/v1/r14-performance-short-2026-10-28T103917789Z-8ea37a3f/native/verification.json",
+    "nativeEligibility": true,
+    "traceComplete": true,
+    "rawBytes": 1176721,
+    "rawSha256": "0961aee132f1ab90d18fb25b899b4eaad000e62b840b242e01c1c413036ee279",
+    "sampleMilliseconds": 20065.5,
+    "status": "MEASURED_WITH_INCOMPLETE_UI_WORKLOAD",
+    "performance": "FAIL under unchanged thresholds, not formal600",
+    "sourceStable": true,
+    "bundleStable": true,
+    "cleanupErrors": 0
+  },
+  "fullCheck": {
+    "path": "artifacts/v1/r14-full-check-2026-10-28T102839587Z-945618e6/verification.json",
+    "status": "FAIL",
+    "cause": "Wiki current AGENTS V1-SRC-0014 hash became stale after authorized normal-scale policy addition; no source drift during check",
+    "repair": "New V1-SRC-0060 supersedes0014; actual Wiki lint0errors39historicalwarnings. Fresh fullcheck still required."
+  },
+  "hearing": {
+    "path": "artifacts/v1/r14-root-hearing-2026-10-28T102838345Z-0325b2e2/verification.json",
+    "status": "ROOT_NO_AUDIO_PASS",
+    "httpResources": 12,
+    "audioContextAttempts": 0,
+    "armBlocked": true,
+    "ownedBrowserClosed": true,
+    "receipt": "artifacts/v1/device-hearing-v3-frozen-20261028/independent-review-r2.json",
+    "human": "NOT_RUN"
+  },
+  "resources": {
+    "paidCalls": 0,
+    "MuseCalls": 0
+  },
+  "copies": [
+    {
+      "originalPath": ".cache/v1/r14-checkpoint-falsy.test.mjs",
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/frozen-contract.raw.txt",
+      "sha256": "822b6fa6cb971ac55bbb680fe96d033ffbfd1c71d04cb875e20db27ca18e8b3c"
+    },
+    {
+      "originalPath": ".cache/v1/r14-checkpoint-independent/red.json",
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/red.raw.json",
+      "sha256": "3e774460fe16bbc2c85d484156441c0dce4db86f883bfa5b49cf2873b2185d77"
+    },
+    {
+      "originalPath": ".cache/v1/r14-checkpoint-independent/green.json",
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/green.raw.json",
+      "sha256": "137eb647a5ee9f96e92ec414a4b364f4e753f136fcc4f622af636e9b58a06d06"
+    },
+    {
+      "originalPath": ".cache/v1/r14-english-independent-review-20261028/review-receipt.json",
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/english-review.raw.json",
+      "sha256": "bfacf798aa3c54e82c28f3cd0b39e67574e0e965e07ff61b290e1d3efcb0eba0"
+    },
+    {
+      "originalPath": ".cache/v1/r14-hearing-20261028/qualification-2026-10-28T10-28-40.491Z/collection.json",
+      "path": "artifacts/v1/r14-checkpoint-repair-20261028/no-audio-r2.raw.json",
+      "sha256": "b9e28b8fa0621bdeb0a8986ef70a3eacd7ca1229ef427d6c7d9b2f1e506e4241"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/v1/r14-performance-formal-2026-10-28T100756692Z-5d6b501c/native/verification.json",
+      "sha256": "80b8a248af65d8de71d1cd2fbaded27a5e8478a45847713217430ac238b31df5"
+    },
+    {
+      "path": "artifacts/v1/r14-root-hearing-2026-10-28T102838345Z-0325b2e2/verification.json",
+      "sha256": "2bc5cc1de73bcd610295114d9778985acd84fea8e61861cf74b1fded3c5be108"
+    },
+    {
+      "path": "artifacts/v1/r14-full-check-2026-10-28T102839587Z-945618e6/verification.json",
+      "sha256": "eeb25fb0d87067e6729827e8da11e03ebf17988053be629ae41b70893bc912ad"
+    },
+    {
+      "path": "artifacts/v1/r14-performance-short-2026-10-28T103917789Z-8ea37a3f/native/verification.json",
+      "sha256": "5770431ff93f781dc85880179c812a425762920964d270bd9ba0087994ab7bac"
+    }
+  ],
+  "overallV1Complete": false
+}

@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-10-26T15:38:50.756Z",
+  "command": "MUSE_NO_AUTO_UPDATE=1 muse skills list --source project --workspace <repo> --trust-workspace --json",
+  "exit_code": 0,
+  "status": "PASS_LOCAL_CLI_DISCOVERY",
+  "project_skill_count": 23,
+  "new_five_discovered": [
+    "agent-orchestration",
+    "codex-verification",
+    "meta-experiment-agent",
+    "muse-implementation",
+    "muse-prompt-optimization"
+  ],
+  "diagnostics": [
+    {
+      "code": "skill-shadowed",
+      "message": "skill `persistent-project-memory` skipped because a higher-priority source defines the same id",
+      "scope": "project",
+      "path": ".claude/skills/persistent-project-memory/SKILL.md"
+    }
+  ],
+  "model_inference_calls": 0,
+  "persistent_trust_changed": false,
+  "raw_artifact": {
+    "path": "research/agents/muse-cli-probe/project-skills.json",
+    "sha256": "bdb60c79d85498348c1c520cf1ae53108b3f89cbd4872c533e1c5896001ae23b"
+  },
+  "limitation": "Catalog discovery is not model skill invocation or live implementation proof."
+}

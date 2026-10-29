@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "title": "Meta Sound function-tool adapter official contract review",
+  "checkedAt": "2026-10-27T00:51:11Z",
+  "scope": "產品 Sound Behavior provider 的可呼叫路徑；不代表帳號、額度或真實模型驗證",
+  "liveValidation": "NOT_RUN",
+  "actualModelCalls": 0,
+  "defaultCloudBudgetUsd": 0,
+  "sources": [
+    {
+      "id": "V1-META-SOUND-SRC-01",
+      "title": "Meta Model API — Tool calling",
+      "url": "https://dev.meta.ai/docs/tool-calling",
+      "checkedAt": "2026-10-27T00:51:11Z",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "supportedParameters": [
+        "Chat Completions 的 function tool 定義位於 tools[].function。",
+        "tool_choice 目前只接受 auto；required、none 與 named function choice 會失敗。",
+        "parallel_tool_calls:false 限制同回合函式平行呼叫；應用程式仍需自行限制總回合與工具數。",
+        "完整 tool_calls 的 function.arguments 由本機解析並執行；一般 content 不是工具呼叫。",
+        "strict:true 針對 parameters schema 的支援子集做檢查，不能代替本地 domain 與授權驗證。"
+      ]
+    },
+    {
+      "id": "V1-META-SOUND-SRC-02",
+      "title": "Meta Model API — Structured output",
+      "url": "https://dev.meta.ai/docs/structured-output",
+      "checkedAt": "2026-10-27T00:51:11Z",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "supportedParameters": [
+        "Strict root 必須是 object；root union 不支援。",
+        "oneOf 與 allOf 在任何位置皆不支援；root 以下可使用 anyOf。",
+        "每個 object 必須 additionalProperties:false，所有 properties 都必須列入 required。",
+        "巢狀深度上限為10；optional 需映射為 required nullable 並由本地 decoder 回復。"
+      ]
+    },
+    {
+      "id": "V1-META-SOUND-SRC-03",
+      "title": "Meta Model API — Chat completion",
+      "url": "https://dev.meta.ai/docs/protocols/chat-completions",
+      "checkedAt": "2026-10-27T00:51:11Z",
+      "pageVersion": null,
+      "sha256": null,
+      "snapshotMode": "remote-only",
+      "trust": "primary-official",
+      "supportedParameters": [
+        "沿用既有 https://api.meta.ai/v1/chat/completions endpoint 與 model/messages 格式。",
+        "回覆的 id 與 model 才能作為實際 provider provenance；設定值不能冒充實際 response ID。"
+      ]
+    }
+  ],
+  "adapterDecisions": [
+    "Sound 的單一 ProposeSoundBehavior function 僅接受 operations，與原12個 Scene 工具契約分離。",
+    "只有 required const discriminator 證明互斥的 oneOf 才可轉 anyOf；不放寬原本本地 schema。",
+    "Decoder 只移除原 schema optional 欄位的 null，保留 required null 供嚴格驗證拒絕。",
+    "Host 固定 proposalId、sceneId 與 scene/document revisions，並以原 AJV 與 SoundProposalHost.stage 檢查 domain、pins 與版本。",
+    "Server 的 browser snapshot 預覽不代替 Session 對目前可信編輯狀態的再次 stage；Apply 仍由使用者明確執行。"
+  ],
+  "limitations": [
+    "未儲存官方頁面全文或可重算的頁面 hash；null 表示未取得固定版本。",
+    "所有模型 transport 測試使用注入 fixture；沒有帳號權限、模型可用性、費率或真實 tool calling 成功證據。",
+    "模型失敗或零預算時停止 live 路徑，保留獨立且明示的離線規劃功能。"
+  ]
+}

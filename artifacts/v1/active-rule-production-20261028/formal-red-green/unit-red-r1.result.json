@@ -1,0 +1,814 @@
+{
+  "classification": "EXPECTED_RED_BEFORE_PRODUCTION_IMPLEMENTATION",
+  "startedAt": "2026-10-27T22:03:52.069Z",
+  "node": "v22.17.0",
+  "supervisorPid": 102144,
+  "childPid": 68864,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--import",
+    "tsx",
+    "--test",
+    "tests/audio-behavior/active-rule-projection.test.ts"
+  ],
+  "inputsBefore": [
+    {
+      "path": ".node-version",
+      "bytes": 8,
+      "sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98"
+    },
+    {
+      "path": "node_modules/tsx/package.json",
+      "bytes": 1663,
+      "sha256": "ab5f14c4251638844ade3905d3cfc52fc1c833644694d655a05f6d0ca746b83c"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 103658,
+      "sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+    },
+    {
+      "path": "package.json",
+      "bytes": 6141,
+      "sha256": "207b86fc9acc5a8945c726688ef6e280c645fc3779e5646da09a4ad6c0d89414"
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "bytes": 28617,
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46"
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "bytes": 8319,
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "bytes": 91355,
+      "sha256": "c3437ecd823ab32dad4b10e2b958824c1bf5ad187add9ac0625468fea99d97ed"
+    },
+    {
+      "path": "src/audio-behavior/index.ts",
+      "bytes": 43477,
+      "sha256": "d8044cb3e9d1e8616a0f8c243db9846efd243a3fdc49f341aa6f11a9b9589cb5"
+    },
+    {
+      "path": "src/audio-behavior/profile-registry.ts",
+      "bytes": 14396,
+      "sha256": "be480ced4dc072cb693c12091c096806720a774bded8789182f96ca46ee515e3"
+    },
+    {
+      "path": "src/audio-behavior/runtime-state.ts",
+      "bytes": 2293,
+      "sha256": "2d3143038c9154c78bd8a88ec7afd1b310803044a1f60b054f29261239b48cbe"
+    },
+    {
+      "path": "src/audio-behavior/trace.ts",
+      "bytes": 300,
+      "sha256": "ec0901a082b25713117c66a94c0161b722d0e1191100e48d1eb9629fae930fde"
+    },
+    {
+      "path": "src/audio-behavior/types.ts",
+      "bytes": 4075,
+      "sha256": "db99877445eb2c51fb0c7a12acc97884b58cf7cce511796271c9b84be713158c"
+    },
+    {
+      "path": "src/audio-behavior/voice-admission.ts",
+      "bytes": 1507,
+      "sha256": "8f934412b2113d206dcb4ec3a77142953d9e98153ea91ef4c3ee75af3fc3d76f"
+    },
+    {
+      "path": "tests/audio-behavior/active-rule-projection.test.ts",
+      "bytes": 13219,
+      "sha256": "ff354a00e271cb537efe292c5afb92d49cabc42e957d8974ab55992f1e4f31b4"
+    },
+    {
+      "path": "tests/audio-behavior/fixtures.ts",
+      "bytes": 4717,
+      "sha256": "3f83d8d237c13c41bf4e86fc971d354e9743505878653d599cba6e80640aaf5f"
+    }
+  ],
+  "protectedBefore": [
+    {
+      "path": "benchmarks/analytic/run.mjs",
+      "expected": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "actual": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346"
+    },
+    {
+      "path": "benchmarks/fixtures/analytical.json",
+      "expected": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "actual": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb"
+    },
+    {
+      "path": "examples/agents/acceptance.mjs",
+      "expected": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "actual": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6"
+    },
+    {
+      "path": "examples/agents/milestone.json",
+      "expected": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "actual": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3"
+    },
+    {
+      "path": "examples/agents/mock-plan.json",
+      "expected": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "actual": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3"
+    },
+    {
+      "path": "examples/agents/p0-01-scene-contract.json",
+      "expected": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "actual": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d"
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "expected": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "actual": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c"
+    },
+    {
+      "path": "examples/agents/smoke-task.json",
+      "expected": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "actual": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0"
+    },
+    {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "expected": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "actual": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83"
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+      "expected": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "actual": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9"
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "expected": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "actual": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70"
+    },
+    {
+      "path": "schemas/agents/handoff.schema.json",
+      "expected": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "actual": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07"
+    },
+    {
+      "path": "schemas/agents/implementation-result.schema.json",
+      "expected": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "actual": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c"
+    },
+    {
+      "path": "schemas/agents/repair-task.schema.json",
+      "expected": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "actual": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410"
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "expected": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "actual": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76"
+    },
+    {
+      "path": "schemas/agents/verification-result.schema.json",
+      "expected": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "actual": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976"
+    },
+    {
+      "path": "schemas/ai-provider-config.schema.json",
+      "expected": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "actual": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f"
+    },
+    {
+      "path": "schemas/ai-scene-change-set.schema.json",
+      "expected": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "actual": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d"
+    },
+    {
+      "path": "schemas/ai-tool-request.schema.json",
+      "expected": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "actual": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21"
+    },
+    {
+      "path": "schemas/ai-tool-result.schema.json",
+      "expected": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "actual": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668"
+    },
+    {
+      "path": "schemas/examples/acoustic-frame.json",
+      "expected": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "actual": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55"
+    },
+    {
+      "path": "schemas/examples/material.json",
+      "expected": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "actual": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317"
+    },
+    {
+      "path": "schemas/examples/scene.json",
+      "expected": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "actual": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a"
+    },
+    {
+      "path": "schemas/experiment.schema.json",
+      "expected": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "actual": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8"
+    },
+    {
+      "path": "schemas/material.schema.json",
+      "expected": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "actual": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7"
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "expected": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "actual": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd"
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "expected": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "actual": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+      "expected": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "actual": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/audio-event.json",
+      "expected": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "actual": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/comparison.json",
+      "expected": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "actual": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/context.json",
+      "expected": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "actual": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/document.json",
+      "expected": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "actual": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/proposal.json",
+      "expected": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "actual": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/runtime-state.json",
+      "expected": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "actual": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053"
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "expected": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "actual": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859"
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "expected": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "actual": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561"
+    },
+    {
+      "path": "schemas/wiki-event.schema.json",
+      "expected": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "actual": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a"
+    },
+    {
+      "path": "schemas/wiki-page.schema.json",
+      "expected": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "actual": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324"
+    },
+    {
+      "path": "schemas/wiki-source-manifest.schema.json",
+      "expected": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "actual": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097"
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "expected": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "actual": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8"
+    },
+    {
+      "path": "scripts/validation/domain-checks.mjs",
+      "expected": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "actual": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92"
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "expected": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "actual": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a"
+    },
+    {
+      "path": "tests/acoustics/analytical.test.mjs",
+      "expected": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "actual": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45"
+    },
+    {
+      "path": "tests/agents/artifacts.test.mjs",
+      "expected": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "actual": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c"
+    },
+    {
+      "path": "tests/agents/cli.test.mjs",
+      "expected": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "actual": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4"
+    },
+    {
+      "path": "tests/agents/context-pack.test.mjs",
+      "expected": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "actual": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b"
+    },
+    {
+      "path": "tests/agents/contract.test.mjs",
+      "expected": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "actual": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210"
+    },
+    {
+      "path": "tests/agents/failure-policy.test.mjs",
+      "expected": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "actual": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4"
+    },
+    {
+      "path": "tests/agents/fixtures/child-process.mjs",
+      "expected": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "actual": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79"
+    },
+    {
+      "path": "tests/agents/harness.test.mjs",
+      "expected": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "actual": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db"
+    },
+    {
+      "path": "tests/agents/process-runner.test.mjs",
+      "expected": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "actual": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf"
+    },
+    {
+      "path": "tests/contracts/fixture-contract.ts",
+      "expected": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "actual": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092"
+    },
+    {
+      "path": "tests/design/design-standards.test.mjs",
+      "expected": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "actual": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9"
+    },
+    {
+      "path": "tests/fixtures/acoustic-frame-nonempty.json",
+      "expected": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "actual": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d"
+    },
+    {
+      "path": "tests/integration/agent-schema-loader.test.mjs",
+      "expected": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "actual": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7"
+    },
+    {
+      "path": "tests/integration/research-index.test.mjs",
+      "expected": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "actual": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7"
+    },
+    {
+      "path": "tests/integration/schemas.test.mjs",
+      "expected": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "actual": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa"
+    },
+    {
+      "path": "tests/integration/validation-output.test.mjs",
+      "expected": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "actual": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9"
+    },
+    {
+      "path": "tests/sound-behaviors/contracts.test.mjs",
+      "expected": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "actual": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb"
+    },
+    {
+      "path": "tests/wiki/agent-projection.test.mjs",
+      "expected": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "actual": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521"
+    },
+    {
+      "path": "tests/wiki/wiki.test.mjs",
+      "expected": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "actual": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a"
+    }
+  ],
+  "nativeExitCode": 1,
+  "signal": null,
+  "closeObserved": true,
+  "endedAt": "2026-10-27T22:03:52.483Z",
+  "timedOut": false,
+  "totals": {
+    "tests": 12,
+    "pass": 0,
+    "fail": 12,
+    "skipped": 0
+  },
+  "missingApiFailures": 12,
+  "expectedRed": true,
+  "inputStable": true,
+  "inputsAfter": [
+    {
+      "path": ".node-version",
+      "bytes": 8,
+      "sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98"
+    },
+    {
+      "path": "node_modules/tsx/package.json",
+      "bytes": 1663,
+      "sha256": "ab5f14c4251638844ade3905d3cfc52fc1c833644694d655a05f6d0ca746b83c"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 103658,
+      "sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+    },
+    {
+      "path": "package.json",
+      "bytes": 6141,
+      "sha256": "207b86fc9acc5a8945c726688ef6e280c645fc3779e5646da09a4ad6c0d89414"
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "bytes": 28617,
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46"
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "bytes": 8319,
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "bytes": 91355,
+      "sha256": "c3437ecd823ab32dad4b10e2b958824c1bf5ad187add9ac0625468fea99d97ed"
+    },
+    {
+      "path": "src/audio-behavior/index.ts",
+      "bytes": 43477,
+      "sha256": "d8044cb3e9d1e8616a0f8c243db9846efd243a3fdc49f341aa6f11a9b9589cb5"
+    },
+    {
+      "path": "src/audio-behavior/profile-registry.ts",
+      "bytes": 14396,
+      "sha256": "be480ced4dc072cb693c12091c096806720a774bded8789182f96ca46ee515e3"
+    },
+    {
+      "path": "src/audio-behavior/runtime-state.ts",
+      "bytes": 2293,
+      "sha256": "2d3143038c9154c78bd8a88ec7afd1b310803044a1f60b054f29261239b48cbe"
+    },
+    {
+      "path": "src/audio-behavior/trace.ts",
+      "bytes": 300,
+      "sha256": "ec0901a082b25713117c66a94c0161b722d0e1191100e48d1eb9629fae930fde"
+    },
+    {
+      "path": "src/audio-behavior/types.ts",
+      "bytes": 4075,
+      "sha256": "db99877445eb2c51fb0c7a12acc97884b58cf7cce511796271c9b84be713158c"
+    },
+    {
+      "path": "src/audio-behavior/voice-admission.ts",
+      "bytes": 1507,
+      "sha256": "8f934412b2113d206dcb4ec3a77142953d9e98153ea91ef4c3ee75af3fc3d76f"
+    },
+    {
+      "path": "tests/audio-behavior/active-rule-projection.test.ts",
+      "bytes": 13219,
+      "sha256": "ff354a00e271cb537efe292c5afb92d49cabc42e957d8974ab55992f1e4f31b4"
+    },
+    {
+      "path": "tests/audio-behavior/fixtures.ts",
+      "bytes": 4717,
+      "sha256": "3f83d8d237c13c41bf4e86fc971d354e9743505878653d599cba6e80640aaf5f"
+    }
+  ],
+  "protectedStable": true,
+  "protectedAfter": [
+    {
+      "path": "benchmarks/analytic/run.mjs",
+      "expected": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "actual": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346"
+    },
+    {
+      "path": "benchmarks/fixtures/analytical.json",
+      "expected": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "actual": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb"
+    },
+    {
+      "path": "examples/agents/acceptance.mjs",
+      "expected": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "actual": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6"
+    },
+    {
+      "path": "examples/agents/milestone.json",
+      "expected": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "actual": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3"
+    },
+    {
+      "path": "examples/agents/mock-plan.json",
+      "expected": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "actual": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3"
+    },
+    {
+      "path": "examples/agents/p0-01-scene-contract.json",
+      "expected": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "actual": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d"
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "expected": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "actual": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c"
+    },
+    {
+      "path": "examples/agents/smoke-task.json",
+      "expected": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "actual": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0"
+    },
+    {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "expected": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "actual": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83"
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+      "expected": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "actual": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9"
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "expected": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "actual": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70"
+    },
+    {
+      "path": "schemas/agents/handoff.schema.json",
+      "expected": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "actual": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07"
+    },
+    {
+      "path": "schemas/agents/implementation-result.schema.json",
+      "expected": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "actual": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c"
+    },
+    {
+      "path": "schemas/agents/repair-task.schema.json",
+      "expected": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "actual": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410"
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "expected": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "actual": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76"
+    },
+    {
+      "path": "schemas/agents/verification-result.schema.json",
+      "expected": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "actual": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976"
+    },
+    {
+      "path": "schemas/ai-provider-config.schema.json",
+      "expected": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "actual": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f"
+    },
+    {
+      "path": "schemas/ai-scene-change-set.schema.json",
+      "expected": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "actual": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d"
+    },
+    {
+      "path": "schemas/ai-tool-request.schema.json",
+      "expected": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "actual": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21"
+    },
+    {
+      "path": "schemas/ai-tool-result.schema.json",
+      "expected": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "actual": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668"
+    },
+    {
+      "path": "schemas/examples/acoustic-frame.json",
+      "expected": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "actual": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55"
+    },
+    {
+      "path": "schemas/examples/material.json",
+      "expected": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "actual": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317"
+    },
+    {
+      "path": "schemas/examples/scene.json",
+      "expected": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "actual": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a"
+    },
+    {
+      "path": "schemas/experiment.schema.json",
+      "expected": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "actual": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8"
+    },
+    {
+      "path": "schemas/material.schema.json",
+      "expected": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "actual": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7"
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "expected": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "actual": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd"
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "expected": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "actual": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+      "expected": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "actual": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/audio-event.json",
+      "expected": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "actual": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/comparison.json",
+      "expected": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "actual": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/context.json",
+      "expected": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "actual": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/document.json",
+      "expected": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "actual": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/proposal.json",
+      "expected": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "actual": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a"
+    },
+    {
+      "path": "schemas/sound-behavior/examples/runtime-state.json",
+      "expected": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "actual": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053"
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "expected": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "actual": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859"
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "expected": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "actual": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561"
+    },
+    {
+      "path": "schemas/wiki-event.schema.json",
+      "expected": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "actual": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a"
+    },
+    {
+      "path": "schemas/wiki-page.schema.json",
+      "expected": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "actual": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324"
+    },
+    {
+      "path": "schemas/wiki-source-manifest.schema.json",
+      "expected": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "actual": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097"
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "expected": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "actual": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8"
+    },
+    {
+      "path": "scripts/validation/domain-checks.mjs",
+      "expected": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "actual": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92"
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "expected": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "actual": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a"
+    },
+    {
+      "path": "tests/acoustics/analytical.test.mjs",
+      "expected": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "actual": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45"
+    },
+    {
+      "path": "tests/agents/artifacts.test.mjs",
+      "expected": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "actual": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c"
+    },
+    {
+      "path": "tests/agents/cli.test.mjs",
+      "expected": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "actual": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4"
+    },
+    {
+      "path": "tests/agents/context-pack.test.mjs",
+      "expected": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "actual": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b"
+    },
+    {
+      "path": "tests/agents/contract.test.mjs",
+      "expected": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "actual": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210"
+    },
+    {
+      "path": "tests/agents/failure-policy.test.mjs",
+      "expected": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "actual": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4"
+    },
+    {
+      "path": "tests/agents/fixtures/child-process.mjs",
+      "expected": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "actual": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79"
+    },
+    {
+      "path": "tests/agents/harness.test.mjs",
+      "expected": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "actual": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db"
+    },
+    {
+      "path": "tests/agents/process-runner.test.mjs",
+      "expected": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "actual": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf"
+    },
+    {
+      "path": "tests/contracts/fixture-contract.ts",
+      "expected": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "actual": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092"
+    },
+    {
+      "path": "tests/design/design-standards.test.mjs",
+      "expected": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "actual": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9"
+    },
+    {
+      "path": "tests/fixtures/acoustic-frame-nonempty.json",
+      "expected": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "actual": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d"
+    },
+    {
+      "path": "tests/integration/agent-schema-loader.test.mjs",
+      "expected": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "actual": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7"
+    },
+    {
+      "path": "tests/integration/research-index.test.mjs",
+      "expected": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "actual": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7"
+    },
+    {
+      "path": "tests/integration/schemas.test.mjs",
+      "expected": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "actual": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa"
+    },
+    {
+      "path": "tests/integration/validation-output.test.mjs",
+      "expected": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "actual": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9"
+    },
+    {
+      "path": "tests/sound-behaviors/contracts.test.mjs",
+      "expected": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "actual": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb"
+    },
+    {
+      "path": "tests/wiki/agent-projection.test.mjs",
+      "expected": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "actual": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521"
+    },
+    {
+      "path": "tests/wiki/wiki.test.mjs",
+      "expected": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "actual": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a"
+    }
+  ],
+  "stdout": {
+    "path": ".cache/v1/active-rule-formal-tests-20261028/unit-red-r1.stdout.raw",
+    "bytes": 13802,
+    "sha256": "24c326d3873935721a8689a49b15b0f271b2778eaefe22f355683973b78a2487"
+  },
+  "stderr": {
+    "path": ".cache/v1/active-rule-formal-tests-20261028/unit-red-r1.stderr.raw",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "limitation": "Expected RED establishes missing actual API only. No GREEN, app suite, typecheck, original regression, browser/native/hearing/profile/API or full V1 validation run by this command.",
+  "activityEnd": {
+    "childCloseObserved": true,
+    "noFurtherRunsScheduled": true,
+    "productionWrites": 0,
+    "paidModelCalls": 0
+  }
+}

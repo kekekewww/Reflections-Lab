@@ -1,0 +1,154 @@
+{
+  "owner": null,
+  "evidence": [
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+      "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+      "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027175511594/browser-verification.json",
+      "sha256": "7cd845e93e5dd27a81a0d6d364fd518faa7dea8499fc81082e9b6101ccbd6cd2",
+      "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+      "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+      "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+    },
+    {
+      "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+      "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+      "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Bounded throw latch/deadline, rolling/sliding hysteresis, material-pair generator/layer selection and provenance trace are directly asserted and pass in current fullcheck. Fullcheck lines6293-6599 and8483-8531; material-pair selection retains contact provenance; no fake continuous duration."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+      "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+      "result": "Bounded throw latch/deadline, rolling/sliding hysteresis, material-pair generator/layer selection and provenance trace are directly asserted and pass in current fullcheck. Fullcheck lines6293-6599 and8483-8531; material-pair selection retains contact provenance; no fake continuous duration."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+      "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+      "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+      "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+      "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+    }
+  ],
+  "created_at": "2026-10-26T17:39:30.474Z",
+  "updated_at": "2026-10-27T21:17:52.688Z",
+  "id": "RLAB-TASK-0013",
+  "title": "Sound P1互動、接觸與Behavior A/B",
+  "description": "按切片加入Grab/Throw/Airborne、rolling/sliding、boundedlatch、materialpair／timeline；需相應FPS事件接線",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "dependencies": [
+    "RLAB-TASK-0012"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "接觸／互動正規化在corner/held/mode/pause/CCD等場景通過",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+          "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+          "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027175511594/browser-verification.json",
+          "sha256": "7cd845e93e5dd27a81a0d6d364fd518faa7dea8499fc81082e9b6101ccbd6cd2",
+          "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+          "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+          "result": "Current real WASM regressions cover canonical contacts, corner pairs, held/pause/mode invalidation and capped Throw CCD. Existing functional browser evidence corroborates host operation. Fullcheck actual tests833-841,844-870 and finite-grasp matrix. This criterion does not require native Pointer Lock to establish physics contact normalization."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "有界latch與rolling/sliding狀態、materialpair/layer／trace可追溯",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Bounded throw latch/deadline, rolling/sliding hysteresis, material-pair generator/layer selection and provenance trace are directly asserted and pass in current fullcheck. Fullcheck lines6293-6599 and8483-8531; material-pair selection retains contact provenance; no fake continuous duration."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+          "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+          "result": "Bounded throw latch/deadline, rolling/sliding hysteresis, material-pair generator/layer selection and provenance trace are directly asserted and pass in current fullcheck. Fullcheck lines6293-6599 and8483-8531; material-pair selection retains contact provenance; no fake continuous duration."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "acoustic/behavior A/B依固定條件與自變項驗證；不把source變化當房間改善",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+          "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+          "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+          "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+          "result": "Actual capture/replay product chain supports acoustic comparison; current independent integration and experiment assertions cover behavior B reevaluation from A raw trace, permitted source changes and rejected propagation changes. Fullcheck lines5813,5927-5957,7967,8045,8069. Acoustic and behavior comparisons retain distinct fixed conditions; no source change is reported as room improvement."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+    "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+    "docs/10-sound-behaviors/SOUND_BEHAVIOR_VALIDATION.md"
+  ],
+  "last_summary": "原子criteria已有直接證據，但Task0012依賴未DONE，整體狀態與依賴保持。"
+}

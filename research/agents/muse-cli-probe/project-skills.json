@@ -1,0 +1,495 @@
+{
+  "skills": [
+    {
+      "id": "acoustic-research",
+      "name": "acoustic-research",
+      "display_name": "acoustic-research",
+      "description": "查證 Reflection Lab 聲學理論、材質資料、論文與科學主張；用於研究與來源更新，不代替數值驗證。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/acoustic-research/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 229,
+        "startup_estimated_tokens": 58,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "acoustic-validation",
+      "name": "acoustic-validation",
+      "display_name": "acoustic-validation",
+      "description": "驗證 Reflection Lab 幾何聲學、頻帶能量、傳播、RIR 與數值 benchmark；用於公式與求解器變更。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/acoustic-validation/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 227,
+        "startup_estimated_tokens": 57,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "agent-orchestration",
+      "name": "agent-orchestration",
+      "display_name": "agent-orchestration",
+      "description": "管理 Reflection Lab Codex × Muse 開發 Harness 的任務派送、有限修復、quota failover、checkpoint 與安全恢復；維持既有 Wiki Task 為任務權威。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/agent-orchestration/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 278,
+        "startup_estimated_tokens": 70,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "animate",
+      "name": "animate",
+      "display_name": "animate",
+      "description": "Build an animation from scratch, making the decisions in the order that determines whether it feels right — should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits. Writes the implementation. Use when asked to animate something, add motion, make a component feel alive, or build a transition. For critiquing existing motion use review-animations; for auditing a whole codebase use improve-animations.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/animate/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 533,
+        "startup_estimated_tokens": 134,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "animation-performance",
+      "name": "animation-performance",
+      "display_name": "animation-performance",
+      "description": "Keep web animations inside the frame budget — animate composite-only properties, keep motion off the main thread when the page is busy, and find the cause when an animation drops frames. Covers the layout/paint/composite pipeline, cheaper property swaps, CSS vs WAAPI vs requestAnimationFrame, Framer Motion's hardware-accelerated path, React re-rendering per frame, inherited CSS variable recalculation, blur cost, and when `will-change` actually helps. Use when an animation is janky, choppy, stutters, or drops frames; when choosing which property to animate; when deciding between CSS and JS animation on performance grounds; or when reaching for `will-change` or GPU layers. For choosing easing, duration, or whether to animate at all use animate; for reviewing motion as a whole use review-animations.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/animation-performance/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 924,
+        "startup_estimated_tokens": 231,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "break-ui",
+      "name": "break-ui",
+      "display_name": "break-ui",
+      "description": "Try to break a piece of UI by feeding it worst-case data — long names, unbreakable emails, one-letter names, missing fields, huge counts, zero items, long labels, non-Latin text, emoji, extreme numbers — then render it behind a \"Demo data / Worst case\" toggle and report everything that broke, with the fix for each. Use when the user asks to stress-test, break, or find edge cases in a component or screen, or to \"try the worst case\". For visual design critique use emil-design-eng; for motion use review-animations.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/break-ui/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 584,
+        "startup_estimated_tokens": 146,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "codex-verification",
+      "name": "codex-verification",
+      "display_name": "codex-verification",
+      "description": "獨立驗證 Reflection Lab 實作結果，核對凍結 acceptance、Git diff、測試 artifacts 與 provenance，建立可重現且有限次數的修復任務。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/codex-verification/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 265,
+        "startup_estimated_tokens": 67,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "compliance-and-provenance",
+      "name": "compliance-and-provenance",
+      "display_name": "compliance-and-provenance",
+      "description": "查核 Reflection Lab 競賽規則、第三方 license、資料集音效權利與既有成果來源；不代替使用者接受條款或提交。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/compliance-and-provenance/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 275,
+        "startup_estimated_tokens": 69,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "emil-design-eng",
+      "name": "emil-design-eng",
+      "display_name": "emil-design-eng",
+      "description": "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/emil-design-eng/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 246,
+        "startup_estimated_tokens": 62,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "experiment-validation",
+      "name": "experiment-validation",
+      "display_name": "experiment-validation",
+      "description": "處理 Reflection Lab 實驗錄製、snapshot、motion replay、A/B 條件、結果 provenance 與可重現性驗證。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/experiment-validation/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 234,
+        "startup_estimated_tokens": 59,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "improve-animations",
+      "name": "improve-animations",
+      "display_name": "improve-animations",
+      "description": "Survey a codebase's animation and motion code as a senior motion advisor, then produce a prioritized audit and self-contained implementation plans for other agents (or cheaper models) to execute. Read-only on source code — it plans improvements, it does not apply them. Use when the user asks to \"improve the animations\", \"audit the motion\", \"make this app feel better\", or wants a roadmap of animation fixes rather than a review of a single diff.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/improve-animations/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 552,
+        "startup_estimated_tokens": 138,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "meta-experiment-agent",
+      "name": "meta-experiment-agent",
+      "display_name": "meta-experiment-agent",
+      "description": "設計或驗證 Reflection Lab 產品內 Meta AI 實驗 Agent 的工具契約、prompt、數值 grounding 與 API quota 邊界；不作 coding executor。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/meta-experiment-agent/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 269,
+        "startup_estimated_tokens": 68,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "muse-implementation",
+      "name": "muse-implementation",
+      "display_name": "muse-implementation",
+      "description": "以 Reflection Lab Task Contract 委派 Muse Code 實作或修復，處理受限工作區、實作報告與 quota 失敗；不替代獨立驗收。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/muse-implementation/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 254,
+        "startup_estimated_tokens": 64,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "muse-prompt-optimization",
+      "name": "muse-prompt-optimization",
+      "display_name": "muse-prompt-optimization",
+      "description": "評估 Reflection Lab Muse coding 或產品 runtime 提示詞，以固定 fixtures 比較策略、記錄可觀察指標與實測限制；不將離線流程測試當模型表現。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/muse-prompt-optimization/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 306,
+        "startup_estimated_tokens": 77,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "persistent-project-memory",
+      "name": "persistent-project-memory",
+      "display_name": "persistent-project-memory",
+      "description": "維護 Reflection Lab 跨 Agent Wiki、來源、任務、Checkpoint、衝突與交接；用於重要研究、實作或 Session 交接，不保存私人對話歷史。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/persistent-project-memory/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 297,
+        "startup_estimated_tokens": 75,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "physics-interaction",
+      "name": "physics-interaction",
+      "display_name": "physics-interaction",
+      "description": "設計與驗證 Reflection Lab Rapier FPS、抓取投擲、建造放置、剛體狀態與碰撞音訊事件。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/physics-interaction/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 217,
+        "startup_estimated_tokens": 55,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "pick-ui-library",
+      "name": "pick-ui-library",
+      "display_name": "pick-ui-library",
+      "description": "Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/pick-ui-library/SKILL.md",
+      "activation": "user-invocable-only",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 352,
+        "startup_estimated_tokens": 88,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "prototype",
+      "name": "prototype",
+      "display_name": "prototype",
+      "description": "Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Only runs when explicitly invoked; it does not trigger on its own.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/prototype/SKILL.md",
+      "activation": "user-invocable-only",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 309,
+        "startup_estimated_tokens": 78,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "reflection-lab-design-system",
+      "name": "reflection-lab-design-system",
+      "display_name": "reflection-lab-design-system",
+      "description": "在 Reflection Lab 規劃、實作或審查 UI、元件、動畫、FPS/Build、聲學圖表時使用；按需讀正式設計規範、Emil skills、狀態及驗證要求，避免把靜態審查當成實機通過。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/reflection-lab-design-system/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 356,
+        "startup_estimated_tokens": 89,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "review-animations",
+      "name": "review-animations",
+      "display_name": "review-animations",
+      "description": "Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to flagging; approval is earned.",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/review-animations/SKILL.md",
+      "activation": "user-invocable-only",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 258,
+        "startup_estimated_tokens": 65,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "spatial-audio-dsp",
+      "name": "spatial-audio-dsp",
+      "display_name": "spatial-audio-dsp",
+      "description": "處理 Reflection Lab HRTF、SourceGraph、傳播延遲、early paths、reverb 與音訊連續性；不用於論文書目整理。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/spatial-audio-dsp/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 229,
+        "startup_estimated_tokens": 58,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "steam-audio-integration",
+      "name": "steam-audio-integration",
+      "display_name": "steam-audio-integration",
+      "description": "處理 Reflection Lab 的 Steam Audio C API、SDK 下載校驗、native build、授權、capability adapter 與隔離 smoke。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/steam-audio-integration/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 249,
+        "startup_estimated_tokens": 63,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    },
+    {
+      "id": "ux-engineering",
+      "name": "ux-engineering",
+      "display_name": "ux-engineering",
+      "description": "處理 Reflection Lab Workspace、Inspector、FPS HUD、輸入仲裁、建造預覽與聲學路徑選取；先讀既有 UX 規格。",
+      "short_description": null,
+      "scope": "project",
+      "source": {
+        "type": "local"
+      },
+      "path": ".agents/skills/ux-engineering/SKILL.md",
+      "activation": "on",
+      "diagnostics": [],
+      "provenance": null,
+      "context_cost": {
+        "startup_bytes": 219,
+        "startup_estimated_tokens": 55,
+        "invoke_bytes": null,
+        "invoke_estimated_tokens": null
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "skill-shadowed",
+      "message": "skill `persistent-project-memory` skipped because a higher-priority source defines the same id",
+      "scope": "project",
+      "path": ".claude/skills/persistent-project-memory/SKILL.md"
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "assignment": "independent-research-ops",
+  "executor": "Codex",
+  "model_id": null,
+  "reviewed_at": "2026-10-27T05:50:17.240Z",
+  "status": "PASS",
+  "scope": {
+    "document_pairs": 9,
+    "full_semantic_comparison": true,
+    "pass_pairs": 9,
+    "blocked_pairs": 0,
+    "whole_corpus_semantic_review": false
+  },
+  "reviewers": [
+    {
+      "id": "/root/v1_english_docs/review_research_ops",
+      "scope": [
+        "research/theory/ACOUSTIC_THEORY.md",
+        "research/theory/DSP_MODELS.md",
+        "research/theory/PHYSICS_THEORY.md",
+        "research/datasets/DATASET_CATALOG.md"
+      ],
+      "role": "independent reviewer and report writer"
+    },
+    {
+      "id": "/root/v1_english_docs/review_research_ops/review_papers",
+      "scope": [
+        "research/papers/LITERATURE_REVIEW.md",
+        "research/papers/COLLISION_WAVE_NOTES.md"
+      ],
+      "role": "independent read-only reviewer"
+    },
+    {
+      "id": "/root/v1_english_docs/review_research_ops/review_rights_live",
+      "scope": [
+        "docs/01-compliance/LICENSE_REGISTER.md",
+        "docs/01-compliance/PROVENANCE_POLICY.md",
+        "server/META_LIVE_VALIDATION.md"
+      ],
+      "role": "independent read-only reviewer"
+    }
+  ],
+  "method": [
+    "Read each scoped canonical document and corresponding English mirror completely and compare semantic content.",
+    "Independently recompute SHA-256 and compare the english-source marker against the current canonical file.",
+    "Compare fenced blocks after line-ending normalization, inline literals, and numeric tokens; manually inspect any lexical or human-readable-label differences.",
+    "Review translation fidelity to local canonical documents only; do not refresh or independently endorse their scientific/legal/service facts."
+  ],
+  "files": [
+    {
+      "source": "research/papers/LITERATURE_REVIEW.md",
+      "target": "docs/en/research/papers/LITERATURE_REVIEW.md",
+      "source_sha256": "ef2240f2f62b26f2c911b850db06fca545a4facda2bcda2de6fa28140244a6b2",
+      "target_sha256": "1881dcef58f02f55e776dcbd821af819ad454c449578e41899d89aedd0fbe348",
+      "marker_source": "research/papers/LITERATURE_REVIEW.md",
+      "marker_sha256": "ef2240f2f62b26f2c911b850db06fca545a4facda2bcda2de6fa28140244a6b2",
+      "marker_matches_current_source": true,
+      "source_fence_count": 0,
+      "target_fence_count": 0,
+      "fences_exact": true,
+      "source_inline_count": 5,
+      "target_inline_count": 5,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 94,
+      "target_line_count": 94,
+      "source_numeric_count": 99,
+      "target_numeric_count": 99,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves P01–P11, S01–S05, T01–T04; full-text versus preview/access status; pressure/energy and measured/synthetic distinctions; historical and unexecuted statements; reproduction limitations."
+      ]
+    },
+    {
+      "source": "research/papers/COLLISION_WAVE_NOTES.md",
+      "target": "docs/en/research/papers/COLLISION_WAVE_NOTES.md",
+      "source_sha256": "bb3f6567888b9021e2db57e1d2b2e5a6b0868d711b4f899cb478111ad0c4e012",
+      "target_sha256": "4a4e28fcf8cf9e21966800a4f16a91816479801cd1d8268de67805a53a1f8dc3",
+      "marker_source": "research/papers/COLLISION_WAVE_NOTES.md",
+      "marker_sha256": "bb3f6567888b9021e2db57e1d2b2e5a6b0868d711b4f899cb478111ad0c4e012",
+      "marker_matches_current_source": true,
+      "source_fence_count": 0,
+      "target_fence_count": 0,
+      "fences_exact": true,
+      "source_inline_count": 21,
+      "target_inline_count": 21,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 110,
+      "target_line_count": 110,
+      "source_numeric_count": 115,
+      "target_numeric_count": 115,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves CW01–CW07; modal/contact/radiation/air-field distinctions; pressure approximations, numerical-method limits, access failures, unrun experiments, and redistribution limitations."
+      ]
+    },
+    {
+      "source": "research/theory/ACOUSTIC_THEORY.md",
+      "target": "docs/en/research/theory/ACOUSTIC_THEORY.md",
+      "source_sha256": "26e8c37564eac4ffe827cccabeba4a47a041d55c2f9b3811fdd78e0e373cb1f4",
+      "target_sha256": "9f977f9f61e96e3e0eb5d8aa3ae1c544477d47e286ca7e6eb9924bbde40f8036",
+      "marker_source": "research/theory/ACOUSTIC_THEORY.md",
+      "marker_sha256": "26e8c37564eac4ffe827cccabeba4a47a041d55c2f9b3811fdd78e0e373cb1f4",
+      "marker_matches_current_source": true,
+      "source_fence_count": 5,
+      "target_fence_count": 5,
+      "fences_exact": true,
+      "source_inline_count": 59,
+      "target_inline_count": 59,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 126,
+      "target_line_count": 126,
+      "source_numeric_count": 122,
+      "target_numeric_count": 122,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves pressure 1/r versus intensity 1/r², dB SPL calibration versus dBFS, finite-surface visibility conditions, path identity, explicit approximation settings, A/R/T conservation, reflected-energy scattering, impedance/phase restrictions, Measured/Derived/Synthetic labels, air-loss domains, retarded geometry, Doppler signs, and V1/V2/V3/V5 boundaries."
+      ]
+    },
+    {
+      "source": "research/theory/DSP_MODELS.md",
+      "target": "docs/en/research/theory/DSP_MODELS.md",
+      "source_sha256": "62ac47d03e382717bff2451cb715ea2a526eee9116f9be25b80afb9f27200390",
+      "target_sha256": "608bcc4ae469528cfb8d01732fbd40cfb407f386cf24e5da8303bfae55b74d24",
+      "marker_source": "research/theory/DSP_MODELS.md",
+      "marker_sha256": "62ac47d03e382717bff2451cb715ea2a526eee9116f9be25b80afb9f27200390",
+      "marker_matches_current_source": true,
+      "source_fence_count": 6,
+      "target_fence_count": 6,
+      "fences_exact": true,
+      "source_inline_count": 18,
+      "target_inline_count": 18,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 113,
+      "target_line_count": 113,
+      "source_numeric_count": 94,
+      "target_numeric_count": 94,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves RIR/BRIR/HRTF ownership, propagation/algorithmic/device delay separation, fractional-delay and FDN stability limits, pressure-versus-energy metrics, independent clocks, historical unimplemented/unrun statements, and the distinction between isolated synthetic kernels and complete V2 validation."
+      ]
+    },
+    {
+      "source": "research/theory/PHYSICS_THEORY.md",
+      "target": "docs/en/research/theory/PHYSICS_THEORY.md",
+      "source_sha256": "a314a91fc7a3a262ef5c4ff88dfb73e0a795b1e82cd68bf7cbeff294906e29d7",
+      "target_sha256": "b7ef30132b241968c0bd55739b33bc49f3db4cdb651cf3f48368e3a9252f4d02",
+      "marker_source": "research/theory/PHYSICS_THEORY.md",
+      "marker_sha256": "a314a91fc7a3a262ef5c4ff88dfb73e0a795b1e82cd68bf7cbeff294906e29d7",
+      "marker_matches_current_source": true,
+      "source_fence_count": 10,
+      "target_fence_count": 10,
+      "fences_exact": true,
+      "source_inline_count": 51,
+      "target_inline_count": 51,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 146,
+      "target_line_count": 146,
+      "source_numeric_count": 65,
+      "target_numeric_count": 65,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves contact-normal signs, force/impulse units, normal kinetic loss versus acoustic energy, dynamic/fixed/kinematic distinctions, tuned samples versus measurements, modal/radiation assumptions, bounded audio events, stencil-specific stability, asymptotic cost versus benchmark, rigid Neumann mode oracle, and incomplete fixture coverage."
+      ]
+    },
+    {
+      "source": "research/datasets/DATASET_CATALOG.md",
+      "target": "docs/en/research/datasets/DATASET_CATALOG.md",
+      "source_sha256": "6409763e9fb8c7fe1d1c4b312f068cff3b025b383d0e71f8679d5498fef5d3ca",
+      "target_sha256": "21000bb55ad95b40e98d18357cf97fa335da4b5071e51df4ba593ac7a89dfa40",
+      "marker_source": "research/datasets/DATASET_CATALOG.md",
+      "marker_sha256": "6409763e9fb8c7fe1d1c4b312f068cff3b025b383d0e71f8679d5498fef5d3ca",
+      "marker_matches_current_source": true,
+      "source_fence_count": 1,
+      "target_fence_count": 1,
+      "fences_exact": true,
+      "source_inline_count": 68,
+      "target_inline_count": 68,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 142,
+      "target_line_count": 142,
+      "source_numeric_count": 158,
+      "target_numeric_count": 158,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves D01–D09 methods, versions, numerical settings, access observations, UNKNOWN terms, code/data license separation, measured versus synthetic sources, SOFA format versus content rights, restricted RIEC use, all NOT RUN states, acquisition pinning/dry-run gates, and V2/V3/V5 evidence limits."
+      ]
+    },
+    {
+      "source": "docs/01-compliance/LICENSE_REGISTER.md",
+      "target": "docs/en/01-compliance/LICENSE_REGISTER.md",
+      "source_sha256": "4f5e4dd3268a342e084ada74d8816a16b075b2cda287d5c30d49e47b3cf1c1e8",
+      "target_sha256": "d21e1682d1ecc773cbfd09a2241bd16e5c75f3d82de70bbea10f88393fa0f764",
+      "marker_source": "docs/01-compliance/LICENSE_REGISTER.md",
+      "marker_sha256": "4f5e4dd3268a342e084ada74d8816a16b075b2cda287d5c30d49e47b3cf1c1e8",
+      "marker_matches_current_source": true,
+      "source_fence_count": 1,
+      "target_fence_count": 1,
+      "fences_exact": true,
+      "source_inline_count": 36,
+      "target_inline_count": 36,
+      "inline_sequence_exact": false,
+      "number_multiset_exact": false,
+      "source_line_count": 72,
+      "target_line_count": 72,
+      "source_numeric_count": 147,
+      "target_numeric_count": 148,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves current versus historical inventories, conditional adoption versus legal approval, distinct code/binary/data/trademark rights, notices obligations, unknown-license restrictions, synthetic fixtures, and public-distribution gates.",
+        "One human-readable inline label is translated: 有條件可採用 → Conditionally adoptable. Technical inline literals are retained.",
+        "Raw numeric multiset differs only because source heading 第一版 is rendered V1. Per-line comparison confirmed the additional digit 1 is a faithful ordinal translation; all original numeric values and counts are retained."
+      ]
+    },
+    {
+      "source": "docs/01-compliance/PROVENANCE_POLICY.md",
+      "target": "docs/en/01-compliance/PROVENANCE_POLICY.md",
+      "source_sha256": "cdb9044f44f3776909ee1160ecb26918c9c111edc41832e91b9c29daa18faddd",
+      "target_sha256": "4163ce6da12335ec7a44abd2ed1425c834a746514d672879759d952ec69a12de",
+      "marker_source": "docs/01-compliance/PROVENANCE_POLICY.md",
+      "marker_sha256": "cdb9044f44f3776909ee1160ecb26918c9c111edc41832e91b9c29daa18faddd",
+      "marker_matches_current_source": true,
+      "source_fence_count": 0,
+      "target_fence_count": 0,
+      "fences_exact": true,
+      "source_inline_count": 11,
+      "target_inline_count": 11,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 48,
+      "target_line_count": 48,
+      "source_numeric_count": 15,
+      "target_numeric_count": 15,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves evidence/authorship categories, phase boundaries, event date uncertainty, immutable history, existing work records, and rights review gates.",
+        "The parent corrected RESEARCH-OPS-001. This reviewer reread the complete canonical policy and updated English mirror; pre-event product code owned by the project now preserves ownership without adding a licensing distinction."
+      ]
+    },
+    {
+      "source": "server/META_LIVE_VALIDATION.md",
+      "target": "docs/en/server/META_LIVE_VALIDATION.md",
+      "source_sha256": "680c3ab9936707d555912958e733591601279de50b25d0e6debaab430718d860",
+      "target_sha256": "3c7a4c2148bb86e2fe223432af52000542c8da6b4c469a40d47ff455bd319037",
+      "marker_source": "server/META_LIVE_VALIDATION.md",
+      "marker_sha256": "680c3ab9936707d555912958e733591601279de50b25d0e6debaab430718d860",
+      "marker_matches_current_source": true,
+      "source_fence_count": 2,
+      "target_fence_count": 2,
+      "fences_exact": true,
+      "source_inline_count": 25,
+      "target_inline_count": 25,
+      "inline_sequence_exact": true,
+      "number_multiset_exact": true,
+      "source_line_count": 58,
+      "target_line_count": 58,
+      "source_numeric_count": 69,
+      "target_numeric_count": 69,
+      "status": "PASS",
+      "full_read": true,
+      "semantic_comparison": "COMPLETE",
+      "notes": [
+        "Full comparison preserves US$1/three-request authorization, US$0.75 reservations, exhausted request slots, unknown actual billing/credit, live versus fake evidence, the default zero gate, and unaccepted/NOT RUN boundaries."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "RESEARCH-OPS-001",
+      "severity": "BLOCKER",
+      "source": "docs/01-compliance/PROVENANCE_POLICY.md",
+      "source_line": 22,
+      "target": "docs/en/01-compliance/PROVENANCE_POLICY.md",
+      "target_line": 23,
+      "source_excerpt": "賽前自有產品程式",
+      "target_excerpt": "pre-event proprietary product code",
+      "issue": "The canonical wording describes code owned by the project; proprietary can narrow that to closed or restricted-license code, which the canonical sentence does not assert.",
+      "required_correction": "Replace “pre-event proprietary product code” with “pre-event product code owned by the project”.",
+      "repair_owner": "Parent translation agent",
+      "status": "RESOLVED",
+      "resolution": "Parent changed the wording to “pre-event product code owned by the project”; independent full reread confirmed fidelity.",
+      "previous_target_sha256": "46be9de25d6f235c2d314c46bcbd89e88934958c457967e42cdfffba925dc60a",
+      "verified_target_sha256": "4163ce6da12335ec7a44abd2ed1425c834a746514d672879759d952ec69a12de",
+      "verified_at": "2026-10-27T05:50:17.240Z"
+    }
+  ],
+  "limits": [
+    "This report applies only to the nine pinned source/mirror pairs; it is not semantic proof for all 226 documents.",
+    "Source-relative links are pending the parent's coordinated rewrite; link navigation and anchors are outside this review.",
+    "Scientific claims, legal rights, billing, account credit, dataset acquisition, runtime behavior, builds, browser/audio/performance, and model/API execution were not newly validated.",
+    "Historical, NOT RUN, UNKNOWN, and unimplemented statements were assessed for faithful translation, not promoted to current product facts.",
+    "No source or translation edits, Git actions, Wiki mutations, external browsing, builds, API/model/key actions were performed by this reviewer team.",
+    "A target or source hash change after this snapshot requires review of the changed content before reusing the result."
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "review_id": "frozen-history-pin-independent",
+  "reviewed_at": "2026-10-27T19:01:49.923Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_artifact_scope",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent scoped implementation reviewer"
+  },
+  "authorization_scope": "FROZEN_HISTORY_PROMOTE_GO_NOT_FINALDOCSGO",
+  "result": "SCOPED_PASS",
+  "full_corpus_pass_claim": false,
+  "scope": {
+    "registered_prepared_source_snapshots": 3,
+    "existing_raw_records_verified_unchanged": 5,
+    "actual_paths_inspected_explicitly": 8,
+    "selected_focused_tests_pass": 10,
+    "independent_cache_probe_groups_pass": 6,
+    "active_code_findings": 0,
+    "whole_corpus_enumeration": false,
+    "selected_finalization_executed_only_in_cache_fixture": true,
+    "promoted_narrative_hash_pairs_checked": 10,
+    "historical_metadata_records_compared": 262
+  },
+  "inputs": {
+    "raw_snapshot_plan": {
+      "path": ".cache/v1/english-frozen-history-prep/raw-snapshot-plan.json",
+      "sha256": "254d81708bafda875e33fc4243c2743be1deb19e2cae35d1454ba7369425300c"
+    },
+    "prior_cache_review": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/raw-snapshots.json",
+      "sha256": "a2d1225cc9e574da4bd7087436a58527850a9d41dc8785afe07b983e470f8c4f"
+    },
+    "parent_focused_evidence": {
+      "path": ".cache/v1/english-frozen-history-prep/promotion-evidence/20261027T185832227Z/result.json",
+      "sha256": "0febb5a9d2d44424a9e39c51555cd66ae655ab7be4bbdbf68959839422ada393"
+    }
+  },
+  "reviewed_code": [
+    {
+      "path": "scripts/validation/english-docs.mjs",
+      "sha256": "894ea7680e8051754db7bf97a182be60207c17df867f8afc39fe9902dbf6c978"
+    },
+    {
+      "path": "tests/integration/english-docs.test.mjs",
+      "sha256": "39b829f3419c940b545b68f56d9c83faee9211e9e2b309746409b2febc28c5d1"
+    }
+  ],
+  "implementation_findings": [],
+  "code_review_checks": [
+    {
+      "area": "Exact registered capture paths",
+      "result": "PASS",
+      "detail": "Only the three enumerated prepared-static source paths receive the new originalSources receipt handling; generic authored artifact Markdown is not ignored."
+    },
+    {
+      "area": "Historical source pins",
+      "result": "PASS",
+      "detail": "Registry checks copied source SHA256, exact adjacent evidence path/SHA256, own canonical originalSources key and pinned hash before considering current canonical equality."
+    },
+    {
+      "area": "Invalid registered receipt",
+      "result": "PASS",
+      "detail": "Broken registered bytes or receipt return an included entry with IMMUTABLE_SOURCE_SNAPSHOT_PIN_MISMATCH and cannot fall back to matching canonical bytes."
+    },
+    {
+      "area": "Failed build-spec capture",
+      "result": "PASS",
+      "detail": "The first capture uses its failed preflight build-spec pin. Its receipt proves captured source provenance, not successful build or native execution; the explicit reason preserves that boundary."
+    },
+    {
+      "area": "Existing exclusions",
+      "result": "PASS",
+      "detail": "Explicitly inspected existing five records deepEqual the historical scoped review and current formal manifest. Their existing classification and evidence fields are unchanged."
+    },
+    {
+      "area": "Explicit source-path inspection",
+      "result": "PASS",
+      "detail": "Nonempty canonical workspace Markdown paths are validated and inspected directly without listMarkdown/Git traversal; aliases, escapes, duplicates and mirrors are rejected by focused fixtures."
+    },
+    {
+      "area": "Scoped finalization",
+      "result": "PASS",
+      "detail": "With sourcePaths supplied, only selected translation targets can be finalized. The full manifest, validation report and index are not written; scope_complete is false and the result states it is not complete/current project-document coverage."
+    },
+    {
+      "area": "Selected recorded comparison",
+      "result": "PASS",
+      "detail": "Missing/removal checks are limited to selected paths; focused tests confirm unrelated manifest entries and raw exclusions are not falsely reported removed."
+    }
+  ],
+  "independent_test_run": {
+    "receipt": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/result.json",
+      "sha256": "a8cc207c1681ea706dd19473ab790189071578872b9cd71ead4591fb8cdebdb9"
+    },
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-name-pattern=prepared source|selected source",
+      "tests/integration/english-docs.test.mjs"
+    ],
+    "started_at": "2026-10-27T18:59:42.800Z",
+    "closed_at": "2026-10-27T18:59:43.173Z",
+    "exit_code": 0,
+    "signal": null,
+    "spawn_error": null,
+    "source_stable": true,
+    "pass": 10,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0,
+    "stderr_empty": true,
+    "stdout": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/focused.stdout.txt",
+      "sha256": "cb52b7094909f0ce0e81bca920683f447c4a481beb02dc1f677a02fc2bdc379d"
+    },
+    "stderr": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/focused.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unselected_original_tests": "NOT RUN by name pattern; this includes the Git-initializing inventory test."
+  },
+  "independent_probes": {
+    "receipt": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/probes.json",
+      "sha256": "a4d632942b7cdbb90e32027a4e1cd4f40e8968c573ea739dc4390a8668d51548"
+    },
+    "groups": [
+      {
+        "name": "Actual exact3 registered receipts include evidence path/hash",
+        "status": "PASS"
+      },
+      {
+        "name": "Existing5 raw records deepEqual historical baseline",
+        "status": "PASS"
+      },
+      {
+        "name": "All3 receipt pins survive a changed canonical in a no-Git fixture",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid registered receipt despite matching current canonical is included and INCOMPLETE",
+        "status": "PASS"
+      },
+      {
+        "name": "Adjacent authored Markdown still requires translation",
+        "status": "PASS"
+      },
+      {
+        "name": "Scoped finalization changes only selected English target with full corpus sentinels preserved",
+        "status": "PASS"
+      }
+    ],
+    "actual_selected_paths": [
+      "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+      "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+      "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+      "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+      "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+      "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+      "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+      "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md"
+    ],
+    "actual_raw_records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        }
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        }
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        }
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH"
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH"
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        }
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        }
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        }
+      }
+    ],
+    "existing_five_deep_equal_historical_and_manifest": true,
+    "cache_fixture": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/fixture-9UDGFm",
+    "selected_finalize_result": {
+      "status": "PASS",
+      "scope_complete": false,
+      "scope": "Only the explicitly selected source paths; this result is not complete/current project-document coverage. Selected finalization never writes the corpus manifest, index or validation report.",
+      "inventory_strategy": "explicit_source_paths_no_git_enumeration",
+      "changed_files": [
+        "docs/en/a.md"
+      ]
+    },
+    "whole_fixture_tree_hashes_recorded_before_after": true
+  },
+  "review_fixture_error": {
+    "receipt": {
+      "path": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z/probe-attempt-1.json",
+      "sha256": "10f87ca84ec36708690ac948d23d8060355c2b3daa4626f7d7e799f1785c8cb3"
+    },
+    "classification": "REVIEW_FIXTURE_SETUP_ERROR_NOT_PRODUCT_FAILURE",
+    "detail": "The first ad hoc stdin fixture used literal Han characters that PowerShell replaced with question marks. The intended Chinese narrative became original_english. The attempt is retained; the corrected fixture uses ASCII Unicode escapes and all six probe groups passed. No product or test source was changed to correct this setup error."
+  },
+  "reviewer_writes": {
+    "formal": [
+      "docs/en/_reports/frozen-history-pin-independent.json"
+    ],
+    "cache_only_evidence_directory": ".cache/v1/english-frozen-history-prep/reviews/pin-independent-2026-10-27T185942794Z",
+    "code_test_manifest_mirror_changes": false
+  },
+  "operations_not_run": [
+    "Git commands",
+    "full corpus inventory/check/finalize",
+    "original whole test suite",
+    "npm",
+    "build",
+    "browser",
+    "native runtime",
+    "API/model calls",
+    "full quality gate"
+  ],
+  "limits": [
+    "This report validates the exact three new receipt exceptions, unchanged five existing records, and selected-source API behavior only.",
+    "Actual receipt inspection selected exactly eight known paths; it does not inventory new or stale authored project documentation.",
+    "The scoped PASS is not complete/current English coverage or V1 product acceptance.",
+    "No hearing, performance, physics/audio runtime or live model success is established by copied documentation, build manifest existence or this review.",
+    "Later whole-corpus validation and any formal currentness publication still require the parent final-document gate."
+  ],
+  "partial_promotion_sanity": {
+    "checked_at": "2026-10-27T19:02:56.798Z",
+    "promotion_report": {
+      "path": "docs/en/_reports/frozen-history-promotion-20261027T190114391Z.json",
+      "sha256": "fdba52a732e639118dadead0bf0acc9c31dd9178b46c953a8a8da22cf3b94599",
+      "status": "SCOPED_PASS_FULL_CORPUS_PENDING",
+      "scope_complete": false
+    },
+    "manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "ff3e261f8565731898e4b3158cec5403091f868da1fd303d2fa87165c297d42d",
+      "status": "PARTIAL_REFRESH_PENDING_FINAL_DOCS",
+      "scope_complete": false,
+      "declared_document_records": 272,
+      "declared_raw_records": 8,
+      "current_global_inventory": "NOT_RUN",
+      "current_global_freshness": "NOT_REEVALUATED",
+      "current_global_missing": null,
+      "current_global_stale": null
+    },
+    "historical_validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "81b21ae369f515f78818c0d7d2da22836c99a1de9115cd9fc4c69961d788e100",
+      "matches_recorded_manifest_preimage": true,
+      "all_262_prior_declared_entries_deep_equal": true,
+      "comparison_boundary": "Metadata byte-value comparison only; no current validation or enumeration of those historical source files."
+    },
+    "index": {
+      "path": "docs/en/index.md",
+      "sha256": "d6ef121ae43be8118a0c11f59eeac485a9eb07a4f7633eb1ae6a1226c9f0b1de",
+      "matches_promotion_report_sha256": true,
+      "explicit_partial_historical_notice_present": true
+    },
+    "selected_promoted_pairs": [
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261027-r4.md",
+        "source_sha256": "d7f65067b8584f82df746935f527e7f1f0648bb1a4474b3b375082a7d844afa0",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261027-r4.md",
+        "target_sha256": "1a13c0a56885d2a5d6a462953953dfc869e925d20beb91b3334151c8ac92bcab",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261027-r5.md",
+        "source_sha256": "139aa2c026899939a1915246b215ccb6df181d3d3646ef20bd1d30aa5c6e8ed9",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261027-r5.md",
+        "target_sha256": "1f74facd28ac6fc3a33311bdf1f1f3f16463180eeaa9c98d064cc4ef0415c922",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261027-r6.md",
+        "source_sha256": "4190531a15de4a58903ab3a03d9149c37360f796ee39a67f53da15e5cac4819f",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261027-r6.md",
+        "target_sha256": "758900e1d6150feac1a7462d1b29c1bc8d2f88385f8766df4991dbd736d97e28",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261027-r7.md",
+        "source_sha256": "a77a7f48ceeb1a4d8c03a5631a4825cae43a47b02f325441076a9be30e43a9fe",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261027-r7.md",
+        "target_sha256": "f4f10437441f7c29c39eb6e1fd9e0b110272af44b57e0b503933475ea965c3e9",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r8.md",
+        "source_sha256": "a9acb526977a2675bd31a72d20b26c1b7bfe3489069a6eb9da0af118d0409d1e",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261028-r8.md",
+        "target_sha256": "069ff3ab79010d439bf57ac2416968e7e443f027b814e6f8129d53521e721422",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/016c6c42-8309-4278-876f-543cc922f7e7.md",
+        "source_sha256": "268baeddcd0665d630d480f5c6d41490afb01138e15b826a2a72a1943579ede1",
+        "target": "docs/en/knowledge/wiki/handoffs/016c6c42-8309-4278-876f-543cc922f7e7.md",
+        "target_sha256": "8df8c45cc7d28030510aa83ffb8f0c352664d72fbf9045ecdb3d64c1d4dabe36",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.md",
+        "source_sha256": "659496b308dd6d6d81949d586c66298008e324f123635ffac51bade084d8951f",
+        "target": "docs/en/knowledge/wiki/handoffs/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.md",
+        "target_sha256": "665a244ce2ec77f217f52a79a5b58f6536abd19a83dd2abe4fb12c69c79966d5",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md",
+        "source_sha256": "69828a2fb407b2cdaf5fd46a53a8f01b6f4346c0ab69e2175a631aa53d5e73d6",
+        "target": "docs/en/knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md",
+        "target_sha256": "0c5e52e4f87b7dde0212813d4a0ecc33a12006ce6143cd96eb47fbdc93e1e559",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.md",
+        "source_sha256": "d902007f9e6d3da8f3a4ab15bee30a44814d15ecfa671eb94b3718a827d97381",
+        "target": "docs/en/knowledge/wiki/handoffs/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.md",
+        "target_sha256": "bd77ee05e319c69cb8bef9cc3e0b5c81a700eba6a929702a64210d3805525d0b",
+        "declared_hashes_match_actual": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.md",
+        "source_sha256": "b9ebe2bbc83f984e0ab8932c8e66d4a5de45f67cb033888ba8598a220aefa55b",
+        "target": "docs/en/knowledge/wiki/handoffs/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.md",
+        "target_sha256": "7ec41af6ef31ebb170c7ff42e350ddba16d99025d56c40ad81e7671eb1f5c049",
+        "declared_hashes_match_actual": true
+      }
+    ],
+    "all_eight_raw_records_deep_equal_independent_explicit_selection": true,
+    "mechanical_inverse_and_semantic_review_boundary": "Parent report records ten mechanical inverse/cache comparisons; this reviewer checks resulting source/target/manifest hashes and partial claims, not full semantic rereview of those ten narratives.",
+    "source_inventory_observed": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "3c9a522a26f9d8dfe15de1bd263572dd4c373e52424f3609720dff43e17cc95a",
+      "status": "Historical; not reexecuted or changed by reviewer."
+    },
+    "result": "PARTIAL_CLAIMS_CONSISTENT_NO_CURRENT_CORPUS_PASS"
+  }
+}

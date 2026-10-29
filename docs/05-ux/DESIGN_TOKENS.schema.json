@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/design-tokens/1",
+  "title": "Reflection Lab 設計 tokens（本地格式，非 DTCG 相容宣告）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "updatedAt", "groups"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "status": { "const": "PROPOSED" },
+    "updatedAt": { "type": "string", "format": "date" },
+    "groups": { "$ref": "#/$defs/group" }
+  },
+  "$defs": {
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$type", "$value", "$description"],
+      "properties": {
+        "$type": {
+          "enum": [
+            "color",
+            "dimension",
+            "number",
+            "fontFamily",
+            "duration",
+            "cubicBezier",
+            "shadow",
+            "string"
+          ]
+        },
+        "$value": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "number" },
+            { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }
+          ]
+        },
+        "$description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "group": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "oneOf": [{ "$ref": "#/$defs/token" }, { "$ref": "#/$defs/group" }]
+      }
+    }
+  }
+}

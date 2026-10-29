@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-10-27T07:10:56.6815551Z",
+  "commands": [
+    {
+      "artifact": "drain-regression-red.tap",
+      "result": "RED expected 1 fail: disposed context node count 63 !== 59 before guard",
+      "command": "node --import tsx --test --test-name-pattern=\"disposed reverb\" tests/audio-runtime/static-preview.test.ts"
+    },
+    {
+      "artifact": "helper-green.tap",
+      "result": "PASS 14/14",
+      "command": "node --import tsx --test tests/app/static-preview.test.ts tests/audio-runtime/static-preview.test.ts"
+    },
+    {
+      "result": "PASS",
+      "command": "npx eslint src/app/static-preview.ts tests/app/static-preview.test.ts tests/audio-runtime/static-preview.test.ts src/audio/engine.ts"
+    },
+    {
+      "result": "PASS",
+      "command": "npx tsc --noEmit --pretty false"
+    },
+    {
+      "command": "node --import tsx --test tests/audio-runtime/engine.test.ts tests/audio-runtime/pause-regressions.test.ts tests/audio-runtime/late-reverb.test.ts tests/audio-runtime/asset-bank.test.ts tests/audio-runtime/static-preview.test.ts",
+      "result": "PASS 53/53",
+      "artifact": "adjacent-audio-green.tap"
+    }
+  ],
+  "actualExecutor": "Codex",
+  "files": [
+    {
+      "path": "src/app/static-preview.ts",
+      "sha256": "786be430da9300509e87a29d2048178946c84deab2579d7bf96edcc8bc43e082"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "0f3b0ea93a573904cb11bd49701900d1cac36d75651bc8f7003d88f70d3bc635"
+    },
+    {
+      "path": "tests/app/static-preview.test.ts",
+      "sha256": "c07b4ab49cdd87c4a2e332f44edb7698fc789711a444c3503a3b1947e1b9d85f"
+    },
+    {
+      "path": "tests/audio-runtime/static-preview.test.ts",
+      "sha256": "9768d5e952aac0b357ae5b01628ae820445aa7a7758a73ea100c112454d02af2"
+    },
+    {
+      "path": "artifacts/v1/static-preview-20261027/drain-regression-red.tap",
+      "sha256": "e338591392aa0a0cec3d81a5df472da3ab6171a216a07eefea54d6555763f672"
+    },
+    {
+      "path": "artifacts/v1/static-preview-20261027/helper-green.tap",
+      "sha256": "d2eb48d2266e9f3e0b0652cc03ee5df7fa60954307eefc7a65de98fcbbffb955"
+    },
+    {
+      "path": "artifacts/v1/static-preview-20261027/adjacent-audio-green.tap",
+      "sha256": "6140aa5f02472232861e208406ef06a2f280696f45b555e88b8d4ccab3a16f7a"
+    }
+  ],
+  "independentReview": {
+    "result": "PASS limited helper/control-graph scope; independently reran 14/14",
+    "helperSha256": "786be430da9300509e87a29d2048178946c84deab2579d7bf96edcc8bc43e082",
+    "agent": "preview_contract_review"
+  },
+  "notRun": [
+    "Runtime/UI integration",
+    "Real browser static preview output",
+    "Native PCM output",
+    "Hearing",
+    "Full V1 acceptance"
+  ],
+  "schemaVersion": 1,
+  "liveApiCalls": 0,
+  "gitHead": "e6b898c30193e8cd9e5ef9ddc2f1e6bcb8aee313",
+  "museCalls": 0,
+  "scope": "Static scene preview helper and control-graph validation only"
+}

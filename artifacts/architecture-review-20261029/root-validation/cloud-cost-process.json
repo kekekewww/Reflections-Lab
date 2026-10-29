@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "Deterministic offline cost estimates, not measured capacity or real spend; AI pricing symbolic",
+  "commands": [
+    {
+      "command": "node scripts/validation/cloud-cost-model.mjs --self-test",
+      "exit_code": 0,
+      "stdout": "PASS: billing units, minimum duration, egress tiers, nine-scenario workload units, symbolic AI, shared allowance sensitivity\n"
+    },
+    {
+      "command": "node scripts/validation/cloud-cost-model.mjs",
+      "exit_code": 0,
+      "scenarios": 9,
+      "output_path": "artifacts/architecture-review-20261029/root-validation/cloud-cost-output.json",
+      "sha256": "fec44b97fb77d82bc046dc42bf7e10f42d514be74b0111a7058beb6d58d9b77e"
+    }
+  ],
+  "script_sha256": "56e210d33a366d7f3de4e2426d27c6e44f0737c7962cbb8ffd5ad357906dba0e",
+  "input_sha256": "64259750209b475fe71f69bf32fd99e371425e946c7d32924f65c97fcc8892e0"
+}

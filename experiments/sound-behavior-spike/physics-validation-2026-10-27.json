@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T17:32:43.204Z",
+  "scope": "Isolated Synthetic/Derived physics-to-sound policy; no product audio validation",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "experiments/sound-behavior-spike/physics-policy.test.mjs"
+  ],
+  "exit_code": 0,
+  "stdout": "TAP version 13\n# Subtest: pure rolling requires contact, translation and matching angular contact-point velocity\nok 1 - pure rolling requires contact, translation and matching angular contact-point velocity\n  ---\n  duration_ms: 1.0284\n  type: 'test'\n  ...\n# Subtest: moving surface and unsupported or unknown geometry do not become fake rolling\nok 2 - moving surface and unsupported or unknown geometry do not become fake rolling\n  ---\n  duration_ms: 0.1895\n  type: 'test'\n  ...\n# Subtest: rolling/sliding candidate retains prior state in the slip hysteresis band\nok 3 - rolling/sliding candidate retains prior state in the slip hysteresis band\n  ---\n  duration_ms: 0.2146\n  type: 'test'\n  ...\n# Subtest: linear start/stop uses hysteresis, retaining state between thresholds\nok 4 - linear start/stop uses hysteresis, retaining state between thresholds\n  ---\n  duration_ms: 0.6777\n  type: 'test'\n  ...\n# Subtest: multi-point impact sums impulse and uses an impulse-weighted contact position once\nok 5 - multi-point impact sums impulse and uses an impulse-weighted contact position once\n  ---\n  duration_ms: 0.8438\n  type: 'test'\n  ...\n# Subtest: support impulses and duplicate contact callbacks cannot retrigger an impact\nok 6 - support impulses and duplicate contact callbacks cannot retrigger an impact\n  ---\n  duration_ms: 1.6158\n  type: 'test'\n  ...\n# Subtest: persistent episode cannot emit after cooldown merely because a held contact has large closing proxy\nok 7 - persistent episode cannot emit after cooldown merely because a held contact has large closing proxy\n  ---\n  duration_ms: 0.2961\n  type: 'test'\n  ...\n# Subtest: two spatial regions remain distinct; per-episode cooldown and discontinuity suppress only audible candidates\nok 8 - two spatial regions remain distinct; per-episode cooldown and discontinuity suppress only audible candidates\n  ---\n  duration_ms: 0.2195\n  type: 'test'\n  ...\n# Subtest: explicit Throw differs from Drop and freefall; epoch replay keeps normalized event identity\nok 9 - explicit Throw differs from Drop and freefall; epoch replay keeps normalized event identity\n  ---\n  duration_ms: 0.5716\n  type: 'test'\n  ...\n# Subtest: invalid and overflow kinematic data fail closed instead of creating NaN policy decisions\nok 10 - invalid and overflow kinematic data fail closed instead of creating NaN policy decisions\n  ---\n  duration_ms: 0.5402\n  type: 'test'\n  ...\n1..10\n# tests 10\n# suites 0\n# pass 10\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 84.0948\n",
+  "stderr": "",
+  "duration_ms": 133.2025,
+  "source_hashes": {
+    "experiments/sound-behavior-spike/physics-policy.mjs": "aeed12ad5143158f3c767f0abe547f0ec3fdf0729b273827b2b02eef3c53ab77",
+    "experiments/sound-behavior-spike/physics-policy.test.mjs": "7fe65595c5f9f0ae55f4a170b097bcf56bb15e4fa269896773dbc8439efde0c8",
+    "experiments/sound-behavior-spike/physics-probe.mjs": "aa6c76da12b062d5d63840b9216f116fc764af49f3806ba5b75eb9124a7a1298"
+  },
+  "latest_wasm_artifact": "experiments/sound-behavior-spike/physics-results-2026-10-26T17-24-46-117Z.json"
+}

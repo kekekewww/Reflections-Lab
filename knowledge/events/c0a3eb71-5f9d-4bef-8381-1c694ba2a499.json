@@ -1,0 +1,94 @@
+{
+  "id": "c0a3eb71-5f9d-4bef-8381-1c694ba2a499",
+  "type": "handoff",
+  "created_at": "2026-10-25T20:13:19.801Z",
+  "agent": "codex-root",
+  "session": "reflection-lab-phase2",
+  "summary": "Phase2預交接：工具與規範已整合，等待完整gate",
+  "task_id": "RLAB-TASK-0005",
+  "details": {
+    "agent": "codex-root",
+    "session": "reflection-lab-phase2",
+    "task_id": "RLAB-TASK-0005",
+    "summary": "Phase2預交接：工具與規範已整合，等待完整gate",
+    "completed": [
+      "來源新版本/原文hash與實際Listener衝突reconcile已保留",
+      "設計14/14、本次product-contract30/30、project Skills10/10及vendor bytes已核",
+      "Wiki/新Agent閱讀路徑已建立；正式產品未實作"
+    ],
+    "commands": [
+      {
+        "command": "npm test",
+        "result": "30 PASS, 0 FAIL after AJV upgrade"
+      },
+      {
+        "command": "npm run test:design",
+        "result": "14 PASS, 0 FAIL"
+      },
+      {
+        "command": "scripts/setup/validate-skills.ps1",
+        "result": "10 project official PASS + 8 upstream exact bytes PASS"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "benchmarks/results/phase1-validation-preserved.json",
+        "sha256": "62e41825013f6fddd06403b04e1c2763b40d45ab7ec04cc5a0f40762d52e96b0",
+        "result": "Immutable historical baseline; not new Wiki test evidence"
+      }
+    ],
+    "risks": [
+      "Phase2 full16-command gate still pending",
+      "Native Claude/Pi/browser not run",
+      "No HEAD and no automatic hooks"
+    ],
+    "next_steps": [
+      "Read Now/task5 then docs09 WIKI_OPERATIONS; do not redo scientific research",
+      "Run complete validation gate; update criterion evidence only after real results",
+      "Finalize handoff with Phase2 DONE state; leave formal productP0 scope separate"
+    ],
+    "modified_files": [
+      {
+        "path": "knowledge/schema.md",
+        "sha256": "2a0820710a3b8deb405ad582011dab4109260110fc1bb0e89152c61b9e5a1134",
+        "state": "present"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "a80711ae5bea185b148409c3841b06b1c31e768ba3b42706d6229e8280ccd610",
+        "state": "present"
+      },
+      {
+        "path": "scripts/wiki/core.mjs",
+        "sha256": "eece2c01833a911cd884e644a08b852ef1021322b00896f856a9c6948b6c16ef",
+        "state": "present"
+      },
+      {
+        "path": "third_party/emil-skills.manifest.json",
+        "sha256": "1f2e8c61b575510162cbd75cd5d6e3defd41b2e8d4d0c8931dd497883f48b5c7",
+        "state": "present"
+      },
+      {
+        "path": "docs/05-ux/DESIGN_SYSTEM.md",
+        "sha256": "ba72e2fda168c05db7b4cfa840eea65db2ea5b0b9769a6ad6a4d74d70a8e2f50",
+        "state": "present"
+      },
+      {
+        "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+        "sha256": "7c8d624fb1429393be172c24687a5af74c48f27a5f65ab9f817c61dff6895029",
+        "state": "present"
+      }
+    ],
+    "now": {
+      "expected_hash": "da9e1ffc594e364c20dba84564ad577c39f5b1e466ee30a4f21ddc6ea18839bc",
+      "body": "# 現在的 Reflection Lab\r\n\r\n目前是研究／工程準備。Phase 1 有文獻、資料契約、原生SDK與基本物理隔離驗證；沒有正式產品UI／FPS／音訊runtime。Phase 2 正建立持久Wiki與設計工程環境，完成狀態以task與驗證artifact為準。\r\n\r\n本次優先：[Wiki工具任務](../tasks/RLAB-TASK-0003.json)、[設計規範](../tasks/RLAB-TASK-0004.json)、[跨Agent入口](../tasks/RLAB-TASK-0005.json)。接手前看 [handoff](handoffs/index.md)，不要重做既有研究。\r\n\r\n下一個正式產品P0是 [SceneSpec＋Three房間＋Rapier固定步](../../docs/NEXT_ENGINEERING_TASK.md)。本次沒有啟動它；技術READY不等於擴大當次使用者授權。\r\n\r\n主方案Web Three/Rapier/WebAudio，Steam native作capability adapter；個別反射路徑只由提供資料的backend顯示。重要限制：[blockers](blockers/open-questions.md)。Meta帳號、瀏覽器音訊、完整Grab、V3/V5均未驗。\r\n\r\n快速命令：`npm run wiki -- status`、`npm run wiki -- query \"FPS grab\"`、`npm run wiki -- lint`、`npm run check`。實際最新驗證與未完成項目查task/evidence；此頁不持續追加歷史。\r\n"
+    },
+    "git": {
+      "branch": "main",
+      "head": null,
+      "status": "?? .agents/skills/acoustic-research/SKILL.md\n?? .agents/skills/acoustic-validation/SKILL.md\n?? .agents/skills/animate/RECIPES.md\n?? .agents/skills/animate/SKILL.md\n?? .agents/skills/animation-performance/SKILL.md\n?? .agents/skills/break-ui/CATALOG.md\n?? .agents/skills/break-ui/SKILL.md\n?? .agents/skills/compliance-and-provenance/SKILL.md\n?? .agents/skills/emil-design-eng/SKILL.md\n?? .agents/skills/experiment-validation/SKILL.md\n?? .agents/skills/improve-animations/AUDIT.md\n?? .agents/skills/improve-animations/PLAN-TEMPLATE.md\n?? .agents/skills/improve-animations/SKILL.md\n?? .agents/skills/persistent-project-memory/SKILL.md\n?? .agents/skills/physics-interaction/SKILL.md\n?? .agents/skills/pick-ui-library/SKILL.md\n?? .agents/skills/pick-ui-library/agents/openai.yaml\n?? .agents/skills/prototype/PICKER.md\n?? .agents/skills/prototype/SKILL.md\n?? .agents/skills/reflection-lab-design-system/SKILL.md\n?? .agents/skills/review-animations/SKILL.md\n?? .agents/skills/review-animations/STANDARDS.md\n?? .agents/skills/spatial-audio-dsp/SKILL.md\n?? .agents/skills/steam-audio-integration/SKILL.md\n?? .agents/skills/ux-engineering/SKILL.md\n?? .claude/skills/persistent-project-memory/SKILL.md\n?? .env.example\n?? .gitattributes\n?? .github/workflows/validation.yml\n?? .gitignore\n?? .node-version\n?? .prettierrc.json\n?? AGENTS.md\n?? CLAUDE.md\n?? README.md\n?? benchmarks/analytic/run.mjs\n?? benchmarks/fixtures/analytical.json\n?? benchmarks/results/analytic-local.json\n?? benchmarks/results/environment-local.json\n?? benchmarks/results/phase1-validation-preserved.json\n?? benchmarks/results/phase2-validation-local.json\n?? benchmarks/results/validation-local.json\n?? docs/00-project/BOOTSTRAP_EXECUTION_PLAN.md\n?? docs/00-project/BOOTSTRAP_VERIFICATION.json\n?? docs/00-project/EXISTING_ASSETS_AUDIT.md\n?? docs/00-project/FILE_MANIFEST.md\n?? docs/00-project/MASTER_REQUEST.md\n?? docs/00-project/PHASE1_FILE_MANIFEST.md\n?? docs/00-project/PHASE2_FILE_MANIFEST.md\n?? docs/00-project/PHASE2_REQUEST.md\n?? docs/00-project/PROJECT_BASELINE.md\n?? docs/00-project/PROJECT_PROVENANCE.md\n?? docs/01-compliance/DEPENDENCY_LICENSE_INVENTORY.json\n?? docs/01-compliance/HACKATHON_RULES.md\n?? docs/01-compliance/LICENSE_REGISTER.md\n?? docs/01-compliance/PHASE2_DEPENDENCY_LICENSE_INVENTORY.json\n?? docs/01-compliance/PROVENANCE_POLICY.md\n?? docs/02-architecture/ADR_INDEX.md\n?? docs/02-architecture/ARCHITECTURE.md\n?? docs/02-architecture/AUDIO_RUNTIME.md\n?? docs/02-architecture/DATA_CONTRACTS.md\n?? docs/02-architecture/adr/001-rendering.md\n?? docs/02-architecture/adr/002-physics.md\n?? docs/02-architecture/adr/003-first-person.md\n?? docs/02-architecture/adr/004-grab-throw.md\n?? docs/02-architecture/adr/005-acoustic-backend.md\n?? docs/02-architecture/adr/006-audio-backend.md\n?? docs/02-architecture/adr/007-scene-material.md\n?? docs/02-architecture/adr/008-ai-integration.md\n?? docs/02-architecture/adr/009-recording.md\n?? docs/02-architecture/adr/010-deployment.md\n?? docs/03-sdk/INTEGRATION_COMPARISON.md\n?? docs/03-sdk/SDK_EVIDENCE.json\n?? docs/03-sdk/SDK_LICENSE.md\n?? docs/03-sdk/SDK_VALIDATION.md\n?? docs/03-sdk/STEAM_AUDIO_RESEARCH.md\n?? docs/04-physics/FPS_INTERACTION_SPEC.md\n?? docs/04-physics/INPUT_CONTROLS.md\n?? docs/04-physics/OBJECT_STATES.md\n?? docs/04-physics/PHYSICS_ARCHITECTURE.md\n?? docs/04-physics/PHYSICS_AUDIO_EVENTS.md\n?? docs/05-ux/COMPETITIVE_UX_RESEARCH.md\n?? docs/05-ux/COMPONENT_SPEC.md\n?? docs/05-ux/COMPONENT_STATES.json\n?? docs/05-ux/COMPONENT_STATES.md\n?? docs/05-ux/DESIGN_SYSTEM.md\n?? docs/05-ux/DESIGN_TOKENS.json\n?? docs/05-ux/DESIGN_TOKENS.schema.json\n?? docs/05-ux/EMIL_SKILLS.md\n?? docs/05-ux/FPS_INTERACTION_UX.md\n?? docs/05-ux/MOTION_GUIDELINES.md\n?? docs/05-ux/PERFORMANCE_STANDARDS.md\n?? docs/05-ux/UI_STRESS_TESTS.md\n?? docs/05-ux/USER_FLOWS.md\n?? docs/05-ux/WORKSPACE_ARCHITECTURE.md\n?? docs/06-validation/ACOUSTIC_VALIDATION.md\n?? docs/06-validation/BENCHMARK_PLAN.md\n?? docs/06-validation/PERFORMANCE_BUDGET.md\n?? docs/06-validation/PHYSICS_VALIDATION.md\n?? docs/07-experiments/AB_COMPARISON.md\n?? docs/07-experiments/EXPERIMENT_MODEL.md\n?? docs/07-experiments/RECORD_REPLAY.md\n?? docs/08-ai/AI_EXPERIMENT_AGENT.md\n?? docs/08-ai/AI_SCENE_CONTROL.md\n?? docs/08-ai/AI_TOOL_SCHEMAS.md\n?? docs/08-ai/META_MODEL_RESEARCH.md\n?? docs/09-knowledge/AGENT_COMPATIBILITY.md\n?? docs/09-knowledge/KNOWLEDGE_REFERENCE_RESEARCH.md\n?? docs/09-knowledge/PHASE2_REPORT.md\n?? docs/09-knowledge/SCENARIO_VALIDATION.json\n?? docs/09-knowledge/SEARCH_ENGINE_EVALUATION.md\n?? docs/09-knowledge/WIKI_OPERATIONS.md\n?? docs/BOOTSTRAP_REPORT.md\n?? docs/DECISION_LOG.md\n?? docs/IMPLEMENTATION_STATUS.md\n?? docs/KNOWN_LIMITATIONS.md\n?? docs/NEXT_ENGINEERING_TASK.md\n?? docs/RESEARCH_STATUS.md\n?? docs/ROADMAP.md\n?? eslint.config.mjs\n?? experiments/dataset-fetch-spike/README.md\n?? experiments/dataset-fetch-spike/dataset-fetch.test.mjs\n?? experiments/dependency-smoke/README.md\n?? experiments/dependency-smoke/smoke.mjs\n?? experiments/physics-spike/.gitignore\n?? experiments/physics-spike/README.md\n?? experiments/physics-spike/package-lock.json\n?? experiments/physics-spike/package.json\n?? experiments/physics-spike/results.json\n?? experiments/physics-spike/results/rapier-win64-20261025T192231997Z.json\n?? experiments/physics-spike/smoke.mjs\n?? experiments/sdk-smoke-tests/README.md\n?? experiments/sdk-smoke-tests/results/native-win64-2026-10-26.json\n?? experiments/sdk-smoke-tests/results/native-win64-2026-10-26.jsonl\n?? experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.json\n?? experiments/sdk-smoke-tests/results/native-win64-confirmation-2026-10-26.jsonl\n?? experiments/sdk-smoke-tests/run.ps1\n?? experiments/sdk-smoke-tests/smoke.c\n?? experiments/wiki-validation/README.md\n?? knowledge/README.md\n?? knowledge/conflicts/e12dc748-94fd-4ab2-b9d8-72808a5b1749.json\n?? knowledge/events/163efa7a-3bd0-4116-841d-ffd61d1a3c8d.json\n?? knowledge/events/17e68837-fab5-4afa-8944-257d9ae9027c.json\n?? knowledge/events/1bde7d4e-dd54-4d28-95b3-89cbfc96c04c.json\n?? knowledge/events/20c86843-15a8-433b-87d1-43a8e181b2d3.json\n?? knowledge/events/27272aad-2d32-4eb7-b898-1bb658829d9b.json\n?? knowledge/events/462dfbb2-6455-4ccc-9fa9-e74160defac7.json\n?? knowledge/events/6c211791-73fc-4472-8f3d-18df2a7b3d84.json\n?? knowledge/events/6e6a917d-d732-4d3f-8563-1b086718ab16.json\n?? knowledge/events/89f95bea-5fa4-46c5-b07d-cb6886aa45d3.json\n?? knowledge/events/d310eb55-d4c0-4a66-adb9-284113dfc1f0.json\n?? knowledge/events/d508252a-337e-4a93-b3c4-a6057b2a103a.json\n?? knowledge/events/dfdfe6bd-a6dd-48fb-b2ec-85bf307b4883.json\n?? knowledge/events/e66b1c11-1e4b-407b-bfa5-da17910614db.json\n?? knowledge/schema.md\n?? knowledge/sources/manifest.json\n?? knowledge/tasks/RLAB-TASK-0001.json\n?? knowledge/tasks/RLAB-TASK-0002.json\n?? knowledge/tasks/RLAB-TASK-0003.json\n?? knowledge/tasks/RLAB-TASK-0004.json\n?? knowledge/tasks/RLAB-TASK-0005.json\n?? knowledge/tasks/RLAB-TASK-0006.json\n?? knowledge/tasks/RLAB-TASK-0007.json\n?? knowledge/transactions/0bb677b8-c97d-4fb6-a771-77a91c025988.json\n?? knowledge/transactions/1f78271c-34fc-4955-ba03-c671f2a16d00.json\n?? knowledge/transactions/2276649b-8114-492b-b0aa-b428b2e13908.json\n?? knowledge/transactions/22dc1d96-defb-493d-9ee5-472a651fb1ee.json\n?? knowledge/transactions/33ebe4a3-2fe3-45b4-9d65-bdff53ece275.json\n?? knowledge/transactions/3c876f8c-60a0-4168-afd3-8516c630021c.json\n?? knowledge/transactions/71c5b6d2-9d2c-4f09-95e8-e2f987bbf7f0.json\n?? knowledge/transactions/730e07d9-d77f-4687-bdb6-abc1e2aa4d59.json\n?? knowledge/transactions/8beee8f7-9ed8-4881-8d92-82fe6c503f12.json\n?? knowledge/transactions/a338a80c-2a3e-4702-b1bc-e9241f85cd0c.json\n?? knowledge/transactions/bd389e14-0c62-49dc-970e-f20836184e7b.json\n?? knowledge/transactions/c60acca9-bc9f-4d17-8e28-541216fcb0d7.json\n?? knowledge/transactions/d8df42b8-0df2-4b14-8a84-81d448f9d21b.json\n?? knowledge/transactions/dbdb1972-470b-4548-9dc6-be61e1826311.json\n?? knowledge/transactions/dec9bb69-7472-4738-8be9-aa6a558c031e.json\n?? knowledge/wiki/architecture/runtime-and-contracts.md\n?? knowledge/wiki/blockers/open-questions.md\n?? knowledge/wiki/concepts/evidence-levels.md\n?? knowledge/wiki/concepts/memory-and-search.md\n?? knowledge/wiki/decisions/fps-listener-exit.md\n?? knowledge/wiki/decisions/index.md\n?? knowledge/wiki/experiments/physics-and-benchmarks.md\n?? knowledge/wiki/experiments/record-replay.md\n?? knowledge/wiki/experiments/steam-audio.md\n?? knowledge/wiki/features/interactive-sandbox.md\n?? knowledge/wiki/features/meta-agent.md\n?? knowledge/wiki/goals.md\n?? knowledge/wiki/handoffs/index.md\n?? knowledge/wiki/history/bootstrap-and-phase2.md\n?? knowledge/wiki/index.md\n?? knowledge/wiki/log.md\n?? knowledge/wiki/now.md\n?? knowledge/wiki/research/acoustics-and-dsp.md\n?? knowledge/wiki/research/datasets-and-rights.md\n?? knowledge/wiki/roadmap.md\n?? knowledge/wiki/tasks.md\n?? knowledge/wiki/ui-ux/design-engineering.md\n?? knowledge/wiki/ui-ux/fps-grab-review.md\n?? knowledge/wiki/ui-ux/review-history.md\n?? package-lock.json\n?? package.json\n?? research/EVIDENCE_LEDGER.json\n?? research/datasets/DATASET_CATALOG.md\n?? research/datasets/acquisition-manifest.example.json\n?? research/papers/COLLISION_WAVE_NOTES.md\n?? research/papers/LITERATURE_REVIEW.md\n?? research/papers/PAPER_INDEX.md\n?? research/theory/ACOUSTIC_THEORY.md\n?? research/theory/DSP_MODELS.md\n?? research/theory/PHYSICS_THEORY.md\n?? schemas/README.md\n?? schemas/acoustic-frame.schema.json\n?? schemas/ai-provider-config.schema.json\n?? schemas/ai-scene-change-set.schema.json\n?? schemas/ai-tool-request.schema.json\n?? schemas/ai-tool-result.schema.json\n?? schemas/examples/acoustic-frame.json\n?? schemas/examples/material.json\n?? schemas/examples/scene.json\n?? schemas/experiment.schema.json\n?? schemas/material.schema.json\n?? schemas/scene.schema.json\n?? schemas/wiki-event.schema.json\n?? schemas/wiki-page.schema.json\n?? schemas/wiki-source-manifest.schema.json\n?? schemas/wiki-task.schema.json\n?? scripts/setup/datasets.mjs\n?? scripts/setup/emil-skills.mjs\n?? scripts/setup/environment.mjs\n?? scripts/setup/steam-audio.ps1\n?? scripts/setup/validate-skills.ps1\n?? scripts/validation/analytic-kernels.mjs\n?? scripts/validation/docs.mjs\n?? scripts/validation/domain-checks.mjs\n?? scripts/validation/research-index.mjs\n?? scripts/validation/run-all.mjs\n?? scripts/validation/schemas.mjs\n?? scripts/wiki/cli.mjs\n?? scripts/wiki/core.mjs\n?? src/README.md\n?? tests/acoustics/analytical.test.mjs\n?? tests/contracts/fixture-contract.ts\n?? tests/design/design-standards.test.mjs\n?? tests/fixtures/acoustic-frame-nonempty.json\n?? tests/integration/research-index.test.mjs\n?? tests/integration/schemas.test.mjs\n?? tests/wiki/README.md\n?? tests/wiki/wiki.test.mjs\n?? third_party/emil-skills.LICENSE\n?? third_party/emil-skills.README.md\n?? third_party/emil-skills.manifest.json\n?? third_party/steam-audio/README.md\n?? third_party/steam-audio/manifest.json\n?? tsconfig.json",
+      "worktree": "D:\\Developing\\Meta Hack"
+    },
+    "execution_note": "命令與結果由操作者提供；檔案 hash 與 Git 狀態由工具現場取得。"
+  }
+}

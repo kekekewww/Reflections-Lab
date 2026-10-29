@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "$id": "https://reflection-lab.local/schemas/agents/verification-result.schema.json",
+  "title": "Actual independent Node acceptance runner result",
+  "required": [
+    "schema_version",
+    "id",
+    "task_id",
+    "run_id",
+    "authority",
+    "validation_mode",
+    "recorded_at",
+    "status",
+    "acceptance_hashes",
+    "results",
+    "git_revision",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "authority": {
+      "const": "independent-node-runner"
+    },
+    "validation_mode": {
+      "enum": ["MOCK", "LIVE", "LIVE_NOT_RUN"]
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"]
+    },
+    "acceptance_hashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "acceptance_id",
+          "command",
+          "exit_code",
+          "stdout",
+          "stderr",
+          "duration_ms",
+          "signal",
+          "timed_out",
+          "cancelled",
+          "process_stopped",
+          "output_limit",
+          "spawn_error",
+          "stop_scope",
+          "process_tree_stopped",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "acceptance_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exit_code": {
+            "type": ["integer", "null"]
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "stderr": {
+            "type": "string"
+          },
+          "duration_ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "signal": {
+            "type": ["string", "null"]
+          },
+          "timed_out": {
+            "type": "boolean"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "process_stopped": {
+            "type": "boolean"
+          },
+          "output_limit": {
+            "type": "boolean"
+          },
+          "spawn_error": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "required": ["code", "message"],
+                "additionalProperties": false,
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "stop_scope": {
+            "enum": [
+              "not_started",
+              "direct_process",
+              "process_tree",
+              "process_group",
+              "unconfirmed"
+            ]
+          },
+          "process_tree_stopped": {
+            "type": ["boolean", "null"]
+          },
+          "status": {
+            "enum": ["PASS", "FAIL"]
+          }
+        }
+      }
+    },
+    "git_revision": {
+      "type": ["string", "null"]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "checkedAt": "2026-10-27T18:09:56.898Z",
+  "scope": "Independent exact-byte delta review + actual readiness-loop VM regression; no browser, network probe, server, live inventory or runner top-level import.",
+  "files": [
+    {
+      "path": "tests/browser/run-product-e2e.mjs",
+      "beforeSha256": "28d6f81cfb32c82c6795c8d35fda40f8a53bfffa0df207048f101c7e703eb550",
+      "afterSha256": "28d6f81cfb32c82c6795c8d35fda40f8a53bfffa0df207048f101c7e703eb550"
+    },
+    {
+      "path": "tests/integration/product-preview-readiness.test.mjs",
+      "beforeSha256": "d379c9a6964c201b7396dce9328e294ad37295e49557c6a9074c42d622180c14",
+      "afterSha256": "d379c9a6964c201b7396dce9328e294ad37295e49557c6a9074c42d622180c14"
+    }
+  ],
+  "sourceStable": true,
+  "delta": {
+    "baselineSha256": "5d284636c0e026106cf5007474f26d32f88d99bf8655539989300445093f86a0",
+    "reconstructedBaselineSha256": "5d284636c0e026106cf5007474f26d32f88d99bf8655539989300445093f86a0",
+    "onlyImportAndReadinessNormalization": true,
+    "rawLogsAndTimeoutsAndProcessAndHttpHashGuardsUnchanged": true
+  },
+  "builtin": {
+    "runtime": "v22.17.0",
+    "requiredRuntime": "22.17.0",
+    "sampleBytes": 77,
+    "sampleSha256": "5e56bab3a53cf566c6d2702abf9550d76205ae489a3384f80bacb37fc6ee9b9d",
+    "sampleMatchesObserved": true,
+    "rawMatches": false,
+    "normalizedMatches": true
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/integration/product-preview-readiness.test.mjs"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "tests": 11,
+  "passed": 11,
+  "failed": 0,
+  "skipped": 0,
+  "limitations": [
+    "Mock fetch and process states in actual extracted readiness loop do not replace one corrected live product attempt.",
+    "Original prefix .includes URL semantics are preserved; no new URL parser contract introduced."
+  ]
+}

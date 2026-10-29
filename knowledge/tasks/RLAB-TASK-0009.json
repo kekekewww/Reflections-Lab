@@ -1,0 +1,45 @@
+{
+  "id": "RLAB-TASK-0009",
+  "title": "Harness Live模型與安全程序隔離驗證",
+  "description": "接續已完成的離線控制流程；需核實實際Muse帳號／成本上限與後代程序隔離，才能啟用完整Live自動接手。不得把Mock或echo當模型實作。 2026-10-27使用者改採Codex主導，取消此強制Live Harness前置；保留為Optional工具歷史，並非已通過或產品Meta帳號問題解除。",
+  "status": "CANCELLED",
+  "priority": "P2",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0008"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "Muse真實模型正常修改隔離fixture，固定獨立驗收及usage/model/session provenance有證據",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "受控程序樹在成功／quota／timeout／cancel後確認停止；safe live fallback／recovery不重疊writer",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "原Goal／Milestone／Task安全延續，live quota來源及計費限制核實且不提額／換帳號",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "docs/09-agents/PHASE3_REPORT.md",
+    "docs/09-agents/HEADLESS_EXECUTION.md",
+    "docs/09-agents/QUOTA_RESEARCH.md",
+    "scripts/agents/process-runner.mjs"
+  ],
+  "evidence": [],
+  "blockers": [
+    "Muse usage query transient failure, account/billing remains unknown and paid budget defaults0",
+    "Live process-tree containment not proven; direct child exit cannot authorize another writer"
+  ],
+  "created_at": "2026-10-26T15:45:00+00:00",
+  "updated_at": "2026-10-26T17:39:30.474Z",
+  "superseded_by": "ADR-013"
+}

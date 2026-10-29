@@ -1,0 +1,70 @@
+{
+  "id": "fcd68474-0f02-408f-a4dc-6513c3e04561",
+  "status": "RESOLVED",
+  "kind": "FACTUAL_INSTALL_STATUS",
+  "created_at": "2026-10-27T05:43:43.768Z",
+  "agent": "codex-root",
+  "session": "v1-20261027",
+  "details": {
+    "source_path": "AGENTS.md",
+    "source_sha256": "5a1a16c1190dc25a162e22c1209d5234ed0fa7158ae6fe538683f14646c233b0",
+    "source_git_revision": "e6b898c30193e8cd9e5ef9ddc2f1e6bcb8aee313",
+    "stale_statement": "React/R3F尚未安裝或驗證。",
+    "authoritative_behavior_evidence": [
+      "package-lock.json",
+      "artifacts/v1/product-e2e-chrome-20261027T033616Z/verification.json"
+    ],
+    "scope": "Correct factual installation/validation status, preserving development, safety and scientific rules"
+  },
+  "proposal": {
+    "agent": "codex-root",
+    "session": "v1-20261027",
+    "summary": "React/R3F實際已鎖版安裝並通過分項產品browser，不能延續舊未安裝描述；完整驗收仍未完成"
+  },
+  "resolved_at": "2026-10-27T05:43:50.028Z",
+  "resolution": {
+    "agent": "codex-root",
+    "session": "v1-20261027",
+    "rationale": "實際行為以鎖版程式與可重現產品4case為準；舊AGENTS安裝狀態屬研究期過期事實。保留原Git revision/hash與舊句、分項scope，不改Codex主導／獨立驗收／預算／科學規則。英文需求為使用者後續明確範圍，保留繁中canonical與共用task資料。",
+    "pages": [
+      {
+        "path": "wiki/architecture/runtime-and-contracts.md",
+        "expected_hash": "e4e59fda389920445ac878c723c396bbd252f57b1a3dc76b623b3fc4bd1b587a",
+        "metadata": {
+          "id": "RLAB-KB-0007",
+          "title": "執行架構與資料權威",
+          "type": "architecture",
+          "status": "ACCEPTED",
+          "created_at": "2026-10-25T19:46:51.310610+00:00",
+          "updated_at": "2026-10-27T05:43:47.446Z",
+          "sources": [
+            "RLAB-SRC-0055",
+            "RLAB-SRC-0057",
+            "RLAB-SRC-0056",
+            "SB-SRC-0009",
+            "SB-SRC-0016",
+            "SB-SRC-0001",
+            "V1-SRC-0004",
+            "V1-SRC-0001",
+            "V1-SRC-0007",
+            "V1-SRC-0014"
+          ],
+          "related_tasks": [
+            "RLAB-TASK-0016"
+          ],
+          "related_decisions": [
+            "ADR-005",
+            "ADR-006",
+            "ADR-007"
+          ],
+          "supersedes": [],
+          "tags": [
+            "P1",
+            "architecture"
+          ]
+        },
+        "body": "# Runtime、時鐘與資料權威\n\n[Architecture](../../../docs/02-architecture/ARCHITECTURE.md)、[Data Contracts](../../../docs/02-architecture/DATA_CONTRACTS.md)、ADR-011／013／014維持設計權威。正式React／TypeScript／R3F／Three／Rapier Web主線已安裝並實作，精確版本見package-lock與[工具鏈](../../../docs/03-sdk/V1_WEB_TOOLCHAIN.md)，Steam Audio仍Optional。\n\nScene→validated atomic command→fixed physics→pose/contact snapshots→Sound rules/logical voices→acoustic worker→Web Audio／telemetry／recorder。SI、右手+Y/-Z、quaternion xyzw；renderer只插值，不反寫dynamic pose。physics60Hz、render、聲學、音訊與AI各自clock；bootstrap自動panel更新10Hz，關鍵命令立即發布，沒有改動domain fixed tick。\n\n互動過載可丟wall time並記telemetry；錄製過載pause保留欠帳，Resume有限批次或Stop封存連續ticks。AudioContext在pause繼續走，fade／epoch／cursor處理logical arrivals；native onended不改寫deterministic behavior state。NoGravity切換保留運動與持續音相位。\n\n有限一階box反射／直接／遮擋是數值近似，材質Synthetic；IR不虛構individual paths。Worker有取消、逾時、大小／容量上限與telemetry，[正式bundle測試](../../../docs/11-v1/ACOUSTIC_DELIVERY.md)只涵蓋service，不代表全產品10分鐘profile。\n\n目前實作及分項證據見[進度](../../../docs/11-v1/SESSION_PROGRESS_20261027.md)。完整產品E2E／效能／裝置與聽測未完成，不以安裝或單元PASS代替。\n\n\n已依package-lock及固定22ca產品bundle4／4結果核對React/R3F實際安裝與分項browser狀態；AGENTS舊「尚未安裝」為過期事實描述，保留[Conflict Record](../../conflicts/fcd68474-0f02-408f-a4dc-6513c3e04561.json)及Git e6b898c preimage，不改品質政策、不宣告整體第一版完成。另依使用者明確需求提供英文介面與完整可追溯文件譯本，繁中canonical與工作／測試資料仍共用。\n"
+      }
+    ]
+  }
+}

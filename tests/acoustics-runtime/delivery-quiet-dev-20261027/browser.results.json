@@ -1,0 +1,341 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/browser/acoustic-delivery.config.ts"
+    ],
+    "configFile": "D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.config.ts",
+    "rootDir": "D:/Developing/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Developing/Meta Hack/test-results/acoustic-delivery",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Developing/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "acoustic-delivery.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "snapshotDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "acoustic-delivery.spec.ts",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": [
+              "--use-gl=angle",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/acoustic-delivery-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "acoustic-delivery.spec.ts",
+      "file": "acoustic-delivery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native production Worker preserves pinned identities and independent 3-4-5 delay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6055,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: ACOUSTIC_TIMEOUT\n    at failure (http://127.0.0.1:5187/src/app/acoustic-service.ts:12:27)\n    at http://127.0.0.1:5187/src/app/acoustic-service.ts:315:25",
+                    "stack": "Error: page.evaluate: Error: ACOUSTIC_TIMEOUT\n    at failure (http://127.0.0.1:5187/src/app/acoustic-service.ts:12:27)\n    at http://127.0.0.1:5187/src/app/acoustic-service.ts:315:25\n    at failure (http://127.0.0.1:5187/src/app/acoustic-service.ts:12:27)\n    at http://127.0.0.1:5187/src/app/acoustic-service.ts:315:25\n    at D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts:20:29",
+                    "location": {
+                      "file": "http://127.0.0.1:5187/src/app/acoustic-service.ts",
+                      "column": 27,
+                      "line": 12
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:5187/src/app/acoustic-service.ts",
+                        "column": 27,
+                        "line": 12
+                      },
+                      "message": "Error: page.evaluate: Error: ACOUSTIC_TIMEOUT\n    at failure (http://127.0.0.1:5187/src/app/acoustic-service.ts:12:27)\n    at http://127.0.0.1:5187/src/app/acoustic-service.ts:315:25\n    at failure (http://127.0.0.1:5187/src/app/acoustic-service.ts:12:27)\n    at http://127.0.0.1:5187/src/app/acoustic-service.ts:315:25\n    at D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts:20:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:22:01.804Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-native-p-44a80-and-independent-3-4-5-delay\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-native-p-44a80-and-independent-3-4-5-delay\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-native-p-44a80-and-independent-3-4-5-delay\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:5187/src/app/acoustic-service.ts",
+                    "column": 27,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2cba173a5c81e5143ef8-6dba4d28d2ab42bdebbf",
+          "file": "acoustic-delivery.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "native delayed transport cancellation and timeout terminate obsolete Workers safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:22:09.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2cba173a5c81e5143ef8-1388de972641cd850206",
+          "file": "acoustic-delivery.spec.ts",
+          "line": 65,
+          "column": 1
+        },
+        {
+          "title": "native production Worker returns bounded solver failures and remains recoverable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:22:16.067Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2cba173a5c81e5143ef8-5358fbf4054d537cca89",
+          "file": "acoustic-delivery.spec.ts",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "20Hz 8-source/32-surface order1 Worker profile records actual tail and payload costs",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8757,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m20\u001b[39m\nReceived:   \u001b[31m21\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m20\u001b[39m\nReceived:   \u001b[31m21\u001b[39m\n    at D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts:336:52",
+                    "location": {
+                      "file": "D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts",
+                      "column": 52,
+                      "line": 336
+                    },
+                    "snippet": "  334 |     profile.finalTelemetry.maxPayloadBytes,\n  335 |   );\n> 336 |   expect(profile.p95.roundTripIncludingDispatchMs).toBeLessThan(20);\n      |                                                    ^\n  337 |   expect(profile.p95.serviceDeliveryHandlerMs).toBeLessThan(1);\n  338 | });\n  339 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts",
+                        "column": 52,
+                        "line": 336
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m20\u001b[39m\nReceived:   \u001b[31m21\u001b[39m\n\n  334 |     profile.finalTelemetry.maxPayloadBytes,\n  335 |   );\n> 336 |   expect(profile.p95.roundTripIncludingDispatchMs).toBeLessThan(20);\n      |                                                    ^\n  337 |   expect(profile.p95.serviceDeliveryHandlerMs).toBeLessThan(1);\n  338 | });\n  339 |\n    at D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts:336:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:22:16.909Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-20Hz-8-s-ed951-tual-tail-and-payload-costs\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-20Hz-8-s-ed951-tual-tail-and-payload-costs\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\acoustic-delivery\\acoustic-delivery-20Hz-8-s-ed951-tual-tail-and-payload-costs\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Developing\\Meta Hack\\tests\\browser\\acoustic-delivery.spec.ts",
+                    "column": 52,
+                    "line": 336
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2cba173a5c81e5143ef8-efd3e604dbb15da132d4",
+          "file": "acoustic-delivery.spec.ts",
+          "line": 191,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T01:22:00.645Z",
+    "duration": 25284.55,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      ".cache/architecture-review/isolated-legacy.config.ts",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\Developing\\Meta Hack\\.cache\\architecture-review\\isolated-legacy.config.ts",
+    "rootDir": "D:/Developing/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Developing/Meta Hack/test-results/architecture-legacy",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Developing/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "ui.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\Developing\\Meta Hack\\test-results\\architecture-legacy",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "snapshotDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "ui.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:64875",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": [
+              "--use-gl=angle",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:/Developing/Meta Hack/test-results/architecture-legacy-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --outDir test-results/ui-preview-dist --host 127.0.0.1 --port 64875 --strictPort",
+      "cwd": "D:\\Developing\\Meta Hack\\",
+      "url": "http://127.0.0.1:64875",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "ui.spec.ts",
+      "file": "ui.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real workspace renders three panels and keeps collapsed splitters out of focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2630,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T14:02:18.375Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-02224694b3ac9a601648",
+          "file": "ui.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "atmosphere controls change real solver paths and preserve gravity settings",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12926,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('真空不取消機械碰撞')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('真空不取消機械碰撞') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('真空不取消機械碰撞')\u001b[22m\n\u001b[2m    23 × locator resolved to <p class=\"micro-copy\">真空不取消機械碰撞；此模型未涵蓋固體傳聲。無重力不等於真空。</p>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('真空不取消機械碰撞')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('真空不取消機械碰撞') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('真空不取消機械碰撞')\u001b[22m\n\u001b[2m    23 × locator resolved to <p class=\"micro-copy\">真空不取消機械碰撞；此模型未涵蓋固體傳聲。無重力不等於真空。</p>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui.spec.ts:48:63",
+                    "location": {
+                      "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui.spec.ts",
+                      "column": 63,
+                      "line": 48
+                    },
+                    "snippet": "  46 |   await expect(medium).toHaveValue(\"vacuum\");\n  47 |   await expect(page.locator(\".viewport-legend\")).toContainText(\"0/0\");\n> 48 |   await expect(page.getByText(\"真空不取消機械碰撞\", { exact: false })).toBeVisible();\n     |                                                               ^\n  49 |   await medium.selectOption(\"air\");\n  50 |   await expect(medium).toHaveValue(\"air\");\n  51 |   await expect(page.locator(\".viewport-legend\")).not.toContainText(\"0/0\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui.spec.ts",
+                        "column": 63,
+                        "line": 48
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('真空不取消機械碰撞')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('真空不取消機械碰撞') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('真空不取消機械碰撞')\u001b[22m\n\u001b[2m    23 × locator resolved to <p class=\"micro-copy\">真空不取消機械碰撞；此模型未涵蓋固體傳聲。無重力不等於真空。</p>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  46 |   await expect(medium).toHaveValue(\"vacuum\");\n  47 |   await expect(page.locator(\".viewport-legend\")).toContainText(\"0/0\");\n> 48 |   await expect(page.getByText(\"真空不取消機械碰撞\", { exact: false })).toBeVisible();\n     |                                                               ^\n  49 |   await medium.selectOption(\"air\");\n  50 |   await expect(medium).toHaveValue(\"air\");\n  51 |   await expect(page.locator(\".viewport-legend\")).not.toContainText(\"0/0\");\n    at D:\\Developing\\Meta Hack\\tests\\browser\\ui.spec.ts:48:63"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T14:02:21.264Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\architecture-legacy\\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\architecture-legacy\\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\Developing\\Meta Hack\\test-results\\architecture-legacy\\ui-atmosphere-controls-cha-2a6bf-d-preserve-gravity-settings\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Developing\\Meta Hack\\tests\\browser\\ui.spec.ts",
+                    "column": 63,
+                    "line": 48
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b32a84588827ef93d8bd",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "synthetic perceptual reverb is explicit and raw reference stays selectable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-03e1d950961fd6deece3",
+          "file": "ui.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "actual pointer lock has explicit Enter resume, Tab exit and no acquisition throw",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-deb8872c9407644d1eba",
+          "file": "ui.spec.ts",
+          "line": 81,
+          "column": 1
+        },
+        {
+          "title": "explicit alternative controls move the actual listener and enable a staged object",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b90e7dd3f3109aff8502",
+          "file": "ui.spec.ts",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "320 CSS px and reduced motion keep transport, monitor and forms reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-a2eb2bb5196c52cb6e32",
+          "file": "ui.spec.ts",
+          "line": 169,
+          "column": 1
+        },
+        {
+          "title": "audio import advertises only the preflighted WAV formats",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ea2d4658b41a5b1e7880",
+          "file": "ui.spec.ts",
+          "line": 205,
+          "column": 1
+        },
+        {
+          "title": "AI defaults offline and selecting a blocked Meta gate never proposes a model request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-9e37bf5de7f6e1b019d6",
+          "file": "ui.spec.ts",
+          "line": 216,
+          "column": 1
+        },
+        {
+          "title": "project JSON stays a local review draft until explicit Apply",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-538e15240fadbe356623",
+          "file": "ui.spec.ts",
+          "line": 271,
+          "column": 1
+        },
+        {
+          "title": "completed recording exports a separate raw RecordingArtifact JSON",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f59fc4584921dd08ba84",
+          "file": "ui.spec.ts",
+          "line": 348,
+          "column": 1
+        },
+        {
+          "title": "reset seals an interrupted recording for export while replay remains unavailable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b835bca00f51212fe088",
+          "file": "ui.spec.ts",
+          "line": 378,
+          "column": 1
+        },
+        {
+          "title": "rule drafts survive selection and rejected transactions until actual acknowledgement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-75efcab4a1470830ff84",
+          "file": "ui.spec.ts",
+          "line": 405,
+          "column": 1
+        },
+        {
+          "title": "nonlinear curve and object override Apply/Clear/Undo retain source playback intent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f3308fb322676c28a583",
+          "file": "ui.spec.ts",
+          "line": 473,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-29T14:02:17.282Z",
+    "duration": 18204.879,
+    "expected": 1,
+    "skipped": 11,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

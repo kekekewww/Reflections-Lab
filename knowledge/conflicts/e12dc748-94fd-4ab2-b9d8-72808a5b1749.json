@@ -1,0 +1,85 @@
+{
+  "id": "e12dc748-94fd-4ab2-b9d8-72808a5b1749",
+  "status": "RESOLVED",
+  "kind": "AUTHORITATIVE_DOCUMENT_CONFLICT",
+  "created_at": "2026-10-25T19:55:43.367779+00:00",
+  "agent": "codex-root",
+  "session": "reflection-lab-phase2",
+  "details": {
+    "question": "FPS exit listener policy and optional jump/crouch priority",
+    "sources": [
+      {
+        "path": "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+        "sha256": "3dcf38f0a871fa680fc548037aafa2950b765717b1eeba3ca5dbe10dcd3fde76",
+        "excerpt": [
+          "每個 Workspace 保留自己的**觀察相機**位置，Listener 則為場景／實驗實體。FPS 連結 Listener 時顯示「Listener 跟隨第一人稱」，離開後 Listener 留在最後位置；重播模式由錄製軌跡決定 Listener。Analysis 拖曳相機不得改變錄音 Listener 或重算成另一組結果。使用者需按「將 Listener 移至目前相機」才產生可撤銷的 Domain Command。"
+        ]
+      },
+      {
+        "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+        "sha256": "a469674367700800443118551493b1bebbfdc3b3a010e657051ccdeff088b585",
+        "excerpt": [
+          "模擬執行／暫停是獨立狀態，不與三模式或 Workspace 混為一談。一般切 Scene / Analysis Workspace 不等於 Reset／Pause；離開 FPS 輸入控制時先退出 Pointer Lock、清鍵盤狀態。若 Held／ghost 未完成，在安全 tick 暫停並保留最後有效快照，提示「持有中；恢復後繼續」；不能暗中 drop。編輯幾何與確認放置需安全暫停、驗證交易；關閉 UI 後需明確 Resume。",
+          "進 FPS 預設保留原 listener 選擇；若跟隨，HUD 顯示「聆聽位置：玩家」。離開 FPS 回復原 `ScenePinned` pose，並標記 listener discontinuity。只保留一個活動 render listener；比較多接收點由 solver 計算或分次渲染，不創造多個互相覆寫的 AudioContext listener。"
+        ]
+      },
+      {
+        "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+        "sha256": "a469674367700800443118551493b1bebbfdc3b3a010e657051ccdeff088b585",
+        "excerpt": [
+          "初始候選：capsule 半徑 `0.25 m`、總高 `1.75 m`、眼高 `1.60 m`（自腳底量）、步行 `2 m/s`、快走 `3.5 m/s`、controller offset `0.01 m`。這些是操作預設，與實體人體精確尺寸無關。跳躍、蹲下列 P1；P0 不顯示未支援按鍵。"
+        ]
+      },
+      {
+        "path": "docs/05-ux/FPS_INTERACTION_UX.md",
+        "sha256": "806e8aa0cd44e0e6b19bd1d351ebe66088d6b404548f2cc17e16ca5c690809ef",
+        "excerpt": [
+          "Space 跳躍、Ctrl 蹲下、推力工具列為 P2，MVP 未配置，避免與按鈕啟動、瀏覽器功能及持有物投擲混淆。Ctrl/Cmd+K 只作可選 Command Palette，保留可見按鈕並允許重綁；Ctrl/Cmd+L/T/W/R、Alt+F4 等組合永不攔截。全域可見 Mute 不依賴 lock 或遊戲快捷鍵；無 lock 時 M 可作 monitor mute，但輸入欄內保留打字。"
+        ]
+      }
+    ]
+  },
+  "proposal": {
+    "decision": "Restore saved ScenePinned by default with discontinuity; explicit move-to-camera remains separate; jump/crouch optional P2",
+    "status": "AGENT_ENGINEERING_PROPOSAL"
+  },
+  "resolved_at": "2026-10-25T20:06:45.833Z",
+  "resolution": {
+    "agent": "codex-root",
+    "session": "reflection-lab-phase2",
+    "rationale": "比較Physics明確ScenePinned還原契約與Workspace相反舊文，採保存/還原避免退出成為隱藏量測變因；jump/crouch依原需求可選與UX規劃統一P2。保留原文/hash，並非使用者新偏好或runtime驗證。",
+    "pages": [
+      {
+        "path": "wiki/decisions/fps-listener-exit.md",
+        "expected_hash": null,
+        "metadata": {
+          "id": "RLAB-KB-0024",
+          "title": "FPS退出Listener與可選動作的整合決策",
+          "type": "decision",
+          "status": "ACCEPTED",
+          "created_at": "2026-10-25T20:06:44.646Z",
+          "updated_at": "2026-10-25T20:06:44.646Z",
+          "sources": [
+            "RLAB-SRC-0002",
+            "RLAB-SRC-0018-V2",
+            "RLAB-SRC-0023"
+          ],
+          "related_tasks": [
+            "RLAB-TASK-0004"
+          ],
+          "related_decisions": [
+            "ADR-003"
+          ],
+          "supersedes": [],
+          "tags": [
+            "UX",
+            "FPS",
+            "listener",
+            "conflict-resolution"
+          ]
+        },
+        "body": "# FPS Listener 退出政策整合\n\nPhase 2 獨立審閱發現 Workspace 舊文要求保留最後位置，Physics FPS 規格則要求還原 saved ScenePinned。原文節錄／hash保存在 [Conflict Record](../../conflicts/e12dc748-94fd-4ab2-b9d8-72808a5b1749.json)，沒有把相反文字默默混合。\n\n工程整合決定：使用者選 FollowPlayer 時保存原 ScenePinned pose；真正退出 FPS 預設還原、velocity=0並標 discontinuity。普通 Scene/Analysis 觀察相機不改實驗 listener；若要用最後視角作新量測點，需顯式且可撤銷的 move-listener command。理由是維持 measurement listener 與 observer 的既有邊界，避免退出模式成為隱藏變因。\n\n同次將 jump/crouch 統一為可選P2，符合原需求「可選」與UX已排除MVP的規劃。這是本次代理在授權範圍內的工程整合，不宣稱使用者另行選過這個預設，也沒有實作或測得browser行為。\n\nContext/Alternatives：保留最後位置較方便探索，但會默改量測條件；保存原位置較可預測，保留顯式command作替代。Trade-offs：退出會跳回原listener，UI須提示與ramp；Risks：renderer discontinuity與tail仍需實測。Status：ACCEPTED for specification；Superseded By：無；Related task：RLAB-TASK-0004；Commit：null（尚無HEAD）。\n\n唯一具體規範：[Physics FPS](../../../docs/04-physics/FPS_INTERACTION_SPEC.md)、[Workspace](../../../docs/05-ux/WORKSPACE_ARCHITECTURE.md)。\n"
+      }
+    ]
+  }
+}

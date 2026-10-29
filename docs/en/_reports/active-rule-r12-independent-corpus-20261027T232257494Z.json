@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "review_id": "active-rule-r12-independent-corpus",
+  "reviewed_at_utc": "2026-10-27T23:22:57.494Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_validator",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent current documentation and targeted R12 delta verifier"
+  },
+  "status": "PASS_SCOPED_ACTIVE_RULE_R12_DOCUMENTATION_DELTA",
+  "scope": {
+    "authorization": "Final CORPUS_READY; all canonical/prose/group/manifest writers ended",
+    "current_complete_inventory_checked": true,
+    "changed_pairs": 10,
+    "new_pairs": 2,
+    "refreshed_existing_pairs": 8,
+    "unselected_prior_entries": 275,
+    "review_groups": 4,
+    "group_pair_counts": [
+      2,
+      3,
+      3,
+      2
+    ],
+    "preexisting_reports": 79,
+    "new_whole_corpus_semantic_review": false,
+    "product_completion_claim": false
+  },
+  "summary": {
+    "originals": 285,
+    "markdown_files_inventoried": 293,
+    "authored_artifact_documents": 15,
+    "shared_raw_evidence": 8,
+    "translations_required": 266,
+    "translated": 266,
+    "original_english": 18,
+    "existing_english_companions": 1,
+    "missing": 0,
+    "stale": 0,
+    "errors": 0,
+    "warnings": 15
+  },
+  "evidence": {
+    "independent_unit_tests": {
+      "path": ".cache/v1/english-active-rule-r12/independent/20261027T231814137Z/unit-result.json",
+      "sha256": "4d63ae4bc5e492c2fbb3c583307ef72a448587040ba9c0e4aaff40b2e1525399",
+      "bytes": 3578
+    },
+    "independent_current_full_audit": {
+      "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/full-audit.json",
+      "sha256": "24c72b9bb635004fe9383f18c67e5f84217af8876d3c0ab832c54d63c141795b",
+      "bytes": 455064
+    },
+    "independent_review_union": {
+      "path": ".cache/v1/english-active-rule-r12/independent/coverage-final.json",
+      "sha256": "fb9828ac58e74681b0c1a6f416d118047b0a2d500f088030ca37673cdc502ec3",
+      "bytes": 76550
+    },
+    "frozen_source_inventory": {
+      "path": ".cache/v1/english-active-rule-r12/inventory.json",
+      "sha256": "0aed62d926a15f973bcde3b1404e1f5e92069866b7c6beb2e847b13fa99ddaf1",
+      "bytes": 106344
+    },
+    "reviewed_target_capture": {
+      "path": ".cache/v1/english-active-rule-r12/reviewed-targets.json",
+      "sha256": "5ba3064eee199be7737283d3ac7d50e7835973a8add540dfb006d106e091c4ac",
+      "bytes": 6372
+    },
+    "preexisting_report_pins": {
+      "path": ".cache/v1/english-active-rule-r12/preexisting-report-pins.json",
+      "sha256": "80b126d51c42c24f0c4ecdb2f20500fbad4431647fb446c5ef25b3e323f27e4f",
+      "bytes": 14625
+    },
+    "coordinator_mechanical_proof": {
+      "path": "docs/en/_reports/active-rule-r12-mechanical-20261027T232110728Z.json",
+      "sha256": "eaf5dfa53c4e5625ba8b536471af2838371c6ed678ac24f7bb5b0f1cc73490e1",
+      "bytes": 17108
+    },
+    "manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "e6ef61a9101004ba1beb14f5d81ec821f79522023beb0b2a1b9a8dee5957ab0e",
+      "bytes": 209326
+    },
+    "validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "e6ef61a9101004ba1beb14f5d81ec821f79522023beb0b2a1b9a8dee5957ab0e",
+      "bytes": 209326
+    },
+    "source_inventory": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "f09af49701c2253ec88376db24d6f3b50bfa4ff26519c859944f4637afb340fc",
+      "bytes": 101560
+    },
+    "index": {
+      "path": "docs/en/index.md",
+      "sha256": "82b39e1ffb8a76015cdda2051430126261c47b853558346bae7f4398f3250c39",
+      "bytes": 57636
+    }
+  },
+  "commands": [
+    {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "node": "v22.17.0",
+      "started_at": "2026-10-27T23:18:14.138Z",
+      "duration_ms": 440.3689,
+      "exit_code": 0,
+      "tests": 31,
+      "passes": 31,
+      "failures": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T231814137Z/unit.stdout.txt",
+        "sha256": "1bf3992445f87aaa2da9372dd2f3885c452ee24739214dc39101f8e9a1d2ab4f",
+        "bytes": 6999
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T231814137Z/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "currentness": "Independent fresh31-test run; checker and test hashes match the final frozen seal. This does not claim the separate931-product-test or Vite26 execution."
+    },
+    {
+      "command": "node scripts/validation/english-docs.mjs check",
+      "args": [
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "started_at": "2026-10-27T23:21:59.388Z",
+      "duration_ms": 667.6965,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/english-check.stdout.txt",
+        "sha256": "74522d792e1c7bbd62e7f555234e2ab87307193ff889c2d74b9f6099dca2bdc1",
+        "bytes": 270
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/english-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "{\"status\":\"PASS\",\"originals\":285,\"markdown_files_inventoried\":293,\"authored_artifact_documents\":15,\"shared_raw_evidence\":8,\"translations_required\":266,\"translated\":266,\"original_english\":18,\"existing_english_companions\":1,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":15}\n",
+      "stderr_text": ""
+    },
+    {
+      "command": "node scripts/validation/docs.mjs",
+      "args": [
+        "scripts/validation/docs.mjs"
+      ],
+      "started_at": "2026-10-27T23:21:59.393Z",
+      "duration_ms": 454.3879,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/maintained-links.stdout.txt",
+        "sha256": "df9cb2793b24f910a0b5bd6e0d70b8d0aa5373ef871b43cc12312de300651008",
+        "bytes": 1932
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/maintained-links.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "PASS Markdown local targets: 6065 links in 566 documents; fenced code/external URLs/anchors excluded.\nScope: maintained Markdown; exact raw byte snapshot directories under root artifacts (source-before/source-after/sources/tested-bundle) excluded from link checking; run SHA proof checks are separate.\nExcluded raw byte snapshots (24): artifacts/v1/audio-prefix-irv2-preflight-20261027172840/prepared-ir-static-v1/sources, artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources, artifacts/v1/audio-prepared-ir-static-v1-preflight-20261027155118424/prepared-ir-static-v1/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources, artifacts/v1/gravity-toggle-review-v1/sources, artifacts/v1/integration-review-v3/sources, artifacts/v1/integration-review-v4/sources, artifacts/v1/integration-review-v5/sources, artifacts/v1/integration-review-v6/sources, artifacts/v1/integration-review-v7/sources, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-before, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-before, artifacts/v1/physics-boundaries-20261027/combined-final/source-after, artifacts/v1/physics-boundaries-20261027/combined-final/source-before, artifacts/v1/physics-boundaries-20261027/combined-v1/source-after, artifacts/v1/physics-boundaries-20261027/combined-v1/source-before, artifacts/v1/product-e2e-chrome-20261027T021924Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T024059Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T033616Z/tested-bundle, artifacts/v1/product-final-build-20261027T124914444Z/tested-bundle, artifacts/v1/replay-objectview-review-v1/sources.\n",
+      "stderr_text": ""
+    }
+  ],
+  "inventory_audit": {
+    "command": "git ls-files --cached --others --exclude-standard -z",
+    "exit_code": 0,
+    "stderr": "",
+    "regular_markdown_count": 293,
+    "exact_paths_match": true,
+    "source_inventory_matches": true,
+    "missing": [],
+    "extra": []
+  },
+  "source_target_hash_audit": {
+    "status": "PASS",
+    "current_original_rows": 285,
+    "all_current_source_target_bytes_and_markers_exact": true,
+    "frozen_delta_rows": [
+      {
+        "source": "docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "target": "docs/en/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "expected_sha256": "b7555bdf4d52f8d4d50182e5b8efd386d8b03e7890c67ba328acb69972c58bf6",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "target": "docs/en/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "expected_sha256": "cfe312a73c49d7f175fa89ba7083162ef692aa94d7beb0524019f96ccca45ae4",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/docs/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r12.md",
+        "target": "docs/en/11-v1/SESSION_PROGRESS_20261028-r12.md",
+        "expected_sha256": "15c2f31631a236770a3bb9affb5f4c91057f893564694e43b6adae871436526d",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/docs/11-v1/SESSION_PROGRESS_20261028-r12.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/features/interactive-sandbox.md",
+        "target": "docs/en/knowledge/wiki/features/interactive-sandbox.md",
+        "expected_sha256": "8a71ba8e804029ebcb94a38e6e3f93d2ce9a72b4fa7062fe9b1445a03f98cdfc",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/features/interactive-sandbox.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/features/sound-behaviors.md",
+        "target": "docs/en/knowledge/wiki/features/sound-behaviors.md",
+        "expected_sha256": "d6f8466bf7c5c20d930dd8a7fa9e3ca1533bad4fa21c325400edd75c026ca73a",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/features/sound-behaviors.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md",
+        "target": "docs/en/knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md",
+        "expected_sha256": "bfecded6969e09bdd01baf849aedaf5852f7ed67d684f25cd23659002ee86fb7",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "target": "docs/en/knowledge/wiki/index.md",
+        "expected_sha256": "8001f22115d28d93eb9d0bfc46f18f4577f88214b20f79518fc819c2560ff0f2",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/index.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "target": "docs/en/knowledge/wiki/log.md",
+        "expected_sha256": "8d45651d43d6f96699d3ff2ede4e3cdd88e1931f5e5715fe4615b85b0337bd06",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/log.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "target": "docs/en/knowledge/wiki/now.md",
+        "expected_sha256": "c149e74fad31c9ef0f0a93b5fe57430017424d909769489796324328cf1166af",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/knowledge/wiki/now.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "src/audio-behavior/README.md",
+        "target": "docs/en/src/audio-behavior/README.md",
+        "expected_sha256": "41185bb530c8ad1cf07560ac34bea7fdebee0bea25d1c6cb7b17035caeafe41a",
+        "snapshot": ".cache/v1/english-active-rule-r12/sources/src/audio-behavior/README.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      }
+    ],
+    "unselected_prior_rows_retained_byteexact": 275,
+    "prior_entries_bound_to_previous_pinned_independent_per_file_audit": true,
+    "full_per_file_evidence": {
+      "path": ".cache/v1/english-active-rule-r12/independent/20261027T232159387Z/full-audit.json",
+      "sha256": "24c72b9bb635004fe9383f18c67e5f84217af8876d3c0ab832c54d63c141795b",
+      "bytes": 455064
+    }
+  },
+  "semantic_review_coverage": {
+    "status": "PASS_COVERAGE_AND_PINS",
+    "counts": {
+      "group_reports": 4,
+      "group_rows": 10,
+      "group_row_sizes": [
+        2,
+        3,
+        3,
+        2
+      ],
+      "group_row_sizes_match_expected": true,
+      "combined_unique_sources": 10,
+      "groups_with_prose_freeze_declaration": 4,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0,
+      "defects": 0
+    },
+    "report_pins": [
+      {
+        "path": "docs/en/_reports/active-rule-r12-compliance-toolchain-review.json",
+        "expected_sha256": "63ef711f94cb66eb2b74c5d3f083b7c8aa17429bee55b82478862ba7770c8a74",
+        "actual_sha256": "63ef711f94cb66eb2b74c5d3f083b7c8aa17429bee55b82478862ba7770c8a74",
+        "matches": true,
+        "completed_at": "2026-10-27T23:20:00.526226Z",
+        "prose_freeze_declared": true,
+        "report_end": null,
+        "rows": 2
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-features-audio-readme-review.json",
+        "expected_sha256": "8e20cce4263e5ac04d3418cc991aba79d1ac13029696bfe9caa5131dfce59e69",
+        "actual_sha256": "8e20cce4263e5ac04d3418cc991aba79d1ac13029696bfe9caa5131dfce59e69",
+        "matches": true,
+        "completed_at": "2026-10-27T23:20:56.976370Z",
+        "prose_freeze_declared": true,
+        "report_end": true,
+        "rows": 3
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-wiki-core-review.json",
+        "expected_sha256": "81a8737de7d0dda5fbe9b92a8a575b9650b47d7a612ff96d98ed44b0b635a8ac",
+        "actual_sha256": "81a8737de7d0dda5fbe9b92a8a575b9650b47d7a612ff96d98ed44b0b635a8ac",
+        "matches": true,
+        "completed_at": "2026-10-27T23:20:34.101213Z",
+        "prose_freeze_declared": true,
+        "report_end": null,
+        "rows": 3
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-checkpoint-handoff-review.json",
+        "expected_sha256": "4f09ffe7af24d72bcd782703daf92ac38ed0cfc5496f7bb3fa69855e70218bde",
+        "actual_sha256": "4f09ffe7af24d72bcd782703daf92ac38ed0cfc5496f7bb3fa69855e70218bde",
+        "matches": true,
+        "completed_at": "2026-10-27T23:19:36.134Z",
+        "prose_freeze_declared": true,
+        "report_end": null,
+        "rows": 2
+      }
+    ],
+    "exact_union_rows": 10,
+    "missing": 0,
+    "extra": 0,
+    "duplicates": 0,
+    "defects": 0,
+    "all_current_stage_and_raw_reviewed_target_pins_match": true,
+    "all_four_PROSE_FREEZE_and_independent_ENDs_received": true,
+    "qualification": "The four disjoint group reports cover exactly10 source pairs. This reviewer audits their declared semantic-review coverage, exact source/review byte pins and mechanical carry-forward; unchanged historical semantic evidence is reused without a broad new reread.",
+    "retained_history_boundaries": [
+      "Index retains49 prior rows plus one reviewed new row.",
+      "Log retains220 prior rows plus15 reviewed new rows.",
+      "Now retains its reviewed baseline with the scoped R12 follow-up."
+    ]
+  },
+  "mechanical_preservation": {
+    "status": "PASS_EXACT_DOCUMENTED_MECHANICAL_TRANSFORM",
+    "proof": {
+      "path": "docs/en/_reports/active-rule-r12-mechanical-20261027T232110728Z.json",
+      "sha256": "eaf5dfa53c4e5625ba8b536471af2838371c6ed678ac24f7bb5b0f1cc73490e1"
+    },
+    "rows": [
+      {
+        "source": "docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+        "reviewed_target_sha256": "398b29c919e7b430094dacdfbf46be7b55ff41328695c26482fc8f08307ea162",
+        "final_target_sha256": "216b5ce48b7a7e67ed2f1387f5e006ae9ac273d43048df4c0353f674fe59ee55",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "docs/03-sdk/V1_WEB_TOOLCHAIN.md",
+        "reviewed_target_sha256": "58c272e1749b1121f47629b482e81d76fc952301ef71ae7ed85d738dc0cf881a",
+        "final_target_sha256": "647008b5a3442e0a49bf0fa1708a1fd4798669948dd47ba7344f3d628ec7423a",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "docs/11-v1/SESSION_PROGRESS_20261028-r12.md",
+        "reviewed_target_sha256": "2b8ed27fc4760823844170d320d7ae9c71cec07e15fb69e248b3a99709400641",
+        "final_target_sha256": "9c25d42d67d1d5cb0b65d68145621659ce79800381154410f4518d9209bbc21e",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/features/interactive-sandbox.md",
+        "reviewed_target_sha256": "b06db4b3d6aef89e6f89db6a10d5b93c8f68b719bf75cea347735a6ea6bc9cfd",
+        "final_target_sha256": "74c425c3d4a30ff372ea52c3ab3cf9c34693f98abc91fe42858400ea04e9003c",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/features/sound-behaviors.md",
+        "reviewed_target_sha256": "ea5304e26641ae02ca77bcf415bdfd134368cf7c2bb9eb8aca9bf4bd1f52e2ea",
+        "final_target_sha256": "44eedf8c1fd2d023d7a11d62c6d362d7ae7d3e38991614ad8092845d80c0097c",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md",
+        "reviewed_target_sha256": "02353d5462787e615feccc2f43a153890c436197b1ad1fb5464f4cbdc61d495f",
+        "final_target_sha256": "495693e157faff94848e7a397c79f022437367adac6d04879570ebe441b09752",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "reviewed_target_sha256": "8467569d7694467e88bc8c3220c497073c1ea2a332dda4bcc83ec6c38c52b9eb",
+        "final_target_sha256": "cc96af9c6512ecdf0053abf935178766b281a7d063198b4f5f34fc52f4599cf7",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "reviewed_target_sha256": "4755b8668e81c9e8e5f663acf55ed25b7255087d28275606e3d90527f4a39f76",
+        "final_target_sha256": "5a2a78e4f943ee89ff7abc6677e8ed2441b08c6a9aa9d38fcae0d4b8fed3d65d",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "reviewed_target_sha256": "edaaa92a9726538f4422d400e7534f61a509429e83e67cb030bad23903ba509c",
+        "final_target_sha256": "8030877189055f59ba21d6d3efcfc54345f52a2fe38d04ebec70e6023c3f9a0b",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "src/audio-behavior/README.md",
+        "reviewed_target_sha256": "073bc9302cebb8fc5c8268fcbc268602c1fd72adece4da0ea14421dbaeaf721e",
+        "final_target_sha256": "64b9256c73344a97cd567ce23b7259c6ca7e07a7227b45ec6464fcea49d292f5",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      }
+    ],
+    "normalization_scope": [
+      "knowledge/wiki/log.md"
+    ],
+    "method": "Only deterministic local-link mapping, generated notice/anchors and bounded existing frontmatter separator normalization; metadata changes only links=english-relative.",
+    "limit": "Mechanical replay uses the frozen rewriteLinks helper independently tested31/31, not a new CommonMark parser or semantic whole-corpus rereview.",
+    "no_raw_byte_equality_claim_across_generated_wrappers": true
+  },
+  "prior_reports_preserved": {
+    "status": "PASS",
+    "count": 79,
+    "all_byteexact": true,
+    "preserved_receipts": [
+      {
+        "path": "docs/en/_reports/provenance-r6-current-corpus-20261027T215453241Z.json",
+        "sha256": "e3ad4e8f53b3960d160f8d64f7517509e24af78d6e344de8299aec8f4d5e3c19",
+        "bytes": 212538
+      },
+      {
+        "path": "docs/en/_reports/provenance-r6-independent-corpus-20261027T215445765Z.json",
+        "sha256": "c9bd6de287b6252d6cc4916a2a3094b32a2e6b00fb8d8a8cd84e217e48fc1427",
+        "bytes": 31126
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-independent-corpus.json",
+        "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+        "bytes": 42390
+      }
+    ],
+    "no_old_report_overwritten": true
+  },
+  "shared_raw_evidence": {
+    "status": "PASS",
+    "count": 8,
+    "all_source_and_receipt_pins_exact": true,
+    "metadata_and_classifications_deep_equal_prior_reviewed_epoch": true,
+    "records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      }
+    ],
+    "qualification": "Captured source/failure-context provenance is not product/build/native success."
+  },
+  "warnings": {
+    "count": 15,
+    "unchanged_from_prior_current_corpus": true,
+    "records": [
+      {
+        "source": "third_party/emil-skills.README.md",
+        "warnings": [
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/emil-design-eng/SKILL.md",
+            "target": "third_party/skills/emil-design-eng/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate/SKILL.md",
+            "target": "third_party/skills/animate/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate-expo/SKILL.md",
+            "target": "third_party/skills/animate-expo/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/review-animations/SKILL.md",
+            "target": "third_party/skills/review-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/improve-animations/SKILL.md",
+            "target": "third_party/skills/improve-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/find-animation-opportunities/SKILL.md",
+            "target": "third_party/skills/find-animation-opportunities/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-performance/SKILL.md",
+            "target": "third_party/skills/animation-performance/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-vocabulary/SKILL.md",
+            "target": "third_party/skills/animation-vocabulary/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/apple-design/SKILL.md",
+            "target": "third_party/skills/apple-design/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/write-swift/SKILL.md",
+            "target": "third_party/skills/write-swift/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/pick-ui-library/SKILL.md",
+            "target": "third_party/skills/pick-ui-library/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/prototype/SKILL.md",
+            "target": "third_party/skills/prototype/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/mobile-native/SKILL.md",
+            "target": "third_party/skills/mobile-native/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/break-ui/SKILL.md",
+            "target": "third_party/skills/break-ui/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/ask-sonner/SKILL.md",
+            "target": "third_party/skills/ask-sonner/SKILL.md"
+          }
+        ]
+      }
+    ]
+  },
+  "current_Root_Git_seal": {
+    "HEAD_text": "ref: refs/heads/codex/sound-behavior-research",
+    "commit": "9ccff9fce573c4d739399a473f662cb956ae03f0",
+    "paths": [
+      ".git/index",
+      ".git/HEAD",
+      ".git/refs/heads/codex/sound-behavior-research"
+    ],
+    "stable": true,
+    "qualification": "This task seals the authorized current Root Git epoch; only read-only Git inventory enumeration was executed by the reviewer."
+  },
+  "source_stability": {
+    "unit_inputs_stable": true,
+    "current_full_check_inputs_stable": true,
+    "sealed_inputs": 684,
+    "final_seal_matches_post_check_snapshot": true,
+    "final_seal_sha256": "663c340b880850320a43a5325b2babc64821adfd2b3b43f42e63f3457901f181",
+    "continuous_monitor": false,
+    "reviewer_product_source_Wiki_task_or_Git_mutations": false,
+    "reviewer_writes": "Only authorized independent cache evidence and this new uniquely named report"
+  },
+  "R12_claim_boundaries": [
+    "The931/Vite26 statements remain source-qualified captured test/build claims and were not rerun by this documentation reviewer.",
+    "UI27 local12-file byte equivalence does not become a newUI27 run or an assertion that all12 files were validated over HTTP.",
+    "R3 is empirical evidence and does not become formalV3 or formal600-second performance acceptance.",
+    "The six rights records and esbuild substatus do not complete all rights/legal gates; the final fullcheck limitation remains pending as documented.",
+    "Native/hearing/performance/legal and complete-release gates are not upgraded by this translation audit."
+  ],
+  "findings": [],
+  "limitations": [
+    "Current documentation coverage/currentness/hash/link and targeted review provenance evidence does not establish complete first-version product acceptance.",
+    "No new whole-history semantic review, scientific/legal endorsement or product-runtime validation is claimed.",
+    "Remote URL availability and renderer-specific anchors remain outside the checks.",
+    "Maintained local links exclude raw snapshot directories; exactly eight shared raw Markdown records receive separate source/evidence pin checks.",
+    "Before/after seals cannot detect reverted interim edits; formal writers were frozen.",
+    "npm CI, build, browser, Native7/native/device/hearing, paidAPI/model, full npm check, Root Wiki/task writes and Root Git mutations were NOT RUN."
+  ],
+  "all_filesystem_and_process_IO_end_after_this_report": true
+}

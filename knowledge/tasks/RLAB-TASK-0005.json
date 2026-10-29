@@ -1,0 +1,74 @@
+{
+  "id": "RLAB-TASK-0005",
+  "title": "跨Agent入口與無對話交接",
+  "description": "以官方文件、本機版本與薄入口串接Codex/Claude/Pi；不自動設定Hooks，不把本地子代理閱讀等同原生三種Agent的live證明。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "原始Gist／qmd／Agent官方能力與本機版本可追溯",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase2-validation-local.json",
+          "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+          "command": "npm run validate:all",
+          "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+        },
+        {
+          "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+          "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+          "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+          "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "獨立無上下文Agent由AGENTS/Wiki找到P0／規格／命令與Grab驗收",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/phase2-validation-local.json",
+          "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+          "command": "npm run validate:all",
+          "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+        },
+        {
+          "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+          "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+          "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+          "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "docs/09-knowledge/AGENT_COMPATIBILITY.md",
+    "knowledge/wiki/handoffs/"
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/results/phase2-validation-local.json",
+      "sha256": "9cfb8bede766d793c2ec2f3be3bde2f338ffc2899bbe5a39ecac5be80925d61b",
+      "command": "npm run validate:all",
+      "result": "PASS16/16; Wiki50pass1skip, Design14pass, core30pass; actual exits/stdout/hashes"
+    },
+    {
+      "path": "docs/09-knowledge/SCENARIO_VALIDATION.json",
+      "sha256": "305abd11cdb5a0facd08a87a3acb8eeb138cf402ee0ef25d901c11fc87959ce8",
+      "command": "Read-only independent Agent A/D and Agent B handoff receiver",
+      "result": "PASS_READING; raw evidence and scope7/7 checked; no nativeClaude/Pi/browser claim"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-25T20:20:14.553Z",
+  "last_summary": "Criteria closed only after actual16gate and independenthandoff evidence verification"
+}

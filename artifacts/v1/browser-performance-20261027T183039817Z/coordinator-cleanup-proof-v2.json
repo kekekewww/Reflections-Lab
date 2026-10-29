@@ -1,0 +1,43 @@
+{
+    "schemaVersion":  2,
+    "scope":  "exact-current-23876-or-direct-parent-23876-and-listen-5191-only",
+    "startedAt":  "2026-10-27T18:46:29.7890550+00:00",
+    "completedAt":  "2026-10-27T18:46:33.1764212+00:00",
+    "targetKnownRunnerPid":  23876,
+    "targetKnownCreationDate":  "2026-10-27T18:30:39.4838294Z",
+    "processQueryFilter":  "ProcessId = 23876 OR ParentProcessId = 23876",
+    "projectedProperties":  [
+                                "ProcessId",
+                                "ParentProcessId",
+                                "Name",
+                                "CreationDate",
+                                "ExecutablePath"
+                            ],
+    "processRows":  [
+
+                    ],
+    "processErrors":  [
+
+                      ],
+    "listenerRows":  [
+
+                     ],
+    "portErrors":  [
+                       {
+                           "id":  "CmdletizationQuery_NotFound,Get-NetTCPConnection",
+                           "expectedNotFound":  true,
+                           "message":  " CIM 伺服器上 ROOT/StandardCimv2/MSFT_NetTCPConnection 類別之執行個體的 CIM 查詢: SELECT * FROM MSFT_NetTCPConnection  WHERE ((LocalPort = 5191)) AND ((State = 2)) 找不到相符的 MSFT_NetTCPConnection 物件。請確認查詢參數然後重試。"
+                       }
+                   ],
+    "knownScopeClear":  true,
+    "noKill":  true,
+    "noCommandLineRead":  true,
+    "globalInventory":  false,
+    "originalSerializationFailure":  {
+                                         "path":  "coordinator-cleanup-proof.json",
+                                         "byteLength":  0,
+                                         "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                         "error":  "PowerShell bare true literal not recognized; initial query rows were not durably serialized; no cleanup claim from that file",
+                                         "correction":  "Only boolean serialization corrected; same exact known-PID/port read; original empty file retained"
+                                     }
+}

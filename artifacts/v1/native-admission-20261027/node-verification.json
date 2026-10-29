@@ -1,0 +1,92 @@
+{
+  "files": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "3b97535c11812e629c966b356c4285a437ab1ae4c5b381e25b86df0db9bc6e86"
+    },
+    {
+      "path": "src/app/behavior-diagnostics.ts",
+      "sha256": "350da43eab23e61c704005f189007d0511e48256b3667e4e8b23eb45226e9b9d"
+    },
+    {
+      "path": "src/ui/contracts.ts",
+      "sha256": "c304e6511d127abd77ab1feabe8960ecb302fdb3e1040aac3ba3f3d9b308904e"
+    },
+    {
+      "path": "src/ui/AnalysisDock.tsx",
+      "sha256": "75042d75ab624e98831e215cca4108f14f92b2627370881ac995c4ce041d3ed2"
+    },
+    {
+      "path": "src/ui/RuleCard.tsx",
+      "sha256": "9fa8fa166af095856d28b0f5e7e6b313df4c4d4d82f080445829bcaeedc81ec0"
+    },
+    {
+      "path": "src/ui/locales/explorer.ts",
+      "sha256": "a06baffce33c822c313e21938f503830f4e194fcfd69527f886a25ec5ce69a65"
+    },
+    {
+      "path": "src/ui/behavior-diagnostic-text.ts",
+      "sha256": "bde3aec312c31425f169bf243ac7a96c199ca288ad8cb959762579109351166d"
+    },
+    {
+      "path": "tests/app/native-admission.test.ts",
+      "sha256": "54b4642de509fa51fecc9e79691e38cf2e134246ba78c0255ca0681161e1940a"
+    },
+    {
+      "path": "tests/browser/native-admission.config.ts",
+      "sha256": "f3400bc99183e1a406b0a28632342b247dbbd776aed9b6dc2e24f1f8d800fbd3"
+    },
+    {
+      "path": "tests/browser/native-admission.spec.ts",
+      "sha256": "5b8c5562b839657960e8418a3600c578ca4af75e1a759d5a4b4a993463aa5df1"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "sha256": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92"
+    }
+  ],
+  "scope": "Bounded ephemeral native audio rejection association; V1-UX-04 only",
+  "static": {
+    "typecheck": "PASS",
+    "emilStandards": "PASS_STATIC_ONLY",
+    "targetedLint": "PASS",
+    "emilSourcePin": "PASS",
+    "targetedFormat": "PASS"
+  },
+  "status": "PASS_NODE_AND_STATIC_ONLY",
+  "node": {
+    "raw": "artifacts/v1/native-admission-20261027/green-final.log",
+    "fail": 0,
+    "command": "node --import tsx --test tests/app/native-admission.test.ts tests/app/behavior-diagnostics.test.ts tests/app/static-preview-integration.test.ts tests/app/replay-audio.test.ts tests/app/runtime.test.ts src/ui/behavior-diagnostic-text.test.ts",
+    "exitCode": 0,
+    "tests": 35,
+    "pass": 35,
+    "archivedRaw": "artifacts/v1/native-admission-20261027/green-final.txt"
+  },
+  "browser": {
+    "spec": "tests/browser/native-admission.spec.ts",
+    "status": "NOT RUN",
+    "rootWindowRequired": true,
+    "config": "tests/browser/native-admission.config.ts",
+    "preparedCases": 2
+  },
+  "red": {
+    "expectedFailure": "Actual engine dropped 1 of 9 logical sources at explicit test-only maxSources8, but no inspectable native rejection association existed",
+    "exitCode": 1,
+    "raw": "artifacts/v1/native-admission-20261027/red.log",
+    "pass": 0,
+    "fail": 1,
+    "archivedRaw": "artifacts/v1/native-admission-20261027/red.txt"
+  },
+  "limits": [
+    "FakeAudioContext records control graph only, not DSP/PCM",
+    "Explicit test-only native maxSources8; product maxVoices24/maxSources32 unchanged",
+    "No actual device-output or hearing claim",
+    "No schema/recording/DSP/budget edits",
+    "Root owns full check, browser scheduling and all Wiki/task/doc/Git integration"
+  ]
+}

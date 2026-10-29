@@ -1,0 +1,1118 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-27T03:11:24.421Z",
+  "completedAt": "2026-10-27T03:11:30.095Z",
+  "status": "PASS",
+  "scope": "Current bounded Node/Rapier motion-hysteresis and physics/interaction regression; fresh run, not retroactive reconstruction of earlier reported commands",
+  "executor": "Codex",
+  "nodeVersion": "v22.17.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "gitRevisionAtCapture": "2662bc8ee3976280c5c14f619ff798570f035f14",
+  "command": {
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "--import",
+      "tsx",
+      "--test",
+      "tests/physics/motion-hysteresis.test.ts",
+      "tests/physics/physics-world.test.ts",
+      "tests/physics/contact-emission.test.ts",
+      "tests/physics/character-motor.test.ts",
+      "tests/physics/fixed-clock.test.ts",
+      "tests/interaction-runtime/host.test.ts"
+    ],
+    "cwd": "D:\\Developing\\Meta Hack",
+    "timeoutMs": 120000,
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": {
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/regression.stdout.txt",
+      "sha256": "a0315c99fc34ca717acd138675f348f21c370dbad40fbeb54abafeb567519bbd",
+      "bytes": 16063,
+      "encoding": "utf8"
+    },
+    "stderr": {
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/regression.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "encoding": "utf8"
+    },
+    "counts": {
+      "tests": 67,
+      "suites": 0,
+      "pass": 67,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "sourceBefore": [
+    {
+      "path": "src/interaction/index.ts",
+      "sha256": "0c1f8fcab6e39ff367665fb44e97fa141013048d9d2e6e93873e9432775d700e"
+    },
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "e99da87a2228623226fd52c382307d5c2077c67b7468b5ed13b9dde07d1a41bd"
+    },
+    {
+      "path": "src/interaction/math.ts",
+      "sha256": "69f9af88645ae417a3f7828b669acf03d8bef0175843858f3c61c5380490a9d6"
+    },
+    {
+      "path": "src/interaction/types.ts",
+      "sha256": "c390fb3a0557b82591789d58c2bb713dcb4cd5a0a89cb59aa21b60ea56cfe352"
+    },
+    {
+      "path": "src/physics/character-motor.ts",
+      "sha256": "5e3d29d2e0d71c6ae0b4a87f3bb944bd123ebe0402220e574859421fddd4a8f9"
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+    },
+    {
+      "path": "src/physics/index.ts",
+      "sha256": "098845b1ed89e3321e938d34a07b62eff2c7f944ad9960c59aca00d12330318b"
+    },
+    {
+      "path": "src/physics/math.ts",
+      "sha256": "a498fcf1dc3faa5061483fd09cb1e9218d9376f92ec1c8c8d14f0486315dfe35"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "path": "src/physics/types.ts",
+      "sha256": "f2b76de5d89b400cb200be739e43d036708401ebc83d75e0cfcf0d822b4c58c6"
+    },
+    {
+      "path": "src/scene/commands.ts",
+      "sha256": "8bc0423eb9c83ac22794ff34a4dea3f64b093722e7571daa8173a023e2f34bd7"
+    },
+    {
+      "path": "src/scene/errors.ts",
+      "sha256": "971bc6a250e93a221dd4fe47b9a05ecf05a100e48b4b56ae1b987756f8331fe3"
+    },
+    {
+      "path": "src/scene/index.ts",
+      "sha256": "5d3ac854c7a1e999aff75efd27dba7c1a1f96fd44a4cfa2ea850c7d97ebb17e9"
+    },
+    {
+      "path": "src/scene/scene-host.ts",
+      "sha256": "3445209bedb437d2f5b598698523c0fc0c171380989ec7be96655098c9ecaf99"
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sha256": "04c8756b364fef6de36cd5de5dbe8738ea3d09f8b57cb8b45db961bf1bbfce84"
+    },
+    {
+      "path": "src/scene/validate-scene.ts",
+      "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+    },
+    {
+      "path": "tests/interaction-runtime/host.test.ts",
+      "sha256": "d97d7238e64af9ea661c0e982ed2eee856b29beb82c746a6c61a54c71454a4fe"
+    },
+    {
+      "path": "tests/physics/character-motor.test.ts",
+      "sha256": "4129c65779e83e814a75edf3941dc0f7e88c08d1228693e0590844375821a28b"
+    },
+    {
+      "path": "tests/physics/contact-emission.test.ts",
+      "sha256": "8c8e3ae8779b5d90beb98daf7e723d4a74d1dc85255e2e21a736699c8738ef9b"
+    },
+    {
+      "path": "tests/physics/fixed-clock.test.ts",
+      "sha256": "f70e33eae21b9b6b9095ddcb6398dc1efa8f819b667b30c844c8681bea3725fe"
+    },
+    {
+      "path": "tests/physics/motion-hysteresis.test.ts",
+      "sha256": "e3ae7cf6986009dc915129906ea71ab7256fe8af27c722e0121a8c2586fdab67"
+    },
+    {
+      "path": "tests/physics/physics-world.test.ts",
+      "sha256": "baf32b45c93159a09d98c1c561b69bb078f61fba49f9ae04b255aa8676d277e1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "src/interaction/index.ts",
+      "sha256": "0c1f8fcab6e39ff367665fb44e97fa141013048d9d2e6e93873e9432775d700e"
+    },
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "e99da87a2228623226fd52c382307d5c2077c67b7468b5ed13b9dde07d1a41bd"
+    },
+    {
+      "path": "src/interaction/math.ts",
+      "sha256": "69f9af88645ae417a3f7828b669acf03d8bef0175843858f3c61c5380490a9d6"
+    },
+    {
+      "path": "src/interaction/types.ts",
+      "sha256": "c390fb3a0557b82591789d58c2bb713dcb4cd5a0a89cb59aa21b60ea56cfe352"
+    },
+    {
+      "path": "src/physics/character-motor.ts",
+      "sha256": "5e3d29d2e0d71c6ae0b4a87f3bb944bd123ebe0402220e574859421fddd4a8f9"
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+    },
+    {
+      "path": "src/physics/index.ts",
+      "sha256": "098845b1ed89e3321e938d34a07b62eff2c7f944ad9960c59aca00d12330318b"
+    },
+    {
+      "path": "src/physics/math.ts",
+      "sha256": "a498fcf1dc3faa5061483fd09cb1e9218d9376f92ec1c8c8d14f0486315dfe35"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "path": "src/physics/types.ts",
+      "sha256": "f2b76de5d89b400cb200be739e43d036708401ebc83d75e0cfcf0d822b4c58c6"
+    },
+    {
+      "path": "src/scene/commands.ts",
+      "sha256": "8bc0423eb9c83ac22794ff34a4dea3f64b093722e7571daa8173a023e2f34bd7"
+    },
+    {
+      "path": "src/scene/errors.ts",
+      "sha256": "971bc6a250e93a221dd4fe47b9a05ecf05a100e48b4b56ae1b987756f8331fe3"
+    },
+    {
+      "path": "src/scene/index.ts",
+      "sha256": "5d3ac854c7a1e999aff75efd27dba7c1a1f96fd44a4cfa2ea850c7d97ebb17e9"
+    },
+    {
+      "path": "src/scene/scene-host.ts",
+      "sha256": "3445209bedb437d2f5b598698523c0fc0c171380989ec7be96655098c9ecaf99"
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sha256": "04c8756b364fef6de36cd5de5dbe8738ea3d09f8b57cb8b45db961bf1bbfce84"
+    },
+    {
+      "path": "src/scene/validate-scene.ts",
+      "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+    },
+    {
+      "path": "tests/interaction-runtime/host.test.ts",
+      "sha256": "d97d7238e64af9ea661c0e982ed2eee856b29beb82c746a6c61a54c71454a4fe"
+    },
+    {
+      "path": "tests/physics/character-motor.test.ts",
+      "sha256": "4129c65779e83e814a75edf3941dc0f7e88c08d1228693e0590844375821a28b"
+    },
+    {
+      "path": "tests/physics/contact-emission.test.ts",
+      "sha256": "8c8e3ae8779b5d90beb98daf7e723d4a74d1dc85255e2e21a736699c8738ef9b"
+    },
+    {
+      "path": "tests/physics/fixed-clock.test.ts",
+      "sha256": "f70e33eae21b9b6b9095ddcb6398dc1efa8f819b667b30c844c8681bea3725fe"
+    },
+    {
+      "path": "tests/physics/motion-hysteresis.test.ts",
+      "sha256": "e3ae7cf6986009dc915129906ea71ab7256fe8af27c722e0121a8c2586fdab67"
+    },
+    {
+      "path": "tests/physics/physics-world.test.ts",
+      "sha256": "baf32b45c93159a09d98c1c561b69bb078f61fba49f9ae04b255aa8676d277e1"
+    }
+  ],
+  "sourceStable": true,
+  "sourceCopies": [
+    {
+      "originalPath": "src/physics/physics-world.ts",
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/source-snapshot/src/physics/physics-world.ts",
+      "sha256": "071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4"
+    },
+    {
+      "originalPath": "tests/physics/motion-hysteresis.test.ts",
+      "path": "artifacts/v1/motion-hysteresis-validation-20261027/source-snapshot/tests/physics/motion-hysteresis.test.ts",
+      "sha256": "e3ae7cf6986009dc915129906ea71ab7256fe8af27c722e0121a8c2586fdab67"
+    }
+  ],
+  "sourceCopiesMatch": true,
+  "acceptanceMatrix": {
+    "path": "docs/11-v1/REQUIREMENTS.json",
+    "sha256Before": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c",
+    "sha256After": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c"
+  },
+  "protectedBefore": [
+    {
+      "path": "benchmarks/analytic/run.mjs",
+      "sha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "matches": true
+    },
+    {
+      "path": "benchmarks/fixtures/analytical.json",
+      "sha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "role": "fixed-reference",
+      "actualSha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/acceptance.mjs",
+      "sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "role": "regression-or-acceptance",
+      "actualSha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/milestone.json",
+      "sha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/mock-plan.json",
+      "sha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "role": "regression-or-acceptance",
+      "actualSha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/p0-01-scene-contract.json",
+      "sha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "sha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "role": "regression-or-acceptance",
+      "actualSha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/smoke-task.json",
+      "sha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "role": "regression-or-acceptance",
+      "actualSha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "matches": true
+    },
+    {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "sha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "role": "regression-or-acceptance",
+      "actualSha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "matches": true
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+      "sha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "matches": true
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "sha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "role": "contract",
+      "actualSha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/handoff.schema.json",
+      "sha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "role": "contract",
+      "actualSha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/implementation-result.schema.json",
+      "sha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "role": "contract",
+      "actualSha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/repair-task.schema.json",
+      "sha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "role": "contract",
+      "actualSha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "role": "contract",
+      "actualSha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/verification-result.schema.json",
+      "sha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "role": "contract",
+      "actualSha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-provider-config.schema.json",
+      "sha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "role": "contract",
+      "actualSha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-scene-change-set.schema.json",
+      "sha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "role": "contract",
+      "actualSha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-tool-request.schema.json",
+      "sha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "role": "contract",
+      "actualSha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-tool-result.schema.json",
+      "sha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "role": "contract",
+      "actualSha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/acoustic-frame.json",
+      "sha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "role": "contract",
+      "actualSha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/material.json",
+      "sha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "role": "contract",
+      "actualSha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/scene.json",
+      "sha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "role": "contract",
+      "actualSha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "matches": true
+    },
+    {
+      "path": "schemas/experiment.schema.json",
+      "sha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "role": "contract",
+      "actualSha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "matches": true
+    },
+    {
+      "path": "schemas/material.schema.json",
+      "sha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "role": "contract",
+      "actualSha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "matches": true
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "sha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "role": "contract",
+      "actualSha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "role": "contract",
+      "actualSha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+      "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "role": "contract",
+      "actualSha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/audio-event.json",
+      "sha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "role": "contract",
+      "actualSha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/comparison.json",
+      "sha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "role": "contract",
+      "actualSha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/context.json",
+      "sha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "role": "contract",
+      "actualSha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/document.json",
+      "sha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "role": "contract",
+      "actualSha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/proposal.json",
+      "sha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "role": "contract",
+      "actualSha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/runtime-state.json",
+      "sha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "role": "contract",
+      "actualSha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "role": "contract",
+      "actualSha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "role": "contract",
+      "actualSha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-event.schema.json",
+      "sha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "role": "contract",
+      "actualSha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-page.schema.json",
+      "sha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "role": "contract",
+      "actualSha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-source-manifest.schema.json",
+      "sha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "role": "contract",
+      "actualSha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "role": "contract",
+      "actualSha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "matches": true
+    },
+    {
+      "path": "scripts/validation/domain-checks.mjs",
+      "sha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "role": "independent-domain-validator",
+      "actualSha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "matches": true
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "role": "independent-domain-validator",
+      "actualSha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "matches": true
+    },
+    {
+      "path": "tests/acoustics/analytical.test.mjs",
+      "sha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/artifacts.test.mjs",
+      "sha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/cli.test.mjs",
+      "sha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "role": "regression-or-acceptance",
+      "actualSha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/context-pack.test.mjs",
+      "sha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/contract.test.mjs",
+      "sha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "role": "regression-or-acceptance",
+      "actualSha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/failure-policy.test.mjs",
+      "sha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "role": "regression-or-acceptance",
+      "actualSha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/fixtures/child-process.mjs",
+      "sha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "role": "fixed-reference",
+      "actualSha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/harness.test.mjs",
+      "sha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "role": "regression-or-acceptance",
+      "actualSha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/process-runner.test.mjs",
+      "sha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "role": "regression-or-acceptance",
+      "actualSha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "matches": true
+    },
+    {
+      "path": "tests/contracts/fixture-contract.ts",
+      "sha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "role": "regression-or-acceptance",
+      "actualSha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "matches": true
+    },
+    {
+      "path": "tests/design/design-standards.test.mjs",
+      "sha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "matches": true
+    },
+    {
+      "path": "tests/fixtures/acoustic-frame-nonempty.json",
+      "sha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "role": "fixed-reference",
+      "actualSha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/agent-schema-loader.test.mjs",
+      "sha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "role": "regression-or-acceptance",
+      "actualSha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/research-index.test.mjs",
+      "sha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "role": "regression-or-acceptance",
+      "actualSha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/schemas.test.mjs",
+      "sha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "role": "regression-or-acceptance",
+      "actualSha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/validation-output.test.mjs",
+      "sha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "matches": true
+    },
+    {
+      "path": "tests/sound-behaviors/contracts.test.mjs",
+      "sha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "role": "regression-or-acceptance",
+      "actualSha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "matches": true
+    },
+    {
+      "path": "tests/wiki/agent-projection.test.mjs",
+      "sha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "role": "regression-or-acceptance",
+      "actualSha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "matches": true
+    },
+    {
+      "path": "tests/wiki/wiki.test.mjs",
+      "sha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "role": "regression-or-acceptance",
+      "actualSha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "matches": true
+    }
+  ],
+  "protectedAfter": [
+    {
+      "path": "benchmarks/analytic/run.mjs",
+      "sha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "matches": true
+    },
+    {
+      "path": "benchmarks/fixtures/analytical.json",
+      "sha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "role": "fixed-reference",
+      "actualSha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/acceptance.mjs",
+      "sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "role": "regression-or-acceptance",
+      "actualSha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/milestone.json",
+      "sha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/mock-plan.json",
+      "sha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "role": "regression-or-acceptance",
+      "actualSha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/p0-01-scene-contract.json",
+      "sha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "sha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "role": "regression-or-acceptance",
+      "actualSha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "matches": true
+    },
+    {
+      "path": "examples/agents/smoke-task.json",
+      "sha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "role": "regression-or-acceptance",
+      "actualSha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "matches": true
+    },
+    {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "sha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "role": "regression-or-acceptance",
+      "actualSha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "matches": true
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+      "sha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "matches": true
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "sha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "role": "contract",
+      "actualSha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/handoff.schema.json",
+      "sha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "role": "contract",
+      "actualSha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/implementation-result.schema.json",
+      "sha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "role": "contract",
+      "actualSha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/repair-task.schema.json",
+      "sha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "role": "contract",
+      "actualSha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "role": "contract",
+      "actualSha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "matches": true
+    },
+    {
+      "path": "schemas/agents/verification-result.schema.json",
+      "sha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "role": "contract",
+      "actualSha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-provider-config.schema.json",
+      "sha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "role": "contract",
+      "actualSha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-scene-change-set.schema.json",
+      "sha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "role": "contract",
+      "actualSha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-tool-request.schema.json",
+      "sha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "role": "contract",
+      "actualSha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "matches": true
+    },
+    {
+      "path": "schemas/ai-tool-result.schema.json",
+      "sha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "role": "contract",
+      "actualSha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/acoustic-frame.json",
+      "sha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "role": "contract",
+      "actualSha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/material.json",
+      "sha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "role": "contract",
+      "actualSha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "matches": true
+    },
+    {
+      "path": "schemas/examples/scene.json",
+      "sha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "role": "contract",
+      "actualSha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "matches": true
+    },
+    {
+      "path": "schemas/experiment.schema.json",
+      "sha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "role": "contract",
+      "actualSha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "matches": true
+    },
+    {
+      "path": "schemas/material.schema.json",
+      "sha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "role": "contract",
+      "actualSha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "matches": true
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "sha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "role": "contract",
+      "actualSha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "role": "contract",
+      "actualSha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+      "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "role": "contract",
+      "actualSha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/audio-event.json",
+      "sha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "role": "contract",
+      "actualSha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/comparison.json",
+      "sha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "role": "contract",
+      "actualSha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/context.json",
+      "sha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "role": "contract",
+      "actualSha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/document.json",
+      "sha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "role": "contract",
+      "actualSha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/proposal.json",
+      "sha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "role": "contract",
+      "actualSha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/runtime-state.json",
+      "sha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "role": "contract",
+      "actualSha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "role": "contract",
+      "actualSha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "matches": true
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "role": "contract",
+      "actualSha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-event.schema.json",
+      "sha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "role": "contract",
+      "actualSha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-page.schema.json",
+      "sha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "role": "contract",
+      "actualSha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-source-manifest.schema.json",
+      "sha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "role": "contract",
+      "actualSha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "matches": true
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "role": "contract",
+      "actualSha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "matches": true
+    },
+    {
+      "path": "scripts/validation/domain-checks.mjs",
+      "sha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "role": "independent-domain-validator",
+      "actualSha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "matches": true
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "role": "independent-domain-validator",
+      "actualSha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "matches": true
+    },
+    {
+      "path": "tests/acoustics/analytical.test.mjs",
+      "sha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/artifacts.test.mjs",
+      "sha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "role": "regression-or-acceptance",
+      "actualSha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/cli.test.mjs",
+      "sha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "role": "regression-or-acceptance",
+      "actualSha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/context-pack.test.mjs",
+      "sha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "role": "regression-or-acceptance",
+      "actualSha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/contract.test.mjs",
+      "sha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "role": "regression-or-acceptance",
+      "actualSha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/failure-policy.test.mjs",
+      "sha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "role": "regression-or-acceptance",
+      "actualSha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/fixtures/child-process.mjs",
+      "sha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "role": "fixed-reference",
+      "actualSha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/harness.test.mjs",
+      "sha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "role": "regression-or-acceptance",
+      "actualSha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "matches": true
+    },
+    {
+      "path": "tests/agents/process-runner.test.mjs",
+      "sha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "role": "regression-or-acceptance",
+      "actualSha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "matches": true
+    },
+    {
+      "path": "tests/contracts/fixture-contract.ts",
+      "sha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "role": "regression-or-acceptance",
+      "actualSha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "matches": true
+    },
+    {
+      "path": "tests/design/design-standards.test.mjs",
+      "sha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "matches": true
+    },
+    {
+      "path": "tests/fixtures/acoustic-frame-nonempty.json",
+      "sha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "role": "fixed-reference",
+      "actualSha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/agent-schema-loader.test.mjs",
+      "sha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "role": "regression-or-acceptance",
+      "actualSha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/research-index.test.mjs",
+      "sha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "role": "regression-or-acceptance",
+      "actualSha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/schemas.test.mjs",
+      "sha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "role": "regression-or-acceptance",
+      "actualSha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "matches": true
+    },
+    {
+      "path": "tests/integration/validation-output.test.mjs",
+      "sha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "role": "regression-or-acceptance",
+      "actualSha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "matches": true
+    },
+    {
+      "path": "tests/sound-behaviors/contracts.test.mjs",
+      "sha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "role": "regression-or-acceptance",
+      "actualSha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "matches": true
+    },
+    {
+      "path": "tests/wiki/agent-projection.test.mjs",
+      "sha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "role": "regression-or-acceptance",
+      "actualSha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "matches": true
+    },
+    {
+      "path": "tests/wiki/wiki.test.mjs",
+      "sha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "role": "regression-or-acceptance",
+      "actualSha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "matches": true
+    }
+  ],
+  "protectedAcceptanceMatches": true,
+  "independentReview": "Separate independent-review proof is produced by the isolated reviewer; this run itself is the implementation agent's distinct test process and does not claim independent model review",
+  "notRun": [
+    "browser",
+    "API/model calls",
+    "long-duration performance",
+    "hearing/device validation",
+    "full product acceptance"
+  ]
+}

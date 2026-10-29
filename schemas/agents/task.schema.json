@@ -1,0 +1,336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/agents/task.schema.json",
+  "title": "Pinned development task execution contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "wiki_task_id",
+    "goal_id",
+    "milestone_id",
+    "objective",
+    "allowed_files",
+    "acceptance"
+  ],
+  "$defs": {
+    "safePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "wiki_task_id": {
+      "type": "string",
+      "pattern": "^RLAB-TASK-[A-Za-z0-9_-]+$"
+    },
+    "goal_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "milestone_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "preferred_executor": {
+      "const": "MUSE",
+      "default": "MUSE"
+    },
+    "fallback_executor": {
+      "const": "CODEX",
+      "default": "CODEX"
+    },
+    "allowed_files": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": [],
+      "minItems": 1
+    },
+    "relevant_files": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": []
+    },
+    "protected_files": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": []
+    },
+    "remaining_work": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "completed_acceptance_criteria": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+      },
+      "default": [],
+      "uniqueItems": true
+    },
+    "muse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "reasoning_effort": {
+          "enum": ["none", "minimal", "low", "medium", "high", "xhigh", "max", "ultra"]
+        }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "required": ["id", "script"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "script": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*\\.(?:mjs|cjs|js)$"
+          },
+          "args": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "type": "string",
+              "maxLength": 8192
+            },
+            "default": []
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "default": {},
+      "properties": {
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 8
+        },
+        "max_repairs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "default": 3
+        },
+        "max_rate_retries": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "default": 2
+        },
+        "backoff_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 300000,
+          "default": 1000
+        },
+        "max_backoff_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 300000,
+          "default": 30000
+        },
+        "max_elapsed_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400000,
+          "default": 300000
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600000,
+          "default": 60000
+        },
+        "max_output_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 8388608,
+          "default": 1048576
+        },
+        "development": {
+          "type": "object",
+          "additionalProperties": false,
+          "default": {},
+          "properties": {
+            "max_paid_usd": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            },
+            "max_model_steps": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 30
+            },
+            "per_attempt_reservation_usd": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            }
+          }
+        },
+        "product_runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "default": {},
+          "properties": {
+            "max_paid_usd": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "out_of_scope": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "allowed_operations": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "forbidden_operations": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "expected_deliverables": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "architecture_refs": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": []
+    },
+    "skill_refs": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": []
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "model_profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    }
+  }
+}

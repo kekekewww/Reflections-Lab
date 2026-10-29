@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: default SceneSpec passes the production validator with linked sources and independent listener
+ok 1 - default SceneSpec passes the production validator with linked sources and independent listener
+  ---
+  duration_ms: 4.5852
+  type: 'test'
+  ...
+# Subtest: default material bands conserve A/R/T and retain explicit Synthetic provenance
+ok 2 - default material bands conserve A/R/T and retain explicit Synthetic provenance
+  ---
+  duration_ms: 0.2876
+  type: 'test'
+  ...
+# Subtest: oscillator defaults create a real behavior runtime without fixture or missing assets
+ok 3 - oscillator defaults create a real behavior runtime without fixture or missing assets
+  ---
+  duration_ms: 10.689
+  type: 'test'
+  ...
+# Subtest: behavior context uses actual body generations and trusted registry without aliases
+ok 4 - behavior context uses actual body generations and trusted registry without aliases
+  ---
+  duration_ms: 0.7497
+  type: 'test'
+  ...
+# Subtest: physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+ok 5 - physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+  ---
+  duration_ms: 0.42
+  type: 'test'
+  ...
+# Subtest: contact begins and fast motion never fabricate an impact or throw
+ok 6 - contact begins and fast motion never fabricate an impact or throw
+  ---
+  duration_ms: 0.9771
+  type: 'test'
+  ...
+# Subtest: accepted discrete physics inputs preserve provenance, contact location and impulse units
+ok 7 - accepted discrete physics inputs preserve provenance, contact location and impulse units
+  ---
+  duration_ms: 0.9142
+  type: 'test'
+  ...
+# Subtest: unavailable contact data stay unknown and rejected commands are never marked accepted
+ok 8 - unavailable contact data stay unknown and rejected commands are never marked accepted
+  ---
+  duration_ms: 0.9759
+  type: 'test'
+  ...
+# Subtest: default impact emits at the contact and does not stop its independent continuous source
+ok 9 - default impact emits at the contact and does not stop its independent continuous source
+  ---
+  duration_ms: 5.5333
+  type: 'test'
+  ...
+# Subtest: Scene source playing and dBFS gain control their default continuous binding
+ok 10 - Scene source playing and dBFS gain control their default continuous binding
+  ---
+  duration_ms: 2.596
+  type: 'test'
+  ...
+# Subtest: real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+ok 11 - real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+  ---
+  duration_ms: 161.7573
+  type: 'test'
+  ...
+# Subtest: producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+ok 12 - producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+  ---
+  duration_ms: 1.4961
+  type: 'test'
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+ok 13 - producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+  ---
+  duration_ms: 1.6273
+  type: 'test'
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=null)
+ok 14 - producer support contact owns continuous metrics despite stronger impact (support J=null)
+  ---
+  duration_ms: 0.2972
+  type: 'test'
+  ...
+# Subtest: another participant's pose contact cannot replace the object's own producer contact
+ok 15 - another participant's pose contact cannot replace the object's own producer contact
+  ---
+  duration_ms: 0.3368
+  type: 'test'
+  ...
+# Subtest: event-only contact fallback keeps its deterministic impulse and pair ordering
+ok 16 - event-only contact fallback keeps its deterministic impulse and pair ordering
+  ---
+  duration_ms: 0.7722
+  type: 'test'
+  ...
+# Subtest: rolling and impact intents keep distinct emitter, material and parent-event provenance
+ok 17 - rolling and impact intents keep distinct emitter, material and parent-event provenance
+  ---
+  duration_ms: 9.5416
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2205.6753

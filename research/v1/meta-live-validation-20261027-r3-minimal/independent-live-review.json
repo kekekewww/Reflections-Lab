@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PASS",
+  "checkedAt": "2026-10-27T02:20:53.688Z",
+  "reviewer": "sound_live_contract_review",
+  "independentProposalReviewer": "schema_union_audit",
+  "scope": "SAVED_META_SOUND_LIVE_PROPOSAL_HOST_APPLY_AND_LOCAL_COMPUTED_ARTIFACTS",
+  "actualModelOperations": [
+    "RemoveBinding",
+    "AssignBinding"
+  ],
+  "actualResponseId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+  "actualModelId": "muse-spark-1.3",
+  "toolCallId": "call_122d87ff-1f07-4bd5-8109-a3c94caef085",
+  "usage": {
+    "promptTokens": 4968,
+    "completionTokens": 262,
+    "cachedInputTokens": 0,
+    "reasoningTokens": 83
+  },
+  "host": {
+    "sceneRevision": 0,
+    "behaviorRevisionBefore": 0,
+    "behaviorRevisionAfter": 1
+  },
+  "recording": {
+    "runId": "run.tool.e22ff739e12d99a4350aef880ec1a872d53aed65",
+    "startTick": 0,
+    "endTick": 180,
+    "frameCount": 181,
+    "fixedDtS": 0.016666666666666666,
+    "sourcePhaseEvidence": {
+      "evidenceClass": "logicalIntent",
+      "reason": "LOGICAL_INTENT_ONLY"
+    },
+    "artifactSha256": "3fe18d5e0b730bb9d156bf4fbdd797c7c90026fb7e5cc6c4a3af0f47b3e230b8",
+    "recordingWrapperSha256": "6aea13d33962f040d4445e4c6557ee275b82f53b2d8aacc1f678b03cb34ab946",
+    "pitch2ImpactTicks": [
+      37,
+      62
+    ],
+    "verifiedPhysicalParentEvents": true,
+    "manifestEventAndPathHashesVerified": true,
+    "captureAndAnalysisArtifactLinksVerified": true
+  },
+  "analysis": {
+    "directArrivalTimeS": 0.01730193285324898,
+    "directPathSamples": 211,
+    "rt60S": null,
+    "rt60Availability": "unsupported"
+  },
+  "budget": {
+    "verifiedFromSavedSummaryOnly": true,
+    "priorTwoAttemptsDeepEqualPriorSavedSummaries": true,
+    "totalPaidRequests": 3,
+    "paidRequestsThisExecution": 1,
+    "reservedUsd": 0.75,
+    "remainingRequestSlots": 0,
+    "knownSuccessfulRequestEstimatedUsd": 0.0073235,
+    "estimateMethod": "(4968*1.25 + 262*4.25)/1000000; reasoning83 already included within completion262",
+    "actualBillingCostUsd": null,
+    "remainingCreditUsd": null
+  },
+  "checks": [
+    "real response/model/call IDs linked through transport, product API and Host audit",
+    "original proposal and final document AJV independently passed by schema_union_audit",
+    "unchanged Scene and profiles/assets; only requested binding replaced with pitch2",
+    "continuous 0..180 frames, unique audio/physics events and same-tick physical parents",
+    "canonical recording content hash, wrapper hashes, motion/contact/events/paths manifest hashes",
+    "Capture and Analyze succeeded; computed direct delay independently recomputed",
+    "prior two failed requests retained byte-for-byte as parsed attempt objects in saved summaries",
+    "SceneLive NOT_RUN; MetaRun false; HOST_EXPLICIT_FIXED60 clearly labeled"
+  ],
+  "limitations": [
+    "Only saved sanitized artifacts reviewed; no independent network re-observation.",
+    "Actual live coverage is two Sound operations, not all five operations or Scene live.",
+    "No WASM rerun, heavy tests, browser, server or API executed by this review.",
+    "Full source-phase replay/fingerprint re-evaluation was not rerun; captured evidence remains logicalIntent only.",
+    "No hardware audio, PCM output/read pointer, hearing, physical measurement or fresh resimulation claim.",
+    "V1 computed trace/artifact evidence; no RT60 without valid IR.",
+    "Known-success estimate is not a billed amount or total actual cost; both HTTP400 costs and credit remain unknown."
+  ],
+  "reviewedFiles": {
+    "summary.json": {
+      "bytes": 20172,
+      "sha256": "81c7b8653386799d64c52307a87bde4652a78015b5773db23e9be82d72171ead"
+    },
+    "transport-1.json": {
+      "bytes": 542,
+      "sha256": "66f8839ccf3ac8375680d69bef2bcb50889f75cc028b3010387d384b2f8123a5"
+    },
+    "product-api-1.json": {
+      "bytes": 1444,
+      "sha256": "7e3ca4b721f3323811da51ebf51d60d75fac1c83a7a7fc27d88266e0d95c553c"
+    },
+    "sound-1.json": {
+      "bytes": 769,
+      "sha256": "3bac2ca755796586dc0ddba13d7fed9f1289ad8b80da3942a49e47d5b3d1d186"
+    },
+    "recording.json": {
+      "bytes": 5357264,
+      "sha256": "6352c69d056fe7fb4450c1173b4b2031b7b4e78451074677c5e792e414594077"
+    },
+    "meta-behavior-trace.json": {
+      "bytes": 3653,
+      "sha256": "fea42fc32384bccc5904f468ffccf45155e9406d8e27ac015adc87df54345f54"
+    },
+    "analysis.json": {
+      "bytes": 6406933,
+      "sha256": "a68be34cf3919e125b7051e267aee20c247e883eaee7341b2f06c982d6857b2a"
+    },
+    "initial.json": {
+      "bytes": 10331,
+      "sha256": "532204c24a269208d75450d3e0dfa08f5451efad8ab5ae46ef0b49e537753b1a"
+    }
+  }
+}

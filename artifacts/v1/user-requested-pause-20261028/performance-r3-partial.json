@@ -1,0 +1,184 @@
+{
+  "kind": "USER_REQUESTED_PAUSE_PARTIAL_CHECKPOINT",
+  "status": "PAUSED_INCOMPLETE",
+  "savedAt": "2026-10-28T00:15:01.331917+00:00",
+  "owner": "/root/trace_v3_candidate",
+  "reason": "Root forwarded explicit user request to leave user testing and pause all tasks; no more implementation or tests authorized.",
+  "rootReportedFunctionalCommit": "6aafa976c96c810027153eae214a47c0a2a4dd87",
+  "gitOperationsByThisTask": 0,
+  "lastExecutedBundle": {
+    "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/verification.json",
+    "sha256": "1f88a2bfba4bcc5b1281b19c9df319b3e8f12d100375cdbc797dca15bdb2c51f",
+    "status": "BEHAVIORAL_RED_OBSERVED",
+    "tap": {
+      "tests": 303,
+      "pass": 262,
+      "fail": 41,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "nativeClose": {
+      "code": 1,
+      "signal": null
+    },
+    "retainedChildStopped": true,
+    "pid": 66704,
+    "sourceStableAtRed": true,
+    "plumbingFailures": false
+  },
+  "authorizedBundlesUsed": 1,
+  "greenBundle": "NOT_RUN",
+  "frozenTests": "frozen-tests.json",
+  "candidateStatus": "PARTIAL_UNVALIDATED_R3; parent numeric/resource patch written after RED, fixture/runner lanes interrupted during implementation; do not promote or claim GREEN.",
+  "ownedProcesses": {
+    "liveRetainedChildProcesses": 0,
+    "basis": "Last owned bundle has native close code1 and retained handle stopped; no other child process was launched by this owner. No new process scan performed."
+  },
+  "agents": {
+    "r3_fixture_lifecycle": "INTERRUPTED_STOP_SENT",
+    "r3_runner_cleanup": "INTERRUPTED_STOP_SENT",
+    "r3_reference_tests": "COMPLETED_STOP_SENT",
+    "readonly_design_review": "COMPLETED",
+    "fixture_tests_static": "COMPLETED",
+    "cleanup_test_review": "COMPLETED"
+  },
+  "additionalImplementationAfterPause": false,
+  "additionalTestsAfterPause": 0,
+  "browserRuns": 0,
+  "serverRuns": 0,
+  "cdpCalls": 0,
+  "buildRuns": 0,
+  "networkCalls": 0,
+  "activeWrites": 0,
+  "limits": [
+    "R3 acceptance remains RED:303tests,262pass,41fail; no syntax/import blocker at that run.",
+    "Frozen tests and independent reference preserved; interrupted code is unvalidated partial work.",
+    "R1/R2 and earlier217PASS remain historical scoped results, not R3 completion.",
+    "No semanticclearMarks executor/browser/shortworkload/600 qualification.",
+    "Root owns persistent pause handoff and any later resume."
+  ],
+  "partialFileInventory": [
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/baseline.json",
+      "bytes": 13806,
+      "sha256": "7d1e42e20bcdf32ccf2ffe9e2877c54da26177a0d1965c410110200a39819a7b"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-fixture-v3.html",
+      "bytes": 690,
+      "sha256": "912df1924682b435748f834e6587d5f8ebed258c9d1b43d73cbd1cf84c66c80d"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-fixture-v3.mjs",
+      "bytes": 43374,
+      "sha256": "a973253c81cfe1660386e9d6d077b433b9d447fbda51ca0d3bd31067be76c88e"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-native-v3.mjs",
+      "bytes": 22992,
+      "sha256": "ef7a52e73fe22113309f004ebca82b2b3d5be86cddb7b6c8947eaa3037725d69"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-profile-v3.mjs",
+      "bytes": 37986,
+      "sha256": "cbf028423d62068d7a63f21a0b5da8f2958484b540b4cf4810627b594f76010b"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-proof-v3.mjs",
+      "bytes": 6998,
+      "sha256": "0471c7b7b422633b0ab0ad4ecfce6b338b018c379821c779e21c1c2896f006b5"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-qualifier-v3.mjs",
+      "bytes": 1773,
+      "sha256": "229f16e897ab8d530e701f836ea00d22b9a1de205616fef838a0aaa84471308d"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/browser/performance-v3.vite.config.ts",
+      "bytes": 476,
+      "sha256": "3dd00f9b5a7001bf3bc8d709f2a596cdd7ca359e0bd43ef4f3fb67cfd6e5a1eb"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/fixtures/performance-v3-negative-fixtures.mjs",
+      "bytes": 9754,
+      "sha256": "ab5c4ff703210917cba1c5f2f3829e90e633dfdd5f993b7d824784a4220eec49"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/candidate/tests/integration/performance-profile-v3.test.mjs",
+      "bytes": 8774,
+      "sha256": "7b5604a1474a9ad0a5e55ae3920ddd06b6f0653b085639557d0c0947a8eb99d8"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/frozen-tests.json",
+      "bytes": 2039,
+      "sha256": "adfe96c64710ef3f8a1dada70d906542ec2391d5237dfa86786927b3808e50b0"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/command.json",
+      "bytes": 872,
+      "sha256": "d0740d9fb612a67de7d362be2b3274205db7a5f03ec3b8c26f7b01510f499681"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/source-after.json",
+      "bytes": 25098,
+      "sha256": "1484be80b7bb0eebca5b8d1ee5cd980ba385570c264acb8afff408c5a77fda54"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/source-before.json",
+      "bytes": 25098,
+      "sha256": "1484be80b7bb0eebca5b8d1ee5cd980ba385570c264acb8afff408c5a77fda54"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/stderr.raw.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/stdout.tap",
+      "bytes": 102846,
+      "sha256": "85e911dbc66df3e8f5b22a0fa5fb906ed64b6c936a0a430ec0adc54e5f2be944"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/results/red-2026-10-28T001236676Z-5cf90864/verification.json",
+      "bytes": 6760,
+      "sha256": "1f88a2bfba4bcc5b1281b19c9df319b3e8f12d100375cdbc797dca15bdb2c51f"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/run-bundle.mjs",
+      "bytes": 7954,
+      "sha256": "72118054ffef565d412a0cd4fbf2117b09a00f1783c1806464f835db8f6f2192"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/fixture-adapter.mjs",
+      "bytes": 6290,
+      "sha256": "acffaffb3853c458635811f909a2eed09f1b78a20893faaf7e123ffc8834e19e"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/fixture-lifecycle.test.mjs",
+      "bytes": 10887,
+      "sha256": "bdb4c74969f464dcacbb672f2a6873f66249f3f40a03bb527c7a8a54f47757b7"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/native-resource.test.mjs",
+      "bytes": 4917,
+      "sha256": "35458a30f7a544c4ee8888f3bf48c7ecd8b8c2971fb47ffef83448ee193ea2cc"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/reference-acceptance.test.mjs",
+      "bytes": 9716,
+      "sha256": "9c63a175dcbda41f221843d4cb896049bab78cdaa3990f27998d67abbc841edd"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/runner-adapter.mjs",
+      "bytes": 4540,
+      "sha256": "5516bc25a422c9ad357902075762f2c6f80649fecf9b509e3cd10fd60c2fae67"
+    },
+    {
+      "path": ".cache/v1/performance-v3-candidate-20261028/repairs/r3/tests/runner-cleanup.test.mjs",
+      "bytes": 9262,
+      "sha256": "d184a3e88074f83883eb2a40db2046fce11a34a5aa1d8a84271765b379ec8b44"
+    }
+  ],
+  "activity": "ALL_IO_END"
+}

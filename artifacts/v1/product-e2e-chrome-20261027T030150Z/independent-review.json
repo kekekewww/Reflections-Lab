@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-27T03:09:33.036Z",
+  "auditor": "/root/v1_browser_performance/e2e_review",
+  "mode": "Read-only archive arithmetic and source inspection; no browser/build/model calls",
+  "archive": "artifacts/v1/product-e2e-chrome-20261027T030150Z",
+  "status": "DIAGNOSTIC_PARTIAL_WITH_CONFIRMED_METRIC_DEFECT",
+  "recording": {
+    "runId": "recording.7c751d23-c44f-432c.capture.1",
+    "startTick": 4,
+    "endTick": 84,
+    "frameCount": 81,
+    "reportedSha256": "816cd283828f3cc33610421fbb1cde8b59a2d539ec98fccd70b2c9d01d1a8253",
+    "independentCanonicalSha256": "816cd283828f3cc33610421fbb1cde8b59a2d539ec98fccd70b2c9d01d1a8253",
+    "shaMatches": true,
+    "contiguous": true,
+    "singleEpoch": true,
+    "matchesCaptureStart": true,
+    "explicitOverrunRecoveries": 0
+  },
+  "acceptedEventLinkage": {
+    "OnGrab": {
+      "starts": 1,
+      "acceptedParents": 1,
+      "ticks": [
+        11
+      ]
+    },
+    "OnThrow": {
+      "starts": 1,
+      "acceptedParents": 1,
+      "ticks": [
+        25
+      ]
+    },
+    "OnImpact": {
+      "starts": 1,
+      "acceptedParents": 1,
+      "ticks": [
+        78
+      ]
+    }
+  },
+  "comparison": {
+    "reportedMatched": "acoustic A/B：固定條件相符。",
+    "fingerprintDifferences": [
+      "propagationMaterialHash"
+    ],
+    "restoredArtifactSha256": "816cd283828f3cc33610421fbb1cde8b59a2d539ec98fccd70b2c9d01d1a8253",
+    "restoredShaMatches": true
+  },
+  "metricDefect": {
+    "id": "STOP_DIAGNOSTIC_POPULATION_MISMATCH",
+    "allDirectSamples": {
+      "count": 118,
+      "meanS": 0.01592289576547707
+    },
+    "playingDirectSamples": {
+      "count": 116,
+      "meanS": 0.016036576002133818
+    },
+    "omittedStopDiagnostics": [
+      {
+        "tick": 25,
+        "sourceId": "voice.2cbd393a1064438a",
+        "playbackState": "fading",
+        "stopEvent": true,
+        "directDelayS": 0.007288626970483854
+      },
+      {
+        "tick": 39,
+        "sourceId": "voice.cb7a65207e7ced68",
+        "playbackState": "fading",
+        "stopEvent": true,
+        "directDelayS": 0.011370257108287698
+      }
+    ],
+    "predictedDeltaS": 0.0001136802366567477,
+    "reportedDeltaS": 0.0001136802366567477,
+    "residualS": 0,
+    "confirmedExactPopulationExplanation": true,
+    "method": "Recompute arithmetic means from raw A only; filter by same-frame authoritative runtimeSnapshot.state.instances playbackState=playing. This exactly predicts reported B-A.",
+    "sourceCause": [
+      "src/app/runtime.ts capture includes result.events stop diagnostics",
+      "src/app/recording-processor.ts B sources include only playing runtime instances",
+      "src/experiments/comparison.ts averages all non-stale available direct routes without emission eligibility"
+    ],
+    "requiredRepair": "Align metric eligibility for genuinely emitting sources across A/B; retain diagnostic routes but do not include them as source emission samples. Keep fixed acceptance and source equality gates."
+  },
+  "nativeEvidence": {
+    "device": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "hardwareConcurrency": 32,
+      "widthCssPx": 1440,
+      "heightCssPx": 1000,
+      "devicePixelRatio": 1,
+      "webglVendor": "Google Inc. (NVIDIA)",
+      "webglRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "contexts": [
+      {
+        "state": "running",
+        "currentTimeSeconds": 16.970666666666666,
+        "sampleRateHz": 48000,
+        "baseLatencySeconds": 0.01,
+        "outputLatencySeconds": 0.04
+      }
+    ],
+    "sourceStarts": 5,
+    "impact440Starts": 1,
+    "pannerCount": 24,
+    "allHrtfRolloffZero": true
+  },
+  "run": {
+    "playwrightStats": {
+      "startTime": "2026-10-27T03:01:52.455Z",
+      "duration": 28112.274,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "sourceMatchesBuildAtStart": false,
+    "bundleStableDuringRun": true,
+    "harnessStableDuringRun": true,
+    "buildInputDigest": "77ccfece6abdcdb927a23b46087ecbd30707bace1821d43f6c215eee07f5cdec",
+    "treeAudit": {
+      "checkedAt": "2026-10-27T03:02:21.9752656Z",
+      "remaining": [],
+      "roots": [
+        48212,
+        59544,
+        21180
+      ],
+      "status": "PASS_ZERO_REMAINING"
+    }
+  },
+  "inputHashes": [
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/verification.json",
+      "sha256": "2dfad905318ca5e550e59adba526106887f526d5e6e4f3b1d1419789411e4915"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/results.json",
+      "sha256": "ec68b7d9162ab04faed1a4f63439f696563988427ab4fa69a7665d0c3ceee89c"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/build.json",
+      "sha256": "e9156f936f2fc41bb10d28f94a092cc9aae9a994a15a8134790dfe3f7de446d1"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/recording.json",
+      "sha256": "439b168e791ec02c68e5cd97ebb044a20698c7bf5f4154c2d9f682d676917611"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/evidence.json",
+      "sha256": "43f56f1c6fc0eec1ca75a6cf5338b4a71fd2eeead57c7cb8267d93f337cb9738"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/execution-diagnostics.json",
+      "sha256": "57ac51d85dc805520f357738099502a35a6d0b5d66e32e85db7a6389ebae9ec1"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/project.json",
+      "sha256": "59679a3069a24dcc063701756dbffd7f03b916813699061bb20c04d90af94d81"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T030150Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/console.json",
+      "sha256": "d13ff029cdda2226d13e5b7f0ee82929d8b123d2b9ee99f9f046d2c2159ade09"
+    }
+  ],
+  "sourceAtAudit": [
+    {
+      "path": "src/experiments/comparison.ts",
+      "sha256": "b95907bb30384f3a34ccaa99b822db0262cbcab3cb875cbed72f404cf71cb4de",
+      "frozenBuildSha256": "b95907bb30384f3a34ccaa99b822db0262cbcab3cb875cbed72f404cf71cb4de"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "691c62a6307911dd0a92b87be58710131ec6b06f7bd404a6b8a4d6c9fc7bfc40",
+      "frozenBuildSha256": "72054c664c1a6bc0473e2933b7d5b236d72db2016aaf0782f651e1d71c1897a4"
+    },
+    {
+      "path": "src/app/recording-processor.ts",
+      "sha256": "8af83fd1a4632d4cfe8b226a66dcc17afd74c41ba19ba32d13507a0cfbbab866",
+      "frozenBuildSha256": "8af83fd1a4632d4cfe8b226a66dcc17afd74c41ba19ba32d13507a0cfbbab866"
+    }
+  ],
+  "limitations": [
+    "Only one clean-launch case; not the final three-launch validation.",
+    "Immutable77cc bundle diagnostic; current source did not match build, so wrapper exit1 is intentional.",
+    "Raw candidate B was not saved in this archive; final runs must preserve it for independent propagation/metric verification.",
+    "Native API graph scheduling is not hardware hearing, PCM render or AudioWorklet deadline evidence."
+  ]
+}

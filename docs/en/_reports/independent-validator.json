@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "review_id": "independent-validator",
+  "reviewed_at_utc": "2026-10-27T06:10:54.264Z",
+  "reviewer": {
+    "executor": "Codex",
+    "model_id": null,
+    "role": "independent validator source and fixture reviewer"
+  },
+  "status": "SCOPED_PASS_CAPABILITY_EXPLICIT",
+  "scope": {
+    "validator_and_tests_fully_read": true,
+    "independent_fixture_cases": 16,
+    "case_passes": 16,
+    "case_failures": 0,
+    "actual_corpus_finalization": "NOT RUN by reviewer; coordinator separately finalizes corpus",
+    "browser_build_api_validate_all": "NOT RUN"
+  },
+  "frozen_inputs_before": {
+    "scripts/validation/english-docs.mjs": "0b4f6887eebb4bf78a399bf0e73d704c579fcdd7826aa7fb4cbd0b68a78f1e89",
+    "tests/integration/english-docs.test.mjs": "aa200b80f490939d22039fcb841ea7294d8dd5061a62fa0941569fb8417365c1",
+    "package.json": "e80f1aba2827d1ad07bc6f39fa467447e15f1e542fd690a581e10e0ea1e7d56a",
+    "scripts/validation/run-all.mjs": "212bc2806cfa6e17df98efbe5e0c269a8d7421bdfa3d45773870bb8e5ac594dd",
+    "scripts/validation/docs.mjs": "b3a417008bcc872a8b2cd4e2ab7e55f0363f737b38907db8fd5c4495545556f5",
+    "README.md": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+    "README.en.md": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c"
+  },
+  "frozen_inputs_after": {
+    "scripts/validation/english-docs.mjs": "0b4f6887eebb4bf78a399bf0e73d704c579fcdd7826aa7fb4cbd0b68a78f1e89",
+    "tests/integration/english-docs.test.mjs": "aa200b80f490939d22039fcb841ea7294d8dd5061a62fa0941569fb8417365c1",
+    "package.json": "e80f1aba2827d1ad07bc6f39fa467447e15f1e542fd690a581e10e0ea1e7d56a",
+    "scripts/validation/run-all.mjs": "212bc2806cfa6e17df98efbe5e0c269a8d7421bdfa3d45773870bb8e5ac594dd",
+    "scripts/validation/docs.mjs": "b3a417008bcc872a8b2cd4e2ab7e55f0363f737b38907db8fd5c4495545556f5",
+    "README.md": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+    "README.en.md": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c"
+  },
+  "input_hashes_stable": true,
+  "node": "v22.17.0",
+  "platform": "win32",
+  "baseline": {
+    "command": "node --test tests/integration/english-docs.test.mjs",
+    "exit_code": 0,
+    "stdout": "TAP version 13\n# Subtest: documentation inventory excludes generated mirrors and shared non-Markdown data\nok 1 - documentation inventory excludes generated mirrors and shared non-Markdown data\n  ---\n  duration_ms: 4.7953\n  type: 'test'\n  ...\n# Subtest: missing and stale translations cannot pass coverage\nok 2 - missing and stale translations cannot pass coverage\n  ---\n  duration_ms: 7.3022\n  type: 'test'\n  ...\n# Subtest: lost quota comparison operators and modified code are rejected\nok 3 - lost quota comparison operators and modified code are rejected\n  ---\n  duration_ms: 3.9106\n  type: 'test'\n  ...\n# Subtest: link rewriting uses English Markdown, shares raw results, and leaves code unchanged\nok 4 - link rewriting uses English Markdown, shares raw results, and leaves code unchanged\n  ---\n  duration_ms: 0.7773\n  type: 'test'\n  ...\n# Subtest: recorded English hashes detect prose tampering and check mode does not write files\nok 5 - recorded English hashes detect prose tampering and check mode does not write files\n  ---\n  duration_ms: 12.0731\n  type: 'test'\n  ...\n# Subtest: an English README companion must contain the complete original sections\nok 6 - an English README companion must contain the complete original sections\n  ---\n  duration_ms: 4.3281\n  type: 'test'\n  ...\n# Subtest: repeated finalization is idempotent for translated pages and shared-data links\nok 7 - repeated finalization is idempotent for translated pages and shared-data links\n  ---\n  duration_ms: 8.6156\n  type: 'test'\n  ...\n# Subtest: inline technical examples are preserved while backtick-labelled navigation is rewritten\nok 8 - inline technical examples are preserved while backtick-labelled navigation is rewritten\n  ---\n  duration_ms: 0.2316\n  type: 'test'\n  ...\n# Subtest: untranslated Chinese prose cannot pass by retaining a valid provenance marker\nok 9 - untranslated Chinese prose cannot pass by retaining a valid provenance marker\n  ---\n  duration_ms: 2.8389\n  type: 'test'\n  ...\n# Subtest: Windows separators and percent-encoded separators cannot validate an outside-workspace link\nok 10 - Windows separators and percent-encoded separators cannot validate an outside-workspace link\n  ---\n  duration_ms: 2.8549\n  type: 'test'\n  ...\n# Subtest: an .en.md filename cannot exempt untranslated prose from coverage\nok 11 - an .en.md filename cannot exempt untranslated prose from coverage\n  ---\n  duration_ms: 3.676\n  type: 'test'\n  ...\n# Subtest: encoded filenames keep spaces and hash characters inside the path\nok 12 - encoded filenames keep spaces and hash characters inside the path\n  ---\n  duration_ms: 0.1068\n  type: 'test'\n  ...\n# Subtest: escaped or mismatched backtick runs do not hide actual navigation\nok 13 - escaped or mismatched backtick runs do not hide actual navigation\n  ---\n  duration_ms: 0.1772\n  type: 'test'\n  ...\n# Subtest: unsupported nested image-link destinations cannot silently pass coverage\nok 14 - unsupported nested image-link destinations cannot silently pass coverage\n  ---\n  duration_ms: 3.1247\n  type: 'test'\n  ...\n1..14\n# tests 14\n# suites 0\n# pass 14\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 119.9472\n",
+    "stderr": "",
+    "error": null
+  },
+  "cases": [
+    {
+      "name": "inventory-shares-machine-files",
+      "scenario": "Generated English Markdown and JSON do not create additional canonical sources.",
+      "status": "PASS",
+      "observation": {
+        "sources": 1
+      }
+    },
+    {
+      "name": "missing-source-and-target-fail",
+      "scenario": "Delete only the isolated target, then validate.",
+      "status": "PASS",
+      "observation": {
+        "originals": 1,
+        "translations_required": 1,
+        "translated": 0,
+        "original_english": 0,
+        "existing_english_companions": 0,
+        "missing": 1,
+        "stale": 0,
+        "errors": 1,
+        "warnings": 0
+      }
+    },
+    {
+      "name": "stale-marker-fails",
+      "scenario": "Valid marker format with an outdated source SHA cannot pass.",
+      "status": "PASS",
+      "observation": [
+        "SOURCE_CHANGED"
+      ]
+    },
+    {
+      "name": "untranslated-body-fails",
+      "scenario": "Copy the complete Chinese canonical body under an otherwise valid marker.",
+      "status": "PASS",
+      "observation": [
+        "HAN_PROSE_REQUIRES_REVIEW",
+        "HAN_PROSE_REQUIRES_REVIEW"
+      ]
+    },
+    {
+      "name": "english-suffix-does-not-bypass",
+      "scenario": "A canonical *.en.md file containing a Chinese heading is rejected.",
+      "status": "PASS",
+      "observation": [
+        "HAN_PROSE_REQUIRES_REVIEW"
+      ]
+    },
+    {
+      "name": "readme-valid-marker-truncation-fails",
+      "scenario": "A README companion with a valid source marker but missing a section and code must fail.",
+      "status": "PASS",
+      "observation": [
+        "VERBATIM_CODE_CHANGED",
+        "SECTION_STRUCTURE_CHANGED",
+        "TECHNICAL_IDS_CHANGED",
+        "TECHNICAL_RELATION_CHANGED"
+      ]
+    },
+    {
+      "name": "readme-source-drift-fails",
+      "scenario": "Finalize an isolated README pair, then append canonical prose without refreshing the companion.",
+      "status": "PASS",
+      "observation": [
+        "SOURCE_CHANGED",
+        "MANIFEST_SOURCE_CHANGED"
+      ]
+    },
+    {
+      "name": "readme-english-drift-fails",
+      "scenario": "Finalize a README pair, then change English prose without changing heading levels.",
+      "status": "PASS",
+      "observation": [
+        "TRANSLATION_HASH_CHANGED"
+      ]
+    },
+    {
+      "name": "manifest-missing-fails",
+      "scenario": "CLI check requires a finalized manifest.",
+      "status": "PASS",
+      "observation": [
+        {
+          "code": "MANIFEST_NOT_FINALIZED"
+        }
+      ]
+    },
+    {
+      "name": "manifest-duplicate-fails",
+      "scenario": "A duplicate recorded canonical source is rejected.",
+      "status": "PASS",
+      "observation": [
+        {
+          "code": "DUPLICATE_MANIFEST_SOURCE"
+        }
+      ]
+    },
+    {
+      "name": "windows-path-boundary-fails",
+      "scenario": "A real sibling file exists, but raw and encoded backslash traversal cannot validate it.",
+      "status": "PASS",
+      "observation": [
+        {
+          "href": "..\\..\\..\\outside.txt",
+          "errors": [
+            "LINK_OUTSIDE_WORKSPACE"
+          ]
+        },
+        {
+          "href": "..%5c..%5c..%5coutside.txt",
+          "errors": [
+            "LINK_OUTSIDE_WORKSPACE"
+          ]
+        },
+        {
+          "href": "%2Foutside.txt",
+          "errors": [
+            "LINK_OUTSIDE_WORKSPACE"
+          ]
+        },
+        {
+          "href": "C%3A%5Coutside.txt",
+          "errors": [
+            "LINK_OUTSIDE_WORKSPACE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rewrite-preserves-code-and-shared-data",
+      "scenario": "Markdown navigation changes to English; fenced and inline examples remain verbatim; JSON stays shared.",
+      "status": "PASS",
+      "observation": "[B](b.md#source) [raw](../../results/x.json) and `[sample](../results/x.json)`\n\n```md\n[B](b.md)\n```\n"
+    },
+    {
+      "name": "encoded-filename-preserved",
+      "scenario": "Space and hash remain encoded inside a path during rewriting.",
+      "status": "PASS",
+      "observation": "[raw](../../results/a%20b%23c.json)"
+    },
+    {
+      "name": "escaped-mismatched-inline-link-fails",
+      "scenario": "Escaped backticks and unequal backtick runs cannot hide a real missing link.",
+      "status": "PASS",
+      "observation": [
+        [
+          "MISSING_LOCAL_LINK"
+        ],
+        [
+          "MISSING_LOCAL_LINK"
+        ]
+      ]
+    },
+    {
+      "name": "finalize-idempotent-and-cli-check-readonly",
+      "scenario": "Finalize twice in an isolated two-page fixture, preserve canonical/data hashes, then compare every fixture byte before and after the CLI check.",
+      "status": "PASS",
+      "observation": {
+        "fixture_file_count": 8,
+        "cli_exit": 0,
+        "stdout": "{\"status\":\"PASS\",\"originals\":2,\"translations_required\":2,\"translated\":2,\"original_english\":0,\"existing_english_companions\":0,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":0}",
+        "all_file_hashes_stable": true
+      }
+    },
+    {
+      "name": "nested-image-local-destination-explicitly-rejected",
+      "scenario": "nested-image-local-destination-explicitly-rejected",
+      "status": "PASS",
+      "observation": {
+        "name": "nested-image-link-destination",
+        "actual_status": "INCOMPLETE",
+        "errors": [
+          {
+            "code": "UNSUPPORTED_LOCAL_LINK_SYNTAX",
+            "href": "missing.md"
+          }
+        ],
+        "warnings": [],
+        "confirmed_false_pass": false,
+        "resolution": "CAPABILITY_EXPLICIT"
+      }
+    }
+  ],
+  "probes": [
+    {
+      "name": "nested-image-link-destination",
+      "actual_status": "INCOMPLETE",
+      "errors": [
+        {
+          "code": "UNSUPPORTED_LOCAL_LINK_SYNTAX",
+          "href": "missing.md"
+        }
+      ],
+      "warnings": [],
+      "confirmed_false_pass": false,
+      "resolution": "CAPABILITY_EXPLICIT"
+    }
+  ],
+  "readme_audit": {
+    "source": "README.md",
+    "target": "README.en.md",
+    "source_sha256": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+    "target_sha256": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c",
+    "marker_path": "README.md",
+    "marker_source_sha256": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+    "marker_current": true,
+    "fully_read_source_and_english": true,
+    "semantic_result": "PASS",
+    "source_fences": [
+      "f2962afe42379086276158c305e15ed004512f6d4a907158381d364ca624d57b",
+      "c88febf757d3b890cda7846d7403e21912bcdcf6e4eafdd53563332d0f709fce"
+    ],
+    "target_fences": [
+      "f2962afe42379086276158c305e15ed004512f6d4a907158381d364ca624d57b",
+      "c88febf757d3b890cda7846d7403e21912bcdcf6e4eafdd53563332d0f709fce"
+    ],
+    "notes": [
+      "All paragraphs, both command blocks, versions/dates, 15/8 skill counts, SI/SPL and evidence boundaries, default budget, rights and NOT RUN qualifications were fully compared."
+    ],
+    "recheck_note": "Fully re-read finalized README companion. Changes from initial reviewed bytes are generated notice/anchors and English Markdown navigation; command/code and semantic body remain faithful."
+  },
+  "duration_ms": 410.1168,
+  "fixture_output_root": ".cache/docs-en/independent-validator/recheck-XH9d1B",
+  "limits": [
+    "This reviews the frozen validator plus a full README translation pair; it does not verify all translated sentences.",
+    "Remote URL availability and anchor identity are not checked.",
+    "No production sources or translations were mutated. Isolated fixtures and these reports are the only reviewer outputs.",
+    "The English corpus gate is still standalone at this snapshot; coordinator will integrate a read-only npm gate after interim manifest freeze."
+  ],
+  "findings": [
+    {
+      "id": "EN-VALIDATOR-001",
+      "priority": "P2",
+      "status": "RESOLVED",
+      "title": "Nested image-link outer destination is omitted by link extraction and rewriting",
+      "locations": [
+        {
+          "path": "scripts/validation/english-docs.mjs",
+          "line": 276
+        },
+        {
+          "path": "scripts/validation/english-docs.mjs",
+          "line": 251
+        }
+      ],
+      "expected": "MISSING_LOCAL_LINK for the outer missing.md destination",
+      "observed": "PASS with zero errors and warnings; existing inner image checked only",
+      "current_corpus_local_occurrence": false,
+      "current_remote_syntax_example": {
+        "path": "third_party/emil-skills.README.md",
+        "line": 8
+      },
+      "reproduction": {
+        "name": "nested-image-link-destination",
+        "source": "# 原文\n\n[![badge](../assets/logo.png)](missing.md)\n",
+        "english": "# Original\n\n[![badge](../../assets/logo.png)](missing.md)\n",
+        "expected": "MISSING_LOCAL_LINK for outer destination missing.md",
+        "actual_status": "PASS",
+        "errors": [],
+        "warnings": [],
+        "confirmed_false_pass": true
+      },
+      "resolution": "CAPABILITY_EXPLICIT",
+      "resolution_note": "Unsupported local nested-image outer destinations are explicitly rejected with UNSUPPORTED_LOCAL_LINK_SYNTAX. The validator does not pretend to rewrite all CommonMark forms.",
+      "recheck": {
+        "name": "nested-image-link-destination",
+        "actual_status": "INCOMPLETE",
+        "errors": [
+          {
+            "code": "UNSUPPORTED_LOCAL_LINK_SYNTAX",
+            "href": "missing.md"
+          }
+        ],
+        "warnings": [],
+        "confirmed_false_pass": false,
+        "resolution": "CAPABILITY_EXPLICIT"
+      }
+    }
+  ],
+  "resolved_and_independently_rechecked": [
+    "Unreviewed Chinese prose is a hard failure.",
+    "An .en.md filename cannot bypass Han-prose coverage checks.",
+    "Raw/decoded Windows separators and decoded absolute paths are rejected.",
+    "Percent-encoded spaces/hash remain inside filenames.",
+    "Escaped and unequal backtick runs do not suppress real navigation.",
+    "README companion uses complete provenance, section, fence, ID and relation checks.",
+    "Nested-image outer local destinations no longer silently pass; unsupported syntax is a hard failure."
+  ],
+  "integration": {
+    "status": "STANDALONE_GATE_AT_REVIEW_SNAPSHOT",
+    "validate_all_executed": false,
+    "production_check_mutations": false,
+    "coordinator_plan": "Hook a read-only npm English gate after the interim manifest freeze.",
+    "cli_readonly_evidence": {
+      "name": "finalize-idempotent-and-cli-check-readonly",
+      "scenario": "Finalize twice in an isolated two-page fixture, preserve canonical/data hashes, then compare every fixture byte before and after the CLI check.",
+      "status": "PASS",
+      "observation": {
+        "fixture_file_count": 8,
+        "cli_exit": 0,
+        "stdout": "{\"status\":\"PASS\",\"originals\":2,\"translations_required\":2,\"translated\":2,\"original_english\":0,\"existing_english_companions\":0,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":0}",
+        "all_file_hashes_stable": true
+      }
+    },
+    "observed_english_package_scripts": {},
+    "observed_runner_english_lines": []
+  },
+  "independent_fixture_command": "PowerShell literal heredoc containing the independent fixture suite piped to node --input-type=module; no source/test file written.",
+  "initial_frozen_review": {
+    "reviewed_at_utc": "2026-10-27T06:06:23.968Z",
+    "status": "SCOPED_PASS_WITH_LINK_PARSER_FINDING",
+    "frozen_inputs_before": {
+      "scripts/validation/english-docs.mjs": "406867532f13e177d471fb5e65ee5b2fc7b91944bcd5e2902571c268d55e47c2",
+      "tests/integration/english-docs.test.mjs": "faa4bf0ff5d32cab2300d35c1feac51b7bdd59f6611fb3c1cc660101e837e0b6",
+      "package.json": "e80f1aba2827d1ad07bc6f39fa467447e15f1e542fd690a581e10e0ea1e7d56a",
+      "scripts/validation/run-all.mjs": "212bc2806cfa6e17df98efbe5e0c269a8d7421bdfa3d45773870bb8e5ac594dd",
+      "scripts/validation/docs.mjs": "b3a417008bcc872a8b2cd4e2ab7e55f0363f737b38907db8fd5c4495545556f5",
+      "README.md": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+      "README.en.md": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c"
+    },
+    "frozen_inputs_after": {
+      "scripts/validation/english-docs.mjs": "406867532f13e177d471fb5e65ee5b2fc7b91944bcd5e2902571c268d55e47c2",
+      "tests/integration/english-docs.test.mjs": "faa4bf0ff5d32cab2300d35c1feac51b7bdd59f6611fb3c1cc660101e837e0b6",
+      "package.json": "e80f1aba2827d1ad07bc6f39fa467447e15f1e542fd690a581e10e0ea1e7d56a",
+      "scripts/validation/run-all.mjs": "212bc2806cfa6e17df98efbe5e0c269a8d7421bdfa3d45773870bb8e5ac594dd",
+      "scripts/validation/docs.mjs": "b3a417008bcc872a8b2cd4e2ab7e55f0363f737b38907db8fd5c4495545556f5",
+      "README.md": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+      "README.en.md": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c"
+    },
+    "baseline": {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: documentation inventory excludes generated mirrors and shared non-Markdown data\nok 1 - documentation inventory excludes generated mirrors and shared non-Markdown data\n  ---\n  duration_ms: 4.7898\n  type: 'test'\n  ...\n# Subtest: missing and stale translations cannot pass coverage\nok 2 - missing and stale translations cannot pass coverage\n  ---\n  duration_ms: 7.1985\n  type: 'test'\n  ...\n# Subtest: lost quota comparison operators and modified code are rejected\nok 3 - lost quota comparison operators and modified code are rejected\n  ---\n  duration_ms: 3.6049\n  type: 'test'\n  ...\n# Subtest: link rewriting uses English Markdown, shares raw results, and leaves code unchanged\nok 4 - link rewriting uses English Markdown, shares raw results, and leaves code unchanged\n  ---\n  duration_ms: 0.7498\n  type: 'test'\n  ...\n# Subtest: recorded English hashes detect prose tampering and check mode does not write files\nok 5 - recorded English hashes detect prose tampering and check mode does not write files\n  ---\n  duration_ms: 11.7828\n  type: 'test'\n  ...\n# Subtest: an English README companion must contain the complete original sections\nok 6 - an English README companion must contain the complete original sections\n  ---\n  duration_ms: 5.3723\n  type: 'test'\n  ...\n# Subtest: repeated finalization is idempotent for translated pages and shared-data links\nok 7 - repeated finalization is idempotent for translated pages and shared-data links\n  ---\n  duration_ms: 8.7458\n  type: 'test'\n  ...\n# Subtest: inline technical examples are preserved while backtick-labelled navigation is rewritten\nok 8 - inline technical examples are preserved while backtick-labelled navigation is rewritten\n  ---\n  duration_ms: 0.2687\n  type: 'test'\n  ...\n# Subtest: untranslated Chinese prose cannot pass by retaining a valid provenance marker\nok 9 - untranslated Chinese prose cannot pass by retaining a valid provenance marker\n  ---\n  duration_ms: 3.3895\n  type: 'test'\n  ...\n# Subtest: Windows separators and percent-encoded separators cannot validate an outside-workspace link\nok 10 - Windows separators and percent-encoded separators cannot validate an outside-workspace link\n  ---\n  duration_ms: 3.3384\n  type: 'test'\n  ...\n# Subtest: an .en.md filename cannot exempt untranslated prose from coverage\nok 11 - an .en.md filename cannot exempt untranslated prose from coverage\n  ---\n  duration_ms: 4.2243\n  type: 'test'\n  ...\n# Subtest: encoded filenames keep spaces and hash characters inside the path\nok 12 - encoded filenames keep spaces and hash characters inside the path\n  ---\n  duration_ms: 0.1118\n  type: 'test'\n  ...\n# Subtest: escaped or mismatched backtick runs do not hide actual navigation\nok 13 - escaped or mismatched backtick runs do not hide actual navigation\n  ---\n  duration_ms: 0.1733\n  type: 'test'\n  ...\n1..13\n# tests 13\n# suites 0\n# pass 13\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 114.2355\n",
+      "stderr": "",
+      "error": null
+    },
+    "cases": [
+      {
+        "name": "inventory-shares-machine-files",
+        "scenario": "Generated English Markdown and JSON do not create additional canonical sources.",
+        "status": "PASS",
+        "observation": {
+          "sources": 1
+        }
+      },
+      {
+        "name": "missing-source-and-target-fail",
+        "scenario": "Delete only the isolated target, then validate.",
+        "status": "PASS",
+        "observation": {
+          "originals": 1,
+          "translations_required": 1,
+          "translated": 0,
+          "original_english": 0,
+          "existing_english_companions": 0,
+          "missing": 1,
+          "stale": 0,
+          "errors": 1,
+          "warnings": 0
+        }
+      },
+      {
+        "name": "stale-marker-fails",
+        "scenario": "Valid marker format with an outdated source SHA cannot pass.",
+        "status": "PASS",
+        "observation": [
+          "SOURCE_CHANGED"
+        ]
+      },
+      {
+        "name": "untranslated-body-fails",
+        "scenario": "Copy the complete Chinese canonical body under an otherwise valid marker.",
+        "status": "PASS",
+        "observation": [
+          "HAN_PROSE_REQUIRES_REVIEW",
+          "HAN_PROSE_REQUIRES_REVIEW"
+        ]
+      },
+      {
+        "name": "english-suffix-does-not-bypass",
+        "scenario": "A canonical *.en.md file containing a Chinese heading is rejected.",
+        "status": "PASS",
+        "observation": [
+          "HAN_PROSE_REQUIRES_REVIEW"
+        ]
+      },
+      {
+        "name": "readme-valid-marker-truncation-fails",
+        "scenario": "A README companion with a valid source marker but missing a section and code must fail.",
+        "status": "PASS",
+        "observation": [
+          "VERBATIM_CODE_CHANGED",
+          "SECTION_STRUCTURE_CHANGED",
+          "TECHNICAL_IDS_CHANGED",
+          "TECHNICAL_RELATION_CHANGED"
+        ]
+      },
+      {
+        "name": "readme-source-drift-fails",
+        "scenario": "Finalize an isolated README pair, then append canonical prose without refreshing the companion.",
+        "status": "PASS",
+        "observation": [
+          "SOURCE_CHANGED",
+          "MANIFEST_SOURCE_CHANGED"
+        ]
+      },
+      {
+        "name": "readme-english-drift-fails",
+        "scenario": "Finalize a README pair, then change English prose without changing heading levels.",
+        "status": "PASS",
+        "observation": [
+          "TRANSLATION_HASH_CHANGED"
+        ]
+      },
+      {
+        "name": "manifest-missing-fails",
+        "scenario": "CLI check requires a finalized manifest.",
+        "status": "PASS",
+        "observation": [
+          {
+            "code": "MANIFEST_NOT_FINALIZED"
+          }
+        ]
+      },
+      {
+        "name": "manifest-duplicate-fails",
+        "scenario": "A duplicate recorded canonical source is rejected.",
+        "status": "PASS",
+        "observation": [
+          {
+            "code": "DUPLICATE_MANIFEST_SOURCE"
+          }
+        ]
+      },
+      {
+        "name": "windows-path-boundary-fails",
+        "scenario": "A real sibling file exists, but raw and encoded backslash traversal cannot validate it.",
+        "status": "PASS",
+        "observation": [
+          {
+            "href": "..\\..\\..\\outside.txt",
+            "errors": [
+              "LINK_OUTSIDE_WORKSPACE"
+            ]
+          },
+          {
+            "href": "..%5c..%5c..%5coutside.txt",
+            "errors": [
+              "LINK_OUTSIDE_WORKSPACE"
+            ]
+          },
+          {
+            "href": "%2Foutside.txt",
+            "errors": [
+              "LINK_OUTSIDE_WORKSPACE"
+            ]
+          },
+          {
+            "href": "C%3A%5Coutside.txt",
+            "errors": [
+              "LINK_OUTSIDE_WORKSPACE"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rewrite-preserves-code-and-shared-data",
+        "scenario": "Markdown navigation changes to English; fenced and inline examples remain verbatim; JSON stays shared.",
+        "status": "PASS",
+        "observation": "[B](b.md#source) [raw](../../results/x.json) and `[sample](../results/x.json)`\n\n```md\n[B](b.md)\n```\n"
+      },
+      {
+        "name": "encoded-filename-preserved",
+        "scenario": "Space and hash remain encoded inside a path during rewriting.",
+        "status": "PASS",
+        "observation": "[raw](../../results/a%20b%23c.json)"
+      },
+      {
+        "name": "escaped-mismatched-inline-link-fails",
+        "scenario": "Escaped backticks and unequal backtick runs cannot hide a real missing link.",
+        "status": "PASS",
+        "observation": [
+          [
+            "MISSING_LOCAL_LINK"
+          ],
+          [
+            "MISSING_LOCAL_LINK"
+          ]
+        ]
+      },
+      {
+        "name": "finalize-idempotent-and-cli-check-readonly",
+        "scenario": "Finalize twice in an isolated two-page fixture, preserve canonical/data hashes, then compare every fixture byte before and after the CLI check.",
+        "status": "PASS",
+        "observation": {
+          "fixture_file_count": 8,
+          "cli_exit": 0,
+          "stdout": "{\"status\":\"PASS\",\"originals\":2,\"translations_required\":2,\"translated\":2,\"original_english\":0,\"existing_english_companions\":0,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":0}",
+          "all_file_hashes_stable": true
+        }
+      }
+    ],
+    "probes": [
+      {
+        "name": "nested-image-link-destination",
+        "source": "# 原文\n\n[![badge](../assets/logo.png)](missing.md)\n",
+        "english": "# Original\n\n[![badge](../../assets/logo.png)](missing.md)\n",
+        "expected": "MISSING_LOCAL_LINK for outer destination missing.md",
+        "actual_status": "PASS",
+        "errors": [],
+        "warnings": [],
+        "confirmed_false_pass": true
+      }
+    ],
+    "readme_audit": {
+      "source": "README.md",
+      "target": "README.en.md",
+      "source_sha256": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+      "target_sha256": "1d65ca7e24e1c91cbb6072ef7145ce44c5b2b330948be358cf58aaa81820561c",
+      "marker_path": "README.md",
+      "marker_source_sha256": "21b52b98793d071ea78f1633d8acaaf1096a8b4eb73eba9c7b4e6064d47f7b03",
+      "marker_current": true,
+      "fully_read_source_and_english": true,
+      "semantic_result": "PASS",
+      "source_fences": [
+        "f2962afe42379086276158c305e15ed004512f6d4a907158381d364ca624d57b",
+        "c88febf757d3b890cda7846d7403e21912bcdcf6e4eafdd53563332d0f709fce"
+      ],
+      "target_fences": [
+        "f2962afe42379086276158c305e15ed004512f6d4a907158381d364ca624d57b",
+        "c88febf757d3b890cda7846d7403e21912bcdcf6e4eafdd53563332d0f709fce"
+      ],
+      "notes": [
+        "All paragraphs, both command blocks, versions/dates, 15/8 skill counts, SI/SPL and evidence boundaries, default budget, rights and NOT RUN qualifications were fully compared."
+      ]
+    },
+    "findings": [
+      {
+        "id": "EN-VALIDATOR-001",
+        "priority": "P2",
+        "status": "OPEN",
+        "title": "Nested image-link outer destination is omitted by link extraction and rewriting",
+        "locations": [
+          {
+            "path": "scripts/validation/english-docs.mjs",
+            "line": 276
+          },
+          {
+            "path": "scripts/validation/english-docs.mjs",
+            "line": 251
+          }
+        ],
+        "expected": "MISSING_LOCAL_LINK for the outer missing.md destination",
+        "observed": "PASS with zero errors and warnings; existing inner image checked only",
+        "current_corpus_local_occurrence": false,
+        "current_remote_syntax_example": {
+          "path": "third_party/emil-skills.README.md",
+          "line": 8
+        },
+        "reproduction": {
+          "name": "nested-image-link-destination",
+          "source": "# 原文\n\n[![badge](../assets/logo.png)](missing.md)\n",
+          "english": "# Original\n\n[![badge](../../assets/logo.png)](missing.md)\n",
+          "expected": "MISSING_LOCAL_LINK for outer destination missing.md",
+          "actual_status": "PASS",
+          "errors": [],
+          "warnings": [],
+          "confirmed_false_pass": true
+        }
+      }
+    ]
+  }
+}

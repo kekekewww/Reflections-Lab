@@ -1,0 +1,123 @@
+{
+  "id": "RLAB-TASK-0018",
+  "title": "聲學Worker與即時路由證據",
+  "description": "沿用凍結第一版51項驗收的證據切片；不另建任務系統、不取代原0006/0011–0014 criteria。先前分檔實作由Task0006協調，本Task統整完整跨模組驗收。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0006",
+    "RLAB-TASK-0011"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "既定direct／finite ISM／energy與metadata獨立reference測試通過，能力和近似明示",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+          "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+          "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+        },
+        {
+          "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+          "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+          "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "真Worker bounds/backpressure/cancel/stale與delivery實測；性能失敗保留原結果與固定門檻",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+          "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+          "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+          "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+          "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+          "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+          "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "src/acoustics",
+    "src/app/acoustic-service.ts",
+    "tests/acoustics-runtime"
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/check.stdout.txt",
+      "sha256": "e311571c93bf27d0c3064bdebf0c6097a20f32da2a6cbdf14eb38699c67eaba3",
+      "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+    },
+    {
+      "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+      "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+      "result": "Current actual independent literal acoustic tests pass direct3-4-5 delay/pressure, inverse-distance energy, finite polygon reflection, occlusion, air/material energy and invalid metadata domains; capabilities and unavailable IR metrics are explicit. Fullcheck lines3881-4043 and independent geometry regressions. Finite first-order capability is allowed, no unsupported higher-order or measured-room/V5 claim required."
+    },
+    {
+      "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+      "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+      "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+    },
+    {
+      "path": "artifacts/v1/worker-current-functional-20261027191925546/causal-summary.json",
+      "sha256": "6313b05823b83062e07b92d6ca560d85373f08386356d7c26488197521a16442",
+      "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+      "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+      "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+      "result": "Actual current native Worker tests and46 Node tests pass identity/bounds/backpressure/cancellation/stale/recovery/delivery; fixed formal profile failures are archived with original thresholds. Literal criterion requires preserving performance failures, not converting VAL04 into PASS. Browser actual4 PASS/native0 includes three functional cases plus unintended short20Hz fourth case; outer selection guard remains FAIL/native1. Do not report intended three-case selection success or substitute short profile for formal600. Old profile output restored from exact preimage; current source16/global1822 stable."
+    }
+  ],
+  "created_at": "2026-10-27T01:20:34.717Z",
+  "updated_at": "2026-10-27T21:17:55.406Z",
+  "last_summary": "原兩項component criterion通過並DONE；正式性能FAIL保留，不代表VAL04或整體第一版通過。"
+}

@@ -1,0 +1,123 @@
+{
+  "id": "RLAB-TASK-0010",
+  "title": "Sound Behavior研究、契約與架構整合",
+  "description": "Codex主導開發政策修訂；研究Physics-driven Sound Behaviors、middleware、傳播、UX與Meta產品AI；僅隔離風險spike與draft schema驗證，不開始正式產品。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0008"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "官方規則／成熟工具／Rapier／Web Audio來源查核，證據與限制分開",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "research/sound-behaviors/middleware-sources.json",
+          "sha256": "892426c6d131887e25e4ca2a9ac4a5566dda32174cf42d928007fb8b97c7890b",
+          "result": "18primarysources+accesslimitations; noSDKinstalled"
+        },
+        {
+          "path": "research/sound-behaviors/ai-rules-sources.json",
+          "sha256": "4e846a3531788dda11083f6d108a77d0241a7cbe622fa6bd80f3c68e4bd52a51",
+          "result": "Officialrules/MetaAPIread; codingagentsUNSTATED; no terms/modelcalls"
+        },
+        {
+          "path": "research/sound-behaviors/physics-sources.json",
+          "sha256": "d886ef04379f4afd919a4399bb515374b02ef69c6b918216f45df35ece34df00",
+          "result": "PinnedRapier0.21official+localtype/runtime/sourceproof"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "完整事件、狀態、分層傳播與版本化draft schema可驗證，meaningful正負例與風險spike有實證",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/sound-behavior-validation-20261027.json",
+          "sha256": "4b9839aa22bb015b6fde993e59d80f6fd5d615ac046b480d69e9fa4ebf24d4d3",
+          "result": "22 capabilities PASS:20initial+2doc-onlyrepair; originalFAIL retained"
+        },
+        {
+          "path": "experiments/sound-behavior-spike/physics-validation-final-2026-10-27.json",
+          "sha256": "a7786170f8b7d19464bba698e3a0dbf122d18620f185891cef55a0d59be55296",
+          "result": "13isolatedpolicyPASS;3WASMsubcaseswithsourcehashes"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "Codex-primary ADR、UX／Meta工具規格、MVP／前置依賴與下一Milestone整合",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md",
+          "sha256": "ecd8214327e3752b62d2c26875416b7a1659e36baedeaa9ffc2a72060fc18843",
+          "result": "Architecture/UX/AI/MVP/dependencies integrated; productNOTIMPLEMENTED"
+        },
+        {
+          "path": "docs/02-architecture/adr/013-codex-primary-development.md",
+          "sha256": "90f324096a0509b54c1ca3e90bf6224c92d25552d8906f34fbecc9e178293fc7",
+          "result": "Accepted latestuserpolicy supersedesmandatoryMuse"
+        },
+        {
+          "path": "docs/10-sound-behaviors/TASK_POLICY_UPDATE.json",
+          "sha256": "9d66a29c62873a90f1d7a8cede10365081ff2d4709c0b7164cd602bc12fea063",
+          "result": "CancelobsoleteTask9 only; preserveunmetcriteria/history"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "獨立審查、適當回歸、來源版本、Wiki task／checkpoint／handoff／Now完成",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "benchmarks/results/sound-behavior-validation-20261027.json",
+          "sha256": "4b9839aa22bb015b6fde993e59d80f6fd5d615ac046b480d69e9fa4ebf24d4d3",
+          "result": "22 capabilities PASS:20initial+2doc-onlyrepair; originalFAIL retained"
+        },
+        {
+          "path": "docs/10-sound-behaviors/INDEPENDENT_REVIEW.md",
+          "sha256": "09bfa748810d2b468e8954b8261789f9ae0027b635b9338e7a8165e951d7df8c",
+          "result": "No unresolvedP1/P2 in scoped draft/spikes"
+        },
+        {
+          "path": "knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md",
+          "sha256": "a1f11e20c609b7dbbcd3c62ed458ae08569ac4b288279315aa9e2826a880fd5c",
+          "result": "RealWiki checkpoint/handoff recorded withscopehashes; closingmetadata next"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/00-project/SOUND_BEHAVIOR_REQUEST.md",
+    "docs/10-sound-behaviors/",
+    "docs/02-architecture/AUDIO_RUNTIME.md",
+    "docs/04-physics/PHYSICS_AUDIO_EVENTS.md",
+    "schemas/sound-behavior/"
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/results/sound-behavior-validation-20261027.json",
+      "sha256": "4b9839aa22bb015b6fde993e59d80f6fd5d615ac046b480d69e9fa4ebf24d4d3",
+      "result": "22 capabilities PASS:20initial+2doc-onlyrepair; originalFAIL retained"
+    },
+    {
+      "path": "docs/10-sound-behaviors/INDEPENDENT_REVIEW.md",
+      "sha256": "09bfa748810d2b468e8954b8261789f9ae0027b635b9338e7a8165e951d7df8c",
+      "result": "No unresolvedP1/P2 in scoped draft/spikes"
+    },
+    {
+      "path": "knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md",
+      "sha256": "a1f11e20c609b7dbbcd3c62ed458ae08569ac4b288279315aa9e2826a880fd5c",
+      "result": "RealWiki checkpoint/handoff recorded withscopehashes; closingmetadata next"
+    }
+  ],
+  "created_at": "2026-10-27T00:25:00+08:00",
+  "updated_at": "2026-10-26T18:06:17.095Z",
+  "last_summary": "Research/architecture/draft/spikes complete, independentreview+22capabilitiesPASS; formalproduct/audio/browser/Meta NOTRUN. Codex primary, optional MuseCode."
+}

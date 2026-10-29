@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": "Original concurrent human-feedback metadata, preserved exact bytes; product/test sources unchanged",
+  "results": [
+    {
+      "name": "wiki-after-r18",
+      "command": [
+        "node",
+        "scripts/wiki/cli.mjs",
+        "lint",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "english-after-r18",
+      "command": [
+        "node",
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

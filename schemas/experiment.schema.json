@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/experiment.schema.json",
+  "title": "Reflection Lab Experiment Manifest v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "experimentId", "createdAt", "sceneId", "sceneRevision", "sceneSha256", "motionTraceSha256", "contactTraceSha256", "materialRegistrySha256", "backendId", "backendVersion", "physicsVersion", "solverSettings", "recordingMode", "resultArtifacts", "validationLevel"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"}, "experimentId": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{0,63}$"},
+    "createdAt": {"type": "string", "description": "UTC ISO8601; checked by domain parser", "pattern": "Z$"},
+    "sceneId": {"type": "string", "minLength": 1}, "sceneRevision": {"type": "integer", "minimum": 0},
+    "sceneSha256": {"$ref": "#/$defs/hash"}, "motionTraceSha256": {"$ref": "#/$defs/hash"}, "contactTraceSha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}, "materialRegistrySha256": {"$ref": "#/$defs/hash"},
+    "backendId": {"type": "string", "minLength": 1}, "backendVersion": {"type": "string", "minLength": 1}, "physicsVersion": {"type": "string", "minLength": 1},
+    "solverSettings": {"type": "object", "additionalProperties": false, "required": ["fixedDtS", "sampleRateHz", "seed", "speedOfSoundMps", "temperatureC", "relativeHumidityPercent", "pressurePa", "maxReflectionOrder"], "properties": {"fixedDtS": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.1}, "sampleRateHz": {"enum": [44100, 48000]}, "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295}, "speedOfSoundMps": {"type": "number", "minimum": 250, "maximum": 400}, "temperatureC": {"type": "number", "minimum": -20, "maximum": 50}, "relativeHumidityPercent": {"type": "number", "minimum": 0, "maximum": 100}, "pressurePa": {"type": "number", "minimum": 80000, "maximum": 110000}, "maxReflectionOrder": {"type": "integer", "minimum": 0, "maximum": 2}}},
+    "recordingMode": {"enum": ["authoritativeMotionTrace", "sameRuntimeResimulation", "syntheticFixture"]},
+    "resultArtifacts": {"type": "array", "maxItems": 100, "items": {"type": "object", "additionalProperties": false, "required": ["id", "sha256", "kind", "evidenceClass"], "properties": {"id": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/hash"}, "kind": {"enum": ["rir", "paths", "metrics", "events", "telemetry"]}, "evidenceClass": {"enum": ["Measured", "Computed", "Estimated"]}}}},
+    "validationLevel": {"enum": ["V0", "V1", "V2", "V3", "V4", "V5"]}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

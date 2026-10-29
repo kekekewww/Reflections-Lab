@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordedAt": "2026-10-26T18:42:20.844Z",
+  "status": "MEASURED_LOCAL_ONLY",
+  "command": "node --import tsx tests/acoustics-runtime/benchmark.ts",
+  "environment": {
+    "node": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "logicalCpus": 32
+  },
+  "configuration": {
+    "warmup": 30,
+    "sampleCount": 20,
+    "iterationsPerSample": 10,
+    "surfaces": 36,
+    "bands": 7,
+    "concurrency": 1,
+    "workload": "36 exact static box faces; first-order bounded room solve, includes input validation and allocations"
+  },
+  "millisecondsPerSolve": {
+    "min": 0.37493999999999233,
+    "median": 0.5592700000000036,
+    "p95": 4.421439999999995,
+    "max": 5.38352000000001
+  },
+  "paths": 7,
+  "segmentTests": 468,
+  "budgetExceeded": false,
+  "sourceHashes": {
+    "src/acoustics/types.ts": "8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431",
+    "src/acoustics/geometry.ts": "e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3",
+    "src/acoustics/solver.ts": "6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383",
+    "src/acoustics/index.ts": "fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1"
+  },
+  "sink": 1610,
+  "limitations": [
+    "Single local Node process under concurrent development load; not browser/worker/audio callback timing.",
+    "p95 across batch average times, not individual frame tail latency.",
+    "No general scene capacity, real-room accuracy or device latency claim."
+  ]
+}

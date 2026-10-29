@@ -1,0 +1,125 @@
+{
+  "executor": "Codex /root/v1_interaction_finish",
+  "captured_at": "2026-10-27T00:34:52.936Z",
+  "node": "v22.17.0",
+  "supersedes": "tests/interaction-runtime/evidence-20261027/verification.json",
+  "scope": "InteractionHost real Rapier WASM; ordinary pause retains actual input mode; alternative input guard; staged lifecycle; Held freeze/restore; stale support",
+  "tests": {
+    "total": 22,
+    "pass": 22,
+    "fail": 0
+  },
+  "source_stable_during_checks": true,
+  "results": [
+    {
+      "command": "node --import tsx --test tests/interaction-runtime/host.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v2/host.tap",
+      "sha256": "6040a5810723b4bbc73ea6872255d2baa259e6d885e52236b1f24ea6c40ad8c3"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v2/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/interaction tests/interaction-runtime/host.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v2/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/interaction tests/interaction-runtime/host.test.ts",
+      "exit_code": 0,
+      "log": "tests/interaction-runtime/evidence-20261027-v2/format.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/interaction/index.ts",
+      "sha256": "0c1f8fcab6e39ff367665fb44e97fa141013048d9d2e6e93873e9432775d700e"
+    },
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "4a08eff92f08970fa5bb7b2db89a87be3f12a93d0e751dc8e8fc7003365f769c"
+    },
+    {
+      "path": "src/interaction/math.ts",
+      "sha256": "69f9af88645ae417a3f7828b669acf03d8bef0175843858f3c61c5380490a9d6"
+    },
+    {
+      "path": "src/interaction/types.ts",
+      "sha256": "f16154d25496dcf68a07499a38d31cfffa40a3d95edf0d4be64f2c92304c5a12"
+    },
+    {
+      "path": "src/physics/character-motor.ts",
+      "sha256": "5e3d29d2e0d71c6ae0b4a87f3bb944bd123ebe0402220e574859421fddd4a8f9"
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "48a6f457db80afac17f92d65512c659882d43a62dcdeb377554f260325369d6a"
+    },
+    {
+      "path": "src/physics/index.ts",
+      "sha256": "098845b1ed89e3321e938d34a07b62eff2c7f944ad9960c59aca00d12330318b"
+    },
+    {
+      "path": "src/physics/math.ts",
+      "sha256": "a498fcf1dc3faa5061483fd09cb1e9218d9376f92ec1c8c8d14f0486315dfe35"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "faadbc5563f17590e364844f378cd29742e483e002d2c4f7d4b8db2d84b5fba4"
+    },
+    {
+      "path": "src/physics/types.ts",
+      "sha256": "f2b76de5d89b400cb200be739e43d036708401ebc83d75e0cfcf0d822b4c58c6"
+    },
+    {
+      "path": "src/scene/commands.ts",
+      "sha256": "8bc0423eb9c83ac22794ff34a4dea3f64b093722e7571daa8173a023e2f34bd7"
+    },
+    {
+      "path": "src/scene/errors.ts",
+      "sha256": "971bc6a250e93a221dd4fe47b9a05ecf05a100e48b4b56ae1b987756f8331fe3"
+    },
+    {
+      "path": "src/scene/index.ts",
+      "sha256": "5d3ac854c7a1e999aff75efd27dba7c1a1f96fd44a4cfa2ea850c7d97ebb17e9"
+    },
+    {
+      "path": "src/scene/scene-host.ts",
+      "sha256": "3445209bedb437d2f5b598698523c0fc0c171380989ec7be96655098c9ecaf99"
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sha256": "04c8756b364fef6de36cd5de5dbe8738ea3d09f8b57cb8b45db961bf1bbfce84"
+    },
+    {
+      "path": "src/scene/validate-scene.ts",
+      "sha256": "adfa3ddab7314f80aa115689789e70246410cc0c272f0bbdcb3cf90642f70e2e"
+    },
+    {
+      "path": "tests/interaction-runtime/host.test.ts",
+      "sha256": "f05b3a3b887c8fdd72e238c02ccd031883807c301ca32eef293cdf06912e529c"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "Codex /root/v1_interaction_finish/review_interaction",
+    "status": "PASS",
+    "reported_tests": "22/22 true Rapier WASM",
+    "checks": ["ESLint", "Prettier", "source/state-transition review"],
+    "reviewed_change": "pausePreservingInputMode retains actual input mode while shared freeze/input-clear/generation validation remains unchanged",
+    "reported_hashes": {
+      "src/interaction/interaction-host.ts": "4a08eff92f08970fa5bb7b2db89a87be3f12a93d0e751dc8e8fc7003365f769c",
+      "src/interaction/types.ts": "f16154d25496dcf68a07499a38d31cfffa40a3d95edf0d4be64f2c92304c5a12",
+      "tests/interaction-runtime/host.test.ts": "f05b3a3b887c8fdd72e238c02ccd031883807c301ca32eef293cdf06912e529c"
+    }
+  },
+  "limitations": [
+    "Browser Pointer Lock, DOM focus/IME and UI wiring are outside this evidence scope.",
+    "Arbitrary external body-mode roundtrips while a fixed restore record exists are not observable without a dedicated mode revision; known replaced/rebuilt generations are rejected."
+  ]
+}

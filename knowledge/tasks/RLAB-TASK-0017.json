@@ -1,0 +1,120 @@
+{
+  "id": "RLAB-TASK-0017",
+  "title": "FPS／Build／物理接觸邊界驗收",
+  "description": "沿用凍結第一版51項驗收的證據切片；不另建任務系統、不取代原0006/0011–0014 criteria。先前分檔實作由Task0006協調，本Task統整完整跨模組驗收。 已依固定criteria完成當前0eef功能驗收；完整第一版、原生縮放、性能與人工聽測另列。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0006",
+    "RLAB-TASK-0011"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "依既定PHY/BLD/EVT驗收完成四模式、抓投重量／牆角／堆疊／低FPS矩陣、角色移動與真接觸bridge證據",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/physics-boundaries-20261027/combined-final/verification.json",
+          "sha256": "bb9755a7a92ce65e4c82a4e81fae50b1f1c10759e9bc5e32a94fc1787ba005e4",
+          "result": "PASS; Actual WASM matrix29+boundaries9=38/38; protected61 unchanged. Later source formatting/support fix is re-covered by current Q849."
+        },
+        {
+          "path": "artifacts/v1/support-anchor-20261027/final-receipt.json",
+          "sha256": "8842ceafb599154f9f0d1541358d0979d84a07978928137f45f06b0b68d723e8",
+          "result": "PASS; RED/GREEN17+independent17+adjacent50, logical support contact source provenance fixed; 2 owned/10 evidence hashes current at spot audit."
+        },
+        {
+          "path": "artifacts/v1/ui-reflow-functional-20261027T122600892Z/proof-receipt.json",
+          "sha256": "8db97499a3837dfd865ba4fa57c5d433425ed678256ff16d00f88daba22f0ea5",
+          "result": "PASS27/27 current0eef UI; strict1677 inputs stable; independent91payload audit, no retry/skip/flaky; not native200/OS/hearing"
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-verification.json",
+          "sha256": "803a0bc65c8520c176593cbffe641b3aa1bbe439d8c8d58a384d93834ff9ee6e",
+          "result": "PASS2/2 actual browser PhysicsWorld fourmodes and10 lifecycle cycles; sourceStable171; softwareANGLE correctness, not GPU performance"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "真browser鍵鼠／替代操作、focus／pause／Listener／Staged安全流程通過；未執行明列",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/ui-reflow-functional-20261027T122600892Z/proof-receipt.json",
+          "sha256": "8db97499a3837dfd865ba4fa57c5d433425ed678256ff16d00f88daba22f0ea5",
+          "result": "PASS27/27 current0eef UI; strict1677 inputs stable; independent91payload audit, no retry/skip/flaky; not native200/OS/hearing"
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-verification.json",
+          "sha256": "803a0bc65c8520c176593cbffe641b3aa1bbe439d8c8d58a384d93834ff9ee6e",
+          "result": "PASS2/2 actual browser PhysicsWorld fourmodes and10 lifecycle cycles; sourceStable171; softwareANGLE correctness, not GPU performance"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "src/physics",
+    "src/interaction",
+    "src/app/physics-behavior.ts",
+    "tests/physics",
+    "tests/interaction-runtime"
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+      "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+      "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+      "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+      "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+    },
+    {
+      "path": "artifacts/v1/physics-boundaries-20261027/combined-final/verification.json",
+      "sha256": "bb9755a7a92ce65e4c82a4e81fae50b1f1c10759e9bc5e32a94fc1787ba005e4",
+      "result": "PASS; Actual WASM matrix29+boundaries9=38/38; protected61 unchanged. Later source formatting/support fix is re-covered by current Q849."
+    },
+    {
+      "path": "artifacts/v1/support-anchor-20261027/final-receipt.json",
+      "sha256": "8842ceafb599154f9f0d1541358d0979d84a07978928137f45f06b0b68d723e8",
+      "result": "PASS; RED/GREEN17+independent17+adjacent50, logical support contact source provenance fixed; 2 owned/10 evidence hashes current at spot audit."
+    },
+    {
+      "path": "artifacts/v1/ui-reflow-functional-20261027T122600892Z/proof-receipt.json",
+      "sha256": "8db97499a3837dfd865ba4fa57c5d433425ed678256ff16d00f88daba22f0ea5",
+      "result": "PASS27/27 current0eef UI; strict1677 inputs stable; independent91payload audit, no retry/skip/flaky; not native200/OS/hearing"
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-verification.json",
+      "sha256": "803a0bc65c8520c176593cbffe641b3aa1bbe439d8c8d58a384d93834ff9ee6e",
+      "result": "PASS2/2 actual browser PhysicsWorld fourmodes and10 lifecycle cycles; sourceStable171; softwareANGLE correctness, not GPU performance"
+    }
+  ],
+  "created_at": "2026-10-27T01:20:34.717Z",
+  "updated_at": "2026-10-27T12:57:42.195Z",
+  "last_summary": "原criteria/dependencies未改；當前UI27/physics2/storage5/product4分別直接驗證，完成本Task範圍，不代表整體V1。"
+}

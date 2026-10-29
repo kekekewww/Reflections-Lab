@@ -1,0 +1,34 @@
+name: Reflection Lab validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.17.0
+          cache: npm
+      - run: npm install --global npm@11.4.2
+      - run: npm ci --ignore-scripts
+      - run: npm ci --prefix experiments/physics-spike --ignore-scripts
+      - run: npm run check
+      - run: npm run benchmark
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.17.0
+          cache: npm
+      - run: npm install --global npm@11.4.2
+      - run: npm ci --ignore-scripts
+      - run: node node_modules/@playwright/test/cli.js install --with-deps chromium
+      - run: node tests/browser/build-ui-preview.mjs
+      - run: node node_modules/@playwright/test/cli.js test --config tests/browser/ui-refined-v2.config.ts
+      - run: node node_modules/@playwright/test/cli.js test --config tests/browser/linked-workflow-v2.config.ts
+      - run: npm run test:browser:storage
+      - run: npm run test:browser:physics

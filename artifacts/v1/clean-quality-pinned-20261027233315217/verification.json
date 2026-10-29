@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "startedAt": "2026-10-27T23:33:15.217Z",
+  "cwd": "D:\\Developing\\Meta Hack",
+  "supervisorPid": 61172,
+  "node": "v22.17.0",
+  "nodeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+  "scope": "Full npm check plus offline fixture prompt benchmark; exact prior locked clean installs reused only with matching dependency inputs. Native/browser/hearing/profile/Meta remain separate.",
+  "steps": [
+    {
+      "label": "npm-explicit-version",
+      "command": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/kevin/AppData/Roaming/npm/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "startedAt": "2026-10-27T23:33:16.265Z",
+      "endedAt": "2026-10-27T23:33:16.408Z",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputLimit": false,
+      "spawnError": null,
+      "processStopped": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "versionMatches": true,
+      "passed": true,
+      "stdout": "npm-explicit-version.stdout.txt",
+      "stderr": "npm-explicit-version.stderr.txt"
+    },
+    {
+      "label": "npm-nested-shim-version",
+      "command": [
+        "C:\\Windows\\System32\\cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm --version"
+      ],
+      "startedAt": "2026-10-27T23:33:16.408Z",
+      "endedAt": "2026-10-27T23:33:16.558Z",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputLimit": false,
+      "spawnError": null,
+      "processStopped": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "versionMatches": true,
+      "passed": true,
+      "stdout": "npm-nested-shim-version.stdout.txt",
+      "stderr": "npm-nested-shim-version.stderr.txt"
+    },
+    {
+      "label": "check",
+      "command": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/kevin/AppData/Roaming/npm/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "check"
+      ],
+      "startedAt": "2026-10-27T23:33:16.558Z",
+      "endedAt": "2026-10-27T23:36:44.268Z",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputLimit": false,
+      "spawnError": null,
+      "processStopped": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "versionMatches": null,
+      "passed": true,
+      "stdout": "check.stdout.txt",
+      "stderr": "check.stderr.txt"
+    },
+    {
+      "label": "prompt-benchmark",
+      "command": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/kevin/AppData/Roaming/npm/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "benchmark:muse"
+      ],
+      "startedAt": "2026-10-27T23:36:44.269Z",
+      "endedAt": "2026-10-27T23:36:44.890Z",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputLimit": false,
+      "spawnError": null,
+      "processStopped": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "versionMatches": null,
+      "passed": true,
+      "stdout": "prompt-benchmark.stdout.txt",
+      "stderr": "prompt-benchmark.stderr.txt"
+    }
+  ],
+  "errors": [],
+  "protectedAcceptance": [
+    {
+      "path": "benchmarks/analytic/run.mjs",
+      "sha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "role": "regression-or-acceptance",
+      "actual": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "matches": true,
+      "after": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+      "afterMatches": true
+    },
+    {
+      "path": "benchmarks/fixtures/analytical.json",
+      "sha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "role": "fixed-reference",
+      "actual": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "matches": true,
+      "after": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/acceptance.mjs",
+      "sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "role": "regression-or-acceptance",
+      "actual": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "matches": true,
+      "after": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/milestone.json",
+      "sha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "role": "regression-or-acceptance",
+      "actual": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "matches": true,
+      "after": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/mock-plan.json",
+      "sha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "role": "regression-or-acceptance",
+      "actual": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "matches": true,
+      "after": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/p0-01-scene-contract.json",
+      "sha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "role": "regression-or-acceptance",
+      "actual": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "matches": true,
+      "after": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "sha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "role": "regression-or-acceptance",
+      "actual": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "matches": true,
+      "after": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "afterMatches": true
+    },
+    {
+      "path": "examples/agents/smoke-task.json",
+      "sha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "role": "regression-or-acceptance",
+      "actual": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "matches": true,
+      "after": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+      "afterMatches": true
+    },
+    {
+      "path": "experiments/physics-spike/smoke.mjs",
+      "sha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "role": "regression-or-acceptance",
+      "actual": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "matches": true,
+      "after": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+      "afterMatches": true
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+      "sha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "role": "regression-or-acceptance",
+      "actual": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "matches": true,
+      "after": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "sha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "role": "contract",
+      "actual": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "matches": true,
+      "after": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/agents/handoff.schema.json",
+      "sha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "role": "contract",
+      "actual": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "matches": true,
+      "after": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/agents/implementation-result.schema.json",
+      "sha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "role": "contract",
+      "actual": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "matches": true,
+      "after": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/agents/repair-task.schema.json",
+      "sha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "role": "contract",
+      "actual": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "matches": true,
+      "after": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/agents/task.schema.json",
+      "sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "role": "contract",
+      "actual": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "matches": true,
+      "after": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/agents/verification-result.schema.json",
+      "sha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "role": "contract",
+      "actual": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "matches": true,
+      "after": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/ai-provider-config.schema.json",
+      "sha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "role": "contract",
+      "actual": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "matches": true,
+      "after": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/ai-scene-change-set.schema.json",
+      "sha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "role": "contract",
+      "actual": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "matches": true,
+      "after": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/ai-tool-request.schema.json",
+      "sha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "role": "contract",
+      "actual": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "matches": true,
+      "after": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/ai-tool-result.schema.json",
+      "sha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "role": "contract",
+      "actual": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "matches": true,
+      "after": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/examples/acoustic-frame.json",
+      "sha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "role": "contract",
+      "actual": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "matches": true,
+      "after": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/examples/material.json",
+      "sha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "role": "contract",
+      "actual": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "matches": true,
+      "after": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/examples/scene.json",
+      "sha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "role": "contract",
+      "actual": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "matches": true,
+      "after": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/experiment.schema.json",
+      "sha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "role": "contract",
+      "actual": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "matches": true,
+      "after": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/material.schema.json",
+      "sha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "role": "contract",
+      "actual": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "matches": true,
+      "after": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "sha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "role": "contract",
+      "actual": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "matches": true,
+      "after": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "role": "contract",
+      "actual": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "matches": true,
+      "after": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+      "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "role": "contract",
+      "actual": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "matches": true,
+      "after": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/audio-event.json",
+      "sha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "role": "contract",
+      "actual": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "matches": true,
+      "after": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/comparison.json",
+      "sha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "role": "contract",
+      "actual": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "matches": true,
+      "after": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/context.json",
+      "sha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "role": "contract",
+      "actual": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "matches": true,
+      "after": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/document.json",
+      "sha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "role": "contract",
+      "actual": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "matches": true,
+      "after": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/proposal.json",
+      "sha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "role": "contract",
+      "actual": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "matches": true,
+      "after": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/examples/runtime-state.json",
+      "sha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "role": "contract",
+      "actual": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "matches": true,
+      "after": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "role": "contract",
+      "actual": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "matches": true,
+      "after": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "role": "contract",
+      "actual": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "matches": true,
+      "after": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/wiki-event.schema.json",
+      "sha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "role": "contract",
+      "actual": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "matches": true,
+      "after": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/wiki-page.schema.json",
+      "sha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "role": "contract",
+      "actual": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "matches": true,
+      "after": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/wiki-source-manifest.schema.json",
+      "sha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "role": "contract",
+      "actual": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "matches": true,
+      "after": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+      "afterMatches": true
+    },
+    {
+      "path": "schemas/wiki-task.schema.json",
+      "sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "role": "contract",
+      "actual": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "matches": true,
+      "after": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+      "afterMatches": true
+    },
+    {
+      "path": "scripts/validation/domain-checks.mjs",
+      "sha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "role": "independent-domain-validator",
+      "actual": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "matches": true,
+      "after": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+      "afterMatches": true
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "role": "independent-domain-validator",
+      "actual": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "matches": true,
+      "after": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/acoustics/analytical.test.mjs",
+      "sha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "role": "regression-or-acceptance",
+      "actual": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "matches": true,
+      "after": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/artifacts.test.mjs",
+      "sha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "role": "regression-or-acceptance",
+      "actual": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "matches": true,
+      "after": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/cli.test.mjs",
+      "sha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "role": "regression-or-acceptance",
+      "actual": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "matches": true,
+      "after": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/context-pack.test.mjs",
+      "sha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "role": "regression-or-acceptance",
+      "actual": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "matches": true,
+      "after": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/contract.test.mjs",
+      "sha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "role": "regression-or-acceptance",
+      "actual": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "matches": true,
+      "after": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/failure-policy.test.mjs",
+      "sha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "role": "regression-or-acceptance",
+      "actual": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "matches": true,
+      "after": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/fixtures/child-process.mjs",
+      "sha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "role": "fixed-reference",
+      "actual": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "matches": true,
+      "after": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/harness.test.mjs",
+      "sha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "role": "regression-or-acceptance",
+      "actual": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "matches": true,
+      "after": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/agents/process-runner.test.mjs",
+      "sha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "role": "regression-or-acceptance",
+      "actual": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "matches": true,
+      "after": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/contracts/fixture-contract.ts",
+      "sha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "role": "regression-or-acceptance",
+      "actual": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "matches": true,
+      "after": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/design/design-standards.test.mjs",
+      "sha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "role": "regression-or-acceptance",
+      "actual": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "matches": true,
+      "after": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/fixtures/acoustic-frame-nonempty.json",
+      "sha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "role": "fixed-reference",
+      "actual": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "matches": true,
+      "after": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/integration/agent-schema-loader.test.mjs",
+      "sha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "role": "regression-or-acceptance",
+      "actual": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "matches": true,
+      "after": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/integration/research-index.test.mjs",
+      "sha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "role": "regression-or-acceptance",
+      "actual": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "matches": true,
+      "after": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/integration/schemas.test.mjs",
+      "sha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "role": "regression-or-acceptance",
+      "actual": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "matches": true,
+      "after": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/integration/validation-output.test.mjs",
+      "sha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "role": "regression-or-acceptance",
+      "actual": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "matches": true,
+      "after": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/sound-behaviors/contracts.test.mjs",
+      "sha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "role": "regression-or-acceptance",
+      "actual": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "matches": true,
+      "after": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/wiki/agent-projection.test.mjs",
+      "sha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "role": "regression-or-acceptance",
+      "actual": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "matches": true,
+      "after": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+      "afterMatches": true
+    },
+    {
+      "path": "tests/wiki/wiki.test.mjs",
+      "sha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "role": "regression-or-acceptance",
+      "actual": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "matches": true,
+      "after": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+      "afterMatches": true
+    }
+  ],
+  "sourceStable": true,
+  "notRunByThisCommand": [
+    "fresh npm ci",
+    "native/browser tests",
+    "manual hearing",
+    "600-second profile",
+    "live Meta",
+    "remote CI",
+    "Git"
+  ],
+  "exitEvidence": "Actual retained ChildProcess close event through existing runProcess; not inferred from wrapper exit or JSON. Normal close proves the direct process only, not a globally empty process tree.",
+  "reusedCleanInstallEvidence": {
+    "path": "artifacts/v1/qualification-locked-offline-ci-20261027144405972/verification.json",
+    "sha256": "05409b50fe0e1a929667dfd0dfa3993ff1e5873dfa94b671588d072ccf76b9f9",
+    "status": "PASS_LOCKED_OFFLINE_CI",
+    "stages": [
+      {
+        "name": "root",
+        "exitCode": 0
+      },
+      {
+        "name": "physics-spike",
+        "exitCode": 0
+      }
+    ],
+    "dependencyBindings": [
+      {
+        "path": "package.json",
+        "priorSha256": "207b86fc9acc5a8945c726688ef6e280c645fc3779e5646da09a4ad6c0d89414",
+        "currentSha256": "207b86fc9acc5a8945c726688ef6e280c645fc3779e5646da09a4ad6c0d89414"
+      },
+      {
+        "path": "package-lock.json",
+        "priorSha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+        "currentSha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+      },
+      {
+        "path": ".node-version",
+        "priorSha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98",
+        "currentSha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98"
+      },
+      {
+        "path": "experiments/physics-spike/package.json",
+        "priorSha256": "923015b91c8f8d8f4761d7c0a6f7cc75d15760a39d120c3fc0597f9e2456c062",
+        "currentSha256": "923015b91c8f8d8f4761d7c0a6f7cc75d15760a39d120c3fc0597f9e2456c062"
+      },
+      {
+        "path": "experiments/physics-spike/package-lock.json",
+        "priorSha256": "33e30676831f0b6d769855183ca812f903d0e4f5875519fd199fce8f48c035b7",
+        "currentSha256": "33e30676831f0b6d769855183ca812f903d0e4f5875519fd199fce8f48c035b7"
+      }
+    ],
+    "scope": "Both actual offline clean installs exit0. Exact root/spike package JSON, locks and .node-version match. No reinstall is performed or implied by this run."
+  },
+  "versions": {
+    "node": "v22.17.0",
+    "nodeExecutable": "C:/Program Files/nodejs/node.exe",
+    "nodeExecutableSha256": "39d45b5933f339d3ebdebd76474893dab5d7da1038920f65cf5bbcf0f20f3636",
+    "npm": "11.4.2",
+    "npmCli": "C:/Users/kevin/AppData/Roaming/npm/node_modules/npm/bin/npm-cli.js",
+    "npmCliSha256": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7"
+  },
+  "supervisorSignal": null,
+  "sourceInputCount": 1960,
+  "sourceBeforeDigest": "9fffe9548424d2046ed2a277c60c62c35be449dcd563d5e5943d6af5921b99ec",
+  "sourceAfterDigest": "9fffe9548424d2046ed2a277c60c62c35be449dcd563d5e5943d6af5921b99ec",
+  "finishedAt": "2026-10-27T23:36:46.585Z",
+  "sourceStabilityScope": "All validation inputs before/after only; coordinator must hold writers. No continuous monitoring claim.",
+  "artifacts": [
+    {
+      "path": "check.process-result.json",
+      "sha256": "f95310ae3b87c1893c208923d4ef076ff5542fa5cca3eaa23983170d4b49eac7"
+    },
+    {
+      "path": "check.stderr.txt",
+      "sha256": "d79e4144b596aba3efe480a763561840cbfef5eb0cb7529f9b108e6fedc4fb34"
+    },
+    {
+      "path": "check.stdout.txt",
+      "sha256": "63c13bbddac4cbe979d321670f7d8ef74715e7bd7d3363d6c5e82432c9b5fe01"
+    },
+    {
+      "path": "npm-explicit-version.process-result.json",
+      "sha256": "2f177c168984a09afcd49a94cecb2adf9d980c2a951fb50c6d53f56e857a1b22"
+    },
+    {
+      "path": "npm-explicit-version.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "npm-explicit-version.stdout.txt",
+      "sha256": "2508078567c3ea117ab9085e7cc420e14bdc7881ffa2e35b73165858d8d35287"
+    },
+    {
+      "path": "npm-nested-shim-version.process-result.json",
+      "sha256": "a29f76a7e1aa08ecf6e8d2f0018ab496317775e066dad98aea6ae194179d05a4"
+    },
+    {
+      "path": "npm-nested-shim-version.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "npm-nested-shim-version.stdout.txt",
+      "sha256": "2508078567c3ea117ab9085e7cc420e14bdc7881ffa2e35b73165858d8d35287"
+    },
+    {
+      "path": "orchestration.json",
+      "sha256": "c8c9d76a27dfd9cefc1dcc0df073160f6cade6fd99b891daf5387c17928c2956"
+    },
+    {
+      "path": "prompt-benchmark.process-result.json",
+      "sha256": "3b7a24914edd3570d18623ac3ab80052eb7e4771c097aa6924c4a0109f656e7e"
+    },
+    {
+      "path": "prompt-benchmark.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "prompt-benchmark.stdout.txt",
+      "sha256": "2420f17673cd3f5c4185a519fbd2a658b38948c3e3ea78b4c0f9218905fa9b61"
+    },
+    {
+      "path": "source-after.json",
+      "sha256": "bbdf03ac2da4f75ef0596c988fce84d479923724568849a5d931d2df1a29fd39"
+    },
+    {
+      "path": "source-before.json",
+      "sha256": "bbdf03ac2da4f75ef0596c988fce84d479923724568849a5d931d2df1a29fd39"
+    }
+  ]
+}

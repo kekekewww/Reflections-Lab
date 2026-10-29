@@ -1,0 +1,407 @@
+---
+id: RLAB-KB-0002
+title: 事件時間索引
+type: log
+status: ACCEPTED
+created_at: 2026-10-25T19:46:51.310610+00:00
+updated_at: 2026-10-29T14:37:33.663Z
+sources:
+  - RLAB-SRC-0002
+related_tasks: []
+related_decisions: []
+supersedes: []
+tags: []
+---
+
+# 專案事件時間索引
+
+原始 `knowledge/events/*.json` 不可變；此頁是可重建的時間排序視圖。事件的命令／結果由操作者提供，artifact hash與Git狀態由CLI核對，不把Agent自述當完成證明。詳 [歷史](history/bootstrap-and-phase2.md)。
+
+<!-- wiki:generated:start -->
+- 2026-10-25T19:56:33.701Z [task.claim: RLAB-TASK-0003 claim](../events/e66b1c11-1e4b-407b-bfa5-da17910614db.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T19:56:34.192Z [task.claim: RLAB-TASK-0004 claim](../events/6c211791-73fc-4472-8f3d-18df2a7b3d84.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T19:56:34.689Z [task.claim: RLAB-TASK-0005 claim](../events/27272aad-2d32-4eb7-b898-1bb658829d9b.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:06:44.156Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0018原hash與歷史](../events/dfdfe6bd-a6dd-48fb-b2ec-85bf307b4883.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:06:45.833Z [reconcile: 比較Physics明確ScenePinned還原契約與Workspace相反舊文，採保存/還原避免退出成為隱藏量測變因；jump/crouch依原需求可選與UX規劃統一P2。保留原文/hash，並非使用者新偏好或runtime驗證。](../events/20c86843-15a8-433b-87d1-43a8e181b2d3.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:02.507Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0023原hash與歷史](../events/17e68837-fab5-4afa-8944-257d9ae9027c.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:04.411Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0024原hash與歷史](../events/d310eb55-d4c0-4a66-adb9-284113dfc1f0.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:05.873Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0028原hash與歷史](../events/6e6a917d-d732-4d3f-8563-1b086718ab16.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:07.391Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0037原hash與歷史](../events/163efa7a-3bd0-4116-841d-ffd61d1a3c8d.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:08.975Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0042原hash與歷史](../events/462dfbb2-6455-4ccc-9fa9-e74160defac7.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:10.430Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0044原hash與歷史](../events/d508252a-337e-4a93-b3c4-a6057b2a103a.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:08:11.973Z [ingest: 索引現行來源新版本，保留RLAB-SRC-0046原hash與歷史](../events/1bde7d4e-dd54-4d28-95b3-89cbfc96c04c.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:12:10.795Z [ingest: 索引Codex manual-invocation policy，保持上游原文](../events/89f95bea-5fa4-46c5-b07d-cb6886aa45d3.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:13:19.801Z [handoff: Phase2預交接：工具與規範已整合，等待完整gate](../events/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:18:03.030Z [handoff: Phase2實證接收點：完整16命令通過，等待交接閱讀核對](../events/fba987da-df7b-4d64-b431-e04e13ebc278.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:11.494Z [task.update: RLAB-TASK-0003 update](../events/50f618b7-2008-4bf8-8699-6d3f9eb709c8.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:12.002Z [task.release: RLAB-TASK-0003 release](../events/83700da7-a38a-49e8-9e8b-3aeeb8ba211a.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:12.596Z [task.update: RLAB-TASK-0004 update](../events/8d2f716e-2338-4695-8a02-9ac835ae9df0.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:13.162Z [task.release: RLAB-TASK-0004 release](../events/42990e27-1309-4de9-b3db-e07e409fa6f9.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:13.893Z [task.update: RLAB-TASK-0005 update](../events/39278890-15e9-4df0-9591-1eea3f2bb0b6.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:20:14.557Z [task.release: RLAB-TASK-0005 release](../events/77bc86dc-84ba-4614-a805-d147e490abde.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:21:11.233Z [ingest: 將Phase2真實驗證整合回現況/歷史/UX review；保留未驗範圍](../events/6cc07ced-bf54-4c41-a1b9-4fdaa6eba717.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:21:53.640Z [checkpoint: Phase2完成：持久Wiki與設計工程環境的最終交接](../events/46989a0e-f490-4a7b-b6e6-3af6e83c91a9.json) — codex-root / reflection-lab-phase2
+- 2026-10-25T20:21:54.309Z [handoff: Phase2完成：持久Wiki與設計工程環境的最終交接](../events/0c46d575-d5da-44c7-8615-424bb34a8982.json) — codex-root / reflection-lab-phase2
+- 2026-10-26T15:22:38.128Z [task.claim: RLAB-TASK-0008 claim](../events/c8dfb836-c3ef-4f70-89d8-31ec56be4f74.json) — codex-root / phase3-20261026
+- 2026-10-26T15:41:28.353Z [task.update: RLAB-TASK-0008 update](../events/51b37652-0e9c-43b6-9d34-678b9a5e3056.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:07.789Z [ingest: Phase3來源與綜合：docs/02-architecture/ARCHITECTURE.md](../events/d3b49be2-1803-4710-b306-9ea0d576f661.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:09.441Z [ingest: Phase3來源與綜合：docs/NEXT_ENGINEERING_TASK.md](../events/326fa9c8-8898-4bd6-ae48-65cbc14eb063.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:11.750Z [ingest: Phase3來源與綜合：docs/02-architecture/adr/001-rendering.md](../events/d3599a80-a5d8-4473-b63e-1fb163c7adf5.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:13.698Z [ingest: Phase3來源與綜合：docs/02-architecture/adr/011-web-core-and-rendering.md](../events/6fba4596-9908-41b6-ac2e-2b6d35190cea.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:15.334Z [ingest: Phase3來源與綜合：docs/02-architecture/adr/012-development-harness.md](../events/2e7f1a91-c6a5-45d8-b5ac-9b0b47ef793c.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:17.507Z [ingest: Phase3來源與綜合：docs/09-agents/FAILOVER_POLICY.md](../events/c03cf854-9653-4cec-91a1-8fceaf32deb2.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:19.076Z [ingest: Phase3來源與綜合：docs/09-agents/CODEX_MUSE_ORCHESTRATION.md](../events/75e3e358-3d17-436a-afd8-4a36a3740437.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:20.611Z [ingest: Phase3來源與綜合：research/agents/model-source-metadata.json](../events/9050bc08-5b3d-4433-98a9-fc59c1490bd5.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:22.243Z [ingest: Phase3來源與綜合：research/agents/muse-source-metadata.json](../events/1c156dfa-ace4-47cd-97c6-9901b8aeb450.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:24.639Z [ingest: Phase3來源與綜合：research/agents/quota-source-metadata.json](../events/9d3079c1-44fe-455c-a1c6-e38b5ddd5f47.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:27.484Z [ingest: Phase3來源與綜合：docs/09-agents/CODEX_CAPABILITIES.md](../events/1e08c9b2-a82f-4711-bf7c-fa69566de807.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:29.816Z [ingest: Phase3來源與綜合：docs/08-ai/PHASE3_RUNTIME_AGENT.md](../events/d63d7768-c8cc-4048-abf1-ade913151170.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:31.429Z [ingest: Phase3來源與綜合：benchmarks/muse/results/skills-2026-10-26.json](../events/17f9d14f-c3e8-4a8e-82cb-4fff48ac961f.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:33.380Z [ingest: Phase3來源與綜合：research/agents/muse-project-skill-discovery-proof.json](../events/adfa6db9-338d-4ae5-a4aa-a7a7f5a52aed.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:34.873Z [ingest: Phase3來源與綜合：benchmarks/muse/results/offline-2026-10-26T15-32-03-603Z.json](../events/aa5fa11d-8af5-4e96-b6f2-33cfc215e9ad.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:36.538Z [ingest: Phase3來源與綜合：artifacts/phase3-current-codex/proof.json](../events/f5481e5d-1f19-4761-943a-dde8d56a32e0.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:38.435Z [ingest: Phase3來源與綜合：artifacts/phase3-demo-confirmation-20261026/report.json](../events/3fdeec42-d74a-4961-8fc6-889fa62a1369.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:40.979Z [ingest: Phase3來源與綜合：docs/00-project/FAILOVER_REQUEST.md](../events/1b723762-d2aa-4db9-89a3-fad43eaa28f4.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:44.197Z [ingest: Phase3來源與綜合：artifacts/phase3-user-confirmed-muse-status.json](../events/c55f4c7d-509b-4952-abf7-ca3ab9fe9d3f.json) — codex-root / phase3-20261026
+- 2026-10-26T15:49:46.434Z [ingest: Phase3來源與綜合：artifacts/phase3-codex-resource-observation.json](../events/3012f737-6803-476c-8bcd-3d5bcc5a56a6.json) — codex-root / phase3-20261026
+- 2026-10-26T15:50:03.241Z [task.update: RLAB-TASK-0008 update](../events/ea909f1e-81de-4640-beed-1f672ab3e819.json) — codex-root / phase3-20261026
+- 2026-10-26T15:51:35.264Z [ingest: Phase3加入取消與context pack操作，取代同一正式操作來源版本](../events/06d3381f-73f8-4991-890a-c907cb3fa717.json) — codex-root / phase3-20261026
+- 2026-10-26T15:51:59.730Z [task.heartbeat: RLAB-TASK-0008 heartbeat](../events/2b69d962-0cb7-41a7-be71-cc864c52a38a.json) — codex-root / phase3-20261026
+- 2026-10-26T16:00:05.196Z [handoff: Phase3預交接：19命令通過，使用者確認Muse0，Codex實際接手驗收，待新Agent閱讀後結案](../events/dddd64a7-7e89-40db-95cc-5537daed88f5.json) — codex-root / phase3-20261026
+- 2026-10-26T16:07:41.758Z [task.update: RLAB-TASK-0008 update](../events/4ac3b2d5-f41f-40a3-8f3a-ff97ee90abd2.json) — codex-root / phase3-20261026
+- 2026-10-26T16:07:42.549Z [task.release: RLAB-TASK-0008 release](../events/7af4c22a-87fe-49d9-a366-9d77e568f7f2.json) — codex-root / phase3-20261026
+- 2026-10-26T16:07:43.560Z [task.claim: RLAB-TASK-0006 claim](../events/63b79f02-a9d4-4224-98a8-a7448f5344e1.json) — codex-root / phase3-metadata-update
+- 2026-10-26T16:07:47.625Z [task.update: RLAB-TASK-0006 update](../events/1fd543e1-4230-4ba6-bdb9-a746812a55fe.json) — codex-root / phase3-metadata-update
+- 2026-10-26T16:07:48.630Z [task.release: RLAB-TASK-0006 release](../events/c334b28b-5283-4ca6-a342-6983efe66c15.json) — codex-root / phase3-metadata-update
+- 2026-10-26T16:08:54.048Z [ingest: Phase3結案證據：benchmarks/results/phase3-validation-20261026-final.json](../events/9e35afd4-ab04-42b8-ab5c-72d470f83023.json) — codex-root / phase3-20261026
+- 2026-10-26T16:08:55.893Z [ingest: Phase3結案證據：artifacts/phase3-user-zero-muse/export.json](../events/e1daf94f-3c50-41ec-aeab-b7b57e959573.json) — codex-root / phase3-20261026
+- 2026-10-26T16:08:58.038Z [ingest: Phase3結案證據：artifacts/phase3-fresh-handoff-receipt.json](../events/21d199d4-ea7c-40d0-b52f-2cebdb64d5b8.json) — codex-root / phase3-20261026
+- 2026-10-26T16:08:59.211Z [ingest: Phase3結案證據：artifacts/phase3-project-skill-validation.txt](../events/876223ca-ecd8-4a0b-8443-bac452902514.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:01.278Z [ingest: Phase3結案證據：docs/09-agents/PHASE3_REPORT.md](../events/9729dd02-0ef8-48dd-9ef5-3f7c839a575e.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:03.127Z [ingest: Phase3結案證據：docs/09-agents/VALIDATION_SUMMARY.json](../events/2425845b-ffce-489a-9c04-37ac9b628935.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:04.182Z [ingest: Phase3結案證據：docs/09-agents/INDEPENDENT_REVIEW.md](../events/bfd2721d-e22b-466c-a8ef-629512912911.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:05.384Z [ingest: Phase3結案證據：scripts/agents/engine.mjs](../events/dc6e8e17-e331-462e-88ba-d35de11192ae.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:07.866Z [ingest: Phase3結案證據：schemas/agents/task.schema.json](../events/820a66af-c1bd-468e-9faa-7677abde2e78.json) — codex-root / phase3-20261026
+- 2026-10-26T16:09:10.583Z [ingest: Phase3結案證據：artifacts/phase3-git-byte-check.json](../events/558d9fb6-eca0-429e-8a84-775166c3140c.json) — codex-root / phase3-20261026
+- 2026-10-26T16:11:18.738Z [checkpoint: Phase3工程完成：Muse使用者確認0，Codex實際接手及獨立驗收，19gate與fresh receiver PASS；Live限制另列](../events/d3cda4e9-151a-4af4-8403-b443e2976fbb.json) — codex-root / phase3-20261026
+- 2026-10-26T16:11:19.747Z [handoff: Phase3工程完成：Muse使用者確認0，Codex實際接手及獨立驗收，19gate與fresh receiver PASS；Live限制另列](../events/fd1a594d-8ead-4b52-aba6-89dcced0eb77.json) — codex-root / phase3-20261026
+- 2026-10-26T16:12:01.615Z [ingest: 下一個正式切片contract明確固定最新scopedhandoff，未啟動產品](../events/f8fdf976-a950-460e-b5fe-149bbf99dc87.json) — codex-root / phase3-20261026
+- 2026-10-26T17:19:07.575Z [task.claim: RLAB-TASK-0010 claim](../events/dda90c89-e37a-4404-a199-7aadff5f52b4.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:41:34.755Z [task.heartbeat: RLAB-TASK-0010 heartbeat](../events/43814940-dd3c-4e20-8ad9-c4b6ca10fdc0.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:41:35.645Z [task.claim: RLAB-TASK-0006 claim](../events/15c9248a-a94c-4fa4-adeb-8a2869df81ee.json) — codex-root / sound-policy-metadata
+- 2026-10-26T17:41:37.112Z [task.update: RLAB-TASK-0006 update](../events/64320b60-6a2e-4785-9cee-26fdf69c7a7c.json) — codex-root / sound-policy-metadata
+- 2026-10-26T17:41:38.212Z [task.release: RLAB-TASK-0006 release](../events/2fbc750e-7117-455b-90c5-ab277dc2c0e2.json) — codex-root / sound-policy-metadata
+- 2026-10-26T17:52:34.195Z [ingest: Sound Behavior來源／政策整合：docs/00-project/SOUND_BEHAVIOR_REQUEST.md](../events/e8185fbe-fac3-444c-822d-17dcee2f796e.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:36.795Z [ingest: Sound Behavior來源／政策整合：research/EVIDENCE_LEDGER.json](../events/e96fbda9-7b63-4347-9ca0-02ba7e2bd2fd.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:39.686Z [ingest: Sound Behavior來源／政策整合：docs/04-physics/PHYSICS_AUDIO_EVENTS.md](../events/d39fe28d-ae0f-40d5-8483-0b55503528b0.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:42.200Z [ingest: Sound Behavior來源／政策整合：docs/07-experiments/RECORD_REPLAY.md](../events/73b035f3-cc24-46ea-830f-b715b9df5d4a.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:44.809Z [ingest: Sound Behavior來源／政策整合：docs/07-experiments/AB_COMPARISON.md](../events/7a86ad37-c477-48a2-8780-10009380ba53.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:47.119Z [ingest: Sound Behavior來源／政策整合：docs/KNOWN_LIMITATIONS.md](../events/e3f43d94-2095-4bc7-8314-d257d28459f2.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:50.067Z [ingest: Sound Behavior來源／政策整合：docs/ROADMAP.md](../events/27d54680-9ca0-4171-828a-68742e13d3b1.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:53.822Z [ingest: Sound Behavior來源／政策整合：docs/01-compliance/HACKATHON_RULES.md](../events/42f6a408-6ed5-405e-882b-965a0adc259b.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:55.826Z [ingest: Sound Behavior來源／政策整合：docs/02-architecture/ARCHITECTURE.md](../events/0fd07344-2b04-4218-8ea5-dc2284580abf.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:57.871Z [ingest: Sound Behavior來源／政策整合：docs/NEXT_ENGINEERING_TASK.md](../events/b942f9e2-fb2e-443c-8690-580c463a01c1.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:52:59.941Z [ingest: Sound Behavior來源／政策整合：docs/02-architecture/adr/012-development-harness.md](../events/52ad18fc-f104-4307-895e-1c4544d5d8c1.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:02.349Z [ingest: Sound Behavior來源／政策整合：docs/09-agents/FAILOVER_POLICY.md](../events/1bd7b2d5-3e18-4bbb-851f-853ef49d834a.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:04.509Z [ingest: Sound Behavior來源／政策整合：docs/09-agents/CODEX_MUSE_ORCHESTRATION.md](../events/120ced74-9585-4473-885b-e77c161c92ba.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:06.860Z [ingest: Sound Behavior來源／政策整合：docs/02-architecture/adr/013-codex-primary-development.md](../events/02853085-b8d0-4037-932b-79afd49b330d.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:08.790Z [ingest: Sound Behavior來源／政策整合：docs/02-architecture/adr/014-sound-behavior-system.md](../events/c2f5b794-6204-477c-9ecc-22e08a421ee1.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:10.681Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md](../events/9ec82fac-5db7-4dfe-9679-3442e137caf8.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:12.778Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/BEHAVIOR_SCHEMA.md](../events/77ee6975-27ca-4a00-b085-24823acd20c6.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:14.809Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/EVENT_MODEL.md](../events/f8ea56cf-f0a6-42ff-81d6-dfe10e595082.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:16.698Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/SOUND_BEHAVIOR_VALIDATION.md](../events/20b627f0-3547-407a-bb21-355274951ec5.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:19.047Z [ingest: Sound Behavior來源／政策整合：docs/05-ux/SOUND_BEHAVIOR_UX.md](../events/ff2050c1-6cfd-46f0-bb73-4fe8cfb31d1f.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:21.220Z [ingest: Sound Behavior來源／政策整合：docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md](../events/29dbf704-421f-49bf-a689-bae9e233a1e2.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:23.105Z [ingest: Sound Behavior來源／政策整合：research/sound-behaviors/middleware-sources.json](../events/1ab6d9da-2d4d-4f69-892f-1baea3564869.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:25.460Z [ingest: Sound Behavior來源／政策整合：research/sound-behaviors/physics-sources.json](../events/200e37b6-f8f4-41fe-8529-8f9aac664039.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:27.429Z [ingest: Sound Behavior來源／政策整合：research/sound-behaviors/audio-sources.json](../events/92a0f2f4-83d3-4090-9a75-ec5fb6a5a0e7.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:30.023Z [ingest: Sound Behavior來源／政策整合：research/sound-behaviors/ai-rules-sources.json](../events/760eeb44-8399-40b9-9d80-44212726b36c.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:32.523Z [ingest: Sound Behavior來源／政策整合：research/sound-behaviors/ux-sources.json](../events/bdd75cb7-0f0c-4855-8500-6991df3a2a20.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:34.586Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md](../events/5076381c-6537-45df-ac20-72a07849de2e.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:37.227Z [ingest: Sound Behavior來源／政策整合：docs/10-sound-behaviors/INDEPENDENT_REVIEW.md](../events/1bdc1f19-6e4e-42c7-9a16-4541145f9365.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:53:39.498Z [ingest: Sound Behavior來源／政策整合：experiments/sound-behavior-spike/physics-validation-final-2026-10-27.json](../events/0ad7b64d-a6e3-4afe-b83d-7909b9ef427c.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T17:55:00.487Z [ingest: 將Sound/Codex-primary需求接回原有各領域綜合頁，保留歷史](../events/89a75745-dfa3-43f0-8bc4-88b542445cf4.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:00:13.216Z [ingest: 修正Wiki roadmap相對task連結，不改程式或驗收](../events/52786161-0f63-470e-a5e6-fc5ce9247f58.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:05:24.683Z [checkpoint: Sound Behavior研究與驗證完成；準備結案Task0010，保留所有產品NOTRUN邊界](../events/88517dc5-8033-4f94-a270-181fd463cd9e.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:05:27.187Z [handoff: Sound Behavior研究與驗證完成；準備結案Task0010，保留所有產品NOTRUN邊界](../events/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:06:16.120Z [task.update: RLAB-TASK-0010 update](../events/3f0da990-2f9c-4927-b742-f2abb7d6c555.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:06:17.104Z [task.release: RLAB-TASK-0010 release](../events/85e78c7c-4f84-4f79-a0f6-1ee444d52da2.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:06:18.236Z [task.claim: RLAB-TASK-0011 claim](../events/b879f726-cbe1-421b-961d-1899489cc7fa.json) — codex-root / sound-readiness-metadata
+- 2026-10-26T18:06:19.754Z [task.update: RLAB-TASK-0011 update](../events/91461e3f-b6c2-4b2e-be27-bde4026d7028.json) — codex-root / sound-readiness-metadata
+- 2026-10-26T18:06:21.532Z [task.release: RLAB-TASK-0011 release](../events/a60227ad-fae5-4a41-9239-ce0392d66aea.json) — codex-root / sound-readiness-metadata
+- 2026-10-26T18:07:50.755Z [ingest: Sound結案來源與現況：benchmarks/results/sound-behavior-validation-20261027.json](../events/ec8a8f84-2008-4818-8a02-813f35aea9fe.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:07:53.122Z [ingest: Sound結案來源與現況：docs/10-sound-behaviors/SOUND_BEHAVIOR_REPORT.md](../events/c4c56467-369d-415b-948d-686472de9a09.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:07:55.461Z [ingest: Sound結案來源與現況：schemas/sound-behavior/behavior-document.schema.json](../events/83679785-93c1-4574-8918-97d3e0981489.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:07:57.918Z [ingest: Sound結案來源與現況：schemas/sound-behavior/sound-behavior-ai.schema.json](../events/c1501559-1357-4a73-901a-cb7c87ce362c.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:07:59.791Z [ingest: Sound結案來源與現況：schemas/sound-behavior/types.ts](../events/d5946f77-fa86-4bcd-b9cc-a0cc1554aff7.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:01.253Z [ingest: Sound結案來源與現況：docs/02-architecture/AUDIO_RUNTIME.md](../events/b1df5491-eba0-4dee-839b-7e8d347787f5.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:03.287Z [ingest: Sound結案來源與現況：docs/10-sound-behaviors/PHYSICS_AUDIO_BRIDGE.md](../events/9fa6658b-5185-46f7-b529-3f41d79a606d.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:05.156Z [ingest: Sound結案來源與現況：docs/02-architecture/ADR_INDEX.md](../events/16f7182b-3bd3-45af-a6c6-92facc94cdfe.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:07.064Z [ingest: Sound結案來源與現況：experiments/sound-behavior-spike/skills-validation-20261027.txt](../events/08fc2a5a-81ef-4630-8de8-d18f7157f69b.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:09.843Z [ingest: Sound結案來源與現況：docs/10-sound-behaviors/TASK_POLICY_UPDATE.json](../events/8c3175bd-9d93-4f7d-96ee-e46f844013b3.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:12.595Z [ingest: Sound結案來源與現況：scripts/validation/sound-behavior.mjs](../events/f258d7fb-7595-4348-b281-7c0274f55cdb.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:14.886Z [ingest: Sound結案來源與現況：experiments/sound-behavior-spike/physics-policy.mjs](../events/c9e94c5f-945c-41e6-8863-f68b05c43258.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:08:17.236Z [ingest: Sound結案來源與現況：experiments/sound-behavior-spike/physics-results-2026-10-26T17-57-48-990Z.json](../events/8ba23622-30dc-479a-981e-dfd83a7d870a.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:13:12.865Z [handoff: Sound Behavior研究結案；Task0010 DONE、0011 READY，Codex主導，正式產品尚未實作](../events/bef01763-78fa-47c9-9a35-b1182df2a54a.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:14:42.751Z [ingest: 收斂報告Bounce驗證範圍並更新證據hash，舊bytes已封存](../events/c2b3961c-b632-47d2-a503-1bcc4d004340.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:14:44.088Z [handoff: Sound Behavior研究結案；Task0010 DONE、0011 READY，Codex主導，正式產品尚未實作](../events/53d30f97-81ea-4a1e-839b-e9998d2217d0.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:16:32.075Z [ingest: 移除blocker頁更新行的CRLF混用；不變更結論](../events/1863739d-0eb8-42e9-a5ee-0ce9c5597c5b.json) — codex-root / sound-behavior-20261027
+- 2026-10-26T18:32:26.680Z [task.claim: RLAB-TASK-0006 claim](../events/74a1ed3e-5ba4-47e6-8fc2-6c09cd2de4eb.json) — codex-root / v1-20261027
+- 2026-10-26T18:32:28.817Z [task.claim: RLAB-TASK-0011 claim](../events/ec80525e-592d-48b4-8713-59e2876f8fdf.json) — codex-root / v1-20261027
+- 2026-10-26T18:33:35.068Z [ingest: 使用者授權第一版正式實作，延續既有task及驗收，不使用Muse](../events/38c97e61-71e2-4f0d-9d41-d43f7aedc5b7.json) — codex-root / v1-20261027
+- 2026-10-27T00:40:46.912Z [task.update: RLAB-TASK-0011 update](../events/97952a74-58fc-400c-8065-8d990e03ea49.json) — codex-root / v1-20261027
+- 2026-10-27T00:40:49.892Z [task.release: RLAB-TASK-0011 release](../events/f1fb1823-1228-42ae-aa65-18fd47d573e4.json) — codex-root / v1-20261027
+- 2026-10-27T00:42:23.853Z [ingest: M0領域層帶證據完成，第一版整體驗收持續，未縮限目標](../events/69f3b32a-2010-4c6e-85a8-21d80df4c84d.json) — codex-root / v1-20261027
+- 2026-10-27T01:12:31.742Z [ingest: 更新Muse Code使用者回報可用credit150；不提高支出、不切executor、不冒充產品Meta live](../events/68cc2b6a-f42e-45ba-bfff-889e1822c4d9.json) — codex-root / v1-20261027
+- 2026-10-27T02:50:57.527Z [ingest: 同步V1正式程式／分項證據、Meta小型Live與未完成整體驗收；取代過期research-only現況](../events/784a72a6-aaf5-4f81-baab-ee0ac64a6a48.json) — codex-root / v1-20261027
+- 2026-10-27T02:50:58.754Z [ingest: Meta Live US1總授權與安全範圍](../events/f157cf22-33fd-4877-acf6-b560d827ce4a.json) — codex-root / v1-20261027
+- 2026-10-27T02:50:59.918Z [ingest: 開發與產品資源狀態實際觀察](../events/5ed7f1c8-efef-4639-a569-a18b832e0bab.json) — codex-root / v1-20261027
+- 2026-10-27T02:52:28.782Z [ingest: V1現行來源版本：package-lock.json](../events/f04aa09e-9d27-44d6-bfe8-28061f0410cb.json) — codex-root / v1-20261027
+- 2026-10-27T02:52:31.232Z [ingest: V1現行來源版本：docs/01-compliance/LICENSE_REGISTER.md](../events/cc0c1483-784b-475b-843f-1706b734169a.json) — codex-root / v1-20261027
+- 2026-10-27T02:52:33.121Z [ingest: V1現行來源版本：docs/KNOWN_LIMITATIONS.md](../events/7c99dbc6-0914-4de0-aad9-f454f21a3b08.json) — codex-root / v1-20261027
+- 2026-10-27T02:52:34.965Z [ingest: V1現行來源版本：docs/ROADMAP.md](../events/c127345b-01ad-4c0a-befc-ed45950c4d3c.json) — codex-root / v1-20261027
+- 2026-10-27T02:55:31.372Z [task.update: RLAB-TASK-0006 update](../events/870cb7da-29ec-4680-8c78-4d34a220c63b.json) — codex-root / v1-20261027
+- 2026-10-27T02:55:32.627Z [checkpoint: V1程式與部分Meta Live已落地；完整E2E／效能仍驗證中，未宣告完成](../events/060c3406-1f53-4646-af43-ed3ab9654756.json) — codex-root / v1-20261027
+- 2026-10-27T03:05:16.189Z [checkpoint: 核實原Meta access/budget及Sound切片AC-02；資格仍BLOCKED，未改criteria／依賴](../events/ae9b412a-f2e9-4452-86d1-216314cffd42.json) — codex-root / v1-20261027
+- 2026-10-27T03:13:30.854Z [ingest: 使用者新增英文版本，延續V1與原驗收；預設介面＋使用說明範圍](../events/fe36d356-6105-4379-b3a6-bcc97705660d.json) — codex-root / v1-20261027
+- 2026-10-27T03:31:42.579Z [ingest: 使用者明確擴充為介面＋全部專案文件英文版；保留canonical／原驗收與API預算](../events/01fb18e3-12bc-41c4-8c5b-ea8fe6d066a0.json) — codex-root / v1-20261027
+- 2026-10-27T05:41:16.937Z [ingest: 加入官方Codex app唯讀quota時間點證據；不假造CLI餘額、不reset或增加支出](../events/7c046d15-7504-4b92-a62b-7de4a167fcf4.json) — codex-root / v1-20261027
+- 2026-10-27T05:43:47.114Z [ingest: 核對並更正AGENTS過期安裝事實，保留ConflictRecord／Gitpreimage與原品質規則](../events/826415fa-1c29-46f0-a7e5-2e3f0ab62930.json) — codex-root / v1-20261027
+- 2026-10-27T05:43:50.028Z [reconcile: 實際行為以鎖版程式與可重現產品4case為準；舊AGENTS安裝狀態屬研究期過期事實。保留原Git revision/hash與舊句、分項scope，不改Codex主導／獨立驗收／預算／科學規則。英文需求為使用者後續明確範圍，保留繁中canonical與共用task資料。](../events/d91a2571-aa60-430b-867e-49d0d6b1691e.json) — codex-root / v1-20261027
+- 2026-10-27T06:00:08.294Z [ingest: 第一版coreGit／完整產品4案／雙語8＋13／跨引擎實況checkpoint；整體未完成](../events/1638c3ae-88fc-4045-83bb-99e7779fb1c2.json) — codex-root / v1-20261027
+- 2026-10-27T06:00:09.328Z [task.update: RLAB-TASK-0006 update](../events/79ec494c-4245-4234-8e71-205c596f38a0.json) — codex-root / v1-20261027
+- 2026-10-27T06:00:11.186Z [handoff: 第一版core已Git保存，產品4案與雙語8+13通過；其餘固定驗收持續](../events/8e25e0c8-5443-4e3e-807c-ce63463d529a.json) — codex-root / v1-20261027
+- 2026-10-27T06:01:40.043Z [checkpoint: 將英文介面＋全文件需求接入既有Task0016 AC-04，不建第二任務系統](../events/0fffcb0d-daa4-4465-9347-c8dcf441cef4.json) — codex-root / v1-20261027
+- 2026-10-27T07:09:36.874Z [ingest: 保留全驗收：cleancheck lint失敗、support修補、原UX04診斷與3D預聽及完整英譯清冊收斂](../events/d2fd4895-3a2b-4291-9baf-a51c0a769c3f.json) — codex-root / v1-20261027
+- 2026-10-27T07:42:24.929Z [ingest: 補登限制文件的新固定版本，保留先前hash與品質檢查失敗](../events/fdb12df0-71d4-4b06-b4c1-78ce1e0d99be.json) — codex-root / v1-20261027
+- 2026-10-27T10:04:23.058Z [ingest: 完整check/runtime849及當前UI27通過；保留真正縮放版面FAIL並進行窄修，完整goal未完成](../events/cd5be887-db69-43fb-9899-808f7ca31f4c.json) — codex-root / v1-20261027
+- 2026-10-27T10:04:25.315Z [task.update: RLAB-TASK-0006 update](../events/e6fe5e00-d325-4a7f-9e1c-24bb183af136.json) — codex-root / v1-20261027
+- 2026-10-27T10:04:27.852Z [checkpoint: 第一版品質與當前UI通過；原生縮放找到版面缺陷，Codex持續窄修，完整goal未完成](../events/d9a02a45-c6df-4bc8-9c3c-3b30065d0dfd.json) — codex-root / v1-20261027
+- 2026-10-27T10:04:30.333Z [handoff: 第一版品質與當前UI通過；原生縮放找到版面缺陷，Codex持續窄修，完整goal未完成](../events/2c69e001-673d-45e4-b940-0209eb3fc34c.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:38.539Z [task.update: RLAB-TASK-0006 update](../events/77cc16a4-89a5-4d41-a409-c62efd5c8fd1.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:39.304Z [task.release: RLAB-TASK-0006 release](../events/519e37e9-346d-4205-b9bc-7b8307a32f79.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:40.171Z [task.claim: RLAB-TASK-0017 claim](../events/4d1fe944-6c5b-4be3-bd75-477e5a0de944.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:41.294Z [task.update: RLAB-TASK-0017 update](../events/97032ecd-4d6f-40b5-ba71-809275385de3.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:42.203Z [task.release: RLAB-TASK-0017 release](../events/7961943a-ca93-4539-b70d-ed1638bc0ccb.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:43.519Z [task.claim: RLAB-TASK-0019 claim](../events/8c22946f-f8d7-4be5-8de8-f87e9aeec83a.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:44.671Z [task.update: RLAB-TASK-0019 update](../events/26676fa1-0417-4da1-859c-15da72675661.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:45.352Z [task.release: RLAB-TASK-0019 release](../events/a265188a-83ec-4ef1-9284-242a27791485.json) — codex-root / v1-20261027
+- 2026-10-27T12:57:46.195Z [task.claim: RLAB-TASK-0020 claim](../events/12941063-ff64-4110-a5fe-656ea6283460.json) — codex-root / v1-20261027
+- 2026-10-27T13:03:02.680Z [ingest: 當前UI27/physics2/storage5/product4驗證，依原條件結案0006/0017/0019；原生/600/聽測仍待驗](../events/fa7d901d-25d3-4758-a6c8-456183fa7191.json) — codex-root / v1-20261027
+- 2026-10-27T13:03:04.192Z [checkpoint: 當前功能UI27/physics2/storage5/product4通過；0006/0017/0019 DONE，最後原生/性能/裝置驗收持續](../events/41c80dc7-baf1-43d7-a1fe-1fd6827e35d9.json) — codex-root / v1-20261027
+- 2026-10-27T13:03:05.726Z [handoff: 當前功能UI27/physics2/storage5/product4通過；0006/0017/0019 DONE，最後原生/性能/裝置驗收持續](../events/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.json) — codex-root / v1-20261027
+- 2026-10-27T13:50:18.823Z [ingest: 原生V2通過；唯一正式600秒首輪保留實際CPU/負載失敗與RAF邊界缺口，開始原因修補](../events/ebfc9ccb-a52a-4e22-b0c6-3331d28ec0ba.json) — codex-root / v1-20261027
+- 2026-10-27T13:56:36.241Z [ingest: 原生V2通過；唯一正式600秒首輪保留實際CPU/負載失敗與RAF邊界缺口，開始原因修補](../events/34328bc5-3bdd-45f5-a201-a0e7bf4a1b6e.json) — codex-root / v1-20261027
+- 2026-10-27T13:56:37.929Z [task.update: RLAB-TASK-0020 update](../events/e24244dd-41bd-4185-b94c-593440b765e6.json) — codex-root / v1-20261027
+- 2026-10-27T13:56:40.488Z [checkpoint: 真NativeV2通過；正式600首輪未達標，保留FAIL並依原負載/門檻修補](../events/cd7c7c89-c92c-4b2d-a477-3ae6e67ced0e.json) — codex-root / v1-20261027
+- 2026-10-27T13:56:43.541Z [handoff: 真NativeV2通過；正式600首輪未達標，保留FAIL並依原負載/門檻修補](../events/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.json) — codex-root / v1-20261027
+- 2026-10-27T15:29:36.388Z [ingest: 新版效能修補、鎖版安裝及900項回歸通過；音訊準備逾時保留，另實作不改oracle的靜態V2](../events/b9281728-38c5-404b-858d-dd3c5cee72b3.json) — codex-root / v1-20261027
+- 2026-10-27T15:29:40.542Z [task.update: RLAB-TASK-0020 update](../events/78f729e2-d7fe-40f3-9875-aefa4c5c2e68.json) — codex-root / v1-20261027
+- 2026-10-27T15:29:45.369Z [checkpoint: 新版修補完成CI900與a699建置；保留音訊prepare逾時，準備靜態V2及新版原生與效能驗收](../events/40acad59-70b9-41a6-855d-a6821e2e98b5.json) — codex-root / v1-20261027
+- 2026-10-27T15:29:49.818Z [handoff: 新版修補完成CI900與a699建置；保留音訊prepare逾時，準備靜態V2及新版原生與效能驗收](../events/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.json) — codex-root / v1-20261027
+- 2026-10-27T16:21:04.038Z [ingest: 原生25項通過，IR reference初始化缺陷由獨立PCM模型及nativegetter確認；保留一次短效能FAIL並診斷](../events/ddb7fa28-80b1-4732-8e1b-494f3d1bd874.json) — codex-root / v1-20261027
+- 2026-10-27T16:21:05.876Z [task.update: RLAB-TASK-0020 update](../events/30a3bae5-9095-46eb-91ea-a44bb59f95f9.json) — codex-root / v1-20261027
+- 2026-10-27T16:21:08.686Z [checkpoint: Native25通過；IR reference初始化缺陷確診與原FAIL保留；短效能未達標並唯讀診斷](../events/e4e18132-0ccf-44df-8c75-8ea28e39f963.json) — codex-root / v1-20261027
+- 2026-10-27T16:21:11.309Z [handoff: Native25通過；IR reference初始化缺陷確診與原FAIL保留；短效能未達標並唯讀診斷](../events/016c6c42-8309-4278-876f-543cc922f7e7.json) — codex-root / v1-20261027
+- 2026-10-27T17:30:12.720Z [ingest: 產品三檔小修補凍結；391/150分項、100工具與155observer測試通過，新來源native仍待驗](../events/9ae5fdd7-f152-4e35-9e8d-f9809174191b.json) — codex-root / v1-20261027
+- 2026-10-27T17:30:14.270Z [task.update: RLAB-TASK-0020 update](../events/84323f66-fba4-4c75-94c9-c32dbc2d095a.json) — codex-root / v1-20261027
+- 2026-10-27T17:30:16.072Z [checkpoint: 產品與工具來源凍結；分項391/150/100/155通過，新native資格準備中](../events/e3731a0e-0ae7-47f3-95c8-2ed75ba2201d.json) — codex-root / v1-20261027
+- 2026-10-27T17:30:18.420Z [handoff: 產品與工具來源凍結；分項391/150/100/155通過，新native資格準備中](../events/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.json) — codex-root / v1-20261027
+- 2026-10-27T18:59:28.661Z [ingest: 當前分項與product4通過，正式性能FAIL/incomplete，人工與完整品質尚待完成](../events/0ce00e29-2239-4de0-a5b5-dbf0f8357e57.json) — codex-root / v1-20261027
+- 2026-10-27T18:59:31.966Z [task.update: RLAB-TASK-0020 update](../events/e747927c-096c-4564-be35-1c127e547eed.json) — codex-root / v1-20261027
+- 2026-10-27T18:59:35.671Z [checkpoint: 當前native25/IRv2/UI27/physics2/storage5/product4通過；正式性能未通過，實際聽測待使用者](../events/86941e84-be85-49f6-9b8a-953998ca71c6.json) — codex-root / v1-20261027
+- 2026-10-27T18:59:40.021Z [handoff: 當前native25/IRv2/UI27/physics2/storage5/product4通過；正式性能未通過，實際聽測待使用者](../events/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.json) — codex-root / v1-20261027
+- 2026-10-27T19:02:15.519Z [ingest: 第一版當前限制r10：功能PASS、性能與人工門檻未完成](../events/c3c50ab6-fb73-4099-b197-727e0eb999c2.json) — codex-root / v1-20261027
+- 2026-10-27T19:02:19.434Z [ingest: 下一步r10：原Scene切片完成，轉入原第一版未解門檻](../events/7dda2dd4-7c86-46e1-a3e9-9f743f4b5601.json) — codex-root / v1-20261027
+- 2026-10-27T19:02:23.945Z [ingest: 性能預算r10實測連結；原數值與政策保持](../events/912077e1-ae80-43d8-af67-1c0060d71e17.json) — codex-root / v1-20261027
+- 2026-10-27T19:08:17.846Z [ingest: 將當前分項與product4／性能限制綜合回既有feature與replay頁，不另建任務系統](../events/38c19c24-4fda-4aa6-a384-d536d5c4eac7.json) — codex-root / v1-20261027
+- 2026-10-27T19:31:32.316Z [ingest: 當前限制更新：Worker實際結果與聽測等待時段結束](../events/21866820-4b9c-4a70-91c8-59714c38b949.json) — codex-root / v1-20261027
+- 2026-10-27T19:31:33.728Z [ingest: 第一版51列當前證據r4：18scopedPASS／33PARTIAL，整體未完成](../events/4b1127bc-fe79-4f4f-b322-482aa89111f1.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:02.097Z [ingest: 第一版checkpoint r11：當前完整917品質與英文通過，保留人工性能外部門檻](../events/a6f61998-45d3-47b7-a4f9-c3531f3bb7c3.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:03.772Z [ingest: 更新當前限制：完整品質與production bytes已核實，裝置／性能／權利未完成](../events/cfc234b7-fc72-4cff-b751-f86f4fddcfa0.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:05.329Z [ingest: 把當前完整917品質與仍未完成門檻綜合回既有feature／replay頁](../events/a403d5ad-72db-49c4-a449-13b380208398.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:51.217Z [task.claim: RLAB-TASK-0012 claim](../events/dd7ba115-8d7b-4ce9-84ed-17e266cb390c.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:52.387Z [task.update: RLAB-TASK-0012 update](../events/c701a255-148e-499d-9e34-934fe05f9252.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:53.529Z [task.claim: RLAB-TASK-0018 claim](../events/9e7256e7-2560-45b4-aba3-840b358eb983.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:54.710Z [task.update: RLAB-TASK-0018 update](../events/2c34182f-9be4-4607-9c2c-bf02eb43b1f4.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:55.411Z [task.release: RLAB-TASK-0018 release](../events/74d9745c-55dd-4a20-8a7c-aad3c0217640.json) — codex-root / v1-20261027
+- 2026-10-27T21:17:56.596Z [task.update: RLAB-TASK-0020 update](../events/f8015b10-a617-4ffd-91d4-1c7e480621ec.json) — codex-root / v1-20261027
+- 2026-10-27T21:19:11.755Z [ingest: 第一版51列r5：完整917綁定解除24項等待，42scopedPASS／9PARTIAL，整體未完成](../events/5d2f559c-fdfe-4c61-9938-dbbce16caec3.json) — codex-root / v1-20261027
+- 2026-10-27T21:20:00.578Z [checkpoint: 當前完整917品質與英文通過；原Task18 component DONE，51列42scopedPASS／9PARTIAL，整體門檻仍未完成](../events/680798f3-ef41-4c82-85dc-855a2504a784.json) — codex-root / v1-20261027
+- 2026-10-27T21:20:02.039Z [handoff: 當前完整917品質與英文通過；原Task18 component DONE，51列42scopedPASS／9PARTIAL，整體門檻仍未完成](../events/14c04833-4a26-4407-b0d4-3de2d81d6597.json) — codex-root / v1-20261027
+- 2026-10-27T21:41:39.903Z [task.update: RLAB-TASK-0020 update](../events/e0087bcd-51be-4c18-94f8-0c571b455d4c.json) — codex-root / v1-20261027
+- 2026-10-27T21:41:42.075Z [ingest: 真實aec0604本機Git、最後品質及fresh接收證據](../events/fbe6f08e-30b6-4d0d-ad25-1d55bc575234.json) — codex-root / v1-20261027
+- 2026-10-27T21:41:43.431Z [ingest: 第一版r6：只結案OPS01持久化，43scopedPASS／8PARTIAL](../events/58800679-5be7-491f-af38-5aef8e3d344d.json) — codex-root / v1-20261027
+- 2026-10-27T21:41:44.720Z [checkpoint: 實際aec0604與freshreceiver支持OPS01／Task16AC03，43scopedPASS／8PARTIAL；整體未完成](../events/45a8bddb-80f6-4094-88f2-8e8c057c4b35.json) — codex-root / v1-20261027
+- 2026-10-27T21:41:46.078Z [handoff: 實際aec0604與freshreceiver支持OPS01／Task16AC03，43scopedPASS／8PARTIAL；整體未完成](../events/419ef922-a43e-46bd-9226-b0baacbc6b58.json) — codex-root / v1-20261027
+- 2026-10-27T21:49:09.696Z [task.update: RLAB-TASK-0020 update](../events/fc6beb66-e099-42ed-a84b-02856e8ebdfa.json) — codex-root / v1-20261027
+- 2026-10-27T21:49:11.118Z [ingest: R2隔離候選14PASS及完整view等價；正式來源未套用，nextwork改為正式套用前驗證](../events/7f676158-5da2-4d96-9171-c417843bb4c5.json) — codex-root / v1-20261027
+- 2026-10-27T21:49:12.348Z [checkpoint: R2隔離候選14/14與全view等價完成；正式來源未套用，43/8及未完成門檻不變](../events/f9586111-416f-4b63-9ea2-b17cdca4ea40.json) — codex-root / v1-20261027
+- 2026-10-27T21:49:13.663Z [handoff: R2隔離候選14/14與全view等價完成；正式來源未套用，43/8及未完成門檻不變](../events/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.json) — codex-root / v1-20261027
+- 2026-10-27T22:17:52.842Z [task.update: RLAB-TASK-0020 update](../events/8f7bf8c4-a2dd-452a-a072-ad6ba7a0508d.json) — codex-root / v1-20261027
+- 2026-10-27T22:17:54.260Z [ingest: 正式BehaviorRuntime active-rule唯讀投影API說明](../events/b7f6fde5-d4fb-4efd-9ead-7fea24b25afe.json) — codex-root / v1-20261027
+- 2026-10-27T22:17:55.603Z [ingest: active-rule投影正式實作：931回歸與獨立審查通過，當前browser及完整品質待驗](../events/a44bdeb2-b3ce-427d-b7c2-8149fefd31bf.json) — codex-root / v1-20261027
+- 2026-10-27T22:17:56.862Z [checkpoint: active-rule唯讀投影正式套用，931項回歸通過；當前browser／完整品質待驗，goal未完成](../events/d8366e0e-e59a-49d1-a4a4-210488a5083d.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:41.696Z [task.update: RLAB-TASK-0020 update](../events/ca694c5b-6868-43ae-a142-4455b500e478.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:43.278Z [ingest: r12當前功能整合與獨立驗證：931/26/UI27同bytes/physics2/storage5/product4](../events/0615345b-22ea-451c-8bca-e0d9307568f4.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:44.733Z [ingest: r12正式整合續報與保留門檻](../events/583466f1-8e8d-4141-a08c-7dccf863ebb9.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:46.212Z [ingest: Web dev入口與私密檔案拒絕回歸操作](../events/4f3f4427-96c6-480e-bab0-479ad85de667.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:47.643Z [ingest: r12當前NOTICE綁定與esbuild來源子狀態](../events/bba02a82-0f0d-4b5d-abda-47feaaffd25a.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:49.103Z [ingest: 指定Chromium來源支持獨立V3工程，尚無正式量測資格](../events/159017af-1b1f-4ba5-b80f-0020c2561042.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:50.604Z [ingest: R3小型因果trace完整獨立empirical核對](../events/501e8e5b-1bb5-4da9-8e14-31f07f143e37.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:52.098Z [ingest: 相同23/16/6音訊closure來源核對，非當前App聽測](../events/eab56e7f-f7ab-4fcd-9d07-f17cc6a98e22.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:53.599Z [ingest: r12 production/NOTICE逐檔綁定與獨立審查](../events/113bb132-52fa-473e-898d-f65081f84b21.json) — codex-root / v1-20261027
+- 2026-10-27T23:15:55.027Z [checkpoint: r12正式投影與dev修復：931runtime/26Vite/physics2/storage5/product4通過，整體goal仍ACTIVE](../events/c37960fb-f138-4495-8b52-e9f7a6be709a.json) — codex-root / v1-20261027
+- 2026-10-27T23:16:40.433Z [handoff: r12正式投影與dev修復：931runtime/26Vite/physics2/storage5/product4通過，整體goal仍ACTIVE](../events/b92b3225-3c77-478f-9111-f84d3ad7c34f.json) — codex-root / v1-20261027
+- 2026-10-27T23:39:26.184Z [ingest: 清理child環境遺失已授權Gitcontext：正負對照與單一路徑修復](../events/3ac47408-c1ac-4a35-8ef8-74fab34659d5.json) — codex-root / v1-20261027
+- 2026-10-27T23:39:27.718Z [ingest: R12完整品質實跑PASS與原生preview清理，最後metadata/Git待收尾](../events/cbcaf8a9-2d28-4e4b-a50a-237cd94fb8ff.json) — codex-root / v1-20261027
+- 2026-10-27T23:39:28.990Z [task.update: RLAB-TASK-0020 update](../events/9d302310-e712-4375-814d-f99930a1d0eb.json) — codex-root / v1-20261027
+- 2026-10-27T23:39:30.534Z [checkpoint: r12完整品質與離線benchmark實際通過；最後metadata英文/Git待收尾，整體仍未完成](../events/7d22d38b-cb44-430c-a66a-465c50cbf1cf.json) — codex-root / v1-20261027
+- 2026-10-27T23:39:32.040Z [handoff: r12完整品質與離線benchmark實際通過；最後metadata英文/Git待收尾，整體仍未完成](../events/68cb57eb-8034-4b39-baf0-4970fe3abe2b.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:37.864Z [ingest: R12實際Git6aafa97與finalQ4/freshreceiver，接續效能資格](../events/a94e1035-12af-4975-a697-582182594f22.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:39.338Z [ingest: 使用者明確延後聽測與原生互動驗證；自動開發續行](../events/e6fdfa17-5e5b-4e2b-b8b6-34828e99b292.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:40.752Z [ingest: 未套用V3封存正規化與cacheR2修復：原bytes/FAIL保留](../events/80b2443c-3e64-446b-a01b-e45c32ca9a99.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:42.197Z [task.update: RLAB-TASK-0012 update](../events/f5e97399-06f6-4fcd-959e-bb9ec2d18bd6.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:45.147Z [task.update: RLAB-TASK-0020 update](../events/e43e7756-4af1-4697-8823-ece8252bb9f9.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:46.898Z [checkpoint: R12 actualGit/全品質已保存；依使用者延期人工測試，續行V3自動資格工程](../events/95d8e015-8cc9-4bfa-85a9-1065810d834a.json) — codex-root / v1-20261027
+- 2026-10-28T00:11:48.717Z [handoff: R12 actualGit/全品質已保存；依使用者延期人工測試，續行V3自動資格工程](../events/3807fc47-bd19-45e4-a2f9-39448e711a5a.json) — codex-root / v1-20261027
+- 2026-10-28T00:16:24.381Z [ingest: 依使用者要求停止全部任務，保留雙語使用者測試及未完成工程交接](../events/f476b4d0-4659-4edd-b036-bab517c09bdb.json) — codex-root / v1-20261027
+- 2026-10-28T00:16:25.649Z [task.update: RLAB-TASK-0012 update](../events/5139b334-b58c-4ca2-b6d2-75a904e387bd.json) — codex-root / v1-20261027
+- 2026-10-28T00:16:26.902Z [task.release: RLAB-TASK-0012 release](../events/5ed66481-12ca-4cd9-bf44-3d4c41413083.json) — codex-root / v1-20261027
+- 2026-10-28T00:17:19.901Z [task.update: RLAB-TASK-0020 update](../events/e976add3-78ef-4892-ad1b-91dd7fa82629.json) — codex-root / v1-20261027
+- 2026-10-28T00:17:21.292Z [task.release: RLAB-TASK-0020 release](../events/66a81458-4363-4b24-8a50-c374557b5764.json) — codex-root / v1-20261027
+- 2026-10-28T00:17:23.070Z [checkpoint: 使用者要求暫停全部任務；雙語使用者測試及 partial 工程已保存，已知自有程序停止](../events/01929d24-d6ee-413a-a077-ae3574a70869.json) — codex-root / v1-20261027
+- 2026-10-28T00:17:24.692Z [handoff: 使用者要求暫停全部任務；雙語使用者測試及 partial 工程已保存，已知自有程序停止](../events/e58b3e01-a529-4d7c-8bab-c7418773bbf8.json) — codex-root / v1-20261027
+- 2026-10-28T08:17:53.601Z [ingest: 保存基本使用者實測與第一人稱阻塞／UI過量說明回報；保持全域暫停](../events/556746bc-765c-4b2b-a76b-81aeb033fb67.json) — codex-root / v1-20261027
+- 2026-10-28T08:18:01.085Z [handoff: 新增使用者基礎實測：音訊方向／重力反彈可觀察；第一人稱不可用及UI混亂，維持暫停](../events/89c071f0-a668-4c1f-ba86-5d885237ca49.json) — codex-root / v1-20261027
+- 2026-10-28T08:22:02.610Z [ingest: 使用者指定 Emil Skills 為 UI 排版與互動參考](../events/5e717007-5dbe-4715-922f-a12d6ace1112.json) — codex-root / v1-20261027
+- 2026-10-28T08:22:10.767Z [ingest: 正式設計規範補入使用者 Emil UI 方向與資訊層級要求](../events/1dc8a9f9-6d7e-43ce-8871-66ee243a5081.json) — codex-root / v1-20261027
+- 2026-10-28T08:22:20.592Z [handoff: 使用者指定 Emil UI 設計方向已接入正式規範；維持開發暫停](../events/f7352adf-612b-40f3-9cf8-8acbba2c599d.json) — codex-root / v1-20261027
+- 2026-10-28T08:33:35.360Z [ingest: 使用者明確恢復完整第一版，所有子代理Terra，僅餘真人門檻才暫停](../events/77dbb753-e04b-4221-a9a6-6935ca0f2eef.json) — codex-root / v1-20261028-r13
+- 2026-10-28T08:33:40.404Z [task.claim: RLAB-TASK-0012 claim](../events/96724a21-98f8-41cf-8e5d-5389c7774347.json) — codex-root / v1-20261028-r13
+- 2026-10-28T08:33:46.228Z [task.claim: RLAB-TASK-0020 claim](../events/e965ad45-3205-4952-b736-f63d758a4768.json) — codex-root / v1-20261028-r13
+- 2026-10-28T08:33:53.271Z [checkpoint: R13已恢復，Terra分工與獨立門檻盤點保存；FPS/UI實作與cache性能修復進行中](../events/3c8a08d6-bc74-4f4e-99f5-8684ee2b3246.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:01.437Z [ingest: R13 runtime944/FPS7/UI21/product4實際通過，性能候選305與R5語意保存，goal仍ACTIVE](../events/551e0793-981e-4c87-8a6d-c2a85696e263.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:04.948Z [task.update: RLAB-TASK-0012 update](../events/20fa95d4-b1ac-4e09-9214-32599cbfcc6e.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:09.322Z [task.release: RLAB-TASK-0012 release](../events/372aee5f-6ee2-49fc-9294-d0085575b9e1.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:13.648Z [task.update: RLAB-TASK-0020 update](../events/b724a579-11a6-4452-9bcf-586eb7b48a39.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:17.578Z [task.release: RLAB-TASK-0020 release](../events/ad8266d4-e9fe-4011-956c-de2713d4c917.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:31:21.378Z [handoff: R13整合自動驗證保存，Computer Use停止桌面操作；完整goal仍ACTIVE，工程未完成](../events/27af8ba2-6c19-41e2-866b-582f73ae75b4.json) — codex-root / v1-20261028-r13
+- 2026-10-28T09:49:13.372Z [task.claim: RLAB-TASK-0012 claim](../events/3e3111d1-a9fb-4cce-8765-87831ba29210.json) — codex-root / v1-20261028-r14
+- 2026-10-28T09:49:17.390Z [task.claim: RLAB-TASK-0020 claim](../events/07ef844c-9f4e-427c-975f-eef91f3a5423.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:02:58.079Z [ingest: 使用者移除原生200%驗收、正常100%操作補充](../events/2a15ac60-c2df-47a8-916d-fb6e42821ed5.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:03:11.051Z [ingest: R14實際FPS7與兩次短追蹤、英文及來源工程進度](../events/d267f0b8-4720-47b3-aca6-df1a28b7cd77.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:34:17.276Z [ingest: AGENTS加入已確認100%範圍補充，固定新來源並保留原版本為historical](../events/9f76ce08-8e07-4414-95ad-9f3f0f56b7d8.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:40:33.241Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/ed22da65-a7bc-4805-bbaf-ceb54e910dbe.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:40:36.581Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/41dabb66-574a-41d4-b243-d1e38034ac47.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:42:22.003Z [ingest: R14長測原FAIL保存，checkpoint/falsy錯誤真RED-GREEN、R2無聲通過，goal仍active](../events/0db12507-a6f5-448c-a022-5c34938b89b1.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:42:24.638Z [task.update: RLAB-TASK-0012 update](../events/847b2bb8-893f-4429-bd69-3813b211a233.json) — codex-root / v1-20261028-r14
+- 2026-10-28T10:42:27.115Z [task.update: RLAB-TASK-0020 update](../events/1e24e2cd-6314-40aa-ba94-d022d5b559b5.json) — codex-root / v1-20261028-r14
+- 2026-10-28T11:37:24.624Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/8c6b155a-c06b-4262-a4a1-520f9f1eaeed.json) — codex-root / v1-20261028-r14
+- 2026-10-28T11:37:27.144Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/2adc902a-267b-48e9-b436-77b92d3bc18f.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:16:12.857Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/15b0c9a6-9f6f-4eff-89ab-b7c6fb0f2e11.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:16:15.090Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/4d788594-6407-4ee6-aeff-9b86dd4d0525.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:16:29.458Z [ingest: R14完整品質與正式613秒trace保存；同資料數值重算完整但性能FAIL，工程續行](../events/87a10b4e-22a2-413a-b63a-c256d6163269.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:16:33.272Z [task.update: RLAB-TASK-0012 update](../events/94d02d26-3f5c-4d4d-b46f-f303a9b1ea70.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:16:37.726Z [task.update: RLAB-TASK-0020 update](../events/82873a33-27ca-44f3-8143-433bf5655dff.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:34:45.221Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/247e35ac-4bd7-4baa-aee6-71aa932c56c1.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:34:47.402Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/4d45e122-6e60-4bb4-bf04-acb88f66b853.json) — codex-root / v1-20261028-r14
+- 2026-10-28T12:53:25.436Z [ingest: R15正式Web背景封存，保留原核驗與合成browser範圍](../events/11daad33-1791-45db-a508-26bf77504015.json) — codex-root / v1-20261028-r14
+- 2026-10-28T13:01:02.590Z [ingest: R15背景封存正式整合960/28/4及R4無聲通過，正式效能與最後收尾仍進行](../events/cb9330f2-b279-4bea-afe2-add35db2465d.json) — codex-root / v1-20261028-r14
+- 2026-10-28T13:01:07.335Z [task.update: RLAB-TASK-0012 update](../events/6f7f8a5a-48c9-4ba7-9b1e-f52adb58b5b3.json) — codex-root / v1-20261028-r14
+- 2026-10-28T13:01:12.460Z [task.update: RLAB-TASK-0020 update](../events/a557a2af-aa37-4e54-88f7-c8460030fcc7.json) — codex-root / v1-20261028-r14
+- 2026-10-28T15:30:55.675Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/d1ff138d-4109-4d1f-89ac-58d1ea1e2f8d.json) — codex-root / v1-20261028-r14
+- 2026-10-28T15:30:58.128Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/d0bc72ae-b5fb-4967-9411-f31f441ab9f0.json) — codex-root / v1-20261028-r14
+- 2026-10-28T15:38:12.495Z [ingest: R15完整check與14檔／274副本核對通過，完整scope及正式性能仍進行](../events/16280ce3-501d-4a26-8e11-29426ead0dab.json) — codex-root / v1-20261028-r14
+- 2026-10-28T15:38:15.178Z [task.update: RLAB-TASK-0012 update](../events/6e22224c-39b7-4cb9-89e4-5836530f6584.json) — codex-root / v1-20261028-r14
+- 2026-10-28T15:38:17.912Z [task.update: RLAB-TASK-0020 update](../events/34d5f237-87d2-4e21-8b16-8129a14d86a2.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:20:29.898Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/b36cb0dd-57ca-43ad-8350-b334def48201.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:20:33.398Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/1f827997-b822-4a99-938b-a4a9a7a5727d.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:20:43.410Z [ingest: R16保存C2正式收尾FAIL、原資料缺失及Sol模型授權；固定邊界修補進行](../events/72c63c0f-bc78-46ac-9a6c-ede1d2392ada.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:20:47.341Z [task.update: RLAB-TASK-0012 update](../events/42ee0a07-7d63-4767-80aa-5ae967eac969.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:20:51.154Z [task.update: RLAB-TASK-0020 update](../events/9dcb58eb-2ddd-4614-90e0-7a9fe23d4912.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:57:49.682Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/b2eebe00-78ee-4c1a-84cd-0e3f32ac4ac3.json) — codex-root / v1-20261028-r14
+- 2026-10-28T16:57:51.487Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/ef34d880-66a7-4437-b72f-62e0264ae90e.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:16:09.004Z [ingest: R16固定原邊界修補、Root640及真UI短測資料保存成功；負載與性能未通過，待正式長測](../events/ea4464d7-fbf0-4c0e-a7a1-403c8a5bf271.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:16:12.160Z [task.update: RLAB-TASK-0012 update](../events/7fe8d187-37ca-4f19-ad53-16209cd898cd.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:16:15.405Z [task.update: RLAB-TASK-0020 update](../events/bf3d1ea2-bf97-4f5b-86d9-bbd258b33517.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:54:56.374Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/6024d61d-454c-40d7-bb3a-ea454beeb33e.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:54:59.998Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/40b484a7-f539-4417-9812-6f16677ad10c.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:55:09.611Z [ingest: R17保留Root新8與原28通過、第三產品capture真FAIL，修vacuum錯誤Computed狀態；新正式600未啟動](../events/9db0c63c-6bf5-40f1-b709-1ffe2db070a4.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:55:13.760Z [task.update: RLAB-TASK-0012 update](../events/02d25421-3e9c-41c2-98ec-12b206d7e889.json) — codex-root / v1-20261028-r14
+- 2026-10-28T17:55:19.822Z [task.update: RLAB-TASK-0020 update](../events/e830b497-5a65-40fb-9699-4aa16fae0d58.json) — codex-root / v1-20261028-r14
+- 2026-10-28T18:34:08.618Z [ingest: R17新readmodel與有界Grab fixture通過整合；保留額外程序真FAIL，正式長測及完整check待做](../events/36dee5be-e266-40df-ae40-711fb80f0358.json) — codex-root / v1-20261028-r14
+- 2026-10-28T18:34:13.820Z [task.update: RLAB-TASK-0012 update](../events/d6022a0b-a500-4925-aebc-4c73520bc5dd.json) — codex-root / v1-20261028-r14
+- 2026-10-28T18:34:21.699Z [task.update: RLAB-TASK-0020 update](../events/473553cc-6dc8-4354-9441-b8980015fc69.json) — codex-root / v1-20261028-r14
+- 2026-10-28T18:39:05.873Z [ingest: R17記錄實際可用v3產品與v2連動命令，保留原contexts定義與額外FAIL](../events/085181a2-cc26-4e92-8f3a-49b22a812897.json) — codex-root / v1-20261028-r14
+- 2026-10-28T18:47:07.829Z [ingest: R17原三context範圍獨立確認，英文raw精確pin及Root39通過；額外FAIL保留](../events/2c810525-b117-4c2d-b4d3-fa64040b3cc6.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:03:07.087Z [task.heartbeat: RLAB-TASK-0012 heartbeat](../events/ee2e2f8a-92aa-42e9-a6cf-02e000d406d1.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:03:10.617Z [task.heartbeat: RLAB-TASK-0020 heartbeat](../events/9cc80402-b0de-4749-a477-1c685542bf96.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:04:06.635Z [ingest: R17完整npm check實際通過且來源穩定；正式600秒尚待執行](../events/df907a21-6667-4632-818c-e21345626bb2.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:04:10.434Z [task.update: RLAB-TASK-0012 update](../events/640e0f82-8a34-444e-85cb-3d0c7cac4b54.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:04:14.132Z [task.update: RLAB-TASK-0020 update](../events/caf14052-eb9a-4e1e-83cb-a6b8259f0ae2.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:30:52.819Z [ingest: R17逐原條件判讀完成：完整負面600秒證據、功能回歸與已知通知範圍保存，剩真人及最後持久化](../events/40288728-2612-4643-a921-84058a3f51e8.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:30:56.532Z [task.update: RLAB-TASK-0012 update](../events/0145e3fd-6c47-4a0a-8d51-7ba489fd7ec0.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:30:59.504Z [task.update: RLAB-TASK-0020 update](../events/7caaf925-781f-47fe-b19b-9581338d9a44.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:32:14.636Z [task.release: RLAB-TASK-0012 release](../events/28b47b06-393b-4045-a7ca-864fd3f0993b.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:32:18.286Z [task.release: RLAB-TASK-0020 release](../events/30f3ddbc-b216-4938-9220-c81a961b45b8.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:32:22.580Z [handoff: R17真人前工程收尾：完整功能回歸及負面600秒證據保存，釋放claims；待最後metadata／Git後依要求暫停](../events/b04e358b-d17b-420b-a9f6-a42f6658f285.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:36:53.483Z [ingest: R17性能預算來源版本：原目標與完整負面量測分開](../events/0de06157-6776-45d9-af2b-bc1f6e21ef34.json) — codex-root / v1-20261028-r14
+- 2026-10-28T19:36:57.947Z [ingest: R17當前限制來源版本：真人／性能／來源界線](../events/8925b2f0-5c0e-4355-869d-95130cf70c95.json) — codex-root / v1-20261028-r14
+- 2026-10-29T05:20:28.640Z [task.claim: RLAB-TASK-0021 claim](../events/44a30680-c719-43bf-9b64-f2b1e01e063c.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:22.045Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/45b2c9eb-bc3e-4471-af71-44c11dc502ad.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:26.824Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/be5d1410-f2ce-47e6-8f0a-22870e754b99.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:32.055Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/db2b0704-cce0-41b6-8148-ad8294cd3297.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:39.705Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/3b124ec4-116b-47de-a424-2b1bf9b5014d.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:47.083Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/8d637067-7262-4e28-89b4-fe9d46e80c40.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:31:54.192Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/2359ab29-c31c-461e-9625-00b4391272ec.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:01.970Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/78a2d24f-0e38-41fc-ab4e-c33f526611e9.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:09.168Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/e9e32962-d5dd-41fe-a232-0bdda4019315.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:15.323Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/9efcd7fd-c635-48ec-8bac-41697163ace6.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:21.779Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/b3c11292-fb7c-4848-a5ef-6f044eca2020.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:29.027Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/24878496-b0d2-4fdd-8bfd-5b9fafa36f0d.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:35.510Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/18e80c4f-c4a5-493e-a93d-0ab64b995b34.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:42.278Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/a193a149-33ee-45d6-944d-e8a45834df6e.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:48.639Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/9ed6b254-86cb-4e80-8a5b-931a06eb8d5a.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:32:54.991Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/6147cd8e-8062-4b24-9ddc-25117c79c27b.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:01.269Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/642c8afc-e88b-4b36-89e8-2833524b5349.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:06.610Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/a8c65a72-0992-422b-a708-8fa73af5c899.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:11.608Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/71517d2d-9295-40e4-bf05-562f2984ad31.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:17.924Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/8c7d16f9-33be-439c-b065-157394ded93e.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:25.953Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/07d5e224-8afa-4d4d-aa18-222143ea4d78.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:34.251Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/ed47252c-c34d-42a0-a102-c8f9ca83d4df.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:41.732Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/65b6648d-d591-4008-8aae-55b8bdc6a32a.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:49.861Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/6ee37467-8cd8-444e-9fe9-e3d314f04463.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:33:57.626Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/2ffee28c-c2ad-44b3-ad0b-289446e6dd44.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:05.048Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/ab3d0ff4-2e33-41e9-a44c-8c75c4ccf4db.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:12.121Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/eb6d30a8-65c7-4955-8174-a87e857a1082.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:17.692Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/3fbb729a-d354-4b4d-ad83-0f0f786af45d.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:23.441Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/fadf218b-164f-4a6e-9d06-5732f2c72208.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:29.850Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/7c1fdda8-cf7c-40df-8c33-545c0e9af7cf.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:36.443Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/cf465a5b-c9bc-49ea-ab1a-f7f4aa08aba2.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:46.579Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/f8b53c92-ebd0-461e-a073-9e62abc19821.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:34:54.756Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/4cc5ed72-3a8a-4f72-813c-fa70716c0adf.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:35:02.744Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/ada145dc-fab7-46a5-a578-bb537e1db291.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:38:46.238Z [ingest: 將研究後實際runtime邊界、roadmap及使用者乾淨snapshot新授權接回既有綜合頁](../events/5357173c-7596-4735-b62e-79d94d34b7a9.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:53:58.845Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/fc236238-cd97-4961-a538-6aef2dfe7b6d.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:54:01.549Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/e1169e6b-5652-40fd-9636-b9df570de318.json) — codex-root / architecture-review-20261029
+- 2026-10-29T05:54:04.630Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/2b9ef8f4-9285-4b10-ade1-efc0843aa505.json) — codex-root / architecture-review-20261029
+- 2026-10-29T06:06:14.360Z [task.update: RLAB-TASK-0021 update](../events/e302e0b8-568d-4f89-a2fb-a2a8e7a1c5ae.json) — codex-root / architecture-review-20261029
+- 2026-10-29T06:06:16.530Z [task.release: RLAB-TASK-0021 release](../events/a77fcabb-6003-4268-9224-a1ca07bea944.json) — codex-root / architecture-review-20261029
+- 2026-10-29T06:06:18.223Z [handoff: 使用者明確暫停：停止本輪驗證，保留研究與暫存變更；未commit/merge/push](../events/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.json) — codex-root / architecture-review-20261029
+- 2026-10-29T13:26:22.186Z [task.claim: RLAB-TASK-0021 claim](../events/bf4d38ad-3bba-4721-8f21-3d1d88ebea87.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T13:26:30.825Z [handoff: 使用者明確重新開始；恢復隔離驗證與已授權整合發佈](../events/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T13:47:08.613Z [task.update: RLAB-TASK-0021 update](../events/d92fbb9e-b4eb-42fa-91e2-31f5fbb56855.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T13:59:07.775Z [ingest: 記錄真人第一人稱阻斷、音量與直接操作問題；限定1至8未提及項目，其他不標成功](../events/b1660ba4-765a-483b-a762-31231f536885.json) — codex-root / user-feedback-record-20261029-r18
+- 2026-10-29T14:01:10.437Z [handoff: 供Claude Code接手：真人FPS失敗、預設音量過小及直接操作UX問題；僅記錄未修復](../events/117efd63-cca1-486e-8061-b379685543bb.json) — codex-root / user-feedback-record-20261029-r18
+- 2026-10-29T14:17:12.227Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/0b1ffcf2-2cba-4125-b3f0-b336758db545.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:17:15.316Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/42760478-e874-41b7-ab2f-37d254ba5075.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:17:18.467Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/b8b8bcc4-d02f-495d-9a3b-87faddcb16e0.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:17:21.269Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/94f953f9-2da2-4634-9a7e-b9a2a091272e.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:17:24.214Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/13669493-cbc0-484d-8462-e3ad4fc490cd.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:17:27.254Z [ingest: 索引本輪研究／canonical／契約來源新版本；舊hash與events保留](../events/b8fdef68-cbc6-4e01-b1d7-875ba314e907.json) — codex-root / architecture-review-20261029
+- 2026-10-29T14:19:12.451Z [task.update: RLAB-TASK-0021 update](../events/bcc48a35-d156-4bd3-bd2a-3eccb9dc345d.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T14:20:34.312Z [ingest: 保存實際合併/完整品質/browser證據與原區R18真人回報；公開仍未完成](../events/e5da6639-539a-412c-9024-45dc6ae13ca0.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T14:20:36.159Z [handoff: 安全合併及原區全品質/47功能browser通過；保留R18真人FPS失敗，準備乾淨公開snapshot](../events/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.json) — codex-root / architecture-review-resume-20261029
+- 2026-10-29T14:37:33.450Z [ingest: 公開快照修復四份真實歷史收據連結；原bytes與測試門檻保留](../events/f6b37b7e-92eb-4f98-be61-361601b4348b.json) — codex-root / public-snapshot-validation-20261029
+<!-- wiki:generated:end -->

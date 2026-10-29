@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCEEND_NODE_STATIC_QUALIFIED_ONLY",
+  "recordedAt": "2026-10-27T14:00:20.439Z",
+  "files": [
+    {
+      "path": "tests/browser/performance-profile.mjs",
+      "sha256": "ff060a4c8315f704a80669b02236199d5df327c6dc9158b3794ee264d0c9029d"
+    },
+    {
+      "path": "tests/browser/performance-fixture.mjs",
+      "sha256": "a0b506cf361f2cf50fd98d0ec0b782eb72c5768224f35f47e300abcbaf56ea51"
+    },
+    {
+      "path": "tests/integration/performance-profile.test.mjs",
+      "sha256": "d5aab5f8cd2a60f19d07c6b47fa281c300e1d0b65fa783ad773f063c504a6897"
+    }
+  ],
+  "independentTests": {
+    "command": "node --test tests/integration/performance-profile.test.mjs",
+    "tests": 146,
+    "passed": 146,
+    "failed": 0,
+    "exitCode": 0,
+    "threeHashesBeforeAfterStable": true,
+    "receipt": "artifacts/v1/performance-boundary-physics-final-20261027.json",
+    "receiptSha256": "6a3af4d0bb95c816491c934a852688ee7ffa5dc881923092e01777481c2d20df",
+    "observedRedReceipts": [
+      "artifacts/v1/performance-boundary-v2-red-20261027.json",
+      "artifacts/v1/performance-boundary-null-physics-red-20261027.json"
+    ]
+  },
+  "staticChecks": [
+    {
+      "id": "syntaxRunner",
+      "command": "node --check tests/browser/performance-profile.mjs",
+      "chunk_id": "fbb050",
+      "wall_time_seconds": 0.1428235,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "syntaxFixture",
+      "command": "node --check tests/browser/performance-fixture.mjs",
+      "chunk_id": "5330e9",
+      "wall_time_seconds": 0.3427188,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "lint",
+      "command": "node node_modules/eslint/bin/eslint.js tests/browser/performance-profile.mjs tests/browser/performance-fixture.mjs tests/integration/performance-profile.test.mjs",
+      "chunk_id": "56dd3c",
+      "wall_time_seconds": 2.1174542,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "format",
+      "command": "node node_modules/prettier/bin/prettier.cjs --check tests/browser/performance-profile.mjs tests/browser/performance-fixture.mjs tests/integration/performance-profile.test.mjs",
+      "chunk_id": "0dee9b",
+      "wall_time_seconds": 1.2698563,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "Checking formatting...\nAll matched files use Prettier code style!\n"
+    }
+  ],
+  "independentStaticReview": {
+    "agent": "/root/v1_browser_performance/profile_runner/native_graph_audit",
+    "scope": "Exact source hashes above reviewed for v2 callback membership, collection-specific PerformanceMark identity, two-anchor bin mapping with native RunTask wall duration, and guarded fixture native wake maintenance. No blocking defect; no dynamic capacity claim.",
+    "result": "NO_BLOCKING_STATIC_DEFECT"
+  },
+  "changes": [
+    "V2 exact collection window/ID and actual callback-entry performance.now prove membership independently from raw native RAF timestamps; finite/strict-order remains separately reported.",
+    "Bins are exact markers plus strictly interior raw RAF times; leading negative offsets preserved. Legacy foreign/outside frames remain rejected without v2 proof.",
+    "Collection-specific actual PerformanceMark names identify the matching native trace markers; both must belong to one CrRendererMain.",
+    "Two actual mark anchors map only bin positions; native RunTask clipping/union/occupancy never rescaled, only microseconds/1000. Both anchor offsets, raw duration difference and mapping slope retained.",
+    "Fixture-only guarded wakeUp before every measured step for255 distinct native Dynamic bodies, never Fixed; exact original every30-step impulse vectors/cadence unchanged. Guard validates APIs and boolean sleep query before any impulse.",
+    "Native pre/post-wake and post-step sleeping counts plus wake/impulse/setup/measured-step costs recorded separately; original255awake/256body/64CCD/1/60dt/4catchup/<2ms gates unchanged."
+  ],
+  "physicsCausalSource": {
+    "path": "artifacts/v1/physics-profile-awake-causal-audit-20261027.json",
+    "sha256": "16eda198e90b642dec64ea131f077cb88cb23f52a2f3bc4b26351c5f7cc2e4b6"
+  },
+  "preservedFirstTrial": {
+    "path": "artifacts/v1/browser-performance-20261027T131711449Z/verification.json",
+    "sha256": "aa05fc7ac8af17be68dd7e1778804fd5b169c34f7be4cf774fcd3da6c11e9dc6",
+    "mainThreadOccupancyOriginalStatus": "NOT_RUN",
+    "unchanged": true
+  },
+  "notRun": [
+    "new browser/profile",
+    "build/server",
+    "old trace offline rebin",
+    "actual native wake workload performance",
+    "human hearing",
+    "AudioWorklet render deadline"
+  ],
+  "ownership": "Only the listed3source files and newJSONreceipts changed by this subtree; no product/docs/Markdown/package/budget/cap/domain-motion/path-ID changes.",
+  "hold": "All source writes/checks/I/O stop after this receipt. Browser/reprofile/offline rebin await separate Root qualification authorization."
+}

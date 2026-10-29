@@ -1,0 +1,32 @@
+{
+    "scope":  "Replay ObjectView projection while the underlying live Rapier body is paused",
+    "outcome":  "GREEN: saved velocity/angular velocity/sleep state shown; StopReplay restores untouched live tick, pose, v, omega, sleep and document",
+    "command":  {
+                    "command":  "node --import tsx --test --test-name-pattern \"Replay ObjectView uses\" tests/app/integration-regressions.test.ts",
+                    "cwd":  "D:\\Developing\\Meta Hack",
+                    "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                    "exitCode":  0,
+                    "startedAt":  "2026-10-27T02:57:31.6616646+00:00",
+                    "completedAt":  "2026-10-27T02:57:34.6401554+00:00",
+                    "durationMs":  2828,
+                    "stdout":  "replay-objectview-green.stdout.txt",
+                    "stderr":  "replay-objectview-green.stderr.txt",
+                    "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                },
+    "gitHead":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "sourceBefore":  "green-source-before.json",
+    "sourceAfter":  "green-source-after.json",
+    "sourceCount":  146,
+    "sourceUnchanged":  true,
+    "changed":  [
+
+                ],
+    "modelCalls":  0,
+    "browserRun":  false,
+    "physics":  "Actual Rapier, bounded unrecorded warmup to real sleep",
+    "notClaimed":  [
+                       "root runtime edited",
+                       "whole suite rerun",
+                       "browser evidence"
+                   ]
+}

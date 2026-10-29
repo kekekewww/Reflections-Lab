@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/agents/implementation-result.schema.json",
+  "title": "Executor self report; not independent verification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "run_id",
+    "executor",
+    "model",
+    "cli_version",
+    "modified_files",
+    "completed_acceptance_criteria",
+    "remaining_work",
+    "tests_reported",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "executor": {
+      "enum": ["MUSE", "CODEX"]
+    },
+    "model": {
+      "type": ["string", "null"],
+      "maxLength": 4096
+    },
+    "cli_version": {
+      "type": ["string", "null"],
+      "maxLength": 4096
+    },
+    "modified_files": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      },
+      "default": []
+    },
+    "completed_acceptance_criteria": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "remaining_work": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "default": []
+    },
+    "tests_reported": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "result"],
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "result": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "default": []
+    }
+  }
+}

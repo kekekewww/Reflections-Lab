@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "createdAt": "2026-10-27T17:36:53.527Z",
+  "baseline": {
+    "id": "prefix-f3e5",
+    "baselineId": "audio-prefix-f3e5",
+    "recordPath": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+    "recordSha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2",
+    "legacyBaseline": {
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/verification.json",
+      "sha256": "968e56921ee0c4b8f0f67b57f61fd70bfe79cc346d96ff8cf0aa9dd98aa2f78a"
+    },
+    "approvedDelta": [
+      {
+        "path": "src/audio/band-filter.ts",
+        "from": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+        "to": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+      }
+    ],
+    "approvalEvidence": {
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603"
+    }
+  },
+  "scope": "Current registered prefix-f3e5 native DSP/cursor/pause and IR reference qualification using cached Chromium headless shell",
+  "executable": {
+    "version": "156.0.8078.4",
+    "actualPath25": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+    "actualPathIr": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+    "sha256": "f77d8e27c8db1e4ac0399459a00e0c97bb9417adc393474cabaffebe2314ecb0",
+    "stable25": true,
+    "stableIr": true
+  },
+  "globalSource": {
+    "allGlobalStable": true,
+    "inputCount": 1781,
+    "beforeFile": "artifacts/v1/audio-prefix-native25-20261027173304441/global-source-before.json",
+    "finalAfterCleanupFile": "artifacts/v1/audio-prefix-irv2-20261027173404198/global-source-after-cleanup.json",
+    "sha256": "87fee0c726a6a62bad79ed43e46872878db37bc81021852d727bf117b820a451"
+  },
+  "utilityConformance": {
+    "sourceendReceipt": "artifacts/v1/audio-requal-utility-sourceend-20261027172620604/sourceend-receipt.json",
+    "sha256": "f966623731561532cb3c81c2f58d28fbb348336221142b8b4f455b9f6169576a",
+    "focusedPassed": 100,
+    "scopedChecks": "lint/format/strict PASS"
+  },
+  "review": {
+    "status": "NO_BLOCKERS_REPORTED",
+    "reviewer": "/root/v1_audio_finish/audio_review",
+    "native25Reviewer": "/root/v1_audio_finish/audio_review/cross_engine_report_review",
+    "scope": "Independent read-only audit of the two fresh actual qualification artifact directories; no rerun",
+    "native25": "25 unique PASS/raw true cases in six unique suites; raw files/evidence consistent with no skips/warnings/errors. Registered23 Root prefix source map and six utilities stable, only CE-to-F3 approved band delta, all immutable oracle/driver pins retained.",
+    "irV2": "Independent bounded calculation asserted all six renders times two channels times12000 samples finite (576000 Float32 payload bytes). Every actual/reference pair independently computed RMS and maximum error0, matching records and strict RMS<0.001/maxAbs<1e-5. Nonzero reference energy and all schedule/buffer/format flags true. IR21/supplemental/source snapshots/JS/maps/fresh25 receipt binding match.",
+    "lifecycle": "Native Node78560 and48052 retained close0. Actual cached headless-shell executable hash f77d8e and browserPIDs47932/67824 match successful runner cleanup; recorded known-owned process counts0. Global before/after source proofs each1781 and equal.",
+    "reviewProcessLimitation": "The tiny Node audit passed all PCM/source/executable assertions, then its final cleanup JSON read encountered the existing PowerShell UTF8 BOM. Reviewer independently read the unchanged cleanup JSON through PowerShell and confirmed0; no rerun or artifact correction was performed.",
+    "noChanges": "Reviewer performed no source/docs/artifact writes, tests/build/browser reruns or performance/hearing inference. Historical FAIL artifacts retained."
+  },
+  "limitations": [
+    "Cached Chromium headless-shell156.0.8078.4, not installedChrome",
+    "No App/UI/performance/hearing/device/SPL/Worklet/Meta API or completeV1 claim",
+    "Original Firefox numericalFAIL, WebKit missing capabilities and IRv1 referenceFAIL remain immutable historical results",
+    "IRv2 changes only version metadata and the independently confirmed inactive gain intrinsic initialization; unchanged bounds and schedules",
+    "Legacy V1 event/file/export names remain for compatibility; manifest/profile/verification explicitly identify V2"
+  ],
+  "native25": {
+    "path": "artifacts/v1/audio-prefix-native25-20261027173304441/qualification-receipt.json",
+    "sha256": "66131495a113b8c3423fc2bb4a8ae6df445e44c96284b82d7d7c8f88331bec4d",
+    "wrapperSha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+    "passed": 25,
+    "nativeClose": {
+      "exitCode": 0,
+      "signal": null,
+      "observedAt": "2026-10-27T17:33:09.915Z",
+      "provenance": "Retained Node ChildProcess close event"
+    },
+    "knownOwnedProcesses": 0
+  },
+  "irV2": {
+    "path": "artifacts/v1/audio-prefix-irv2-20261027173404198/qualification-receipt.json",
+    "sha256": "427ab66330e66b0584805a973fd2830263f9211cbab447b64d40084b98b420a1",
+    "wrapperSha256": "02b41b5f8bc1a91bae72383e35eb93be56f86aef8a2a688c6b544205dfce245d",
+    "passed": 3,
+    "renders": 6,
+    "rawPcmBytes": 576000,
+    "nativeClose": {
+      "exitCode": 0,
+      "signal": null,
+      "observedAt": "2026-10-27T17:34:08.784Z",
+      "provenance": "Retained Node ChildProcess close event"
+    },
+    "knownOwnedProcesses": 0
+  },
+  "noFurtherExecution": "All browsers/servers/native workloads ended; source and CPU frozen; further stages require Root authorization"
+}

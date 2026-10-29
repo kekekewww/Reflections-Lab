@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 1,
+  "auditor": "/root/v1_browser_performance/product_archive_audit",
+  "secondaryReviewer": "/root/v1_browser_performance/product_archive_audit/trace_native_review",
+  "status": "PASS_WITH_NATIVE_CONTROL_SCOPE_LIMITS",
+  "checks": [
+    {
+      "id": "launch1.native440-prefix-route",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch1.running-native-context",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay.observer-light-source.trace.zip.exact-harness-source",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch1.restored-complete-raw-A",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch1.seek-exact-raw-pose",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch2.native440-prefix-route",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch2.running-native-context",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "product-e2e-clean-launch-2-7cf50-B-and-durable-reload-replay.observer-light-source.trace.zip.exact-harness-source",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch2.restored-complete-raw-A",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch2.seek-exact-raw-pose",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch3.native440-prefix-route",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch3.running-native-context",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "product-e2e-clean-launch-3-391ff-B-and-durable-reload-replay.observer-light-source.trace.zip.exact-harness-source",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch3.restored-complete-raw-A",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "launch3.seek-exact-raw-pose",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "product-e2e-a-separate-bro-0eba6-without-activating-hardware.observer-light-source.trace.zip.exact-harness-source",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "product-e2e-a-separate-bro-0eba6-without-activating-hardware.relink-target-source.trace.zip.exact-harness-source",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.trace-missing-and-wrong-bytes-rejected",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.scene-unchanged-after-rejection",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.empty-assets-before-apply",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.renamed-original-file-supplied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.no-native-context-or-start",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "relink.same-id-revision-sha-ready",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "launches": [
+    {
+      "launch": 1,
+      "nativeStarts": {
+        "sample": 2,
+        "110": 1,
+        "330": 1,
+        "440": 1
+      },
+      "nativeImpactPaths": [
+        [
+          183,
+          184,
+          185,
+          190,
+          186,
+          187,
+          191,
+          192,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8,
+          1
+        ]
+      ],
+      "contextStates": [
+        {
+          "state": "running",
+          "currentTimeSeconds": 11.541333333333334,
+          "sampleRateHz": 48000,
+          "baseLatencySeconds": 0.01,
+          "outputLatencySeconds": 0.04
+        }
+      ],
+      "trace": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "restoredCallId": "plxu@481",
+      "seekCallId": "plxu@520",
+      "seekTick": 13,
+      "replayNumericValues": [
+        {
+          "callId": "plxu@202",
+          "expression": "() => window.__nativeGraph.starts.some(start => start.kind === \"oscillator\" && start.frequencyHz === 440)",
+          "value": true
+        },
+        {
+          "callId": "plxu@490",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 0
+        },
+        {
+          "callId": "plxu@502",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@506",
+          "expression": "() => window.__reflectionLab.getSnapshot().monitor.activeVoices",
+          "value": 2
+        },
+        {
+          "callId": "plxu@511",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.5333333333333333
+        },
+        {
+          "callId": "plxu@515",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.5333333333333333
+        },
+        {
+          "callId": "plxu@524",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@529",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.16666666666666666
+        },
+        {
+          "callId": "plxu@533",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "launch": 2,
+      "nativeStarts": {
+        "sample": 10,
+        "110": 1,
+        "330": 1,
+        "440": 1
+      },
+      "nativeImpactPaths": [
+        [
+          327,
+          328,
+          329,
+          334,
+          330,
+          331,
+          335,
+          336,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8,
+          1
+        ]
+      ],
+      "contextStates": [
+        {
+          "state": "running",
+          "currentTimeSeconds": 19.68,
+          "sampleRateHz": 48000,
+          "baseLatencySeconds": 0.01,
+          "outputLatencySeconds": 0.04
+        }
+      ],
+      "trace": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-2-7cf50-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "restoredCallId": "plxu@1152",
+      "seekCallId": "plxu@1191",
+      "seekTick": 10,
+      "replayNumericValues": [
+        {
+          "callId": "plxu@825",
+          "expression": "() => window.__nativeGraph.starts.some(start => start.kind === \"oscillator\" && start.frequencyHz === 440)",
+          "value": true
+        },
+        {
+          "callId": "plxu@1161",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 0
+        },
+        {
+          "callId": "plxu@1173",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@1177",
+          "expression": "() => window.__reflectionLab.getSnapshot().monitor.activeVoices",
+          "value": 2
+        },
+        {
+          "callId": "plxu@1182",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.6
+        },
+        {
+          "callId": "plxu@1186",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.6
+        },
+        {
+          "callId": "plxu@1195",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@1200",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.16666666666666666
+        },
+        {
+          "callId": "plxu@1204",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "launch": 3,
+      "nativeStarts": {
+        "sample": 30,
+        "110": 8,
+        "330": 1,
+        "440": 1
+      },
+      "nativeImpactPaths": [
+        [
+          841,
+          842,
+          843,
+          848,
+          844,
+          845,
+          849,
+          850,
+          4,
+          3,
+          5,
+          6,
+          7,
+          8,
+          1
+        ]
+      ],
+      "contextStates": [
+        {
+          "state": "running",
+          "currentTimeSeconds": 26.872,
+          "sampleRateHz": 48000,
+          "baseLatencySeconds": 0.01,
+          "outputLatencySeconds": 0.04
+        }
+      ],
+      "trace": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-3-391ff-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "restoredCallId": "plxu@1892",
+      "seekCallId": "plxu@1931",
+      "seekTick": 10,
+      "replayNumericValues": [
+        {
+          "callId": "plxu@1545",
+          "expression": "() => window.__nativeGraph.starts.some(start => start.kind === \"oscillator\" && start.frequencyHz === 440)",
+          "value": true
+        },
+        {
+          "callId": "plxu@1901",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 0
+        },
+        {
+          "callId": "plxu@1913",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@1917",
+          "expression": "() => window.__reflectionLab.getSnapshot().monitor.activeVoices",
+          "value": 2
+        },
+        {
+          "callId": "plxu@1922",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.4
+        },
+        {
+          "callId": "plxu@1926",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.4
+        },
+        {
+          "callId": "plxu@1935",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 6
+        },
+        {
+          "callId": "plxu@1940",
+          "expression": "() => window.__reflectionLab.getSnapshot().recording.replayTimeSeconds",
+          "value": 0.16666666666666666
+        },
+        {
+          "callId": "plxu@1944",
+          "expression": "() => window.__nativeGraph.starts.filter(start => start.kind === \"sample\").length",
+          "value": 12
+        }
+      ]
+    }
+  ],
+  "relink": {
+    "trace": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-a-separate-bro-0eba6-without-activating-hardware/relink-target-source.trace.zip",
+    "rejectedValues": [
+      {
+        "callId": "plxu@2104",
+        "value": "ASSET_REQUIRED_MISSING: Import the original WAV, then apply this project again: asset.3a5ef226-407b-4c55-a682-d2ac522825fd"
+      },
+      {
+        "callId": "plxu@2118",
+        "value": "ASSET_REQUIRED_MISSING: Import the original WAV, then apply this project again: asset.3a5ef226-407b-4c55-a682-d2ac522825fd"
+      },
+      {
+        "callId": "plxu@2121",
+        "value": "ASSET_RELINK_MISMATCH: This WAV does not match any external asset SHA in the pending project"
+      }
+    ],
+    "unchangedSceneCallIds": [
+      "plxu@2102",
+      "plxu@2107"
+    ],
+    "emptyAssetsCallIds": [
+      "plxu@2124",
+      "plxu@2136"
+    ],
+    "renamedFileCallIds": [
+      "plxu@2127"
+    ],
+    "loadedCallId": "plxu@2141",
+    "restoredPin": {
+      "assetId": "asset.3a5ef226-407b-4c55-a682-d2ac522825fd",
+      "revision": 1,
+      "sha256": "235d44fbedac9e915beb597ddcf5f208da7e5d9ccab2d1a330f0fe96ba781f3d",
+      "hashKind": "encodedBytesSha256",
+      "name": "source-original.wav",
+      "mimeType": "audio/wav",
+      "byteLength": 9644,
+      "storage": "externalFile",
+      "rights": {
+        "license": "USER_CONFIRMED_LOCAL_USE",
+        "source": "User-confirmed local WAV; encoded bytes stored locally; project JSON retains immutable references"
+      }
+    }
+  },
+  "traceBindings": [
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "sha256": "caf84077bebcf97e0b298e2dae0e46ae1b1c96c5f5b243f1e050a8733fda4b98",
+      "sourceCopies": [
+        {
+          "entry": "src/e959701f0f196d4757b3ed5e9b2048f1d58104b6.ts",
+          "sha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-2-7cf50-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "sha256": "24e2acf9146a733c58a1bd2156fdbc58ff7395e7d87ca79f3ac575ac1fbd33a3",
+      "sourceCopies": [
+        {
+          "entry": "src/e959701f0f196d4757b3ed5e9b2048f1d58104b6.ts",
+          "sha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-clean-launch-3-391ff-B-and-durable-reload-replay/observer-light-source.trace.zip",
+      "sha256": "c588234e8d4e6695826475be138c68ef74dea9f0d83ff98c4b817efac9cb3f90",
+      "sourceCopies": [
+        {
+          "entry": "src/e959701f0f196d4757b3ed5e9b2048f1d58104b6.ts",
+          "sha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-a-separate-bro-0eba6-without-activating-hardware/observer-light-source.trace.zip",
+      "sha256": "10bb8edcc1e9aad050db317fcee91909346e3f4dd0405008ca40a77131a703ee",
+      "sourceCopies": [
+        {
+          "entry": "src/e959701f0f196d4757b3ed5e9b2048f1d58104b6.ts",
+          "sha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T033616Z/cases/product-e2e-a-separate-bro-0eba6-without-activating-hardware/relink-target-source.trace.zip",
+      "sha256": "43a686ef1ddc6c3323d9e8efa1a6f2020e755a315ac583561d147b09bb62bbb1",
+      "sourceCopies": [
+        {
+          "entry": "src/e959701f0f196d4757b3ed5e9b2048f1d58104b6.ts",
+          "sha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Connection prefix proves successful connection construction before successful native start; disconnect chronology was not captured.",
+    "Positive Delay values were sampled at graph collection, not independently timestamped at exact native start.",
+    "Native graph/control and clock evidence does not establish device PCM, human hearing, SPL or AudioWorklet deadlines.",
+    "Source phase grade is logicalIntent/NATIVE_CURSOR_PARTIAL, not native waveform/phase equivalence.",
+    "Multiple native source reconstructions across bounded recoveries are not duplicate accepted physics trigger events."
+  ]
+}

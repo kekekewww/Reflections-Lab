@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-28T18:06:57.879Z",
+  "expected": "RED ready !== unavailable on unchanged old product, no weakened nullable/path ID predicates",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "tests/browser/linked-workflow-v2.config.ts",
+    "--grep",
+    "real unavailable propagation"
+  ],
+  "before": [
+    {
+      "path": "tests/browser/linked-workflow-v2.spec.ts",
+      "sha256": "00e2cda0eda92c72a7c0695e8faae35dc0c9d774ef6eda844854e21a8f7aba8a"
+    },
+    {
+      "path": "tests/browser/linked-workflow-v2.config.ts",
+      "sha256": "207f7e7eb15b853b9430fc1d298f4f247add052d87f2a092b3d3d3eab7f51a22"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "f02bbac3a794d73b234cdc7ece3cf2774668153fa7743a017679fee79d38d4c2"
+    }
+  ],
+  "after": [
+    {
+      "path": "tests/browser/linked-workflow-v2.spec.ts",
+      "sha256": "00e2cda0eda92c72a7c0695e8faae35dc0c9d774ef6eda844854e21a8f7aba8a"
+    },
+    {
+      "path": "tests/browser/linked-workflow-v2.config.ts",
+      "sha256": "207f7e7eb15b853b9430fc1d298f4f247add052d87f2a092b3d3d3eab7f51a22"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "f02bbac3a794d73b234cdc7ece3cf2774668153fa7743a017679fee79d38d4c2"
+    }
+  ],
+  "sourceStable": true,
+  "result": {
+    "exit_code": 1,
+    "signal": null,
+    "timed_out": false,
+    "cancelled": false,
+    "process_stopped": true,
+    "stdout": "\nRunning 1 test using 1 worker\n\n[1/1] tests\\browser\\linked-workflow-v2.spec.ts:166:1 › real unavailable propagation preserves path identity and null metrics with its actual reason\n  1) tests\\browser\\linked-workflow-v2.spec.ts:166:1 › real unavailable propagation preserves path identity and null metrics with its actual reason \n\n    Error: expect(received).toBe(expected) // Object.is equality\n\n    Expected: \"unavailable\"\n    Received: \"ready\"\n\n      177 |   );\n      178 |   await expect(page.locator(\".path-table\")).toHaveCount(0);\n    > 179 |   expect((await snapshot(page)).acoustic.state).toBe(\"unavailable\");\n          |                                                 ^\n      180 |   await expect(page.locator(\".paths-panel\")).toContainText(/vacuum/i);\n      181 |   await expect(page.locator(\".paths-panel\")).not.toContainText(\"No paths to display yet\");\n      182 |   await expect(page.locator(\".evidence-tag\")).not.toContainText(\"Computed\");\n        at D:\\Developing\\Meta Hack\\tests\\browser\\linked-workflow-v2.spec.ts:179:49\n\n    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────\n    artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\test-failed-1.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\error-context.md\n\n    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────\n    artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\trace.zip\n    Usage:\n\n        npx playwright show-trace artifacts\\v1\\r17-vacuum-browser-red-20261029\\proofs\\linked-workflow-v2-real-un-56281-rics-with-its-actual-reason\\trace.zip\n\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n  1 failed\n    tests\\browser\\linked-workflow-v2.spec.ts:166:1 › real unavailable propagation preserves path identity and null metrics with its actual reason \n",
+    "stderr": "",
+    "duration_ms": 20413.0106,
+    "output_limit": false,
+    "spawn_error": null,
+    "stop_scope": "direct_process",
+    "process_tree_stopped": null
+  },
+  "scope": "One frozen browser acceptance case before candidate promotion; original V1 workflow retained",
+  "overallV1Complete": false
+}

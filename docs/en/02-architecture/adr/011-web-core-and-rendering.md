@@ -1,0 +1,18 @@
+<!-- english-source: {"path":"docs/02-architecture/adr/011-web-core-and-rendering.md","sha256":"e4b179b066d0cde959bc08589726e10449ff6911085531e12cebf1a9cba58214","translated_at":"2026-10-27T03:38:21Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-notice:start -->
+> English translation of [`docs/02-architecture/adr/011-web-core-and-rendering.md`](../../../02-architecture/adr/011-web-core-and-rendering.md). Source SHA-256: `e4b179b066d0cde959bc08589726e10449ff6911085531e12cebf1a9cba58214`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+<!-- english-notice:end -->
+
+<!-- english-original-anchor --> <a id="adr-011獨立作品web-acoustic-core-與-r3f-view"></a>
+# ADR-011: Independent Work, Web Acoustic Core, and R3F View
+
+- Status: Accepted, 2026-10-26; based on the latest Phase3 user requirements. This is an architecture decision; the formal product has not yet been implemented.
+- Context: Reflection Lab is an independent new work; past research may be cited, but the core code of Echo Canvas / Reflections is not reused directly. The existing ADR-005 already adopts a Web direct / first-order core, while Rendering ADR-001 still uses a direct Three runtime for the initial version.
+- Decision: The primary product direction is React / TypeScript, Three.js / React Three Fiber, Rapier WASM, a custom Geometric Acoustic Core, Web Audio / AudioWorklet, and server Meta Model API. R3F is the planned integration direction for the view adapter and has not yet been installed or validated; fixed-step physics, the solver, and the audio clock are not driven through React state.
+- Acoustic scope: Direct propagation, distance attenuation, occlusion, limited first-order Image Source Method, stable path IDs, materials and air attenuation with sources / frequency bands, and spatial rendering parameters. Implement each formula individually according to the original scientific / acceptance contracts; this ADR cannot be used to claim completion or greater accuracy.
+- Steam Audio: Retain existing native smoke tests / SDK hash / licensing, an optional capability adapter, and its candidacy for independent benchmarks; it is not a mandatory MVP dependency. The SDK and Web solver use different models and cannot directly serve as ground truth for the same model.
+- Supersedes: The “initial version does not adopt R3F” portion of ADR-001; ADR-005's Web solver and ADR-008's Meta host security boundary remain in effect. The new [Harness ADR](012-development-harness.md) governs development agents and cannot replace product Meta integration.
+- Provenance: Distinguish sources and existing work through fixed artifacts / Git records; the initial checkout has no HEAD, so record null and do not fabricate history for uncommitted work. The first local commit must clearly describe the scope of existing research and this infrastructure work; do not push.
+- Retained features: Scene Editor, FPS Simulation / Build, Grab / Drop / Throw / Rotate, four body modes, dynamic / collision audio, listener sync, acoustic visualization, record/replay, A/B experiments, and Meta Experiment Agent.
+- Risks: Wiring the R3F lifecycle to imperative poses / dispose requires validation in a formal milestone; check official documentation and pin API / package versions at installation time. An architecture list is not evidence of integration.
+- Basis: [Original user requirements](../../00-project/PHASE3_REQUEST.md), [ADR-001](001-rendering.md), [ADR-005](005-acoustic-backend.md), [Original formal task](../../NEXT_ENGINEERING_TASK.md).

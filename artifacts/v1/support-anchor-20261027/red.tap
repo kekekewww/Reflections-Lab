@@ -1,0 +1,406 @@
+TAP version 13
+# Subtest: default SceneSpec passes the production validator with linked sources and independent listener
+ok 1 - default SceneSpec passes the production validator with linked sources and independent listener
+  ---
+  duration_ms: 4.9939
+  type: 'test'
+  ...
+# Subtest: default material bands conserve A/R/T and retain explicit Synthetic provenance
+ok 2 - default material bands conserve A/R/T and retain explicit Synthetic provenance
+  ---
+  duration_ms: 0.29
+  type: 'test'
+  ...
+# Subtest: oscillator defaults create a real behavior runtime without fixture or missing assets
+ok 3 - oscillator defaults create a real behavior runtime without fixture or missing assets
+  ---
+  duration_ms: 10.5796
+  type: 'test'
+  ...
+# Subtest: behavior context uses actual body generations and trusted registry without aliases
+ok 4 - behavior context uses actual body generations and trusted registry without aliases
+  ---
+  duration_ms: 0.735
+  type: 'test'
+  ...
+# Subtest: physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+ok 5 - physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+  ---
+  duration_ms: 0.401
+  type: 'test'
+  ...
+# Subtest: contact begins and fast motion never fabricate an impact or throw
+ok 6 - contact begins and fast motion never fabricate an impact or throw
+  ---
+  duration_ms: 0.9632
+  type: 'test'
+  ...
+# Subtest: accepted discrete physics inputs preserve provenance, contact location and impulse units
+ok 7 - accepted discrete physics inputs preserve provenance, contact location and impulse units
+  ---
+  duration_ms: 0.9839
+  type: 'test'
+  ...
+# Subtest: unavailable contact data stay unknown and rejected commands are never marked accepted
+ok 8 - unavailable contact data stay unknown and rejected commands are never marked accepted
+  ---
+  duration_ms: 1.0264
+  type: 'test'
+  ...
+# Subtest: default impact emits at the contact and does not stop its independent continuous source
+ok 9 - default impact emits at the contact and does not stop its independent continuous source
+  ---
+  duration_ms: 5.7426
+  type: 'test'
+  ...
+# Subtest: Scene source playing and dBFS gain control their default continuous binding
+ok 10 - Scene source playing and dBFS gain control their default continuous binding
+  ---
+  duration_ms: 2.6331
+  type: 'test'
+  ...
+# Subtest: real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+ok 11 - real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+  ---
+  duration_ms: 176.6079
+  type: 'test'
+  ...
+# Subtest: producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+not ok 12 - producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+  ---
+  duration_ms: 5.5576
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\defaults.test.ts:1:13599'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   -0.55,
+    +   0.35,
+    -   -0.8,
+        0,
+    -   0
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: -0.8
+    1: 0
+    2: 0
+  actual:
+    0: -0.55
+    1: 0.35
+    2: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\defaults.test.ts:464:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+not ok 13 - producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+  ---
+  duration_ms: 4.8555
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\support-anchor.test.ts:1:2302'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   closingSpeedMetresPerSecond: 2,
+    -   closingSpeedMetresPerSecond: 0,
+        colliderA: 'collider.ball',
+    +   colliderB: 'collider.wall',
+    +   episodeId: 'episode.wall.1',
+    -   colliderB: 'collider.floor',
+    -   episodeId: 'episode.floor.7',
+        impulseMethod: 'RapierContactImpulse',
+        materialA: 'material.metal',
+    +   materialB: 'material.metal',
+    -   materialB: 'material.wood',
+        normalAtoB: [
+    +     1,
+          0,
+    -     -1,
+          0
+        ],
+    +   normalImpulseNewtonSeconds: 12,
+    -   normalImpulseNewtonSeconds: 0.8,
+        objectA: 'object.ball',
+    +   objectB: 'object.wall',
+    +   pairKey: 'pair.ball-wall',
+    -   objectB: 'object.floor',
+    -   pairKey: 'pair.ball-floor',
+        pointWorldMetres: [
+    +     0.8,
+    +     1,
+          0,
+    -     0,
+    -     0
+        ],
+    +   tangentSpeedMetresPerSecond: 1.6,
+    -   tangentSpeedMetresPerSecond: 0,
+        velocityMethod: 'PreStepRigidBodyEstimate'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    pairKey: 'pair.ball-floor'
+    episodeId: 'episode.floor.7'
+    objectA: 'object.ball'
+    objectB: 'object.floor'
+    colliderA: 'collider.ball'
+    colliderB: 'collider.floor'
+    materialA: 'material.metal'
+    materialB: 'material.wood'
+    pointWorldMetres:
+      0: 0
+      1: 0
+      2: 0
+    normalAtoB:
+      0: 0
+      1: -1
+      2: 0
+    normalImpulseNewtonSeconds: 0.8
+    impulseMethod: 'RapierContactImpulse'
+    closingSpeedMetresPerSecond: 0
+    tangentSpeedMetresPerSecond: 0
+    velocityMethod: 'PreStepRigidBodyEstimate'
+  actual:
+    pairKey: 'pair.ball-wall'
+    episodeId: 'episode.wall.1'
+    objectA: 'object.ball'
+    objectB: 'object.wall'
+    colliderA: 'collider.ball'
+    colliderB: 'collider.wall'
+    materialA: 'material.metal'
+    materialB: 'material.metal'
+    pointWorldMetres:
+      0: 0.8
+      1: 1
+      2: 0
+    normalAtoB:
+      0: 1
+      1: 0
+      2: 0
+    normalImpulseNewtonSeconds: 12
+    impulseMethod: 'RapierContactImpulse'
+    closingSpeedMetresPerSecond: 2
+    tangentSpeedMetresPerSecond: 1.6
+    velocityMethod: 'PreStepRigidBodyEstimate'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\support-anchor.test.ts:114:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=null)
+not ok 14 - producer support contact owns continuous metrics despite stronger impact (support J=null)
+  ---
+  duration_ms: 0.9277
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\support-anchor.test.ts:1:2302'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   closingSpeedMetresPerSecond: 2,
+    -   closingSpeedMetresPerSecond: 0,
+        colliderA: 'collider.ball',
+    +   colliderB: 'collider.wall',
+    +   episodeId: 'episode.wall.1',
+    +   impulseMethod: 'RapierContactImpulse',
+    -   colliderB: 'collider.floor',
+    -   episodeId: 'episode.floor.7',
+    -   impulseMethod: 'Unavailable',
+        materialA: 'material.metal',
+    +   materialB: 'material.metal',
+    -   materialB: 'material.wood',
+        normalAtoB: [
+    +     1,
+          0,
+    -     -1,
+          0
+        ],
+    +   normalImpulseNewtonSeconds: 12,
+    -   normalImpulseNewtonSeconds: null,
+        objectA: 'object.ball',
+    +   objectB: 'object.wall',
+    +   pairKey: 'pair.ball-wall',
+    -   objectB: 'object.floor',
+    -   pairKey: 'pair.ball-floor',
+        pointWorldMetres: [
+    +     0.8,
+    +     1,
+          0,
+    -     0,
+    -     0
+        ],
+    +   tangentSpeedMetresPerSecond: 1.6,
+    -   tangentSpeedMetresPerSecond: 0,
+        velocityMethod: 'PreStepRigidBodyEstimate'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    pairKey: 'pair.ball-floor'
+    episodeId: 'episode.floor.7'
+    objectA: 'object.ball'
+    objectB: 'object.floor'
+    colliderA: 'collider.ball'
+    colliderB: 'collider.floor'
+    materialA: 'material.metal'
+    materialB: 'material.wood'
+    pointWorldMetres:
+      0: 0
+      1: 0
+      2: 0
+    normalAtoB:
+      0: 0
+      1: -1
+      2: 0
+    normalImpulseNewtonSeconds: ~
+    impulseMethod: 'Unavailable'
+    closingSpeedMetresPerSecond: 0
+    tangentSpeedMetresPerSecond: 0
+    velocityMethod: 'PreStepRigidBodyEstimate'
+  actual:
+    pairKey: 'pair.ball-wall'
+    episodeId: 'episode.wall.1'
+    objectA: 'object.ball'
+    objectB: 'object.wall'
+    colliderA: 'collider.ball'
+    colliderB: 'collider.wall'
+    materialA: 'material.metal'
+    materialB: 'material.metal'
+    pointWorldMetres:
+      0: 0.8
+      1: 1
+      2: 0
+    normalAtoB:
+      0: 1
+      1: 0
+      2: 0
+    normalImpulseNewtonSeconds: 12
+    impulseMethod: 'RapierContactImpulse'
+    closingSpeedMetresPerSecond: 2
+    tangentSpeedMetresPerSecond: 1.6
+    velocityMethod: 'PreStepRigidBodyEstimate'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\support-anchor.test.ts:114:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: another participant's pose contact cannot replace the object's own producer contact
+not ok 15 - another participant's pose contact cannot replace the object's own producer contact
+  ---
+  duration_ms: 0.5461
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\support-anchor.test.ts:1:3503'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   0.8,
+    +   1,
+        0,
+    -   0,
+    -   0
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 0
+    1: 0
+    2: 0
+  actual:
+    0: 0.8
+    1: 1
+    2: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\support-anchor.test.ts:141:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: event-only contact fallback keeps its deterministic impulse and pair ordering
+ok 16 - event-only contact fallback keeps its deterministic impulse and pair ordering
+  ---
+  duration_ms: 0.4392
+  type: 'test'
+  ...
+# Subtest: rolling and impact intents keep distinct emitter, material and parent-event provenance
+not ok 17 - rolling and impact intents keep distinct emitter, material and parent-event provenance
+  ---
+  duration_ms: 10.2393
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\app\\support-anchor.test.ts:1:4720'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   0.8,
+    +   1,
+        0,
+    -   0,
+    -   0
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 0
+    1: 0
+    2: 0
+  actual:
+    0: 0.8
+    1: 1
+    2: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\app\support-anchor.test.ts:211:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 12
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2050.2331

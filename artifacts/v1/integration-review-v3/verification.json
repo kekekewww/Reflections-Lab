@@ -1,0 +1,135 @@
+{
+    "schemaVersion":  "1.0.0",
+    "reviewer":  "codex-v1_integration_review",
+    "scope":  "Independent Node runtime/control integration; no product-wide completion claim",
+    "createdAt":  "2026-10-27T02:19:24.7634564+00:00",
+    "gitHead":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "worktreeDirty":  true,
+    "nodeVersion":  "v22.17.0",
+    "npmVersion":  "11.4.2",
+    "commands":  [
+                     {
+                         "command":  "node --import tsx --test --test-name-pattern \"object labels and source reference frequency\" tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T02:17:53.5723702+00:00",
+                         "completedAt":  "2026-10-27T02:17:54.7246714+00:00",
+                         "durationMs":  1102,
+                         "stdout":  "metadata-green.stdout.txt",
+                         "stderr":  "metadata-green.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node --import tsx --test tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T02:18:09.8765468+00:00",
+                         "completedAt":  "2026-10-27T02:18:27.7914742+00:00",
+                         "durationMs":  17767,
+                         "stdout":  "owned-suites.stdout.txt",
+                         "stderr":  "owned-suites.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T02:18:10.3667752+00:00",
+                         "completedAt":  "2026-10-27T02:18:23.9977824+00:00",
+                         "durationMs":  13474,
+                         "stdout":  "typecheck.stdout.txt",
+                         "stderr":  "typecheck.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     }
+                 ],
+    "ownedTests":  {
+                       "total":  34,
+                       "passed":  34,
+                       "failed":  0
+                   },
+    "sourceCheck":  {
+                        "beforeCount":  144,
+                        "afterCount":  144,
+                        "unchanged":  true,
+                        "changed":  [
+
+                                    ],
+                        "beforeManifest":  "source-before.json",
+                        "afterManifest":  "source-after.json"
+                    },
+    "artifacts":  [
+                      {
+                          "path":  "metadata-green.command.json",
+                          "sha256":  "0456503dd226f65389d1966c7ae0cb08afb2e94a562dbab57c9f301a147c63bd",
+                          "byteLength":  606
+                      },
+                      {
+                          "path":  "metadata-green.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "metadata-green.stdout.txt",
+                          "sha256":  "1d202744432b342a555a1836f3528c13a59b9057cb35ad5ce3a3c6c71eb6280b",
+                          "byteLength":  425
+                      },
+                      {
+                          "path":  "owned-suites.command.json",
+                          "sha256":  "d944695ebbd67c05bdc82363eff4781360b2178d7345699d96c5de5c3e7ae090",
+                          "byteLength":  576
+                      },
+                      {
+                          "path":  "owned-suites.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "owned-suites.stdout.txt",
+                          "sha256":  "0c1e5c995c8a0e52e7af5ef95ca35a84b53b7003d5a671efb2dcbf3591148312",
+                          "byteLength":  8955
+                      },
+                      {
+                          "path":  "source-after.json",
+                          "sha256":  "5b6675199236a3416d3d2f2653509c0053a3326661afc7693f7f058cb7f0086b",
+                          "byteLength":  21800
+                      },
+                      {
+                          "path":  "source-before.json",
+                          "sha256":  "5b6675199236a3416d3d2f2653509c0053a3326661afc7693f7f058cb7f0086b",
+                          "byteLength":  21800
+                      },
+                      {
+                          "path":  "typecheck.command.json",
+                          "sha256":  "8a4ac70067d30d59053f5093cd48c30e152c44b8aa1fc870e23226a451f71dbc",
+                          "byteLength":  522
+                      },
+                      {
+                          "path":  "typecheck.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "typecheck.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      }
+                  ],
+    "notRun":  [
+                   "Browser product workflows",
+                   "Native OfflineAudioContext/DSP in this reviewer run",
+                   "Hardware PCM pointer/waveform measurement",
+                   "Device hearing",
+                   "10-minute performance",
+                   "Real Meta/provider API"
+               ],
+    "modelCalls":  0,
+    "sourceEditsByReviewer":  [
+                                  "tests/app/integration-regressions.test.ts",
+                                  "tests/app/app-control-regressions.test.ts",
+                                  "docs/11-v1/INTEGRATION_REVIEW.md"
+                              ],
+    "note":  "FakeAudioContext/native-callback adapters prove host/control clocks; shared memory BlobStore tests do not prove browser IndexedDB reload or quota"
+}

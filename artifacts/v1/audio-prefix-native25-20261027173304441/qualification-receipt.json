@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "createdAt": "2026-10-27T17:36:53.527Z",
+  "baseline": {
+    "id": "prefix-f3e5",
+    "baselineId": "audio-prefix-f3e5",
+    "recordPath": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+    "recordSha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2",
+    "legacyBaseline": {
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/verification.json",
+      "sha256": "968e56921ee0c4b8f0f67b57f61fd70bfe79cc346d96ff8cf0aa9dd98aa2f78a"
+    },
+    "approvedDelta": [
+      {
+        "path": "src/audio/band-filter.ts",
+        "from": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+        "to": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+      }
+    ],
+    "approvalEvidence": {
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603"
+    }
+  },
+  "scope": "Current registered prefix-f3e5 native DSP/cursor/pause and IR reference qualification using cached Chromium headless shell",
+  "executable": {
+    "version": "156.0.8078.4",
+    "actualPath25": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+    "actualPathIr": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+    "sha256": "f77d8e27c8db1e4ac0399459a00e0c97bb9417adc393474cabaffebe2314ecb0",
+    "stable25": true,
+    "stableIr": true
+  },
+  "globalSource": {
+    "allGlobalStable": true,
+    "inputCount": 1781,
+    "beforeFile": "artifacts/v1/audio-prefix-native25-20261027173304441/global-source-before.json",
+    "finalAfterCleanupFile": "artifacts/v1/audio-prefix-irv2-20261027173404198/global-source-after-cleanup.json",
+    "sha256": "87fee0c726a6a62bad79ed43e46872878db37bc81021852d727bf117b820a451"
+  },
+  "utilityConformance": {
+    "sourceendReceipt": "artifacts/v1/audio-requal-utility-sourceend-20261027172620604/sourceend-receipt.json",
+    "sha256": "f966623731561532cb3c81c2f58d28fbb348336221142b8b4f455b9f6169576a",
+    "focusedPassed": 100,
+    "scopedChecks": "lint/format/strict PASS"
+  },
+  "review": {
+    "status": "NO_BLOCKERS_REPORTED",
+    "reviewer": "/root/v1_audio_finish/audio_review",
+    "native25Reviewer": "/root/v1_audio_finish/audio_review/cross_engine_report_review",
+    "scope": "Independent read-only audit of the two fresh actual qualification artifact directories; no rerun",
+    "native25": "25 unique PASS/raw true cases in six unique suites; raw files/evidence consistent with no skips/warnings/errors. Registered23 Root prefix source map and six utilities stable, only CE-to-F3 approved band delta, all immutable oracle/driver pins retained.",
+    "irV2": "Independent bounded calculation asserted all six renders times two channels times12000 samples finite (576000 Float32 payload bytes). Every actual/reference pair independently computed RMS and maximum error0, matching records and strict RMS<0.001/maxAbs<1e-5. Nonzero reference energy and all schedule/buffer/format flags true. IR21/supplemental/source snapshots/JS/maps/fresh25 receipt binding match.",
+    "lifecycle": "Native Node78560 and48052 retained close0. Actual cached headless-shell executable hash f77d8e and browserPIDs47932/67824 match successful runner cleanup; recorded known-owned process counts0. Global before/after source proofs each1781 and equal.",
+    "reviewProcessLimitation": "The tiny Node audit passed all PCM/source/executable assertions, then its final cleanup JSON read encountered the existing PowerShell UTF8 BOM. Reviewer independently read the unchanged cleanup JSON through PowerShell and confirmed0; no rerun or artifact correction was performed.",
+    "noChanges": "Reviewer performed no source/docs/artifact writes, tests/build/browser reruns or performance/hearing inference. Historical FAIL artifacts retained."
+  },
+  "limitations": [
+    "Cached Chromium headless-shell156.0.8078.4, not installedChrome",
+    "No App/UI/performance/hearing/device/SPL/Worklet/Meta API or completeV1 claim",
+    "Original Firefox numericalFAIL, WebKit missing capabilities and IRv1 referenceFAIL remain immutable historical results",
+    "IRv2 changes only version metadata and the independently confirmed inactive gain intrinsic initialization; unchanged bounds and schedules",
+    "Legacy V1 event/file/export names remain for compatibility; manifest/profile/verification explicitly identify V2"
+  ],
+  "method": "ORIGINAL25_VIA_PREPARED_STATIC_V2",
+  "passed": 25,
+  "expected": 25,
+  "source23Stable": true,
+  "supplementalStable": true,
+  "bundlesStable": true,
+  "manifestPath": "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prefix-native25-preflight-20261027172830\\prepared-static-v2\\manifest.json",
+  "manifestSha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2",
+  "nativeChild": {
+    "pid": 78560,
+    "file": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "file:///D:/Developing/Meta%20Hack/.cache/v1/audio-qualification-observer.mjs",
+      "D:\\Developing\\Meta Hack\\artifacts\\v1\\audio-prefix-native25-20261027173304441\\original-driver-v2.mjs",
+      "--run",
+      "--engines",
+      "chromium",
+      "--output",
+      "artifacts\\v1\\audio-prefix-native25-20261027173304441"
+    ],
+    "spawnedAt": "2026-10-27T17:33:06.970Z"
+  },
+  "nativeClose": {
+    "exitCode": 0,
+    "signal": null,
+    "observedAt": "2026-10-27T17:33:09.915Z",
+    "provenance": "Retained Node ChildProcess close event"
+  },
+  "retainedExitMatches": true,
+  "browserProcess": {
+    "at": "2026-10-27T17:33:07.582Z",
+    "monotonicMs": 588.7844,
+    "pid": 78560,
+    "event": "owned-browser-server-process",
+    "browserPid": 47932,
+    "spawnfile": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+  },
+  "cleanup": {
+    "observedAt": "2026-10-27T17:33:43.7495472Z",
+    "scope": "Recorded launcher/wrapper/native/browser PIDs and their direct children only",
+    "knownPids": [
+      70992,
+      48232,
+      78560,
+      47932
+    ],
+    "ownedProcessCount": 0,
+    "processes": [],
+    "runnerCleanup": [
+      {
+        "resource": "browser",
+        "pid": 47932,
+        "method": "close",
+        "ok": true
+      },
+      {
+        "resource": "source-server",
+        "ok": true
+      }
+    ]
+  },
+  "hashes": {
+    "actual-node-close.json": "635f5e585af528b8ad13aac3c362c2031c7c8d8e008b7ec2f6b9f32c94cf6779",
+    "actual-node-start.json": "12c1cc80b051131e8a63b2892895082b64410b397acb53d16714ff4719b9e82a",
+    "actual-process-result-v2.json": "d3d120eea6b02450798184d420599e2afd44a6c75bca9bba0971d35e5a0e745c",
+    "chromium.baseline.json": "9cceecc2a6d36020256e3e4290ae06a2fe9390b2b07e6704ff3c8f2a55e750b5",
+    "chromium.continuity.json": "de3a5e49cd899904588b736378dd4b965684a455adb80230052d789e75f4fdb0",
+    "chromium.late.json": "6c0d2dcdc9413d972674df61413f9664beaf0d1a84a39bb4e1ce2a41ff3e4785",
+    "chromium.pause.json": "5fbaf7ea4a607db28b29abfc2aea0facde2ced95f5d92ee022ece7cca03cf097",
+    "chromium.restore.json": "a7b8cf33faf8145d284ba370d262232e4bcc2c5ff5f881b6392ba2ceeb5e3f56",
+    "chromium.wave.json": "dd5a35edb88e384a4242328a31017aa7d30d2f703cc70f605096d9684537da37",
+    "driver-conformance-v2.json": "07943a367ec9a8b575fa273452dd5ed0cca8581ff4c8e3c40df70921ae01a488",
+    "global-source-after.json": "87fee0c726a6a62bad79ed43e46872878db37bc81021852d727bf117b820a451",
+    "global-source-before.json": "87fee0c726a6a62bad79ed43e46872878db37bc81021852d727bf117b820a451",
+    "global-source-proof.json": "8bb6127ebf254e1687717abb18883e68b2aacf08ddd7d3b9cbb9b533a1b214e7",
+    "launcher-process.json": "fa69e7615bbacb6628098f80ba1d3206ed15d91b45f7cc88888036f9f96a7c68",
+    "launcher.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launcher.stdout.txt": "6296e05746697a27b7a8f7d9072ad76f4b8f8605d2c4fcc39ae44a7665b8ffd0",
+    "observer.jsonl": "ceafd61557b185358cca6f2b500594a844dd250c4a3171aa6d8f743a83fd15d6",
+    "original-driver-v2.mjs": "3db5140aed8e75d9ddb165c50946ecc70dc792a94ecf81804b2553f6c0d7529a",
+    "preparation.json": "7bb1a21996d335b33f8cd2c89a07e03a1e95f6ab186d26f17de61e9a9fc2ffe1",
+    "process-cleanup.json": "3e0e1907f33a61d6f427f3b65523d68e992c37462259d8c48860e34a2fae13e8",
+    "stderr.txt": "37543cd48f78c817e5cadf0e507b94a8ff08e2c97088feaa681f70d0286880f7",
+    "stdout.txt": "54c5836fb81ba6b4baafaec0c174ba154d08eac5770504cb4a357a6b47f4f016",
+    "verification.json": "0f7bca55a4308e8fa804685c122e578e3a444f19063d6155d500c2eece2f18d6",
+    "wrapper-preparation-v2.json": "52bbd4a547035e50eae8cb15a8689d79875cd4bed91108135546bb5c93a6e3f8",
+    "wrapper-verification-v2.json": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74"
+  }
+}

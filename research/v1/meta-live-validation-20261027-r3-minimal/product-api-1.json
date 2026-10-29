@@ -1,0 +1,50 @@
+{
+  "phase": "sound",
+  "route": "/api/agent/propose-sound",
+  "httpStatus": 200,
+  "value": {
+    "proposal": {
+      "schemaVersion": "1.0.0",
+      "proposalId": "sound.meta-1-mvq2358f",
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0,
+      "expectedBehaviorRevision": 0,
+      "operations": [
+        {
+          "type": "RemoveBinding",
+          "bindingId": "binding.interactive.ball"
+        },
+        {
+          "type": "AssignBinding",
+          "binding": {
+            "bindingId": "binding.interactive.ball",
+            "objectId": "ball",
+            "objectGeneration": 1,
+            "profileId": "profile.interactive-tone",
+            "profileRevision": 1,
+            "enabled": true,
+            "overrides": [
+              {
+                "ruleId": "rule.impact",
+                "pitchSemitones": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "assumptions": [
+      "聲音參數為創意設定，不代表量測聲壓或物件真實振動。"
+    ],
+    "warnings": [
+      "Server驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。"
+    ],
+    "summary": "Meta Sound提案：2個受限操作，等待本機Host預覽與套用。",
+    "provenance": {
+      "provider": "metaModelApi",
+      "modelId": "muse-spark-1.3",
+      "requestId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+      "label": "META_LIVE"
+    }
+  }
+}

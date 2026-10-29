@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-29T05:32:26.210569+00:00",
+  "evidence_kind": "transcribed_completed_tool_receipt",
+  "original_raw_json_persisted": false,
+  "original_raw_stdout_available_in_repository": false,
+  "completeness": "Summary metrics were captured from the actual completed tool result. Original scanner JSON was transformed by a PowerShell summary pipeline and was not persisted. Do not treat this file as original raw JSON.",
+  "source_tool": "functions.exec -> exec_command/write_stdin",
+  "source_session_id": 43755,
+  "source_completion_chunk_id": "f51f7c",
+  "command": "node scripts/validation/publication-audit.mjs --ref c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "stdout_transform": "PowerShell ConvertFrom-Json then selected summary fields, signature hits and literal candidate groups; human-facing tool output was partly truncated.",
+  "scanner_version_hash_at_execution": null,
+  "execution_timestamp_utc": null,
+  "result": {
+    "head": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+    "commit_count": 13,
+    "reachable_objects": 8774,
+    "unique_blobs": 6758,
+    "blob_bytes": 2579720986,
+    "scan_input_bytes": 8571358844,
+    "archive_members": 2891,
+    "binary_payloads_skipped": 2329,
+    "candidate_counts": {
+      "meta-token": 58,
+      "url-password": 20,
+      "literal-secret-assignment": 21
+    },
+    "errors": [],
+    "exit_code": 0
+  },
+  "redaction": "Only paths/rules/blob SHA/offset/length/candidate hashes and review hints were emitted; no candidate values were emitted."
+}

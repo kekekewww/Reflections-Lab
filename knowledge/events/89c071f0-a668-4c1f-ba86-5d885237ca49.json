@@ -1,0 +1,87 @@
+{
+  "id": "89c071f0-a668-4c1f-ba86-5d885237ca49",
+  "type": "handoff",
+  "created_at": "2026-10-28T08:18:01.085Z",
+  "agent": "codex-root",
+  "session": "v1-20261027",
+  "summary": "新增使用者基礎實測：音訊方向／重力反彈可觀察；第一人稱不可用及UI混亂，維持暫停",
+  "task_id": "RLAB-TASK-0020",
+  "details": {
+    "agent": "codex-root",
+    "session": "v1-20261027",
+    "task_id": "RLAB-TASK-0020",
+    "summary": "新增使用者基礎實測：音訊方向／重力反彈可觀察；第一人稱不可用及UI混亂，維持暫停",
+    "completed": [
+      "Saved actual user basic audible/directional and qualitative gravity/rebound observations",
+      "Recorded first-person unusable/discoverability blocker and UI explanation overload; no root cause fabricated",
+      "Linked report into Now and interactive-sandbox; no task status, claim or frozen acceptance criteria changed"
+    ],
+    "commands": [
+      {
+        "command": "Read-only source inspection of Viewport.tsx and useFPSInput.ts",
+        "result": "Declared controls found; no browser reproduction, diagnosis or usability PASS inferred"
+      },
+      {
+        "command": "Wiki ingest and handoff with dry-run/optimistic hashes",
+        "result": "Feedback persistence only; overall development remains paused"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "artifacts/v1/basic-user-feedback-20261028/feedback.json",
+        "sha256": "d284ca53b5647f70f4c0e42b81395e273a067c736474d3a013f5c4cc1b83f4e6",
+        "result": "Actual user qualitative report; partial listening observations and unresolved first-person/UI defects."
+      },
+      {
+        "path": "artifacts/v1/basic-user-feedback-20261028/REPORT.md",
+        "sha256": "da824bf8d6dbc3a4f46aaf73ac10c38fb84396fd82ff6fd607f11d5a1c2b5d13",
+        "result": "Actual user qualitative report; partial listening observations and unresolved first-person/UI defects."
+      }
+    ],
+    "risks": [
+      "Actual device/route/volume/browser/build identity not supplied for this run",
+      "First-person blocker unresolved; static button presence is not evidence of working user interaction",
+      "Complete listening/native/performance/external acceptance still incomplete; formal prior evidence not rewritten",
+      "New feedback metadata English mirror delta pending; bilingual report provided"
+    ],
+    "next_steps": [
+      "WAIT for explicit development resume; do not start agents, repairs or automatic tests",
+      "On resume prioritize first-person discoverability, pointer lock/input and explicit resume path; reproduce using actual visible product",
+      "Simplify default UI explanations and expose immediate actions; defer lower-priority layout polish as user accepts",
+      "Preserve original acceptance and prior evidence; verify fixes with meaningful independent and actual browser evidence"
+    ],
+    "modified_files": [
+      {
+        "path": "artifacts/v1/basic-user-feedback-20261028/feedback.json",
+        "sha256": "d284ca53b5647f70f4c0e42b81395e273a067c736474d3a013f5c4cc1b83f4e6",
+        "state": "present"
+      },
+      {
+        "path": "artifacts/v1/basic-user-feedback-20261028/REPORT.md",
+        "sha256": "da824bf8d6dbc3a4f46aaf73ac10c38fb84396fd82ff6fd607f11d5a1c2b5d13",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/wiki/now.md",
+        "sha256": "c9c4b5529973bfefdfeb728ba7fd73f1e86a8c2a53c9de30a4f7627434d73959",
+        "state": "present"
+      },
+      {
+        "path": "knowledge/wiki/features/interactive-sandbox.md",
+        "sha256": "6c6045a3df37fef8028980af6ab6fb16321066ca99785ba5a2f857ad46819323",
+        "state": "present"
+      }
+    ],
+    "now": {
+      "expected_hash": "c9c4b5529973bfefdfeb728ba7fd73f1e86a8c2a53c9de30a4f7627434d73959",
+      "body": "最新[基礎使用者實測回報](../../artifacts/v1/basic-user-feedback-20261028/feedback.json)：實際聽到聲音、可辨方向，預設場景有重力與反彈；屬基本主觀／定性觀察，裝置路徑等仍未知，完整裝置聽測未完成。**第一人稱完全無法操作且入口不明，列為使用者回報的阻塞缺陷，原因未確診。** UI 混亂、說明文字過量，比例及彈性不足；使用者可接受第一版版面細節稍後調整。原正式矩陣是先前的限定證據，不能用它否定本次可用性缺陷。恢復後優先第一人稱入口與控制，再精簡常駐說明；開發仍暫停，未啟動修復／測試。\n\n# 依使用者要求暫停全部任務\n\n使用者要求「可以留下使用者測試即可暫停所有任務」。已停止新的實作、測試、所有已知工作代理及自有程序；三位 cache owner 均回報 ALL_IO_END，無已知存續的自有 ChildProcess。未建立自動恢復排程，等待使用者明確恢復。這是暫停，不是第一版完成。\n\n[雙語待使用者測試清單](../../artifacts/v1/user-requested-pause-20261028/USER_TEST_CHECKLIST.md)保留原生 200% 縮放／Pointer Lock／焦點與 320 CSS px 視口，以及 Hi-x65／D3V 實際聽測。原延期範圍保留；本次已有基本發聲／方向聽感回報，完整裝置聽測與原生視窗驗收仍未完成，route、rate、block 仍 UNKNOWN。舊網址與指令失效，現在不需操作，也不啟動新視窗或催測。\n\n[暫停紀錄](../../artifacts/v1/user-requested-pause-20261028/pause-record.json)保存來源與 partial receipts。實際 HEAD 為 6aafa976c96c810027153eae214a47c0a2a4dd87（codex/sound-behavior-research）；R12 完整 check＋離線 benchmark／runtime931／1977 source／61 protected 通過證據已在該 checkpoint 保存，未 push/deploy。之後的 next-phase metadata 與本暫停交接仍未提交，工作區有變更；不將其冒充先前品質截點。\n\n正式矩陣仍為 [r6](../../docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r6.md) 的 43 scoped PASS／8 PARTIAL，凍結驗收不變。正式效能與權利／競賽等外部門檻尚未完成，不是僅剩使用者測試。Task0012 與 Task0020 均仍 2/3 未完成；依既有 CLI 釋放 Root claim 後狀態為 READY、owner=null。READY 是 schema 的可認領狀態，不代表恢復排程；使用者要求的全域暫停優先。\n\nCache-only 中斷工作原樣保留：performance R3 最後 RED303＝262 PASS／41 FAIL，GREEN NOT RUN，partial code 未驗／不可 promote；mark lifecycle R4 最後 pure162 PASS，但 browser 從未啟動，計畫／review／GO 未完；hearing r12 binding 只保留 raw manifests 與可能的未確認 partial test，沒有執行新 pure／native／browser／audio。來源與 checkpoint 見暫停紀錄。原 R1/R2、V2、舊正式600 FAIL/incomplete 與既有產品證據不覆寫。\n\n已提交里程碑的英文完整性證據保留；後續 next-phase／暫停 metadata 英文 delta 待恢復時更新，本次測試清單已中英並列。Codex 主導，沒有新增 Muse／Meta API 呼叫或費用，原資源上限不變。\n\n恢復時先讀本頁、最新 handoff 與三份 partial receipts，核對 Git／實檔；不得把中斷候選當 GREEN、不得重跑已完成工作或放寬固定驗收。\n"
+    },
+    "git": {
+      "branch": "codex/sound-behavior-research",
+      "head": "6aafa976c96c810027153eae214a47c0a2a4dd87",
+      "status": "M knowledge/sources/manifest.json\n M knowledge/tasks/RLAB-TASK-0012.json\n M knowledge/tasks/RLAB-TASK-0020.json\n M knowledge/wiki/features/interactive-sandbox.md\n M knowledge/wiki/index.md\n M knowledge/wiki/log.md\n M knowledge/wiki/now.md\n M knowledge/wiki/tasks.md\n?? artifacts/v1/basic-user-feedback-20261028/REPORT.md\n?? artifacts/v1/basic-user-feedback-20261028/feedback.json\n?? artifacts/v1/git-checkpoint-r12-20261028/Now-before-next-phase.raw.txt\n?? artifacts/v1/git-checkpoint-r12-20261028/checkpoint-and-next-phase.json\n?? artifacts/v1/git-checkpoint-r12-20261028/commit-receipt.json\n?? artifacts/v1/git-checkpoint-r12-20261028/fresh-receiver.json\n?? artifacts/v1/git-checkpoint-r12-20261028/guarded-commit-helper.mjs.raw.txt\n?? artifacts/v1/git-checkpoint-r12-20261028/manual-test-deferral.json\n?? artifacts/v1/git-checkpoint-r12-20261028/stage-plan.json\n?? artifacts/v1/user-requested-pause-20261028/Now-before-pause.raw.txt\n?? artifacts/v1/user-requested-pause-20261028/USER_TEST_CHECKLIST.md\n?? artifacts/v1/user-requested-pause-20261028/git-status-before-pause.txt\n?? artifacts/v1/user-requested-pause-20261028/hearing-binding-r12-partial.json\n?? artifacts/v1/user-requested-pause-20261028/mark-lifecycle-r4-last-pure.json\n?? artifacts/v1/user-requested-pause-20261028/pause-persistence-note.json\n?? artifacts/v1/user-requested-pause-20261028/pause-record.json\n?? artifacts/v1/user-requested-pause-20261028/performance-r3-partial.json\n?? artifacts/v1/user-requested-pause-20261028/persistence-summary.json\n?? knowledge/events/01929d24-d6ee-413a-a077-ae3574a70869.json\n?? knowledge/events/3807fc47-bd19-45e4-a2f9-39448e711a5a.json\n?? knowledge/events/5139b334-b58c-4ca2-b6d2-75a904e387bd.json\n?? knowledge/events/556746bc-765c-4b2b-a76b-81aeb033fb67.json\n?? knowledge/events/5ed66481-12ca-4cd9-bf44-3d4c41413083.json\n?? knowledge/events/66a81458-4363-4b24-8a50-c374557b5764.json\n?? knowledge/events/80b2443c-3e64-446b-a01b-e45c32ca9a99.json\n?? knowledge/events/95d8e015-8cc9-4bfa-85a9-1065810d834a.json\n?? knowledge/events/a94e1035-12af-4975-a697-582182594f22.json\n?? knowledge/events/e43e7756-4af1-4697-8823-ece8252bb9f9.json\n?? knowledge/events/e58b3e01-a529-4d7c-8bab-c7418773bbf8.json\n?? knowledge/events/e6fdfa17-5e5b-4e2b-b8b6-34828e99b292.json\n?? knowledge/events/e976add3-78ef-4892-ad1b-91dd7fa82629.json\n?? knowledge/events/f476b4d0-4659-4edd-b036-bab517c09bdb.json\n?? knowledge/events/f5e97399-06f6-4fcd-959e-bb9ec2d18bd6.json\n?? knowledge/transactions/0801ee4e-137e-4371-a0b4-13dd68c1745f.json\n?? knowledge/transactions/173d69e4-982f-42bf-b9aa-2744e3fedb70.json\n?? knowledge/transactions/258f0805-fc21-4ad1-a74e-fb5899b0e17d.json\n?? knowledge/transactions/30fad809-9f92-4b11-924a-591fd0695932.json\n?? knowledge/transactions/3a48ca51-26c9-4032-aa88-35f4d12866e3.json\n?? knowledge/transactions/4198b1fe-ad80-40c3-a4db-a07776f47d23.json\n?? knowledge/transactions/4bc2bf3e-e40b-4054-8052-aeb8e6f30f33.json\n?? knowledge/transactions/75e5ed07-19e1-4930-aaf5-98297ac81b73.json\n?? knowledge/transactions/94ef4e49-f353-4684-9ddb-bffea303cb2e.json\n?? knowledge/transactions/9542b617-f55e-4b0a-b278-be1e747c92f0.json\n?? knowledge/transactions/9ac3a52b-2965-48b9-a22c-ffdd9e6a6a23.json\n?? knowledge/transactions/bfdb5f88-a785-4b02-88be-f1ce2fb7a90b.json\n?? knowledge/transactions/c2c18f3c-1ac9-4f01-b22e-f113043a73d0.json\n?? knowledge/transactions/cc635f0f-f1f5-48b4-8e39-914c53239056.json\n?? knowledge/transactions/d69f1003-430f-48e4-8426-ffe8493939c9.json\n?? knowledge/wiki/handoffs/3807fc47-bd19-45e4-a2f9-39448e711a5a.md\n?? knowledge/wiki/handoffs/e58b3e01-a529-4d7c-8bab-c7418773bbf8.md",
+      "worktree": "D:\\Developing\\Meta Hack"
+    },
+    "execution_note": "命令與結果由操作者提供；檔案 hash 與 Git 狀態由工具現場取得。"
+  }
+}

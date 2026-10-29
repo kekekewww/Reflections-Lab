@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/v1_physics_boundaries/physics_reference_review",
+  "executor": "Codex collaboration subagent; no Muse or model API call",
+  "scope": "Read-only review of canonical character/contact references, current nine boundary tests, and retained RED oracle failure",
+  "result": "PASS_WITH_LIMITATIONS",
+  "approvedTestsSha256": "ca07b4182943e0a3475f7750d75136e64e1262126c081b24b7e58e47e3b3636e",
+  "approvedRunnerSha256": "1361c1722dbb4f71930f096d42d901c167e5b3db9103ebce68f47a58f9a2dd47",
+  "findings": [
+    "RED geometric symmetric-patch-center expectation was invalid: iterative solver positive impulses need not be symmetric. It did not identify a core defect.",
+    "Current multipoint reference independently computes sum(J * fixedSurfaceWitnessWorld) / sum(J), while retaining analytic floor y=0, actual raw impulse sum and real COM momentum assertions. No physical penetration tolerance was weakened.",
+    "All nine cases are bounded and meaningful: real configured radius/skin/45-degree limit, 0.7m passage/0.4m rejection, 12m/s throw/CCD/dedup, lexical canonical normal ordering, angular point slip, real 4+ contact patch, corner pair episodes.",
+    "Final persistent Throw dedup case reacquires a fresh grip, retries the remembered command ID, proves rejection retains grip and exact solver velocity, then explicitly drops before any servo step.",
+    "Final runner captures its own source and acceptance/requirements/direct scene imports, enforces 9/38 TAP counts, fresh 9/29 measurement entries, source stability and 61 protected hashes."
+  ],
+  "limitations": [
+    "Ramp traversal/rejection starts on each ramp; it does not establish entry-seam behavior.",
+    "Corner coverage uses separate convex domain wall objects; it does not establish arbitrary multiple patches within one compound pair.",
+    "Public snapshots export Ns, not force N; the impulse unit reference uses momentum change, and force equivalent is explicitly J/dt.",
+    "CCD intermediate contacts may not survive post-step; collision prevention is verified without claiming a complete substep impact trace."
+  ]
+}

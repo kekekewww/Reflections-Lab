@@ -1,0 +1,286 @@
+TAP version 13
+# Subtest: ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25
+ok 1 - ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25
+  ---
+  duration_ms: 4.1997
+  type: 'test'
+  ...
+# Subtest: ACO-001: doubling distance halves pressure and quarters energy
+ok 2 - ACO-001: doubling distance halves pressure and quarters energy
+  ---
+  duration_ms: 0.6186
+  type: 'test'
+  ...
+# Subtest: ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction
+ok 3 - ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction
+  ---
+  duration_ms: 1.2957
+  type: 'test'
+  ...
+# Subtest: ACO-002: an infinite-plane intersection outside finite polygon is rejected
+ok 4 - ACO-002: an infinite-plane intersection outside finite polygon is rejected
+  ---
+  duration_ms: 0.5471
+  type: 'test'
+  ...
+# Subtest: a reflection cannot connect opposite sides of a zero-thickness reflector
+ok 5 - a reflection cannot connect opposite sides of a zero-thickness reflector
+  ---
+  duration_ms: 0.3544
+  type: 'test'
+  ...
+# Subtest: flipping a two-sided surface normal preserves the finite reflection geometry and identity
+ok 6 - flipping a two-sided surface normal preserves the finite reflection geometry and identity
+  ---
+  duration_ms: 0.8243
+  type: 'test'
+  ...
+# Subtest: ACO-002: visibility rejects a reflection blocked on its real first segment
+ok 7 - ACO-002: visibility rejects a reflection blocked on its real first segment
+  ---
+  duration_ms: 0.4738
+  type: 'test'
+  ...
+# Subtest: direct occlusion removes the direct acoustic path and names its actual blocker
+ok 8 - direct occlusion removes the direct acoustic path and names its actual blocker
+  ---
+  duration_ms: 0.4012
+  type: 'test'
+  ...
+# Subtest: path identity survives source motion and request/revision/tick changes
+ok 9 - path identity survives source motion and request/revision/tick changes
+  ---
+  duration_ms: 0.8348
+  type: 'test'
+  ...
+# Subtest: AIR-001: explicit synthetic dB/m is applied once as a pressure factor
+ok 10 - AIR-001: explicit synthetic dB/m is applied once as a pressure factor
+  ---
+  duration_ms: 0.6609
+  type: 'test'
+  ...
+# Subtest: AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model
+ok 11 - AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model
+  ---
+  duration_ms: 0.4643
+  type: 'test'
+  ...
+# Subtest: MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption
+ok 12 - MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption
+  ---
+  duration_ms: 0.3705
+  type: 'test'
+  ...
+# Subtest: vacuum has no airborne acoustic paths while leaving mechanical scene data untouched
+ok 13 - vacuum has no airborne acoustic paths while leaving mechanical scene data untouched
+  ---
+  duration_ms: 0.5653
+  type: 'test'
+  ...
+# Subtest: RT60/DRR/C50 and impulse response remain unavailable without a validated response
+ok 14 - RT60/DRR/C50 and impulse response remain unavailable without a validated response
+  ---
+  duration_ms: 0.261
+  type: 'test'
+  ...
+# Subtest: plain returned frame conforms to the original unchanged AcousticFrame v1 schema
+ok 15 - plain returned frame conforms to the original unchanged AcousticFrame v1 schema
+  ---
+  duration_ms: 74.7636
+  type: 'test'
+  ...
+# Subtest: solver does not mutate frozen request/geometry/material arrays
+ok 16 - solver does not mutate frozen request/geometry/material arrays
+  ---
+  duration_ms: 0.4843
+  type: 'test'
+  ...
+# Subtest: rejects singular, nonfinite, negative, nonconserving, and misaligned domains
+ok 17 - rejects singular, nonfinite, negative, nonconserving, and misaligned domains
+  ---
+  duration_ms: 1.0043
+  type: 'test'
+  ...
+# Subtest: rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity
+ok 18 - rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity
+  ---
+  duration_ms: 0.38
+  type: 'test'
+  ...
+# Subtest: bounded path selection never returns more than its declared admission limit
+ok 19 - bounded path selection never returns more than its declared admission limit
+  ---
+  duration_ms: 0.2124
+  type: 'test'
+  ...
+# Subtest: segment budget is strict and fails closed rather than emitting an unchecked path
+ok 20 - segment budget is strict and fails closed rather than emitting an unchecked path
+  ---
+  duration_ms: 0.1606
+  type: 'test'
+  ...
+# Subtest: invalid budget values cannot bypass bounded work
+ok 21 - invalid budget values cannot bypass bounded work
+  ---
+  duration_ms: 0.1766
+  type: 'test'
+  ...
+# Subtest: untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected
+ok 22 - untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected
+  ---
+  duration_ms: 0.1916
+  type: 'test'
+  ...
+# Subtest: oriented box surfaces preserve exact 90-degree Y rotation and stable face identity
+ok 23 - oriented box surfaces preserve exact 90-degree Y rotation and stable face identity
+  ---
+  duration_ms: 1.0028
+  type: 'test'
+  ...
+# Subtest: dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections
+ok 24 - dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections
+  ---
+  duration_ms: 0.7337
+  type: 'test'
+  ...
+# Subtest: accepted near-unit surface normal is normalized before reflection geometry
+ok 25 - accepted near-unit surface normal is normalized before reflection geometry
+  ---
+  duration_ms: 0.2108
+  type: 'test'
+  ...
+# Subtest: sparse material bands cannot silently become unity-gain reflection coefficients
+ok 26 - sparse material bands cannot silently become unity-gain reflection coefficients
+  ---
+  duration_ms: 0.1491
+  type: 'test'
+  ...
+# Subtest: sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors
+ok 27 - sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors
+  ---
+  duration_ms: 0.2542
+  type: 'test'
+  ...
+# Subtest: nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them
+ok 28 - nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them
+  ---
+  duration_ms: 0.1707
+  type: 'test'
+  ...
+# Subtest: 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs
+ok 29 - 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs
+  ---
+  duration_ms: 0.6463
+  type: 'test'
+  ...
+# Subtest: one in-flight batch rejects backpressure without a hidden Worker queue
+ok 30 - one in-flight batch rejects backpressure without a hidden Worker queue
+  ---
+  duration_ms: 22.8188
+  type: 'test'
+  ...
+# Subtest: active cancellation terminates obsolete work; old replies cannot settle the new Worker
+ok 31 - active cancellation terminates obsolete work; old replies cannot settle the new Worker
+  ---
+  duration_ms: 1.1064
+  type: 'test'
+  ...
+# Subtest: timeout terminates the Worker and a later solve creates a fresh transport
+ok 32 - timeout terminates the Worker and a later solve creates a fresh transport
+  ---
+  duration_ms: 13.586
+  type: 'test'
+  ...
+# Subtest: onerror rejects exactly one batch and clears its timer/transport
+ok 33 - onerror rejects exactly one batch and clears its timer/transport
+  ---
+  duration_ms: 0.8769
+  type: 'test'
+  ...
+# Subtest: onmessageerror rejects exactly one batch and clears its timer/transport
+ok 34 - onmessageerror rejects exactly one batch and clears its timer/transport
+  ---
+  duration_ms: 0.5679
+  type: 'test'
+  ...
+# Subtest: a synchronous postMessage failure does not leave pending work or a timeout
+ok 35 - a synchronous postMessage failure does not leave pending work or a timeout
+  ---
+  duration_ms: 29.6818
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong requestId never reaches the caller
+ok 36 - a reply with stale/wrong requestId never reaches the caller
+  ---
+  duration_ms: 0.8561
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong sourceId never reaches the caller
+ok 37 - a reply with stale/wrong sourceId never reaches the caller
+  ---
+  duration_ms: 0.4989
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong listenerId never reaches the caller
+ok 38 - a reply with stale/wrong listenerId never reaches the caller
+  ---
+  duration_ms: 0.596
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong sceneRevision never reaches the caller
+ok 39 - a reply with stale/wrong sceneRevision never reaches the caller
+  ---
+  duration_ms: 0.8614
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong geometryRevision never reaches the caller
+ok 40 - a reply with stale/wrong geometryRevision never reaches the caller
+  ---
+  duration_ms: 0.8702
+  type: 'test'
+  ...
+# Subtest: a reply with stale/wrong poseTick never reaches the caller
+ok 41 - a reply with stale/wrong poseTick never reaches the caller
+  ---
+  duration_ms: 0.3642
+  type: 'test'
+  ...
+# Subtest: malformed/partial/error batches reject as a whole, without publishing partial results
+ok 42 - malformed/partial/error batches reject as a whole, without publishing partial results
+  ---
+  duration_ms: 1.9933
+  type: 'test'
+  ...
+# Subtest: source/path/geometry/payload budgets reject before posting, with no unbounded stringify
+ok 43 - source/path/geometry/payload budgets reject before posting, with no unbounded stringify
+  ---
+  duration_ms: 0.6834
+  type: 'test'
+  ...
+# Subtest: timing retention is bounded and returned telemetry cannot mutate service history
+ok 44 - timing retention is bounded and returned telemetry cannot mutate service history
+  ---
+  duration_ms: 15.0682
+  type: 'test'
+  ...
+# Subtest: nonprimitive or fractional identities cannot enter the owned scalar handoff
+ok 45 - nonprimitive or fractional identities cannot enter the owned scalar handoff
+  ---
+  duration_ms: 0.3728
+  type: 'test'
+  ...
+# Subtest: dispose is terminal and idempotent for Worker and synchronous modes
+ok 46 - dispose is terminal and idempotent for Worker and synchronous modes
+  ---
+  duration_ms: 0.8457
+  type: 'test'
+  ...
+1..46
+# tests 46
+# suites 0
+# pass 46
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 533.8128

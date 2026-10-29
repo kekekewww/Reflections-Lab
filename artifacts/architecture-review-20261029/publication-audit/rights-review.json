@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_publication_rights_inventory",
+  "baseline_commit": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "reviewed_checkout": "D:/Developing/Meta Hack",
+  "reviewer": {
+    "agent": "/root/publication_audit/rights_inventory",
+    "executor": "Codex",
+    "model": "UNKNOWN",
+    "mode": "read_only_original_checkout"
+  },
+  "receipt_provenance": "Retrospective structured receipt reconstructed from this agent's completed tool calls and report. Original raw command outputs were displayed in the conversation but were not persisted as raw audit files. This JSON is not an original raw execution log.",
+  "commands_and_methods": [
+    {
+      "command": "Get-Content AGENTS.md; compliance-and-provenance/SKILL.md; PROJECT_PROVENANCE.md; DATASET_CATALOG.md; SDK_LICENSE.md; LICENSE_REGISTER.md; V1_THIRD_PARTY_NOTICES.md; PROVENANCE_POLICY.md",
+      "status": "EXECUTED",
+      "purpose": "Read local policy and fixed provenance records; some combined output was truncated, followed by bounded rereads of the notices and provenance policy."
+    },
+    {
+      "command": "git ls-files followed by extension/path filtering and Group-Object",
+      "status": "EXECUTED",
+      "purpose": "Inventory selected tracked media, binaries and compiled evidence paths at baseline HEAD."
+    },
+    {
+      "command": "git log c210ca882ca8503b322c28884bf1e9f6e9fe126d --format= --name-only -- *.wav *.mp3 *.ogg *.flac *.sofa *.pdf *.dll *.exe *.wasm *.lib *.a *.woff *.woff2 *.ttf *.otf",
+      "status": "EXECUTED",
+      "purpose": "Check direct path names in baseline reachable history; no matching path names were returned."
+    },
+    {
+      "method": "System.IO.Compression.ZipFile.OpenRead on all 108 tracked ZIP files; enumerate entry names without extraction",
+      "status": "EXECUTED",
+      "purpose": "Identify directly named restricted asset/binary entries and inspect a representative trace entry list."
+    },
+    {
+      "method": "Parse third_party/emil-skills.manifest.json and compare SHA-256 of all 16 local manifest files",
+      "status": "EXECUTED",
+      "purpose": "Verify fixed vendored skill originals and included license."
+    },
+    {
+      "method": "Parse knowledge/sources/manifest.json and inspect UNKNOWN license records",
+      "status": "EXECUTED",
+      "purpose": "Distinguish remote metadata-only references from local redistributed copies."
+    },
+    {
+      "command": "rg -l AGFzbQE|AGFzbQ artifacts/v1/r17-final-delivery-20261029/web/assets --glob *.js; Get-FileHash -Algorithm SHA256",
+      "status": "EXECUTED",
+      "purpose": "Confirm an embedded WASM base64 signature in a compiled bundle and bind referenced evidence bytes."
+    },
+    {
+      "command": "git status --short; git rev-parse HEAD",
+      "status": "EXECUTED",
+      "purpose": "Confirm original checkout remained clean and on baseline during this review."
+    }
+  ],
+  "counts": {
+    "selected_tracked_extensions": {
+      "png": 298,
+      "webm": 2,
+      "zip": 108
+    },
+    "selected_tracked_extensions_outside_artifacts_or_native_accessibility_evidence": 0,
+    "artifacts_js_mjs_css_map_paths": 677,
+    "artifacts_source_maps": 233,
+    "artifacts_js_mjs_css_paths_excluding_maps": 444,
+    "zip_files_enumerated": 108,
+    "zip_open_failures_observed": 0,
+    "direct_restricted_extension_zip_entries_observed": 0,
+    "direct_restricted_extension_history_paths_observed": 0,
+    "emil_manifest_files_sha256_verified": 16,
+    "emil_manifest_mismatches": 0,
+    "unknown_license_source_records": 10,
+    "unknown_license_sources_remote_only_with_null_path": 10
+  },
+  "findings": [
+    {
+      "id": "RIGHTS-01",
+      "classification": "PUBLICATION_POLICY_BLOCKER_FOR_ORIGINAL_HISTORY",
+      "finding": "Tracked compiled bundles, source maps and delivery archive conflict with the user's explicit exclusion of build artifacts. Removing them only at the branch tip does not remove reachable historical objects.",
+      "examples": [
+        "artifacts/v1/r17-final-delivery-20261029/web/assets/index-DELE_Xh5.js",
+        "artifacts/v1/r17-final-delivery-20261029/local-delivery.zip"
+      ],
+      "recommendation": "Exclude compiled/container artifacts from the actual publication history while preserving original local evidence; no history modification was performed by this reviewer."
+    },
+    {
+      "id": "RIGHTS-02",
+      "classification": "NO_DIRECT_RESTRICTED_ASSET_PATH_FOUND_WITHIN_METHOD",
+      "finding": "No direct PDF, audio/HRTF, font or native SDK binary paths matched the listed history extensions. Steam Audio tracked files are README/manifest, and dataset records are source/license/acquisition metadata. Container resources can use opaque names, so this is not a content-level clearance."
+    },
+    {
+      "id": "RIGHTS-03",
+      "classification": "CONDITIONAL_ALLOWED_THIRD_PARTY_COPY",
+      "finding": "All 16 Emil Skills manifest files match recorded SHA-256. Fixed upstream commit, copyright and full MIT license are retained. Necessary license and notice originals should not be confused with prohibited executable build artifacts."
+    },
+    {
+      "id": "RIGHTS-04",
+      "classification": "METADATA_FALSE_POSITIVE",
+      "finding": "All ten UNKNOWN source license records are remote_only with null local path. Local records state that full official documentation/Gist text is not redistributed."
+    },
+    {
+      "id": "RIGHTS-05",
+      "classification": "BINARY_DISTRIBUTION_LIMITATION",
+      "finding": "Recorded R3F lineage, Rapier/WASM closure and tooling notice gaps concern actual distributed implementations/binaries. They are not automatically blockers for original source-only publication after compiled artifacts are excluded."
+    },
+    {
+      "id": "RIGHTS-06",
+      "classification": "USER_IP_DECISION_REMAINS",
+      "finding": "Root project LICENSE is not selected. The reviewer did not choose or add a license and does not classify the absence itself as discovered third-party infringement."
+    }
+  ],
+  "file_references": [
+    {
+      "path": "third_party/emil-skills.manifest.json",
+      "sha256": "1f2e8c61b575510162cbd75cd5d6e3defd41b2e8d4d0c8931dd497883f48b5c7"
+    },
+    {
+      "path": "third_party/emil-skills.LICENSE",
+      "sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b"
+    },
+    {
+      "path": "docs/01-compliance/V1_THIRD_PARTY_NOTICES.md",
+      "sha256": "b7555bdf4d52f8d4d50182e5b8efd386d8b03e7890c67ba328acb69972c58bf6"
+    },
+    {
+      "path": "artifacts/v1/r17-final-delivery-20261029/web/assets/index-DELE_Xh5.js",
+      "sha256": "eb6a41ae8373492d1e5bcd19ee10d089f49458fde2f2eab11e184ec9477f3445",
+      "observation": "Embedded WASM base64 signature detected; signature alone is not a complete binary provenance analysis."
+    },
+    {
+      "path": "artifacts/v1/r17-final-delivery-20261029/local-delivery.zip",
+      "sha256": "145bd22041f5255343e8c8fcfa0433c38b14cc10de566a61250326192085eb59",
+      "bytes": 6544048,
+      "entries": 279,
+      "last_path_commit_observed": "cde1e2b0ed7c57228bfa64b01c262b6eeab3cba1"
+    }
+  ],
+  "limits": [
+    "This subreview did not perform or rerun a full secret scan.",
+    "ZIP enumeration covered entry names; opaque resources, nested containers and complete embedded-content rights were not exhaustively inspected by this reviewer.",
+    "Selected extension/path matching is not proof that differently named binary/media files do not exist.",
+    "Fixed local provenance records were read; current remote legal terms were not rechecked in this subreview.",
+    "No public release, full legal clearance, contest eligibility or complete product acceptance is claimed.",
+    "No original checkout modifications, Git config changes, commits, pushes, history cleanup or Wiki mutations were performed. Only this requested retrospective receipt is written to the research worktree."
+  ],
+  "recorded_at": "2026-10-29T05:32:15.5072447+00:00"
+}

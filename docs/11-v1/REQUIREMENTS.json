@@ -1,0 +1,2236 @@
+{
+  "schema_version": 1,
+  "id": "RLAB-V1-ACCEPTANCE-20261027",
+  "created_at": "2026-10-26T18:34:50.796Z",
+  "baseline_commit": "2662bc8ee3976280c5c14f619ff798570f035f14",
+  "branch_at_capture": "codex/sound-behavior-research",
+  "authority": "Latest user goal: implement first version under Codex, no Muse quota; existing accepted ADRs and canonical acceptance.",
+  "scope_note": "This is a requirement/evidence matrix, not a replacement task system or proof that product requirements have passed. Existing Wiki Task IDs remain authoritative.",
+  "priority_notes": {
+    "P0": "第一版必要核心；不可用M0或spike成功替代整體完成。",
+    "P1": "第一版Roadmap D5–D8與Task0013的產品能力；分切片實作不等於可在結案時無聲刪除。若正式改scope須另列決策，不能假已完成。",
+    "EXTERNAL_GATE": "需要使用者帳號/預算/資格/授權或外部狀態。可繼續其他實作，但缺證據不能宣稱此項完成。",
+    "EVIDENCE_GATE": "完成聲稱所需真實驗證；未跑保持NOT RUN，不能用較窄測試代替。"
+  },
+  "completion_rule": "Do not mark full first-version goal achieved until required in-scope requirements and required external/evidence gates have direct current evidence. Missing, indirect, narrower or uncertain evidence is not completion. P2 is explicitly deferred, not faked.",
+  "status_values": [
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "NOT RUN"
+  ],
+  "requirements": [
+    {
+      "id": "V1-SYS-01",
+      "priority": "P0",
+      "domain": "system",
+      "title": "可重現的正式Web app",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D1/D9"
+        },
+        {
+          "path": "docs/NEXT_ENGINEERING_TASK.md",
+          "section": "實作項目與驗收"
+        }
+      ],
+      "pass_conditions": [
+        "乾淨npm ci後以明載dev命令開啟room/sphere；正式typecheck/build通過，保留原研究scripts。",
+        "新增依賴精確鎖版並記license/來源；不將spike或空頁宣稱正式app。"
+      ],
+      "evidence_methods": [
+        "新環境安裝、build stdout/exit、browser畫面與版本"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SCN-01",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "Scene v1與domain正負例",
+      "sources": [
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "Scene/Material"
+        },
+        {
+          "path": "schemas/scene.schema.json",
+          "section": "全部"
+        },
+        {
+          "path": "docs/NEXT_ENGINEERING_TASK.md",
+          "section": "全域限制/Review focus"
+        }
+      ],
+      "pass_conditions": [
+        "SI、右手+Y/-Z、xyzw unit quaternion、ID唯一且跨參照合法；拒絕NaN/Infinity、重複ID、dangling refs、負mass、非法geometry。",
+        "僅box/sphere/capsule；sphere三維等直徑；256 objects/32 sources/一listener；dimensions0.01..100m、position±200m、mass0.001..10000kg。"
+      ],
+      "evidence_methods": [
+        "Schema與獨立literal domain負例；真host API"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SCN-02",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "原子交易、revision與Undo",
+      "sources": [
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "Scene/Material"
+        },
+        {
+          "path": "examples/agents/scene-host-acceptance.mjs",
+          "section": "原有凍結驗收"
+        }
+      ],
+      "pass_conditions": [
+        "多操作任一失敗全部rollback；STALE_REVISION與UNKNOWN_ID明確拒絕。",
+        "輸入與既有scene不被mutation；commit/undo revision單調遞增，穩定ID不依array順序或engine handle。"
+      ],
+      "evidence_methods": [
+        "原有Scene acceptance獨立程序＋新增交易負例"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SCN-03",
+      "priority": "P0",
+      "domain": "scene",
+      "title": "匯入/匯出、Reset與資源清理",
+      "sources": [
+        {
+          "path": "docs/NEXT_ENGINEERING_TASK.md",
+          "section": "驗收/Review focus"
+        }
+      ],
+      "pass_conditions": [
+        "roundtrip保留所有IDs、units、source/listener metadata；非法import保留舊scene。",
+        "pause不step；reset回目前document revision起點；重複reset/import/dispose不遺留world、queue、geometry/material或多重RAF。"
+      ],
+      "evidence_methods": [
+        "host roundtrip＋browser連續reset10次/資源計數"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-01",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "固定步與過載政策",
+      "sources": [
+        {
+          "path": "docs/04-physics/PHYSICS_ARCHITECTURE.md",
+          "section": "固定步與時鐘"
+        },
+        {
+          "path": "docs/06-validation/PERFORMANCE_BUDGET.md",
+          "section": "catch-up政策"
+        }
+      ],
+      "pass_conditions": [
+        "fixedDt=1/60s；30/60/144Hz render不改固定步結果；render僅插值。",
+        "互動catch-up≤4且丟wall-time有telemetry；record/A-B過載pause、不丟simulation ticks。"
+      ],
+      "evidence_methods": [
+        "同初始state多render cadence比較＋過載trace"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-02",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "四body modes與切換",
+      "sources": [
+        {
+          "path": "docs/04-physics/OBJECT_STATES.md",
+          "section": "§2–4與驗收"
+        },
+        {
+          "path": "docs/NEXT_ENGINEERING_TASK.md",
+          "section": "四modes"
+        }
+      ],
+      "pass_conditions": [
+        "真Rapier證明Gravity on/off保留速度、NoGravity仍受impulse/contact、Fixed不受力、Kinematic用next pose且trajectory有clearance驗證。",
+        "Lock/Unlock預設零速並還原原重力mode；切換清controllers/舊contacts且記discontinuity；delete/undo不沿用invalid handles。"
+      ],
+      "evidence_methods": [
+        "真WASM模式/切換矩陣＋browser操作"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0006"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-03",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "FPS角色碰撞與移動",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D2"
+        },
+        {
+          "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+          "section": "§1–3"
+        }
+      ],
+      "pass_conditions": [
+        "正立capsule角色、WASD對角正規化、wall/slope/doorway碰撞有效，camera不直接穿透位移。",
+        "Pointer lock成功後才接收視角輸入；具不鎖定的可用替代操作。"
+      ],
+      "evidence_methods": [
+        "真Rapier character cases＋browser鍵鼠/替代操作"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-04",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "有限且壁安全的抓取",
+      "sources": [
+        {
+          "path": "docs/04-physics/PHYSICS_ARCHITECTURE.md",
+          "section": "抓取/target clamp"
+        },
+        {
+          "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+          "section": "抓取"
+        }
+      ],
+      "pass_conditions": [
+        "Dynamic模式、mass、gravity與collision groups不因Held改變；有限impulse/torque servo，target sweep+overlap排除自身但保留牆/玩家/其他物件。",
+        "受阻可落後且顯原因；不得parent到camera、teleport穿牆或以kinematic假扮Dynamic。"
+      ],
+      "evidence_methods": [
+        "0.1/1/5/20kg、薄牆/角落/堆疊/低FPS/NoGravity真WASM；記penetration/tracking/force saturation/blocked"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-05",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "Drop/Throw語意與去重",
+      "sources": [
+        {
+          "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+          "section": "§4"
+        },
+        {
+          "path": "docs/04-physics/INPUT_CONTROLS.md",
+          "section": "抓投操作"
+        },
+        {
+          "path": "docs/04-physics/OBJECT_STATES.md",
+          "section": "Held"
+        }
+      ],
+      "pass_conditions": [
+        "Drop不新增impulse且保留當刻solver velocity與NoGravity；Throw解除controller後同tick施加一次有限COM impulse。",
+        "commandId重送不重複throw；速度/clearance/CCD有界；取得lock的click不會throw。"
+      ],
+      "evidence_methods": [
+        "明確intent事件＋WASM速度/impulse assertions＋browser lock click"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-PHY-06",
+      "priority": "P0",
+      "domain": "physics",
+      "title": "Pause/focus與Listener還原",
+      "sources": [
+        {
+          "path": "docs/04-physics/INPUT_CONTROLS.md",
+          "section": "§2/6"
+        },
+        {
+          "path": "docs/04-physics/OBJECT_STATES.md",
+          "section": "Grab接觸與睡眠"
+        },
+        {
+          "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+          "section": "Listener"
+        }
+      ],
+      "pass_conditions": [
+        "Esc/blur/hidden清輸入並安全pause，取消未commit throw，保存Held/ghost且停止控制impulse；不得偷偷Drop或自動Resume。",
+        "Resume先重驗generation/collider/grip/clearance再ramp；editor camera不暗改Pinned Listener，退出FPS還原Pinned pose、velocity=0並記discontinuity。"
+      ],
+      "evidence_methods": [
+        "browser blur/visibility/lock/IME trace＋fixedstep controller/state assertions"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-BLD-01",
+      "priority": "P0",
+      "domain": "build",
+      "title": "Ghost/Staged/Active三階段",
+      "sources": [
+        {
+          "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+          "section": "§5"
+        },
+        {
+          "path": "docs/04-physics/OBJECT_STATES.md",
+          "section": "§1"
+        },
+        {
+          "path": "docs/05-ux/FPS_INTERACTION_UX.md",
+          "section": "First-Person Build"
+        }
+      ],
+      "pass_conditions": [
+        "Ghost無active body/source；Place在安全固定步重驗且原子建立Staged；等待geometry ack後顯式Enable，另行Resume。",
+        "surface support與shape query拒絕overlap；invalid/stale/racing occupancy/連點不留半物件、雙ID或意外聲源。"
+      ],
+      "evidence_methods": [
+        "browser placement＋document/body/source/revision counts＋WASM shape queries"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-EVT-01",
+      "priority": "P0",
+      "domain": "events",
+      "title": "可靠正規化物理事件",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/EVENT_MODEL.md",
+          "section": "全部"
+        },
+        {
+          "path": "docs/04-physics/PHYSICS_AUDIO_EVENTS.md",
+          "section": "contact extraction/aggregation"
+        }
+      ],
+      "pass_conditions": [
+        "步後複製暫時contact值，以domain IDs/generation/episode記tick/sequence/materialPair/worldContact。",
+        "point velocity=vCOM+omega×r；local→world與collider normal方向正確；force N/impulse Ns不可混用，缺值為null。"
+      ],
+      "evidence_methods": [
+        "真Rapier多contact/旋轉/collider ordering fixtures與單位assertions"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-EVT-02",
+      "priority": "P0",
+      "domain": "events",
+      "title": "Impact去重與invalidations",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/EVENT_MODEL.md",
+          "section": "Impact/episodes"
+        },
+        {
+          "path": "docs/04-physics/PHYSICS_AUDIO_EVENTS.md",
+          "section": "去重與分類"
+        }
+      ],
+      "pass_conditions": [
+        "support/persistent contact不逐tick發impact；多點合理聚合、episode/cooldown/hysteresis有界。",
+        "mode/delete/teleport/replay invalidation不偽造bounce或新impact；audible voice drop不刪raw event trace。"
+      ],
+      "evidence_methods": [
+        "single impact/resting/microjitter/multiobject/held-wall/pause/mode/CCD fixtures"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012",
+        "RLAB-TASK-0013"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-01",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "排序/去重與正交狀態",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+          "section": "不可放寬驗收1–3"
+        }
+      ],
+      "pass_conditions": [
+        "event以tick/sequence定義排序；eventId重送不重播；shared profile每binding有獨立runtime state。",
+        "AlwaysOn在移動、Impact、Grab/Throw、NoGravity不中斷；Held/contact等維度可共存；Throw/Drop只來自成功interaction。"
+      ],
+      "evidence_methods": [
+        "固定golden event trace、同tick不同sequence、重送與多binding fixtures"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-02",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "有界映射與合法引用",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+          "section": "不可放寬驗收4"
+        },
+        {
+          "path": "schemas/sound-behavior/behavior-document.schema.json",
+          "section": "draft v1"
+        }
+      ],
+      "pass_conditions": [
+        "mapping/fade/cooldown具範圍/單位、curve嚴格x與clamp；effective enabled/overrides正確。",
+        "拒絕NaN/Infinity、missing asset/rule、stale scene/profile/binding revision；不eval任意JS。"
+      ],
+      "evidence_methods": [
+        "正負fixtures＋runtime極值/disabled override tests"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-03",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "聲音預算與deterministic admission",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+          "section": "不可放寬驗收5"
+        },
+        {
+          "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+          "section": "資源預算"
+        }
+      ],
+      "pass_conditions": [
+        "continuous與one-shot生命週期分離但共受有效預算；priority/stableID tie-break決定drop/steal並記原因。",
+        "instance/voice、active emitter、path/decoded-memory上限分別執行，超量不造成無界queue/allocation。"
+      ],
+      "evidence_methods": [
+        "event burst/over-cap/cleanup/同優先排序 fixtures及browser telemetry"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0011",
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-04",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "快照/epoch與決策重播",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+          "section": "不可放寬驗收6–7"
+        },
+        {
+          "path": "docs/07-experiments/RECORD_REPLAY.md",
+          "section": "Sound Behavior extension"
+        }
+      ],
+      "pass_conditions": [
+        "pause不前進logical tick；reset/seek換epoch清舊dedup/deadline/schedule。",
+        "保存state重評同raw trace得相同logical decisions；不把AudioNode/Rapier object序列化。"
+      ],
+      "evidence_methods": [
+        "golden snapshot/resume/replay＋stale epoch負例"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0011"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-05",
+      "priority": "P1",
+      "domain": "behavior",
+      "title": "接觸/有界latch/material pair layers",
+      "sources": [
+        {
+          "path": "knowledge/tasks/RLAB-TASK-0013.json",
+          "section": "AC-01/02"
+        },
+        {
+          "path": "docs/10-sound-behaviors/EVENT_MODEL.md",
+          "section": "Rolling/Sliding/Bounce"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "latched semantics"
+        }
+      ],
+      "pass_conditions": [
+        "rolling/sliding使用接觸與相對point速度/角速度、hysteresis且缺支撐資料回unknown，不能將平移都當rolling。",
+        "OnThrow-start/OnImpact-stop有界latch具stopOn/retrigger/deadline，不以WhileAirborne偷換；materialpair覆寫仍受finite generator與voice上限。"
+      ],
+      "evidence_methods": [
+        "rotating support/slip/held/mode/CCD/latch deadline/retrigger/layer trace tests"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-06",
+      "priority": "P0",
+      "domain": "assets",
+      "title": "可信資產匯入/選擇與生成",
+      "sources": [
+        {
+          "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+          "section": "Audio generation/assets"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "Trusted pins與v1 Apply"
+        }
+      ],
+      "pass_conditions": [
+        "asset ID/revision/SHA與權利/availability來自trusted registry，fixture-only不能當正式音檔；模型不提供任意path/URL。",
+        "可用sample/loop與簡單oscillator/envelope；持續實例保持playhead，新one-shot建立新source，decoded buffer可重用；creative內容不標Measured vibration。"
+      ],
+      "evidence_methods": [
+        "真音檔decode/playback與registry負例＋deterministic synth references"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-SND-07",
+      "priority": "P0",
+      "domain": "behavior",
+      "title": "安全手動作者與Apply/Undo",
+      "sources": [
+        {
+          "path": "docs/05-ux/SOUND_BEHAVIOR_UX.md",
+          "section": "§3"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "Trusted pins與v1 Apply"
+        }
+      ],
+      "pass_conditions": [
+        "draft→validate→diff→pause/fade/drain→原子新revision/new epoch；derivedAssetPins與操作一起提交，inverse可Undo。",
+        "invalid/stale保留draft及舊配置；shared profile受影響bindings列明；不宣稱無縫retired-profile voices。"
+      ],
+      "evidence_methods": [
+        "domain transaction正負例＋browser Apply/Cancel/Undo"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-ACO-01",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "真direct path/occlusion",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D5"
+        },
+        {
+          "path": "docs/06-validation/ACOUSTIC_VALIDATION.md",
+          "section": "ACO-001/002"
+        }
+      ],
+      "pass_conditions": [
+        "產品solver以實際source/listener/geometry算t=r/c、1m reference pressure1/r與finite segment occlusion，r=0有明示拒絕/有來源的regularization。",
+        "source movement或blocker變更會更新真路徑，UI不能用裝飾線替代求解。"
+      ],
+      "evidence_methods": [
+        "3-4-5 literal fixture＋blocker cases＋browser真path inspector"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-ACO-02",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "有限一階ISM反射與path identity",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D5"
+        },
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "AcousticFrame"
+        },
+        {
+          "path": "docs/06-validation/ACOUSTIC_VALIDATION.md",
+          "section": "ACO-002/003"
+        }
+      ],
+      "pass_conditions": [
+        "反射點在finite polygon內，每段檢查blockers；first-order path帶真vertices/length/absolute delay/relative delay/arrival direction。",
+        "ID由source/listener/ordered surfaces/model決定，不含座標或rank；arrival指listener到倒數第二vertex。"
+      ],
+      "evidence_methods": [
+        "固定一階sqrt20、polygon外與反射blocker負例、1mm continuity；可與獨立reference比對"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-ACO-03",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "材質/大氣/模型標籤",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D6"
+        },
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "Scene/Material"
+        },
+        {
+          "path": "docs/06-validation/ACOUSTIC_VALIDATION.md",
+          "section": "MAT-001/AIR-001"
+        }
+      ],
+      "pass_conditions": [
+        "每band A+R+T=1且finite/[0,1]；scattering只分配R，pressure magnitude依已宣告phase/impedance近似。",
+        "示範材質標Synthetic；air模型有來源/適用條件；gravity0不等vacuum，vacuum不消除mechanical collision；未驗ISO不得宣稱符合。"
+      ],
+      "evidence_methods": [
+        "band energy literal fixtures、air conversion、invalid material與medium tests"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-ACO-04",
+      "priority": "P1",
+      "domain": "acoustics",
+      "title": "AcousticFrame與worker邊界",
+      "sources": [
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "AcousticFrame"
+        },
+        {
+          "path": "docs/06-validation/PERFORMANCE_BUDGET.md",
+          "section": "worker/delivery"
+        }
+      ],
+      "pass_conditions": [
+        "frame含source/listener/revision/poseTick/solver版本與capabilities；stale或錯配frame不套用。",
+        "bounds/backpressure與取消有限；unsupported/空路徑/0/未完成分開，沒有IR/individual-path capability不捏造替代。"
+      ],
+      "evidence_methods": [
+        "真worker/message/queue/cancel/stale-frame tests與UI狀態"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AUD-01",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "統一SourceGraph與一次處理",
+      "sources": [
+        {
+          "path": "docs/02-architecture/AUDIO_RUNTIME.md",
+          "section": "SourceGraph/排程"
+        },
+        {
+          "path": "docs/02-architecture/DATA_CONTRACTS.md",
+          "section": "AcousticFrame"
+        }
+      ],
+      "pass_conditions": [
+        "所有3D continuous/contact emission走同一Acoustic Core route，contact聲源用world contact而非固定COM。",
+        "同emission epoch加一次absolute propagation delay；1/r、air/material、HRTF與Doppler不重複；反射HRTF用最後segment apparent direction。"
+      ],
+      "evidence_methods": [
+        "真OfflineAudioContext impulse arrival/gain/direction/routing assertions＋browsergraph"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AUD-02",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "持續聲源與平滑更新",
+      "sources": [
+        {
+          "path": "docs/02-architecture/AUDIO_RUNTIME.md",
+          "section": "持續源/path bank/參數平滑"
+        }
+      ],
+      "pass_conditions": [
+        "抓取/碰撞/NoGravity不重建continuous source或重置phase；source/listener/path更新用穩定IDs且gain/delay平滑。",
+        "path birth/death/voice steal有audio-clock fade；callback不等AI/network/physics/geometry，不做無界allocation/log。"
+      ],
+      "evidence_methods": [
+        "真graph持續source identity/playhead、parameter ramps、burst/dispose tests"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AUD-03",
+      "priority": "P0",
+      "domain": "audio",
+      "title": "Pause/Resume音訊時間",
+      "sources": [
+        {
+          "path": "docs/02-architecture/AUDIO_RUNTIME.md",
+          "section": "Pause/Resume"
+        },
+        {
+          "path": "docs/07-experiments/RECORD_REPLAY.md",
+          "section": "時間與儲存"
+        }
+      ],
+      "pass_conditions": [
+        "Freeze-and-fade保留logical offsets/event cursor/pending arrivals，取消舊epoch；Resume重錨只排未到達事件一次。",
+        "seek/reset清舊排程；pause時audition另時鐘且排除run/metrics。"
+      ],
+      "evidence_methods": [
+        "OfflineAudioContext arrival/duplication tests＋browser pause/seek trace"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AUD-04",
+      "priority": "P1",
+      "domain": "audio",
+      "title": "Raw/Simulated與基本reverb",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D6"
+        },
+        {
+          "path": "docs/02-architecture/AUDIO_RUNTIME.md",
+          "section": "Monitor/IR/normalization"
+        },
+        {
+          "path": "docs/07-experiments/AB_COMPARISON.md",
+          "section": "報告"
+        }
+      ],
+      "pass_conditions": [
+        "Raw/Simulated使用同asset/event/seed/playhead/gain，不改run；route crossfade用audio clock。",
+        "基本reverb明示perceptual approximation，IR是否含direct/distance/air/material/normalization可查；能量驗證不能被Convolver自動normalization掩蓋。"
+      ],
+      "evidence_methods": [
+        "真offline graph energy/arrival/normalization測試＋browser route切換"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-01",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Workspace/Transport與資料權威",
+      "sources": [
+        {
+          "path": "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+          "section": "正交狀態/驗收"
+        },
+        {
+          "path": "docs/05-ux/COMPONENT_SPEC.md",
+          "section": "P0元件"
+        }
+      ],
+      "pass_conditions": [
+        "Scene/Simulation/Analysis切換不Reset run/source/recording；Run/Pause/Resume/Reset語義不同，Reset保留已完成結果並標interrupted capture。",
+        "Scene Explorer/Library/Inspector/Transport/Monitor與精確數字入口可用，顯units/revision/tick與可操作error。"
+      ],
+      "evidence_methods": [
+        "真browser workflow U01–U08/command trace"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-02",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "共享選取與真資料可視化",
+      "sources": [
+        {
+          "path": "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+          "section": "Selection/Capability"
+        },
+        {
+          "path": "docs/05-ux/COMPONENT_SPEC.md",
+          "section": "整合驗收"
+        }
+      ],
+      "pass_conditions": [
+        "3D/table/Inspector共用stable object/path/event ID，排序/刪除/stale結果不誤選另一物件。",
+        "只畫solver產生的路徑，顯model/source/units/stale/revision；unsupported/empty/unavailable/0有區分。"
+      ],
+      "evidence_methods": [
+        "browser linked-selection＋stale frame/empty capability cases"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-03",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "FPS輸入仲裁與安全退出",
+      "sources": [
+        {
+          "path": "docs/05-ux/FPS_INTERACTION_UX.md",
+          "section": "進入/焦點/退出與MVP mappings"
+        },
+        {
+          "path": "docs/05-ux/UI_STRESS_TESTS.md",
+          "section": "UX-STRESS-10/14/18"
+        }
+      ],
+      "pass_conditions": [
+        "pointer-lock acquisition click不Throw/Place；Esc/blur/hidden安全pause；Tab正常導覽且保留browser shortcuts。",
+        "input/contenteditable/中文IME擁有按鍵，keydown repeat不重複throw/fix/create；有非lock與非drag替代。"
+      ],
+      "evidence_methods": [
+        "browser composition/focus/keyboard/lock-denied/action-log測試"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-04",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Sound Inspector作者/診斷",
+      "sources": [
+        {
+          "path": "docs/05-ux/SOUND_BEHAVIOR_UX.md",
+          "section": "§§2–5 / SB-UX-01..06"
+        }
+      ],
+      "pass_conditions": [
+        "可新增/啟停規則、合法trigger/asset、gain/pitch/curve與preset/binding override；顯contact emitter與抑制/voice原因。",
+        "audition/3D preview/run分離；切選不無聲丟draft；error/stale/disabled有可操作說明；Apply/Undo與runtime版本一致。"
+      ],
+      "evidence_methods": [
+        "真browser規則編輯與audio/event/instance trace"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-05",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "可及性/reflow/motion",
+      "sources": [
+        {
+          "path": "docs/05-ux/DESIGN_SYSTEM.md",
+          "section": "可及性/版面與縮放/動態"
+        },
+        {
+          "path": "docs/05-ux/COMPONENT_STATES.json",
+          "section": "profiles/commonStates"
+        },
+        {
+          "path": "docs/05-ux/UI_STRESS_TESTS.md",
+          "section": "UX-STRESS-08/09/18"
+        }
+      ],
+      "pass_conditions": [
+        "native controls/visible focus/accessible names/dialog focus-return/keyboard操作可用；不逐tick aria-live刷屏。",
+        "200%及320CSSpx仍到達Mute/Pause/退出/表單；Reduced Motion不延後命令；tokens使用canonical值，不能以色彩/動畫作唯一狀態線索。"
+      ],
+      "evidence_methods": [
+        "真browser keyboard/dialog/zoom/reflow/reduced-motion/contrast檢查"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-UX-06",
+      "priority": "P0",
+      "domain": "ux",
+      "title": "Monitor與音訊暴露狀態",
+      "sources": [
+        {
+          "path": "docs/05-ux/DESIGN_SYSTEM.md",
+          "section": "可及性與音訊暴露"
+        },
+        {
+          "path": "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+          "section": "Monitor"
+        }
+      ],
+      "pass_conditions": [
+        "預設muted，經user gesture啟用；Mute/gain常駐，Mute不停止simulation。",
+        "blocked/error/source stop狀態分離；dBFS不宣稱SPL或耳機安全校準；事件有文字/視覺替代。"
+      ],
+      "evidence_methods": [
+        "browser autoplay/gesture/mute test與實際聲音狀態確認"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-RPL-01",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "可追溯capture與finalization",
+      "sources": [
+        {
+          "path": "docs/07-experiments/RECORD_REPLAY.md",
+          "section": "時間與儲存/Sound Behavior extension"
+        }
+      ],
+      "pass_conditions": [
+        "保存tick-indexed motion/velocity/listener/raw physics-player trace及分離behavior/audio decisions，連結scene/profile/assets/solver版本與hash。",
+        "final state flush/chunk count/hash正確；缺tick/重sequence/非法quaternion/unresolved refs拒絕；cancel/crash不得產生Captured incomplete manifest。"
+      ],
+      "evidence_methods": [
+        "真runtimecapture、格式破壞/取消/crash fixtures、序列化大小與quota量測"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-RPL-02",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "Authoritative replay與seek",
+      "sources": [
+        {
+          "path": "docs/07-experiments/RECORD_REPLAY.md",
+          "section": "三模式與驗收"
+        }
+      ],
+      "pass_conditions": [
+        "authoritative motion replay重用已保存motion/raw events，physics不重新決定路徑；listener/source時間序列一致。",
+        "pause/resume/seek/reset採新epoch與清楚tail政策，不重播impact；保留recorded-output與behavior重新評估模式差別。"
+      ],
+      "evidence_methods": [
+        "end-to-end record/replay/hash compare/audio event counts"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-RPL-03",
+      "priority": "P1",
+      "domain": "recording",
+      "title": "Pinned resimulation證據",
+      "sources": [
+        {
+          "path": "docs/07-experiments/RECORD_REPLAY.md",
+          "section": "驗收"
+        }
+      ],
+      "pass_conditions": [
+        "同初始snapshot、同Rapier/WASM、seed/建立順序/fixedDt，120ticks重跑兩次同機比較state hashes/明示誤差。",
+        "同機通過不推論跨平台bitwise；fresh physics rerun使用新run/motion trace。"
+      ],
+      "evidence_methods": [
+        "真WASM兩次120tick snapshot regression"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AB-01",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Acoustic A/B固定條件",
+      "sources": [
+        {
+          "path": "docs/07-experiments/AB_COMPARISON.md",
+          "section": "可比較條件與報告"
+        }
+      ],
+      "pass_conditions": [
+        "同motion/source signal/listener/geometry/seed/sampleRate/window/backend/solver/analysis，只更動宣告acoustic材料或propagation；不符合回INCOMPATIBLE。",
+        "保留原值、candidate−baseline、units/band/window/artifact；baseline0百分比unavailable；normalized listening不推絕對能量。"
+      ],
+      "evidence_methods": [
+        "真run manifests/hash守門與numeric delta負例"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AB-02",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Behavior A/B自變項",
+      "sources": [
+        {
+          "path": "docs/07-experiments/AB_COMPARISON.md",
+          "section": "Sound Behavior A/B"
+        },
+        {
+          "path": "schemas/sound-behavior/behavior-document.schema.json",
+          "section": "SoundBehaviorComparison"
+        }
+      ],
+      "pass_conditions": [
+        "固定motion/raw physicsEvent/listener/geometry/physics/solver/atmosphere/propagation，只允許宣告asset/generator/gain/pitch/profile變化，保留雙方hash。",
+        "behavior decision可不同，不把creative sample差異說成牆面RT改善；不支援時明示CAPABILITY_UNSUPPORTED，不能假完成比較。"
+      ],
+      "evidence_methods": [
+        "真authoritative replay兩組profiles＋比較metadata負例"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0013"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-MET-01",
+      "priority": "P1",
+      "domain": "analysis",
+      "title": "Grounded metrics與無資料拒絕",
+      "sources": [
+        {
+          "path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+          "section": "可重現實驗與來源標籤"
+        },
+        {
+          "path": "docs/06-validation/ACOUSTIC_VALIDATION.md",
+          "section": "RIR/DSP邊界"
+        },
+        {
+          "path": "docs/07-experiments/AB_COMPARISON.md",
+          "section": "報告"
+        }
+      ],
+      "pass_conditions": [
+        "只從solver/PCM/RIR artifacts產生支援metric，包含method/window/unit/band/provenance；Computed/Estimated/Measured/AI explanation分離。",
+        "不足decay或fit<3sample回null/reason；不從普通音樂或AI生成RT60/SPL；沒有V5不得標量測。"
+      ],
+      "evidence_methods": [
+        "獨立synthetic impulse/EDC/0.6s decay fixtures與artifact missing/tamper/insufficient-data負例"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AI-01",
+      "priority": "P1",
+      "domain": "ai",
+      "title": "原12工具的安全host",
+      "sources": [
+        {
+          "path": "docs/08-ai/AI_TOOL_SCHEMAS.md",
+          "section": "12 tools"
+        },
+        {
+          "path": "docs/08-ai/AI_SCENE_CONTROL.md",
+          "section": "preview/apply/undo"
+        },
+        {
+          "path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+          "section": "角色與資料流"
+        }
+      ],
+      "pass_conditions": [
+        "原tool enum不被暗改；scene提案只stage，host驗證schema/domain/revision/授權後preview，Apply/Cancel/Undo明確且idempotent。",
+        "RunSimulation queued≠完成；immutable input/run ledger/cancel/timeout有效；手動編輯不依賴API。"
+      ],
+      "evidence_methods": [
+        "OfflineFixtureProvider/recorded response標籤＋真hosttransaction/run tests"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AI-02",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "Behavior提案的安全host",
+      "sources": [
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "機器契約/Host必要驗證/Trusted pins"
+        }
+      ],
+      "pass_conditions": [
+        "五種新operation與舊12enum分離；unknown/JS/URL/asset/trigger/stale generation拒絕；derived pins與操作原子提交且Undo。",
+        "proposal→preview/diff→user Apply→實際runtime artifact可追溯；模型沒有OS/shell/repo權限，不能自我批准。"
+      ],
+      "evidence_methods": [
+        "真host工具正負fixtures/duplicate proposal/shared-profile迁移/Undo"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AI-03",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "Provider邊界、預算及錯誤",
+      "sources": [
+        {
+          "path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+          "section": "Run狀態與停止條件"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "Meta adapter/失敗與驗收"
+        }
+      ],
+      "pass_conditions": [
+        "strict provider schema adapter與本地AJV/domain分開；完整arguments後才stage，model text/no-tool/refusal/truncation有受控結果。",
+        "12turns/48calls/6runs/concurrency1/120s/session及token/runtime caps由host管理；預設付費0、不使用Muse額度；401/403/billing/429/outage分清且transient最多2retry。"
+      ],
+      "evidence_methods": [
+        "provider契約/fixture fault injection＋budget/cancel/unknown mutation result ledger tests"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AI-04",
+      "priority": "P0",
+      "domain": "ai",
+      "title": "模型說明只引用真結果",
+      "sources": [
+        {
+          "path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+          "section": "Grounding"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "可展示受控實驗"
+        }
+      ],
+      "pass_conditions": [
+        "每個數字連到實際metricRecord/artifact，缺/竄改引用拒絕；AI不捏造asset、聲學量測、run成功或global optimum。",
+        "offline fixture/recorded/live來源清楚；模型故障仍可手動完成同一作者與實驗流程。"
+      ],
+      "evidence_methods": [
+        "artifact移除/改寫/錯誤誘導及人工fallback E2E"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0014"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-AI-05",
+      "priority": "EXTERNAL_GATE",
+      "domain": "ai",
+      "title": "真Meta產品整合",
+      "sources": [
+        {
+          "path": "knowledge/tasks/RLAB-TASK-0014.json",
+          "section": "AC-02"
+        },
+        {
+          "path": "knowledge/tasks/RLAB-TASK-0007.json",
+          "section": "account/eligibility"
+        },
+        {
+          "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+          "section": "真Meta整合及競賽展示"
+        }
+      ],
+      "pass_conditions": [
+        "在帳號/模型/來源/明確有限預算核實後，保存實際Meta response/model ID、redacted tool trace、preview/Apply、真runtime run/results。",
+        "Codex開發、Mock、MuseCode CLI或其他模型輸出都不能解除此門檻；禁止自動充值/提高cap/換未授權帳號。"
+      ],
+      "evidence_methods": [
+        "授權真Meta端到端trace；無帳號/預算記BLOCKED或NOT RUN"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0007",
+        "RLAB-TASK-0014"
+      ],
+      "external_dependency": true,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-VAL-01",
+      "priority": "P0",
+      "domain": "verification",
+      "title": "凍結驗收與獨立審查",
+      "sources": [
+        {
+          "path": "docs/09-agents/VALIDATION_POLICY.md",
+          "section": "全部"
+        }
+      ],
+      "pass_conditions": [
+        "原tests/fixtures/reference/schema hash不因實作而變；如原驗收本身有缺陷，須獨立review與新version/理由，不能改expected/tolerance趕工。",
+        "獨立程序保留command/exit/stdout/stderr/version/hash；隔離review有重現缺陷、修復與複驗，不僅同模型自我宣告。"
+      ],
+      "evidence_methods": [
+        "protected hash比對＋原regression＋新產品tests＋隔離review"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-VAL-02",
+      "priority": "EVIDENCE_GATE",
+      "domain": "verification",
+      "title": "Browser/DSP/E2E與乾淨重開",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D9"
+        },
+        {
+          "path": "docs/09-agents/VALIDATION_POLICY.md",
+          "section": "frontend/audio驗收"
+        },
+        {
+          "path": "knowledge/tasks/RLAB-TASK-0012.json",
+          "section": "AC-03"
+        }
+      ],
+      "pass_conditions": [
+        "真browser驗證輸入/畫面/cleanup與產品鏈；真OfflineAudioContext驗arrival/energy/continuity/voice cleanup，不能以Node公式代替。",
+        "端到端scene→throw→impact→sound→capture→A/B可重現；三次乾淨重開演示保留失敗/console紀錄。"
+      ],
+      "evidence_methods": [
+        "browser artifacts、offline PCM分析、3次乾淨launch E2E"
+      ],
+      "task_ids": [
+        "RLAB-TASK-0012"
+      ],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-VAL-03",
+      "priority": "EVIDENCE_GATE",
+      "domain": "verification",
+      "title": "實際裝置聽測與跨browser",
+      "sources": [
+        {
+          "path": "docs/ROADMAP.md",
+          "section": "D9"
+        },
+        {
+          "path": "docs/09-agents/VALIDATION_POLICY.md",
+          "section": "音訊裝置聽測"
+        },
+        {
+          "path": "docs/06-validation/BENCHMARK_PLAN.md",
+          "section": "V2/V4/V5"
+        }
+      ],
+      "pass_conditions": [
+        "指定browser/OS/硬體/耳機/sampleRate/實際block，實際檢查click/pop、volume jump、moving position、dropout與Pause/Resume。",
+        "測不到的裝置/hearing/crossbrowser明示NOT RUN；不能由PCM有聲、碼審或UI流暢推PASS/V5/calibrated SPL。"
+      ],
+      "evidence_methods": [
+        "實際裝置紀錄與跨browser比較；無觀察者/裝置可驗時保留限制"
+      ],
+      "task_ids": [],
+      "external_dependency": true,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-VAL-04",
+      "priority": "EVIDENCE_GATE",
+      "domain": "performance",
+      "title": "正式性能profile與退階",
+      "sources": [
+        {
+          "path": "docs/06-validation/PERFORMANCE_BUDGET.md",
+          "section": "初始工程目標/效能退階"
+        },
+        {
+          "path": "docs/05-ux/PERFORMANCE_STANDARDS.md",
+          "section": "量測metadata"
+        }
+      ],
+      "pass_conditions": [
+        "正式profile分別量測UI/physics/worker/delivery/audio，不用Node batch平均冒充frame tail或schema容量。",
+        "保存10min UI trace與硬體/viewport/scene/voice/paths版本；未量項仍TARGET/UNVERIFIED，降階顯示capability/stale與actual caps。"
+      ],
+      "evidence_methods": [
+        "canonical profile benchmark與telemetry；採native nodes時不冒稱AudioWorklet p99通過"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-OPS-01",
+      "priority": "P0",
+      "domain": "provenance",
+      "title": "Wiki/Task/交接/Git持久化",
+      "sources": [
+        {
+          "path": "AGENTS.md",
+          "section": "Session Startup/授權完成定義"
+        },
+        {
+          "path": "knowledge/schema.md",
+          "section": "Task與操作"
+        }
+      ],
+      "pass_conditions": [
+        "沿用同一Task/Wiki：criteria實際有hash證據才DONE；claims釋放、來源版本/現況/限制/下一步更新。",
+        "保留未提交變更及舊證據，checkpoint/handoff帶真正commands/Git provenance；本地commit可恢復，不擅自push/deploy。"
+      ],
+      "evidence_methods": [
+        "wiki lint/status、task/evidence hashes、fresh handoff reader、git diff/log"
+      ],
+      "task_ids": [],
+      "external_dependency": false,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "V1-COM-01",
+      "priority": "EXTERNAL_GATE",
+      "domain": "compliance",
+      "title": "權利/規則/發布授權",
+      "sources": [
+        {
+          "path": "AGENTS.md",
+          "section": "授權安全"
+        },
+        {
+          "path": "docs/01-compliance/HACKATHON_RULES.md",
+          "section": "2026-10-27重查"
+        },
+        {
+          "path": "docs/01-compliance/LICENSE_REGISTER.md",
+          "section": "register"
+        }
+      ],
+      "pass_conditions": [
+        "實際依賴/素材/音效/HRTF有license/version/hash/NOTICE；不複製EchoCanvas/Reflections核心或未授權商業資產。",
+        "codingagent公開條款UNSTATED、本人資格/登入後條款/提交欄位仍須核實；不代接受條款、部署、提交或決定根LICENSE。"
+      ],
+      "evidence_methods": [
+        "實際dependency/asset manifest與使用者外部確認；不以開發完成聲稱競賽合規"
+      ],
+      "task_ids": [],
+      "external_dependency": true,
+      "status_at_freeze": "NOT RUN",
+      "evidence": []
+    }
+  ],
+  "deferred": [
+    {
+      "id": "V1-P2-01",
+      "items": [
+        "Node-based Behavior Graph",
+        "modal/complex procedural synthesis",
+        "advanced sound layering/AI optimization",
+        "second-order以上正式反射",
+        "diffraction/wave solver/advanced impedance",
+        "dynamic reflectors",
+        "完整自由物理/跨平台bitwise replay",
+        "Steam Audio browser backend",
+        "jump/crouch/push工具"
+      ],
+      "sources": [
+        "docs/ROADMAP.md",
+        "knowledge/tasks/RLAB-TASK-0015.json",
+        "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md"
+      ],
+      "reason": "Canonical P2；保留BACKLOG與capability拒絕，研究regression仍須保持。"
+    }
+  ],
+  "scope_conflicts": [
+    {
+      "id": "V1-CON-01",
+      "issue": "舊Phase3 Harness preferred=MUSE/only-src/禁止依賴與當前Codex全面實作衝突",
+      "resolution": "ADR013及最新使用者授權優先；舊profile保留歷史，仍使用原Scene literal驗收；package-lock可因授權新依賴更新。"
+    },
+    {
+      "id": "V1-CON-02",
+      "issue": "P0-01文件禁止順帶FPS/audio/AI，與整體第一版Roadmap不同scope",
+      "resolution": "該禁令只限P0-01切片；整體第一版仍包含D2–D8與Task0012–0014，不能據此排除。"
+    },
+    {
+      "id": "V1-CON-03",
+      "issue": "Sound UX候選P0 triggers比最新Roadmap最小vertical更廣",
+      "resolution": "先AlwaysOn/Impact；Grab/Throw/Airborne需FPS前置並在後續Task0013驗收；不因enum存在就稱可執行。"
+    },
+    {
+      "id": "V1-CON-04",
+      "issue": "Schema沒有room/cylinder/label且要求listener；UI stress有空場景/名稱案例",
+      "resolution": "room由合法box walls組合；label只限UI暫存或另作版本決策；listenerless作draft/非法import負例，不能偷偷放寬Scene v1。"
+    },
+    {
+      "id": "V1-CON-05",
+      "issue": "Workspace早期兩階段用語與詳細Build三階段",
+      "resolution": "依Ghost→PlacementPending→Staged→explicit Active，geometry ack及Resume不得省略。"
+    },
+    {
+      "id": "V1-CON-06",
+      "issue": "性能提出多組配置/latency targets，尚未量測",
+      "resolution": "數值權威只PERFORMANCE_BUDGET；UI p95≤50/p99≤100ms仍PROPOSED，desktop-60配置不是容量保證。"
+    },
+    {
+      "id": "V1-CON-07",
+      "issue": "舊12AI工具/Scene/Experiment v1與新Sound proposal/比較draft分離",
+      "resolution": "不可暗中擴舊enum或宣稱跨文檔原子交易；使用明示版本adapter，兩種A/B各自守門。"
+    },
+    {
+      "id": "V1-CON-08",
+      "issue": "Task0012 AC03含聽測，Task0014 AC02需真Meta；目前無live資源證據",
+      "resolution": "不能將offline/built/fixture當DONE。完成獨立可做工作，保留該AC BLOCKED/NOT RUN與精確解除條件。"
+    },
+    {
+      "id": "V1-CON-09",
+      "issue": "既有source資料中的研究/未授權狀態已被新實作授權取代",
+      "resolution": "保留歷史與研究文件；新status/Now由root依真正實作/測試更新，該矩陣不是授權再次確認門檻。"
+    }
+  ],
+  "canonical_source_snapshots": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "b89a89bc3eda034a1eba310a8540218a961b2f3af1da2c1fd529c6d4206a80a8",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/01-compliance/HACKATHON_RULES.md",
+      "sha256": "b408e37549cb31eedd0af6af65bc00c4b7327d428ce57037a60a9913951d6868",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/01-compliance/LICENSE_REGISTER.md",
+      "sha256": "c93f704b93de02b61e650f005e7f90510b52d959c416763d9b8782ba0e7f76e6",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/02-architecture/AUDIO_RUNTIME.md",
+      "sha256": "b7029732ca02aecc33783c1f85d57c7e15b851e8c090d2ce2fa4febc4389a1e1",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/02-architecture/DATA_CONTRACTS.md",
+      "sha256": "149c0ec2999be14cca2e7552a34aadafef517b369d8466c77410e1ce20201e47",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/04-physics/FPS_INTERACTION_SPEC.md",
+      "sha256": "703b597a3bbb3bb5952542c0f2d5f6fcc006bcb58bb6e2beb9aeb26b3338f783",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/04-physics/INPUT_CONTROLS.md",
+      "sha256": "7cd4b0fd04c856f289e7f660c1acaa8ad979ec8bc7fddf5a5c645fc464f65706",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/04-physics/OBJECT_STATES.md",
+      "sha256": "e74507a63520ba51ed47a5c2e2120ce798c0a895b17b4de2e71101f3904db801",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/04-physics/PHYSICS_ARCHITECTURE.md",
+      "sha256": "718678474717ede3c190d6980d90bb2c0f9879c8297728f55ce8d83a931d37b4",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/04-physics/PHYSICS_AUDIO_EVENTS.md",
+      "sha256": "0653712d397024845f278be654238785ed986ea722be415594338cbd533356bc",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/COMPONENT_SPEC.md",
+      "sha256": "d7455c5c298b978b69dbe08e3e21cc953e8c571b10e0d0b6c2d8505a4127db05",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/COMPONENT_STATES.json",
+      "sha256": "4c20c430958d87e52d2a4b30fae4b48b3a98803ccea86bbe68ddb4a2d1eff703",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/DESIGN_SYSTEM.md",
+      "sha256": "ba72e2fda168c05db7b4cfa840eea65db2ea5b0b9769a6ad6a4d74d70a8e2f50",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/DESIGN_TOKENS.json",
+      "sha256": "c5ffd01bd81013d1f1156b93c78361ab163b9a5753ecec8049aed74d21505a77",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/FPS_INTERACTION_UX.md",
+      "sha256": "806e8aa0cd44e0e6b19bd1d351ebe66088d6b404548f2cc17e16ca5c690809ef",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/MOTION_GUIDELINES.md",
+      "sha256": "937960e1af54e4f7307b712dc4beb630fd40384b72ab3271e72055ecd0baf292",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/PERFORMANCE_STANDARDS.md",
+      "sha256": "2038370a55e7142d5a299bff7796c89b7b61822d842f3447fecb8dc32e50f569",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/SOUND_BEHAVIOR_UX.md",
+      "sha256": "24d1fd048ba7aae166e5dce5b0041e91089c23a80bec984f45306767bceec821",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/UI_STRESS_TESTS.md",
+      "sha256": "d0c9c891af620fc7a2b3207b32ab5f98b10c9f908302a922480ccd18ae9cd581",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+      "sha256": "0bc02011aab1e9ec009b53d976e08343b5c2507cea48bf798c938e8c8309e247",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/06-validation/ACOUSTIC_VALIDATION.md",
+      "sha256": "db512256244301b42ee30d1c71ace2c2774a412f3a7596fb8499da13c26a92aa",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/06-validation/BENCHMARK_PLAN.md",
+      "sha256": "e8305598f2069b3a07c1ecc057cb5ffa94149f56ead7dd1e8659336436592893",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/06-validation/PERFORMANCE_BUDGET.md",
+      "sha256": "e5959cdd2d4465d605277a5e1e458c60f57b94976b11f8cd9eae3b39cd6cea8a",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/06-validation/PHYSICS_VALIDATION.md",
+      "sha256": "c626f6eb4ab07d5cac2f6bc8f42c986c601a4010fcb45d416390215efe249897",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/07-experiments/AB_COMPARISON.md",
+      "sha256": "a087e3b1fb719870508cc0de76ab59d07fa01ff478537e83cfc0b75912423fdd",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/07-experiments/RECORD_REPLAY.md",
+      "sha256": "5d90fbb809eb4012897e77312b82aa99ef036e169b88b984a6bf17628b96d2ab",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/08-ai/AI_EXPERIMENT_AGENT.md",
+      "sha256": "6add2576282095d2300fbd054595fe3c0ae6cdd76e1e305bc80c14c0b5f91d8e",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/08-ai/AI_SCENE_CONTROL.md",
+      "sha256": "15d21aebb3dd41fce24aae60f92ee1214d7c1cbf824ec4323c78a95ba663e560",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/08-ai/AI_TOOL_SCHEMAS.md",
+      "sha256": "48eb330d7c2f30dd544d61bd1dc75d0657569985696f1a0a9fd8db9c6340602f",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/08-ai/MUSE_SOUND_BEHAVIOR_INTEGRATION.md",
+      "sha256": "28a20bd91f69202216ee63ada38740e2ed8f818656c7fa6b946ddec54d3bb41b",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/09-agents/VALIDATION_POLICY.md",
+      "sha256": "671f4c9de3cbc3d9aec2b6fe6eb530a642e6fdf308da348018ee7ec0f554676b",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/10-sound-behaviors/EVENT_MODEL.md",
+      "sha256": "0beab8cf0f08cc774a2ab33c0cf7d43042aef2fd238c918f607ee3c8d5997d41",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md",
+      "sha256": "86dbe18573ac3f8969b6934c10b1245e1c8aa03d98be873fdd3bf2c65d0deaa9",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md",
+      "sha256": "6c8f4fa5efe3b45357a0b0f3f6a1e1f2119b9b39100fbe617cfd5e86bc2e5087",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/NEXT_ENGINEERING_TASK.md",
+      "sha256": "cf88cde056af1f9c4669bb7d680dfe44f841e12e591ac7459267b6642f0144db",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "sha256": "be8eb975cc7dea38617972e487991818801a6d7525c6a6fd00859082cda96c1a",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "examples/agents/scene-host-acceptance.mjs",
+      "sha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "knowledge/schema.md",
+      "sha256": "13d1247d045bbf13f2247a4e54f574f1838cda2bd07f3ffcbf20d4d40a913851",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "knowledge/tasks/RLAB-TASK-0007.json",
+      "sha256": "993e780de807e7241e953bfb719af012a76d670446c541ed34d0068e7922e6a2",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "knowledge/tasks/RLAB-TASK-0012.json",
+      "sha256": "52abace3e50c74186d1939b7ef5fdac5b7ce2295103c7abb79fe93dba3d05042",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "knowledge/tasks/RLAB-TASK-0013.json",
+      "sha256": "7b800bc3b84fd170922b456261fbac68f1865e1771601e78ab03b0dfd0bdf083",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "knowledge/tasks/RLAB-TASK-0014.json",
+      "sha256": "15e23c3273bafd11bcd62b5cc5c1e7e4ce000ef1b0a83715e96ab2acb9101404",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "schemas/scene.schema.json",
+      "sha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    },
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "purpose": "Capture provenance only; docs/status may evolve with evidence, not globally immutable."
+    }
+  ],
+  "protected_acceptance": {
+    "policy": "Implementers must not modify these existing tests/fixtures/schema/reference to manufacture success. Legitimate acceptance defects need isolated review and a new documented contract version. New tests may be added. package/config/lockfile are provenance, not globally frozen, because new app dependencies are authorized.",
+    "files": [
+      {
+        "path": "benchmarks/analytic/run.mjs",
+        "sha256": "b7b02f84519581bf709621682a0125304c827e88e7490ced5663cf9d0c5a2346",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "benchmarks/fixtures/analytical.json",
+        "sha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+        "role": "fixed-reference"
+      },
+      {
+        "path": "examples/agents/acceptance.mjs",
+        "sha256": "2f700878c9e0aa5a18f4d0d7313578c67f66d2c844225bb1b548871b54b5c0a6",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "examples/agents/milestone.json",
+        "sha256": "c7cb0cf076698a75e26f1f9d82f6e02af34a6bf8e0654cb5020d4cdf944266b3",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "examples/agents/mock-plan.json",
+        "sha256": "2207d8031442e5809efcb2e995e0c10220108b3307dc4e2104b5860d5f82a7c3",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "examples/agents/p0-01-scene-contract.json",
+        "sha256": "b6a0479cf9cd4c997ab6ddd629b7c81616e9580d5a0f515a749f837f3627733d",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "examples/agents/scene-host-acceptance.mjs",
+        "sha256": "257e6f66e22e6f8f52878159905e3d5c941ebf300cddae4d4ec1611b9bcf128c",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "examples/agents/smoke-task.json",
+        "sha256": "9a37ff2ee856a497c677303e767bb9f111bcfab4b047677ce9ab8c66c48729d0",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "experiments/physics-spike/smoke.mjs",
+        "sha256": "cd8f6234f7a47b85d734ec6eb37645d297898eb379bca5dcb5ff7b2604f02e83",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "experiments/sound-behavior-spike/physics-policy.test.mjs",
+        "sha256": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "schemas/acoustic-frame.schema.json",
+        "sha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/agents/handoff.schema.json",
+        "sha256": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/agents/implementation-result.schema.json",
+        "sha256": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/agents/repair-task.schema.json",
+        "sha256": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/agents/task.schema.json",
+        "sha256": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/agents/verification-result.schema.json",
+        "sha256": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/ai-provider-config.schema.json",
+        "sha256": "94cd9324d74f51dd50f1a09e8012a7d0a39408b04b617805b4d68824c794f38f",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/ai-scene-change-set.schema.json",
+        "sha256": "9131e7b6aeb49e2be85aa5dadac01c1e1ea270148f18bc0049e436cb517f0c4d",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/ai-tool-request.schema.json",
+        "sha256": "e208850c318a6a49eb21ac4870303e575197af80816bd4e1ea8d6ff5155a3a21",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/ai-tool-result.schema.json",
+        "sha256": "7b4dbcd25d41f6e6915b66c112a5a445e424f416bc38eda4f92bc96b28575668",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/examples/acoustic-frame.json",
+        "sha256": "44deca7d0470d10dbcf0447c4144a1fec17dcb32743a78602a18628c61e6cb55",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/examples/material.json",
+        "sha256": "98fdf48596c3b4022a30b8721b4ea20699b8efcb58d4b676b683f2f820a28317",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/examples/scene.json",
+        "sha256": "2e8e3d23bcb44a1199b3a81f5a23f2784745474998bd19718d53f9a0896e917a",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/experiment.schema.json",
+        "sha256": "7ace1c1992547d6cc1409c3531940e68da1eb7ac3f00466f6c04259ecbb68df8",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/material.schema.json",
+        "sha256": "f3c9070c568bbfb571ed745b19d1f0ab9e6e6c65fe8da6af1b09291327950cf7",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/scene.schema.json",
+        "sha256": "482a058245d30d966e476bc40c74f2dd969b68e69abd958977ab887ca76affbd",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/behavior-document.schema.json",
+        "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/asset-descriptor.json",
+        "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/audio-event.json",
+        "sha256": "66df7408352ac890b36b72443f2bfe645f5310c514a23ebd905af7fde255c3dd",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/comparison.json",
+        "sha256": "668bbe336679ab9ddf8c311ce165ddb0208b79803ca9bc3fd9e6c3c5cb1c0525",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/context.json",
+        "sha256": "08afa8c48375ffb3571da098fc096c36cb398aaff0df19b9e08ce3d4be8a154f",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/document.json",
+        "sha256": "c2bfb87257250abcb350076b0f19a39c9aa49016e106c14eb8c9dc8276fa5d88",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/proposal.json",
+        "sha256": "c096ae8274582434b04da7ebd3e23a4f2ae342df299711c96cb0065f61eaf85a",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/examples/runtime-state.json",
+        "sha256": "2101f2cd75780313d34984c4b7196bd005a1ede535bcd3ff78cfd197ddfa6053",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+        "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/sound-behavior/types.ts",
+        "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/wiki-event.schema.json",
+        "sha256": "9d478773ba5ff0b6abae6bcca7f7be49331aaba6416e8c8f18a1eec92c856f5a",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/wiki-page.schema.json",
+        "sha256": "9cc6aca959b371376deaea9eb26b6a4865931c06c2550cb56f440d0d871d9324",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/wiki-source-manifest.schema.json",
+        "sha256": "c94d71bca535b9e187a79d690a2f56f058a45f6f523ee2f021d6311ce3d06097",
+        "role": "contract"
+      },
+      {
+        "path": "schemas/wiki-task.schema.json",
+        "sha256": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+        "role": "contract"
+      },
+      {
+        "path": "scripts/validation/domain-checks.mjs",
+        "sha256": "849587ab437a5e82b8653d71e41645694382866e7d8e43b1166afb30cad79a92",
+        "role": "independent-domain-validator"
+      },
+      {
+        "path": "scripts/validation/sound-behavior.mjs",
+        "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+        "role": "independent-domain-validator"
+      },
+      {
+        "path": "tests/acoustics/analytical.test.mjs",
+        "sha256": "c098146cc482061496b18512799f78daab526ab73e1eb1dd935854d1496f9d45",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/artifacts.test.mjs",
+        "sha256": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/cli.test.mjs",
+        "sha256": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/context-pack.test.mjs",
+        "sha256": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/contract.test.mjs",
+        "sha256": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/failure-policy.test.mjs",
+        "sha256": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/fixtures/child-process.mjs",
+        "sha256": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+        "role": "fixed-reference"
+      },
+      {
+        "path": "tests/agents/harness.test.mjs",
+        "sha256": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/agents/process-runner.test.mjs",
+        "sha256": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/contracts/fixture-contract.ts",
+        "sha256": "81b2a688e3999bea631061c7be9f60064a25cb60d063bb64a202c632d7b25092",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/design/design-standards.test.mjs",
+        "sha256": "e721c94c84022478bba9a3cd78d8eae7aa19adb24219872c37ea1e74870c25e9",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/fixtures/acoustic-frame-nonempty.json",
+        "sha256": "68d9bd3440a21e6f517ce80cb6fa1e5799277d27900ff6435589a361d2e2808d",
+        "role": "fixed-reference"
+      },
+      {
+        "path": "tests/integration/agent-schema-loader.test.mjs",
+        "sha256": "130798a7e694eec1a998d7b887d8c8a9e17e80dc44fd7a309adaf9155c91e1f7",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/integration/research-index.test.mjs",
+        "sha256": "9a00b7a4522687e8c02207d71ab46fe1b4931a9c869f8a11b0fff0c3b42627b7",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/integration/schemas.test.mjs",
+        "sha256": "3756b1bdf9c1ec9260acd9d4780aabaee9751461cb4dce07a65961bb106a4bfa",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/integration/validation-output.test.mjs",
+        "sha256": "1df825ddfc1c9f2972ed5d1e64e27cad405c3766a75f552ec6de3e64ede3cac9",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/sound-behaviors/contracts.test.mjs",
+        "sha256": "70f30fa526c60eb69abc30ccb0efdb79110153bbb2080806b11b382dda1c37bb",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/wiki/agent-projection.test.mjs",
+        "sha256": "e7623804883e797d40aeca626b86f9c9b7c83318be1bb84261bfb37cca8ae521",
+        "role": "regression-or-acceptance"
+      },
+      {
+        "path": "tests/wiki/wiki.test.mjs",
+        "sha256": "304dc4a0c53ba2dc7a67e18b00b34c6a54386b264a98c76ab8aeaef83a6ae36a",
+        "role": "regression-or-acceptance"
+      }
+    ],
+    "task_criteria": [
+      {
+        "task_id": "RLAB-TASK-0006",
+        "path": "knowledge/tasks/RLAB-TASK-0006.json",
+        "criteria": [
+          {
+            "id": "AC-01",
+            "text": "Scene roundtrip／非法輸入／revision/rollback通過"
+          },
+          {
+            "id": "AC-02",
+            "text": "固定步與四body modes有WASM及browser驗證"
+          }
+        ],
+        "criteria_sha256": "602852646ccb28fd1f57fc729852867206bc0e6758b01ebe5b9c3c414959b675"
+      },
+      {
+        "task_id": "RLAB-TASK-0011",
+        "path": "knowledge/tasks/RLAB-TASK-0011.json",
+        "criteria": [
+          {
+            "id": "AC-01",
+            "text": "正規化事件排序、去重、正交continuous／one-shot狀態通過固定fixtures"
+          },
+          {
+            "id": "AC-02",
+            "text": "bounded mappings／cooldown／voice admission及無效revision／asset明確拒絕"
+          },
+          {
+            "id": "AC-03",
+            "text": "snapshot／epoch／replay deterministic決策trace與獨立review；不宣稱已播放audio"
+          }
+        ],
+        "criteria_sha256": "3267d3349411b0ae4bf8706a4096291532932c02d7a7546b580e59db0557d7c7"
+      },
+      {
+        "task_id": "RLAB-TASK-0012",
+        "path": "knowledge/tasks/RLAB-TASK-0012.json",
+        "criteria": [
+          {
+            "id": "AC-01",
+            "text": "真physics事件→AudioEvent→contact/object emitter→同一acoustic route可重現"
+          },
+          {
+            "id": "AC-02",
+            "text": "continuous不中斷，one-shot去重／預算、延遲/HRTF/距離不雙算"
+          },
+          {
+            "id": "AC-03",
+            "text": "OfflineAudioContext／browser互動／聽測／清理與獨立驗證有證據"
+          }
+        ],
+        "criteria_sha256": "c76f8767d52201c9b4cb7ee9fb43cf056906138e5f6a844f440f0966eb18e8b8"
+      },
+      {
+        "task_id": "RLAB-TASK-0013",
+        "path": "knowledge/tasks/RLAB-TASK-0013.json",
+        "criteria": [
+          {
+            "id": "AC-01",
+            "text": "接觸／互動正規化在corner/held/mode/pause/CCD等場景通過"
+          },
+          {
+            "id": "AC-02",
+            "text": "有界latch與rolling/sliding狀態、materialpair/layer／trace可追溯"
+          },
+          {
+            "id": "AC-03",
+            "text": "acoustic/behavior A/B依固定條件與自變項驗證；不把source變化當房間改善"
+          }
+        ],
+        "criteria_sha256": "034912e963bd6d37f5df1fc8dcdb622382e0633ad70a6feb361dfa6b7c037b9a"
+      },
+      {
+        "task_id": "RLAB-TASK-0014",
+        "path": "knowledge/tasks/RLAB-TASK-0014.json",
+        "criteria": [
+          {
+            "id": "AC-01",
+            "text": "host安全白名單／registrypins／revision／budget／undo及手動fallback通過"
+          },
+          {
+            "id": "AC-02",
+            "text": "Task0007帳號／來源／明確預算核實，實際Meta proposal→合法behavior→run artifact有trace"
+          },
+          {
+            "id": "AC-03",
+            "text": "模型只解釋真實computed結果，缺asset／trigger／metric與API錯誤拒絕，live與fixture分清"
+          }
+        ],
+        "criteria_sha256": "a19b9f7d5866fca82dafd9096c3fa42dfab1308eef62c75cd78691260c0a254a"
+      }
+    ],
+    "scene_host_entry": "src/scene-host.mjs",
+    "scene_host_exports": [
+      "createScene",
+      "applyCommand",
+      "serializeScene",
+      "deserializeScene"
+    ],
+    "scene_host_command": "node examples/agents/scene-host-acceptance.mjs <candidate-workspace>",
+    "notes": "Original old-Harness allowed_files/preferred executor are historical scope, not current whole-product policy; keep its original file and exact literal acceptance."
+  },
+  "canonical_numeric_references": {
+    "path": "benchmarks/fixtures/analytical.json",
+    "sha256": "f030658e54c08478da36960af3d2212cb943180523637f3b64007a17dc80fccb",
+    "note": "Use each fixture expected/unit/tolerance unchanged. Historical order2/mode/Doppler regression does not require claiming all those capabilities in the new product."
+  },
+  "performance_gate": {
+    "canonical": "docs/06-validation/PERFORMANCE_BUDGET.md",
+    "status_at_freeze": "TARGET/UNVERIFIED",
+    "profiles": [
+      {
+        "subsystem": "UI",
+        "target": "60Hz, frame16.67ms; self main work p95<4ms",
+        "profile": "specified hardware/GPU/resolution,10min"
+      },
+      {
+        "subsystem": "physics",
+        "target": "fixedDt1/60; step p95<2ms; catchup<=4",
+        "profile": "256 primitives,CCD subset,contact flood"
+      },
+      {
+        "subsystem": "acoustic worker",
+        "target": "20Hz; job p95<20ms",
+        "profile": "1listener/8sources/32surfaces/order<=2 starting profile"
+      },
+      {
+        "subsystem": "delivery",
+        "target": "p95<1ms/update",
+        "profile": "<=256paths,bounded payload/queue/backpressure"
+      },
+      {
+        "subsystem": "audio",
+        "target": "48kHz/128-frame benchmark; actual Worklet p99<1ms",
+        "profile": "actual render deadline/underruns/long listening; native-node MVP cannot claim Worklet profile"
+      },
+      {
+        "subsystem": "simulation",
+        "target": "concurrency1; run<=30s simulated",
+        "profile": "host quotas/cancel/timeout/cost ledger"
+      }
+    ],
+    "not_adopted": "UI latency p95<=50ms,p99<=100ms remains PROPOSED; no invented universal click/penetration tolerance."
+  },
+  "verification_levels": {
+    "V0": "schema/domain",
+    "V1": "analytical/numerical",
+    "V2": "real DSP graph",
+    "V3": "independent solver comparison",
+    "V4": "browser/runtime/performance",
+    "V5": "perceptual/measurement; no claim from token/static/Node tests"
+  },
+  "freeze_validation": {
+    "source_paths_exist": true,
+    "requirements_unique": true,
+    "protected_count": 61,
+    "requirements_count": 51,
+    "product_test_execution": "NOT RUN by this read-only auditor; no model API calls"
+  }
+}

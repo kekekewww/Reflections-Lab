@@ -1,0 +1,264 @@
+{
+  "status": "SOURCEEND_NODE_CONFORMANCE_PASS_NATIVE_NOT_RUN",
+  "createdAt": "2026-10-27T17:26:20.642Z",
+  "scope": "Only six registered harness files; no product edits, native/browser/server/preparation-build execution",
+  "baseline": {
+    "id": "prefix-f3e5",
+    "baselineId": "audio-prefix-f3e5",
+    "recordPath": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+    "recordSha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2",
+    "legacyBaseline": {
+      "path": "artifacts/v1/audio-qualification-original25-observed-20261027151352235/verification.json",
+      "sha256": "968e56921ee0c4b8f0f67b57f61fd70bfe79cc346d96ff8cf0aa9dd98aa2f78a"
+    },
+    "approvedDelta": [
+      {
+        "path": "src/audio/band-filter.ts",
+        "from": "ce7012f442aa292e672ab24e442b0a84964a7afddcf6ebad92cbe4552bd1bb2a",
+        "to": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693"
+      }
+    ],
+    "approvalEvidence": {
+      "path": "artifacts/v1/audio-prefix-sourceend-20261027170233273/sourceend-receipt.json",
+      "sha256": "57240da1fb2e0b6bc54f57a89e66a604addc09d0f827051382ed76e45e4b9603"
+    }
+  },
+  "sources": {
+    "tests/audio-runtime/run-prepared-native-v2.mjs": "660b4a0f788f111456575a77516be69b718ac3cd414e816cc7811da19c74fa09",
+    "tests/audio-runtime/prepared-native-v2.test.mjs": "7a5d53c63cde0179d7f98dd499a5d0dd7100cac741b38a520fc712844f391624",
+    "tests/audio-runtime/native-ir-state-reference-v2.ts": "05b7940ca4b16f77e3ef20861429529a7e6b39e7466b49e64f356e4b897a778e",
+    "tests/audio-runtime/prepared-ir-static-v1.mjs": "4a5fb5e16b4afa5d29c27c9652dc8e7936920967638bfdf7e5fc3a5764f573f2",
+    "tests/audio-runtime/run-prepared-ir-v1.mjs": "4171dcf56b782ee6139e1e6ef711dbc58b98225822998bbaed255e9fa05ce86e",
+    "tests/audio-runtime/prepared-ir-v1.test.mjs": "ead4a6749b347b04b9cf21082cc27d26e188083ffcee7fcaac3d4488aea64aae"
+  },
+  "source23": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "f3e5cb2b6d1ad0301d44cd4f7092b0a4d4c621826484c5ed0588549c611f2693",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "30ee8a02e876ffa147883c1fb1ff76a2c06fe7a53fc18610c1d898d09d85eccc",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "6933366f25833f3568c39371bc22df823cd1297aa45b34cca5d1cfdd77f591b0",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "protectedIrV1": {
+    "tests/audio-runtime/native-ir-state-reference-v1.ts": "ea3dfb59556d5ee58877d7d807854d5881f87c80fb10038fc2af9a158b43c607",
+    "tests/audio-runtime/ir-state-reference-v1-data.ts": "0e8d748019448d5a7ac19bd1dbfa085f946ab8875c8bc765c10db4078a56b171",
+    "tests/audio-runtime/ir-state-reference-v1.test.ts": "080038408a4078f9d5ab33d4ba13e57641af08dd17e07bc8814fc6eefcff05a7",
+    "tests/audio-runtime/run-ir-state-reference-v1.mjs": "aa4dd31d11833a4b8bff0414ec1b4db08f621ff2e502ca09afd7bf8ffce249eb"
+  },
+  "focused": {
+    "original25Utility": {
+      "command": "node --test tests/audio-runtime/prepared-native-v2.test.mjs",
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0
+    },
+    "irUtility": {
+      "command": "node --test tests/audio-runtime/prepared-ir-v1.test.mjs",
+      "passed": 53,
+      "failed": 0,
+      "skipped": 0
+    },
+    "processProvenance": "Retained ChildProcess close; raw TAP/process receipts copied unchanged"
+  },
+  "scopedChecks": {
+    "lint": "PASS",
+    "format": "PASS",
+    "strict": "PASS",
+    "sourceStable": true
+  },
+  "invariants": [
+    "Original23 hashes retain all pinned identities except registered ce7012-to-f3e5 band-filter approval",
+    "IRv1 fixture/data/test/aa4 driver and all previous FAIL artifacts retained",
+    "V2 fixture exact version metadata plus inactive gain intrinsic initialization only",
+    "Original25 four bootstrap edits; IRv1 two, IRv2 five fixed bindings; timed callbacks and original thresholds unchanged",
+    "Fresh prefix IR requires Root-identified current25 receipt and rigid registered-source/native/cleanup validation"
+  ],
+  "native": "NOT RUN; Root RUNGO required",
+  "performance": "NOT RUN; historical failures not superseded",
+  "hearing": "NOT RUN",
+  "processCleanup": "All focused/scoped Node processes reported stopped; no native/browser/server launched in this stage",
+  "reviews": {
+    "status": "NO_BLOCKERS_REPORTED",
+    "scope": "Read-only independent review of approved six-file utility revision; no native validation claim",
+    "reviews": [
+      {
+        "reviewer": "/root/v1_audio_finish/audio_review/native_capability_review",
+        "target": "IR static helper and native IRv2 fixture",
+        "finding": "No blockers. V1 fixture remains EA3; V2 is exactly fixed version metadata plus inactive bank intrinsic gain initialization. Thresholds, mathematics, schedules, bodies and export binding remain unchanged. Helper preserves default V1 and fixed V1/V2 profile, six-input closure and immutable V1 check."
+      },
+      {
+        "reviewer": "/root/v1_audio_finish/audio_review/native_capability_review",
+        "target": "Native wrapper660b and IR wrapper4171",
+        "finding": "No blockers. Legacy968, Root281, source23 digest and approval receipt are pinned; only approved ce7012-to-f3e5 delta accepted. Prefix IR validates explicit receipt identity, adjacent original25 verification, all25 IDs, retained native close, cleanup, registered sources and current utilities. IR PASS requires all3 checks and exact6 finite fullPCM renders with source/bundle/executable/native receipt stability. Legacy defaults, original V1/data/test/aa4 and fixed byte/AST derivations retain timed bodies."
+      },
+      {
+        "reviewer": "/root/v1_audio_finish/audio_review",
+        "target": "Final read-only wrapper guard audit",
+        "finding": "No blocking guard issue in final660b/4171. Fixed baseline/evidence/helper pins admit only exact band CE-to-F3; dual rebase rejected. Fresh25 path/SHA is checked against adjacent raw25, six unique suites and full IDs, native close, cleanup and current utility closure. Post-run source/bundle/driver/executable/receipt and all3 checks/six renders/576000 finite PCM gates remain intact."
+      },
+      {
+        "reviewer": "/root/v1_audio_finish/audio_review",
+        "target": "Owned conformance tests and focused execution",
+        "finding": "Final formatted original25 utility47/47 and first IR utility53/53 PASS with retained Node exit0, no skip/cancel/timeout, sourceStable across11 tracked inputs. Old60 test cases retained; new positives and bounded mutation negatives cover registered baselines, exact fixture/driver derivation and fresh qualification receipts."
+      }
+    ],
+    "limitations": [
+      "Independent reviewer findings were communicated through collaboration; this JSON records those findings rather than a new reviewer execution.",
+      "No native/browser/server/preparation build was executed in this utility stage."
+    ]
+  },
+  "evidence": {
+    "source/tests/audio-runtime/run-prepared-native-v2.mjs": {
+      "originalPath": "tests/audio-runtime/run-prepared-native-v2.mjs",
+      "sha256": "660b4a0f788f111456575a77516be69b718ac3cd414e816cc7811da19c74fa09",
+      "bytes": 28978
+    },
+    "source/tests/audio-runtime/prepared-native-v2.test.mjs": {
+      "originalPath": "tests/audio-runtime/prepared-native-v2.test.mjs",
+      "sha256": "7a5d53c63cde0179d7f98dd499a5d0dd7100cac741b38a520fc712844f391624",
+      "bytes": 20428
+    },
+    "source/tests/audio-runtime/native-ir-state-reference-v2.ts": {
+      "originalPath": "tests/audio-runtime/native-ir-state-reference-v2.ts",
+      "sha256": "05b7940ca4b16f77e3ef20861429529a7e6b39e7466b49e64f356e4b897a778e",
+      "bytes": 12785
+    },
+    "source/tests/audio-runtime/prepared-ir-static-v1.mjs": {
+      "originalPath": "tests/audio-runtime/prepared-ir-static-v1.mjs",
+      "sha256": "4a5fb5e16b4afa5d29c27c9652dc8e7936920967638bfdf7e5fc3a5764f573f2",
+      "bytes": 19287
+    },
+    "source/tests/audio-runtime/run-prepared-ir-v1.mjs": {
+      "originalPath": "tests/audio-runtime/run-prepared-ir-v1.mjs",
+      "sha256": "4171dcf56b782ee6139e1e6ef711dbc58b98225822998bbaed255e9fa05ce86e",
+      "bytes": 37114
+    },
+    "source/tests/audio-runtime/prepared-ir-v1.test.mjs": {
+      "originalPath": "tests/audio-runtime/prepared-ir-v1.test.mjs",
+      "sha256": "ead4a6749b347b04b9cf21082cc27d26e188083ffcee7fcaac3d4488aea64aae",
+      "bytes": 24548
+    },
+    "preimages/native-ir-state-reference-v1.ts": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/native-ir-state-reference-v1.ts",
+      "sha256": "ea3dfb59556d5ee58877d7d807854d5881f87c80fb10038fc2af9a158b43c607",
+      "bytes": 12758
+    },
+    "preimages/prepared-ir-static-v1.mjs": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/prepared-ir-static-v1.mjs",
+      "sha256": "df7d7d2788f6e8a5c59760f017e8bb99a0d40ad2ca61ab1f017fa12f9e372572",
+      "bytes": 16938
+    },
+    "preimages/prepared-ir-v1.test.mjs": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/prepared-ir-v1.test.mjs",
+      "sha256": "2bd06a0fb88de35656a3d1ce39c54dec387c3226e4be2f8c5d716d78b56d9db4",
+      "bytes": 13886
+    },
+    "preimages/prepared-native-v2.test.mjs": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/prepared-native-v2.test.mjs",
+      "sha256": "09deeb83b6037e3706a0faa618f8d1074367f5cb3835e7842697f1f762fb1bf5",
+      "bytes": 14198
+    },
+    "preimages/run-prepared-ir-v1.mjs": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/run-prepared-ir-v1.mjs",
+      "sha256": "5942b305c7b5d3677532800e4c4769b5b5262eeb49d6b70b7abd0a4945a8f9e5",
+      "bytes": 25963
+    },
+    "preimages/run-prepared-native-v2.mjs": {
+      "originalPath": ".cache/v1/audio-requal-utility-preimages-20261028/run-prepared-native-v2.mjs",
+      "sha256": "d773f7c104ba20cc70615e688182fd0d4f0d61967f0e86fd1d81bd463bb79b00",
+      "bytes": 23654
+    },
+    "focused/ir-v1-v2.process-result.json": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/ir-v1-v2.process-result.json",
+      "sha256": "f9d1a1ae6fe951655664637b926ce793060d4ccc857ca4cefbc1f4ac2e841ba1",
+      "bytes": 357
+    },
+    "focused/ir-v1-v2.stderr.txt": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/ir-v1-v2.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "focused/ir-v1-v2.stdout.tap": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/ir-v1-v2.stdout.tap",
+      "sha256": "01c8f9581da470cf9413f0087456671ea1995d840e2b2dde3ff5d1c3dec98a01",
+      "bytes": 10138
+    },
+    "focused/native-v2.process-result.json": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/native-v2.process-result.json",
+      "sha256": "73fa79865daf94bfd5a2073736c0c440863f1c92ef8ef7bca408da4f0be454eb",
+      "bytes": 351
+    },
+    "focused/native-v2.stderr.txt": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/native-v2.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "focused/native-v2.stdout.tap": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/native-v2.stdout.tap",
+      "sha256": "657b6e601d90f81841fea9177aec0061992cef5c02e129402f6dd298a2540e6e",
+      "bytes": 9515
+    },
+    "focused/source-stability.json": {
+      "originalPath": ".cache/v1/prepared-audio-requal-final-conformance-20261027172441432/source-stability.json",
+      "sha256": "9e61a7ef4ea6b1353005face236c77749247ed1b144ac3a645e6289874667033",
+      "bytes": 4414
+    },
+    "scoped/format.stderr.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/format.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "scoped/format.stdout.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/format.stdout.txt",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "bytes": 66
+    },
+    "scoped/lint.stderr.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/lint.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "scoped/lint.stdout.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/lint.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "scoped/receipt.json": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/receipt.json",
+      "sha256": "7a27390412869e7c39544e8d5c3e6e3f70dbf8ed37d847e1887db5e1f570e471",
+      "bytes": 4380
+    },
+    "scoped/strict.stderr.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/strict.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "scoped/strict.stdout.txt": {
+      "originalPath": ".cache/v1/audio-requal-scoped-20261027172457307/strict.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "approved-baseline.json": {
+      "originalPath": "artifacts/v1/audio-prefix-approved-baseline-20261028.json",
+      "sha256": "281c75ecf575ffdef27aa99e6bf7c053d9c2c595a0dd176235ea997a1a160bd2",
+      "bytes": 3184
+    }
+  }
+}

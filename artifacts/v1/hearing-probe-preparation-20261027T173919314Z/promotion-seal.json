@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_STATIC_PURE_PREPARATION_ONLY",
+  "sealedAt": "2026-10-27T18:25:44.638Z",
+  "promotionReview": {
+    "path": "artifacts/v1/hearing-probe-preparation-20261027T173919314Z/promotion-review.json",
+    "sha256": "3a4e7bf5e07c873f5e2e19272d7b9ed84e0e66e3de08ff1893088334f21425ce"
+  },
+  "bindingTransition": {
+    "path": "tests/browser/device-hearing/binding.json",
+    "beforeSha256": "29585c392ddd0e8e6601ab3940852ba51cabb1de6c3cdab220089bf29dd81dec",
+    "afterSha256": "5e662c4135a2789bbd5b10b503a28916d7e2a2a940f24de7b12f423afcc1b4f4",
+    "changedFields": [
+      "promotionVerification.status",
+      "promotionVerification.receiptSha256",
+      "promotionVerification.driverSha256",
+      "promotionVerification.protocolSha256"
+    ]
+  },
+  "bindingFormat": {
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "nodeVersion": "v22.17.0",
+    "args": [
+      "node_modules/prettier/bin/prettier.cjs",
+      "--write",
+      "tests/browser/device-hearing/binding.json"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "actualClose": true
+  },
+  "sourcesAfter": {
+    "tests/browser/device-hearing/hearing-probe.mjs": "18b2f6677f52bdfe8dfa41e5e0a13c2503f56a9b1a93c6e4be07a2b50f7841e0",
+    "tests/browser/device-hearing/hearing-probe.synthetic.test.mjs": "f22c7934f7fdbf0c78ff3dee637a7094af241ea3c5e97973ebefb37bc9f42495",
+    "tests/browser/device-hearing/manual-driver.pure.test.mjs": "05beb402c649a07393efc922e7f788df2b326dc7e623da82aaea9725cefbdc63",
+    "tests/browser/device-hearing/manual-probe-driver.mjs": "ed6c2e2f1961044cf51f4e4a3e79391a16732ae83d91f4e79be2282ec305b363",
+    "tests/browser/device-hearing/manual-probe-protocol.json": "0bccbdea89bc15063f8893ddd89f24113d10aca271e3db2e680932732b09f18f",
+    "tests/browser/device-hearing/binding.json": "5e662c4135a2789bbd5b10b503a28916d7e2a2a940f24de7b12f423afcc1b4f4",
+    "tests/browser/device-hearing/manual-binding.pure.test.mjs": "46b37a96def08882fb2c9da0cde0e2477eaa863cc170cba6e23adc3505d29e8d"
+  },
+  "protected61Unchanged": true,
+  "referentialValidation": {
+    "receiptPathAndActualShaMatch": true,
+    "driverPinMatchesActualBytes": true,
+    "protocolPinMatchesActualBytes": true
+  },
+  "hashGraph": "binding points to review/driver/protocol; seal records allowed pre/post binding hashes and review hash; review records pre-finalization binding and permits four-field transition. No circular self-hash claim.",
+  "verification": "Independent one focused47/47 (18+11+18binding) with actual close; no test repeat after PASS",
+  "workletUtf8Sha256": "79faea329835d31b5462c2c0e22d1391532fd2ef542b375e95d3691ae4dbd1db",
+  "originalEvidence": "15 immutable payloads plus7candidate preimages and original mappings/reviews retained; original receipt scopes unchanged",
+  "actualBlock": "UNKNOWN",
+  "browserNativeHearing": "NOT_RUN",
+  "overallV1AndUI": "NOT_CLAIMED",
+  "ownChildProcessesClosed": true,
+  "next": "SOURCE+CPU+IO END after this process closes; no hearing runtime before separate Root GO"
+}

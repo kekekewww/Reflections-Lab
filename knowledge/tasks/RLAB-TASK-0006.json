@@ -1,0 +1,156 @@
+{
+  "id": "RLAB-TASK-0006",
+  "title": "P0-01場景與固定步物理骨架",
+  "description": "已依最新使用者授權實作正式Scene交易、真Rapier固定步與四模式；仍在完整驗收，不以舊smoke代替browser／整合。ADR013維持Codex主導，舊Muse Harness Optional。 已依固定criteria完成當前0eef功能驗收；完整第一版、原生縮放、性能與人工聽測另列。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0003",
+    "RLAB-TASK-0004",
+    "RLAB-TASK-0005"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "Scene roundtrip／非法輸入／revision/rollback通過",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T125130Z/verification.json",
+          "sha256": "712c694a90e2af56c14866de562835ba1ed813a15d1c162e0fd2f4aa96c331a6",
+          "result": "PASS4/4 actualthrow/impact/nativegraph/capture/acousticB/durable reload/replay and empty-store exactWAV relink; source/bundle/harness current0eef stable;3cleancontexts underoneChrome, not3OSprocesses/hearing/Meta"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "固定步與四body modes有WASM及browser驗證",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+          "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+          "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+          "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+          "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+        },
+        {
+          "path": "artifacts/v1/physics-boundaries-20261027/combined-final/verification.json",
+          "sha256": "bb9755a7a92ce65e4c82a4e81fae50b1f1c10759e9bc5e32a94fc1787ba005e4",
+          "result": "PASS; Actual WASM matrix29+boundaries9=38/38; protected61 unchanged. Later source formatting/support fix is re-covered by current Q849."
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-verification.json",
+          "sha256": "803a0bc65c8520c176593cbffe641b3aa1bbe439d8c8d58a384d93834ff9ee6e",
+          "result": "PASS2/2 actual browser PhysicsWorld fourmodes and10 lifecycle cycles; sourceStable171; softwareANGLE correctness, not GPU performance"
+        },
+        {
+          "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-measurements.json",
+          "sha256": "ddb51ab0d3996125904b8cc97a2b2c6b884b54a06e7596566d7d208ac0e3814f",
+          "result": "Actualfourmode transition/impulse/pause and10reset/import/dispose records;48/48World+Queue,16/16Workers freed, trackedGPUresources0; not JS heap proof"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/NEXT_ENGINEERING_TASK.md",
+    "schemas/scene.schema.json",
+    "src/",
+    "docs/10-sound-behaviors/NEXT_AUDIO_MILESTONE.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027.md",
+      "sha256": "e0e04d728de9f259fc864f5f8b15b694d5824800260b14b8c4863282d9e4a913",
+      "result": "Checkpoint scope; full V1 not complete"
+    },
+    {
+      "path": "research/v1/meta-live-validation-20261027-r3-minimal/independent-live-review.json",
+      "sha256": "5210e5d32326b5ced30b25359882528e96ef371f7f3e4ad6d59b2a43bc4ac7dc",
+      "result": "PASS limited genuine Meta Sound proposal/Host/local-run slice; no Scene/model Run/UI/hearing claim"
+    },
+    {
+      "path": "artifacts/v1/recording-overrun-green-20261027/verification.json",
+      "sha256": "4312780704ba5d39dceaada7d37f9f32a3ca08bfb534481a75fc3e16f13e9f0a",
+      "result": "PASS retained recording debt and30 contiguous ticks; original RED preserved"
+    },
+    {
+      "path": "artifacts/v1/key-http-boundary-20261027.json",
+      "sha256": "d814e3f950b83d060cf453cb5f6345158bb814b31485f29aa77b5a8602a54262",
+      "result": "PASS HEAD403 denial normal/uppercase/@fs; no credential content retrieved"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/verification.json",
+      "sha256": "8172b2961bcb643a245e452d832b5d8552829e06347fe9b321a236be900b153f",
+      "result": "FAIL full product chain due repeated safe recording pause; preserved not masked"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027-r2.md",
+      "sha256": "2240cb8d97c2ce5cb791dbdd40e0de8e02f178ce1f0808479f44c0f0e1d7d61e",
+      "result": "Progress checkpoint only: coreGit/independent38+8, fixedproduct4, bilingualEN8+zh13; fullacceptance stillinprogress"
+    },
+    {
+      "path": "docs/11-v1/SESSION_PROGRESS_20261027-r4.md",
+      "sha256": "d7f65067b8584f82df746935f527e7f1f0648bb1a4474b3b375082a7d844afa0",
+      "result": "Progress checkpoint only; fullgoal unfinished, native geometry FAIL under repair"
+    },
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/verification.json",
+      "sha256": "5952f4ad4824c57a35255a0bfb3ab781116b8c17bd47a37eee363f9e2534ae36",
+      "result": "PASS; Complete npm run check and offline prompt benchmark, 849/849 runtime; full build/license/English gates. Product/core still matched at read-only audit; later documentation/CSS changes need final binding."
+    },
+    {
+      "path": "artifacts/v1/ui-post-race-functional-20261027T092244732Z/proof-receipt.json",
+      "result": "PASS27 scoped to2bb716 bundle; sourceStable1667, later CSS repair needs newbuild",
+      "sha256": "668af1516ce6156752f8f3f2d9da0583a9663e9fcda17a727f706982edd3cc7d"
+    },
+    {
+      "path": "artifacts/v1/native-zoom-reachability-2026-10-27T09-51-22.380Z-1c73b87a/summary.json",
+      "result": "FAIL strict200Exitgeometry/320covered; actualnativeLockboth true; browserprotocol notOS keyboard",
+      "sha256": "88f8142aad5e5cecc0b1c2e4cad297e15c301ede72a595205439a274fa0ec8ee"
+    },
+    {
+      "path": "artifacts/v1/clean-quality-20261027091558838/check.stdout.txt",
+      "sha256": "4eb87e08a58d25fe42585c92359ce094c3f2d9d517b46300181efe30c486340d",
+      "result": "PASS; Raw current fullcheck stdout; runtime 849 pass/0 fail, including actual WASM boundary nine and pinned120; not browser/hearing/performance."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T125130Z/verification.json",
+      "sha256": "712c694a90e2af56c14866de562835ba1ed813a15d1c162e0fd2f4aa96c331a6",
+      "result": "PASS4/4 actualthrow/impact/nativegraph/capture/acousticB/durable reload/replay and empty-store exactWAV relink; source/bundle/harness current0eef stable;3cleancontexts underoneChrome, not3OSprocesses/hearing/Meta"
+    },
+    {
+      "path": "artifacts/v1/physics-boundaries-20261027/combined-final/verification.json",
+      "sha256": "bb9755a7a92ce65e4c82a4e81fae50b1f1c10759e9bc5e32a94fc1787ba005e4",
+      "result": "PASS; Actual WASM matrix29+boundaries9=38/38; protected61 unchanged. Later source formatting/support fix is re-covered by current Q849."
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-verification.json",
+      "sha256": "803a0bc65c8520c176593cbffe641b3aa1bbe439d8c8d58a384d93834ff9ee6e",
+      "result": "PASS2/2 actual browser PhysicsWorld fourmodes and10 lifecycle cycles; sourceStable171; softwareANGLE correctness, not GPU performance"
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027124437715/browser-measurements.json",
+      "sha256": "ddb51ab0d3996125904b8cc97a2b2c6b884b54a06e7596566d7d208ac0e3814f",
+      "result": "Actualfourmode transition/impulse/pause and10reset/import/dispose records;48/48World+Queue,16/16Workers freed, trackedGPUresources0; not JS heap proof"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-27T12:57:39.292Z",
+  "scope": "future-formal-product; not authorized by Phase2 wiki task",
+  "last_summary": "原criteria/dependencies未改；當前UI27/physics2/storage5/product4分別直接驗證，完成本Task範圍，不代表整體V1。"
+}

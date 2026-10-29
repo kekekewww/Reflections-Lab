@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0.0",
+  "proposalId": "proposal.new-profile",
+  "sceneId": "scene.fixture",
+  "expectedSceneRevision": 4,
+  "expectedBehaviorRevision": 0,
+  "operations": [
+    {
+      "type": "CreateProfile",
+      "profile": {
+        "profileId": "profile.creative-copy",
+        "revision": 1,
+        "name": "Unbound copied fixture profile",
+        "presetKind": "creative",
+        "rules": [
+          {
+            "ruleId": "rule.flight",
+            "enabled": true,
+            "conditions": [],
+            "gainLinear": 0.5,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.05,
+            "cooldownSeconds": 0,
+            "priority": 50,
+            "voiceLimit": 1,
+            "layerGroup": "layer.main",
+            "mappings": [
+              {
+                "mappingId": "map.flight-gain",
+                "input": "sourceSpeedMetresPerSecond",
+                "target": "gainLinear",
+                "inputMin": 0,
+                "inputMax": 20,
+                "outputMin": 0.1,
+                "outputMax": 0.8,
+                "curve": [
+                  {
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ],
+                "interpolation": "linear",
+                "clamp": true,
+                "smoothingSeconds": 0.02
+              }
+            ],
+            "trigger": {
+              "kind": "continuous",
+              "type": "WhileAirborne"
+            },
+            "generator": {
+              "kind": "sample",
+              "asset": {
+                "assetId": "asset.fixture-sine",
+                "revision": 1,
+                "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d"
+              },
+              "loop": true,
+              "startOffsetSeconds": 0
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [0, 0, 0]
+            }
+          },
+          {
+            "ruleId": "rule.impact",
+            "enabled": true,
+            "conditions": [],
+            "gainLinear": 0.5,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.05,
+            "cooldownSeconds": 0.08,
+            "priority": 80,
+            "voiceLimit": 4,
+            "layerGroup": "layer.main",
+            "mappings": [],
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnImpact"
+            },
+            "generator": {
+              "kind": "sample",
+              "asset": {
+                "assetId": "asset.fixture-sine",
+                "revision": 1,
+                "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d"
+              },
+              "loop": false,
+              "startOffsetSeconds": 0
+            },
+            "emitter": {
+              "attachment": "contact",
+              "aggregation": "impulseWeighted"
+            }
+          },
+          {
+            "ruleId": "rule.always",
+            "enabled": true,
+            "conditions": [],
+            "gainLinear": 0.5,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.05,
+            "cooldownSeconds": 0,
+            "priority": 50,
+            "voiceLimit": 1,
+            "layerGroup": "layer.main",
+            "mappings": [],
+            "trigger": {
+              "kind": "continuous",
+              "type": "AlwaysOn"
+            },
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 1000
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [0, 0, 0]
+            }
+          }
+        ],
+        "materialPairOverrides": [
+          {
+            "overrideId": "pair.metal-wood",
+            "ruleId": "rule.impact",
+            "materialA": "material.metal",
+            "materialB": "material.wood",
+            "generator": {
+              "kind": "sample",
+              "asset": {
+                "assetId": "asset.fixture-sine",
+                "revision": 1,
+                "sha256": "178ed3bfe520b1c5187939e49efc34fee38afbc6e1208e211ef726a66d1fe03d"
+              },
+              "loop": false,
+              "startOffsetSeconds": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

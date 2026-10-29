@@ -1,0 +1,723 @@
+{
+  "status": "SOUND_PASSED_SCENE_NOT_RUN",
+  "validationScope": "sound-only",
+  "sceneLive": "NOT_RUN_REQUEST_CAP_RESERVED_FOR_SOUND",
+  "soundPassed": true,
+  "scenePassed": false,
+  "runPassed": true,
+  "metaRun": false,
+  "runPlanner": "HOST_EXPLICIT_FIXED60",
+  "paidRequests": 1,
+  "paidRequestsThisExecution": 1,
+  "totalPaidRequests": 3,
+  "model": "muse-spark-1.3",
+  "dataMode": "standard",
+  "scene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "document": {
+    "schemaVersion": "1.0.0",
+    "documentId": "behavior.reflection-lab",
+    "revision": 1,
+    "assets": [],
+    "profiles": [
+      {
+        "profileId": "profile.continuous-tone",
+        "revision": 1,
+        "name": "持續測試音 · 程序音色",
+        "presetKind": "procedural",
+        "rules": [
+          {
+            "ruleId": "rule.always",
+            "enabled": true,
+            "trigger": {
+              "kind": "continuous",
+              "type": "AlwaysOn"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 220
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0,
+            "priority": 40,
+            "voiceLimit": 1,
+            "layerGroup": "layer.rule.always",
+            "mappings": []
+          }
+        ],
+        "materialPairOverrides": []
+      },
+      {
+        "profileId": "profile.interactive-tone",
+        "revision": 1,
+        "name": "互動創意音色 · 非真實振動",
+        "presetKind": "creative",
+        "rules": [
+          {
+            "ruleId": "rule.impact",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnImpact"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 440
+            },
+            "emitter": {
+              "attachment": "contact",
+              "aggregation": "impulseWeighted"
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 80,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.impact",
+            "mappings": [
+              {
+                "mappingId": "mapping.impact-gain",
+                "input": "closingSpeedMetresPerSecond",
+                "target": "gainLinear",
+                "inputMin": 0,
+                "inputMax": 10,
+                "outputMin": 0.025,
+                "outputMax": 0.25,
+                "curve": [
+                  {
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ],
+                "interpolation": "linear",
+                "clamp": true,
+                "smoothingSeconds": 0.015
+              }
+            ],
+            "oneShotDurationSeconds": 0.22
+          },
+          {
+            "ruleId": "rule.grab",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnGrab"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 110
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 40,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.grab",
+            "mappings": [],
+            "oneShotDurationSeconds": 0.22
+          },
+          {
+            "ruleId": "rule.throw",
+            "enabled": true,
+            "trigger": {
+              "kind": "discrete",
+              "type": "OnThrow"
+            },
+            "conditions": [],
+            "generator": {
+              "kind": "oscillator",
+              "waveform": "sine",
+              "frequencyHz": 330
+            },
+            "emitter": {
+              "attachment": "object",
+              "offsetMetres": [
+                0,
+                0,
+                0
+              ]
+            },
+            "gainLinear": 0.06309573444801933,
+            "pitchSemitones": 0,
+            "fadeInSeconds": 0.01,
+            "fadeOutSeconds": 0.06,
+            "cooldownSeconds": 0.08,
+            "priority": 40,
+            "voiceLimit": 4,
+            "layerGroup": "layer.rule.throw",
+            "mappings": [],
+            "oneShotDurationSeconds": 0.22
+          }
+        ],
+        "materialPairOverrides": []
+      }
+    ],
+    "bindings": [
+      {
+        "bindingId": "binding.continuous.speaker",
+        "objectId": "speaker",
+        "objectGeneration": 1,
+        "profileId": "profile.continuous-tone",
+        "profileRevision": 1,
+        "enabled": true,
+        "overrides": [
+          {
+            "ruleId": "rule.always",
+            "gainLinear": 0.06309573444801933
+          }
+        ]
+      },
+      {
+        "bindingId": "binding.interactive.ball",
+        "objectId": "ball",
+        "objectGeneration": 1,
+        "profileId": "profile.interactive-tone",
+        "profileRevision": 1,
+        "enabled": true,
+        "overrides": [
+          {
+            "ruleId": "rule.impact",
+            "pitchSemitones": 2
+          }
+        ]
+      }
+    ]
+  },
+  "audit": {
+    "scene": [],
+    "sound": [
+      {
+        "sequence": 1,
+        "timestamp": 1793067489098,
+        "action": "stage",
+        "previewId": "sound.preview-1",
+        "proposalId": "sound.meta-1-mvq2358f",
+        "sceneRevision": 0,
+        "documentRevision": 0,
+        "provenance": {
+          "provider": "metaModelApi",
+          "modelId": "muse-spark-1.3",
+          "requestId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+          "label": "META_LIVE"
+        }
+      },
+      {
+        "sequence": 2,
+        "timestamp": 1793067489100,
+        "action": "apply",
+        "previewId": "sound.preview-1",
+        "proposalId": "sound.meta-1-mvq2358f",
+        "sceneRevision": 0,
+        "documentRevision": 1,
+        "provenance": {
+          "provider": "metaModelApi",
+          "modelId": "muse-spark-1.3",
+          "requestId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+          "label": "META_LIVE"
+        }
+      }
+    ]
+  },
+  "experimentLedger": [
+    {
+      "artifactIds": [
+        "artifact.3fe18d5e0b730bb9d156bf4fbdd797c7c90026fb"
+      ],
+      "errorCode": null,
+      "requestId": "request.live.explicit-run",
+      "runId": "run.tool.e22ff739e12d99a4350aef880ec1a872d53aed65",
+      "solverSteps": 180,
+      "state": "succeeded",
+      "tool": "RunSimulation",
+      "wallTimeMs": 4443.7952
+    },
+    {
+      "artifactIds": [
+        "experiment.8f619111806224479a30b29bb03be0c7f5b61b2d",
+        "artifact.3fe18d5e0b730bb9d156bf4fbdd797c7c90026fb"
+      ],
+      "errorCode": null,
+      "requestId": "request.live.capture",
+      "runId": "run.tool.e22ff739e12d99a4350aef880ec1a872d53aed65",
+      "solverSteps": 0,
+      "state": "succeeded",
+      "tool": "CaptureExperiment",
+      "wallTimeMs": 1113.972099999999
+    },
+    {
+      "artifactIds": [
+        "artifact.3fe18d5e0b730bb9d156bf4fbdd797c7c90026fb"
+      ],
+      "errorCode": null,
+      "requestId": "request.live.analysis",
+      "runId": "run.tool.e22ff739e12d99a4350aef880ec1a872d53aed65",
+      "solverSteps": 0,
+      "state": "succeeded",
+      "tool": "AnalyzeAcousticResults",
+      "wallTimeMs": 1126.2214999999997
+    }
+  ],
+  "transport": [
+    {
+      "attempt": "meta-live-60764027-f894-4967-9cfc-b40ba6cb7a70",
+      "phase": "sound",
+      "httpStatus": 200,
+      "responseId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+      "modelId": "muse-spark-1.3",
+      "usage": {
+        "promptTokens": 4968,
+        "completionTokens": 262,
+        "cachedInputTokens": 0,
+        "reasoningTokens": 83
+      },
+      "finishReason": "tool_calls",
+      "toolCallNames": [
+        "ProposeSoundBehavior"
+      ],
+      "toolCallIds": [
+        "call_122d87ff-1f07-4bd5-8109-a3c94caef085"
+      ],
+      "requestId": "2b6ce407-cdbf-4d36-93fc-09f29be7d630"
+    }
+  ],
+  "productPlans": [
+    {
+      "phase": "sound",
+      "route": "/api/agent/propose-sound",
+      "httpStatus": 200,
+      "value": {
+        "proposal": {
+          "schemaVersion": "1.0.0",
+          "proposalId": "sound.meta-1-mvq2358f",
+          "sceneId": "scene.reflection-lab",
+          "expectedSceneRevision": 0,
+          "expectedBehaviorRevision": 0,
+          "operations": [
+            {
+              "type": "RemoveBinding",
+              "bindingId": "binding.interactive.ball"
+            },
+            {
+              "type": "AssignBinding",
+              "binding": {
+                "bindingId": "binding.interactive.ball",
+                "objectId": "ball",
+                "objectGeneration": 1,
+                "profileId": "profile.interactive-tone",
+                "profileRevision": 1,
+                "enabled": true,
+                "overrides": [
+                  {
+                    "ruleId": "rule.impact",
+                    "pitchSemitones": 2
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "assumptions": [
+          "聲音參數為創意設定，不代表量測聲壓或物件真實振動。"
+        ],
+        "warnings": [
+          "Server驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。"
+        ],
+        "summary": "Meta Sound提案：2個受限操作，等待本機Host預覽與套用。",
+        "provenance": {
+          "provider": "metaModelApi",
+          "modelId": "muse-spark-1.3",
+          "requestId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+          "label": "META_LIVE"
+        }
+      }
+    }
+  ],
+  "phaseResults": [
+    {
+      "phase": "sound",
+      "attempt": 1,
+      "preview": {
+        "mode": "live",
+        "status": "preview",
+        "message": "Meta Sound提案：2個受限操作，等待本機Host預覽與套用。",
+        "preview": "聲音參數為創意設定，不代表量測聲壓或物件真實振動。\n解除Binding binding.interactive.ball\n將 ball 綁定至 profile.interactive-tone@1\nServer驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。",
+        "canApply": true
+      },
+      "beforeSceneRevision": 0,
+      "beforeBehaviorRevision": 0,
+      "apply": {
+        "mode": "live",
+        "status": "idle",
+        "message": "提案已由Host套用並建立新revision；可使用復原。",
+        "canApply": false
+      },
+      "afterSceneRevision": 0,
+      "afterBehaviorRevision": 1
+    }
+  ],
+  "budget": {
+    "schemaVersion": "1.0.0",
+    "policy": {
+      "budgetUsd": 1,
+      "maxPaidRequests": 3,
+      "reservePerRequestUsd": 0.25,
+      "maxCompletionTokens": 1000,
+      "modelId": "muse-spark-1.3",
+      "dataMode": "standard",
+      "inputUsdPerMillionTokens": 1.25,
+      "outputUsdPerMillionTokens": 4.25,
+      "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+    },
+    "createdAt": "2026-10-27T01:54:48.314Z",
+    "updatedAt": "2026-10-27T02:18:09.064Z",
+    "attempts": [
+      {
+        "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+        "phase": "sound",
+        "reservedAt": "2026-10-27T01:54:48.365Z",
+        "settledAt": "2026-10-27T01:54:49.389Z",
+        "reservedUsd": 0.25,
+        "requestSummary": {
+          "modelId": "muse-spark-1.3",
+          "maxCompletionTokens": 1000,
+          "inputBytes": 15299,
+          "payloadSha256": "6c5db0f41035bf9f3162a4b0424c4bc4f89d5126b9f2348219b7437aae4e3d8f",
+          "toolNames": [
+            "ProposeSoundBehavior"
+          ]
+        },
+        "status": "failed",
+        "httpStatus": 400,
+        "responseId": null,
+        "modelId": null,
+        "usage": null,
+        "estimatedCostUsd": null,
+        "validationError": "MISSING_RESPONSE_METADATA",
+        "actualBillingCostUsd": null
+      },
+      {
+        "attemptId": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+        "phase": "scene",
+        "reservedAt": "2026-10-27T02:07:15.640Z",
+        "settledAt": "2026-10-27T02:07:15.940Z",
+        "reservedUsd": 0.25,
+        "requestSummary": {
+          "modelId": "muse-spark-1.3",
+          "maxCompletionTokens": 1000,
+          "inputBytes": 11979,
+          "payloadSha256": "1dd811bf45e98eefb9da7d7630f7945fed8eb31124c2b86a855476af8ad6b825",
+          "toolNames": [
+            "CreateScene",
+            "AddObject",
+            "SetMaterial",
+            "SetRigidBodyMode",
+            "ConfigureSoundSource",
+            "MoveListener",
+            "SetTrajectory",
+            "RunSimulation",
+            "CaptureExperiment",
+            "AnalyzeAcousticResults",
+            "CompareExperiments"
+          ]
+        },
+        "status": "failed",
+        "httpStatus": 400,
+        "responseId": null,
+        "modelId": null,
+        "usage": null,
+        "estimatedCostUsd": null,
+        "validationError": "HTTP_400_REQUEST_REJECTED",
+        "actualBillingCostUsd": null
+      },
+      {
+        "attemptId": "meta-live-60764027-f894-4967-9cfc-b40ba6cb7a70",
+        "phase": "sound",
+        "reservedAt": "2026-10-27T02:18:06.911Z",
+        "settledAt": "2026-10-27T02:18:09.064Z",
+        "reservedUsd": 0.25,
+        "requestSummary": {
+          "modelId": "muse-spark-1.3",
+          "maxCompletionTokens": 1000,
+          "inputBytes": 15309,
+          "payloadSha256": "8e1a1f494b83e276dc44247f93e85c30254fca91c89dc509c6ffb8775950db88",
+          "toolNames": [
+            "ProposeSoundBehavior"
+          ]
+        },
+        "status": "completed",
+        "httpStatus": 200,
+        "responseId": "chatcmpl-01a17b26-9b01-76e4-994a-504ee9d735cd",
+        "modelId": "muse-spark-1.3",
+        "usage": {
+          "promptTokens": 4968,
+          "completionTokens": 262,
+          "cachedInputTokens": 0,
+          "reasoningTokens": 83
+        },
+        "estimatedCostUsd": 0.0073235,
+        "validationError": null,
+        "actualBillingCostUsd": null
+      }
+    ],
+    "actualBillingCostUsd": null,
+    "remainingCreditUsd": null,
+    "reconciliations": [
+      {
+        "attemptId": "meta-live-057a820a-ee0b-49d7-9692-d8afe385f56d",
+        "kind": "HTTP_400_REQUEST_REJECTION",
+        "reason": "Root authorized bounded repair of known HTTP 400 request rejection; original diagnostic unavailable; retain unknown billing and original reservation.",
+        "safeAuthorizationRef": "ROOT-20261027-HTTP400-REPAIR",
+        "createdAt": "2026-10-27T02:06:48.044Z"
+      },
+      {
+        "attemptId": "meta-live-8534dcdb-ec8a-4c1c-a739-7dc5ede9f0ef",
+        "kind": "HTTP_400_REQUEST_REJECTION",
+        "reason": "Root authorized final Sound-only repair after confirmed remote uniqueItems rejection; original local uniqueness validation retained; preserve both unknown bills and reservations.",
+        "safeAuthorizationRef": "ROOT-20261027-UNIQUEITEMS-REPAIR",
+        "createdAt": "2026-10-27T02:17:12.563Z"
+      }
+    ],
+    "reservedUsd": 0.75,
+    "unreservedAuthorizedUsd": 0.25,
+    "remainingRequestSlots": 0,
+    "blockedReason": "REQUEST_LIMIT_REACHED"
+  },
+  "remainingCreditUsd": null,
+  "actualBillingCostUsd": null,
+  "browser": "NOT_RUN",
+  "hearing": "NOT_RUN",
+  "physicalMeasurement": "NOT_RUN"
+}

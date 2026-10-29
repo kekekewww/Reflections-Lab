@@ -1,0 +1,36 @@
+<!-- english-source: {"path":"docs/11-v1/MOTION_HYSTERESIS.md","sha256":"e30f17749e66eb5b0385ec5c44089382487798c1043538fcdd96732cf70d392e","translated_at":"2026-10-27T03:41:10Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-notice:start -->
+> English translation of [`docs/11-v1/MOTION_HYSTERESIS.md`](../../11-v1/MOTION_HYSTERESIS.md). Source SHA-256: `e30f17749e66eb5b0385ec5c44089382487798c1043538fcdd96732cf70d392e`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+<!-- english-notice:end -->
+
+<!-- english-original-anchor --> <a id="固定步運動狀態與遲滯"></a>
+# Fixed-Step Motion States and Hysteresis
+
+2026-10-27. Corresponds to V1-SND-05; implemented in [PhysicsWorld](../../../src/physics/physics-world.ts), with validation in the [actual Rapier tests](../../../tests/physics/motion-hysteresis.test.ts). These states are **Derived/Tuned engineering classifications**, not measured material data or natural vibration models, and they do not constitute listening-test evidence.
+
+States update only once per completed fixed step. `snapshot`, `getPose`, and `interpolatedPoses` only read the saved states; they cannot advance exit counters or consume `OnStartMoving`/`OnStopMoving` edges early. Velocities remain actual Rapier data, while states correspond to the last completed physics step.
+
+| State | Entry | Exit/Retention |
+| ------------ | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Moving | World-frame linear speed ≥0.05 m/s | Exits only after ≤0.025 m/s for 2 consecutive steps; retains its previous state in the intermediate band |
+| Spinning | Angular speed magnitude ≥0.1 rad/s | Exits only after ≤0.05 rad/s for 2 consecutive steps |
+| Sliding | Valid contact-point relative slip ≥0.12 m/s | Exits only after ≤0.08 m/s for 2 consecutive steps; retains its previous state in the intermediate band |
+| Rolling candidate | Sphere is supported, COM tangential speed relative to support ≥0.05 m/s, tangent-plane component of relative angular velocity ≥0.1 rad/s, slip <0.08 m/s | Retained while relative tangential speed >0.025 m/s, tangent-plane angular speed >0.05 rad/s, and slip <0.12 m/s; low motion must persist for 2 consecutive steps before exit; loss of support/episode change invalidates it immediately |
+
+Moving/Spinning/Held are mutually orthogonal; Held bodies can still move and make contact. Pause advances neither ticks nor exit counters and does not fabricate a stop/release. Sliding uses actual contact-point slip, and wall contact can also produce Sliding; COM translation cannot substitute for it. A fixed supporting surface does not become Sliding because another object slides. While Sliding is active, the contact point with the actual maximum slip is selected, with the stable pair key used to sort equal values, avoiding a sound located on the floor when the object is scraping a wall. Rolling subtracts the supporting surface's linear/angular velocity and removes angular velocity about the normal axis, so shared rigid-body motion with a platform or spinning in place cannot alone prove rolling. Sliding and Rolling cannot both be true.
+
+Thresholds are explicitly declared Tuned initial values for this version, retaining the existing production entry values and adding exit bands and fixed-step stability conditions; numbers from research spikes have not automatically become product calibration values. [ADR-014](../02-architecture/adr/014-sound-behavior-system.md), the [event model](../10-sound-behaviors/EVENT_MODEL.md), and the [Bridge](../10-sound-behaviors/PHYSICS_AUDIO_BRIDGE.md) remain the authorities for their respective layers.
+
+Each existing body record stores one set of states and bounded counters, without adding an unbounded Map spanning epochs. Geometry rebuild/remove-readd/reset creates fresh states with a new generation; body-mode changes that do not preserve velocity, enabled changes, and authoring transforms clear states. DynamicGravity ↔ DynamicNoGravity preserves actual velocities and Moving/Spinning, while clearing contact classifications. A new contact episode does not inherit old Rolling/Sliding. Rolling is `null` when applicable sphere-support data is unavailable; missing slip is not filled with zero.
+
+Executed:
+
+At 2026-10-27 03:11 UTC, raw evidence from another run of the current version was separately archived: [complete 67-test procedure and hash manifest](../../../artifacts/v1/motion-hysteresis-validation-20261027/verification.json), [raw stdout](../../../artifacts/v1/motion-hysteresis-validation-20261027/regression.stdout.txt), [raw stderr](../../../artifacts/v1/motion-hysteresis-validation-20261027/regression.stderr.txt), and the isolated reviewer's [29-test independent procedure and manifest](../../../artifacts/v1/motion-hysteresis-validation-20261027/independent-review/verification.json)/[raw TAP](../../../artifacts/v1/motion-hysteresis-validation-20261027/independent-review/tests.stdout.tap). Both new executions exited 0, sources matched before and after, and all 61 protected-file hashes matched; actual source/test copies are retained, without backfilling these as records of the earlier execution.
+
+- `node --import tsx --test tests/physics/motion-hysteresis.test.ts`: 9/9 PASS; 6 of the initial 7 tests failed before the fix, covering threshold jitter, read-only getters, rad/s separation, actual sphere-ground contact and slip bands, normal-axis spin, Held/Pause, and mode/enable/generation cleanup, with additional regressions for fixed supporting surfaces and contact localization at wall corners.
+- `node --import tsx --test tests/physics/physics-world.test.ts tests/physics/contact-emission.test.ts tests/physics/character-motor.test.ts tests/physics/fixed-clock.test.ts tests/interaction-runtime/host.test.ts`: 58/58 PASS.
+- All the tests above and the new tests in the same execution: 67/67 PASS, 0 fail/skip.
+- `node node_modules/typescript/bin/tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext --esModuleInterop --resolveJsonModule --skipLibCheck src/physics/physics-world.ts tests/physics/motion-hysteresis.test.ts`: PASS. Root must rerun the overall `tsc --noEmit` after other concurrent UI changes finish; this scoped check does not replace it.
+- `node node_modules/eslint/bin/eslint.js src/physics/physics-world.ts tests/physics/motion-hysteresis.test.ts`: PASS.
+
+The isolated review reran the 9 new tests + 20 original Physics/contact tests, 29/29 PASS; the fixed-support misclassification and wall-corner sound localization issues identified in review were fixed and revalidated. The reviewed source SHA256 is `071adc79ac6a0b7f12b7dade2994e7d4ae0df07c40899eaae547fd45a764dcc4`. This version still classifies contacts at the single-body level and does not claim a complete multi-patch classifier. This page does not claim that browser/long-duration performance/manual listening tests were completed in this round; root consolidates overall first-version acceptance.

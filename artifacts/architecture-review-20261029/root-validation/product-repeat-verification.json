@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "browserSelection": "chrome",
+  "observerProfile": "light",
+  "requestedGpuProfile": "default",
+  "effectiveEnvironment": {
+    "PRODUCT_BROWSER_CHANNEL": "chrome",
+    "PRODUCT_OBSERVER_PROFILE": "light",
+    "PRODUCT_GPU_PROFILE": "default"
+  },
+  "browserLaunchCommands": [
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\kevin\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-cx4MRQ --remote-debugging-pipe --no-startup-window +0ms"
+  ],
+  "browserEngine": "chromium",
+  "browserChannel": "chrome",
+  "startedAt": "2026-10-29T05:31:33.222Z",
+  "completedAt": "2026-10-29T05:32:51.171Z",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "tests/browser/product-refined-v3.config.ts",
+    "--global-timeout",
+    "480000"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "runError": null,
+  "ownedProcesses": {
+    "runnerPid": 50800,
+    "previewPid": 64456,
+    "playwrightPid": 60400,
+    "previewCommand": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/vite/bin/vite.js",
+      "preview",
+      "--outDir",
+      "test-results/product-preview-dist",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "5190",
+      "--strictPort"
+    ],
+    "testCommand": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "tests/browser/product-refined-v3.config.ts",
+      "--global-timeout",
+      "480000"
+    ],
+    "cleanup": [
+      {
+        "label": "playwright",
+        "pid": 60400,
+        "alreadyExited": true
+      },
+      {
+        "label": "preview",
+        "pid": 64456,
+        "exited": true,
+        "exitCode": null,
+        "signalCode": "SIGTERM"
+      }
+    ],
+    "nativeLaunchedPids": [
+      89560
+    ],
+    "treeAudit": {
+      "checkedAt": "2026-10-29T05:32:50.9960388Z",
+      "remaining": [],
+      "roots": [
+        64456,
+        60400,
+        89560
+      ],
+      "status": "PASS_ZERO_REMAINING"
+    }
+  },
+  "buildInputDigest": "6f0c168a3110d9601a7502ab2359be47df73efdded536cb8065570ed43392fe4",
+  "sourceMatchesBuildAtStart": true,
+  "sourceStableDuringRun": true,
+  "bundleMatchesBuildAtStart": true,
+  "bundleStableDuringRun": true,
+  "harnessBefore": [
+    {
+      "path": "tests/browser/build-product-preview.mjs",
+      "sha256": "e3293facf57cd5acda8b4dcb6e5da0f198e066fb10d626090c8d81b1265b30e2"
+    },
+    {
+      "path": "tests/browser/product-refined-v3.config.ts",
+      "sha256": "2b54ed7e00d3ccd227aa276c63017fca2186ea90410b22b5a6196d8040649e54"
+    },
+    {
+      "path": "tests/browser/product-e2e-refined-v3.spec.ts",
+      "sha256": "1e1b7b9b314985b6c437a19ec230016227862a7ecbe883500e12172316a33a97"
+    },
+    {
+      "path": "tests/browser/run-product-refined-v3.mjs",
+      "sha256": "69745e2ba7c50a8f08dab2e3a197e50f361c202d3a7cca82b8bd95787e4b883b"
+    }
+  ],
+  "harnessAfter": [
+    {
+      "path": "tests/browser/build-product-preview.mjs",
+      "sha256": "e3293facf57cd5acda8b4dcb6e5da0f198e066fb10d626090c8d81b1265b30e2"
+    },
+    {
+      "path": "tests/browser/product-refined-v3.config.ts",
+      "sha256": "2b54ed7e00d3ccd227aa276c63017fca2186ea90410b22b5a6196d8040649e54"
+    },
+    {
+      "path": "tests/browser/product-e2e-refined-v3.spec.ts",
+      "sha256": "1e1b7b9b314985b6c437a19ec230016227862a7ecbe883500e12172316a33a97"
+    },
+    {
+      "path": "tests/browser/run-product-refined-v3.mjs",
+      "sha256": "69745e2ba7c50a8f08dab2e3a197e50f361c202d3a7cca82b8bd95787e4b883b"
+    }
+  ],
+  "harnessStableDuringRun": true,
+  "host": {
+    "node": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "cpuCount": 32,
+    "memoryBytes": 33959825408
+  },
+  "resultsPath": "test-results/product-e2e/results.json",
+  "limitations": [
+    "Fixed e2e-mode native product bundle, isolated local preview; direct runtime action coverage is labelled in each case.",
+    "No model inference. No hardware hearing, SPL calibration or AudioWorklet deadline claim."
+  ],
+  "testResults": {
+    "path": "test-results/product-e2e/results.json",
+    "sha256": "0df0dec9ed0451d605b1303d29a49c57b31edad02b97b86467bc0796216d5c91",
+    "stats": {
+      "startTime": "2026-10-29T05:31:35.523Z",
+      "duration": 69068.945,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "fresh": true
+  },
+  "archiveDirectory": "artifacts/v1/product-e2e-chrome-20261029T053133Z"
+}

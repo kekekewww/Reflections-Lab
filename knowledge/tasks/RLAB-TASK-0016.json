@@ -1,0 +1,343 @@
+{
+  "id": "RLAB-TASK-0016",
+  "title": "第一版完整產品整合與獨立驗收",
+  "description": "依最新使用者授權完成既定第一版；不是僅M0。整合場景/物理/FPS/build/聲學/聲音行為/UI/錄放/產品AI，原驗收不縮限。 使用者後續明確要求英文介面＋所有專案文件；新增EN01–06補充驗收，原51項與原criteria不縮限。",
+  "status": "BACKLOG",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-0006",
+    "RLAB-TASK-0011",
+    "RLAB-TASK-0012",
+    "RLAB-TASK-0013",
+    "RLAB-TASK-0014",
+    "RLAB-TASK-0017",
+    "RLAB-TASK-0018",
+    "RLAB-TASK-0019",
+    "RLAB-TASK-0020"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "現有Roadmap第一版P0/P1具可執行功能與requirement-by-requirement證據，P2與外部限制明列",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/11-v1/ACCEPTANCE.md",
+          "sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "docs/11-v1/REQUIREMENTS.json",
+          "sha256": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.json",
+          "sha256": "b676166556d7e5a55bf87416991c3d098cca4566b6bece04a1947d6c5ab9186f",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "artifacts/v1/native-visibility-rca-20261028.json",
+          "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+          "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+          "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+          "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "原回歸、新數值/physics/audio、browser/E2E與獨立審查通過；不以窄測試支撐整體完成",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/audio-prefix-native25-20261027173304441/wrapper-verification-v2.json",
+          "sha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+          "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+          "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+          "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+          "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/native-visibility-rca-20261028.json",
+          "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+          "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "Wiki/ADR/status/limits、最新handoff與Git provenance一致，無Muse額度呼叫",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/git-checkpoint-r11-20261028/git-and-qualified-provenance.json",
+          "result": "Actual localaec0604+clean capture+3591committedpaths and independentfreshreceiver support scopedOPS01/Task16AC03; no futurehash invented.",
+          "sha256": "3783ed129b14bf7724ae0cdcd481a1d2fa4c7f572c78c3567a2144c401f8ebd2"
+        },
+        {
+          "path": "artifacts/v1/git-checkpoint-r11-20261028/fresh-receiver.json",
+          "result": "Fresh independenthandoffPASS and literalprovenanceclosure supported; originalunfinishedgates retained.",
+          "sha256": "8565b1c0338c0180d791ec62ace687dd553d92709d60abcaee34f079eedc0391"
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027213004429/verification.json",
+          "result": "Actual finalpostEnglishdelta fullcheck917/offlinebenchmarkPASS; source1884/protected61 stable; no device/performance/live claim.",
+          "sha256": "8b3a25f8ed5437bcb20f7423397082fde0b9ce5cf3457a742bef601bc6e9ff5d"
+        },
+        {
+          "path": "docs/en/_reports/delta-r11-current-corpus-20261027T212950525Z.json",
+          "result": "Captured261/261mirrors allcurrent/0errors with31tests/5926links; laterfollowupdelta must refresh.",
+          "sha256": "577b9ba1499c656fde77caf5d42ebd3a76621396641b05cf7d2885a36211d728"
+        },
+        {
+          "path": "docs/en/_reports/delta-r11-independent-corpus-20261027T212939977Z.json",
+          "result": "Independent261-mirror currentness/fidelity/carryforward auditPASS; oldreports unchanged.",
+          "sha256": "c6f56602db6f68f8a3c2285d77becd7ae7e2863440ff54d3227e5831804a6126"
+        },
+        {
+          "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation-r11.json",
+          "result": "All12 fullcheck-rebuilt production files match NOTICEcandidate; sixrights/sourcegaps notclosed.",
+          "sha256": "cd6641b51a5577c38e1d87bf6f0452d42188f22b0b73b3ebd1ff8251f27a5b85"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "依使用者後續確認完成繁中／英文介面與所有專案文件英文版；EN01–06有真browser、原文／翻譯hash、完整性／連結／current-stale與獨立語義審查證據，工作與測試資料共用",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/en/_reports/final-current-corpus-20261027T194614022Z.json",
+          "sha256": "f999f10b151089aba018a9e45ecec0daeba1c4a4e4bfff237d3fbd89aefe48c2",
+          "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/captured-english-independent-review.json",
+          "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+          "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+        },
+        {
+          "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+          "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b",
+          "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+        },
+        {
+          "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+          "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+          "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+        },
+        {
+          "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+          "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+          "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+        },
+        {
+          "path": "docs/en/_reports/delta-r11-current-corpus-20261027T212950525Z.json",
+          "result": "Captured261/261mirrors allcurrent/0errors with31tests/5926links; laterfollowupdelta must refresh.",
+          "sha256": "577b9ba1499c656fde77caf5d42ebd3a76621396641b05cf7d2885a36211d728"
+        },
+        {
+          "path": "docs/en/_reports/delta-r11-independent-corpus-20261027T212939977Z.json",
+          "result": "Independent261-mirror currentness/fidelity/carryforward auditPASS; oldreports unchanged.",
+          "sha256": "c6f56602db6f68f8a3c2285d77becd7ae7e2863440ff54d3227e5831804a6126"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/ROADMAP.md",
+    "docs/11-v1/ACCEPTANCE.md",
+    "docs/superpowers/plans/2026-10-27-v1-implementation.md",
+    "docs/11-v1/ENGLISH_ACCEPTANCE.md",
+    "docs/00-project/V1_ENGLISH_FULL_DOCS_REQUEST_20261027.md",
+    "README.en.md",
+    "docs/11-v1/USER_GUIDE.en.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/11-v1/ACCEPTANCE.md",
+      "sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENTS.json",
+      "sha256": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.json",
+      "sha256": "b676166556d7e5a55bf87416991c3d098cca4566b6bece04a1947d6c5ab9186f",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "artifacts/v1/native-visibility-rca-20261028.json",
+      "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+      "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+      "result": "The frozen51 requirement map exists and many concrete capabilities pass, but required evidence gates still lack direct current completion: native desktop checks, real listening and formal complete performance profile. Full first-version scope is not yet all covered. P2 stays deferred; no reduction of original P0/P1 or external/evidence scope. See proposed r5 review for completed rows rather than rerunning them."
+    },
+    {
+      "path": "artifacts/v1/final-acceptance-review-20261028/task-criterion-review.json",
+      "sha256": "e8b9e695d2b75c38ad23b59c9dbd86e0c14eb13f2bf9bdc5805e9ec1a9496cf3",
+      "result": "Independent originalcriterion review:13 verified/5 unverified; exact originalcriteria/dependencies; not fullV1 completion."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/audio-prefix-native25-20261027173304441/wrapper-verification-v2.json",
+      "sha256": "af322d2565fda2aee2a5d4bafbe801a199e9a0005256ba0317eea97fefb67a74",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261027T181111Z/verification.json",
+      "sha256": "26a5c42cd7394af1a2363d8fc56fffeddea872dd8476900002eee7ef90127a52",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json",
+      "sha256": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/browser-performance-20261027T183039817Z/independent-result-review.json",
+      "sha256": "b5d4e851915b1160fcfdbe9da3f949169f670893b520f7fdf675368798709100",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/device-hearing-session-2026-10-27T18-52-15.946Z/collection.json",
+      "sha256": "797874fae63dddc9cd4900da5d71e06dc54f422a015dda39be2a82774462ba01",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "artifacts/v1/native-visibility-rca-20261028.json",
+      "sha256": "4ad964217704f61b972b0cf5ac995c534f563086b74eee732bf38b5faf45a002",
+      "result": "Current pinned fullcheck917 and many actual browser/native suites pass, but current native desktop checks remain NOT_RUN, listening NOT_RUN and formal600 performance FAIL/incomplete with main occupancy NOT_RUN. Narrow successful suites cannot support whole-version completion. Preserve actual regression/browser successes as fulfilled subset. No new thresholds or assumed full-profile qualification."
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENT_EVIDENCE_20261028-r4.json",
+      "sha256": "b676166556d7e5a55bf87416991c3d098cca4566b6bece04a1947d6c5ab9186f",
+      "result": "Captured Wiki/ADR/status/limits and previous local Git provenance exist, but final task/evidence reconciliation, latest handoff and local Git checkpoint have not yet been updated for the final917/English/NOTICE results at this review cutoff. Owner can complete this administrative criterion after consistent canonical update/handoff/local commit; this read-only review performs none. No Muse usage inferred from a benchmark name: benchmark:muse is explicitly offline fixture-only."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Captured Wiki/ADR/status/limits and previous local Git provenance exist, but final task/evidence reconciliation, latest handoff and local Git checkpoint have not yet been updated for the final917/English/NOTICE results at this review cutoff. Owner can complete this administrative criterion after consistent canonical update/handoff/local commit; this read-only review performs none. No Muse usage inferred from a benchmark name: benchmark:muse is explicitly offline fixture-only."
+    },
+    {
+      "path": "docs/en/_reports/final-current-corpus-20261027T194614022Z.json",
+      "sha256": "f999f10b151089aba018a9e45ecec0daeba1c4a4e4bfff237d3fbd89aefe48c2",
+      "result": "Captured Wiki/ADR/status/limits and previous local Git provenance exist, but final task/evidence reconciliation, latest handoff and local Git checkpoint have not yet been updated for the final917/English/NOTICE results at this review cutoff. Owner can complete this administrative criterion after consistent canonical update/handoff/local commit; this read-only review performs none. No Muse usage inferred from a benchmark name: benchmark:muse is explicitly offline fixture-only."
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation.json",
+      "sha256": "1976fc0330ab4b54b6ce22ddd46f1c3cb818e10e229efe4be8a99620f5bb0bb8",
+      "result": "Captured Wiki/ADR/status/limits and previous local Git provenance exist, but final task/evidence reconciliation, latest handoff and local Git checkpoint have not yet been updated for the final917/English/NOTICE results at this review cutoff. Owner can complete this administrative criterion after consistent canonical update/handoff/local commit; this read-only review performs none. No Muse usage inferred from a benchmark name: benchmark:muse is explicitly offline fixture-only."
+    },
+    {
+      "path": "docs/en/_reports/final-current-corpus-20261027T194614022Z.json",
+      "sha256": "f999f10b151089aba018a9e45ecec0daeba1c4a4e4bfff237d3fbd89aefe48c2",
+      "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+    },
+    {
+      "path": "artifacts/v1/final-acceptance-review-20261028/captured-english-independent-review.json",
+      "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+      "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+    },
+    {
+      "path": "artifacts/v1/ui-current-functional-20261027T174359786Z/proof-receipt.json",
+      "sha256": "3c18ccff8a8f684a7da136ee1f148a62dacad8971fd9e7f3dbf7212ba9971c0b",
+      "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027195151500/verification.json",
+      "sha256": "09d1164bf39d9d320bbd4b8b27bc3a2d95957b5200fd361cfd81796849bc2c13",
+      "result": "Captured full English corpus has277 originals,258/258 required mirrors,18 English originals and one companion, no missing/stale/error. All31 docs tests and independent semantic/fidelity reviews are retained; current UI27 includes EN8/ZH13 actual browser operation and presentation isolation. EN01-06 scope passes at f999 captured corpus. Subsequent canonical edits must refresh affected English mirrors/hash report before final commit; native200% remains separate original gate, as EN04 explicitly states."
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r11-20261028/git-and-qualified-provenance.json",
+      "result": "Actual localaec0604+clean capture+3591committedpaths and independentfreshreceiver support scopedOPS01/Task16AC03; no futurehash invented.",
+      "sha256": "3783ed129b14bf7724ae0cdcd481a1d2fa4c7f572c78c3567a2144c401f8ebd2"
+    },
+    {
+      "path": "artifacts/v1/git-checkpoint-r11-20261028/fresh-receiver.json",
+      "result": "Fresh independenthandoffPASS and literalprovenanceclosure supported; originalunfinishedgates retained.",
+      "sha256": "8565b1c0338c0180d791ec62ace687dd553d92709d60abcaee34f079eedc0391"
+    },
+    {
+      "path": "artifacts/v1/clean-quality-pinned-20261027213004429/verification.json",
+      "result": "Actual finalpostEnglishdelta fullcheck917/offlinebenchmarkPASS; source1884/protected61 stable; no device/performance/live claim.",
+      "sha256": "8b3a25f8ed5437bcb20f7423397082fde0b9ce5cf3457a742bef601bc6e9ff5d"
+    },
+    {
+      "path": "docs/en/_reports/delta-r11-current-corpus-20261027T212950525Z.json",
+      "result": "Captured261/261mirrors allcurrent/0errors with31tests/5926links; laterfollowupdelta must refresh.",
+      "sha256": "577b9ba1499c656fde77caf5d42ebd3a76621396641b05cf7d2885a36211d728"
+    },
+    {
+      "path": "docs/en/_reports/delta-r11-independent-corpus-20261027T212939977Z.json",
+      "result": "Independent261-mirror currentness/fidelity/carryforward auditPASS; oldreports unchanged.",
+      "sha256": "c6f56602db6f68f8a3c2285d77becd7ae7e2863440ff54d3227e5831804a6126"
+    },
+    {
+      "path": "artifacts/v1/bundle-notice-pack-20261027-1914-r10/fullcheck-production-byte-confirmation-r11.json",
+      "result": "All12 fullcheck-rebuilt production files match NOTICEcandidate; sixrights/sourcegaps notclosed.",
+      "sha256": "cd6641b51a5577c38e1d87bf6f0452d42188f22b0b73b3ebd1ff8251f27a5b85"
+    }
+  ],
+  "created_at": "2026-10-26T18:33:32.132Z",
+  "updated_at": "2026-10-27T21:41:39.059Z",
+  "last_summary": "原AC03以實際aec0604／freshreceiver／最終品質與英文明確證據核實；AC04維持已證。AC01／02及原依賴未完成，整體保持BACKLOG。"
+}

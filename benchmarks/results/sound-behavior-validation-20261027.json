@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T18:00:24.347Z",
+  "status": "PASS",
+  "scope": "22 capabilities:20 initial commands passed; only two documentation-link gates rerun after one relative-link repair. No runtime/test/acceptance changed.",
+  "initial": {
+    "path": "benchmarks/results/phase3-sound-behavior-20261027-final.json",
+    "sha256": "d6ed8e3d1c680bf12f480e849c838813c438f94958f6a4703d82f1154f39205b",
+    "status": "FAIL",
+    "passed": 20,
+    "failed": [
+      "npm run validate:docs",
+      "npm run validate:wiki"
+    ],
+    "failure_reason": "Wiki roadmap linked ../../tasks instead of ../tasks"
+  },
+  "repair": "knowledge/wiki/roadmap.md relative link only via optimistic Wiki CLI",
+  "repair_checks": [
+    {
+      "replaces": "npm run validate:docs",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/validation/docs.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS Markdown local targets: 745 links in 205 documents; fenced code/external URLs/anchors excluded.\n",
+      "stderr": ""
+    },
+    {
+      "replaces": "npm run validate:wiki",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/wiki/cli.mjs",
+        "lint",
+        "--format",
+        "json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"issues\": [\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/02-architecture/ARCHITECTURE.md\",\n      \"message\": \"RLAB-SRC-0004 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"research/EVIDENCE_LEDGER.json\",\n      \"message\": \"RLAB-SRC-0005 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/04-physics/FPS_INTERACTION_SPEC.md\",\n      \"message\": \"RLAB-SRC-0018 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/04-physics/PHYSICS_AUDIO_EVENTS.md\",\n      \"message\": \"RLAB-SRC-0020 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/05-ux/WORKSPACE_ARCHITECTURE.md\",\n      \"message\": \"RLAB-SRC-0023 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/05-ux/DESIGN_SYSTEM.md\",\n      \"message\": \"RLAB-SRC-0024 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/06-validation/PERFORMANCE_BUDGET.md\",\n      \"message\": \"RLAB-SRC-0028 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/07-experiments/RECORD_REPLAY.md\",\n      \"message\": \"RLAB-SRC-0030 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/07-experiments/AB_COMPARISON.md\",\n      \"message\": \"RLAB-SRC-0031 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/KNOWN_LIMITATIONS.md\",\n      \"message\": \"RLAB-SRC-0034 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/ROADMAP.md\",\n      \"message\": \"RLAB-SRC-0035 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/NEXT_ENGINEERING_TASK.md\",\n      \"message\": \"RLAB-SRC-0036 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/01-compliance/LICENSE_REGISTER.md\",\n      \"message\": \"RLAB-SRC-0037 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/01-compliance/HACKATHON_RULES.md\",\n      \"message\": \"RLAB-SRC-0038 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/05-ux/DESIGN_TOKENS.json\",\n      \"message\": \"RLAB-SRC-0042 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/05-ux/UI_STRESS_TESTS.md\",\n      \"message\": \"RLAB-SRC-0044 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/09-knowledge/AGENT_COMPATIBILITY.md\",\n      \"message\": \"RLAB-SRC-0046 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/02-architecture/adr/001-rendering.md\",\n      \"message\": \"RLAB-SRC-0051 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/02-architecture/ARCHITECTURE.md\",\n      \"message\": \"RLAB-P3-SRC-0001 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/NEXT_ENGINEERING_TASK.md\",\n      \"message\": \"RLAB-P3-SRC-0002 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/02-architecture/adr/012-development-harness.md\",\n      \"message\": \"RLAB-P3-SRC-0005 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/09-agents/FAILOVER_POLICY.md\",\n      \"message\": \"RLAB-P3-SRC-0006 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/09-agents/CODEX_MUSE_ORCHESTRATION.md\",\n      \"message\": \"RLAB-P3-SRC-0007 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    },\n    {\n      \"code\": \"SOURCE_HASH_STALE\",\n      \"path\": \"docs/09-agents/CODEX_MUSE_ORCHESTRATION.md\",\n      \"message\": \"RLAB-P3-SRC-0021 pinned hash 與目前檔案不同。\",\n      \"severity\": \"warning\"\n    }\n  ],\n  \"summary\": {\n    \"pages\": 36,\n    \"sources\": 153,\n    \"tasks\": 15,\n    \"errors\": 0,\n    \"warnings\": 24\n  },\n  \"limitations\": [\n    \"只比較明確 assertion key/value；不自動判斷任意自然語言矛盾。\",\n    \"檢查引用、artifact hash 與本地版本，不驗證論文真實性、實際命令執行或遠端最新版本。\",\n    \"Markdown 連結檢查檔案路徑，不保證所有平台的 heading anchor 語法。\"\n  ]\n}\n",
+      "stderr": ""
+    }
+  ],
+  "code_hash_checks": [
+    {
+      "path": "schemas/sound-behavior/behavior-document.schema.json",
+      "sha256": "4b8e69bd6693675834566ddec921fc9b2da21f73b40fb0dee578d1384e33ee46",
+      "matchesInitialGate": true
+    },
+    {
+      "path": "schemas/sound-behavior/sound-behavior-ai.schema.json",
+      "sha256": "4062e91170c34ab6d2536ee9e0e6ddffa85eb79ef1bfd6b6200c296c63b7f859",
+      "matchesInitialGate": true
+    },
+    {
+      "path": "schemas/sound-behavior/types.ts",
+      "sha256": "ee9782723df138c7870de01d5413e3a0e160211d0fd6b586501999b6974af561",
+      "matchesInitialGate": true
+    },
+    {
+      "path": "scripts/validation/sound-behavior.mjs",
+      "sha256": "1fc7b67c649829abda6c719559ba877feb1b727f93147851042e1e7f261d328a",
+      "matchesInitialGate": true
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-policy.mjs",
+      "sha256": "c7ec6f5a1bd6f1ca3970e36ead6151e941d6ab68b4dfc8619db0bd5a76dc0a7b",
+      "matchesInitialGate": true
+    },
+    {
+      "path": "experiments/sound-behavior-spike/physics-probe.mjs",
+      "sha256": "aa6c76da12b062d5d63840b9216f116fc764af49f3806ba5b75eb9124a7a1298",
+      "matchesInitialGate": true
+    }
+  ],
+  "command_count": 22,
+  "final_exit_codes": [
+    {
+      "command": "npm run environment:check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:agents",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:prompts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:wiki",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:design",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:sound-behaviors",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:sound-behaviors",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run smoke:sound-physics",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run smoke:dependencies",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:physics",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:datasets",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:research",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:schemas",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:docs",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:wiki",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:skills",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run validate:design",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run benchmark:muse",
+      "exitCode": 0
+    }
+  ],
+  "test_counts": {
+    "core": 32,
+    "agents": 75,
+    "prompts": 12,
+    "wiki": {
+      "pass": 53,
+      "skip": 1
+    },
+    "design": 14,
+    "sound_behavior_contracts": 21,
+    "isolated_physics_policy": 13,
+    "sound_combined": 34,
+    "rapier_sound_api": 3
+  },
+  "limits": [
+    "Draft validation/isolated spikes are not production runtime",
+    "Browser/OfflineAudioContext/hearing/performance/Meta live NOT RUN",
+    "Historical sourcehash warnings preserved; no unresolved lint errors"
+  ]
+}

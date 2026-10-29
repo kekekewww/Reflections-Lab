@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: actual capsule 20 degree ramp respects the configured 45 degree climb limit
+ok 1 - actual capsule 20 degree ramp respects the configured 45 degree climb limit
+  ---
+  duration_ms: 109.3803
+  type: 'test'
+  ...
+# Subtest: actual capsule 60 degree ramp respects the configured 45 degree climb limit
+ok 2 - actual capsule 60 degree ramp respects the configured 45 degree climb limit
+  ---
+  duration_ms: 7.8199
+  type: 'test'
+  ...
+# Subtest: actual capsule 0.7m doorway uses real radius and controller skin
+ok 3 - actual capsule 0.7m doorway uses real radius and controller skin
+  ---
+  duration_ms: 28.8402
+  type: 'test'
+  ...
+# Subtest: actual capsule 0.4m doorway uses real radius and controller skin
+ok 4 - actual capsule 0.4m doorway uses real radius and controller skin
+  ---
+  duration_ms: 21.7798
+  type: 'test'
+  ...
+# Subtest: 12m/s capped Throw with CCD cannot traverse a 0.01m wall with a 0.02m sphere
+ok 5 - 12m/s capped Throw with CCD cannot traverse a 0.01m wall with a 0.02m sphere
+  ---
+  duration_ms: 16.7317
+  type: 'test'
+  ...
+# Subtest: rotated contact uses canonical world normal and v+omega cross r (support sorts first)
+ok 6 - rotated contact uses canonical world normal and v+omega cross r (support sorts first)
+  ---
+  duration_ms: 3.6311
+  type: 'test'
+  ...
+# Subtest: rotated contact uses canonical world normal and v+omega cross r (body sorts first)
+ok 7 - rotated contact uses canonical world normal and v+omega cross r (body sorts first)
+  ---
+  duration_ms: 1.8775
+  type: 'test'
+  ...
+# Subtest: flat box multipoint impact aggregates positive manifold impulses once per pair in N s
+not ok 8 - flat box multipoint impact aggregates positive manifold impulses once per pair in N s
+  ---
+  duration_ms: 4.3521
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\tests\\physics\\v1-boundaries.test.ts:1:8836'
+  failureType: 'testCodeFailure'
+  error: 'symmetric impulse-weighted patch center x: -0.00624188492046258 vs 0'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    near (D:\Developing\Meta Hack\tests\physics\v1-boundaries.test.ts:15:76)
+    TestContext.<anonymous> (D:\Developing\Meta Hack\tests\physics\v1-boundaries.test.ts:180:7)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: simultaneous corner contacts retain separate domain pairs, normals and episodes
+ok 9 - simultaneous corner contacts retain separate domain pairs, normals and episodes
+  ---
+  duration_ms: 21.3528
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1973.8454

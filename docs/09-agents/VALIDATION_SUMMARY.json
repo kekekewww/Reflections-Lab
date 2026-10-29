@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T16:00:04.594Z",
+  "status": "PASS_OFFLINE_FOUNDATION",
+  "raw_gate": {
+    "path": "benchmarks/results/phase3-validation-20261026-final.json",
+    "sha256": "1ed81452c89ff51906c378a3e6e0ec891d4b14121d6dd0cbbc2b97f65e3b8079",
+    "commands": 19,
+    "result": "19/19 exit0"
+  },
+  "test_counts": {
+    "agent": {
+      "pass": 75,
+      "skip": 0
+    },
+    "prompt": {
+      "pass": 12,
+      "skip": 0
+    },
+    "core_and_integration": {
+      "pass": 32,
+      "skip": 0
+    },
+    "wiki": {
+      "pass": 53,
+      "skip": 1
+    },
+    "design": {
+      "pass": 14,
+      "skip": 0
+    },
+    "rapier_smoke": {
+      "pass": 6
+    },
+    "datasets": {
+      "pass": 17,
+      "skip": 1
+    }
+  },
+  "preferred_executor": "MUSE",
+  "active_executor": "CODEX",
+  "muse_resource": {
+    "status": "exhausted",
+    "remaining": 0,
+    "provenance": "USER_CONFIRMED; usage API failed earlier",
+    "model_dispatches": 0
+  },
+  "codex_resource_observation": "artifacts/phase3-codex-resource-observation.json",
+  "meta_runtime": {
+    "balance": null,
+    "live_tests": "NOT RUN",
+    "development_quota_separate": true
+  },
+  "actual_handoff": {
+    "path": "artifacts/phase3-user-zero-muse/export.json",
+    "sha256": "6034f2dcb009cea309a76bfe0445cbf19f44094873647d10f077d0f404cf4af5",
+    "run_id": "469191b9-3b56-4eb1-a94e-7db11d605f4f",
+    "muse_attempts": 0,
+    "current_codex_implementation": true,
+    "independent_acceptance": "PASS"
+  },
+  "partial_edit_handoff": {
+    "path": "artifacts/phase3-current-codex/proof.json",
+    "sha256": "53633d70678fee72238ce2670a2abb67b354121d8c6e146ca8b37bbad7f4ef35",
+    "muse_trigger": "MOCK",
+    "actual_codex_implementation": true
+  },
+  "demo": {
+    "confirmation": "artifacts/phase3-demo-confirmation-20261026/report.json",
+    "result": "8/8 PASS MOCK",
+    "initial_failure_preserved": "artifacts/phase3-demo-20261026/report.json"
+  },
+  "source_code_hashes": {
+    "prompts/README.md": "265c988c3e54ec14fcc7ad48e1ad3d231e65601789951980d5d08bee9fa0e624",
+    "prompts/muse/acoustic-solver.md": "11b05e437cf86e315b700f8818c4b2bf14d94f1e23edf2e47f4a46c2fcc37511",
+    "prompts/muse/bugfix.md": "4760e6380eea124ea835402c412d388c292702d76a1f6eccbf1673ae00d04415",
+    "prompts/muse/codex-fallback.md": "16ed3c6ae9d67b7e8b0693ed312093a5227d78debe16bdaa09c655deb96a1986",
+    "prompts/muse/handoff.md": "adfa8873ca8878e17d5c066d45bc379a78b59c3e5abcdcaf411660dc1c24006f",
+    "prompts/muse/implementation.md": "62058c9b2ba22cfa155dab0d821b3f92388321f9a9d9a090efc9055b08e65529",
+    "prompts/muse/physics-interaction.md": "cf202a0227de15bede115850a63894c7d463471d209ccb7e7358ddd74bfc8b17",
+    "prompts/muse/repair.md": "fcaf6ced4a8e0042a894dbb7da5d92e4f74181d6e88bfa96854b8b99dbfaf652",
+    "prompts/muse/ui-implementation.md": "eeb662e4fae46aa93f8e38413e53eae0fcbf3c2cff0ab8562bd63415743b0d48",
+    "prompts/render.mjs": "cbe8d1ad88866b126e31959cad8a02c21e8c8e9286bcc1e5995e53e56319235b",
+    "prompts/render.test.mjs": "bedfc2d1481e52bcc104a3794a07f7796c95ea4fd89f3f2c0e7ec04ad9ab4c22",
+    "prompts/runtime/acoustic-analysis.md": "bd5c33a86dec26086d11364b048bfeb11b1181b6c21e5fca875fa72960cec8c1",
+    "prompts/runtime/experiment-agent.md": "02a5a61d4a561eb912ab33e1324fd10ea3ae272438f4afc882d6b4ae043782b9",
+    "prompts/runtime/scene-planner.md": "dc8fdc73f4681fe9ab7175f362ba2361d00cf7ed0f063b96b2493f75198b6288",
+    "schemas/agents/handoff.schema.json": "59814ea091481b64528ffd4d6bb51138f85fcd654831613f46faf3ce53110d07",
+    "schemas/agents/implementation-result.schema.json": "e1f626608813c0511bc33a5a0d601c5a1480ff7180304ab107b01c5b0383675c",
+    "schemas/agents/repair-task.schema.json": "2bfa034e347dcfd400246d3c6dd84fd3637c155d3d6a58a6687a3be024f72410",
+    "schemas/agents/task.schema.json": "43ef54791a5fcbe1c159bdcb3eb1de98a4213a333de89cedb9e2956a88dcdc76",
+    "schemas/agents/verification-result.schema.json": "b366062dab8cb027db0eba677ab07f33ae50934f2fb52366cac3f2ae4537b976",
+    "schemas/wiki-task.schema.json": "ad17ec01278d510678edaab52fd153ef6f8447827e272cb281b2005537681fb8",
+    "scripts/agents/cancellation.mjs": "ef770d750f1541c93b890c44411d7aa61cf80bd5a5c788f11246f52e0b02db3c",
+    "scripts/agents/cli.mjs": "d8152433bf5d49b1ce1f6af4ca4ec86f6a8569ad5ee461acfbc8617d6bd5343c",
+    "scripts/agents/context-pack.mjs": "316686fed91dd35875662c9ec362dc8ea4ed8f94802522b7b68cde1a1086f133",
+    "scripts/agents/contract.mjs": "dc12b921d009b05a4bbeb1c2741a11437bcb8a7b30f2431ab56f9c3c09202911",
+    "scripts/agents/demo.mjs": "780852557a16e966a357fbcb37629da3430998532a6afccfad1c5ca1e8bf4c54",
+    "scripts/agents/engine.mjs": "9d809b08e02247216cc1a62c3bd725e3f05bdf2b7e8446b917070933b0370ae8",
+    "scripts/agents/failure-policy.mjs": "83bde5806a54c48fcabe66d0f3939a776cdeccb09ae474641844f5e85844f9d2",
+    "scripts/agents/milestone.mjs": "3b9fe3ae9804af918470f0e8bf609dfdfac2356c2398a37e89b02c5582aa904d",
+    "scripts/agents/mock-executor.mjs": "de2b5c54acb7ca6ad51638d8b815c6375984be570ee933b04188451df399a136",
+    "scripts/agents/muse-adapter.mjs": "a2ee58e10612a9fcffa2e47b9eb9d3697395bbdc2ac0429ae9180fd1c428299c",
+    "scripts/agents/process-runner.mjs": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+    "scripts/agents/resources.mjs": "88c2ba59f495fb01ba823cf9e4b1e03abe30c6a84d3e86797001f344c9944ac5",
+    "scripts/agents/store.mjs": "e0e608c50023976cae3b508357923b1ac14dfe4fd04676eb9d223d96ed788f28",
+    "scripts/validation/run-all.mjs": "ec54982266d1ce084144166520b7c29b1f9cedac8e8b00e997ce2d02ee20f7d2",
+    "scripts/validation/schemas.mjs": "0136c375edce20ec0902e272eb40c3bcf2c6c010242316e19af7654f9d85451a",
+    "scripts/validation/validation-output.mjs": "e097cb10dbf171f2f9c02c978802502edf18c6c03e1d7df7c21eef8551c7ee36",
+    "scripts/wiki/agent-projection.mjs": "faf8ed9669ff17b575d8b15ae5375bceba24e774978659274df31598b5eb8ef4",
+    "scripts/wiki/core.mjs": "21219bc73bd7536ff410a2240cd11b028caed645ae9f1748bb587f0336a93246",
+    "tests/agents/artifacts.test.mjs": "b33f30d4d7dbbd72eba4d489dfd1429c8e8c04f67dce4cbc94f21386f052784c",
+    "tests/agents/cli.test.mjs": "d989878273c8ccf49bf5af558c6a356fc8e0df81f7a526eacc9398d698ba60d4",
+    "tests/agents/context-pack.test.mjs": "c2bcf66a382386f1c5891beb6652f710be4f8dcd4919bfba3e805eb5b66b5b9b",
+    "tests/agents/contract.test.mjs": "99a2cea98902db3e3c32b4bd0ad9625a2bc0f257da21f30ba5e09b67dc04d210",
+    "tests/agents/failure-policy.test.mjs": "cd624a22c8dcc55347a2e1acd3a18c042726f419b49e78f21f1a0b83e831e0c4",
+    "tests/agents/fixtures/child-process.mjs": "6127a01de0cfd1253d553b5a196de3d92a647c68216f163ed8a365ca3ac5ce79",
+    "tests/agents/harness.test.mjs": "8e33a343154d208c44bc1c88c17ac4eed85463adc9999447d4b307bed09051db",
+    "tests/agents/process-runner.test.mjs": "8ee7480714ca2e87f3781cf94a665da9ce48c96246c1886ae9f84e0242891acf"
+  },
+  "git": {
+    "initial_snapshot_commit": "038d83d8d42bdf1174f131cd98d2c563ced0c031",
+    "branch": "codex/phase3-agent-failover",
+    "remote_pushed": false,
+    "eol_byte_check": "artifacts/phase3-git-byte-check.json"
+  },
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "scope": "official docs/version/help reviewed, unknown account fields explicit"
+    },
+    "B": {
+      "status": "PARTIAL",
+      "scope": "real Muse echo and Mock headless; real Muse model BLOCKED zero quota"
+    },
+    "C": {
+      "status": "PARTIAL",
+      "scope": "validated contracts and real Mock exchange; true Muse implementation/result NOT RUN"
+    },
+    "D": {
+      "status": "PASS",
+      "scope": "protected independent Node acceptance, actual Codex fixture, separate code review; no product E2E claim"
+    },
+    "E": {
+      "status": "PASS",
+      "scope": "bounded repair/retry and failure fixtures"
+    },
+    "F": {
+      "status": "PARTIAL",
+      "scope": "workspace locks/path/secret guards/Git snapshots PASS; live descendant containment BLOCKED"
+    },
+    "G": {
+      "status": "PASS",
+      "scope": "runtime schema/prompt/test foundation only; live product integration NOT RUN"
+    },
+    "H": {
+      "status": "PASS",
+      "scope": "CLI sources/task projection/checkpoint/handoff/Now maintained; finalclose recorded"
+    },
+    "I": {
+      "status": "PASS",
+      "scope": "fresh receiver checked state/evidence and completed resume no-op; no Muse dispatch"
+    }
+  },
+  "limitations": [
+    "No Muse/Meta model inference or live quota-stop wire validation",
+    "Live descendant containment is not proven; old writer cannot be assumed stopped",
+    "Independent Codex process, retained Muse SDK/session resume, nonzero cost ceiling and remote CI NOT RUN",
+    "Workspace snapshot rejects node_modules and has size/count limits",
+    "Latest scoped handoff must be explicitly selected in future contract relevant_files",
+    "Product runtime/UI/browser/audio integration NOT RUN",
+    "Before initial snapshot Git had no HEAD; historical null revisions remain correct"
+  ],
+  "fresh_receipt": {
+    "path": "artifacts/phase3-fresh-handoff-receipt.json",
+    "sha256": "4cd507994d3304fcf4a8127a24855f19ed621bee82ea21e9f5af0ad2096b4833",
+    "result": "PASS"
+  },
+  "project_skills_validation": {
+    "path": "artifacts/phase3-project-skill-validation.txt",
+    "result": "15 official format PASS; 8 upstream pinned bytes separately"
+  },
+  "completed_at_taipei_date": "2026-10-27"
+}

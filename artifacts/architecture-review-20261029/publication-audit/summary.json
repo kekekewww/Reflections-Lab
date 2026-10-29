@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-29T05:34:12.518056+00:00",
+  "baseline": "c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+  "status": {
+    "original_full_history_public_push": "BLOCKED",
+    "clean_public_snapshot": "USER_AUTHORIZED_NOT_YET_VALIDATED_OR_PUSHED",
+    "independent_original_raw_receipt_verification": "PARTIAL",
+    "known_candidate_classification": "RECHECKED_99_OF_99"
+  },
+  "full_scan_receipt_scope": {
+    "completed_runs_reported": 2,
+    "commands": [
+      "node scripts/validation/publication-audit.mjs --ref c210ca882ca8503b322c28884bf1e9f6e9fe126d",
+      "node scripts/validation/publication-audit.mjs --ref c210ca882ca8503b322c28884bf1e9f6e9fe126d --progress"
+    ],
+    "commit_count": 13,
+    "reachable_objects": 8774,
+    "unique_blobs": 6758,
+    "blob_bytes": 2579720986,
+    "scan_input_bytes": 8571358844,
+    "archive_members": 2891,
+    "binary_payloads_skipped": 2329,
+    "errors": [],
+    "raw_scanner_stdout_json_persisted": false,
+    "receipt_kind": "Later transcription of actual completed tool summaries; not original raw JSON",
+    "execution_timestamps_and_execution_version_hashes": "Not captured; null in per-run receipts"
+  },
+  "targeted_candidate_recheck": {
+    "git_blobs_read": 102,
+    "git_blob_bytes_read": 464583578,
+    "candidate_count": 99,
+    "rule_counts": {
+      "url-password": 20,
+      "meta-token": 58,
+      "literal-secret-assignment": 21
+    },
+    "counts_match_original_tool_receipts": true,
+    "confirmed_real_credentials": 0,
+    "full_scan_rerun": false
+  },
+  "redaction_method": "Retain path, rule, Git blob SHA, byte offset, match length and SHA-256 only; never record candidate values. Test titles and classification booleans do not contain candidate values.",
+  "rights_review_scope": "Later metadata record of independent read-only review; see rights-review.json for commands, source hashes and limitations.",
+  "current_scanner_sha256": "5bf634aa4d3e0b886837c4b22dcac52b2035371aeb74be9baba337f83b09e699",
+  "report_canonical_sha256": "3601bfa7554aa8a76cb0df2ebf2fb7bbef9b7827f676da3fa825b4894ed99838",
+  "files": [
+    {
+      "path": "artifacts/architecture-review-20261029/publication-audit/full-scan-run-1-tool-receipt.json",
+      "bytes": 1579,
+      "sha256": "022f3970fc34dc8a14f35e7cfb783287c201c8e2f81d9cedeeee6b51131b316e"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication-audit/full-scan-run-2-tool-receipt.json",
+      "bytes": 1590,
+      "sha256": "855342eead348f2f0ee5cdb390ce0312c3015f95e059b9e1b706e9b0e1719d45"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication-audit/candidate-classification.json",
+      "bytes": 58992,
+      "sha256": "f26b4bad6a7be019e8b88462d0ad2ef454bd8eed6ebec7e83176baf572c5a692"
+    },
+    {
+      "path": "artifacts/architecture-review-20261029/publication-audit/rights-review.json",
+      "bytes": 8123,
+      "sha256": "2a8eb76d7a54394c3e46df94d25927a11022856ee72437b6757e97871e164f61"
+    }
+  ],
+  "recommendation": "Keep original history and local evidence; do not rerun the large original history solely to approve a separate clean snapshot. Verify that the actual public ref has no original ancestors, audit its exact allowlist, run fresh-clone checks, and save complete redacted JSON from a full scan of that actual public ref.",
+  "pending": [
+    "Root supplies final research HEAD for --since supplemental scan.",
+    "Root completes product repeat before any further full scan.",
+    "The actual clean public snapshot HEAD requires its own full scan with original raw redacted stdout persisted.",
+    "No push was performed by this auditor."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "runnerPid": 45304,
+  "previewPid": 8164,
+  "playwrightPid": 74688,
+  "previewCommand": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vite/bin/vite.js",
+    "preview",
+    "--outDir",
+    "test-results/product-preview-dist",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "5190",
+    "--strictPort"
+  ],
+  "testCommand": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "tests/browser/product-e2e.config.ts",
+    "--global-timeout",
+    "240000",
+    "--grep",
+    "__launcher_cleanup_probe_no_cases__"
+  ],
+  "cleanup": [
+    {
+      "label": "playwright",
+      "pid": 74688,
+      "alreadyExited": true
+    },
+    {
+      "label": "preview",
+      "pid": 8164,
+      "exited": true,
+      "exitCode": null,
+      "signalCode": "SIGTERM"
+    }
+  ],
+  "nativeLaunchedPids": [],
+  "treeAudit": {
+    "checkedAt": "2026-10-27T02:40:33.0817962Z",
+    "remaining": [],
+    "roots": [
+      8164,
+      74688
+    ],
+    "status": "PASS_ZERO_REMAINING"
+  }
+}

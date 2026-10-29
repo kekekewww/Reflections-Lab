@@ -1,0 +1,326 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/browser/product-refined-v3.config.ts",
+      "--global-timeout",
+      "480000"
+    ],
+    "configFile": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-refined-v3.config.ts",
+    "rootDir": "C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 480000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta Hack/test-results/product-e2e/cases",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/kevin/.codex/worktrees/architecture-review-20261029/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "product-e2e-refined-v3.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\test-results\\product-e2e\\cases",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser",
+        "snapshotDir": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "product-e2e-refined-v3.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5190",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": []
+          },
+          "browserName": "chromium",
+          "channel": "chrome",
+          "video": "off"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\test-results\\product-e2e\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "product-e2e-refined-v3.spec.ts",
+      "file": "product-e2e-refined-v3.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "clean launch 1: actual throw/impact/native audio/capture/acoustic B and durable reload/replay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18903,
+                  "error": {
+                    "message": "Error: Explicit capture recovery budget exhausted (8)",
+                    "stack": "Error: Explicit capture recovery budget exhausted (8)\n    at recoverCapture (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:367:37)\n    at captureWait (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:511:5)\n    at productChain (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:676:5)",
+                    "location": {
+                      "file": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts",
+                      "column": 37,
+                      "line": 367
+                    },
+                    "snippet": "  365 |       `Unexpected capture stop at ${phase}: ${JSON.stringify(transportStamp(before))}`,\n  366 |     );\n> 367 |   if (recoveries.length >= 8) throw new Error(\"Explicit capture recovery budget exhausted (8)\");\n      |                                     ^\n  368 |   await page.getByRole(\"button\", { name: /^(開始運算|繼續運算)$/ }).click({ timeout: 3000 });\n  369 |   const after = await page.evaluate(() => window.__reflectionLab!.getSnapshot());\n  370 |   recoveries.push({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts",
+                        "column": 37,
+                        "line": 367
+                      },
+                      "message": "Error: Explicit capture recovery budget exhausted (8)\n\n  365 |       `Unexpected capture stop at ${phase}: ${JSON.stringify(transportStamp(before))}`,\n  366 |     );\n> 367 |   if (recoveries.length >= 8) throw new Error(\"Explicit capture recovery budget exhausted (8)\");\n      |                                     ^\n  368 |   await page.getByRole(\"button\", { name: /^(開始運算|繼續運算)$/ }).click({ timeout: 3000 });\n  369 |   const after = await page.evaluate(() => window.__reflectionLab!.getSnapshot());\n  370 |   recoveries.push({\n    at recoverCapture (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:367:37)\n    at captureWait (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:511:5)\n    at productChain (C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts:676:5)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launching> C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\kevin\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-jIWyNl --remote-debugging-pipe --no-startup-window \u001b[30m+0ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launched> pid=85584 \u001b[30m+17ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=85584] <gracefully close start> \u001b[30m+20s\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=85584] <process did exit: exitCode=0, signal=null> \u001b[30m+128ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=85584] starting temporary directories cleanup \u001b[30m+1ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=85584] finished temporary directories cleanup \u001b[30m+19ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=85584] <gracefully close end> \u001b[30m+0ms\u001b[0m\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-29T05:28:51.135Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\test-results\\product-e2e\\cases\\product-e2e-refined-v3-cle-c57ad-B-and-durable-reload-replay\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\test-results\\product-e2e\\cases\\product-e2e-refined-v3-cle-c57ad-B-and-durable-reload-replay\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\kevin\\.codex\\worktrees\\architecture-review-20261029\\Meta Hack\\tests\\browser\\product-e2e-refined-v3.spec.ts",
+                    "column": 37,
+                    "line": 367
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1bace0fb0c857f519ca4-b3d0a9430b6951d51414",
+          "file": "product-e2e-refined-v3.spec.ts",
+          "line": 1121,
+          "column": 3
+        },
+        {
+          "title": "clean launch 2: actual throw/impact/native audio/capture/acoustic B and durable reload/replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23875,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launching> C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\kevin\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-yJNCpr --remote-debugging-pipe --no-startup-window \u001b[30m+0ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launched> pid=40300 \u001b[30m+9ms\u001b[0m\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-29T05:29:12.427Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bace0fb0c857f519ca4-cced8c333f47396d7c57",
+          "file": "product-e2e-refined-v3.spec.ts",
+          "line": 1121,
+          "column": 3
+        },
+        {
+          "title": "clean launch 3: actual throw/impact/native audio/capture/acoustic B and durable reload/replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21304,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T05:29:36.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bace0fb0c857f519ca4-d7c3876dbaf38354f7bb",
+          "file": "product-e2e-refined-v3.spec.ts",
+          "line": 1121,
+          "column": 3
+        },
+        {
+          "title": "a separate browser store rejects missing WAV bytes, then relinks the exact original without activating hardware",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5032,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-29T05:29:57.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bace0fb0c857f519ca4-1343cfd8a28595119d99",
+          "file": "product-e2e-refined-v3.spec.ts",
+          "line": 1126,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-29T05:28:48.689Z",
+    "duration": 74766.665,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

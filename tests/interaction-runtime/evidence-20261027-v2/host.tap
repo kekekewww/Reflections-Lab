@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: actual lock confirmation gates FPS input; blur freezes ticks and clears latched movement
+ok 1 - actual lock confirmation gates FPS input; blur freezes ticks and clears latched movement
+  ---
+  duration_ms: 113.2499
+  type: 'test'
+  ...
+# Subtest: ordinary pause preserves actual lock and Held while clearing controls; explicit Resume needs no second lock event
+ok 2 - ordinary pause preserves actual lock and Held while clearing controls; explicit Resume needs no second lock event
+  ---
+  duration_ms: 17.4832
+  type: 'test'
+  ...
+# Subtest: ordinary pause preserves alternative input and the exact uncommitted ghost without activating it
+ok 3 - ordinary pause preserves alternative input and the exact uncommitted ghost without activating it
+  ---
+  duration_ms: 1.6238
+  type: 'test'
+  ...
+# Subtest: explicit alternative input enables real FPS controls without claiming browser lock or auto-resuming
+ok 4 - explicit alternative input enables real FPS controls without claiming browser lock or auto-resuming
+  ---
+  duration_ms: 5.3736
+  type: 'test'
+  ...
+# Subtest: alternative input keeps Held on blur and blocks held keys until a fresh release after explicit Resume
+ok 5 - alternative input keeps Held on blur and blocks held keys until a fresh release after explicit Resume
+  ---
+  duration_ms: 3.9976
+  type: 'test'
+  ...
+# Subtest: E key edges grab/drop exactly once and NoGravity drop preserves current velocity
+ok 6 - E key edges grab/drop exactly once and NoGravity drop preserves current velocity
+  ---
+  duration_ms: 1.4023
+  type: 'test'
+  ...
+# Subtest: pointer-lock acquisition click cannot throw; a subsequent press emits one finite throw
+ok 7 - pointer-lock acquisition click cannot throw; a subsequent press emits one finite throw
+  ---
+  duration_ms: 1.0505
+  type: 'test'
+  ...
+# Subtest: first blocking wall prevents selecting and grabbing a dynamic body behind it
+ok 8 - first blocking wall prevents selecting and grabbing a dynamic body behind it
+  ---
+  duration_ms: 0.7163
+  type: 'test'
+  ...
+# Subtest: Held freeze preserves the same body; resume is explicit and build switching is rejected
+ok 9 - Held freeze preserves the same body; resume is explicit and build switching is rejected
+  ---
+  duration_ms: 1.5233
+  type: 'test'
+  ...
+# Subtest: rotating Held body does not rotate the camera and produces normalized finite targets
+ok 10 - rotating Held body does not rotate the camera and produces normalized finite targets
+  ---
+  duration_ms: 2.2716
+  type: 'test'
+  ...
+# Subtest: resume rejects a saved Held generation after collider geometry was rebuilt
+ok 11 - resume rejects a saved Held generation after collider geometry was rebuilt
+  ---
+  duration_ms: 2.0695
+  type: 'test'
+  ...
+# Subtest: Build commits one disabled fixed staged body and requires matching geometry acknowledgement before enable
+ok 12 - Build commits one disabled fixed staged body and requires matching geometry acknowledgement before enable
+  ---
+  duration_ms: 4.458
+  type: 'test'
+  ...
+# Subtest: invalid player-overlapping ghost cannot mutate the scene, and cancel affects only preview
+ok 13 - invalid player-overlapping ghost cannot mutate the scene, and cancel affects only preview
+  ---
+  duration_ms: 2.1478
+  type: 'test'
+  ...
+# Subtest: pending placement rejects duplicate input; stale geometry acknowledgement cannot enable a staged body
+ok 14 - pending placement rejects duplicate input; stale geometry acknowledgement cannot enable a staged body
+  ---
+  duration_ms: 1.4498
+  type: 'test'
+  ...
+# Subtest: pending placement cannot be canceled halfway; a completed staged cancel removes exactly one disabled body
+ok 15 - pending placement cannot be canceled halfway; a completed staged cancel removes exactly one disabled body
+  ---
+  duration_ms: 1011.2041
+  type: 'test'
+  ...
+# Subtest: Freeze Held clears the saved lease and Unlock restores its exact prior gravity mode before explicit Resume
+ok 16 - Freeze Held clears the saved lease and Unlock restores its exact prior gravity mode before explicit Resume
+  ---
+  duration_ms: 4.3824
+  type: 'test'
+  ...
+# Subtest: Unlock cannot reuse a previous body's gravity mode after the same stable ID is removed and rebuilt
+ok 17 - Unlock cannot reuse a previous body's gravity mode after the same stable ID is removed and rebuilt
+  ---
+  duration_ms: 2.0514
+  type: 'test'
+  ...
+# Subtest: a key pressed while inactive must be released before it can become a fresh action after Resume
+ok 18 - a key pressed while inactive must be released before it can become a fresh action after Resume
+  ---
+  duration_ms: 0.6019
+  type: 'test'
+  ...
+# Subtest: physical keys held through suspension cannot resume movement or drop the saved Held body
+ok 19 - physical keys held through suspension cannot resume movement or drop the saved Held body
+  ---
+  duration_ms: 6.4263
+  type: 'test'
+  ...
+# Subtest: a failed asynchronous geometry acknowledgement keeps one disabled staged object and remains recoverable
+ok 20 - a failed asynchronous geometry acknowledgement keeps one disabled staged object and remains recoverable
+  ---
+  duration_ms: 1.874
+  type: 'test'
+  ...
+# Subtest: an injected physics Resume failure leaves the host suspended and the real world paused
+ok 21 - an injected physics Resume failure leaves the host suspended and the real world paused
+  ---
+  duration_ms: 0.7605
+  type: 'test'
+  ...
+# Subtest: a removed Gentle Place support cancels the pending placement without silently dropping Held
+ok 22 - a removed Gentle Place support cancels the pending placement without silently dropping Held
+  ---
+  duration_ms: 60.0897
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1737.4526

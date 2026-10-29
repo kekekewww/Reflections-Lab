@@ -1,0 +1,1711 @@
+{
+  "requestedEngines": [
+    "firefox",
+    "webkit"
+  ],
+  "expectedChecks": 50,
+  "passedChecks": 8,
+  "status": "FAIL",
+  "exitCode": 1,
+  "createdAt": "2026-10-27T05:37:40.936Z",
+  "browserLaunched": true,
+  "runnerError": null,
+  "interrupted": false,
+  "sourceStable": true,
+  "sourcesBefore": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "dedfed098eb37e4e4d82dcc76450c3c33fdd3edc8b0b1baaa2db56fa413f4e12",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "0b6c537253ce24a127a36c5d75285926f3a8b806398b9ef13f88d696ec1655a7",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "d0e89221fe136f517d8d4d56bde8f87b17831e71f6c015c8b4fff90d2604618a",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "cc119673e216953d591ef4a7d8d8f6772c70179ca4c6c250a1129251dca7fd58",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "sourcesAfter": {
+    "node_modules/playwright-core/browsers.json": "2cfd419f71ac6475d81e1301fa86c34cf2a2a6bae2a0da4b5a2b18310216b6bf",
+    "package-lock.json": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+    "src/audio/assets.ts": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+    "src/audio/band-filter.ts": "dedfed098eb37e4e4d82dcc76450c3c33fdd3edc8b0b1baaa2db56fa413f4e12",
+    "src/audio/control.ts": "4cf55ecbf59091a0193122c0b3c44e264b3d865f68f4896844923ca103c31b92",
+    "src/audio/engine.ts": "0b6c537253ce24a127a36c5d75285926f3a8b806398b9ef13f88d696ec1655a7",
+    "src/audio/index.ts": "de41f9ab8a5f5ef9758a4c892982add9013365c9af07ae37a542c6db7b935571",
+    "src/audio/late-reverb.ts": "2e8836bc47f575b200b1a6f6d61ca1e84be99ea18266c91625a4de2503e80209",
+    "src/audio/routes.ts": "d0e89221fe136f517d8d4d56bde8f87b17831e71f6c015c8b4fff90d2604618a",
+    "src/audio/types.ts": "b0b063eb80af5c415345a29eba584d03a8ce56bacb0bbc3f30f2f2f511ccbcbc",
+    "src/audio/wav.ts": "68f4a2942e09dceacfa6d63482c2d77b27b4e9b993073931e30c1e7dc109742b",
+    "tests/audio-runtime/CROSS_ENGINE.md": "cc119673e216953d591ef4a7d8d8f6772c70179ca4c6c250a1129251dca7fd58",
+    "tests/audio-runtime/browser.ts": "949b3ededc3dc4f543d779285d868a9d1207ada824a76b8b8ebffabc4a1c5bdd",
+    "tests/audio-runtime/cross-engine-harness.ts": "627edf27b551f08a5e5c0dd75f46fd530a46a089062bdfe6d37bbd5195d4c79e",
+    "tests/audio-runtime/cross-engine-report.mjs": "6ba1caca4eef9b17c2b337de696c41f8328655c2f3ba553e0d9e8d5b3a827c93",
+    "tests/audio-runtime/cross-engine-runner.test.mjs": "fbf5d721125c37b4bff0c640eb1ae89fb765c53216bb687892cadf18d124070a",
+    "tests/audio-runtime/cross-engine.config.mjs": "5af844cc3f0c439377bc05076beccdd6551b1dfc235bcdb0d66077c200da927e",
+    "tests/audio-runtime/native-continuity.ts": "7d62888ced978bee38febf86a60c3cb6cfacd476d3df189bf7e7f7f1588488de",
+    "tests/audio-runtime/native-pause.ts": "a27a6f7f6d6f9a5561aa78cb7a8fc9ffa983ad304c67fd1d07b64d6f8b992155",
+    "tests/audio-runtime/native-restore.ts": "73769ee5880b4ee2e2dee6c9504e55b69afb86bff090598572be373e856d6e30",
+    "tests/audio-runtime/native-reverb.ts": "bb25147b6bc0aacb4cdd1c1172dcfd4cdfe05ec2824888a7c91e9e5f49079e72",
+    "tests/audio-runtime/native-wave.ts": "2ee97cd90a2a8e3a3b44b7f2e293ffbcac1c6380bf1027b090c3303b5b0277a9",
+    "tests/audio-runtime/run-cross-engine.mjs": "ee1c4347feb6916f30efc985d52584dc664ed28e7b4d798c5fc6b8994d14bbbc"
+  },
+  "engines": [
+    {
+      "engine": "firefox",
+      "cache": {
+        "engine": "firefox",
+        "executablePath": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\firefox-1555\\firefox\\firefox.exe",
+        "executableExists": true,
+        "manifestRevision": "1555",
+        "manifestVersion": "157.0"
+      },
+      "actualVersion": "157.0",
+      "suites": [
+        {
+          "suite": "baseline",
+          "module": "/tests/audio-runtime/browser.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.25066666666666665
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.30133333333333334
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.3333333333333333
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.25066666666666665,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.30133333333333334,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.3333333333333333,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "FAIL",
+            "checks": [
+              {
+                "id": "native-delay-arrivals-once",
+                "pass": true,
+                "evidence": {
+                  "direct": {
+                    "sample": 4080,
+                    "amplitude": 0.3535533845424652
+                  },
+                  "reflection": {
+                    "sample": 6480,
+                    "amplitude": 0.17673353850841522
+                  },
+                  "expectedDirect": 4080,
+                  "expectedReflection": 6480,
+                  "sampleRate": 48000
+                }
+              },
+              {
+                "id": "native-pressure-gain-once-and-no-convolver-normalization",
+                "pass": false,
+                "evidence": {
+                  "actualEnergy": 0.31246948243551215,
+                  "expectedEnergy": 0.3125,
+                  "directPeak": 0.3535533845424652,
+                  "expectedCenteredChannelPeak": 0.3535533905932738
+                }
+              },
+              {
+                "id": "native-dispose-resource-accounting",
+                "pass": true,
+                "evidence": {
+                  "telemetry": {
+                    "enabled": false,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 0,
+                    "activeSources": 0,
+                    "cachedSourceFrames": 0,
+                    "activePaths": 0,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-continuous-generator-survives-parameter-and-impact-updates",
+                "pass": true,
+                "evidence": {
+                  "generatorsBeforeImpact": 1,
+                  "generatorsCreated": 2,
+                  "tailEnergy": 15.0865852364826
+                }
+              },
+              {
+                "id": "native-independent-voice-path-and-decoded-memory-budgets",
+                "pass": true,
+                "evidence": {
+                  "low": {
+                    "accepted": true
+                  },
+                  "high": {
+                    "accepted": true
+                  },
+                  "rejected": {
+                    "accepted": false,
+                    "reason": "VOICE_PRIORITY_BUDGET"
+                  },
+                  "stolen": {
+                    "accepted": true,
+                    "stolenInstanceId": "low"
+                  },
+                  "memoryRejected": true,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 1,
+                    "activeVoices": 2,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 3,
+                    "retiringVoices": 1,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 1,
+                    "stolenVoices": 1,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "suspended",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": "VOICE_PRIORITY_BUDGET",
+                    "budget": {
+                      "maxVoices": 2,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 1,
+                      "maxTotalPaths": 3,
+                      "maxDecodedBytes": 4096,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "native-bounded-burst-finite-output",
+                "pass": true,
+                "evidence": {
+                  "energy": 2990.6704913701737
+                }
+              },
+              {
+                "id": "native-hrtf-renders-finite-nonzero-output",
+                "pass": true,
+                "evidence": {
+                  "energy": 17.01854426102853,
+                  "telemetry": {
+                    "enabled": true,
+                    "muted": false,
+                    "paused": false,
+                    "monitorMode": "simulated",
+                    "monitorGain": 0.5,
+                    "activeVoices": 1,
+                    "activeSources": 1,
+                    "cachedSourceFrames": 1,
+                    "activePaths": 1,
+                    "retiringVoices": 0,
+                    "pendingVoices": 0,
+                    "frozenVoices": 0,
+                    "frozenArrivals": 0,
+                    "draining": false,
+                    "droppedVoices": 0,
+                    "stolenVoices": 0,
+                    "droppedPaths": 0,
+                    "staleFrames": 0,
+                    "lateEvents": 0,
+                    "decodedBytes": 0,
+                    "assetCount": 0,
+                    "sampleRate": 48000,
+                    "contextState": "closed",
+                    "baseLatencySeconds": null,
+                    "outputLatencySeconds": null,
+                    "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                    "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                    "maximumBandFilterGroupDelaySeconds": 0,
+                    "nativeHrtfAndLimiterLatencySeconds": null,
+                    "pauseBoundaryAudioSeconds": null,
+                    "pauseClockSkewSeconds": null,
+                    "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                    "lastError": null,
+                    "budget": {
+                      "maxVoices": 24,
+                      "maxSources": 32,
+                      "maxSourceFrames": 64,
+                      "maxPathsPerVoice": 8,
+                      "maxTotalPaths": 96,
+                      "maxDecodedBytes": 67108864,
+                      "maxAssetDurationSeconds": 120,
+                      "maxAssetChannels": 2,
+                      "maxPendingEvents": 256,
+                      "maxAssets": 64,
+                      "maxConcurrentDecodes": 2,
+                      "maxLateSends": 16,
+                      "maxLateReverbBytes": 4194304
+                    },
+                    "lateReverb": {
+                      "enabled": false,
+                      "decaySeconds": 1.2,
+                      "wetGain": 0.15,
+                      "seed": 1,
+                      "model": "Synthetic/perceptual approximation",
+                      "irIncludesDirect": false,
+                      "convolverNormalize": false,
+                      "irEnergyNormalization": "explicit unit energy",
+                      "decodedBytes": 0,
+                      "activeSends": 0,
+                      "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                    }
+                  },
+                  "scope": "Native render sanity only, not calibrated HRTF/hearing validation"
+                }
+              }
+            ],
+            "limitations": [
+              "No hearing/headphone/device-latency certification",
+              "HRTF/limiter native algorithmic latency is not inferred from d/c",
+              "Finite fixtures do not establish maximum real-time voice capacity",
+              "Native pause boundary has a 20ms fade target and is separate from the logical physics tick"
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "error": null,
+          "status": "FAIL",
+          "classification": "ORIGINAL_THRESHOLD_FAILURE",
+          "cases": [
+            {
+              "id": "native-delay-arrivals-once",
+              "status": "PASS",
+              "evidence": {
+                "direct": {
+                  "sample": 4080,
+                  "amplitude": 0.3535533845424652
+                },
+                "reflection": {
+                  "sample": 6480,
+                  "amplitude": 0.17673353850841522
+                },
+                "expectedDirect": 4080,
+                "expectedReflection": 6480,
+                "sampleRate": 48000
+              }
+            },
+            {
+              "id": "native-pressure-gain-once-and-no-convolver-normalization",
+              "status": "FAIL",
+              "evidence": {
+                "actualEnergy": 0.31246948243551215,
+                "expectedEnergy": 0.3125,
+                "directPeak": 0.3535533845424652,
+                "expectedCenteredChannelPeak": 0.3535533905932738
+              }
+            },
+            {
+              "id": "native-dispose-resource-accounting",
+              "status": "PASS",
+              "evidence": {
+                "telemetry": {
+                  "enabled": false,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 0,
+                  "activeSources": 0,
+                  "cachedSourceFrames": 0,
+                  "activePaths": 0,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-continuous-generator-survives-parameter-and-impact-updates",
+              "status": "PASS",
+              "evidence": {
+                "generatorsBeforeImpact": 1,
+                "generatorsCreated": 2,
+                "tailEnergy": 15.0865852364826
+              }
+            },
+            {
+              "id": "native-independent-voice-path-and-decoded-memory-budgets",
+              "status": "PASS",
+              "evidence": {
+                "low": {
+                  "accepted": true
+                },
+                "high": {
+                  "accepted": true
+                },
+                "rejected": {
+                  "accepted": false,
+                  "reason": "VOICE_PRIORITY_BUDGET"
+                },
+                "stolen": {
+                  "accepted": true,
+                  "stolenInstanceId": "low"
+                },
+                "memoryRejected": true,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 1,
+                  "activeVoices": 2,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 3,
+                  "retiringVoices": 1,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 1,
+                  "stolenVoices": 1,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "suspended",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": "VOICE_PRIORITY_BUDGET",
+                  "budget": {
+                    "maxVoices": 2,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 1,
+                    "maxTotalPaths": 3,
+                    "maxDecodedBytes": 4096,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                }
+              }
+            },
+            {
+              "id": "native-bounded-burst-finite-output",
+              "status": "PASS",
+              "evidence": {
+                "energy": 2990.6704913701737
+              }
+            },
+            {
+              "id": "native-hrtf-renders-finite-nonzero-output",
+              "status": "PASS",
+              "evidence": {
+                "energy": 17.01854426102853,
+                "telemetry": {
+                  "enabled": true,
+                  "muted": false,
+                  "paused": false,
+                  "monitorMode": "simulated",
+                  "monitorGain": 0.5,
+                  "activeVoices": 1,
+                  "activeSources": 1,
+                  "cachedSourceFrames": 1,
+                  "activePaths": 1,
+                  "retiringVoices": 0,
+                  "pendingVoices": 0,
+                  "frozenVoices": 0,
+                  "frozenArrivals": 0,
+                  "draining": false,
+                  "droppedVoices": 0,
+                  "stolenVoices": 0,
+                  "droppedPaths": 0,
+                  "staleFrames": 0,
+                  "lateEvents": 0,
+                  "decodedBytes": 0,
+                  "assetCount": 0,
+                  "sampleRate": 48000,
+                  "contextState": "closed",
+                  "baseLatencySeconds": null,
+                  "outputLatencySeconds": null,
+                  "propagationDelayResponsibility": "AcousticFrame.absoluteDelayS once",
+                  "bandFilterModel": "uniformGainOrWindowedFrequencySamplingApproximation",
+                  "maximumBandFilterGroupDelaySeconds": 0,
+                  "nativeHrtfAndLimiterLatencySeconds": null,
+                  "pauseBoundaryAudioSeconds": null,
+                  "pauseClockSkewSeconds": null,
+                  "pauseArrivalPolicy": "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters",
+                  "lastError": null,
+                  "budget": {
+                    "maxVoices": 24,
+                    "maxSources": 32,
+                    "maxSourceFrames": 64,
+                    "maxPathsPerVoice": 8,
+                    "maxTotalPaths": 96,
+                    "maxDecodedBytes": 67108864,
+                    "maxAssetDurationSeconds": 120,
+                    "maxAssetChannels": 2,
+                    "maxPendingEvents": 256,
+                    "maxAssets": 64,
+                    "maxConcurrentDecodes": 2,
+                    "maxLateSends": 16,
+                    "maxLateReverbBytes": 4194304
+                  },
+                  "lateReverb": {
+                    "enabled": false,
+                    "decaySeconds": 1.2,
+                    "wetGain": 0.15,
+                    "seed": 1,
+                    "model": "Synthetic/perceptual approximation",
+                    "irIncludesDirect": false,
+                    "convolverNormalize": false,
+                    "irEnergyNormalization": "explicit unit energy",
+                    "decodedBytes": 0,
+                    "activeSends": 0,
+                    "sendResponsibility": "earliest valid solver path delay/bands/HRTF once"
+                  }
+                },
+                "scope": "Native render sanity only, not calibrated HRTF/hearing validation"
+              }
+            }
+          ]
+        },
+        {
+          "suite": "pause",
+          "module": "/tests/audio-runtime/native-pause.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-ended-emission-unarrived-impulse-restored-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-heard-impact-not-reemitted",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-future-emission-rescheduled-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-sample-cursor-preserved-across-pause",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-oscillator-cursor-preserved-across-pause",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-paused-run-keeps-device-clock-running",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "late",
+          "module": "/tests/audio-runtime/native-reverb.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-synthetic-late-IR-explicit-unit-energy-no-auto-normalization",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-late-tail-starts-after-real-solver-path-and-30ms-synthetic-onset",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-late-bank-crossfade-bounded-finite-and-source-preserving",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-original-WAV-import-real-decode-and-trusted-hash-playback",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "continuity",
+          "module": "/tests/audio-runtime/native-continuity.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-delayed-path-birth-and-death-follow-audio-clock-fades",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "restore",
+          "module": "/tests/audio-runtime/native-restore.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-seek-restores-authored-offset-once-and-existing-propagation-pipeline",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-seek-ended-heard-impact-stays-heard",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-seek-ended-unarrived-impact-arrives-once",
+              "status": "NOT_RUN_AGGREGATE_DEPENDENCY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-capture-source-cursor-integrates-authored-pitch-ramp",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-pause-captured-cursor-restores-without-fade-age-inflation",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineSuspend. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "wave",
+          "module": "/tests/audio-runtime/native-wave.ts",
+          "capabilities": {
+            "offlineAudioContext": true,
+            "audioContext": true,
+            "nativeNodes": true,
+            "offlineSuspend": false,
+            "offlineResume": true,
+            "periodicWave": true,
+            "decodeAudioData": true,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": true,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "diagnostics": {
+            "operations": [
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 8
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 16
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 24
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 32
+                },
+                "endTime": 0
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 3,
+                  "channels": 1,
+                  "sampleRate": 48000,
+                  "bits": 32
+                },
+                "endTime": 0
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 1
+              },
+              {
+                "method": "decodeAudioData",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "wave": {
+                  "format": 1,
+                  "channels": 1,
+                  "sampleRate": 8000,
+                  "bits": 16
+                },
+                "endTime": 0
+              },
+              {
+                "method": "startRendering",
+                "context": "OfflineAudioContext",
+                "status": "fulfilled",
+                "time": 0,
+                "endTime": 0.2
+              }
+            ],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": [
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 1,
+                "sampleRate": 48000
+              },
+              {
+                "kind": "OfflineAudioContext",
+                "state": "closed",
+                "currentTime": 0.2,
+                "sampleRate": 48000
+              }
+            ]
+          },
+          "raw": {
+            "status": "PASS",
+            "checks": [
+              {
+                "id": "native-supported-PCM8-16-24-32-and-normalized-float32-WAV-decode",
+                "pass": true,
+                "evidence": {
+                  "decodeCalls": 5,
+                  "results": [
+                    {
+                      "bits": 8,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-8",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "3c7a5df23f3ee3cfb63c284b0bc8fb9070eb7615fb873be5bbf656a60a26f34d",
+                        "assetId": "wav-pcm-8",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 16,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-16",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                        "assetId": "wav-pcm-16",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 24,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-24",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "aa8d51ef95f0b947253385c62d0591b29fc6b9b831ec702087d206348fd5de04",
+                        "assetId": "wav-pcm-24",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 32,
+                      "float": false,
+                      "asset": {
+                        "name": "wav-pcm-32",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "916f715ed3062517b128c370b6c7727890a1aacc23fc700f3e3ab09d0940714a",
+                        "assetId": "wav-pcm-32",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    },
+                    {
+                      "bits": 32,
+                      "float": true,
+                      "asset": {
+                        "name": "wav-float-32",
+                        "origin": "imported",
+                        "license": "ORIGINAL_TEST_WAV",
+                        "sha256": "f2f49e59c3babca9c9b7fc0613567fefd398e1a39a0abdb6e5f7f51481e132c9",
+                        "assetId": "wav-float-32",
+                        "revision": 1,
+                        "durationSeconds": 0.01,
+                        "sampleRate": 48000,
+                        "channels": 1,
+                        "decodedBytes": 1920
+                      },
+                      "admission": {
+                        "accepted": true
+                      }
+                    }
+                  ],
+                  "peaks": [
+                    3840,
+                    11040,
+                    18240,
+                    25440,
+                    32640
+                  ],
+                  "expected": [
+                    3840,
+                    11040,
+                    18240,
+                    25440,
+                    32640
+                  ]
+                }
+              },
+              {
+                "id": "native-WAV-resample-reservation-and-unsupported-format-preflight",
+                "pass": true,
+                "evidence": {
+                  "resampled": {
+                    "name": "Original8kWAV",
+                    "origin": "imported",
+                    "license": "ORIGINAL_TEST_WAV",
+                    "sha256": "e75988fb5c3898c0bc032f83f7e3fa2700fd0f42425f8d96d0a06cf8d59de570",
+                    "assetId": "resampled",
+                    "revision": 1,
+                    "durationSeconds": 0.01,
+                    "sampleRate": 48000,
+                    "channels": 1,
+                    "decodedBytes": 1920
+                  },
+                  "decodeCallsBeforeRejects": 1,
+                  "decodeCallsAfterRejects": 1,
+                  "memoryCode": "DECODED_MEMORY_BUDGET",
+                  "compressedCode": "WAV_CAPABILITY_UNSUPPORTED"
+                }
+              }
+            ],
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0",
+            "limitations": [
+              "V1onlyuncompressedRIFF/WAVEPCM8/16/24/32 andnormalizedfinitefloat32; compressed/extensible formats explicitlyunsupported",
+              "Metadata/chunk/PCMreservationsboundacceptednativework; internalbrowserdecoderresidentpeaknotmeasured",
+              "No bundled third-party codec, hearing or realtime capacity certification"
+            ]
+          },
+          "error": null,
+          "status": "PASS",
+          "classification": "NATIVE_CHECKS_PASSED",
+          "cases": [
+            {
+              "id": "native-supported-PCM8-16-24-32-and-normalized-float32-WAV-decode",
+              "status": "PASS",
+              "evidence": {
+                "decodeCalls": 5,
+                "results": [
+                  {
+                    "bits": 8,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-8",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "3c7a5df23f3ee3cfb63c284b0bc8fb9070eb7615fb873be5bbf656a60a26f34d",
+                      "assetId": "wav-pcm-8",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 16,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-16",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "6584691e3d854b3e37fffc1f2b82f75d412c0a71d54c229915eb52fda57963d9",
+                      "assetId": "wav-pcm-16",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 24,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-24",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "aa8d51ef95f0b947253385c62d0591b29fc6b9b831ec702087d206348fd5de04",
+                      "assetId": "wav-pcm-24",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 32,
+                    "float": false,
+                    "asset": {
+                      "name": "wav-pcm-32",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "916f715ed3062517b128c370b6c7727890a1aacc23fc700f3e3ab09d0940714a",
+                      "assetId": "wav-pcm-32",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  },
+                  {
+                    "bits": 32,
+                    "float": true,
+                    "asset": {
+                      "name": "wav-float-32",
+                      "origin": "imported",
+                      "license": "ORIGINAL_TEST_WAV",
+                      "sha256": "f2f49e59c3babca9c9b7fc0613567fefd398e1a39a0abdb6e5f7f51481e132c9",
+                      "assetId": "wav-float-32",
+                      "revision": 1,
+                      "durationSeconds": 0.01,
+                      "sampleRate": 48000,
+                      "channels": 1,
+                      "decodedBytes": 1920
+                    },
+                    "admission": {
+                      "accepted": true
+                    }
+                  }
+                ],
+                "peaks": [
+                  3840,
+                  11040,
+                  18240,
+                  25440,
+                  32640
+                ],
+                "expected": [
+                  3840,
+                  11040,
+                  18240,
+                  25440,
+                  32640
+                ]
+              }
+            },
+            {
+              "id": "native-WAV-resample-reservation-and-unsupported-format-preflight",
+              "status": "PASS",
+              "evidence": {
+                "resampled": {
+                  "name": "Original8kWAV",
+                  "origin": "imported",
+                  "license": "ORIGINAL_TEST_WAV",
+                  "sha256": "e75988fb5c3898c0bc032f83f7e3fa2700fd0f42425f8d96d0a06cf8d59de570",
+                  "assetId": "resampled",
+                  "revision": 1,
+                  "durationSeconds": 0.01,
+                  "sampleRate": 48000,
+                  "channels": 1,
+                  "decodedBytes": 1920
+                },
+                "decodeCallsBeforeRejects": 1,
+                "decodeCallsAfterRejects": 1,
+                "memoryCode": "DECODED_MEMORY_BUDGET",
+                "compressedCode": "WAV_CAPABILITY_UNSUPPORTED"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "cache": {
+        "engine": "webkit",
+        "executablePath": "C:\\Users\\kevin\\AppData\\Local\\ms-playwright\\webkit-2370\\Playwright.exe",
+        "executableExists": true,
+        "manifestRevision": "2370",
+        "manifestVersion": "27.2"
+      },
+      "actualVersion": "27.2",
+      "suites": [
+        {
+          "suite": "baseline",
+          "module": "/tests/audio-runtime/browser.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-delay-arrivals-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-pressure-gain-once-and-no-convolver-normalization",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-dispose-resource-accounting",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-continuous-generator-survives-parameter-and-impact-updates",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-independent-voice-path-and-decoded-memory-budgets",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-bounded-burst-finite-output",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-hrtf-renders-finite-nonzero-output",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "pause",
+          "module": "/tests/audio-runtime/native-pause.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-ended-emission-unarrived-impulse-restored-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-heard-impact-not-reemitted",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-future-emission-rescheduled-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-sample-cursor-preserved-across-pause",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-oscillator-cursor-preserved-across-pause",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-paused-run-keeps-device-clock-running",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, periodicWave, audioContext. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "late",
+          "module": "/tests/audio-runtime/native-reverb.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-synthetic-late-IR-explicit-unit-energy-no-auto-normalization",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-late-tail-starts-after-real-solver-path-and-30ms-synthetic-onset",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-late-bank-crossfade-bounded-finite-and-source-preserving",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-original-WAV-import-real-decode-and-trusted-hash-playback",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "continuity",
+          "module": "/tests/audio-runtime/native-continuity.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-delayed-path-birth-and-death-follow-audio-clock-fades",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "restore",
+          "module": "/tests/audio-runtime/native-restore.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-seek-restores-authored-offset-once-and-existing-propagation-pipeline",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-seek-ended-heard-impact-stays-heard",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-seek-ended-unarrived-impact-arrives-once",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-capture-source-cursor-integrates-authored-pitch-ramp",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-pause-captured-cursor-restores-without-fade-age-inflation",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, offlineSuspend, offlineResume. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        },
+        {
+          "suite": "wave",
+          "module": "/tests/audio-runtime/native-wave.ts",
+          "capabilities": {
+            "offlineAudioContext": false,
+            "audioContext": false,
+            "nativeNodes": false,
+            "offlineSuspend": false,
+            "offlineResume": false,
+            "periodicWave": false,
+            "decodeAudioData": false,
+            "webCrypto": true,
+            "cancelAndHoldAtTime": false,
+            "liveResume": false,
+            "secureContext": true,
+            "visibility": "visible",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15"
+          },
+          "diagnostics": {
+            "operations": [],
+            "instrumentationWarnings": [],
+            "visibility": "visible",
+            "liveContexts": [],
+            "nativeContexts": []
+          },
+          "raw": null,
+          "error": null,
+          "status": "BLOCKED",
+          "classification": "MISSING_CAPABILITY",
+          "reason": "Missing native API(s): offlineAudioContext, nativeNodes, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases.",
+          "cases": [
+            {
+              "id": "native-supported-PCM8-16-24-32-and-normalized-float32-WAV-decode",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            },
+            {
+              "id": "native-WAV-resample-reservation-and-unsupported-format-preflight",
+              "status": "BLOCKED_CAPABILITY",
+              "reason": "Missing native API(s): offlineAudioContext, nativeNodes, decodeAudioData. The unchanged aggregate suite cannot run independently reachable cases."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "browser",
+      "pid": 47156,
+      "method": "close",
+      "ok": true
+    },
+    {
+      "resource": "browser",
+      "pid": 84280,
+      "method": "close",
+      "ok": true
+    },
+    {
+      "resource": "source-server",
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "All original numeric thresholds and fixture decisions are unchanged",
+    "Missing APIs block affected checks; unrelated checks inside an unchanged aggregate may remain NOT_RUN_AGGREGATE_DEPENDENCY",
+    "Native resume timeout with observed suspended context is environment-blocked, not a passing DSP result",
+    "No hearing/headphone/device-latency/SPL or AudioWorklet/real-time capacity claim"
+  ]
+}

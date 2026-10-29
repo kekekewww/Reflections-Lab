@@ -1,0 +1,106 @@
+﻿TAP version 13
+# Subtest: bootstrap owns RAF, React root and runtime teardown in order and exactly once
+ok 1 - bootstrap owns RAF, React root and runtime teardown in order and exactly once
+  ---
+  duration_ms: 2.0765
+  type: 'test'
+  ...
+# Subtest: a canceled but already queued RAF callback cannot advance or resurrect the loop
+ok 2 - a canceled but already queued RAF callback cannot advance or resurrect the loop
+  ---
+  duration_ms: 0.2232
+  type: 'test'
+  ...
+# Subtest: dispose during advance closes the gate before another animation frame is requested
+ok 3 - dispose during advance closes the gate before another animation frame is requested
+  ---
+  duration_ms: 0.1998
+  type: 'test'
+  ...
+# Subtest: duplicate pending mounts reject before creating a second runtime
+ok 4 - duplicate pending mounts reject before creating a second runtime
+  ---
+  duration_ms: 0.5446
+  type: 'test'
+  ...
+# Subtest: aborting a pending mount releases its lease and late factory completion cannot replace the new app
+ok 5 - aborting a pending mount releases its lease and late factory completion cannot replace the new app
+  ---
+  duration_ms: 0.4538
+  type: 'test'
+  ...
+# Subtest: an already aborted request never invokes a factory or claims the element
+ok 6 - an already aborted request never invokes a factory or claims the element
+  ---
+  duration_ms: 0.3068
+  type: 'test'
+  ...
+# Subtest: a render failure disposes its runtime and leaves the container available for retry
+ok 7 - a render failure disposes its runtime and leaves the container available for retry
+  ---
+  duration_ms: 0.322
+  type: 'test'
+  ...
+# Subtest: unmount failure still disposes the runtime, releases the lease and remains idempotent
+ok 8 - unmount failure still disposes the runtime, releases the lease and remains idempotent
+  ---
+  duration_ms: 0.3628
+  type: 'test'
+  ...
+# Subtest: initial RAF scheduling failure rolls back both mounted view and runtime
+ok 9 - initial RAF scheduling failure rolls back both mounted view and runtime
+  ---
+  duration_ms: 0.2453
+  type: 'test'
+  ...
+# Subtest: advance errors tear down instead of scheduling an endless failing frame
+ok 10 - advance errors tear down instead of scheduling an endless failing frame
+  ---
+  duration_ms: 0.452
+  type: 'test'
+  ...
+# Subtest: a reschedule failure cleans the active view and runtime
+ok 11 - a reschedule failure cleans the active view and runtime
+  ---
+  duration_ms: 0.161
+  type: 'test'
+  ...
+# Subtest: renderer commit errors defer teardown outside the render callback
+ok 12 - renderer commit errors defer teardown outside the render callback
+  ---
+  duration_ms: 0.1726
+  type: 'test'
+  ...
+# Subtest: late canvas/controller reads and input cannot touch a disposed runtime
+ok 13 - late canvas/controller reads and input cannot touch a disposed runtime
+  ---
+  duration_ms: 0.1587
+  type: 'test'
+  ...
+# Subtest: aborting an already mounted application performs the same complete teardown
+ok 14 - aborting an already mounted application performs the same complete teardown
+  ---
+  duration_ms: 0.1205
+  type: 'test'
+  ...
+# Subtest: negative frame timestamps never become a negative simulation delta
+ok 15 - negative frame timestamps never become a negative simulation delta
+  ---
+  duration_ms: 0.1434
+  type: 'test'
+  ...
+# Subtest: an old renderer's queued or late fatal error cannot report into a fresh mount
+ok 16 - an old renderer's queued or late fatal error cannot report into a fresh mount
+  ---
+  duration_ms: 0.1489
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1911.3991

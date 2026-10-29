@@ -1,0 +1,605 @@
+{
+  "schema_version": 1,
+  "review_id": "active-rule-r12-q2-independent-corpus",
+  "reviewed_at_utc": "2026-10-27T23:45:11.201Z",
+  "reviewer": {
+    "agent": "/root/v1_english_docs/review_validator",
+    "executor": "Codex",
+    "model_id": null,
+    "role": "Independent current documentation and four-pair QA metadata verifier"
+  },
+  "status": "PASS_SCOPED_ACTIVE_RULE_R12_Q2_DOCUMENTATION_DELTA",
+  "scope": {
+    "authorization": "Final CORPUS_READY; all canonical/prose/group/manifest writers ended",
+    "current_complete_inventory_checked": true,
+    "changed_pairs": 4,
+    "new_pairs": 1,
+    "refreshed_existing_pairs": 3,
+    "unselected_prior_entries": 282,
+    "review_groups": 2,
+    "group_pair_counts": [
+      3,
+      1
+    ],
+    "preexisting_reports": 86,
+    "new_whole_corpus_semantic_review": false,
+    "product_completion_claim": false
+  },
+  "summary": {
+    "originals": 286,
+    "markdown_files_inventoried": 294,
+    "authored_artifact_documents": 15,
+    "shared_raw_evidence": 8,
+    "translations_required": 267,
+    "translated": 267,
+    "original_english": 18,
+    "existing_english_companions": 1,
+    "missing": 0,
+    "stale": 0,
+    "errors": 0,
+    "warnings": 15
+  },
+  "evidence": {
+    "independent_unit_tests": {
+      "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234105996Z/unit-result.json",
+      "sha256": "fd260d3d1d566cbfe6ad851d6ef56ec51a40c365960c3b87ef99c6a831a3294d",
+      "bytes": 3617
+    },
+    "independent_current_full_audit": {
+      "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/full-audit.json",
+      "sha256": "335bc6724dd46213d970f9f07e760dea38218dbc0f46fe09048c51a412063d1c",
+      "bytes": 453825
+    },
+    "independent_review_union": {
+      "path": ".cache/v1/english-active-rule-r12-q2/independent/coverage-final.json",
+      "sha256": "4bbe530b4daefa37d7c60ea91c623746031e969106afc7712bdd6b602f88edf1",
+      "bytes": 30168
+    },
+    "frozen_source_inventory": {
+      "path": ".cache/v1/english-active-rule-r12-q2/inventory.json",
+      "sha256": "129b910fb0fece4f4034f1a9eae9afdc868a59a2f26f835c9b1aa90aebf24c31",
+      "bytes": 101863
+    },
+    "reviewed_target_capture": {
+      "path": ".cache/v1/english-active-rule-r12-q2/reviewed-targets.json",
+      "sha256": "15751eb6d465484af504dc0d26d6cd6f06d8ac9e74c65a0721072383eff73109",
+      "bytes": 3266
+    },
+    "preexisting_report_pins": {
+      "path": ".cache/v1/english-active-rule-r12-q2/preexisting-report-pins.json",
+      "sha256": "db98a4e69f3f63e9c3c5c57cc35c352dfa2c7a1d817caf004e0e9d5445c27866",
+      "bytes": 16038
+    },
+    "coordinator_mechanical_proof": {
+      "path": "docs/en/_reports/active-rule-r12-q2-mechanical-20261027T234352970Z.json",
+      "sha256": "ede8ab97517ffcbf51f53cbcc7085d5d664c1d0033632dd355bec30f68abc9fe",
+      "bytes": 12549
+    },
+    "manifest": {
+      "path": "docs/en/manifest.json",
+      "sha256": "f783621886d139cdf6a96e8e4e8e9d46e904e5e59a8446b66a4dd628f413c441",
+      "bytes": 210062
+    },
+    "validation": {
+      "path": "docs/en/validation.json",
+      "sha256": "f783621886d139cdf6a96e8e4e8e9d46e904e5e59a8446b66a4dd628f413c441",
+      "bytes": 210062
+    },
+    "source_inventory": {
+      "path": "docs/en/source-inventory.json",
+      "sha256": "d4bab0d5b15993c3e4470b67d3861f97b695d4bead9c8ba2ff24deb877299b16",
+      "bytes": 101931
+    },
+    "index": {
+      "path": "docs/en/index.md",
+      "sha256": "d7938d3b9f1492c9f1034ac78162b36d6c0b7de18f28f7a101cfd9b995e6fa8d",
+      "bytes": 57878
+    }
+  },
+  "commands": [
+    {
+      "command": "node --test tests/integration/english-docs.test.mjs",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "node": "v22.17.0",
+      "started_at": "2026-10-27T23:41:05.997Z",
+      "duration_ms": 408.29859999999996,
+      "exit_code": 0,
+      "tests": 31,
+      "passes": 31,
+      "failures": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234105996Z/unit.stdout.txt",
+        "sha256": "19fd184306d1289ed996148eb57bb8e4aba9e41794c61cb9287bdc84a6d3b73c",
+        "bytes": 6999
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234105996Z/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "currentness": "Fresh independent existing31-test run; checker/test hashes equal the final frozen seal."
+    },
+    {
+      "command": "node scripts/validation/english-docs.mjs check",
+      "args": [
+        "scripts/validation/english-docs.mjs",
+        "check"
+      ],
+      "started_at": "2026-10-27T23:44:35.318Z",
+      "duration_ms": 920.6478999999999,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/english-check.stdout.txt",
+        "sha256": "1ad2bae6d4c2dfa3daa46b10061f9bbc357d336aeea72107bfdc426312963388",
+        "bytes": 270
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/english-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "{\"status\":\"PASS\",\"originals\":286,\"markdown_files_inventoried\":294,\"authored_artifact_documents\":15,\"shared_raw_evidence\":8,\"translations_required\":267,\"translated\":267,\"original_english\":18,\"existing_english_companions\":1,\"missing\":0,\"stale\":0,\"errors\":0,\"warnings\":15}\n",
+      "stderr_text": ""
+    },
+    {
+      "command": "node scripts/validation/docs.mjs",
+      "args": [
+        "scripts/validation/docs.mjs"
+      ],
+      "started_at": "2026-10-27T23:44:35.323Z",
+      "duration_ms": 692.0134,
+      "exit_code": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/maintained-links.stdout.txt",
+        "sha256": "33fc593c02118c48a1c9a21d4980750c63a906923338ddc6cbbd55befaf6c0ea",
+        "bytes": 1932
+      },
+      "stderr": {
+        "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/maintained-links.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdout_text": "PASS Markdown local targets: 6086 links in 568 documents; fenced code/external URLs/anchors excluded.\nScope: maintained Markdown; exact raw byte snapshot directories under root artifacts (source-before/source-after/sources/tested-bundle) excluded from link checking; run SHA proof checks are separate.\nExcluded raw byte snapshots (24): artifacts/v1/audio-prefix-irv2-preflight-20261027172840/prepared-ir-static-v1/sources, artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources, artifacts/v1/audio-prepared-ir-static-v1-preflight-20261027155118424/prepared-ir-static-v1/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources, artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources, artifacts/v1/gravity-toggle-review-v1/sources, artifacts/v1/integration-review-v3/sources, artifacts/v1/integration-review-v4/sources, artifacts/v1/integration-review-v5/sources, artifacts/v1/integration-review-v6/sources, artifacts/v1/integration-review-v7/sources, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-red/source-before, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-after, artifacts/v1/physics-boundaries-20261027/boundaries-v2/source-before, artifacts/v1/physics-boundaries-20261027/combined-final/source-after, artifacts/v1/physics-boundaries-20261027/combined-final/source-before, artifacts/v1/physics-boundaries-20261027/combined-v1/source-after, artifacts/v1/physics-boundaries-20261027/combined-v1/source-before, artifacts/v1/product-e2e-chrome-20261027T021924Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T024059Z/tested-bundle, artifacts/v1/product-e2e-chrome-20261027T033616Z/tested-bundle, artifacts/v1/product-final-build-20261027T124914444Z/tested-bundle, artifacts/v1/replay-objectview-review-v1/sources.\n",
+      "stderr_text": ""
+    }
+  ],
+  "inventory_audit": {
+    "command": "git ls-files --cached --others --exclude-standard -z",
+    "exit_code": 0,
+    "stderr": "",
+    "regular_markdown_count": 294,
+    "exact_paths_match": true,
+    "source_inventory_matches": true,
+    "missing": [],
+    "extra": []
+  },
+  "source_target_hash_audit": {
+    "status": "PASS",
+    "current_original_rows": 286,
+    "all_current_source_target_bytes_and_markers_exact": true,
+    "frozen_delta_rows": [
+      {
+        "source": "knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md",
+        "target": "docs/en/knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md",
+        "expected_sha256": "2eb387e92a194715b834fd9ae3690893399943bba914c3f02d8ce393fc115a29",
+        "snapshot": ".cache/v1/english-active-rule-r12-q2/sources/knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "target": "docs/en/knowledge/wiki/index.md",
+        "expected_sha256": "fe567d4af1d90fe791229dd37b4e8a4669d6f634d3f4f2bc2bfb502dac94e5b2",
+        "snapshot": ".cache/v1/english-active-rule-r12-q2/sources/knowledge/wiki/index.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "target": "docs/en/knowledge/wiki/log.md",
+        "expected_sha256": "d7e07b7562e1a76cff60173b2a8600f413f3ef0b2e98ddd5d94f914d029f1216",
+        "snapshot": ".cache/v1/english-active-rule-r12-q2/sources/knowledge/wiki/log.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "target": "docs/en/knowledge/wiki/now.md",
+        "expected_sha256": "b950c14b9af306b24263956e074415e2ab736414a8c145ad0399dd229e5e5eef",
+        "snapshot": ".cache/v1/english-active-rule-r12-q2/sources/knowledge/wiki/now.md",
+        "snapshot_matches": true,
+        "current_matches": true,
+        "manifest_matches": true
+      }
+    ],
+    "unselected_prior_rows_retained_byteexact": 282,
+    "prior_entries_bound_to_previous_pinned_independent_per_file_audit": true,
+    "full_per_file_evidence": {
+      "path": ".cache/v1/english-active-rule-r12-q2/independent/20261027T234435310Z/full-audit.json",
+      "sha256": "335bc6724dd46213d970f9f07e760dea38218dbc0f46fe09048c51a412063d1c",
+      "bytes": 453825
+    }
+  },
+  "semantic_review_coverage": {
+    "status": "PASS_COVERAGE_AND_PINS",
+    "counts": {
+      "group_reports": 2,
+      "group_rows": 4,
+      "group_sizes": [
+        3,
+        1
+      ],
+      "unique_sources": 4,
+      "groups_frozen": 2,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0,
+      "defects": 0
+    },
+    "report_pins": [
+      {
+        "path": "docs/en/_reports/active-rule-r12-q2-wiki-core-review.json",
+        "sha256": "b9dea878b8d3ade79f16faa3cfd45af1f380a87164ea637085e37358116f1c24",
+        "expected_sha256": "b9dea878b8d3ade79f16faa3cfd45af1f380a87164ea637085e37358116f1c24",
+        "matches": true,
+        "prose_freeze_declared": true,
+        "completed_at": "2026-10-27T23:43:37.569852Z",
+        "rows": 3
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-q2-handoff-review.json",
+        "sha256": "6c53c56d032b1f99afb925b4d5f576513b97c4eeadf4bc4ed3214c017648f0cc",
+        "expected_sha256": "6c53c56d032b1f99afb925b4d5f576513b97c4eeadf4bc4ed3214c017648f0cc",
+        "matches": true,
+        "prose_freeze_declared": true,
+        "completed_at": "2026-10-27T23:41:39.954Z",
+        "rows": 1
+      }
+    ],
+    "exact_union_rows": 4,
+    "missing": 0,
+    "extra": 0,
+    "duplicates": 0,
+    "defects": 0,
+    "all_current_stage_and_raw_reviewed_target_pins_match": true,
+    "both_PROSE_FREEZE_and_independent_ENDs_received": true,
+    "qualification": "Two disjoint group reports cover the new68cb handoff and the three current core Wiki pages. This reviewer checks declared semantic-review coverage, exact byte/provenance pins and mechanical carry-forward; unchanged prior reviews are reused without a new whole-history semantic reread.",
+    "retained_history_boundaries": [
+      "Index retains50 prior rows plus one reviewed new row.",
+      "Log retains235 prior rows plus five reviewed new rows.",
+      "Now retains six prior paragraphs with its reviewed QA follow-up."
+    ]
+  },
+  "mechanical_preservation": {
+    "status": "PASS_EXACT_DOCUMENTED_MECHANICAL_TRANSFORM",
+    "proof": {
+      "path": "docs/en/_reports/active-rule-r12-q2-mechanical-20261027T234352970Z.json",
+      "sha256": "ede8ab97517ffcbf51f53cbcc7085d5d664c1d0033632dd355bec30f68abc9fe"
+    },
+    "rows": [
+      {
+        "source": "knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md",
+        "reviewed_target_sha256": "1193ce5676c09188576e1c6efb05675b8be79d65eb273cac21550ca5955bee17",
+        "final_target_sha256": "9411d17d9ccb34e4d48f9a84fbfea1d1f9f3bb28e5b94b3c9fb9766750e2174e",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/index.md",
+        "reviewed_target_sha256": "0a31550b4912294d80825a5f4aeaccac69edc9f6f1ba6ae01becfd5fcad020ae",
+        "final_target_sha256": "54fdc6d9dbcd6043b278bd49b12fef357461b651bfb764c4fab2fedda1d7db1c",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      },
+      {
+        "source": "knowledge/wiki/log.md",
+        "reviewed_target_sha256": "d4a0b58ac56744088857148022a9a2b320d1e50baef74edb625f4e4f8ed4d679",
+        "final_target_sha256": "171b724d9cdb7318f46c90e2d76a8d4ede9e8bb7a4d1b819e12c737e25a8a041",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": true
+      },
+      {
+        "source": "knowledge/wiki/now.md",
+        "reviewed_target_sha256": "b0e28b15e1432c37e1e7575df29e271813144f0254559e199e935ae85f774fa3",
+        "final_target_sha256": "a70088925c0c45bf240acc0f7ace5efcce1c1513eea38c50ba02966847d67b59",
+        "exact_documented_transform": true,
+        "metadata_changes_only_links": true,
+        "frontmatter_separator_normalized": false
+      }
+    ],
+    "normalization_scope": [
+      "knowledge/wiki/log.md"
+    ],
+    "method": "Only deterministic link mapping, generated notices/anchors and bounded frontmatter separator normalization; metadata changes only links=english-relative.",
+    "limit": "Replay uses the frozen rewriteLinks helper independently tested31/31, not an independent CommonMark parser or broad semantic reread.",
+    "no_raw_byte_equality_claim_across_generated_wrappers": true
+  },
+  "prior_reports_preserved": {
+    "status": "PASS",
+    "count": 86,
+    "all_byteexact": true,
+    "preserved_receipts": [
+      {
+        "path": "docs/en/_reports/active-rule-r12-current-corpus-20261027T232305093Z.json",
+        "sha256": "288de67905a483a6482d433b5a6091a075fa38b3d1da54ec502755f13e6b349c",
+        "bytes": 214237
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-independent-corpus-20261027T232257494Z.json",
+        "sha256": "925c0c4552fcdc0613e9608e4cf7cd205408232a3fbf05f625e69e4675740f7e",
+        "bytes": 35510
+      },
+      {
+        "path": "docs/en/_reports/active-rule-r12-mechanical-20261027T232110728Z.json",
+        "sha256": "eaf5dfa53c4e5625ba8b536471af2838371c6ed678ac24f7bb5b0f1cc73490e1",
+        "bytes": 17108
+      },
+      {
+        "path": "docs/en/_reports/final-refresh-independent-corpus.json",
+        "sha256": "08f13a4d2fe74a247d9be26862454c7093c4a70e22fad0f8d35c564b0d520ca3",
+        "bytes": 42390
+      }
+    ],
+    "no_old_report_overwritten": true
+  },
+  "shared_raw_evidence": {
+    "status": "PASS",
+    "count": 8,
+    "all_source_and_receipt_pins_exact": true,
+    "metadata_and_classifications_deep_equal_prior_reviewed_epoch": true,
+    "records": [
+      {
+        "source": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prefix-native25-preflight-20261027172830/prepared-static-v2/manifest.json",
+          "sha256": "585b2e7d93ad35905aa735e00c27212b4eef1017d926873169e1c2dd56a1eeb2"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153307199/prepared-static-v2/build-spec.json",
+          "sha256": "924e97b927ff9b03c65e9a93dcc945e328f2e4afff1624c4ec63334e157fef23"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/sources/tests/audio-runtime/CROSS_ENGINE.md",
+        "source_sha256": "442e12e66bd5b2388af72f3d8d0447a6ba0eafa3c0bf6c7748ac61f785f5b847",
+        "source_bytes": 5690,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Exact registered captured Markdown bytes match their originalSources receipt pin; raw source evidence does not imply that the build or native tests passed.",
+        "canonical_source": "tests/audio-runtime/CROSS_ENGINE.md",
+        "confirmation": "REGISTERED_PREPARED_SOURCE_MAP_PIN_MATCH",
+        "evidence": {
+          "path": "artifacts/v1/audio-prepared-static-v2-preflight-20261027153418936/prepared-static-v2/manifest.json",
+          "sha256": "6e05d21f0aa53a801f434cf12cadb1eea7093abaf6ee1d785dad4bc50142c868"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-after/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/physics-boundaries-20261027/combined-final/source-before/docs/11-v1/ACCEPTANCE.md",
+        "source_sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406",
+        "source_bytes": 35806,
+        "classification": "shared_raw_source_snapshot",
+        "reason": "Byte-identical captured source copy; not a newly authored narrative.",
+        "canonical_source": "docs/11-v1/ACCEPTANCE.md",
+        "confirmation": "CURRENT_CANONICAL_BYTES_MATCH",
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T021924Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "0c8db04f789bc837e30729377b2e5578556b63fef9c1c35aa66c84b8a32b1c89",
+        "source_bytes": 44947,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T021924Z/results.json",
+          "sha256": "da48b4191228410a74243f8f6e8f8945711cb28ea364872ef45f2d285b322516"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T024059Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "57340c8ea99124a07402c5709268f63b19980991d79fe85f214c536f66e78a6a",
+        "source_bytes": 43934,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T024059Z/results.json",
+          "sha256": "4be88e374bf76503f0815ddecbf5c7d1dd51996bc9088572f4d063284fe0e25a"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      },
+      {
+        "source": "artifacts/v1/product-e2e-chrome-20261027T025205Z/cases/product-e2e-clean-launch-1-e2f3f-B-and-durable-reload-replay/error-context.md",
+        "source_sha256": "9720c0f902402decea5f745ce4fe451eab1b11d1f73d6f19235f00691484f8bf",
+        "source_bytes": 44259,
+        "classification": "shared_raw_generated_browser_context",
+        "reason": "Standard generated Playwright failure context, matched to a recorded error-context attachment; preserved as raw evidence, not an authored project report.",
+        "confirmation": "GENERATED_CONTEXT_AND_RECORDED_ATTACHMENT",
+        "evidence": {
+          "path": "artifacts/v1/product-e2e-chrome-20261027T025205Z/results.json",
+          "sha256": "d5e5636359908eb45d875592116f3aba65d4662d5fdcecb05ee53e36312c2766"
+        },
+        "source_pin_matches": true,
+        "metadata_unchanged": true,
+        "evidence_pin_matches": true
+      }
+    ],
+    "qualification": "Captured source/failure-context provenance is not product/build/native success."
+  },
+  "warnings": {
+    "count": 15,
+    "unchanged_from_prior_current_corpus": true,
+    "records": [
+      {
+        "source": "third_party/emil-skills.README.md",
+        "warnings": [
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/emil-design-eng/SKILL.md",
+            "target": "third_party/skills/emil-design-eng/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate/SKILL.md",
+            "target": "third_party/skills/animate/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animate-expo/SKILL.md",
+            "target": "third_party/skills/animate-expo/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/review-animations/SKILL.md",
+            "target": "third_party/skills/review-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/improve-animations/SKILL.md",
+            "target": "third_party/skills/improve-animations/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/find-animation-opportunities/SKILL.md",
+            "target": "third_party/skills/find-animation-opportunities/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-performance/SKILL.md",
+            "target": "third_party/skills/animation-performance/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/animation-vocabulary/SKILL.md",
+            "target": "third_party/skills/animation-vocabulary/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/apple-design/SKILL.md",
+            "target": "third_party/skills/apple-design/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/write-swift/SKILL.md",
+            "target": "third_party/skills/write-swift/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/pick-ui-library/SKILL.md",
+            "target": "third_party/skills/pick-ui-library/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/prototype/SKILL.md",
+            "target": "third_party/skills/prototype/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/mobile-native/SKILL.md",
+            "target": "third_party/skills/mobile-native/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/break-ui/SKILL.md",
+            "target": "third_party/skills/break-ui/SKILL.md"
+          },
+          {
+            "code": "ORIGINAL_OR_COMPANION_LINK_ISSUE",
+            "href": "./skills/ask-sonner/SKILL.md",
+            "target": "third_party/skills/ask-sonner/SKILL.md"
+          }
+        ]
+      }
+    ]
+  },
+  "current_Root_Git_seal": {
+    "HEAD_text": "ref: refs/heads/codex/sound-behavior-research",
+    "commit": "9ccff9fce573c4d739399a473f662cb956ae03f0",
+    "paths": [
+      ".git/index",
+      ".git/HEAD",
+      ".git/refs/heads/codex/sound-behavior-research"
+    ],
+    "stable": true,
+    "qualification": "Authorized current Git state is sealed within this task; reviewer ran only read-only inventory enumeration and never staged or changed Root Git."
+  },
+  "source_stability": {
+    "unit_inputs_stable": true,
+    "current_full_check_inputs_stable": true,
+    "sealed_inputs": 679,
+    "final_seal_matches_post_check_snapshot": true,
+    "final_seal_sha256": "7124567637fe099e85895e2f4e74aa46f3427890a659944d3388901d591686dc",
+    "continuous_monitor": false,
+    "reviewer_source_checker_config_Wiki_task_product_or_Git_mutations": false,
+    "reviewer_writes": "Only authorized independent cache evidence and this new uniquely named report"
+  },
+  "QA_and_native_boundaries": [
+    "The first RootQA ownership failure remains recorded. The documented repair affects only a cache-wrapper child environment; no checker source or global configuration change is attributed to this reviewer.",
+    "Native preview TTL expired and the outcome is UNKNOWN; this does not imply that the user did not execute it and is not native acceptance PASS.",
+    "All four native0 values are command exit codes, not evidence of device/hearing/native functional acceptance.",
+    "Existing R12 session/SDK/NOTICE/API README evidence is retained outside this four-pair metadata delta; product and external gates are not upgraded."
+  ],
+  "findings": [],
+  "limitations": [
+    "Current documentation coverage/currentness/hash/link and targeted review provenance evidence does not establish complete first-version product acceptance.",
+    "No new broad historical semantic review, scientific/legal endorsement or product-runtime validation is claimed.",
+    "Remote URL availability and renderer-specific anchors remain outside the checks.",
+    "Maintained local links exclude raw snapshot directories; exactly eight shared raw Markdown records receive separate source/evidence pin checks.",
+    "Before/after seals cannot detect reverted interim edits; formal writers were frozen.",
+    "npm CI, build, browser, native/device/hearing, paidAPI/model, full npm check, Root Wiki/task/config writes and Root Git mutations were NOT RUN."
+  ],
+  "all_filesystem_and_process_IO_end_after_this_report": true
+}

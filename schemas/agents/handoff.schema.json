@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "$id": "https://reflection-lab.local/schemas/agents/handoff.schema.json",
+  "title": "Same-task Codex handoff with original goal and acceptance hashes",
+  "required": [
+    "schema_version",
+    "id",
+    "run_id",
+    "task_id",
+    "wiki_task_id",
+    "goal_id",
+    "milestone_id",
+    "from",
+    "to",
+    "reason",
+    "contract_sha256",
+    "git",
+    "checkpoint",
+    "modified_files",
+    "completed_acceptance_criteria",
+    "remaining_work",
+    "acceptance_hashes",
+    "verification_evidence",
+    "resource_usage",
+    "limits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "wiki_task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "goal_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "milestone_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "from": {
+      "enum": ["MUSE", "CODEX", null]
+    },
+    "to": {
+      "const": "CODEX"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "git": {
+      "type": "object",
+      "required": ["revision", "branch", "status", "repository_present"],
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": ["string", "null"]
+        },
+        "branch": {
+          "type": ["string", "null"]
+        },
+        "status": {
+          "type": ["string", "null"]
+        },
+        "repository_present": {
+          "type": "boolean"
+        }
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["id", "path", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "status": {
+          "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"]
+        },
+        "authority": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "modified_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^[A-Za-z0-9_@. -]+(?:/[A-Za-z0-9_@. -]+)*$"
+      }
+    },
+    "completed_acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_work": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_hashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "verification_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "status": {
+            "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"]
+          },
+          "authority": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resource_usage": {
+      "type": "object",
+      "required": [
+        "started_at_ms",
+        "attempts",
+        "elapsed_ms",
+        "reserved_usd",
+        "cost_usd",
+        "input_tokens",
+        "output_tokens",
+        "cached_tokens",
+        "tool_calls",
+        "remaining_quota"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "started_at_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "attempts": {
+          "type": "number",
+          "minimum": 0
+        },
+        "elapsed_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reserved_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cost_usd": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "input_tokens": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "cached_tokens": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "tool_calls": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "remaining_quota": {
+          "type": ["number", "null"],
+          "minimum": 0
+        }
+      }
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

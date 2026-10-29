@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "scope": "Cache-only RCA of existing Native V2 receipts, code and logs. No new browser, OS UI, P/Invoke, process query, acceptance run or formal source/doc write.",
+  "conclusion": "No recorded launcher, script, reported engine-version or platform delta explains the old PASS versus two current hidden preflight failures. Cause remains undetermined.",
+  "runs": [
+    {
+      "artifact": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T13-09-13.922Z-6ad461b3",
+      "summarySha256": "7b5566e7ea7c761423b5f57fe9191a763b4a47405cae08b6c63b46569fa6e1b8",
+      "status": "PASS",
+      "inputDigest": "0eefc158d5d2ee1a2a9f75ec42340867c99373ec287dcb71d100a6f05bd86d1e",
+      "beforeBaselineSamples": [
+        1,
+        1
+      ],
+      "visibility": "visible"
+    },
+    {
+      "artifact": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T17-40-46.993Z-5b71dbdb",
+      "summarySha256": "491079ec01ea6f7bd16e91947beca9e664d8f8d7cd8fe47909c3196fa3b12458",
+      "status": "FAIL",
+      "inputDigest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+      "beforeBaselineSamples": [
+        74,
+        74
+      ],
+      "visibility": "hidden"
+    },
+    {
+      "artifact": "artifacts/v1/native-zoom-reachability-v2-2026-10-27T17-51-47.034Z-a63cdf0d",
+      "summarySha256": "8f14c8580077a69f0beea5c09e37716cefdfb2d5508eae7a1344abd6c720af16",
+      "status": "FAIL",
+      "inputDigest": "028b16a8f8f49bda1be4bc693867fc5061e9819dac872e49186d541a4deb7bc0",
+      "beforeBaselineSamples": [
+        72,
+        72
+      ],
+      "visibility": "hidden",
+      "externalReadiness": "User reported desktop unlocked and screen awake; not inferred from browser measurements"
+    }
+  ],
+  "confirmedComparisons": {
+    "allSevenScriptHashesIdentical": true,
+    "normalizedCliIdenticalExceptDeclaredPreviewPid": true,
+    "normalizedBrowserArgumentsIdenticalExceptUniqueEmptyProfile": true,
+    "reportedExecutable": "C:/Users/kevin/AppData/Local/ms-playwright/chromium-1248/chrome-win64/chrome.exe",
+    "reportedEngineVersionAllCases": "156.0.8078.4",
+    "executableBinaryHashRecorded": false,
+    "platformAllRuns": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "arch": "x64",
+      "node": "v22.17.0"
+    },
+    "visibleOptionAllCases": true,
+    "noDefaultsAllCases": true,
+    "defaultContextOnlyAllCases": true,
+    "sandboxExecutableAccessWarningOccursInAllSixCases": true,
+    "networkServiceRestartWarningOccursInAllSixCases": true,
+    "warningsAreNotDiscriminators": true,
+    "failedCases": {
+      "windowFocused": true,
+      "windowState": "normal",
+      "tabActive": true,
+      "documentHasFocus": true,
+      "documentHidden": true,
+      "visibilityState": "hidden",
+      "tabAttempts": 0,
+      "completedChecks": 0,
+      "baseline": null,
+      "layout": null
+    },
+    "packageLockUnchangedBetweenBuilds": true,
+    "productSourceChanged": [
+      "src/app/runtime.ts",
+      "src/audio/band-filter.ts",
+      "src/audio/routes.ts",
+      "src/interaction/interaction-host.ts",
+      "src/interaction/types.ts",
+      "src/physics/physics-world.ts"
+    ],
+    "productSourceAdded": [
+      "src/app/view-projection.ts"
+    ],
+    "productVisibilitySourceFindings": "AccessibleMovement.tsx and useFPSInput.ts consume document.hidden to release/pause input. No document visibility setter, lifecycle override or focus-emulation call was found by the scoped src/server search.",
+    "localPlaywrightImplementation": "coreBundle.js skips Emulation.setFocusEmulationEnabled for noDefaults on the native default context; noDefaults is true in every receipt."
+  },
+  "evidenceGaps": [
+    "No inherited environment snapshot or whitelist was recorded; launcher source supplies no explicit env option. No environment or secret dump was performed.",
+    "No historical browser Windows SessionId, window station, virtual desktop, actual foreground/z-order or native occlusion identity was recorded.",
+    "Failed cases abort before metrics(), so actual CDP window bounds and screen dimensions were not captured before the failed gate.",
+    "No before-navigation about:blank visibility sample exists; the current receipts alone cannot isolate host/browser versus page timing.",
+    "Same executable path and reported version do not establish a frozen executable binary hash."
+  ],
+  "interpretation": [
+    "The real visibility gate correctly distinguished focused/active from actually visible; it must remain unchanged.",
+    "Native window occlusion or a desktop/session/surface issue is a possible browser/host hypothesis, not an established cause.",
+    "User-awake confirmation does not prove or disprove an independently recorded browser desktop/session relationship.",
+    "Shared stderr warnings cannot explain the success/failure difference on this evidence.",
+    "No basis exists to infer desktop lock, blame the user, declare a product regression, or promote the current acceptance results."
+  ],
+  "supportedNextStep": {
+    "status": "PROPOSAL_ONLY_NOT_RUN",
+    "prerequisites": "Restore the official computer-use surface initialization through the supported environment/tool path. Root is handling this; no reset or custom UI helper is proposed.",
+    "diagnostic": "If separately authorized, one bounded localization-only owned-browser diagnostic should record actual about:blank visibility/focus and exact owned window bounds before localhost navigation, then the same values after navigation and passive visibility history, paired with a supported observation of the exact owned window.",
+    "discriminatingOutcomes": [
+      "Already hidden before application navigation points outside application code.",
+      "Initially visible then hidden identifies a transition to investigate, without itself assigning cause."
+    ],
+    "controls": "Same original browser/security flags, isolated profile and exact owned window binding; no emulated visibility/focus, no input or acceptance matrix, no security-dialog automation, no third unchanged Native V2 run.",
+    "safety": "Any process identity capture must filter exact known owned PIDs before requesting only safe fields such as ProcessId/ParentProcessId/SessionId; no global CommandLine or environment read."
+  },
+  "supportedSurfaceStatus": {
+    "source": "Root-reported observation, not machine-native proof",
+    "record": ".cache/v1/native-surface-initialization-20261028.json",
+    "result": "Both supported node_repl @oai/sky and cua_repl getState failed initial kernel asset creation with os error 3 before app calls.",
+    "relevance": "This blocks current visual observation; no evidence makes it the cause of earlier Chromium visibility failures.",
+    "currentPowerShellSessionId1": "Root reported a later current PowerShell session observation; it cannot establish the prior Chrome windows' session identity."
+  },
+  "independentNarrowReview": {
+    "agent": "/root/v1_native_accessibility/visibility_rca_review",
+    "result": "Agrees no differentiating recorded launcher delta and no justified lock/product inference; no browser/process/source operations."
+  },
+  "primarySources": [
+    {
+      "url": "https://playwright.dev/docs/api/class-browsertype#browser-type-connect-over-cdp-option-no-defaults",
+      "supports": "noDefaults suppresses default-context focus/media overrides; CDP attachment is lower fidelity and custom launcher arguments have caveats"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/interaction.html#page-visibility",
+      "supports": "System visibility is determined by the user agent and is distinct from focus; visibility-state history is a read-only diagnostic"
+    },
+    {
+      "url": "https://chromium.googlesource.com/chromium/src/+/master/docs/windows_native_window_occlusion_tracking.md",
+      "supports": "Windows native occlusion can treat foreground tabs as background; multiple host/window factors exist, so none is established by hidden alone"
+    }
+  ],
+  "nextAcceptanceStatus": "Current native200/320/direct Exit remain NOT_RUN; old PASS stays historical.",
+  "stop": "RCA complete. No new retry or further work before formal600."
+}

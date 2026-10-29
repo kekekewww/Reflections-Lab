@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_READ_ONLY_REVIEW_COMPLETE_ORIGINAL_FAILURES_PRESERVED",
+  "reviewer": "/root/profile_result_review",
+  "scope": "Existing small summary, verification header/status fields, source-proof header/hash, selected timing source and original acceptance text only. No raw large trace reparse, source edits, tests, benchmark, browser, build, process operations, API mutation or Git operation.",
+  "inputs": {
+    "artifacts/v1/browser-performance-20261027T183039817Z/operational-summary.json": "ab19d72f240f04e2005ee664494d9f89867e5636a97f9f25df39c99b848ba57f",
+    "artifacts/v1/browser-performance-20261027T183039817Z/verification.json": "c94eae28e4a84aa00d29ce69f5a3e09139e99569713a623a7abf96b095a873f6",
+    "artifacts/v1/browser-performance-20261027T183039817Z/global-source-proof.json": "91a243aab9928731c682b98dc3b06326f4eb3fdfbf517ac728cb715c29e7df9a",
+    "tests/browser/performance-fixture.mjs": "32641b92aa3cd48e9eacdd979f324738567b9a4b61c64b93e14c136f6846546b",
+    "tests/browser/performance-profile.mjs": "df86db94c6654399851ec1e3a4a240bc5821aee8dfa0745180d404c8cdf23c9c"
+  },
+  "resultInterpretation": {
+    "operationalCompletion": "The existing receipts report actual native and .NET exit0 with retained handles, no timeout, unchanged1789 source inputs and exact-owned cleanup. Those facts are operational completion, not metric or overallV1 PASS. This review hashes the durable proofs but does not recapture1789 files or repeat process queries.",
+    "physics": "All recorded3000-sample load gates are true, including255 awake dynamics and64 CCD. Canonical nativeWasmStep p95=2.199999988079071ms remains FAIL against <2ms. Public completeFixedTick p95=12.5ms is a different measured quantity, without its own copied native threshold.",
+    "acoustics": "Each profile has600 observed batches. Worker compute p95=6.8/9.5ms remains UNVERIFIED for the requested workload because20Hz/capacity gates failed. Default receive-through-consumers p95=3.9ms and stress14.4ms remain FAIL against <1ms; default had6 deadline misses, stress31 plus95 measured dropped paths. A smaller service-only p95 is not the full delivery cost.",
+    "ui": "628935ms of collection and31295 finite ordered frame records are valuable observed overloaded/degradation evidence. They do not establish a qualified continuous600s active workload: original actual600Seconds, uninterruptedSimulation, fixedTickProgress, noDroppedWallTime, noOverrunOrRecordingDebt, periodicCaptureCompleted and genuineRunningWarmup flags are false. Original RAF interval p95=17ms and allRAF callback CPU18.9ms remain FAIL. Official renderer-main occupancy remains NOT_RUN.",
+    "interpolation": "31040 successful fast interpolatedTransforms calls, zero failures and zero legacy calls support observation/accounting coverage of the actual current path. They do not validate the failed UI workload or prove a cross-run performance improvement."
+  },
+  "timestampFinding": {
+    "observedFailure": "106 of31295 records fail only native timestamp <= callbackObservedAtPerformanceMs. All recorded collection IDs, observed in-window bounds, finite/order checks otherwise pass. Maximum excess2.3865140974521637e-8ms is about23.865 picoseconds.",
+    "example": {
+      "index": 765,
+      "nativeRafArgumentMs": 126281.9,
+      "performanceNowAtWrapperEntryMs": 126281.89999997616
+    },
+    "localSource": [
+      "tests/browser/performance-fixture.mjs:58-68 directly stores the native RAF argument and performance.now() sampled at wrapper entry.",
+      "tests/browser/performance-profile.mjs:249-259 directly compares those raw values before main-task correlation. No epoch/timeOrigin/native-trace coordinate conversion occurs on this failed path."
+    ],
+    "conclusion": "No avoidable harness clock-coordinate conversion is established by the inspected code. Browser exposure/coarsening/representation is a plausible inference, not a demonstrated exact cause. Do not call this one ULP of the relative timestamps or assert an IEEE754-derived bound without additional evidence.",
+    "preservation": "Original membershipFALSE and main NOT_RUN remain unchanged. No epsilon, clamping, rebinning, endpoint shift or retrospective upgrade.",
+    "primaryContext": "HR-Time defines coarsened double-valued durations and monotonicity of chronological performance.now() readings sharing a time origin. HTML passes a supplied frame timestamp to callbacks. These sources establish clock semantics and finite precision; they do not by themselves diagnose this Chrome binary's tiny reversals."
+  },
+  "pauseFinding": {
+    "source": "The fixture explicitly schedules recordToggle captures at10s/300s/580s, records dispatch before/after, and can issue a later run action when not recording. Those automatic actions explain why later RUNNING status is compatible with earlier PAUSED observations; no manual-resume inference is needed.",
+    "observedReasons": "Each recorded transition reports fixed-step overload with recording ticks retained. That is required degradation behavior under the existing policy, not alone proof of a product correctness defect.",
+    "durationBoundsSeconds": [[4.8042,4.9191],[5.8026,5.8725],[0,0.0333]],
+    "finalIntervalRightCensored": true,
+    "stopPersistIntervalSeconds": 47.8853,
+    "limits": "The exact pause instant inside each instrumented advance/dispatch is unmeasured. The final beforeStop-to-capture-end interval is an end-to-end dispatch span and cannot be labeled entirely pause, active simulation, disk I/O, clone, serialization or a specific function cost. At measured end, retained recording debt is47.78846666666676s."
+  },
+  "acceptanceInterpretation": {
+    "V1_ACO_04": "ACCEPTANCE.md:81 requires worker identity/revision/capability, stale/mismatch rejection, bounded queue/backpressure/cancel, and explicit unsupported/empty/zero/incomplete distinctions with worker/message/UI evidence. Profile failure alone neither proves nor disproves this whole contract; retain its separate functional evidence.",
+    "V1_VAL_04": "ACCEPTANCE.md:141 requires split formal measurements,10min trace and environment/load provenance, honest unmeasured states and capability/degradation disclosure. Native nodes cannot establish AudioWorklet p99.",
+    "aggregation": "PERFORMANCE_STANDARDS.md:64 expressly permits a run to be partially PASS with per-metric FAIL/UNVERIFIED. The documents do not specify a complete all-initial-TARGET aggregation rule, but ACCEPTANCE.md:9/15 still requires current direct evidence for required gates and forbids silent waiver or wholeV1 completion. No metric status or criterion was changed.",
+    "overloadPolicy": "PERFORMANCE_BUDGET.md:20 and PERFORMANCE_STANDARDS.md:23/36 require recording/A-B overload pause with retained ticks/backlog. A long trace remains useful overload evidence but does not become uninterrupted active-load proof."
+  },
+  "boundedForwardOptions": [
+    "Keep this run as FAIL/incomplete with measured observations and exact source/cleanup evidence. Complete independent unaffected functionality, hearing and provenance work without relabeling it.",
+    "If future timing-method work is authorized, first isolate the raw browser timestamp exposure with a small separate diagnostic recording both API values and context/resolution metadata. Do not presume a harness transform bug or choose a tolerance from the desired result.",
+    "Any future membership-proof redesign must be independently reviewed and versioned, retain raw timestamp order/ID/window-negative tests, explain its causal membership contract, and require new qualification evidence. Existing results must not be upgraded.",
+    "Treat recording stop/persist latency and runtime overload as distinct future engineering investigations. New substage timing can identify cost; the present47.885s aggregate alone cannot assign a cause. Preserve the no-lost-recording-tick policy."
+  ],
+  "primarySources": [
+    {"url":"https://www.w3.org/TR/hr-time-3/#sec-coarsen-time","supports":"Coarsening/jitter, relative high resolution time and double-valued duration semantics"},
+    {"url":"https://www.w3.org/TR/hr-time-3/#dom-performance-now","supports":"Same-origin monotonic performance.now reading contract"},
+    {"url":"https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#run-the-animation-frame-callbacks","supports":"Animation callbacks receive a supplied frame timestamp"}
+  ],
+  "overallV1Complete": false,
+  "reviewExecution": "Cache-only review file is the sole mutation; no tests/browser/benchmark/native process was launched."
+}

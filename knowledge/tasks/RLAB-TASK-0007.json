@@ -1,0 +1,77 @@
+{
+  "id": "RLAB-TASK-0007",
+  "title": "核實參賽條件與Meta帳號存取",
+  "description": "Meta帳號模型存取／本次US1本地budget gate已有真實連線及usage／ledger證據。本人入選、登入後條款／提交欄位與賽前成果規則仍未核實，不代接受；整體維持BLOCKED。",
+  "status": "BLOCKED",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "入選與官方提交欄位／賽前成果規則有合法證據",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "Meta實際帳號模型存取與預算限制驗證",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/00-project/META_API_VALIDATION_AUTH_20261027.md",
+          "sha256": "9166f410152a105f6d9794bced8e3d84f1228e039543348c4cf3c1b9975514f6",
+          "result": "User explicitly authorized totalUS1; no permission to raise cap"
+        },
+        {
+          "path": "research/v1/meta-catalog-20261027T0131Z.json",
+          "sha256": "c3b4fef5a75d1d0aadab5ba4de9658fa7c2c9099ce20b7142ba7e477e3ddcdc4",
+          "result": "Actual authenticated catalog HTTP200; no remaining-credit/billing claim"
+        },
+        {
+          "path": "research/v1/meta-live-validation-20261027-r3-minimal/independent-live-review.json",
+          "sha256": "5210e5d32326b5ced30b25359882528e96ef371f7f3e4ad6d59b2a43bc4ac7dc",
+          "result": "PASS actual Meta Sound tool proposal→HostApply→local180ticks/181frames and run artifacts; not Scene/model-plannedRun/UI/hearing"
+        },
+        {
+          "path": "research/v1/meta-live-budget-20261027.json",
+          "sha256": "7aff29999999c201ce3f1ff37e9aeda48e569be678038908b0c86db96ddf766c",
+          "result": "Bounded sharedledger:3requests/.75USDreserved/0remainingrequests; successestimate.0073235, actualbillingnull"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/01-compliance/HACKATHON_RULES.md",
+    "docs/08-ai/META_MODEL_RESEARCH.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/00-project/META_API_VALIDATION_AUTH_20261027.md",
+      "sha256": "9166f410152a105f6d9794bced8e3d84f1228e039543348c4cf3c1b9975514f6",
+      "result": "User explicitly authorized totalUS1; no permission to raise cap"
+    },
+    {
+      "path": "research/v1/meta-catalog-20261027T0131Z.json",
+      "sha256": "c3b4fef5a75d1d0aadab5ba4de9658fa7c2c9099ce20b7142ba7e477e3ddcdc4",
+      "result": "Actual authenticated catalog HTTP200; no remaining-credit/billing claim"
+    },
+    {
+      "path": "research/v1/meta-live-validation-20261027-r3-minimal/independent-live-review.json",
+      "sha256": "5210e5d32326b5ced30b25359882528e96ef371f7f3e4ad6d59b2a43bc4ac7dc",
+      "result": "PASS actual Meta Sound tool proposal→HostApply→local180ticks/181frames and run artifacts; not Scene/model-plannedRun/UI/hearing"
+    },
+    {
+      "path": "research/v1/meta-live-budget-20261027.json",
+      "sha256": "7aff29999999c201ce3f1ff37e9aeda48e569be678038908b0c86db96ddf766c",
+      "result": "Bounded sharedledger:3requests/.75USDreserved/0remainingrequests; successestimate.0073235, actualbillingnull"
+    }
+  ],
+  "created_at": "2026-10-25T19:49:07.702518+00:00",
+  "updated_at": "2026-10-27T03:05:14.841Z",
+  "blockers": [
+    "External user account/eligibility and unpublished rule details; no terms accepted"
+  ],
+  "last_reviewed_at": "2026-10-25T19:49:07.702518+00:00",
+  "last_summary": "僅以真實證據核實既有AC-02，未改原criterion文字／依賴／整體狀態；其他範圍仍待驗"
+}

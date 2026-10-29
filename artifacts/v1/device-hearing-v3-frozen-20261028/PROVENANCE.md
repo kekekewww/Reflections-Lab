@@ -1,0 +1,7 @@
+# Frozen product build for device hearing V3
+
+This directory preserves the exact raw `test-results/product-e2e/build.json` bytes produced by the historical product e2e build (SHA-256 `e0a4654e8b948ebf47ce17aa00a72b412204de23beb169501e639fab7d307806`). Its bundle entries retain their original `test-results/product-preview-dist/` paths; files below `bundle/` are mapped by stripping that prefix, with original bytes and hashes unchanged. The manifest records 172 input entries, the same 172 post-build entries, and 12 bundle files. This is an instrumented e2e build, not a hearing, device, performance or production-release claim.
+
+Bundled outputs contain project and third-party code and source maps. Their distribution and corresponding notices and source obligations remain subject to the project's final license/provenance and NOTICE review; this directory does not establish that review or choose a root license. Do not publish this artifact before that review is resolved.
+
+`independent-review.json` is intentionally absent until Root completes independent review. It must contain exact ordered closure produced by `computeClosure`, schemaVersion 1, status `APPROVED_FOR_HUMAN_SESSION`, reviewer `root-independent-review`, and no additional keys. The review gate does not include the receipt itself in its file list; the driver records and rechecks its exact bytes. Qualification-only fixtures use `MOCK_NOT_APPROVED` and are rejected for human sessions.

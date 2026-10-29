@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/ai-scene-change-set.schema.json",
+  "title": "Reflection Lab staged scene transaction v1",
+  "description": "Host-owned transaction record. Passing JSON Schema is not an approval or a domain-validation result.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "transactionId", "sceneId", "baseRevision", "status", "operations", "beforeSnapshotId", "previewDigest", "approvedDigest", "approvedBy", "resultRevision", "validationErrors"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "transactionId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+    "sceneId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
+    "baseRevision": {"type": "integer", "minimum": 0},
+    "status": {"enum": ["drafted", "validated", "previewed", "awaitingApproval", "applied", "reverted", "rejected", "expired", "conflict", "failed"]},
+    "operations": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"allOf": [{"$ref": "ai-tool-request.schema.json"}, {"type": "object", "properties": {"tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory"]}}}]}},
+    "beforeSnapshotId": {"anyOf": [{"$ref": "ai-tool-request.schema.json#/$defs/id"}, {"type": "null"}]},
+    "previewDigest": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+    "approvedDigest": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+    "approvedBy": {"enum": ["human", "trustedLocalPolicy", null]},
+    "resultRevision": {"type": ["integer", "null"], "minimum": 1},
+    "validationErrors": {"type": "array", "maxItems": 32, "items": {"$ref": "ai-tool-result.schema.json#/$defs/error"}}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"enum": ["previewed", "awaitingApproval", "applied", "reverted"]}}}, "then": {"properties": {"previewDigest": {"type": "string"}, "beforeSnapshotId": {"type": "string"}}}},
+    {"if": {"properties": {"status": {"enum": ["applied", "reverted"]}}}, "then": {"properties": {"approvedDigest": {"type": "string"}, "approvedBy": {"enum": ["human", "trustedLocalPolicy"]}, "resultRevision": {"type": "integer"}, "validationErrors": {"type": "array", "maxItems": 0}}}}
+  ]
+}

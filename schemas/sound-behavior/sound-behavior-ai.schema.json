@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/sound-behavior/sound-behavior-ai.schema.json",
+  "title": "Sound Behavior proposal draft; not provider tool adapter",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "proposalId": {
+      "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/Id"
+    },
+    "sceneId": {
+      "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/Id"
+    },
+    "expectedSceneRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "expectedBehaviorRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "CreateProfile"
+              },
+              "profile": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/SoundBehaviorProfile"
+              }
+            },
+            "required": ["type", "profile"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "ReplaceProfile"
+              },
+              "profileId": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/Id"
+              },
+              "expectedProfileRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "profile": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/SoundBehaviorProfile"
+              }
+            },
+            "required": ["type", "profileId", "expectedProfileRevision", "profile"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "DeleteProfile"
+              },
+              "profileId": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/Id"
+              },
+              "expectedProfileRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            },
+            "required": ["type", "profileId", "expectedProfileRevision"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "AssignBinding"
+              },
+              "binding": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/BehaviorBinding"
+              }
+            },
+            "required": ["type", "binding"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "RemoveBinding"
+              },
+              "bindingId": {
+                "$ref": "https://reflection-lab.local/schemas/sound-behavior/behavior-document.schema.json#/$defs/Id"
+              }
+            },
+            "required": ["type", "bindingId"],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 64
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "proposalId",
+    "sceneId",
+    "expectedSceneRevision",
+    "expectedBehaviorRevision",
+    "operations"
+  ],
+  "additionalProperties": false
+}

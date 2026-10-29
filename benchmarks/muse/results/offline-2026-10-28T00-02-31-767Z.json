@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-28T00:02:31.766Z",
+  "mode": "OFFLINE_TRUSTED_FIXTURE_VALIDATION",
+  "live_evaluation": "NOT RUN",
+  "status": "PASS",
+  "scope": "4 類 × 2 prompt strategy 的可執行基礎；沒有模型生成，不能比較模型或 prompt 成效。TypeScript transpile 不等於專案 typecheck；physics fixture 不是 Rapier/browser 驗證。",
+  "results": [
+    {
+      "fixture_id": "typescript-component",
+      "category": "TypeScript component logic",
+      "strategy": "A",
+      "prompt": "實作具 disabled/loading 狀態、HTML escaping 的 TypeScript 按鈕字串元件。\n請輸出實作與已執行測試。",
+      "prompt_utf8_bytes": 123,
+      "prompt_sha256": "4d991a567879d563e599535feb02eb10307e89b0f14da3e09b3fa3c4405d2ab1",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 4,
+        "checks": [
+          {
+            "name": "normal accessible state",
+            "passed": true
+          },
+          {
+            "name": "loading state",
+            "passed": true
+          },
+          {
+            "name": "disabled state",
+            "passed": true
+          },
+          {
+            "name": "escape label",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "41f6dc442a6208287a3054ed7289cb14268c6a68c9e5383295ca02f73ce6b04d",
+        "validation_latency_ms": 32.75049999999999
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 4,
+        "checks": [
+          {
+            "name": "normal accessible state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"false\">播放</button>'\n          ^\n"
+          },
+          {
+            "name": "loading state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"true\" disabled>處理中</button>'\n          ^\n"
+          },
+          {
+            "name": "disabled state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"false\" disabled>播放</button>'\n          ^\n"
+          },
+          {
+            "name": "escape label",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button><script>&\"</button>'\n- '<button aria-busy=\"false\">&lt;script&gt;&amp;&quot;</button>'\n"
+          }
+        ],
+        "candidate_sha256": "22436a942502e389b945ba8f54b7c79abf79c2fe874755e2dc14f88aa370b305",
+        "validation_latency_ms": 3.629799999999989
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "typescript-component",
+      "category": "TypeScript component logic",
+      "strategy": "B",
+      "prompt": "{\n  \"task_id\": \"PROMPT-FIXTURE-typescript-component\",\n  \"objective\": \"實作具 disabled/loading 狀態、HTML escaping 的 TypeScript 按鈕字串元件。\",\n  \"scope\": [\n    \"單一隔離 TypeScript fixture\"\n  ],\n  \"constraints\": [\n    \"輸出 aria-busy 與 disabled\",\n    \"label 不可成為 HTML\",\n    \"loading 時文字顯示處理中\"\n  ],\n  \"acceptance_criteria\": [\n    \"正常狀態可操作\",\n    \"loading 狀態鎖定\",\n    \"特殊字元安全編碼\"\n  ],\n  \"forbidden_operations\": [\n    \"修改驗收程式\",\n    \"網路或模型 API 呼叫\",\n    \"宣稱已通過未執行的測試\"\n  ],\n  \"completion\": \"列出修改、測試、限制；獨立驗證器決定完成狀態\"\n}",
+      "prompt_utf8_bytes": 685,
+      "prompt_sha256": "28d32498ecb8e7c3fe4f5c9c2e4d7f639d75b0f2b37746a81c9324f0212a42cc",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 4,
+        "checks": [
+          {
+            "name": "normal accessible state",
+            "passed": true
+          },
+          {
+            "name": "loading state",
+            "passed": true
+          },
+          {
+            "name": "disabled state",
+            "passed": true
+          },
+          {
+            "name": "escape label",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "41f6dc442a6208287a3054ed7289cb14268c6a68c9e5383295ca02f73ce6b04d",
+        "validation_latency_ms": 32.75049999999999
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 4,
+        "checks": [
+          {
+            "name": "normal accessible state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"false\">播放</button>'\n          ^\n"
+          },
+          {
+            "name": "loading state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"true\" disabled>處理中</button>'\n          ^\n"
+          },
+          {
+            "name": "disabled state",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button>播放</button>'\n- '<button aria-busy=\"false\" disabled>播放</button>'\n          ^\n"
+          },
+          {
+            "name": "escape label",
+            "passed": false,
+            "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<button><script>&\"</button>'\n- '<button aria-busy=\"false\">&lt;script&gt;&amp;&quot;</button>'\n"
+          }
+        ],
+        "candidate_sha256": "22436a942502e389b945ba8f54b7c79abf79c2fe874755e2dc14f88aa370b305",
+        "validation_latency_ms": 3.629799999999989
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "physics-impulse",
+      "category": "Physics interaction contract",
+      "strategy": "A",
+      "prompt": "依速度差與質量算有限 impulse，限制最大向量長度。單位 kg、m/s、N·s。\n請輸出實作與已執行測試。",
+      "prompt_utf8_bytes": 130,
+      "prompt_sha256": "dd605da360f7858117418fc22fec696320a05236c40b3e7846441da529c8dcee",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "mass multiplies velocity delta",
+            "passed": true
+          },
+          {
+            "name": "bounded vector length",
+            "passed": true
+          },
+          {
+            "name": "zero delta stays zero",
+            "passed": true
+          },
+          {
+            "name": "invalid mass or velocity rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "8d3ce082e65d266bd348734c1a325359fc097057050559e10d8fc26aefbdf0df",
+        "validation_latency_ms": 5.925400000000025
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "mass multiplies velocity delta",
+            "passed": true
+          },
+          {
+            "name": "bounded vector length",
+            "passed": false,
+            "error": "6 != 3"
+          },
+          {
+            "name": "zero delta stays zero",
+            "passed": true
+          },
+          {
+            "name": "invalid mass or velocity rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "efce1802b49a208274d803360c78ba631692cc62a97b074bf48f7d3236f21a3d",
+        "validation_latency_ms": 2.145399999999995
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "physics-impulse",
+      "category": "Physics interaction contract",
+      "strategy": "B",
+      "prompt": "{\n  \"task_id\": \"PROMPT-FIXTURE-physics-impulse\",\n  \"objective\": \"依速度差與質量算有限 impulse，限制最大向量長度。單位 kg、m/s、N·s。\",\n  \"scope\": [\n    \"單一隔離 TypeScript fixture\"\n  ],\n  \"constraints\": [\n    \"不改變輸入\",\n    \"質量與上限必須有限且正\",\n    \"拒絕非有限速度\",\n    \"中間運算溢位須明確失敗\"\n  ],\n  \"acceptance_criteria\": [\n    \"質量乘速度差\",\n    \"限制 impulse magnitude\",\n    \"無效參數及數值溢位明確失敗\"\n  ],\n  \"forbidden_operations\": [\n    \"修改驗收程式\",\n    \"網路或模型 API 呼叫\",\n    \"宣稱已通過未執行的測試\"\n  ],\n  \"completion\": \"列出修改、測試、限制；獨立驗證器決定完成狀態\"\n}",
+      "prompt_utf8_bytes": 729,
+      "prompt_sha256": "485a800844c281474b9dd2bb0b305c4fa786dd0c18cb980ba5129d7ac8ada184",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "mass multiplies velocity delta",
+            "passed": true
+          },
+          {
+            "name": "bounded vector length",
+            "passed": true
+          },
+          {
+            "name": "zero delta stays zero",
+            "passed": true
+          },
+          {
+            "name": "invalid mass or velocity rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "8d3ce082e65d266bd348734c1a325359fc097057050559e10d8fc26aefbdf0df",
+        "validation_latency_ms": 5.925400000000025
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "mass multiplies velocity delta",
+            "passed": true
+          },
+          {
+            "name": "bounded vector length",
+            "passed": false,
+            "error": "6 != 3"
+          },
+          {
+            "name": "zero delta stays zero",
+            "passed": true
+          },
+          {
+            "name": "invalid mass or velocity rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "efce1802b49a208274d803360c78ba631692cc62a97b074bf48f7d3236f21a3d",
+        "validation_latency_ms": 2.145399999999995
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "acoustic-floor-reflection",
+      "category": "Geometry / acoustic mathematics",
+      "strategy": "A",
+      "prompt": "用 y=0 平面 image source 解二維一階反射的交點、總長與傳播延遲。\n請輸出實作與已執行測試。",
+      "prompt_utf8_bytes": 122,
+      "prompt_sha256": "e2f3d65f413b487b0ab5b6ff4eef4f7baf43fa9c94a79c8776c8422978a7ac33",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "vertical length and delay",
+            "passed": true
+          },
+          {
+            "name": "3-4-5 triangle",
+            "passed": true
+          },
+          {
+            "name": "asymmetric bounce",
+            "passed": true
+          },
+          {
+            "name": "invalid geometry rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "5c70a23853d9a81d5cdd654e2518c4ecdc00cfa2d7c8e56008254322ac6cf4f6",
+        "validation_latency_ms": 3.8005999999999744
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "vertical length and delay",
+            "passed": false,
+            "error": "1 != 5"
+          },
+          {
+            "name": "3-4-5 triangle",
+            "passed": false,
+            "error": "3 != 5"
+          },
+          {
+            "name": "asymmetric bounce",
+            "passed": false,
+            "error": "3 != 2"
+          },
+          {
+            "name": "invalid geometry rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "8b260981c593441b30f59c969aad1d64a1b7575137a3bb2133b11b971dfa9e75",
+        "validation_latency_ms": 2.527499999999975
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "acoustic-floor-reflection",
+      "category": "Geometry / acoustic mathematics",
+      "strategy": "B",
+      "prompt": "{\n  \"task_id\": \"PROMPT-FIXTURE-acoustic-floor-reflection\",\n  \"objective\": \"用 y=0 平面 image source 解二維一階反射的交點、總長與傳播延遲。\",\n  \"scope\": [\n    \"單一隔離 TypeScript fixture\"\n  ],\n  \"constraints\": [\n    \"SI m、s\",\n    \"source/listener 必須在地板上方\",\n    \"聲速必須有限正數\",\n    \"不混入音訊播放延遲\",\n    \"中間運算或結果溢位須明確失敗\"\n  ],\n  \"acceptance_criteria\": [\n    \"對稱垂直路徑解析值\",\n    \"斜向 3-4-5 解析值\",\n    \"無效幾何與數值溢位拒絕\"\n  ],\n  \"forbidden_operations\": [\n    \"修改驗收程式\",\n    \"網路或模型 API 呼叫\",\n    \"宣稱已通過未執行的測試\"\n  ],\n  \"completion\": \"列出修改、測試、限制；獨立驗證器決定完成狀態\"\n}",
+      "prompt_utf8_bytes": 776,
+      "prompt_sha256": "7b9aab2f58467b29471d882a212064c186859ac97dac62083e39b433f8d312a2",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "vertical length and delay",
+            "passed": true
+          },
+          {
+            "name": "3-4-5 triangle",
+            "passed": true
+          },
+          {
+            "name": "asymmetric bounce",
+            "passed": true
+          },
+          {
+            "name": "invalid geometry rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "5c70a23853d9a81d5cdd654e2518c4ecdc00cfa2d7c8e56008254322ac6cf4f6",
+        "validation_latency_ms": 3.8005999999999744
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "vertical length and delay",
+            "passed": false,
+            "error": "1 != 5"
+          },
+          {
+            "name": "3-4-5 triangle",
+            "passed": false,
+            "error": "3 != 5"
+          },
+          {
+            "name": "asymmetric bounce",
+            "passed": false,
+            "error": "3 != 2"
+          },
+          {
+            "name": "invalid geometry rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "8b260981c593441b30f59c969aad1d64a1b7575137a3bb2133b11b971dfa9e75",
+        "validation_latency_ms": 2.527499999999975
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "bugfix-smoothing",
+      "category": "Bug fix / regression",
+      "strategy": "A",
+      "prompt": "修正插值 alpha 超出 [0,1] 造成 overshoot；非有限輸入明確拒絕。\n請輸出實作與已執行測試。",
+      "prompt_utf8_bytes": 118,
+      "prompt_sha256": "dc109761ff725a67523e4551c4ed2688e8a99a434c77d3a37019e760e054fa90",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "normal interpolation",
+            "passed": true
+          },
+          {
+            "name": "lower clamp regression",
+            "passed": true
+          },
+          {
+            "name": "upper clamp regression",
+            "passed": true
+          },
+          {
+            "name": "invalid input rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "64728e436b2cd2850793a8250bd38ec119718e4779b3a4a469b617ac3fc567eb",
+        "validation_latency_ms": 3.016300000000001
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "normal interpolation",
+            "passed": true
+          },
+          {
+            "name": "lower clamp regression",
+            "passed": false,
+            "error": "-5 != 0"
+          },
+          {
+            "name": "upper clamp regression",
+            "passed": false,
+            "error": "20 != 10"
+          },
+          {
+            "name": "invalid input rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "fc7213aabfca886dbafd00e6c02d564efd91bbe8ee63d7e445fdc484cc64149b",
+        "validation_latency_ms": 2.199299999999994
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    },
+    {
+      "fixture_id": "bugfix-smoothing",
+      "category": "Bug fix / regression",
+      "strategy": "B",
+      "prompt": "{\n  \"task_id\": \"PROMPT-FIXTURE-bugfix-smoothing\",\n  \"objective\": \"修正插值 alpha 超出 [0,1] 造成 overshoot；非有限輸入明確拒絕。\",\n  \"scope\": [\n    \"單一隔離 TypeScript fixture\"\n  ],\n  \"constraints\": [\n    \"保留 [0,1] 內原行為\",\n    \"alpha clamp\",\n    \"拒絕 NaN/Infinity\",\n    \"中間運算或結果溢位須明確失敗\"\n  ],\n  \"acceptance_criteria\": [\n    \"正常插值\",\n    \"上下界 regression\",\n    \"非有限輸入與數值溢位拒絕\"\n  ],\n  \"forbidden_operations\": [\n    \"修改驗收程式\",\n    \"網路或模型 API 呼叫\",\n    \"宣稱已通過未執行的測試\"\n  ],\n  \"completion\": \"列出修改、測試、限制；獨立驗證器決定完成狀態\"\n}",
+      "prompt_utf8_bytes": 700,
+      "prompt_sha256": "96f93eb8156a3ab0c79d50c9fb693bbd5e62e9c255e88aafd66ccc7d7c5c1d22",
+      "model": null,
+      "model_cli_version": null,
+      "live_status": "NOT RUN",
+      "fixture_reference": {
+        "status": "PASS",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "normal interpolation",
+            "passed": true
+          },
+          {
+            "name": "lower clamp regression",
+            "passed": true
+          },
+          {
+            "name": "upper clamp regression",
+            "passed": true
+          },
+          {
+            "name": "invalid input rejected",
+            "passed": true
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": true
+          }
+        ],
+        "candidate_sha256": "64728e436b2cd2850793a8250bd38ec119718e4779b3a4a469b617ac3fc567eb",
+        "validation_latency_ms": 3.016300000000001
+      },
+      "negative_control": {
+        "status": "FAIL",
+        "compile_errors": [],
+        "expected_check_count": 5,
+        "checks": [
+          {
+            "name": "normal interpolation",
+            "passed": true
+          },
+          {
+            "name": "lower clamp regression",
+            "passed": false,
+            "error": "-5 != 0"
+          },
+          {
+            "name": "upper clamp regression",
+            "passed": false,
+            "error": "20 != 10"
+          },
+          {
+            "name": "invalid input rejected",
+            "passed": false,
+            "error": "Missing expected exception."
+          },
+          {
+            "name": "finite input overflow rejected explicitly",
+            "passed": false,
+            "error": "Missing expected exception."
+          }
+        ],
+        "candidate_sha256": "fc7213aabfca886dbafd00e6c02d564efd91bbe8ee63d7e445fdc484cc64149b",
+        "validation_latency_ms": 2.199299999999994
+      },
+      "model_metrics": {
+        "task_success_rate": null,
+        "test_pass_rate": null,
+        "repair_rounds": null,
+        "unexpected_file_modifications": null,
+        "hallucinated_apis": null,
+        "latency_ms": null,
+        "tokens": null,
+        "cost_usd": null,
+        "tool_calls": null,
+        "human_intervention": null,
+        "final_code_quality": null
+      }
+    }
+  ],
+  "source_hashes": {
+    "fixtures.mjs": "3b2c8d588263aaa67738608d04166e998bd92dd9c00cf223cb336c025c36dd36",
+    "acceptance.mjs": "9c436a0e42824d6486a9c991f7817f6e83ac1cb64bfd00c9804e5865e8e56a74",
+    "evaluate.mjs": "256eff3b1e35933ab6fea659df95d09793e78bf87ebc515c1824d9a56747f665",
+    "evaluation-config.json": "295aac870fb51416f572daca9f6723c1e96174023ab481e4df525da4c536fd52"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "recordedAt": "2026-10-27T22:38:35.187Z",
+  "status": "PHYSICS2_ACTUAL_FAIL_ALL_NEXT_NOT_RUN",
+  "originalProof": {
+    "path": "artifacts/v1/physics-acceptance-20261027/browser-20261027223502213/browser-verification.json",
+    "sha256": "61e8630dbf49efebeb40a1775cb3e07da69ed88ea74bead1831e38a90c510d7b"
+  },
+  "operationEndSha256": "e44ed5c692231649bb7801022f282ac4d6507bf78e667d0edf752ebe31cef5b2",
+  "actualExitCode": 1,
+  "statistics": {
+    "startTime": "2026-10-27T22:35:04.677Z",
+    "duration": 20001.084,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "sourceStable": true,
+  "harnessStable": true,
+  "protected61Stable": true,
+  "sourceCount": 1926,
+  "failures": [
+    {
+      "title": "real Chrome/WASM fixed 60 Hz and four body modes preserve their physical semantics",
+      "file": "physics-lifecycle.spec.ts",
+      "line": 36,
+      "column": 1,
+      "status": "failed",
+      "retry": 0,
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Developing\\Meta Hack\\tests\\browser\\physics-lifecycle.spec.ts",
+            "column": 29,
+            "line": 41
+          },
+          "message": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5176/src/physics/index.ts\n\n  39 |   const beforeHashes = await sourceHashes(physicsPaths);\n  40 |   await page.goto(\"/physics-lifecycle-harness\");\n> 41 |   const result = await page.evaluate(async () => {\n     |                             ^\n  42 |     const { PhysicsWorld } = await import(\"/src/physics/index.ts\");\n  43 |     const makeObject = (id: string, mode: string, x: number) => ({\n  44 |       id,\n    at D:\\Developing\\Meta Hack\\tests\\browser\\physics-lifecycle.spec.ts:41:29"
+        }
+      ],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-real-Chr-806d8-ve-their-physical-semantics\\test-failed-1.png"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-real-Chr-806d8-ve-their-physical-semantics\\error-context.md"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-real-Chr-806d8-ve-their-physical-semantics\\error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-real-Chr-806d8-ve-their-physical-semantics\\trace.zip"
+        }
+      ]
+    },
+    {
+      "title": "actual app bootstrap: ten reset/import cycles preserve one world/queue/worker and disposal stops RAF and GPU resources",
+      "file": "physics-lifecycle.spec.ts",
+      "line": 204,
+      "column": 1,
+      "status": "failed",
+      "retry": 0,
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Developing\\Meta Hack\\tests\\browser\\physics-lifecycle.spec.ts",
+            "column": 29,
+            "line": 222
+          },
+          "message": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5176/src/physics/index.ts\n\n  220 |   page.on(\"pageerror\", (error) => errors.push(error.message));\n  221 |   await page.goto(\"/physics-lifecycle-harness\");\n> 222 |   const result = await page.evaluate(async () => {\n      |                             ^\n  223 |     const pause = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));\n  224 |     const waitUntil = async (predicate: () => boolean, description: string, timeoutMs = 10_000) => {\n  225 |       const deadline = performance.now() + timeoutMs;\n    at D:\\Developing\\Meta Hack\\tests\\browser\\physics-lifecycle.spec.ts:222:29"
+        }
+      ],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-actual-a-13c3a-stops-RAF-and-GPU-resources\\test-failed-1.png"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-actual-a-13c3a-stops-RAF-and-GPU-resources\\error-context.md"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-actual-a-13c3a-stops-RAF-and-GPU-resources\\error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "D:\\Developing\\Meta Hack\\test-results\\v1-physics-browser\\physics-lifecycle-actual-a-13c3a-stops-RAF-and-GPU-resources\\trace.zip"
+        }
+      ]
+    }
+  ],
+  "nativeBrowserPids": [
+    62964,
+    60816
+  ],
+  "browserNativeExit0": [
+    {
+      "pid": 62964,
+      "exit0": true
+    },
+    {
+      "pid": 60816,
+      "exit0": true
+    }
+  ],
+  "cleanupStatus": "PASS_KNOWN_PROCESS_ZERO_AND_PORT_FREE",
+  "cleanupSha256": "f604fee23a9b78590d4db61085f54036add36292c1b236b6a13bcbdbadd648aa",
+  "failureOutputCount": 8,
+  "failureOutputsSha256": "774f3ed541dc3c04b8c1313c7d02d1e2db484ddf52ce78bfb70a5329a1d1cdb4",
+  "allPreservedScratchPreimagesMatch": true,
+  "preimageCount": 32,
+  "storage": "NOT_RUN",
+  "productBuild": "NOT_RUN",
+  "product": "NOT_RUN",
+  "limits": "Module load failure happened before product numerical/lifecycle assertions. No cause inferred, no retries/source edits/secret reads/HTTP probes."
+}

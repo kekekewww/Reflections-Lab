@@ -1,0 +1,77 @@
+{
+  "stage": "EXPORTEND_FINAL_UI_RENDER_TRANSFORMS",
+  "createdAt": "2026-10-27T17:11:12.958Z",
+  "directory": "artifacts/v1/interpolated-transform-candidate-sourceend-20261027T171111837Z",
+  "executor": {
+    "name": "Codex",
+    "exactModel": null
+  },
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "90752684a0f3c2d0bdcea1dfc776cd1ceceb4677e401cef4c7a6f89f40fb02d7",
+    "bytes": 50747,
+    "payloadFileCount": 75,
+    "payloadBytes": 942586
+  },
+  "sourceEnd": {
+    "path": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/receipt.json",
+    "sha256": "dc58fb112621eadb20795e4b957b4f0f91bbc8b4dd81d7e69fbe0e0e0a38a37e"
+  },
+  "product": {
+    "physicsPreimage": "9df0d1d2c01c03522c38659644f51d979a80d6e9198f973d2c9bbc6115ea6d85",
+    "physicsPostimage": "650233edc0ea91fb8bb164de5f3fbe44e1dbdf7c91fc4cf5873126c96995be6f",
+    "runtimePreimage": "be7ffea957b092143ae7556f7e9205dff4718a3bb3b8df2d931ea0832df4d490",
+    "runtimePostimage": "c3437ecd823ab32dad4b10e2b958824c1bf5ad187add9ac0625468fea99d97ed",
+    "fullPublicInterpolationLiteralSha256": "74c210007c612deb05a303970db8987edca155861623013f3c613eb2910fb0c0",
+    "fullPublicInterpolationUnchanged": true
+  },
+  "recovery": [
+    {
+      "restorePath": "src/physics/physics-world.ts",
+      "preimage": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/physics-world.preimage.ts.raw",
+      "postimage": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/physics-world.postimage.ts.raw"
+    },
+    {
+      "restorePath": "src/app/runtime.ts",
+      "preimage": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/runtime.preimage.ts.raw",
+      "postimage": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/runtime.postimage.ts.raw"
+    },
+    {
+      "restorePath": "tests/physics/interpolated-transform.test.ts",
+      "snapshot": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/interpolated-transform.final.test.ts.raw"
+    },
+    {
+      "restorePath": "tests/app/render-transform.test.ts",
+      "snapshot": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/render-transform.final.test.ts.raw"
+    },
+    {
+      "restorePath": "tests/physics/fixtures/interpolated-transform-reference.mjs",
+      "snapshot": "payload/cache/v1/ui-perf-diagnosis/interpolated-transform-candidate/interpolated-transform-reference.final.mjs.raw"
+    }
+  ],
+  "restoreInstructions": "Preserve current work first, then copy exact .raw bytes to the mapped original paths. Existing sourceEND receipts contain exact Node commands and actual exits. Source inventories retain required repository hashes; dependencies and the rest of the repository are not duplicated.",
+  "existingProofs": {
+    "baselineRed": "5 expected absent-getter failures / 2 existing semantic passes, exit1",
+    "firstGreenFixtureFailure": "6/7, preserved; spawn discontinuity setup corrected with explicit branch assertion, no product change",
+    "finalFocused": "7/7 exit0",
+    "relevantRegressions": "391/391 exit0",
+    "strictLintFormat": "PASS exit0",
+    "independent": "7/7 exit0, no findings, PID29228 closed normally",
+    "count": "Full poses700→550;150 copied transform projections; full interpolation0 in counted runtime; snapshots350/publish205/behavior.snapshot205/requests60 unchanged."
+  },
+  "limits": [
+    "Node22.17.0;105 objects/100 dynamic/101 bindings301 rules;320 fixedticks including120 warmup.",
+    "Retained4 representative DTOs+4 reference copies remained unchanged; full disposal and before/after source stability retained.",
+    "Node clocks/counters add overhead; no browser/React/GPU/native WebAudio or canonical CPU/frame-budget PASS claim.",
+    "Prior history stage archive includes initial900 count, failed bootstrap and Root bounded known-process absence evidence. Its export receipt/manifest are cross-linked here.",
+    "No new test, source write, benchmark, browser, build, docs/Wiki/task/Git or process action during export."
+  ],
+  "originalInputsPreserved": true,
+  "copiedBytesVerified": true,
+  "ownershipRelease": {
+    "status": "SOURCEEND_AND_CPU_END_RELEASED_TO_COORDINATOR",
+    "noRemainingNativeJobsInAgentScope": true,
+    "noFurtherOptimization": true,
+    "action": "Stop after export; broad qualification belongs to coordinator."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCEEND_SCOPED_INTERPOLATION_OBSERVER",
+  "recordedAt": "2026-10-27T17:22:11.598Z",
+  "scope": [
+    "tests/browser/performance-profile.mjs",
+    "tests/browser/performance-fixture.mjs",
+    "tests/integration/performance-profile.test.mjs"
+  ],
+  "preimages": [
+    {
+      "path": "tests/browser/performance-profile.mjs",
+      "sha256": "ff060a4c8315f704a80669b02236199d5df327c6dc9158b3794ee264d0c9029d"
+    },
+    {
+      "path": "tests/browser/performance-fixture.mjs",
+      "sha256": "a0b506cf361f2cf50fd98d0ec0b782eb72c5768224f35f47e300abcbaf56ea51"
+    },
+    {
+      "path": "tests/integration/performance-profile.test.mjs",
+      "sha256": "d5aab5f8cd2a60f19d07c6b47fa281c300e1d0b65fa783ad773f063c504a6897"
+    }
+  ],
+  "finalFiles": [
+    {
+      "path": "tests/browser/performance-profile.mjs",
+      "sha256": "df86db94c6654399851ec1e3a4a240bc5821aee8dfa0745180d404c8cdf23c9c"
+    },
+    {
+      "path": "tests/browser/performance-fixture.mjs",
+      "sha256": "32641b92aa3cd48e9eacdd979f324738567b9a4b61c64b93e14c136f6846546b"
+    },
+    {
+      "path": "tests/integration/performance-profile.test.mjs",
+      "sha256": "27c9135a2b5a8024ba8f6b77ae9ba8125671bbf56da1ea3223e260ff68f49d75"
+    }
+  ],
+  "reason": "Product LabRuntime.getPose now invokes PhysicsWorld.interpolatedTransforms; observing only the unchanged full public interpolatedPoses would miss the active interpolation work.",
+  "implementation": [
+    "Required current fast method checked before any wrapping; both supported interpolation methods observed with explicit method provenance and successful/failed call counts.",
+    "Original this/arguments/return/error identities retained. Timing starts before the delegated call and ends in finally before sample bookkeeping; measurement-disabled delegation records no samples.",
+    "Per-method durations inclusive; aggregate records outermost calls only, avoiding nested delegation double-counting.",
+    "Existing aggregate metric ID retained, raw method observations exported, duplicate method arrays omitted from compact report.",
+    "UI instrumentation validity requires successful nonzero fast-call evidence and consistent call/sample counts. Successful clock-quantized0ms calls remain valid; legacy-only or failed fast calls cannot manufacture observation."
+  ],
+  "independentTests": {
+    "command": "& 'C:\\Program Files\\nodejs\\node.exe' --test tests/integration/performance-profile.test.mjs",
+    "tests": 155,
+    "passed": 155,
+    "failed": 0,
+    "exitCode": 0,
+    "original146AssertionsRetained": true,
+    "newFocusedCases": 9,
+    "beforeAfterOwnThreeHashesStable": true,
+    "rawRed": "artifacts/v1/performance-interpolation-observer-red-20261028.json",
+    "finalReceipt": "artifacts/v1/performance-interpolation-observer-final-20261028.json",
+    "finalReceiptSha256": "70006a6062568ecf118a2a5051151f3902729335c6710c85dbdea16be516a85a"
+  },
+  "scopedStaticChecks": [
+    {
+      "id": "syntaxRunner",
+      "command": "& 'C:\\Program Files\\nodejs\\node.exe' --check tests/browser/performance-profile.mjs",
+      "chunk_id": "710104",
+      "wall_time_seconds": 0.2212649,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "syntaxFixture",
+      "command": "& 'C:\\Program Files\\nodejs\\node.exe' --check tests/browser/performance-fixture.mjs",
+      "chunk_id": "8aef22",
+      "wall_time_seconds": 0.4994788,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "lint",
+      "command": "& 'C:\\Program Files\\nodejs\\node.exe' node_modules/eslint/bin/eslint.js tests/browser/performance-profile.mjs tests/browser/performance-fixture.mjs tests/integration/performance-profile.test.mjs",
+      "chunk_id": "8cf06f",
+      "wall_time_seconds": 2.0617813,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "id": "format",
+      "command": "& 'C:\\Program Files\\nodejs\\node.exe' node_modules/prettier/bin/prettier.cjs --check tests/browser/performance-profile.mjs tests/browser/performance-fixture.mjs tests/integration/performance-profile.test.mjs",
+      "chunk_id": "33ed3b",
+      "wall_time_seconds": 1.1870624,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "Checking formatting...\nAll matched files use Prettier code style!\n"
+    }
+  ],
+  "independentStaticReview": {
+    "agent": "/root/v1_browser_performance/profile_runner/native_graph_audit",
+    "result": "NO_BLOCKING_SCOPED_DEFECT",
+    "exactBeforeAfterOwnThreeHashesStable": true,
+    "scope": "Actual observer installation, required method, delegation semantics, successful/failure accounting, nested intervals, outermost aggregate, UI observation guard and raw/report wiring. No product checks or runtime performance claim."
+  },
+  "preserved": [
+    "Thresholds",
+    "Cadence",
+    "Scene/load",
+    "Trace boundary/clock correlation",
+    "Wake maintenance/impulse vectors",
+    "All earlier raw formal and smoke results; no rebin or retrospective promotion"
+  ],
+  "notRun": [
+    "Browser",
+    "Build/server",
+    "Smoke",
+    "600-second profile",
+    "Old artifact reanalysis",
+    "Whole-project checks"
+  ],
+  "stabilityLimit": "This binds ONLY the three listed inputs. Other explicitly authorized audio utility revisions occurred concurrently; no global source-stability or final product freeze is claimed.",
+  "sourceEnd": "All subtree source writes, checks and I/O stop after this export; further browser/profile work requires separate Root authorization."
+}

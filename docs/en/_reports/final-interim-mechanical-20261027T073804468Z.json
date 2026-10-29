@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-27T07:38:04.468Z",
+  "status": "PASS",
+  "scope": "Eleven artifact translations independently read before mechanical finalization; source hashes remain current and inverse generated notice/anchor/navigation changes reproduce all reviewed target bytes.",
+  "method": "Remove generated notice and original-heading anchors; invert local link mapping; restore source-relative marker; compare full reconstructed file SHA256 against independently reviewed snapshot SHA256.",
+  "reproduction_script": "import fs from 'node:fs';\nimport { createHash } from 'node:crypto';\nimport { inventory, parseTranslation, rewriteLinks } from '../../scripts/validation/english-docs.mjs';\nconst hash = value => createHash('sha256').update(value).digest('hex');\nconst reviewPaths=['docs/en/_reports/artifact-scope-independent.json','docs/en/_reports/artifact-archive-final-interim.json','docs/en/_reports/artifact-static-preview-final-interim.json'];\nconst inverse=new Map(inventory(process.cwd()).map(e=>[e.target,e.source]));\nconst rows=reviewPaths.flatMap(reviewPath=>{\n  const bytes=fs.readFileSync(reviewPath),review=JSON.parse(bytes);\n  return (review.reviewed_pairs??review.files).map(row=>{\n    const source=row.source_path??row.source,target=row.english_path??row.target,reviewed=row.english_sha256??row.target_sha256;\n    const current=fs.readFileSync(target,'utf8'),parsed=parseTranslation(current);\n    const body=parsed.body.replace(/<!-- english-notice:start -->[\\s\\S]*?<!-- english-notice:end -->\\r?\\n(?:\\r?\\n)?/g,'').replace(/<!-- english-original-anchor -->\\s*<a id=\"[^\"]*\"><\\/a>\\r?\\n?/g,'');\n    const reconstructed=`<!-- english-source: ${JSON.stringify({...parsed.metadata,links:'source-relative'})} -->\\n`+rewriteLinks(body,target,source,inverse);\n    return {source,target,review:{path:reviewPath,sha256:hash(bytes)},source_sha256:hash(fs.readFileSync(source)),reviewed_source_sha256:row.source_sha256,reviewed_target_sha256:reviewed,final_target_sha256:hash(current),reconstructed_review_sha256:hash(reconstructed),exact_review_reconstructed:hash(reconstructed)===reviewed};\n  });\n});\nif(rows.some(row=>!row.exact_review_reconstructed||row.source_sha256!==row.reviewed_source_sha256))throw Error('Source drift or mechanical inverse mismatch');\nconst report={schema_version:1,generated_at:new Date().toISOString(),status:'PASS',scope:'Eleven artifact translations independently read before mechanical finalization; source hashes remain current and inverse generated notice/anchor/navigation changes reproduce all reviewed target bytes.',method:'Remove generated notice and original-heading anchors; invert local link mapping; restore source-relative marker; compare full reconstructed file SHA256 against independently reviewed snapshot SHA256.',reproduction_script:fs.readFileSync('.cache/docs-en/mechanical-final-interim-proof.mjs','utf8'),entries:rows};\nconst file='docs/en/_reports/final-interim-mechanical-'+report.generated_at.replace(/[-:.]/g,'')+'.json';\nfs.writeFileSync(file,JSON.stringify(report,null,2)+'\\n',{flag:'wx'});\nconsole.log(JSON.stringify({file,sha256:hash(fs.readFileSync(file)),status:report.status,pairs:rows.length}));\n",
+  "entries": [
+    {
+      "source": "artifacts/v1/audio-cross-engine-run-20261027053729781/execution-summary.md",
+      "target": "docs/en/artifacts/v1/audio-cross-engine-run-20261027053729781/execution-summary.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "4d6195ac7d0be5dd35bdbdac7aff61975d02236ed8e507b0eceda87bd05ac0f2",
+      "reviewed_source_sha256": "4d6195ac7d0be5dd35bdbdac7aff61975d02236ed8e507b0eceda87bd05ac0f2",
+      "reviewed_target_sha256": "3f973464e27a50352d03d4bd4ad01f04c06a94157a582ed65665b1253620406f",
+      "final_target_sha256": "acfc67bf35742489e397fbe71ee4dd1d6ea2de0112ebb267f1a0c5e1b4cc7df3",
+      "reconstructed_review_sha256": "3f973464e27a50352d03d4bd4ad01f04c06a94157a582ed65665b1253620406f",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/audio-delay-reference-v1-run-20261027054851146/compatibility-summary.md",
+      "target": "docs/en/artifacts/v1/audio-delay-reference-v1-run-20261027054851146/compatibility-summary.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "5310fba235c10e7e4c7668e463bab61901bf332b283d07577db79cb4924fc41d",
+      "reviewed_source_sha256": "5310fba235c10e7e4c7668e463bab61901bf332b283d07577db79cb4924fc41d",
+      "reviewed_target_sha256": "ba086c96b67fc89144fb5592ef65aa54cff09525d9cb5a9aad93dc2d444dc473",
+      "final_target_sha256": "ec7ae4c5ace5817c0c13cd4b8d9767b15d1cd989e5e2574fcc52c9f3c7ae1eac",
+      "reconstructed_review_sha256": "ba086c96b67fc89144fb5592ef65aa54cff09525d9cb5a9aad93dc2d444dc473",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/physics-boundaries-20261027/README.md",
+      "target": "docs/en/artifacts/v1/physics-boundaries-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "bcbc2222247da86cc7d673a1967985378409f25d6c2a212e6343982098561b1c",
+      "reviewed_source_sha256": "bcbc2222247da86cc7d673a1967985378409f25d6c2a212e6343982098561b1c",
+      "reviewed_target_sha256": "387336744b2c4c46a340f3020d246f22b5d0e60c6c7af4a76e0428b5a19f9958",
+      "final_target_sha256": "8e96c27f78c5870c0ca91a1e4377177383212748d6639d4dda566122a1353d54",
+      "reconstructed_review_sha256": "387336744b2c4c46a340f3020d246f22b5d0e60c6c7af4a76e0428b5a19f9958",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/product-e2e-chrome-20261027T030150Z/independent-review.md",
+      "target": "docs/en/artifacts/v1/product-e2e-chrome-20261027T030150Z/independent-review.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "757be7a66ef8266740d4ab6eace4d95d4a4b05a692cd4f8d84d755af4c2a8f34",
+      "reviewed_source_sha256": "757be7a66ef8266740d4ab6eace4d95d4a4b05a692cd4f8d84d755af4c2a8f34",
+      "reviewed_target_sha256": "9630b305c46f0cb90595886cf9c4b04870306da5d54b36f7cef9072603c68913",
+      "final_target_sha256": "f38e2d1cd6ac8d09635c3b5fd5a303b23ada51676ba666bb86cd5e4d5e2ac838",
+      "reconstructed_review_sha256": "9630b305c46f0cb90595886cf9c4b04870306da5d54b36f7cef9072603c68913",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/ui-localization-20261027/README.md",
+      "target": "docs/en/artifacts/v1/ui-localization-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "9d2dd58b8cd36f3902cd53e24fb0885223bc75c50695de7b665da5052b003c6a",
+      "reviewed_source_sha256": "9d2dd58b8cd36f3902cd53e24fb0885223bc75c50695de7b665da5052b003c6a",
+      "reviewed_target_sha256": "be503f7dfc9b76fae83bab620211421682b0add13dd7fdc4eb60c657b70406be",
+      "final_target_sha256": "3119338cf5edd98482af8484c55b976ce8ce4cdf04a056c7802cbb7af850fb2e",
+      "reconstructed_review_sha256": "be503f7dfc9b76fae83bab620211421682b0add13dd7fdc4eb60c657b70406be",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/ui-validation-20261027/README.md",
+      "target": "docs/en/artifacts/v1/ui-validation-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "c0016153e7387bd5c70666c0d2254a971a1af8a0bca2c67cdf1ff6c29e64eba6",
+      "reviewed_source_sha256": "c0016153e7387bd5c70666c0d2254a971a1af8a0bca2c67cdf1ff6c29e64eba6",
+      "reviewed_target_sha256": "a4cb3d6d722501e0d4a74572ff2752a4888e6c2bf41d67ad0dbc68868e3fb2e3",
+      "final_target_sha256": "d70df600fc6f63ffa15fc285c8a068d1c1061bbccb0154247b57c57c2994a838",
+      "reconstructed_review_sha256": "a4cb3d6d722501e0d4a74572ff2752a4888e6c2bf41d67ad0dbc68868e3fb2e3",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/support-anchor-20261027/README.md",
+      "target": "docs/en/artifacts/v1/support-anchor-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "70da982e0c63d521ff4e8cd6d2c050d7d3bc13ed7e8646aed222566b763d3113",
+      "reviewed_source_sha256": "70da982e0c63d521ff4e8cd6d2c050d7d3bc13ed7e8646aed222566b763d3113",
+      "reviewed_target_sha256": "0d20497e437f970f413abc3b7aff37f0ff1dfa399ea9f3eaece594c2331df990",
+      "final_target_sha256": "ff678566258b2f148c3a3b1ec2841135fac59ba7e29721387ee4229fa8e1b65a",
+      "reconstructed_review_sha256": "0d20497e437f970f413abc3b7aff37f0ff1dfa399ea9f3eaece594c2331df990",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/support-anchor-20261027/review/REVIEW.md",
+      "target": "docs/en/artifacts/v1/support-anchor-20261027/review/REVIEW.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "21032a1c5d69ab9457d4b8ace9cf9786290b08e934667c1dc984032af580e697",
+      "reviewed_source_sha256": "21032a1c5d69ab9457d4b8ace9cf9786290b08e934667c1dc984032af580e697",
+      "reviewed_target_sha256": "9d962f2b8cb24c39e66d3b357bef20c782753cf064a2f5d5eeb92158e10dff83",
+      "final_target_sha256": "7a0e2c3a68f1e8e74b53f1f6e3d6296c9773323d89b4628622be7fef05100337",
+      "reconstructed_review_sha256": "9d962f2b8cb24c39e66d3b357bef20c782753cf064a2f5d5eeb92158e10dff83",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/sound-diagnostics-20261027/README.md",
+      "target": "docs/en/artifacts/v1/sound-diagnostics-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-scope-independent.json",
+        "sha256": "c54acc66a1afac34a174eefdc375c86f371e80c7aa8c04f1a72d3dbb16a09e0f"
+      },
+      "source_sha256": "0a3c8dffc23d7e57cdcdc38460e0e33b3be48f3aca82986edfe13ec1ca48730d",
+      "reviewed_source_sha256": "0a3c8dffc23d7e57cdcdc38460e0e33b3be48f3aca82986edfe13ec1ca48730d",
+      "reviewed_target_sha256": "ef86ddf195f831b25c8d4694d44629a213182bedaee313bbdf9dd5147d83591f",
+      "final_target_sha256": "685fcf6858d5b915788dab06933d292f7d84e1704bf02b8a5e5a36035fd03720",
+      "reconstructed_review_sha256": "ef86ddf195f831b25c8d4694d44629a213182bedaee313bbdf9dd5147d83591f",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/product-archive-independent-review-20261027T071354Z/REVIEW.md",
+      "target": "docs/en/artifacts/v1/product-archive-independent-review-20261027T071354Z/REVIEW.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-archive-final-interim.json",
+        "sha256": "794317d4a3cb6b75919bdf19a21636e9c89d5608b287a650a587ceb54f8c7a38"
+      },
+      "source_sha256": "5a0a6c5334b52a797b49ead75994b58346c9ecdae3e660584b8ed3f98909e200",
+      "reviewed_source_sha256": "5a0a6c5334b52a797b49ead75994b58346c9ecdae3e660584b8ed3f98909e200",
+      "reviewed_target_sha256": "a9946f070412b2e419d92e0299905111d8116269d4d526b091c6f3b845f469ea",
+      "final_target_sha256": "5b11a99e61ef492ff80825c6b58a5bd2c49d9b44a06b4a82ecb1ee9d703064f0",
+      "reconstructed_review_sha256": "a9946f070412b2e419d92e0299905111d8116269d4d526b091c6f3b845f469ea",
+      "exact_review_reconstructed": true
+    },
+    {
+      "source": "artifacts/v1/static-preview-20261027/README.md",
+      "target": "docs/en/artifacts/v1/static-preview-20261027/README.md",
+      "review": {
+        "path": "docs/en/_reports/artifact-static-preview-final-interim.json",
+        "sha256": "f5448a988e7a3696621e828b79124085a66c7db3f85807e76cdb7dd81b0d244a"
+      },
+      "source_sha256": "4a34c7ab7f7d19b79341e341b215bd531193b423b48e7990c15b29e74a5228ba",
+      "reviewed_source_sha256": "4a34c7ab7f7d19b79341e341b215bd531193b423b48e7990c15b29e74a5228ba",
+      "reviewed_target_sha256": "e684fc63a48ec428182c8c2ca5defc2c12af32adc551c5e1c3fd638775298254",
+      "final_target_sha256": "55736535fc674ba1c55ffb91cdc38693be231acedaebb51bf1130924ed487dfc",
+      "reconstructed_review_sha256": "e684fc63a48ec428182c8c2ca5defc2c12af32adc551c5e1c3fd638775298254",
+      "exact_review_reconstructed": true
+    }
+  ]
+}

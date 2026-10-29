@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-27T07:26:51.360Z",
+  "status": "PASS_ARCHIVED_CHINESE_FUNCTIONAL_EVIDENCE_WITH_STATED_LIMITS",
+  "archive": "artifacts/v1/product-e2e-chrome-20261027T033616Z",
+  "inputDigest": "22ca0c47490f3fc4e73e400cbd9d795b072c61e8e0dad6fa746955f0e9739d5a",
+  "scope": "Historical22ca Chinese four-case evidence only; no new test/browser/build/server/model invocation",
+  "arithmeticChecks": {
+    "total": 63,
+    "passed": 63,
+    "report": "arithmetic-review.json"
+  },
+  "traceChecks": {
+    "total": 23,
+    "passed": 23,
+    "report": "trace-review.json"
+  },
+  "reviewers": [
+    "/root/v1_browser_performance/product_archive_audit",
+    "/root/v1_browser_performance/product_archive_audit/trace_native_review"
+  ],
+  "sourcePhaseEvidence": [
+    {
+      "launch": 1,
+      "a": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "b": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "fingerprintVersion": "content-and-cursors-v2"
+    },
+    {
+      "launch": 2,
+      "a": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "b": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "fingerprintVersion": "content-and-cursors-v2"
+    },
+    {
+      "launch": 3,
+      "a": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "b": {
+        "evidenceClass": "logicalIntent",
+        "reason": "NATIVE_CURSOR_PARTIAL"
+      },
+      "fingerprintVersion": "content-and-cursors-v2"
+    }
+  ],
+  "nativeControlScopeLimits": [
+    "Connection prefix proves successful connection construction before successful native start; disconnect chronology was not captured.",
+    "Positive Delay values were sampled at graph collection, not independently timestamped at exact native start.",
+    "Native graph/control and clock evidence does not establish device PCM, human hearing, SPL or AudioWorklet deadlines.",
+    "Source phase grade is logicalIntent/NATIVE_CURSOR_PARTIAL, not native waveform/phase equivalence.",
+    "Multiple native source reconstructions across bounded recoveries are not duplicate accepted physics trigger events."
+  ],
+  "recoveryCounts": [
+    0,
+    2,
+    7
+  ],
+  "historicalSources": {
+    "preservedBundleFiles": 10,
+    "sourceMapContentsBoundToInputHash": 86,
+    "testSourceSha256": "88113fc25097538e389e8b0b3d39dd329218b3fcc30f74200575d586561b603d",
+    "traceSourceCopies": 5
+  },
+  "oldArchiveModified": false,
+  "authoredMarkdown": [
+    "REVIEW.md"
+  ],
+  "proseFreeze": "FINALDOCEND"
+}

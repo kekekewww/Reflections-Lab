@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reflection-lab.local/schemas/acoustic-frame.schema.json",
+  "title": "Reflection Lab AcousticFrame v1",
+  "description": "One source/listener pair. arrivalDirection is unit listener-to-penultimate-vertex (apparent source), opposite to final propagation direction. bandGains are pressure ratios aligned with strictly increasing bandCentersHz.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "requestId", "sceneRevision", "geometryRevision", "poseTick", "backendId", "backendVersion", "sourceId", "listenerId", "bandCentersHz", "gainQuantity", "capabilities", "modelClass", "directDelayS", "paths", "pathAvailability", "impulseResponseArtifactId", "stale", "limitations"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"}, "requestId": {"type": "string", "minLength": 1, "maxLength": 64},
+    "sceneRevision": {"type": "integer", "minimum": 0}, "geometryRevision": {"type": "integer", "minimum": 0}, "poseTick": {"type": "integer", "minimum": 0},
+    "backendId": {"type": "string", "minLength": 1}, "backendVersion": {"type": "string", "minLength": 1},
+    "sourceId": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{0,63}$"}, "listenerId": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{0,63}$"},
+    "bandCentersHz": {"type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true, "items": {"type": "number", "minimum": 20, "maximum": 24000}}, "gainQuantity": {"const": "pressureRatio"},
+    "capabilities": {"type": "array", "uniqueItems": true, "items": {"enum": ["directParameters", "individualReflectionPaths", "impulseResponse", "lateReverb", "dynamicOccluders", "dynamicReflectors"]}},
+    "modelClass": {"enum": ["analytical", "numericalApproximation", "perceptualApproximation", "unverified"]},
+    "directDelayS": {"type": ["number", "null"], "minimum": 0},
+    "paths": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/path"}},
+    "pathAvailability": {"enum": ["available", "unsupported", "notRun", "failed"]},
+    "impulseResponseArtifactId": {"type": ["string", "null"]}, "stale": {"type": "boolean"},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "vector": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+    "path": {"type": "object", "additionalProperties": false,
+      "required": ["id", "sourceId", "listenerId", "surfaceIds", "order", "verticesM", "lengthM", "absoluteDelayS", "relativeDelayS", "arrivalDirection", "bandGains"],
+      "properties": {"id": {"type": "string", "minLength": 1}, "sourceId": {"type": "string", "minLength": 1}, "listenerId": {"type": "string", "minLength": 1}, "surfaceIds": {"type": "array", "maxItems": 8, "items": {"type": "string"}}, "order": {"type": "integer", "minimum": 0, "maximum": 8}, "verticesM": {"type": "array", "minItems": 2, "maxItems": 10, "items": {"$ref": "#/$defs/vector"}}, "lengthM": {"type": "number", "minimum": 0}, "absoluteDelayS": {"type": "number", "minimum": 0}, "relativeDelayS": {"type": "number", "minimum": 0}, "arrivalDirection": {"$ref": "#/$defs/vector"}, "bandGains": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"type": "number", "minimum": 0}}}
+    }
+  }
+}

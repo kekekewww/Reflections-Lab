@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T15:26:37.344Z",
+  "installed_version": "Muse Code 1.4.13 (1.4.13-R6996.1)",
+  "platform": "Windows x64",
+  "launcher": "muse.cmd -> .muse-launcher.ps1",
+  "process_environment": {
+    "MUSE_NO_AUTO_UPDATE": "1",
+    "XDG_CONFIG_HOME": "isolated .cache/phase3/muse-echo/config for echo only"
+  },
+  "launcher_initial_error": {
+    "status": "LOCAL_PERMISSION_ERROR",
+    "message": "Auto-update timestamp write outside workspace denied; no escalation or installation performed."
+  },
+  "schema": {
+    "command": "muse schema generate-json-schema --out .cache/phase3/muse-schema",
+    "status": "PASS_LOCAL_OFFLINE_EXPORT",
+    "fingerprint": "sha256:7fddaf646dbc317e5fcac0785e135eb04df14fbb0db1863089dfd6da21730e5b",
+    "file_sha256": "59c3c649418af35b54d4c64153210b2c77f8e0be2e47bf595a0ad33194530894",
+    "selected_definitions": {
+      "SubscriptionUsage": {
+        "description": "The one usage payload shape: the `usage/read` result's `usage` member and\nthe `usage/changed` params (ADR 32563 D2/D3). The numbers are\npoint-in-time — `observedAtMs` is the host's arrival stamp, so a client\nrenders \"as of\", never implies live data (spec 18742 US-FR-004).",
+        "properties": {
+          "observedAtMs": {
+            "description": "When the host RECEIVED this observation (frame arrival or mint\nrequest-send), epoch milliseconds.",
+            "type": "integer"
+          },
+          "tier": {
+            "description": "The provider's subscription tier id, verbatim.",
+            "type": "string"
+          },
+          "weekly": {
+            "$ref": "#/$defs/SubscriptionUsageWeekly",
+            "description": "The rolling weekly block."
+          },
+          "window": {
+            "$ref": "#/$defs/SubscriptionUsageWindow",
+            "description": "The current window."
+          }
+        },
+        "required": [
+          "observedAtMs",
+          "tier",
+          "weekly",
+          "window"
+        ],
+        "type": "object"
+      },
+      "SubscriptionUsageWeekly": {
+        "description": "The rolling weekly block: same semantics as\n[`SubscriptionUsageWindow`] without a duration (ADR 32563 D2).",
+        "properties": {
+          "resetsAtMs": {
+            "description": "When the weekly window resets, epoch milliseconds.",
+            "type": "integer"
+          },
+          "usedPercent": {
+            "description": "Percent of the weekly budget used (integer ≥ 0, may exceed 100).",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "resetsAtMs",
+          "usedPercent"
+        ],
+        "type": "object"
+      },
+      "SubscriptionUsageWindow": {
+        "description": "The current usage window (the provider's 5-hour-class block): verbatim\nprovider percentages with the reset stamp normalized to epoch\nmilliseconds (ADR 32563 D2).",
+        "properties": {
+          "resetsAtMs": {
+            "description": "When the window resets, epoch milliseconds.",
+            "type": "integer"
+          },
+          "usedPercent": {
+            "description": "Percent of the window's budget used: an integer ≥ 0, verbatim from\nthe provider — over-quota values above 100 are valid.",
+            "type": "integer"
+          },
+          "windowDurationMins": {
+            "description": "The window's length in minutes (> 0).",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "resetsAtMs",
+          "usedPercent",
+          "windowDurationMins"
+        ],
+        "type": "object"
+      },
+      "UsageReadResult": {
+        "description": "`usage/read` result: `{usage?}` — omitted, never `null`, when the host\nhas observed nothing (ADR 32563 D2: truthful absence, no\n\"nothing observed\" error).",
+        "properties": {
+          "usage": {
+            "$ref": "#/$defs/SubscriptionUsage",
+            "description": "The last-observed subscription usage window, when one exists."
+          }
+        },
+        "type": "object"
+      },
+      "QuotaDetail": {
+        "description": "Typed quota-exhaustion detail (tdd SS4.5.1, ADR 50047 D2): the limit\nkind plus the provider's reset instant.",
+        "properties": {
+          "limitKind": {
+            "$ref": "#/$defs/LimitKind",
+            "description": "Which quota was exhausted (open enum; unknown values fall back)."
+          },
+          "resetsAtMs": {
+            "description": "Epoch milliseconds at which the provider says usage resets.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "limitKind",
+          "resetsAtMs"
+        ],
+        "type": "object"
+      },
+      "LimitKind": {
+        "description": "Quota limit kinds (tdd SS4.5.1, ADR 50047 D2): open for evolution.",
+        "enum": [
+          "tierLimit"
+        ],
+        "type": "string",
+        "x-msp-openness": "open"
+      },
+      "TurnError": {
+        "description": "The settled turn-failure object (tdd SS4.5.1): `{kind, message,\nretryable}`.",
+        "properties": {
+          "kind": {
+            "$ref": "#/$defs/TurnErrorKind",
+            "description": "The failure class (open camelCase enum grounded in the runtime's\nterminal failure classification)."
+          },
+          "message": {
+            "description": "Human-readable failure text.",
+            "type": "string"
+          },
+          "quota": {
+            "$ref": "#/$defs/QuotaDetail",
+            "description": "Typed quota-exhaustion detail (ADR 50047 D2/D3): present iff the\nstopping failure was the quota class. Clients branch on presence,\nnever by parsing `message`."
+          },
+          "retryable": {
+            "description": "The server's judgment that resubmitting the same input may succeed.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "kind",
+          "message",
+          "retryable"
+        ],
+        "type": "object"
+      },
+      "TurnErrorKind": {
+        "description": "Turn failure classes (tdd SS4.5.1, `TerminalErrorKind` plus the\nmodel-task failure class). Open.",
+        "enum": [
+          "stepLimit",
+          "configError",
+          "projectionError",
+          "logError",
+          "workflowLaunchError",
+          "environmentError",
+          "modelError",
+          "launchError",
+          "authRequired",
+          "mcpLinkError"
+        ],
+        "type": "string",
+        "x-msp-openness": "open"
+      }
+    },
+    "limitation": "MSP schema is not an exec JSONL schema; typed stop detail was inspected but no real quota stop was observed."
+  },
+  "echo": {
+    "started_at": "2026-10-26T15:25:53.1594438+00:00",
+    "duration_ms": 2283.1611,
+    "exit_code": 0,
+    "provider": "echo",
+    "model_inference": false,
+    "session_persistence": false,
+    "network_inference_calls": 0,
+    "argv": [
+      "exec",
+      "--provider",
+      "echo",
+      "--workspace",
+      "<isolated-workspace>",
+      "--prompt-file",
+      "<prompt-file>",
+      "--json",
+      "--max-model-steps",
+      "2",
+      "--contributor-mode",
+      "off",
+      "--disable-approval",
+      "--sandbox-network",
+      "restricted",
+      "--disable-web-tools",
+      "--disable-reminders",
+      "--disable-request-user-input",
+      "--no-foreign-personal-context",
+      "--disable-shell",
+      "--disable-write",
+      "--no-session-log"
+    ],
+    "event_count": 15,
+    "event_payload_types": [
+      "runtime.command.accepted",
+      "session.run.linked",
+      "session.workspace_branch.observed",
+      "turn.input.user",
+      "run.lifecycle.started",
+      "task.stream.linked",
+      "task.lifecycle.proposed",
+      "task.lifecycle.accepted",
+      "task.lifecycle.scheduled",
+      "task.lifecycle.side_effect_intent",
+      "task.lifecycle.started",
+      "run.output.delta",
+      "task.lifecycle.completed",
+      "run.usage",
+      "run.terminal.completed"
+    ],
+    "terminal": "completed",
+    "allowance": null,
+    "models": [
+      {
+        "model": null,
+        "input_tokens": 0,
+        "cached_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_tokens": 0,
+        "calls": 1
+      }
+    ],
+    "independent_checks": {
+      "json_parse": "PASS",
+      "envelope_version": "PASS",
+      "completed_terminal": "PASS",
+      "usage_unknown_preserved": "PASS",
+      "workspace_files": [
+        "prompt.txt"
+      ]
+    },
+    "validation_scope": "OFFLINE_CLI_ECHO_TRANSPORT_ONLY",
+    "limitations": [
+      "Not Meta model inference; not Muse code implementation correctness.",
+      "No write/shell operations requested or allowed, so OS sandbox write enforcement NOT RUN.",
+      "Workspace untrusted; AGENTS skipped.",
+      "No retained log; session resume/export NOT RUN.",
+      "Echo timestamps are provider synthetic fields; wall duration from process stopwatch."
+    ]
+  },
+  "artifact_hashes": {
+    "research/agents/muse-cli-probe/echo.prompt.txt": "e692662fadb510966a4cf77dee8419d9e4bf94d10b988d1b76de92898db483de",
+    "research/agents/muse-cli-probe/echo.stderr.txt": "3092da31b13518316d7bda73478e6b52d402542fda04546c428c6ed6fb1a57d7",
+    "research/agents/muse-cli-probe/echo.stdout.jsonl": "e49a4ae547cd820869d413d11873f98787b10cb6e72217421f92ff37389dd450",
+    "research/agents/muse-cli-probe/exec-help.txt": "866a7d36b2027098d4aeb1d73c0b8bd5a999e2a6de45a32d975c54aa3f52679e",
+    "research/agents/muse-cli-probe/export-help.txt": "006fe5ee9482ec65c1898d2856a2e1342526aaa3a7c5437b747e30e241aa1d0b",
+    "research/agents/muse-cli-probe/serve-help.txt": "852051f58ed62170dcf9c2562ea5103b66714149447e4069da2127513f96fdfe",
+    "research/agents/muse-cli-probe/usage-help.txt": "6233ccf89ed250d95f619c627463d0b3a8cd31df155f85d5d889985cb29f0133",
+    "research/agents/muse-cli-probe/usage-query.json": "e0ceefd3e11cfd61aa0daa1911e943bc2e1ec1079cdb9337229e000e5398d488",
+    "research/agents/muse-cli-probe/version.txt": "be07a12e9f3622ebc4c25cb71ce59bab646b705cb3b7c991dea9e6a4ce2b308c"
+  }
+}

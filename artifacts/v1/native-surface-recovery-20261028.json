@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "ROOT_AUTHORED_OBSERVATION_OF_SUPPORTED_TOOL_RECOVERY",
+  "dateTaipei": "2026-10-28",
+  "scope": "Tool-returned initialization results, not a machine-generated native acceptance receipt.",
+  "beforeReset": "Known UI/native/coordinator/profile/audio/physics owners confirmed no active persistent REPL consumer or needed bindings; useful results were already durable. Other root prep used filesystem commands only.",
+  "operations": [
+    {"tool": "mcp__node_repl__js_reset", "result": "js kernel reset"},
+    {"tool": "mcp__node_repl__js", "operation": "Documented direct @oai/sky initialize", "result": "failed to write kernel assets: 系統找不到指定的路徑。 (os error 3)"},
+    {"tool": "mcp__cua_repl.js_reset", "result": "js kernel reset"},
+    {"tool": "mcp__cua_repl.js", "operation": "await cua.getState();", "result": "failed to write kernel assets: 系統找不到指定的路徑。 (os error 3)"}
+  ],
+  "appOperationReached": false,
+  "nativeV2Rerun": false,
+  "customWindowsHelperOrSecurityChange": false,
+  "conclusion": "Official reset did not restore initialization. Cause remains undetermined; no inference of desktop lock, visibility cause or product regression."
+}

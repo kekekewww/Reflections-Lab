@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: known decision reasons are bilingual and preserve original codes and missing-contact semantics
+ok 1 - known decision reasons are bilingual and preserve original codes and missing-contact semantics
+  ---
+  duration_ms: 1.2388
+  type: 'test'
+  ...
+# Subtest: unknown original decision detail is preserved in either locale
+ok 2 - unknown original decision detail is preserved in either locale
+  ---
+  duration_ms: 0.4797
+  type: 'test'
+  ...
+# Subtest: disabled rule card visibly explains its actual configuration reason without a fabricated decision
+ok 3 - disabled rule card visibly explains its actual configuration reason without a fabricated decision
+  ---
+  duration_ms: 56.9322
+  type: 'test'
+  ...
+# Subtest: unrecorded run exposes actual global voice budget rejection
+ok 4 - unrecorded run exposes actual global voice budget rejection
+  ---
+  duration_ms: 6589.737
+  type: 'test'
+  ...
+# Subtest: real Rapier cooldown rejection retains raw impact/contact and captured replay provenance
+ok 5 - real Rapier cooldown rejection retains raw impact/contact and captured replay provenance
+  ---
+  duration_ms: 4357.8128
+  type: 'test'
+  ...
+# Subtest: disabled binding and override are configuration states, not fabricated rejected events
+ok 6 - disabled binding and override are configuration states, not fabricated rejected events
+  ---
+  duration_ms: 18.7433
+  type: 'test'
+  ...
+# Subtest: actual evaluator missing-contact rejection projects no fabricated COM emitter
+ok 7 - actual evaluator missing-contact rejection projects no fabricated COM emitter
+  ---
+  duration_ms: 1.3124
+  type: 'test'
+  ...
+# Subtest: semantic rejection IDs survive order changes; invalid legacy entries are ignored; latest state is bounded
+ok 8 - semantic rejection IDs survive order changes; invalid legacy entries are ignored; latest state is bounded
+  ---
+  duration_ms: 7.3813
+  type: 'test'
+  ...
+# Subtest: actual native rejection keeps the enqueued logical event after asynchronous updates and pause
+ok 9 - actual native rejection keeps the enqueued logical event after asynchronous updates and pause
+  ---
+  duration_ms: 583.4572
+  type: 'test'
+  ...
+# Subtest: saved pending input retains copied enqueue intent while active logical events advance
+ok 10 - saved pending input retains copied enqueue intent while active logical events advance
+  ---
+  duration_ms: 40.1271
+  type: 'test'
+  ...
+# Subtest: real renderer rejection is excluded from captured data and cleared for replay and seek
+ok 11 - real renderer rejection is excluded from captured data and cleared for replay and seek
+  ---
+  duration_ms: 388.6256
+  type: 'test'
+  ...
+# Subtest: native rejection storage is bounded, copied and independent of accepted outcomes
+ok 12 - native rejection storage is bounded, copied and independent of accepted outcomes
+  ---
+  duration_ms: 4.7038
+  type: 'test'
+  ...
+# Subtest: native reason descriptions are bilingual and preserve unknown/prototype-named engine reasons
+ok 13 - native reason descriptions are bilingual and preserve unknown/prototype-named engine reasons
+  ---
+  duration_ms: 1.1037
+  type: 'test'
+  ...
+# Subtest: replay control graph routes captured starts, updates and original listener orientation
+ok 14 - replay control graph routes captured starts, updates and original listener orientation
+  ---
+  duration_ms: 303.9298
+  type: 'test'
+  ...
+# Subtest: late capture restores original source cursor before its first update
+ok 15 - late capture restores original source cursor before its first update
+  ---
+  duration_ms: 116.1192
+  type: 'test'
+  ...
+# Subtest: seek previews emit nothing; resume restores only remaining cursor content and never the old grab
+ok 16 - seek previews emit nothing; resume restores only remaining cursor content and never the old grab
+  ---
+  duration_ms: 555.3321
+  type: 'test'
+  ...
+# Subtest: replay rejects a rehashed arbitrary intent generator and tampered frame
+ok 17 - replay rejects a rehashed arbitrary intent generator and tampered frame
+  ---
+  duration_ms: 126.4063
+  type: 'test'
+  ...
+# Subtest: no enabled engine leaves replay silent without constructing an AudioContext
+ok 18 - no enabled engine leaves replay silent without constructing an AudioContext
+  ---
+  duration_ms: 80.3831
+  type: 'test'
+  ...
+# Subtest: enabling audio during replay anchors and restores the current continuous cursor
+ok 19 - enabling audio during replay anchors and restores the current continuous cursor
+  ---
+  duration_ms: 210.9728
+  type: 'test'
+  ...
+# Subtest: captured stop intents release the original source through the audio engine
+ok 20 - captured stop intents release the original source through the audio engine
+  ---
+  duration_ms: 99.2247
+  type: 'test'
+  ...
+# Subtest: sample replay verifies captured asset pins against the trusted decoded registry
+ok 21 - sample replay verifies captured asset pins against the trusted decoded registry
+  ---
+  duration_ms: 81.3684
+  type: 'test'
+  ...
+# Subtest: late pitch-mapped capture needs a true source cursor and restores it without using the logical playhead
+ok 22 - late pitch-mapped capture needs a true source cursor and restores it without using the logical playhead
+  ---
+  duration_ms: 287.6766
+  type: 'test'
+  ...
+# Subtest: seek cuts fading content instead of inventing emissions after its recorded stop
+ok 23 - seek cuts fading content instead of inventing emissions after its recorded stop
+  ---
+  duration_ms: 208.9889
+  type: 'test'
+  ...
+# Subtest: a retained contact source keeps its original selected material generator across contact updates
+ok 24 - a retained contact source keeps its original selected material generator across contact updates
+  ---
+  duration_ms: 100.0218
+  type: 'test'
+  ...
+# Subtest: exhausted high-pitch sample fallback clamps source position to decoded content
+ok 25 - exhausted high-pitch sample fallback clamps source position to decoded content
+  ---
+  duration_ms: 537.4839
+  type: 'test'
+  ...
+# Subtest: app commands edit real Scene and reject invalid input atomically
+ok 26 - app commands edit real Scene and reject invalid input atomically
+  ---
+  duration_ms: 350.2285
+  type: 'test'
+  ...
+# Subtest: app Run/Pause/Reset drives actual fixed-step Rapier and preserves author document
+ok 27 - app Run/Pause/Reset drives actual fixed-step Rapier and preserves author document
+  ---
+  duration_ms: 199.2342
+  type: 'test'
+  ...
+# Subtest: project save/load and invalid import preserve scene and sound behavior
+ok 28 - project save/load and invalid import preserve scene and sound behavior
+  ---
+  duration_ms: 66.5965
+  type: 'test'
+  ...
+# Subtest: public rule preview preserves original run/scene/behavior/recording and monitor mute
+ok 29 - public rule preview preserves original run/scene/behavior/recording and monitor mute
+  ---
+  duration_ms: 416.0534
+  type: 'test'
+  ...
+# Subtest: Run and Recording reject raw/scene previews and Run stops a prior independent preview
+ok 30 - Run and Recording reject raw/scene previews and Run stops a prior independent preview
+  ---
+  duration_ms: 118.1008
+  type: 'test'
+  ...
+# Subtest: real Rapier contact selection previews exact accepted point and authoring invalidates retained capture
+ok 31 - real Rapier contact selection previews exact accepted point and authoring invalidates retained capture
+  ---
+  duration_ms: 687.7602
+  type: 'test'
+  ...
+# Subtest: paused recording permits isolated preview while replay requires an explicit return to live scene
+ok 32 - paused recording permits isolated preview while replay requires an explicit return to live scene
+  ---
+  duration_ms: 422.9496
+  type: 'test'
+  ...
+# Subtest: immediate Stop and blur cancel scene-preview preflight before any late source starts
+ok 33 - immediate Stop and blur cancel scene-preview preflight before any late source starts
+  ---
+  duration_ms: 250.9608
+  type: 'test'
+  ...
+# Subtest: runtime disposal cancels preview preflight without creating another device source
+ok 34 - runtime disposal cancels preview preflight without creating another device source
+  ---
+  duration_ms: 135.2008
+  type: 'test'
+  ...
+# Subtest: a selected raw physics contact resolves the requested layer rather than another matching rule
+ok 35 - a selected raw physics contact resolves the requested layer rather than another matching rule
+  ---
+  duration_ms: 289.6372
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13703.7355

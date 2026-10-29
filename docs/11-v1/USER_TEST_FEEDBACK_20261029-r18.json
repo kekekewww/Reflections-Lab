@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "kind": "USER_REPORTED_MANUAL_TEST_FEEDBACK",
+  "recordedAt": "2026-10-29T13:59:04.276Z",
+  "userFacingDate": "2026-10-29",
+  "language": "zh-TW",
+  "guide": {
+    "kind": "conversation_manual",
+    "writingBlockId": "73841",
+    "sectionScope": "Sections1through8; all other sections unverified",
+    "urlProvidedInGuide": "http://127.0.0.1:5173/"
+  },
+  "provenance": {
+    "authority": "Direct human feedback",
+    "repositoryHeadAtRecording": "39f6c2ba50c2f64d0b30b93f49b7728f94a0116a",
+    "testedBrowserBundleHash": null,
+    "actualTestedRevision": "UNKNOWN_NOT_CAPTURED",
+    "deviceRoute": null,
+    "DAC": null,
+    "physicalVolume": null,
+    "agentReproduction": "NOT_RUN"
+  },
+  "originalFeedback": [
+    "進入第一人稱後無法移動或是做任何操作，後續第一人稱操作相關內容皆無法測試",
+    "材質與反射暫時無法測試，不標記為成功",
+    "預設聲音太小聲。",
+    "控制部分，無法直接點選場景中的物件以選取、拖曳、縮放等，非常不直覺。",
+    "1~8如未提及則沒問題，其他不能標記正確完成。請紀錄。"
+  ],
+  "statusRules": {
+    "unmentionedIndependentItemsInSections1To8": "USER_REPORTED_NO_ISSUE",
+    "meaning": "User reports no issue under the stated scope; not independent reproduction, numerical/scientific validation, or blanket acceptance.",
+    "explicitProblemsOverrideUnmentionedRule": true,
+    "FPSDependentItemsOverrideUnmentionedRule": "BLOCKED_NOT_TESTED",
+    "materialAndReflectionOverrideUnmentionedRule": "NOT_TESTED_NOT_SUCCESSFUL",
+    "sections9Through14": "UNVERIFIED_NOT_SUCCESSFUL",
+    "unsupportedInferences": [
+      "Do not mark all first8 sections PASS",
+      "Do not mark recording/replay/A-B/save-load/offline or liveMeta correct or complete",
+      "Do not infer a specific device route, volume calibration, model output or tested build hash"
+    ]
+  },
+  "findings": [
+    {
+      "id": "USER-R18-FPS-01",
+      "status": "FAILED_USER_REPORT",
+      "severity": "BLOCKER",
+      "manualSection": 4,
+      "observation": "進入第一人稱後無法移動或做任何操作。",
+      "downstream": "後續所有依賴第一人稱的控制、抓投、安全退出／替代操作、建造及FPS聽測均未能完成；不得因第1至8節未逐項提及而標成功。",
+      "rootCause": "UNKNOWN",
+      "repairStatus": "NOT_STARTED_RECORD_ONLY"
+    },
+    {
+      "id": "USER-R18-ACOUSTICS-01",
+      "status": "NOT_TESTED",
+      "manualSection": 7,
+      "scope": [
+        "material",
+        "reflections"
+      ],
+      "observation": "材質與反射暫時無法測試；不標成功。"
+    },
+    {
+      "id": "USER-R18-AUDIO-01",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSection": 7,
+      "observation": "預設聲音太小聲。",
+      "calibration": "UNKNOWN; no digital gain, Windows volume, DAC, device or SPL inferred",
+      "repairStatus": "NOT_STARTED_RECORD_ONLY"
+    },
+    {
+      "id": "USER-R18-UI-01",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSections": [
+        3,
+        5
+      ],
+      "observation": "無法直接點選場景物件以選取、拖曳、縮放等，控制非常不直覺。",
+      "userExpectation": "Direct scene object selection and manipulation",
+      "implementationDiagnosis": "UNKNOWN; record reported experience without claiming reproduced defect or implemented gizmo behavior",
+      "repairStatus": "NOT_STARTED_RECORD_ONLY"
+    }
+  ],
+  "scopeResults": [
+    {
+      "scope": "Unmentioned items within1–8 that are independent of failedFPS and not explicitly excluded",
+      "status": "USER_REPORTED_NO_ISSUE"
+    },
+    {
+      "scope": "FPS entry movement/actions",
+      "status": "FAILED_USER_REPORT"
+    },
+    {
+      "scope": "Subsequent FPS-dependent operations, including first-person building",
+      "status": "BLOCKED_NOT_TESTED"
+    },
+    {
+      "scope": "Material/reflection validation",
+      "status": "NOT_TESTED"
+    },
+    {
+      "scope": "Section9 recording/replay/events",
+      "status": "UNVERIFIED"
+    },
+    {
+      "scope": "Section10 A/B comparison",
+      "status": "UNVERIFIED"
+    },
+    {
+      "scope": "Section11 saving/export/import",
+      "status": "UNVERIFIED"
+    },
+    {
+      "scope": "Section12 offline experiment assistant",
+      "status": "UNVERIFIED"
+    },
+    {
+      "scope": "Other claims outside1–8, formaldevicehearing/scientific/Meta acceptance",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "acceptance": {
+    "humanAcceptanceComplete": false,
+    "overallV1Complete": false,
+    "priorAutomatedReceipts": "Retained as bounded historical automated evidence; do not override this current human failure or imply human success.",
+    "originalCriteriaChanged": false
+  },
+  "execution": {
+    "recordOnly": true,
+    "productCodeChanged": false,
+    "testsRun": false,
+    "goalResumeRequested": false,
+    "otherArchitectureTaskChanged": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Developing\\Meta Hack\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/browser/ui-locale.config.ts"
+    ],
+    "configFile": "D:\\Developing\\Meta Hack\\tests\\browser\\ui-locale.config.ts",
+    "rootDir": "D:/Developing/Meta Hack/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Developing/Meta Hack/test-results/ui-locale",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Developing/Meta Hack/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "ui-locale.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\Developing\\Meta Hack\\test-results\\ui-locale",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "snapshotDir": "D:\\Developing\\Meta Hack\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "ui-locale.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "args": [
+              "--use-gl=angle",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Developing\\Meta Hack\\test-results\\ui-locale-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --outDir test-results/ui-preview-dist --host 127.0.0.1 --port 5174 --strictPort",
+      "cwd": "D:\\Developing\\Meta Hack\\",
+      "url": "http://127.0.0.1:5174",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "ui-locale.spec.ts",
+      "file": "ui-locale.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EN-01 visible native choice defaults to zh-TW and persists English across reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5308,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:19.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-0de3668c57b4a6da72bd",
+          "file": "ui-locale.spec.ts",
+          "line": 220,
+          "column": 1
+        },
+        {
+          "title": "EN-01 an invalid stored locale safely uses the explicit zh-TW default",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2255,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:25.569Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-7257e75163ea2ec836fb",
+          "file": "ui-locale.spec.ts",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "EN-01 denied preference storage cannot prevent startup or language changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3557,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:27.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-ee7a10e2d485d8955e6f",
+          "file": "ui-locale.spec.ts",
+          "line": 249,
+          "column": 1
+        },
+        {
+          "title": "EN-02 English controls, dialogs, known diagnostics and offline preview remain functional without model calls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5409,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:31.411Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-dfa64f4ce8ef5c918640",
+          "file": "ui-locale.spec.ts",
+          "line": 273,
+          "column": 1
+        },
+        {
+          "title": "EN-02 an unmapped failed action preserves its code and visibly labels the original diagnostic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:36.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-0917b79f1f276bc17862",
+          "file": "ui-locale.spec.ts",
+          "line": 400,
+          "column": 1
+        },
+        {
+          "title": "EN-03 language focus preserves valid and invalid raw drafts without scene commands",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:39.468Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "paused-draft-invariance.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lUnVudGltZSI6IHRydWUsCiAgInNhbWVXb3JsZCI6IHRydWUsCiAgInNhbWVDYW52YXMiOiB0cnVlLAogICJzYW1lQXVkaW9FbmdpbmUiOiB0cnVlLAogICJzYW1lQXVkaW9Db250ZXh0IjogdHJ1ZSwKICAic2FtZUNvbnRpbnVvdXNTb3VyY2VzIjogdHJ1ZSwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMCwKICAic2FtZURvY3VtZW50cyI6IHRydWUsCiAgInNhbWVSdW5JZCI6IHRydWUsCiAgInNhbWVSdW5FcG9jaCI6IHRydWUsCiAgImluaXRpYWxUaWNrIjogMCwKICAiY3VycmVudFRpY2siOiAwLAogICJpbml0aWFsQXVkaW9UaW1lIjogbnVsbCwKICAiY3VycmVudEF1ZGlvVGltZSI6IG51bGwsCiAgImRpc3BhdGNoZXMiOiBbXQp9"
+                    },
+                    {
+                      "name": "locale-runtime-observation.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbml0aWFsVGljayI6IDAsCiAgImN1cnJlbnRUaWNrIjogMCwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMCwKICAiZGlzcGF0Y2hlcyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-c6de7023fc615a6c66f5",
+          "file": "ui-locale.spec.ts",
+          "line": 432,
+          "column": 1
+        },
+        {
+          "title": "EN-03 natural running clocks advance while language keeps actual context and continuous native sources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4657,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:42.839Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "running-native-identity.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lUnVudGltZSI6IHRydWUsCiAgInNhbWVXb3JsZCI6IHRydWUsCiAgInNhbWVDYW52YXMiOiB0cnVlLAogICJzYW1lQXVkaW9FbmdpbmUiOiB0cnVlLAogICJzYW1lQXVkaW9Db250ZXh0IjogdHJ1ZSwKICAic2FtZUNvbnRpbnVvdXNTb3VyY2VzIjogdHJ1ZSwKICAiY29udGludW91c1ZvaWNlc09ic2VydmVkIjogMSwKICAic2FtZURvY3VtZW50cyI6IHRydWUsCiAgInNhbWVSdW5JZCI6IHRydWUsCiAgInNhbWVSdW5FcG9jaCI6IHRydWUsCiAgImluaXRpYWxUaWNrIjogMTYsCiAgImN1cnJlbnRUaWNrIjogMzYsCiAgImluaXRpYWxBdWRpb1RpbWUiOiAwLjQ2MTMzMzMzMzMzMzMzMzMsCiAgImN1cnJlbnRBdWRpb1RpbWUiOiAxLjAyMTMzMzMzMzMzMzMzMzQsCiAgImRpc3BhdGNoZXMiOiBbXQp9"
+                    },
+                    {
+                      "name": "locale-runtime-observation.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbml0aWFsVGljayI6IDE2LAogICJjdXJyZW50VGljayI6IDQwLAogICJjb250aW51b3VzVm9pY2VzT2JzZXJ2ZWQiOiAxLAogICJkaXNwYXRjaGVzIjogW10KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-e361f860866e606be438",
+          "file": "ui-locale.spec.ts",
+          "line": 481,
+          "column": 1
+        },
+        {
+          "title": "EN-04 English desktop and 320px retain readable forms, visible monitoring and keyboard alternatives",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:44:47.510Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a08c582f0c19593b15e-4756c3d2bc269e534521",
+          "file": "ui-locale.spec.ts",
+          "line": 573,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T05:44:18.942Z",
+    "duration": 34868.119999999995,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "inputDigest": "9ae2ca2eb7508be78a0fcfa96ef99e1543189a644b6f3c1057d10d3c78664176",
+  "sourceStableDuringBuild": true,
+  "sourceMatchesManifestAfterTests": true,
+  "english": {
+    "command": "npx playwright test --config tests/browser/ui-locale.config.ts",
+    "cliExitCode": 0,
+    "stats": {
+      "startTime": "2026-10-27T05:44:18.942Z",
+      "duration": 34868.119999999995,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "chinese": {
+    "command": "npx playwright test --config tests/browser/ui-preview.config.ts",
+    "cliExitCode": 0,
+    "stats": {
+      "startTime": "2026-10-27T05:45:17.662Z",
+      "duration": 70721.19499999999,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "protectedTestUnchanged": true
+  },
+  "observedNodeGates": {
+    "source": "Observed execution tool results; raw stdout was not separately retained",
+    "unit": {
+      "command": "npx tsx --test src/ui/*.test.ts src/ui/viewport/*.test.ts",
+      "pass": 62,
+      "fail": 0,
+      "skip": 0,
+      "cliExitCode": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "cliExitCode": 0
+    },
+    "scopedStrict": {
+      "command": "npx tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --jsx react-jsx --resolveJsonModule --lib ES2022,DOM,DOM.Iterable --types node src/vite-env.d.ts tests/browser/ui-locale.spec.ts tests/browser/ui-locale.config.ts",
+      "cliExitCode": 0
+    },
+    "eslint": {
+      "command": "npx eslint src/ui src/main.tsx tests/browser/ui-locale.spec.ts tests/browser/ui-locale.config.ts",
+      "cliExitCode": 0
+    },
+    "format": {
+      "command": "npx prettier --write src/ui src/main.tsx tests/browser/ui-locale.spec.ts tests/browser/ui-locale.config.ts",
+      "cliExitCode": 0
+    },
+    "staticTokens": "75 tokens / 19 components PASS; static only, not visual/audio proof"
+  },
+  "observations": [
+    {
+      "test": "EN-03 language focus preserves valid and invalid raw drafts without scene commands",
+      "name": "paused-draft-invariance.json",
+      "data": {
+        "sameRuntime": true,
+        "sameWorld": true,
+        "sameCanvas": true,
+        "sameAudioEngine": true,
+        "sameAudioContext": true,
+        "sameContinuousSources": true,
+        "continuousVoicesObserved": 0,
+        "sameDocuments": true,
+        "sameRunId": true,
+        "sameRunEpoch": true,
+        "initialTick": 0,
+        "currentTick": 0,
+        "initialAudioTime": null,
+        "currentAudioTime": null,
+        "dispatches": []
+      }
+    },
+    {
+      "test": "EN-03 language focus preserves valid and invalid raw drafts without scene commands",
+      "name": "locale-runtime-observation.json",
+      "data": {
+        "initialTick": 0,
+        "currentTick": 0,
+        "continuousVoicesObserved": 0,
+        "dispatches": []
+      }
+    },
+    {
+      "test": "EN-03 natural running clocks advance while language keeps actual context and continuous native sources",
+      "name": "running-native-identity.json",
+      "data": {
+        "sameRuntime": true,
+        "sameWorld": true,
+        "sameCanvas": true,
+        "sameAudioEngine": true,
+        "sameAudioContext": true,
+        "sameContinuousSources": true,
+        "continuousVoicesObserved": 1,
+        "sameDocuments": true,
+        "sameRunId": true,
+        "sameRunEpoch": true,
+        "initialTick": 16,
+        "currentTick": 36,
+        "initialAudioTime": 0.4613333333333333,
+        "currentAudioTime": 1.0213333333333334,
+        "dispatches": []
+      }
+    },
+    {
+      "test": "EN-03 natural running clocks advance while language keeps actual context and continuous native sources",
+      "name": "locale-runtime-observation.json",
+      "data": {
+        "initialTick": 16,
+        "currentTick": 40,
+        "continuousVoicesObserved": 1,
+        "dispatches": []
+      }
+    }
+  ],
+  "visual": {
+    "inspected": [
+      "english-desktop.png",
+      "english-320.png"
+    ],
+    "scope": "actual saved desktop and 320 CSS px English screenshots inspected; native zoom is separate"
+  },
+  "modelRequests": "All propose requests intercepted; tests assert zero model requests",
+  "cleanup": "Owned browsers/CLIs completed; verified Vite preview PID 82688 stopped; foreground session 90713 ended; elevated scoped process inventory found zero owned preview processes",
+  "runnerBoundary": "Initial preflights ran no cases because an isolated sandbox listener was inaccessible. Running both preview and Playwright outside that isolation resolved it; no assertions or product changes were used to bypass the runner issue.",
+  "limits": [
+    "EN-05 English guide review is reported separately by its document owner",
+    "This is UI localization proof, not Firefox/WebKit audio, hearing/SPL, all 51 acceptance items, or complete V1 proof"
+  ]
+}

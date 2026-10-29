@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-26T17:23:43.200Z",
+  "status": "PASS",
+  "node": "v22.17.0",
+  "platform": "win32",
+  "package": {
+    "name": "@dimforge/rapier3d-compat",
+    "version": "0.21.0",
+    "license": "Apache-2.0"
+  },
+  "fixed_dt_seconds": 0.016666666666666666,
+  "source": {
+    "path": "experiments/sound-behavior-spike/physics-probe.mjs",
+    "sha256": "cd9bc1ec4c047e447e346682d5a73e9530945fae457c30e68f9b2c48c3d543fd"
+  },
+  "checks": [
+    {
+      "name": "world_point_velocity_distinguishes_rolling_from_center_translation",
+      "status": "PASS",
+      "contactPointMetres": [
+        0,
+        -0.5,
+        0
+      ],
+      "linearVelocityMetresPerSecond": [
+        2,
+        0,
+        0
+      ],
+      "angularVelocityRadiansPerSecond": [
+        0,
+        0,
+        -4
+      ],
+      "rollingPointVelocity": [
+        0,
+        0,
+        0
+      ],
+      "slidingPointVelocity": [
+        2,
+        0,
+        0
+      ],
+      "scope": "Kinematic identity only; no friction/rolling solver or audio"
+    },
+    {
+      "name": "box_floor_manifold_has_multiple_contacts_with_distinct_contact_and_center_positions",
+      "status": "PASS",
+      "collisionStarts": 1,
+      "maxGeometricContacts": 4,
+      "restForceStepsInLast60": 60,
+      "samples": [
+        {
+          "tick": 25,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            0.5007493257289752,
+            -0.01636473834514618,
+            0.5003083889023401
+          ],
+          "centerMetres": [
+            0.0014986514579504728,
+            0.46727052330970764,
+            0.0006167778046801686
+          ],
+          "normalImpulseNewtonSeconds": 0.9766197800636292,
+          "preStepLinearVelocity": [
+            0,
+            -3.923997402191162,
+            0
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.4985988736152649,
+            -0.016518082469701767,
+            0.5008054971694946
+          ]
+        },
+        {
+          "tick": 25,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            -0.49925067427102476,
+            -0.01636473834514618,
+            0.5003083889023401
+          ],
+          "centerMetres": [
+            0.0014986514579504728,
+            0.46727052330970764,
+            0.0006167778046801686
+          ],
+          "normalImpulseNewtonSeconds": 1.0413812398910522,
+          "preStepLinearVelocity": [
+            0,
+            -3.923997402191162,
+            0
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.4985988736152649,
+            -0.016518082469701767,
+            0.5008054971694946
+          ]
+        },
+        {
+          "tick": 25,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            -0.49925067427102476,
+            -0.01636473834514618,
+            -0.4996916110976599
+          ],
+          "centerMetres": [
+            0.0014986514579504728,
+            0.46727052330970764,
+            0.0006167778046801686
+          ],
+          "normalImpulseNewtonSeconds": 1.0998378992080688,
+          "preStepLinearVelocity": [
+            0,
+            -3.923997402191162,
+            0
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.4985988736152649,
+            -0.016518082469701767,
+            0.5008054971694946
+          ]
+        },
+        {
+          "tick": 25,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            0.5007493257289752,
+            -0.01636473834514618,
+            -0.4996916110976599
+          ],
+          "centerMetres": [
+            0.0014986514579504728,
+            0.46727052330970764,
+            0.0006167778046801686
+          ],
+          "normalImpulseNewtonSeconds": 1.0044612884521484,
+          "preStepLinearVelocity": [
+            0,
+            -3.923997402191162,
+            0
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.4985988736152649,
+            -0.016518082469701767,
+            0.5008054971694946
+          ]
+        },
+        {
+          "tick": 26,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            0.50147672847379,
+            -0.01236124336719513,
+            0.5008082010317594
+          ],
+          "centerMetres": [
+            0.00295345694757998,
+            0.47527751326560974,
+            0.0016164020635187626
+          ],
+          "normalImpulseNewtonSeconds": 0.04405258595943451,
+          "preStepLinearVelocity": [
+            0.09243373572826385,
+            0.0348023921251297,
+            0.041974857449531555
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.49742591381073,
+            -0.012616153806447983,
+            0.5016466975212097
+          ]
+        },
+        {
+          "tick": 26,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            -0.49852327152621,
+            -0.01236124336719513,
+            0.5008082010317594
+          ],
+          "centerMetres": [
+            0.00295345694757998,
+            0.47527751326560974,
+            0.0016164020635187626
+          ],
+          "normalImpulseNewtonSeconds": 0.019560083746910095,
+          "preStepLinearVelocity": [
+            0.09243373572826385,
+            0.0348023921251297,
+            0.041974857449531555
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.49742591381073,
+            -0.012616153806447983,
+            0.5016466975212097
+          ]
+        },
+        {
+          "tick": 26,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            -0.49852327152621,
+            -0.01236124336719513,
+            -0.4991917989682406
+          ],
+          "centerMetres": [
+            0.00295345694757998,
+            0.47527751326560974,
+            0.0016164020635187626
+          ],
+          "normalImpulseNewtonSeconds": 0.033291228115558624,
+          "preStepLinearVelocity": [
+            0.09243373572826385,
+            0.0348023921251297,
+            0.041974857449531555
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.49742591381073,
+            -0.012616153806447983,
+            0.5016466975212097
+          ]
+        },
+        {
+          "tick": 26,
+          "flipped": true,
+          "normalAtoB": [
+            0,
+            -1,
+            0
+          ],
+          "pointWorldMetres": [
+            0.50147672847379,
+            -0.01236124336719513,
+            -0.4991917989682406
+          ],
+          "centerMetres": [
+            0.00295345694757998,
+            0.47527751326560974,
+            0.0016164020635187626
+          ],
+          "normalImpulseNewtonSeconds": 0.04812251031398773,
+          "preStepLinearVelocity": [
+            0.09243373572826385,
+            0.0348023921251297,
+            0.041974857449531555
+          ],
+          "geometricContacts": 4,
+          "solverContacts": 4,
+          "solverRepresentativeWorldMetres": [
+            -0.49742591381073,
+            -0.012616153806447983,
+            0.5016466975212097
+          ]
+        }
+      ],
+      "scope": "Geometric contact points/impulses copied inside callback; solver indices never paired with geometric indices; normal orientation verified only for this fixture"
+    },
+    {
+      "name": "sensor_zone_enter_exit_does_not_produce_contact_force_or_impact",
+      "status": "PASS",
+      "events": [
+        {
+          "tick": 55,
+          "colliderA": "zone-main",
+          "colliderB": "ball-main",
+          "trigger": "OnEnterZone"
+        },
+        {
+          "tick": 187,
+          "colliderA": "zone-main",
+          "colliderB": "ball-main",
+          "trigger": "OnExitZone"
+        }
+      ],
+      "contactForceEvents": 0,
+      "finalX": 3.000009775161743,
+      "scope": "Dynamic ball crossing one static sensor; not fixed/kinematic zone pair validation"
+    }
+  ],
+  "limitations": [
+    "Isolated Node/WASM API probes; no product bridge/audio/browser implementation",
+    "No complete CCD/substep, simultaneous wall contacts, compound shapes, cross-platform replay or hearing validation",
+    "Fixture thresholds and geometric tolerances are synthetic controls, not calibrated presets"
+  ]
+}

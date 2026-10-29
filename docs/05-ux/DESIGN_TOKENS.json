@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED",
+  "updatedAt": "2026-10-26",
+  "groups": {
+    "color": {
+      "canvas": {
+        "$type": "color",
+        "$value": "#11151D",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "panel": {
+        "$type": "color",
+        "$value": "#181E29",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "#232C3B",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "textPrimary": {
+        "$type": "color",
+        "$value": "#F3F6FB",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "textSecondary": {
+        "$type": "color",
+        "$value": "#B9C5D8",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "textMuted": {
+        "$type": "color",
+        "$value": "#9FABC0",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "#7FC8FF",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#87DAB2",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#F5C36A",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#FF9292",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      },
+      "borderSubtle": {
+        "$type": "color",
+        "$value": "#394558",
+        "$description": "僅裝飾分隔；不能作重要輸入唯一邊界"
+      },
+      "borderControl": {
+        "$type": "color",
+        "$value": "#7D8DA5",
+        "$description": "非透明初始色；實際疊色仍需驗證"
+      }
+    },
+    "typography": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "\"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif",
+        "$description": "不下載字型；由本機 fallback"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "\"Cascadia Mono\", Consolas, monospace",
+        "$description": "domain ID、路徑與可複製精確數據"
+      },
+      "body": {
+        "$type": "dimension",
+        "$value": "14px",
+        "$description": "一般文字"
+      },
+      "secondary": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "次文字仍須可讀"
+      },
+      "title": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "工作區標題"
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "區段標題"
+      },
+      "lineHeight": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "繁中與拉丁文字行高"
+      },
+      "numericVariant": {
+        "$type": "string",
+        "$value": "tabular-nums",
+        "$description": "量測表與比較數值不跳動"
+      }
+    },
+    "spacing": {
+      "0": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "1": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "3": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "5": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "4px 格點；不套用於物理 SI 值"
+      }
+    },
+    "radius": {
+      "control": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$description": "緊密表單"
+      },
+      "panel": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$description": "浮層與面板"
+      },
+      "badge": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$description": "來源／狀態標籤"
+      }
+    },
+    "border": {
+      "control": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$description": "搭配 color.borderControl"
+      },
+      "divider": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$description": "搭配 color.borderSubtle，僅分區"
+      },
+      "focusWidth": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$description": "focus-visible ring"
+      },
+      "focusOffset": {
+        "$type": "dimension",
+        "$value": "2px",
+        "$description": "不被容器裁切"
+      }
+    },
+    "elevation": {
+      "flat": {
+        "$type": "shadow",
+        "$value": "none",
+        "$description": "場景／一般表單"
+      },
+      "overlay": {
+        "$type": "shadow",
+        "$value": "0 8px 24px #00000066",
+        "$description": "僅浮層；不以陰影作唯一邊界"
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "$type": "duration",
+          "$value": "0ms",
+          "$description": "快捷鍵、選取、高頻數據與 reduced-motion 預設"
+        },
+        "press": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "可選 pointer 按壓；keyboard 立即"
+        },
+        "tooltip": {
+          "$type": "duration",
+          "$value": "125ms",
+          "$description": "第一個 tooltip；相鄰已開啟時立即"
+        },
+        "panel": {
+          "$type": "duration",
+          "$value": "160ms",
+          "$description": "偶發面板；不可延後接收輸入"
+        },
+        "dialog": {
+          "$type": "duration",
+          "$value": "200ms",
+          "$description": "偶發 modal；focus 立即移入"
+        }
+      },
+      "easing": {
+        "out": {
+          "$type": "cubicBezier",
+          "$value": [0.23, 1, 0.32, 1],
+          "$description": "來源：Emil 固定版 strong ease-out"
+        },
+        "inOut": {
+          "$type": "cubicBezier",
+          "$value": [0.77, 0, 0.175, 1],
+          "$description": "來源：Emil 固定版；畫面內移動"
+        },
+        "drawer": {
+          "$type": "cubicBezier",
+          "$value": [0.32, 0.72, 0, 1],
+          "$description": "來源：Emil 固定版；需明示使用理由"
+        }
+      },
+      "pressScale": {
+        "$type": "number",
+        "$value": 0.97,
+        "$description": "僅 pointer 微互動；不縮放 physics body"
+      }
+    },
+    "zIndex": {
+      "viewport": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "3D 視窗層"
+      },
+      "panels": {
+        "$type": "number",
+        "$value": 10,
+        "$description": "一般面板"
+      },
+      "hud": {
+        "$type": "number",
+        "$value": 20,
+        "$description": "viewport 情境提示；不蓋住全域控制"
+      },
+      "popover": {
+        "$type": "number",
+        "$value": 30,
+        "$description": "非 modal 浮層"
+      },
+      "modal": {
+        "$type": "number",
+        "$value": 40,
+        "$description": "焦點管理與 inert 背景"
+      },
+      "toast": {
+        "$type": "number",
+        "$value": 50,
+        "$description": "不搶焦點、不遮 Master Mute"
+      },
+      "tooltip": {
+        "$type": "number",
+        "$value": 60,
+        "$description": "只補充資訊，不能遮 dialog 核心操作"
+      }
+    },
+    "sizing": {
+      "row": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "一般資料列"
+      },
+      "icon": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "基本圖示"
+      },
+      "iconTarget": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "一般 icon 實際命中"
+      },
+      "criticalTarget": {
+        "$type": "dimension",
+        "$value": "44px",
+        "$description": "Mute/Pause/Enter FPS"
+      },
+      "minimumTarget": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "桌面其他控制最小實際命中"
+      },
+      "topBar": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$description": "初始版面"
+      },
+      "monitorStrip": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$description": "全工作區可達"
+      },
+      "leftPanel": {
+        "$type": "dimension",
+        "$value": "240px",
+        "$description": "可收合"
+      },
+      "rightPanel": {
+        "$type": "dimension",
+        "$value": "304px",
+        "$description": "可收合"
+      },
+      "bottomDock": {
+        "$type": "dimension",
+        "$value": "200px",
+        "$description": "可收合"
+      }
+    },
+    "interactive": {
+      "default": {
+        "$type": "string",
+        "$value": "panel + borderControl + textPrimary",
+        "$description": "元件狀態由 COMPONENT_STATES.json 決定"
+      },
+      "hover": {
+        "$type": "string",
+        "$value": "raised + borderControl",
+        "$description": "pointer hover 以媒體查詢限制"
+      },
+      "focus": {
+        "$type": "string",
+        "$value": "accent ring + visible label",
+        "$description": "focus-visible 不以動畫延遲"
+      },
+      "active": {
+        "$type": "string",
+        "$value": "raised + textPrimary + pressed semantics",
+        "$description": "按壓與 selected 分開"
+      },
+      "disabled": {
+        "$type": "string",
+        "$value": "panel + textSecondary + reason",
+        "$description": "不以低 opacity 降到不可讀"
+      },
+      "loading": {
+        "$type": "string",
+        "$value": "progress label + cancel when supported",
+        "$description": "保留穩定尺寸／domain command ID"
+      },
+      "error": {
+        "$type": "string",
+        "$value": "danger icon + field message + retry",
+        "$description": "保留原輸入及最後有效結果"
+      }
+    },
+    "acoustic": {
+      "direct": {
+        "$type": "string",
+        "$value": "color.success + solid + direction arrow + Direct label",
+        "$description": "只由 solver path 提供"
+      },
+      "reflected": {
+        "$type": "string",
+        "$value": "color.accent + polyline + reflection nodes + order label",
+        "$description": "與工具抓取線區別"
+      },
+      "transmitted": {
+        "$type": "string",
+        "$value": "color.textSecondary + dash + crossing marker + Transmission label",
+        "$description": "反映能力與 provenance"
+      },
+      "blocked": {
+        "$type": "string",
+        "$value": "color.danger + dash-dot + cross marker + debug-only label",
+        "$description": "未通過 visibility；不送音訊"
+      },
+      "selected": {
+        "$type": "string",
+        "$value": "color.accent + outer halo + pinned ID label",
+        "$description": "附加到原路徑線型；不改 path type"
+      },
+      "stale": {
+        "$type": "string",
+        "$value": "color.warning + badge + result/current revision",
+        "$description": "只保留舊結果，不能冒稱目前"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+// Single integration entry; V2 is registered by the existing integration glob.
+import "../performance-v3/performance-profile-v3.spec.mjs";
+import "../performance-v3/reference-acceptance.spec.mjs";
+import "../performance-v3/fixture-lifecycle.spec.mjs";
+import "../performance-v3/runner-cleanup.spec.mjs";
+import "../performance-v3/native-resource.spec.mjs";
+import "../performance-v3/startup-cleanup.spec.mjs";
+import "../performance-v3/eligibility-repair.spec.mjs";
+import "../performance-v3/formal-stream.spec.mjs";
+import "../performance-v3/streaming-trace.spec.mjs";
+import "../performance-v3/ui-checkpoint.spec.mjs";
+import "../performance-v3/checkpoint-falsy.spec.mjs";
+import "../performance-v3/ui-stream-fault.spec.mjs";
+import "../performance-v3/trace-closure.spec.mjs";
+import "../performance-v3/bounded-cli.spec.mjs";
+import "../performance-v3/formal-numeric.spec.mjs";
+import "../performance-v3/reanalysis-cli.spec.mjs";
+import "../performance-v3/window-boundary.spec.mjs";
+import "../performance-v3/window-lifecycle.spec.mjs";
+import "../performance-v3/window-metadata.spec.mjs";
+import "../performance-v3/window-tail-error.spec.mjs";
+import "../performance-v3/window-longtask.spec.mjs";
+import "../performance-v3/error-record.spec.mjs";

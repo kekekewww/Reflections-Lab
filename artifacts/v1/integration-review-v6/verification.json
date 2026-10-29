@@ -1,0 +1,302 @@
+{
+    "schemaVersion":  "1.0.0",
+    "reviewer":  "codex-v1_integration_review",
+    "scope":  "Intermediate Node integration/metrics runs; metrics.ts changed after initial freeze, therefore not a final current-source gate",
+    "createdAt":  "2026-10-27T03:36:38.6515401+00:00",
+    "gitHeadAtSourceSnapshot":  "2662bc8ee3976280c5c14f619ff798570f035f14",
+    "worktreeDirtyAtSourceSnapshot":  true,
+    "nodeVersion":  "v22.17.0",
+    "npmVersion":  "11.4.2",
+    "outcome":  "SOURCE_CHANGED_HISTORICAL_PASSES",
+    "commands":  [
+                     {
+                         "command":  "node --import tsx --test tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:27:36.1155326+00:00",
+                         "completedAt":  "2026-10-27T03:27:57.9131673+00:00",
+                         "durationMs":  21646,
+                         "stdout":  "owned-suites.stdout.txt",
+                         "stderr":  "owned-suites.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node --import tsx --test tests/app/metrics-population.test.ts tests/app/metrics-population-review.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:32:36.4738244+00:00",
+                         "completedAt":  "2026-10-27T03:32:55.5256699+00:00",
+                         "durationMs":  18904,
+                         "stdout":  "metric-population-group.stdout.txt",
+                         "stderr":  "metric-population-group.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:27:36.5426922+00:00",
+                         "completedAt":  "2026-10-27T03:27:50.0879507+00:00",
+                         "durationMs":  13390,
+                         "stdout":  "typecheck.stdout.txt",
+                         "stderr":  "typecheck.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/eslint/bin/eslint.js tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:27:34.0893100+00:00",
+                         "completedAt":  "2026-10-27T03:27:35.7315934+00:00",
+                         "durationMs":  1586,
+                         "stdout":  "lint.stdout.txt",
+                         "stderr":  "lint.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     },
+                     {
+                         "command":  "node node_modules/prettier/bin/prettier.cjs --check tests/app/integration-regressions.test.ts tests/app/app-control-regressions.test.ts",
+                         "cwd":  "D:\\Developing\\Meta Hack",
+                         "nodeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                         "exitCode":  0,
+                         "startedAt":  "2026-10-27T03:27:37.2191882+00:00",
+                         "completedAt":  "2026-10-27T03:27:38.4732442+00:00",
+                         "durationMs":  994,
+                         "stdout":  "format.stdout.txt",
+                         "stderr":  "format.stderr.txt",
+                         "runner":  "Independent Node process via PowerShell ProcessStartInfo, UTF-8 capture"
+                     }
+                 ],
+    "ownedTests":  {
+                       "tests":  38,
+                       "pass":  38,
+                       "fail":  0,
+                       "skipped":  0,
+                       "cancelled":  0,
+                       "todo":  0
+                   },
+    "additionalMetricTests":  {
+                                  "tests":  8,
+                                  "pass":  8,
+                                  "fail":  0,
+                                  "skipped":  0,
+                                  "cancelled":  0,
+                                  "todo":  0
+                              },
+    "totalPassed":  46,
+    "sourceCheck":  {
+                        "beforeCount":  147,
+                        "afterCount":  147,
+                        "unchanged":  false,
+                        "changed":  [
+                                        {
+                                            "path":  "src/experiments/metrics.ts",
+                                            "beforeSha256":  "00ce2686e7abd25a9a7f061ba00ac8ea9f7117c0e17276cadddac8f0527e0cb5",
+                                            "afterSha256":  "8010efee1946cfe0dba145f18e9a8b0815c756c54d47a4199419e77023d9a8fb"
+                                        }
+                                    ],
+                        "beforeManifest":  "source-before.json",
+                        "afterManifest":  "source-after.json"
+                    },
+    "sourceCopies":  [
+                         {
+                             "path":  "tests/app/integration-regressions.test.ts",
+                             "copy":  "sources/tests/app/integration-regressions.test.ts",
+                             "sha256":  "b13fcabb46bd30cd2533ea1b7b2f5126c0694e7014d6d0efffc39a1f9c03b2a7",
+                             "byteLength":  57496,
+                             "matchesCurrent":  true
+                         },
+                         {
+                             "path":  "tests/app/app-control-regressions.test.ts",
+                             "copy":  "sources/tests/app/app-control-regressions.test.ts",
+                             "sha256":  "c42d81b97452d910449fbd2741d5f9fc7308c5578b624a602d2abaaf0cc11d38",
+                             "byteLength":  25865,
+                             "matchesCurrent":  true
+                         },
+                         {
+                             "path":  "tests/app/metrics-population.test.ts",
+                             "copy":  "sources/tests/app/metrics-population.test.ts",
+                             "sha256":  "673b4ff4a4fdfe486d1bfe9fe298da6c276ac30183ec9e7353ff511052070fc4",
+                             "byteLength":  5012,
+                             "matchesCurrent":  true
+                         },
+                         {
+                             "path":  "tests/app/metrics-population-review.test.ts",
+                             "copy":  "sources/tests/app/metrics-population-review.test.ts",
+                             "sha256":  "0bfb70f645dbf74a9b15cb97a9f60a3c95eae33f31ec80252eb6ba371a2cca9b",
+                             "byteLength":  20225,
+                             "matchesCurrent":  true
+                         }
+                     ],
+    "artifacts":  [
+                      {
+                          "path":  "format.command.json",
+                          "sha256":  "1d8581b08ed9e6da890d948d92bba90c45f4bf60ec27e0b36626de854ddc3562",
+                          "byteLength":  589
+                      },
+                      {
+                          "path":  "format.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "format.stdout.txt",
+                          "sha256":  "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+                          "byteLength":  66
+                      },
+                      {
+                          "path":  "lint.command.json",
+                          "sha256":  "de2c15da0d7a26f1733bdce0ad583b4989b7b8435ba9161700a0198519b62ee8",
+                          "byteLength":  573
+                      },
+                      {
+                          "path":  "lint.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "lint.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "metric-population-group.command.json",
+                          "sha256":  "e576007f2de6ea02f4f19f1c7a456d5f5d077b1a8be6028eafd1b2741e8c5318",
+                          "byteLength":  595
+                      },
+                      {
+                          "path":  "metric-population-group.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "metric-population-group.stdout.txt",
+                          "sha256":  "52bccfe12e3167aa9e14b4330a1857ebde737243dabbea168cc0f894a0170077",
+                          "byteLength":  2618
+                      },
+                      {
+                          "path":  "metric-tests-after.json",
+                          "sha256":  "e470a14f3f9d9f2759eeec34e99a816383ddda1893018ee37d21156436e11fd5",
+                          "byteLength":  391
+                      },
+                      {
+                          "path":  "metric-tests-before.json",
+                          "sha256":  "e470a14f3f9d9f2759eeec34e99a816383ddda1893018ee37d21156436e11fd5",
+                          "byteLength":  391
+                      },
+                      {
+                          "path":  "owned-suites.command.json",
+                          "sha256":  "b1f4ed547d052a07d25e4b4af48f086820a8bb9ec9ce634bc37cc5e083ff030f",
+                          "byteLength":  576
+                      },
+                      {
+                          "path":  "owned-suites.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "owned-suites.stdout.txt",
+                          "sha256":  "3d08d8fe53221621b23375819799c7338f66ee5dad0d18c38092748a215a2636",
+                          "byteLength":  10104
+                      },
+                      {
+                          "path":  "source-after.json",
+                          "sha256":  "13baf547a96f752022a8d12433ce0c4417f6ac6d0297180dd31a427a12fb02dd",
+                          "byteLength":  22270
+                      },
+                      {
+                          "path":  "source-before.json",
+                          "sha256":  "35d8c7bb80416b44d546624279991838b4351174e8ebf9e8b7433b219bbc0281",
+                          "byteLength":  22270
+                      },
+                      {
+                          "path":  "source-interim.json",
+                          "sha256":  "13baf547a96f752022a8d12433ce0c4417f6ac6d0297180dd31a427a12fb02dd",
+                          "byteLength":  22270
+                      },
+                      {
+                          "path":  "sources/tests/app/app-control-regressions.test.ts",
+                          "sha256":  "c42d81b97452d910449fbd2741d5f9fc7308c5578b624a602d2abaaf0cc11d38",
+                          "byteLength":  25865
+                      },
+                      {
+                          "path":  "sources/tests/app/integration-regressions.test.ts",
+                          "sha256":  "b13fcabb46bd30cd2533ea1b7b2f5126c0694e7014d6d0efffc39a1f9c03b2a7",
+                          "byteLength":  57496
+                      },
+                      {
+                          "path":  "sources/tests/app/metrics-population.test.ts",
+                          "sha256":  "673b4ff4a4fdfe486d1bfe9fe298da6c276ac30183ec9e7353ff511052070fc4",
+                          "byteLength":  5012
+                      },
+                      {
+                          "path":  "sources/tests/app/metrics-population-review.test.ts",
+                          "sha256":  "0bfb70f645dbf74a9b15cb97a9f60a3c95eae33f31ec80252eb6ba371a2cca9b",
+                          "byteLength":  20225
+                      },
+                      {
+                          "path":  "typecheck.command.json",
+                          "sha256":  "7dd8b6b42d234f01efe4b66fe2156e869ed07623636357c28f1e6d9d68aa3359",
+                          "byteLength":  522
+                      },
+                      {
+                          "path":  "typecheck.stderr.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      },
+                      {
+                          "path":  "typecheck.stdout.txt",
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "byteLength":  0
+                      }
+                  ],
+    "crossEvidence":  [
+                          {
+                              "path":  "../integration-review-v5/verification.json",
+                              "sha256":  "df5690b34250340eb84e182ba3e4e56d1210df1142edfcb2b667bc75a4d08b09"
+                          },
+                          {
+                              "path":  "../integration-review-source-copies-20261027.json",
+                              "sha256":  "580593952a346bceedc37c366169597075c36ebb0ba99120af975e435b9eea6b"
+                          },
+                          {
+                              "path":  "../replay-objectview-review-v1/red-verification.json",
+                              "sha256":  "360755530e6d4afade212eaf34318e406e35f5ade70b8f890f33f06ba3ace938"
+                          },
+                          {
+                              "path":  "../replay-objectview-review-v1/green-verification.json",
+                              "sha256":  "8b3de05d3262e904ed46a3371829b59c9c18d89edb50dfe63cbb9c6e9c2c70ff"
+                          },
+                          {
+                              "path":  "../gravity-toggle-review-v1/red-verification.json",
+                              "sha256":  "5c2f067b5dee2b27f185858da359cc5370342722e55fe14a02911a08112c2630"
+                          },
+                          {
+                              "path":  "../gravity-toggle-review-v1/green-verification.json",
+                              "sha256":  "df1d1a293db7d9d6450b741e55caf1e29d188cfcd155b0487fbf61152942ca18"
+                          }
+                      ],
+    "notRun":  [
+                   "Browser product workflows",
+                   "Native OfflineAudioContext/DSP in this reviewer run",
+                   "Hardware PCM pointer/waveform measurement",
+                   "Device hearing",
+                   "10-minute performance",
+                   "Real Meta/provider API"
+               ],
+    "modelCalls":  0,
+    "sourceEditsByReviewer":  [
+                                  "tests/app/integration-regressions.test.ts",
+                                  "tests/app/app-control-regressions.test.ts",
+                                  "docs/11-v1/INTEGRATION_REVIEW.md"
+                              ],
+    "limitations":  [
+                        "Only regression source bytes are archived here. Historical runtime implementation hashes alone are not a reconstructable checkout; Root owns the Git checkpoint.",
+                        "FakeAudioContext cases verify actual AudioEngine control graph with real Rapier, not native PCM/waveform/hearing.",
+                        "Replay ObjectView cases primarily cover Seek; nonzero differing angular velocity and continuous multi-frame ObjectView updates are not individually established.",
+                        "Additional metric test files are independently rerun and archived, authored by the experiment-tools agent and its separate reviewer; no implementation edits by this reviewer."
+                    ]
+}

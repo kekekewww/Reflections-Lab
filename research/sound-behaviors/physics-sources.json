@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "research_date_taipei": "2026-10-27",
+  "recorded_at": "2026-10-26T17:18:19.322Z",
+  "scope": "Rapier Physics-to-Sound Behavior source research; metadata/paraphrase only",
+  "package": {
+    "name": "@dimforge/rapier3d-compat",
+    "version": "0.21.0",
+    "license": "Apache-2.0"
+  },
+  "local_artifacts": [
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/package.json",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "5abcda69edc27faac2516ab958bf3bb8b1f912ee1e47df4d2b9aea67535a20b3",
+      "bytes": 814,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/LICENSE",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "bytes": 11343,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/pipeline/event_queue.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "53e67e99cef9780c2c4acb445494f60df3908f98cd1c3e74359ca230480f1ba6",
+      "bytes": 4220,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/pipeline/world.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "427ab396be6d8a628bac322ce8bdf7792a5ff0e3a161c64e5de1f1434d40079d",
+      "bytes": 35082,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/geometry/narrow_phase.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "4789e2241ff3e1f113f4a30e480f394ba66e71f2cb3c64a494bad9ad9e212d64",
+      "bytes": 5998,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/dynamics/rigid_body.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "fba7353bae14afb9d22a355660ff346cab33627626d84c3d520cf3267e1e1695",
+      "bytes": 36609,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/geometry/collider.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "fc595f8e8f1a1106aaed0f377c63f0dd2d2d88d25e0b88a860c1e975677ea75e",
+      "bytes": 44644,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/dynamics/integration_parameters.d.ts",
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "sha256": "8c3c37ea2972a4835100ab6e6d2687b4c8c0b828f9f600821813e602e8fcf952",
+      "bytes": 4144,
+      "access": "LOCAL_INSTALLED_DECLARATION_READ; not runtime execution"
+    }
+  ],
+  "sources": [
+    {
+      "id": "SB-PHYS-SRC-001",
+      "title": "Rapier JavaScript Advanced collision-detection",
+      "url": "https://rapier.rs/docs/user_guides/javascript/advanced_collision_detection/",
+      "version": "JavaScript user guide0.21; web reviewed2026-10-27",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; redistribution license not independently verified; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY",
+      "access": "Actual page read with web open, including contact graph, events, manifold ordering and CCD sections",
+      "claims": [
+        "Broad-phase contact-pair existence alone does not prove touching; inspect geometric/active solver contacts.",
+        "A pair may have multiple manifolds; geometric contacts and transient solver contacts have different index domains, with solved impulse retained in geometric contacts.",
+        "Collision/contact-force events require at least one collider enabling the relevant ActiveEvents; force threshold uses summed per-contact magnitudes.",
+        "Manifold1/2 refer to internal collider ordering, which can differ from query argument order."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-002",
+      "title": "Rapier TempContactManifold API",
+      "url": "https://rapier.rs/javascript3d/classes/TempContactManifold.html",
+      "version": "Current API site; locally cross-checked installed0.21.0 declarations",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official API documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY_AND_LOCAL_DECLARATION",
+      "access": "Actual API page read; no full documentation copy stored",
+      "claims": [
+        "normal is world-space; localContactPoint1/2 are collider-local geometry points.",
+        "contactImpulse uses geometric-contact index; solverContactPoint uses solver-contact index and returns world-space position or null.",
+        "Do not invent a one-to-one mapping between the two index domains."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-003",
+      "title": "Rapier TempContactForceEvent API",
+      "url": "https://rapier.rs/javascript3d/classes/TempContactForceEvent.html",
+      "version": "Current API site; locally cross-checked installed0.21.0 declarations",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official API documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY_AND_LOCAL_DECLARATION",
+      "access": "Actual API page read and pinned event_queue.d.ts inspected",
+      "claims": [
+        "Temporary force event may only be read inside the drain callback; copy plain data immediately.",
+        "totalForceMagnitude sums force magnitudes, unlike the magnitude of totalForce vector sum.",
+        "The force event does not expose contactImpulse; N and N*s must remain distinct."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-004",
+      "title": "Rapier World contactPair API",
+      "url": "https://rapier.rs/javascript3d/classes/World.html#contactPair",
+      "version": "Current API site; locally cross-checked installed0.21.0 declarations",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official API documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY_AND_LOCAL_DECLARATION",
+      "access": "Actual World API contactPair section read",
+      "claims": [
+        "contactPair invokes callback for each manifold and provides a flipped boolean.",
+        "When flipped, localNormal1 and other side1 values refer to the second query collider; normalize both ordering and normal before canonical pair aggregation.",
+        "Pinned JS EventQueue collision callbacks expose two handles and started only; generic-guide Rust SENSOR/REMOVED flags are not an additional JS callback argument."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-005",
+      "title": "Rapier RigidBody API and rigid-body guide",
+      "url": "https://rapier.rs/javascript3d/classes/RigidBody.html",
+      "supporting_urls": [
+        "https://rapier.rs/docs/user_guides/javascript/rigid_bodies/"
+      ],
+      "version": "JavaScript0.21 guide and locally installed0.21.0 declarations",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY_AND_LOCAL_DECLARATION",
+      "access": "Actual guide/body API sections read; velocityAtPoint/worldCom and mode APIs checked locally",
+      "claims": [
+        "linvel is COM linear velocity; angvel is angular velocity; velocityAtPoint accepts a world point; worldCom returns world COM.",
+        "Fixed, Dynamic and two Kinematic modes differ; gravityScale0 does not make a dynamic body Fixed.",
+        "Kinematic next-pose methods let the engine derive artificial velocity; direct pose setting is a teleport and should be marked discontinuity.",
+        "Post-step velocityAtPoint is a post-solve sample, not an exact pre-impact velocity; pre-step rigid-body point velocity reconstruction is a project approximation."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-006",
+      "title": "Rapier sleeping guide",
+      "url": "https://rapier.rs/docs/user_guides/javascript/rigid_body_sleeping/",
+      "version": "Current official JavaScript guide reviewed2026-10-27",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY",
+      "access": "Actual sleeping guide and installed isSleeping/sleep/wakeUp declarations read",
+      "claims": [
+        "Sleeping dynamic bodies suspend simulation until awakened; contacts or explicit wakeUp can wake them.",
+        "OnSleep/OnWake are application state edges observed from snapshots, not native EventQueue sleep/wake callbacks.",
+        "Do not equate low speed, stopped sound state, sleeping, and Fixed body mode."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-007",
+      "title": "Rapier CCD guide",
+      "url": "https://rapier.rs/docs/user_guides/javascript/rigid_body_ccd/",
+      "version": "Current official JavaScript0.21 guide reviewed2026-10-27",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY",
+      "access": "Actual CCD guide read; local maxCcdSubsteps declaration checked",
+      "claims": [
+        "Fast dynamic bodies are swept against fixed targets automatically, except dynamic mesh-like shapes; per-body CCD enables moving-target sweeps.",
+        "Two CCD-enabled objects may still tunnel; this is not an unlimited collision guarantee.",
+        "maxCcdSubsteps defaults1; increasing it permits bounded successive impacts at added cost. Sound timestamps remain fixed-step unless independent substep evidence exists."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-008",
+      "title": "Rapier determinism guide",
+      "url": "https://rapier.rs/docs/user_guides/javascript/determinism/",
+      "version": "JavaScript user guide0.21 reviewed2026-10-27",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY",
+      "access": "Actual determinism page read",
+      "claims": [
+        "WASM engine determinism requires the same version, initial state, parameters, and exact add/remove order.",
+        "Nondeterministic initialization such as cross-platform transcendental JS results can invalidate equal-input assumptions.",
+        "This does not by itself prove complete behavior/asset/PRNG/audio replay determinism; record event stream, versions and seeds separately."
+      ]
+    },
+    {
+      "id": "SB-PHYS-SRC-009",
+      "title": "Rapier colliders guide",
+      "url": "https://rapier.rs/docs/user_guides/javascript/colliders/",
+      "version": "JavaScript user guide0.21 reviewed2026-10-27",
+      "acquired_at": "2026-10-26T17:18:19.322Z",
+      "sha256": null,
+      "license": "Official documentation; metadata/paraphrase only",
+      "trust": "DOC_REVIEWED_PRIMARY",
+      "access": "Actual sensor, collision groups, active collision types and active events sections read",
+      "claims": [
+        "Sensors produce intersection transitions, not solid contact forces; zone events must not be impact events.",
+        "Collision detection defaults off when both bodies are non-dynamic; explicit ActiveCollisionTypes such as KINEMATIC_FIXED may be needed.",
+        "Collision groups can suppress contacts/events, while solver groups can retain contacts but suppress solved forces.",
+        "Removed collider handles may be reused; persist stable domain ID plus generation, never raw handle or body collider array index."
+      ]
+    }
+  ],
+  "limitations": [
+    "Rendered official pages were actually read; original HTTP bytes not acquired, so remote SHA256 remains null",
+    "Current official JavaScript user guide identifies version0.21; URL pages are mutable rather than immutable releases",
+    "No model calls, audio playback or production bridge execution",
+    "Sound event thresholds, hysteresis, aggregation and rolling/sliding classifiers are project Derived/Tuned policies, not Rapier APIs",
+    "Engine deterministic guarantee is conditional; no cross-platform complete product replay validation performed"
+  ],
+  "isolated_spike_verification": {
+    "policy_artifact": {
+      "path": "experiments/sound-behavior-spike/physics-validation-final-2026-10-27.json",
+      "sha256": "a7786170f8b7d19464bba698e3a0dbf122d18620f185891cef55a0d59be55296",
+      "result": "13/13 PASS"
+    },
+    "wasm_artifact": {
+      "path": "experiments/sound-behavior-spike/physics-results-2026-10-26T17-24-46-117Z.json",
+      "sha256": "744743d0b1524fdab7399972b9b041b8059733198ac31ccc9a5164c32b702e16",
+      "result": "3/3 PASS"
+    },
+    "source_hashes": {
+      "experiments/sound-behavior-spike/physics-policy.mjs": "c7ec6f5a1bd6f1ca3970e36ead6151e941d6ab68b4dfc8619db0bd5a76dc0a7b",
+      "experiments/sound-behavior-spike/physics-policy.test.mjs": "dc005aa55eae42be11ab10d160fc71922477edb5f96f22e2f2c4e46d655e14e9",
+      "experiments/sound-behavior-spike/physics-probe.mjs": "aa6c76da12b062d5d63840b9216f116fc764af49f3806ba5b75eb9124a7a1298"
+    },
+    "scope": "Final isolated Synthetic/Derived physics-to-sound policy; not product audio/bridge implementation"
+  },
+  "runtime_artifacts": [
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/rapier.mjs",
+      "sha256": "02dc6a4e2fffc013bab08fbb44fa68f501d8303615e9afe4c7d89ad4eedda0d0",
+      "bytes": 4340292,
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "access": "LOCAL_RUNTIME_ARTIFACT_HASHED; bytes not redistributed"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/dist/rapier_wasm3d_bg.wasm",
+      "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+      "bytes": 3082103,
+      "version": "0.21.0",
+      "license": "Apache-2.0",
+      "access": "LOCAL_RUNTIME_ARTIFACT_HASHED; bytes not redistributed"
+    }
+  ],
+  "toolchain_lock": {
+    "path": "package-lock.json",
+    "sha256": "4a9418c52b067fbcaa5b5b7724e7ef641590302f64058734a9838895a5827e9d"
+  }
+}

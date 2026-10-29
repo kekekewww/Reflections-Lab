@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "kind": "INDEPENDENT_READ_ONLY_ACTUAL_PRODUCTION_ACTIVE_RULE_IMPLEMENTATION_REVIEW",
+  "reviewer": "/root/active_rule_candidate_review",
+  "recordedAtUtc": "2026-10-27T22:12:23.797Z",
+  "status": "PASS_SCOPED_IMPLEMENTATION_AND_MAINTAINED_TEST_REVIEW",
+  "baseGit": "9ccff9fce573c4d739399a473f662cb956ae03f0",
+  "scope": "Actual applied three-file production delta plus maintained14 tests, archived RED/GREEN evidence and formatting derivative. Static/data review only; no reviewed source/test/build/browser/profile/API execution or canonical/source/Git mutation by this reviewer.",
+  "sources": [
+    {
+      "path": "src/audio-behavior/index.ts",
+      "baseSha256": "d8044cb3e9d1e8616a0f8c243db9846efd243a3fdc49f341aa6f11a9b9589cb5",
+      "reviewedCandidateSha256": "ab4e7283183e2b1a8bc684854299fe008be31d76424cad48ea457389bfaf540c",
+      "currentSha256": "2ac018b39bdae2fc9e492c2e512be0e4a74453467efbf310d30fa68abb55c3df",
+      "removedCRBytes": 6
+    },
+    {
+      "path": "src/audio-behavior/types.ts",
+      "baseSha256": "db99877445eb2c51fb0c7a12acc97884b58cf7cce511796271c9b84be713158c",
+      "reviewedCandidateSha256": "1e6bcf185edc485f945cc3a30f7006568198b2f9fc835f7510d0a95739a86a33",
+      "currentSha256": "15b6aca9e5652869cd58aa2d2fd8f8c3ccf8f8cf27a1d97a96023a6668c63052",
+      "removedCRBytes": 6
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "baseSha256": "c3437ecd823ab32dad4b10e2b958824c1bf5ad187add9ac0625468fea99d97ed",
+      "reviewedCandidateSha256": "84fa8c5aa92ae31cc1e558e15c07c1042e65101cf49892a528d45bc230cd8d0f",
+      "currentSha256": "84fa8c5aa92ae31cc1e558e15c07c1042e65101cf49892a528d45bc230cd8d0f",
+      "removedCRBytes": 0
+    }
+  ],
+  "exactDeltaAudit": {
+    "gitBaseMatchesAllArchivedPreimages": true,
+    "approvedFiveSubstitutionsReconstructOriginalThreeFiles": true,
+    "runtimeByteExactToApprovedCandidate": true,
+    "totalCRBytesRemoved": 12,
+    "onlyCRLFtoLFWithinInsertedIndexAndTypeBlocks": true,
+    "proof": "Both before-format copies equal their approved candidate bytes. Each has exactly six CR bytes, every CR followed by LF. Replacing those CRLF pairs by LF yields the entire actual current file byte-for-byte. No other formatting/source delta exists.",
+    "fullSnapshotMethod": {
+      "bytes": 297,
+      "sha256": "81e373cd330c6a18f2d42da68edce6ed8d284640eef22247b50c83d3bea33ac4",
+      "byteExact": true
+    },
+    "outsidePublishSnapshotCallSitesUnchanged": true,
+    "semanticDecision": "Only additive DTO/interface method and fresh current-state projection, plus two publish acquisition/receiver substitutions. No step/reset/restore/replace/notifyEnded/recorder/clock/event/admission/physics/solver or publication-frequency changes.",
+    "ownershipAndFreshness": "getActiveRuleStates maps the current reassigned closure variable state.bindings on every invocation; each outer array, binding object and activeRuleIds array is fresh. No cache/stale captured state/ordering change/validation side effect. Original find/includes and unknown-binding false behavior preserved."
+  },
+  "maintainedTests": [
+    {
+      "path": "tests/audio-behavior/active-rule-projection.test.ts",
+      "sha256": "ff354a00e271cb537efe292c5afb92d49cabc42e957d8974ab55992f1e4f31b4",
+      "cases": 12,
+      "byteExactToPreImplementationFrozenCopy": true
+    },
+    {
+      "path": "tests/app/active-rule-view.test.ts",
+      "sha256": "e80932fc13f2a0c830a89be2915549b1743ca708a4a0451b2c37f3f903103dc0",
+      "cases": 2,
+      "byteExactToPreImplementationFrozenCopy": true
+    }
+  ],
+  "testOracleDecision": {
+    "approved": true,
+    "unit": "Expected projection reads the original full snapshot, whose entire method is pinned at297 bytes/81e373. It does not derive expected values by invoking the new getter. Two instances compare full snapshots, steps and traces; explicit literals/ownership mutation/current-state reset/restore/replace/true postmutation overflow rejection add meaningful assertions.",
+    "app": "Reference run replaces only the test-observed getter with a projection backed by full snapshot. Current production LabRuntime runs in both branches, replacement behavior objects are instrumented through a property observer, and all spy/global identity seams restore in finally. This is a getter-delta oracle, not an independent implementation of all runtime algorithms.",
+    "completePayloads": "Maintained tests deeply compare complete ordered views and checkpoint views/full snapshots/traces/exported projects/capture-replay artifacts. Notification/publication, behavior-step/physics-tick and requests-method invocation counts stay equal. Explicit140/144 ticks and105objects/100dynamic/101bindings/301rules are fixed.",
+    "snapshotCountPrecision": "Counts are instrumented app acquisitions; saved-method oracle snapshots at checkpoints bypass spies symmetrically. Large186->0 does not mean zero calls including test oracles. requests counts method invocations, not completed solver jobs or network/model calls.",
+    "unchangedAcceptance": "Both new test files still match their before-implementation frozen bytes. Original40-case behavior runtime test file is byte-identical to Git base, SHA59f1b4c09c74e7c1f900876d900ac0613e7a59eb20e4459527cdfb2a72c6ebca. All61 frozen protected originals currently match.",
+    "independentSubreview": {
+      "path": ".cache/v1/active-rule-formal-oracle-review-20261028.json",
+      "sha256": "37ae08768e0d1ab84bf4465e50d166145e4e8d4fe3d31d0c2726c9c315bcd623",
+      "status": "PASS",
+      "executions": 0
+    }
+  },
+  "observedExecutionEvidence": {
+    "RED": {
+      "path": ".cache/v1/active-rule-formal-tests-20261028/unit-red-r1.result.json",
+      "sha256": "83329c46814e96d1372d11b7077fb0e8c20c0ad464eb78a17976c3308ec2c693",
+      "childPid": 68864,
+      "nativeExitCode": 1,
+      "closeObserved": true,
+      "timedOut": false,
+      "totals": {
+        "tests": 12,
+        "pass": 0,
+        "fail": 12,
+        "skipped": 0
+      },
+      "rawMissingApiErrors": 12,
+      "scope": "Pre-implementation missing actual API; rawstderr empty and all raw hash/byte fields verified."
+    },
+    "GREEN": {
+      "path": ".cache/v1/active-rule-formal-tests-20261028/formal-green-r1.result.json",
+      "sha256": "49b471ec412e04c4925d2a3bf7a3e6ca8aa7a15142ca77653e3637959fb44803",
+      "childPid": 79460,
+      "nativeExitCode": 0,
+      "closeObserved": true,
+      "signal": null,
+      "timedOut": false,
+      "totals": {
+        "tests": 54,
+        "pass": 54,
+        "fail": 0,
+        "skipped": 0
+      },
+      "individualUniquePassingCases": 54,
+      "executionInputs": 19,
+      "executionInputsBeforeAfterExact": true,
+      "protected61BeforeAfterExact": true,
+      "scope": "Actual Node22/tsx current maintained14 plus unchanged originalbehavior40. Rawstdout/stderr hashes and TAP totals were independently read; no execution repeated by this reviewer."
+    },
+    "derivativeBinding": "GREEN and typecheck bind the approved pre-format source hashes ab4e/1e6/84fa. The only current differences among all19 captured execution inputs are index/types' exact12 CR removals proven above. Do not label GREEN a new execution against2ac/15b; Root's current-bound fullruntime/static run remains the stronger next verification.",
+    "staticQualityFirstAttempt": {
+      "path": "artifacts/v1/active-rule-production-20261028/static-quality-r1/verification.json",
+      "status": "FAIL",
+      "typecheckActualExit0": true,
+      "formatActualExit1": true,
+      "originalFailurePreserved": true,
+      "scope": "Pre-format input. Formatting derivative was audited; current-bound style/fullruntime outcomes are not asserted in this review."
+    }
+  },
+  "frozenAuthority": {
+    "requirementsPath": "docs/11-v1/REQUIREMENTS.json",
+    "sha256": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c",
+    "protectedCount": 61,
+    "currentAllMatch": true
+  },
+  "findings": [],
+  "remainingScope": [
+    "Complete Root's current2ac/15b/84fa-bound full runtime, typecheck/lint/format/build checks and read their actual results; this reviewer executed none.",
+    "Current browser/UI/product and any applicable audio/source binding remain separate, as do production/NOTICE bytes, Wiki/English/current task evidence and Git checkpoint.",
+    "No new formal performance run or budget/VAL04 claim follows from semantic equality or fewer full-state clones. First review current browser binding and bounded same-load causal measurement method; preserve all original loads/clocks/thresholds and old failures.",
+    "App tests useWorker=false/audioNULL; Date/UUID seams control identity metadata only. They are not native audio/hearing/worker delivery/GC/allocation/FPS or device measurements.",
+    "Native desktop visibility/Pointer Lock/zoom, actual listening/route/rate/block, main trace qualification, prior formal performance failures and external rights remain unresolved independently.",
+    "No wholeV1/Task completion decision is made here."
+  ],
+  "activity": {
+    "sourceCanonicalTaskWikiWrites": 0,
+    "reviewedProductOrTestsExecuted": 0,
+    "buildBrowserProfileOrApiRuns": 0,
+    "gitMutations": 0,
+    "cacheOnly": true,
+    "allActivityEnd": true
+  }
+}

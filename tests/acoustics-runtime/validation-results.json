@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordedAt": "2026-10-26T18:42:20.967Z",
+  "status": "PASS",
+  "scope": "V1 finite polygon first-order geometric acoustic runtime; synthetic/derived analytical reference, not full-room or audio rendering validation",
+  "results": [
+    {
+      "name": "tests",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/acoustics-runtime/solver.test.ts"
+      ],
+      "exitCode": 0,
+      "stdout": "TAP version 13\n# Subtest: ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25\nok 1 - ACO-001: 3-4-5 free field has a 5/343 s arrival and 1/5 pressure, not 1/25\n  ---\n  duration_ms: 8.4559\n  type: 'test'\n  ...\n# Subtest: ACO-001: doubling distance halves pressure and quarters energy\nok 2 - ACO-001: doubling distance halves pressure and quarters energy\n  ---\n  duration_ms: 1.4328\n  type: 'test'\n  ...\n# Subtest: ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction\nok 3 - ACO-002: finite floor reflection hits [3,0,0], length sqrt(20), final-segment apparent direction\n  ---\n  duration_ms: 2.6556\n  type: 'test'\n  ...\n# Subtest: ACO-002: an infinite-plane intersection outside finite polygon is rejected\nok 4 - ACO-002: an infinite-plane intersection outside finite polygon is rejected\n  ---\n  duration_ms: 0.9265\n  type: 'test'\n  ...\n# Subtest: a reflection cannot connect opposite sides of a zero-thickness reflector\nok 5 - a reflection cannot connect opposite sides of a zero-thickness reflector\n  ---\n  duration_ms: 0.5978\n  type: 'test'\n  ...\n# Subtest: flipping a two-sided surface normal preserves the finite reflection geometry and identity\nok 6 - flipping a two-sided surface normal preserves the finite reflection geometry and identity\n  ---\n  duration_ms: 1.4131\n  type: 'test'\n  ...\n# Subtest: ACO-002: visibility rejects a reflection blocked on its real first segment\nok 7 - ACO-002: visibility rejects a reflection blocked on its real first segment\n  ---\n  duration_ms: 0.8017\n  type: 'test'\n  ...\n# Subtest: direct occlusion removes the direct acoustic path and names its actual blocker\nok 8 - direct occlusion removes the direct acoustic path and names its actual blocker\n  ---\n  duration_ms: 0.5432\n  type: 'test'\n  ...\n# Subtest: path identity survives source motion and request/revision/tick changes\nok 9 - path identity survives source motion and request/revision/tick changes\n  ---\n  duration_ms: 0.95\n  type: 'test'\n  ...\n# Subtest: AIR-001: explicit synthetic dB/m is applied once as a pressure factor\nok 10 - AIR-001: explicit synthetic dB/m is applied once as a pressure factor\n  ---\n  duration_ms: 0.7779\n  type: 'test'\n  ...\n# Subtest: AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model\nok 11 - AIR-003: explicitly derived dry-air speed uses absolute temperature, not a fabricated RH model\n  ---\n  duration_ms: 0.4877\n  type: 'test'\n  ...\n# Subtest: MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption\nok 12 - MAT-001: reflection pressure is sqrt((1-s)R); scattered energy is excluded, not reclassified as absorption\n  ---\n  duration_ms: 0.5301\n  type: 'test'\n  ...\n# Subtest: vacuum has no airborne acoustic paths while leaving mechanical scene data untouched\nok 13 - vacuum has no airborne acoustic paths while leaving mechanical scene data untouched\n  ---\n  duration_ms: 0.9331\n  type: 'test'\n  ...\n# Subtest: RT60/DRR/C50 and impulse response remain unavailable without a validated response\nok 14 - RT60/DRR/C50 and impulse response remain unavailable without a validated response\n  ---\n  duration_ms: 0.4158\n  type: 'test'\n  ...\n# Subtest: plain returned frame conforms to the original unchanged AcousticFrame v1 schema\nok 15 - plain returned frame conforms to the original unchanged AcousticFrame v1 schema\n  ---\n  duration_ms: 97.5665\n  type: 'test'\n  ...\n# Subtest: solver does not mutate frozen request/geometry/material arrays\nok 16 - solver does not mutate frozen request/geometry/material arrays\n  ---\n  duration_ms: 0.5032\n  type: 'test'\n  ...\n# Subtest: rejects singular, nonfinite, negative, nonconserving, and misaligned domains\nok 17 - rejects singular, nonfinite, negative, nonconserving, and misaligned domains\n  ---\n  duration_ms: 1.3963\n  type: 'test'\n  ...\n# Subtest: rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity\nok 18 - rejects degenerate/nonplanar/nonconvex polygons and unresolved material identity\n  ---\n  duration_ms: 0.4574\n  type: 'test'\n  ...\n# Subtest: bounded path selection never returns more than its declared admission limit\nok 19 - bounded path selection never returns more than its declared admission limit\n  ---\n  duration_ms: 0.2611\n  type: 'test'\n  ...\n# Subtest: segment budget is strict and fails closed rather than emitting an unchecked path\nok 20 - segment budget is strict and fails closed rather than emitting an unchecked path\n  ---\n  duration_ms: 0.1979\n  type: 'test'\n  ...\n# Subtest: invalid budget values cannot bypass bounded work\nok 21 - invalid budget values cannot bypass bounded work\n  ---\n  duration_ms: 0.2622\n  type: 'test'\n  ...\n# Subtest: untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected\nok 22 - untrusted non-array bands, atmospheric coefficients, and budget objects are explicitly rejected\n  ---\n  duration_ms: 0.2954\n  type: 'test'\n  ...\n# Subtest: oriented box surfaces preserve exact 90-degree Y rotation and stable face identity\nok 23 - oriented box surfaces preserve exact 90-degree Y rotation and stable face identity\n  ---\n  duration_ms: 1.0028\n  type: 'test'\n  ...\n# Subtest: dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections\nok 24 - dynamic occluder snapshots block/unblock direct sound without inventing dynamic reflections\n  ---\n  duration_ms: 0.7553\n  type: 'test'\n  ...\n# Subtest: accepted near-unit surface normal is normalized before reflection geometry\nok 25 - accepted near-unit surface normal is normalized before reflection geometry\n  ---\n  duration_ms: 0.2133\n  type: 'test'\n  ...\n# Subtest: sparse material bands cannot silently become unity-gain reflection coefficients\nok 26 - sparse material bands cannot silently become unity-gain reflection coefficients\n  ---\n  duration_ms: 0.155\n  type: 'test'\n  ...\n# Subtest: sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors\nok 27 - sparse surfaces, polygon vertices, and endpoint vectors produce explicit domain errors\n  ---\n  duration_ms: 0.2184\n  type: 'test'\n  ...\n# Subtest: nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them\nok 28 - nonfinite atmosphere inputs are rejected even when another medium/speed branch would not use them\n  ---\n  duration_ms: 0.2484\n  type: 'test'\n  ...\n# Subtest: 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs\nok 29 - 64-character Scene object IDs produce six stable suffixed acoustic faces without widening endpoint/material IDs\n  ---\n  duration_ms: 0.7535\n  type: 'test'\n  ...\n1..29\n# tests 29\n# suites 0\n# pass 29\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1607.7161\n",
+      "stderr": ""
+    },
+    {
+      "name": "strict-types",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--strict",
+        "--noUncheckedIndexedAccess",
+        "--exactOptionalPropertyTypes",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--target",
+        "ES2022",
+        "--skipLibCheck",
+        "--allowImportingTsExtensions",
+        "src/acoustics/index.ts",
+        "tests/acoustics-runtime/solver.test.ts",
+        "tests/acoustics-runtime/benchmark.ts"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "format",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src/acoustics",
+        "tests/acoustics-runtime/solver.test.ts",
+        "tests/acoustics-runtime/benchmark.ts"
+      ],
+      "exitCode": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": ""
+    },
+    {
+      "name": "benchmark",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "tests/acoustics-runtime/benchmark.ts"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"recordedAt\": \"2026-10-26T18:42:20.844Z\",\n  \"status\": \"MEASURED_LOCAL_ONLY\",\n  \"command\": \"node --import tsx tests/acoustics-runtime/benchmark.ts\",\n  \"environment\": {\n    \"node\": \"v22.17.0\",\n    \"platform\": \"win32\",\n    \"arch\": \"x64\",\n    \"cpu\": \"13th Gen Intel(R) Core(TM) i9-13980HX\",\n    \"logicalCpus\": 32\n  },\n  \"configuration\": {\n    \"warmup\": 30,\n    \"sampleCount\": 20,\n    \"iterationsPerSample\": 10,\n    \"surfaces\": 36,\n    \"bands\": 7,\n    \"concurrency\": 1,\n    \"workload\": \"36 exact static box faces; first-order bounded room solve, includes input validation and allocations\"\n  },\n  \"millisecondsPerSolve\": {\n    \"min\": 0.37493999999999233,\n    \"median\": 0.5592700000000036,\n    \"p95\": 4.421439999999995,\n    \"max\": 5.38352000000001\n  },\n  \"paths\": 7,\n  \"segmentTests\": 468,\n  \"budgetExceeded\": false,\n  \"sourceHashes\": {\n    \"src/acoustics/types.ts\": \"8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431\",\n    \"src/acoustics/geometry.ts\": \"e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3\",\n    \"src/acoustics/solver.ts\": \"6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383\",\n    \"src/acoustics/index.ts\": \"fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1\"\n  },\n  \"sink\": 1610,\n  \"limitations\": [\n    \"Single local Node process under concurrent development load; not browser/worker/audio callback timing.\",\n    \"p95 across batch average times, not individual frame tail latency.\",\n    \"No general scene capacity, real-room accuracy or device latency claim.\"\n  ]\n}\n",
+      "stderr": ""
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "src/acoustics/types.ts",
+      "sha256": "8d937b0a2e8c05ea564b720b1863d56a0dd82a938234d5d2ceb69bbbc8ab1431"
+    },
+    {
+      "path": "src/acoustics/geometry.ts",
+      "sha256": "e8cdc0fda8dd54ba7698cb9117ca97b42d990e93c5c38b5c0f28bb1104d3dcc3"
+    },
+    {
+      "path": "src/acoustics/solver.ts",
+      "sha256": "6af38909823322b1c1672d146dab9291401a736876cb4872bc205bd8e6d68383"
+    },
+    {
+      "path": "src/acoustics/index.ts",
+      "sha256": "fbc437439658eb3738d8d50389f49f0f5b2f9798a0dedf88dbeb7443578ffba1"
+    },
+    {
+      "path": "tests/acoustics-runtime/solver.test.ts",
+      "sha256": "07bda057d7d92f32aaa0afae8ec56e40bcd1379f155b8d8a00bc81af32ab0fa0"
+    },
+    {
+      "path": "tests/acoustics-runtime/benchmark.ts",
+      "sha256": "e4282234112492fbcc1e26441e9377735ff8eeaed80fd677dc3693c109a00c88"
+    },
+    {
+      "path": "schemas/acoustic-frame.schema.json",
+      "sha256": "cb5f9148af5d13378f4b8967ca3bdad19b5389d5b5545487e1b36535b8390a70"
+    }
+  ],
+  "independentReview": {
+    "agent": "/root/v1_acoustic_core/acoustic_review",
+    "scope": "Read-only geometry/energy/budget/input review plus targeted reproductions",
+    "findings": [
+      "P2 near-unit normal was not normalized before mirror",
+      "P2 sparse material bands skipped validation"
+    ],
+    "resolution": "Both repaired and independently reprobed; no remaining scoped P1/P2",
+    "testAuthor": "/root/v1_acoustic_core/acoustic_acceptance"
+  },
+  "limitations": [
+    "No renderer/browser audio/HRTF/hearing/device latency verified here",
+    "No physical room measurement, diffuse solver, diffraction, wave/modal, phase-correct IR or RT60",
+    "Dynamic occluders use bounded quasi-static box/polygon snapshots; moving reflectors and retarded-time are unsupported"
+  ]
+}
