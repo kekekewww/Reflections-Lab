@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.md","sha256":"212e93d4567c42f8524205a7427fa57ac85aedb05e440c37e633e6baa93b14b9","translated_at":"2026-11-04T17:28:57.206Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
+<!-- english-source: {"path":"README.md","sha256":"647fc4b33dd015259d230ed9d8cd7a0cc8e97f8c57ca440f4cf7ee65b2a538d7","translated_at":"2026-11-04T17:32:11.358Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.md`](README.md). Source SHA-256: `212e93d4567c42f8524205a7427fa57ac85aedb05e440c37e633e6baa93b14b9`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.md`](README.md). Source SHA-256: `647fc4b33dd015259d230ed9d8cd7a0cc8e97f8c57ca440f4cf7ee65b2a538d7`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
@@ -106,7 +106,7 @@ npm run build:site
 This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It has no server, so a visitor uses Muse with their own Meta API key. Everything else works without one.
 
 - **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
-- **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it.
+- **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it. [Meta's docs](https://dev.meta.ai/docs/authentication) advise keeping keys out of browser code, so use a separate key you can delete afterwards.
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
 - **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 

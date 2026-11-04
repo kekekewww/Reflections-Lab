@@ -861,8 +861,8 @@ export const explorerMessages = {
   },
   "analysis.agent.keyHelp": {
     "zh-TW":
-      "金鑰只保留在此分頁的記憶體，也只會傳送到 api.meta.ai；不會儲存，重新載入頁面就會清除。請求由你的 Meta 帳號計費，通常每個指令幾美分，複雜場景會更多。",
-    en: "Your key stays in this tab's memory and goes only to api.meta.ai. It's never saved, and a reload clears it. Requests are billed to your Meta account, usually a few cents per instruction and more for complex scenes.",
+      "金鑰只保留在此分頁的記憶體，也只會傳送到 api.meta.ai；不會儲存，重新載入頁面就會清除。請求由你的 Meta 帳號計費，通常每個指令幾美分，複雜場景會更多。請使用可在事後刪除的專用金鑰。",
+    en: "Your key stays in this tab's memory and goes only to api.meta.ai. It's never saved, and a reload clears it. Requests are billed to your Meta account, usually a few cents per instruction and more for complex scenes. Use a separate key you can delete afterwards.",
   },
   "analysis.agent.keyHeld": {
     "zh-TW": "此分頁正在使用你的金鑰。",

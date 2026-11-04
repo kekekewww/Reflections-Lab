@@ -94,7 +94,7 @@ npm run build:site
 This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It has no server, so a visitor uses Muse with their own Meta API key. Everything else works without one.
 
 - **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
-- **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it.
+- **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it. [Meta's docs](https://dev.meta.ai/docs/authentication) advise keeping keys out of browser code, so use a separate key you can delete afterwards.
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
 - **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 

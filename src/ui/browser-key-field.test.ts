@@ -35,6 +35,8 @@ test("the help text says where the key goes, how long it stays and who pays", ()
   assert.match(help, /memory/i);
   assert.match(help, /reload/i);
   assert.match(help, /your Meta account|you pay/i);
+  assert.match(help, /separate key/i);
+  assert.match(help, /delete/i);
   const chinese = translate("zh-TW", "analysis.agent.keyHelp" as unknown as MessageKey);
   assert.match(chinese, /api\.meta\.ai/);
 });
