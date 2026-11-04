@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { noticePackages, siteHeaders } from "../../scripts/build-site.mjs";
+import { browserMetaPaths } from "../../scripts/validation/local-bundle.mjs";
 
 function policy() {
   const line = siteHeaders()
@@ -20,7 +21,7 @@ function policy() {
   );
 }
 
-test("the page can only send data to itself and to Meta's API", () => {
+test("the page's fetch-style requests can only reach itself and Meta's API", () => {
   assert.deepEqual(policy()["connect-src"], ["'self'", "https://api.meta.ai"]);
 });
 
@@ -34,6 +35,15 @@ test("the page can only run its own scripts", () => {
   assert.deepEqual(rules["base-uri"], ["'none'"]);
   assert.deepEqual(rules["form-action"], ["'none'"]);
   assert.deepEqual(rules["frame-ancestors"], ["'none'"]);
+});
+
+test("the local bundle guard finds a browser path to Meta", () => {
+  const files = [
+    { name: "safe.js", text: "goes only to api.meta.ai" },
+    { name: "agent.js", text: 'fetch("https://api.meta.ai/v1/chat/completions")' },
+  ];
+  assert.deepEqual(browserMetaPaths(files), ["agent.js"]);
+  assert.deepEqual(browserMetaPaths(files.slice(0, 1)), []);
 });
 
 test("the page sends no referrer and isn't sniffed", () => {

@@ -138,7 +138,16 @@ test("the key store trims, refuses malformed input and forgets", () => {
   setBrowserKey(`  ${KEY}\n`);
   assert.equal(getBrowserKey(), KEY);
   assert.equal(hasBrowserKey(), true);
-  for (const bad of ["", "   ", "two words", `Bearer ${KEY}`, "x".repeat(1025), "line\nbreak"])
+  for (const bad of [
+    "",
+    "   ",
+    "two words",
+    `Bearer ${KEY}`,
+    "x".repeat(1025),
+    "line\nbreak",
+    'with"quote',
+    "back\\slash",
+  ])
     assert.throws(() => setBrowserKey(bad), /key/i);
   assert.equal(getBrowserKey(), KEY, "a refused value leaves the earlier key in place");
   forgetBrowserKey();

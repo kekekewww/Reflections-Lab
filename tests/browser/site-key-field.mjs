@@ -339,7 +339,7 @@ const scanStorage = async (page) =>
     await keyInput.waitFor({ timeout: 5000 });
     await page.waitForTimeout(300);
     check(
-      "the field hides what you type and isn't autofilled",
+      "the field hides what you type and asks browsers not to autofill",
       (await keyInput.getAttribute("type")) === "password" &&
         (await keyInput.getAttribute("autocomplete")) === "off" &&
         (await keyInput.getAttribute("spellcheck")) === "false",
@@ -544,6 +544,24 @@ const scanStorage = async (page) =>
     await shot("8-forgotten");
     for (const route of hanging.splice(0)) await route.abort("failed").catch(() => {});
 
+    // A page-cache event, the case where the page would otherwise come back with its memory intact.
+    const leavePage = () =>
+      page.evaluate(() =>
+        window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true })),
+      );
+    await keyInput.fill(KEY);
+    await leavePage();
+    check("leaving the page clears a typed key", (await keyInput.inputValue()) === "");
+    await keyInput.fill(KEY);
+    await button("Use key").click();
+    await page.waitForTimeout(300);
+    await leavePage();
+    await page.waitForTimeout(300);
+    check(
+      "leaving the page clears a key in use",
+      (await button("Forget key").count()) === 0 && (await keyInput.count()) === 1,
+    );
+
     await keyInput.fill(KEY);
     await button("Use key").click();
     await page.waitForTimeout(300);
@@ -585,6 +603,69 @@ const scanStorage = async (page) =>
     );
     await page.getByRole("combobox", { name: /Interface language|介面語言/ }).selectOption("en");
 
+    if (AUDIO) {
+      // The rest of the app, under the same rules, after the key is gone.
+      const callsBefore = metaCalls.length;
+      await page.getByLabel("AI execution mode").selectOption("offline");
+      await page.waitForTimeout(400);
+      await prompt.fill("ball impact audio quiet");
+      await submit.click();
+      await page.locator(".agent-preview").waitFor({ timeout: 15000 });
+      check("offline tools work and call nothing", metaCalls.length === callsBefore);
+      await page.getByRole("button", { name: "Cancel preview" }).click();
+      await page.waitForTimeout(300);
+
+      await tab(/^Events & recording/).click();
+      await page.waitForTimeout(300);
+      await page
+        .getByRole("button", { name: /Start recording/ })
+        .first()
+        .click();
+      await page.waitForTimeout(4000);
+      await page
+        .getByRole("button", { name: /Stop recording/ })
+        .first()
+        .click();
+      const replay = page.getByRole("button", { name: /Replay recording/ }).first();
+      let replayReady = false;
+      for (let i = 0; i < 20 && !replayReady; i++) {
+        await page.waitForTimeout(1000);
+        replayReady = (await replay.count()) > 0 && (await replay.isEnabled());
+      }
+      check("recording seals under the network rules", replayReady);
+      await replay.click();
+      await page.waitForTimeout(2000);
+      const endReplay = page.getByRole("button", { name: /End replay/ }).first();
+      check("replay runs under the network rules", (await endReplay.count()) > 0);
+      await endReplay.click().catch(() => {});
+      await page.waitForTimeout(600);
+
+      await button("Reset")
+        .first()
+        .click()
+        .catch(() => {});
+      await page.waitForTimeout(600);
+      await button("Enter first person").first().click();
+      await page.waitForTimeout(1500);
+      check(
+        "first person opens under the network rules",
+        (await page.locator("body").innerText()).includes("First-person interaction"),
+      );
+      await shot("9b-first-person");
+      await page.keyboard.press("Escape").catch(() => {});
+      await page.waitForTimeout(300);
+      const exit = button("Exit first person");
+      if (await exit.count())
+        await exit
+          .first()
+          .click()
+          .catch(() => {});
+      await page.waitForTimeout(500);
+      await tab(/^Meta experiment agent/).click();
+      await page.getByLabel("AI execution mode").selectOption("meta");
+      await keyInput.waitFor({ timeout: 5000 });
+    }
+
     await page.setViewportSize({ width: 1100, height: 720 }).catch(() => {});
     await page.waitForTimeout(300);
     const overflow = await page
@@ -624,7 +705,7 @@ const scanStorage = async (page) =>
         return true;
       }
     });
-    check("the network rules stop the page sending data anywhere else", blocked);
+    check("the network rules block requests to other sites", blocked);
     await page.waitForTimeout(200);
     const finalViolations = (await page.evaluate(() => window.__violations)).filter(
       (v) => !v.includes("example.com"),

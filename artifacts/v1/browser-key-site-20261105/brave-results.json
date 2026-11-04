@@ -26,7 +26,7 @@
     "ok": true
   },
   {
-    "check": "the field hides what you type and isn't autofilled",
+    "check": "the field hides what you type and asks browsers not to autofill",
     "ok": true
   },
   {
@@ -166,6 +166,14 @@
     "ok": true
   },
   {
+    "check": "leaving the page clears a typed key",
+    "ok": true
+  },
+  {
+    "check": "leaving the page clears a key in use",
+    "ok": true
+  },
+  {
     "check": "no busy error appeared at any point before the reload",
     "ok": true,
     "detail": 0
@@ -198,6 +206,22 @@
     "detail": "你的 Meta API 金鑰\n使用金鑰\n\n金鑰只保留在此分頁的記憶體，也只會傳送到 api.meta.ai；不會儲存，重新載入頁面就會清除。請求由你的 Meta 帳號計費，通常每個指令幾美分，複雜場景會更多。"
   },
   {
+    "check": "offline tools work and call nothing",
+    "ok": true
+  },
+  {
+    "check": "recording seals under the network rules",
+    "ok": true
+  },
+  {
+    "check": "replay runs under the network rules",
+    "ok": true
+  },
+  {
+    "check": "first person opens under the network rules",
+    "ok": true
+  },
+  {
     "check": "the field fits a smaller window",
     "ok": true,
     "detail": {
@@ -220,7 +244,7 @@
     "ok": true
   },
   {
-    "check": "the network rules stop the page sending data anywhere else",
+    "check": "the network rules block requests to other sites",
     "ok": true
   },
   {
@@ -246,7 +270,7 @@
       "Failed to load resource: net::ERR_FAILED"
     ],
     "failedSiteRequests": [
-      "404 /assets/index-C5POr1mG.js.map",
+      "404 /assets/index-CMFhm6on.js.map",
       "404 /_headers",
       "404 /api/agent/status"
     ],

@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.md","sha256":"108b6123c8a8617e753742bce5f74499794cecbc376b5052adea5163c1deb6cf","translated_at":"2026-11-04T16:43:41.365Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
+<!-- english-source: {"path":"README.md","sha256":"6a0d33f66f4453c3ae2f39667b23f01bde9cfa76ee86ccb2463092f9ec3a7847","translated_at":"2026-11-04T17:06:46.002Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.md`](README.md). Source SHA-256: `108b6123c8a8617e753742bce5f74499794cecbc376b5052adea5163c1deb6cf`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.md`](README.md). Source SHA-256: `6a0d33f66f4453c3ae2f39667b23f01bde9cfa76ee86ccb2463092f9ec3a7847`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
@@ -108,7 +108,7 @@ This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It h
 - **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
 - **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it.
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
-- **The network rules** in `dist-site/_headers` only let the page send data to itself and to Meta, so the host has to apply that file.
+- **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 
 It has been tested with a fixture key and a mocked Meta API, but not yet with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
 

@@ -10,8 +10,9 @@ const notify = () => listeners.forEach((listener) => listener());
 
 export function setBrowserKey(value: string): void {
   const trimmed = value.trim();
-  // A key travels in an HTTP header, so anything but printable ASCII is a paste mistake.
-  if (!trimmed || trimmed.length > 1024 || /[^\x21-\x7e]/.test(trimmed))
+  // A key travels in an HTTP header, so anything but printable ASCII is a paste mistake. Quotes and
+  // backslashes are refused too, because replies are checked for the key as serialized JSON.
+  if (!trimmed || trimmed.length > 1024 || /[^\x21-\x7e]|["\\]/.test(trimmed))
     throw new AgentError("KEY_INVALID", "Meta API key格式無效。");
   key = trimmed;
   notify();

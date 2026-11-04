@@ -6,7 +6,7 @@ import { pathToFileURL } from "node:url";
 const SITE = "dist-site";
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  // The visitor's key leaves this page only for Meta, whatever a script tries.
+  // The page's fetch-style requests can only reach itself and Meta. This doesn't cover navigation.
   "connect-src 'self' https://api.meta.ai",
   // Ajv compiles its bundled schemas with new Function, and Rapier needs WebAssembly.
   // Inline and third-party scripts stay blocked, and connect-src above still limits where data goes.

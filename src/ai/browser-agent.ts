@@ -76,7 +76,8 @@ export const VISITOR_ERROR_MESSAGES: Readonly<Record<string, string>> = Object.f
   MODEL_UNAVAILABLE: "Meta目前未向此金鑰提供這個模型。",
   RATE_LIMITED: "Meta暫時限制此金鑰的請求；請稍後再試。",
   TIMEOUT: "無法確認Meta是否已回覆；未自動重試以免重複計費。請檢查網路後再試。",
-  BUDGET_EXCEEDED: "已達此頁的請求或費用上限；重新載入並再次輸入金鑰後可繼續。",
+  BUDGET_EXCEEDED:
+    "此請求超出此頁的上限，未套用任何變更。請縮小指令或場景；若已達請求或費用上限，請重新載入並再次輸入金鑰。",
   CANCELED: "請求已停止；已送出的內容仍可能由Meta計費。",
 });
 

@@ -19,8 +19,12 @@ export function BrowserKeyField() {
   const refocusInput = useRef(false);
   useEffect(() => {
     // Returning with the back button must not bring a key back from the page cache.
-    window.addEventListener("pagehide", forgetBrowserKey);
-    return () => window.removeEventListener("pagehide", forgetBrowserKey);
+    const clear = () => {
+      forgetBrowserKey();
+      if (input.current) input.current.value = "";
+    };
+    window.addEventListener("pagehide", clear);
+    return () => window.removeEventListener("pagehide", clear);
   }, []);
   useEffect(() => {
     if (held || !refocusInput.current) return;

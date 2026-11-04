@@ -96,7 +96,7 @@ This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It h
 - **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
 - **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it.
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
-- **The network rules** in `dist-site/_headers` only let the page send data to itself and to Meta, so the host has to apply that file.
+- **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 
 It has been tested with a fixture key and a mocked Meta API, but not yet with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
 

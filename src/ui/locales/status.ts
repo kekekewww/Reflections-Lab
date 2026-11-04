@@ -1398,8 +1398,9 @@ export const statusMessages = {
     en: "Couldn't confirm whether Meta replied. It wasn't retried, to avoid charging you twice. Check your connection and try again. [TIMEOUT]",
   },
   "status.site.BUDGET_EXCEEDED": {
-    "zh-TW": "BUDGET_EXCEEDED：已達此頁的請求或費用上限；重新載入並再次輸入金鑰後可繼續。",
-    en: "This page reached its request or cost limit. Reload it and enter your key again to continue. [BUDGET_EXCEEDED]",
+    "zh-TW":
+      "BUDGET_EXCEEDED：此請求超出此頁的上限，未套用任何變更。請縮小指令或場景；若已達請求或費用上限，請重新載入並再次輸入金鑰。",
+    en: "This request went over the page's limits, and nothing was applied. Try a smaller instruction or scene. If you've reached the request or cost limit, reload and enter your key again. [BUDGET_EXCEEDED]",
   },
   "status.site.CANCELED": {
     "zh-TW": "CANCELED：請求已停止；已送出的內容仍可能由Meta計費。",
@@ -2088,7 +2089,7 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
   "RATE_LIMITED：Meta暫時限制此金鑰的請求；請稍後再試。": "status.site.RATE_LIMITED",
   "TIMEOUT：無法確認Meta是否已回覆；未自動重試以免重複計費。請檢查網路後再試。":
     "status.site.TIMEOUT",
-  "BUDGET_EXCEEDED：已達此頁的請求或費用上限；重新載入並再次輸入金鑰後可繼續。":
+  "BUDGET_EXCEEDED：此請求超出此頁的上限，未套用任何變更。請縮小指令或場景；若已達請求或費用上限，請重新載入並再次輸入金鑰。":
     "status.site.BUDGET_EXCEEDED",
   "CANCELED：請求已停止；已送出的內容仍可能由Meta計費。": "status.site.CANCELED",
   "已有Meta請求進行中，不能重複派送。": "status.server.requestActive",
