@@ -26,7 +26,7 @@ The scene uses SI units: metres, kilograms, seconds, radians, and hertz. The coo
 
 ## Work with objects
 
-Select a box, sphere, or capsule, then use the Inspector to edit its supported transform and properties. Invalid changes are rejected; a failed revision check means the scene changed after the draft was prepared. Review the current values and try again rather than assuming that a rejected change was applied.
+Click a box, sphere, or capsule in the viewport (or select it in the list). While the scene is Ready or Paused, the viewport shows a transform tool: choose **Move**, **Rotate**, or **Scale** above the view and drag a handle. Each finished drag is one undoable scene change; Esc during a drag cancels it. Spheres scale uniformly. While the simulation is running the tool is hidden. The Inspector remains available for exact values and other properties. Scene and acoustic revisions, coordinates, the path legend and blocked candidates are in **View details** below the 3D view; an acoustic state that changes how to read the scene (pending, stale, vacuum, no paths, error) stays visible on the view. Invalid changes are rejected; a failed revision check means the scene changed after the draft was prepared. Review the current values and try again rather than assuming that a rejected change was applied.
 
 | Body mode               | Behavior                                                                                                                  |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -35,25 +35,29 @@ Select a box, sphere, or capsule, then use the Inspector to edit its supported t
 | Fixed                   | Does not move under ordinary forces.                                                                                      |
 | Kinematic               | Uses the supported host-driven motion policy rather than ordinary dynamic forces.                                         |
 
-Use the on-screen state and rejection reason when a mode or placement cannot be applied. Placement follows preview → staged object → explicit enable; a staged object is not silently activated or allowed to emit sound.
+Use the on-screen state and rejection reason when a mode or placement cannot be applied. A first-person placement validates the preview, creates the object without an active body or sound until the acoustic geometry is acknowledged, and then activates it automatically; a failed placement rolls back and shows the reason. Each placement is one undo step. The complete list of settings and their ranges is in the [parameter reference](../en/11-v1/PARAMETER_REFERENCE.md).
 
 ## First-person interaction
 
-Choose **Enter first person** and wait for mouse control to be confirmed. If it is not acquired, use **Enable pointer control** or choose alternative controls. Entering or acquiring controls may pause the simulation; choose **Resume simulation** explicitly after control is confirmed. Entering the mode does not start motion by itself.
+Choose **Enter first person**. Once the browser confirms mouse control, that same click starts first-person controls; you do not need a second Enter. If you were holding an object, the simulation stays paused until you click the view or press Enter. While paused after a fix, the status line shows that action's outcome until you resume. The one-line hint bar at the bottom of the view lists the keys for the current situation. After Esc releases the mouse, click the view (or **Enable pointer control**) to lock it again; Chrome briefly refuses an immediate relock right after Esc. If mouse control is not available, choose **Enable controls without pointer lock**, then **Start first-person controls**.
 
-| Input             | Action                                                           |
-| ----------------- | ---------------------------------------------------------------- |
-| W / A / S / D     | Move while first-person controls are active.                     |
-| Shift             | Sprint.                                                          |
-| Mouse movement    | Look around while pointer lock is active.                        |
-| E                 | Grab the eligible aimed dynamic object, or drop the held object. |
-| Left mouse button | Throw while interacting, or confirm placement in build mode.     |
-| Mouse wheel       | Adjust the supported held-object/placement distance.             |
-| B                 | Switch to/from build mode when its state permits.                |
-| Enter             | Pause/resume while mouse control is locked.                      |
-| Esc or Tab        | Release mouse control and safely suspend interaction.            |
+| Input             | Action                                                             |
+| ----------------- | ------------------------------------------------------------------ |
+| W / A / S / D     | Move while first-person controls are active.                       |
+| Shift             | Sprint.                                                            |
+| Mouse movement    | Look around while pointer lock is active.                          |
+| Left mouse button | Grab the aimed dynamic object (0.1–20 kg, within 3 m); while holding, throw it; during a placement preview, cancel the preview. |
+| Right mouse button | Hold to show a placement preview that follows the crosshair (attached to a surface it hits, otherwise in mid-air); release to place. A quick click also places. While holding an object, put it down. |
+| Mouse wheel       | Adjust the held-object or preview distance.                        |
+| R                 | While holding, hold R to rotate the object; while previewing, toggle preview rotation. |
+| L                 | Open the object library to choose the placement shape.             |
+| E / B             | Optional: E grabs or puts down; B cancels a placement preview.     |
+| Enter / click     | Enter pauses or resumes; clicking the paused, locked view resumes. |
+| Esc or Tab        | Release mouse control and safely suspend interaction.              |
 
-The alternative controls provide explicit movement, look, and interaction buttons. Keyboard shortcuts do not act as scene controls while you are typing or composing text.
+The alternative controls provide explicit movement, look, and interaction buttons. With them enabled, click the view to focus it; then W / A / S / D move, arrow keys look, and Enter starts or pauses. Keyboard shortcuts do not act as scene controls while you are typing or composing text.
+
+Objects placed in mid-air default to **Dynamic without gravity**: they stay where you put them but still collide. Objects placed on a surface keep the default **Dynamic with gravity**. A placement must be within 3.5 m and must not overlap other bodies or you.
 
 Grabbed objects remain dynamic and keep collision solving; they are not attached directly to the camera. An obstruction or insufficient clearance may prevent a motion or state change. Read the reason rather than forcing a placement through geometry.
 
@@ -68,15 +72,16 @@ Rules can use an oscillator or a validated sample. Edit gain, pitch, mappings, a
 For a first live listening session:
 
 1. Keep the scene **Ready** or **Paused**. In the bottom Monitor strip, choose **Enable listening** and start at low device volume.
-2. Adjust **Monitor gain**. Choose **Simulated** for the acoustic chain or **Raw reference** for centered dry audio without environmental propagation or HRTF.
+2. Adjust **Monitor gain**, shown in dB (−40 to +12 dB, default 0 dB; digital gain, not calibrated sound pressure). The default level is about 23 dB louder than before R18, so start with a low device volume. An output safety ceiling after the limiter keeps the digital output below full scale; it is not a hearing-safety guarantee. Choose **Simulated** for the acoustic chain or **Raw reference** for centered dry audio without environmental propagation or HRTF.
 3. Choose **Start simulation** or **Resume simulation** when you want a live experiment to advance. Enabling listening does not resume physics automatically.
+   If the sound breaks up, keep **Audio buffer** on **Stable** (the default) or try **Balanced**; like a DAW buffer size, a larger buffer drops out less but adds delay. Changing it restarts the audio engine safely. **Output underruns** counts the dropouts the browser reports; it shows NOT_AVAILABLE when the browser does not provide the count.
 4. Finish with **Pause** and **Mute monitor**. Muting only changes monitoring; it does not pause physics. Pause alone is not the monitor's mute control.
 
 You can inspect saved evidence or replay an existing recording without creating a new run. Raw audition and independent preview are local listening aids, outside an experiment's computed metrics.
 
 A rule's **Logical instance active**, created, or updated status describes a logical sound decision. It does not establish native admission or actual device output. When a matching native rejection is available, read its original reason, attempted tick, and instance ID. These recent live diagnostics are bounded and excluded from recordings; absence of a rejection is not proof that you heard a sound. The standard product limits are 24 voices and 32 sources; reaching an audio limit does not indicate that Meta API credit is exhausted.
 
-All simulated 3D voices use the common acoustic route. Paths in the viewport come from the solver; an unavailable or stale result is not a fresh computed path. The current model supports direct sound, occlusion, and finite first-order reflections within its stated geometry limits. It does not simulate general wave acoustics, diffraction, or arbitrary vibrating materials.
+All simulated 3D voices use the common acoustic route. Paths in the viewport come from the solver; an unavailable or stale result is not a fresh computed path. The current model supports direct sound, occlusion, and finite first-order reflections within its stated geometry limits. Only boxes take part in that geometry: spheres and capsules neither block nor reflect sound, so the Inspector disables their acoustic material and role and says why. It does not simulate general wave acoustics, diffraction, or arbitrary vibrating materials.
 
 Materials marked **Synthetic** are demonstration parameters, not measured wood, metal, or concrete. Geometric propagation is a **numerical approximation**; browser HRTF and synthetic late reverb provide **perceptual approximations**. Physics-inspired samples are creative sound content, not measured vibration or proof of physical realism. Values labeled dBFS are digital levels, not calibrated dB SPL.
 

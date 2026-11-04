@@ -1,0 +1,280 @@
+TAP version 13
+# Subtest: semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+ok 1 - semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+  ---
+  duration_ms: 1.8248
+  type: 'test'
+  ...
+# Subtest: independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+ok 2 - independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+  ---
+  duration_ms: 1.9709
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 0
+ok 3 - semantic oracle accepts the full literal with actual handles beginning at 0
+  ---
+  duration_ms: 1.8586
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 100
+ok 4 - semantic oracle accepts the full literal with actual handles beginning at 100
+  ---
+  duration_ms: 1.1828
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 700
+ok 5 - semantic oracle accepts the full literal with actual handles beginning at 700
+  ---
+  duration_ms: 0.6217
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+ok 6 - semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+  ---
+  duration_ms: 1.0616
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+ok 7 - semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+  ---
+  duration_ms: 1.0151
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback before its registration
+ok 8 - semantic oracle rejects callback before its registration
+  ---
+  duration_ms: 0.6992
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+ok 9 - semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+  ---
+  duration_ms: 1.4744
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+ok 10 - semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+  ---
+  duration_ms: 0.8442
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback handle differs from its native registration
+ok 11 - semantic oracle rejects callback handle differs from its native registration
+  ---
+  duration_ms: 0.6861
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects handle reuse across different registration labels
+ok 12 - semantic oracle rejects handle reuse across different registration labels
+  ---
+  duration_ms: 0.667
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects string handles are not coerced
+ok 13 - semantic oracle rejects string handles are not coerced
+  ---
+  duration_ms: 0.626
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+ok 14 - semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+  ---
+  duration_ms: 0.376
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child fires inside the parent group with coherent total counts
+ok 15 - semantic oracle rejects nested child fires inside the parent group with coherent total counts
+  ---
+  duration_ms: 0.8428
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested registration is falsely attributed to another callback
+ok 16 - semantic oracle rejects nested registration is falsely attributed to another callback
+  ---
+  duration_ms: 0.4414
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child was registered outside the frozen parent order
+ok 17 - semantic oracle rejects nested child was registered outside the frozen parent order
+  ---
+  duration_ms: 0.5333
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects measured callback misrepresented as pretrace
+ok 18 - semantic oracle rejects measured callback misrepresented as pretrace
+  ---
+  duration_ms: 0.5119
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing callback is not repaired by receipt-derived counts
+ok 19 - semantic oracle rejects missing callback is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.2856
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+ok 20 - semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.2981
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+ok 21 - semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+  ---
+  duration_ms: 0.7952
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+ok 22 - semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+  ---
+  duration_ms: 0.6187
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+ok 23 - semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+  ---
+  duration_ms: 0.2866
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw bytes are not a canonical 16-character byte string
+ok 24 - semantic oracle rejects raw bytes are not a canonical 16-character byte string
+  ---
+  duration_ms: 0.2011
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nonfinite callback argument
+ok 25 - semantic oracle rejects nonfinite callback argument
+  ---
+  duration_ms: 0.383
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime mark is silently changed into a normal mark
+ok 26 - semantic oracle rejects custom startTime mark is silently changed into a normal mark
+  ---
+  duration_ms: 0.4999
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime did not preserve its exact requested zero
+ok 27 - semantic oracle rejects custom startTime did not preserve its exact requested zero
+  ---
+  duration_ms: 0.5001
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom mark is attached to the wrong representative
+ok 28 - semantic oracle rejects custom mark is attached to the wrong representative
+  ---
+  duration_ms: 0.4511
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark name does not bind the independently observed callback bytes
+ok 29 - semantic oracle rejects mark name does not bind the independently observed callback bytes
+  ---
+  duration_ms: 0.4409
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark-name byte count is not an estimate
+ok 30 - semantic oracle rejects mark-name byte count is not an estimate
+  ---
+  duration_ms: 0.7722
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed group count differs from independent callback journal
+ok 31 - semantic oracle rejects claimed group count differs from independent callback journal
+  ---
+  duration_ms: 0.4676
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed callback handle differs from independent journal
+ok 32 - semantic oracle rejects claimed callback handle differs from independent journal
+  ---
+  duration_ms: 0.5031
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing operation array is not empty success
+ok 33 - semantic oracle rejects missing operation array is not empty success
+  ---
+  duration_ms: 0.2008
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal schema
+ok 34 - semantic oracle rejects unknown journal schema
+  ---
+  duration_ms: 0.2167
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown scenario cannot inherit this qualification
+ok 35 - semantic oracle rejects unknown scenario cannot inherit this qualification
+  ---
+  duration_ms: 0.1689
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal collection differs from actual collector
+ok 36 - semantic oracle rejects journal collection differs from actual collector
+  ---
+  duration_ms: 0.4181
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal field fails closed
+ok 37 - semantic oracle rejects unknown journal field fails closed
+  ---
+  duration_ms: 0.1819
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation field fails closed
+ok 38 - semantic oracle rejects unknown operation field fails closed
+  ---
+  duration_ms: 0.6622
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation kind fails closed
+ok 39 - semantic oracle rejects unknown operation kind fails closed
+  ---
+  duration_ms: 0.5019
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown mark field fails closed
+ok 40 - semantic oracle rejects unknown mark field fails closed
+  ---
+  duration_ms: 0.4644
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null journal
+ok 41 - semantic oracle returns controlled rejection for null journal
+  ---
+  duration_ms: 0.3082
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for array journal
+ok 42 - semantic oracle returns controlled rejection for array journal
+  ---
+  duration_ms: 0.1829
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null operation
+ok 43 - semantic oracle returns controlled rejection for null operation
+  ---
+  duration_ms: 0.4756
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null mark
+ok 44 - semantic oracle returns controlled rejection for null mark
+  ---
+  duration_ms: 0.434
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null collector output
+ok 45 - semantic oracle returns controlled rejection for null collector output
+  ---
+  duration_ms: 0.1824
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 131.1803

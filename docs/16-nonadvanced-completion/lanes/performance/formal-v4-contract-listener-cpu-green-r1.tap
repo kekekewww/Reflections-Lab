@@ -1,0 +1,1900 @@
+TAP version 13
+# Subtest: V4 exposes a separate CLI and bounded planner without changing the original sources
+ok 1 - V4 exposes a separate CLI and bounded planner without changing the original sources
+  ---
+  duration_ms: 2.5878
+  type: 'test'
+  ...
+# Subtest: V4 exposes pure workload classification and null-safe observation summaries
+ok 2 - V4 exposes pure workload classification and null-safe observation summaries
+  ---
+  duration_ms: 0.2087
+  type: 'test'
+  ...
+# Subtest: formal defaults retain the original 600/all/3000/600 workload and product default monitor
+ok 3 - formal defaults retain the original 600/all/3000/600 workload and product default monitor
+  ---
+  duration_ms: 2.8105
+  type: 'test'
+  ...
+# Subtest: probe-off still selects the entire original formal workload
+ok 4 - probe-off still selects the entire original formal workload
+  ---
+  duration_ms: 0.3227
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 seconds
+ok 5 - formal V4 rejects 599 seconds
+  ---
+  duration_ms: 0.3045
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects only UI
+ok 6 - formal V4 rejects only UI
+  ---
+  duration_ms: 0.1077
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 2999 physics iterations
+ok 7 - formal V4 rejects 2999 physics iterations
+  ---
+  duration_ms: 0.0845
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 acoustic iterations
+ok 8 - formal V4 rejects 599 acoustic iterations
+  ---
+  duration_ms: 0.0778
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects prepare
+ok 9 - formal V4 rejects prepare
+  ---
+  duration_ms: 0.3633
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects software GPU
+ok 10 - formal V4 rejects software GPU
+  ---
+  duration_ms: 0.4221
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects load mode releases original default analysers
+ok 11 - formal V4 rejects load mode releases original default analysers
+  ---
+  duration_ms: 0.1649
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects spectrum is a different product workload
+ok 12 - formal V4 rejects spectrum is a different product workload
+  ---
+  duration_ms: 0.1655
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects waveform is a different product workload
+ok 13 - formal V4 rejects waveform is a different product workload
+  ---
+  duration_ms: 0.1935
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects another pinned monitor input
+ok 14 - formal V4 rejects another pinned monitor input
+  ---
+  duration_ms: 0.1464
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode levels
+ok 15 - short diagnostic may explicitly pin product mode levels
+  ---
+  duration_ms: 0.1395
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode spectrum
+ok 16 - short diagnostic may explicitly pin product mode spectrum
+  ---
+  duration_ms: 0.0499
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode waveform
+ok 17 - short diagnostic may explicitly pin product mode waveform
+  ---
+  duration_ms: 0.0461
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode load
+ok 18 - short diagnostic may explicitly pin product mode load
+  ---
+  duration_ms: 0.0379
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode unknown
+ok 19 - V4 rejects malformed or workload-reducing options --probe-mode unknown
+  ---
+  duration_ms: 0.0912
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode
+ok 20 - V4 rejects malformed or workload-reducing options --probe-mode
+  ---
+  duration_ms: 0.0562
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+ok 21 - V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+  ---
+  duration_ms: 0.0463
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+ok 22 - V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+  ---
+  duration_ms: 0.0527
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+ok 23 - V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+  ---
+  duration_ms: 0.0526
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification
+ok 24 - V4 rejects malformed or workload-reducing options --qualification
+  ---
+  duration_ms: 0.0483
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification one --qualification two
+ok 25 - V4 rejects malformed or workload-reducing options --qualification one --qualification two
+  ---
+  duration_ms: 0.0544
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --native-voices 8
+ok 26 - V4 rejects malformed or workload-reducing options --native-voices 8
+  ---
+  duration_ms: 0.0501
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --paths 1
+ok 27 - V4 rejects malformed or workload-reducing options --paths 1
+  ---
+  duration_ms: 0.1419
+  type: 'test'
+  ...
+# Subtest: short planning points to the new profile and retains original process bounds
+ok 28 - short planning points to the new profile and retains original process bounds
+  ---
+  duration_ms: 0.5267
+  type: 'test'
+  ...
+# Subtest: formal on needs a real registered qualification
+ok 29 - formal on needs a real registered qualification
+  ---
+  duration_ms: 0.6009
+  type: 'test'
+  ...
+# Subtest: formal off needs a real registered qualification
+ok 30 - formal off needs a real registered qualification
+  ---
+  duration_ms: 0.1794
+  type: 'test'
+  ...
+# Subtest: external dependencies cannot approve a method using flags or a substituted lookup
+ok 31 - external dependencies cannot approve a method using flags or a substituted lookup
+  ---
+  duration_ms: 0.205
+  type: 'test'
+  ...
+# Subtest: new UI workload retains every original gate under explicitly typed V4 membership
+ok 32 - new UI workload retains every original gate under explicitly typed V4 membership
+  ---
+  duration_ms: 2.8954
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short actual native window
+ok 33 - V4 preserves original rejection: short actual native window
+  ---
+  duration_ms: 0.7123
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing interpolation evidence
+ok 34 - V4 preserves original rejection: missing interpolation evidence
+  ---
+  duration_ms: 0.4839
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: sample truncation
+ok 35 - V4 preserves original rejection: sample truncation
+  ---
+  duration_ms: 0.4379
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: runtime error
+ok 36 - V4 preserves original rejection: runtime error
+  ---
+  duration_ms: 0.5359
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: paused simulation frame
+ok 37 - V4 preserves original rejection: paused simulation frame
+  ---
+  duration_ms: 0.3473
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short fixed tick progress
+ok 38 - V4 preserves original rejection: short fixed tick progress
+  ---
+  duration_ms: 0.3204
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: dropped wall time
+ok 39 - V4 preserves original rejection: dropped wall time
+  ---
+  duration_ms: 0.3954
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: five catch-up steps
+ok 40 - V4 preserves original rejection: five catch-up steps
+  ---
+  duration_ms: 0.4092
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: rejected grab
+ok 41 - V4 preserves original rejection: rejected grab
+  ---
+  duration_ms: 0.4448
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: pending script
+ok 42 - V4 preserves original rejection: pending script
+  ---
+  duration_ms: 0.345
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: capture after closed wall window
+ok 43 - V4 preserves original rejection: capture after closed wall window
+  ---
+  duration_ms: 0.2983
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing capture tick
+ok 44 - V4 preserves original rejection: missing capture tick
+  ---
+  duration_ms: 0.2822
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: suspended graph
+ok 45 - V4 preserves original rejection: suspended graph
+  ---
+  duration_ms: 0.2673
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short warmup
+ok 46 - V4 preserves original rejection: short warmup
+  ---
+  duration_ms: 0.5713
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects missing passive snapshot without creating observation resources
+ok 47 - V4 monitor workload rejects missing passive snapshot without creating observation resources
+  ---
+  duration_ms: 0.3158
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+ok 48 - V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+  ---
+  duration_ms: 0.1437
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects load instead of original default without creating observation resources
+ok 49 - V4 monitor workload rejects load instead of original default without creating observation resources
+  ---
+  duration_ms: 0.0871
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects right instead of original default without creating observation resources
+ok 50 - V4 monitor workload rejects right instead of original default without creating observation resources
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects hidden product monitor without creating observation resources
+ok 51 - V4 monitor workload rejects hidden product monitor without creating observation resources
+  ---
+  duration_ms: 0.1206
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown rate without creating observation resources
+ok 52 - V4 monitor workload rejects unknown rate without creating observation resources
+  ---
+  duration_ms: 0.0944
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown FFT size without creating observation resources
+ok 53 - V4 monitor workload rejects unknown FFT size without creating observation resources
+  ---
+  duration_ms: 0.0802
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unconfigured stale age without creating observation resources
+ok 54 - V4 monitor workload rejects unconfigured stale age without creating observation resources
+  ---
+  duration_ms: 0.0788
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+ok 55 - V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+  ---
+  duration_ms: 0.1256
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown analyser count without creating observation resources
+ok 56 - V4 monitor workload rejects unknown analyser count without creating observation resources
+  ---
+  duration_ms: 0.0928
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown total tap count without creating observation resources
+ok 57 - V4 monitor workload rejects unknown total tap count without creating observation resources
+  ---
+  duration_ms: 0.0796
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+ok 58 - V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+  ---
+  duration_ms: 0.0755
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+ok 59 - V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+  ---
+  duration_ms: 0.0817
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects negative audio sample clock without creating observation resources
+ok 60 - V4 monitor workload rejects negative audio sample clock without creating observation resources
+  ---
+  duration_ms: 0.0842
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown sample clock without creating observation resources
+ok 61 - V4 monitor workload rejects unknown sample clock without creating observation resources
+  ---
+  duration_ms: 0.0805
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects read after closed window without creating observation resources
+ok 62 - V4 monitor workload rejects read after closed window without creating observation resources
+  ---
+  duration_ms: 0.0677
+  type: 'test'
+  ...
+# Subtest: probe-off null UI observations remain explicit unknown and do not throw
+ok 63 - probe-off null UI observations remain explicit unknown and do not throw
+  ---
+  duration_ms: 0.7026
+  type: 'test'
+  ...
+# Subtest: partial UI native observations cannot become a smaller measured maximum
+ok 64 - partial UI native observations cannot become a smaller measured maximum
+  ---
+  duration_ms: 0.2786
+  type: 'test'
+  ...
+# Subtest: actual measured zero UI values stay zero
+ok 65 - actual measured zero UI values stay zero
+  ---
+  duration_ms: 0.3778
+  type: 'test'
+  ...
+# Subtest: physics empty summary has explicit finite-or-null values
+ok 66 - physics empty summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.2439
+  type: 'test'
+  ...
+# Subtest: physics partial summary has explicit finite-or-null values
+ok 67 - physics partial summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.1235
+  type: 'test'
+  ...
+# Subtest: physics nonfinite summary has explicit finite-or-null values
+ok 68 - physics nonfinite summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.0896
+  type: 'test'
+  ...
+# Subtest: physics measured zero summary has explicit finite-or-null values
+ok 69 - physics measured zero summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.1093
+  type: 'test'
+  ...
+# Subtest: empty acoustic rows are not zero misses or all updates completed
+ok 70 - empty acoustic rows are not zero misses or all updates completed
+  ---
+  duration_ms: 0.4388
+  type: 'test'
+  ...
+# Subtest: missing native telemetry cannot turn into zero graph load
+ok 71 - missing native telemetry cannot turn into zero graph load
+  ---
+  duration_ms: 0.1989
+  type: 'test'
+  ...
+# Subtest: partial cadence is unverified while a known miss remains visible
+ok 72 - partial cadence is unverified while a known miss remains visible
+  ---
+  duration_ms: 0.1652
+  type: 'test'
+  ...
+# Subtest: clean probe-off remains comparison only even if every advertised flag says true
+ok 73 - clean probe-off remains comparison only even if every advertised flag says true
+  ---
+  duration_ms: 0.6632
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED
+ok 74 - probe-off does not overwrite existing execution status FAILED
+  ---
+  duration_ms: 0.1815
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED_CLEANUP
+ok 75 - probe-off does not overwrite existing execution status FAILED_CLEANUP
+  ---
+  duration_ms: 0.3556
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status TIMED_OUT
+ok 76 - probe-off does not overwrite existing execution status TIMED_OUT
+  ---
+  duration_ms: 0.0833
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+ok 77 - probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+  ---
+  duration_ms: 0.071
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+ok 78 - probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+  ---
+  duration_ms: 0.0767
+  type: 'test'
+  ...
+# Subtest: all-missing metrics remain null and NOT_RUN in comparison output
+ok 79 - all-missing metrics remain null and NOT_RUN in comparison output
+  ---
+  duration_ms: 0.2358
+  type: 'test'
+  ...
+# Subtest: a partial observation is not promoted to PASS while a known FAIL stays FAIL
+ok 80 - a partial observation is not promoted to PASS while a known FAIL stays FAIL
+  ---
+  duration_ms: 0.1267
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actual600Seconds false
+ok 81 - unapproved probe-on remains nonqualified with actual600Seconds false
+  ---
+  duration_ms: 0.2029
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actualInterpolationObserved false
+ok 82 - unapproved probe-on remains nonqualified with actualInterpolationObserved false
+  ---
+  duration_ms: 0.0781
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with closedWindowNoPending false
+ok 83 - unapproved probe-on remains nonqualified with closedWindowNoPending false
+  ---
+  duration_ms: 0.0425
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+ok 84 - unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+  ---
+  duration_ms: 0.0497
+  type: 'test'
+  ...
+# Subtest: short diagnostic evidence cannot claim formal600 using an external true flag
+ok 85 - short diagnostic evidence cannot claim formal600 using an external true flag
+  ---
+  duration_ms: 0.0838
+  type: 'test'
+  ...
+# Subtest: nominal monitor freshness is explicit configuration, not a new default acceptance limit
+ok 86 - nominal monitor freshness is explicit configuration, not a new default acceptance limit
+  ---
+  duration_ms: 0.1467
+  type: 'test'
+  ...
+# Subtest: actual measured zero acoustic graph values remain zero without implying valid workload
+ok 87 - actual measured zero acoustic graph values remain zero without implying valid workload
+  ---
+  duration_ms: 0.157
+  type: 'test'
+  ...
+# Subtest: approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+ok 88 - approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+  ---
+  duration_ms: 0.3984
+  type: 'test'
+  ...
+# Subtest: the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+ok 89 - the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+  ---
+  duration_ms: 56.0938
+  type: 'test'
+  ...
+# Subtest: approved semantic pins may be covered by a unique well-formed superset
+ok 90 - approved semantic pins may be covered by a unique well-formed superset
+  ---
+  duration_ms: 18.739
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong qualification ID
+ok 91 - canonical V4 resolver rejects wrong qualification ID
+  ---
+  duration_ms: 20.6496
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing qualification ID with approval flags
+ok 92 - canonical V4 resolver rejects missing qualification ID with approval flags
+  ---
+  duration_ms: 23.8763
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong executable hash
+ok 93 - canonical V4 resolver rejects wrong executable hash
+  ---
+  duration_ms: 26.4622
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing executable hash
+ok 94 - canonical V4 resolver rejects missing executable hash
+  ---
+  duration_ms: 22.4731
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong producer
+ok 95 - canonical V4 resolver rejects wrong producer
+  ---
+  duration_ms: 27.0782
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing producer
+ok 96 - canonical V4 resolver rejects missing producer
+  ---
+  duration_ms: 20.9505
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing scope
+ok 97 - canonical V4 resolver rejects missing scope
+  ---
+  duration_ms: 21.4092
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming formal600 PASS
+ok 98 - canonical V4 resolver rejects claiming formal600 PASS
+  ---
+  duration_ms: 17.1726
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming DSP CPU
+ok 99 - canonical V4 resolver rejects claiming DSP CPU
+  ---
+  duration_ms: 9.5519
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming GUI
+ok 100 - canonical V4 resolver rejects claiming GUI
+  ---
+  duration_ms: 6.6586
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming hearing
+ok 101 - canonical V4 resolver rejects claiming hearing
+  ---
+  duration_ms: 6.6768
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing source manifest
+ok 102 - canonical V4 resolver rejects missing source manifest
+  ---
+  duration_ms: 5.999
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source missing
+ok 103 - canonical V4 resolver rejects one approved source missing
+  ---
+  duration_ms: 8.032
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source changed
+ok 104 - canonical V4 resolver rejects one approved source changed
+  ---
+  duration_ms: 6.3947
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate approved source
+ok 105 - canonical V4 resolver rejects duplicate approved source
+  ---
+  duration_ms: 5.5631
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate path with conflicting bytes
+ok 106 - canonical V4 resolver rejects duplicate path with conflicting bytes
+  ---
+  duration_ms: 6.726
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+ok 107 - new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+  ---
+  duration_ms: 1.0428
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+ok 108 - new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+  ---
+  duration_ms: 0.3958
+  type: 'test'
+  ...
+# Subtest: a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+ok 109 - a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+  ---
+  duration_ms: 0.8173
+  type: 'test'
+  ...
+# Subtest: V4 normal typed successful exit retains release and child qualification separately
+ok 110 - V4 normal typed successful exit retains release and child qualification separately
+  ---
+  duration_ms: 1.1837
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+ok 111 - V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+  ---
+  duration_ms: 0.2996
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote nonzero exit after actual resource closure to formal success
+ok 112 - V4 release cannot promote nonzero exit after actual resource closure to formal success
+  ---
+  duration_ms: 0.1156
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote unknown typed timeout state to formal success
+ok 113 - V4 release cannot promote unknown typed timeout state to formal success
+  ---
+  duration_ms: 0.1006
+  type: 'test'
+  ...
+# Subtest: audio resource policy arm defaults to the original reference without reducing any formal load
+ok 114 - audio resource policy arm defaults to the original reference without reducing any formal load
+  ---
+  duration_ms: 0.3286
+  type: 'test'
+  ...
+# Subtest: the candidate audio arm is an explicit option under the same original formal workload
+ok 115 - the candidate audio arm is an explicit option under the same original formal workload
+  ---
+  duration_ms: 0.1809
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm unknown
+ok 116 - audio policy arm is type/identity strict: --audio-policy-arm unknown
+  ---
+  duration_ms: 0.4079
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm
+ok 117 - audio policy arm is type/identity strict: --audio-policy-arm
+  ---
+  duration_ms: 0.127
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+ok 118 - audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+  ---
+  duration_ms: 0.1107
+  type: 'test'
+  ...
+# Subtest: the bounded planner forwards the requested arm without claiming it is observed
+ok 119 - the bounded planner forwards the requested arm without claiming it is observed
+  ---
+  duration_ms: 0.4256
+  type: 'test'
+  ...
+# Subtest: formal mandatory gate inventories exactly retain immutable UI physics and acoustic evaluators
+ok 120 - formal mandatory gate inventories exactly retain immutable UI physics and acoustic evaluators
+  ---
+  duration_ms: 1.9433
+  type: 'test'
+  ...
+# Subtest: a complete synthetic report reaches formal workload classification without inventing raw V3 approval
+ok 121 - a complete synthetic report reaches formal workload classification without inventing raw V3 approval
+  ---
+  duration_ms: 5.759
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.actual600Seconds gate rather than a nonempty true subset
+ok 122 - formal report requires its own UI.actual600Seconds gate rather than a nonempty true subset
+  ---
+  duration_ms: 2.0573
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.finiteOrderedFrames gate rather than a nonempty true subset
+ok 123 - formal report requires its own UI.finiteOrderedFrames gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.7774
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.frameCollectionMembership gate rather than a nonempty true subset
+ok 124 - formal report requires its own UI.frameCollectionMembership gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.5938
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.actualInterpolationObserved gate rather than a nonempty true subset
+ok 125 - formal report requires its own UI.actualInterpolationObserved gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.8658
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.noSampleTruncation gate rather than a nonempty true subset
+ok 126 - formal report requires its own UI.noSampleTruncation gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.7007
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.noRuntimeOrScriptErrors gate rather than a nonempty true subset
+ok 127 - formal report requires its own UI.noRuntimeOrScriptErrors gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.9966
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.uninterruptedSimulation gate rather than a nonempty true subset
+ok 128 - formal report requires its own UI.uninterruptedSimulation gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4118
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.fixedTickProgress gate rather than a nonempty true subset
+ok 129 - formal report requires its own UI.fixedTickProgress gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3893
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.noDroppedWallTime gate rather than a nonempty true subset
+ok 130 - formal report requires its own UI.noDroppedWallTime gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4176
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.noOverrunOrRecordingDebt gate rather than a nonempty true subset
+ok 131 - formal report requires its own UI.noOverrunOrRecordingDebt gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.387
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.acceptedGrabAndThrow gate rather than a nonempty true subset
+ok 132 - formal report requires its own UI.acceptedGrabAndThrow gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4067
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.closedWindowNoPending gate rather than a nonempty true subset
+ok 133 - formal report requires its own UI.closedWindowNoPending gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3667
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.periodicCaptureCompleted gate rather than a nonempty true subset
+ok 134 - formal report requires its own UI.periodicCaptureCompleted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3562
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.captureTickSamples gate rather than a nonempty true subset
+ok 135 - formal report requires its own UI.captureTickSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.8283
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.nativeGraphStarted gate rather than a nonempty true subset
+ok 136 - formal report requires its own UI.nativeGraphStarted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.428
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.genuineRunningWarmup gate rather than a nonempty true subset
+ok 137 - formal report requires its own UI.genuineRunningWarmup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4031
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.topMonitorSnapshotValid gate rather than a nonempty true subset
+ok 138 - formal report requires its own UI.topMonitorSnapshotValid gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4088
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+ok 139 - formal report requires its own UI.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 1.275
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.actualAudioPolicyAtClose gate rather than a nonempty true subset
+ok 140 - formal report requires its own UI.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.7713
+  type: 'test'
+  ...
+# Subtest: an unrelated true flag cannot replace the entire UI gate inventory
+ok 141 - an unrelated true flag cannot replace the entire UI gate inventory
+  ---
+  duration_ms: 1.0375
+  type: 'test'
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for false
+ok 142 - mandatory UI gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.6853
+  type: 'test'
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for null
+ok 143 - mandatory UI gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.3838
+  type: 'test'
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for truthy string
+ok 144 - mandatory UI gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.407
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.exactBodyProfile gate rather than a nonempty true subset
+ok 145 - formal report requires its own physics.exactBodyProfile gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4941
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.fixedStepAndWarmup gate rather than a nonempty true subset
+ok 146 - formal report requires its own physics.fixedStepAndWarmup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4797
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.completeSamples gate rather than a nonempty true subset
+ok 147 - formal report requires its own physics.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3378
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.awakeDynamicLoad gate rather than a nonempty true subset
+ok 148 - formal report requires its own physics.awakeDynamicLoad gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3326
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.allDynamicBodiesContacted gate rather than a nonempty true subset
+ok 149 - formal report requires its own physics.allDynamicBodiesContacted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3532
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.observedContactLoad gate rather than a nonempty true subset
+ok 150 - formal report requires its own physics.observedContactLoad gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3463
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.boundedCatchup gate rather than a nonempty true subset
+ok 151 - formal report requires its own physics.boundedCatchup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4196
+  type: 'test'
+  ...
+# Subtest: an unrelated true flag cannot replace the entire physics gate inventory
+ok 152 - an unrelated true flag cannot replace the entire physics gate inventory
+  ---
+  duration_ms: 0.6787
+  type: 'test'
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for false
+ok 153 - mandatory physics gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.4063
+  type: 'test'
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for null
+ok 154 - mandatory physics gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.3352
+  type: 'test'
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for truthy string
+ok 155 - mandatory physics gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 1.3677
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.completeSamples gate rather than a nonempty true subset
+ok 156 - formal report requires its own productDefault.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 1.0394
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.eightVoicesAdmitted gate rather than a nonempty true subset
+ok 157 - formal report requires its own productDefault.eightVoicesAdmitted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.6434
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.actualModuleWorker gate rather than a nonempty true subset
+ok 158 - formal report requires its own productDefault.actualModuleWorker gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3879
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.frozenAcousticMatrix gate rather than a nonempty true subset
+ok 159 - formal report requires its own productDefault.frozenAcousticMatrix gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3505
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.nativeContextRunning gate rather than a nonempty true subset
+ok 160 - formal report requires its own productDefault.nativeContextRunning gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3551
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.sustainedRequestedPaths gate rather than a nonempty true subset
+ok 161 - formal report requires its own productDefault.sustainedRequestedPaths gate rather than a nonempty true subset
+  ---
+  duration_ms: 1.1651
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.sustainedEightVoices gate rather than a nonempty true subset
+ok 162 - formal report requires its own productDefault.sustainedEightVoices gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.9986
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.cleanNativeState gate rather than a nonempty true subset
+ok 163 - formal report requires its own productDefault.cleanNativeState gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.5609
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+ok 164 - formal report requires its own productDefault.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4951
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+ok 165 - formal report requires its own productDefault.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4716
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.nativeClockAdvances gate rather than a nonempty true subset
+ok 166 - formal report requires its own productDefault.nativeClockAdvances gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.336
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.meets20HzWindows gate rather than a nonempty true subset
+ok 167 - formal report requires its own productDefault.meets20HzWindows gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3173
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.observableDeliveryIdentity gate rather than a nonempty true subset
+ok 168 - formal report requires its own productDefault.observableDeliveryIdentity gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3522
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+ok 169 - formal report requires its own productDefault.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.6713
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.actualAudioPolicyAtClose gate rather than a nonempty true subset
+ok 170 - formal report requires its own productDefault.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.9318
+  type: 'test'
+  ...
+# Subtest: an unrelated true flag cannot replace the entire productDefault gate inventory
+ok 171 - an unrelated true flag cannot replace the entire productDefault gate inventory
+  ---
+  duration_ms: 0.855
+  type: 'test'
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for false
+ok 172 - mandatory productDefault gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.5389
+  type: 'test'
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for null
+ok 173 - mandatory productDefault gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.4389
+  type: 'test'
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for truthy string
+ok 174 - mandatory productDefault gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.4364
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.completeSamples gate rather than a nonempty true subset
+ok 175 - formal report requires its own stress256.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4462
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.eightVoicesAdmitted gate rather than a nonempty true subset
+ok 176 - formal report requires its own stress256.eightVoicesAdmitted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4485
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.actualModuleWorker gate rather than a nonempty true subset
+ok 177 - formal report requires its own stress256.actualModuleWorker gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.385
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.frozenAcousticMatrix gate rather than a nonempty true subset
+ok 178 - formal report requires its own stress256.frozenAcousticMatrix gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3453
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.nativeContextRunning gate rather than a nonempty true subset
+ok 179 - formal report requires its own stress256.nativeContextRunning gate rather than a nonempty true subset
+  ---
+  duration_ms: 9.8078
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.sustainedRequestedPaths gate rather than a nonempty true subset
+ok 180 - formal report requires its own stress256.sustainedRequestedPaths gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4704
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.sustainedEightVoices gate rather than a nonempty true subset
+ok 181 - formal report requires its own stress256.sustainedEightVoices gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3098
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.cleanNativeState gate rather than a nonempty true subset
+ok 182 - formal report requires its own stress256.cleanNativeState gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2691
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+ok 183 - formal report requires its own stress256.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.302
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+ok 184 - formal report requires its own stress256.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3086
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.nativeClockAdvances gate rather than a nonempty true subset
+ok 185 - formal report requires its own stress256.nativeClockAdvances gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2621
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.meets20HzWindows gate rather than a nonempty true subset
+ok 186 - formal report requires its own stress256.meets20HzWindows gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3001
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.observableDeliveryIdentity gate rather than a nonempty true subset
+ok 187 - formal report requires its own stress256.observableDeliveryIdentity gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2592
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+ok 188 - formal report requires its own stress256.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.278
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.actualAudioPolicyAtClose gate rather than a nonempty true subset
+ok 189 - formal report requires its own stress256.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2786
+  type: 'test'
+  ...
+# Subtest: an unrelated true flag cannot replace the entire stress256 gate inventory
+ok 190 - an unrelated true flag cannot replace the entire stress256 gate inventory
+  ---
+  duration_ms: 0.2781
+  type: 'test'
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for false
+ok 191 - mandatory stress256 gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.2802
+  type: 'test'
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for null
+ok 192 - mandatory stress256 gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.2324
+  type: 'test'
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for truthy string
+ok 193 - mandatory stress256 gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.2518
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects two copies of productDefault omit stress256 despite every advertised gate being true
+ok 194 - formal profile identity rejects two copies of productDefault omit stress256 despite every advertised gate being true
+  ---
+  duration_ms: 0.476
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects two copies of stress256 omit productDefault despite every advertised gate being true
+ok 195 - formal profile identity rejects two copies of stress256 omit productDefault despite every advertised gate being true
+  ---
+  duration_ms: 0.3146
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects unknown default profile ID despite every advertised gate being true
+ok 196 - formal profile identity rejects unknown default profile ID despite every advertised gate being true
+  ---
+  duration_ms: 0.282
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects unknown stress profile ID despite every advertised gate being true
+ok 197 - formal profile identity rejects unknown stress profile ID despite every advertised gate being true
+  ---
+  duration_ms: 0.2877
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects default falsely marked nondefault despite every advertised gate being true
+ok 198 - formal profile identity rejects default falsely marked nondefault despite every advertised gate being true
+  ---
+  duration_ms: 0.2893
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress falsely marked default despite every advertised gate being true
+ok 199 - formal profile identity rejects stress falsely marked default despite every advertised gate being true
+  ---
+  duration_ms: 0.3814
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects default carries the stress path capacity despite every advertised gate being true
+ok 200 - formal profile identity rejects default carries the stress path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.6913
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress carries the smaller default path capacity despite every advertised gate being true
+ok 201 - formal profile identity rejects stress carries the smaller default path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.3492
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects default graph target changed despite every advertised gate being true
+ok 202 - formal profile identity rejects default graph target changed despite every advertised gate being true
+  ---
+  duration_ms: 0.289
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress graph target changed despite every advertised gate being true
+ok 203 - formal profile identity rejects stress graph target changed despite every advertised gate being true
+  ---
+  duration_ms: 0.2861
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects default missing path capacity despite every advertised gate being true
+ok 204 - formal profile identity rejects default missing path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.2768
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress missing graph target despite every advertised gate being true
+ok 205 - formal profile identity rejects stress missing graph target despite every advertised gate being true
+  ---
+  duration_ms: 0.2518
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects default arm absent despite every advertised gate being true
+ok 206 - formal profile identity rejects default arm absent despite every advertised gate being true
+  ---
+  duration_ms: 0.3029
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress arm absent despite every advertised gate being true
+ok 207 - formal profile identity rejects stress arm absent despite every advertised gate being true
+  ---
+  duration_ms: 0.2759
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision number is controlled nonqualification without replace throwing
+ok 208 - a malformed browser revision number is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.2728
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision boolean is controlled nonqualification without replace throwing
+ok 209 - a malformed browser revision boolean is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.2178
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision array is controlled nonqualification without replace throwing
+ok 210 - a malformed browser revision array is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.3741
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision object is controlled nonqualification without replace throwing
+ok 211 - a malformed browser revision object is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.2614
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision null is controlled nonqualification without replace throwing
+ok 212 - a malformed browser revision null is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.2438
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision missing is controlled nonqualification without replace throwing
+ok 213 - a malformed browser revision missing is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.2288
+  type: 'test'
+  ...
+# Subtest: V4 exposes a bounded actual TCP listener observation independently of child exit flags
+ok 214 - V4 exposes a bounded actual TCP listener observation independently of child exit flags
+  ---
+  duration_ms: 0.7986
+  type: 'test'
+  ...
+# Subtest: a real connect event observes a listening owned endpoint and cleans the socket
+ok 215 - a real connect event observes a listening owned endpoint and cleans the socket
+  ---
+  duration_ms: 1.2865
+  type: 'test'
+  ...
+# Subtest: ECONNREFUSED alone proves no listener at the bounded observation instant
+ok 216 - ECONNREFUSED alone proves no listener at the bounded observation instant
+  ---
+  duration_ms: 0.2192
+  type: 'test'
+  ...
+# Subtest: TCP error EACCES keeps listening unknown rather than fabricating false
+ok 217 - TCP error EACCES keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.1597
+  type: 'test'
+  ...
+# Subtest: TCP error ETIMEDOUT keeps listening unknown rather than fabricating false
+ok 218 - TCP error ETIMEDOUT keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.6956
+  type: 'test'
+  ...
+# Subtest: TCP error ECONNRESET keeps listening unknown rather than fabricating false
+ok 219 - TCP error ECONNRESET keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.1193
+  type: 'test'
+  ...
+# Subtest: TCP error undefined keeps listening unknown rather than fabricating false
+ok 220 - TCP error undefined keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.1608
+  type: 'test'
+  ...
+# Subtest: a bounded connect timeout remains null and destroys the socket without a fake refusal
+ok 221 - a bounded connect timeout remains null and destroys the socket without a fake refusal
+  ---
+  duration_ms: 0.2175
+  type: 'test'
+  ...
+# Subtest: listener observation rejects another host before any TCP side effect
+ok 222 - listener observation rejects another host before any TCP side effect
+  ---
+  duration_ms: 0.4639
+  type: 'test'
+  ...
+# Subtest: listener observation rejects a non-loopback address before any TCP side effect
+ok 223 - listener observation rejects a non-loopback address before any TCP side effect
+  ---
+  duration_ms: 0.3966
+  type: 'test'
+  ...
+# Subtest: listener observation rejects another port before any TCP side effect
+ok 224 - listener observation rejects another port before any TCP side effect
+  ---
+  duration_ms: 0.1627
+  type: 'test'
+  ...
+# Subtest: listener observation rejects a string port before any TCP side effect
+ok 225 - listener observation rejects a string port before any TCP side effect
+  ---
+  duration_ms: 0.0723
+  type: 'test'
+  ...
+# Subtest: listener observation rejects zero timeout before any TCP side effect
+ok 226 - listener observation rejects zero timeout before any TCP side effect
+  ---
+  duration_ms: 0.0554
+  type: 'test'
+  ...
+# Subtest: listener observation rejects timeout above the 5000ms hard bound before any TCP side effect
+ok 227 - listener observation rejects timeout above the 5000ms hard bound before any TCP side effect
+  ---
+  duration_ms: 0.0492
+  type: 'test'
+  ...
+# Subtest: listener observation rejects nonfinite timeout before any TCP side effect
+ok 228 - listener observation rejects nonfinite timeout before any TCP side effect
+  ---
+  duration_ms: 0.0515
+  type: 'test'
+  ...
+# Subtest: listener observation rejects fractional timeout before any TCP side effect
+ok 229 - listener observation rejects fractional timeout before any TCP side effect
+  ---
+  duration_ms: 0.0472
+  type: 'test'
+  ...
+# Subtest: listener observation permits the exact 1ms finite bound
+ok 230 - listener observation permits the exact 1ms finite bound
+  ---
+  duration_ms: 0.1271
+  type: 'test'
+  ...
+# Subtest: listener observation permits the exact 5000ms finite bound
+ok 231 - listener observation permits the exact 5000ms finite bound
+  ---
+  duration_ms: 0.1105
+  type: 'test'
+  ...
+# Subtest: V4 wrapper releases known stopped processes only with an actual false preview listening observation
+ok 232 - V4 wrapper releases known stopped processes only with an actual false preview listening observation
+  ---
+  duration_ms: 0.21
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus null listener evidence cannot release the machine
+ok 233 - stopped preview child plus null listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0642
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus missing listener evidence cannot release the machine
+ok 234 - stopped preview child plus missing listener evidence cannot release the machine
+  ---
+  duration_ms: 0.036
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus still listening listener evidence cannot release the machine
+ok 235 - stopped preview child plus still listening listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0323
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus false string listener evidence cannot release the machine
+ok 236 - stopped preview child plus false string listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0322
+  type: 'test'
+  ...
+# Subtest: an observed refusal cannot rescue a preview process that was not confirmed stopped
+ok 237 - an observed refusal cannot rescue a preview process that was not confirmed stopped
+  ---
+  duration_ms: 0.0477
+  type: 'test'
+  ...
+# Subtest: actual preview refusal cannot rescue an unknown browser close
+ok 238 - actual preview refusal cannot rescue an unknown browser close
+  ---
+  duration_ms: 0.0421
+  type: 'test'
+  ...
+# Subtest: actual no-listen evidence preserves the frozen forced-process-tree requirement
+ok 239 - actual no-listen evidence preserves the frozen forced-process-tree requirement
+  ---
+  duration_ms: 0.0584
+  type: 'test'
+  ...
+# Subtest: process CPU method exposes the independent versioned summarizer
+ok 240 - process CPU method exposes the independent versioned summarizer
+  ---
+  duration_ms: 1.4274
+  type: 'test'
+  ...
+# Subtest: same complete PID/type sets use cumulative CPU seconds over the actual wall interval
+ok 241 - same complete PID/type sets use cumulative CPU seconds over the actual wall interval
+  ---
+  duration_ms: 1.4118
+  type: 'test'
+  ...
+# Subtest: a measured positive cumulative counter that does not change preserves actual delta zero
+ok 242 - a measured positive cumulative counter that does not change preserves actual delta zero
+  ---
+  duration_ms: 0.2265
+  type: 'test'
+  ...
+# Subtest: subsecond wall duration is converted from milliseconds exactly once
+ok 243 - subsecond wall duration is converted from milliseconds exactly once
+  ---
+  duration_ms: 0.2085
+  type: 'test'
+  ...
+# Subtest: a zero cumulative endpoint is ambiguous in the pinned producer and cannot become measured zero
+ok 244 - a zero cumulative endpoint is ambiguous in the pinned producer and cannot become measured zero
+  ---
+  duration_ms: 0.3609
+  type: 'test'
+  ...
+# Subtest: a new process prevents a matched subset from being presented as whole-browser CPU
+ok 245 - a new process prevents a matched subset from being presented as whole-browser CPU
+  ---
+  duration_ms: 0.3216
+  type: 'test'
+  ...
+# Subtest: a disappeared process prevents a smaller surviving total from being reported as complete
+ok 246 - a disappeared process prevents a smaller surviving total from being reported as complete
+  ---
+  duration_ms: 0.156
+  type: 'test'
+  ...
+# Subtest: a PID whose type changes cannot inherit the previous process counter
+ok 247 - a PID whose type changes cannot inherit the previous process counter
+  ---
+  duration_ms: 0.1926
+  type: 'test'
+  ...
+# Subtest: a cumulative counter reset is unknown rather than a negative CPU measurement
+ok 248 - a cumulative counter reset is unknown rather than a negative CPU measurement
+  ---
+  duration_ms: 0.2899
+  type: 'test'
+  ...
+# Subtest: two empty endpoints do not claim that the browser consumed zero CPU
+ok 249 - two empty endpoints do not claim that the browser consumed zero CPU
+  ---
+  duration_ms: 0.3728
+  type: 'test'
+  ...
+# Subtest: invalid before missing response remains explicit unknown
+ok 250 - invalid before missing response remains explicit unknown
+  ---
+  duration_ms: 0.1522
+  type: 'test'
+  ...
+# Subtest: invalid after missing response remains explicit unknown
+ok 251 - invalid after missing response remains explicit unknown
+  ---
+  duration_ms: 0.0989
+  type: 'test'
+  ...
+# Subtest: invalid before null response remains explicit unknown
+ok 252 - invalid before null response remains explicit unknown
+  ---
+  duration_ms: 0.0469
+  type: 'test'
+  ...
+# Subtest: invalid after null response remains explicit unknown
+ok 253 - invalid after null response remains explicit unknown
+  ---
+  duration_ms: 0.044
+  type: 'test'
+  ...
+# Subtest: invalid before array instead of response remains explicit unknown
+ok 254 - invalid before array instead of response remains explicit unknown
+  ---
+  duration_ms: 0.0356
+  type: 'test'
+  ...
+# Subtest: invalid after array instead of response remains explicit unknown
+ok 255 - invalid after array instead of response remains explicit unknown
+  ---
+  duration_ms: 0.0359
+  type: 'test'
+  ...
+# Subtest: invalid before missing processInfo remains explicit unknown
+ok 256 - invalid before missing processInfo remains explicit unknown
+  ---
+  duration_ms: 0.1194
+  type: 'test'
+  ...
+# Subtest: invalid after missing processInfo remains explicit unknown
+ok 257 - invalid after missing processInfo remains explicit unknown
+  ---
+  duration_ms: 0.0481
+  type: 'test'
+  ...
+# Subtest: invalid before null processInfo remains explicit unknown
+ok 258 - invalid before null processInfo remains explicit unknown
+  ---
+  duration_ms: 0.0334
+  type: 'test'
+  ...
+# Subtest: invalid after null processInfo remains explicit unknown
+ok 259 - invalid after null processInfo remains explicit unknown
+  ---
+  duration_ms: 0.0337
+  type: 'test'
+  ...
+# Subtest: invalid before object processInfo remains explicit unknown
+ok 260 - invalid before object processInfo remains explicit unknown
+  ---
+  duration_ms: 0.0306
+  type: 'test'
+  ...
+# Subtest: invalid after object processInfo remains explicit unknown
+ok 261 - invalid after object processInfo remains explicit unknown
+  ---
+  duration_ms: 0.0342
+  type: 'test'
+  ...
+# Subtest: before null row is not coerced or silently discarded
+ok 262 - before null row is not coerced or silently discarded
+  ---
+  duration_ms: 0.1023
+  type: 'test'
+  ...
+# Subtest: after null row is not coerced or silently discarded
+ok 263 - after null row is not coerced or silently discarded
+  ---
+  duration_ms: 0.0543
+  type: 'test'
+  ...
+# Subtest: before scalar row is not coerced or silently discarded
+ok 264 - before scalar row is not coerced or silently discarded
+  ---
+  duration_ms: 0.0548
+  type: 'test'
+  ...
+# Subtest: after scalar row is not coerced or silently discarded
+ok 265 - after scalar row is not coerced or silently discarded
+  ---
+  duration_ms: 0.0382
+  type: 'test'
+  ...
+# Subtest: before string PID is not coerced or silently discarded
+ok 266 - before string PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0488
+  type: 'test'
+  ...
+# Subtest: after string PID is not coerced or silently discarded
+ok 267 - after string PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0367
+  type: 'test'
+  ...
+# Subtest: before fractional PID is not coerced or silently discarded
+ok 268 - before fractional PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0433
+  type: 'test'
+  ...
+# Subtest: after fractional PID is not coerced or silently discarded
+ok 269 - after fractional PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.1168
+  type: 'test'
+  ...
+# Subtest: before zero PID is not coerced or silently discarded
+ok 270 - before zero PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0619
+  type: 'test'
+  ...
+# Subtest: after zero PID is not coerced or silently discarded
+ok 271 - after zero PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0386
+  type: 'test'
+  ...
+# Subtest: before negative PID is not coerced or silently discarded
+ok 272 - before negative PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0436
+  type: 'test'
+  ...
+# Subtest: after negative PID is not coerced or silently discarded
+ok 273 - after negative PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0364
+  type: 'test'
+  ...
+# Subtest: before missing PID is not coerced or silently discarded
+ok 274 - before missing PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0454
+  type: 'test'
+  ...
+# Subtest: after missing PID is not coerced or silently discarded
+ok 275 - after missing PID is not coerced or silently discarded
+  ---
+  duration_ms: 0.0357
+  type: 'test'
+  ...
+# Subtest: before empty process type is not coerced or silently discarded
+ok 276 - before empty process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0444
+  type: 'test'
+  ...
+# Subtest: after empty process type is not coerced or silently discarded
+ok 277 - after empty process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0374
+  type: 'test'
+  ...
+# Subtest: before nonstring process type is not coerced or silently discarded
+ok 278 - before nonstring process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0815
+  type: 'test'
+  ...
+# Subtest: after nonstring process type is not coerced or silently discarded
+ok 279 - after nonstring process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.04
+  type: 'test'
+  ...
+# Subtest: before missing process type is not coerced or silently discarded
+ok 280 - before missing process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0624
+  type: 'test'
+  ...
+# Subtest: after missing process type is not coerced or silently discarded
+ok 281 - after missing process type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0473
+  type: 'test'
+  ...
+# Subtest: before missing CPU counter is not coerced or silently discarded
+ok 282 - before missing CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.049
+  type: 'test'
+  ...
+# Subtest: after missing CPU counter is not coerced or silently discarded
+ok 283 - after missing CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0403
+  type: 'test'
+  ...
+# Subtest: before null CPU counter is not coerced or silently discarded
+ok 284 - before null CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0503
+  type: 'test'
+  ...
+# Subtest: after null CPU counter is not coerced or silently discarded
+ok 285 - after null CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0387
+  type: 'test'
+  ...
+# Subtest: before string CPU counter is not coerced or silently discarded
+ok 286 - before string CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0505
+  type: 'test'
+  ...
+# Subtest: after string CPU counter is not coerced or silently discarded
+ok 287 - after string CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0409
+  type: 'test'
+  ...
+# Subtest: before NaN CPU counter is not coerced or silently discarded
+ok 288 - before NaN CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0821
+  type: 'test'
+  ...
+# Subtest: after NaN CPU counter is not coerced or silently discarded
+ok 289 - after NaN CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0458
+  type: 'test'
+  ...
+# Subtest: before infinite CPU counter is not coerced or silently discarded
+ok 290 - before infinite CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0524
+  type: 'test'
+  ...
+# Subtest: after infinite CPU counter is not coerced or silently discarded
+ok 291 - after infinite CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.049
+  type: 'test'
+  ...
+# Subtest: before negative CPU counter is not coerced or silently discarded
+ok 292 - before negative CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.051
+  type: 'test'
+  ...
+# Subtest: after negative CPU counter is not coerced or silently discarded
+ok 293 - after negative CPU counter is not coerced or silently discarded
+  ---
+  duration_ms: 0.0388
+  type: 'test'
+  ...
+# Subtest: before duplicate PID/type is not coerced or silently discarded
+ok 294 - before duplicate PID/type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0968
+  type: 'test'
+  ...
+# Subtest: after duplicate PID/type is not coerced or silently discarded
+ok 295 - after duplicate PID/type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0686
+  type: 'test'
+  ...
+# Subtest: before same PID with another type is not coerced or silently discarded
+ok 296 - before same PID with another type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0636
+  type: 'test'
+  ...
+# Subtest: after same PID with another type is not coerced or silently discarded
+ok 297 - after same PID with another type is not coerced or silently discarded
+  ---
+  duration_ms: 0.0436
+  type: 'test'
+  ...
+# Subtest: null options cannot substitute a fixed 600-second denominator or an advertised status
+ok 298 - null options cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0546
+  type: 'test'
+  ...
+# Subtest: non-object options cannot substitute a fixed 600-second denominator or an advertised status
+ok 299 - non-object options cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0563
+  type: 'test'
+  ...
+# Subtest: missing interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 300 - missing interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0435
+  type: 'test'
+  ...
+# Subtest: null interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 301 - null interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0423
+  type: 'test'
+  ...
+# Subtest: string interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 302 - string interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0358
+  type: 'test'
+  ...
+# Subtest: zero interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 303 - zero interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0356
+  type: 'test'
+  ...
+# Subtest: negative interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 304 - negative interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0407
+  type: 'test'
+  ...
+# Subtest: NaN interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 305 - NaN interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0382
+  type: 'test'
+  ...
+# Subtest: infinite interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 306 - infinite interval cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0377
+  type: 'test'
+  ...
+# Subtest: missing scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 307 - missing scope cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0421
+  type: 'test'
+  ...
+# Subtest: nonstring scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 308 - nonstring scope cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0346
+  type: 'test'
+  ...
+# Subtest: empty scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 309 - empty scope cannot substitute a fixed 600-second denominator or an advertised status
+  ---
+  duration_ms: 0.0326
+  type: 'test'
+  ...
+# Subtest: advertised totals and success flags cannot repair a missing raw counter
+ok 310 - advertised totals and success flags cannot repair a missing raw counter
+  ---
+  duration_ms: 0.0956
+  type: 'test'
+  ...
+# Subtest: overflow of finite per-process deltas does not serialize Infinity as a valid total
+ok 311 - overflow of finite per-process deltas does not serialize Infinity as a valid total
+  ---
+  duration_ms: 0.0943
+  type: 'test'
+  ...
+# Subtest: wall milliseconds that underflow during conversion cannot substitute a zero denominator
+ok 312 - wall milliseconds that underflow during conversion cannot substitute a zero denominator
+  ---
+  duration_ms: 0.0766
+  type: 'test'
+  ...
+# Subtest: overflow of CPU/wall ratio with a representable wall interval leaves totals unknown
+ok 313 - overflow of CPU/wall ratio with a representable wall interval leaves totals unknown
+  ---
+  duration_ms: 0.0635
+  type: 'test'
+  ...
+# Subtest: the maximum bounded process list is fully evaluated without truncation
+ok 314 - the maximum bounded process list is fully evaluated without truncation
+  ---
+  duration_ms: 2.8144
+  type: 'test'
+  ...
+# Subtest: one process beyond the observation cap fails closed rather than reporting a truncated total
+ok 315 - one process beyond the observation cap fails closed rather than reporting a truncated total
+  ---
+  duration_ms: 1.0843
+  type: 'test'
+  ...
+1..315
+# tests 315
+# suites 0
+# pass 315
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1336.308

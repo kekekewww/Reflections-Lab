@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "kind": "R18_HUMAN_REPORT_ENGINEERING_REPAIR",
+  "recordedAt": "2026-10-30T05:30:00+08:00",
+  "humanReport": "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+  "executor": {
+    "actual": "Claude Code (main thread: claude-opus-5-5); main thread reviewed and merged every change",
+    "subagents": [
+      {
+        "role": "direct-manipulation implementation and later gizmo lifecycle fixes (frontend)",
+        "model": "Sonnet (Claude Code subagent)",
+        "files": [
+          "src/ui/viewport/TransformGizmo.tsx",
+          "src/ui/viewport/gizmo-commit.ts",
+          "src/ui/viewport/gizmo-commit.test.ts",
+          "src/ui/viewport/SceneEntities.tsx",
+          "src/ui/viewport/CameraRig.tsx",
+          "src/ui/Viewport.tsx",
+          "src/ui/styles.css",
+          "tests/browser/gizmo-lifecycle.spec.ts"
+        ],
+        "reviewedBy": "main thread before merge; CRLF line endings introduced by the subagent were restored to LF before commit"
+      },
+      {
+        "role": "pending no-lock Resume handover fix (frontend)",
+        "model": "Sonnet (Claude Code subagent)",
+        "files": [
+          "src/ui/viewport/useFPSInput.ts",
+          "src/ui/Viewport.tsx",
+          "src/ui/viewport/fps-entry-coordination.test.ts"
+        ],
+        "reviewedBy": "main thread; added the stale-settle assertion and mutation-checked it (14/15 without the token guard)"
+      },
+      {
+        "role": "adversarial code review, four rounds (read-only)",
+        "model": "Codex companion task, model gpt-6.1-sol, effort xhigh (as reported by the review agent)",
+        "status": "see adversarialReview"
+      }
+    ],
+    "productMetaLive": "NOT RUN; no paid API calls"
+  },
+  "git": {
+    "branch": "claude/meta-hack-r18-handoff-d292c8 (worktree of D:/Developing/Meta Hack)",
+    "base": "a5f2a9098971ed8facb3b024b7539d2a9b1135f6",
+    "carriedHandoffCommit": "c5e541b",
+    "finalProductCommit": "5e56260b1a9242e29c4afe6ce393bd8a37986320",
+    "productCommits": {
+      "04d9493": "USER-R18-FPS-01 entry click starts controls; safe pauses keep the real lock",
+      "7972125": "USER-R18-UI-01 viewport move / rotate / scale gizmo",
+      "93e03e0": "USER-R18-AUDIO-01 default monitor 0 dB, dB control -40..+12, headroom -6 dB",
+      "9f7ae42": "UI: technical viewport details behind one disclosure",
+      "a333d86": "review round 1 fixes and the output safety ceiling",
+      "4bcda82": "review round 2 fixes (pending no-lock Resume, gizmo mode change, post-dispose cancel)",
+      "4de5698": "review round 3 fix (gizmo ownership on the bridge across remounts)",
+      "5e56260": "review round 4 / gate finding (selection ignored while a gizmo commit is pending)"
+    },
+    "audioSourcesUnchangedSince": "a333d86 (git diff a333d86..5e56260 -- src/audio src/app is empty)",
+    "mainCheckout": "untouched; still at a5f2a90 with its saved-but-uncommitted handoff files (byte-identical copies committed here as c5e541b)",
+    "pushed": false
+  },
+  "environment": {
+    "os": "Windows 11 Home 10.0.26200",
+    "node": "22.17.0",
+    "npm": "11.4.2",
+    "playwright": "1.64.1",
+    "chrome": "156.0.8078.75 (channel chrome, headless, --use-angle=swiftshader)",
+    "inputClass": "Playwright CDP keyboard/mouse events in headless Chrome with a real native Pointer Lock; not physical devices, not a human",
+    "uiPreviewInputDigest": {
+      "final": "5ed91d1c29fb757fc36f89aab2ab8da8be841aaec588bb8c2c6d993a54103229",
+      "baselineA5f2a90": "6f0c168a3110d9601a7502ab2359be47df73efdded536cb8065570ed43392fe4"
+    },
+    "productPreviewFrozenInputDigest": "5ed91d1c29fb757fc36f89aab2ab8da8be841aaec588bb8c2c6d993a54103229"
+  },
+  "findings": [
+    {
+      "id": "USER-R18-FPS-01",
+      "reproducedBeforeFix": {
+        "command": "node artifacts/v1/r19-r18-repair-20261030/probes/repro-fps.mjs (run against a5f2a90 sources on the dev server)",
+        "observed": "Pointer lock CANVAS acquired; simulationState stayed 'ready', tick 0; W held 1 s, mouse moved and canvas clicked -> listener [0,1.6,4] and orientation unchanged; only an extra Enter started motion (tick 27 -> W moved z 4 -> 2.403)."
+      },
+      "rootCause": [
+        "After a successful entry the host stayed suspended and the UI dropped every look/move/click until a separate Enter key press; the entry click was not treated as the explicit start that FPS_INTERACTION_UX and INPUT_CONTROLS specify.",
+        "Secondary: transaction safe pauses (toggleFixed, place, KeyL) called suspend(), clearing the host's pointerLocked while the browser still owned the lock, so an explicit Enter Resume afterwards failed."
+      ],
+      "fix": ["04d9493", "a333d86", "4bcda82"],
+      "afterFix": {
+        "command": "node artifacts/v1/r19-r18-repair-20261030/probes/repro-fps-after.mjs",
+        "observed": "Entry click -> running (tick 41) with lock CANVAS and no Enter; F fixes ball -> paused with lock kept; Enter -> running; W 1 s + mouse -> z 4 -> 2.502, yaw changed; Enter pause; click resume; Esc -> unlocked/paused; click view after 1.3 s -> relocked and running; 0 OnThrow events; 0 console errors."
+      },
+      "redGreen": [
+        "red-ui.txt: 4 R18 hook tests FAIL on the original hook, pass after 04d9493",
+        "red-host.txt: host safe-pause lock test FAILS on the original host, passes after 04d9493",
+        "red-ui-review.txt / red-runtime-run.txt: review round 1 regressions (pending entry vs Tab/IME/text focus, stale Resume after exit/inputBlur, alternative-controls handover, double start) FAIL before a333d86",
+        "red-pending-resume.txt: review round 2 pending no-lock Resume regressions FAIL before 4bcda82 (13 pass / 2 fail)"
+      ],
+      "codeLevelVerdict": "RESOLVED at code level by review rounds 2-4; human acceptance outstanding"
+    },
+    {
+      "id": "USER-R18-UI-01",
+      "diagnosis": "Click selection existed; there was no drag/rotate/scale in the viewport, only Inspector numbers.",
+      "fix": ["7972125", "9f7ae42", "a333d86", "4bcda82", "4de5698", "5e56260"],
+      "behaviour": "One drag commits exactly one patchObject (one revision, one Undo); Escape, pointercancel, lost pointer capture and window blur cancel without a commit; no second drag can start and selection clicks are ignored until the previous commit settles, including across a tool switch and a CanvasBoundary remount; hidden while running or replaying.",
+      "redGreen": [
+        "red-gizmo-review2.txt: mode change during a pending commit (revision 2 instead of 1) and post-dispose lost-capture TypeError FAIL before 4bcda82",
+        "red-gizmo-remount.txt: canvas remount during a pending commit (revision 2 instead of 1) FAILS before 4de5698",
+        "red-gizmo-selection.txt: selection changed to wall.right during a pending commit FAILS before 5e56260; first seen as a TRANSACTION_BUSY banner in the full refined run on 4de5698"
+      ],
+      "unitTests": "src/ui/viewport/gizmo-commit.test.ts (4); browser lifecycle tests/browser/gizmo-lifecycle.spec.ts (6)",
+      "codeLevelVerdict": "RESOLVED at code level for every confirmed finding; a never-settling commit promise would keep the gizmo disabled (hypothetical, reproduced only by injection, no real path found); visual quality and usability need the human retest"
+    },
+    {
+      "id": "USER-R18-AUDIO-01",
+      "diagnosis": "Stacked conservative stages: -24 dBFS default source, distance attenuation, fixed -14 dB master headroom, 0.18 (-14.9 dB) linear monitor default; a linear 0-100% slider could add at most +14.9 dB.",
+      "fix": ["93e03e0", "a333d86"],
+      "measurement": {
+        "method": "AnalyserNode fan-out on the output chain in real Chrome (digital dBFS); probes measure-volume.mjs, measure-mute.mjs, measure-overload.mjs, measure-limiter-stress.mjs",
+        "before": { "monitorGain": 0.18, "peakDbfs": -51.4, "rmsDbfs": -67.0 },
+        "after": { "monitorGain": 1, "peakDbfs": -28.7, "rmsDbfs": -43.6, "preLimiterPeakDbfs": -30.4 },
+        "afterAtPlus12dB": { "peakDbfs": -17.7, "rmsDbfs": -31.2 },
+        "muted": "silent (null)",
+        "minus40dB": { "rmsDbfs": -83.1 },
+        "readyState": "silent until Start (existing Freeze-and-fade behaviour)",
+        "stress": {
+          "case": "rule gain 4, sources next to the Listener, monitor +12 dB",
+          "beforeSafetyCeiling": { "peakDbfs": 3.05, "samplesAtOrAboveFullScale": 6061 },
+          "afterSafetyCeiling": { "peakDbfs": -0.31, "samplesAtOrAboveFullScale": 0 },
+          "oldEquivalentMonitorMinus8dB": { "peakDbfs": 0.04, "note": "the overload pre-dated the R19 default change" }
+        },
+        "safetyCeiling": "WaveShaper after the DynamicsCompressor: identity up to -1 dBFS, soft tanh knee to a -0.2 dBFS design ceiling; finite inputs beyond full scale map to about -0.314 dBFS (Codex check); oversample none; per-engine sample ceiling, not a reconstructed true-peak limit"
+      },
+      "notInferred": ["device", "DAC", "Windows volume", "dB SPL", "listening comfort"],
+      "codeLevelVerdict": "RESOLVED at code level; default loudness and comfort need human listening"
+    }
+  ],
+  "commands": [
+    { "command": "npm ci (worktree)", "exit": 0 },
+    { "command": "npx tsc --noEmit (5e56260)", "exit": 0 },
+    { "command": "npx eslint and npx prettier --check on every touched file", "exit": 0 },
+    { "command": "TSX_DISABLE_CACHE=1 node --import tsx --test src/ui/*.test.ts src/ui/viewport/*.test.ts tests/app/fps-entry-race.test.ts tests/interaction-runtime/*.test.ts (5e56260)", "result": "135 pass / 0 fail" },
+    { "command": "TSX_DISABLE_CACHE=1 node --import tsx --test tests/audio-runtime/*.test.ts tests/app/*.test.ts (5e56260)", "result": "437 pass / 0 fail" },
+    { "command": "node tests/browser/build-ui-preview.mjs && npx playwright test --config tests/browser/ui-refined-v2.config.ts (5e56260, digest 5ed91d1c)", "result": "35 pass / 0 fail" },
+    { "command": "npx playwright test --config tests/browser/pointerlock-race.config.ts (5e56260)", "result": "2 pass" },
+    { "command": "node node_modules/@playwright/test/cli.js test --config tests/browser/linked-workflow-v2.config.ts (5e56260)", "result": "8 pass" },
+    { "command": "npm run test:browser:physics (5e56260)", "result": "2 pass", "archive": "artifacts/v1/physics-acceptance-20261029/browser-20261029212104602/browser-verification.json sha256 048998ad89a6a8a47ef2418e828aef3e1e2ae8d468b165960df31ade4ffcb07b (untracked run archive)" },
+    { "command": "npm run test:browser:storage (5e56260)", "result": "5 pass", "archive": "artifacts/v1/storage-browser-20261029212144489/verification.json sha256 92cdba194da2d8b777bfa0f82c50fa4ba5a11aab616c466dde0d994bfeaf6c90 (untracked)" },
+    { "command": "node tests/browser/build-product-preview.mjs && node tests/browser/run-product-refined-v3.mjs (5e56260)", "result": "4 pass; sourceMatchesBuildAtStart true, sourceStableDuringRun true, bundleStableDuringRun true", "archive": "artifacts/v1/product-e2e-chrome-20261029T212208Z/verification.json sha256 349767427fb0490a4b12074e5a77a2a3b42f6e29111558e7a6e6ef7e20fa1605 (untracked)" },
+    { "command": "npx playwright test --config tests/browser/ui-preview.config.ts (legacy ui.spec)", "result": "5 pass / 8 fail; identical 8 failures on baseline a5f2a90 (pre-existing, legacy spec predates R17 disclosure UI)" },
+    { "command": "npm run test:browser:product (original product-e2e.spec)", "result": "4 fail; the same 4 fail on baseline a5f2a90 (import rights checkbox inside the collapsed R17 disclosure)", "archive": "verification.json sha256 1468c3487fa607e6d02ed3cef10744285e54fdca1e48d2e7ee060dc222a0e415; the untracked archive was moved to the session scratchpad preserved-run-archives/product-e2e-chrome-20261029T192021Z, not deleted" },
+    { "command": "node --test tests/integration/english-docs*.test.mjs tests/integration/english-r17-context-pin.test.mjs", "result": "44 pass / 0 fail" },
+    { "command": "npm run check", "result": "run after the Wiki ingest that pins this file; its receipt is recorded in the R19 Wiki handoff and RLAB-TASK-0022 evidence, not here, so this pinned record does not go stale" }
+  ],
+  "invalidatedRuns": [
+    "Three run-product-refined-v3 passes during the a333d86 sweep reused a product bundle built from older sources; the runner correctly reported sourceMatchesBuildAtStart false and exit 1. They are not counted; the valid runs rebuilt the bundle first.",
+    "The 4de5698 gate run was stopped after ui-refined-v2 showed a TRANSACTION_BUSY banner (fixed in 5e56260); its partial results are not counted."
+  ],
+  "toolingChanges": [
+    "scripts/validation/english-docs.mjs accepts the actual translation executor (Codex or Claude Code) and renders the recorded model ID in the notice; previously any non-Codex translation failed and every notice said 'model ID unavailable' even when metadata recorded one"
+  ],
+  "testChangesForBehaviourChange": [
+    "ui.spec / ui-refined-v2 / fps-entry-race-recovery / pointerlock-race / native-accessibility cases: removed the 'paused after entry, press Enter to start' expectation (the R18 blocker) and now assert running after entry, real WASD movement under the native lock, unchanged no-acquisition-throw and modified-Enter checks",
+    "fps-entry-race-recovery R18 fixing-pause test: presses F only after the tick advanced, because a paused world at tick 0 reports 'ready' (test race, not a relaxed expectation)",
+    "ui-locale(-refined-v2) EN-04: monitor keyboard step now asserts +1 dB on the dB control instead of 0.18 -> 0.19",
+    "tests/app/fixtures/view-projection-reference.mjs: frozen publication reference mirrors the changed blocked-state monitor default literal"
+  ],
+  "adversarialReview": {
+    "executor": "Codex companion task via Claude Code subagents; model gpt-6.1-sol, effort xhigh, read-only (no servers, installs, browser runs or repo writes)",
+    "rounds": [
+      { "reviewed": "c5e541b..93e03e0", "confirmed": "6 defects (4 MAJOR FPS/gizmo, 1 MAJOR stale Resume, 1 MINOR double start) + 1 speculative overload risk", "outcome": "all fixed in a333d86; overload confirmed by measurement and fixed with the safety ceiling" },
+      { "reviewed": "9f7ae42, a333d86", "confirmed": "2 MAJOR (pending no-lock Resume handover; gizmo mode change bypasses pending-commit guard) + 1 MINOR (post-dispose lost-capture cancel)", "outcome": "fixed in 4bcda82; earlier items RESOLVED or PARTIAL as listed" },
+      { "reviewed": "a333d86..4bcda82", "confirmed": "1 MAJOR (pending ownership lost on unmount/remount)", "outcome": "fixed in 4de5698; round 2 items RESOLVED" },
+      { "reviewed": "4bcda82..4de5698", "confirmed": "1 MINOR (selection TRANSACTION_BUSY while a commit is pending, also caught by the refined gate) + 1 hypothetical MINOR (never-settling commit promise)", "outcome": "selection fixed in 5e56260 (not re-reviewed by Codex; covered by RED/GREEN browser regression and the full gate run); hypothetical recorded as a limitation" }
+    ]
+  },
+  "notRun": [
+    "physical keyboard/mouse and human Pointer Lock",
+    "device listening on Hi-x65 / D3V",
+    "600-second performance profile (R17 negative result retained)",
+    "native accessibility runner (cases updated, not executed)",
+    "Codex re-review of 5e56260 itself",
+    "Meta live"
+  ],
+  "humanGatesRemaining": [
+    "R19 retest of first person, direct manipulation and default volume at 100% scale (docs/11-v1/HUMAN_TEST_GUIDE.md)",
+    "material and reflection listening (USER-R18-ACOUSTICS-01 NOT TESTED)",
+    "sections 9-14 of the manual remain UNVERIFIED"
+  ]
+}

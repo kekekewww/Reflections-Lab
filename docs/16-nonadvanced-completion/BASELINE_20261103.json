@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "kind": "SOURCE_BOUND_BOOTSTRAP_BASELINE_NOT_TEST_RESULT",
+  "created_at": "2026-11-02T16:58:38.444Z",
+  "git": {
+    "head": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+    "branch": "codex/nonadvanced-integration-20261103",
+    "worktree": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration",
+    "status_at_observation": ""
+  },
+  "original_task_snapshots": [
+    {
+      "id": "RLAB-TASK-PERF-20261101-001",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-001.json",
+      "sha256": "755712c0e9aae5f57033f47fe2039c2190953665d1370a390832446380050889",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "保存source／bundle／browser hash、硬體／裝置／實際rate與支援矩陣；沒有推定128-frame或固定硬體buffer。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "late onset、snapshot拒收、voice/path拒絕、PCM gaps、native output統計與聽感各有定義與獨立欄位；unsupported/null不計為零。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "以受控stall／事件／path更新fixture檢驗歸因可分辨性，保存negative results、probe overhead與原R17 FAIL；不變更正式門檻。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-002",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-002.json",
+      "sha256": "d60f1e88c8ef58cf4dc9d118074d7d6146b245d96f96a79a26b506745b254eef",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "每個已接納整數tick連續、同tick事件順序／pre-state／source cursors／refs與原admission維持，並有獨立等價oracle。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "frame slots及bytes包含in-flight所有權，超高水位pause producer而非覆寫；保留recording-mode debt pause且錯誤不可標Captured。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "同負載分項p95/p99／queue age／peak memory與原實作比較，正式原profile及門檻未更改；無收益或不等價時保留原路徑。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-003",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-003.json",
+      "sha256": "1d15fee03c89b3a22544b62c0a286b12850a4c95087358e8f662a90a26fb5c12",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "最後量測與受驗source hashes一致；初版R21負面短樣本及修補後NOT RUN邊界保留。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "scalar／shape／delay／direction各有oracle；exact suppression與deadband誤差獨立報告，path ID、birth/death、tail及一次傳播延遲不變。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "相同負載control／upload／consumer與output證據支持選擇；沒有測得收益或出現新gap／phase問題時不採納。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-004",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-004.json",
+      "sha256": "5b912a41b2964e0f8112c4995150b8d11c39dfdcb112ed7041e58eeb1de4ee3b",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "現有一批in-flight、timeout與payload caps保留或有獨立證據的新有限上界；沒有hidden unbounded queue。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "run/epoch/revision/source identity、event去重與emission時間負面案例通過；latest-only僅用可丟預覽，不用capture/event。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "量age、rejection、onset與consumer成本；不以少求paths或改正式負載宣告性能通過。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-005",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-005.json",
+      "sha256": "05fc713ec4205368d9d53be65efd8cf4463f38671edbe4aef5c59cbaab040e2f",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001",
+        "RLAB-TASK-PERF-20261101-004"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "同revision及相同輸入solver結果／validation與reference一致，stale geometry可拒收。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "transfer只移交owned buffers，包含in-flight容量；detach、return、crash、cancel與reuse generation皆有負面測試。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "只有同負載copy／allocation及age證明才採納；SAB保持選用且不默加隔離headers。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-006",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-006.json",
+      "sha256": "9d58206febfa7a81d76c2bb8625ed44c9eb98be4c479e57d99eeb5b790efe01d",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001",
+        "RLAB-TASK-PERF-20261101-004"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "logical tick／pitch／phase／cursor／admission decisions有獨立oracle；virtualization不刪physics events或改錄製決策。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "slots、hysteresis、resume/tail/pending budgets與actual降級可見，重複start及resource leak負面測試通過。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "同輸入量成本／onset／phase及聽測限制；不以少render voices替代原正式容量profile。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-007",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-007.json",
+      "sha256": "6d23e00b8e795aa354bee639852a1d1e0ef3d3681ecc6edf20f978996b51ee95",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "只在既有store新增政策，source of truth、hash/revision/license refs及decode concurrency/caps一致。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "active、retiring、pending arrivals與recording引用不能被evict；cancel／quota／decode failure不遺失有效資產。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "同負載列resident與stage峰值及reload延遲，沒有證明收益即保留原政策。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-008",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-008.json",
+      "sha256": "4bbd0550e6928048e6575ea6ce926bb0eb89003dc01b9c3174ca0d6ffab778f8",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001",
+        "RLAB-TASK-PERF-20261101-002"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "純copy優化保留canonical artifact/hash/schema；若chunk持久格式改變，先交compat/migration正負fixture、版本與rollback方案才可採納。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "accepted/processed/persisted/published水位、全tick連續、bounded容量及transaction completion可驗；失敗標interrupted/incomplete且不刪舊有效成果。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "量capture→seal→save→replay峰值與主緒成本；store caps與實際RAM/磁碟估計分開，原600秒FAIL保留。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-011",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-011.json",
+      "sha256": "5ac6eb1fcb59324fae525e91fab10f964f44fe10724f0234f31fa26ffc078c63",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001",
+        "RLAB-TASK-PERF-20261101-008"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "短take明確取得相同asset bytes並驗hash/rate/channels，sample origin／phase／tail與獨立oracle相符；trace JSON不冒充PCM。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "chunk邊界delay/filter/HRTF/IR/limiter state與reference比較；未能等價者保留整段限制，不硬接contexts。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "峰值/輸出cap/cancel及失敗不發布completed；schema/格式需要變更另經compat gate，無cloud或Worklet強制依賴。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-PERF-20261101-014",
+      "path": "knowledge/tasks/RLAB-TASK-PERF-20261101-014.json",
+      "sha256": "48d7570fdca8056292867b78d6f47d8762f5da48e9a04bc581f891868ef97fe1",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-PERF-20261101-001"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "P0保存來源／bundle／browser/資格與硬體／裝置capability、probe overhead及原負載基準，正式拒絕與研究執行分開；既有FAIL不覆蓋。",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "P1每個候選獨立版本、固定條件及負面lifecycle／恢復／output收據；任何未執行情境標NOT RUN，unsupported欄位不當零。 啟動時固定有限baseline／候選清單；後續清單外候選沿用方法並在各自task收證，不擴張或重開本task完成範圍。",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "600秒wall／sim／capture duration分列；遵守18000frame及bytes上限，不宣稱600秒連續capture；正式profile原負載／門檻不變且窗外drain不回填。",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-0016",
+      "path": "knowledge/tasks/RLAB-TASK-0016.json",
+      "sha256": "7301eb25ff1ffb2c4d461f4017d7513b1ac4b8446c2f2e95784a427f2920e962",
+      "status": "BACKLOG",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011",
+        "RLAB-TASK-0012",
+        "RLAB-TASK-0013",
+        "RLAB-TASK-0014",
+        "RLAB-TASK-0017",
+        "RLAB-TASK-0018",
+        "RLAB-TASK-0019",
+        "RLAB-TASK-0020"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "現有Roadmap第一版P0/P1具可執行功能與requirement-by-requirement證據，P2與外部限制明列",
+          "verified": false
+        },
+        {
+          "id": "AC-02",
+          "text": "原回歸、新數值/physics/audio、browser/E2E與獨立審查通過；不以窄測試支撐整體完成",
+          "verified": false
+        },
+        {
+          "id": "AC-03",
+          "text": "Wiki/ADR/status/limits、最新handoff與Git provenance一致，無Muse額度呼叫",
+          "verified": true
+        },
+        {
+          "id": "AC-04",
+          "text": "依使用者後續確認完成繁中／英文介面與所有專案文件英文版；EN01–06有真browser、原文／翻譯hash、完整性／連結／current-stale與獨立語義審查證據，工作與測試資料共用",
+          "verified": true
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    },
+    {
+      "id": "RLAB-TASK-0020",
+      "path": "knowledge/tasks/RLAB-TASK-0020.json",
+      "sha256": "4a8dc23968cf3ceff86fa8141e20c90af1f41737bd402cf45a54fe3ceb357604",
+      "status": "BLOCKED",
+      "owner_present": false,
+      "dependencies": [
+        "RLAB-TASK-0006",
+        "RLAB-TASK-0011"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-01",
+          "text": "乾淨npm ci與完整check/build/regression、三次乾淨產品E2E、十次reset/import/dispose與當前來源hash證據",
+          "verified": true
+        },
+        {
+          "id": "AC-02",
+          "text": "既定UI/accessibility/input／native audio／性能profile保留PASS/FAIL/NOT RUN及硬體資訊，不以Node或token代替畫面／DSP／聽測",
+          "verified": true
+        },
+        {
+          "id": "AC-03",
+          "text": "新依賴license/source、requirement結果表及CI/可重現命令完整；外部Meta與人工門檻分開",
+          "verified": false
+        }
+      ],
+      "current_run_result": "NOT_RUN",
+      "preservation": "Historical flags/evidence retained; no claim of current rerun"
+    }
+  ],
+  "formal_sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ca9a0bd5e0b830350bf2f13cb3d839b30a56ae50660d0583237ca5ecef9d9276"
+    },
+    {
+      "path": "docs/11-v1/ACCEPTANCE.md",
+      "sha256": "9a7355656a1fdb734a4261cd525f25baaad99664bbe876952087026b2ab6e406"
+    },
+    {
+      "path": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md",
+      "sha256": "6e6d79ea50735433c56c4d2f343ead07f22c90d015d42fe5d828046a1d30f21d"
+    },
+    {
+      "path": "docs/11-v1/REQUIREMENTS.json",
+      "sha256": "7506d24fa30acca446a517c4a9660ee53b62928ab0047048151583c8de5c6a3c"
+    },
+    {
+      "path": "docs/11-v1/BROWSER_PERFORMANCE.md",
+      "sha256": "f411a58a49aa202befee5ef31d311c6285c95cd2f030318c3209f356c4042486"
+    },
+    {
+      "path": "docs/06-validation/PERFORMANCE_BUDGET.md",
+      "sha256": "2a2f3d55dbb018c73913c740eef4fc960b85c88b16a672bb1c767713a774f8b8"
+    },
+    {
+      "path": "docs/02-architecture/adr/013-codex-primary-development.md",
+      "sha256": "90f324096a0509b54c1ca3e90bf6224c92d25552d8906f34fbecc9e178293fc7"
+    },
+    {
+      "path": "knowledge/wiki/handoffs/392bc8c2-6b33-456f-bb27-300d311adf02.md",
+      "sha256": "8101d2e7bfbd7dadcf241627ba35f63bfb2aac116181eca409e4b83da193c355"
+    }
+  ],
+  "historical_evidence_policy": "1536 runtime / 217 finite parameter families / five 5-second WAVs and all past FAILs remain historical. None is a new test run.",
+  "tests": {
+    "product": "NOT_RUN",
+    "native_computer_use": "NOT_RUN",
+    "playwright": "NOT_RUN",
+    "formal_performance": "NOT_RUN",
+    "hearing": "NOT_RUN",
+    "claude_independent_review": "NOT_RUN"
+  }
+}

@@ -1,14 +1,14 @@
-<!-- english-source: {"path":"docs/05-ux/SOUND_BEHAVIOR_UX.md","sha256":"24d1fd048ba7aae166e5dce5b0041e91089c23a80bec984f45306767bceec821","translated_at":"2026-10-27T03:39:33Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/05-ux/SOUND_BEHAVIOR_UX.md","sha256":"cc159db3aa4f000aa851bc17f9961ed8faf575a527a18c56bf9bb65bd8ef7bd2","translated_at":"2026-11-02T10:48:08.737Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/05-ux/SOUND_BEHAVIOR_UX.md`](../../05-ux/SOUND_BEHAVIOR_UX.md). Source SHA-256: `24d1fd048ba7aae166e5dce5b0041e91089c23a80bec984f45306767bceec821`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/05-ux/SOUND_BEHAVIOR_UX.md`](../../05-ux/SOUND_BEHAVIOR_UX.md). Source SHA-256: `cc159db3aa4f000aa851bc17f9961ed8faf575a527a18c56bf9bb65bd8ef7bd2`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="sound-behaviorinspector預聽與實驗檢查"></a>
 # Sound Behavior: Inspector, Audition, and Experiment Checks
 
-Date: 2026-10-27 (Asia/Taipei). Status: **design proposal / static research; formal UI, user testing, browser, audio, and performance acceptance are all NOT RUN**. This page defines editing and inspection workflows; it is not a new authority for runtime, tokens, or data schemas.
+Current-state update, 2026-11-02 (original design date 2026-10-27, Asia/Taipei): the Event Rules Inspector, bounded audition, and experiment workflows have product implementations and component evidence. NOT RUN in the original design research describes that historical snapshot only. Current validation remains separated by actual source and scope; it does not mean every plan on this page or human, audio, or performance acceptance has passed. See the [Parameter Reference](../11-v1/PARAMETER_REFERENCE.md) and [Core Handoff](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md). This page defines editing and inspection workflows; it is not a new authority for runtime, tokens, or data schemas.
 
-The user requested Codex as the primary developer for this work, with Muse Code as an optional tool; the product's Meta Muse Agent must still use the same validated editing workflow. Manual operation does not depend on API access or model quota. This page does not install a UI library or begin formal interface implementation.
+Under the confirmed development policy, Codex is the primary developer and Muse Code is optional; the product's Meta Muse Agent must still use the same validated editing workflow. Manual operation does not depend on API access or model quota. This page preserves design rationale without introducing another UI library or work system.
 
 <!-- english-original-anchor --> <a id="1-設計建議與既有工作區"></a>
 ## 1. Design Recommendation and Existing Workspace
@@ -45,7 +45,7 @@ The top always displays the object name / stable object ID, authoring or runtime
   [素材乾音預聽] [場景聲學預聽] [停止預聽]
 ```
 
-The P0 entry points offer only implemented and accepted Always On, On Grab, On Throw, While Airborne, On Impact, and required parameters. Other continuous / discrete triggers are shown as unsupported, with reasons, according to the registry and feature phase; an enum existing in the schema does not make it available in the product. Do not infer the `While Airborne` runtime state from “velocity greater than zero”; `On Throw` can only arise from an accepted throw command. See the [Event Model](../10-sound-behaviors/EVENT_MODEL.md) for the source of these determinations.
+The current shared product capability registry contains 19 triggers. Continuous triggers are AlwaysOn, WhileMoving, WhileAirborne, WhileRolling, WhileSliding, WhileSpinning, and WhileHeld; discrete triggers are OnGrab, OnRelease, OnThrow, OnDrop, OnImpact, OnBounce, OnStartMoving, OnStopMoving, OnEnterZone, OnExitZone, OnSleep, and OnWake. UI, AI preview, and Host share trusted producer declarations; an enum existing in the schema does not establish availability. OnBounce covers only the Tuned subset of separation, after an accepted impact, from a Fixed support that has not moved or rotated. Zone requires a real registry and explicit zoneId; it produces Derived enter/exit events from fixed-step object centers with hysteresis, and a fast outside→outside crossing may produce no event. Missing producers/registry disable the option with an accurate reason. New Zone rules offer enabled zones only; existing disabled references are retained. `WhileAirborne` is not inferred from “velocity greater than zero”; `OnThrow` can only arise from an accepted throw command. See the [Event Model](../10-sound-behaviors/EVENT_MODEL.md) and [Zone Handoff](../15-ui-parameter-audit/zones/HANDOFF.md) for the determinations.
 
 | Area | Editing behavior | Required feedback |
 | --- | --- | --- |
@@ -148,7 +148,7 @@ Natural-language output from the product's Muse Agent first becomes legal struct
 | Cost | Reuses the existing Inspector, asset picker, numeric fields, and command transaction | Additionally requires node/port typing, connection / cycle validation, compile, layout, zoom, keyboard connections, Undo / debugging |
 | Beginner understanding | Directly answers “when, what sound, where from,” but still requires testing | A canvas may help explain dependencies or increase navigation cost; do not claim in advance that it is easier |
 | Validation / traceability | Stable rule IDs and field errors can link directly to events | node ID / port ID / compile error must point back to a rule or protected IR; graph positions are not runtime semantics |
-| Adoption in this work | Design proposal; UI not yet implemented | Research and unlocking conditions only; no library installation or copying commercial examples |
+| Original adoption record, 2026-10-27 | Design proposal; UI was not implemented at that time. See the page introduction and Parameter Reference for the current state | Research and unlocking conditions only; no library installation or copying commercial examples |
 
 React Flow can be listed as a future P2 presentation-layer candidate: official documentation covers keyboard / screen-reader support, node data flow, and connection-cycle validation examples; the repository core uses MIT. This does not provide Reflection Lab's audio scheduling, domain validation, or real-time DSP; its data-flow example also must not enter an audio callback. Pin the exact version, React compatibility, and distribution license at adoption. It was not installed or performance-validated in this work, and Pro example rights were not conflated with the core MIT license. [Accessibility](https://reactflow.dev/learn/advanced-use/accessibility), [Computing flows](https://reactflow.dev/learn/advanced-use/computing-flows), [Cycle validation](https://reactflow.dev/examples/interaction/prevent-cycles), [core LICENSE](https://github.com/xyflow/xyflow/blob/main/LICENSE) (checked 2026-10-27).
 
@@ -157,14 +157,16 @@ Unlocking the Graph requires validated event/runtime behavior, measurable author
 <!-- english-original-anchor --> <a id="8-可及性fps-仲裁與壓力案例"></a>
 ## 8. Accessibility, FPS Arbitration, and Stress Cases
 
-Follow [InputRouter](../04-physics/INPUT_CONTROLS.md) and [FPS UX](FPS_INTERACTION_UX.md): release pointer lock before opening Inspector / asset picker, pause on a safe tick, and retain Held / ghost; return focus to the original control after closing, without automatically relocking or dropping. Tab remains reserved for focus; text and IME own WASD / E / R / Delete / Undo; the first lock click does not also Throw. Esc handles only the top layer / browser exit; it must not simultaneously delete a rule or release an object.
+Follow [InputRouter](../04-physics/INPUT_CONTROLS.md) and [FPS UX](FPS_INTERACTION_UX.md): release pointer lock before opening Inspector / asset picker, pause on a safe tick and preserve the Held snapshot while cancelling any uncommitted ghost without placing it; return focus to the original control after closing and require explicit resumption, without automatically relocking or dropping. Tab remains reserved for focus; text and IME own WASD / E / R / Delete / Undo; the first lock click does not also Throw. Esc handles only the top layer / browser exit; it must not simultaneously delete a rule or release an object.
 
 Rule cards prioritize native button / select / number input; icons have accessible names. Dragging curve points has point-table and numeric alternatives; the asset menu is fully keyboard-operable. Enter / Space acts only on the focused control; a focus change does not automatically audition. Deleting a rule supports Undo; Delete in a text box does not delete an object. Selection / value updates / keyboard feedback are immediate; Reduced Motion removes unnecessary movement without changing fades or physics / audio timing. Important states may use restrained announcements, without reporting voices or meters every tick.
 
 Stress follows the [existing matrix](UI_STRESS_TESTS.md) and [measurement standards](PERFORMANCE_STANDARDS.md): long Traditional Chinese asset names, identical names with different IDs, the maximum legal rules / bindings and one entry over the limit, missingasset, burst events, voice stealing, slowdecode, solverstale, API failure, rapid selection changes, 200%zoom, keyboard-only, IME, pointerlock loss, and Pause/Resume. Runtime lists can be virtualized and the timeline aggregated in the view, without reducing the original event ledger; degraded counts / suppression reasons remain visible, and Mute / Pause are always reachable. Read quantity and performance thresholds only from the schema and formal budgets; do not extrapolate capacity guarantees from this research.
 
-<!-- english-original-anchor --> <a id="9-實作後驗收計畫"></a>
-## 9. Post-Implementation Acceptance Plan
+<!-- english-original-anchor --> <a id="9-原2026-10-27實作後驗收計畫"></a>
+## 9. Original Post-Implementation Acceptance Plan, 2026-10-27
+
+The NOT RUN values below preserve the original design snapshot, rather than the latest product results. Actual finite-case/source evidence is recorded separately through the introductory links; it does not establish that all ten complete cases passed.
 
 | Case | Operation and inspectable expectation | Evidence | This work |
 | --- | --- | --- | --- |
@@ -189,4 +191,4 @@ This page primarily synthesizes existing Reflection Lab standards and the user's
 <!-- english-original-anchor --> <a id="v1-apply邊界補充"></a>
 ## v1 Apply Boundary Supplement
 
-The v1 runtime draft resolves only the current revision. Apply or deletion uses pause → fade/drain old voices → atomic new revision → newrunEpoch; retired-version/tombstone is not implemented. Draft sliders / audition do not imply seamless editing of a running profile; ordinary pose / mapping input updates do not change the profile or rebuild AlwaysOn. This product-host and audio workflow remains NOT RUN.
+The v1 runtime draft resolves only the current revision. Apply or deletion uses pause → fade/drain old voices → atomic new revision → newrunEpoch; retired-version/tombstone is not implemented. Draft sliders / audition do not imply seamless editing of a running profile; ordinary pose / mapping input updates do not change the profile or rebuild AlwaysOn. The product host/audio workflow in the original 2026-10-27 draft was NOT RUN at that time. See the introductory links for current bounded production workflows and component receipts; these do not establish that full multiversion live editing or listening tests passed.

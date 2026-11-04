@@ -1,6 +1,10 @@
 ﻿import type { MessageCatalog } from "../locale-types.js";
 
 export const explorerMessages = {
+  "explorer.selectPrimitive": {
+    "zh-TW": "選擇放置形狀：{shape}",
+    en: "Select placement shape: {shape}",
+  },
   "explorer.assetDetails": { "zh-TW": "來源資訊", en: "Source details" },
   "analysis.native.logicalActive": {
     "zh-TW": "邏輯實例活動中",
@@ -753,8 +757,8 @@ export const explorerMessages = {
     en: "Checking",
   },
   "analysis.provider.ready": {
-    "zh-TW": "可提出請求；live 驗證尚未執行",
-    en: "Requests are permitted; live verification has not been run",
+    "zh-TW": "可提出請求",
+    en: "Requests are permitted",
   },
   "analysis.provider.blocked": {
     "zh-TW": "已阻擋",
@@ -814,7 +818,7 @@ export const explorerMessages = {
   },
   "analysis.agent.promptExample": {
     "zh-TW": "例如：新增一顆無重力的球，碰撞時發出電子音",
-    en: "Example: ball impact audio quiet",
+    en: "Example: add a sphere without gravity that plays an electronic sound on impact",
   },
   "analysis.agent.preparing": {
     "zh-TW": "準備操作預覽…",
@@ -841,6 +845,10 @@ export const explorerMessages = {
   "analysis.agent.shortcut": {
     "zh-TW": "Ctrl / ⌘ + Enter 送出；組字時不提交。",
     en: "Ctrl / ⌘ + Enter to submit. Composition input is not submitted.",
+  },
+  "analysis.agent.museNote": {
+    "zh-TW": "Muse的說明：",
+    en: "Muse says:",
   },
   "analysis.agent.previewHeading": {
     "zh-TW": "操作預覽",

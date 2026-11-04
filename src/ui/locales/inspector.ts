@@ -67,8 +67,9 @@ export const inspectorMessages = {
     en: "Physical-inspired describes timbre design, not a body vibration solver. Impact sounds use the actual contact position.",
   },
   "inspector.unsupportedTriggers": {
-    "zh-TW": "OnBounce／OnEnterZone／OnExitZone 尚未由目前物理 bridge 提供，新增選項已停用。",
-    en: "The current physics bridge does not provide OnBounce, OnEnterZone, or OnExitZone; these options are disabled.",
+    "zh-TW":
+      "OnEnterZone／OnExitZone 使用已註冊區域的物件中心進出事件；新增規則時先選擇啟用的區域。OnBounce 支援固定支撐面上的有限反彈分類。",
+    en: "OnEnterZone and OnExitZone use body-center crossings of registered zones; choose an enabled zone when adding a rule. OnBounce supports bounded classification against fixed supports.",
   },
   "inspector.savedDraftsAria": {
     "zh-TW": "保留的聲音行為草稿",
@@ -114,13 +115,28 @@ export const inspectorMessages = {
     en: "Exclude from geometric acoustics",
   },
   "inspector.acousticRole.staticSurface": {
-    "zh-TW": "靜態反射表面",
-    en: "Static reflecting surface",
+    "zh-TW": "靜態反射表面（固定物件）",
+    en: "Static reflecting surface (fixed objects)",
   },
   "inspector.acousticRole.dynamicOccluder": { "zh-TW": "動態遮蔽物", en: "Dynamic occluder" },
   "inspector.acousticRole.dynamicReflector": {
-    "zh-TW": "動態反射面（依後端能力）",
-    en: "Dynamic reflector (subject to backend support)",
+    "zh-TW": "動態反射面",
+    en: "Dynamic reflector",
+  },
+  "inspector.curvedAcousticNote": {
+    "zh-TW":
+      "球體與膠囊以解析幾何判定遮擋；選擇反射角色時可求解一階鏡面反射點。聲壓幅度採射線路徑近似，不含曲率聚焦、繞射或實體穿透聲。",
+    en: "Spheres and capsules use analytic occlusion; reflecting roles can solve first-order specular points. Pressure uses a ray-path approximation without curvature focusing, diffraction or solid transmission.",
+  },
+  "inspector.dynamicReflectorNote": {
+    "zh-TW":
+      "動態反射面依每次求解的實際姿態計算一階反射；採準靜態快照近似，不含延遲時刻的移動邊界或多普勒。",
+    en: "Moving reflectors use the actual pose at each solve for first-order reflection. This quasi-static snapshot approximation has no retarded moving-boundary or Doppler model.",
+  },
+  "inspector.movingStaticSurfaceNote": {
+    "zh-TW":
+      "此舊設定在移動物件上維持遮擋行為。需要快照反射時請明確選擇「動態反射面」；靜態反射表面適用固定物件。",
+    en: "This legacy setting remains occlusion-only on moving bodies. Explicitly select Dynamic reflector for snapshot reflections; Static reflecting surface applies to fixed objects.",
   },
   "inspector.material.hard": { "zh-TW": "硬質表面 · Synthetic", en: "Hard surface · Synthetic" },
   "inspector.material.soft": {

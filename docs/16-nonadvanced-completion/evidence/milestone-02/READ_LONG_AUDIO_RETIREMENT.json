@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "kind": "M2_READ_ONLY_LONG_AUDIO_OWNERSHIP_AUDIT_NOT_ACCEPTANCE",
+  "reader": "/root/nonadvanced_memory/criteria_read",
+  "recorded_at": "2026-11-02T19:50:06.6359335Z",
+  "observed_integration_HEAD": "41526a710d41947a45c46364eab5bf1b2f7eb162",
+  "active_source_not_frozen": true,
+  "long09": {
+    "sourceCommit": "bb4d27e7fd5e988c9573355eb45d0e4480bdc065",
+    "method": "Actual Chromium native OfflineAudioContext/IDB/WebLocks component runner controlled through Playwright; not native ComputerUse or public product UI matrix.",
+    "browser": {
+      "browserVersion": "156.0.8078.75",
+      "browserExecutable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "executableSha256": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+      "ownedBrowserPid": 62828,
+      "ownedSpawnFile": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "nodeVersion": "v22.17.0"
+    },
+    "raw_status": "ERROR",
+    "exit": 1,
+    "checks": {
+      "total": 58,
+      "pass": 57,
+      "fail": 1,
+      "failedOriginalGate": "whole-native-reference-master"
+    },
+    "raw_check_count": 58,
+    "raw_pass": 57,
+    "raw_fail": 1,
+    "original_gate": {
+      "id": "whole-native-reference-master",
+      "pass": false,
+      "maxError": 2.9802322387695312E-06,
+      "overCount": 321,
+      "tolerance": 2E-06,
+      "actualFrames": 2976000,
+      "referenceFrames": 3024000
+    },
+    "other_checks": "Mix/dry/stemsum/IDB/WebLocks may pass within stated component cases; 57passed does not close original master gate or entire run.",
+    "failurePhases": [
+      "Original 63-second whole-native master exceeds unchanged 2e-6",
+      "16-download batch exceeds unchanged 90000ms Node deadline; 14 completed, 15th partial, 16th missing",
+      "Unhandled pending download TargetClosed rejection terminated coordinator before finally persisted own cleanup; no in-process clean-exit claim"
+    ],
+    "phaseTimings": [
+      {
+        "name": "renderer-crash",
+        "milliseconds": 7335.247,
+        "deadlineMs": 45000,
+        "status": "settled"
+      },
+      {
+        "name": "store",
+        "milliseconds": 220.3181999999997,
+        "deadlineMs": 45000,
+        "status": "settled"
+      },
+      {
+        "name": "dsp",
+        "milliseconds": 175318.86169999998,
+        "deadlineMs": 300000,
+        "status": "settled"
+      },
+      {
+        "name": "downloads",
+        "milliseconds": 90000.38200000001,
+        "deadlineMs": 90000,
+        "status": "error",
+        "error": "Error: DOWNLOADS_NODE_WALL_DEADLINE_90000MS"
+      }
+    ],
+    "complete_downloads": 14,
+    "expected_downloads": 16,
+    "partial": [
+      "master-frozen-c63.diagnostic.wav"
+    ],
+    "missing": [
+      "long.diagnostics.json"
+    ],
+    "independentWorkerParser": "NOT_RUN: preceding download phase failed. Manual file hashes/RIFF lengths below are not a substitute for complete planned Worker matrix.",
+    "cleanup": {
+      "schemaVersion": "long-native-manual-cleanup-v1",
+      "observedAtUtc": "2026-11-02T19:37:16.1296513Z",
+      "run": "native-2026-11-02T193138116Z.json",
+      "ownedBrowserPid": 62828,
+      "recordedOwnedExecutable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "ownedBrowserPidPresent": false,
+      "ownedServerPort": 5353,
+      "ownedServerListenerCount": 0,
+      "noTerminationIssued": true,
+      "method": "Read-only checks of this run recorded PID and server port after coordinator exit1; both absent. No unknown process was enumerated or terminated."
+    },
+    "cleanup_scope": "Manual postterminal ownedPID/port absence only; original coordinator died before finally, not inprocess cleanexit or proof about arbitrary processes.",
+    "source_end_scope": {
+      "head": "bb4d27e7fd5e988c9573355eb45d0e4480bdc065",
+      "allRecordedSourcesUnchanged": true,
+      "headUnchanged": true,
+      "method": "Manual post-terminal read-only receipt; original runner failed before finally could persist its own cleanup. Not an in-process clean exit claim.",
+      "reader_rehashed_active_source": false
+    },
+    "PCM_metadata_audit": [
+      {
+        "filename": "dry.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\dry.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "a4a87bf92655491d731d317594aed90439c1527283a36d28141c9f61acce095d",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "a4a87bf92655491d731d317594aed90439c1527283a36d28141c9f61acce095d",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "a4a87bf92655491d731d317594aed90439c1527283a36d28141c9f61acce095d",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "long.manifest.json",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\long.manifest.json",
+        "exists": true,
+        "actual_bytes_at_read": 348108,
+        "actual_sha256_at_read": "7217fbd8732f82c0faaea1a5350cdfbc92af60eeb20121d216acdd9c6bdfdd52",
+        "receipt_bytes": 348108,
+        "receipt_sha256": "7217fbd8732f82c0faaea1a5350cdfbc92af60eeb20121d216acdd9c6bdfdd52",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "completed_as_reported": null,
+        "hash_matches_expected_as_reported": null,
+        "RIFF_metadata_from_fixed_receipt": null,
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "master-frozen-a62.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\master-frozen-a62.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "master-frozen-b62.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\master-frozen-b62.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "f5f1c0dfd086d3330d743b977daa3a2c92195d434ede57f2dbfc8a4e0b03bb17",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "master-frozen-c63.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\master-frozen-c63.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 10485760,
+        "actual_sha256_at_read": "0c145187cf1b1655c66d955fb625f8e0d651611b61f392dea1cf6e9e3a654f72",
+        "receipt_bytes": 10485760,
+        "receipt_sha256": "0c145187cf1b1655c66d955fb625f8e0d651611b61f392dea1cf6e9e3a654f72",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 24192056,
+        "expected_sha256": "77518bcd25029aeacb0110f7a43618155e56a698eca354009806add4b57c2640",
+        "completed_as_reported": false,
+        "hash_matches_expected_as_reported": false,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 3024000,
+          "declaredRiffBytes": 24192056,
+          "actualLengthMatchesDeclared": false
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "master-frozen-input62.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\master-frozen-input62.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "e3be2a05a360a29d56c182e532dceab1d861c32ba39fa01fc02378ca9bd4f33e",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "e3be2a05a360a29d56c182e532dceab1d861c32ba39fa01fc02378ca9bd4f33e",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "e3be2a05a360a29d56c182e532dceab1d861c32ba39fa01fc02378ca9bd4f33e",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "master.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\master.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "4f0912f43925b381d7a47a640129337befa9e283d93181e6ac993c7b0a6998f7",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "4f0912f43925b381d7a47a640129337befa9e283d93181e6ac993c7b0a6998f7",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "4f0912f43925b381d7a47a640129337befa9e283d93181e6ac993c7b0a6998f7",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "mix.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\mix.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "46d2f898b549c49e4375f724beef968e55b98cee5e43c580e2e3b1be50a24ef0",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "46d2f898b549c49e4375f724beef968e55b98cee5e43c580e2e3b1be50a24ef0",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "46d2f898b549c49e4375f724beef968e55b98cee5e43c580e2e3b1be50a24ef0",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "original-asset.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\original-asset.wav",
+        "exists": true,
+        "actual_bytes_at_read": 384056,
+        "actual_sha256_at_read": "97ae03f5d9a897f06dec1cf82bba77fa33519aff9c2117cdfa419a23a3828cd8",
+        "receipt_bytes": 384056,
+        "receipt_sha256": "97ae03f5d9a897f06dec1cf82bba77fa33519aff9c2117cdfa419a23a3828cd8",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "completed_as_reported": null,
+        "hash_matches_expected_as_reported": null,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 1,
+          "sampleRateHz": 48000,
+          "declaredFrames": 96000,
+          "declaredRiffBytes": 384056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "reference-dry63.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\reference-dry63.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 24192056,
+        "actual_sha256_at_read": "bdfd22368801a051a0790edf989b3fbb78db8c7c188c8f49bc1cb906862d6fc8",
+        "receipt_bytes": 24192056,
+        "receipt_sha256": "bdfd22368801a051a0790edf989b3fbb78db8c7c188c8f49bc1cb906862d6fc8",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 24192056,
+        "expected_sha256": "bdfd22368801a051a0790edf989b3fbb78db8c7c188c8f49bc1cb906862d6fc8",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 3024000,
+          "declaredRiffBytes": 24192056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "reference-master62.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\reference-master62.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "7f3d8409a7644eaf74865b5e37840f3d5a04a92f57ac82d583e9a278a74071a9",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "7f3d8409a7644eaf74865b5e37840f3d5a04a92f57ac82d583e9a278a74071a9",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "7f3d8409a7644eaf74865b5e37840f3d5a04a92f57ac82d583e9a278a74071a9",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "reference-master63.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\reference-master63.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 24192056,
+        "actual_sha256_at_read": "54a4a8856d00436eed2b35e8b3a8d0051d680f7ec978b36952c107cee010bbf9",
+        "receipt_bytes": 24192056,
+        "receipt_sha256": "54a4a8856d00436eed2b35e8b3a8d0051d680f7ec978b36952c107cee010bbf9",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 24192056,
+        "expected_sha256": "54a4a8856d00436eed2b35e8b3a8d0051d680f7ec978b36952c107cee010bbf9",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 3024000,
+          "declaredRiffBytes": 24192056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "reference-mix63.diagnostic.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\reference-mix63.diagnostic.wav",
+        "exists": true,
+        "actual_bytes_at_read": 24192056,
+        "actual_sha256_at_read": "9c527af99ac81f0256d63fd834728387bd31f466647c3bbcc264797b53241e15",
+        "receipt_bytes": 24192056,
+        "receipt_sha256": "9c527af99ac81f0256d63fd834728387bd31f466647c3bbcc264797b53241e15",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 24192056,
+        "expected_sha256": "9c527af99ac81f0256d63fd834728387bd31f466647c3bbcc264797b53241e15",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 3024000,
+          "declaredRiffBytes": 24192056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "stem-46219de459d8-ball.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\stem-46219de459d8-ball.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "8235db171ccddd8a318f259f5003f2c8617595e32b5711c172f84ad5595edc5a",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "8235db171ccddd8a318f259f5003f2c8617595e32b5711c172f84ad5595edc5a",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "8235db171ccddd8a318f259f5003f2c8617595e32b5711c172f84ad5595edc5a",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      },
+      {
+        "filename": "stem-be569a2d963a-speaker.wav",
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\offline-render\\.cache\\nonadvanced-long-render\\2026-11-02T193138116Z\\stem-be569a2d963a-speaker.wav",
+        "exists": true,
+        "actual_bytes_at_read": 23808056,
+        "actual_sha256_at_read": "41d8a5250e21790b219d7e7fc4c8fb864d68c5566925441c73af3ee3ed8d4a45",
+        "receipt_bytes": 23808056,
+        "receipt_sha256": "41d8a5250e21790b219d7e7fc4c8fb864d68c5566925441c73af3ee3ed8d4a45",
+        "receipt_bytes_match": true,
+        "receipt_hash_match": true,
+        "expected_bytes": 23808056,
+        "expected_sha256": "41d8a5250e21790b219d7e7fc4c8fb864d68c5566925441c73af3ee3ed8d4a45",
+        "completed_as_reported": true,
+        "hash_matches_expected_as_reported": true,
+        "RIFF_metadata_from_fixed_receipt": {
+          "channels": 2,
+          "sampleRateHz": 48000,
+          "declaredFrames": 2976000,
+          "declaredRiffBytes": 23808056,
+          "actualLengthMatchesDeclared": true
+        },
+        "method": "File bytes/sha256 only; no new PCM/DSP/numerical calculation."
+      }
+    ],
+    "artifacts": [
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs/16-nonadvanced-completion/lanes/long-render/ATTEMPT02_RECEIPT.json",
+        "sha256": "823805b91f064122abb27dc696085f0a9605ee3e3235aab1d6eb8cbdbd9c6d63",
+        "bytes": 28191,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\native-2026-11-02T193138116Z.json",
+        "sha256": "25aa852ac071fce6f3ef49c08fefff6ede715c76ab8640984115a2911fc5d47d",
+        "bytes": 142144,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\native-attempt02.stdout.txt",
+        "sha256": "d5fc940df97e80ce95149295ecf1a841d8996ffd4aa3034789af5332c158b8e3",
+        "bytes": 9226,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\native-attempt02.exit.txt",
+        "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+        "bytes": 3,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\ATTEMPT02_MANUAL_CLEANUP.json",
+        "sha256": "05d8a4251ada6886f581feebeb7d61afece612fad9d86d4d520ddd669a854b47",
+        "bytes": 564,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\ATTEMPT02_MANUAL_SOURCE_END.json",
+        "sha256": "fc712b84ebf33ba3ec9a28836287b08991041d611e5fae5fcccff420d92455b8",
+        "bytes": 37357,
+        "last_path_commit": "09a78ff7552f4a0550c67d3c9986235e9e43240e",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+        "path": "docs\\16-nonadvanced-completion\\lanes\\long-render\\SOURCE_FREEZE_V4.json",
+        "sha256": "b312f2ec36f25c0d3e1edc582610403852779773c88957875679c640d3d20eb9",
+        "bytes": 8336,
+        "last_path_commit": "bb4d27e7fd5e988c9573355eb45d0e4480bdc065",
+        "tap_summary": {},
+        "scope": "Fixed native Long09 attempt02 receipt/raw; no active source pin refresh"
+      }
+    ],
+    "diagnosticConclusion": "E1 bit-exact frozen master B62/C63 prefix differences are zero; full63 native master remains over original gate. same62 comparison is within tolerance but not bit exact. These observations constrain hypotheses and do not prove a root cause.",
+    "memory_scope": "Product plan remains an admission estimate, not observed native/heap peak; diagnostic oracle/input buffers are additional.",
+    "limitations": [
+      "No third browser retry performed.",
+      "No tolerance/gain/HRTF/IR/limiter/workload/deadline relaxed.",
+      "No product UI/ComputerUse/hardware/600-second/fullV1 claim."
+    ],
+    "not_completed": [
+      "Whole63second native master original2e-6gate",
+      "16download batch under original90sdeadline",
+      "IndependentplannedWorkerRIFF/fullmatrix",
+      "Publicproduct60scapture/recovery/downloadUI",
+      "ComputerUse",
+      "Formal600/hearing/V1"
+    ]
+  },
+  "audio": {
+    "merged_resource_component_commit": "3b8404a53c96d19b87feaacf0bb48926d07b0191",
+    "merged_static_preview_component_commit": "bba1c37eb0db984cb34439e63ba1b9d0f1ccc34f",
+    "merge_ancestry": "Both commits directly observed as ancestor of41526a710d41947a45c46364eab5bf1b2f7eb162 (git merge-base exits0).",
+    "root_runtime_receipt_policy": [
+      "reference native content v1 pin; resource policy remains default reference"
+    ],
+    "candidate_default": "Root resource policy remains default reference/off; mergedcandidate source is not resource-policy adoption.",
+    "newEOF": "FOCUSED226=224PASS/2previewFAIL; narrow45/45PASS. These raw files are owner-lane progress without final source binding/independent final review; not Root fullsuite/currentnative result.",
+    "preview_failures": [
+      "rapid replacement bounds independent live voices and disposed host cannot restart",
+      "disposed reverb preview creates no nodes when its pending fade drain resolves"
+    ],
+    "report_limit": "CurrentLANE_REPORT still describes197focused/carrier component and priornative02twoof5; do not silently rebind it to226/45 or call those final.",
+    "artifacts": [
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/LANE_REPORT.md",
+        "sha256": "69baf6510f24615205dc5b31d8765d953dad8d4d5c3d4a3fd3200703a43e73e3",
+        "bytes": 8293,
+        "last_path_commit": "3b8404a53c96d19b87feaacf0bb48926d07b0191",
+        "tap_summary": {},
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/FOCUSED-combined-eof-20261103.txt",
+        "sha256": "338f98c19c39cf94fece9651823d31646d8dd9463328ff1859dc921c3c130ea0",
+        "bytes": 56383,
+        "last_path_commit": "",
+        "tap_summary": {
+          "tests": 226,
+          "pass": 224,
+          "fail": 2,
+          "skipped": 0
+        },
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/GREEN-combined-native-eof-attempt01-20261103.txt",
+        "sha256": "e448f2c903084bf34f0ac98301d0f7a872369b7fb118d7aec8e163fc667e3e83",
+        "bytes": 11221,
+        "last_path_commit": "",
+        "tap_summary": {
+          "tests": 45,
+          "pass": 45,
+          "fail": 0,
+          "skipped": 0
+        },
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/RED-combined-native-eof-20261103.txt",
+        "sha256": "ec1c54375c7164e7bf2caad1e98bff8de9bb4837aaec07a8e0f1a661d52191bf",
+        "bytes": 19819,
+        "last_path_commit": "",
+        "tap_summary": {
+          "tests": 15,
+          "pass": 4,
+          "fail": 11,
+          "skipped": 0
+        },
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/LINT-combined-eof-20261103.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "last_path_commit": "",
+        "tap_summary": {},
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "path": "docs/16-nonadvanced-completion/lanes/audio/FORMAT-combined-eof-20261103.txt",
+        "sha256": "8d56a0070becf515136fc6bc053ec5f702b3b6c0cababffb216cb5b5b61cb870",
+        "bytes": 423,
+        "last_path_commit": "",
+        "tap_summary": {},
+        "scope": "Owner-lane intermediate EOF progress; not final source receipt or Root acceptance"
+      }
+    ]
+  },
+  "ninth_tree": {
+    "path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-retirement",
+    "branch": "codex/nonadvanced-audio-retirement-20261103",
+    "git_observed_HEAD": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+    "source_commit": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+    "baseline_commit": "b73512364d00bc1b8115e82b9a449b84b1a620be",
+    "owner": "UNKNOWN_PENDING_ROOT_EXPLICIT_DISPATCH",
+    "owner_evidence": "Neitherverification.json norREADME has owner/agent field. independentReview.agent is a reviewer, not authority for owner assignment; Git path/branch cannot identify responsible agent.",
+    "independent_review": {
+      "agent": "/root/implement_audio/virtual_engine_review/offline_cleanup_review",
+      "mode": "read-only source and saved TAP review; reviewer ran no processes",
+      "initialBlockingFinding": "finite offline native onended changed same-checkpoint admission and route controls",
+      "resolution": "paired RED then native callback suppression for finite offline scheduled ends; sole flush lifecycle owner",
+      "finalBlockingFindings": 0
+    },
+    "finalTests": {
+      "newTests": 14,
+      "existingTests": 91,
+      "pass": 105,
+      "fail": 0,
+      "skip": 0,
+      "cancelled": 0
+    },
+    "scope": "offline audio-clock retirement narrow fix; control-graph only",
+    "receipt_committed_field_at_test": false,
+    "source_binding_note": "Receipt reflects dirty testtime; later af572 commit exists. No current engine hash rechecked.",
+    "raw_hash_audit": [
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\green-final.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\green-focused.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\green-formatted.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\green-regression.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\lint.txt",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\red-delivery-race.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\red-extended.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      },
+      {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\audio-retirement\\docs\\16-nonadvanced-completion\\lanes\\audio-retirement\\red.tap",
+        "bytes_match": true,
+        "sha256_match": true
+      }
+    ],
+    "notRun": [
+      "global typecheck",
+      "full check/build",
+      "browser",
+      "native OfflineAudioContext PCM",
+      "long output",
+      "hearing"
+    ],
+    "limits": [
+      "Cleanup occurs at explicit control checkpoints; no native sample-exact disconnect claim.",
+      "Known sourceEndAudioTime and existing tail estimate are reused; no new pitch-dependent natural-end prediction.",
+      "Unexpected ends with infinite sourceEndAudioTime retain native callback fallback.",
+      "Control fakes do not prove native PCM equivalence, 2e-6 sum relationship, or the sole cause of long-master nondeterminism.",
+      "OS process IDs were not captured; all returned exec calls were terminal with no ongoing session handle."
+    ],
+    "artifacts": [
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-retirement",
+        "path": "docs/16-nonadvanced-completion/lanes/audio-retirement/verification.json",
+        "sha256": "50d37dce63d8d66ee390aa3ffb96120802f2191c020f4990b22497d4c9f26c3d",
+        "bytes": 6759,
+        "last_path_commit": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+        "tap_summary": {},
+        "scope": "Offline audio retirement narrow control-graph source/REDGREEN receipt, not native PCM proof"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-retirement",
+        "path": "docs/16-nonadvanced-completion/lanes/audio-retirement/README.md",
+        "sha256": "877aef06d0ea3465c22fe3b0ac8d5f37c4966ea51ea006f22ba16e841dafa360",
+        "bytes": 4427,
+        "last_path_commit": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+        "tap_summary": {},
+        "scope": "Offline audio retirement narrow control-graph source/REDGREEN receipt, not native PCM proof"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-retirement",
+        "path": "docs/16-nonadvanced-completion/lanes/audio-retirement/green-formatted.tap",
+        "sha256": "0ed6b573bbecc35852977b1f8b70ff912e5f45c009b04d06de78b6c4039ffe61",
+        "bytes": 25032,
+        "last_path_commit": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+        "tap_summary": {
+          "tests": 105,
+          "pass": 105,
+          "fail": 0,
+          "skipped": 0
+        },
+        "scope": "Offline audio retirement narrow control-graph source/REDGREEN receipt, not native PCM proof"
+      },
+      {
+        "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-retirement",
+        "path": "docs/16-nonadvanced-completion/lanes/audio-retirement/red-delivery-race.tap",
+        "sha256": "df3a96b7d1cbdacf8acc24535674c04e059a844fbc354be8a3572ea03129f73a",
+        "bytes": 6572,
+        "last_path_commit": "af572b12b8fa83b2f25d4f18d0cac8e00c35ad14",
+        "tap_summary": {
+          "tests": 14,
+          "pass": 12,
+          "fail": 2,
+          "skipped": 0
+        },
+        "scope": "Offline audio retirement narrow control-graph source/REDGREEN receipt, not native PCM proof"
+      }
+    ]
+  },
+  "public_capture_semantics": {
+    "authority": "docs/16-nonadvanced-completion/lanes/integration/ROOT_RUNTIME_INTEGRATION_M2.json productChanges[0] + parent explicit steering",
+    "public_60_seconds_accepted_frames": 3600,
+    "fixed_dt_seconds": "1/60",
+    "inclusive_3601": "Independent capacity fixture for0..3600inclusive only; not an extra publiccapturetick or permission to shift renderwindow.",
+    "original_caps": "18000frames/64MiB unchanged",
+    "output_signal_tail": "60signal+2tail=62seconds; originalrenderwindow and reference tolerances unchanged."
+  },
+  "conclusion": "S2partial only; no originaltask/criterion closure or final product/nativeUI/formalperformance acceptance. Reader only reads docs/raw/PCMbyteshashes and writes this cache; no tests/browser/DSP rerun, shared mutation or active-source pin."
+}

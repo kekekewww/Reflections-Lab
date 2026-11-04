@@ -4,9 +4,12 @@ import { effectiveRule } from "../audio-behavior/profile-registry.js";
 import { solveAcoustics } from "../acoustics/index.js";
 import type { AcousticMaterial, AcousticSolution, Atmosphere, Vec3 } from "../acoustics/types.js";
 import { AudioEngine } from "../audio/engine.js";
-import type { AudioEngineOptions, VoiceInput } from "../audio/types.js";
+import { PRODUCT_HEADROOM_GAIN } from "../audio/monitor-level.js";
+import type { AudioAssetBankEntry, AudioEngineOptions, VoiceInput } from "../audio/types.js";
+import type { AudioAssetLease } from "../audio/asset-leases.js";
 import type { SceneListener, SceneSpec } from "../scene/types.js";
 import { canonicalJson } from "../ai/validation.js";
+import { acousticEmitterMetadata } from "./behavior-acoustic-source.js";
 import { buildAcousticRequests, type AcousticPose } from "./acoustic-input.js";
 
 /** Host-captured accepted output and its real physics input, never a UI position projection. */
@@ -54,7 +57,11 @@ export interface StaticPreviewMetadata {
   durationSeconds: number;
   emissionEpochSeconds: 0;
   excludedFromExperiment: true;
-  source: { id: string; origin: "objectOffset" | "fixed" | "capturedContact"; positionM: Vec3 };
+  source: {
+    id: string;
+    origin: "objectOffset" | "fixed" | "capturedContact" | "zoneCenter";
+    positionM: Vec3;
+  };
   listener: SceneListener;
   contact: {
     runId: string;
@@ -220,13 +227,26 @@ export function prepareStaticPreview(
     } else if (rule.emitter.attachment === "fixed") {
       position = [...rule.emitter.positionMetres];
       origin = "fixed";
+    } else if (rule.emitter.attachment === "zone") {
+      const zoneId = rule.emitter.zoneId;
+      const zone = scene.zones?.find((entry) => entry.id === zoneId);
+      if (!zone) fail("ZONE_REFERENCE_UNAVAILABLE");
+      position = [...zone.centerM];
+      origin = "zoneCenter";
     } else fail("EMITTER_UNSUPPORTED");
   }
   const sourceId = `${previewId}.source`;
   const request = buildAcousticRequests({
     scene,
     poses: input.poses,
-    sources: [{ id: sourceId, objectId: input.objectId, positionM: position }],
+    sources: [
+      {
+        id: sourceId,
+        objectId: input.objectId,
+        positionM: position,
+        ...acousticEmitterMetadata(rule.emitter),
+      },
+    ],
     listener: input.listener,
     tick: input.tick,
     materials: input.materials,
@@ -322,13 +342,29 @@ export interface StaticPreviewView {
 export interface StaticPreviewHostOptions {
   getEngine: () => AudioEngine | null;
   createEngine?: (options: AudioEngineOptions) => AudioEngine;
+  /** Preferred source: hold exact sample pins until the independent context has closed. */
+  acquireAssetBank?: (
+    assetIds: readonly string[],
+  ) => Promise<Pick<AudioAssetLease, "entries" | "release">>;
+  /** Legacy read-only snapshot. Callers should migrate to the scoped async source. */
+  getAssetBank?: () => readonly AudioAssetBankEntry[];
   onChanged?: () => void;
+}
+
+interface PreviewSession {
+  engine: AudioEngine;
+  acquisition: Promise<Pick<AudioAssetLease, "entries" | "release"> | null>;
+  lease: Pick<AudioAssetLease, "entries" | "release"> | null;
+  cleanup: Promise<void> | null;
+  closing: Promise<void> | null;
 }
 
 /** One independent bounded preview. Native render callbacks never change the original run. */
 export class StaticPreviewHost {
   private engine: AudioEngine | null = null;
-  private retiring: AudioEngine | null = null;
+  private current: PreviewSession | null = null;
+  // Preserve the existing one-active/one-retiring context bound, including pending closes/borrows.
+  private readonly sessions = new Set<PreviewSession>();
   private serial = 0;
   private timer: ReturnType<typeof setTimeout> | null = null;
   private disposed = false;
@@ -357,13 +393,83 @@ export class StaticPreviewHost {
     this.view.monitorGain = monitor.monitorGain;
   }
 
+  private closeEngine(session: PreviewSession): Promise<void> {
+    if (session.closing) return session.closing;
+    let resolve!: () => void, reject!: (error: unknown) => void;
+    session.closing = new Promise<void>((accept, refuse) => {
+      resolve = accept;
+      reject = refuse;
+    });
+    // Old injected engines remain compatible for the legacy unscoped API. A scoped bank
+    // cannot be returned without a trustworthy close-completion boundary.
+    try {
+      const engine = session.engine as AudioEngine & { disposeAsync?: () => Promise<void> };
+      if (engine.disposeAsync) Promise.resolve(engine.disposeAsync()).then(resolve, reject);
+      else {
+        engine.dispose();
+        if (this.options.acquireAssetBank)
+          reject(new Error("PREVIEW_DISPOSAL_COMPLETION_UNAVAILABLE"));
+        else resolve();
+      }
+    } catch (error) {
+      reject(error);
+    }
+    void session.closing.catch(() => {});
+    return session.closing;
+  }
+
+  private retire(session: PreviewSession): Promise<void> {
+    if (session.cleanup) return session.cleanup;
+    session.engine.setMuted(true);
+    let resolve!: () => void, reject!: (error: unknown) => void;
+    const completion = new Promise<void>((accept, refuse) => {
+      resolve = accept;
+      reject = refuse;
+    });
+    session.cleanup = completion;
+    void (async () => {
+      let drainError: unknown;
+      try {
+        await session.engine.drainVoices();
+      } catch (error) {
+        drainError = error;
+      }
+      // A rejected close retains the lease and the session for honest residency accounting.
+      await this.closeEngine(session);
+      const lease = await session.acquisition.catch(() => null);
+      lease?.release();
+      session.lease = null;
+      this.sessions.delete(session);
+      if (drainError) throw drainError;
+    })().then(resolve, reject);
+    void completion.catch(() => {});
+    return completion;
+  }
+
   async start(input: StaticPreviewInput): Promise<StaticPreviewView | null> {
     if (this.disposed) fail("PREVIEW_DISPOSED");
     const plan = prepareStaticPreview(input, `preview.${crypto.randomUUID()}`);
     const source = this.options.getEngine();
     if (!source) fail("AUDIO_NOT_ENABLED");
-    this.stop();
+    void this.stop().catch(() => {});
     const serial = this.serial;
+    // Replacement first retires the current graph and force-closes an older fade.
+    // A full two-context pool waits for real cleanup instead of refusing a valid
+    // replacement or creating a third context while an owned close is pending.
+    if (this.sessions.size >= 2) {
+      const oldest = this.sessions.values().next().value!;
+      try {
+        await this.retire(oldest);
+      } catch (error) {
+        if (this.disposed || serial !== this.serial) return null;
+        this.view.status = "error";
+        this.view.error = error instanceof Error ? error.message : String(error);
+        this.options.onChanged?.();
+        throw error;
+      }
+      if (this.disposed || serial !== this.serial) return null;
+      if (this.sessions.size >= 2) fail("PREVIEW_CONTEXT_BUDGET");
+    }
     const engine = (this.options.createEngine ?? ((options) => new AudioEngine(options)))({
       budget: {
         maxVoices: 1,
@@ -374,36 +480,87 @@ export class StaticPreviewHost {
         maxLateSends: 1,
       },
       monitorGain: source.getTelemetry().monitorGain,
+      headroomGain: PRODUCT_HEADROOM_GAIN,
+      outputSafetyClip: true,
       spatializationModel: "HRTF",
     });
+    let resolveBorrow!: (lease: Pick<AudioAssetLease, "entries" | "release"> | null) => void;
+    let rejectBorrow!: (error: unknown) => void;
+    const acquisition = new Promise<Pick<AudioAssetLease, "entries" | "release"> | null>(
+      (accept, refuse) => {
+        resolveBorrow = accept;
+        rejectBorrow = refuse;
+      },
+    );
+    const session: PreviewSession = {
+      engine,
+      acquisition,
+      lease: null,
+      cleanup: null,
+      closing: null,
+    };
+    session.acquisition = acquisition.then((lease) => {
+      session.lease = lease;
+      return lease;
+    });
+    this.sessions.add(session);
+    this.current = session;
     this.engine = engine;
     this.view = { ...this.view, status: "starting", metadata: plan.metadata, error: null };
-    // Activate the independent device context synchronously from the explicit UI action.
-    const enabling = engine.enable(0);
-    this.syncMonitor();
-    this.options.onChanged?.();
+    const current = () => !this.disposed && serial === this.serial && this.current === session;
     try {
-      await enabling;
-      if (this.disposed || serial !== this.serial || this.engine !== engine) return null;
+      // Keep native activation synchronous with the explicit gesture; asset preparation is
+      // awaited before any source starts, without introducing another emission/physics event.
+      const enabling = engine.enable(0);
+      const ready = Promise.all([enabling, session.acquisition]);
+      void ready.catch(() => {});
+      const ids =
+        plan.voice.generator.kind === "sample" ? [plan.voice.generator.asset.assetId] : [];
+      try {
+        if (this.options.acquireAssetBank)
+          Promise.resolve(this.options.acquireAssetBank(ids)).then(resolveBorrow, rejectBorrow);
+        else resolveBorrow(null);
+      } catch (error) {
+        rejectBorrow(error);
+      }
+      this.syncMonitor();
+      this.options.onChanged?.();
+      await ready;
+      if (!current()) {
+        void this.retire(session).catch(() => {});
+        return null;
+      }
       if (plan.voice.generator.kind === "sample") {
         const reference = plan.voice.generator.asset;
-        const descriptor = source
-          .getAssets()
-          .find(
+        const borrowed = session.lease?.entries ?? this.options.getAssetBank?.();
+        if (borrowed) {
+          const entry = borrowed.find(
             (value) =>
               value.assetId === reference.assetId &&
-              value.revision === reference.revision &&
-              value.sha256 === reference.sha256,
+              value.metadata.revision === reference.revision &&
+              value.metadata.sha256 === reference.sha256,
           );
-        const buffer = descriptor && source.getAssetBuffer(reference.assetId);
-        if (!descriptor || !buffer) fail("ASSET_NOT_READY");
-        engine.registerBuffer(reference.assetId, buffer, {
-          name: descriptor.name,
-          origin: descriptor.origin,
-          license: descriptor.license,
-          revision: descriptor.revision,
-          sha256: reference.sha256,
-        });
+          if (!entry) fail("ASSET_NOT_READY");
+          engine.registerBuffer(reference.assetId, entry.buffer, { ...entry.metadata });
+        } else {
+          const descriptor = source
+            .getAssets()
+            .find(
+              (value) =>
+                value.assetId === reference.assetId &&
+                value.revision === reference.revision &&
+                value.sha256 === reference.sha256,
+            );
+          const buffer = descriptor && source.getAssetBuffer(reference.assetId);
+          if (!descriptor || !buffer) fail("ASSET_NOT_READY");
+          engine.registerBuffer(reference.assetId, buffer, {
+            name: descriptor.name,
+            origin: descriptor.origin,
+            license: descriptor.license,
+            revision: descriptor.revision,
+            sha256: reference.sha256,
+          });
+        }
       }
       const reverb = source.getTelemetry().lateReverb;
       if (reverb.enabled) engine.setLateReverb(reverb);
@@ -420,15 +577,42 @@ export class StaticPreviewHost {
       const tail = reverb.enabled ? reverb.decaySeconds : 0;
       this.timer = setTimeout(
         () => {
-          if (serial === this.serial) this.stop();
+          if (serial === this.serial) void this.stop().catch(() => {});
         },
         ((plan.voice.durationSeconds ?? 2) + maximumDelay + tail + 0.15) * 1000,
       );
       this.options.onChanged?.();
       return this.getView();
     } catch (error) {
-      if (serial !== this.serial || this.disposed) return null;
-      this.stop();
+      const ownsView = current();
+      if (ownsView) {
+        ++this.serial;
+        this.current = null;
+        this.engine = null;
+        if (this.timer !== null) clearTimeout(this.timer);
+        this.timer = null;
+      }
+      const failureSerial = this.serial;
+      const ownsFailureView = () =>
+        !this.disposed && this.serial === failureSerial && this.current === null;
+      const cleanup = this.retire(session);
+      if (!ownsView) {
+        void cleanup.catch(() => {});
+        return null;
+      }
+      try {
+        await cleanup;
+      } catch (cleanupError) {
+        if (!ownsFailureView()) return null;
+        if (!this.disposed) {
+          this.view.status = "error";
+          this.view.error =
+            cleanupError instanceof Error ? cleanupError.message : String(cleanupError);
+          this.options.onChanged?.();
+        }
+        throw cleanupError;
+      }
+      if (!ownsFailureView()) return null;
       this.view.status = "error";
       this.view.error = error instanceof Error ? error.message : String(error);
       this.options.onChanged?.();
@@ -437,32 +621,40 @@ export class StaticPreviewHost {
   }
 
   stop(): Promise<void> {
-    ++this.serial;
+    const serial = ++this.serial;
     if (this.timer !== null) clearTimeout(this.timer);
     this.timer = null;
-    const engine = this.engine;
+    const active = this.current;
+    this.current = null;
     this.engine = null;
-    // At most one fading engine may remain even during rapid start/stop gestures.
-    this.retiring?.dispose();
-    this.retiring = null;
-    let completion = Promise.resolve();
-    if (engine) {
-      engine.setMuted(true);
-      this.retiring = engine;
-      completion = engine.drainVoices().finally(() => {
-        engine.dispose();
-        if (this.retiring === engine) this.retiring = null;
-      });
-    }
+    // Disconnect an older fade immediately, while still awaiting its real close completion.
+    for (const session of this.sessions)
+      if (session !== active && session.cleanup) void this.closeEngine(session).catch(() => {});
+    const cleanup = [...this.sessions].map((session) => this.retire(session));
+    const completion = Promise.allSettled(cleanup).then((results) => {
+      const failure = results.find((result) => result.status === "rejected");
+      if (failure?.status === "rejected") {
+        if (!this.disposed && serial === this.serial && this.current === null) {
+          this.view.status = "error";
+          this.view.error =
+            failure.reason instanceof Error ? failure.reason.message : String(failure.reason);
+          this.options.onChanged?.();
+        }
+        throw failure.reason;
+      }
+    });
+    void completion.catch(() => {});
     if (this.view.status !== "idle") this.view.status = "stopped";
-    this.options.onChanged?.();
+    if (!this.disposed) this.options.onChanged?.();
     return completion;
   }
 
   dispose(): void {
-    this.stop();
-    this.retiring?.dispose();
-    this.retiring = null;
+    if (this.disposed) return;
     this.disposed = true;
+    void this.stop().catch(() => {});
+    // Preserve synchronous graph disconnection on disposal, but keep each PCM
+    // lease until its in-flight drain and actual owned close both complete.
+    for (const session of this.sessions) void this.closeEngine(session).catch(() => {});
   }
 }

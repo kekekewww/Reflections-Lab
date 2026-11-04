@@ -26,7 +26,7 @@ async function open(page: Page) {
 async function lockAndRun(page: Page) {
   await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
-  await page.keyboard.press("Enter");
+  // R18: the entry click starts controls once the actual lock is confirmed.
   await expect.poll(async () => (await snapshot(page)).simulationState).toBe("running");
 }
 test("composition boundary fixture releases actual pointer lock, pauses and preserves Unicode text ownership", async ({
@@ -276,7 +276,7 @@ test("native tab visibility loss pauses a moving locked player and never automat
   await originalSession.detach();
   await page.getByRole("button", { name: "啟用滑鼠控制", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
-  await page.keyboard.press("Enter");
+  // The explicit reacquisition click is the Resume gesture (R18); no second Enter.
   await expect.poll(async () => (await snapshot(page)).tick).toBeGreaterThan(stopped.tick + 6);
   const resumedWithoutRelease = await snapshot(page);
   expect(

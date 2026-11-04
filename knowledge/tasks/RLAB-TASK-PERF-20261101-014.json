@@ -1,0 +1,115 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-014",
+  "title": "兩階段lifecycle／裝置與長run驗證",
+  "description": "原R17性能FAIL與人耳／裝置缺口存在；新診斷、候選與不同browser不能互相代替，600秒wall也不等於600秒capture。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "P0保存來源／bundle／browser/資格與硬體／裝置capability、probe overhead及原負載基準，正式拒絕與研究執行分開；既有FAIL不覆蓋。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "P1每個候選獨立版本、固定條件及負面lifecycle／恢復／output收據；任何未執行情境標NOT RUN，unsupported欄位不當零。 啟動時固定有限baseline／候選清單；後續清單外候選沿用方法並在各自task收證，不擴張或重開本task完成範圍。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "600秒wall／sim／capture duration分列；遵守18000frame及bytes上限，不宣稱600秒連續capture；正式profile原負載／門檻不變且窗外drain不回填。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "tests/browser",
+    "docs/11-v1/BROWSER_PERFORMANCE.md",
+    "docs/06-validation/PERFORMANCE_BUDGET.md",
+    "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/11-v1/BROWSER_PERFORMANCE.md",
+      "sha256": "60af07044f8ddb23e0f4c1c3ce24625e080a810590d50158209a354c8eb257bd",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+      "sha256": "01271dbc0e685b1aa9f0935ebbd21e337dfac1e9ce556347b1f115cdfefd3443",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.081Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "原R17性能FAIL與人耳／裝置缺口存在；新診斷、候選與不同browser不能互相代替，600秒wall也不等於600秒capture。",
+  "evidence_basis": [
+    {
+      "path": "docs/11-v1/BROWSER_PERFORMANCE.md",
+      "locator": "R17 C4及正式資格邊界",
+      "classification": "CONFIRMED BY BROWSER PROFILE — historical",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "60af07044f8ddb23e0f4c1c3ce24625e080a810590d50158209a354c8eb257bd"
+    },
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "locator": "REC-01、REC-05；18000frame上限",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa"
+    },
+    {
+      "path": "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+      "locator": "CLOUD-02 lifecycle",
+      "classification": "OFFICIAL SOURCE REVIEW",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "01271dbc0e685b1aa9f0935ebbd21e337dfac1e9ce556347b1f115cdfefd3443"
+    }
+  ],
+  "affected_modules": [
+    "tests/browser",
+    "docs/11-v1/BROWSER_PERFORMANCE.md",
+    "docs/06-validation/PERFORMANCE_BUDGET.md"
+  ],
+  "proposed_solution": "P0在001後固定低頻觀測、真裝置／browser capability與原負載基準；P1僅對另行啟動且完成的候選重跑lifecycle／output／同負載長run。候選不是此task的反向依賴，避免cycle。",
+  "alternatives": [
+    "僅自動headless功能回歸：不足以清真人／音訊／性能gate。",
+    "短微基準可診斷，不替代正式600秒。",
+    "實際裝置不可取得時保留NOT RUN。"
+  ],
+  "expected_benefit": "避免局部改善帶來lifecycle或裝置回歸，提供採納與撤回依據；不預設任何候選通過。",
+  "complexity": "中至高；硬體取得、互斥測試窗口與長run保存。",
+  "performance_impact": "同負載p95/p99/max、long tasks/GC、wall/sim時間、queue/debt/drop、steady/peak memory及完成狀態分列。",
+  "audio_quality_impact": "PCM/output／onset／tail／phase與真人觀察各有證據；muted graph或finite PCM不等於聽測。",
+  "latency_impact": "實際sample rate、base/output latency與device route記真值；未量callback/hardware延遲留未知。",
+  "compatibility_regression_risk": "browser hash資格不符、背景freeze、熱節流、probe、裝置變動及window外排空可破壞可比性。",
+  "benchmark_plan": "P0固定正式原負載及100% viewport/browser/device metadata；P1含hidden/freeze/sleep/resume/quota/cancel/crash、長run/repeated lifecycle、Hi-x65／D3V可取得實際聽測、同負載一般筆電／高階機分報。",
+  "rollback_plan": "若新候選有回歸，保留原FAIL/raw與source bindings，drain其queue/worker/node再回各任務的已驗fallback；未驗裝置不解除原gate。",
+  "priority_rationale": "P0先建立可信比較與裝置界線，P1在候選後重驗；靜態depends001避免與候選互相鎖死，資源與執行由後續明確安排。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": "P0 follows001; P1 verification is selected per separately activated candidate without adding a reverse dependency cycle.",
+  "compatibility_risk": "Real devices/browser builds and APIs differ; capability matrix remains explicit.",
+  "regression_risk": "Scope drift and asynchronous resets can invalidate comparisons; freeze finite candidates.",
+  "candidate_commit": null,
+  "verification_scope_policy": "Freeze finite baseline and candidate list at activation; later candidate evidence belongs to each later task."
+}

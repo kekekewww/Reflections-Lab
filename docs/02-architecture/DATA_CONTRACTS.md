@@ -27,3 +27,7 @@ IR output 必須附 sample rate、channels／ambisonic order、reference emissio
 記錄 `experimentId, tick, substep, sequence, bodyAId, bodyBId, contactId, worldPointM, normal, relativeVelocityMps, impulseNs?, forceN?, surfaceIds, materialPair, classification`。force 與 impulse 不同；引擎 API 未提供就存 null，不把 force 冒充 Ns。使用模擬時間，不以 `Date.now()` 作音訊排程依據。連續 emitter 與 contact voice 分別配置 IDs。
 
 契約上限與拒絕：初版 scene 最多 256 objects、32 sources、1 active listener、200 m 場景範圍；這些是保守設計預算，不是性能測試結論。輸入 NaN／Infinity、外部任意 URL、重複 ID、負質量與超大 operation array 拒絕。相依 API 詳見 [AI 工具規格](../08-ai/AI_TOOL_SCHEMAS.md)。
+
+## 2026-11-02 Web 幾何模型請求補充
+
+內部 AcousticRequest 可附 analytic primitives（sphere/capsule）、只遮蔽的 boxOccluders 與 modelVersion；三類幾何共用原 surface 預算，非新增 Scene 儲存欄位。曲面或 dynamicReflector Scene 的每個 source 使用 web-geometric-primitives-1.0.0，純舊平面請求保留 web-geometric-1.0.0；非法／矛盾 pin 拒絕。舊已存 AudioReplay 的 pinned 模型與路徑仍可播放，新重評與 matched A/B 必須核目前模型，不能挪用舊 baseline。emitterObjectId 三態、自排除、OBB admission 與 snapshot 壽命詳見[有限模型契約](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md)。AcousticFrame 不新增捏造路徑或法線欄位；dynamicReflectors capability 僅實際請求具備對應角色時提供。

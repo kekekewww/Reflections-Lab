@@ -1,3 +1,11 @@
+import { acousticPayloadBytes as payloadBytes } from "./acoustic-payload.js";
+import {
+  acousticPacketBytes,
+  canPackAcousticBatch,
+  packAcousticBatch,
+} from "./acoustic-transport.js";
+import type { AcousticTransport } from "./acoustic-transport.js";
+import { acousticRequestSolverVersion } from "../capabilities/acoustic-geometry.js";
 import { solveAcoustics } from "../acoustics/index.js";
 import type { AcousticRequest, AcousticSolution } from "../acoustics/types.js";
 
@@ -18,9 +26,17 @@ export interface AcousticServiceOptions {
   workerFactory?: () => WorkerPort;
   now?: () => number;
   timeoutMs?: number;
+  /** Explicit candidate; clone remains the reference until same-load measurements support adoption. */
+  transport?: AcousticTransport;
 }
 export interface AcousticServiceTelemetry {
   mode: "worker" | "synchronous";
+  transport: AcousticTransport;
+  lastTransport: AcousticTransport | null;
+  /** UTF-8 JSON bytes of the posted body; browser-internal structured-clone bytes are unobservable. */
+  lastWireRequestBytes: number;
+  /** Packet construction/size measurement only; original payload validation is outside this timer. */
+  lastEncodeMs: number | null;
   disposed: boolean;
   inFlight: boolean;
   pendingSources: number;
@@ -66,6 +82,7 @@ interface PendingBatch {
   timer: ReturnType<typeof setTimeout>;
 }
 interface RequestIdentity {
+  backendVersion: string;
   requestId: string;
   sourceId: string;
   listenerId: string;
@@ -180,7 +197,12 @@ function validSolution(solution: AcousticSolution): boolean {
     !["available", "unsupported", "failed"].includes(frame.pathAvailability) ||
     !strings(frame.capabilities) ||
     !frame.capabilities.every((value) =>
-      ["directParameters", "individualReflectionPaths", "dynamicOccluders"].includes(value),
+      [
+        "directParameters",
+        "individualReflectionPaths",
+        "dynamicOccluders",
+        "dynamicReflectors",
+      ].includes(value),
     ) ||
     !strings(frame.limitations) ||
     frame.limitations.length > 64 ||
@@ -239,43 +261,6 @@ function validSolution(solution: AcousticSolution): boolean {
   );
 }
 
-/** Inspect bounds before stringifying or structured-cloning potentially huge input. */
-function payloadBytes(value: unknown): number {
-  const stack: { value: unknown; depth: number }[] = [{ value, depth: 0 }];
-  let nodes = 0;
-  while (stack.length) {
-    const item = stack.pop()!;
-    if (++nodes > 200_000 || item.depth > 16) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-    if (typeof item.value === "string") {
-      if (item.value.length > 8192) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-    } else if (typeof item.value === "number") {
-      if (!Number.isFinite(item.value)) throw failure("ACOUSTIC_PAYLOAD_INVALID");
-    } else if (item.value !== null && typeof item.value === "object") {
-      if (Array.isArray(item.value)) {
-        if (!denseArray(item.value, 0, 4096)) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-        for (const entry of item.value) {
-          if (entry === undefined) throw failure("ACOUSTIC_PAYLOAD_INVALID");
-          stack.push({ value: entry, depth: item.depth + 1 });
-        }
-      } else {
-        const prototype = Object.getPrototypeOf(item.value);
-        if (prototype !== Object.prototype && prototype !== null)
-          throw failure("ACOUSTIC_PAYLOAD_INVALID");
-        const entries = Object.entries(item.value);
-        if (entries.length > 64) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-        for (const [key, entry] of entries) {
-          if (key.length > 128) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-          stack.push({ value: entry, depth: item.depth + 1 });
-        }
-      }
-    } else if (typeof item.value !== "boolean" && item.value !== null && item.value !== undefined) {
-      throw failure("ACOUSTIC_PAYLOAD_INVALID");
-    }
-  }
-  const bytes = encoder.encode(JSON.stringify(value)).byteLength;
-  if (bytes > ACOUSTIC_DELIVERY_LIMITS.maxPayloadBytes) throw failure("ACOUSTIC_PAYLOAD_BUDGET");
-  return bytes;
-}
 function checkBatch(requests: AcousticRequest[]): void {
   if (!Array.isArray(requests) || requests.length > ACOUSTIC_DELIVERY_LIMITS.maxSources)
     throw failure("SOURCE_BUDGET_EXCEEDED");
@@ -290,6 +275,16 @@ function checkBatch(requests: AcousticRequest[]): void {
       !request.listener ||
       !Array.isArray(request.surfaces) ||
       request.surfaces.length > ACOUSTIC_DELIVERY_LIMITS.maxSurfacesPerSource ||
+      (request.primitives !== undefined &&
+        (!Array.isArray(request.primitives) ||
+          request.surfaces.length + request.primitives.length >
+            ACOUSTIC_DELIVERY_LIMITS.maxSurfacesPerSource)) ||
+      (request.boxOccluders !== undefined &&
+        (!Array.isArray(request.boxOccluders) ||
+          request.surfaces.length +
+            (request.primitives?.length ?? 0) +
+            request.boxOccluders.length >
+            ACOUSTIC_DELIVERY_LIMITS.maxSurfacesPerSource)) ||
       !Array.isArray(request.materials) ||
       request.materials.length > 256 ||
       request.surfaces.some(
@@ -327,6 +322,10 @@ export class AcousticService {
   private readonly factory: (() => WorkerPort) | null;
   private readonly now: () => number;
   private readonly timeoutMs: number;
+  private readonly transport: AcousticTransport;
+  private lastTransport: AcousticTransport | null = null;
+  private lastWireRequestBytes = 0;
+  private lastEncodeMs: number | null = null;
   private sequence = 0;
   private workerCreations = 0;
   private pending: PendingBatch | null = null;
@@ -347,6 +346,9 @@ export class AcousticService {
   private lastError: string | null = null;
 
   constructor(useWorker = true, options: AcousticServiceOptions = {}) {
+    this.transport = options.transport ?? "clone";
+    if (!["clone", "deduplicated"].includes(this.transport))
+      throw failure("ACOUSTIC_TRANSPORT_UNSUPPORTED");
     this.now = options.now ?? (() => performance.now());
     this.timeoutMs = options.timeoutMs ?? ACOUSTIC_DELIVERY_LIMITS.timeoutMs;
     if (
@@ -387,6 +389,10 @@ export class AcousticService {
     const last = this.timings.at(-1);
     return Object.freeze({
       mode: this.factory ? "worker" : "synchronous",
+      transport: this.transport,
+      lastTransport: this.lastTransport,
+      lastWireRequestBytes: this.lastWireRequestBytes,
+      lastEncodeMs: this.lastEncodeMs,
       disposed: this.disposed,
       inFlight: this.pending !== null,
       pendingSources: this.pending?.requests.length ?? 0,
@@ -425,6 +431,7 @@ export class AcousticService {
       // Native postMessage takes the complete snapshot synchronously. Retain only
       // owned scalar identity here instead of cloning all geometry a second time.
       pinned = requests.map((request) => ({
+        backendVersion: acousticRequestSolverVersion(request),
         requestId: request.requestId,
         sourceId: request.source.id,
         listenerId: request.listener.id,
@@ -442,6 +449,9 @@ export class AcousticService {
     this.lastError = null;
     const startedAt = this.now();
     if (!this.factory || pinned.length === 0) {
+      this.lastTransport = null;
+      this.lastWireRequestBytes = 0;
+      this.lastEncodeMs = null;
       try {
         const results = requests.map((request) => solveAcoustics(request));
         this.lastResponseBytes = payloadBytes(results);
@@ -465,6 +475,39 @@ export class AcousticService {
       this.lastError = error instanceof Error ? error.message : "ACOUSTIC_WORKER_UNAVAILABLE";
       return Promise.reject(error);
     }
+    let payload: { requests: AcousticRequest[] } | { packet: ReturnType<typeof packAcousticBatch> };
+    const encodeStart = this.now();
+    try {
+      if (this.transport === "deduplicated" && canPackAcousticBatch(requests)) {
+        const packet = packAcousticBatch(requests);
+        // A legal logical request can exceed packet depth/nodes after its wrapper and refs
+        // are added. Use the Worker's exact packet guard, then retain clone as the fallback.
+        let packetBytes: number | null = null;
+        try {
+          packetBytes = acousticPacketBytes(packet);
+        } catch {
+          /* representation unavailable */
+        }
+        if (packetBytes !== null && packetBytes < this.lastRequestBytes) {
+          this.lastTransport = "deduplicated";
+          this.lastWireRequestBytes = packetBytes;
+          payload = { packet };
+        } else {
+          this.lastTransport = "clone";
+          this.lastWireRequestBytes = this.lastRequestBytes;
+          payload = { requests };
+        }
+      } else {
+        this.lastTransport = "clone";
+        this.lastWireRequestBytes = this.lastRequestBytes;
+        payload = { requests };
+      }
+      this.lastEncodeMs = Math.max(0, this.now() - encodeStart);
+    } catch (error) {
+      this.counters.failedBatches++;
+      this.lastError = error instanceof Error ? error.message : "ACOUSTIC_PACKET_INVALID";
+      return Promise.reject(error);
+    }
     const batchId = ++this.sequence;
     return new Promise((resolve, reject) => {
       this.pending = {
@@ -480,7 +523,7 @@ export class AcousticService {
         }, this.timeoutMs),
       };
       try {
-        this.worker!.postMessage({ batchId, requests });
+        this.worker!.postMessage({ batchId, ...payload });
       } catch (error) {
         this.rejectPending(
           error instanceof Error ? error : failure("ACOUSTIC_POST_MESSAGE_FAILED"),
@@ -525,6 +568,9 @@ export class AcousticService {
           !frame ||
           !validSolution(solution!) ||
           result.sourceId !== expected.sourceId ||
+          frame.backendId !== "custom-web-geometric" ||
+          frame.backendVersion !== expected.backendVersion ||
+          frame.paths.some((path) => !path.id.startsWith(expected.backendVersion + "|")) ||
           frame.requestId !== expected.requestId ||
           frame.sourceId !== expected.sourceId ||
           frame.listenerId !== expected.listenerId ||

@@ -1,7 +1,7 @@
 /**
- * Category B extension seam only. No renderer implements this contract yet.
+ * Portable render job contract. The bounded native-offline-recorded backend implements
+ * captured finite takes up to 60 seconds; unsupported capabilities are rejected by runtime validation.
  * Jobs/results contain portable data, never AudioNode/AudioBuffer/engine objects.
- * Future backends must validate hashes, integer bounds and capabilities at runtime.
  */
 export interface RenderArtifactRef {
   /** Stable artifact ID resolved by the host; never an array index or engine handle. */

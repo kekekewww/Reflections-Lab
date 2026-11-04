@@ -1,0 +1,102 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-002",
+  "title": "研究並驗證錄製逐tick有界evaluation lane",
+  "description": "capture在physics onTick同步求解、組裝與append，與main RAF競爭；既有Worker不涵蓋此熱路徑。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "每個已接納整數tick連續、同tick事件順序／pre-state／source cursors／refs與原admission維持，並有獨立等價oracle。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "frame slots及bytes包含in-flight所有權，超高水位pause producer而非覆寫；保留recording-mode debt pause且錯誤不可標Captured。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "同負載分項p95/p99／queue age／peak memory與原實作比較，正式原profile及門檻未更改；無收益或不等價時保留原路徑。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/app/runtime.ts",
+    "src/app/recording-host.ts",
+    "src/app/recording-processor.ts",
+    "src/experiments/recorder.ts",
+    "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/evidence/r21-merge-reconciliation.json",
+      "sha256": "53ddeaea346b57ab14e218a8927bcb0861badd39eb404603ffa1d1ce97d8d32b",
+      "result": "Research basis src/app/runtime.ts is the 05d40fd version (sha256 0954858f1ebd8ba62e6f4a5d9f1068faa581ac26e089d3af4010259748796ee2, git blob 2cadc83c32032a22073b4bb9163b58f479f48842), kept in this record after R21 commit 38925e6 changed the file; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-02T03:28:49.784Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "capture在physics onTick同步求解、組裝與append，與main RAF競爭；既有Worker不涵蓋此熱路徑。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "locator": "REC-01、REC-02",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "locator": "onTick capturing同步solve與append",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "4090429a532886a6233584d368a9586f4f4bb38fcf86966005f161200b91972d"
+    }
+  ],
+  "affected_modules": [
+    "src/app/runtime.ts",
+    "src/app/recording-host.ts",
+    "src/app/recording-processor.ts",
+    "src/experiments/recorder.ts"
+  ],
+  "proposed_solution": "先以immutable tick inputs、run/epoch/revision與有限frame/byte admission做隔離sequential evaluation lane；高水位pause producer，ack降到低水位才續行。encode/persist由008處理。",
+  "alternatives": [
+    "留主緒但分項窄化／減配置，作低風險對照。",
+    "只將一般preview改latest-only，不能解決capture。",
+    "丟tick或降低solver品質：不符合原錄製語義。"
+  ],
+  "expected_benefit": "候選可縮短capture main spans並穩定背壓；throughput與改善幅度待量。",
+  "complexity": "高；跨緒事件／pre-state／cursor排序及取消狀態。",
+  "performance_impact": "量producer、evaluation、consumer與peak copies；不能以平均快於實時保證deadline。",
+  "audio_quality_impact": "保留原聲學結果、來源phase與admission；不得省source或改原被錄decision。",
+  "latency_impact": "背壓可增加wall duration；與連續simulated tick及實際音訊onset分報。",
+  "compatibility_regression_risk": "stale epoch、重複stop、worker crash或半接納frame可能破壞trace；不得變更canonical格式以簡化此任務。",
+  "benchmark_plan": "相同pinned trace／scene的capture on/off，含最大合法frame、event burst、slow consumer、cancel、stop及crash；核tick／event／cursor oracle與watermarks。",
+  "rollback_plan": "停止新接納、drain或明示interrupt已接納frames，固定最後完整tick，釋放worker／buffers後回到原同步evaluation；不遺失已保存artifact。",
+  "priority_rationale": "直接對應歷史overload與目前可讀熱路徑；依001先證明成本，變更範圍限evaluation避免一次重寫整條鏈。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Worker/transfer capabilities vary; keep a validated main-thread reference.",
+  "regression_risk": "Lost/reordered ticks/events, stale identity, source phase and atomic publication are protected.",
+  "candidate_commit": null
+}

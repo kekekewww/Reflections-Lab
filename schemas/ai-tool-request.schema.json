@@ -9,7 +9,7 @@
   "properties": {
     "schemaVersion": {"const": "1.0.0"},
     "requestId": {"$ref": "#/$defs/id"},
-    "tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory", "RunSimulation", "CaptureExperiment", "AnalyzeAcousticResults", "CompareExperiments", "PreviewSceneChanges"]},
+    "tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory", "MoveObject", "ResizeObject", "RemoveObject", "RunSimulation", "CaptureExperiment", "AnalyzeAcousticResults", "CompareExperiments", "PreviewSceneChanges"]},
     "sceneId": {"$ref": "#/$defs/id"},
     "expectedSceneRevision": {"type": "integer", "minimum": 0},
     "transactionId": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
@@ -23,6 +23,9 @@
     {"properties": {"tool": {"const": "ConfigureSoundSource"}, "arguments": {"$ref": "#/$defs/ConfigureSoundSource"}, "transactionId": {"$ref": "#/$defs/id"}}},
     {"properties": {"tool": {"const": "MoveListener"}, "arguments": {"$ref": "#/$defs/MoveListener"}, "transactionId": {"$ref": "#/$defs/id"}}},
     {"properties": {"tool": {"const": "SetTrajectory"}, "arguments": {"$ref": "#/$defs/SetTrajectory"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "MoveObject"}, "arguments": {"$ref": "#/$defs/MoveObject"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "ResizeObject"}, "arguments": {"$ref": "#/$defs/ResizeObject"}, "transactionId": {"$ref": "#/$defs/id"}}},
+    {"properties": {"tool": {"const": "RemoveObject"}, "arguments": {"$ref": "#/$defs/RemoveObject"}, "transactionId": {"$ref": "#/$defs/id"}}},
     {"properties": {"tool": {"const": "RunSimulation"}, "arguments": {"$ref": "#/$defs/RunSimulation"}, "transactionId": {"type": "null"}}},
     {"properties": {"tool": {"const": "CaptureExperiment"}, "arguments": {"$ref": "#/$defs/CaptureExperiment"}, "transactionId": {"type": "null"}}},
     {"properties": {"tool": {"const": "AnalyzeAcousticResults"}, "arguments": {"$ref": "#/$defs/AnalyzeAcousticResults"}, "transactionId": {"type": "null"}}},
@@ -66,6 +69,21 @@
       "type": "object", "additionalProperties": false,
       "required": ["listenerId", "positionM", "orientationQuaternion"],
       "properties": {"listenerId": {"$ref": "#/$defs/id"}, "positionM": {"$ref": "#/$defs/positionM"}, "orientationQuaternion": {"$ref": "#/$defs/quaternion"}}
+    },
+    "MoveObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "positionM", "orientationQuaternion"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "positionM": {"$ref": "#/$defs/positionM"}, "orientationQuaternion": {"$ref": "#/$defs/quaternion"}}
+    },
+    "ResizeObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId", "dimensionsM"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}, "dimensionsM": {"$ref": "#/$defs/dimensionsM"}}
+    },
+    "RemoveObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objectId"],
+      "properties": {"objectId": {"$ref": "#/$defs/id"}}
     },
     "SetTrajectory": {
       "type": "object", "additionalProperties": false,

@@ -1,0 +1,2102 @@
+{
+  "offlineFixture": false,
+  "prompt": "Turn this room into a small recital room: a raised wooden stage across the back wall, a grand-piano-sized box on the stage, and twelve chairs in three rows facing the stage.",
+  "expect": {
+    "minAddedObjects": 14,
+    "toolCounts": {
+      "AddObject": 14
+    }
+  },
+  "settings": {
+    "modelId": "muse-spark-1.3",
+    "authorizationId": "artifact.meta-limits-20261104",
+    "effort": "medium",
+    "maxCompletionTokens": 16000,
+    "maxRounds": 3,
+    "stopAtUsd": 2,
+    "parallelToolCalls": true,
+    "maxInputBytes": 128000
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "responseId": "chatcmpl-01a1a5e7-f729-7041-aff1-4047699ec608",
+      "modelId": "muse-spark-1.3",
+      "finishReason": "tool_calls",
+      "calls": 14,
+      "toolCounts": {
+        "AddObject": 14
+      },
+      "failures": [],
+      "usage": {
+        "promptTokens": 4207,
+        "completionTokens": 5891,
+        "reasoningTokens": 2893,
+        "cachedTokens": 0
+      },
+      "elapsedMs": 33790,
+      "text": "Building your recital room — stage, grand piano, and 12 chairs in three rows."
+    }
+  ],
+  "stopReason": "accepted",
+  "accepted": true,
+  "finalRequests": [
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-1",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          6,
+          0.4,
+          2
+        ],
+        "label": "Raised wooden stage",
+        "massKg": 300,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "stage.platform-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0,
+          0.2,
+          -3
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-2",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          1.4,
+          1,
+          1.8
+        ],
+        "label": "Grand piano sized box",
+        "massKg": 300,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "piano.grand-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.8,
+          0.9,
+          -3
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-3",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 1 seat 1",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r1-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          -1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-4",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 1 seat 2",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r1-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          -1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-5",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 1 seat 3",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r1-03",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          -1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-6",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 1 seat 4",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r1-04",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          -1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-7",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 2 seat 1",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r2-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          0.6
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-8",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 2 seat 2",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r2-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          0.6
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-9",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 2 seat 3",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r2-03",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          0.6
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-10",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 2 seat 4",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r2-04",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          0.6
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-11",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 3 seat 1",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r3-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          1.8
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-12",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 3 seat 2",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r3-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          1.8
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-13",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 3 seat 3",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r3-03",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          1.8
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.request-14",
+      "transactionId": "meta.plan-0895aa3e65122349794c7fcb21b89ef4d365fd0e.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "label": "Chair row 3 seat 4",
+        "massKg": 15,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "chair.r3-04",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          1.8
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    }
+  ],
+  "beforeScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "candidateScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 1,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      },
+      {
+        "id": "stage.platform-01",
+        "shape": "box",
+        "dimensionsM": [
+          6,
+          0.4,
+          2
+        ],
+        "positionM": [
+          0,
+          0.2,
+          -3
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 300,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "piano.grand-01",
+        "shape": "box",
+        "dimensionsM": [
+          1.4,
+          1,
+          1.8
+        ],
+        "positionM": [
+          0.8,
+          0.9,
+          -3
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 300,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r1-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          -1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r1-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          -1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r1-03",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          -1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r1-04",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          -1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r2-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          0.6
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r2-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          0.6
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r2-03",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          0.6
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r2-04",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          0.6
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r3-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -1.5,
+          0.45,
+          1.8
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r3-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          -0.5,
+          0.45,
+          1.8
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r3-03",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          0.5,
+          0.45,
+          1.8
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "chair.r3-04",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.9,
+          0.45
+        ],
+        "positionM": [
+          1.5,
+          0.45,
+          1.8
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 15,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "score": {
+    "addedObjects": 14,
+    "addedSources": 0,
+    "toolCounts": {
+      "AddObject": 14
+    },
+    "outsideRoom": 0,
+    "intersectingPairs": 1,
+    "unsupported": 0,
+    "listenerMovedM": 0,
+    "listenerInside": 0,
+    "paths": [],
+    "listenerFacingErrorDeg": null,
+    "gridSpacingErrorM": null
+  },
+  "apply": {
+    "worked": true,
+    "error": null
+  },
+  "pathStarts": [],
+  "followUp": {
+    "prompt": "Move the audience 0.5 m further from the stage, make the stage 1 m deeper, and remove the back row of chairs.",
+    "expect": {
+      "toolCounts": {
+        "MoveObject": 8,
+        "ResizeObject": 1,
+        "RemoveObject": 4
+      }
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "responseId": "chatcmpl-01a1a5e8-3a3f-74c5-b45b-b1567b56dd5d",
+        "modelId": "muse-spark-1.3",
+        "finishReason": "tool_calls",
+        "calls": 14,
+        "toolCounts": {
+          "ResizeObject": 1,
+          "MoveObject": 9,
+          "RemoveObject": 4
+        },
+        "failures": [],
+        "usage": {
+          "promptTokens": 5569,
+          "completionTokens": 2603,
+          "reasoningTokens": 1363,
+          "cachedTokens": 0
+        },
+        "elapsedMs": 17091,
+        "text": "Pushing the audience back, deepening the stage, and clearing the last row."
+      }
+    ],
+    "stopReason": "accepted",
+    "accepted": true,
+    "finalRequests": [
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-1",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "ResizeObject",
+        "arguments": {
+          "dimensionsM": [
+            6,
+            0.4,
+            3
+          ],
+          "objectId": "stage.platform-01"
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-2",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "stage.platform-01",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            0,
+            0.2,
+            -2.5
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-3",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r1-01",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            -1.5,
+            0.45,
+            -0.5
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-4",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r1-02",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            -0.5,
+            0.45,
+            -0.5
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-5",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r1-03",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            0.5,
+            0.45,
+            -0.5
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-6",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r1-04",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            1.5,
+            0.45,
+            -0.5
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-7",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r2-01",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            -1.5,
+            0.45,
+            1.1
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-8",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r2-02",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            -0.5,
+            0.45,
+            1.1
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-9",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r2-03",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            0.5,
+            0.45,
+            1.1
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-10",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "MoveObject",
+        "arguments": {
+          "objectId": "chair.r2-04",
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "positionM": [
+            1.5,
+            0.45,
+            1.1
+          ]
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-11",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "RemoveObject",
+        "arguments": {
+          "objectId": "chair.r3-01"
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-12",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "RemoveObject",
+        "arguments": {
+          "objectId": "chair.r3-02"
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-13",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "RemoveObject",
+        "arguments": {
+          "objectId": "chair.r3-03"
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      },
+      {
+        "schemaVersion": "1.0.0",
+        "requestId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.request-14",
+        "transactionId": "meta.plan-65451a27dc0add65f4d9c2a260d2ad66ce95b0e6.transaction",
+        "tool": "RemoveObject",
+        "arguments": {
+          "objectId": "chair.r3-04"
+        },
+        "sceneId": "scene.reflection-lab",
+        "expectedSceneRevision": 1
+      }
+    ],
+    "candidateScene": {
+      "schemaVersion": "1.0.0",
+      "sceneId": "scene.reflection-lab",
+      "sceneRevision": 2,
+      "units": "SI",
+      "coordinateSystem": "right-handed-y-up-minus-z-forward",
+      "seed": 1746,
+      "gravityMps2": [
+        0,
+        -9.81,
+        0
+      ],
+      "objects": [
+        {
+          "id": "floor",
+          "shape": "box",
+          "dimensionsM": [
+            6.4,
+            0.2,
+            8.4
+          ],
+          "positionM": [
+            0,
+            -0.1,
+            0
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 100,
+          "friction": 0.6,
+          "restitution": 0.15,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "wall.back",
+          "shape": "box",
+          "dimensionsM": [
+            6.4,
+            4,
+            0.2
+          ],
+          "positionM": [
+            0,
+            2,
+            -4.1
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 100,
+          "friction": 0.6,
+          "restitution": 0.15,
+          "physicsMaterialId": "material.hard",
+          "acousticMaterialId": "material.hard",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "wall.left",
+          "shape": "box",
+          "dimensionsM": [
+            0.2,
+            4,
+            8.4
+          ],
+          "positionM": [
+            -3.1,
+            2,
+            0
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 100,
+          "friction": 0.6,
+          "restitution": 0.15,
+          "physicsMaterialId": "material.hard",
+          "acousticMaterialId": "material.hard",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "wall.right",
+          "shape": "box",
+          "dimensionsM": [
+            0.2,
+            4,
+            8.4
+          ],
+          "positionM": [
+            3.1,
+            2,
+            0
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 100,
+          "friction": 0.6,
+          "restitution": 0.15,
+          "physicsMaterialId": "material.hard",
+          "acousticMaterialId": "material.hard",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "ball",
+          "shape": "sphere",
+          "dimensionsM": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "positionM": [
+            -0.8,
+            2,
+            0
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "dynamicGravity",
+          "massKg": 1,
+          "friction": 0.4,
+          "restitution": 0.55,
+          "physicsMaterialId": "material.metal",
+          "acousticMaterialId": "material.metal",
+          "acousticRole": "dynamicOccluder"
+        },
+        {
+          "id": "speaker",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.7,
+            0.35
+          ],
+          "positionM": [
+            1.5,
+            1.3,
+            -2
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 100,
+          "friction": 0.6,
+          "restitution": 0.15,
+          "physicsMaterialId": "material.hard",
+          "acousticMaterialId": "material.soft",
+          "acousticRole": "none"
+        },
+        {
+          "id": "stage.platform-01",
+          "shape": "box",
+          "dimensionsM": [
+            6,
+            0.4,
+            3
+          ],
+          "positionM": [
+            0,
+            0.2,
+            -2.5
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 300,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "piano.grand-01",
+          "shape": "box",
+          "dimensionsM": [
+            1.4,
+            1,
+            1.8
+          ],
+          "positionM": [
+            0.8,
+            0.9,
+            -3
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 300,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r1-01",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            -1.5,
+            0.45,
+            -0.5
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r1-02",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            -0.5,
+            0.45,
+            -0.5
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r1-03",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            0.5,
+            0.45,
+            -0.5
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r1-04",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            1.5,
+            0.45,
+            -0.5
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r2-01",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            -1.5,
+            0.45,
+            1.1
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r2-02",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            -0.5,
+            0.45,
+            1.1
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r2-03",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            0.5,
+            0.45,
+            1.1
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        },
+        {
+          "id": "chair.r2-04",
+          "shape": "box",
+          "dimensionsM": [
+            0.45,
+            0.9,
+            0.45
+          ],
+          "positionM": [
+            1.5,
+            0.45,
+            1.1
+          ],
+          "orientationQuaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mode": "fixed",
+          "massKg": 15,
+          "friction": 0.6,
+          "restitution": 0.25,
+          "physicsMaterialId": "material.wood",
+          "acousticMaterialId": "material.wood",
+          "acousticRole": "staticSurface"
+        }
+      ],
+      "sources": [
+        {
+          "id": "source.speaker",
+          "objectId": "speaker",
+          "signalId": "signal.tone-220",
+          "mode": "continuous",
+          "gainDbfs": -24,
+          "playing": true
+        }
+      ],
+      "listener": {
+        "id": "listener.main",
+        "positionM": [
+          0,
+          1.6,
+          4
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "attachment": "independent"
+      }
+    },
+    "score": {
+      "addedObjects": 0,
+      "addedSources": 0,
+      "toolCounts": {
+        "ResizeObject": 1,
+        "MoveObject": 9,
+        "RemoveObject": 4
+      },
+      "outsideRoom": 0,
+      "intersectingPairs": 0,
+      "unsupported": 0,
+      "listenerMovedM": 0,
+      "listenerInside": 0,
+      "paths": [],
+      "listenerFacingErrorDeg": null,
+      "gridSpacingErrorM": null
+    },
+    "apply": {
+      "worked": true,
+      "error": null
+    },
+    "pathStarts": []
+  },
+  "undo": {
+    "worked": false,
+    "error": {
+      "code": "REVISION_CONFLICT",
+      "message": "後續已有編輯，不能覆蓋。"
+    }
+  },
+  "error": null,
+  "estimatedCost": {
+    "label": "Estimated at list price; not actual billing",
+    "usd": 0.0483195,
+    "knownUsageUsd": 0.0483195,
+    "roundsWithUsage": 2,
+    "coverage": "Reported usage in finished planner rounds only; failed or uncertain attempts may consume additional reservations.",
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+  }
+}

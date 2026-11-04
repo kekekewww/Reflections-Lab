@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "kind": "STAGE_AND_RESOURCE_PROJECTION_NOT_TASK_AUTHORITY",
+  "created_at": "2026-11-02T16:58:38.444Z",
+  "updated_at": "2026-11-02T18:12:52.373Z",
+  "canonical_task_system": "knowledge/tasks/*.json",
+  "umbrella_task": "RLAB-TASK-0032",
+  "scope_source": "docs/16-nonadvanced-completion/REQUEST_20261103.json",
+  "baseline_head": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "integration": {
+    "owner": "/root",
+    "worktree": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration",
+    "branch": "codex/nonadvanced-integration-20261103",
+    "git_index_owner": "/root",
+    "rule": "Root alone owns integration/main worktrees and their Git indexes, shared integration staging/commits and normal merges. No push/deploy."
+  },
+  "shared_memory": {
+    "owner": "/root/nonadvanced_memory",
+    "worktree": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration",
+    "paths": [
+      "knowledge/**",
+      "docs/16-nonadvanced-completion shared source/contract/stage records",
+      "docs/en/**"
+    ],
+    "rule": "Single shared metadata/source/task/Now/log/English writer; no candidate product edits, commits or Git index manipulation."
+  },
+  "candidate_owners": {
+    "status": "EIGHT_TREES_PARTIAL_CANDIDATE_INTEGRATION",
+    "assignment_authority": "Root actual ownership v1 message; independently checked seven actual worktrees and branches.",
+    "assignments": [
+      {
+        "lane": "recording-storage",
+        "owner": "/root/implement_storage",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/recording-storage",
+        "branch": "codex/nonadvanced-recording-storage-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "6ce41d704693e2c4576e5cdaccabdccd6770cb67",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "src/persistence/blob-store.ts",
+          "src/experiments/recorder.ts",
+          "src/experiments/recording-worker-client.ts",
+          "src/experiments/recording-seal.worker.ts",
+          "src/app/recording-host.ts"
+        ],
+        "new_module_scopes": [
+          "new incremental-sha256/recording-persistence/chunk modules in owned domains",
+          "src/app/recording-evaluation-lane.ts only minimal necessary changes; owner currently reports not needed",
+          "dedicated recording/storage tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/recording-storage/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-recording-storage-20261103",
+        "worktree_dirty_at_observation": true,
+        "status_text_sha256": "7f676bd8084d341f15e4dc2618d63d8cd66e87b94be1efd401d3e57334667564"
+      },
+      {
+        "lane": "acoustic-transport",
+        "owner": "/root/implement_acoustic",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/acoustic-transport",
+        "branch": "codex/nonadvanced-acoustic-transport-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "ee9238e06a47ae9b494da799a77fd7c794f9f062",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "src/app/acoustic-input.ts",
+          "src/app/acoustic-service.ts",
+          "src/app/acoustic-worker.ts"
+        ],
+        "new_module_scopes": [
+          "new cache/packet/pending modules in owned domain",
+          "dedicated acoustic transport tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/acoustic-transport/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-acoustic-transport-20261103",
+        "worktree_dirty_at_observation": true,
+        "status_text_sha256": "eb984be6fc6789779a2d28af5e75caabade89c278e3e09cb54cdd28517ad1591"
+      },
+      {
+        "lane": "audio-resources",
+        "owner": "/root/implement_audio",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+        "branch": "codex/nonadvanced-audio-resources-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "1f29cbe68ced6fed362f133cab65b093025409fd",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "src/audio/engine.ts",
+          "src/audio/route-response.ts",
+          "src/audio/routes.ts",
+          "src/audio/control.ts"
+        ],
+        "new_module_scopes": [
+          "new virtual timeline/policy modules",
+          "dedicated audio resource tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/audio-resources/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-audio-resources-20261103",
+        "worktree_dirty_at_observation": true,
+        "status_text_sha256": "76e6ecc6f4e421e4b82b4079efc7361be26b4fdb5c0ed8382dc6b938597b1f7d"
+      },
+      {
+        "lane": "asset-lifecycle",
+        "owner": "/root/implement_assets",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/asset-lifecycle",
+        "branch": "codex/nonadvanced-asset-lifecycle-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "75e78d143c569ac6e60c5665d1002b8ca105da10",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "src/audio/assets.ts",
+          "src/audio/asset-leases.ts",
+          "src/app/asset-host.ts"
+        ],
+        "new_module_scopes": [
+          "new residency modules",
+          "dedicated asset lifecycle tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/asset-lifecycle/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-asset-lifecycle-20261103",
+        "worktree_dirty_at_observation": false,
+        "status_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "lane": "offline-render",
+        "owner": "/root/implement_long_render",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/offline-render",
+        "branch": "codex/nonadvanced-offline-render-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "ea04294077210454f0e9b0fdc04159808e91048d",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "src/audio/render-types.ts",
+          "src/audio/render-contract.ts",
+          "src/audio/render-preset.ts",
+          "src/audio/render-pcm.ts",
+          "src/audio/render-backend.ts",
+          "src/audio/render-validation.ts",
+          "src/audio/wav.ts",
+          "src/app/render-host.ts"
+        ],
+        "new_module_scopes": [
+          "new render chunk/output store modules",
+          "dedicated long render tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/offline-render/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-offline-render-20261103",
+        "worktree_dirty_at_observation": true,
+        "status_text_sha256": "a66216784f8a5ff8f4652f0ed74971ce1ce81f37753cf7ee640f422d959659e3"
+      },
+      {
+        "lane": "baseline",
+        "owner": "/root/implement_perf",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+        "branch": "codex/nonadvanced-baseline-measure-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "494d580d0865fd38bfcb5caa2a9896b225672ee3",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "tests/browser/performance-*",
+          "tests/performance-v3/*"
+        ],
+        "new_module_scopes": [
+          "performance benchmark/pure telemetry modules only",
+          "report proposed shared runtime/engine seam changes to Root; do not cross-write"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/baseline/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-baseline-measure-20261103",
+        "worktree_dirty_at_observation": true,
+        "status_text_sha256": "45729141e19f3064f586aa8143786fe0f97f2292563e166cc3263b4cf8772404"
+      },
+      {
+        "lane": "meta-demo",
+        "owner": "/root/implement_meta",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/meta-demo",
+        "branch": "codex/nonadvanced-meta-demo-20261103",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "4bd58af70cb886d2aed100cd5f815c0cb5882743",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "owned_paths": [
+          "server/meta-provider.ts",
+          "server/meta-live-validation-cli.ts",
+          "tests/ai-runtime/meta-live-validation.test.ts"
+        ],
+        "new_module_scopes": [
+          "corresponding server Meta/provider/validation modules",
+          "src/ai corresponding changes require reporting Root first",
+          "new dedicated Meta tests"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/meta-demo/",
+        "scope_rule": "Root actual dispatch v1. Overlap/new shared-boundary proposal requires Root confirmation; no independent cross-owner writes.",
+        "actual_branch_at_observation": "codex/nonadvanced-meta-demo-20261103",
+        "worktree_dirty_at_observation": false,
+        "status_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "lane": "ui-recovery",
+        "owner": "/root/implement_recovery_ui",
+        "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/ui-recovery",
+        "branch": "codex/nonadvanced-ui-recovery-20261103",
+        "owned_paths": [
+          "src/ui/RenderPanel.tsx",
+          "src/ui/PipelinePanels.tsx",
+          "src/ui/contracts.ts",
+          "src/ui/controller-ports.ts",
+          "src/ui/RecordingRecoveryPanel.tsx",
+          "src/ui/recovery-contracts.ts",
+          "src/ui/recovery.css",
+          "src/ui/controller-recovery-ports.test.ts",
+          "src/ui/recovery-contracts.test.ts",
+          "src/ui/recovery-locale.test.ts",
+          "src/ui/recovery-ui.test.ts",
+          "src/ui/locales/pipeline.ts",
+          "src/ui/locales/status.ts",
+          "tests/browser/nonadvanced/recovery-ui.spec.ts"
+        ],
+        "new_module_scopes": [
+          "Only explicit14UI/test paths perRootdispatch/SourceReceipt; sharedruntime3ports andAppCSSimport remainRoot"
+        ],
+        "report_path": "docs/16-nonadvanced-completion/lanes/ui/",
+        "scope_rule": "RootexplicitdelegatedUIexception; no cross-owner writes beyond exactSourceReceipt paths.",
+        "status": "ACTIVE_CANDIDATE_NOT_ACCEPTANCE",
+        "head_at_observation": "f42c6b9ff0a8bb8519af81606e551797c159e880",
+        "actual_branch_at_observation": "codex/nonadvanced-ui-recovery-20261103",
+        "observed_at": "2026-11-02T18:12:52.373Z",
+        "worktree_dirty_at_observation": false,
+        "status_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "S0",
+      "state": "S0_COMPLETE_SCOPE_AND_BASELINE_FACTS_ONLY",
+      "evidence": [
+        "docs/16-nonadvanced-completion/stages/00-s0-freeze-20261103.json",
+        "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json"
+      ],
+      "authority": "Projection only; original task criteria unchanged",
+      "limits": "Not S1/S2 completion or baseline regression PASS; one reproducible mockMetaJSONfailure remains."
+    },
+    {
+      "id": "S1",
+      "state": "NOT_RUN_FORMAL_ATTRIBUTION_BASELINE",
+      "evidence": [],
+      "authority": "Projection only; original task criteria unchanged"
+    },
+    {
+      "id": "S2",
+      "state": "PARTIAL_CANDIDATE_INTEGRATION_NOT_CLOSED",
+      "evidence": [
+        "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json"
+      ],
+      "authority": "Projection only; original task criteria unchanged"
+    },
+    {
+      "id": "S3",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "authority": "Projection only; original task criteria unchanged"
+    },
+    {
+      "id": "S4",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "authority": "Projection only; original task criteria unchanged"
+    },
+    {
+      "id": "S5",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "authority": "Projection only; original task criteria unchanged"
+    },
+    {
+      "id": "S6",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "authority": "Projection only; original task criteria unchanged"
+    }
+  ],
+  "resources": [
+    {
+      "id": "machine-performance",
+      "coordinator": "/root",
+      "lease": {
+        "state": "NOT_GRANTED_NEXT_EXCLUSIVE_PREPARING",
+        "requested_holder": "/root/implement_audio",
+        "purpose": "NATIVE_DSP_ATTEMPT02",
+        "authority": "Rootlatestmessage; preparationisnotpermissiontostart",
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "All other lanes stop new tests/build/browser/native while Root-coordinated nativeDSPexclusive is in force. Only actualRoot release/grant permits nextslot."
+    },
+    {
+      "id": "native-computer-use",
+      "coordinator": "/root",
+      "lease": "UNASSIGNED",
+      "rule": "Single operator; actual methods only; no private IPC or policy bypass."
+    },
+    {
+      "id": "playwright-browser",
+      "coordinator": "/root",
+      "lease": {
+        "state": "UNASSIGNED_ATTEMPT02_NOT_GRANTED",
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "NativeDSPdigital evidence only; not ComputerUse/nativeinput orcompleteproductionparameter/pipelinePlaywrightmatrix."
+    },
+    {
+      "id": "small-test-A",
+      "coordinator": "/root",
+      "lease": {
+        "state": "ROOT_ROTATING_SMALL_TEST_SLOT",
+        "holders": [
+          "/root/implement_audio"
+        ],
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "Atmostoneconcurrency1testprocessperslot; multiplelistedholdersrotate, notparallel. Browser/native/build/formalprofile requireseparateRootexclusivegrant."
+    },
+    {
+      "id": "small-test-B",
+      "coordinator": "/root",
+      "lease": {
+        "state": "ROOT_ROTATING_SMALL_TEST_SLOT",
+        "holders": [
+          "/root/implement_recovery_ui",
+          "/root/implement_perf"
+        ],
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "Atmostoneconcurrency1testprocessperslot; multiplelistedholdersrotate, notparallel. Browser/native/build/formalprofile requireseparateRootexclusivegrant."
+    },
+    {
+      "id": "small-test-C",
+      "coordinator": "/root",
+      "lease": {
+        "state": "ROOT_ROTATING_SMALL_TEST_SLOT",
+        "holders": [
+          "/root/implement_storage",
+          "/root/implement_acoustic"
+        ],
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "Atmostoneconcurrency1testprocessperslot; multiplelistedholdersrotate, notparallel. Browser/native/build/formalprofile requireseparateRootexclusivegrant."
+    },
+    {
+      "id": "small-test-D",
+      "coordinator": "/root",
+      "lease": {
+        "state": "ROOT_ROTATING_SMALL_TEST_SLOT",
+        "holders": [
+          "/root/implement_long_render"
+        ],
+        "observed_at": "2026-11-02T18:12:52.373Z"
+      },
+      "rule": "Atmostoneconcurrency1testprocessperslot; multiplelistedholdersrotate, notparallel. Browser/native/build/formalprofile requireseparateRootexclusivegrant."
+    }
+  ],
+  "long_recording_output_freeze": {
+    "status": "FROZEN_SPECIFICATION_V2_IMPLEMENTATION_PARTIAL_NOT_PRODUCT_PASS",
+    "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V2.json",
+    "sha256": "026d31d9adb6124806de9acb09ff5fe87ed005e0abe76edf49149935feb03b5e",
+    "preserved_V1_path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json",
+    "signal_seconds": 60,
+    "tail_seconds": 2,
+    "total_seconds": 62,
+    "owners": 2,
+    "WAV_files": 5,
+    "manifest": 1,
+    "per_job_WAV_bytes": 201326592,
+    "per_job_manifest_bytes": 2097152,
+    "archive_aggregate_bytes": 402653184,
+    "max_archive_jobs": 64,
+    "physical_IDB_overhead": "UNMEASURED"
+  },
+  "current_run_tests": {
+    "typecheck": "BASELINE_EXIT0",
+    "initial_runtime": "RESOURCE_ABORTED_EXIT1",
+    "targeted_three_file_recheck": "19PASS_EXIT0_SCOPED",
+    "full_concurrency4_runtime": "1535OF1536_EXIT1_ONE_MOCK_META_FAILURE",
+    "original_default_runtime_retry": "1535OF1536_EXIT1_SAME_MOCK_META_FAILURE",
+    "candidate_acceptance": "PARTIAL_ONLY_NO_NEW_CRITERION_VERIFIED",
+    "native": "NOT_RUN",
+    "Playwright": "NOT_RUN",
+    "formal_performance": "NOT_RUN_CURRENT_SOURCE",
+    "audio_native_attempt01": "FIVE_FAIL_TEN_ZERO_FRAME_PCM_INVALID",
+    "audio_native_attempt02": "NOT_RUN_NOT_AUTHORIZED_TO_START",
+    "UI": "25UNIT_STATIC;19FAMILIES/3PWAUTHOREDNOTRUN",
+    "storage": "98FOCUSED_NODE;TRUE_IDB_NOTRUN"
+  },
+  "claude": "NOT_RUN_AFTER_CODEX_HANDOFF",
+  "manual": "NOT_RUN_AFTER_CLAUDE",
+  "current_resource_restrictions": {
+    "authority": "/root",
+    "observed_at": "2026-11-02T18:12:52.373Z",
+    "state": "FOUR_NORMAL_SMALL_TEST_SLOTS_WITH_ROTATION",
+    "slotA": "audio",
+    "slotB": "UI/perfrotate",
+    "slotC": "storage/acousticrotate",
+    "slotD": "renderer",
+    "next_audio_attempt02": "PREPARING_NOT_GRANTED",
+    "forbidden_without_separate_grant": [
+      "nativeOACattempt02",
+      "browser/IDB5198",
+      "ComputerUse",
+      "build/formalperformance"
+    ],
+    "method_boundary": "OACdigitalDSP !=ComputerUse. GUInativepolicy remains blockedwith0input."
+  },
+  "candidate_git_policy": "Each candidate owner may quietly stage/commit only explicitly owned files using that candidate worktree Git index. Root normally merges reviewed commits into integration/main. No cross-owner edits, broad staging, push/deploy or shared index use.",
+  "root_owned_paths": [
+    "src/app/runtime.ts",
+    "src/experiments/source-phase.ts",
+    "package/config",
+    "SharedUI exceptRootexplicit14pathui-recoverydelegation",
+    "integration/mainGitindexes"
+  ]
+}

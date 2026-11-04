@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "AGENT_AUTOMATED_RETEST",
+  "recordedAt": "2026-10-31T11:20:00Z",
+  "scope": "Everything in docs/11-v1/FULL_TEST_PROCEDURE.md that automation can reach; not a human pass",
+  "executor": {
+    "mainThread": "Claude Code, claude-opus-5-5 (gates, review, verification of findings, procedure corrections)",
+    "exploratorySuite": "Claude Code subagent, claude-sonnet-5-5 (wrote and ran the exploratory Playwright suite under .cache/agent-retest/, gitignored)"
+  },
+  "git": {
+    "branch": "claude/meta-hack-r18-handoff-d292c8",
+    "head": "4a905b1724992f6a85e6765392c4525ef6a344c7",
+    "productCheckpoint": "5e56260b1a9242e29c4afe6ce393bd8a37986320",
+    "previewDigest": "5ed91d1c29fb757fc36f89aab2ab8da8be841aaec588bb8c2c6d993a54103229"
+  },
+  "environment": {
+    "os": "Windows 11 Home 10.0.26200",
+    "browser": "Chrome 156.0.8078.75 headless, launch settings from tests/browser/ui-preview.config.ts; GPU acceleration not verified",
+    "input": "Playwright / CDP synthetic input",
+    "devServer": "npm run dev at http://127.0.0.1:5173 (API 127.0.0.1:8787) for the exploratory suite"
+  },
+  "gates": [
+    { "command": "TSX_DISABLE_CACHE=1 node --import tsx --test src/ui/*.test.ts src/ui/viewport/*.test.ts tests/app/fps-entry-race.test.ts tests/interaction-runtime/*.test.ts", "result": "135 pass / 0 fail" },
+    { "command": "TSX_DISABLE_CACHE=1 node --import tsx --test tests/audio-runtime/*.test.ts tests/app/*.test.ts", "result": "437 pass / 0 fail" },
+    { "command": "npm run check", "result": "exit 0 (528 s); English 311/311, 0 stale; experiments/physics-spike/results.json timestamp-only rewrite restored afterwards" },
+    { "command": "node tests/browser/build-ui-preview.mjs && npx playwright test --config tests/browser/ui-refined-v2.config.ts", "result": "35 passed" },
+    { "command": "npx playwright test --config tests/browser/pointerlock-race.config.ts", "result": "2 passed" },
+    { "command": "npx playwright test --config tests/browser/linked-workflow-v2.config.ts", "result": "8 passed" },
+    { "command": "npm run test:browser:physics", "result": "2 passed" },
+    { "command": "npm run test:browser:storage", "result": "5 passed; archive artifacts/v1/storage-browser-20261031105931409 (untracked)" },
+    { "command": "node tests/browser/build-product-preview.mjs && node tests/browser/run-product-refined-v3.mjs", "result": "4 passed; sourceMatchesBuildAtStart, sourceStableDuringRun, bundleStableDuringRun all true; archive artifacts/v1/product-e2e-chrome-20261031T105953Z (untracked)" },
+    { "command": "npm run test:browser:ui (legacy ui.spec)", "result": "5 passed / 8 failed; same count as baseline a5f2a90 and R19" },
+    { "command": "npm run test:browser:product (legacy product-e2e.spec)", "result": "4 failed; same as baseline a5f2a90 and R19; archive artifacts/v1/product-e2e-chrome-20261031T110523Z (untracked)" }
+  ],
+  "exploratorySuite": {
+    "command": "cd .cache/agent-retest && npx playwright test --config pw.config.ts",
+    "playwright": "17 tests: 16 passed, 1 failed (B9 recording length)",
+    "steps": "117 evidence entries: 93 PASS, 21 NOTE, 3 FAIL (B5.4, B5.5 B key, B9.1)",
+    "passedSections": "B1, B2 (incl. Esc cancel, one commit per drag, click during a delayed commit), B3, B4 (incl. alternative controls with refused lock), B5 grab/throw/hold-distance/Esc/build button path, B6 controls (default 0 dB, -40..+12 dB, Simulated/Raw, mute keeps physics running), B7 paths/material/vacuum, B8, B9 replay/seek/end/export, B10 acoustic and behaviour A/B, B11, B12, B13.1-B13.3",
+    "notAutomated": "loudness, pops, direction and every listening judgement; real Alt+Tab; physical Zhuyin IME; B13.4 pending-lock window (covered by pointerlock-race); visual quality and usability"
+  },
+  "findings": [
+    { "id": "AGENT-RETEST-01", "status": "CONFIRMED_IN_CODE_AND_SCREENSHOT", "summary": "The interaction catch-up notice is hard-coded Traditional Chinese and appears in the English interface", "where": "src/app/runtime.ts:805" },
+    { "id": "AGENT-RETEST-02", "status": "OBSERVED_AUTOMATED", "summary": "F on an aimed ball makes it Fixed, but the expected hint 'The object is fixed; explicitly resume to continue the simulation.' is not shown; the automated run saw 'Authoring edit: paused and cleared previous sounds.'" },
+    { "id": "AGENT-RETEST-03", "status": "CONFIRMED_IN_CODE", "summary": "The B key only switches to build mode and shows no placement preview; only the 'Switch to build' button starts a box preview", "where": "src/interaction/interaction-host.ts:325 (setBuild) vs src/app/runtime.ts:1747 (beginBuild)" },
+    { "id": "AGENT-RETEST-04", "status": "CONFIRMED_IN_CODE", "summary": "Acoustic geometry includes only boxes, so the default ball (acousticRole dynamicOccluder) never blocks a path; this limit is not stated in docs/KNOWN_LIMITATIONS.md", "where": "src/app/acoustic-input.ts:82" },
+    { "id": "AGENT-RETEST-05", "status": "CONFIRMED_IN_MARKUP", "summary": "The WebGL-unavailable fallback inside the canvas has role=alert and is exposed to the accessibility tree while WebGL works; screen-reader behaviour not tested", "where": "src/ui/Viewport.tsx:202" },
+    { "id": "AGENT-RETEST-06", "status": "ENVIRONMENT_LIMITED", "summary": "In headless Chrome, recording paused for the fixed-step workload limit about every 0.1 s of simulated time (0.82 s recorded in 6.1 s wall time, also on an idle machine); consistent with the retained R17 performance FAIL, not representative of a GPU browser" }
+  ],
+  "procedureCorrections": "docs/11-v1/FULL_TEST_PROCEDURE.md and its English mirror: B5.4 and B5.5 now ask the tester to record the observed text, B6.5 Listener follows first person automatically, B7.3 uses a box occluder, B9.1 asks for pause frequency, B9.2 replay status text, B12 default offline mode and 'Apply actions' label",
+  "notRun": ["human Pointer Lock and physical keyboard/mouse", "any listening judgement", "Hi-x65 / D3V device listening", "600-second performance profile", "native accessibility runner", "Meta live"],
+  "limitations": "All evidence is headless Chrome with synthetic input and does not replace the human R19 retest; RLAB-TASK-0022 AC-06 stays open"
+}

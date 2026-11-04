@@ -1,0 +1,186 @@
+TAP version 13
+# Subtest: formal V4 exposes a streamed analyzer independently of the frozen V3 module
+not ok 1 - formal V4 exposes a streamed analyzer independently of the frozen V3 module
+  ---
+  duration_ms: 3.0806
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\formal-v4-stream.spec.mjs:87:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/formal-v4-stream.spec.mjs:88:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: formal streaming fixture is the exact committed short raw and still fails original V3
+ok 2 - formal streaming fixture is the exact committed short raw and still fails original V3
+  ---
+  duration_ms: 27.7774
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves full raw counts, exact caps, source indexes and numeric bits
+ok 3 - formal V4 stream preserves full raw counts, exact caps, source indexes and numeric bits
+  ---
+  duration_ms: 0.3411
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name owned B is validated before retention selection
+ok 4 - formal V4 stream rejects unknown-name owned B is validated before retention selection
+  ---
+  duration_ms: 0.1842
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name owned E is validated before retention selection
+ok 5 - formal V4 stream rejects unknown-name owned E is validated before retention selection
+  ---
+  duration_ms: 0.1168
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects known pinned source cannot be discarded because its owner changed
+ok 6 - formal V4 stream rejects known pinned source cannot be discarded because its owner changed
+  ---
+  duration_ms: 0.1143
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name known source on another owner is not filtered away
+ok 7 - formal V4 stream rejects unknown-name known source on another owner is not filtered away
+  ---
+  duration_ms: 0.0974
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects invalid complete task outside window remains rejected
+ok 8 - formal V4 stream rejects invalid complete task outside window remains rejected
+  ---
+  duration_ms: 0.0872
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign non-object before retention
+ok 9 - formal V4 stream rejects foreign non-object before retention
+  ---
+  duration_ms: 0.4339
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign array object before retention
+ok 10 - formal V4 stream rejects foreign array object before retention
+  ---
+  duration_ms: 0.5423
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign number before retention
+ok 11 - formal V4 stream rejects foreign number before retention
+  ---
+  duration_ms: 0.1786
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign non-string name before retention
+ok 12 - formal V4 stream rejects foreign non-string name before retention
+  ---
+  duration_ms: 0.0719
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign name 512 plus one before retention
+ok 13 - formal V4 stream rejects foreign name 512 plus one before retention
+  ---
+  duration_ms: 0.0557
+  type: 'test'
+  ...
+# Subtest: formal V4 name cap accepts the exact 512-character foreign-name edge
+ok 14 - formal V4 name cap accepts the exact 512-character foreign-name edge
+  ---
+  duration_ms: 0.1524
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for bad gzip header
+ok 15 - formal V4 preserves the original stream error for bad gzip header
+  ---
+  duration_ms: 0.1219
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for duplicate traceEvents keys
+ok 16 - formal V4 preserves the original stream error for duplicate traceEvents keys
+  ---
+  duration_ms: 0.0523
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for truncated gzip
+ok 17 - formal V4 preserves the original stream error for truncated gzip
+  ---
+  duration_ms: 0.0471
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for gzip CRC mismatch
+ok 18 - formal V4 preserves the original stream error for gzip CRC mismatch
+  ---
+  duration_ms: 0.0477
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for producer mismatch
+ok 19 - formal V4 stream preserves rejection for producer mismatch
+  ---
+  duration_ms: 0.0908
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for executable mismatch
+ok 20 - formal V4 stream preserves rejection for executable mismatch
+  ---
+  duration_ms: 0.0525
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for native trace loss
+ok 21 - formal V4 stream preserves rejection for native trace loss
+  ---
+  duration_ms: 0.0493
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for unknown trace close
+ok 22 - formal V4 stream preserves rejection for unknown trace close
+  ---
+  duration_ms: 0.0532
+  type: 'test'
+  ...
+# Subtest: formal V4 uses the exact original formal resource ceilings
+ok 23 - formal V4 uses the exact original formal resource ceilings
+  ---
+  duration_ms: 0.1332
+  type: 'test'
+  ...
+# Subtest: formal V4 retains unknown B and E from another owner without inventing a rejection
+ok 24 - formal V4 retains unknown B and E from another owner without inventing a rejection
+  ---
+  duration_ms: 0.1564
+  type: 'test'
+  ...
+# Subtest: formal V4 maps classifications to changed raw ordinals after pruning an earlier event
+ok 25 - formal V4 maps classifications to changed raw ordinals after pruning an earlier event
+  ---
+  duration_ms: 0.1285
+  type: 'test'
+  ...
+# Subtest: formal V4 retains unknown complete events at the pinned posting site on another owner
+ok 26 - formal V4 retains unknown complete events at the pinned posting site on another owner
+  ---
+  duration_ms: 0.1215
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 25
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 301.3827

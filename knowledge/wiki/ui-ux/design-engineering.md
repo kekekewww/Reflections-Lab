@@ -4,7 +4,7 @@ title: 設計工程與唯一規範
 type: design
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T13:59:04.321Z
+updated_at: 2026-11-03T02:33:49.790Z
 sources:
   - RLAB-SRC-0042-V2
   - RLAB-SRC-0025
@@ -24,8 +24,21 @@ sources:
   - V1-SRC-0071
   - V1-SRC-0073
   - V1-USER-TEST-20261029-R18
+  - V1-SRC-0076
+  - V1-SRC-0078
+  - V1-SRC-0079
+  - V1-SRC-0083
+  - V1-SRC-0084
+  - V1-SRC-0091
+  - V1-SRC-0092
+  - PUB-NONADVANCED-UX-WORKSPACE-TOP-MONITOR-20261103-V3-c50a26196014
+  - PUB-NONADVANCED-UX-COMPONENT-TOP-MONITOR-20261103-V2-4ea3fe0e4aaa
+  - PUB-NONADVANCED-M4-PARTIAL-CLAUDE-HANDOFF-20261103-V1-ba2803b99e2f
 related_tasks:
   - RLAB-TASK-0004
+  - RLAB-TASK-0022
+  - RLAB-TASK-0033
+  - RLAB-TASK-0032
 related_decisions: []
 supersedes: []
 tags:
@@ -35,6 +48,14 @@ tags:
   - UI
   - UX
 ---
+
+## M4頂列功能部分證據與兩份英文界線
+
+[部分交接](../../../docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md)保production03四PASS/一FAIL；一個Zone草稿跨四mode保留非所有表單。de628兩UX譯本sourcehash相符，scoped2PASS是Root回報、無獨立scopedraw，非全英文。原canonical需求/內部workspace相容/token不變；完整S4/CU/recording仍未過。
+
+## 2026-11-03頂列需求取代範圍
+
+最新使用者需求以四種可切換TopMonitor取代頂列三步Workspace導航；[工作區架構](../../../docs/05-ux/WORKSPACE_ARCHITECTURE.md)與[元件契約](../../../docs/05-ux/COMPONENT_SPEC.md)保留舊內部workspace相容／狀態／相機，負載明分Worker與主緒。只更新需求規格，驗收現況查[Task0033](../../tasks/RLAB-TASK-0033.json)來源綁定證據，本頁不另複製flags；原tokens/數值/其他gate不改。
 
 # 設計工程與當前驗證
 
@@ -60,3 +81,17 @@ R17最後判讀：[REQUIREMENT_EVIDENCE_20261029-r17.json](../../../docs/11-v1/R
 依使用者明確規則，僅第1至8節未提及且未受上述失敗／排除影響的項目記為「使用者回報未發現問題」；不是整批PASS、獨立重現、科學或裝置驗證。第9節錄放、第10節A/B、第11節儲存匯入匯出、第12節離線助手及其他範圍不標正確完成。實測bundle／裝置路徑／DAC／音量未提供，保持UNKNOWN。舊自動測試證據保留，不能覆蓋這次真人失敗。
 
 本次只紀錄，未修程式、未啟動測試、未恢復本對話已暫停的開發goal；Task0021的既有研究／整合狀態不變。恢復產品工程時，先調查第一人稱阻斷，再處理直接操作與預設音量；不能再只把FPS列為等待首次真人測試。
+
+## 2026-10-30 R19：直接操作、dB 監聽與視圖資訊收納
+
+依 R18 回報：Viewport 工具列加入移動／旋轉／縮放（TransformControls，前端由 Sonnet 子代理實作、主線審查合併）；Monitor 改為 −40 至 +12 dB 的整數 dB 控制，預設 0 dB、主混音 headroom −6 dB，limiter 之後加輸出安全上限（約 −0.3 dBFS），[Component Spec](../../../docs/05-ux/COMPONENT_SPEC.md)、[DESIGN_SYSTEM](../../../docs/05-ux/DESIGN_SYSTEM.md) 與 [Audio Runtime](../../../docs/02-architecture/AUDIO_RUNTIME.md) 已同步並保留「非校準 SPL」限制。預設場景數位峰值約 −51 → −29 dBFS；極端壓力案例由 +3 dBFS 降為約 −0.3 dBFS 且無全刻度樣本，都只是 AudioContext 數位電平。三維畫面的修訂版本、座標、聲線圖例與阻擋候選收進「視圖資訊」；第一人稱提示依狀態說明下一步。
+
+這些只有程式審查、headless 量測與自動 browser 證據；視覺品質、易用性、版面比例與聽感待真人 R19 重測，不宣稱 UI 視覺或聽測通過。
+
+## 2026-10-31 R20：狀態訊息、無障礙與誠實標示
+
+自動重測後修補：狀態列的帶參數訊息改用目錄化模板翻譯，未知細節仍以原始細節標示保留；互動結果在暫停時顯示為暫停原因；Inspector 對球體與膠囊停用聲學材質與角色，並以可見說明連結 aria-describedby；畫布內的 WebGL 備用文字改為 aria-hidden，真正失敗仍由 CanvasBoundary 以 alert 宣告。證據是 headless Chrome、單元測試與 CDP 無障礙樹，未經螢幕閱讀器、視覺或真人確認，見 [R20 修補紀錄](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/bc1d5761ca79212cbfd1a00eb2db4aa74be824c0)。
+
+## 2026-11-01 R21：懸浮提示與底部提示列
+
+主頁面靜態說明改為 HelpTip：滑鼠懸停與鍵盤聚焦開啟、Esc 關閉、role=tooltip 加 aria-describedby、不困住焦點，使用 tooltip 125 ms 與 z-index 60 token；停用控制的原因可聚焦取得；欄位名稱、數值、狀態、錯誤、安全警告與證據標籤保持可見。第一人稱情境提示改為 viewport 底部一行提示列，不遮準星。球體尺寸改為單一直徑，膠囊為直徑加高度，不符時顯示翻譯後的原因。證據是單元與 headless 瀏覽器測試，觸控與螢幕閱讀器未驗證，見 [R21 最終驗證](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/ab0b1838a7e4d7eb0152047367f0299dd336049d)。

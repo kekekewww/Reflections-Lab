@@ -235,7 +235,8 @@ async function open(page: Page) {
   expect(servedHtml, "The preview server must serve the exact frozen product HTML").toBe(
     expectedHtml,
   );
-  await expect(page.locator("canvas")).toBeVisible();
+  // The top monitor adds its own canvas; the product scene is the 3D viewport canvas.
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
   await expect
     .poll(() => page.evaluate(() => Boolean(window.__reflectionLabMount && window.__reflectionLab)))
     .toBe(true);
@@ -289,7 +290,7 @@ async function installRuntimeTimings(page: Page) {
 async function collectGraph(page: Page) {
   return page.evaluate(() => {
     const graph = (window as GraphWindow).__nativeGraph;
-    const canvas = document.querySelector("canvas"),
+    const canvas = document.querySelector<HTMLCanvasElement>(".viewport-canvas-wrap canvas"),
       gl = canvas?.getContext("webgl2"),
       debug = gl?.getExtension("WEBGL_debug_renderer_info");
     return {

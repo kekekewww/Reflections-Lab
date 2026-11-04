@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "USER_AUTHORIZED_CORE_IMPLEMENTATION",
+  "recordedAt": "2026-11-02T05:04:33.815Z",
+  "userFacingDate": "2026-11-02",
+  "language": "zh-TW",
+  "authority": "User instruction in the active Codex chat; concise authorization summary, not a verbatim transcript",
+  "authorizationSummary": "使用者已確認測試完成、基本功能正常，並授權實作六項核心，以專案內平行 worktrees 開發、進行基本測試、保留記憶 checkpoint 與完整 Claude 交接，後續由 Claude 重新驗證；本地合併到 main，並透過 computer-use 在產品匯出音檔。",
+  "coreScope": [
+    "錄製與A/B有界evaluation",
+    "成本觀測與native音訊更新",
+    "UI/AI/Preview/Host共用能力及真物理資料的最小靜態支撐Bounce",
+    "Meta既有工具UI閉環",
+    "Motion authoring與SetTrajectory支援子集",
+    "同AudioEngine與真OfflineAudioContext的30秒/16outputs短take full mix與object stems renderer"
+  ],
+  "authorizedActions": {
+    "projectLocalWorktrees": true,
+    "basicImplementationTests": true,
+    "localCommitsAndMergeToMain": true,
+    "persistentMemoryAndCheckpoints": true,
+    "claudeHandoffAndLaterReverification": true,
+    "computerUseProductAudioExport": true
+  },
+  "limits": [
+    "No new paid API or cloud spend, push, deployment, terms acceptance or root-license decision inferred.",
+    "Six finite core stages do not activate every14 performance optimization task or adopt all7 proposed ADRs.",
+    "Basic-function human testing is already confirmed; do not request a duplicate prerequisite retest.",
+    "Retain600-second performance failures and scientific/device/live-Meta/external evidence gates.",
+    "Claude independent revalidation and new-feature human listening remain NOT_RUN until actually performed."
+  ],
+  "baseline": {
+    "head": "429efb7597ec913bd879ecc05c29a6be7ad5175c",
+    "branch": "codex/core-pipeline-local-20261102",
+    "workspace": "D:/Developing/Meta Hack/.worktrees/integration"
+  },
+  "contract": "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md"
+}

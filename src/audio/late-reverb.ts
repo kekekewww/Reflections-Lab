@@ -1,5 +1,6 @@
 import { finite, smooth } from "./control.js";
 import { AudioEngineError, type LateReverbSettings } from "./types.js";
+import { DeterministicMixInput, type DeterministicMixHandle } from "./deterministic-mix.js";
 
 /** Original deterministic mono diffusion IR. It predicts no room metric or individual ray. */
 export function createSyntheticLateIR(
@@ -32,7 +33,9 @@ export function createSyntheticLateIR(
 /** Two bounded IR banks crossfade on the audio clock, with one coalesced pending update. */
 export class LateReverbBus {
   readonly input: GainNode;
+  readonly inputMix: DeterministicMixInput;
   private readonly wet: GainNode;
+  private readonly mixHandle: DeterministicMixHandle | null;
   private convolvers: [ConvolverNode, ConvolverNode];
   private bankGains: [GainNode, GainNode];
   private active: 0 | 1 = 0;
@@ -44,13 +47,16 @@ export class LateReverbBus {
   settings: LateReverbSettings = { enabled: false, decaySeconds: 1.2, wetGain: 0.15, seed: 1 };
   constructor(
     private readonly context: BaseAudioContext,
-    output: AudioNode,
+    private readonly output: AudioNode | DeterministicMixInput,
     private readonly maxBytes: number,
+    maxSends?: number,
   ) {
     this.input = context.createGain();
+    this.inputMix = new DeterministicMixInput(context, this.input, maxSends);
     this.wet = context.createGain();
     this.wet.gain.value = 0;
-    this.wet.connect(output);
+    this.mixHandle = output instanceof DeterministicMixInput ? output.attach(this.wet) : null;
+    if (!(output instanceof DeterministicMixInput)) this.wet.connect(output);
     this.convolvers = [context.createConvolver(), context.createConvolver()];
     this.bankGains = [context.createGain(), context.createGain()];
     this.connectBanks();
@@ -157,12 +163,15 @@ export class LateReverbBus {
       this.applyIR(this.settings);
   }
   dispose(): void {
+    if (this.disposed) return;
     this.disposed = true;
     if (this.timer !== null) clearTimeout(this.timer);
     this.timer = null;
     this.pending = null;
     for (const convolver of this.convolvers) convolver.buffer = null;
     this.settings = { ...this.settings, enabled: false };
+    this.inputMix.dispose();
+    if (this.output instanceof DeterministicMixInput) this.output.detach(this.mixHandle!);
     for (const node of [this.input, this.wet, ...this.convolvers, ...this.bankGains])
       node.disconnect();
   }

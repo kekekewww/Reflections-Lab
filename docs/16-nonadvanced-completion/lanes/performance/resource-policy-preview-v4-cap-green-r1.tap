@@ -1,0 +1,682 @@
+TAP version 13
+# Subtest: V4 exposes a separately testable owned preview readiness predicate
+ok 1 - V4 exposes a separately testable owned preview readiness predicate
+  ---
+  duration_ms: 10.8158
+  type: 'test'
+  ...
+# Subtest: only the expected ready URL from a still-live owned child is ready
+ok 2 - only the expected ready URL from a still-live owned child is ready
+  ---
+  duration_ms: 6.4588
+  type: 'test'
+  ...
+# Subtest: V4 does not treat EADDRINUSE containing the port as a ready owned server
+ok 3 - V4 does not treat EADDRINUSE containing the port as a ready owned server
+  ---
+  duration_ms: 1.7329
+  type: 'test'
+  ...
+# Subtest: V4 does not treat another host on the same port as a ready owned server
+ok 4 - V4 does not treat another host on the same port as a ready owned server
+  ---
+  duration_ms: 0.6913
+  type: 'test'
+  ...
+# Subtest: V4 does not treat a port with the same numeric prefix as a ready owned server
+ok 5 - V4 does not treat a port with the same numeric prefix as a ready owned server
+  ---
+  duration_ms: 1.8668
+  type: 'test'
+  ...
+# Subtest: V4 does not treat already exited owned child as a ready owned server
+ok 6 - V4 does not treat already exited owned child as a ready owned server
+  ---
+  duration_ms: 1.24
+  type: 'test'
+  ...
+# Subtest: V4 does not treat terminated owned child as a ready owned server
+ok 7 - V4 does not treat terminated owned child as a ready owned server
+  ---
+  duration_ms: 1.8363
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown exit state as a ready owned server
+ok 8 - V4 does not treat unknown exit state as a ready owned server
+  ---
+  duration_ms: 1.1001
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown signal state as a ready owned server
+ok 9 - V4 does not treat unknown signal state as a ready owned server
+  ---
+  duration_ms: 2.5432
+  type: 'test'
+  ...
+# Subtest: additional V4 owned-preview rejection: an error sentence merely contains the expected root URL
+ok 10 - additional V4 owned-preview rejection: an error sentence merely contains the expected root URL
+  ---
+  duration_ms: 3.0301
+  type: 'test'
+  ...
+# Subtest: additional V4 owned-preview rejection: a Local announcement points below the expected root URL
+ok 11 - additional V4 owned-preview rejection: a Local announcement points below the expected root URL
+  ---
+  duration_ms: 1.4616
+  type: 'test'
+  ...
+# Subtest: V4 exposes a pure public resource-policy witness validator separately from configuration labels
+ok 12 - V4 exposes a pure public resource-policy witness validator separately from configuration labels
+  ---
+  duration_ms: 1.7176
+  type: 'test'
+  ...
+# Subtest: public reference resource witness retains the original 8-path budget and 24-voice cap
+ok 13 - public reference resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 1.843
+  type: 'test'
+  ...
+# Subtest: public reference resource witness retains the original 32-path budget and 24-voice cap
+ok 14 - public reference resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 0.701
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 8-path budget and 24-voice cap
+ok 15 - public candidate resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 0.4705
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 32-path budget and 24-voice cap
+ok 16 - public candidate resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 1.116
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate requested but actual resource mode is reference
+ok 17 - resource witness rejects candidate requested but actual resource mode is reference
+  ---
+  duration_ms: 0.4014
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference requested but actual resource mode is candidate
+ok 18 - resource witness rejects reference requested but actual resource mode is candidate
+  ---
+  duration_ms: 0.2882
+  type: 'test'
+  ...
+# Subtest: resource witness rejects software cursor representation
+ok 19 - resource witness rejects software cursor representation
+  ---
+  duration_ms: 0.1602
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown representation
+ok 20 - resource witness rejects unknown representation
+  ---
+  duration_ms: 0.4141
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable oscillator content
+ok 21 - resource witness rejects seekable oscillator content
+  ---
+  duration_ms: 0.4733
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable clock content
+ok 22 - resource witness rejects seekable clock content
+  ---
+  duration_ms: 0.2295
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown content
+ok 23 - resource witness rejects unknown content
+  ---
+  duration_ms: 0.131
+  type: 'test'
+  ...
+# Subtest: resource witness rejects requested flags cannot rescue a reference graph
+ok 24 - resource witness rejects requested flags cannot rescue a reference graph
+  ---
+  duration_ms: 0.11
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown requested arm
+ok 25 - resource witness rejects unknown requested arm
+  ---
+  duration_ms: 0.0907
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing requested arm
+ok 26 - resource witness rejects missing requested arm
+  ---
+  duration_ms: 0.0931
+  type: 'test'
+  ...
+# Subtest: resource witness rejects null requested arm
+ok 27 - resource witness rejects null requested arm
+  ---
+  duration_ms: 0.0795
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unsupported path cap
+ok 28 - resource witness rejects unsupported path cap
+  ---
+  duration_ms: 0.0772
+  type: 'test'
+  ...
+# Subtest: resource witness rejects path cap string
+ok 29 - resource witness rejects path cap string
+  ---
+  duration_ms: 0.0797
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing resource snapshot
+ok 30 - resource witness rejects missing resource snapshot
+  ---
+  duration_ms: 0.0769
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing telemetry
+ok 31 - resource witness rejects missing telemetry
+  ---
+  duration_ms: 0.076
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing complete public budget
+ok 32 - resource witness rejects missing complete public budget
+  ---
+  duration_ms: 0.1032
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxVoices
+ok 33 - resource witness rejects changed original budget.maxVoices
+  ---
+  duration_ms: 0.1062
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxVoices
+ok 34 - resource witness rejects unknown original budget.maxVoices
+  ---
+  duration_ms: 0.1009
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSources
+ok 35 - resource witness rejects changed original budget.maxSources
+  ---
+  duration_ms: 0.0733
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSources
+ok 36 - resource witness rejects unknown original budget.maxSources
+  ---
+  duration_ms: 0.0638
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSourceFrames
+ok 37 - resource witness rejects changed original budget.maxSourceFrames
+  ---
+  duration_ms: 0.0703
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSourceFrames
+ok 38 - resource witness rejects unknown original budget.maxSourceFrames
+  ---
+  duration_ms: 0.0642
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPathsPerVoice
+ok 39 - resource witness rejects changed original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0633
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPathsPerVoice
+ok 40 - resource witness rejects unknown original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0588
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxTotalPaths
+ok 41 - resource witness rejects changed original budget.maxTotalPaths
+  ---
+  duration_ms: 0.1576
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxTotalPaths
+ok 42 - resource witness rejects unknown original budget.maxTotalPaths
+  ---
+  duration_ms: 0.1245
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxDecodedBytes
+ok 43 - resource witness rejects changed original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.0742
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxDecodedBytes
+ok 44 - resource witness rejects unknown original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.0682
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetDurationSeconds
+ok 45 - resource witness rejects changed original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.0592
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetDurationSeconds
+ok 46 - resource witness rejects unknown original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.0603
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetChannels
+ok 47 - resource witness rejects changed original budget.maxAssetChannels
+  ---
+  duration_ms: 0.1065
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetChannels
+ok 48 - resource witness rejects unknown original budget.maxAssetChannels
+  ---
+  duration_ms: 0.069
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPendingEvents
+ok 49 - resource witness rejects changed original budget.maxPendingEvents
+  ---
+  duration_ms: 0.066
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPendingEvents
+ok 50 - resource witness rejects unknown original budget.maxPendingEvents
+  ---
+  duration_ms: 0.083
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssets
+ok 51 - resource witness rejects changed original budget.maxAssets
+  ---
+  duration_ms: 0.0756
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssets
+ok 52 - resource witness rejects unknown original budget.maxAssets
+  ---
+  duration_ms: 0.0687
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxConcurrentDecodes
+ok 53 - resource witness rejects changed original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0758
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxConcurrentDecodes
+ok 54 - resource witness rejects unknown original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateSends
+ok 55 - resource witness rejects changed original budget.maxLateSends
+  ---
+  duration_ms: 0.0731
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateSends
+ok 56 - resource witness rejects unknown original budget.maxLateSends
+  ---
+  duration_ms: 0.0596
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateReverbBytes
+ok 57 - resource witness rejects changed original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.0626
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateReverbBytes
+ok 58 - resource witness rejects unknown original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.0577
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: active rendered cap is reduced
+ok 59 - resource witness rejects resourceSnapshot: active rendered cap is reduced
+  ---
+  duration_ms: 0.1331
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: active rendered cap is reduced
+ok 60 - resource witness rejects telemetry: active rendered cap is reduced
+  ---
+  duration_ms: 0.0602
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+ok 61 - resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.1627
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+ok 62 - resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.0872
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+ok 63 - resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0687
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: internal arrivals consume the parent cap
+ok 64 - resource witness rejects telemetry: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0585
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+ok 65 - resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.0582
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: all graphs silently omit internal arrivals
+ok 66 - resource witness rejects telemetry: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.0554
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+ok 67 - resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.0594
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+ok 68 - resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.0597
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+ok 69 - resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0634
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference gains the candidate virtual reserve
+ok 70 - resource witness rejects telemetry: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0559
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+ok 71 - resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0559
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference claims an explicit parent graph policy
+ok 72 - resource witness rejects telemetry: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0539
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+ok 73 - resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+  ---
+  duration_ms: 0.1268
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+ok 74 - resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0661
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+ok 75 - resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0576
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+ok 76 - resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+  ---
+  duration_ms: 0.058
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+ok 77 - resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+  ---
+  duration_ms: 0.0553
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile is misinterpreted as 32 voices
+ok 78 - stress resource witness rejects stress profile is misinterpreted as 32 voices
+  ---
+  duration_ms: 0.1282
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile kept the default 96-path internal allowance
+ok 79 - stress resource witness rejects stress profile kept the default 96-path internal allowance
+  ---
+  duration_ms: 0.0793
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress candidate kept default 176-carrier cap
+ok 80 - stress resource witness rejects stress candidate kept default 176-carrier cap
+  ---
+  duration_ms: 0.0721
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count unknown
+ok 81 - resource witness rejects native source count unknown
+  ---
+  duration_ms: 0.0926
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count nonfinite
+ok 82 - resource witness rejects native source count nonfinite
+  ---
+  duration_ms: 0.0738
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native graph count unknown
+ok 83 - resource witness rejects native graph count unknown
+  ---
+  duration_ms: 0.0834
+  type: 'test'
+  ...
+# Subtest: resource witness rejects active and tail counts cannot be combined into a fabricated zero
+ok 84 - resource witness rejects active and tail counts cannot be combined into a fabricated zero
+  ---
+  duration_ms: 0.0824
+  type: 'test'
+  ...
+# Subtest: resource witness rejects pending voice count unknown
+ok 85 - resource witness rejects pending voice count unknown
+  ---
+  duration_ms: 0.0701
+  type: 'test'
+  ...
+# Subtest: solver default reference omits the virtualization key and any substitute content model
+ok 86 - solver default reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.2194
+  type: 'test'
+  ...
+# Subtest: solver explicit reference omits the virtualization key and any substitute content model
+ok 87 - solver explicit reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.1083
+  type: 'test'
+  ...
+# Subtest: solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+ok 88 - solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+  ---
+  duration_ms: 0.0751
+  type: 'test'
+  ...
+# Subtest: solver rejects an unknown audioPolicyArm before constructing any engine
+ok 89 - solver rejects an unknown audioPolicyArm before constructing any engine
+  ---
+  duration_ms: 0.2019
+  type: 'test'
+  ...
+# Subtest: actual UI mount default reference calls LabRuntime.create with no options argument
+ok 90 - actual UI mount default reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 0.6379
+  type: 'test'
+  ...
+# Subtest: actual UI mount explicit reference calls LabRuntime.create with no options argument
+ok 91 - actual UI mount explicit reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 0.5588
+  type: 'test'
+  ...
+# Subtest: actual UI mount candidate passes typed DEFAULT without changing source content
+ok 92 - actual UI mount candidate passes typed DEFAULT without changing source content
+  ---
+  duration_ms: 0.2066
+  type: 'test'
+  ...
+# Subtest: actual UI mount rejects unknown arm before LabRuntime.create
+ok 93 - actual UI mount rejects unknown arm before LabRuntime.create
+  ---
+  duration_ms: 0.1841
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate policy disabled from the public virtualization telemetry
+ok 94 - resource witness rejects candidate policy disabled from the public virtualization telemetry
+  ---
+  duration_ms: 0.1501
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+ok 95 - resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+  ---
+  duration_ms: 0.0903
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+ok 96 - resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0899
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+ok 97 - resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0817
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+ok 98 - resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0934
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+ok 99 - resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+  ---
+  duration_ms: 0.0908
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: candidate sources exceed the original 176-carrier capacity
+ok 100 - additional V4 observed-cap rejection: candidate sources exceed the original 176-carrier capacity
+  ---
+  duration_ms: 1.0568
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: reference sources exceed the original 144-source capacity
+ok 101 - additional V4 observed-cap rejection: reference sources exceed the original 144-source capacity
+  ---
+  duration_ms: 1.1771
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: stress candidate sources exceed 336 rather than inheriting the default cap
+ok 102 - additional V4 observed-cap rejection: stress candidate sources exceed 336 rather than inheriting the default cap
+  ---
+  duration_ms: 1.3465
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: parent graphs exceed the original active-plus-retiring capacity 48
+ok 103 - additional V4 observed-cap rejection: parent graphs exceed the original active-plus-retiring capacity 48
+  ---
+  duration_ms: 0.0954
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: default internal-arrival graphs exceed 96
+ok 104 - additional V4 observed-cap rejection: default internal-arrival graphs exceed 96
+  ---
+  duration_ms: 0.0733
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: stress internal-arrival graphs exceed 256
+ok 105 - additional V4 observed-cap rejection: stress internal-arrival graphs exceed 256
+  ---
+  duration_ms: 0.0673
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: native slots do not equal the separately observed parent and internal graphs
+ok 106 - additional V4 observed-cap rejection: native slots do not equal the separately observed parent and internal graphs
+  ---
+  duration_ms: 0.0631
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: native slots exceed all graph capacity instead of being truncated
+ok 107 - additional V4 observed-cap rejection: native slots exceed all graph capacity instead of being truncated
+  ---
+  duration_ms: 0.1298
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: public parent-graph endpoints disagree
+ok 108 - additional V4 observed-cap rejection: public parent-graph endpoints disagree
+  ---
+  duration_ms: 0.0692
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: public internal-arrival endpoints disagree
+ok 109 - additional V4 observed-cap rejection: public internal-arrival endpoints disagree
+  ---
+  duration_ms: 0.1987
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: active voices exceed the unchanged 24-voice capacity
+ok 110 - additional V4 observed-cap rejection: active voices exceed the unchanged 24-voice capacity
+  ---
+  duration_ms: 0.1377
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: default active paths exceed the original total 96
+ok 111 - additional V4 observed-cap rejection: default active paths exceed the original total 96
+  ---
+  duration_ms: 0.0872
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: stress active paths exceed the original total 256
+ok 112 - additional V4 observed-cap rejection: stress active paths exceed the original total 256
+  ---
+  duration_ms: 0.0804
+  type: 'test'
+  ...
+1..112
+# tests 112
+# suites 0
+# pass 112
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1391.3576

@@ -242,6 +242,53 @@ test("generated failure contexts require both standard structure and a recorded 
   assert.equal(inspectDocumentationSources(f.root).excluded_shared_raw.length, 0);
 });
 
+test("a generated failure context without a page snapshot is raw only with its recorded attachment", () => {
+  const f = fixture();
+  const withoutSnapshot = generatedContext.replace(
+    "# Page snapshot\n\n```yaml\n- button: Example\n```\n\n",
+    "",
+  );
+  assert.ok(!withoutSnapshot.includes("Page snapshot"));
+  const source = browserEvidence(f.root, withoutSnapshot);
+  assert.equal(
+    inspectDocumentationSources(f.root).excluded_shared_raw[0].classification,
+    "shared_raw_generated_browser_context",
+  );
+  for (const variant of [
+    withoutSnapshot.replace("# Error details", "# Error summary"),
+    withoutSnapshot.replace("# Test info\n\nA captured failure\n\n", ""),
+    withoutSnapshot + "\n# Authored follow-up\n\nA project report.\n",
+  ]) {
+    browserEvidence(f.root, variant);
+    assert.ok(inventory(f.root).some((e) => e.source === source));
+  }
+  browserEvidence(f.root, withoutSnapshot);
+  put(
+    f.root,
+    "artifacts/v1/browser/results.json",
+    JSON.stringify({ suites: [], stats: {}, attachments: [] }),
+  );
+  assert.ok(inventory(f.root).some((e) => e.source === source));
+});
+
+test("a timeout context ending in its page snapshot is raw only when nothing follows the snapshot", () => {
+  const f = fixture();
+  const withoutSource = generatedContext.replace(
+    "# Test source\n\n```ts\nexpect(result).toBe(true);\n```\n",
+    "",
+  );
+  assert.ok(!withoutSource.includes("Test source"));
+  const source = browserEvidence(f.root, withoutSource);
+  assert.equal(
+    inspectDocumentationSources(f.root).excluded_shared_raw[0].classification,
+    "shared_raw_generated_browser_context",
+  );
+  for (const appendix of ["\n這是新撰的報告。\n", "\n## Authored project analysis\n\nText.\n"]) {
+    browserEvidence(f.root, withoutSource + appendix);
+    assert.ok(inventory(f.root).some((e) => e.source === source));
+  }
+});
+
 test("authored lower-level headings and prose after generated source remain in English scope", () => {
   const f = fixture();
   for (const appendix of [
@@ -473,4 +520,26 @@ test("selected source paths reject escapes, aliases, duplicates and English mirr
     ["docs/topic.md", "docs/topic.md"],
   ])
     assert.throws(() => inspectDocumentationSources(f.root, sourcePaths));
+});
+test("translation provenance records the actual executor and rejects unknown ones", () => {
+  const f = fixture();
+  const body = "# Limits\n\nusedPercent ≥100\n\nRLAB-TASK-0006\n\n```js\nconst value = 1;\n```\n";
+  const target = path.join(f.root, "docs/en/topic.md");
+  const write = (executor, model_id) =>
+    fs.writeFileSync(
+      target,
+      `<!-- english-source: ${JSON.stringify({ path: "docs/topic.md", sha256: hash(f.source), translated_at: "2026-10-30T00:00:00.000Z", executor, model_id, links: "source-relative" })} -->\n` +
+        body,
+    );
+  write("Unrecorded agent", null);
+  assert.ok(
+    validateEnglishDocs(f.root).entries[0].errors.some(
+      (e) => e.code === "INVALID_TRANSLATION_METADATA",
+    ),
+  );
+  write("Claude Code", "claude-opus-5-5");
+  assert.equal(validateEnglishDocs(f.root, { finalize: true }).status, "PASS");
+  const finalized = fs.readFileSync(target, "utf8");
+  assert.match(finalized, /Executor: Claude Code; model ID claude-opus-5-5\./);
+  assert.doesNotMatch(finalized, /Executor: Codex/);
 });

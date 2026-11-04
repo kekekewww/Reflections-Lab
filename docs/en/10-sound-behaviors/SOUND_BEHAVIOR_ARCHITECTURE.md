@@ -1,12 +1,12 @@
-<!-- english-source: {"path":"docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md","sha256":"8aff3bb47639ea5599936aaa9f23ed709b6882710edb3381d5f528872b11c8aa","translated_at":"2026-10-29T05:29:36Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md","sha256":"a46beb4fde0b4423440379c47fe217afda6dd102c036be188d05ab1807749e63","translated_at":"2026-11-02T10:45:05.9892524+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md`](../../10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md). Source SHA-256: `8aff3bb47639ea5599936aaa9f23ed709b6882710edb3381d5f528872b11c8aa`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md`](../../10-sound-behaviors/SOUND_BEHAVIOR_ARCHITECTURE.md). Source SHA-256: `a46beb4fde0b4423440379c47fe217afda6dd102c036be188d05ab1807749e63`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="sound-behavior-架構與整合界線"></a>
 # Sound Behavior Architecture and Integration Boundaries
 
-2026-10-29: The architecture is accepted, and the production evaluator / bridge / Inspector / Audio integration now have implementations and component evidence; the complete V1 remains unfinished. The design below includes events without producers and future capabilities; the whole plan must not be read as implemented. See the [research](../12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md) for current code / tests / gaps; the [Closing Report](SOUND_BEHAVIOR_REPORT.md) retains only its original research / draft scope. See [ADR-014](../02-architecture/adr/014-sound-behavior-system.md) for the decision. Events / schemas / UX retain their single formal sources, without duplicating thresholds or tokens.
+2026-11-02 update: The architecture is accepted, and the production finite evaluator/bridge/Inspector/native SourceGraph integration are implemented. Product producers for 19 triggers are connected; Bounce and Zone retain explicit fixed-support/center-sampling boundaries. Availability depends on the shared capability table, trusted Host declarations and a valid Zone registry; see the [Zone delivery](../15-ui-parameter-audit/zones/HANDOFF.md). Full V1 remains incomplete. The original design's later Graph/multiversion-state requirements remain below; this does not imply the entire plan is implemented. See the [research](../12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md) for current code/tests/gaps. The [Closing Report](SOUND_BEHAVIOR_REPORT.md) retains only its original research/draft scope. See [ADR-014](../02-architecture/adr/014-sound-behavior-system.md) for the decision. Events/schemas/UX retain their sole official sources without duplicating thresholds or tokens.
 
 <!-- english-original-anchor --> <a id="分層與責任"></a>
 ## Layers and Responsibilities
@@ -38,7 +38,7 @@ flowchart LR
 | Renderer | Direct/early/late for the same emission, spatialization, headroom, lifecycle | Recalculating distance/delay/Doppler/HRTF a second time |
 | AI / Recorder | Valid candidates, preview/undo, traces and references to actual results | Blocking the audio callback, arbitrary shell commands, LLM-fabricated measurements |
 
-The existing Rapier world, Scene command host, AcousticFrame, audio clocks, and domain IDs remain authoritative. The addition is a behavior authoring/event bridge layer. The main application is not yet implemented; passing the draft validator does not produce a playable product.
+The existing Rapier world, Scene command host, AcousticFrame, audio clocks and domain IDs remain authoritative; the addition is the behavior-authoring/event-bridge layer. A finite production runtime has replaced the original research/draft stage's "main application not yet implemented" state. Current product implementation, Node/actual-DOM and digital artifacts each have separate receipts in the [core handoff](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md). A draft validator, document or isolated mathematical success still cannot replace product, hearing or full-V1 acceptance.
 
 <!-- english-original-anchor --> <a id="event-rules正交狀態而非單一fsm或大graph"></a>
 ## Event Rules + Orthogonal States, Rather Than a Single FSM or Large Graph

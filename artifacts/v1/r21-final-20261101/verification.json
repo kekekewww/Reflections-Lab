@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "kind": "R21_FINAL_VERIFICATION",
+  "recordedAt": "2026-11-01T17:56:56.414Z",
+  "branch": "claude/meta-hack-r18-handoff-d292c8",
+  "baseCommit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "workingTree": "uncommitted R21 changes on top of baseCommit",
+  "executors": {
+    "coordinator": {
+      "agent": "Claude Code",
+      "model": "claude-opus-5-5",
+      "role": "requirements, measurement, docs, verification"
+    },
+    "implementer": {
+      "agent": "Codex",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "role": "all product and test code changes except the empty startup notice and the monitor label nowrap"
+    },
+    "reviewers": {
+      "agent": "Claude Code subagents",
+      "model": "claude-opus-5-5",
+      "rounds": 3,
+      "mode": "read-only"
+    }
+  },
+  "userReport": "docs/11-v1/USER_TEST_FEEDBACK_20261101-r21.json",
+  "requirementChanges": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md (two 2026-11-01 sections)",
+  "implementationReports": [
+    "artifacts/v1/r21-fps-controls-20261101/REPORT.md",
+    "artifacts/v1/r21-fps-controls-20261101/REVIEW_REPORT.md",
+    "artifacts/v1/r21-audio-smoothness-20261101/implementation-report.md",
+    "artifacts/v1/r21-audio-smoothness-20261101/REGRESSION_REPORT.md",
+    "artifacts/v1/r21-audio-smoothness-20261101/review2-report.md",
+    "artifacts/v1/r21-helptips-20261101/REPORT.md",
+    "artifacts/v1/r21-final-20261101/CODEX_FINAL_FIXES.md"
+  ],
+  "independentReviews": [
+    {
+      "round": 1,
+      "scope": "first-person controls",
+      "findings": "1 BLOCKER, 1 MAJOR, 7 MINOR",
+      "resolution": "all fixed (REVIEW_REPORT.md)"
+    },
+    {
+      "round": 2,
+      "scope": "audio buffer change and controls fixes",
+      "findings": "5 MAJOR, 7 MINOR",
+      "resolution": "all fixed (review2-report.md)"
+    },
+    {
+      "round": 3,
+      "scope": "second audio fixes, hover tooltips, startup status",
+      "findings": "2 MAJOR, 7 MINOR",
+      "resolution": "all fixed (CODEX_FINAL_FIXES.md)"
+    }
+  ],
+  "measuredRegressionAvoided": "Future-scheduled parameter automation (cancelAndHoldAtTime at now+lookahead) raised editor underruns to 74 per 20 s; shadowing the lookahead to 0 removed them; the design was withdrawn so the lookahead applies to onsets only.",
+  "gates": [
+    {
+      "gate": "unit-ui-interaction",
+      "exit": 0,
+      "seconds": 5,
+      "output": "artifacts/v1/r21-final-20261101/unit-ui-interaction.txt",
+      "sha256": "e8327183fd690a8a77011928d7405b67010484a5a123cd435495c4a2b88d4e45",
+      "counts": {
+        "tests": 175,
+        "pass": 175,
+        "fail": 0
+      }
+    },
+    {
+      "gate": "unit-audio-app",
+      "exit": 0,
+      "seconds": 37,
+      "output": "artifacts/v1/r21-final-20261101/unit-audio-app.txt",
+      "sha256": "77d00c2139db66f7d1e6c1f751077ecc0311c1353a5de08b5115cbd82716b36c",
+      "counts": {
+        "tests": 526,
+        "pass": 526,
+        "fail": 0
+      }
+    },
+    {
+      "gate": "typecheck",
+      "exit": 0,
+      "seconds": 7,
+      "output": "artifacts/v1/r21-final-20261101/typecheck.txt",
+      "sha256": "4191a7c1739dcbeac0c197c70d02c7fc263450a9ab15aaebfc73646a10cc1c1c"
+    },
+    {
+      "gate": "lint",
+      "exit": 0,
+      "seconds": 120,
+      "output": "artifacts/v1/r21-final-20261101/lint.txt",
+      "sha256": "65c4f5c6a13e2c0f02ce0676f8f259d3854b740193d4e060a1e7c2f1475afa1b"
+    },
+    {
+      "gate": "format-check",
+      "exit": 0,
+      "seconds": 8,
+      "output": "artifacts/v1/r21-final-20261101/format-check.txt",
+      "sha256": "8006a431efd9cec56102afd59de72d232246cb405fb7d0a494fa0699b2545a22"
+    },
+    {
+      "gate": "build-ui-preview",
+      "exit": 0,
+      "seconds": 2,
+      "output": "artifacts/v1/r21-final-20261101/build-ui-preview.txt",
+      "sha256": "e941015eae46c9e73fcdae0bbcad31cd5a083999dd48a4dd7f1f5ee4b80bf622"
+    },
+    {
+      "gate": "browser-ui-refined-v2",
+      "exit": 0,
+      "seconds": 222,
+      "output": "artifacts/v1/r21-final-20261101/browser-ui-refined-v2.txt",
+      "sha256": "796fc729986792f9d4c3a41e06beba3408bf3817ad356ac89724192c769a2db6",
+      "counts": {
+        "passed": 47,
+        "failed": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "gate": "browser-pointerlock-race",
+      "exit": 0,
+      "seconds": 12,
+      "output": "artifacts/v1/r21-final-20261101/browser-pointerlock-race.txt",
+      "sha256": "1d9041ba6cc29f8872151ea24dd5f7b2c584a2fe037a77abfd55347db7401dc8",
+      "counts": {
+        "passed": 2,
+        "failed": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "gate": "browser-linked-workflow-v2",
+      "exit": 0,
+      "seconds": 38,
+      "output": "artifacts/v1/r21-final-20261101/browser-linked-workflow-v2.txt",
+      "sha256": "de7058e0208d0eea339710c11e7b355a1b45ba5a4f78ac1136398dcaad4c8301",
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "gate": "browser-physics",
+      "exit": 0,
+      "seconds": 42,
+      "output": "artifacts/v1/r21-final-20261101/browser-physics.txt",
+      "sha256": "2b63d843286d4791e0cac442cb81bfcdd6eee254122771f2717df940d92fad43"
+    },
+    {
+      "gate": "browser-storage",
+      "exit": 0,
+      "seconds": 24,
+      "output": "artifacts/v1/r21-final-20261101/browser-storage.txt",
+      "sha256": "25f46020f20a47a1be836b43174937201ba8b5436e32438be5f283a86685552c"
+    },
+    {
+      "gate": "build-product-preview",
+      "exit": 0,
+      "seconds": 1,
+      "output": "artifacts/v1/r21-final-20261101/build-product-preview.txt",
+      "sha256": "073449c75e42c9d2b4eb58ffb9d76522e426722fd8a5df673f96124f1826c17e"
+    },
+    {
+      "gate": "browser-product-v3",
+      "exit": 0,
+      "seconds": 40,
+      "output": "artifacts/v1/r21-final-20261101/browser-product-v3.txt",
+      "sha256": "d30678d7346affa17c8d52f0f2424d68f207ea06c5a35df2834bb724f1499b3f"
+    },
+    {
+      "gate": "legacy-browser-ui",
+      "exit": 1,
+      "seconds": 252,
+      "output": "artifacts/v1/r21-final-20261101/legacy-browser-ui.txt",
+      "sha256": "922e04de624f22efdc1018a15e75ebc44d81902aabb6ae3be2e6cf1057bda545",
+      "counts": {
+        "passed": 5,
+        "failed": 8,
+        "flaky": 0
+      }
+    },
+    {
+      "gate": "legacy-browser-product",
+      "exit": 1,
+      "seconds": 372,
+      "output": "artifacts/v1/r21-final-20261101/legacy-browser-product.txt",
+      "sha256": "ee2c5bfdd3d687d898218422263e4b2da913c6a9b3ed0f121989030e7be1187b",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "audioRuns": {
+    "method": "node tests/browser/audio-smoothness/run.mjs --seconds 20 --scenario editor,fps-walk --variant tap=0 (headless Chrome 156, Chrome AudioContext.playbackStats, no AudioWorklet tap); quiet machine unless noted",
+    "baselineR20": {
+      "dir": "artifacts/v1/r21-audio-smoothness-20261101/baseline-r20-notap",
+      "results": [
+        {
+          "scenario": "editor",
+          "simulatedSecondsIn20": 14.5,
+          "outputUnderrunEvents": 19,
+          "outputUnderrunMs": 185,
+          "lateEvents": 2,
+          "droppedVoices": 0,
+          "listenerAutomationCalls": null,
+          "longTaskMs": 10295,
+          "pageErrors": 0
+        },
+        {
+          "scenario": "fps-walk",
+          "simulatedSecondsIn20": 16.38,
+          "outputUnderrunEvents": 14,
+          "outputUnderrunMs": 143,
+          "lateEvents": 3,
+          "droppedVoices": 0,
+          "listenerAutomationCalls": null,
+          "longTaskMs": 6731,
+          "pageErrors": 0
+        }
+      ]
+    },
+    "regressionFutureAutomation": {
+      "dir": "artifacts/v1/r21-audio-smoothness-20261101/after-r21-notap",
+      "results": [
+        {
+          "scenario": "editor",
+          "simulatedSecondsIn20": 15.7,
+          "outputUnderrunEvents": 74,
+          "outputUnderrunMs": 803,
+          "lateEvents": 2,
+          "droppedVoices": 0,
+          "listenerAutomationCalls": null,
+          "longTaskMs": 8607,
+          "pageErrors": 0
+        },
+        {
+          "scenario": "fps-walk",
+          "simulatedSecondsIn20": 13.65,
+          "outputUnderrunEvents": 38,
+          "outputUnderrunMs": 404,
+          "lateEvents": 2,
+          "droppedVoices": 0,
+          "listenerAutomationCalls": null,
+          "longTaskMs": 10782,
+          "pageErrors": 0
+        }
+      ]
+    },
+    "afterRegressionFix": [
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/after-fix-notap-1",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 14.63,
+            "outputUnderrunEvents": 0,
+            "outputUnderrunMs": 0,
+            "lateEvents": 2,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 40,
+            "longTaskMs": 10623,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 14.65,
+            "outputUnderrunEvents": 3,
+            "outputUnderrunMs": 25,
+            "lateEvents": 1,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 14085,
+            "longTaskMs": 10284,
+            "pageErrors": 0
+          }
+        ]
+      },
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/after-fix-notap-2",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 15.02,
+            "outputUnderrunEvents": 0,
+            "outputUnderrunMs": 0,
+            "lateEvents": 2,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 23,
+            "longTaskMs": 9627,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 14.77,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 7,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 14244,
+            "longTaskMs": 10537,
+            "pageErrors": 0
+          }
+        ]
+      }
+    ],
+    "afterReview2": [
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/after-review2-notap-1",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 16.92,
+            "outputUnderrunEvents": 0,
+            "outputUnderrunMs": 0,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 42,
+            "longTaskMs": 8000,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 17.55,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 6,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 16250,
+            "longTaskMs": 10336,
+            "pageErrors": 0
+          }
+        ]
+      },
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/after-review2-notap-2",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 18.38,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 5,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 36,
+            "longTaskMs": 9296,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 18.75,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 6,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 9049,
+            "longTaskMs": 5579,
+            "pageErrors": 0
+          }
+        ]
+      }
+    ],
+    "final": [
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/final-notap-1",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 19.28,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 12,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 15,
+            "longTaskMs": 4816,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 19.17,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 10,
+            "lateEvents": 1,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 9103,
+            "longTaskMs": 3439,
+            "pageErrors": 0
+          }
+        ]
+      },
+      {
+        "dir": "artifacts/v1/r21-audio-smoothness-20261101/final-notap-2",
+        "results": [
+          {
+            "scenario": "editor",
+            "simulatedSecondsIn20": 18.68,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 12,
+            "lateEvents": 1,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 42,
+            "longTaskMs": 6420,
+            "pageErrors": 0
+          },
+          {
+            "scenario": "fps-walk",
+            "simulatedSecondsIn20": 19.28,
+            "outputUnderrunEvents": 1,
+            "outputUnderrunMs": 10,
+            "lateEvents": 0,
+            "droppedVoices": 0,
+            "listenerAutomationCalls": 7152,
+            "longTaskMs": 3755,
+            "pageErrors": 0
+          }
+        ]
+      }
+    ],
+    "controls": {
+      "singleOscillatorPage": "0 to 1 underruns in 20 s (scratchpad sink-control experiment)",
+      "r21WithLookaheadShadowedToZero": "0 and 6 underruns in 15 s before the regression fix",
+      "r20WithPlaybackLatency": "3 and 3 underruns in 15 s"
+    }
+  },
+  "finalCheck": {
+    "command": "npm run check",
+    "receipt": "artifacts/v1/r21-final-20261101/npm-run-check.txt",
+    "note": "run after the Wiki records; see the receipt and gates-final-check.tsv"
+  },
+  "humanPending": [
+    "B5 new mouse controls and placement with a physical mouse and real Pointer Lock",
+    "B6 dropouts and Output underruns on the user's Brave browser and device, per buffer preset",
+    "B1 tooltips by hover and keyboard; touch and screen readers unverified",
+    "B7 to B14 not yet tested by the user"
+  ],
+  "limitations": [
+    "All evidence is headless Chrome with CDP input and code review; not a human pass",
+    "Physics and interaction still run on the main thread; headless runs advance about 0.8 to 0.95x real time",
+    "Legacy npm run test:browser:ui (8 fail) and test:browser:product (4 fail) match the baseline; their failure archives are preserved in the session scratchpad"
+  ]
+}

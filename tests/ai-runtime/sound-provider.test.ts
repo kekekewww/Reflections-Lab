@@ -70,7 +70,7 @@ function profile() {
       {
         ruleId: "rule.impact",
         enabled: true,
-        trigger: { kind: "discrete", type: "OnImpact" },
+        trigger: { kind: "discrete", type: "OnImpact", zoneId: null },
         conditions: [],
         generator: { kind: "oscillator", waveform: "sine", frequencyHz: 440 },
         emitter: { attachment: "contact", aggregation: "representative" },
@@ -179,6 +179,7 @@ test("Meta Sound accepts only operations and fills immutable envelope from the h
       assert.ok(new TextEncoder().encode(String(init?.body)).length < 32000);
       assert.deepEqual(Object.keys(sent.tools[0].function.parameters.properties), ["operations"]);
       assert.equal(String(init?.body).includes(fixtureKey), false);
+      assert.match(sent.messages[0].content, /先RemoveBinding.*再AssignBinding/);
     }),
   });
   const plan = await provider.planSound("撞擊時發出電子音", current, {
@@ -266,7 +267,7 @@ test("provider grammar omits uniqueItems while original Sound validation rejects
 
   const duplicate = args();
   const rule = duplicate.operations[0]!.profile!.rules[0]! as unknown as Schema;
-  rule.trigger = { kind: "discrete", type: "OnThrow" };
+  rule.trigger = { kind: "discrete", type: "OnThrow", zoneId: null };
   rule.emitter = { attachment: "object", offsetMetres: [0, 0, 0] };
   rule.lifecycle = {
     mode: "latched",

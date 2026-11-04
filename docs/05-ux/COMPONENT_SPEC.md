@@ -1,6 +1,12 @@
 # 介面元件與資料規格
 
-查核日期：2026-10-26。狀態：**設計完成／實作與元件測試 NOT RUN**。以下為 UI 讀模型與互動契約草案；Domain schema、backend contract、DSP 規格才是正式數值／能力定義的來源。元件不得自行捏造聲學數據。
+## 2026-11-03 頂列監測需求與取代範圍
+
+依[使用者原文](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/d6ca447d6ad71a49a3e081110a5702b6975ecd3a)（SHA-256：`ef5ec791276d668aec3f29877cc77d532d5452e2ebcf614af1d8f9f3efc4b5f2`）及 [Task0033](../../knowledge/tasks/RLAB-TASK-0033.json)，頂列三步 `Build scene / Interactive experiment / Inspect & compare` 導覽改為可切換的音軌電平、頻譜、波形與處理負載監測。2026-10-26 原 ProjectBar 的「Workspace／切 Workspace」頂列入口規格由本節取代；內部 workspace 配置、相容狀態與既有資料仍保留，見 [工作區架構](WORKSPACE_ARCHITECTURE.md)。
+
+這是需求／元件契約更新，並非已實作或 browser PASS。四模式切換只改本機檢視；不發出 Transport／Record 命令、不改場景或錄製、不重啟聲源。原音訊路由、數值容差、預算、正式性能負載與所有其他 gate 保留。
+
+歷史規格截點：2026-10-26；頂列入口依上方 2026-11-03 需求取代，其餘契約保留。當時狀態：**設計完成／實作與元件測試 NOT RUN**。以下為 UI 讀模型與互動契約草案；Domain schema、backend contract、DSP 規格才是正式數值／能力定義的來源。元件不得自行捏造聲學數據。
 
 ## 共通契約
 
@@ -14,7 +20,8 @@
 
 | 元件／優先級 | 輸入及主要狀態 | 操作與輸出 | 鍵盤／可及性與失敗 |
 | --- | --- | --- | --- |
-| **ProjectBar** P0 | project、document dirty、save status、Workspace | 切 Workspace、儲存、匯出；不 Reset | 明確標籤／焦點順序；save failure 可 Retry |
+| **ProjectBar** P0 | project、document dirty、save status | 儲存、匯出；頂列不再提供三步 Workspace 導覽 | 明確標籤／焦點順序；save failure 可 Retry |
+| **TopMonitor** P1 | 四種檢視模式、真音訊讀值／具來源的處理負載、資料狀態 | 只切音軌電平／頻譜／波形／處理負載；不發實驗命令 | 名稱、選取與焦點可辨；圖表具可讀摘要；未量資料明示原因 |
 | **SimulationTransport** P0 | Ready/Running/Paused/Error、runId/tick、pause cause | Run/Pause/Resume/Reset；Capture/record 分開 | 不能僅靠三角圖示；Reset 指明目標 revision；錯誤停用動作有原因 |
 | **SceneExplorer** P0 | object tree、selection、filter、lock／visibility | 選取、命名、複製、刪除、reparent（有 Domain 支援才顯） | 方向鍵 tree pattern、F2／明示命名、刪除可 Undo；hidden 不等 disabled／muted |
 | **ObjectLibrary** P0 | primitive/preset、source/license、search/filter | 選後產生 draft；Scene 或 FPS ghost | list keyboard selection、Enter 選取；資產 loading/error 不造半成品 |
@@ -35,6 +42,25 @@
 | **Status/EvidenceBadge** P1 | provenance/validation/capability/freshness | 展開來源、模型假設與限制 | badge 有文字；沒有 confidence 不填百分比 |
 
 SceneExplorer 的 visibility 指渲染，physics enabled、acoustic participating、emitter muted 必須為各自欄位；隱藏牆不能默默讓聲音穿過。多選 Inspector 顯 mixed values，不用第一個物件的值冒充全體。釘選 Inspector 有 pin icon 和資料版本，避免使用者以為看到新選取。
+
+## 頂列監測 TopMonitor（2026-11-03 需求）
+
+TopMonitor 使用原頂列空間，四種模式可切換並顯示目前模式；它是唯讀監測元件。MonitorStrip 的啟用聆聽、Master Mute、monitor gain、Raw／Simulated 仍是獨立音訊控制，不能被監測分頁取代或因圖表切換而改值。資料屬觀測讀模型，不寫入 Scene、trace 或結果，也不以每幀 React state 更新驅動 physics／audio clock。
+
+| 模式 | 真實資料與必要說明 | 缺值與禁止的替代 |
+| --- | --- | --- |
+| 音軌電平 | 以穩定 source／track ID 分列；顯示實際提供的 peak／RMS、量測 tap／聲道路徑、單位與觀測窗；數位電平使用 dBFS 等明確 reference | 不將靜音、真正零訊號、未就緒、不可取得合併；無資料不偽造 0 dBFS，不推導 dB SPL |
+| 頻譜 | 實際音訊頻域資料；頻率 Hz、取樣率、FFT／窗與幅度 reference 可查，顯示哪個音軌／混音 tap | 無資料不畫裝飾頻譜；不把 normalized RIR 或 solver energy 冒作現行音訊頻譜 |
+| 波形 | 實際音訊時間取樣；標時間窗、數位振幅及音軌／混音 tap，有界取樣／繪圖 | 無資料不產生示意正弦波；不暗中 normalize／clip 來掩蓋實際取樣差異，不冒數位輸出驗證 |
+| 處理負載 | 各量測以來源、單位、涵蓋範圍與時間窗命名；例如 solver 的 Worker 耗時、control 端更新耗時、畫面更新間隔須分開 | Worker solver 時間不能總稱 main-thread time；control 耗時／frame 間隔不冒整個程序 CPU 或 native DSP CPU；未量測或不支援顯示 unavailable，不填 0 或虛構 CPU 百分比 |
+
+音訊未啟用、無有效訊號、觀測被停用、來源刪除、資料過期與錯誤需有可讀狀態，不能讓空圖代替原因。資料來源、FFT／觀測窗等技術細節可收在可展開資訊；影響當前讀值的單位、來源與不可取得理由仍可查。不得為了取得圖表而自動啟用聆聽或播放來源。
+
+分析器只在需要音訊資料的可見模式延遲建立／啟用，以有限觀測與緩衝取樣；非作用模式不持續讀取。允許明確有界的重用，切換與 dispose 停止自有訂閱並釋放自有觀測資源，不能斷開正式音訊路徑或重建 AudioContext。處理負載檢視不藉此建立不必要的音訊分析器；新增觀測成本另列量測，未取得成本證據前不宣稱改善性能或符合預算。
+
+模式控制採清楚的標籤、選取狀態與可見焦點；沿用既有鍵盤／IME／Esc 仲裁，不攔截場景操作快捷鍵。圖表提供文字／數字摘要，不每幀 `aria-live` 廣播。版面在正常 100% 顯示比例與既有窄畫面／鍵盤／reduced-motion 要求下驗證，不能以省空間為由遮住 Mute、Transport 或焦點。
+
+各 criterion 的現況以 [Task0033](../../knowledge/tasks/RLAB-TASK-0033.json) 的來源綁定 evidence 為準，本頁不複製驗收旗標。驗證須涵蓋真 Playwright 四模式／雙語／鍵盤焦點、資料狀態、錄製與聲源連續性及清理，並以固定訊號核對數位讀值；Computer Use 的 URL policy 停止另記方法限制，不阻止可執行的 Playwright 驗證。靜態文件、component unit 或圖表看似合理不能代替完整產品、數位音訊與正式性能驗收。
 
 ## 三類 Inspector 範例
 
@@ -100,7 +126,7 @@ IR x 軸以相對 source emission 的時間；實際到達、DSP block 與設備
 
 Level match 為可選監聽輔助，預設關閉；顯 gain offset 與方法，不能改 raw metrics／scene source gain。多源／impact 比較綁定同一 captured event stream，避免 Raw／Simulated 聽到不同的碰撞。Raw 不是 unmuted，也不是 free-field 模型；如日後提供「保留 HRTF 的 direct-only」應另命名與路由，不改 Raw 定義。
 
-Monitor 預設 muted；使用者點啟用後起始 gain 建議 -18 dB 相對 unity（產品預設，並非已校準的安全聲壓）。Master Mute 可在所有 Workspace 透過鍵盤抵達，不改 source/physics/record trace。clip meter 僅表示 digital clipping；不能推估耳機 dB SPL，若有 limiter 也不能宣稱保證聽力安全。任意素材可能有過大 transient，因此保持清楚音量控制、明示 enable、避免模式切換增益突升，是介面要求；沒有做暴露量測就顯「實際 SPL／暴露未知」。本次無播放測試。
+Monitor 預設 muted；使用者點啟用後起始 monitor gain 為 0 dB 相對 unity，控制以整數 dB 呈現，範圍 -40 至 +12 dB；主混音 headroom 為 -6 dB，之後仍有 -3 dBFS limiter，最後是 -1 dBFS 以下完全線性、上限低於全刻度的輸出安全上限（產品預設，並非已校準的安全聲壓）。2026-10-30 依 R18 使用者回報「預設聲音太小」調整：原建議 -18 dB 與 -14 dB headroom 疊加後，預設場景數位輸出峰值約 -51 dBFS；調整後約 -29 dBFS。Master Mute 可在所有 Workspace 透過鍵盤抵達，不改 source/physics/record trace。clip meter 僅表示 digital clipping；不能推估耳機 dB SPL，若有 limiter 也不能宣稱保證聽力安全。任意素材可能有過大 transient，因此保持清楚音量控制、明示 enable、避免模式切換增益突升，是介面要求；沒有做暴露量測就顯「實際 SPL／暴露未知」。本次無播放測試。
 
 ## 可及性與高密度互動
 
@@ -112,6 +138,9 @@ WCAG 2.2 為設計目標，非本次已驗證的符合性。AA 文字／非文�
 
 - object/path/event/IR 選取在 3D、表格、Inspector 一致；刪除／失效引用不指到另一物件。
 - unavailable 值以原因代替 0；錯誤、過期、未計算、未支援可區分。
+- 頂列三步導覽已由四模式監測取代；監測切換不發實驗命令、不重啟來源或遺失錄製／選取／草稿；原內部 workspace 相容行為保留。
+- 真音訊電平／頻譜／波形有固定訊號與來源／單位／觀測窗證據；處理負載的 Worker／control／render 範圍明確，未量 CPU／DSP 不顯示假百分比或 0。
+- 監測 lazy analyser、有界取樣與切換／dispose 清理經驗證；Playwright／Computer Use／數位音訊／正式性能結果分列，不以 unit 或靜態審查代替。
 - 相同音源切 Raw/Simulated 不改 tick/seed/source playhead；音量 match 不改結果。
 - listener 跟隨與 observer 相機各有明示狀態；HRTF 不支援不顯啟用。
 - 材質頻帶、衰減定義與 solver mapping 可追溯；debug 假候選不混進音訊。

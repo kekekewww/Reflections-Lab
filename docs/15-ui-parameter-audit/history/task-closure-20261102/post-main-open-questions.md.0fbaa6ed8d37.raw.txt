@@ -1,0 +1,69 @@
+---
+id: RLAB-KB-0020
+title: 待查條件與實作限制
+type: blocker
+status: ACCEPTED
+created_at: 2026-10-25T19:46:51.310610+00:00
+updated_at: 2026-11-02T15:03:54.112Z
+sources:
+  - RLAB-SRC-0032
+  - RLAB-SRC-0011
+  - RLAB-SRC-0014
+  - SB-SRC-0006
+  - SB-SRC-0008
+  - SB-SRC-0001
+  - V1-SRC-0009
+  - CORE-NATIVE-GATE-CLASSIFICATION-20261102-V1
+  - CORE-NATIVE-FINAL-URL-POLICY-20261102-V1
+  - CORE-NATIVE-GATE-CLASSIFICATION-20261102-V2
+  - UI-FINAL-PARAMETER-COVERAGE-20261102-V1
+  - CORE-FINAL-CHECK-FAD14CC-20261102-V1
+  - CORE-MAIN-FIRST-FAST-FORWARD-20261102-V1
+  - CORE-NATIVE-GATE-CLASSIFICATION-20261102-V3
+related_tasks:
+  - RLAB-TASK-0007
+  - RLAB-TASK-0023
+  - RLAB-TASK-0028
+related_decisions: []
+supersedes: []
+tags:
+  - P0
+  - blocker
+  - NOT-RUN
+---
+
+
+
+
+
+
+
+
+# 限制與解除方式
+
+2026-11-02目前：501核心、217有限UI與新五WAV已驗，[新完整check](../../../docs/15-ui-parameter-audit/evidence/FINAL_FULL_CHECK_FAD14CC_20261102.json)exit0與[本機main](../../../docs/15-ui-parameter-audit/evidence/MAIN_FIRST_FAST_FORWARD_20261102.json)正常整合`fe663ca9f384d247bcd89b331936f6be202c761f`已驗；Task24..31有限DONE，Task23只因字面nativeAC04URLpolicy列BLOCKED。完整V1仍未完成。原基本功能已確認；最新native方法gate以下第四輪為準，前三timeout只是歷史，不能聲稱所有nativeinput皆0。當前能力／條件以[交接](../../../docs/14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md)及[最後中央收據](../../../docs/14-core-pipeline/stages/11-ui-parameters/FINAL_PARAMETER_COVERAGE_5010685.json)核對。
+
+## 歷史限制摘要（原日期與數量保留）
+
+正式限制以[KNOWN_LIMITATIONS](../../../docs/KNOWN_LIMITATIONS.md)為準。第一版已有正式runtime與分項證據；以下分開內部待驗與外部門檻，不能再把所有工程工作寫成尚未實作。
+
+| 類型 | 現況與解除條件 |
+| --- | --- |
+| 產品驗收 | 完整產品Chrome鏈兩次安全pause未完成，仍需測試觀測成本定位、三次乾淨啟動、跨browser、native輸入／zoom、10分鐘profile與乾淨安裝／完整check。這些仍可自行推進。 |
+| Meta Live | 真Sound兩類proposal／Host Apply／本機Run已獨立驗收；Scene Live／Meta規劃Run／UI Live未通過。US$1總授權內3請求已用完，不再呼叫。實際billing與餘額未知。 |
+| 音訊／科學 | 99 Node／25 Native有限DSP證據不代替實際耳機聽測、underrun、裝置latency、完整ISO大氣reference／真房間／獨立solver。native nodes不能冒稱AudioWorklet p99通過。 |
+| 競賽／權利 | 本人資格、登入後條款／表單、根LICENSE與發布決策仍由使用者處理；開發驗收不等於合規或提交。 |
+| 資產 | Synthetic builtin有實際PCM／hash，外部匯入需逐檔rights receipt與pin；不能把code license套到資料集。 |
+| 記憶／歷史 | 無Session Hook，claim只是同checkout合作lease；必須CLI／Git reconcile。未封存完整copy／Git blob的中間版本不能由hash重建；首次Meta400原始body亦未保存。 |
+
+Task只在實際等待外部條件時BLOCKED；尚有可完成工程則繼續。最新[進度與證據](../../../docs/11-v1/SESSION_PROGRESS_20261027.md)，不以模組PASS宣告第一版完成。
+
+
+## 歷史前三次原生方法分類：與產品DOM／數位音檔分開
+
+[方法分類](../../../docs/15-ui-parameter-audit/NATIVE_GATE_CLASSIFICATION_20261102.json)按原Task0023 AC04字面保守記verified=false/PARTIAL_EXTERNAL_NATIVE_ACCESS：native3次timeout/0input，真DOM操作/既有WAV是產品與數位產物PASS，不能當nativePASS或默改原criterion。其餘UI/WAV/main工作繼續；全部不受影響工作完成後若仍無nativeaccess，0023只因AC04列BLOCKED外部gate，0024..0031各自按直接條件可結案。Claude後驗證/新功能真人屬nextstage，R21 retain不是程式未實作。未取得新useramendment，不自行接受DOM替代字面native要求。
+
+
+## 最新原生工具方法阻擋（2026-11-02第四輪）
+
+前三次appapprovaltimeout／0nativeinput保留歷史；[第四輪](../../../docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json)在使用者明確允許建立獨立視窗後，真Ctrl+N成功，未讀原privatepage。隨後工具因Windows無法可靠判定browserURL而停止整turnComputerUse，未完成產品navigation／capture／render／export，也未繞過或續call。不能說第四次timeout或總零nativeinput；Task23AC04原文字仍verified=false／PARTIAL_EXTERNAL_NATIVE_URL_POLICY，真DOM與Stage12數位檔案PASS分開。所有不受影響工程／Main已完成，Task23僅此外部方法gate列BLOCKED；日後真正native成功或使用者明確修訂方法才改判，見[新版分類](../../../docs/15-ui-parameter-audit/NATIVE_GATE_CLASSIFICATION_20261102.json)。

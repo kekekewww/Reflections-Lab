@@ -1,0 +1,202 @@
+---
+id: RLAB-KB-CORE-PIPELINE-20261102
+title: 六項核心實作與整合驗收
+type: feature
+status: ACCEPTED
+created_at: 2026-11-02T05:04:33.815Z
+updated_at: 2026-11-02T14:28:33.766Z
+sources:
+  - CORE-REQ-20261102
+  - CORE-CONTRACT-20261102-V1
+  - CORE-STAGE-03-20261102-V1
+  - CORE-STAGE-05-20261102-V1
+  - CORE-STAGE-01-20261102-V1
+  - CORE-STAGE-02-20261102-V1
+  - CORE-STAGE-04-20261102-V1
+  - CORE-STAGE-06-20261102-V1
+  - CORE-MOTION-GENERATION-20261102-V1
+  - CORE-RENDER-CONTRACT-20261102-V2
+  - CORE-STAGE-07-20261102-V1
+  - CORE-STAGE-07-20261102-V2
+  - CORE-WORKSPACE-STATE-20261102-V1
+  - CORE-STAGE-08-20261102-V1
+  - CORE-STAGES-20261102-V1
+  - CORE-STATUS-20261102-V1
+  - CORE-NEXT-20261102-V1
+  - CORE-LIMITS-20261102-V1
+  - CORE-STAGE-09-20261102-V1
+  - CORE-INTEGRATION-PROGRESS-20261102-V1
+  - CORE-META-UI-WORKFLOW-20261102-V1
+  - CORE-STAGE-10-20261102-V1
+  - CORE-INTEGRATION-PROGRESS-20261102-V2
+  - UI-TAIL-COMBINED-501-READ-20261102-V1
+  - CORE-STAGE12-WAV-20261102-V1
+  - CORE-STAGE12-REPORT-20261102-V1
+  - CORE-R21-FINAL-READ-20261102-V1
+  - UI-FINAL-FINDINGS-20261102-V1
+  - CORE-STATUS-20261102-V2
+  - CORE-NEXT-20261102-V2
+  - CORE-STAGES-20261102-V2
+  - CORE-RENDER-FINITE-CLOSURE-20261102-V1
+  - UI-FINAL-PARAMETER-COVERAGE-20261102-V1
+  - CORE-NATIVE-FINAL-URL-POLICY-20261102-V1
+  - CORE-NATIVE-GATE-CLASSIFICATION-20261102-V2
+related_tasks:
+  - RLAB-TASK-0023
+  - RLAB-TASK-0024
+  - RLAB-TASK-0025
+  - RLAB-TASK-0026
+  - RLAB-TASK-0027
+related_decisions:
+  - ADR-011
+  - ADR-013
+  - ADR-014
+  - ADR-015
+supersedes: []
+tags:
+  - P0
+  - core-pipeline
+  - implementation
+---
+
+# 核心管線目前狀態與交付邊界
+
+501產品六核心、Zone／曲面動態反射與Project環境已有有限實作；Task24..27有限DONE。最新217/217family收據join／0pending、68/71公開Help內容PASS且3條件明示未觀測，新Combined180ticks／5WAV和Stage12RIFF5/5PASS、Tailguard1PASS。版本化source與原FAIL不重標全501重跑，完整方法見[參數審核](../ui-ux/product-parameter-audit-20261102.md)／[Now](../now.md)／[Claude交接](../../../docs/14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md)。29..31按原criteria收尾，不新增Main／Claude已執行前置；最後English／完整check／本機Main仍待。前三次native timeout後第四輪只建獨立視窗成功，產品操作遭WindowsURLpolicy停止，Task23字面AC04false；全V1／聽測／600秒／Meta live仍分開。
+
+## 歷史進度與原始來源截點
+
+下列為當時進度，含待整合／Zone不支援／未重驗等語只描述原source；現在能力與固定新收據見頁首，不改原FAIL與pins。
+
+### 原始核心分工與階段
+
+本輪實作已由使用者授權，精確範圍與完成條件見[核心契約](../../../docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md)，分工與證據提交見[Stages](../../../docs/14-core-pipeline/STAGES.md)，需求摘要見[授權來源](../../../docs/14-core-pipeline/REQUEST_20261102.json)。
+
+Task0023為有限核心整合與基本驗證；0024共用能力/Bounce、0025 Meta UI、0026 Motion、0027短take renderer。PERF001/002/003/014保留原較廣條件並由本輪引用，不放寬依賴或把14項優化全開。所有新criteria在取得實際來源與測試前皆未驗證。
+
+基本功能已經使用者確認，不重複要求前置重測；Claude獨立後驗證、新增功能真人聽測、原600秒性能與其他V1門檻分列。各stage交付時固定source/commit/bundle/命令/退出碼/限制，再由唯一memory writer序列ingest/checkpoint。
+
+### 階段 03 component 截點
+
+共用能力與真 PhysicsWorld 靜態支撐 OnBounce 已有 component 程式及基本回歸。機讀收據記17/17新增案、255/255較廣回歸與typecheck/scoped lint通過；已讀原TAP結尾確認255 pass/0 fail。這些是該branch/source的Node／Rapier證據，UI接線、整合後新bytes及聽感未由此證明。Zone仍unsupported，Bounce為Tuned分類；root須保留Motion控制干預invalidations。
+
+來源：[stage報告](../../../docs/14-core-pipeline/stages/03-capabilities.md)與[機讀收據](../../../docs/14-core-pipeline/stages/03-capabilities-verification.json)，該報告最後變更commit `9efd9ceeede5cc21dbb441ed14445c7bccd124d4`。本輪task尚未因component證據預填完整驗收。
+
+### 階段 05 component 截點
+
+Motion Registry、有限controller與AI transaction hooks已有component程式。已讀原TAP確認Motion12/12 pass，機讀收據列AI bridge29/29、typecheck/scoped lint通過；重疊67案不另加總。Dynamic控制為Tuned、Kinematic旋轉只有終點overlap；root真runtime原子發布、UI／Project／錄製接線與browser仍待整合驗證，不把隔離callback當成完成產品。
+
+來源：[stage報告](../../../docs/14-core-pipeline/stages/05-motion.md)與[機讀收據](../../../docs/14-core-pipeline/stages/05-motion-verification.json)，該報告最後變更commit `dd4ef2232be111ffadaa0f0b4853150000a22e46`。本輪task尚未因component證據預填完整驗收。
+
+### 階段 01 component 截點
+
+有界錄製evaluation、module Worker與B重算已交component。已讀原JSONL最終summary確認153/153 pass、0 fail；queue預設8 frames/32MiB、工作逾時10秒，保留取消/stale/背壓與source phase語意。這不是總heap或同步JS可搶占保證；真browser Worker transport、root短take/Motion/renderer整合及性能收益仍須獨立證據。原恢復時漏tick與其他失敗保留在stage失敗收據，不覆寫原600秒FAIL。
+
+來源：[stage報告](../../../docs/14-core-pipeline/stages/01-recording.md)與[原始收據](../../../docs/14-core-pipeline/stages/01-recording-test-results.jsonl)，該報告最後變更commit `2582bf5e484019c86e2d830e4b7f8654530c95f2`。component基本結果不預填整個產品整合驗收。
+
+### 階段 02 component 截點
+
+有界可停用diagnostics與scalar/shape/delay/direction分工已交component。已讀原TAP確認較廣226/226、最終核心19/19（不重複相加），以及真Chrome OAC4案PCM收據。48kHz字面impulse中master/simulatedMix firstSample4080、dry480，支持該graph一次delay/gain/headroom；不是solver或裝置校準。首次dry能量oracle失敗及依上混方程修正另存；root delivery/UI接線、無probe對照與原性能gate未由此解除。
+
+來源：[stage報告](../../../docs/14-core-pipeline/stages/02-audio.md)與[原始收據](../../../docs/14-core-pipeline/stages/02-audio-oac.json)，該報告最後變更commit `506c19934abb2c2039162011c9a1b8514031db99`。component基本結果不預填整個產品整合驗收。
+
+### 階段 04 component 截點
+
+持久budget ledger、request identity/取消、AgentSession與可信基準/候選/分析比較流程已交component。已讀原TAP確認最終183/183與provider27/27 pass、0 fail；工作流程8案含真Rapier/Behavior/聲學/Host閉環。初85/86失敗、Windows fixture EPERM及修補保留版本。所有model transport仍fixture、費用預設0、沒有新增Meta live；root grounding/cancel/Motion hooks與browser UI接線需最終整合證據。
+
+來源：[stage報告](../../../docs/14-core-pipeline/stages/04-meta.md)與[原始收據](../../../docs/14-core-pipeline/stages/04-meta-final-validation.txt)，該報告最後變更commit `42abb6fe6e0a71dce9dba1d20ccf2c331035c662`。component基本結果不預填整個產品整合驗收。
+
+### 階段 06 component 截點
+
+已讀Node原TAP確認13/13、browser原收據確認真Chrome OAC7/7 exit0，來源核心55d40fd，後續報告提交另保留。沿同AudioEngine重建真RecordingArtifact，預算為發聲30秒/單context45秒/16outputs、工作估算256MiB/輸出192MiB；估算不當native峰值量測。原non-loop/continuous fixture拒絕FAIL保留；最終pre-master stems和mix誤差5.122274160385132e-9、direct impulse2654/2654、dry2080/2080只支持該fixture與source版本。Root真短take/UI下載/computer-use及最終bundle仍另收證；沒有把byte產出當真人聽測或原600秒性能成功。
+
+來源：[原始文件或程式](../../../docs/14-core-pipeline/stages/06-render.md)；最後變更commit `2bbc1b78dbc0a25e1c78f5b53faa404cff39b3cb`。
+
+### Motion 混合世代修補截點
+
+獨立審查重現reset後generation2被preview錯設1的缺陷；修補使用PhysicsWorld實際身分投影及可信prepareRestore，不從scene revision猜世代。已讀真Rapier原TAP18/18與AI bridge報告37/37，原重疊fixture FAIL與修正另存；root仍需接相同World身分政策下的原子runtime callback並重驗UI，不把隔離storage fixture擴大成產品整合通過。
+
+來源：[原始文件或程式](../../../docs/14-core-pipeline/stages/05-motion-generation-fix.md)；最後變更commit `49bad90d1da9ee78ca9cdb2b02e413db97dad473`。
+
+### Render 契約來源版本更新
+
+RenderJob原type-only seam已接有限native-offline-recorded backend與runtime validator。本來源固定本輪src/audio/render-contract.ts實際bytes；以supersedes保留AR-WIKI-ca2bde0e-2ffea48d的2026-10-29 type-only原hash與Git歷史，該舊研究仍是其當時截點，不覆寫成新code。此來源更新處理current hash失配，沒有改驗收、reference或safe()，也不聲稱未實作capabilities已可用。
+
+來源：[原始文件或程式](../../../src/audio/render-contract.ts)；最後變更commit `39606d9fe8808b8f460065b0260cca11b7b3f243`。
+
+### UI 初版來源觀察
+
+已讀初版報告與原始收據，19/19、SSR5/5、headless browser2/2保留原scope。初版原文SHA0678c790...已實際觀察但未Git提交；目前byte前綴與LF/CRLF候選不能精確匹配，沒有捏造preimage或commit。完整舊canonical及當時未提交產品輸入不能只靠hash重建，觀察JSON明示缺口，原測試stdout/process/失敗收據保留。
+
+來源：[固定來源](../../../docs/14-core-pipeline/UI_PRIOR_SOURCE_OBSERVATION.json)。
+
+### UI 原子發布修補
+
+現在報告以實際新hash固定；MotionPanel改讀LabViewModel.motion同次發布快照，不獨立訂閱live workspace，legacy缺欄位才fallback。新增原子snapshot/legacy回歸9/9（7SSR+2ports），root接runtime發布與critical revision。V1是前版hash觀察、不是可重建原文；舊2/2browser不當新atomic source重測。root最終產品輸出與Claude獨立驗證另收證。
+
+來源：[固定來源](../../../docs/14-core-pipeline/stages/07-integration-ui.md)。
+
+### 工作樹與封存範圍
+
+新七個core工作樹位於專案.worktrees，cleanup範圍與原branch SHA保留在精簡JSON，private archives不入Git。C architecture/performance及D public舊樹已封存後移除；C primary與舊R21因active attachment/broker保留，backup已逐regular-file核hash。R21搬刪遭auto-review拒絕，沒有繞過或殺process；使用者表示關閉Claude後再處理。四個fixture symlink只存精確metadata、未追外部target。這是DONE_SCOPED加兩個active-process保留，不是舊樹全刪。
+
+來源：[固定來源](../../../docs/14-core-pipeline/WORKSPACE_STATE_20261102.json)。
+
+### 作者Motion實際進入ExperimentToolHost錄製
+
+實驗clone world現在透過可信registry/pin/generation projection安裝真MotionWorkspace，最多8同時動作且每物件一個，tick0不增減，replay沿原trace而不重執行作者動作。Stage報告列最終8/8與先前38/38不同scope；root凍結來源完整檢查另收證。沒有把本機pipeline結果擴大成browser/裝置/Meta live或全V1。
+
+來源：[正式文件](../../../docs/14-core-pipeline/stages/08-motion-experiment.md)。
+
+### 六core分檔與07/08整合證據規則
+
+Stages已使用實際component報告檔名，07/08是跨核心整合補充而非新增產品核心；報告、source/commit、原失敗、基本/Claude/真人與原性能gates分開。
+
+來源：[正式文件](../../../docs/14-core-pipeline/STAGES.md)。
+
+### 六core合併後正式實作現況前言
+
+正式status前言延續使用者基本功能已確認，更新六項真實component與有限能力。Root品質/CUA輸出/main仍在完成，不冒充全V1；舊章節保留其歷史時間截點。
+
+來源：[正式文件](../../../docs/IMPLEMENTATION_STATUS.md)。
+
+### 六core合併後交付與Claude後驗證順序
+
+下一步改為完成source-bound品質、產品匯出、授權本地main、記憶/英文及Claude獨立重驗；不重開原lane/能力/renderer提案，不把14候選一概啟動。
+
+來源：[正式文件](../../../docs/NEXT_ENGINEERING_TASK.md)。
+
+### 六core目前能力上限與原未解門檻
+
+新限制前言列有界queue與非總heap、control-thread診斷、Tuned Bounce/Motion、30s/45s/16outputs renderer/未支援功能、fixture Meta與預算0。基本功能真人確認不外推science/device/perf；初次WikiFAIL與後續來源/完整checkout修復、UI前版不可重建及兩個active舊樹保留均明示。
+
+來源：[正式文件](../../../docs/KNOWN_LIMITATIONS.md)。
+
+### 正式產品BrowserDOM匯出與獨立WAV檢查
+
+42d25cb/index-27NgeX35.js經真UI capture3秒/180ticks、render、逐一下載5WAV和manifest。獨立RIFF parser5/5，stereo48k/240000frames/5秒、finite/nonzero/0越界、manifest及原下載/copyhash相符；2stems sum誤差1.4901161193847656e-8<2e-6。Native sky.get_window兩次appapproval timeout後停止，沒有native輸入成功；BrowserDOM與數位檔案PASS不當native、人耳、SPL或性能成功。
+
+來源：[正式收據或報告](../../../docs/14-core-pipeline/stages/09-integration-and-export.md)。
+
+### 主整合回歸修補與產品輸出目前進度
+
+Root回報首check缺spike依賴後離線補齊；第二輪23FAIL（Hostrebind過早publish19、舊oracle新增欄位4）在42d25cb修，相關46+8回歸回報PASS。第三完整check與MetaUI空table修補/重驗尚在進行；最終source/main與Claude未完成。這些品質進度是root回報，未假造最終raw結果；09獨立WAV有自己的fixed receipt。
+
+來源：[正式收據或報告](../../../docs/14-core-pipeline/INTEGRATION_PROGRESS_20261102.json)。
+
+### 真正production Meta離線UI閉環與拒絕案例
+
+已讀原browser exit0/1passed21.2s、unit22/22原TAP與7sourcepins目前全相符。真DOM完成hard preview/apply、1秒baseline3tools、soft candidate4tools含Compare、Undo、越權拒絕及不相容geometry/motion拒絕；table有可信數值與125–4000Hz欄，rt60仍未提供。原空table FAIL及21/22格式假設FAIL保留；無testbridge/runtime dispatch、API requests0，不是Meta live/真人/聲學改善。
+
+來源：[固定來源](../../../docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md)。
+
+### b41cdeb第二批實際DOM音檔與獨立檢查
+
+b41cdeb/index-CgrKG5Ax.js固定於exports/final/source-bundle，真DOM逐一下載5WAV+manifest、獨立RIFF5/5、48k stereo/240000frames/5秒、finite/nonzero/0越界/hash一致，stems sum最大1.210719347000122e-8<2e-6。sameProductSource=false明示後續UI已改，不把此固定bundle當未來main完全相同；native仍NOTCOMPLETED。
+
+來源：[固定來源](../../../docs/14-core-pipeline/stages/10-final-ui-export.md)。
+
+### 完整code品質與Meta成功後Motion表單修補進度
+
+Root更正runtime1328/1328；其他完整checkcode/build/license階段通過回報，但命令最後English missing2/stale5/errors16所以exit1，不能改寫為完整命令PASS。Meta真UI已成功；Motion真Save又發現HTML step/pattern使預設invalid，局部修補及browser基本重驗進行中，最後source/main/Claude未完成。V1完整bytes已先保存pre-closing history，不只剩舊hash。
+
+來源：[固定來源](../../../docs/14-core-pipeline/INTEGRATION_PROGRESS_20261102.json)。

@@ -1,4 +1,6 @@
-﻿import { useRef, useState } from "react";
+import { HelpTip } from "./HelpTip.js";
+import { memoView } from "./view-stability.js";
+import { useRef, useState } from "react";
 import type { LabController, LabViewModel, PrimitiveShape } from "./contracts.js";
 import { Badge, Icon } from "./components.js";
 import { useLocale, type MessageKey } from "./locale.js";
@@ -8,7 +10,7 @@ const primitives: { shape: PrimitiveShape; labelKey: MessageKey }[] = [
   { shape: "sphere", labelKey: "explorer.primitive.sphere" },
   { shape: "capsule", labelKey: "explorer.primitive.capsule" },
 ];
-export function SceneExplorer({
+function SceneExplorerView({
   controller,
   model,
   onListener,
@@ -29,7 +31,13 @@ export function SceneExplorer({
   return (
     <aside className="scene-explorer" aria-label={t("explorer.region")}>
       <header className="panel-header">
-        <h2>{t("explorer.scene")}</h2>
+        <div className="help-heading">
+          <h2>{t("explorer.scene")}</h2>
+          <HelpTip
+            topic={t("explorer.scene")}
+            content={`${t("explorer.sceneUnits")} ${t("explorer.gravityAndMedium")}`}
+          />
+        </div>
         <span className="count-label">
           {t("explorer.objectCount", { count: n(model.objects.length) })}
         </span>
@@ -49,21 +57,31 @@ export function SceneExplorer({
       </div>
       <div className="primitive-library">
         {primitives.map(({ shape, labelKey }) => (
-          <button
+          <HelpTip
             key={shape}
-            type="button"
-            disabled={!canEdit}
-            title={
-              canEdit
-                ? t("explorer.addPrimitive", { shape: t(labelKey) })
-                : t("explorer.pauseBeforeAdd")
+            topic={t(labelKey)}
+            content={
+              (canEdit
+                ? t(
+                    model.interactionMode !== "editor"
+                      ? "explorer.selectPrimitive"
+                      : "explorer.addPrimitive",
+                    { shape: t(labelKey) },
+                  )
+                : t("explorer.pauseBeforeAdd")) || t("inspector.runningEditGuard")
             }
-            onClick={() => void controller.dispatch({ type: "addObject", shape })}
           >
-            <Icon name={shape} size={22} />
-            <span>{t(labelKey)}</span>
-            <span className="primitive-plus">+</span>
-          </button>
+            <button
+              key={shape}
+              type="button"
+              disabled={!canEdit}
+              onClick={() => void controller.dispatch({ type: "addObject", shape })}
+            >
+              <Icon name={shape} size={22} />
+              <span>{t(labelKey)}</span>
+              <span className="primitive-plus">+</span>
+            </button>
+          </HelpTip>
         ))}
       </div>
       <div className="explorer-title">
@@ -106,7 +124,14 @@ export function SceneExplorer({
       </ul>
       {matching.length === 0 && (
         <div className="empty-state compact">
-          {query ? t("explorer.noMatches") : t("explorer.addFirst")}
+          {query ? (
+            t("explorer.noMatches")
+          ) : (
+            <>
+              {t("help.noObjects")}
+              <HelpTip topic={t("explorer.sceneObjects")} content={t("explorer.addFirst")} />
+            </>
+          )}
         </div>
       )}
       <button type="button" className="listener-row" onClick={onListener}>
@@ -127,7 +152,10 @@ export function SceneExplorer({
           <span className="subtle">{n(model.assets.length)}</span>
         </div>
         {model.assets.length === 0 && (
-          <div className="empty-state compact">{t("explorer.noAssets")}</div>
+          <div className="empty-state compact">
+            {t("help.noAssets")}
+            <HelpTip topic={t("explorer.soundAssets")} content={t("explorer.noAssets")} />
+          </div>
         )}
         <ul className="asset-list">
           {model.assets.map((asset) => (
@@ -139,21 +167,32 @@ export function SceneExplorer({
                   <small>{asset.provenance}</small>
                 </details>
               </div>
-              <button
-                type="button"
-                className="icon-button"
-                aria-label={t("explorer.auditionLabel", { name: asset.name })}
-                title={t("explorer.auditionTitle")}
-                disabled={asset.status !== "ready" || model.simulationState === "running"}
-                onClick={() => void controller.dispatch({ type: "audition", assetId: asset.id })}
+              <HelpTip
+                topic={t("explorer.auditionLabel", { name: asset.name })}
+                content={
+                  asset.status !== "ready"
+                    ? t("help.assetNotReady")
+                    : model.simulationState === "running"
+                      ? t("explorer.pauseFirst")
+                      : t("explorer.auditionTitle")
+                }
               >
-                <Icon name="play" />
-              </button>
+                <button
+                  type="button"
+                  className="icon-button"
+                  aria-label={t("explorer.auditionLabel", { name: asset.name })}
+                  disabled={asset.status !== "ready" || model.simulationState === "running"}
+                  onClick={() => void controller.dispatch({ type: "audition", assetId: asset.id })}
+                >
+                  <Icon name="play" />
+                </button>
+              </HelpTip>
             </li>
           ))}
         </ul>
         <details className="import-details">
           <summary>{t("explorer.importSound")}</summary>
+          <HelpTip topic={t("explorer.importSound")} content={t("explorer.importHelp")} />
           <label className="check-field rights-field">
             <input
               type="checkbox"
@@ -179,23 +218,26 @@ export function SceneExplorer({
               event.target.value = "";
             }}
           />
-          <button
-            type="button"
-            className="outline-button full-width"
-            disabled={!rights || !canEdit}
-            title={
-              !rights
+          <HelpTip
+            topic={t("explorer.importSound")}
+            content={
+              (!rights
                 ? t("explorer.confirmRightsFirst")
                 : !canEdit
                   ? t("explorer.pauseFirst")
-                  : t("explorer.localDecode")
+                  : t("explorer.localDecode")) || t("inspector.runningEditGuard")
             }
-            onClick={() => fileInput.current?.click()}
           >
-            <Icon name="upload" />
-            {t("explorer.importSound")}
-          </button>
-          <p className="micro-copy">{t("explorer.importHelp")}</p>
+            <button
+              type="button"
+              className="outline-button full-width"
+              disabled={!rights || !canEdit}
+              onClick={() => fileInput.current?.click()}
+            >
+              <Icon name="upload" />
+              {t("explorer.importSound")}
+            </button>
+          </HelpTip>
         </details>
         {fileError && (
           <p className="inline-error" role="alert">
@@ -203,14 +245,19 @@ export function SceneExplorer({
           </p>
         )}
       </div>
-      <div className="explorer-footnote">
-        <Icon name="info" size={14} />
-        <span>
-          {t("explorer.sceneUnits")}
-          <br />
-          {t("explorer.gravityAndMedium")}
-        </span>
-      </div>
     </aside>
   );
 }
+
+export const SceneExplorer = memoView(SceneExplorerView, ({ controller, model, onListener }) => [
+  controller,
+  onListener,
+  model.objects.map(({ id, name, shape, mode, held }) => ({ id, name, shape, mode, held })),
+  model.selectedObjectId,
+  model.simulationState,
+  model.recording.state,
+  model.interactionMode,
+  model.listener.id,
+  model.listener.attachment,
+  model.assets,
+]);

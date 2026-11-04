@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/06-validation/ACOUSTIC_VALIDATION.md","sha256":"7c939ee86259c1532a1219fb82fad3b0af6d046d469cb913ab4868cb73d136cc","translated_at":"2026-10-29T05:28:32Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/06-validation/ACOUSTIC_VALIDATION.md","sha256":"ddb71d7929764bf602869b611aad89be74c55b0ef42176c7eb74b6dfe77774a5","translated_at":"2026-11-02T09:42:41.6947254+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/06-validation/ACOUSTIC_VALIDATION.md`](../../06-validation/ACOUSTIC_VALIDATION.md). Source SHA-256: `7c939ee86259c1532a1219fb82fad3b0af6d046d469cb913ab4868cb73d136cc`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/06-validation/ACOUSTIC_VALIDATION.md`](../../06-validation/ACOUSTIC_VALIDATION.md). Source SHA-256: `ddb71d7929764bf602869b611aad89be74c55b0ef42176c7eb74b6dfe77774a5`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="聲學驗證狀態"></a>
@@ -35,3 +35,8 @@ For `AIR-002` Doppler, n points from the emission source→listener, using `f*(c
 The arrival test converts distance/sound speed to the nearest sample, with quantization error of at most half a sample; a fractional-delay filter has not been implemented. Propagation delay, DSP processing delay, and device latency must be reported separately. DRR, C50, C80, BRIR, HRTF, convolution, FDN, Doppler resampling, and audible click tests remain NOT RUN.
 
 Sources and applicability conditions are maintained in [`EVIDENCE_LEDGER.json`](../../../research/EVIDENCE_LEDGER.json) and [ACOUSTIC_THEORY](../research/theory/ACOUSTIC_THEORY.md). `validate:research` checks metadata, IDs, and fixture claim traceability; it does not prove the correctness of paper content or license interpretations.
+
+<!-- english-original-anchor --> <a id="2026-11-02-曲面與移動反射器補充"></a>
+## 2026-11-02 Curved surfaces and moving-reflector supplement
+
+Task0030 adds analytical sphere/capsule-volume occlusion, bounded first-order specular candidates and real-snapshot reflections from dynamicReflector objects; retain existing planar references/tolerances. The bounded mutually visible-arc derivation, independent references, fixed work limits, curvature-amplitude and moving-boundary limitations are in the [model contract](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) and CG-REF-001–005. This is a geometric-path approximation, with no claim of focusing/caustics/diffraction/Doppler/solid transmission. Read V0–V5 and each receipt separately; unit tests do not establish physical measurements or whole-product acceptance.

@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-29T15:45:19Z",
+  "reviewer": "Codex publication_audit with independent rights_inventory delta/process review",
+  "reviewed_public_ref": "879c2a75ae24c7286cd9051689a32887a2dd8bb4",
+  "parent_public_ref": "aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e",
+  "verdict": "PASS_FOR_SOURCE_PUBLICATION_OF_EXACT_P2_WITH_DECLARED_LIMITS",
+  "scope": "Bounded independent read-only review of final metadata delta, exact manifest, all-reachable scan receipts, candidate identity, tool bindings, rights and publication-status semantics. No tests or scanners were rerun.",
+  "ancestry": {
+    "reachable_commits": ["879c2a75ae24c7286cd9051689a32887a2dd8bb4", "aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e", "a2e38d0c2b0d0d3350581ae189232a9c390a21df"],
+    "p0_parents": [],
+    "original_local_history_reachable": false
+  },
+  "delta_review": {
+    "changed_paths": 38,
+    "added_paths": 21,
+    "modified_paths": 17,
+    "scope": "Only docs/knowledge and publication-evidence metadata",
+    "protected_production_test_script_schema_package_ci_paths_changed": [],
+    "product_dependency_license_material_changes": 0,
+    "restricted_path_extension_matches": 0,
+    "new_rights_or_binary_blocker_observed": false,
+    "p1_product_and_test_equivalence_review_remains_applicable": true
+  },
+  "exact_manifest": {
+    "path": "docs/12-architecture-review/PUBLIC_SNAPSHOT_MANIFEST.json",
+    "stage": "PUBLISHED_SOURCE_WITH_COMPLETION_METADATA",
+    "sha256": "e1c57cc8c05d687de3fc9c4d36bedb2f0c0a8c42deecec1f8ce222ec86b44d73",
+    "p2_tree_paths": 2417,
+    "p2_tree_path_bytes": 50669671,
+    "listed_other_files": 2416,
+    "all_entries_read_from_actual_p2_git_blobs": true,
+    "sha256_or_byte_mismatches": 0,
+    "missing_entries": 0,
+    "unlisted_tree_paths": ["docs/12-architecture-review/PUBLIC_SNAPSHOT_MANIFEST.json"],
+    "self_exception": "Explicit hash-cycle exception; containing P2 commit fixes the manifest bytes"
+  },
+  "full_scan_scope_independently_recomputed": {
+    "reachable_commits": 3,
+    "reachable_objects": 2958,
+    "unique_blobs": 2413,
+    "blob_bytes": 59641850,
+    "raw_primary_metadata_matches": true,
+    "excluded_baseline": null,
+    "scope": "all-reachable-blobs",
+    "over_10_MiB": 0,
+    "over_100_MiB": 0,
+    "primary_process_exit": 0,
+    "primary_errors": 0,
+    "primary_candidates": 23
+  },
+  "candidate_reverification": {
+    "method": "Compare all P2 primary and classified candidates with P1 by immutable Git blob SHA, rule, byte offset and candidate SHA-256, then recompute captured value length and SHA-256 from actual public Git blob bytes",
+    "literal_capture": "group 1; not the whole assignment match",
+    "url_capture": "whole URL rule match",
+    "primary_candidates": 23,
+    "classified_candidates": 23,
+    "classification_identity_errors": 0,
+    "actual_blob_offset_hash_and_length_matches": 23,
+    "classifications": {
+      "false_positive_loopback_development_url": 1,
+      "synthetic_negative_userinfo_fixture": 1,
+      "synthetic_preview_non_secret_label": 1,
+      "synthetic_test_fixture_or_test_source": 20
+    },
+    "confirmed_real_credentials": 0,
+    "candidate_values_output_or_recorded": false
+  },
+  "decoded_supplement": {
+    "audited_ref_matches_p2": true,
+    "process_exit": 0,
+    "blobs": 2413,
+    "utf16_text": 2,
+    "decoded_containers": 83,
+    "duplicate_containers": 87,
+    "signature_hits": 0,
+    "opaque_base64_bodies": 0,
+    "errors": 0,
+    "only_non_text_blob": {
+      "path": "public/favicon.ico",
+      "git_blob": "38dd71e3dce48df3a4e5d6b78b70d1ee9549a9b8",
+      "bytes": 5430,
+      "sha256": "a54f49fe5ca703642ec8efcedf60aaaca42d00e0a9577db4ce503d8e3b4cc028",
+      "matches_prior_reviewed_original_project_icon": true
+    }
+  },
+  "process_tool_bindings_independently_verified": [
+    {
+      "process_receipt": ".cache/architecture-review/validation/audit-p2-primary-process.json",
+      "ref_matches": true,
+      "exit_code": 0,
+      "tool_path": "scripts/validation/publication-audit.mjs",
+      "tool_git_blob": "5debc0f71191c0da741ee85fe0b242141714e03c",
+      "tool_sha256": "5bf634aa4d3e0b886837c4b22dcac52b2035371aeb74be9baba337f83b09e699",
+      "recorded_tool_bytes_unchanged": true,
+      "git_blob_and_sha256_match_actual_p2_source": true
+    },
+    {
+      "process_receipt": ".cache/architecture-review/validation/audit-p2-decoded-process.json",
+      "ref_matches": true,
+      "exit_code": 0,
+      "tool_path": "artifacts/architecture-review-20261029/publication-audit/decoded-text-scanner.mjs",
+      "tool_git_blob": "028a1e7db4ce89d6062ddebbba047a56b201937e",
+      "tool_sha256": "4b878e5abb9e42d66bba97f77f8a0db07a5388d99c3d4f108fc4b40d92d44208",
+      "recorded_tool_bytes_unchanged": true,
+      "git_blob_and_sha256_match_actual_p2_source": true
+    }
+  ],
+  "raw_receipts_read": [
+    { "path": ".cache/architecture-review/validation/audit-p2-primary.json", "bytes": 10294, "sha256": "118e36b3da1b066e3cf24177bc5cad58d0e33e2d1a0fd98ae35c27a5cd012982" },
+    { "path": ".cache/architecture-review/validation/audit-p2-decoded.json", "bytes": 28016, "sha256": "daf0c02d136546b12d0390ef7b86f27e06ff2fc73598c0cf2b6e9f35d62b7f39" },
+    { "path": ".cache/architecture-review/validation/audit-p2-primary-process.json", "bytes": 445, "sha256": "869aa1beb3891f237655760798f74222e80ed23cbdfb3ee6f049f441fadb8f6c" },
+    { "path": ".cache/architecture-review/validation/audit-p2-decoded-process.json", "bytes": 486, "sha256": "c01af4a7ae7a00ca4b6cc4ffefc0d8dac398448ac38d048476a76afcf1896d60" },
+    { "path": ".cache/architecture-review/validation/audit-p2-classification.json", "bytes": 20212, "sha256": "09c510dbbe1d529d6908dde37ad3fadc4e370a38060b34781ce0c2aef9e900c2" }
+  ],
+  "publication_metadata_semantics": {
+    "published_p1_ref_in_preserved_evidence": "aae67e776251d3039ceaf2afe4b2bdc24f6c0c6e",
+    "p1_remote_paths": 2396,
+    "p1_remote_mismatches_in_receipt": 0,
+    "p1_ci_run": 40900293835,
+    "p1_ci_head_in_receipt_matches_p1": true,
+    "p1_ci_receipt_status": "completed/success",
+    "p1_success_is_not_presented_as_p2_remote_success": true,
+    "p2_manifest_requires_final_metadata_push_and_remote_ci_verification": true,
+    "archive_online_download_available": false,
+    "complete_v1_claim": false,
+    "remote_or_ci_requeried_by_this_reviewer": false
+  },
+  "limits": [
+    "This approval applies only to exact P2 source publication. P2 push, remote tree equality and actual P2 CI remain separate unfinished gates at review time.",
+    "Rule-based audits and bounded independent review are not an absolute proof against arbitrary encoded, encrypted or unknown credential representations. P1's documented UTF-16/serialized/base64 JSON recognition, 10MiB/depth64 bounds and signature coverage limits remain applicable.",
+    "New P2 process receipts now bind recorded execution to reviewed tool SHA/Git blob and unchanged bytes; this is stronger local provenance, not third-party execution attestation.",
+    "No original history scan, scanner rerun, tests, new legal-terms review, deployment or push was performed by this reviewer.",
+    "Product/test/config bytes are unchanged from reviewed P1, whose fresh-source test evidence applies within its stated scope. No additional product correctness, human FPS, hearing or performance pass is inferred.",
+    "All local original branches/history and omitted large/binary evidence remain outside public ancestry; local archive references are not represented as public downloads. Root LICENSE and personal legal eligibility remain user-owned decisions.",
+    "This local review artifact was written outside the public P2 tree. If later included or any further public commit is created, that later ref requires its own final metadata and safety verification."
+  ],
+  "pending_external_gates": { "p2_push": "NOT_RUN_AT_REVIEW", "p2_remote_ref_and_tree": "NOT_RUN_AT_REVIEW", "actual_p2_ci": "NOT_RUN_AT_REVIEW" },
+  "reviewer_actions": { "public_files_modified": false, "old_frozen_reviews_modified": false, "wiki_tasks_source_modified": false, "tests_run": false, "scanners_run": false, "original_history_scanned": false, "secret_values_output": false, "push_performed": false }
+}

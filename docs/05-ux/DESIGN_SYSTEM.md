@@ -108,7 +108,7 @@ Tab 保留焦點，B 切 FPS Build；鍵位說明讀自 action mapping。中文 
 
 目標為 WCAG 2.2 AA 的相關 UI 行為；本階段無成品，**符合性未評估**。需要在實作時檢查文字／控制對比、鍵盤操作、焦點、reflow、圖表替代、drag 替代與音訊控制。焦點使用 `border.focusWidth / focusOffset` 與高對比 ring；自訂 dialog 開啟後管理焦點、關閉回原控制，不能鎖住使用者。
 
-音訊預設 muted，由使用者手勢啟用；Master Mute 及 monitor gain 常駐可達。聲音事件也以視覺／文字顯示，不能只靠聽力分辨是否發生撞擊；3D 方位另有方向／數字顯示。預設低 monitor gain、mode switching 不增加 source gain；actual SPL／暴露未知時如實表示，不能以 dBFS meter 或 limiter 充作耳機安全校準。沒有做醫療安全、聽力或設備暴露認證。
+音訊預設 muted，由使用者手勢啟用；Master Mute 及 monitor gain 常駐可達。聲音事件也以視覺／文字顯示，不能只靠聽力分辨是否發生撞擊；3D 方位另有方向／數字顯示。預設 monitor gain 0 dB（R18 前約 -15 dB，仍可下調 40 dB）、mode switching 不增加 source gain；actual SPL／暴露未知時如實表示，不能以 dBFS meter 或 limiter 充作耳機安全校準。沒有做醫療安全、聽力或設備暴露認證。
 
 提供動作障礙替代：不用 hold/chord 的 toggle、按鈕／數字移動、預設 source/listener trajectory、不鎖定滑鼠的選取方式；低視力可放大與高對比；減少動態並停 camera shake；聽障可讀事件與分析數據。Canvas 補上 DOM 工具、物件表、路徑表；不能只加 `aria-label` 就宣稱整個 3D 編輯器可使用。
 

@@ -1,0 +1,423 @@
+TAP version 13
+# Subtest: omitting the runtime resource policy preserves the original undefined engine option
+ok 1 - omitting the runtime resource policy preserves the original undefined engine option
+  ---
+  duration_ms: 114.8762
+  type: 'test'
+  ...
+# Subtest: explicit false is forwarded without changing the reference budget or source content
+not ok 2 - explicit false is forwarded without changing the reference budget or source content
+  ---
+  duration_ms: 21.5251
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:3618'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    <anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:112:12)
+    async withRuntime (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:72:5)
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:110:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the explicit default candidate reaches the actual engine with original primary capacity
+not ok 3 - the explicit default candidate reaches the actual engine with original primary capacity
+  ---
+  duration_ms: 18.8783
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:4115'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + undefined
+    - {
+    -   fairnessSeconds: 1,
+    -   maxNativeGraphs: 48,
+    -   maxNativeVoices: 24,
+    -   maxVirtualVoices: 32,
+    -   minResidenceSeconds: 0.2,
+    -   priorityHysteresis: 0.1
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    maxNativeVoices: 24
+    maxNativeGraphs: 48
+    maxVirtualVoices: 32
+    minResidenceSeconds: 0.2
+    priorityHysteresis: 0.1
+    fairnessSeconds: 1
+  operator: 'deepStrictEqual'
+  stack: |-
+    <anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:125:12)
+    async withRuntime (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:72:5)
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:121:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime owns an immutable scalar copy before the caller mutates its policy or options
+not ok 4 - runtime owns an immutable scalar copy before the caller mutates its policy or options
+  ---
+  duration_ms: 16.4349
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:4978'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + undefined
+    - {
+    -   fairnessSeconds: 1,
+    -   maxNativeGraphs: 48,
+    -   maxNativeVoices: 24,
+    -   maxVirtualVoices: 32,
+    -   minResidenceSeconds: 0.2,
+    -   priorityHysteresis: 0.1
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    maxNativeVoices: 24
+    maxNativeGraphs: 48
+    maxVirtualVoices: 32
+    minResidenceSeconds: 0.2
+    priorityHysteresis: 0.1
+    fairnessSeconds: 1
+  operator: 'deepStrictEqual'
+  stack: |-
+    <anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:148:12)
+    async withRuntime (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:72:5)
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:140:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: optional graph and carrier bounds stay omitted and derive from the unchanged budget
+not ok 5 - optional graph and carrier bounds stay omitted and derive from the unchanged budget
+  ---
+  duration_ms: 77.2045
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:5743'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      withRuntime({ audioResourcePolicy: DEFAULT_NATIVE_VOICE_POLICY }, async (app, contexts) => {
+      const engine = await enable(app), config = configurationOf(engine);
+      assert.equal(contexts.length, 1);
+      assertProductConfiguration(engine);
+      assert.deepEqual(config.virtualization, originalPolicy);
+      assert.equal(Object.isFrozen(config.virtualization), true);
+      assert.deepEqual(engine.getTelemetry().virtualization.policy, originalPolicy);
+      const resources = engine.getNativeResourceSnapshot();
+      assert.equal(resources.mode, "nativeCarrierRoutes");
+      assert.equal(resources.activeRenderedCap, 24);
+      assert.equal(resources.nativeGraphBudget, 48);
+      assert.equal(resources.internalArrivalGraphBudget, 96);
+      assert.equal(resources.nativeGraphTotalBudget, 144);
+      assert.equal(resources.nativeCarrierBudget, 176);
+      })
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    <anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:162:12)
+    async withRuntime (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:72:5)
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:159:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a null-prototype scalar policy is accepted without inheriting unrelated configuration
+not ok 6 - a null-prototype scalar policy is accepted without inheriting unrelated configuration
+  ---
+  duration_ms: 24.6045
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:6485'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + null
+    - {
+    -   fairnessSeconds: 1,
+    -   maxNativeGraphs: 48,
+    -   maxNativeVoices: 24,
+    -   maxVirtualVoices: 32,
+    -   minResidenceSeconds: 0.2,
+    -   priorityHysteresis: 0.1
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    maxNativeVoices: 24
+    maxNativeGraphs: 48
+    maxVirtualVoices: 32
+    minResidenceSeconds: 0.2
+    priorityHysteresis: 0.1
+    fairnessSeconds: 1
+  actual: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    <anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:175:12)
+    async withRuntime (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:72:5)
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:173:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: true instead of an explicit policy
+not ok 7 - runtime rejects unsafe resource policy before audio allocation: true instead of an explicit policy
+  ---
+  duration_ms: 14.1351
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: null
+not ok 8 - runtime rejects unsafe resource policy before audio allocation: null
+  ---
+  duration_ms: 15.2944
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: array
+not ok 9 - runtime rejects unsafe resource policy before audio allocation: array
+  ---
+  duration_ms: 29.5503
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: string
+not ok 10 - runtime rejects unsafe resource policy before audio allocation: string
+  ---
+  duration_ms: 62.7872
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: custom prototype
+not ok 11 - runtime rejects unsafe resource policy before audio allocation: custom prototype
+  ---
+  duration_ms: 165.2794
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: missing required scalar
+not ok 12 - runtime rejects unsafe resource policy before audio allocation: missing required scalar
+  ---
+  duration_ms: 31.1608
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: NaN scalar
+not ok 13 - runtime rejects unsafe resource policy before audio allocation: NaN scalar
+  ---
+  duration_ms: 22.2897
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: infinite scalar
+not ok 14 - runtime rejects unsafe resource policy before audio allocation: infinite scalar
+  ---
+  duration_ms: 16.9987
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: numeric string
+not ok 15 - runtime rejects unsafe resource policy before audio allocation: numeric string
+  ---
+  duration_ms: 10.5501
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: unrelated engine budget
+not ok 16 - runtime rejects unsafe resource policy before audio allocation: unrelated engine budget
+  ---
+  duration_ms: 9.1139
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: hidden unknown configuration
+not ok 17 - runtime rejects unsafe resource policy before audio allocation: hidden unknown configuration
+  ---
+  duration_ms: 11.1868
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: symbol key
+not ok 18 - runtime rejects unsafe resource policy before audio allocation: symbol key
+  ---
+  duration_ms: 8.2313
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:7807'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:197:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects the maxNativeVoices policy accessor without invoking it
+not ok 19 - runtime rejects the maxNativeVoices policy accessor without invoking it
+  ---
+  duration_ms: 7.1429
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:8062'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:213:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects the maxNativeCarriers policy accessor without invoking it
+not ok 20 - runtime rejects the maxNativeCarriers policy accessor without invoking it
+  ---
+  duration_ms: 6.9003
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:8062'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:213:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: runtime rejects an outer audioResourcePolicy accessor without invoking it
+not ok 21 - runtime rejects an outer audioResourcePolicy accessor without invoking it
+  ---
+  duration_ms: 7.0779
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\app\\runtime-performance-options.test.ts:1:8406'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection (Error).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (D:\Developing\Meta Hack\.worktrees\nonadvanced-20261103\baseline\tests\app\runtime-performance-options.test.ts:224:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: resource policy does not replace pre-enable monitor gain or routing choices
+ok 22 - resource policy does not replace pre-enable monitor gain or routing choices
+  ---
+  duration_ms: 16.6051
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 2
+# fail 20
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2507.0326

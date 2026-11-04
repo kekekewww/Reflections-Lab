@@ -1,11 +1,426 @@
 import { expect, test, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
+import { translate } from "../../src/ui/locale-model.js";
+
+const helpEvidence = "artifacts/v1/r21-helptips-20261101";
+
+test("review3 5: closed help leaves heading and project term accessible names clean", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
+  await expect(page.locator(".scene-explorer h2")).toHaveAccessibleName(
+    translate("zh-TW", "explorer.scene"),
+  );
+  await page
+    .locator(".object-row")
+    .filter({ has: page.locator('[title="ball"]') })
+    .click();
+  await expect(
+    page.locator(".inspector h3").filter({ hasText: translate("zh-TW", "inspector.transform") }),
+  ).toHaveAccessibleName(translate("zh-TW", "inspector.transform"));
+  const project = await page.evaluate(() => window.__reflectionLab!.exportProject());
+  await page.getByRole("button", { name: "匯入專案 JSON", exact: true }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.locator("h2")).toHaveAccessibleName("匯入專案 JSON");
+  await dialog.getByLabel("選擇專案 JSON 檔案", { exact: true }).setInputFiles({
+    name: "review3.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(project),
+  });
+  // Native terms expose their child text in the accessibility tree, rather than
+  // accepting an author-supplied accessible name like a heading.
+  const term = dialog
+    .locator("dt")
+    .filter({ hasText: translate("zh-TW", "projectImport.contentSummary") });
+  await expect(term).toMatchAriaSnapshot(
+    `- term: ${translate("zh-TW", "projectImport.contentSummary")}`,
+  );
+});
+
+test("review3 6: NumberField Escape reverts while a hover tooltip is open", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
+  await page
+    .locator(".object-row")
+    .filter({ has: page.locator('[title="ball"]') })
+    .click();
+  const field = page.getByRole("spinbutton", { name: "直徑 m", exact: true });
+  const original = await field.inputValue();
+  await field.fill("9.25");
+  await page.getByRole("button", { name: "說明：場景", exact: true }).hover();
+  await expect(page.locator(".help-tip-bubble")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(field).toHaveValue(original);
+  await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+});
+
+test("review3 9: adjacent hovered help appears immediately, first help uses token motion", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
+  await page
+    .locator(".object-row")
+    .filter({ has: page.locator('[title="ball"]') })
+    .click();
+  const first = page.getByRole("button", { name: "說明：Transform", exact: true });
+  const next = page.locator(".inspector .help-tip-trigger").filter({ visible: true }).nth(1);
+  await page.mouse.move(1, 1);
+  await first.hover();
+  await expect(page.locator(".help-tip-bubble")).toHaveCSS("animation-duration", "0.125s");
+  await next.hover();
+  await expect(page.locator(".help-tip-bubble")).toHaveCSS("animation-name", "none");
+  await page.mouse.move(1, 1);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await first.hover();
+  await expect(page.locator(".help-tip-bubble")).toHaveCSS("animation-name", "none");
+});
+const helperKeys = [
+  "shell.rawRoutingNote",
+  "shell.simulatedRoutingNote",
+  "shell.lateReverbExplanation",
+  "explorer.addFirst",
+  "explorer.noAssets",
+  "explorer.importHelp",
+  "explorer.sceneUnits",
+  "explorer.gravityAndMedium",
+  "inspector.authorPoseHelp",
+  "inspector.noGravityHelp",
+  "inspector.behaviorDescription",
+  "inspector.classificationHelp",
+  "inspector.noBehaviors",
+  "inspector.physicalInspiredHelp",
+  "inspector.unsupportedTriggers",
+  "preview.help",
+  "preview.limit",
+  "inspector.listenerPoseHelp",
+  "inspector.vacuumHelp",
+  "inspector.selectObjectHelp",
+  "analysis.native.scope",
+  "editor.rule.curveHelp",
+  "editor.mapping.instructions",
+  "editor.mapping.clampHelp",
+  "editor.mapping.midpointHelp",
+  "editor.binding.help",
+  "projectImport.validationHelp",
+  "analysis.events.waitingHelp",
+  "analysis.events.tryOtherFilter",
+  "analysis.paths.delayHelp",
+  "analysis.comparison.acousticHelp",
+  "analysis.comparison.behaviorHelp",
+  "analysis.comparison.prepareHelp",
+  "analysis.agent.offlineHelp",
+  "analysis.agent.metaHelp",
+  "analysis.agent.shortcut",
+  "analysis.agent.applyHelp",
+] as const;
+async function expectNoHelperProse(page: Page, locale: "zh-TW" | "en") {
+  const prose = await page.locator("body").evaluate((body) => {
+    const copy = body.cloneNode(true) as HTMLElement;
+    copy.querySelectorAll('[role="tooltip"], script, style').forEach((node) => node.remove());
+    return copy.textContent ?? "";
+  });
+  for (const key of helperKeys)
+    expect(prose, `${key} must be available through help instead of page prose`).not.toContain(
+      translate(locale, key, { zero: 0, one: 1 }),
+    );
+}
+for (const locale of ["zh-TW", "en"] as const) {
+  test(`R21 accessible help at 1280x720 (${locale})`, async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.addInitScript(
+      (locale) => localStorage.setItem("reflection-lab.locale", locale),
+      locale,
+    );
+    await page.goto("/");
+    await expect(
+      page.getByRole("button", { name: translate(locale, "shell.start"), exact: true }),
+    ).toBeVisible();
+    await page
+      .locator(".object-row")
+      .filter({ has: page.locator('[title="ball"]') })
+      .click();
+    const topic = translate(locale, "inspector.transform");
+    const tip = page.getByRole("button", {
+      name: translate(locale, "help.about", { topic }),
+      exact: true,
+    });
+    const text = translate(locale, "inspector.authorPoseHelp");
+    const describedBy = await tip.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+    await tip.hover();
+    await expect(page.locator('.help-tip-bubble[role="tooltip"]')).toHaveText(text);
+    const box = await page.locator(".help-tip-bubble").boundingBox();
+    expect(box).toBeTruthy();
+    expect(box!.x).toBeGreaterThanOrEqual(0);
+    expect(box!.y).toBeGreaterThanOrEqual(0);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(1280);
+    expect(box!.y + box!.height).toBeLessThanOrEqual(720);
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+    await page.mouse.move(5, 5);
+    await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+    await tip.focus();
+    await expect(page.locator(".help-tip-bubble")).toHaveText(text);
+    const cdp = await page.context().newCDPSession(page);
+    const ax = await cdp.send("Accessibility.getFullAXTree");
+    expect(
+      ax.nodes.some(
+        (node) =>
+          node.role?.value === "button" &&
+          node.name?.value === translate(locale, "help.about", { topic }) &&
+          node.description?.value === text,
+      ),
+    ).toBe(true);
+    await expect(page.locator(".inspector .section-copy, .inspector .inspector-help")).toHaveCount(
+      0,
+    );
+    await expectNoHelperProse(page, locale);
+    await page.screenshot({ path: `${helpEvidence}/help-${locale}.png`, timeout: 10_000 });
+    await tip.press("Escape");
+    await expect(tip).toBeFocused();
+    await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+    await expect(tip).toHaveAttribute("aria-describedby", describedBy!);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await tip.hover();
+    await expect(page.locator(".help-tip-bubble")).toHaveCSS("animation-name", "none");
+    await tip.press("Tab");
+    await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+    // Readable disabled reason, with no attempted command.
+    await page.getByRole("button", { name: translate(locale, "shell.start"), exact: true }).click();
+    const library = page.locator(".primitive-library");
+    const reason = library.getByRole("button", {
+      name: translate(locale, "help.about", {
+        topic: translate(locale, "explorer.primitive.sphere"),
+      }),
+      exact: true,
+    });
+    const revision = await page.evaluate(
+      () => (window as any).__reflectionLab.getSnapshot().sceneRevision,
+    );
+    await reason.focus();
+    await expect(page.locator(".help-tip-bubble")).toHaveText(
+      translate(locale, "explorer.pauseBeforeAdd"),
+    );
+    expect(
+      await page.evaluate(() => (window as any).__reflectionLab.getSnapshot().sceneRevision),
+    ).toBe(revision);
+    await page
+      .locator(".transport-bar")
+      .getByRole("button", { name: translate(locale, "shell.pause"), exact: true })
+      .click();
+    // Numeric editing uses the actual transaction, and the retained invalid draft is localized.
+    const diameter = page.getByRole("spinbutton", {
+      name: `${translate(locale, "help.diameter")} m`,
+      exact: true,
+    });
+    await diameter.fill("0.7");
+    await diameter.press("Enter");
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            (window as any).__reflectionLab.getSnapshot().objects.find((o: any) => o.id === "ball")
+              .dimensionsM,
+        ),
+      )
+      .toEqual([0.7, 0.7, 0.7]);
+    await page.evaluate(async () => {
+      const app = (window as any).__reflectionLab;
+      await app.dispatch({ type: "addObject", shape: "capsule" });
+    });
+    const height = page.getByRole("spinbutton", {
+      name: `${translate(locale, "help.height")} m`,
+      exact: true,
+    });
+    await height.fill("0.01");
+    await height.press("Enter");
+    await expect(height).toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator(".inspector .field-message")).toHaveText(
+      translate(locale, "help.heightInvalid"),
+    );
+    const otherLocale = locale === "en" ? "zh-TW" : "en";
+    const beforeLanguageChange = await page.evaluate(
+      () => (window as any).__reflectionLab.getSnapshot().sceneRevision,
+    );
+    const language = page.getByRole("combobox", {
+      name: "介面語言 / Interface language",
+      exact: true,
+    });
+    await language.selectOption(otherLocale);
+    await expect(page.locator(".inspector .field-message")).toHaveText(
+      translate(otherLocale, "help.heightInvalid"),
+    );
+    await expect(page.locator('.inspector input[aria-invalid="true"]')).toHaveValue("0.01");
+    expect(
+      await page.evaluate(() => (window as any).__reflectionLab.getSnapshot().sceneRevision),
+    ).toBe(beforeLanguageChange);
+    await language.selectOption(locale);
+    await expect(page.locator(".inspector .field-message")).toHaveText(
+      translate(locale, "help.heightInvalid"),
+    );
+    await page
+      .getByRole("button", {
+        name: translate(locale, "explorer.listenerEnvironment"),
+        exact: false,
+      })
+      .click();
+    await expect(page.locator(".inspector .section-copy, .inspector .inspector-help")).toHaveCount(
+      0,
+    );
+    await expectNoHelperProse(page, locale);
+    for (const key of [
+      "analysis.tabs.events",
+      "analysis.tabs.paths",
+      "analysis.tabs.comparison",
+      "analysis.tabs.agent",
+    ] as const) {
+      await page.getByRole("tab", { name: translate(locale, key), exact: false }).click();
+      await expectNoHelperProse(page, locale);
+    }
+    await page.locator(".monitor-reverb summary").click();
+    await expectNoHelperProse(page, locale);
+    await page.locator(".monitor-reverb summary").click();
+    await page
+      .getByRole("button", { name: translate(locale, "projectImport.title"), exact: true })
+      .click();
+    await expect(
+      page.getByRole("dialog", { name: translate(locale, "projectImport.title"), exact: true }),
+    ).toBeVisible();
+    await expect(page.getByRole("dialog").locator(".section-copy")).toHaveCount(0);
+    await expect(
+      page.getByText(translate(locale, "help.projectReplaces"), { exact: true }),
+    ).toBeVisible();
+    const projectJson = await page.evaluate(() => (window as any).__reflectionLab.exportProject());
+    await page
+      .getByRole("dialog")
+      .locator('input[type="file"]')
+      .setInputFiles({
+        name: "help-review.json",
+        mimeType: "application/json",
+        buffer: Buffer.from(projectJson),
+      });
+    await expect(page.getByRole("dialog").locator(".project-import-review")).toBeVisible();
+    await expectNoHelperProse(page, locale);
+    await page
+      .getByRole("button", { name: translate(locale, "projectImport.cancel"), exact: true })
+      .click();
+  });
+}
 
 async function openWorkspace(page: Page) {
   await page.goto("/");
   await expect(page.getByRole("button", { name: "開始運算", exact: true })).toBeVisible();
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
 }
+
+test("audio buffer preference persists across reload and both interface languages", async ({
+  page,
+}) => {
+  await openWorkspace(page);
+  const control = page.getByRole("combobox", { name: "音訊緩衝", exact: true });
+  await expect(control).toHaveValue("playback");
+  await control.selectOption("balanced");
+  await expect
+    .poll(() => page.evaluate(() => localStorage.getItem("reflection-lab.audio-buffer")))
+    .toBe("balanced");
+  await page.getByRole("combobox", { name: "介面語言 / Interface language" }).selectOption("en");
+  await page.reload();
+  await expect(page.getByRole("combobox", { name: "Audio buffer", exact: true })).toHaveValue(
+    "balanced",
+  );
+  await page.locator(".monitor-metadata summary").click();
+  await expect(page.getByText("Output underruns: NOT_AVAILABLE", { exact: true })).toBeVisible();
+  await page
+    .getByRole("combobox", { name: "Audio buffer", exact: true })
+    .selectOption("interactive");
+  await expect
+    .poll(() => page.evaluate(() => localStorage.getItem("reflection-lab.audio-buffer")))
+    .toBe("interactive");
+});
+
+test("native audio buffer restart restores live monitoring and refuses a recording restart", async ({
+  page,
+}, info) => {
+  await page.addInitScript(() => {
+    const original = window.AudioContext;
+    const contexts: AudioContext[] = [];
+    (window as any).__audioBufferContexts = contexts;
+    window.AudioContext = class extends original {
+      constructor(options?: AudioContextOptions) {
+        super(options);
+        contexts.push(this);
+      }
+    };
+  });
+  await openWorkspace(page);
+  await page.getByRole("button", { name: "啟用聆聽", exact: true }).click();
+  await page.getByRole("button", { name: "開始運算", exact: true }).click();
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as any).__reflectionLab.getSnapshot().monitor.activeVoices),
+    )
+    .toBe(1);
+  await page.evaluate(async () => {
+    const app = (window as any).__reflectionLab;
+    await app.dispatch({ type: "setMonitorGain", gainLinear: 0.7 });
+    await app.dispatch({ type: "setMonitorMode", mode: "raw" });
+    await app.dispatch({ type: "toggleMute" });
+  });
+  await page.getByRole("combobox", { name: "音訊緩衝", exact: true }).selectOption("balanced");
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as any).__reflectionLab.getSnapshot().monitor.bufferPreset),
+    )
+    .toBe("balanced");
+  const evidence = await page.evaluate(() => {
+    const app = (window as any).__reflectionLab;
+    return {
+      monitor: app.getSnapshot().monitor,
+      transport: app.getSnapshot().simulationState,
+      contexts: (window as any).__audioBufferContexts.map((context: AudioContext) => ({
+        state: context.state,
+        baseLatency: context.baseLatency,
+        outputLatency: context.outputLatency,
+      })),
+    };
+  });
+  expect(evidence.transport).toBe("running");
+  expect(evidence.monitor).toMatchObject({
+    activeVoices: 1,
+    gainLinear: 0.7,
+    muted: true,
+    mode: "raw",
+    bufferPreset: "balanced",
+    rebuilding: false,
+    schedulingLookaheadSeconds: 0.08,
+  });
+  expect(evidence.contexts).toHaveLength(2);
+  expect(evidence.contexts[0].state).toBe("closed");
+  expect(evidence.contexts[1].state).toBe("running");
+  expect(evidence.monitor.outputLatencySeconds).toBe(
+    evidence.contexts[1].baseLatency + evidence.contexts[1].outputLatency,
+  );
+  await page.locator(".monitor-metadata summary").click();
+  await expect(page.getByText(/輸出中斷/)).toBeVisible();
+  await expect(page.locator(".monitor-buffer output")).toHaveText(/\d.* ms/);
+  await info.attach("native-buffer-restart.json", {
+    body: JSON.stringify(evidence, null, 2),
+    contentType: "application/json",
+  });
+  await page.screenshot({ path: info.outputPath("audio-buffer-monitor.png"), timeout: 10_000 });
+  await page.evaluate(() => (window as any).__reflectionLab.dispatch({ type: "recordToggle" }));
+  await page.getByRole("combobox", { name: "音訊緩衝", exact: true }).selectOption("interactive");
+  await expect
+    .poll(() => page.evaluate(() => (window as any).__reflectionLab.getSnapshot().error))
+    .toBe("AUDIO_BUFFER_UNSAFE");
+  await expect(page.getByRole("combobox", { name: "音訊緩衝", exact: true })).toHaveValue(
+    "balanced",
+  );
+  expect(await page.evaluate(() => (window as any).__audioBufferContexts.length)).toBe(2);
+});
 
 test.afterEach(async ({ page }, info) => {
   if (page.isClosed()) return;
@@ -36,6 +451,43 @@ test("real workspace renders three panels and keeps collapsed splitters out of f
   expect(errors).toEqual([]);
 });
 
+test("the WebGL-unavailable fallback stays out of the accessibility tree while the canvas renders", async ({
+  page,
+}) => {
+  await openWorkspace(page);
+  // Chrome exposes <canvas> fallback content to assistive technology even when
+  // WebGL works; Playwright's role queries treat it as hidden, so read the real tree.
+  const cdp = await page.context().newCDPSession(page);
+  const { nodes } = (await cdp.send("Accessibility.getFullAXTree")) as {
+    nodes: Array<{ ignored: boolean; role?: { value: string }; name?: { value: string } }>;
+  };
+  const exposed = nodes
+    .filter((node) => !node.ignored && node.name?.value.includes("WebGL"))
+    .map((node) => `${node.role?.value}: ${node.name?.value}`);
+  expect(exposed).toEqual([]);
+});
+
+test("curved bodies state that they take no part in geometric acoustics; boxes stay editable", async ({
+  page,
+}) => {
+  await openWorkspace(page);
+  const role = page.getByRole("combobox", { name: /^聲學角色/ });
+  const material = page.getByLabel("聲學材質", { exact: true });
+  const note = page.getByText("球體與膠囊目前不進入幾何聲學", { exact: false });
+  await page.getByRole("button", { name: /^ball/ }).first().click();
+  await expect(note).toBeVisible();
+  await expect(role).toBeDisabled();
+  await expect(material).toBeDisabled();
+  await expect(role).toHaveAttribute("aria-describedby", /.+/);
+  await page
+    .getByRole("button", { name: /^wall\.back/ })
+    .first()
+    .click();
+  await expect(note).toHaveCount(0);
+  await expect(role).toBeEnabled();
+  await expect(material).toBeEnabled();
+});
+
 test("atmosphere controls change real solver paths and preserve gravity settings", async ({
   page,
 }) => {
@@ -45,12 +497,8 @@ test("atmosphere controls change real solver paths and preserve gravity settings
   await medium.selectOption("vacuum");
   await expect(medium).toHaveValue("vacuum");
   await expect(page.locator(".viewport-legend")).toContainText("0/0");
-  await page
-    .locator(".inspector-help")
-    .filter({ hasText: "真空不取消機械碰撞" })
-    .locator("summary")
-    .click();
-  await expect(page.getByText("真空不取消機械碰撞", { exact: false })).toBeVisible();
+  await page.getByRole("button", { name: "說明：環境與聲學核心", exact: true }).focus();
+  await expect(page.locator(".help-tip-bubble")).toContainText("真空不取消機械碰撞");
   await medium.selectOption("air");
   await expect(medium).toHaveValue("air");
   await expect(page.locator(".viewport-legend")).not.toContainText("0/0");
@@ -74,9 +522,11 @@ test("synthetic perceptual reverb is explicit and raw reference stays selectable
   await expect(enabled).not.toBeChecked();
   await enabled.check();
   await expect(enabled).toBeChecked();
-  await expect(
-    page.getByText("感知近似尾響；衰減參數不是測得的 RT60。Raw 參考旁路尾響。", { exact: true }),
-  ).toBeVisible();
+  await expect(page.locator(".help-tip-bubble")).toHaveCount(0);
+  await page.getByRole("button", { name: "說明：Synthetic late reverb", exact: true }).focus();
+  await expect(page.locator(".help-tip-bubble")).toHaveText(
+    "感知近似尾響；衰減參數不是測得的 RT60。Raw 參考旁路尾響。",
+  );
   await page.getByRole("button", { name: "Raw 參考", exact: true }).click();
   await expect(page.getByRole("button", { name: "Raw 參考", exact: true })).toHaveAttribute(
     "aria-pressed",
@@ -86,7 +536,7 @@ test("synthetic perceptual reverb is explicit and raw reference stays selectable
   await expect(enabled).not.toBeChecked();
 });
 
-test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition throw", async ({
+test("actual pointer lock starts controls from the entry click, Enter toggles, Tab exits and no acquisition throw", async ({
   page,
 }) => {
   await page.addInitScript(() => {
@@ -114,12 +564,17 @@ test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition
   await openWorkspace(page);
   await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
-  await expect(page.getByRole("button", { name: /^(開始運算|繼續運算)$/ })).toBeVisible();
-  await page.keyboard.press("Enter");
+  // R18: a successful entry click is the explicit start; no hidden second Enter gate.
   await expect(
     page.locator(".transport-actions").getByRole("button", { name: "暫停", exact: true }),
   ).toBeVisible();
   await expect(page.locator(".run-status .subtle.mono")).not.toHaveText("tick 0");
+  const listenerZ = () =>
+    page.evaluate(() => window.__reflectionLab!.getSnapshot().listener.positionM[2]);
+  const start = await listenerZ();
+  await page.keyboard.down("w");
+  await expect.poll(listenerZ).toBeLessThan(start - 0.01);
+  await page.keyboard.up("w");
   await page.keyboard.press("Enter");
   await expect(page.getByRole("button", { name: "繼續運算", exact: true })).toBeVisible();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
@@ -138,7 +593,7 @@ test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition
   await expect(page.getByRole("button", { name: "繼續運算", exact: true })).toBeVisible();
 });
 
-test("explicit alternative controls move the actual listener and enable a staged object", async ({
+test("explicit alternative controls move the actual listener and place a live object without Enable", async ({
   page,
 }, info) => {
   await openWorkspace(page);
@@ -164,15 +619,69 @@ test("explicit alternative controls move the actual listener and enable a staged
   await expect.poll(() => page.evaluate(() => document.pointerLockElement === null)).toBe(true);
   for (let index = 0; index < 20; index += 1)
     await page.getByRole("button", { name: "向下看", exact: true }).click();
-  await page.getByRole("button", { name: "切換建造", exact: true }).click();
+  const count = await page.locator(".object-list > li").count();
+  await page.getByRole("button", { name: "開始放置預覽", exact: true }).click();
   const place = page.getByRole("button", { name: "放置", exact: true });
   await expect(place).toBeEnabled();
   await place.click();
-  await expect(page.getByRole("button", { name: "啟用物件", exact: true })).toBeVisible();
-  await page.screenshot({ path: info.outputPath("staged.png"), timeout: 10_000 });
-  await page.getByRole("button", { name: "啟用物件", exact: true }).click();
+  await expect(page.locator(".object-list > li")).toHaveCount(count + 1);
   await expect(page.getByRole("button", { name: "啟用物件", exact: true })).toHaveCount(0);
+  await expect(
+    page.locator(".transport-actions").getByRole("button", { name: "暫停", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "開始放置預覽", exact: true })).toBeEnabled();
+  await page.screenshot({ path: info.outputPath("live-placement.png"), timeout: 10_000 });
   await expect(page.locator(".error-banner")).toHaveCount(0);
+});
+
+test("R21 FPS hint is docked below the crosshair at 1280x720", async ({ page }, info) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await openWorkspace(page);
+  await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
+  await expect(page.locator(".viewport-fps-hint")).toContainText("左鍵 抓取");
+  await expect(page.locator(".viewport-bottom > .viewport-fps-hint")).toHaveCount(1);
+  const hint = await page.locator(".viewport-fps-hint").boundingBox();
+  const crosshair = await page.locator(".viewport-crosshair").boundingBox();
+  const canvas = await page.locator(".viewport-canvas-wrap").boundingBox();
+  expect(hint).not.toBeNull();
+  expect(crosshair).not.toBeNull();
+  expect(canvas).not.toBeNull();
+  expect(hint!.y).toBeGreaterThanOrEqual(canvas!.y + canvas!.height);
+  expect(hint!.y).toBeGreaterThan(crosshair!.y + crosshair!.height);
+  try {
+    await page.screenshot({ path: info.outputPath("fps-bottom-hint-1280.png"), timeout: 10_000 });
+  } finally {
+    await page.keyboard.press("Tab");
+  }
+});
+
+test("R21 native right hold places, left grabs, right drops and a quick right click places again", async ({
+  page,
+}) => {
+  await openWorkspace(page);
+  await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
+  await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
+  const count = await page.locator(".object-list > li").count();
+  try {
+    await page.mouse.down({ button: "right" });
+    await expect(page.locator(".viewport-fps-hint")).toContainText("放開右鍵 放置");
+    await expect(page.locator(".viewport-fps-hint")).toContainText("空中（無重力）");
+    await page.mouse.up({ button: "right" });
+    await expect(page.locator(".object-list > li")).toHaveCount(count + 1);
+    await page.mouse.down();
+    await page.mouse.up();
+    await expect(page.locator(".viewport-fps-hint")).toContainText("左鍵 投擲");
+    await page.mouse.down({ button: "right" });
+    await page.mouse.up({ button: "right" });
+    await expect(page.locator(".viewport-fps-hint")).toContainText("左鍵 抓取");
+    // Turn to empty space before the second placement, keeping the first body live.
+    await page.mouse.move(900, 360);
+    await page.mouse.click(900, 360, { button: "right" });
+    await expect(page.locator(".object-list > li")).toHaveCount(count + 2);
+    await expect(page.getByRole("button", { name: "啟用物件", exact: true })).toHaveCount(0);
+  } finally {
+    await page.keyboard.press("Tab");
+  }
 });
 
 test("320 CSS px and reduced motion keep transport, monitor and forms reachable", async ({
@@ -219,9 +728,14 @@ test("audio import advertises only the preflighted WAV formats", async ({ page }
     ".wav,audio/wav,audio/x-wav",
   );
   await page.locator(".import-details summary").click();
-  await expect(
-    page.getByText("PCM/float WAV，大小/時長限制依錯誤提示。", { exact: false }),
-  ).toBeVisible();
+  await page
+    .locator(".import-details")
+    .getByRole("button", { name: "說明：匯入聲音", exact: true })
+    .first()
+    .focus();
+  await expect(page.locator(".help-tip-bubble")).toContainText(
+    "PCM/float WAV，大小/時長限制依錯誤提示。",
+  );
 });
 
 test("AI defaults offline and selecting a blocked Meta gate never proposes a model request", async ({

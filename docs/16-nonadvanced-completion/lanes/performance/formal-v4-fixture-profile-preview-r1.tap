@@ -1,0 +1,972 @@
+TAP version 13
+# Subtest: V4 exposes a separately testable owned preview readiness predicate
+ok 1 - V4 exposes a separately testable owned preview readiness predicate
+  ---
+  duration_ms: 0.637
+  type: 'test'
+  ...
+# Subtest: only the expected ready URL from a still-live owned child is ready
+ok 2 - only the expected ready URL from a still-live owned child is ready
+  ---
+  duration_ms: 0.1314
+  type: 'test'
+  ...
+# Subtest: V4 does not treat EADDRINUSE containing the port as a ready owned server
+not ok 3 - V4 does not treat EADDRINUSE containing the port as a ready owned server
+  ---
+  duration_ms: 0.5585
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat another host on the same port as a ready owned server
+not ok 4 - V4 does not treat another host on the same port as a ready owned server
+  ---
+  duration_ms: 0.205
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat a port with the same numeric prefix as a ready owned server
+not ok 5 - V4 does not treat a port with the same numeric prefix as a ready owned server
+  ---
+  duration_ms: 0.1109
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat already exited owned child as a ready owned server
+not ok 6 - V4 does not treat already exited owned child as a ready owned server
+  ---
+  duration_ms: 0.0864
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat terminated owned child as a ready owned server
+not ok 7 - V4 does not treat terminated owned child as a ready owned server
+  ---
+  duration_ms: 0.1992
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat unknown exit state as a ready owned server
+not ok 8 - V4 does not treat unknown exit state as a ready owned server
+  ---
+  duration_ms: 0.0844
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 does not treat unknown signal state as a ready owned server
+not ok 9 - V4 does not treat unknown signal state as a ready owned server
+  ---
+  duration_ms: 0.2138
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:26:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:28:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 exposes a separate CLI and bounded planner without changing the original sources
+ok 10 - V4 exposes a separate CLI and bounded planner without changing the original sources
+  ---
+  duration_ms: 1.3973
+  type: 'test'
+  ...
+# Subtest: V4 exposes pure workload classification and null-safe observation summaries
+ok 11 - V4 exposes pure workload classification and null-safe observation summaries
+  ---
+  duration_ms: 0.1329
+  type: 'test'
+  ...
+# Subtest: formal defaults retain the original 600/all/3000/600 workload and product default monitor
+ok 12 - formal defaults retain the original 600/all/3000/600 workload and product default monitor
+  ---
+  duration_ms: 0.2547
+  type: 'test'
+  ...
+# Subtest: probe-off still selects the entire original formal workload
+ok 13 - probe-off still selects the entire original formal workload
+  ---
+  duration_ms: 0.0932
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 seconds
+ok 14 - formal V4 rejects 599 seconds
+  ---
+  duration_ms: 0.2199
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects only UI
+ok 15 - formal V4 rejects only UI
+  ---
+  duration_ms: 0.0658
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 2999 physics iterations
+ok 16 - formal V4 rejects 2999 physics iterations
+  ---
+  duration_ms: 0.0548
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 acoustic iterations
+ok 17 - formal V4 rejects 599 acoustic iterations
+  ---
+  duration_ms: 0.0573
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects prepare
+ok 18 - formal V4 rejects prepare
+  ---
+  duration_ms: 0.201
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects software GPU
+ok 19 - formal V4 rejects software GPU
+  ---
+  duration_ms: 0.2442
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects load mode releases original default analysers
+ok 20 - formal V4 rejects load mode releases original default analysers
+  ---
+  duration_ms: 0.1181
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects spectrum is a different product workload
+ok 21 - formal V4 rejects spectrum is a different product workload
+  ---
+  duration_ms: 0.0988
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects waveform is a different product workload
+ok 22 - formal V4 rejects waveform is a different product workload
+  ---
+  duration_ms: 0.053
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects another pinned monitor input
+ok 23 - formal V4 rejects another pinned monitor input
+  ---
+  duration_ms: 0.0421
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode levels
+ok 24 - short diagnostic may explicitly pin product mode levels
+  ---
+  duration_ms: 0.0781
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode spectrum
+ok 25 - short diagnostic may explicitly pin product mode spectrum
+  ---
+  duration_ms: 0.0287
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode waveform
+ok 26 - short diagnostic may explicitly pin product mode waveform
+  ---
+  duration_ms: 0.0299
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode load
+ok 27 - short diagnostic may explicitly pin product mode load
+  ---
+  duration_ms: 0.042
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode unknown
+ok 28 - V4 rejects malformed or workload-reducing options --probe-mode unknown
+  ---
+  duration_ms: 0.0607
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode
+ok 29 - V4 rejects malformed or workload-reducing options --probe-mode
+  ---
+  duration_ms: 0.0341
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+ok 30 - V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+  ---
+  duration_ms: 0.03
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+ok 31 - V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+  ---
+  duration_ms: 0.0338
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+ok 32 - V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+  ---
+  duration_ms: 0.0304
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification
+ok 33 - V4 rejects malformed or workload-reducing options --qualification
+  ---
+  duration_ms: 0.0296
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification one --qualification two
+ok 34 - V4 rejects malformed or workload-reducing options --qualification one --qualification two
+  ---
+  duration_ms: 0.0304
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --native-voices 8
+ok 35 - V4 rejects malformed or workload-reducing options --native-voices 8
+  ---
+  duration_ms: 0.0391
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --paths 1
+ok 36 - V4 rejects malformed or workload-reducing options --paths 1
+  ---
+  duration_ms: 0.1053
+  type: 'test'
+  ...
+# Subtest: short planning points to the new profile and retains original process bounds
+ok 37 - short planning points to the new profile and retains original process bounds
+  ---
+  duration_ms: 0.3672
+  type: 'test'
+  ...
+# Subtest: formal on needs a real registered qualification
+ok 38 - formal on needs a real registered qualification
+  ---
+  duration_ms: 0.4328
+  type: 'test'
+  ...
+# Subtest: formal off needs a real registered qualification
+ok 39 - formal off needs a real registered qualification
+  ---
+  duration_ms: 0.1096
+  type: 'test'
+  ...
+# Subtest: external dependencies cannot approve a method using flags or a substituted lookup
+ok 40 - external dependencies cannot approve a method using flags or a substituted lookup
+  ---
+  duration_ms: 0.137
+  type: 'test'
+  ...
+# Subtest: new UI workload retains every original gate under explicitly typed V4 membership
+ok 41 - new UI workload retains every original gate under explicitly typed V4 membership
+  ---
+  duration_ms: 1.8128
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short actual native window
+ok 42 - V4 preserves original rejection: short actual native window
+  ---
+  duration_ms: 0.4757
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing interpolation evidence
+ok 43 - V4 preserves original rejection: missing interpolation evidence
+  ---
+  duration_ms: 0.3084
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: sample truncation
+ok 44 - V4 preserves original rejection: sample truncation
+  ---
+  duration_ms: 0.2605
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: runtime error
+ok 45 - V4 preserves original rejection: runtime error
+  ---
+  duration_ms: 0.3167
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: paused simulation frame
+ok 46 - V4 preserves original rejection: paused simulation frame
+  ---
+  duration_ms: 0.2219
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short fixed tick progress
+ok 47 - V4 preserves original rejection: short fixed tick progress
+  ---
+  duration_ms: 0.1872
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: dropped wall time
+ok 48 - V4 preserves original rejection: dropped wall time
+  ---
+  duration_ms: 0.2462
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: five catch-up steps
+ok 49 - V4 preserves original rejection: five catch-up steps
+  ---
+  duration_ms: 0.2734
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: rejected grab
+ok 50 - V4 preserves original rejection: rejected grab
+  ---
+  duration_ms: 0.2338
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: pending script
+ok 51 - V4 preserves original rejection: pending script
+  ---
+  duration_ms: 0.1788
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: capture after closed wall window
+ok 52 - V4 preserves original rejection: capture after closed wall window
+  ---
+  duration_ms: 0.164
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing capture tick
+ok 53 - V4 preserves original rejection: missing capture tick
+  ---
+  duration_ms: 0.1847
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: suspended graph
+ok 54 - V4 preserves original rejection: suspended graph
+  ---
+  duration_ms: 0.159
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short warmup
+ok 55 - V4 preserves original rejection: short warmup
+  ---
+  duration_ms: 0.155
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects missing passive snapshot without creating observation resources
+ok 56 - V4 monitor workload rejects missing passive snapshot without creating observation resources
+  ---
+  duration_ms: 0.1125
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+ok 57 - V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+  ---
+  duration_ms: 0.0574
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects load instead of original default without creating observation resources
+ok 58 - V4 monitor workload rejects load instead of original default without creating observation resources
+  ---
+  duration_ms: 0.0486
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects right instead of original default without creating observation resources
+ok 59 - V4 monitor workload rejects right instead of original default without creating observation resources
+  ---
+  duration_ms: 0.0421
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects hidden product monitor without creating observation resources
+ok 60 - V4 monitor workload rejects hidden product monitor without creating observation resources
+  ---
+  duration_ms: 0.0406
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown rate without creating observation resources
+ok 61 - V4 monitor workload rejects unknown rate without creating observation resources
+  ---
+  duration_ms: 0.0412
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown FFT size without creating observation resources
+ok 62 - V4 monitor workload rejects unknown FFT size without creating observation resources
+  ---
+  duration_ms: 0.0432
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unconfigured stale age without creating observation resources
+ok 63 - V4 monitor workload rejects unconfigured stale age without creating observation resources
+  ---
+  duration_ms: 0.0437
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+ok 64 - V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+  ---
+  duration_ms: 0.0683
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown analyser count without creating observation resources
+ok 65 - V4 monitor workload rejects unknown analyser count without creating observation resources
+  ---
+  duration_ms: 0.0645
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown total tap count without creating observation resources
+ok 66 - V4 monitor workload rejects unknown total tap count without creating observation resources
+  ---
+  duration_ms: 0.0511
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+ok 67 - V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+  ---
+  duration_ms: 0.0402
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+ok 68 - V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+  ---
+  duration_ms: 0.0474
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects negative audio sample clock without creating observation resources
+ok 69 - V4 monitor workload rejects negative audio sample clock without creating observation resources
+  ---
+  duration_ms: 0.0535
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown sample clock without creating observation resources
+ok 70 - V4 monitor workload rejects unknown sample clock without creating observation resources
+  ---
+  duration_ms: 0.0436
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects read after closed window without creating observation resources
+ok 71 - V4 monitor workload rejects read after closed window without creating observation resources
+  ---
+  duration_ms: 0.0402
+  type: 'test'
+  ...
+# Subtest: probe-off null UI observations remain explicit unknown and do not throw
+ok 72 - probe-off null UI observations remain explicit unknown and do not throw
+  ---
+  duration_ms: 0.3977
+  type: 'test'
+  ...
+# Subtest: partial UI native observations cannot become a smaller measured maximum
+ok 73 - partial UI native observations cannot become a smaller measured maximum
+  ---
+  duration_ms: 0.154
+  type: 'test'
+  ...
+# Subtest: actual measured zero UI values stay zero
+ok 74 - actual measured zero UI values stay zero
+  ---
+  duration_ms: 0.0719
+  type: 'test'
+  ...
+# Subtest: physics empty summary has explicit finite-or-null values
+ok 75 - physics empty summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.1062
+  type: 'test'
+  ...
+# Subtest: physics partial summary has explicit finite-or-null values
+ok 76 - physics partial summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.0678
+  type: 'test'
+  ...
+# Subtest: physics nonfinite summary has explicit finite-or-null values
+ok 77 - physics nonfinite summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.0537
+  type: 'test'
+  ...
+# Subtest: physics measured zero summary has explicit finite-or-null values
+ok 78 - physics measured zero summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.0529
+  type: 'test'
+  ...
+# Subtest: empty acoustic rows are not zero misses or all updates completed
+ok 79 - empty acoustic rows are not zero misses or all updates completed
+  ---
+  duration_ms: 0.2891
+  type: 'test'
+  ...
+# Subtest: missing native telemetry cannot turn into zero graph load
+ok 80 - missing native telemetry cannot turn into zero graph load
+  ---
+  duration_ms: 0.1337
+  type: 'test'
+  ...
+# Subtest: partial cadence is unverified while a known miss remains visible
+ok 81 - partial cadence is unverified while a known miss remains visible
+  ---
+  duration_ms: 0.0947
+  type: 'test'
+  ...
+# Subtest: clean probe-off remains comparison only even if every advertised flag says true
+ok 82 - clean probe-off remains comparison only even if every advertised flag says true
+  ---
+  duration_ms: 0.3656
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED
+ok 83 - probe-off does not overwrite existing execution status FAILED
+  ---
+  duration_ms: 0.1228
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED_CLEANUP
+ok 84 - probe-off does not overwrite existing execution status FAILED_CLEANUP
+  ---
+  duration_ms: 0.0555
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status TIMED_OUT
+ok 85 - probe-off does not overwrite existing execution status TIMED_OUT
+  ---
+  duration_ms: 0.0566
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+ok 86 - probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+  ---
+  duration_ms: 0.0384
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+ok 87 - probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+  ---
+  duration_ms: 0.0478
+  type: 'test'
+  ...
+# Subtest: all-missing metrics remain null and NOT_RUN in comparison output
+ok 88 - all-missing metrics remain null and NOT_RUN in comparison output
+  ---
+  duration_ms: 0.0931
+  type: 'test'
+  ...
+# Subtest: a partial observation is not promoted to PASS while a known FAIL stays FAIL
+ok 89 - a partial observation is not promoted to PASS while a known FAIL stays FAIL
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actual600Seconds false
+ok 90 - unapproved probe-on remains nonqualified with actual600Seconds false
+  ---
+  duration_ms: 0.116
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actualInterpolationObserved false
+ok 91 - unapproved probe-on remains nonqualified with actualInterpolationObserved false
+  ---
+  duration_ms: 0.0464
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with closedWindowNoPending false
+ok 92 - unapproved probe-on remains nonqualified with closedWindowNoPending false
+  ---
+  duration_ms: 0.0318
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+ok 93 - unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+  ---
+  duration_ms: 0.0281
+  type: 'test'
+  ...
+# Subtest: short diagnostic evidence cannot claim formal600 using an external true flag
+ok 94 - short diagnostic evidence cannot claim formal600 using an external true flag
+  ---
+  duration_ms: 0.0701
+  type: 'test'
+  ...
+# Subtest: nominal monitor freshness is explicit configuration, not a new default acceptance limit
+ok 95 - nominal monitor freshness is explicit configuration, not a new default acceptance limit
+  ---
+  duration_ms: 0.0978
+  type: 'test'
+  ...
+# Subtest: actual measured zero acoustic graph values remain zero without implying valid workload
+ok 96 - actual measured zero acoustic graph values remain zero without implying valid workload
+  ---
+  duration_ms: 0.0864
+  type: 'test'
+  ...
+# Subtest: approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+ok 97 - approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+  ---
+  duration_ms: 0.2486
+  type: 'test'
+  ...
+# Subtest: the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+ok 98 - the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+  ---
+  duration_ms: 27.9117
+  type: 'test'
+  ...
+# Subtest: approved semantic pins may be covered by a unique well-formed superset
+ok 99 - approved semantic pins may be covered by a unique well-formed superset
+  ---
+  duration_ms: 2.8339
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong qualification ID
+ok 100 - canonical V4 resolver rejects wrong qualification ID
+  ---
+  duration_ms: 0.9175
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing qualification ID with approval flags
+ok 101 - canonical V4 resolver rejects missing qualification ID with approval flags
+  ---
+  duration_ms: 0.8217
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong executable hash
+ok 102 - canonical V4 resolver rejects wrong executable hash
+  ---
+  duration_ms: 0.7092
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing executable hash
+ok 103 - canonical V4 resolver rejects missing executable hash
+  ---
+  duration_ms: 0.7407
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong producer
+ok 104 - canonical V4 resolver rejects wrong producer
+  ---
+  duration_ms: 0.8169
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing producer
+ok 105 - canonical V4 resolver rejects missing producer
+  ---
+  duration_ms: 0.792
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing scope
+ok 106 - canonical V4 resolver rejects missing scope
+  ---
+  duration_ms: 0.8436
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming formal600 PASS
+ok 107 - canonical V4 resolver rejects claiming formal600 PASS
+  ---
+  duration_ms: 0.7392
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming DSP CPU
+ok 108 - canonical V4 resolver rejects claiming DSP CPU
+  ---
+  duration_ms: 0.7182
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming GUI
+ok 109 - canonical V4 resolver rejects claiming GUI
+  ---
+  duration_ms: 0.7879
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming hearing
+ok 110 - canonical V4 resolver rejects claiming hearing
+  ---
+  duration_ms: 0.7039
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing source manifest
+ok 111 - canonical V4 resolver rejects missing source manifest
+  ---
+  duration_ms: 0.6776
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source missing
+ok 112 - canonical V4 resolver rejects one approved source missing
+  ---
+  duration_ms: 0.7992
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source changed
+ok 113 - canonical V4 resolver rejects one approved source changed
+  ---
+  duration_ms: 0.8916
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate approved source
+ok 114 - canonical V4 resolver rejects duplicate approved source
+  ---
+  duration_ms: 0.8732
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate path with conflicting bytes
+ok 115 - canonical V4 resolver rejects duplicate path with conflicting bytes
+  ---
+  duration_ms: 0.8808
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+ok 116 - new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+  ---
+  duration_ms: 0.1731
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+ok 117 - new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+  ---
+  duration_ms: 0.0438
+  type: 'test'
+  ...
+# Subtest: a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+ok 118 - a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+  ---
+  duration_ms: 0.3341
+  type: 'test'
+  ...
+# Subtest: V4 normal typed successful exit retains release and child qualification separately
+ok 119 - V4 normal typed successful exit retains release and child qualification separately
+  ---
+  duration_ms: 0.2263
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+ok 120 - V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+  ---
+  duration_ms: 0.0615
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote nonzero exit after actual resource closure to formal success
+ok 121 - V4 release cannot promote nonzero exit after actual resource closure to formal success
+  ---
+  duration_ms: 0.0289
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote unknown typed timeout state to formal success
+ok 122 - V4 release cannot promote unknown typed timeout state to formal success
+  ---
+  duration_ms: 0.0264
+  type: 'test'
+  ...
+# Subtest: V4 acoustic probe-off path cap 8 performs zero diagnostic reads and preserves the original workload
+ok 123 - V4 acoustic probe-off path cap 8 performs zero diagnostic reads and preserves the original workload
+  ---
+  duration_ms: 48.0709
+  type: 'test'
+  ...
+# Subtest: V4 acoustic probe-off path cap 32 performs zero diagnostic reads and preserves the original workload
+ok 124 - V4 acoustic probe-off path cap 32 performs zero diagnostic reads and preserves the original workload
+  ---
+  duration_ms: 52.6366
+  type: 'test'
+  ...
+# Subtest: V4 exposes one directly testable asynchronous post-tail disposal helper
+ok 125 - V4 exposes one directly testable asynchronous post-tail disposal helper
+  ---
+  duration_ms: 0.2996
+  type: 'test'
+  ...
+# Subtest: V4 acoustic on retains the tail drain and awaits actual audio-context closure
+ok 126 - V4 acoustic on retains the tail drain and awaits actual audio-context closure
+  ---
+  duration_ms: 15.3387
+  type: 'test'
+  ...
+# Subtest: V4 acoustic off retains the tail drain and awaits actual audio-context closure
+ok 127 - V4 acoustic off retains the tail drain and awaits actual audio-context closure
+  ---
+  duration_ms: 9.6995
+  type: 'test'
+  ...
+# Subtest: V4 UI on preserves all tail stages before awaiting actual native disposal
+ok 128 - V4 UI on preserves all tail stages before awaiting actual native disposal
+  ---
+  duration_ms: 3.5985
+  type: 'test'
+  ...
+# Subtest: V4 UI off preserves all tail stages before awaiting actual native disposal
+ok 129 - V4 UI off preserves all tail stages before awaiting actual native disposal
+  ---
+  duration_ms: 2.6059
+  type: 'test'
+  ...
+# Subtest: native disposal helper waits for the actual engine promise rather than reporting browser cleanup
+ok 130 - native disposal helper waits for the actual engine promise rather than reporting browser cleanup
+  ---
+  duration_ms: 0.6642
+  type: 'test'
+  ...
+# Subtest: resolved dispose promise with actual context running cannot produce CLOSED evidence
+ok 131 - resolved dispose promise with actual context running cannot produce CLOSED evidence
+  ---
+  duration_ms: 1.2519
+  type: 'test'
+  ...
+# Subtest: resolved dispose promise with actual context suspended cannot produce CLOSED evidence
+ok 132 - resolved dispose promise with actual context suspended cannot produce CLOSED evidence
+  ---
+  duration_ms: 0.8895
+  type: 'test'
+  ...
+# Subtest: native disposal keeps unavailable resource endpoints null after genuine context close
+ok 133 - native disposal keeps unavailable resource endpoints null after genuine context close
+  ---
+  duration_ms: 0.4385
+  type: 'test'
+  ...
+# Subtest: native disposal retains observed unreleased resources instead of writing false zeros
+ok 134 - native disposal retains observed unreleased resources instead of writing false zeros
+  ---
+  duration_ms: 0.6476
+  type: 'test'
+  ...
+# Subtest: a rejected actual context close remains a failure with no successful disposal receipt
+ok 135 - a rejected actual context close remains a failure with no successful disposal receipt
+  ---
+  duration_ms: 0.7022
+  type: 'test'
+  ...
+# Subtest: a bounded disposal timeout does not claim that an unresolved context was closed
+ok 136 - a bounded disposal timeout does not claim that an unresolved context was closed
+  ---
+  duration_ms: 0.434
+  type: 'test'
+  ...
+# Subtest: missing asynchronous native disposal API cannot be replaced by fire-and-forget disposal
+ok 137 - missing asynchronous native disposal API cannot be replaced by fire-and-forget disposal
+  ---
+  duration_ms: 0.3902
+  type: 'test'
+  ...
+1..137
+# tests 137
+# suites 0
+# pass 130
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1985.9995

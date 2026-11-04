@@ -1,0 +1,838 @@
+TAP version 13
+# Subtest: owned-PID CPU method exposes its separate planner, capture boundary and summarizer
+ok 1 - owned-PID CPU method exposes its separate planner, capture boundary and summarizer
+  ---
+  duration_ms: 1.9906
+  type: 'test'
+  ...
+# Subtest: the fixed file plan copies only typed CDP-owned PIDs and does not trust CDP CPU zero
+ok 2 - the fixed file plan copies only typed CDP-owned PIDs and does not trust CDP CPU zero
+  ---
+  duration_ms: 2.2024
+  type: 'test'
+  ...
+# Subtest: OS whitelist planning needs id/type rather than Chromium's ambiguous CPU validity
+ok 3 - OS whitelist planning needs id/type rather than Chromium's ambiguous CPU validity
+  ---
+  duration_ms: 0.3127
+  type: 'test'
+  ...
+# Subtest: planner rejects missing response without an all-process enumeration fallback
+ok 4 - planner rejects missing response without an all-process enumeration fallback
+  ---
+  duration_ms: 0.3086
+  type: 'test'
+  ...
+# Subtest: planner rejects null response without an all-process enumeration fallback
+ok 5 - planner rejects null response without an all-process enumeration fallback
+  ---
+  duration_ms: 0.1655
+  type: 'test'
+  ...
+# Subtest: planner rejects array response without an all-process enumeration fallback
+ok 6 - planner rejects array response without an all-process enumeration fallback
+  ---
+  duration_ms: 0.1145
+  type: 'test'
+  ...
+# Subtest: planner rejects missing list without an all-process enumeration fallback
+ok 7 - planner rejects missing list without an all-process enumeration fallback
+  ---
+  duration_ms: 0.2723
+  type: 'test'
+  ...
+# Subtest: planner rejects nonarray list without an all-process enumeration fallback
+ok 8 - planner rejects nonarray list without an all-process enumeration fallback
+  ---
+  duration_ms: 0.1055
+  type: 'test'
+  ...
+# Subtest: planner rejects empty list without an all-process enumeration fallback
+ok 9 - planner rejects empty list without an all-process enumeration fallback
+  ---
+  duration_ms: 0.3731
+  type: 'test'
+  ...
+# Subtest: planner rejects null row without an all-process enumeration fallback
+ok 10 - planner rejects null row without an all-process enumeration fallback
+  ---
+  duration_ms: 0.4206
+  type: 'test'
+  ...
+# Subtest: planner rejects string PID without an all-process enumeration fallback
+ok 11 - planner rejects string PID without an all-process enumeration fallback
+  ---
+  duration_ms: 0.1656
+  type: 'test'
+  ...
+# Subtest: planner rejects fractional PID without an all-process enumeration fallback
+ok 12 - planner rejects fractional PID without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0993
+  type: 'test'
+  ...
+# Subtest: planner rejects zero PID without an all-process enumeration fallback
+ok 13 - planner rejects zero PID without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0634
+  type: 'test'
+  ...
+# Subtest: planner rejects negative PID without an all-process enumeration fallback
+ok 14 - planner rejects negative PID without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0509
+  type: 'test'
+  ...
+# Subtest: planner rejects PID beyond DWORD without an all-process enumeration fallback
+ok 15 - planner rejects PID beyond DWORD without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0491
+  type: 'test'
+  ...
+# Subtest: planner rejects empty type without an all-process enumeration fallback
+ok 16 - planner rejects empty type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.054
+  type: 'test'
+  ...
+# Subtest: planner rejects nonstring type without an all-process enumeration fallback
+ok 17 - planner rejects nonstring type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0519
+  type: 'test'
+  ...
+# Subtest: planner rejects control character type without an all-process enumeration fallback
+ok 18 - planner rejects control character type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0521
+  type: 'test'
+  ...
+# Subtest: planner rejects oversized type without an all-process enumeration fallback
+ok 19 - planner rejects oversized type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.1313
+  type: 'test'
+  ...
+# Subtest: planner rejects duplicate same type without an all-process enumeration fallback
+ok 20 - planner rejects duplicate same type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0597
+  type: 'test'
+  ...
+# Subtest: planner rejects duplicate PID changed type without an all-process enumeration fallback
+ok 21 - planner rejects duplicate PID changed type without an all-process enumeration fallback
+  ---
+  duration_ms: 0.0559
+  type: 'test'
+  ...
+# Subtest: planner rejects relative executable without constructing shell text
+ok 22 - planner rejects relative executable without constructing shell text
+  ---
+  duration_ms: 0.1713
+  type: 'test'
+  ...
+# Subtest: planner rejects unapproved executable basename without constructing shell text
+ok 23 - planner rejects unapproved executable basename without constructing shell text
+  ---
+  duration_ms: 0.1721
+  type: 'test'
+  ...
+# Subtest: planner rejects script as executable without constructing shell text
+ok 24 - planner rejects script as executable without constructing shell text
+  ---
+  duration_ms: 0.0812
+  type: 'test'
+  ...
+# Subtest: planner rejects NUL executable without constructing shell text
+ok 25 - planner rejects NUL executable without constructing shell text
+  ---
+  duration_ms: 0.0671
+  type: 'test'
+  ...
+# Subtest: planner rejects relative input without constructing shell text
+ok 26 - planner rejects relative input without constructing shell text
+  ---
+  duration_ms: 0.0783
+  type: 'test'
+  ...
+# Subtest: planner rejects relative cwd without constructing shell text
+ok 27 - planner rejects relative cwd without constructing shell text
+  ---
+  duration_ms: 0.1322
+  type: 'test'
+  ...
+# Subtest: planner rejects unsafe request identity without constructing shell text
+ok 28 - planner rejects unsafe request identity without constructing shell text
+  ---
+  duration_ms: 0.0581
+  type: 'test'
+  ...
+# Subtest: planner rejects oversized request identity without constructing shell text
+ok 29 - planner rejects oversized request identity without constructing shell text
+  ---
+  duration_ms: 0.0541
+  type: 'test'
+  ...
+# Subtest: planner rejects missing boundary without constructing shell text
+ok 30 - planner rejects missing boundary without constructing shell text
+  ---
+  duration_ms: 0.1634
+  type: 'test'
+  ...
+# Subtest: planner rejects unknown boundary without constructing shell text
+ok 31 - planner rejects unknown boundary without constructing shell text
+  ---
+  duration_ms: 0.0658
+  type: 'test'
+  ...
+# Subtest: planner rejects missing scope without constructing shell text
+ok 32 - planner rejects missing scope without constructing shell text
+  ---
+  duration_ms: 0.0523
+  type: 'test'
+  ...
+# Subtest: planner rejects empty scope without constructing shell text
+ok 33 - planner rejects empty scope without constructing shell text
+  ---
+  duration_ms: 0.0521
+  type: 'test'
+  ...
+# Subtest: planner rejects oversized scope without constructing shell text
+ok 34 - planner rejects oversized scope without constructing shell text
+  ---
+  duration_ms: 0.0514
+  type: 'test'
+  ...
+# Subtest: the full 1024 typed-PID observation cap is preserved and 1025 is rejected before execution
+ok 35 - the full 1024 typed-PID observation cap is preserved and 1025 is rejected before execution
+  ---
+  duration_ms: 0.9173
+  type: 'test'
+  ...
+# Subtest: same creation FILETIME and full PID/type sets produce user plus kernel deltas over actual wall time
+ok 36 - same creation FILETIME and full PID/type sets produce user plus kernel deltas over actual wall time
+  ---
+  duration_ms: 3.3012
+  type: 'test'
+  ...
+# Subtest: successful Win32 zero counters are actual zero rather than the CDP failure sentinel
+ok 37 - successful Win32 zero counters are actual zero rather than the CDP failure sentinel
+  ---
+  duration_ms: 0.4984
+  type: 'test'
+  ...
+# Subtest: subtracting exact 64-bit decimal counters before Number conversion preserves small CPU deltas
+ok 38 - subtracting exact 64-bit decimal counters before Number conversion preserves small CPU deltas
+  ---
+  duration_ms: 0.5761
+  type: 'test'
+  ...
+# Subtest: one 100ns CPU tick remains a nonzero measured delta
+ok 39 - one 100ns CPU tick remains a nonzero measured delta
+  ---
+  duration_ms: 0.3535
+  type: 'test'
+  ...
+# Subtest: creation FILETIME strings that collapse to the same Number still detect PID reuse
+ok 40 - creation FILETIME strings that collapse to the same Number still detect PID reuse
+  ---
+  duration_ms: 0.7115
+  type: 'test'
+  ...
+# Subtest: userTimeTicks reset cannot be cancelled by growth in the other counter
+ok 41 - userTimeTicks reset cannot be cancelled by growth in the other counter
+  ---
+  duration_ms: 0.449
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks reset cannot be cancelled by growth in the other counter
+ok 42 - kernelTimeTicks reset cannot be cancelled by growth in the other counter
+  ---
+  duration_ms: 0.2615
+  type: 'test'
+  ...
+# Subtest: new owned PID cannot report a surviving matched subtotal as whole-browser CPU
+ok 43 - new owned PID cannot report a surviving matched subtotal as whole-browser CPU
+  ---
+  duration_ms: 0.2822
+  type: 'test'
+  ...
+# Subtest: disappeared owned PID cannot report a surviving matched subtotal as whole-browser CPU
+ok 44 - disappeared owned PID cannot report a surviving matched subtotal as whole-browser CPU
+  ---
+  duration_ms: 0.1686
+  type: 'test'
+  ...
+# Subtest: changed owned type cannot report a surviving matched subtotal as whole-browser CPU
+ok 45 - changed owned type cannot report a surviving matched subtotal as whole-browser CPU
+  ---
+  duration_ms: 0.1956
+  type: 'test'
+  ...
+# Subtest: swapped boundary cannot report a surviving matched subtotal as whole-browser CPU
+ok 46 - swapped boundary cannot report a surviving matched subtotal as whole-browser CPU
+  ---
+  duration_ms: 0.1792
+  type: 'test'
+  ...
+# Subtest: different scope cannot report a surviving matched subtotal as whole-browser CPU
+ok 47 - different scope cannot report a surviving matched subtotal as whole-browser CPU
+  ---
+  duration_ms: 0.1489
+  type: 'test'
+  ...
+# Subtest: two individually valid endpoints with a disappeared process cannot expose the surviving subtotal
+ok 48 - two individually valid endpoints with a disappeared process cannot expose the surviving subtotal
+  ---
+  duration_ms: 0.2159
+  type: 'test'
+  ...
+# Subtest: two individually valid endpoints with a new process cannot expose the old matched subtotal
+ok 49 - two individually valid endpoints with a new process cannot expose the old matched subtotal
+  ---
+  duration_ms: 0.2422
+  type: 'test'
+  ...
+# Subtest: two individually valid endpoints with a changed process type cannot inherit a counter
+ok 50 - two individually valid endpoints with a changed process type cannot inherit a counter
+  ---
+  duration_ms: 0.185
+  type: 'test'
+  ...
+# Subtest: reply wrong version keeps canonical totals unknown
+ok 51 - reply wrong version keeps canonical totals unknown
+  ---
+  duration_ms: 0.2301
+  type: 'test'
+  ...
+# Subtest: reply wrong method keeps canonical totals unknown
+ok 52 - reply wrong method keeps canonical totals unknown
+  ---
+  duration_ms: 0.1639
+  type: 'test'
+  ...
+# Subtest: reply wrong request identity keeps canonical totals unknown
+ok 53 - reply wrong request identity keeps canonical totals unknown
+  ---
+  duration_ms: 0.1718
+  type: 'test'
+  ...
+# Subtest: reply missing rows keeps canonical totals unknown
+ok 54 - reply missing rows keeps canonical totals unknown
+  ---
+  duration_ms: 0.2102
+  type: 'test'
+  ...
+# Subtest: reply duplicate rows keeps canonical totals unknown
+ok 55 - reply duplicate rows keeps canonical totals unknown
+  ---
+  duration_ms: 0.2494
+  type: 'test'
+  ...
+# Subtest: reply unowned PID keeps canonical totals unknown
+ok 56 - reply unowned PID keeps canonical totals unknown
+  ---
+  duration_ms: 0.1816
+  type: 'test'
+  ...
+# Subtest: reply unowned replacement PID keeps canonical totals unknown
+ok 57 - reply unowned replacement PID keeps canonical totals unknown
+  ---
+  duration_ms: 0.1884
+  type: 'test'
+  ...
+# Subtest: reply wrong type keeps canonical totals unknown
+ok 58 - reply wrong type keeps canonical totals unknown
+  ---
+  duration_ms: 0.1739
+  type: 'test'
+  ...
+# Subtest: reply missing row keeps canonical totals unknown
+ok 59 - reply missing row keeps canonical totals unknown
+  ---
+  duration_ms: 0.2724
+  type: 'test'
+  ...
+# Subtest: reply open failed keeps canonical totals unknown
+ok 60 - reply open failed keeps canonical totals unknown
+  ---
+  duration_ms: 0.4198
+  type: 'test'
+  ...
+# Subtest: reply query failed keeps canonical totals unknown
+ok 61 - reply query failed keeps canonical totals unknown
+  ---
+  duration_ms: 0.2292
+  type: 'test'
+  ...
+# Subtest: reply close failed keeps canonical totals unknown
+ok 62 - reply close failed keeps canonical totals unknown
+  ---
+  duration_ms: 0.1972
+  type: 'test'
+  ...
+# Subtest: reply string success flag keeps canonical totals unknown
+ok 63 - reply string success flag keeps canonical totals unknown
+  ---
+  duration_ms: 0.2639
+  type: 'test'
+  ...
+# Subtest: reply missing success flag keeps canonical totals unknown
+ok 64 - reply missing success flag keeps canonical totals unknown
+  ---
+  duration_ms: 0.2378
+  type: 'test'
+  ...
+# Subtest: reply error on advertised success keeps canonical totals unknown
+ok 65 - reply error on advertised success keeps canonical totals unknown
+  ---
+  duration_ms: 0.1885
+  type: 'test'
+  ...
+# Subtest: reply missing success error code keeps canonical totals unknown
+ok 66 - reply missing success error code keeps canonical totals unknown
+  ---
+  duration_ms: 0.2075
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks missing cannot be coerced into a native measurement
+ok 67 - creationTimeFileTimeTicks missing cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.2363
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks null cannot be coerced into a native measurement
+ok 68 - creationTimeFileTimeTicks null cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.3235
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+ok 69 - creationTimeFileTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.579
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks negative cannot be coerced into a native measurement
+ok 70 - creationTimeFileTimeTicks negative cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.2054
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks fractional cannot be coerced into a native measurement
+ok 71 - creationTimeFileTimeTicks fractional cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1782
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks exponent cannot be coerced into a native measurement
+ok 72 - creationTimeFileTimeTicks exponent cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1643
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks whitespace cannot be coerced into a native measurement
+ok 73 - creationTimeFileTimeTicks whitespace cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1451
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks leading zero cannot be coerced into a native measurement
+ok 74 - creationTimeFileTimeTicks leading zero cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1404
+  type: 'test'
+  ...
+# Subtest: creationTimeFileTimeTicks uint64 overflow cannot be coerced into a native measurement
+ok 75 - creationTimeFileTimeTicks uint64 overflow cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1483
+  type: 'test'
+  ...
+# Subtest: userTimeTicks missing cannot be coerced into a native measurement
+ok 76 - userTimeTicks missing cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1831
+  type: 'test'
+  ...
+# Subtest: userTimeTicks null cannot be coerced into a native measurement
+ok 77 - userTimeTicks null cannot be coerced into a native measurement
+  ---
+  duration_ms: 1.3686
+  type: 'test'
+  ...
+# Subtest: userTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+ok 78 - userTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.2599
+  type: 'test'
+  ...
+# Subtest: userTimeTicks negative cannot be coerced into a native measurement
+ok 79 - userTimeTicks negative cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.2062
+  type: 'test'
+  ...
+# Subtest: userTimeTicks fractional cannot be coerced into a native measurement
+ok 80 - userTimeTicks fractional cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1954
+  type: 'test'
+  ...
+# Subtest: userTimeTicks exponent cannot be coerced into a native measurement
+ok 81 - userTimeTicks exponent cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1931
+  type: 'test'
+  ...
+# Subtest: userTimeTicks whitespace cannot be coerced into a native measurement
+ok 82 - userTimeTicks whitespace cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1968
+  type: 'test'
+  ...
+# Subtest: userTimeTicks leading zero cannot be coerced into a native measurement
+ok 83 - userTimeTicks leading zero cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1836
+  type: 'test'
+  ...
+# Subtest: userTimeTicks uint64 overflow cannot be coerced into a native measurement
+ok 84 - userTimeTicks uint64 overflow cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1627
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks missing cannot be coerced into a native measurement
+ok 85 - kernelTimeTicks missing cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1853
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks null cannot be coerced into a native measurement
+ok 86 - kernelTimeTicks null cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1464
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+ok 87 - kernelTimeTicks Number loses uint64 identity cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1414
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks negative cannot be coerced into a native measurement
+ok 88 - kernelTimeTicks negative cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1459
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks fractional cannot be coerced into a native measurement
+ok 89 - kernelTimeTicks fractional cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1398
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks exponent cannot be coerced into a native measurement
+ok 90 - kernelTimeTicks exponent cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1353
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks whitespace cannot be coerced into a native measurement
+ok 91 - kernelTimeTicks whitespace cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1325
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks leading zero cannot be coerced into a native measurement
+ok 92 - kernelTimeTicks leading zero cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1668
+  type: 'test'
+  ...
+# Subtest: kernelTimeTicks uint64 overflow cannot be coerced into a native measurement
+ok 93 - kernelTimeTicks uint64 overflow cannot be coerced into a native measurement
+  ---
+  duration_ms: 0.1532
+  type: 'test'
+  ...
+# Subtest: a real Win32 ULONG maximum is representable as a typed owned PID
+ok 94 - a real Win32 ULONG maximum is representable as a typed owned PID
+  ---
+  duration_ms: 0.1626
+  type: 'test'
+  ...
+# Subtest: source or executable identities cannot change between the paired CPU endpoints
+ok 95 - source or executable identities cannot change between the paired CPU endpoints
+  ---
+  duration_ms: 0.4437
+  type: 'test'
+  ...
+# Subtest: creation FILETIME zero is not a valid native process identity
+ok 96 - creation FILETIME zero is not a valid native process identity
+  ---
+  duration_ms: 0.2353
+  type: 'test'
+  ...
+# Subtest: nonzero exit cannot be repaired by advertised valid/status/zero fields
+ok 97 - nonzero exit cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1931
+  type: 'test'
+  ...
+# Subtest: signal cannot be repaired by advertised valid/status/zero fields
+ok 98 - signal cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1485
+  type: 'test'
+  ...
+# Subtest: timeout cannot be repaired by advertised valid/status/zero fields
+ok 99 - timeout cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1389
+  type: 'test'
+  ...
+# Subtest: cancellation cannot be repaired by advertised valid/status/zero fields
+ok 100 - cancellation cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1288
+  type: 'test'
+  ...
+# Subtest: output cap cannot be repaired by advertised valid/status/zero fields
+ok 101 - output cap cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1356
+  type: 'test'
+  ...
+# Subtest: spawn error cannot be repaired by advertised valid/status/zero fields
+ok 102 - spawn error cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1606
+  type: 'test'
+  ...
+# Subtest: unconfirmed stop cannot be repaired by advertised valid/status/zero fields
+ok 103 - unconfirmed stop cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1336
+  type: 'test'
+  ...
+# Subtest: string stopped cannot be repaired by advertised valid/status/zero fields
+ok 104 - string stopped cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1285
+  type: 'test'
+  ...
+# Subtest: missing process stop cannot be repaired by advertised valid/status/zero fields
+ok 105 - missing process stop cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.2371
+  type: 'test'
+  ...
+# Subtest: missing process proof cannot be repaired by advertised valid/status/zero fields
+ok 106 - missing process proof cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.149
+  type: 'test'
+  ...
+# Subtest: unparseable stdout cannot be repaired by advertised valid/status/zero fields
+ok 107 - unparseable stdout cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1805
+  type: 'test'
+  ...
+# Subtest: multiple JSON replies cannot be repaired by advertised valid/status/zero fields
+ok 108 - multiple JSON replies cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1971
+  type: 'test'
+  ...
+# Subtest: oversized stdout cannot be repaired by advertised valid/status/zero fields
+ok 109 - oversized stdout cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 2.0608
+  type: 'test'
+  ...
+# Subtest: changed helper bytes cannot be repaired by advertised valid/status/zero fields
+ok 110 - changed helper bytes cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.2014
+  type: 'test'
+  ...
+# Subtest: changed executable bytes cannot be repaired by advertised valid/status/zero fields
+ok 111 - changed executable bytes cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1453
+  type: 'test'
+  ...
+# Subtest: missing helper pin cannot be repaired by advertised valid/status/zero fields
+ok 112 - missing helper pin cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1286
+  type: 'test'
+  ...
+# Subtest: invalid source hash cannot be repaired by advertised valid/status/zero fields
+ok 113 - invalid source hash cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1232
+  type: 'test'
+  ...
+# Subtest: changed raw request bytes cannot be repaired by advertised valid/status/zero fields
+ok 114 - changed raw request bytes cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1153
+  type: 'test'
+  ...
+# Subtest: changed parsed request cannot be repaired by advertised valid/status/zero fields
+ok 115 - changed parsed request cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.1736
+  type: 'test'
+  ...
+# Subtest: changed stdout bytes cannot be repaired by advertised valid/status/zero fields
+ok 116 - changed stdout bytes cannot be repaired by advertised valid/status/zero fields
+  ---
+  duration_ms: 0.2432
+  type: 'test'
+  ...
+# Subtest: null options stays unknown rather than borrowing the formal 600-second duration
+ok 117 - null options stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.4256
+  type: 'test'
+  ...
+# Subtest: missing wall stays unknown rather than borrowing the formal 600-second duration
+ok 118 - missing wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.2381
+  type: 'test'
+  ...
+# Subtest: string wall stays unknown rather than borrowing the formal 600-second duration
+ok 119 - string wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1684
+  type: 'test'
+  ...
+# Subtest: zero wall stays unknown rather than borrowing the formal 600-second duration
+ok 120 - zero wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1575
+  type: 'test'
+  ...
+# Subtest: negative wall stays unknown rather than borrowing the formal 600-second duration
+ok 121 - negative wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1373
+  type: 'test'
+  ...
+# Subtest: infinite wall stays unknown rather than borrowing the formal 600-second duration
+ok 122 - infinite wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.2986
+  type: 'test'
+  ...
+# Subtest: NaN wall stays unknown rather than borrowing the formal 600-second duration
+ok 123 - NaN wall stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1787
+  type: 'test'
+  ...
+# Subtest: underflow wall conversion stays unknown rather than borrowing the formal 600-second duration
+ok 124 - underflow wall conversion stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1649
+  type: 'test'
+  ...
+# Subtest: missing scope stays unknown rather than borrowing the formal 600-second duration
+ok 125 - missing scope stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1845
+  type: 'test'
+  ...
+# Subtest: different scope stays unknown rather than borrowing the formal 600-second duration
+ok 126 - different scope stays unknown rather than borrowing the formal 600-second duration
+  ---
+  duration_ms: 0.1555
+  type: 'test'
+  ...
+# Subtest: ratio overflow with finite nonzero wall seconds remains explicit unknown
+ok 127 - ratio overflow with finite nonzero wall seconds remains explicit unknown
+  ---
+  duration_ms: 0.6037
+  type: 'test'
+  ...
+# Subtest: missing endpoints return JSON-safe null metrics
+ok 128 - missing endpoints return JSON-safe null metrics
+  ---
+  duration_ms: 0.3647
+  type: 'test'
+  ...
+# Subtest: capture writes one bounded wx request and hashes real bytes before/after an injected runner
+ok 129 - capture writes one bounded wx request and hashes real bytes before/after an injected runner
+  ---
+  duration_ms: 84.1995
+  type: 'test'
+  ...
+# Subtest: capture does not overwrite an existing request artifact or launch a second helper
+ok 130 - capture does not overwrite an existing request artifact or launch a second helper
+  ---
+  duration_ms: 38.4466
+  type: 'test'
+  ...
+# Subtest: invalid whitelist never invokes even the injected runner
+ok 131 - invalid whitelist never invokes even the injected runner
+  ---
+  duration_ms: 10.4005
+  type: 'test'
+  ...
+# Subtest: capture timeout with only direct-child proof separates unknown data from helper release
+ok 132 - capture timeout with only direct-child proof separates unknown data from helper release
+  ---
+  duration_ms: 118.2144
+  type: 'test'
+  ...
+# Subtest: capture timeout with confirmed tree stop separates unknown data from helper release
+ok 133 - capture timeout with confirmed tree stop separates unknown data from helper release
+  ---
+  duration_ms: 105.9799
+  type: 'test'
+  ...
+# Subtest: capture output cap with no stop proof separates unknown data from helper release
+ok 134 - capture output cap with no stop proof separates unknown data from helper release
+  ---
+  duration_ms: 41.3563
+  type: 'test'
+  ...
+# Subtest: capture cancelled with confirmed tree stop separates unknown data from helper release
+ok 135 - capture cancelled with confirmed tree stop separates unknown data from helper release
+  ---
+  duration_ms: 31.1075
+  type: 'test'
+  ...
+# Subtest: capture ordinary API failure separates unknown data from helper release
+ok 136 - capture ordinary API failure separates unknown data from helper release
+  ---
+  duration_ms: 23.3767
+  type: 'test'
+  ...
+# Subtest: a thrown runner leaves helper stop unproved rather than assuming cleanup
+ok 137 - a thrown runner leaves helper stop unproved rather than assuming cleanup
+  ---
+  duration_ms: 11.7622
+  type: 'test'
+  ...
+# Subtest: executable mutation during collection invalidates data even after normal helper close
+ok 138 - executable mutation during collection invalidates data even after normal helper close
+  ---
+  duration_ms: 24.9215
+  type: 'test'
+  ...
+1..138
+# tests 138
+# suites 0
+# pass 138
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 640.8269

@@ -1,0 +1,628 @@
+{
+  "id": "RLAB-TASK-0032",
+  "title": "非進階候選完整實作、雙方法UI驗證與Claude交接",
+  "description": "依2026-11-03明確使用者新授權，以e25f9f4為基準完整推進PERF001–008/011/014及Task20/16證據對帳；advancedTask15/009/010/012排除，cloud013未授權。此umbrella允許候選工程；原依賴/criteria/正式workload/tolerance不改。",
+  "status": "READY",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "精確request、baseline/source/原task依賴criteria、finite候選、owner/lease與long memory/output矩陣已凍結；歷史證據不冒新完成。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/REQUEST_20261103.json",
+          "sha256": "d435aff1e917f7f0e38f2ebd4feefab760ee8dbef6b4110fb97f6fb87aa90d06",
+          "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/BASELINE_20261103.json",
+          "sha256": "3384403c6ba6c32bdb5f6fbfc63d2487bcb557d9c3645bab974bee706340b1fd",
+          "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v2.md",
+          "sha256": "68d3c4efba030686e05262c52d8e6557987534f3fb23687158e5f2afaa36282e",
+          "result": "ExactV2preimage retained afterV3scope/archive/UIdelegation; historicalS0scopeevidence only."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json",
+          "sha256": "1fc567fc7810740db79230057c3709e532f8e0d1be294eb7c53504239a9394e0",
+          "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.s0-v1.json",
+          "sha256": "547cf39cec35e8ece9e78432ad4d7da53fb46972d016dd298178bbd7d60cc040",
+          "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/00-s0-freeze-20261103.json",
+          "sha256": "00228a7dc0252547a913ad7c29cdc192fed25da6991ae44cbf34508b43f4782c",
+          "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v3.md",
+          "sha256": "e118342201e4bf4c06b248db5db345c41c9b02ab7ed81f5e25f30edb4ef82c7a",
+          "result": "ExactM1contractV3historicalpreimage retained afterM2V4; no productPASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V2.json",
+          "sha256": "026d31d9adb6124806de9acb09ff5fe87ed005e0abe76edf49149935feb03b5e",
+          "result": "Rootapprovedv2spec only; publicUI/IDB/caps/longoutputverificationpending."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m1-v1.json",
+          "sha256": "fb013be25e673af1ecb965746ec65f1fb66b883c5d900ddfb3fe13e50ca964fd",
+          "result": "ImmutableM1eighttree/14UIpath/fourslots snapshot, notsource/productacceptance."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/CONTRACT.md",
+          "sha256": "9f596a63a30f03bf3220736a70fedc42f612df121d708ba992f38ba39bb7df4e",
+          "result": "V4Root-approvedscope/semantics only; no criteriontext/dependencychange."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V3.json",
+          "sha256": "79fd234d950bd92c6d39a47a6c7417059319deceace61f3336fced478e2f564c",
+          "result": "public60s3600acceptedvsindependent3601capacityfixture; no +tickrenderwindow/schema/tolerancerelaxation."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m2-v1.json",
+          "sha256": "162aae310115f0533dcb77c08d9b6675833c6d812003a445eaa282f7f2e6fd5e",
+          "result": "NineRoot-scopedrolesandephemeralgrants only; not permanentexecutionpermission."
+        }
+      ],
+      "verified_scope": "Only specification/owner/lease/longmatrix freeze and source-bound baseline facts; no product PASS."
+    },
+    {
+      "id": "AC-02",
+      "text": "PERF001/014歸因、probe overhead、native output支援與正式原600秒負載/門檻有真新來源綁定收據；缺欄null與原FAIL保留。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "PERF002–007逐項原criteria、獨立oracle、同條件成本/輸出/phase與負面lifecycle有證據；無收益者保留原政策且不假宣稱採納。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+          "sha256": "8eb1c5d966c86a6cc8c37b9245228489f4857b04448fda640895b6cb7aebfe9c",
+          "result": "Fixeddoc/raw reader audit only; noactivecodepin, nativeGUI/fullbrowser/longPCM/formalperformancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+          "sha256": "b1fc6b8b26e523958ba186a9d8d925d63ad44db6745b27318e60d8a67f119f71",
+          "result": "Fixedassets69/Meta63+75/storage98scopedresults andmergeevidence; originalcriteria notfullysatisfied."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "PERF008/011真chunk持久化四水位/transaction與長PCM連續DSP state/mix/owner stems輸出完成；schema/hash compat、整段/邊界reference、cap/cancel/crash incomplete守則實驗證。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+          "sha256": "8eb1c5d966c86a6cc8c37b9245228489f4857b04448fda640895b6cb7aebfe9c",
+          "result": "Fixeddoc/raw reader audit only; noactivecodepin, nativeGUI/fullbrowser/longPCM/formalperformancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+          "sha256": "b1fc6b8b26e523958ba186a9d8d925d63ad44db6745b27318e60d8a67f119f71",
+          "result": "Fixedassets69/Meta63+75/storage98scopedresults andmergeevidence; originalcriteria notfullysatisfied."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-05",
+      "text": "原Task20/16完整check/build/regression/產品E2E/lifecycle次數與requirement-by-requirement、原數值/聲學/physics/audio及獨立review證據已按字面對帳；外部條件明列。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "M3partial monitor component/UI/native evidence only; original criterion remains false/fullscope incomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "text": "Computer Use真native產品正常100%完成固定全產品操作模式/UI/參數/錯誤/持久化矩陣，保留原FAIL與修補重驗；不得以DOM/碼審替代。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        }
+      ]
+    },
+    {
+      "id": "AC-07",
+      "text": "Playwright真production DOM pointer/keyboard/適用手勢完成固定全產品矩陣與完整管線；每source/bundle/結果/raw/hash對帳，有限矩陣外未跑項明示。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+          "sha256": "8eb1c5d966c86a6cc8c37b9245228489f4857b04448fda640895b6cb7aebfe9c",
+          "result": "Fixeddoc/raw reader audit only; noactivecodepin, nativeGUI/fullbrowser/longPCM/formalperformancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+          "sha256": "b1fc6b8b26e523958ba186a9d8d925d63ad44db6745b27318e60d8a67f119f71",
+          "result": "Fixedassets69/Meta63+75/storage98scopedresults andmergeevidence; originalcriteria notfullysatisfied."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "M3partial monitor component/UI/native evidence only; original criterion remains false/fullscope incomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-08",
+      "text": "真完整scene/physics/behavior/acoustic/native audio/capture/persist/replay/A-B/render/download管線、長輸出與每owner stems的獨立音檔/reference驗證完成。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+          "sha256": "8eb1c5d966c86a6cc8c37b9245228489f4857b04448fda640895b6cb7aebfe9c",
+          "result": "Fixeddoc/raw reader audit only; noactivecodepin, nativeGUI/fullbrowser/longPCM/formalperformancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+          "sha256": "b1fc6b8b26e523958ba186a9d8d925d63ad44db6745b27318e60d8a67f119f71",
+          "result": "Fixedassets69/Meta63+75/storage98scopedresults andmergeevidence; originalcriteria notfullysatisfied."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "M3partial monitor component/UI/native evidence only; original criterion remains false/fullscope incomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-09",
+      "text": "階段記憶/source/task/Now/English/status/limits與實際Git SHA一致；完整Claude交接已保存，Claude與其後人工仍按順序未驗如實列NOT_RUN；無未授權paid/push/deploy。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+          "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+          "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+          "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+          "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+          "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+          "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "M3partial monitor component/UI/native evidence only; original criterion remains false/fullscope incomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4scoped source-bound component/native/PW/diagnostic evidence only; originalcriterion remains false/fullscopeincomplete."
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/16-nonadvanced-completion/REQUEST_20261103.json",
+    "docs/16-nonadvanced-completion/BASELINE_20261103.json",
+    "docs/16-nonadvanced-completion/CONTRACT.md",
+    "docs/16-nonadvanced-completion/TASK_OWNERSHIP.json",
+    "docs/superpowers/plans/2026-11-03-nonadvanced-completion.md",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-001.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-002.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-003.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-004.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-005.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-006.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-007.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-008.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-011.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-014.json",
+    "knowledge/tasks/RLAB-TASK-0016.json",
+    "knowledge/tasks/RLAB-TASK-0020.json",
+    "docs/16-nonadvanced-completion/RESOURCE_RETRY_STEERING_20261103.json",
+    "docs/16-nonadvanced-completion/stages/00-bootstrap-progress-20261103.json",
+    "docs/16-nonadvanced-completion/stages/00-bootstrap-memory-validation-20261103.json",
+    "knowledge/wiki/features/nonadvanced-completion-20261103.md",
+    "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json",
+    "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.s0-v1.json",
+    "docs/16-nonadvanced-completion/stages/00-s0-freeze-20261103.json",
+    "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v1.md",
+    "docs/16-nonadvanced-completion/verification/native/NATIVE_PREFLIGHT_20261103.json",
+    "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+    "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V2.json",
+    "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m1-v1.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-01/SNAPSHOT_INDEX.json",
+    "docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_DRAFT_20261103.json",
+    "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.md",
+    "docs/IMPLEMENTATION_STATUS.md",
+    "docs/KNOWN_LIMITATIONS.md",
+    "docs/NEXT_ENGINEERING_TASK.md",
+    "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-01/memory-reconcile/PERF007_HISTORY_REBIND.json",
+    "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+    "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V3.json",
+    "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m2-v1.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-02/SNAPSHOT_INDEX.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-02/ROOT_OPERATOR_CONFIRMATIONS.json",
+    "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.md",
+    "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-03/SNAPSHOT_INDEX.json",
+    "knowledge/tasks/RLAB-TASK-0033.json",
+    "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+    "docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md",
+    "docs/16-nonadvanced-completion/evidence/milestone-04/SNAPSHOT_INDEX.json",
+    "docs/16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md",
+    "docs/16-nonadvanced-completion/handoffs/claude-20261103/EVIDENCE_INDEX.json"
+  ],
+  "evidence": [
+    {
+      "path": "docs/16-nonadvanced-completion/REQUEST_20261103.json",
+      "sha256": "d435aff1e917f7f0e38f2ebd4feefab760ee8dbef6b4110fb97f6fb87aa90d06",
+      "result": "Bootstrap scope/source contract only; no product test execution or acceptance promotion"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/BASELINE_20261103.json",
+      "sha256": "3384403c6ba6c32bdb5f6fbfc63d2487bcb557d9c3645bab974bee706340b1fd",
+      "result": "Bootstrap scope/source contract only; no product test execution or acceptance promotion"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v1.md",
+      "sha256": "c7d5600193efa1747ce92399834ef26f23c9da8ae7d364c044817a39566e5e0e",
+      "result": "ExactV1contract bytes retained afterV2 clarification; historical scope only."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/RESOURCE_RETRY_STEERING_20261103.json",
+      "sha256": "15a30db1faa1eb0e4bd8091f88cc6bfee7b9b15559e3c2e9e08854101b40abd4",
+      "result": "Fixed scope/plan/user steering source only; no product PASS or WSL causal diagnosis."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-bootstrap-progress-20261103.json",
+      "sha256": "ccafcd853289584abeaa93e5b183a1884695efcac2979a64d48637ae60713cc8",
+      "result": "Read actual Root type0, original resource-aborted runtime exit1/1517of1520, targeted19of19 exit0; complete suite still pending; no performance claim."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-bootstrap-memory-validation-20261103.json",
+      "sha256": "d9eae4587839943a3f2f378ee5e2fdf42722f0dfad50218bc954d71b40904eee",
+      "result": "Light Wiki metadata lint exit0/0errors/118historicalwarnings;12 original tasks byte-unchanged; no product or Git-index edits."
+    },
+    {
+      "path": "docs/superpowers/plans/2026-11-03-nonadvanced-completion.md",
+      "sha256": "de03854f91217d6608d18a675cf9d191d6c909e19f26dc7c4feca59fb57ec1d5",
+      "result": "Fixed scope/plan/user steering source only; no product PASS or WSL causal diagnosis."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v2.md",
+      "sha256": "68d3c4efba030686e05262c52d8e6557987534f3fb23687158e5f2afaa36282e",
+      "result": "ExactV2preimage retained afterV3scope/archive/UIdelegation; historicalS0scopeevidence only."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json",
+      "sha256": "1fc567fc7810740db79230057c3709e532f8e0d1be294eb7c53504239a9394e0",
+      "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.s0-v1.json",
+      "sha256": "547cf39cec35e8ece9e78432ad4d7da53fb46972d016dd298178bbd7d60cc040",
+      "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-s0-freeze-20261103.json",
+      "sha256": "00228a7dc0252547a913ad7c29cdc192fed25da6991ae44cbf34508b43f4782c",
+      "result": "S0 exactscope/ownership/specification/baseline-facts evidence only; not product, formal performance, longPCM or other stage completion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/verification/native/NATIVE_PREFLIGHT_20261103.json",
+      "sha256": "406cf2798cd864077b5a8ac3e53fcbb8089b2f6fc236c7471dd42498396dbe8d",
+      "result": "Roottoolreported entry preflight only: URLpolicy stopped,0nativeinput/NOTPASS; PWnavigateonly; no rawpayload independentread."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.json",
+      "sha256": "54d27236bd38b2cae7b92e75f5a7fa2d64dfd8df432a9e7b55c72d68b0b222a1",
+      "result": "M1S2partial normalmerge/scopedreceipt/negative/NOTRUN evidence only; no fullproduct or originalcriterion completion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_UI_RENDER_AUDIO_ACOUSTIC.json",
+      "sha256": "8eb1c5d966c86a6cc8c37b9245228489f4857b04448fda640895b6cb7aebfe9c",
+      "result": "Fixeddoc/raw reader audit only; noactivecodepin, nativeGUI/fullbrowser/longPCM/formalperformancePASS."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-01/READ_ASSETS_META_STORAGE.json",
+      "sha256": "b1fc6b8b26e523958ba186a9d8d925d63ad44db6745b27318e60d8a67f119f71",
+      "result": "Fixedassets69/Meta63+75/storage98scopedresults andmergeevidence; originalcriteria notfullysatisfied."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v3.md",
+      "sha256": "e118342201e4bf4c06b248db5db345c41c9b02ab7ed81f5e25f30edb4ef82c7a",
+      "result": "ExactM1contractV3historicalpreimage retained afterM2V4; no productPASS."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V2.json",
+      "sha256": "026d31d9adb6124806de9acb09ff5fe87ed005e0abe76edf49149935feb03b5e",
+      "result": "Rootapprovedv2spec only; publicUI/IDB/caps/longoutputverificationpending."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m1-v1.json",
+      "sha256": "fb013be25e673af1ecb965746ec65f1fb66b883c5d900ddfb3fe13e50ca964fd",
+      "result": "ImmutableM1eighttree/14UIpath/fourslots snapshot, notsource/productacceptance."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-01/SNAPSHOT_INDEX.json",
+      "sha256": "29b44d0630297174ef62f1c869e128c09f85d1e908bb7eb2a0ce2452a4fcb8b4",
+      "result": "66exactdoc/rawsnapshots; noactiveproductsourcepinned."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_DRAFT_20261103.json",
+      "sha256": "0a19f6d2db398d5afff4cfdf40e185b73d32fd05bfff0c3ab5301db1ca14b6f8",
+      "result": "Original51/102/EN6/13taskcriteria preserved;51currentNOTADJUDICATED."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/01a-late-observations-20261103.json",
+      "sha256": "304c62c76c9136efb5cd10d2d907b965a64933201a1cb165ee52552ae60bae21",
+      "result": "Latefixednative02exit1/2PASS3FAIL/validshortPCM,Rootoperatorreportednewguards; no originalcriterioncomplete."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-01/memory-reconcile/PERF007_HISTORY_REBIND.json",
+      "sha256": "eed4252bf7eee0b2271dbe61d656bd9adcce84404b6965f53960d6fc41cbd5b7",
+      "result": "RootauthorizeduniquehistoricalevidencepathCAS;all007semantics/status/deps/owner/ACflagsunchanged, notactivation."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.json",
+      "sha256": "854878ae9486d4a53a6ac255cbce58d037be8bd5f4cefba7f3474ccaf1b6cd2a",
+      "result": "M2partial source/version/negativevalidation evidence only; originalgatesnotclosed, nofullquality/dualUI/performancePASS."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/CONTRACT.md",
+      "sha256": "9f596a63a30f03bf3220736a70fedc42f612df121d708ba992f38ba39bb7df4e",
+      "result": "V4Root-approvedscope/semantics only; no criteriontext/dependencychange."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V3.json",
+      "sha256": "79fd234d950bd92c6d39a47a6c7417059319deceace61f3336fced478e2f564c",
+      "result": "public60s3600acceptedvsindependent3601capacityfixture; no +tickrenderwindow/schema/tolerancerelaxation."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.m2-v1.json",
+      "sha256": "162aae310115f0533dcb77c08d9b6675833c6d812003a445eaa282f7f2e6fd5e",
+      "result": "NineRoot-scopedrolesandephemeralgrants only; not permanentexecutionpermission."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-02/SNAPSHOT_INDEX.json",
+      "sha256": "d2ff8bcb70e9e82356e612310c3936e74e5286eff35bd21e4542d0b7cfb9e0c2",
+      "result": "91exactdoc/rawcopied+onechangeduntrackedADRpreimageskipped; no activecodecopied orsourcequalification."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/evidence/milestone-02/ROOT_OPERATOR_CONFIRMATIONS.json",
+      "sha256": "19fb2d95c7ad40099824dd1f0e5ccd19f595ceaa45e075fb894a202decd95af3",
+      "result": "RootexplicitP1commands/exit authority andninthsoleowner confirmation; no independentreplay."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+      "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+      "result": "NewTask33 scope/compositepartial evidence; no originalTask32AC02–09promotion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+      "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+      "result": "M4partialsource/Root1f118globaltsc0/PW4of5FAIL/storageguard/nativephase20x2s/limitedV4/longV2FAIL/snapshot65/cleanup2;notwholegoalcompletion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md",
+      "sha256": "ba2803b99e2f775cce3cda9b47743718a188ac3104c82b4bbf90162a9c375ee9",
+      "result": "Claude-readablepartialhandoff withStore-ready/boundeddiagnostic/V3/formalV4/fullS4/CU/fullEnglish/fullnpmcheck/Mainmerge remaining;notfinal."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md",
+      "sha256": "52cb8b905f4a0851abfcdfc65e34a37b132b29066fb784e1994728dde217a3fc",
+      "result": "使用者指定Claude接手之完整文書交接；固定Git448/原證據核實/剩餘P0–P3；不是新產品測試或完整criterion通過。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/claude-20261103/EVIDENCE_INDEX.json",
+      "sha256": "a31e605d8929b9cd19dc97cb0fa12fdba0549bd658d9ed40df2638d52c9c1274",
+      "result": "固定42檔交接bundle與25evidence refs之路徑/bytes/hash索引；3大raw仍原位置，非全資料已入Git。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md",
+      "sha256": "8a866cc91d8cc0da980df04e96ef7c1e036a84503bca3b7da9e084702aea3181",
+      "result": "最後交接：結果、限制、人工測試入口與 3 分鐘展示建議；不是第一版完成宣告。（加入人工測試前 CSS-only 介面整理段落與展示環境建議）（加入人工測試回報的三個修正）"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/05-claude-continuation-final-20261103.json",
+      "sha256": "3b64ce322de59bb55215711e6ad4a82c9f75408727ff23487624282bb6051e0c",
+      "result": "M5 機讀紀錄：凍結來源 544d8d9f 與各證據 SHA-256。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/verification/claude-final-20261103/check-05-summary.txt",
+      "sha256": "73bfdfd29fa255b1ea22b029cb4c67577582b28121b88f1a52e2c52ad43d499d",
+      "result": "完整 npm run check：所有套件、build、授權通過，runtime 2270/2270；英文當時未完成。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/RUNTIME_FAILURES_20261103.md",
+      "sha256": "7f7f8d57963f4952fd453030637a2b403a1cf65c6b331e219ea3733c1107f682",
+      "result": "接手時 7 項 runtime 失敗的原因、修正與 RED/GREEN 證據。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.json",
+      "sha256": "8be89c375210faa7367f81fc07b1f094fc2f21632518d39f954dbf165b9c6b4e",
+      "result": "51 列需求逐條判定（Codex 判定、Claude 抽查）。"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261103T100747Z/verification.json",
+      "sha256": "b84b50ee83a2f24878356646cf6cf4db0610db3394edf50f11013f36186e1ffc",
+      "result": "refined v3 產品 E2E 4/4 通過，三次乾淨啟動＋重新連結，來源與 bundle 一致。"
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261103/browser-20261103100843747/browser-verification.json",
+      "sha256": "4521480ce3d274814d408a6e3bbe5a9c1fe30a7e36fbf117bc03dd2d5e4c34b3",
+      "result": "十次 reset/import 與 dispose 2/2 通過。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/top-monitor-browser/attempt09-evidence/results.json",
+      "sha256": "167f796ab93e164f6b36e267ae27732d48c08bbd13003105d4d0c69c707b9095",
+      "result": "production 頂列監測 4/5；錄製連續性案例在原固定步 guard 暫停。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/ui/s4/attempts/s4-final-01/run-receipt.json",
+      "sha256": "a48bb56c897c651855a86feb70ef4191280bfda23803941c95f6ffeb86293115",
+      "result": "S4 全 22 路徑 11 通過／11 失敗，失敗保留未修。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/computer-use/attempt-01/results.json",
+      "sha256": "234cccf6457eeca85da7fbc5756f3afdd9e0f7e46281e00307f2924125305323",
+      "result": "Computer Use BLOCKED（Windows 瀏覽器網址判定政策），0 個產品步驟。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md",
+      "sha256": "d96f686c503468bcda0a12f2bf5936346848c585870c70d279827fcfb86292f0",
+      "result": "長輸出 whole63 原門檻 58/58 通過（在 89f65e4d）。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/ui/readability-pass-20261103/README.md",
+      "sha256": "30bf960547332a215ca30714d1ccd257032f33230dbdf20ef54070120a0ca60a",
+      "result": "人工測試前 CSS-only 介面整理（1be15d5c）：範圍、驗證結果與 refined v3 改版前後 A/B；refined v3 未通過，判定環境"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/USER_REPORTED_FIXES_20261103.md",
+      "sha256": "eb55030d6e3134d9d63d2818709e28e7f198ac574ccf3b1cd48fa9a6ca377949",
+      "result": "人工測試回報的三個問題（視角跳動、球偶爾無聲、抓取鬆脫）的原因、修正、驗證與使用者實測確認"
+    }
+  ],
+  "created_at": "2026-11-02T16:58:38.444Z",
+  "updated_at": "2026-11-03T15:10:53.908Z",
+  "scope_status": "EXPLICITLY_AUTHORIZED_ACTIVE",
+  "original_task_policy": "Preserve all original dependency/criterion/evidence/status authority; umbrella is an orchestration task, not permission to falsely close dependencies.",
+  "current_run_validation_status": "NOT_RUN",
+  "last_summary": "加入人工測試回報修正（c1002ac7、2f2aa2c7）與使用者實測確認；驗收條件未變"
+}

@@ -1,0 +1,192 @@
+{
+  "id": "364713fa-a544-4c3e-a1f8-6b177c943456",
+  "status": "RESOLVED",
+  "kind": "RELATED_CANONICAL_PREVIEW_POLICY_WORDING",
+  "created_at": "2026-11-02T09:34:32.304Z",
+  "agent": "codex-core-memory",
+  "session": "ui-parameter-audit-20261102",
+  "details": {
+    "primary_conflict": "78d81bb5-7d39-426e-8394-8cc5838ee626",
+    "authority": {
+      "path": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md",
+      "sha256": "6e6d79ea50735433c56c4d2f343ead07f22c90d015d42fe5d828046a1d30f21d",
+      "confirmed_scope": "Rootconfirmedpreciseghostpolicyconsistencyonly"
+    },
+    "documents": [
+      {
+        "path": "docs/05-ux/SOUND_BEHAVIOR_UX.md",
+        "sha256": "24d1fd048ba7aae166e5dce5b0041e91089c23a80bec984f45306767bceec821",
+        "preimage": "docs/15-ui-parameter-audit/history/SOUND_BEHAVIOR_UX.md.before-ghost-policy.raw.txt",
+        "source_records": [
+          "SB-SRC-0020"
+        ],
+        "stale_statement": "在安全tick暫停並保留Held／ghost；關閉後焦點回原控制，不自動重鎖或drop。",
+        "proposed": "在安全tick暫停並保留Held快照，取消尚未提交的ghost且不放置；關閉後焦點回原控制，需明示恢復，不自動重鎖或drop。"
+      },
+      {
+        "path": "docs/05-ux/USER_FLOWS.md",
+        "sha256": "0e110f0877ce8962df9aa6c162f38e18d48172c7bf9ded44fcc7607f9a582ec0",
+        "preimage": "docs/15-ui-parameter-audit/history/USER_FLOWS.md.before-ghost-policy.raw.txt",
+        "source_records": [
+          "RLAB-SRC-0027"
+        ],
+        "stale_statement": "| Esc、lock loss、blur | 清 inputs，安全暫停，顯原因；不額外 throw/drop | 明示重新進入＋Resume；持有快照／ghost 保留 |",
+        "proposed": "| Esc、lock loss、blur | 清 inputs，安全暫停，顯原因；保留held快照，取消未提交ghost且不放置；不額外 throw/drop | 明示重新進入＋Resume；需要放置時重新開始preview |"
+      },
+      {
+        "path": "docs/05-ux/COMPONENT_STATES.md",
+        "sha256": "f090aae72a749911c658b388552dc9bb3fdcf19d9e981252d4cf2063bd5831e7",
+        "preimage": "docs/15-ui-parameter-audit/history/COMPONENT_STATES.md.before-ghost-policy.raw.txt",
+        "source_records": [],
+        "stale_statement": "Modal 開啟時先釋放 FPS 輸入、安全暫停並保留 held/ghost；focus 移入、背景不可操作、關閉回 trigger，不自動重鎖。",
+        "proposed": "Modal 開啟時先釋放 FPS 輸入、安全暫停並保留 held 快照，取消尚未提交的 ghost 且不放置；focus 移入、背景不可操作、關閉回 trigger，不自動重鎖。"
+      },
+      {
+        "path": "docs/05-ux/UI_STRESS_TESTS.md",
+        "sha256": "d0c9c891af620fc7a2b3207b32ab5f98b10c9f908302a922480ccd18ae9cd581",
+        "preimage": "docs/15-ui-parameter-audit/history/UI_STRESS_TESTS.md.before-ghost-policy.raw.txt",
+        "source_records": [
+          "RLAB-SRC-0044-V2"
+        ],
+        "stale_statement": "清按鍵與未提交 throw；下一固定 tick pause、保留 interaction 快照；Esc 不二次 drop／delete；焦點回合理控制；明示 Resume、重新取得 lock 的 click 不 throw／place；非 lock 替代可完成工作",
+        "proposed": "清按鍵與未提交 throw；下一固定 tick pause、保留 held 快照，取消未提交 ghost 且不放置；Esc 不二次 drop／delete；焦點回合理控制；明示 Resume、重新取得 lock 的 click 不 throw／place，需要放置時重新開始 preview；非 lock 替代可完成工作"
+      }
+    ],
+    "scope": "Related UX/help/stress wording only; original testFAIL retained; no productchange"
+  },
+  "proposal": {
+    "agent": "codex-core-memory",
+    "session": "ui-parameter-audit-20261102",
+    "summary": "Root明確授權僅同步同一ghost政策一致性。最新11/1使用者驗收補充、FPS33/65及已resolved主Conflict78d81bb5優先：held快照保留，未提交ghost於pause/blur/lockloss取消不放置，明示Resume後須重新preview。四個相關規範的preserve泛文是同一過期文字，精準替換並保留exactpreimage；不改產品、未新增Esc兩次政策、不宣稱correctedbrowserPASS。"
+  },
+  "resolved_at": "2026-11-02T09:35:09.445Z",
+  "resolution": {
+    "agent": "codex-core-memory",
+    "session": "ui-parameter-audit-20261102",
+    "rationale": "Root明確授權僅同步同一ghost政策一致性。最新11/1使用者驗收補充、FPS33/65及已resolved主Conflict78d81bb5優先：held快照保留，未提交ghost於pause/blur/lockloss取消不放置，明示Resume後須重新preview。四個相關規範的preserve泛文是同一過期文字，精準替換並保留exactpreimage；不改產品、未新增Esc兩次政策、不宣稱correctedbrowserPASS。",
+    "pages": [
+      {
+        "path": "wiki/ui-ux/fps-grab-review.md",
+        "expected_hash": "a7ce372c9a8fa989e7d288e3416f65a9f1117856813b4e94cd100aacdb07cdb2",
+        "metadata": {
+          "id": "RLAB-KB-0017",
+          "title": "FPS Grab開發與驗收導覽",
+          "type": "design",
+          "status": "ACCEPTED",
+          "created_at": "2026-10-25T19:46:51.310610+00:00",
+          "updated_at": "2026-11-02T09:35:04.597Z",
+          "sources": [
+            "RLAB-SRC-0017",
+            "RLAB-SRC-0018-V2",
+            "RLAB-SRC-0021",
+            "RLAB-SRC-0026",
+            "RLAB-SRC-0027",
+            "RLAB-SRC-0024-V2",
+            "RLAB-SRC-0043",
+            "RLAB-SRC-0044-V2",
+            "SB-SRC-0003",
+            "V1-SRC-0088",
+            "V1-SRC-0090",
+            "V1-SRC-0095",
+            "V1-FPS-UX-20261102-V1",
+            "V1-ACCEPTANCE-AMENDMENTS-20261102-V1",
+            "V1-SOUND-UX-PREVIEW-20261102-V1",
+            "V1-USER-FLOWS-PREVIEW-20261102-V1",
+            "V1-COMPONENT-STATES-PREVIEW-20261102-V1",
+            "V1-UI-STRESS-PREVIEW-20261102-V1"
+          ],
+          "related_tasks": [
+            "RLAB-TASK-0006",
+            "RLAB-TASK-0028"
+          ],
+          "related_decisions": [],
+          "supersedes": [],
+          "tags": [
+            "P0",
+            "FPS",
+            "grab",
+            "acceptance",
+            "UI",
+            "audio"
+          ]
+        },
+        "body": "\n\n\n\n\n\n\n# FPS Grab 情境：新Agent的最短閱讀路徑\r\n\r\n1. [Physics Architecture](../../../docs/04-physics/PHYSICS_ARCHITECTURE.md)與[FPS Spec](../../../docs/04-physics/FPS_INTERACTION_SPEC.md)：bounded force/torque、排除held自身的shape queries、CCD限制。\r\n2. [Input Controls](../../../docs/04-physics/INPUT_CONTROLS.md)與[FPS UX](../../../docs/05-ux/FPS_INTERACTION_UX.md)：E/G/throw/R/B、Tab焦點、IME、Esc/blur與Resume重驗。\r\n3. [Design System](../../../docs/05-ux/DESIGN_SYSTEM.md)、[Components](../../../docs/05-ux/COMPONENT_SPEC.md)、[Emil配置](../../../docs/05-ux/EMIL_SKILLS.md)：HUD距離／阻塞／mode、錯誤恢復與有目的motion。\r\n4. [Physics→Audio Events](../../../docs/04-physics/PHYSICS_AUDIO_EVENTS.md)與[Audio Runtime](../../../docs/02-architecture/AUDIO_RUNTIME.md)：continuous不因grab重啟、contact音在真實位置、voice caps、delay不雙算。\r\n5. [UI Stress Matrix](../../../docs/05-ux/UI_STRESS_TESTS.md)與[驗證計畫](../../../docs/06-validation/BENCHMARK_PLAN.md)：各自測UI/physics/audio，不把Node數學當視覺測試。\r\n\r\n驗收重點：超距不teleport、牆／薄牆／角落／高質量比不穿透、按住鍵失焦不續跑、Held切Build不暗中drop、Inspector打字不投擲、未取audio permission有可見恢復、pause截尾政策明示。view camera與measurement listener分開，FPS綁定為顯式動作。\r\n\r\n本情境是閱讀／驗收模擬，沒有在Phase2實作Grab或宣稱browser通過。相關P0先後依賴見[正式roadmap](../../../docs/ROADMAP.md)。\n\n## 2026-11-01 R21：滑鼠操作取代 E 與 B\n\n依[驗收補充](../../../docs/11-v1/ACCEPTANCE_AMENDMENTS.md)，抓取改為左鍵，放下改為持有時右鍵，建造改為按住右鍵預覽、放開放置；E 與 B 只是選用捷徑，沒有使用者可見的建造模式。[第一人稱互動 UX](../../../docs/05-ux/FPS_INTERACTION_UX.md) 的輸入映射與狀態機已同步。\n\n\n2026-11-02：FPS原文三處泛文與33/65明確ghost取消條款相衝突；已保全[原版](../../../docs/14-core-pipeline/stages/11-ui-parameters/interaction/FPS_INTERACTION_UX.preimage.md.txt)及owner原FAIL比較，按已確認11/1政策精準同步[canonicalFPS](../../../docs/05-ux/FPS_INTERACTION_UX.md)。此為文件/oracle語義對齊，不改產品、不預填修正後browserPASS；[Conflict Record](../../conflicts/78d81bb5-7d39-426e-8394-8cc5838ee626.json)另記明確reconcile理由。\n\n已reconcile：明確新條款／使用者驗收補充優先於舊泛文，原ghost保留預期撤回但原FAIL保留；新case應驗pause清preview、objectcount不變、primary只Resume不重建。原生Esc預設解鎖不另新增兩步規則。\n\n\n相關Sound UX／User Flows／Component States／UI Stress四處ghost保留泛文已精準同步已確認取消政策，原exactbytes與SourceIDs另存history；[相關Conflict](../../conflicts/364713fa-a544-4c3e-a1f8-6b177c943456.json)連回已解主Conflict。Help索引沿相同canonical連結，沒有變更UI程式或製造browserPASS。\n\n四處相關文字Conflict已reconcile：僅held/ghost語義精準對齊，原stress/設計NOT RUN與舊測試失敗保留，不代表新產品缺陷或實測通過。\n"
+      },
+      {
+        "path": "wiki/ui-ux/product-parameter-audit-20261102.md",
+        "expected_hash": "aa0ec39e3c6a52ff307b81385143a179d6d2c30130c2dec67f51df5528a2203f",
+        "metadata": {
+          "id": "RLAB-KB-UI-PARAMETERS-20261102",
+          "title": "全產品UI參數審核與修補進度",
+          "type": "design",
+          "status": "ACCEPTED",
+          "created_at": "2026-11-02T06:47:04.079Z",
+          "updated_at": "2026-11-02T09:35:04.600Z",
+          "sources": [
+            "UI-PARAM-USER-20261102-V1",
+            "UI-PARAM-CONTRACT-20261102-V1",
+            "UI-PARAM-CONTRACT-20261102-V2",
+            "UI-PARAM-UNSUPPORTED-USER-20261102-V1",
+            "UI-PARAM-UNSUPPORTED-AMENDMENT-20261102-V1",
+            "UI-PARAM-CONTRACT-20261102-V3",
+            "UI-PARAM-IMPLEMENTATION-ASSIGNMENTS-20261102-V1",
+            "UI-PARAM-ENVIRONMENT-ASSIGNMENT-20261102-V1",
+            "UI-PARAM-ACTIVE-FINDINGS-20261102-V1",
+            "V1-ACCEPTANCE-AMENDMENTS-20261102-V1",
+            "UI-PARAM-BEHAVIOR-BASELINE-20261102-V1",
+            "UI-PARAM-ASSETS-BASELINE-20261102-V1",
+            "UI-PARAM-SCENE-BASELINE-20261102-V1",
+            "UI-PARAM-DIAGNOSTICS-BASELINE-20261102-V1",
+            "UI-PARAM-BASELINE-RECONCILIATION-20261102-V1",
+            "UI-PARAM-BASELINE-REPORT-20261102-V1",
+            "UI-PARAM-ENVIRONMENT-IMPLEMENTATION-20261102-V1",
+            "V1-PARAMETER-REFERENCE-20261102-V1",
+            "UI-PARAM-ENVIRONMENT-RECONCILIATION-20261102-V1",
+            "UI-PARAM-ENVIRONMENT-RECONCILIATION-20261102-V2",
+            "UI-PARAM-ACTIVE-FINDINGS-20261102-V2",
+            "UI-PARAM-ENVIRONMENT-UI-A10-20261102-V1",
+            "UI-PARAM-ENVIRONMENT-UI-REPORT-20261102-V1",
+            "UI-PARAM-NATIVE-RETRY-20261102-V1",
+            "UI-PARAM-ZONE-CORE-20261102-V1",
+            "UI-PARAM-ZONE-DETACHED-20261102-V1",
+            "UI-PARAM-ZONE-VOLUMES-20261102-V1",
+            "UI-PARAM-ZONE-BASELINE-20261102-V1",
+            "UI-PARAM-ZONE-POSITION-20261102-V1",
+            "UI-PARAM-ZONE-HANDOFF-20261102-V1",
+            "UI-PARAM-ZONE-RECONCILIATION-20261102-V1",
+            "UI-PARAM-ZONE-IMPLEMENTATION-20261102-V1",
+            "SB-ZONE-SCHEMA-20261102-V1",
+            "SB-ZONE-TYPES-20261102-V1",
+            "V1-FPS-UX-20261102-V1",
+            "V1-SOUND-UX-PREVIEW-20261102-V1",
+            "V1-USER-FLOWS-PREVIEW-20261102-V1",
+            "V1-COMPONENT-STATES-PREVIEW-20261102-V1",
+            "V1-UI-STRESS-PREVIEW-20261102-V1"
+          ],
+          "related_tasks": [
+            "RLAB-TASK-0028",
+            "RLAB-TASK-0023",
+            "RLAB-TASK-0020",
+            "RLAB-TASK-0029",
+            "RLAB-TASK-0030",
+            "RLAB-TASK-0031"
+          ],
+          "related_decisions": [
+            "ADR-011",
+            "ADR-013",
+            "ADR-014",
+            "ADR-015"
+          ],
+          "supersedes": [],
+          "tags": [
+            "P0",
+            "ui-audit",
+            "parameter",
+            "actual-browser"
+          ]
+        },
+        "body": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# 全產品UI參數審核與修補\n\n使用者最新[原始要求](../../../docs/15-ui-parameter-audit/REQUEST_20261102.json)擴及全部既有產品UI。正式驗收在[本輪契約](../../../docs/15-ui-parameter-audit/CONTRACT.md)，單一工作權威為[Task0028](../../tasks/RLAB-TASK-0028.json)。本輪不是只審六個新tab，不重寫原基本人工確認或six-core證據。\n\n五lane證據根為`docs/14-core-pipeline/stages/11-ui-parameters/`，scene/behavior/interaction/pipeline/monitor各自實際操作與修補；INVENTORY為覆蓋分母，不是自動PASS。root依檔案所有權整合，memory writer序列登錄來源/task/checkpoint。\n\n已知起點：monitor engine未enable時gain可操作卻no-op是root確認FAIL，desiredprefs修補已授權；Raw/Sim疑慮先驗後分類。其餘未測不得預標PASS。Native/Brave因appapprovaltimeout未完成；Chrome productionDOM、鍵鼠方法、有效/非法/邊界/持久化/undo以及科學/音訊/性能各自分列。\n\nMain結案暫緩，等待全產品覆蓋與必要修補/重驗。合法unsupported/disabled列原因與實作路徑，不用假enable製造成功；既有600秒FAIL、Meta預算0/fixture、裝置/科學與其他外部gates保留。\n\n## 尚未支援功能已明確納入實作\n\n使用者已明確回答「也實作尚未支援的選項」，原SCOPE_PENDING已解除。見[正式授權](../../../docs/15-ui-parameter-audit/UNSUPPORTED_OPTIONS_AUTHORIZATION_20261102.json)與[補充驗收](../../../docs/15-ui-parameter-audit/AMENDMENT_UNSUPPORTED_OPTIONS_20261102.md)。需完整盤點可見unsupported選項並實作欠缺的產品能力；OnEnterZone/OnExitZone不能只列後續而結案。真外部帳號/裝置/權限gate與合法狀態前置獨立分類，不授付費或假enable。五lane照常，新功能完成後重驗受影響範圍，Main仍待實作及證據。\n\n\n## 未支援能力的兩項正式實作任務\n\n[Task0029](../../tasks/RLAB-TASK-0029.json)由capability_core在專案內zones樹實作區域作者設定及真固定步OnEnterZone/OnExitZone；[Task0030](../../tasks/RLAB-TASK-0030.json)由acoustic_geometry_core在acoustic-geometry樹處理Sphere/Capsule聲學材質/角色與真DynamicReflector反射。兩分支起點皆為f6abb936，完整SHA與分工見[固定指派來源](../../../docs/15-ui-parameter-audit/IMPLEMENTATION_ASSIGNMENTS_20261102.json)。這是目前已辨認三類缺口，不代表完整unsupported盤點已結束；所有criteria仍未verified。\n\nZone optional資料不得污染legacy hash；真fixed-step producer不以合成事件替代。曲面需明示解析/有界數值近似、真solver paths及原105object/surface budget政策。五lane照常，新能力完成後刷新inventory/pins/crosswalk與受影響真DOM/Domain證據，Main待全部實作和重驗。\n\n\n## 正式Project環境保存修補\n\nRoot真UI另確認vacuum35.5在save/reload後回air20；[Task0031](../../tasks/RLAB-TASK-0031.json)由environment_persistence在專案內environment樹／codex/pipeline-environment、基準f6abb936修正式Project環境欄位與驗證/保存載入，不能只localprefs。見[固定指派與原FAIL摘要](../../../docs/15-ui-parameter-audit/ENVIRONMENT_PERSISTENCE_ASSIGNMENT_20261102.json)；實作及真DOM重驗仍在進行，不預填PASS。\n\n\n## 原FAIL與修補待真UI重驗截點\n\nRoot回報monitor prefs/footer/wet step修補f6abb936（Node6 PASS）與camera/transform手勢修補5360cfd（5targeted＋type/lint/format PASS）；當時served仍19db/index-BDGeI4Sd，兩者browser重驗未跑，不能因commit就標新bundle PASS。另replay播放前seek／自然結束後錄製殘留replayFrame正在修，環境保存與未支援能力依Task0029..0031進行。見[固定中途finding來源](../../../docs/15-ui-parameter-audit/ACTIVE_FINDINGS_20261102.json)；原FAIL→fix→PASS與最後pins需由各lane新收據補實。\n\n\n正式V1[驗收補充](../../../docs/11-v1/ACCEPTANCE_AMENDMENTS.md)已接回11/2基本功能確認、六core與全產品／unsupported新增實作的優先範圍；原歷史與外部／科學／性能界線保留。\n\n\n## 已凍結19db批次的分項結果\n\n[基準綜合報告](../../../docs/15-ui-parameter-audit/BASELINE_UI_AUDIT_20261102.md)已讀raw並對帳112固定證據hash全符：behavior/asset57不同case、44family；Inspector29組中27操作PASS、1舊unsupported、1真環境保存FAIL；diagnostics真browser1/1，28盤點項含唯讀與不存在refresh。不同計數不加總或冒全產品coverage。新Zone/geometry/Project環境修補仍須新source重驗，原FAIL與NOT_RUN保留；JS檔名和實際body hash的來源強度亦分開。\n\n\n## Project環境修補已合入，真UI待重驗\n\n環境分支tip0ab136b已是integration a10b741的祖先；[正式報告](../../../docs/15-ui-parameter-audit/environment/REPORT.md)固定產品source59360da：新增11/11、相關51/51（包含11）、build/type/lint/format PASS，原RED與兩個asset前置FAIL保留。Memory writer核對7個pinnedGit來源及全部7個有raw output的run輸出hash吻合，見[獨立讀取對帳](../../../docs/15-ui-parameter-audit/evidence/ENVIRONMENT_COMPONENT_RECONCILIATION.json)。正式Project可選atmosphere/舊檔預設/非法原子拒絕已接線，普通Scene Undo依原契約不復原環境。這仍不是新integration bundle的browserPASS；原vacuum35.5→air20 UI FAIL待新build重驗，Task0031/0028/Main未結案。\n\n環境對帳計數更正：先前source標題／task摘要的8為描述筆誤；原VERIFICATION與對帳JSON均只有7個附raw output的run，另有沒有raw輸出的diffCheck metadata。V2明列7，原7份內容/hash/測試結果未改，V1精確bytes留history。\n\n\n## a10續接截點：immutable export確認新FAIL，其他scope分開\n\nRoot回報sourcea10b741、4173/Bmj、API8787仍gated；replay兩個probe及interrupted案例PASS後，完整流程再發現immutable export在finalized/persistbusy仍enabled卻TRANSACTION_BUSY，屬確認產品FAIL，已授early-readonly修補並保存publicNode RED，不能改歸harness。\n\nMonitor新11browserPASS/Node6是root回報，reverb true/false與-40→render manifest尚待補；Env QA retry仍待結果。Zonefa4固定501/501/0skip＋build0，但detached anchor self-exclusion、wireframe/ProjectZonecontext及browser仍待；Curves backendpin修補19targetedPASS、fullruntime待CPU窗口。固定來源見[中途V2](../../../docs/15-ui-parameter-audit/ACTIVE_FINDINGS_20261102.json)，Task0028..0031/Main仍未結案，無source/bundle/方法範圍移用。\n\n\n## 環境a10真UI重驗4/4\n\n[另批正式綜合](../../../docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md)：sourcea10/index-BmjZ1Zyf下Save/真Export、reload/Load、fresh-context fileImport及legacy精確預設4/4PASS；19檔hash全符且真Project欄位獨立核對，page/console0。原19db保存FAIL保留。只更新環境scope，不替舊27Inspector/新curves/Zone重標PASS；Save回饋UX/rapidbusy觀察另留Task0028，Task0031前4criteria可verified、最終對帳/英文/Claude/Main仍待。\n\n\n## Native第三次access重試仍未完成\n\nRoot在使用者續接後重試Brave：list_apps成功，但get_window/state仍Computer Use app approval timed out，未發任何native input。[固定收據](../../../docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json)記previous2/current1＝總3次；原Stage09兩次bytes不改。實際production DOM pointer/keyboard fallback仍另列方法，不改標native／真人／聽測成功；本輪retry沒有啟動新付費請求。\n\n\n## Zone合入d9，資料與真producer基本條件已驗\n\n[Zone綜合](../../../docs/15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md)已逐階段讀raw與Git：124source條目／50evidence條目hash全符，fa4 501、d35192、a22 6、20bf57、12786green17/reg76皆各自scope不可相加。POSITION保留連續mode-change真edge並取代舊baseline界線，DETACHED修補遠端owner排除。Root回報d9 merged46focused/build0、index-Cla4CyjN；Curves未合與真ZoneUI/WAV仍待，不把localbuild當served／整體完成。Task0029前2criteriaverified，其餘IN_PROGRESS。\n\n\nZone合併後的currentSound schema/types已用同path新source接續，舊SB-SRC-0032/0034 exactGit bytes存history；這是正式資料契約擴充，不是修改舊研究結果。\n\n\nZone合併後的currentSound schema/types已用同path新source接續，舊SB-SRC-0032/0034 exactGit bytes存history；這是正式資料契約擴充，不是修改舊研究結果。\n\n\n2026-11-02：FPS原文三處泛文與33/65明確ghost取消條款相衝突；已保全[原版](../../../docs/14-core-pipeline/stages/11-ui-parameters/interaction/FPS_INTERACTION_UX.preimage.md.txt)及owner原FAIL比較，按已確認11/1政策精準同步[canonicalFPS](../../../docs/05-ux/FPS_INTERACTION_UX.md)。此為文件/oracle語義對齊，不改產品、不預填修正後browserPASS；[Conflict Record](../../conflicts/78d81bb5-7d39-426e-8394-8cc5838ee626.json)另記明確reconcile理由。\n\n已reconcile：明確新條款／使用者驗收補充優先於舊泛文，原ghost保留預期撤回但原FAIL保留；新case應驗pause清preview、objectcount不變、primary只Resume不重建。原生Esc預設解鎖不另新增兩步規則。\n\n\n相關Sound UX／User Flows／Component States／UI Stress四處ghost保留泛文已精準同步已確認取消政策，原exactbytes與SourceIDs另存history；[相關Conflict](../../conflicts/364713fa-a544-4c3e-a1f8-6b177c943456.json)連回已解主Conflict。Help索引沿相同canonical連結，沒有變更UI程式或製造browserPASS。\n\n四處相關文字Conflict已reconcile：僅held/ghost語義精準對齊，原stress/設計NOT RUN與舊測試失敗保留，不代表新產品缺陷或實測通過。\n"
+      }
+    ]
+  }
+}

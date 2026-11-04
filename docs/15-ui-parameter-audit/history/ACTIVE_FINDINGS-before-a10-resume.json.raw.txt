@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "ROOT_REPORTED_INTERIM_UI_AUDIT_FINDINGS",
+  "recordedAt": "2026-11-02T07:29:38.887Z",
+  "authority": "Root reports from actual production UI and subsequent targeted repair status; memory writer independently verified only Git commit identities here",
+  "status": "INTERIM_NOT_FINAL_BROWSER_ACCEPTANCE",
+  "sourceCommits": {
+    "monitor": "f6abb936a8c7c87ff8eb5e6587260b837e6b67ae",
+    "interaction": "5360cfd697bb3bb9aaa485404f56bee309a076b2",
+    "originalServed": "19db9f966d0c34b266243fb1c90a961feb3dcdd5"
+  },
+  "servedBundleAtReport": "index-BDGeI4Sd.js at originalServed; root explicitly had not rebuilt while scene browser lease remained active",
+  "findings": [
+    {
+      "id": "MONITOR-PREENABLE-PREFS",
+      "initialStatus": "CONFIRMED_FAIL",
+      "observation": "Gain is operable before AudioEngine enable but silently no-ops; Raw/Sim initially suspected separately",
+      "repairStatus": "CODE_COMMITTED_TARGETED_PASS_BROWSER_PENDING",
+      "repairCommit": "f6abb936a8c7c87ff8eb5e6587260b837e6b67ae",
+      "reportedTargeted": "Node6 PASS",
+      "scope": "Retain desired monitor prefs and default mute; footer overlap and wet step0.01 also repaired in same commit",
+      "browser": "NOT_RUN_ON_REPAIR_AT_REPORT"
+    },
+    {
+      "id": "CAMERA-TRANSFORM-GESTURE-OWNERSHIP",
+      "initialStatus": "CONFIRMED_FAIL",
+      "originalCommit": "19db9f966d0c34b266243fb1c90a961feb3dcdd5",
+      "observation": "Frame selection and Move gizmo active: Alt+left camera drag also changes ball transform, scene revision0 to1",
+      "repairStatus": "CODE_COMMITTED_TARGETED_PASS_BROWSER_PENDING",
+      "repairCommit": "5360cfd697bb3bb9aaa485404f56bee309a076b2",
+      "reportedTargeted": "5targeted PASS plus type/lint/format; no repaired browser PASS inferred",
+      "scope": "Camera gesture ownership and Held gentlePlace arbitration",
+      "browser": "NOT_RUN_ON_REPAIR_AT_REPORT"
+    },
+    {
+      "id": "REPLAY-SEEK-END-RECORD-STALE-FRAME",
+      "initialStatus": "CONFIRMED_FAIL_ROOT_REPORTED",
+      "observation": "Seek before playback and natural-end then recording can retain stale replayFrame",
+      "repairStatus": "IN_PROGRESS_BY_EVENTS_CHILD",
+      "browser": "PENDING_AFFECTED_SOURCE"
+    },
+    {
+      "id": "PROJECT-ENVIRONMENT-PERSISTENCE",
+      "initialStatus": "CONFIRMED_FAIL_ROOT_REPORTED",
+      "observation": "vacuum35.5 save/reload becomes air20",
+      "repairStatus": "IN_PROGRESS_TASK0031",
+      "assignment": "docs/15-ui-parameter-audit/ENVIRONMENT_PERSISTENCE_ASSIGNMENT_20261102.json"
+    },
+    {
+      "id": "VISIBLE-UNSUPPORTED-CAPABILITIES",
+      "initialStatus": "USER_REQUESTED_REAL_IMPLEMENTATION",
+      "scope": [
+        "OnZoneEnter/Exit author configuration and actual producer: Task0029",
+        "Sphere/Capsule acoustic material/role and real DynamicReflector reflection: Task0030"
+      ],
+      "repairStatus": "IN_PROGRESS_NOT_COMPLETE_INVENTORY",
+      "assignment": "docs/15-ui-parameter-audit/IMPLEMENTATION_ASSIGNMENTS_20261102.json"
+    }
+  ],
+  "limits": [
+    "Root-reported targeted counts are not independent memory-writer test execution.",
+    "No final current source/bundle browser coverage or complete all-parameters acceptance is inferred.",
+    "Full static inventory must refresh after repairs/new capabilities; untested rows remain NOT_RUN.",
+    "Original FAIL evidence and lane raw reports must be retained and ingested when frozen.",
+    "No paid/network budget, native CUA success, hearing/science/performance PASS or Main closure inferred."
+  ]
+}

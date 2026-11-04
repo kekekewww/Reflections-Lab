@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "status": "RESEARCH_ONLY",
+  "formalQualification": "NOT_APPROVED",
+  "parentReceipt": {
+    "path": ".cache/performance-review/measurement/measurement-summary-v2.json",
+    "sha256": "ee538ee2af989b9e2e8eb86af80b3c6068ff61e56a6a3aee51c5ed2e2e7e25dc"
+  },
+  "source": "Saved600-second raw UI, saved finish tail, and unchanged runner launch configuration; no new browser measurement",
+  "raw": {
+    "path": ".cache/performance-review/measurement/current-chrome-600/native/ui.raw.json",
+    "sha256": "e0b5f25c25077f0f0a5c640edbece25695bd682eb61b8e28085b3ca81ce6c6eb"
+  },
+  "traceStatus": "MISSING_CDP_TRACE_FLUSH_TIMEOUT_UNVERIFIED",
+  "fixture": {
+    "sceneObjectCount": 105,
+    "dynamicBodies": 100,
+    "sceneId": null
+  },
+  "declaredBrowserContext": {
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "deviceScaleFactor": 1,
+    "headless": true,
+    "source": "Unchanged tests/browser/performance-profile-v3.mjs browser.newContext launch configuration; no post-run viewport observation invented"
+  },
+  "collectionWindow": {
+    "schemaVersion": "3.0.0",
+    "collectionId": "217a4e30-8804-4412-9d4d-b7908920566a",
+    "beginMarkName": "reflection-profile.begin.217a4e30-8804-4412-9d4d-b7908920566a",
+    "endMarkName": "reflection-profile.end.217a4e30-8804-4412-9d4d-b7908920566a",
+    "beginPerformanceMs": 179622.70000000298,
+    "endPerformanceMs": 780037.8999999911,
+    "observationClock": "performance.now at RAF wrapper entry",
+    "nativeRafTimestampMeaning": "Preserved callback argument; may precede collection begin even when the callback is observed inside the active collection"
+  },
+  "sampleMilliseconds": 600415.1999999881,
+  "firstFrame": {
+    "timestamp": 179571.1,
+    "callbackObservedAtPerformanceMs": 179662,
+    "collectionId": "217a4e30-8804-4412-9d4d-b7908920566a",
+    "rafCpuMs": 326.09999999403954,
+    "callbacks": 2,
+    "advanceMs": 311.29999999701977,
+    "poseMs": 2.8999999910593033,
+    "poseCalls": 105,
+    "simulationRunning": true,
+    "tick": 346
+  },
+  "lastFrame": {
+    "timestamp": 779826.1,
+    "callbackObservedAtPerformanceMs": 779883.8999999911,
+    "collectionId": "217a4e30-8804-4412-9d4d-b7908920566a",
+    "rafCpuMs": 127.70000000298023,
+    "callbacks": 2,
+    "advanceMs": 119.20000000298023,
+    "poseMs": 1.8999999910593033,
+    "poseCalls": 105,
+    "simulationRunning": true,
+    "tick": 20047
+  },
+  "closedWindowPending": {
+    "timestamp": 780037.8999999911,
+    "scriptBusy": false,
+    "runtimeBusy": false,
+    "recorderPending": false,
+    "recorderState": "finalized",
+    "captureIndex": null,
+    "operation": null
+  },
+  "tail": {
+    "path": ".cache/performance-review/measurement/current-chrome-600/native/ui.finish-tail.raw.json",
+    "sha256": "c00f48f76a1177156a6e7cbe2742589dc0d0a475a83e2c0bff76c23f976ed414",
+    "data": {
+      "status": "TAIL_DRAINED_OUTSIDE_WINDOW",
+      "startedAtPerformanceMs": 827445.700000003,
+      "runtimeErrorObservations": [
+        {
+          "stage": "drain",
+          "atPerformanceMs": 827446.3999999911,
+          "error": ""
+        },
+        {
+          "stage": "pause",
+          "atPerformanceMs": 827446.8999999911,
+          "error": ""
+        },
+        {
+          "stage": "recordToggle",
+          "atPerformanceMs": 827469.799999997,
+          "error": ""
+        },
+        {
+          "stage": "final-drain",
+          "atPerformanceMs": 827470.099999994,
+          "error": ""
+        },
+        {
+          "stage": "complete",
+          "atPerformanceMs": 827470.099999994,
+          "error": ""
+        },
+        {
+          "stage": "finally",
+          "atPerformanceMs": 827470.099999994,
+          "error": ""
+        }
+      ],
+      "diagnosticErrors": [],
+      "deadlinePerformanceMs": 962446,
+      "stage": "complete",
+      "lateActionsTruncated": false,
+      "lateActions": [],
+      "captureSummariesTruncated": false,
+      "postWindowCaptures": [],
+      "endedAtPerformanceMs": 827470.299999997,
+      "pendingAfter": {
+        "scriptBusy": false,
+        "runtimeBusy": false,
+        "recorderPending": false
+      }
+    }
+  },
+  "interpretation": [
+    "Window end pending flags are the original closed-window snapshot; tail timestamps and cleanup are outside the window.",
+    "Three captured artifacts do not establish continuous recording load or periodic-capture validity.",
+    "No native trace, renderer-main occupancy, native membership proof, trace data-loss check, qualified600s gate or Worklet/hearing evidence."
+  ]
+}

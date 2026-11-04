@@ -423,7 +423,9 @@ test("actual app bootstrap: ten reset/import cycles preserve one world/queue/wor
       liveQueues: queues.size,
       liveWorkers: workers.size,
       pendingRaf: rafs.size,
-      canvasCount: element.querySelectorAll("canvas").length,
+      // The top monitor adds a 2D meter canvas; the renderer identity is the 3D scene canvas.
+      canvasCount: element.querySelectorAll(".viewport-canvas-wrap canvas").length,
+      allCanvasCount: element.querySelectorAll("canvas").length,
       globalListeners: listeners
         .filter((value) => !value.signal?.aborted)
         .map((value) => ({
@@ -566,6 +568,7 @@ test("actual app bootstrap: ten reset/import cycles preserve one world/queue/wor
   expect(result.disposed.liveWorkers).toBe(0);
   expect(result.disposed.pendingRaf).toBe(0);
   expect(result.disposed.canvasCount).toBe(0);
+  expect(result.disposed.allCanvasCount).toBe(0);
   expect(result.disposed.globalListeners).toEqual([]);
   expect(result.teardownCycles).toHaveLength(10);
   for (const cycle of result.teardownCycles) {
@@ -574,6 +577,7 @@ test("actual app bootstrap: ten reset/import cycles preserve one world/queue/wor
     expect(cycle.mounted.liveQueues).toBe(1);
     expect(cycle.mounted.liveWorkers).toBe(1);
     expect(cycle.disposed.canvasCount).toBe(0);
+    expect(cycle.disposed.allCanvasCount).toBe(0);
     expect(cycle.disposed.liveWorlds).toBe(0);
     expect(cycle.disposed.liveQueues).toBe(0);
     expect(cycle.disposed.liveWorkers).toBe(0);

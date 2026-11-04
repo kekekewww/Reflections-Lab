@@ -32,6 +32,7 @@ test("actual Root impact/expiry capture compares identical and material-only B u
     await command({ type: "recordToggle" });
     for (let step = 0; step < 180; step++) {
       app.advance(1 / 60);
+      await app.flushRecordingEvaluation();
       await new Promise<void>((resolve) => setImmediate(resolve));
     }
     await command({ type: "recordToggle" });

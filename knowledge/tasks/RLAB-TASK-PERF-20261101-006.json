@@ -1,0 +1,97 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-006",
+  "title": "研究保留phase的voice virtualization與資源admission",
+  "description": "logical/native/solver budgets不同，active及retiring/tail競爭；現有steal不是保留phase的virtualization。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-004"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "logical tick／pitch／phase／cursor／admission decisions有獨立oracle；virtualization不刪physics events或改錄製決策。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "slots、hysteresis、resume/tail/pending budgets與actual降級可見，重複start及resource leak負面測試通過。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "同輸入量成本／onset／phase及聽測限制；不以少render voices替代原正式容量profile。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio-behavior/voice-admission.ts",
+    "src/app/runtime.ts",
+    "src/audio/engine.ts",
+    "src/experiments/source-phase.ts",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:34:22.904Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "logical/native/solver budgets不同，active及retiring/tail競爭；現有steal不是保留phase的virtualization。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "locator": "§5、§6",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    }
+  ],
+  "affected_modules": [
+    "src/audio-behavior/voice-admission.ts",
+    "src/app/runtime.ts",
+    "src/audio/engine.ts",
+    "src/experiments/source-phase.ts"
+  ],
+  "proposed_solution": "量voice/route成本後才設有限virtual slots、hysteresis、logical time／pitch積分、resume offset與propagation history；沿用原logical decisions及native admission ledger。",
+  "alternatives": [
+    "維持有限voice caps及顯式reject。",
+    "只調整native admission效率，不做virtualization。",
+    "混合不同emitter到COM：破壞來源定位，不可採用。"
+  ],
+  "expected_benefit": "可能降低非優先聲部的昂貴route成本，代價是明示render降級；收益與聽感待驗。",
+  "complexity": "高；phase／one-shot／arrival／tail的生命週期。",
+  "performance_impact": "actual rendered/virtual/rejected/retiring counts、route成本與memory獨立報告。",
+  "audio_quality_impact": "保留源身份、pitch積分與已錄decision；virtual paths不能假稱已求解。",
+  "latency_impact": "resume admission及phase修復有界；不能重啟one-shot或補發已到達聲音。",
+  "compatibility_regression_risk": "不同sample loop offset、pitch變化、pending arrivals及raw監聽會讓恢復不等價。",
+  "benchmark_plan": "voice flood、priority churn、long loop variable pitch、one-shot邊界、delay pending、pause/seek/replay/A-B與stem selection。",
+  "rollback_plan": "drain virtual transitions及native tails，保留logical state並以原admission恢復可接受voices；其餘顯式reject，不重播one-shots。",
+  "priority_rationale": "使用者可感知的資源競爭，但語義風險高；profile證voice瓶頸後才啟動。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Native source nodes are one-shot; virtual timelines must not reuse started sources.",
+  "regression_risk": "Virtual voice resume can change phase/history or replay one-shots; logical budgets still apply.",
+  "candidate_commit": null,
+  "provenance_corrections": [
+    {
+      "at": "2026-11-01T08:34:22.904Z",
+      "previousCommit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "reason": "Rebind authored review evidence after LF normalization only; task remains unclaimed BACKLOG, all acceptance false"
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "id": "RLAB-TASK-0026",
+  "title": "Motion authoring與SetTrajectory有限核心",
+  "description": "本輪使用者已授權的有限核心實作；精確條件見 docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md。共用既有task系統，不等於全部14項優化或完整V1驗收。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "版本化有限軌跡資料與最小UI可編輯/validate/apply/undo，SetTrajectory真套用已宣告支援子集；invalid/stale原子拒絕。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion.md",
+          "sha256": "7a591f832f947b127824fdd2606b0065dbece22dfea057cfe33328d7e5b3c4a1",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-verification.json",
+          "sha256": "9c91303ff171edf5ef776b1fbf3a2ceb828c4f7ae4a4dd0d96a7415c23171a58",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/08-motion-experiment.md",
+          "sha256": "42b21e4da4e97e2a9cf16f3aee8ba0a40fb7dd608361a43713f982e54ae4a3d0",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-generation-fix.md",
+          "sha256": "0e4ba471de8088450083e962d60f7e525542945320d2fc23f71a4b945d5d0561",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+          "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/MOTION_UI_RECONCILIATION_20261102.json",
+          "sha256": "acf0e6fabc3b64b261a0553899bb4b7978c390b6d61f65e75f5687996485a735",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+          "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_9FCF3F0_BUILD_HTTP.json",
+          "sha256": "ef3bd44e73d4c817da560cdf14a0ad339eb9484646e7919cd24691ed5e9c3c06",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "固定步/不同render cadence一致，clearance及control ownership有效；pause/cancel/reset/delete/mode變更有基本負例。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion.md",
+          "sha256": "7a591f832f947b127824fdd2606b0065dbece22dfea057cfe33328d7e5b3c4a1",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-verification.json",
+          "sha256": "9c91303ff171edf5ef776b1fbf3a2ceb828c4f7ae4a4dd0d96a7415c23171a58",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/08-motion-experiment.md",
+          "sha256": "42b21e4da4e97e2a9cf16f3aee8ba0a40fb7dd608361a43713f982e54ae4a3d0",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-generation-fix.md",
+          "sha256": "0e4ba471de8088450083e962d60f7e525542945320d2fc23f71a4b945d5d0561",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+          "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/MOTION_UI_RECONCILIATION_20261102.json",
+          "sha256": "acf0e6fabc3b64b261a0553899bb4b7978c390b6d61f65e75f5687996485a735",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+          "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/motion-cadence/verification.json",
+          "sha256": "5161b910024243a3e707625b2830c99d85ab8ebc706ad3bd6f4fa2082dbe9b97",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/motion-cadence/evidence.txt",
+          "sha256": "381de873b2002feb133140fa3467dc2e12c11c5738a3a445d2b24372ba1123e2",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_9FCF3F0_BUILD_HTTP.json",
+          "sha256": "ef3bd44e73d4c817da560cdf14a0ad339eb9484646e7919cd24691ed5e9c3c06",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "Dynamic Move To/Move & Release未具完整controller/release政策時明示unsupported，不teleport穿牆或偽造玩家Grab/Throw；記錄可重驗來源。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion.md",
+          "sha256": "7a591f832f947b127824fdd2606b0065dbece22dfea057cfe33328d7e5b3c4a1",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-verification.json",
+          "sha256": "9c91303ff171edf5ef776b1fbf3a2ceb828c4f7ae4a4dd0d96a7415c23171a58",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/08-motion-experiment.md",
+          "sha256": "42b21e4da4e97e2a9cf16f3aee8ba0a40fb7dd608361a43713f982e54ae4a3d0",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/05-motion-generation-fix.md",
+          "sha256": "0e4ba471de8088450083e962d60f7e525542945320d2fc23f71a4b945d5d0561",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+          "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/MOTION_UI_RECONCILIATION_20261102.json",
+          "sha256": "acf0e6fabc3b64b261a0553899bb4b7978c390b6d61f65e75f5687996485a735",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+          "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_9FCF3F0_BUILD_HTTP.json",
+          "sha256": "ef3bd44e73d4c817da560cdf14a0ad339eb9484646e7919cd24691ed5e9c3c06",
+          "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/14-core-pipeline/REQUEST_20261102.json",
+    "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+    "docs/14-core-pipeline/STAGES.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+      "sha256": "c407c71c78daccae3e1d1c84d076d35026aa727ad403b2462f5f724e9c6d6346",
+      "result": "Authorized implementation contract only; no completed implementation or test inferred"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_RECONCILIATION_20261102.json",
+      "sha256": "3d4eaeb31ebd03de15a92bec777ff6e6ed17b6c19330660d9ccb47a7afd3282e",
+      "result": "Original49actualDOMFAIL;9fcffixed38focused/1532runtimePASS;buildandactualUIretestpending"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/SHORT_TAKE_DEBT_CANDIDATE.json",
+      "sha256": "5b6a9f7bfc3f3f06cd26757a3e8d661fd1380138c3feada10ccc61cbcd49bd5d",
+      "result": "Original49actualDOMFAIL;9fcffixed38focused/1532runtimePASS;buildandactualUIretestpending"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/MOTION_UI_RECONCILIATION_20261102.json",
+      "sha256": "acf0e6fabc3b64b261a0553899bb4b7978c390b6d61f65e75f5687996485a735",
+      "result": "Motion5scenarios49+1affected9fcPASS, originalguard/FAILretained; finalcrosswalk/criteriajoinpending"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+      "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007",
+      "result": "Motion5scenarios49+1affected9fcPASS, originalguard/FAILretained; finalcrosswalk/criteriajoinpending"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+      "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2",
+      "result": "Motion5scenarios49+1affected9fcPASS, originalguard/FAILretained; finalcrosswalk/criteriajoinpending"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/05-motion.md",
+      "sha256": "7a591f832f947b127824fdd2606b0065dbece22dfea057cfe33328d7e5b3c4a1",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/05-motion-verification.json",
+      "sha256": "9c91303ff171edf5ef776b1fbf3a2ceb828c4f7ae4a4dd0d96a7415c23171a58",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/08-motion-experiment.md",
+      "sha256": "42b21e4da4e97e2a9cf16f3aee8ba0a40fb7dd608361a43713f982e54ae4a3d0",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/05-motion-generation-fix.md",
+      "sha256": "0e4ba471de8088450083e962d60f7e525542945320d2fc23f71a4b945d5d0561",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+      "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/MOTION_UI_RECONCILIATION_20261102.json",
+      "sha256": "acf0e6fabc3b64b261a0553899bb4b7978c390b6d61f65e75f5687996485a735",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+      "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/motion-cadence/verification.json",
+      "sha256": "5161b910024243a3e707625b2830c99d85ab8ebc706ad3bd6f4fa2082dbe9b97",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/motion-cadence/evidence.txt",
+      "sha256": "381de873b2002feb133140fa3467dc2e12c11c5738a3a445d2b24372ba1123e2",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_9FCF3F0_BUILD_HTTP.json",
+      "sha256": "ef3bd44e73d4c817da560cdf14a0ad339eb9484646e7919cd24691ed5e9c3c06",
+      "result": "DirectfiniteMotioncriterion evidence; historicalversion andUI/Node scope explicit; nofullV1/performanceclaim"
+    }
+  ],
+  "created_at": "2026-11-02T05:04:33.815Z",
+  "updated_at": "2026-11-02T15:09:58.827Z",
+  "related_tasks": [
+    "RLAB-TASK-0023"
+  ],
+  "coordination": "Per-file ownership under docs/14-core-pipeline/STAGES.md; runtime and UI integration owned by root. Parallel independent development, integration validates runtime prerequisites.",
+  "last_summary": "原三criteria已具SetTrajectory/registry原子UI、真Rapier controller/clearance/lifecycle與30/60/144cadence直接證據；版本化有限UI5old49+1affected9fcPASS，Task0026有限DONE。Main/總pipeline/Claude再驗與外部gates另列",
+  "blockers": []
+}

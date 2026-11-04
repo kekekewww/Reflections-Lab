@@ -1,7 +1,13 @@
+import {
+  emitterGeometryPolicyPin,
+  hasCurrentEmitterGeometryPolicy,
+} from "../capabilities/emitter-geometry-policy.js";
 import type { SoundBehaviorDocument } from "../../schemas/sound-behavior/types.js";
-import { AgentError, type ToolRequest } from "../ai/types.js";
-import { validateToolRequest } from "../ai/validation.js";
-import { solveAcoustics, SOLVER_VERSION } from "../acoustics/index.js";
+import { AgentError, type ToolRequest, type MetricEvidence } from "../ai/types.js";
+import { digestJson, validateToolRequest } from "../ai/validation.js";
+import type { GroundingArtifact } from "../ai/grounding.js";
+import { solveAcoustics } from "../acoustics/index.js";
+import { acousticSceneSolverVersion } from "../capabilities/acoustic-geometry.js";
 import type { AcousticFrame, AcousticMaterial, Atmosphere } from "../acoustics/types.js";
 import { createBehaviorRuntime } from "../audio-behavior/index.js";
 import type { BehaviorAsset } from "../audio-behavior/types.js";
@@ -24,10 +30,12 @@ import type { PhysicsSnapshot } from "../physics/types.js";
 import { createScene } from "../scene/index.js";
 import type { SceneSpec } from "../scene/types.js";
 import { buildAcousticRequests } from "./acoustic-input.js";
+import { behaviorAcousticSource } from "./behavior-acoustic-source.js";
 import { reconcileBehaviors } from "./behavior-editor.js";
 import { makeBehaviorContext } from "./defaults.js";
 import { toBehaviorFrame } from "./physics-behavior.js";
 import { RecordingProcessor } from "./recording-processor.js";
+import { prepareExperimentMotion, type ExperimentMotionExecution } from "./motion-experiment.js";
 
 export type ExperimentMetricId =
   | "directArrivalTimeS"
@@ -131,7 +139,7 @@ export interface ExperimentToolLedgerEntry {
 export interface ExperimentToolArtifact {
   id: string;
   sha256: string;
-  kind: "recording" | "capture" | "comparison" | "preview";
+  kind: "recording" | "capture" | "comparison" | "preview" | "analysis";
   data: unknown;
 }
 interface Operation {
@@ -471,6 +479,37 @@ export class ExperimentToolHost {
           "POLICY_DENIED",
           "此入口只執行受限的實驗／分析工具。場景變更必須先預覽及套用。",
         );
+      if (metrics.length > 0 && operation.runId) {
+        // Grounding is published by this trusted host, never synthesized from a
+        // model's claimed metric records by a UI or explanation helper.
+        const groundingId = `artifact.grounding.${(
+          await sha256Canonical({ requestId: request.requestId, runId: operation.runId })
+        ).slice(0, 40)}`;
+        const evidence: MetricEvidence[] = metrics.map((metric) => ({
+          metricRecordId: metric.metricRecordId,
+          evidenceArtifactId: groundingId,
+          runId: metric.runId,
+          metricId: metric.metricId,
+          value: metric.value,
+          unit: metric.unit,
+          availability: metric.availability === "available" ? "available" : "unavailable",
+          provenance: "Computed",
+          methodId: metric.methodId,
+          limitations: [...metric.limitations],
+        }));
+        const payload = { runId: operation.runId, metrics: evidence };
+        const grounding: ExperimentToolArtifact = immutableClone({
+          id: groundingId,
+          sha256: (await digestJson(payload)).slice(7),
+          kind: "analysis",
+          data: payload,
+        });
+        this.check(operation);
+        this.checkStorage(grounding);
+        this.commitArtifact(grounding);
+        artifactIds = [...artifactIds, grounding.id];
+      }
+      this.check(operation);
       this.update(operation, "succeeded", artifactIds);
       return this.result(operation, "succeeded", artifactIds, metrics);
     } catch (error) {
@@ -536,7 +575,16 @@ export class ExperimentToolHost {
       fixedDtSeconds: FIXED_DT,
       clockMode: "recording",
     });
+    let motion: ExperimentMotionExecution | null = null;
     try {
+      this.check(operation);
+      motion = await prepareExperimentMotion(
+        current.physicsConfig,
+        current.sceneSnapshot,
+        scene,
+        world,
+        () => this.check(operation),
+      );
       this.check(operation);
       const assets = clone(this.options.getAssets());
       const document = reconcileBehaviors(
@@ -557,6 +605,11 @@ export class ExperimentToolHost {
         },
       );
       const configuration = this.configuration(current, scene, document, operation);
+      if (motion)
+        configuration.physicsConfig = {
+          ...(configuration.physicsConfig as Record<string, unknown>),
+          ...motion.physicsConfig,
+        };
       const recorder = new ExperimentRecorder(configuration);
       const append = (snapshot: PhysicsSnapshot): void => {
         this.check(operation);
@@ -567,22 +620,11 @@ export class ExperimentToolHost {
         const sources = new Map(
           runtimeSnapshot.state.instances
             .filter((instance) => instance.playbackState === "playing")
-            .map((instance) => [
-              instance.instanceId,
-              {
-                id: instance.instanceId,
-                objectId: instance.objectId,
-                positionM: instance.positionMetres,
-              },
-            ]),
+            .map((instance) => [instance.instanceId, behaviorAcousticSource(document, instance)]),
         );
         // A stop command may retain a diagnostic route without being another emission.
         for (const event of result.events)
-          sources.set(event.instanceId, {
-            id: event.instanceId,
-            objectId: event.objectId,
-            positionM: event.positionMetres,
-          });
+          sources.set(event.instanceId, behaviorAcousticSource(document, event));
         const acousticFrames: AcousticFrame[] = [];
         const inputs = [...sources.values()];
         for (let i = 0; i < inputs.length; i += 16) {
@@ -604,6 +646,14 @@ export class ExperimentToolHost {
                       ...surface,
                       role: "dynamicOccluder" as const,
                     })),
+                    ...(request.primitives
+                      ? {
+                          primitives: request.primitives.map((primitive) => ({
+                            ...primitive,
+                            role: "dynamicOccluder" as const,
+                          })),
+                        }
+                      : {}),
                   }
                 : request;
             const solution = solveAcoustics(query);
@@ -656,7 +706,11 @@ export class ExperimentToolHost {
       this.check(operation);
       return await recorder.finish();
     } finally {
-      world.dispose();
+      try {
+        motion?.workspace.dispose();
+      } finally {
+        world.dispose();
+      }
     }
   }
   private configuration(
@@ -692,13 +746,14 @@ export class ExperimentToolHost {
         ),
       },
       backendId: BACKEND,
-      backendVersion: SOLVER_VERSION,
+      backendVersion: acousticSceneSolverVersion(scene),
       fixedDtS: FIXED_DT,
       sampleRateHz: operation.request.arguments.sampleRateHz as 44100 | 48000,
       solverConfig: {
         backendId: BACKEND,
         maxReflectionOrder: operation.request.arguments.maxReflectionOrder,
         maxPaths: 8,
+        ...emitterGeometryPolicyPin(),
       },
       budget: {
         maxFrames: 1801,
@@ -717,11 +772,22 @@ export class ExperimentToolHost {
       original = await this.recording(String(args.replayTraceId));
     if (
       original.configuration.backendId !== BACKEND ||
-      original.configuration.backendVersion !== SOLVER_VERSION
+      original.configuration.backendVersion !==
+        acousticSceneSolverVersion(createScene(current.sceneSnapshot))
     )
       throw new AgentError(
         "CAPABILITY_UNSUPPORTED",
         "重評必須明示目前實際求解器版本；舊版 recording 保留原始來源，請先建立 fresh run。",
+      );
+    if (
+      !hasCurrentEmitterGeometryPolicy(
+        original.configuration.behaviorConfig,
+        original.configuration.solverConfig,
+      )
+    )
+      throw new AgentError(
+        "CAPABILITY_UNSUPPORTED",
+        "固定或區域音源的舊遮蔽政策不能直接重評比較；原錄音可重播，請建立新的基準錄製。",
       );
     if (args.maxReflectionOrder !== 1)
       throw new AgentError(
@@ -779,7 +845,12 @@ export class ExperimentToolHost {
       sceneSnapshot: scene,
       sourceConfig: clone(current.sourceConfig),
       behaviorConfig: document,
-      solverConfig: { backendId: BACKEND, maxReflectionOrder: 1, maxPaths: 8 },
+      solverConfig: {
+        backendId: BACKEND,
+        maxReflectionOrder: 1,
+        maxPaths: 8,
+        ...emitterGeometryPolicyPin(),
+      },
       atmosphere: clone(current.atmosphere),
       materialRegistry: clone(current.materialRegistry),
       assetManifest: clone(current.assetManifest ?? []),
@@ -1032,6 +1103,16 @@ export class ExperimentToolHost {
   getArtifact(artifactId: string): ExperimentToolArtifact | null {
     const value = this.artifacts.get(artifactId);
     return value ? immutableClone(value) : null;
+  }
+  /** Resolve only host-published immutable analysis artifacts for explanations. */
+  getGroundingArtifact(artifactId: string): GroundingArtifact | undefined {
+    const artifact = this.artifacts.get(artifactId);
+    if (!artifact || artifact.kind !== "analysis") return undefined;
+    return immutableClone({
+      artifactId: artifact.id,
+      sha256: artifact.sha256,
+      payload: artifact.data as GroundingArtifact["payload"],
+    });
   }
   getMetrics(): ExperimentMetricRecord[] {
     return [...this.metricRecords.values()].map(immutableClone);

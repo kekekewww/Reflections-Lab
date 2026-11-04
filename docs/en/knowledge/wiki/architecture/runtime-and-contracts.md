@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/architecture/runtime-and-contracts.md","sha256":"7a651244ed5480783a4231e0400fa88fe7c8aa037eae4d76da160ce5135e51ac","translated_at":"2026-10-29T05:40:57Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/architecture/runtime-and-contracts.md","sha256":"66dd1a1c5cbac16a89318c9769c720171836042bef96da37064890266054fade","translated_at":"2026-11-02T09:59:47.5353156+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0007
 title: Runtime architecture and data authority
 type: architecture
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T05:38:39.561Z
+updated_at: 2026-11-02T09:45:40.484Z
 sources:
   - RLAB-SRC-0055
   - RLAB-SRC-0057
@@ -19,9 +19,17 @@ sources:
   - V1-SRC-0060
   - V1-SRC-0015
   - AR-WIKI-bdabc250-7903063a
+  - SB-ZONE-TYPES-20261102-V1
+  - CORE-STAGE-06-20261102-V1
+  - CG-DATA-CONTRACTS-20261102-V1
+  - CG-ACOUSTIC-VALIDATION-20261102-V1
+  - CG-EVIDENCE-LEDGER-20261102-V1
 related_tasks:
   - RLAB-TASK-0016
   - RLAB-TASK-0021
+  - RLAB-TASK-0028
+  - RLAB-TASK-0029
+  - RLAB-TASK-0030
 related_decisions:
   - ADR-005
   - ADR-006
@@ -33,7 +41,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/architecture/runtime-and-contracts.md`](../../../../../knowledge/wiki/architecture/runtime-and-contracts.md). Source SHA-256: `7a651244ed5480783a4231e0400fa88fe7c8aa037eae4d76da160ce5135e51ac`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/architecture/runtime-and-contracts.md`](../../../../../knowledge/wiki/architecture/runtime-and-contracts.md). Source SHA-256: `66dd1a1c5cbac16a89318c9769c720171836042bef96da37064890266054fade`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="runtime時鐘與資料權威"></a>
@@ -64,3 +72,15 @@ The latest fixed 22ca product bundle completed 3 clean full flows plus an indepe
 The production canonical documents now correct outdated unimplemented statements; see the [Review](../../../12-architecture-review/ARCHITECTURE_REVIEW.md) and [ADR-015](../../../02-architecture/adr/015-client-first-and-render-contract.md). The ordinary live lane uses an acoustic worker, but main-thread RAF drives the physics accumulator, and record onTick still solves synchronously. The seal worker is not the simulation clock. Native Web Audio is implemented; custom AudioWorklet has no product processor registration path.
 
 The shared hard propagation limit is 5 seconds, with a 2-second default. Reject out-of-range settings early; six boundary cases have RED/GREEN results. RenderBackend is only a portable types-only seam, with no take mix/stems/ADM renderer yet and no Scene/Project/Recording migration. See the [research guide](../research/architecture-review-20261029.md) for the research branch and worktree, sources, and limitations of each research domain. This round does not claim V1 completion from research or typechecks.
+
+<!-- english-original-anchor --> <a id="2026-11-02有限核心與zone擴充"></a>
+## 2026-11-02: finite cores and Zone expansion
+
+This round's six cores and the [user's later expansion](../../../15-ui-parameter-audit/AMENDMENT_UNSUPPORTED_OPTIONS_20261102.md) retain the same runtime/domain authority. Task0029 adds optional Scene zones, zoneId identity, atomic authoring-registry pins and a real fixed-step body-center producer. Position-continuous mode changes retain true edges; authored teleports/registry changes establish baselines. Derived limits are in the [pinned Zone synthesis](../../../15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md). Regions do not become Rapier colliders/acoustic surfaces, and markers do not enter persistent hashes. Exact preimages of old schemas/types remain.
+
+The preceding 2026-10-29 types-only RenderBackend statement is a historical research point. Six-core [Stage06](../../../14-core-pipeline/stages/06-render.md) now has same-AudioEngine/real-OfflineAudioContext short-take mix/master/dry/stems, default 30 seconds/16 outputs and other explicit budgets. This does not complete ADM/long takes/cloud/customWorklet. Curves had not merged at that d9 point. The physics master clock remains main RAF, with separate acoustic/recording/audio clocks. Actual Zone UI/WAV, whole-parameter auditing, formal performance/science/devices/Meta live/Main each await their own evidence; not every PERF proposal is adopted.
+
+<!-- english-original-anchor --> <a id="curves動態反射正式來源接續b4-candidate"></a>
+## Curves/dynamic-reflection official-source continuation (b4 candidate)
+
+Curves 7bb merged normally as a06, followed by gizmo source b4; Root's complete code check/final UI validation is still in progress. Official DataContracts/AcousticValidation/Ledger now continue through new source versions. Exact old Git originals are stored under docs15/history without rewriting original research/Task0021 evidence. Analytical sphere/capsule geometry and true-snapshot dynamicReflector share the 256 budget. The 105-object example actually failed at 289 items, then used exact OBB occluder representation to reach 124 without changing the fixture/cap. See the [model contract](../../../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) for model/policy pins and old-Replay/new-reevaluation compatibility. Unmodeled curvature focusing/full-wave behavior does not establish a scientific/performance PASS.

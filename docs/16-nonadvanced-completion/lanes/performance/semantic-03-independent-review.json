@@ -1,0 +1,1537 @@
+{
+  "checksFailed": [],
+  "sourceCommit": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+  "observedHead": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+  "events": 2716,
+  "nativeTasks": {
+    "all": 764,
+    "owned": 44,
+    "selected": 38,
+    "merged": 38
+  },
+  "counts": {
+    "journalOperations": 52,
+    "registered": 26,
+    "callbacks": 24,
+    "groups": 13,
+    "request": 23,
+    "fire": 24,
+    "cancel": 1,
+    "traceHandles": 25
+  },
+  "beginUs": 2667589229,
+  "endUs": 2667811785,
+  "leadingGapUs": 780,
+  "trailingGapUs": 0,
+  "bootstrap": {
+    "timer": 1,
+    "scheduledMs": 550,
+    "enteredMs": 550.5,
+    "exitMs": 550.6000000000931,
+    "requestedDelayMs": 0,
+    "actualDeliveryDelayMs": 0.5,
+    "entryFromBeginMs": 0.8999999999068677,
+    "rawIndexes": {
+      "install": 195,
+      "fire": 198,
+      "enterMark": 202,
+      "exitMark": 203,
+      "task": 197
+    },
+    "task": {
+      "args": {
+        "src_file": "third_party/blink/renderer/core/scheduler/dom_timer.cc",
+        "src_func": "DOMTimer",
+        "src_line": 356
+      },
+      "cat": "toplevel",
+      "dur": 181,
+      "name": "ThreadControllerImpl::RunTask",
+      "ph": "X",
+      "pid": 51296,
+      "tdur": 138,
+      "tid": 44384,
+      "ts": 2667590009,
+      "tts": 396682
+    },
+    "install": {
+      "args": {
+        "data": {
+          "frame": "688482D77E84D749BB85474985FFA7CB",
+          "singleShot": true,
+          "timeout": 0,
+          "timerId": 1
+        }
+      },
+      "cat": "devtools.timeline",
+      "name": "TimerInstall",
+      "ph": "I",
+      "pid": 51296,
+      "s": "t",
+      "tid": 44384,
+      "ts": 2667589664,
+      "tts": 396516
+    },
+    "fire": {
+      "args": {
+        "data": {
+          "frame": "688482D77E84D749BB85474985FFA7CB",
+          "timerId": 1
+        }
+      },
+      "cat": "devtools.timeline",
+      "dur": 174,
+      "name": "TimerFire",
+      "ph": "X",
+      "pid": 51296,
+      "tdur": 132,
+      "tid": 44384,
+      "ts": 2667590016,
+      "tts": 396688
+    },
+    "entryMark": {
+      "args": {
+        "data": {
+          "callTime": 2667590162,
+          "navigationId": "01B02B997F010A2C4E2E44A2139F5181",
+          "sampleTraceId": 7855459118492772,
+          "startTime": 550.5
+        }
+      },
+      "cat": "blink.user_timing",
+      "name": "rlab-semantic.bootstrap.enter.230df3bf-7ee8-4ca7-b528-443203bad2aa.1",
+      "ph": "I",
+      "pid": 51296,
+      "s": "t",
+      "tid": 44384,
+      "ts": 2667590161,
+      "tts": 396797
+    },
+    "exitMark": {
+      "args": {
+        "data": {
+          "callTime": 2667590179,
+          "navigationId": "01B02B997F010A2C4E2E44A2139F5181",
+          "sampleTraceId": 7855459118492775,
+          "startTime": 550.5
+        }
+      },
+      "cat": "blink.user_timing",
+      "name": "rlab-semantic.bootstrap.exit.230df3bf-7ee8-4ca7-b528-443203bad2aa.1",
+      "ph": "I",
+      "pid": 51296,
+      "s": "t",
+      "tid": 44384,
+      "ts": 2667590178,
+      "tts": 396812
+    }
+  },
+  "E0": {
+    "ordinal": 6,
+    "label": "E0",
+    "markIndex": 31,
+    "fireIndex": 1283,
+    "markTsUs": 2667039546,
+    "physicalCallTimeUs": 2667694868,
+    "fireTsUs": 2667694771,
+    "fireDurationUs": 135,
+    "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+  },
+  "source44AllEqual": true,
+  "exeSha256Current": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+  "hostSummary": {
+    "node": "v22.17.0",
+    "nodeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "logicalCpus": 32,
+    "totalMemoryBytes": 33959825408,
+    "browserVersion": "156.0.8078.75",
+    "browserVersionReceipt": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/156.0.8078.75",
+      "revision": "@861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "jsVersion": "15.6.75.25"
+    },
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "deviceScaleFactor": 1
+    },
+    "cdpAttached": true,
+    "debuggerIntervention": "EXACT_PRETRACE_PENDING_PILOT_ONLY_NOT_PERFORMANCE"
+  },
+  "cleanupMs": 403,
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "groupEvidence": [
+    {
+      "ordinal": 1,
+      "labels": [
+        "P0",
+        "P1"
+      ],
+      "rawRafMs": 555.1,
+      "rawRafBits": "408158cccccccccd",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.1.2.408158cccccccccd.408184ccccccd000"
+    },
+    {
+      "ordinal": 2,
+      "labels": [
+        "A0",
+        "A1",
+        "A2"
+      ],
+      "rawRafMs": 571.7,
+      "rawRafBits": "4081dd999999999a",
+      "callbackCount": 3,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.2.4.4081dd999999999a.4081df3333333000"
+    },
+    {
+      "ordinal": 3,
+      "labels": [
+        "B0",
+        "B1"
+      ],
+      "rawRafMs": 588.4,
+      "rawRafBits": "4082633333333333",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.3.7.4082633333333333.4082659999999000"
+    },
+    {
+      "ordinal": 4,
+      "labels": [
+        "C0"
+      ],
+      "rawRafMs": 621.7,
+      "rawRafBits": "40836d999999999a",
+      "callbackCount": 1,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.4.10.40836d999999999a.4083d80000000000"
+    },
+    {
+      "ordinal": 5,
+      "labels": [
+        "D0",
+        "D1",
+        "D2"
+      ],
+      "rawRafMs": 638.4,
+      "rawRafBits": "4083f33333333333",
+      "callbackCount": 3,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.5.11.4083f33333333333.4083f40000000000"
+    },
+    {
+      "ordinal": 6,
+      "labels": [
+        "E0",
+        "E1"
+      ],
+      "rawRafMs": 655.1,
+      "rawRafBits": "408478cccccccccd",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.6.14.408478cccccccccd.4084799999999000"
+    },
+    {
+      "ordinal": 7,
+      "labels": [
+        "F0"
+      ],
+      "rawRafMs": 671.8,
+      "rawRafBits": "4084fe6666666666",
+      "callbackCount": 1,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.7.16.4084fe6666666666.4084ff3333333000"
+    },
+    {
+      "ordinal": 8,
+      "labels": [
+        "G0",
+        "G1"
+      ],
+      "rawRafMs": 688.5,
+      "rawRafBits": "4085840000000000",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.8.17.4085840000000000.408584ccccccd000"
+    },
+    {
+      "ordinal": 9,
+      "labels": [
+        "H0",
+        "H1"
+      ],
+      "rawRafMs": 705.1,
+      "rawRafBits": "408608cccccccccd",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.9.19.408608cccccccccd.40860a6666666000"
+    },
+    {
+      "ordinal": 10,
+      "labels": [
+        "I0"
+      ],
+      "rawRafMs": 721.8,
+      "rawRafBits": "40868e6666666666",
+      "callbackCount": 1,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.10.21.40868e6666666666.40868f3333333000"
+    },
+    {
+      "ordinal": 11,
+      "labels": [
+        "J0",
+        "J1"
+      ],
+      "rawRafMs": 738.4,
+      "rawRafBits": "4087133333333333",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.11.22.4087133333333333.408714ccccccd000"
+    },
+    {
+      "ordinal": 12,
+      "labels": [
+        "K0"
+      ],
+      "rawRafMs": 755.1,
+      "rawRafBits": "408798cccccccccd",
+      "callbackCount": 1,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.12.24.408798cccccccccd.40879a6666666000"
+    },
+    {
+      "ordinal": 13,
+      "labels": [
+        "L0",
+        "L1"
+      ],
+      "rawRafMs": 771.8,
+      "rawRafBits": "40881e6666666666",
+      "callbackCount": 2,
+      "markName": "rlab-v3.observe.230df3bf-7ee8-4ca7-b528-443203bad2aa.13.25.40881e6666666666.4088200000000000"
+    }
+  ],
+  "handleEvidence": [
+    {
+      "label": "PC",
+      "handle": 1,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestIndexes": [],
+      "fireIndexes": [],
+      "cancelIndexes": [],
+      "parentFireIndex": null
+    },
+    {
+      "label": "P0",
+      "handle": 2,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestIndexes": [],
+      "fireIndexes": [
+        306
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": null
+    },
+    {
+      "label": "P1",
+      "handle": 3,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestIndexes": [],
+      "fireIndexes": [
+        355
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": null
+    },
+    {
+      "label": "A0",
+      "handle": 4,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestIndexes": [
+        351
+      ],
+      "fireIndexes": [
+        525
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 306
+    },
+    {
+      "label": "A1",
+      "handle": 5,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestIndexes": [
+        353
+      ],
+      "fireIndexes": [
+        533
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 306
+    },
+    {
+      "label": "A2",
+      "handle": 6,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestIndexes": [
+        354
+      ],
+      "fireIndexes": [
+        541
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 306
+    },
+    {
+      "label": "B0",
+      "handle": 7,
+      "phase": "measured",
+      "parentLabel": "A2",
+      "requestIndexes": [
+        544
+      ],
+      "fireIndexes": [
+        768
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 541
+    },
+    {
+      "label": "B1",
+      "handle": 8,
+      "phase": "measured",
+      "parentLabel": "A2",
+      "requestIndexes": [
+        545
+      ],
+      "fireIndexes": [
+        779
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 541
+    },
+    {
+      "label": "MC",
+      "handle": 9,
+      "phase": "measured",
+      "parentLabel": "B1",
+      "requestIndexes": [
+        782
+      ],
+      "fireIndexes": [],
+      "cancelIndexes": [
+        784
+      ],
+      "parentFireIndex": 779
+    },
+    {
+      "label": "C0",
+      "handle": 10,
+      "phase": "measured",
+      "parentLabel": "B1",
+      "requestIndexes": [
+        785
+      ],
+      "fireIndexes": [
+        1092
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 779
+    },
+    {
+      "label": "D0",
+      "handle": 11,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestIndexes": [
+        1097
+      ],
+      "fireIndexes": [
+        1152
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1092
+    },
+    {
+      "label": "D1",
+      "handle": 12,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestIndexes": [
+        1099
+      ],
+      "fireIndexes": [
+        1163
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1092
+    },
+    {
+      "label": "D2",
+      "handle": 13,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestIndexes": [
+        1100
+      ],
+      "fireIndexes": [
+        1166
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1092
+    },
+    {
+      "label": "E0",
+      "handle": 14,
+      "phase": "measured",
+      "parentLabel": "D2",
+      "requestIndexes": [
+        1169
+      ],
+      "fireIndexes": [
+        1283
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1166
+    },
+    {
+      "label": "E1",
+      "handle": 15,
+      "phase": "measured",
+      "parentLabel": "D2",
+      "requestIndexes": [
+        1170
+      ],
+      "fireIndexes": [
+        1299
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1166
+    },
+    {
+      "label": "F0",
+      "handle": 16,
+      "phase": "measured",
+      "parentLabel": "E1",
+      "requestIndexes": [
+        1303
+      ],
+      "fireIndexes": [
+        1411
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1299
+    },
+    {
+      "label": "G0",
+      "handle": 17,
+      "phase": "measured",
+      "parentLabel": "F0",
+      "requestIndexes": [
+        1420
+      ],
+      "fireIndexes": [
+        1474
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1411
+    },
+    {
+      "label": "G1",
+      "handle": 18,
+      "phase": "measured",
+      "parentLabel": "F0",
+      "requestIndexes": [
+        1422
+      ],
+      "fireIndexes": [
+        1485
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1411
+    },
+    {
+      "label": "H0",
+      "handle": 19,
+      "phase": "measured",
+      "parentLabel": "G0",
+      "requestIndexes": [
+        1484
+      ],
+      "fireIndexes": [
+        1547
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1474
+    },
+    {
+      "label": "H1",
+      "handle": 20,
+      "phase": "measured",
+      "parentLabel": "G1",
+      "requestIndexes": [
+        1489
+      ],
+      "fireIndexes": [
+        1559
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1485
+    },
+    {
+      "label": "I0",
+      "handle": 21,
+      "phase": "measured",
+      "parentLabel": "H1",
+      "requestIndexes": [
+        1562
+      ],
+      "fireIndexes": [
+        1616
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1559
+    },
+    {
+      "label": "J0",
+      "handle": 22,
+      "phase": "measured",
+      "parentLabel": "I0",
+      "requestIndexes": [
+        1628
+      ],
+      "fireIndexes": [
+        1677
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1616
+    },
+    {
+      "label": "J1",
+      "handle": 23,
+      "phase": "measured",
+      "parentLabel": "I0",
+      "requestIndexes": [
+        1629
+      ],
+      "fireIndexes": [
+        1683
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1616
+    },
+    {
+      "label": "K0",
+      "handle": 24,
+      "phase": "measured",
+      "parentLabel": "J1",
+      "requestIndexes": [
+        1692
+      ],
+      "fireIndexes": [
+        1740
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1683
+    },
+    {
+      "label": "L0",
+      "handle": 25,
+      "phase": "measured",
+      "parentLabel": "K0",
+      "requestIndexes": [
+        1746
+      ],
+      "fireIndexes": [
+        1811
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1740
+    },
+    {
+      "label": "L1",
+      "handle": 26,
+      "phase": "measured",
+      "parentLabel": "K0",
+      "requestIndexes": [
+        1749
+      ],
+      "fireIndexes": [
+        1817
+      ],
+      "cancelIndexes": [],
+      "parentFireIndex": 1740
+    }
+  ],
+  "markEvidence": [
+    {
+      "ordinal": 1,
+      "label": "P0",
+      "markIndex": 350,
+      "fireIndex": 306,
+      "markTsUs": 2667600513,
+      "physicalCallTimeUs": 2667600519,
+      "fireTsUs": 2667599953,
+      "fireDurationUs": 663,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 2,
+      "label": "A0",
+      "markIndex": 528,
+      "fireIndex": 525,
+      "markTsUs": 2667611533,
+      "physicalCallTimeUs": 2667611536,
+      "fireTsUs": 2667611440,
+      "fireDurationUs": 133,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 3,
+      "label": "B0",
+      "markIndex": 777,
+      "fireIndex": 768,
+      "markTsUs": 2667628383,
+      "physicalCallTimeUs": 2667628385,
+      "fireTsUs": 2667628292,
+      "fireDurationUs": 130,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 4,
+      "label": "C0",
+      "markIndex": 1096,
+      "fireIndex": 1092,
+      "markTsUs": 2667674658,
+      "physicalCallTimeUs": 2667674661,
+      "fireTsUs": 2667674554,
+      "fireDurationUs": 172,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 5,
+      "label": "D0",
+      "markIndex": 1162,
+      "fireIndex": 1152,
+      "markTsUs": 2667678213,
+      "physicalCallTimeUs": 2667678216,
+      "fireTsUs": 2667678135,
+      "fireDurationUs": 115,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 6,
+      "label": "E0",
+      "markIndex": 31,
+      "fireIndex": 1283,
+      "markTsUs": 2667039546,
+      "physicalCallTimeUs": 2667694868,
+      "fireTsUs": 2667694771,
+      "fireDurationUs": 135,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 7,
+      "label": "F0",
+      "markIndex": 1418,
+      "fireIndex": 1411,
+      "markTsUs": 2667711509,
+      "physicalCallTimeUs": 2667711511,
+      "fireTsUs": 2667711449,
+      "fireDurationUs": 105,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 8,
+      "label": "G0",
+      "markIndex": 1483,
+      "fireIndex": 1474,
+      "markTsUs": 2667728296,
+      "physicalCallTimeUs": 2667728298,
+      "fireTsUs": 2667728229,
+      "fireDurationUs": 113,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 9,
+      "label": "H0",
+      "markIndex": 1552,
+      "fireIndex": 1547,
+      "markTsUs": 2667744890,
+      "physicalCallTimeUs": 2667744892,
+      "fireTsUs": 2667744825,
+      "fireDurationUs": 97,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 10,
+      "label": "I0",
+      "markIndex": 1624,
+      "fireIndex": 1616,
+      "markTsUs": 2667761483,
+      "physicalCallTimeUs": 2667761486,
+      "fireTsUs": 2667761413,
+      "fireDurationUs": 121,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 11,
+      "label": "J0",
+      "markIndex": 1681,
+      "fireIndex": 1677,
+      "markTsUs": 2667778240,
+      "physicalCallTimeUs": 2667778242,
+      "fireTsUs": 2667778182,
+      "fireDurationUs": 87,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 12,
+      "label": "K0",
+      "markIndex": 1744,
+      "fireIndex": 1740,
+      "markTsUs": 2667794941,
+      "physicalCallTimeUs": 2667794943,
+      "fireTsUs": 2667794886,
+      "fireDurationUs": 90,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    {
+      "ordinal": 13,
+      "label": "L0",
+      "markIndex": 1815,
+      "fireIndex": 1811,
+      "markTsUs": 2667811607,
+      "physicalCallTimeUs": 2667811612,
+      "fireTsUs": 2667811539,
+      "fireDurationUs": 98,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.md",
+      "sha256": "9b7a4aa4021240bf57c406f6e475fe65458b39075245a627d632aa55f02e584b",
+      "bytes": 2921,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.json",
+      "sha256": "c768dcd8f2b36dddfd6148788ff068e024db6df5ae703b3030960816bc24251d",
+      "bytes": 17870,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.native-analysis.json",
+      "sha256": "5d12ab7e6c63975251979cfab30cff3d26d8e0e745a6d2b0c117f8ea360623a2",
+      "bytes": 8999,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": ".node-version",
+      "sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98",
+      "bytes": 8,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.json",
+      "sha256": "683aee6aa34db2edb92d7364920f36cbeab4386a40a26a70d73ea4c42b0503b5",
+      "bytes": 19616,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.md",
+      "sha256": "7e94d8b3969427c766af5c7acabb834adf131364fcc1dca859082926c65ebbe8",
+      "bytes": 3769,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md",
+      "sha256": "bc5d9f8af4053753da369248d95191a6a0e129ec37028c462944156549246737",
+      "bytes": 3643,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-SEMANTIC-BOOTSTRAP-V3.md",
+      "sha256": "a872249635688d52a215b4d869632711c70f50e3b6068cb9709c6cb066e44bbd",
+      "bytes": 4484,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json",
+      "sha256": "9d03f774a8a5b340c5fe3d557947d9017e985f193f8ee579a86e88fc1db1bb03",
+      "bytes": 42638,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.json",
+      "sha256": "2f61e7976620cb7127074a3913be46a99f3e3f8a0497c9c9d7b0246cc13f6aad",
+      "bytes": 14341,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.md",
+      "sha256": "219090e9d857ef077a72d0ff162f465ec203dd27a9cb039cd426df534dd081db",
+      "bytes": 5369,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d",
+      "bytes": 31050,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.raw.json",
+      "sha256": "8c95e3bfdceef6a098abcc1102f493e51b4072bb0745b742a237b3d72187fe3e",
+      "bytes": 33304,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.trace.json.gz",
+      "sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72",
+      "bytes": 81393,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.raw.json",
+      "sha256": "dff5fa6d6e4260f3de546f570cc084cd965575e25525690baca753de34243c0e",
+      "bytes": 33245,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.trace.json.gz",
+      "sha256": "02e874df3350dbab25db5a9b10c7503bc2bc9bd65f26b87c613aa952fd767d0b",
+      "bytes": 85161,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/verification.json",
+      "sha256": "9816901c42b618cd956b64366cf254e78bea9e009ff86fdf26cb3c2100a5a491",
+      "bytes": 50667,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+      "bytes": 103658,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "scripts/agents/process-runner.mjs",
+      "sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+      "bytes": 18201,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-deadline-v1.mjs",
+      "sha256": "acdbf3414fcfa16659f14e5fb4b356171fc970fde737759d2a407d05b53b705f",
+      "bytes": 1032,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-error-record-v3.mjs",
+      "sha256": "f7e1d1c0d27bf41440ef4cca65c7373d1aa3f47205032d2c701f51c070c2db5d",
+      "bytes": 5921,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-native-boundary-v4.mjs",
+      "sha256": "55ccd030a3650b78c197f29c68f671ab8d4f344dd43864fbf97bb0b4e439ad8d",
+      "bytes": 5117,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+      "bytes": 33328,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4",
+      "bytes": 4183,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-owned-cleanup-v3.mjs",
+      "sha256": "cdfb742d0d2e5b64e8c62d65ddd186c5a8109896a53bdd6641878fc78224ad43",
+      "bytes": 11236,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-proof-v3.mjs",
+      "sha256": "41a17f0a28b06d647eb8e0c983d2a9059fe498c0421eae5cb1b9bc3b4f4909b0",
+      "bytes": 9341,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-qualification-registry-v4.mjs",
+      "sha256": "5517664d3e9437257488414584c3dc7140572797103b7611269a98f125adc48d",
+      "bytes": 1497,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-bootstrap-v1.mjs",
+      "sha256": "535a9d8054687f624bef0c7ea77d343e3791ed546c2f4a429e750cb2d6881dd5",
+      "bytes": 10812,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v1.mjs",
+      "sha256": "76cea89421f13e6c14d5a7774f1ebdc908d65625ff1d8dcc9f4ac01f2599ae67",
+      "bytes": 6386,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v2.mjs",
+      "sha256": "c6d211e3fe5f35231406fb1ace7385a6b33faf2ecfd020f9efbd8cdc30b93fd6",
+      "bytes": 5184,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v3.mjs",
+      "sha256": "73fa37a2a6cec68b6ff16cf9686fa93ade24bae075e3fd023f43e3a160f20fcb",
+      "bytes": 5480,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v1.mjs",
+      "sha256": "25e82f87ed64e8ce538bfde85b0a5b7a28974ef38832484d8c96f0b1bf9f295f",
+      "bytes": 10131,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v2.mjs",
+      "sha256": "271912625eeefe1f2bd0620757f947cb4beac2a8dd223c2ec26a62501f4c74ba",
+      "bytes": 10653,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-oracle-v1.mjs",
+      "sha256": "cb7e0e85481494c81a358ae6074b913847d902c4acc30d820251ffc1c26561f7",
+      "bytes": 13622,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v1.mjs",
+      "sha256": "8f712452ba026711acb57ef07dd75631c02b552c0e4cbc4e37fbd8eddad28ab7",
+      "bytes": 5409,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v2.mjs",
+      "sha256": "8d38c6cb8c3c82dd8daac80ec8dd81d1040c6bf6ab969f4fa87649723309a44c",
+      "bytes": 6137,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v1.html",
+      "sha256": "eb4b7d3d685dc8758c73ec03fdfb68fab4020a4105ecf5deb369584fc7255cfd",
+      "bytes": 391,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v2.html",
+      "sha256": "4ae11c49b1bf76bdf2a3e24233e12da450f5892c67cb3dea48141a2adc3353b1",
+      "bytes": 391,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v2.mjs",
+      "sha256": "9cca2375741bd9f0226ba2353f606dc47510bf3095400db981f1f770e5c9438a",
+      "bytes": 22032,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v3.mjs",
+      "sha256": "fdf997d2ed0c8de124963dac04928a818961d504fb7828d788bc79f7e4d13273",
+      "bytes": 24836,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/browser/performance-stream-v3.mjs",
+      "sha256": "064b3071d350f9bc3dc4f39682a21c1f1e19f68fd3929a9c147551a149abeaab",
+      "bytes": 7268,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/performance-v3/native-boundary-v4.spec.mjs",
+      "sha256": "c87a4807004c326f976e49caca89e07a90a126e596924211aaf5d24597d14a96",
+      "bytes": 31735,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/performance-v3/semantic-bootstrap-v3.spec.mjs",
+      "sha256": "8a1154d5f324545c71f55bc3c63b70331872b553773d547c9771a59e653f71fb",
+      "bytes": 36598,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    },
+    {
+      "path": "tests/performance-v3/semantic-pilot.spec.mjs",
+      "sha256": "55a1cebcab06d2510c37f473487659309a2839e23c42cde15bcb0430e4d226cd",
+      "bytes": 37383,
+      "archiveEndpointCurrentRunCommitAllEqual": true
+    }
+  ],
+  "performanceBins": [
+    549.6000000000931,
+    555.1,
+    571.7,
+    588.4,
+    621.7,
+    638.4,
+    655.1,
+    671.8,
+    688.5,
+    705.1,
+    721.8,
+    738.4,
+    755.1,
+    771.8,
+    772.1999999997206
+  ],
+  "nativeBoundsUs": [
+    2667589229.0,
+    2667594727.912848,
+    2667611324.631626,
+    2667628021.330638,
+    2667661314.748428,
+    2667678011.447439,
+    2667694708.146451,
+    2667711404.845463,
+    2667728101.5444746,
+    2667744698.2632527,
+    2667761394.9622645,
+    2667777991.6810427,
+    2667794688.380054,
+    2667811385.079066,
+    2667811785.0
+  ],
+  "occupancyMs": [
+    0.181,
+    0.9610000000000001,
+    0.34700000000000003,
+    0.38,
+    0.277,
+    0.244,
+    0.466,
+    0.246,
+    0.223,
+    0.22596226453781126,
+    0.20403773546218873,
+    0.197,
+    0.217,
+    0.263
+  ],
+  "occupancyBits": [
+    "3fc72b020c49ba5e",
+    "3feec083126e978e",
+    "3fd6353f7ced9169",
+    "3fd851eb851eb852",
+    "3fd1ba5e353f7cee",
+    "3fcf3b645a1cac08",
+    "3fddd2f1a9fbe76d",
+    "3fcf7ced916872b0",
+    "3fcc8b4395810625",
+    "3fccec54dc28f5c2",
+    "3fca1de8947ae148",
+    "3fc9374bc6a7ef9e",
+    "3fcbc6a7ef9db22d",
+    "3fd0d4fdf3b645a2"
+  ],
+  "schemaVersion": 1,
+  "status": "SHORT_SEMANTIC_EVIDENCE_CORROBORATED_NOT_FORMAL_APPROVAL",
+  "reviewMethod": "Independent Python standard library JSON/gzip and binary64 reconstruction, without importing or executing production JS",
+  "reviewedAt": "2026-11-03T00:49:33.188433+00:00",
+  "sourceObservedHead": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+  "sourceRunCommit": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+  "formalQualification": "NOT_APPROVED",
+  "formal600Run": false,
+  "overallV1Complete": false,
+  "newNativeCaptureOrRetryPerformed": false,
+  "rawInputs": [
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/native/pilot.raw.json",
+      "sha256": "89ead0e679b89f7b9078a03489c3bb1fa7ca9e67889367b37841f48f67ab10f4",
+      "bytes": 33719
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/native/pilot.trace.json.gz",
+      "sha256": "bbe3d9de15928fcfde0e1cf311d6427199ff4a1f31e770ac8ff0eeca585bc110",
+      "bytes": 65192
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/native/pilot.native-analysis.json",
+      "sha256": "bbeda783d3266fab54fcee0b67783c13619815e13f6f6ea9839ab97b25b22ad3",
+      "bytes": 9847
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/native/verification.json",
+      "sha256": "e228fef5e4a647e876f360b2e958493042751897b58a64f984867180827a1b2e",
+      "bytes": 61103
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/command.json",
+      "sha256": "2abdc7f4aae917164fc39d2f8ae00e1ecaae73de20cecb51b6f4e188bc9d4df6",
+      "bytes": 1660
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/process.json",
+      "sha256": "15dd3a3ba3dd06603429c58e2c119ff84da24f19768b870e94aa386ad699dc32",
+      "bytes": 2608
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/stdout.txt",
+      "sha256": "d1d13a0bfeb31ab25680fe6cd547b897c084728de44a75b57c8a4295f58237fc",
+      "bytes": 271
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-03-v4-bootstrap/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "decodedTraceBytes": 679747,
+  "metadata": {
+    "documentBefore": {
+      "id": "688482D77E84D749BB85474985FFA7CB",
+      "loaderId": "01B02B997F010A2C4E2E44A2139F5181",
+      "url": "http://127.0.0.1:57899/performance-semantic-pilot-v2.html"
+    },
+    "documentAfter": {
+      "id": "688482D77E84D749BB85474985FFA7CB",
+      "loaderId": "01B02B997F010A2C4E2E44A2139F5181",
+      "url": "http://127.0.0.1:57899/performance-semantic-pilot-v2.html"
+    },
+    "traceMetadata": {
+      "dataLossOccurred": false,
+      "stream": "1",
+      "traceFormat": "json",
+      "streamCompression": "gzip"
+    },
+    "browserDeviceAudio": {
+      "requested": false,
+      "sampleRate": null,
+      "hardwareBlockLength": null,
+      "deviceRoute": null,
+      "reason": "NO_AUDIO_REQUESTED_IN_SEMANTIC_PILOT"
+    },
+    "gpu": {
+      "devices": [
+        {
+          "vendorId": 4318,
+          "deviceId": 10336,
+          "subSysId": 349376579,
+          "revision": 161,
+          "vendorString": "",
+          "deviceString": "NVIDIA GeForce RTX 4070 Laptop GPU",
+          "driverVendor": "NVIDIA",
+          "driverVersion": "32.0.15.9200"
+        },
+        {
+          "vendorId": 32902,
+          "deviceId": 42888,
+          "subSysId": 349376579,
+          "revision": 4,
+          "vendorString": "",
+          "deviceString": "Intel(R) UHD Graphics",
+          "driverVendor": "",
+          "driverVersion": "32.0.101.6790"
+        },
+        {
+          "vendorId": 5140,
+          "deviceId": 140,
+          "subSysId": 0,
+          "revision": 0,
+          "vendorString": "",
+          "deviceString": "Microsoft Basic Render Driver",
+          "driverVendor": "",
+          "driverVersion": "10.0.26100.9711"
+        }
+      ],
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "bgra8OverlaySupport": "SCALING",
+        "canSupportThreadedTextureMailbox": false,
+        "directComposition": true,
+        "directMLFeatureLevel": "Not supported",
+        "directRenderingVersion": "",
+        "displayType": "ANGLE_D3D11",
+        "dx12FeatureLevel": "Not supported",
+        "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 ",
+        "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+        "glRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9200)",
+        "glResetNotificationStrategy": 33362,
+        "glVendor": "Google Inc. (NVIDIA)",
+        "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28975 git hash: 127e783de334)",
+        "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+        "glWsVendor": "Google Inc. (NVIDIA)",
+        "glWsVersion": "1.5 (ANGLE 2.1.28975 git hash: 127e783de334)",
+        "inProcessGpu": false,
+        "initializationTime": 0.220395,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "maxMsaaSamples": "8",
+        "nv12OverlaySupport": "SCALING",
+        "optimus": false,
+        "p010OverlaySupport": "SCALING",
+        "passthroughCmdDecoder": true,
+        "pixelShaderVersion": "5.0",
+        "processCrashCount": 0,
+        "rgb10a2OverlaySupport": "SCALING",
+        "sandboxed": false,
+        "skiaBackendType": "GaneshGL",
+        "subpixelFontRendering": true,
+        "supportsD3dSharedImages": false,
+        "supportsDirectML": false,
+        "supportsDx12": false,
+        "supportsOverlays": true,
+        "supportsVulkan": false,
+        "targetCpuBits": 64,
+        "vertexShaderVersion": "5.0",
+        "visibilityCallbackCallCount": 0,
+        "vulkanVersion": "Not supported",
+        "yuy2OverlaySupport": "SCALING"
+      },
+      "featureStatus": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "disabled_off",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      },
+      "driverBugWorkarounds": [
+        "disable_d3d11_vp9_ksvc_decoding",
+        "enable_webgl_timer_query_extensions",
+        "exit_on_context_lost",
+        "unpack_overlapping_rows_separately_unpack_buffer",
+        "use_g22_topleft_color_space_for_yuv_vp",
+        "disabled_extension_GL_KHR_blend_equation_advanced",
+        "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+      ],
+      "videoDecoding": [],
+      "videoEncoding": []
+    },
+    "traceLifecycleFaults": [],
+    "pageErrors": []
+  },
+  "exactNumericChecks": {
+    "selectedCount": 38,
+    "mergedCount": 38,
+    "mergedArraysEqual": true,
+    "performanceBinsBinary64Equal": true,
+    "nativeBoundsBinary64Equal": true,
+    "occupancyBinary64Equal": true,
+    "complete": true,
+    "thresholdUs": 50000
+  },
+  "rawV3Evidence": {
+    "ownedTaskPhases": {
+      "X": 44,
+      "I": 0,
+      "B": 0,
+      "E": 0
+    },
+    "rawV3ReceiptQualified": true,
+    "classifications": [],
+    "classificationBranchExercised": false,
+    "candidateRegistryStatus": "NOT_QUALIFIED"
+  },
+  "cleanupEvidence": {
+    "cleanupErrors": [],
+    "cleanupWallMs": 403,
+    "browserConnectedAfterCleanup": false,
+    "serverListeningAfterCleanup": false,
+    "restoration": {
+      "nativeRafIdentityUnchanged": true,
+      "nativeCancelIdentityUnchanged": true,
+      "pendingAfterRestore": 0,
+      "bootstrapStateAfterRestore": "FIRED",
+      "bootstrapPendingAfterRestore": false,
+      "state": "CLOSED"
+    },
+    "endpointPins": {
+      "sourceStable": true,
+      "executableStable": true,
+      "scope": "BEFORE_AND_AFTER_ENDPOINTS_ONLY_NOT_CONTINUOUS_FILE_MONITORING"
+    },
+    "process": {
+      "exit_code": 0,
+      "signal": null,
+      "timed_out": false,
+      "cancelled": false,
+      "process_stopped": true,
+      "stdout": "{\"directory\":\"D:\\\\Developing\\\\Meta Hack\\\\.worktrees\\\\nonadvanced-20261103\\\\baseline\\\\artifacts\\\\v1\\\\perf-nonadvanced-20261103-semantic-03-v4-bootstrap\\\\native\",\"status\":\"SEMANTIC_CANDIDATE_OBSERVED_NOT_APPROVED\",\"formalQualification\":\"NOT_APPROVED\",\"formal600Run\":false}\n",
+      "stderr": "",
+      "duration_ms": 4557.0003,
+      "output_limit": false,
+      "spawn_error": null,
+      "stop_scope": "direct_process",
+      "process_tree_stopped": null
+    },
+    "outcome": {
+      "machineLeaseReleasable": true,
+      "pilotSucceeded": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "formalQualification": "NOT_APPROVED"
+    }
+  },
+  "limits": [
+    "Only one short owned semantic scenario is corroborated; no formal600 performance result or approved registry entry follows from this report",
+    "The successful capture contains zero V4 classifications; real classified-B behavior remains supported by preserved rejected attempt01 plus frozen raw algorithm tests, not exercised again here",
+    "A one-shot bootstrap includes its actual cost but cannot recover the enclosing pre-existing resumed task or prove lossless full-window CPU coverage",
+    "Source44 are method inputs, not a claim that the full product/UI workload was loaded",
+    "No audio requested; hardware/device route/rate/native DSP CPU/PCM/hearing remain unmeasured",
+    "Attempt01 and attempt02 remain failures; current result never overwrites their status"
+  ],
+  "nativeAnchorEvidence": {
+    "begin": {
+      "eventIndex": 181,
+      "event": {
+        "args": {
+          "data": {
+            "callTime": 2667589250,
+            "navigationId": "01B02B997F010A2C4E2E44A2139F5181",
+            "sampleTraceId": 7855459118492778,
+            "startTime": 549.6000000000931
+          }
+        },
+        "cat": "blink.user_timing",
+        "name": "reflection-profile.begin.230df3bf-7ee8-4ca7-b528-443203bad2aa",
+        "ph": "I",
+        "pid": 51296,
+        "s": "t",
+        "tid": 44384,
+        "ts": 2667589229,
+        "tts": 396112
+      }
+    },
+    "end": {
+      "eventIndex": 1848,
+      "event": {
+        "args": {
+          "data": {
+            "callTime": 2667811786,
+            "navigationId": "01B02B997F010A2C4E2E44A2139F5181",
+            "sampleTraceId": 7855459118493672,
+            "startTime": 772.1999999997206
+          }
+        },
+        "cat": "blink.user_timing",
+        "name": "reflection-profile.end.230df3bf-7ee8-4ca7-b528-443203bad2aa",
+        "ph": "I",
+        "pid": 51296,
+        "s": "t",
+        "tid": 44384,
+        "ts": 2667811785,
+        "tts": 401299
+      }
+    },
+    "ownerDerivedFromRawBegin": {
+      "pid": 51296,
+      "tid": 44384,
+      "navigationId": "01B02B997F010A2C4E2E44A2139F5181"
+    },
+    "rendererMainMetadataIndexes": [
+      2
+    ],
+    "allEventObjectsNamesWithinOriginal512Cap": true
+  },
+  "rawCapsIndependentlyChecked": {
+    "compressedBytes": 65192,
+    "decodedBytes": 679747,
+    "events": 2716,
+    "limits": {
+      "operationMs": 45000,
+      "cleanupMs": 10000,
+      "callbacks": 128,
+      "compressedBytes": 8388608,
+      "decodedBytes": 33554432,
+      "events": 200000
+    },
+    "proofCaps": {
+      "rawFrames": 90000,
+      "proofs": 90000,
+      "callbacks": 360000,
+      "pendingHandles": 8192,
+      "marks": 90000,
+      "markNameCharacters": 192,
+      "markNameBytes": 18874368
+    }
+  },
+  "allOwnedTimerEvents": [
+    {
+      "eventIndex": 195,
+      "name": "TimerInstall",
+      "timerId": 1
+    },
+    {
+      "eventIndex": 198,
+      "name": "TimerFire",
+      "timerId": 1
+    },
+    {
+      "eventIndex": 1825,
+      "name": "TimerInstall",
+      "timerId": 2
+    },
+    {
+      "eventIndex": 1838,
+      "name": "TimerFire",
+      "timerId": 2
+    }
+  ],
+  "auxBootstrapMarkCount": 2,
+  "hostSystemInfoTopLevelKeys": [
+    "gpu",
+    "modelName",
+    "modelVersion",
+    "commandLine"
+  ],
+  "hostCommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=\"C:\\Users\\kevin\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-W7ygFT\" --remote-debugging-pipe --no-startup-window --noerrdialogs --flag-switches-begin --flag-switches-end --enable-unsafe-swiftshader",
+  "hostProvenanceScope": "Host fields are the saved CDP/SystemInfo and Node OS receipt; current executable SHA independently rehashed. No new browser or hardware/audio probe performed.",
+  "reviewerCorrection": "An auxiliary review-only assertion guessed close-timer ordinals 1916/1921 before reading raw and failed; corrected by deriving actual close-timer ordinals 1825/1838. No capture, source or eligibility result changed.",
+  "immutableOriginalSourceHashes": {
+    "tests/browser/performance-native-v3.mjs": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+    "tests/browser/performance-numeric-formal-v3.mjs": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4",
+    "tests/browser/performance-profile.mjs": "df86db94c6654399851ec1e3a4a240bc5821aee8dfa0745180d404c8cdf23c9c"
+  },
+  "protectedBaselineHeadObserved": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "historicalFailurePreservation": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d",
+      "status": "UNVERIFIED_NOT_APPROVED",
+      "numericCoverageComplete": null,
+      "errorMessage": "PILOT_SEMANTIC_EVIDENCE_UNVERIFIED"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/verification.json",
+      "sha256": "9816901c42b618cd956b64366cf254e78bea9e009ff86fdf26cb3c2100a5a491",
+      "status": "UNVERIFIED_NOT_APPROVED",
+      "numericCoverageComplete": false,
+      "errorMessage": "PILOT_SEMANTIC_EVIDENCE_UNVERIFIED"
+    }
+  ]
+}

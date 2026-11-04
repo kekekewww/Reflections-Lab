@@ -1,7 +1,11 @@
 import { assertProjectJson, MAX_PROJECT_BYTES, validateProject } from "./validate-project.js";
 import { ProjectError, type ProjectDocument, type StorageAdapter } from "./types.js";
 export * from "./types.js";
-export { MAX_PROJECT_BYTES, validateProject } from "./validate-project.js";
+export {
+  MAX_PROJECT_BYTES,
+  validateProject,
+  validateProjectAtmosphere,
+} from "./validate-project.js";
 
 /** Creates initial metadata only; it does not activate physics or decode assets. */
 export function createProject(input: unknown): ProjectDocument {

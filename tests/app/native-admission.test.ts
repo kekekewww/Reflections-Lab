@@ -35,7 +35,7 @@ test("actual native rejection keeps the enqueued logical event after asynchronou
     (app as unknown as { audio: AudioEngine }).audio = engine;
     await engine.enable(0);
     await app.dispatch({ type: "run" });
-    // Actual synchronous solver delivery resolves in a microtask after these fixed steps.
+    // Cached solver frames admit immediately; later logical updates remain independent.
     app.advance(1 / 60);
     app.advance(1 / 60);
     app.advance(1 / 60);
@@ -50,8 +50,8 @@ test("actual native rejection keeps the enqueued logical event after asynchronou
     const native = rejected.nativeRejection!;
     assert.equal(native.reason, "SOURCE_BUDGET");
     assert.equal(native.audioEventTick, 1);
-    assert.equal(native.attemptedAtTick, 3);
-    assert.equal(native.acousticPoseTick, 1);
+    assert.equal(native.attemptedAtTick, 1);
+    assert.equal(native.acousticPoseTick, 0);
     assert.equal(native.sourceId, native.instanceId);
     assert.equal(native.generation, 1);
     assert.equal(native.sceneRevision, project.scene.sceneRevision);
@@ -107,6 +107,10 @@ test("saved pending input retains copied enqueue intent while active logical eve
   const app = await LabRuntime.create({ useWorker: false });
   const engine = new AudioEngine({ context: new FakeAudioContext().asContext() });
   try {
+    // Exercise the pending fallback specifically when no cached emitter frame exists.
+    (
+      app as unknown as { cachedEmitterFrames: Map<string, AcousticFrame> }
+    ).cachedEmitterFrames.clear();
     (app as unknown as { audio: AudioEngine }).audio = engine;
     await engine.enable(0);
     await app.dispatch({ type: "run" });

@@ -1,0 +1,30 @@
+# Zone能力已合入：固定步核心與原子作者設定，真UI仍待驗
+
+日期：2026-11-02。Task0029最後feature tip `12786c74e4bc52e378f49f7b21da7987e768562c` 已是root正常merge `d9dc624fdfa7ba0f73195b888335c1dd7b1d920f` 的祖先；root回報merged46focused PASS、build0、served `index-Cla4CyjN.js`。後三者仍依root執行收據補充，不是memorywriter重跑。Curves尚未合入，真ZoneUI／record-replay／WAV與最新整合證據仍待，Task0029／0028／Main未結案。
+
+## 各固定截點與原結果
+
+| 截點 | 正式來源 | 直接範圍 |
+| --- | --- | --- |
+| fa4c314 | [REPORT](zones/REPORT.md)、[evidence](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/faa8f7809b6154300ae40fd4ad2a6e59ed9de704)、[domain](zones/domain.md) | Scene optional zones／原子作者命令／真Rapier固定步producer／共用caps與AI/Host／錄放；原raw501/501、0skip、build0 |
+| d35112f | [DETACHED](zones/DETACHED.md)與其evidence | detached emitter保owner幾何遮擋、原voice/stem/budget owner不變、Project zone references；raw92/92、0skip，含5新案、build0 |
+| a22c978 | [volumes](zones/volumes.md)與verification | editor-only名義3D線框、FPS/replay隱藏、真Three raycast穿透與資源dispose；記錄Node6/6/type/lint |
+| 20bf09a | [BASELINE](zones/BASELINE.md)與evidence | 同metadata不同內容Project import的stale draft/runtime原子拒絕；raw57/57、0skip；此截點build NOT RUN |
+| 12786c74 | [POSITION](zones/POSITION.md)、[HANDOFF](zones/HANDOFF.md)、[final pins](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/de0bebf5f02c6d4a16138403e14080c0a791d334) | 真Motion release的連續mode-change不漏zone edge；rawRED1/5、4FAIL→green17/17（含5新案）→相關76/76、0skip；含先前wireframe/stale的build0 |
+
+集合重疊，不能相加。每個本地bundle只對原source，final local `index-Bem6B9u0.js` 不是root的served `index-Cla4CyjN.js`，也不是未來Curves整合後bundle。
+
+## 現行語義與容量
+
+- optional Scene.zones缺省不插[]，legacy canonical bytes/hash保持；明示[]與缺省在作者資料可區分並Undo回復。最多16個靜態AABB/sphere，穩定跨entity唯一ID；參數／hysteresis／未知欄位／稀疏JSON／第17區域均明示拒絕。
+- 真Rapier完成fixed step後，由body-center occupancy產生 `OnEnterZone`／`OnExitZone`，raw／normalized保存zoneId與真位置。這是Derived採樣＋hysteresis，非整個collider overlap或continuous swept crossing；單一步outside→outside可無事件。
+- start/reset、新建、啟用、作者teleport／幾何／registry等位置不連續會baseline，不能假造enter/exit。POSITION取代舊BASELINE的mode-change首步限制：位置連續的setMode／Motion release保留真跨界，teleport後多次mode-change也不能擦掉baseline。既有Bounce/render generic discontinuity語義不改；marker只在內部record／暫時Set，未入持久schema/hash。
+- producer上限16regions×256poses，occupancy Map最多4096keys、marker Set最多256IDs、events共用2048總上限，超額拒絕。這是容量政策，沒有實機frame time／GPU／音訊性能主張。
+- 同一可信registry進UI／AI／Preview／Host與record/source-phase，要求明示有效zoneId；disabled保留引用／中心anchor但不產生occupancy。A/B改registry geometry／enabled／hysteresis須重新physics錄製，不偷用舊motion。
+- DETACHED已取代fa4末段source-level待辦：emitterObjectId undefined沿legacy self-exclusion、null不排owner、string明示真emitter body；原logical owner/stems不改。Curves完整builder合併須保留三態，null不能用??誤fallback。
+
+## 獨立記憶讀核與尚待
+
+[對帳JSON](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/26ecb8e184a85ec14aaf835ac8c936cc86e16c17)逐階段核對124個來源條目（121個不同commit/path查詢、68種內容hash）及50個原證據條目，全部SHA相符；直接讀raw TAP確認501／92／57／RED1PASS4FAIL／green17／reg76與各0skip。這是既有檔案/Git讀取，不是新測試執行；不把早期domain typecheck施工失敗、stale repro未保存stdout或fixture前置FAIL改寫成完整PASS。
+
+Task0029 AC01作者Domain/schema與AC02真producer固定邊界已有直接基本證據；UI端到端、persist/replay／音檔完整整合、最後source/crosswalk/English/Claude仍待。Root需新source真DOM驗新增/編輯/刪除/禁用、非法／stale／ZONE_IN_USE、Project引用保存重載、wireframe後方picking/FPS/replay不殘留及record/replay/WAV。Node/SSR/Three不冒browser視覺、native輸入、聽感、正式600秒性能、Meta live或V1全數完成。預算0，無新付費／push／部署。

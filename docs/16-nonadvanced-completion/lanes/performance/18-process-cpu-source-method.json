@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "method": "owned-browser-process-cpu-endpoints-v4",
+  "status": "SOURCE_METHOD_AND_TESTS_AUTHORED_NOT_MEASURED",
+  "recordedAt": "2026-11-03T01:45:14.449491+00:00",
+  "observedCheckoutHead": "eb45d19aee08a3b68a768c82af4fa192ea0b26fc",
+  "researchAsOf": "2026-11-03T01:39:11Z",
+  "researchAgent": "formal_cpu_endpoint_tests/systeminfo_primary_source",
+  "primarySources": [
+    {
+      "id": "C1",
+      "repository": "Chromium",
+      "revision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "path": "third_party/blink/public/devtools_protocol/browser_protocol.pdl",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/public/devtools_protocol/browser_protocol.pdl",
+      "acquisitionUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT",
+      "sourceBytes": 1868,
+      "decodedSourceSha256": "f1aa425c26e6c00459f7f5880d3adfc63d3c79762ba7658fdb88b31a59161775",
+      "lines": [
+        "57"
+      ],
+      "meaning": "Includes the domain-split SystemInfo protocol file.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; base64 decoded",
+      "licenseReference": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/LICENSE"
+    },
+    {
+      "id": "C2",
+      "repository": "Chromium",
+      "revision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "path": "third_party/blink/public/devtools_protocol/domains/SystemInfo.pdl",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/public/devtools_protocol/domains/SystemInfo.pdl",
+      "acquisitionUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/public/devtools_protocol/domains/SystemInfo.pdl?format=TEXT",
+      "sourceBytes": 4766,
+      "decodedSourceSha256": "2ad6a7fada51621fa84885dd922a03c740aac83b1b460af331dd2dd4e8f76ed3",
+      "lines": [
+        "93-102",
+        "126-130"
+      ],
+      "meaning": "ProcessInfo contains string type, integer id and number cpuTime; cumulative CPU seconds since process start across all threads. Command returns processInfo array.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; base64 decoded",
+      "licenseReference": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/LICENSE"
+    },
+    {
+      "id": "C3",
+      "repository": "Chromium",
+      "revision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "path": "content/browser/devtools/protocol/system_info_handler.cc",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/content/browser/devtools/protocol/system_info_handler.cc",
+      "acquisitionUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/content/browser/devtools/protocol/system_info_handler.cc?format=TEXT",
+      "sourceBytes": 14065,
+      "decodedSourceSha256": "2ffbf570c3e40178d7817cb6017373477c811b3a571ef7e75e4a99b792c09434",
+      "lines": [
+        "325-337",
+        "340-374",
+        "378-392"
+      ],
+      "meaning": "CPU query failure is replaced with zero TimeDelta before InSecondsF; browser/valid renderer/valid child processes are enumerated sequentially. Browser target only.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; base64 decoded",
+      "licenseReference": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/LICENSE"
+    },
+    {
+      "id": "C4",
+      "repository": "Chromium",
+      "revision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "path": "base/process/process_metrics.h",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/process/process_metrics.h",
+      "acquisitionUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/process/process_metrics.h?format=TEXT",
+      "sourceBytes": 24078,
+      "decodedSourceSha256": "bfd9dcd28d394d0969d970182c666cdc4b68eaeb7a143a91ef36e23fbb93f354",
+      "lines": [
+        "69-79",
+        "175-180"
+      ],
+      "meaning": "Internal CPU usage reports errors separately; cumulative CPU includes all threads and can exceed elapsed wall time on multiple cores.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; base64 decoded",
+      "licenseReference": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/LICENSE"
+    },
+    {
+      "id": "C5",
+      "repository": "Chromium",
+      "revision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "path": "base/process/process_metrics_win.cc",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/process/process_metrics_win.cc",
+      "acquisitionUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/process/process_metrics_win.cc?format=TEXT",
+      "sourceBytes": 10846,
+      "decodedSourceSha256": "1a01c052d6e0a592aeaa2fe71113628479c480b273760ccedd5f3aca6227194d",
+      "lines": [
+        "126-145",
+        "183-215",
+        "219-239"
+      ],
+      "meaning": "Windows may use calibrated QueryProcessCycleTime/TSC or kernel+user GetProcessTimes. Handle duplication may fail. Local branch and precision not measured.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; base64 decoded",
+      "licenseReference": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/LICENSE"
+    },
+    {
+      "id": "N1",
+      "repository": "dotnet/runtime",
+      "revision": "60629d14374c56f1cb51819049ad1fa529307f8d",
+      "path": "src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.Windows.cs",
+      "url": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.Windows.cs",
+      "acquisitionUrl": "https://raw.githubusercontent.com/dotnet/runtime/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.Windows.cs",
+      "sourceBytes": 41903,
+      "sourceSha256": "49620fb20feffb84e36d587a381c0cf161e3ec8c114f6ff1e7fa2d7672b518cf",
+      "lines": [
+        "239-241",
+        "252-254",
+        "695-712"
+      ],
+      "meaning": "For another process, TotalProcessorTime uses GetProcessTimes; invalid handle or failed native call throws instead of returning false zero.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; raw source bytes",
+      "licenseReference": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/LICENSE.TXT"
+    },
+    {
+      "id": "N2",
+      "repository": "dotnet/runtime",
+      "revision": "60629d14374c56f1cb51819049ad1fa529307f8d",
+      "path": "src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessThreadTimes.cs",
+      "url": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessThreadTimes.cs",
+      "acquisitionUrl": "https://raw.githubusercontent.com/dotnet/runtime/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessThreadTimes.cs",
+      "sourceBytes": 715,
+      "sourceSha256": "790f795349e201e6dd97a98819a5ce58afff0428685195d98a33a9e1cfb132e6",
+      "lines": [
+        "10",
+        "12-14"
+      ],
+      "meaning": "Creation FILETIME becomes StartTime; CPU TimeSpan is kernel/user sum.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; raw source bytes",
+      "licenseReference": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/LICENSE.TXT"
+    },
+    {
+      "id": "N3",
+      "repository": "dotnet/runtime",
+      "revision": "60629d14374c56f1cb51819049ad1fa529307f8d",
+      "path": "src/libraries/Common/src/Interop/Windows/Kernel32/Interop.GetProcessTimes.cs",
+      "url": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/Common/src/Interop/Windows/Kernel32/Interop.GetProcessTimes.cs",
+      "acquisitionUrl": "https://raw.githubusercontent.com/dotnet/runtime/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/Common/src/Interop/Windows/Kernel32/Interop.GetProcessTimes.cs",
+      "sourceBytes": 626,
+      "sourceSha256": "dc60c5d3c3cb171aa480d5975ccf7fa1c73b670598d7987d7f99b35d9a718a47",
+      "lines": [
+        "11-14"
+      ],
+      "meaning": "Native return is BOOL with SetLastError and creation/exit/kernel/user outputs from one handle.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; raw source bytes",
+      "licenseReference": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/LICENSE.TXT"
+    },
+    {
+      "id": "N4",
+      "repository": "dotnet/runtime",
+      "revision": "60629d14374c56f1cb51819049ad1fa529307f8d",
+      "path": "src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.cs",
+      "url": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.cs",
+      "acquisitionUrl": "https://raw.githubusercontent.com/dotnet/runtime/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.cs",
+      "sourceBytes": 62289,
+      "sourceSha256": "458239074e7a2167a2d01b44459552e2f13db5da9bcf7c581933028bc8a093ae",
+      "lines": [
+        "199-207",
+        "1035-1054",
+        "1170-1183"
+      ],
+      "meaning": "StartTime is cached and Refresh does not clear it. Re-reading the property on one component is not a fresh identity bracket.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; raw source bytes",
+      "licenseReference": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/LICENSE.TXT"
+    },
+    {
+      "id": "N5",
+      "repository": "dotnet/runtime",
+      "revision": "60629d14374c56f1cb51819049ad1fa529307f8d",
+      "path": "src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessManager.Windows.cs",
+      "url": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessManager.Windows.cs",
+      "acquisitionUrl": "https://raw.githubusercontent.com/dotnet/runtime/60629d14374c56f1cb51819049ad1fa529307f8d/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/ProcessManager.Windows.cs",
+      "sourceBytes": 32742,
+      "sourceSha256": "c0ad6d02f5a89d4c8c504838afd23c263c35097c90344158230c84ed73a82e7c",
+      "lines": [
+        "29-56",
+        "158-172",
+        "377-405"
+      ],
+      "meaning": "GetProcessById checks may fall back to system-wide process enumeration, so this is not a strict owned-PID-only query.",
+      "httpStatus": 200,
+      "transport": "normal TLS HTTPS; raw source bytes",
+      "licenseReference": "https://github.com/dotnet/runtime/blob/60629d14374c56f1cb51819049ad1fa529307f8d/LICENSE.TXT"
+    }
+  ],
+  "sourceAccess": {
+    "normalTls": true,
+    "certificateBypass": false,
+    "initialWebToolFailures": [
+      "Two Gitiles opens returned tool InternalError; not interpreted as404 or absence."
+    ],
+    "fallback": "Normal TLS HTTP200 source retrieval; no native browser or OS CPU query.",
+    "sourceFullTextCommitted": false
+  },
+  "dotnetReference": {
+    "tag": "v10.0.0",
+    "resolvedCommit": "60629d14374c56f1cb51819049ad1fa529307f8d",
+    "resolution": "Official GitHub tag ref via normal TLS HTTP200",
+    "localRuntimeVersion": "NOT_QUERIED",
+    "isClaimAboutInstalledRuntime": false
+  },
+  "protocol": {
+    "method": "SystemInfo.getProcessInfo",
+    "target": "browser",
+    "response": "{processInfo:[{id:integer,type:string,cpuTime:number}]}",
+    "cpuTimeUnit": "seconds",
+    "cpuTimeScope": "Cumulative since process start across all threads",
+    "samplingPeriod": "No fixed sampling period supplied",
+    "identityEpoch": "No process creation/start time supplied"
+  },
+  "criticalFindings": [
+    {
+      "id": "PROCESS-CPU-0-FALLBACK",
+      "evidenceSource": "C3",
+      "result": "A zero cumulative endpoint is ambiguous: native query failure is replaced with0 without a validity flag.",
+      "methodConsequence": "UNVERIFIED; totalCpuSeconds/cpuToWallRatio null, not observed idle CPU."
+    },
+    {
+      "id": "PROCESS-CPU-DELTA-ZERO",
+      "evidenceSource": [
+        "C2",
+        "C3"
+      ],
+      "result": "Same positive cumulative values yield observed delta0 at producer resolution.",
+      "methodConsequence": "Preserve0 without claiming lossless hardware inactivity."
+    },
+    {
+      "id": "PROCESS-CPU-IDENTITY",
+      "evidenceSource": [
+        "C2",
+        "C3"
+      ],
+      "result": "Matching PID/type sets only matches endpoints; no creation epoch or continuous process history.",
+      "methodConsequence": "Complete endpoint coverage is not CPU lossless coverage; transient processes and PID reuse remain possible."
+    },
+    {
+      "id": "OS-CPU-START-CACHE",
+      "evidenceSource": "N4",
+      "result": "StartTime on the same .NET Process object is cached, including across Refresh.",
+      "methodConsequence": "Do not treat repeated property reads as independent identity brackets."
+    },
+    {
+      "id": "OS-CPU-NO-ENUMERATION",
+      "evidenceSource": "N5",
+      "result": "GetProcessById can internally enumerate all process IDs after failure.",
+      "methodConsequence": "A strict whitelist reader should directly open only approved PIDs and use one GetProcessTimes call per handle."
+    }
+  ],
+  "currentMethod": {
+    "api": "summarizeProcessCpuDeltaV4(beforeResponse,afterResponse,{wallMilliseconds,scope})",
+    "helper": "tests/browser/performance-process-cpu-v4.mjs",
+    "testSource": "tests/performance-v3/process-cpu-v4.spec.mjs",
+    "sourceOnlyScope": "Helper authored only after parent reported genuine missing-export RED; parent owns execution/GREEN/format/lint. No native measurement here.",
+    "parentRed": {
+      "raw": "docs/16-nonadvanced-completion/lanes/performance/process-cpu-v4-red-r1.tap",
+      "reportedTests": 75,
+      "reportedFail": 1,
+      "reportedSkipped": 74,
+      "reason": "Missing export; behavioral tests explicitly skipped until implementation exists."
+    },
+    "maxProcessesPerEndpoint": 1024,
+    "positiveRule": "Nonempty unique valid PID sets with identical PID/type identity and finite positive cumulative counters at both endpoints, no reset, finite sum/ratio.",
+    "partialRule": "Missing/malformed/duplicate/changed/new/disappeared/reset/zero-ambiguous/nonfinite endpoints never become a filtered whole-process total.",
+    "cpuToWallRatio": "Observed summed CPU seconds divided by actual caller monotonic wallMilliseconds/1000; may exceed1 across threads.",
+    "sharedEndpointScope": "Same two browser-level endpoints on/off around trace setup and closed collection window, before tail/drain. Recorded Node monotonic interval, not literal600s.",
+    "nullFields": [
+      "nativeDspCpuMs",
+      "hardwareUnderruns"
+    ],
+    "notMeasured": [
+      "actualCPU",
+      "probeOverhead",
+      "hardwareAudio",
+      "nativeDSP",
+      "formal600",
+      "deviceRoute",
+      "callbackDeadline"
+    ]
+  },
+  "existingCodeObservation": {
+    "path": "tests/browser/performance-audio-runner-v1.mjs",
+    "observedWorktreeSha256": "09bd19f50cb3cb47e6eddd2fa9f823be4ff75bc148e5ee57705bb91a61d02f90",
+    "sourceBytes": 22196,
+    "locator": "cpuDifference lines48-88",
+    "zeroAssumption": "Existing helper accepts finite zero cumulative endpoints; producer fallback makes this insufficient evidence for observed CPU0.",
+    "partialSubtotal": "Existing helper retains a matched-process subtotal even if completeCoverage=false; consumers must not mistake it for full coverage.",
+    "historyPolicy": "No old source/raw/threshold or historical FAIL/PASS rewritten here."
+  },
+  "futureWindowsReader": {
+    "status": "SOURCE_PROPOSAL_NOT_IMPLEMENTED_NOT_RUN",
+    "input": "Only owned-browser CDP PID/type whitelist; no system-wide enumeration.",
+    "nativeSequence": "OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION,false,pid) -> one GetProcessTimes(handle) for creation+kernel+user -> CloseHandle, including error paths.",
+    "identity": "Compare creation FILETIME from fresh handles at each endpoint, not PID/type alone or cached StartTime.",
+    "counter": "Preserve success BOOL/GetLastError separately from CPU ticks so successful0 can be distinguished from failure.",
+    "boundedControl": "Pinned hidden helper with timeout and bounded input/output; no Node/browser/OS CPU execution in this source task.",
+    "additionalLimit": "Two endpoints still miss short-lived processes. Successful OS counters do not establish DSP or lossless coverage."
+  },
+  "paidCalls": 0,
+  "executedByThisAgent": {
+    "node": false,
+    "tests": false,
+    "typecheck": false,
+    "build": false,
+    "browser": false,
+    "osProcessCpuQuery": false
+  },
+  "formalQualification": "NOT_APPROVED_BY_THIS_SOURCE_METHOD",
+  "formal600Run": false,
+  "overallV1Complete": false
+}

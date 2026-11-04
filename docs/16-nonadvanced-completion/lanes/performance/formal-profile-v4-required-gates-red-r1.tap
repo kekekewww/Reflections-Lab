@@ -1,0 +1,2924 @@
+TAP version 13
+# Subtest: V4 exposes a separate CLI and bounded planner without changing the original sources
+ok 1 - V4 exposes a separate CLI and bounded planner without changing the original sources
+  ---
+  duration_ms: 4.0889
+  type: 'test'
+  ...
+# Subtest: V4 exposes pure workload classification and null-safe observation summaries
+ok 2 - V4 exposes pure workload classification and null-safe observation summaries
+  ---
+  duration_ms: 0.257
+  type: 'test'
+  ...
+# Subtest: formal defaults retain the original 600/all/3000/600 workload and product default monitor
+ok 3 - formal defaults retain the original 600/all/3000/600 workload and product default monitor
+  ---
+  duration_ms: 4.5712
+  type: 'test'
+  ...
+# Subtest: probe-off still selects the entire original formal workload
+ok 4 - probe-off still selects the entire original formal workload
+  ---
+  duration_ms: 0.4585
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 seconds
+ok 5 - formal V4 rejects 599 seconds
+  ---
+  duration_ms: 0.4942
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects only UI
+ok 6 - formal V4 rejects only UI
+  ---
+  duration_ms: 0.1508
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 2999 physics iterations
+ok 7 - formal V4 rejects 2999 physics iterations
+  ---
+  duration_ms: 0.1343
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects 599 acoustic iterations
+ok 8 - formal V4 rejects 599 acoustic iterations
+  ---
+  duration_ms: 0.1687
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects prepare
+ok 9 - formal V4 rejects prepare
+  ---
+  duration_ms: 0.4826
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects software GPU
+ok 10 - formal V4 rejects software GPU
+  ---
+  duration_ms: 0.637
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects load mode releases original default analysers
+ok 11 - formal V4 rejects load mode releases original default analysers
+  ---
+  duration_ms: 0.2252
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects spectrum is a different product workload
+ok 12 - formal V4 rejects spectrum is a different product workload
+  ---
+  duration_ms: 0.2146
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects waveform is a different product workload
+ok 13 - formal V4 rejects waveform is a different product workload
+  ---
+  duration_ms: 0.13
+  type: 'test'
+  ...
+# Subtest: formal V4 rejects another pinned monitor input
+ok 14 - formal V4 rejects another pinned monitor input
+  ---
+  duration_ms: 0.0923
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode levels
+ok 15 - short diagnostic may explicitly pin product mode levels
+  ---
+  duration_ms: 0.207
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode spectrum
+ok 16 - short diagnostic may explicitly pin product mode spectrum
+  ---
+  duration_ms: 0.0636
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode waveform
+ok 17 - short diagnostic may explicitly pin product mode waveform
+  ---
+  duration_ms: 0.0503
+  type: 'test'
+  ...
+# Subtest: short diagnostic may explicitly pin product mode load
+ok 18 - short diagnostic may explicitly pin product mode load
+  ---
+  duration_ms: 0.0802
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode unknown
+ok 19 - V4 rejects malformed or workload-reducing options --probe-mode unknown
+  ---
+  duration_ms: 0.1391
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode
+ok 20 - V4 rejects malformed or workload-reducing options --probe-mode
+  ---
+  duration_ms: 0.0691
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+ok 21 - V4 rejects malformed or workload-reducing options --probe-mode on --probe-mode off
+  ---
+  duration_ms: 0.0624
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+ok 22 - V4 rejects malformed or workload-reducing options --top-monitor-mode cpu
+  ---
+  duration_ms: 0.0673
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+ok 23 - V4 rejects malformed or workload-reducing options --top-monitor-input mono-sum
+  ---
+  duration_ms: 0.0592
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification
+ok 24 - V4 rejects malformed or workload-reducing options --qualification
+  ---
+  duration_ms: 0.0661
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --qualification one --qualification two
+ok 25 - V4 rejects malformed or workload-reducing options --qualification one --qualification two
+  ---
+  duration_ms: 0.0623
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --native-voices 8
+ok 26 - V4 rejects malformed or workload-reducing options --native-voices 8
+  ---
+  duration_ms: 0.0912
+  type: 'test'
+  ...
+# Subtest: V4 rejects malformed or workload-reducing options --paths 1
+ok 27 - V4 rejects malformed or workload-reducing options --paths 1
+  ---
+  duration_ms: 0.1413
+  type: 'test'
+  ...
+# Subtest: short planning points to the new profile and retains original process bounds
+ok 28 - short planning points to the new profile and retains original process bounds
+  ---
+  duration_ms: 0.6042
+  type: 'test'
+  ...
+# Subtest: formal on needs a real registered qualification
+ok 29 - formal on needs a real registered qualification
+  ---
+  duration_ms: 0.7232
+  type: 'test'
+  ...
+# Subtest: formal off needs a real registered qualification
+ok 30 - formal off needs a real registered qualification
+  ---
+  duration_ms: 0.2678
+  type: 'test'
+  ...
+# Subtest: external dependencies cannot approve a method using flags or a substituted lookup
+ok 31 - external dependencies cannot approve a method using flags or a substituted lookup
+  ---
+  duration_ms: 0.2938
+  type: 'test'
+  ...
+# Subtest: new UI workload retains every original gate under explicitly typed V4 membership
+ok 32 - new UI workload retains every original gate under explicitly typed V4 membership
+  ---
+  duration_ms: 4.8875
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short actual native window
+ok 33 - V4 preserves original rejection: short actual native window
+  ---
+  duration_ms: 1.544
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing interpolation evidence
+ok 34 - V4 preserves original rejection: missing interpolation evidence
+  ---
+  duration_ms: 1.1455
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: sample truncation
+ok 35 - V4 preserves original rejection: sample truncation
+  ---
+  duration_ms: 0.8728
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: runtime error
+ok 36 - V4 preserves original rejection: runtime error
+  ---
+  duration_ms: 0.745
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: paused simulation frame
+ok 37 - V4 preserves original rejection: paused simulation frame
+  ---
+  duration_ms: 0.5012
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short fixed tick progress
+ok 38 - V4 preserves original rejection: short fixed tick progress
+  ---
+  duration_ms: 0.4276
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: dropped wall time
+ok 39 - V4 preserves original rejection: dropped wall time
+  ---
+  duration_ms: 0.5097
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: five catch-up steps
+ok 40 - V4 preserves original rejection: five catch-up steps
+  ---
+  duration_ms: 0.5081
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: rejected grab
+ok 41 - V4 preserves original rejection: rejected grab
+  ---
+  duration_ms: 0.8842
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: pending script
+ok 42 - V4 preserves original rejection: pending script
+  ---
+  duration_ms: 0.7882
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: capture after closed wall window
+ok 43 - V4 preserves original rejection: capture after closed wall window
+  ---
+  duration_ms: 0.7527
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: missing capture tick
+ok 44 - V4 preserves original rejection: missing capture tick
+  ---
+  duration_ms: 0.7319
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: suspended graph
+ok 45 - V4 preserves original rejection: suspended graph
+  ---
+  duration_ms: 0.8558
+  type: 'test'
+  ...
+# Subtest: V4 preserves original rejection: short warmup
+ok 46 - V4 preserves original rejection: short warmup
+  ---
+  duration_ms: 0.9302
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects missing passive snapshot without creating observation resources
+ok 47 - V4 monitor workload rejects missing passive snapshot without creating observation resources
+  ---
+  duration_ms: 0.4748
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+ok 48 - V4 monitor workload rejects unobserved normal UI sample without creating observation resources
+  ---
+  duration_ms: 0.2605
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects load instead of original default without creating observation resources
+ok 49 - V4 monitor workload rejects load instead of original default without creating observation resources
+  ---
+  duration_ms: 0.1921
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects right instead of original default without creating observation resources
+ok 50 - V4 monitor workload rejects right instead of original default without creating observation resources
+  ---
+  duration_ms: 0.2246
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects hidden product monitor without creating observation resources
+ok 51 - V4 monitor workload rejects hidden product monitor without creating observation resources
+  ---
+  duration_ms: 0.2684
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown rate without creating observation resources
+ok 52 - V4 monitor workload rejects unknown rate without creating observation resources
+  ---
+  duration_ms: 0.2691
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown FFT size without creating observation resources
+ok 53 - V4 monitor workload rejects unknown FFT size without creating observation resources
+  ---
+  duration_ms: 0.2021
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unconfigured stale age without creating observation resources
+ok 54 - V4 monitor workload rejects unconfigured stale age without creating observation resources
+  ---
+  duration_ms: 0.2093
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+ok 55 - V4 monitor workload rejects nonfinite normal read clock without creating observation resources
+  ---
+  duration_ms: 0.2095
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown analyser count without creating observation resources
+ok 56 - V4 monitor workload rejects unknown analyser count without creating observation resources
+  ---
+  duration_ms: 0.2729
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown total tap count without creating observation resources
+ok 57 - V4 monitor workload rejects unknown total tap count without creating observation resources
+  ---
+  duration_ms: 0.1782
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+ok 58 - V4 monitor workload rejects analyser count exceeds all taps without creating observation resources
+  ---
+  duration_ms: 0.1919
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+ok 59 - V4 monitor workload rejects duplicate retained source IDs without creating observation resources
+  ---
+  duration_ms: 0.1859
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects negative audio sample clock without creating observation resources
+ok 60 - V4 monitor workload rejects negative audio sample clock without creating observation resources
+  ---
+  duration_ms: 0.2231
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects unknown sample clock without creating observation resources
+ok 61 - V4 monitor workload rejects unknown sample clock without creating observation resources
+  ---
+  duration_ms: 0.192
+  type: 'test'
+  ...
+# Subtest: V4 monitor workload rejects read after closed window without creating observation resources
+ok 62 - V4 monitor workload rejects read after closed window without creating observation resources
+  ---
+  duration_ms: 0.3517
+  type: 'test'
+  ...
+# Subtest: probe-off null UI observations remain explicit unknown and do not throw
+ok 63 - probe-off null UI observations remain explicit unknown and do not throw
+  ---
+  duration_ms: 1.4361
+  type: 'test'
+  ...
+# Subtest: partial UI native observations cannot become a smaller measured maximum
+ok 64 - partial UI native observations cannot become a smaller measured maximum
+  ---
+  duration_ms: 0.586
+  type: 'test'
+  ...
+# Subtest: actual measured zero UI values stay zero
+ok 65 - actual measured zero UI values stay zero
+  ---
+  duration_ms: 0.297
+  type: 'test'
+  ...
+# Subtest: physics empty summary has explicit finite-or-null values
+ok 66 - physics empty summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.3976
+  type: 'test'
+  ...
+# Subtest: physics partial summary has explicit finite-or-null values
+ok 67 - physics partial summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.3015
+  type: 'test'
+  ...
+# Subtest: physics nonfinite summary has explicit finite-or-null values
+ok 68 - physics nonfinite summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.1286
+  type: 'test'
+  ...
+# Subtest: physics measured zero summary has explicit finite-or-null values
+ok 69 - physics measured zero summary has explicit finite-or-null values
+  ---
+  duration_ms: 0.1422
+  type: 'test'
+  ...
+# Subtest: empty acoustic rows are not zero misses or all updates completed
+ok 70 - empty acoustic rows are not zero misses or all updates completed
+  ---
+  duration_ms: 1.0143
+  type: 'test'
+  ...
+# Subtest: missing native telemetry cannot turn into zero graph load
+ok 71 - missing native telemetry cannot turn into zero graph load
+  ---
+  duration_ms: 0.4973
+  type: 'test'
+  ...
+# Subtest: partial cadence is unverified while a known miss remains visible
+ok 72 - partial cadence is unverified while a known miss remains visible
+  ---
+  duration_ms: 0.3564
+  type: 'test'
+  ...
+# Subtest: clean probe-off remains comparison only even if every advertised flag says true
+ok 73 - clean probe-off remains comparison only even if every advertised flag says true
+  ---
+  duration_ms: 1.0196
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED
+ok 74 - probe-off does not overwrite existing execution status FAILED
+  ---
+  duration_ms: 0.2465
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status FAILED_CLEANUP
+ok 75 - probe-off does not overwrite existing execution status FAILED_CLEANUP
+  ---
+  duration_ms: 0.0919
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status TIMED_OUT
+ok 76 - probe-off does not overwrite existing execution status TIMED_OUT
+  ---
+  duration_ms: 0.0688
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+ok 77 - probe-off does not overwrite existing execution status HISTORICAL_SNAPSHOT_ONLY
+  ---
+  duration_ms: 0.0722
+  type: 'test'
+  ...
+# Subtest: probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+ok 78 - probe-off does not overwrite existing execution status MEASURED_WITH_FAILURES
+  ---
+  duration_ms: 0.0805
+  type: 'test'
+  ...
+# Subtest: all-missing metrics remain null and NOT_RUN in comparison output
+ok 79 - all-missing metrics remain null and NOT_RUN in comparison output
+  ---
+  duration_ms: 0.1753
+  type: 'test'
+  ...
+# Subtest: a partial observation is not promoted to PASS while a known FAIL stays FAIL
+ok 80 - a partial observation is not promoted to PASS while a known FAIL stays FAIL
+  ---
+  duration_ms: 0.1436
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actual600Seconds false
+ok 81 - unapproved probe-on remains nonqualified with actual600Seconds false
+  ---
+  duration_ms: 0.2794
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with actualInterpolationObserved false
+ok 82 - unapproved probe-on remains nonqualified with actualInterpolationObserved false
+  ---
+  duration_ms: 0.1263
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with closedWindowNoPending false
+ok 83 - unapproved probe-on remains nonqualified with closedWindowNoPending false
+  ---
+  duration_ms: 0.0546
+  type: 'test'
+  ...
+# Subtest: unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+ok 84 - unapproved probe-on remains nonqualified with topMonitorSnapshotValid false
+  ---
+  duration_ms: 0.0445
+  type: 'test'
+  ...
+# Subtest: short diagnostic evidence cannot claim formal600 using an external true flag
+ok 85 - short diagnostic evidence cannot claim formal600 using an external true flag
+  ---
+  duration_ms: 0.1398
+  type: 'test'
+  ...
+# Subtest: nominal monitor freshness is explicit configuration, not a new default acceptance limit
+ok 86 - nominal monitor freshness is explicit configuration, not a new default acceptance limit
+  ---
+  duration_ms: 0.1938
+  type: 'test'
+  ...
+# Subtest: actual measured zero acoustic graph values remain zero without implying valid workload
+ok 87 - actual measured zero acoustic graph values remain zero without implying valid workload
+  ---
+  duration_ms: 0.2013
+  type: 'test'
+  ...
+# Subtest: approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+ok 88 - approved V4 resolution is a separate canonical authority, leaving frozen candidate registry intact
+  ---
+  duration_ms: 0.4285
+  type: 'test'
+  ...
+# Subtest: the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+ok 89 - the actual approved semantic03 record resolves its exact 44 source pins and limited scope
+  ---
+  duration_ms: 55.1371
+  type: 'test'
+  ...
+# Subtest: approved semantic pins may be covered by a unique well-formed superset
+ok 90 - approved semantic pins may be covered by a unique well-formed superset
+  ---
+  duration_ms: 4.5863
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong qualification ID
+ok 91 - canonical V4 resolver rejects wrong qualification ID
+  ---
+  duration_ms: 1.4347
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing qualification ID with approval flags
+ok 92 - canonical V4 resolver rejects missing qualification ID with approval flags
+  ---
+  duration_ms: 1.407
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong executable hash
+ok 93 - canonical V4 resolver rejects wrong executable hash
+  ---
+  duration_ms: 1.4463
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing executable hash
+ok 94 - canonical V4 resolver rejects missing executable hash
+  ---
+  duration_ms: 1.5501
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects wrong producer
+ok 95 - canonical V4 resolver rejects wrong producer
+  ---
+  duration_ms: 1.5106
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing producer
+ok 96 - canonical V4 resolver rejects missing producer
+  ---
+  duration_ms: 1.4719
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing scope
+ok 97 - canonical V4 resolver rejects missing scope
+  ---
+  duration_ms: 1.5399
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming formal600 PASS
+ok 98 - canonical V4 resolver rejects claiming formal600 PASS
+  ---
+  duration_ms: 1.8462
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming DSP CPU
+ok 99 - canonical V4 resolver rejects claiming DSP CPU
+  ---
+  duration_ms: 1.2328
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming GUI
+ok 100 - canonical V4 resolver rejects claiming GUI
+  ---
+  duration_ms: 1.4136
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects claiming hearing
+ok 101 - canonical V4 resolver rejects claiming hearing
+  ---
+  duration_ms: 1.6643
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects missing source manifest
+ok 102 - canonical V4 resolver rejects missing source manifest
+  ---
+  duration_ms: 1.5654
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source missing
+ok 103 - canonical V4 resolver rejects one approved source missing
+  ---
+  duration_ms: 1.9185
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects one approved source changed
+ok 104 - canonical V4 resolver rejects one approved source changed
+  ---
+  duration_ms: 2.051
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate approved source
+ok 105 - canonical V4 resolver rejects duplicate approved source
+  ---
+  duration_ms: 1.8929
+  type: 'test'
+  ...
+# Subtest: canonical V4 resolver rejects duplicate path with conflicting bytes
+ok 106 - canonical V4 resolver rejects duplicate path with conflicting bytes
+  ---
+  duration_ms: 1.4888
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+ok 107 - new options cannot repair a missing legacy immediate value: --seconds --probe-mode off 20
+  ---
+  duration_ms: 0.2115
+  type: 'test'
+  ...
+# Subtest: new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+ok 108 - new options cannot repair a missing legacy immediate value: --executable-path --qualification semantic-v3-c59df8c64fdfa846d6e22daf C:\\contract-only\\chrome.exe
+  ---
+  duration_ms: 0.0979
+  type: 'test'
+  ...
+# Subtest: a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+ok 109 - a passive monitor sample must belong to the actual collection, without inventing a freshness budget
+  ---
+  duration_ms: 0.2536
+  type: 'test'
+  ...
+# Subtest: V4 normal typed successful exit retains release and child qualification separately
+ok 110 - V4 normal typed successful exit retains release and child qualification separately
+  ---
+  duration_ms: 0.2821
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+ok 111 - V4 release cannot promote forced timeout after a stale successful child receipt to formal success
+  ---
+  duration_ms: 0.0894
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote nonzero exit after actual resource closure to formal success
+ok 112 - V4 release cannot promote nonzero exit after actual resource closure to formal success
+  ---
+  duration_ms: 0.0397
+  type: 'test'
+  ...
+# Subtest: V4 release cannot promote unknown typed timeout state to formal success
+ok 113 - V4 release cannot promote unknown typed timeout state to formal success
+  ---
+  duration_ms: 0.0338
+  type: 'test'
+  ...
+# Subtest: audio resource policy arm defaults to the original reference without reducing any formal load
+ok 114 - audio resource policy arm defaults to the original reference without reducing any formal load
+  ---
+  duration_ms: 0.0617
+  type: 'test'
+  ...
+# Subtest: the candidate audio arm is an explicit option under the same original formal workload
+ok 115 - the candidate audio arm is an explicit option under the same original formal workload
+  ---
+  duration_ms: 0.0757
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm unknown
+ok 116 - audio policy arm is type/identity strict: --audio-policy-arm unknown
+  ---
+  duration_ms: 0.0726
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm
+ok 117 - audio policy arm is type/identity strict: --audio-policy-arm
+  ---
+  duration_ms: 0.0389
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+ok 118 - audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+  ---
+  duration_ms: 0.1572
+  type: 'test'
+  ...
+# Subtest: the bounded planner forwards the requested arm without claiming it is observed
+ok 119 - the bounded planner forwards the requested arm without claiming it is observed
+  ---
+  duration_ms: 0.312
+  type: 'test'
+  ...
+# Subtest: formal mandatory gate inventories exactly retain immutable UI physics and acoustic evaluators
+ok 120 - formal mandatory gate inventories exactly retain immutable UI physics and acoustic evaluators
+  ---
+  duration_ms: 0.9673
+  type: 'test'
+  ...
+# Subtest: a complete synthetic report reaches formal workload classification without inventing raw V3 approval
+ok 121 - a complete synthetic report reaches formal workload classification without inventing raw V3 approval
+  ---
+  duration_ms: 1.7822
+  type: 'test'
+  ...
+# Subtest: formal report requires its own UI.actual600Seconds gate rather than a nonempty true subset
+not ok 122 - formal report requires its own UI.actual600Seconds gate rather than a nonempty true subset
+  ---
+  duration_ms: 1.3309
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.finiteOrderedFrames gate rather than a nonempty true subset
+not ok 123 - formal report requires its own UI.finiteOrderedFrames gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4168
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.frameCollectionMembership gate rather than a nonempty true subset
+not ok 124 - formal report requires its own UI.frameCollectionMembership gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.7296
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.actualInterpolationObserved gate rather than a nonempty true subset
+not ok 125 - formal report requires its own UI.actualInterpolationObserved gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.6572
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.noSampleTruncation gate rather than a nonempty true subset
+not ok 126 - formal report requires its own UI.noSampleTruncation gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.6566
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.noRuntimeOrScriptErrors gate rather than a nonempty true subset
+not ok 127 - formal report requires its own UI.noRuntimeOrScriptErrors gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.6458
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.uninterruptedSimulation gate rather than a nonempty true subset
+not ok 128 - formal report requires its own UI.uninterruptedSimulation gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.5184
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.fixedTickProgress gate rather than a nonempty true subset
+not ok 129 - formal report requires its own UI.fixedTickProgress gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3132
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.noDroppedWallTime gate rather than a nonempty true subset
+not ok 130 - formal report requires its own UI.noDroppedWallTime gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4679
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.noOverrunOrRecordingDebt gate rather than a nonempty true subset
+not ok 131 - formal report requires its own UI.noOverrunOrRecordingDebt gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.307
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.acceptedGrabAndThrow gate rather than a nonempty true subset
+not ok 132 - formal report requires its own UI.acceptedGrabAndThrow gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3888
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.closedWindowNoPending gate rather than a nonempty true subset
+not ok 133 - formal report requires its own UI.closedWindowNoPending gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3337
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.periodicCaptureCompleted gate rather than a nonempty true subset
+not ok 134 - formal report requires its own UI.periodicCaptureCompleted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2829
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.captureTickSamples gate rather than a nonempty true subset
+not ok 135 - formal report requires its own UI.captureTickSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3219
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.nativeGraphStarted gate rather than a nonempty true subset
+not ok 136 - formal report requires its own UI.nativeGraphStarted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2316
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.genuineRunningWarmup gate rather than a nonempty true subset
+not ok 137 - formal report requires its own UI.genuineRunningWarmup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.235
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.topMonitorSnapshotValid gate rather than a nonempty true subset
+not ok 138 - formal report requires its own UI.topMonitorSnapshotValid gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3241
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+not ok 139 - formal report requires its own UI.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2763
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own UI.actualAudioPolicyAtClose gate rather than a nonempty true subset
+not ok 140 - formal report requires its own UI.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2735
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unrelated true flag cannot replace the entire UI gate inventory
+not ok 141 - an unrelated true flag cannot replace the entire UI gate inventory
+  ---
+  duration_ms: 0.4377
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:726:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:729:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for false
+ok 142 - mandatory UI gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.2836
+  type: 'test'
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for null
+ok 143 - mandatory UI gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.3636
+  type: 'test'
+  ...
+# Subtest: mandatory UI gates retain actual-true semantics for truthy string
+ok 144 - mandatory UI gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.307
+  type: 'test'
+  ...
+# Subtest: formal report requires its own physics.exactBodyProfile gate rather than a nonempty true subset
+not ok 145 - formal report requires its own physics.exactBodyProfile gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4456
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.fixedStepAndWarmup gate rather than a nonempty true subset
+not ok 146 - formal report requires its own physics.fixedStepAndWarmup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2764
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.completeSamples gate rather than a nonempty true subset
+not ok 147 - formal report requires its own physics.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3257
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.awakeDynamicLoad gate rather than a nonempty true subset
+not ok 148 - formal report requires its own physics.awakeDynamicLoad gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2845
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.allDynamicBodiesContacted gate rather than a nonempty true subset
+not ok 149 - formal report requires its own physics.allDynamicBodiesContacted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2831
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.observedContactLoad gate rather than a nonempty true subset
+not ok 150 - formal report requires its own physics.observedContactLoad gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2313
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own physics.boundedCatchup gate rather than a nonempty true subset
+not ok 151 - formal report requires its own physics.boundedCatchup gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2495
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unrelated true flag cannot replace the entire physics gate inventory
+not ok 152 - an unrelated true flag cannot replace the entire physics gate inventory
+  ---
+  duration_ms: 0.3191
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:726:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:729:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for false
+ok 153 - mandatory physics gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.2256
+  type: 'test'
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for null
+ok 154 - mandatory physics gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.2597
+  type: 'test'
+  ...
+# Subtest: mandatory physics gates retain actual-true semantics for truthy string
+ok 155 - mandatory physics gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.249
+  type: 'test'
+  ...
+# Subtest: formal report requires its own productDefault.completeSamples gate rather than a nonempty true subset
+not ok 156 - formal report requires its own productDefault.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3753
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.eightVoicesAdmitted gate rather than a nonempty true subset
+not ok 157 - formal report requires its own productDefault.eightVoicesAdmitted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2883
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.actualModuleWorker gate rather than a nonempty true subset
+not ok 158 - formal report requires its own productDefault.actualModuleWorker gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2192
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.frozenAcousticMatrix gate rather than a nonempty true subset
+not ok 159 - formal report requires its own productDefault.frozenAcousticMatrix gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2037
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.nativeContextRunning gate rather than a nonempty true subset
+not ok 160 - formal report requires its own productDefault.nativeContextRunning gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2012
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.sustainedRequestedPaths gate rather than a nonempty true subset
+not ok 161 - formal report requires its own productDefault.sustainedRequestedPaths gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2078
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.sustainedEightVoices gate rather than a nonempty true subset
+not ok 162 - formal report requires its own productDefault.sustainedEightVoices gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2169
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.cleanNativeState gate rather than a nonempty true subset
+not ok 163 - formal report requires its own productDefault.cleanNativeState gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2061
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+not ok 164 - formal report requires its own productDefault.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2298
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+not ok 165 - formal report requires its own productDefault.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.371
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.nativeClockAdvances gate rather than a nonempty true subset
+not ok 166 - formal report requires its own productDefault.nativeClockAdvances gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3992
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.meets20HzWindows gate rather than a nonempty true subset
+not ok 167 - formal report requires its own productDefault.meets20HzWindows gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4365
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.observableDeliveryIdentity gate rather than a nonempty true subset
+not ok 168 - formal report requires its own productDefault.observableDeliveryIdentity gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3647
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+not ok 169 - formal report requires its own productDefault.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2774
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own productDefault.actualAudioPolicyAtClose gate rather than a nonempty true subset
+not ok 170 - formal report requires its own productDefault.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2353
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unrelated true flag cannot replace the entire productDefault gate inventory
+not ok 171 - an unrelated true flag cannot replace the entire productDefault gate inventory
+  ---
+  duration_ms: 0.2161
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:726:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:729:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for false
+ok 172 - mandatory productDefault gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.1868
+  type: 'test'
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for null
+ok 173 - mandatory productDefault gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.1567
+  type: 'test'
+  ...
+# Subtest: mandatory productDefault gates retain actual-true semantics for truthy string
+ok 174 - mandatory productDefault gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.2016
+  type: 'test'
+  ...
+# Subtest: formal report requires its own stress256.completeSamples gate rather than a nonempty true subset
+not ok 175 - formal report requires its own stress256.completeSamples gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3006
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.eightVoicesAdmitted gate rather than a nonempty true subset
+not ok 176 - formal report requires its own stress256.eightVoicesAdmitted gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.276
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.actualModuleWorker gate rather than a nonempty true subset
+not ok 177 - formal report requires its own stress256.actualModuleWorker gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2469
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.frozenAcousticMatrix gate rather than a nonempty true subset
+not ok 178 - formal report requires its own stress256.frozenAcousticMatrix gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.3448
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.nativeContextRunning gate rather than a nonempty true subset
+not ok 179 - formal report requires its own stress256.nativeContextRunning gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2286
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.sustainedRequestedPaths gate rather than a nonempty true subset
+not ok 180 - formal report requires its own stress256.sustainedRequestedPaths gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.1998
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.sustainedEightVoices gate rather than a nonempty true subset
+not ok 181 - formal report requires its own stress256.sustainedEightVoices gate rather than a nonempty true subset
+  ---
+  duration_ms: 5.196
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.cleanNativeState gate rather than a nonempty true subset
+not ok 182 - formal report requires its own stress256.cleanNativeState gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.4169
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+not ok 183 - formal report requires its own stress256.noNativeCapacityOrStaleLoss gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2875
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+not ok 184 - formal report requires its own stress256.eightSuccessfulNativeStarts gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.223
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.nativeClockAdvances gate rather than a nonempty true subset
+not ok 185 - formal report requires its own stress256.nativeClockAdvances gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.1957
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.meets20HzWindows gate rather than a nonempty true subset
+not ok 186 - formal report requires its own stress256.meets20HzWindows gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.1882
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.observableDeliveryIdentity gate rather than a nonempty true subset
+not ok 187 - formal report requires its own stress256.observableDeliveryIdentity gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.1845
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+not ok 188 - formal report requires its own stress256.actualAudioPolicyAtEnable gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2067
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal report requires its own stress256.actualAudioPolicyAtClose gate rather than a nonempty true subset
+not ok 189 - formal report requires its own stress256.actualAudioPolicyAtClose gate rather than a nonempty true subset
+  ---
+  duration_ms: 0.2096
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:720:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:723:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unrelated true flag cannot replace the entire stress256 gate inventory
+not ok 190 - an unrelated true flag cannot replace the entire stress256 gate inventory
+  ---
+  duration_ms: 0.1866
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:726:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:729:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for false
+ok 191 - mandatory stress256 gates retain actual-true semantics for false
+  ---
+  duration_ms: 0.1561
+  type: 'test'
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for null
+ok 192 - mandatory stress256 gates retain actual-true semantics for null
+  ---
+  duration_ms: 0.1391
+  type: 'test'
+  ...
+# Subtest: mandatory stress256 gates retain actual-true semantics for truthy string
+ok 193 - mandatory stress256 gates retain actual-true semantics for truthy string
+  ---
+  duration_ms: 0.1366
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects two copies of productDefault omit stress256 despite every advertised gate being true
+not ok 194 - formal profile identity rejects two copies of productDefault omit stress256 despite every advertised gate being true
+  ---
+  duration_ms: 0.3197
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects two copies of stress256 omit productDefault despite every advertised gate being true
+not ok 195 - formal profile identity rejects two copies of stress256 omit productDefault despite every advertised gate being true
+  ---
+  duration_ms: 0.2803
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects unknown default profile ID despite every advertised gate being true
+not ok 196 - formal profile identity rejects unknown default profile ID despite every advertised gate being true
+  ---
+  duration_ms: 0.235
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects unknown stress profile ID despite every advertised gate being true
+not ok 197 - formal profile identity rejects unknown stress profile ID despite every advertised gate being true
+  ---
+  duration_ms: 0.3315
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects default falsely marked nondefault despite every advertised gate being true
+not ok 198 - formal profile identity rejects default falsely marked nondefault despite every advertised gate being true
+  ---
+  duration_ms: 0.3361
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects stress falsely marked default despite every advertised gate being true
+not ok 199 - formal profile identity rejects stress falsely marked default despite every advertised gate being true
+  ---
+  duration_ms: 0.2443
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects default carries the stress path capacity despite every advertised gate being true
+not ok 200 - formal profile identity rejects default carries the stress path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.2243
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects stress carries the smaller default path capacity despite every advertised gate being true
+not ok 201 - formal profile identity rejects stress carries the smaller default path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.2149
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects default graph target changed despite every advertised gate being true
+not ok 202 - formal profile identity rejects default graph target changed despite every advertised gate being true
+  ---
+  duration_ms: 0.2017
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects stress graph target changed despite every advertised gate being true
+not ok 203 - formal profile identity rejects stress graph target changed despite every advertised gate being true
+  ---
+  duration_ms: 0.2227
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects default missing path capacity despite every advertised gate being true
+not ok 204 - formal profile identity rejects default missing path capacity despite every advertised gate being true
+  ---
+  duration_ms: 0.2287
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects stress missing graph target despite every advertised gate being true
+not ok 205 - formal profile identity rejects stress missing graph target despite every advertised gate being true
+  ---
+  duration_ms: 0.2067
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:766:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:683:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:768:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: formal profile identity rejects default arm absent despite every advertised gate being true
+ok 206 - formal profile identity rejects default arm absent despite every advertised gate being true
+  ---
+  duration_ms: 0.182
+  type: 'test'
+  ...
+# Subtest: formal profile identity rejects stress arm absent despite every advertised gate being true
+ok 207 - formal profile identity rejects stress arm absent despite every advertised gate being true
+  ---
+  duration_ms: 0.2072
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision number is controlled nonqualification without replace throwing
+not ok 208 - a malformed browser revision number is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.6203
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:773:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Got unwanted exception.
+    Actual message: "report.host?.browserVersionReceipt?.revision?.replace is not a function"
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'report.host?.browserVersionReceipt?.revision?.replace is not a function'
+  name: 'TypeError'
+  stack: |-
+    qualifiedContext (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:57:51)
+    Module.classifyProfileEvidenceV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:76:5)
+    classifyCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:672:31)
+    file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:40
+    getActual (node:assert:530:5)
+    Function.doesNotThrow (node:assert:696:32)
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  operator: 'doesNotThrow'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a malformed browser revision boolean is controlled nonqualification without replace throwing
+not ok 209 - a malformed browser revision boolean is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.5666
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:773:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Got unwanted exception.
+    Actual message: "report.host?.browserVersionReceipt?.revision?.replace is not a function"
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'report.host?.browserVersionReceipt?.revision?.replace is not a function'
+  name: 'TypeError'
+  stack: |-
+    qualifiedContext (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:57:51)
+    Module.classifyProfileEvidenceV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:76:5)
+    classifyCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:672:31)
+    file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:40
+    getActual (node:assert:530:5)
+    Function.doesNotThrow (node:assert:696:32)
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  operator: 'doesNotThrow'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a malformed browser revision array is controlled nonqualification without replace throwing
+not ok 210 - a malformed browser revision array is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.3797
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:773:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Got unwanted exception.
+    Actual message: "report.host?.browserVersionReceipt?.revision?.replace is not a function"
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'report.host?.browserVersionReceipt?.revision?.replace is not a function'
+  name: 'TypeError'
+  stack: |-
+    qualifiedContext (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:57:51)
+    Module.classifyProfileEvidenceV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:76:5)
+    classifyCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:672:31)
+    file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:40
+    getActual (node:assert:530:5)
+    Function.doesNotThrow (node:assert:696:32)
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  operator: 'doesNotThrow'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a malformed browser revision object is controlled nonqualification without replace throwing
+not ok 211 - a malformed browser revision object is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.3267
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:773:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Got unwanted exception.
+    Actual message: "report.host?.browserVersionReceipt?.revision?.replace is not a function"
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'report.host?.browserVersionReceipt?.revision?.replace is not a function'
+  name: 'TypeError'
+  stack: |-
+    qualifiedContext (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:57:51)
+    Module.classifyProfileEvidenceV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-profile-contract-v4.mjs:76:5)
+    classifyCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:672:31)
+    file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:40
+    getActual (node:assert:530:5)
+    Function.doesNotThrow (node:assert:696:32)
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  operator: 'doesNotThrow'
+  stack: |-
+    assertRejectedCompleteContractV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:682:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:777:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a malformed browser revision null is controlled nonqualification without replace throwing
+ok 212 - a malformed browser revision null is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.1725
+  type: 'test'
+  ...
+# Subtest: a malformed browser revision missing is controlled nonqualification without replace throwing
+ok 213 - a malformed browser revision missing is controlled nonqualification without replace throwing
+  ---
+  duration_ms: 0.1572
+  type: 'test'
+  ...
+1..213
+# tests 213
+# suites 0
+# pass 137
+# fail 76
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2024.6759

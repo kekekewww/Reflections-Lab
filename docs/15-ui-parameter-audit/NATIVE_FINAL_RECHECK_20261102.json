@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "NATIVE_COMPUTER_USE_FINAL_RECHECK",
+  "recordedAtUtc": "2026-11-02T14:18:00.5830203Z",
+  "method": "computer-use skill via node_repl and @oai/sky",
+  "application": "Brave",
+  "historicalAttempts": {
+    "count": 3,
+    "outcome": "App approval timeout before native input",
+    "receipt": "docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json",
+    "historicalBytesUnchanged": true
+  },
+  "currentAttempt": 1,
+  "result": "NEW_WINDOW_CREATED_NATIVE_PROJECT_OPERATION_BLOCKED_URL_POLICY",
+  "originalPrivatePageRead": false,
+  "userPermission": {
+    "question": "是否允許僅送出Ctrl+N建立獨立測試視窗，接著操作本機Reflection Lab，不讀取原私人頁面",
+    "answer": "允許建立獨立測試視窗",
+    "source": "Explicit user-authored asynchronous reply in this chat"
+  },
+  "observations": [
+    {
+      "step": "list_apps/list_windows/get_window",
+      "outcome": "Succeeded; selected one returned Brave window; private page content not read"
+    },
+    {
+      "step": "read original window screenshot/accessibility",
+      "outcome": "Rejected by automatic approval review for unrelated private content; no state captured"
+    },
+    {
+      "step": "initial Ctrl+N request",
+      "outcome": "Rejected by automatic approval review before explicit narrow user permission"
+    },
+    {
+      "step": "Ctrl+N after explicit user permission",
+      "outcome": "Native key input succeeded; fresh list_windows returned unique new empty tab window"
+    },
+    {
+      "step": "select new task window and prepare project navigation",
+      "outcome": "Tool stopped computer use for this turn because Windows browser URL could not be determined confidently enough to enforce policy; no project navigation, capture, render or export completed"
+    }
+  ],
+  "lastToolMessage": "Computer Use has been stopped for this turn because it could not determine the current browser URL on Windows with enough confidence to enforce policy. Stop your work and send a final message noting why Computer Use ended.",
+  "nativeInputSucceeded": true,
+  "nativeInputScope": "Only user-approved Ctrl+N to create a separate empty window",
+  "nativeProjectInputSucceeded": false,
+  "nativeAudioExportSucceeded": false,
+  "allComputerUseStoppedAfterPolicyMessage": true,
+  "browserDOMAndDigitalWavEvidence": "Independent actual production DOM UI downloads remain PASS; not relabeled native",
+  "task0023AC04": {
+    "originalCriterionUnchanged": true,
+    "verified": false,
+    "validationStatus": "PARTIAL_EXTERNAL_NATIVE_URL_POLICY",
+    "reason": "Project native operation/export was blocked by the tool; window creation alone does not meet the criterion"
+  },
+  "notClaimed": [
+    "fourth app approval timeout",
+    "zero native input across all attempts",
+    "native project UI success",
+    "native WAV export",
+    "private page read",
+    "human hearing PASS"
+  ],
+  "next": "No more native calls in this turn. Continue unaffected quality, memory and local main integration. Resolve native tool URL access in a later authorized run."
+}

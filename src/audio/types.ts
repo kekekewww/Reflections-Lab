@@ -1,5 +1,6 @@
 import type { AcousticFrame, AcousticPath, Vec3 } from "../acoustics/types.js";
 import type { SoundGenerator } from "../../schemas/sound-behavior/types.js";
+import type { AudioBufferPreset } from "./buffer-preset.js";
 
 export type { AcousticFrame, AcousticPath, SoundGenerator };
 export interface AudioBudget {
@@ -25,11 +26,27 @@ export interface LateReverbSettings {
 }
 export interface AudioEngineOptions {
   context?: BaseAudioContext;
+  /** Externally clocked/offline contexts retain zero lookahead unless explicitly selected. */
+  bufferPreset?: AudioBufferPreset;
   budget?: Partial<AudioBudget>;
   headroomGain?: number;
   monitorGain?: number;
   limiterEnabled?: boolean;
+  /** Product outputs add a bounded ceiling after the limiter (see output-safety.ts). */
+  outputSafetyClip?: boolean;
   spatializationModel?: PanningModelType;
+  /**
+   * "directPath" keeps spatializationModel on direct paths and pans reflections and the reverb send
+   * in stereo, so fewer native HRTF panners move. A path's model is fixed when its route is created,
+   * because changing it on a live panner would reset its state.
+   */
+  hrtfScope?: "allPaths" | "directPath";
+  /** Offline export only. Non-master taps are unity pre-master signals, without monitor/limiter. */
+  offlineOutputTap?: "master" | "simulatedMix" | "dryContent";
+  /** Monotonic wall milliseconds for bounded diagnostics; never an audio/render clock. */
+  diagnosticsClockMs?: () => number;
+  /** Disable all diagnostic sampling and native counter polling. */
+  diagnosticsEnabled?: boolean;
   onVoiceEnded?: (instanceId: string) => void;
 }
 export interface AudioAssetMetadata {
@@ -95,6 +112,18 @@ export interface ListenerPose {
   forward: Vec3;
   up: Vec3;
 }
+/** Native clock audit only; the cursor model is not a hardware PCM read pointer. */
+export interface AudioPauseClockAudit {
+  transportPolicy: "legacyRestart" | "sameContextCarrier";
+  logicalCutoffSimulationSeconds: number;
+  logicalCutoffAudioSeconds: number;
+  nativePauseCallAudioSeconds: number;
+  nativeSuspendAudioSeconds: number | null;
+  nativeFadeAdvanceSeconds: number | null;
+  clockSkewAtCallSeconds: number;
+  cursorObservation: "modeledSourceClock;notNativePcmPointer";
+}
+
 export interface AudioTelemetry {
   enabled: boolean;
   muted: boolean;
@@ -114,6 +143,7 @@ export interface AudioTelemetry {
   stolenVoices: number;
   droppedPaths: number;
   staleFrames: number;
+  staleVoiceAdmissions: number;
   lateEvents: number;
   decodedBytes: number;
   assetCount: number;
@@ -121,13 +151,23 @@ export interface AudioTelemetry {
   contextState: string;
   baseLatencySeconds: number | null;
   outputLatencySeconds: number | null;
+  outputUnderrunEvents: number | null;
+  outputUnderrunSeconds: number | null;
+  outputUnderrunStatus: "AVAILABLE" | "NOT_AVAILABLE";
+  bufferPreset: AudioBufferPreset;
+  schedulingLookaheadSeconds: number;
+  schedulingLookaheadPolicy: "onset-only";
+  rebuilding: boolean;
   propagationDelayResponsibility: "AcousticFrame.absoluteDelayS once";
   bandFilterModel: "uniformGainOrWindowedFrequencySamplingApproximation";
   maximumBandFilterGroupDelaySeconds: number;
   nativeHrtfAndLimiterLatencySeconds: null;
   pauseBoundaryAudioSeconds: number | null;
   pauseClockSkewSeconds: number | null;
-  pauseArrivalPolicy: "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters";
+  pauseArrivalPolicy:
+    | "fadeBoundaryCutoff; remainingDelayFromPauseCall; latestPathAndContentParameters"
+    | "sameContextFadeSuspendResume;nativePendingDelayRetained;actualSuspendBoundary";
+  pauseClockAudit?: AudioPauseClockAudit | null;
   lastError: string | null;
   budget: AudioBudget;
   lateReverb: LateReverbSettings & {
@@ -137,7 +177,9 @@ export interface AudioTelemetry {
     irEnergyNormalization: "explicit unit energy";
     decodedBytes: number;
     activeSends: number;
-    sendResponsibility: "earliest valid solver path delay/bands/HRTF once";
+    sendResponsibility:
+      | "earliest valid solver path delay/bands/HRTF once"
+      | "earliest valid solver path delay/bands/stereo panning once";
   };
 }
 export class AudioEngineError extends Error {

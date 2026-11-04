@@ -1,0 +1,49 @@
+check-05 source HEAD: 544d8d9fe7d4c87a62e093a64fb54eb2584826d7
+exit: exit 1
+
+check
+check:research
+environment:check
+test
+test:agents
+test:prompts
+test:wiki
+test:design
+test:sound-behaviors
+validate:sound-behaviors
+smoke:sound-physics
+smoke:dependencies
+test:physics
+test:datasets
+validate:research
+validate:schemas
+validate:docs
+validate:wiki
+validate:skills
+validate:design
+typecheck
+lint
+format:check
+test:runtime
+build
+validate:licenses
+validate:english
+
+TAP summaries (in order):
+# tests 1887 # pass 1887 # fail 0 # cancelled 0 # skipped 0
+# tests 82 # pass 82 # fail 0 # cancelled 0 # skipped 0
+# tests 12 # pass 12 # fail 0 # cancelled 0 # skipped 0
+# tests 54 # pass 54 # fail 0 # cancelled 0 # skipped 0
+# tests 14 # pass 14 # fail 0 # cancelled 0 # skipped 0
+# tests 34 # pass 34 # fail 0 # cancelled 0 # skipped 0
+# tests 18 # pass 18 # fail 0 # cancelled 0 # skipped 0
+# tests 2270 # pass 2270 # fail 0 # cancelled 0 # skipped 0
+
+build:
+ok 2241 - Domain and schema errors reject invalid dimensions, orientations and references
+[32m✓ built in 1.47s[39m
+{"status":"INCOMPLETE","originals":611,"markdown_files_inventoried":629,"authored_artifact_documents":43,"shared_raw_evidence":18,"translations_required":579,"translated":546,"original_english":31,"existing_english_companions":1,"missing":33,"stale":12,"errors":101,"warnings":15}
+
+validate:licenses / validate:english:
+{"status":"PASS","scope":"lock metadata plus installed license artifacts where snapshot platform matches; no legal or bundle-completeness claim","inventory":"docs/01-compliance/V1_DEPENDENCY_LICENSE_INVENTORY-r2.json","snapshotPlatform":"win32","currentPlatform":"win32","lockPackages":199,"installed":149,"omittedOptional":50}
+{"status":"INCOMPLETE","originals":611,"markdown_files_inventoried":629,"authored_artifact_documents":43,"shared_raw_evidence":18,"translations_required":579,"translated":546,"original_english":31,"existing_english_companions":1,"missing":33,"stale":12,"errors":101,"warnings":15}

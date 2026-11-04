@@ -1,0 +1,108 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-004",
+  "title": "釐清latest-valid acoustic snapshot與pending event交換",
+  "description": "一批in-flight與stale拒收已存在；source pose可合併但pending emission不可消失，過期整批拒收可能增加admission age。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "現有一批in-flight、timeout與payload caps保留或有獨立證據的新有限上界；沒有hidden unbounded queue。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "run/epoch/revision/source identity、event去重與emission時間負面案例通過；latest-only僅用可丟預覽，不用capture/event。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "量age、rejection、onset與consumer成本；不以少求paths或改正式負載宣告性能通過。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/app/acoustic-service.ts",
+    "src/app/runtime.ts",
+    "src/audio/engine.ts",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/15-ui-parameter-audit/history/src__app__acoustic-service.ts.11ae54162cda.historical.raw.txt",
+      "sha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-02T09:45:40.484Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "一批in-flight與stale拒收已存在；source pose可合併但pending emission不可消失，過期整批拒收可能增加admission age。",
+  "evidence_basis": [
+    {
+      "path": "docs/15-ui-parameter-audit/history/src__app__acoustic-service.ts.11ae54162cda.historical.raw.txt",
+      "locator": "single in-flight／identity驗證／timeout",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647"
+    },
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "locator": "§3、§7",
+      "classification": "CONFIRMED BY CODE; HYPOTHESIS cost",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    }
+  ],
+  "affected_modules": [
+    "src/app/acoustic-service.ts",
+    "src/app/runtime.ts",
+    "src/audio/engine.ts"
+  ],
+  "proposed_solution": "先定義latest-valid/pending資料所有權、tick/revision/age與明示stale policy；合併preview pose，獨立保存event identity及發聲時間，沿用現有in-flight上界。",
+  "alternatives": [
+    "維持全批拒收並將現況可觀測化。",
+    "分source或分lane admission，需先證額外成本。",
+    "增加無界請求queue：不可採用。"
+  ],
+  "expected_benefit": "減少無意義舊pose工作並讓event等待可診斷；onset改善尚未量。",
+  "complexity": "中；epoch失效與event重試去重。",
+  "performance_impact": "記pending age／request age／rejected batch／skipped preview及actual caps。",
+  "audio_quality_impact": "只使用真求解資料，最近有效frame標stale；不得把舊path當新motion求解。",
+  "latency_impact": "event emission不重設到reply時間；物理延遲僅一次，過期選擇有明確上界。",
+  "compatibility_regression_risk": "latest-only若誤用於event或recording可漏發聲／漏tick；scene revision混用可套錯材質。",
+  "benchmark_plan": "slow solver、busy worker、out-of-order／duplicate／late reply、scene/reset/dispose、same-source多impact、空／invalid結果。",
+  "rollback_plan": "停止新交換接納、invalidate新generation，drain／取消in-flight並保留未到達事件身分，回原service策略且不重播已完成事件。",
+  "priority_rationale": "建立傳輸優化與多緒遷移之前的正確性界線；已有有限queue所以先補責任而非再加queue。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "No new platform prerequisite; use existing module Worker reference.",
+  "regression_risk": "Latest-only state must not erase discrete emissions or allow old scene results.",
+  "candidate_commit": null,
+  "provenance_corrections": [
+    {
+      "at": "2026-11-01T08:34:22.902Z",
+      "previousCommit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "reason": "Rebind authored review evidence after LF normalization only; task remains unclaimed BACKLOG, all acceptance false"
+    }
+  ],
+  "last_summary": "Historicalpinnedevidencepath relocated toexactGitartifact; originalhash/results/status/dependencies/criteriaunchanged. NoBACKLOGclaim/newtests."
+}

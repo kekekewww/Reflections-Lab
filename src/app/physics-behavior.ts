@@ -12,6 +12,9 @@ const DISCRETE_EVENTS = new Set<PhysicsEvent["type"]>([
   "OnThrow",
   "OnDrop",
   "OnImpact",
+  "OnBounce",
+  "OnEnterZone",
+  "OnExitZone",
   "OnStartMoving",
   "OnStopMoving",
   "OnSleep",
@@ -68,6 +71,7 @@ export function toBehaviorFrame(snapshot: PhysicsSnapshot, runEpoch: string): Be
       source: event.source,
       accepted: event.accepted,
       ...(event.commandId === undefined ? {} : { commandId: event.commandId }),
+      ...(event.zoneId === undefined ? {} : { zoneId: event.zoneId }),
       ...(event.contact === undefined ? {} : { contact: structuredClone(event.contact) }),
       metrics: contactMetrics(event.contact),
     }));

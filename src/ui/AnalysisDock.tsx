@@ -1,4 +1,7 @@
-﻿import { useCallback, useId, useMemo, useRef, useState } from "react";
+import { memoView } from "./view-stability.js";
+import { HelpTip } from "./HelpTip.js";
+import { ZonePanel } from "./ZonePanel.js";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import type { FormEvent, KeyboardEvent } from "react";
 import type {
   EventView,
@@ -11,14 +14,32 @@ import type {
 import { useLocale, type MessageKey } from "./locale.js";
 import { behaviorReasonText, nativeRejectionText } from "./behavior-diagnostic-text.js";
 import { acousticPathPresentation, type AcousticPresentation } from "./acoustic-presentation.js";
+import {
+  MotionDockPanel,
+  RenderDockPanel,
+  PerformanceDockPanel,
+  AgentWorkflowPanel,
+} from "./PipelinePanels.js";
 export { acousticPathPresentation } from "./acoustic-presentation.js";
 
-type DockTab = "events" | "paths" | "comparison" | "agent";
+type DockTab =
+  | "events"
+  | "paths"
+  | "comparison"
+  | "agent"
+  | "motion"
+  | "render"
+  | "performance"
+  | "zones";
 const TABS: { id: DockTab; labelKey: MessageKey }[] = [
   { id: "events", labelKey: "analysis.tabs.events" },
   { id: "paths", labelKey: "analysis.tabs.paths" },
   { id: "comparison", labelKey: "analysis.tabs.comparison" },
   { id: "agent", labelKey: "analysis.tabs.agent" },
+  { id: "motion", labelKey: "pipeline.tabs.motion" },
+  { id: "render", labelKey: "pipeline.tabs.render" },
+  { id: "performance", labelKey: "pipeline.tabs.performance" },
+  { id: "zones", labelKey: "pipeline.tabs.zones" },
 ];
 function useAnalysisText() {
   const { t, n, message } = useLocale();
@@ -122,17 +143,24 @@ export function AnalysisDock({ controller, model }: DockProps) {
             </button>
           ))}
         </div>
-        <button
-          className="icon-button dock-collapse"
-          type="button"
-          aria-expanded={!collapsed}
-          aria-controls={`${id}-content`}
-          aria-label={collapsed ? t("analysis.expand") : t("analysis.collapse")}
-          title={collapsed ? t("analysis.expand") : t("analysis.collapse")}
-          onClick={() => setCollapsed((value) => !value)}
+        <HelpTip
+          topic={collapsed ? t("analysis.expand") : t("analysis.collapse")}
+          content={
+            (collapsed ? t("analysis.expand") : t("analysis.collapse")) ||
+            t("inspector.runningEditGuard")
+          }
         >
-          {collapsed ? "⌃" : "⌄"}
-        </button>
+          <button
+            className="icon-button dock-collapse"
+            type="button"
+            aria-expanded={!collapsed}
+            aria-controls={`${id}-content`}
+            aria-label={collapsed ? t("analysis.expand") : t("analysis.collapse")}
+            onClick={() => setCollapsed((value) => !value)}
+          >
+            {collapsed ? "⌃" : "⌄"}
+          </button>
+        </HelpTip>
       </div>
       <div id={`${id}-content`} className="dock-content" hidden={collapsed}>
         {actionError && (
@@ -174,13 +202,46 @@ export function AnalysisDock({ controller, model }: DockProps) {
           hidden={tab !== "agent"}
         >
           <AgentPanel model={model} send={send} />
+          <AgentWorkflowPanel controller={controller} send={send} />
+        </div>
+        <div
+          role="tabpanel"
+          id={`${id}-motion-panel`}
+          aria-labelledby={`${id}-motion-tab`}
+          hidden={tab !== "motion"}
+        >
+          <MotionDockPanel controller={controller} model={model} />
+        </div>
+        <div
+          role="tabpanel"
+          id={`${id}-render-panel`}
+          aria-labelledby={`${id}-render-tab`}
+          hidden={tab !== "render"}
+        >
+          <RenderDockPanel controller={controller} active={!collapsed && tab === "render"} />
+        </div>
+        <div
+          role="tabpanel"
+          id={`${id}-zones-panel`}
+          aria-labelledby={`${id}-zones-tab`}
+          hidden={tab !== "zones"}
+        >
+          <ZonePanel controller={controller} model={model} />
+        </div>
+        <div
+          role="tabpanel"
+          id={`${id}-performance-panel`}
+          aria-labelledby={`${id}-performance-tab`}
+          hidden={tab !== "performance"}
+        >
+          <PerformanceDockPanel controller={controller} />
         </div>
       </div>
     </section>
   );
 }
 
-function EventsPanel({ model, send }: { model: LabViewModel; send: Send }) {
+function EventsPanelView({ model, send }: { model: LabViewModel; send: Send }) {
   const { t, n, message, number } = useAnalysisText();
   const [filter, setFilter] = useState("");
   const state = model.recording.state;
@@ -212,36 +273,66 @@ function EventsPanel({ model, send }: { model: LabViewModel; send: Send }) {
     <div className="dock-panel events-panel">
       <div className="dock-toolbar">
         <div className="button-group">
-          <button
-            type="button"
-            className={state === "recording" ? "button-danger" : ""}
-            aria-pressed={state === "recording"}
-            disabled={state === "replaying" || model.simulationState === "error"}
-            title={state === "replaying" ? t("analysis.recording.stopReplayFirst") : undefined}
-            onClick={() => send({ type: "recordToggle" })}
-          >
-            {state === "recording" ? t("analysis.recording.stop") : t("analysis.recording.start")}
-          </button>
-          <button
-            type="button"
-            disabled={!model.recording.canReplay || state === "recording"}
-            title={
-              !model.recording.canReplay ? t("analysis.recording.completeRequired") : undefined
+          <HelpTip
+            topic={t("analysis.recording.start")}
+            content={
+              state === "replaying"
+                ? t("analysis.recording.stopReplayFirst")
+                : model.simulationState === "error"
+                  ? t("shell.simulationError")
+                  : t(
+                      state === "recording"
+                        ? "analysis.recording.stop"
+                        : "analysis.recording.start",
+                    )
             }
-            onClick={() => send({ type: state === "replaying" ? "stopReplay" : "replay" })}
           >
-            {state === "replaying"
-              ? t("analysis.recording.endReplay")
-              : t("analysis.recording.replay")}
-          </button>
-          <button
-            type="button"
-            disabled={!(model.recording.hasArtifact ?? model.recording.canReplay)}
-            title={t("analysis.recording.exportHelp")}
-            onClick={() => send({ type: "exportRecording" })}
+            <button
+              type="button"
+              className={state === "recording" ? "button-danger" : ""}
+              aria-pressed={state === "recording"}
+              disabled={state === "replaying" || model.simulationState === "error"}
+              onClick={() => send({ type: "recordToggle" })}
+            >
+              {state === "recording" ? t("analysis.recording.stop") : t("analysis.recording.start")}
+            </button>
+          </HelpTip>
+          <HelpTip
+            topic={t("analysis.recording.replay")}
+            content={
+              !model.recording.canReplay
+                ? t("analysis.recording.completeRequired")
+                : state === "recording"
+                  ? t("help.stopRecording")
+                  : t("analysis.recording.replay")
+            }
           >
-            {t("analysis.recording.export")}
-          </button>
+            <button
+              type="button"
+              disabled={!model.recording.canReplay || state === "recording"}
+              onClick={() => send({ type: state === "replaying" ? "stopReplay" : "replay" })}
+            >
+              {state === "replaying"
+                ? t("analysis.recording.endReplay")
+                : t("analysis.recording.replay")}
+            </button>
+          </HelpTip>
+          <HelpTip
+            topic={t("analysis.recording.export")}
+            content={
+              !(model.recording.hasArtifact ?? model.recording.canReplay)
+                ? t("help.noArchivedRecording")
+                : t("analysis.recording.exportHelp")
+            }
+          >
+            <button
+              type="button"
+              disabled={!(model.recording.hasArtifact ?? model.recording.canReplay)}
+              onClick={() => send({ type: "exportRecording" })}
+            >
+              {t("analysis.recording.export")}
+            </button>
+          </HelpTip>
         </div>
         <span className={`badge ${state === "recording" ? "badge-danger" : ""}`}>
           {recordingLabel}
@@ -366,14 +457,27 @@ function EventsPanel({ model, send }: { model: LabViewModel; send: Send }) {
       ) : (
         <div className="empty-state">
           <strong>{filter ? t("analysis.events.noMatches") : t("analysis.events.waiting")}</strong>
-          <p>{filter ? t("analysis.events.tryOtherFilter") : t("analysis.events.waitingHelp")}</p>
+          <HelpTip
+            topic={t("analysis.tabs.events")}
+            content={
+              filter ? t("analysis.events.tryOtherFilter") : t("analysis.events.waitingHelp")
+            }
+          />
         </div>
       )}
     </div>
   );
 }
 
-function EventDetails({ event }: { event: EventView }) {
+const EventsPanel = memoView(EventsPanelView, ({ model, ...props }) => [
+  props,
+  model.events,
+  model.selectedEventId,
+  model.recording,
+  model.simulationState,
+]);
+
+function EventDetailsView({ event }: { event: EventView }) {
   const { t, n, message, number } = useAnalysisText();
   return (
     <aside className="dock-detail" aria-label={t("analysis.events.details")}>
@@ -520,20 +624,23 @@ function EventDetails({ event }: { event: EventView }) {
             </div>
             <div>
               <dt>{t("analysis.native.acousticFrame")}</dt>
-              <dd className="mono">{event.nativeRejection.acousticRequestId}</dd>
+              <dd className="mono">
+                {event.nativeRejection.acousticRequestId ?? t("projectImport.notProvided")}
+              </dd>
             </div>
             <div>
               <dt>{t("analysis.native.attempt")}</dt>
               <dd>
                 {t("analysis.native.attemptValues", {
                   attempt: event.nativeRejection.attemptedAtTick,
-                  pose: event.nativeRejection.acousticPoseTick,
-                  scene: event.nativeRejection.acousticSceneRevision,
+                  pose: event.nativeRejection.acousticPoseTick ?? t("projectImport.notProvided"),
+                  scene:
+                    event.nativeRejection.acousticSceneRevision ?? t("projectImport.notProvided"),
                 })}
               </dd>
             </div>
           </dl>
-          <p className="muted">{t("analysis.native.scope")}</p>
+          <HelpTip topic={t("analysis.events.evidence")} content={t("analysis.native.scope")} />
         </>
       )}
       {event.detail && <p className="muted">{message(event.detail)}</p>}
@@ -541,8 +648,10 @@ function EventDetails({ event }: { event: EventView }) {
   );
 }
 
-function PathsPanel({ model, send }: { model: LabViewModel; send: Send }) {
-  const { t, n, number } = useAnalysisText();
+const EventDetails = memoView(EventDetailsView);
+
+function PathsPanelView({ model, send }: { model: LabViewModel; send: Send }) {
+  const { t, n, number, message } = useAnalysisText();
   const selected = model.paths.find((path) => path.id === model.selectedPathId);
   const presentation = acousticPathPresentation(model);
   return (
@@ -636,10 +745,10 @@ function PathsPanel({ model, send }: { model: LabViewModel; send: Send }) {
                 </div>
                 <div>
                   <dt>{t("analysis.detail.model")}</dt>
-                  <dd>{model.acoustic.model}</dd>
+                  <dd>{message(model.acoustic.model)}</dd>
                 </div>
               </dl>
-              <p className="muted">{t("analysis.paths.delayHelp")}</p>
+              <HelpTip topic={t("analysis.paths.origin")} content={t("analysis.paths.delayHelp")} />
             </aside>
           )}
         </div>
@@ -658,7 +767,15 @@ function PathsPanel({ model, send }: { model: LabViewModel; send: Send }) {
   );
 }
 
-function ComparisonPanel({ model, send }: { model: LabViewModel; send: Send }) {
+const PathsPanel = memoView(PathsPanelView, ({ model, ...props }) => [
+  props,
+  model.paths,
+  model.selectedPathId,
+  model.sceneRevision,
+  model.acoustic,
+]);
+
+function ComparisonPanelView({ model, send }: { model: LabViewModel; send: Send }) {
   const { t, message } = useAnalysisText();
   const [kind, setKind] = useState<"acoustic" | "behavior">("acoustic");
   return (
@@ -684,38 +801,55 @@ function ComparisonPanel({ model, send }: { model: LabViewModel; send: Send }) {
             <option value="behavior">{t("analysis.comparison.behavior")}</option>
           </select>
         </label>
-        <button
-          className="primary-button"
-          type="button"
-          disabled={!model.comparison.hasA || !model.comparison.hasB}
-          title={
+        <HelpTip
+          topic={t("analysis.comparison.compare")}
+          content={
             !model.comparison.hasA || !model.comparison.hasB
               ? t("analysis.comparison.snapshotsRequired")
-              : undefined
+              : t("analysis.comparison.compare")
           }
-          onClick={() => send({ type: "compare", kind })}
         >
-          {t("analysis.comparison.compare")}
-        </button>
+          <button
+            className="primary-button"
+            type="button"
+            disabled={!model.comparison.hasA || !model.comparison.hasB}
+            onClick={() => send({ type: "compare", kind })}
+          >
+            {t("analysis.comparison.compare")}
+          </button>
+        </HelpTip>
       </div>
       <div className="comparison-summary">
-        <p className="muted">
-          {kind === "acoustic"
-            ? t("analysis.comparison.acousticHelp")
-            : t("analysis.comparison.behaviorHelp")}
-        </p>
-        <p className="dock-status" role="status">
-          {model.comparison.status
-            ? message(model.comparison.status)
-            : t("analysis.comparison.prepareHelp")}
-        </p>
+        <HelpTip
+          topic={t("analysis.comparison.kind")}
+          content={
+            kind === "acoustic"
+              ? t("analysis.comparison.acousticHelp")
+              : t("analysis.comparison.behaviorHelp")
+          }
+        />
+        {model.comparison.status ? (
+          <p className="dock-status" role="status">
+            {message(model.comparison.status)}
+          </p>
+        ) : (
+          <HelpTip
+            topic={t("analysis.tabs.comparison")}
+            content={t("analysis.comparison.prepareHelp")}
+          />
+        )}
       </div>
       <MetricList metrics={model.comparison.metrics} empty={t("analysis.comparison.noMetrics")} />
     </div>
   );
 }
 
-function MetricList({ metrics, empty }: { metrics: MetricView[]; empty: string }) {
+const ComparisonPanel = memoView(ComparisonPanelView, ({ model, ...props }) => [
+  props,
+  model.comparison,
+]);
+
+function MetricListView({ metrics, empty }: { metrics: MetricView[]; empty: string }) {
   const { t, message, number } = useAnalysisText();
   if (!metrics.length) return <p className="empty-caption muted">{empty}</p>;
   return (
@@ -734,10 +868,16 @@ function MetricList({ metrics, empty }: { metrics: MetricView[]; empty: string }
   );
 }
 
-function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
+const MetricList = memoView(MetricListView);
+
+function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
   const { t, message } = useAnalysisText();
   const [prompt, setPrompt] = useState("");
   const composing = useRef(false);
+  const previewPanel = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (model.ai.preview) previewPanel.current?.scrollIntoView({ block: "end" });
+  }, [model.ai.preview]);
   const loading = model.ai.status === "loading";
   const selectedProvider = model.ai.selectedProvider ?? "offline";
   const providerStatus = model.ai.providerStatus;
@@ -758,6 +898,14 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
     <div className="dock-panel agent-panel">
       <div className="agent-heading">
         <strong>{t("analysis.agent.heading")}</strong>
+        <HelpTip
+          topic={t("analysis.agent.execution")}
+          content={
+            selectedProvider === "offline"
+              ? t("analysis.agent.offlineHelp")
+              : t("analysis.agent.metaHelp")
+          }
+        />
         <span className={`badge ${model.ai.mode === "live" ? "badge-success" : "badge-warning"}`}>
           {model.ai.mode === "live"
             ? t("analysis.agent.resultMeta")
@@ -791,13 +939,24 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
         >
           {t("analysis.agent.refresh")}
         </button>
+        <HelpTip topic={t("pipeline.agent.undo")} content={t("pipeline.agent.undoHelp")}>
+          <button
+            type="button"
+            disabled={loading || model.ai.canUndo !== true}
+            onClick={() => send({ type: "undoAI" })}
+          >
+            {t("pipeline.agent.undo")}
+          </button>
+        </HelpTip>
       </div>
       <p
         className="field-help agent-provider-status"
         id="experiment-agent-provider-status"
         role="status"
       >
-        {t("analysis.agent.gate", { status: providerLabels[providerStatus?.status ?? "unknown"] })}
+        {t("analysis.agent.gate", {
+          status: providerLabels[providerStatus?.status ?? "unknown"],
+        })}
         {providerStatus?.reason
           ? message(providerStatus.reason)
           : t("analysis.agent.noServerStatus")}
@@ -813,7 +972,7 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
             maxLength={4000}
             value={prompt}
             placeholder={t("analysis.agent.promptExample")}
-            aria-describedby="experiment-agent-mode experiment-agent-provider-status"
+            aria-describedby="experiment-agent-provider-status"
             onChange={(event) => setPrompt(event.target.value)}
             onCompositionStart={() => {
               composing.current = true;
@@ -842,14 +1001,12 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
             {loading ? t("analysis.agent.preparing") : t("analysis.agent.previewAction")}
           </button>
         </div>
-        <p className="field-help" id="experiment-agent-mode">
-          {unavailable
-            ? t("analysis.agent.unavailableHelp")
-            : selectedProvider === "offline"
-              ? t("analysis.agent.offlineHelp")
-              : t("analysis.agent.metaHelp")}{" "}
-          {t("analysis.agent.shortcut")}
-        </p>
+        {unavailable && (
+          <p className="field-help" id="experiment-agent-mode">
+            {t("analysis.agent.unavailableHelp")}
+          </p>
+        )}
+        <HelpTip topic={t("analysis.agent.prompt")} content={t("analysis.agent.shortcut")} />
       </form>
       {model.ai.message && (
         <p
@@ -859,14 +1016,19 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
           {message(model.ai.message)}
         </p>
       )}
+      {model.ai.note && (
+        <p className="agent-message">
+          <strong>{t("analysis.agent.museNote")}</strong> {model.ai.note}
+        </p>
+      )}
       {model.ai.preview && (
-        <div className="agent-preview">
+        <div className="agent-preview" ref={previewPanel}>
           <div className="panel-heading">
             <h3>{t("analysis.agent.previewHeading")}</h3>
             <span className="badge">{t("analysis.agent.notApplied")}</span>
           </div>
           <pre tabIndex={0} aria-label={t("analysis.agent.validatedDiff")}>
-            {model.ai.preview}
+            {model.ai.preview.split("\n").map(message).join("\n")}
           </pre>
           <div className="button-group">
             <button
@@ -883,9 +1045,18 @@ function AgentPanel({ model, send }: { model: LabViewModel; send: Send }) {
               {t("analysis.agent.cancel")}
             </button>
           </div>
-          <p className="field-help">{t("analysis.agent.applyHelp")}</p>
+          <HelpTip
+            topic={t("analysis.agent.previewHeading")}
+            content={t("analysis.agent.applyHelp")}
+          />
         </div>
       )}
     </div>
   );
 }
+
+const AgentPanel = memoView(AgentPanelView, ({ model, ...props }) => [
+  props,
+  model.ai,
+  model.simulationState,
+]);

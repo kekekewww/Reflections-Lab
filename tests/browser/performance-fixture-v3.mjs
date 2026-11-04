@@ -15,6 +15,9 @@ import { AudioEngine } from "../../src/audio/index.ts";
 import { createProofCollector } from "./performance-proof-v3.mjs";
 const previousRAF = window.requestAnimationFrame,
   previousCancelRAF = window.cancelAnimationFrame;
+const probeMode = window.__performanceProfileConfig?.probeMode ?? "on";
+if (!["on", "off"].includes(probeMode)) throw new Error("INVALID_PERFORMANCE_PROBE_MODE");
+const probesEnabled = probeMode === "on";
 const v3Proof = createProofCollector({ mark: (name) => performance.mark(name) });
 const nativeRAF = requestAnimationFrame.bind(window);
 const nativeCancelRAF = cancelAnimationFrame.bind(window);
@@ -93,6 +96,7 @@ const observedRAF = (callback) => {
         samples.audioTelemetry.push({
           atMs: timestamp - startedAt,
           ...runtime.audio.getTelemetry(),
+          audioDiagnostics: runtime.audio.getDiagnostics(),
         });
       }
     }
@@ -140,8 +144,10 @@ const observedCancelRAF = (requestHandle) => {
   }
   return nativeCancelRAF(requestHandle);
 };
-window.requestAnimationFrame = observedRAF;
-window.cancelAnimationFrame = observedCancelRAF;
+if (probesEnabled) {
+  window.requestAnimationFrame = observedRAF;
+  window.cancelAnimationFrame = observedCancelRAF;
+}
 function restoreRAFObserver() {
   if (
     window.requestAnimationFrame === previousRAF &&
@@ -181,6 +187,7 @@ function uiScene() {
   return scene;
 }
 function wrap(object, key, sink) {
+  if (!probesEnabled) return;
   const original = object[key].bind(object);
   object[key] = (...args) => {
     const start = clock();
@@ -283,6 +290,7 @@ function artifactSummary() {
     : null;
 }
 function instrumentNativeStarts(context, evidence) {
+  if (!probesEnabled) return;
   for (const kind of ["createOscillator", "createBufferSource"]) {
     const create = context[kind].bind(context);
     context[kind] = (...args) => {
@@ -462,61 +470,69 @@ async function mountUI() {
     }),
   );
   wrap(runtime, "publish", (ms) => append(samples.publishMs, ms));
-  interpolationObservation = instrumentInterpolationMethods(
-    runtime.world,
-    clock,
-    () => measuring,
-    append,
-  );
-  const originalWorldAdvance = runtime.world.advance.bind(runtime.world);
-  let advanceResult = null;
-  runtime.world.advance = (...args) => {
-    advanceResult = originalWorldAdvance(...args);
-    return advanceResult;
-  };
-  const originalRuntimeAdvance = runtime.advance.bind(runtime);
-  runtime.advance = (deltaSeconds) => {
-    const collecting = measuring || warmingUp;
-    const before = collecting ? clockState() : null;
-    advanceResult = null;
-    const start = clock();
-    let error = null;
-    try {
-      return originalRuntimeAdvance(deltaSeconds);
-    } catch (cause) {
-      error = String(cause);
-      throw cause;
-    } finally {
-      const durationMs = clock() - start;
-      if (collecting) {
-        append(measuring ? samples.advances : samples.warmupAdvances, {
-          phase: measuring ? "measured" : "warmup",
-          atMs: start - startedAt,
-          deltaSeconds,
-          durationMs,
-          steps: advanceResult?.steps ?? 0,
-          overrun: advanceResult?.overrun ?? false,
-          droppedWallTimeSeconds: advanceResult?.droppedWallTimeSeconds ?? 0,
-          captureIndex: currentCaptureIndex,
-          before,
-          after: clockState(),
-          error,
-        });
+  interpolationObservation = probesEnabled
+    ? instrumentInterpolationMethods(runtime.world, clock, () => measuring, append)
+    : {
+        ms: [],
+        calls: 0,
+        successfulCalls: 0,
+        failedCalls: 0,
+        requiredMethod: "interpolatedTransforms",
+        observedMethods: [],
+        byMethod: {},
+        aggregateScope: "NOT_OBSERVED_PROBE_OFF",
+      };
+  if (probesEnabled) {
+    const originalWorldAdvance = runtime.world.advance.bind(runtime.world);
+    let advanceResult = null;
+    runtime.world.advance = (...args) => {
+      advanceResult = originalWorldAdvance(...args);
+      return advanceResult;
+    };
+    const originalRuntimeAdvance = runtime.advance.bind(runtime);
+    runtime.advance = (deltaSeconds) => {
+      const collecting = measuring || warmingUp;
+      const before = collecting ? clockState() : null;
+      advanceResult = null;
+      const start = clock();
+      let error = null;
+      try {
+        return originalRuntimeAdvance(deltaSeconds);
+      } catch (cause) {
+        error = String(cause);
+        throw cause;
+      } finally {
+        const durationMs = clock() - start;
+        if (collecting) {
+          append(measuring ? samples.advances : samples.warmupAdvances, {
+            phase: measuring ? "measured" : "warmup",
+            atMs: start - startedAt,
+            deltaSeconds,
+            durationMs,
+            steps: advanceResult?.steps ?? 0,
+            overrun: advanceResult?.overrun ?? false,
+            droppedWallTimeSeconds: advanceResult?.droppedWallTimeSeconds ?? 0,
+            captureIndex: currentCaptureIndex,
+            before,
+            after: clockState(),
+            error,
+          });
+        }
+        if (measuring) {
+          const frame = samples.frame.get(currentFrame);
+          if (frame) frame.advanceMs += durationMs;
+        }
       }
-      if (measuring) {
-        const frame = samples.frame.get(currentFrame);
-        if (frame) frame.advanceMs += durationMs;
+    };
+    wrap(runtime, "getPose", (ms) => {
+      const frame = samples.frame.get(currentFrame);
+      if (frame) {
+        frame.poseMs += ms;
+        frame.poseCalls++;
       }
-    }
-  };
-  wrap(runtime, "getPose", (ms) => {
-    const frame = samples.frame.get(currentFrame);
-    if (frame) {
-      frame.poseMs += ms;
-      frame.poseCalls++;
-    }
-    samples.poseCalls++;
-  });
+      samples.poseCalls++;
+    });
+  }
   mounted = await mountReflectionLab(document.getElementById("root"), {
     createRuntime: async () => runtime,
   });
@@ -528,6 +544,7 @@ async function mountUI() {
       runtime.audio.context.state !== "running"
     )
       throw new Error(`NATIVE_AUDIO_ENABLE_FAILED: ${runtime.getSnapshot().error}`);
+    runtime.audio.setDiagnosticsEnabled(probesEnabled);
     instrumentNativeStarts(runtime.audio.context, samples.nativeStarts);
     runtime.audio?.setMuted(true);
     document.getElementById("profile-enable-audio").dataset.ready = "true";
@@ -593,6 +610,7 @@ async function beginUI(durationSeconds = 600) {
   nextCapture = 0;
   measuring = true;
   if (
+    probesEnabled &&
     typeof PerformanceObserver === "function" &&
     PerformanceObserver.supportedEntryTypes.includes("longtask")
   ) {
@@ -613,7 +631,7 @@ async function warmupUI(durationMs = 10000) {
   warmup = {
     requestedDurationMs: durationMs,
     started: clockState(),
-    nativeStartsBefore: samples.nativeStarts.length,
+    nativeStartsBefore: probesEnabled ? samples.nativeStarts.length : null,
     audioClockBefore: runtime.audio.context.currentTime,
     audioBefore: runtime.audio.getTelemetry(),
   };
@@ -631,7 +649,7 @@ async function warmupUI(durationMs = 10000) {
   Object.assign(warmup, {
     durationMs: clock() - startedAt,
     ended: clockState(),
-    nativeStartsAfter: samples.nativeStarts.length,
+    nativeStartsAfter: probesEnabled ? samples.nativeStarts.length : null,
     audioClockAfter: runtime.audio.context.currentTime,
     audioAfter: runtime.audio.getTelemetry(),
     advances: samples.warmupAdvances,
@@ -711,6 +729,10 @@ function closeUIWindow() {
     const final = runtime.getSnapshot(),
       audio = runtime.audio?.getTelemetry() ?? null;
     const result = {
+      probeMode,
+      probeCoverage: probesEnabled
+        ? "INSTRUMENTED_NATIVE_RAF_METHOD_AUDIO_LONGTASK_AND_EXTERNAL_CDP"
+        : "MINIMAL_WINDOW_ENDPOINTS_AND_WORKLOAD_ACTIONS_ONLY_EXTERNAL_CDP_MUST_BE_OFF",
       startedAtPerformanceMs: startedAt,
       sampleMilliseconds: measuredEndAt - startedAt,
       collectionWindow,
@@ -722,7 +744,7 @@ function closeUIWindow() {
       final,
       audio,
       audioTelemetry: samples.audioTelemetry,
-      nativeStarts: samples.nativeStarts,
+      nativeStarts: probesEnabled ? samples.nativeStarts : null,
       droppedWallTimeSeconds:
         measuredEndClock.totalDroppedWallTimeSeconds -
         measurementStartedClock.totalDroppedWallTimeSeconds,
@@ -735,15 +757,14 @@ function closeUIWindow() {
         const advances = samples.advances.filter((sample) => sample.captureIndex === window.index);
         return {
           ...window,
-          advanceCount: advances.length,
-          overrunCount: advances.filter((sample) => sample.overrun).length,
-          pausedAdvanceCount: advances.filter(
-            (sample) => sample.before.paused || sample.after.paused,
-          ).length,
-          maxAccumulatorSeconds: Math.max(
-            0,
-            ...advances.map((sample) => sample.after.accumulatorSeconds),
-          ),
+          advanceCount: probesEnabled ? advances.length : null,
+          overrunCount: probesEnabled ? advances.filter((sample) => sample.overrun).length : null,
+          pausedAdvanceCount: probesEnabled
+            ? advances.filter((sample) => sample.before.paused || sample.after.paused).length
+            : null,
+          maxAccumulatorSeconds: probesEnabled
+            ? Math.max(0, ...advances.map((sample) => sample.after.accumulatorSeconds))
+            : null,
         };
       }),
       recorderArtifact: runtime.getRecordingArtifact()
@@ -759,21 +780,23 @@ function closeUIWindow() {
       fixedStepMs: samples.fixedStepMs,
       onTick: samples.onTick,
       publishMs: samples.publishMs,
-      interpolationMs: interpolationObservation.ms,
-      interpolationCalls: interpolationObservation.calls,
-      interpolationObservation: {
-        requiredMethod: interpolationObservation.requiredMethod,
-        observedMethods: interpolationObservation.observedMethods,
-        calls: interpolationObservation.calls,
-        successfulCalls: interpolationObservation.successfulCalls,
-        failedCalls: interpolationObservation.failedCalls,
-        byMethod: interpolationObservation.byMethod,
-        aggregateScope: interpolationObservation.aggregateScope,
-      },
-      poseCalls: samples.poseCalls,
+      interpolationMs: probesEnabled ? interpolationObservation.ms : null,
+      interpolationCalls: probesEnabled ? interpolationObservation.calls : null,
+      interpolationObservation: probesEnabled
+        ? {
+            requiredMethod: interpolationObservation.requiredMethod,
+            observedMethods: interpolationObservation.observedMethods,
+            calls: interpolationObservation.calls,
+            successfulCalls: interpolationObservation.successfulCalls,
+            failedCalls: interpolationObservation.failedCalls,
+            byMethod: interpolationObservation.byMethod,
+            aggregateScope: interpolationObservation.aggregateScope,
+          }
+        : null,
+      poseCalls: probesEnabled ? samples.poseCalls : null,
       longTasks: samples.longTasks,
       actions: samples.actions,
-      droppedSamples: samples.droppedSamples,
+      droppedSamples: probesEnabled ? samples.droppedSamples : null,
       longTaskSupported:
         typeof PerformanceObserver === "function" &&
         PerformanceObserver.supportedEntryTypes.includes("longtask"),
@@ -962,8 +985,9 @@ async function finishUI(options = {}) {
   return closedUIRaw;
 }
 // BEGIN_TESTABLE_PHYSICS_MAINTENANCE
-export function maintainPhysicsLoad(world, tick, now) {
-  const setupStartedAt = now();
+export function maintainPhysicsLoad(world, tick, now, { measure = true } = {}) {
+  if (typeof measure !== "boolean") throw new Error("INVALID_PHYSICS_PROBE_MODE");
+  const setupStartedAt = measure ? now() : null;
   if (
     !(world.records instanceof Map) ||
     world.records.size !== 256 ||
@@ -981,7 +1005,7 @@ export function maintainPhysicsLoad(world, tick, now) {
       typeof record.body?.isDynamic !== "function" ||
       record.body.isDynamic() !== true ||
       typeof record.body.isSleeping !== "function" ||
-      typeof record.body.isSleeping() !== "boolean" ||
+      (measure && typeof record.body.isSleeping() !== "boolean") ||
       typeof record.body.wakeUp !== "function"
     )
       throw new Error("PHYSICS_WAKE_ADAPTER_UNAVAILABLE");
@@ -996,25 +1020,26 @@ export function maintainPhysicsLoad(world, tick, now) {
     fixed[0][1].body.isFixed() !== true
   )
     throw new Error("PHYSICS_WAKE_ADAPTER_UNAVAILABLE");
-  const impulseStartedAt = now();
+  const impulseStartedAt = measure ? now() : null;
   if (tick % 30 === 0)
     for (let i = 0; i < 255; i++)
       world.applyImpulse(`stress.${i}`, [Math.sin(i) * 0.001, 0.04, Math.cos(i) * 0.001]);
-  const impulseMaintenanceMs = now() - impulseStartedAt;
+  const impulseMaintenanceMs = measure ? now() - impulseStartedAt : null;
   const sleepingCount = () =>
     records.reduce((sum, record) => {
       const value = record.body.isSleeping();
       if (typeof value !== "boolean") throw new Error("PHYSICS_SLEEP_QUERY_INVALID");
       return sum + Number(value);
     }, 0);
-  const nativePreWakeSleepingBodies = sleepingCount();
-  const wakeStartedAt = now();
+  const nativePreWakeSleepingBodies = measure ? sleepingCount() : null;
+  const wakeStartedAt = measure ? now() : null;
   for (const record of records) record.body.wakeUp();
-  const wakeMaintenanceMs = now() - wakeStartedAt;
-  const nativePostWakeSleepingBodies = sleepingCount();
-  if (nativePostWakeSleepingBodies !== 0) throw new Error("PHYSICS_WAKE_NOT_EFFECTIVE");
-  const totalSetupMs = now() - setupStartedAt;
+  const wakeMaintenanceMs = measure ? now() - wakeStartedAt : null;
+  const nativePostWakeSleepingBodies = measure ? sleepingCount() : null;
+  if (measure && nativePostWakeSleepingBodies !== 0) throw new Error("PHYSICS_WAKE_NOT_EFFECTIVE");
+  const totalSetupMs = measure ? now() - setupStartedAt : null;
   if (
+    measure &&
     ![impulseMaintenanceMs, wakeMaintenanceMs, totalSetupMs].every(
       (value) => Number.isFinite(value) && value >= 0,
     )
@@ -1071,39 +1096,43 @@ async function physicsProfile(iterations = 3000) {
       throw new Error("NATIVE_CCD_QUERY_UNAVAILABLE");
     return record.body.isCcdEnabled();
   }).length;
-  const original = world.world.step.bind(world.world);
-  world.world.step = (...args) => {
-    const start = clock();
-    const value = original(...args);
-    if (native.length < iterations) native.push(clock() - start);
-    return value;
-  };
+  if (probesEnabled) {
+    const original = world.world.step.bind(world.world);
+    world.world.step = (...args) => {
+      const start = clock();
+      const value = original(...args);
+      if (native.length < iterations) native.push(clock() - start);
+      return value;
+    };
+  }
   world.resume();
   for (let i = 0; i < 240; i++) world.step();
   native.length = 0;
   const started = clock();
   for (let tick = 0; tick < iterations; tick++) {
-    const totalMeasuredStartedAt = clock();
-    const maintenance = maintainPhysicsLoad(world, tick, clock);
-    loadMaintenance.push(maintenance);
-    const start = clock(),
+    const totalMeasuredStartedAt = probesEnabled ? clock() : null;
+    const maintenance = maintainPhysicsLoad(world, tick, clock, { measure: probesEnabled });
+    const start = probesEnabled ? clock() : null,
       snapshot = world.step();
-    const completeFinishedAt = clock();
-    const completeStepMs = completeFinishedAt - start;
-    complete.push(completeStepMs);
-    completeWithLoadSetupMs.push(completeFinishedAt - totalMeasuredStartedAt);
-    contacts.push(world.pairs.size);
-    for (const pair of world.pairs.values())
-      for (const id of [pair.a, pair.b]) if (id.startsWith("stress.")) contactBodyIds.add(id);
-    events.push(snapshot.events.length);
-    awakeBodies.push(
-      snapshot.poses.filter((pose) => pose.mode.startsWith("dynamic") && !pose.sleeping).length,
-    );
-    nativePostStepSleepingBodies.push(
-      [...world.records.values()].filter(
-        (record) => record.body.isDynamic() && record.body.isSleeping(),
-      ).length,
-    );
+    const completeFinishedAt = probesEnabled ? clock() : null;
+    if (probesEnabled) {
+      loadMaintenance.push(maintenance);
+      const completeStepMs = completeFinishedAt - start;
+      complete.push(completeStepMs);
+      completeWithLoadSetupMs.push(completeFinishedAt - totalMeasuredStartedAt);
+      contacts.push(world.pairs.size);
+      for (const pair of world.pairs.values())
+        for (const id of [pair.a, pair.b]) if (id.startsWith("stress.")) contactBodyIds.add(id);
+      events.push(snapshot.events.length);
+      awakeBodies.push(
+        snapshot.poses.filter((pose) => pose.mode.startsWith("dynamic") && !pose.sleeping).length,
+      );
+      nativePostStepSleepingBodies.push(
+        [...world.records.values()].filter(
+          (record) => record.body.isDynamic() && record.body.isSleeping(),
+        ).length,
+      );
+    }
     if (tick % 60 === 0) await new Promise((resolve) => setTimeout(resolve, 0));
   }
   const beforeStallTick = world.tick,
@@ -1111,6 +1140,8 @@ async function physicsProfile(iterations = 3000) {
   const after = world.snapshot();
   const result = {
     scene,
+    probeMode,
+    timingStatus: probesEnabled ? "OBSERVED" : "NOT_OBSERVED_PROBE_OFF",
     iterations,
     warmupSteps: 240,
     nativeStepMs: native,
@@ -1212,6 +1243,7 @@ async function enableSolverAudio() {
     monitorGain: 0.05,
   });
   await solverEngine.enable(0);
+  solverEngine.setDiagnosticsEnabled(probesEnabled);
   instrumentNativeStarts(solverEngine.context, solverNativeStarts);
   solverEngine.setMuted(true);
   solverEngine.updateListener({ positionM: [0.05, 1.7, 0.1], forward: [0, 0, -1], up: [0, 1, 0] });
@@ -1369,79 +1401,98 @@ async function acousticProfile(iterations = 600) {
     started = clock(),
     admissions = [],
     warmupRaw = [],
-    baselineNativeAudio = solverEngine.getTelemetry();
-  let measurementBaselineNativeAudio = null;
+    baselineNativeAudio = solverEngine.getTelemetry(),
+    baselineAudioDiagnostics = solverEngine.getDiagnostics();
+  let measurementBaselineNativeAudio = null,
+    measurementBaselineAudioDiagnostics = null;
   let begin = null;
   try {
     for (let tick = 0; tick < iterations + 20; tick++) {
-      const updateStart = clock();
+      const updateStart = probesEnabled ? clock() : null;
       let telemetry, consumerMs;
-      const { solutions, delivery } = await measureNativeDelivery(
-        service,
-        acousticRequests(tick, solverPathCap),
-        (solutions) => {
-          telemetry = service.getTelemetry();
-          const deliveryStart = clock();
-          for (const solution of solutions) solverEngine?.updateFrame(solution.frame);
-          if (tick === 0 && solverEngine) {
-            for (const solution of solutions) {
-              const admission = solverEngine.playVoice(
-                {
-                  instanceId: solution.frame.sourceId,
-                  sourceId: solution.frame.sourceId,
-                  generator: { kind: "oscillator", waveform: "sine", frequencyHz: 110 },
-                  gainLinear: 0.02,
-                  pitchSemitones: 0,
-                  emissionTimeSeconds: 0,
-                  continuous: true,
-                  fadeInSeconds: 0.01,
-                  fadeOutSeconds: 0.02,
-                },
-                solution.frame,
-              );
-              admissions.push({ sourceId: solution.frame.sourceId, ...admission });
-            }
+      const requests = acousticRequests(tick, solverPathCap);
+      const consume = (solutions) => {
+        if (probesEnabled) telemetry = service.getTelemetry();
+        const deliveryStart = probesEnabled ? clock() : null;
+        for (const solution of solutions) solverEngine?.updateFrame(solution.frame);
+        if (tick === 0 && solverEngine) {
+          for (const solution of solutions) {
+            const admission = solverEngine.playVoice(
+              {
+                instanceId: solution.frame.sourceId,
+                sourceId: solution.frame.sourceId,
+                generator: { kind: "oscillator", waveform: "sine", frequencyHz: 110 },
+                gainLinear: 0.02,
+                pitchSemitones: 0,
+                emissionTimeSeconds: 0,
+                continuous: true,
+                fadeInSeconds: 0.01,
+                fadeOutSeconds: 0.02,
+              },
+              solution.frame,
+            );
+            admissions.push({ sourceId: solution.frame.sourceId, ...admission });
           }
-          consumerMs = clock() - deliveryStart;
-        },
-        clock,
-      );
-      if (tick === 20) begin = clock();
-      const completedAtMs = clock() - started;
-      const row = {
-        tick,
-        submittedAtMs: updateStart - started,
-        completedAtMs,
-        scheduledAtMs: tick * 50,
-        submissionLateMs: updateStart - (started + tick * 50),
-        deadlineMissed: completedAtMs > (tick + 1) * 50,
-        roundTripMs: telemetry.lastRoundTripMs,
-        workerComputeMs: telemetry.lastWorkerComputeMs,
-        serviceDeliveryMs: telemetry.lastDeliveryHandlerMs,
-        audioConsumerMs: consumerMs,
-        totalDeliveryMs: consumerMs + (telemetry.lastDeliveryHandlerMs ?? 0),
-        observedDelivery: delivery,
-        receiveThroughNativeConsumersMs: delivery.durationMs,
-        returnedPaths: solutions.reduce((sum, value) => sum + value.frame.paths.length, 0),
-        segmentTests: solutions.reduce((sum, value) => sum + value.diagnostics.segmentTests, 0),
-        bytes: { request: telemetry.lastRequestBytes, response: telemetry.lastResponseBytes },
-        budgetExceeded: solutions.some((value) => value.diagnostics.budgetExceeded),
-        solverDiagnostics: solutions.map((value) => ({
-          sourceId: value.frame.sourceId,
-          ...value.diagnostics,
-        })),
-        routeState: nativeRouteState(solverEngine, solutions),
-        nativeAudio: solverEngine
-          ? { ...solverEngine.getTelemetry(), currentTimeSeconds: solverEngine.context.currentTime }
-          : null,
+        }
+        consumerMs = probesEnabled ? clock() - deliveryStart : null;
       };
-      (tick >= 20 ? measurements : warmupRaw).push(row);
-      if (tick === 19) measurementBaselineNativeAudio = solverEngine.getTelemetry();
+      let solutions, delivery;
+      if (probesEnabled) {
+        ({ solutions, delivery } = await measureNativeDelivery(service, requests, consume, clock));
+      } else {
+        solutions = await service.solve(requests);
+        consume(solutions);
+      }
+      if (tick === 20) begin = clock();
+      if (probesEnabled) {
+        const completedAtMs = clock() - started;
+        const row = {
+          tick,
+          submittedAtMs: updateStart - started,
+          completedAtMs,
+          scheduledAtMs: tick * 50,
+          submissionLateMs: updateStart - (started + tick * 50),
+          deadlineMissed: completedAtMs > (tick + 1) * 50,
+          roundTripMs: telemetry.lastRoundTripMs,
+          workerComputeMs: telemetry.lastWorkerComputeMs,
+          serviceDeliveryMs: telemetry.lastDeliveryHandlerMs,
+          audioConsumerMs: consumerMs,
+          totalDeliveryMs:
+            Number.isFinite(consumerMs) && Number.isFinite(telemetry.lastDeliveryHandlerMs)
+              ? consumerMs + telemetry.lastDeliveryHandlerMs
+              : null,
+          observedDelivery: delivery,
+          receiveThroughNativeConsumersMs: delivery.durationMs,
+          returnedPaths: solutions.reduce((sum, value) => sum + value.frame.paths.length, 0),
+          segmentTests: solutions.reduce((sum, value) => sum + value.diagnostics.segmentTests, 0),
+          bytes: { request: telemetry.lastRequestBytes, response: telemetry.lastResponseBytes },
+          budgetExceeded: solutions.some((value) => value.diagnostics.budgetExceeded),
+          solverDiagnostics: solutions.map((value) => ({
+            sourceId: value.frame.sourceId,
+            ...value.diagnostics,
+          })),
+          routeState: nativeRouteState(solverEngine, solutions),
+          audioDiagnostics: solverEngine?.getDiagnostics() ?? null,
+          nativeAudio: solverEngine
+            ? {
+                ...solverEngine.getTelemetry(),
+                currentTimeSeconds: solverEngine.context.currentTime,
+              }
+            : null,
+        };
+        (tick >= 20 ? measurements : warmupRaw).push(row);
+      }
+      if (tick === 19) {
+        measurementBaselineNativeAudio = solverEngine.getTelemetry();
+        measurementBaselineAudioDiagnostics = solverEngine.getDiagnostics();
+      }
       await new Promise((resolve) =>
         setTimeout(resolve, Math.max(0, started + (tick + 1) * 50 - clock())),
       );
     }
     const result = {
+      probeMode,
+      timingStatus: probesEnabled ? "OBSERVED" : "NOT_OBSERVED_PROBE_OFF",
       iterations,
       warmupBatches: 20,
       targetHz: 20,
@@ -1457,11 +1508,14 @@ async function acousticProfile(iterations = 600) {
       raw: measurements,
       admissions,
       baselineNativeAudio,
+      baselineAudioDiagnostics,
       measurementBaselineNativeAudio,
+      measurementBaselineAudioDiagnostics,
       warmupRaw,
       nativeStarts: solverNativeStarts,
       telemetry: service.getTelemetry(),
       nativeAudio: solverEngine?.getTelemetry() ?? null,
+      audioDiagnostics: solverEngine?.getDiagnostics() ?? null,
     };
     return result;
   } finally {

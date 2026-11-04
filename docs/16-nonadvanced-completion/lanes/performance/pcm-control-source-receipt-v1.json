@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "method": "controlled-native-audio-pcm-v1",
+  "status": "SOURCE_READY_NATIVE_PCM_NOT_RUN",
+  "observedHeadBeforeCommit": "047d977f723db067cf703cf265c207855095420e",
+  "productBase": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "source": [
+    {
+      "path": "tests/browser/performance-audio-attribution-v1.html",
+      "sha256": "20560d735df3a12313e768392109085ae459fd301a8255849bdd8ae99290fb17"
+    },
+    {
+      "path": "tests/browser/performance-audio-attribution-v1.mjs",
+      "sha256": "488e6c49a4f6645ea7b59c2100a59814fae83ece558315ab8a2ad7e5b9a1b9ba"
+    },
+    {
+      "path": "tests/browser/performance-audio-attribution-v1.vite.config.ts",
+      "sha256": "bf518a309f0a89b52b81384c28a81d65877fff4f4f9b34403aa97357eb7d8cff"
+    },
+    {
+      "path": "tests/browser/performance-audio-command-v1.mjs",
+      "sha256": "dafbe99d4ecd6ab1fa6d55fc4c6a02d8ff68c03efbcea5a8624ad8d2f5ef9a79"
+    },
+    {
+      "path": "tests/browser/performance-audio-controls-v1.mjs",
+      "sha256": "932c1de561a2e6851c2f38f1d12e3055eb396b12209abbc2719ce13033172f9e"
+    },
+    {
+      "path": "tests/browser/performance-audio-runner-v1.mjs",
+      "sha256": "09bd19f50cb3cb47e6eddd2fa9f823be4ff75bc148e5ee57705bb91a61d02f90"
+    },
+    {
+      "path": "tests/browser/performance-fixture-v3.mjs",
+      "sha256": "bd4b2317e961322489ebd4daf22a2b36168e4fab4f233810cc4a93198f0cc8b3"
+    },
+    {
+      "path": "tests/browser/performance-pcm-artifact-v1.mjs",
+      "sha256": "c2b2e8567b9ef407c95315bff961cfc2a03da7caf0e8c930966c79ec66d123ea"
+    },
+    {
+      "path": "tests/browser/performance-pcm-probe-v1.js",
+      "sha256": "f2c06f66399e3d11c868b3cd5c1ed691bd5a1d10d4d8ec59512d54c76151881e"
+    },
+    {
+      "path": "tests/browser/performance-profile.mjs",
+      "sha256": "792f45b9fd9bd601593395610d7fe5ebea34914d72e82465b0a2013d5a72d3b2"
+    },
+    {
+      "path": "tests/performance-v3/attribution-metrics.spec.mjs",
+      "sha256": "d7d76b31d3c64dd0983eea7b3b822c935e014e9fc5755f54b7c66203aa38c724"
+    },
+    {
+      "path": "tests/performance-v3/pcm-probe.spec.mjs",
+      "sha256": "440498c03b62c848ca3e9766e63ab4371c7636d11f9bd15d0a2fa048bb1aca58"
+    },
+    {
+      "path": "tests/performance-v3/probe-free-fixture.spec.mjs",
+      "sha256": "9ae1a26514825f783bf4ba35641991604bcb10bef2ce526ac8564be0c628dba8"
+    }
+  ],
+  "unitValidation": {
+    "command": "node --test --test-concurrency=1 <six explicitly registered owned performance specs>",
+    "exitCode": 0,
+    "tests": 356,
+    "pass": 356,
+    "fail": 0,
+    "skip": 0,
+    "raw": "focused-356-green-r1.tap"
+  },
+  "lint": [
+    {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "raw": "pcm-control-lint-r5.txt"
+    },
+    {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "scope": "final runner output-target checks",
+      "raw": "pcm-runner-lint-r6.txt"
+    }
+  ],
+  "redEvidence": [
+    {
+      "raw": "pcm-artifact-oracle-red-r1.tap",
+      "fail": 1,
+      "scope": "missing artifact module export; other guarded new assertions not yet exercised"
+    },
+    {
+      "raw": "pcm-wave-bits-red-r1.tap",
+      "fail": 3,
+      "scope": "short/long PCM rejection plus original signed-zero/NaN payload bytes"
+    },
+    {
+      "raw": "audio-controls-red-r1.tap",
+      "fail": 1,
+      "scope": "missing control oracle export; guarded new assertions not yet exercised"
+    },
+    {
+      "raw": "audio-overhead-source-window-red-r1.tap",
+      "fail": 15,
+      "scope": "14 actual source/window false-success mutations plus missing overhead export"
+    }
+  ],
+  "workloadScope": {
+    "formal600Replacement": false,
+    "engineOriginalBudgetFields": 13,
+    "defaultVoiceCap": 24,
+    "pathsPerVoice": 8,
+    "totalPaths": 96,
+    "captureSeconds": 3,
+    "cases": [
+      "steady",
+      "main-stall",
+      "late-onset",
+      "stale-frame",
+      "path-churn",
+      "voice-path-budget",
+      "digital-gap"
+    ],
+    "budgetControl": "32 requested paths and 36 admissions against default engine budget; not the formal stress32/256 workload",
+    "referenceContentModel": "nativeReference",
+    "candidateAdopted": false,
+    "candidateValidation": "NOT_RUN_NOT_QUALIFIED"
+  },
+  "probeComparison": {
+    "on": [
+      "bounded PCM Worklet",
+      "500ms engine diagnostics polling",
+      "module setup and WAV encoding/report costs"
+    ],
+    "commonBothModes": [
+      "unity post-master control GainNode",
+      "bounded action journal and timer entry/wall observations",
+      "before/after native telemetry endpoints"
+    ],
+    "scope": "WHOLE_CASE_DESCRIPTIVE_ONLY",
+    "fullyObserverFreeFormalRun": false,
+    "nativeDspCpuMs": null,
+    "hardwareUnderrunEvents": null,
+    "physicalHearing": "NOT_RUN"
+  },
+  "actualPcm": "NOT_RUN",
+  "build": "NOT_RUN",
+  "sourceTypecheck": "NOT_RUN",
+  "processCpuOverhead": "NOT_RUN",
+  "formal600Run": false,
+  "overallV1Complete": false,
+  "paidCalls": 0
+}

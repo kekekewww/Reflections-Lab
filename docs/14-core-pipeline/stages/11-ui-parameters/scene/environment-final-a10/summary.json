@@ -1,0 +1,179 @@
+{
+  "kind": "PRODUCTION_ENVIRONMENT_SAVE_IMPORT_REGRESSION",
+  "sourceCommit": "a10b7419908ecd88fd26d96dc354ca5659796986",
+  "observedGitHead": "a10b7419908ecd88fd26d96dc354ca5659796986",
+  "declaredEntry": "index-BmjZ1Zyf.js",
+  "startedAt": "2026-11-02T08:20:04.552Z",
+  "method": "Actual production DOM; fresh browser context imports actual UI-exported bytes; no runtime/test bridge",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "save-and-export-atmosphere",
+      "status": "PASS",
+      "atmosphere": {
+        "medium": "vacuum",
+        "speedOfSoundMps": 352.18911894037836,
+        "temperatureC": 35.5,
+        "bandAbsorptionDbPerM": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dataClass": "Synthetic"
+      }
+    },
+    {
+      "id": "reload-load-preserves-environment",
+      "status": "PASS",
+      "ui": {
+        "medium": "vacuum",
+        "temperatureC": 35.5
+      }
+    },
+    {
+      "id": "fresh-context-import-carries-environment",
+      "status": "PASS",
+      "ui": {
+        "medium": "vacuum",
+        "temperatureC": 35.5
+      }
+    },
+    {
+      "id": "legacy-import-defaults-exact-and-no-cross-project-leak",
+      "status": "PASS",
+      "atmosphere": {
+        "medium": "air",
+        "speedOfSoundMps": 343,
+        "temperatureC": 20,
+        "bandAbsorptionDbPerM": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dataClass": "Synthetic"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "saved-vacuum-35.5.json",
+      "bytes": 10744,
+      "sha256": "bcdf5993a92f5e88d3a753ffde3fb3406d7eaac82cbb874ed048c462b4e956c4",
+      "origin": "real UI project export download"
+    },
+    {
+      "path": "after-reload-load.json",
+      "bytes": 10744,
+      "sha256": "61a1587b851346f1fd6e4fe6f109e2652b3cf686f32280f1b7c7c5ddb321eeee",
+      "origin": "real UI project export download"
+    },
+    {
+      "path": "fresh-context-import.json",
+      "bytes": 10744,
+      "sha256": "bca22c50bcad563bc0288d8356e5fea2704df89bd411ad8f8db69b319306b6c2",
+      "origin": "real UI project export download"
+    },
+    {
+      "path": "legacy-without-atmosphere.json",
+      "bytes": 5751,
+      "sha256": "21018e2c83f4d0ccbdb4290e723c9ab662be5a1c11898bf976cf2c1febdae501",
+      "origin": "same actual UI-exported project with only optional atmosphere omitted for backwards compatibility case"
+    },
+    {
+      "path": "legacy-loaded-export.json",
+      "bytes": 10724,
+      "sha256": "bf56c16bb60f681d68859592ae9cbd748aa878f89e96813e98459f08caba9392",
+      "origin": "real UI project export download"
+    }
+  ],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-D2dVaeGQ.js",
+      "bytes": 762190,
+      "sha256": "17f6fb338f55061ce563ff9b7b19fd627c0ce7b4c41d1d1cd010067ccb3c9507"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-BmjZ1Zyf.js",
+      "bytes": 5093255,
+      "sha256": "0ed373c786549c63413e9ef5cac502630df727ba9a1d331c988c2101c8a5d42a"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "bytes": 38307,
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-CoxiAUXl.js",
+      "bytes": 772536,
+      "sha256": "acd6154acf99be78317f4bad9384822bfe4eaeb8c2bedcd066532a5bfd4e8581"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DdUoJwm0.js",
+      "bytes": 12257,
+      "sha256": "e4c1de5ba1b9a3338e3f563c0f1a7fb751d1145b2d0953be76a5c919ab9fe0e2"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-D2dVaeGQ.js",
+      "bytes": 762190,
+      "sha256": "17f6fb338f55061ce563ff9b7b19fd627c0ce7b4c41d1d1cd010067ccb3c9507"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-BmjZ1Zyf.js",
+      "bytes": 5093255,
+      "sha256": "0ed373c786549c63413e9ef5cac502630df727ba9a1d331c988c2101c8a5d42a"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "bytes": 38307,
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-CoxiAUXl.js",
+      "bytes": 772536,
+      "sha256": "acd6154acf99be78317f4bad9384822bfe4eaeb8c2bedcd066532a5bfd4e8581"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DdUoJwm0.js",
+      "bytes": 12257,
+      "sha256": "e4c1de5ba1b9a3338e3f563c0f1a7fb751d1145b2d0953be76a5c919ab9fe0e2"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-D2dVaeGQ.js",
+      "bytes": 762190,
+      "sha256": "17f6fb338f55061ce563ff9b7b19fd627c0ce7b4c41d1d1cd010067ccb3c9507"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-BmjZ1Zyf.js",
+      "bytes": 5093255,
+      "sha256": "0ed373c786549c63413e9ef5cac502630df727ba9a1d331c988c2101c8a5d42a"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "bytes": 38307,
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-CoxiAUXl.js",
+      "bytes": 772536,
+      "sha256": "acd6154acf99be78317f4bad9384822bfe4eaeb8c2bedcd066532a5bfd4e8581"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DdUoJwm0.js",
+      "bytes": 12257,
+      "sha256": "e4c1de5ba1b9a3338e3f563c0f1a7fb751d1145b2d0953be76a5c919ab9fe0e2"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "browser": "156.0.8078.75",
+  "finishedAt": "2026-11-02T08:20:18.852Z",
+  "projectDownloads": 4
+}

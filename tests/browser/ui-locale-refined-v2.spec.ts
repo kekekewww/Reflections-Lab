@@ -104,7 +104,7 @@ declare global {
 async function openWorkspace(page: Page) {
   await page.goto("/");
   await expect(page.getByRole("combobox", { name: LOCALE_LABEL, exact: true })).toBeVisible();
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
   await expect.poll(() => page.evaluate(() => !!window.__reflectionLab)).toBe(true);
 }
 
@@ -133,7 +133,7 @@ async function expectLocalizedHead(page: Page, locale: "zh-TW" | "en") {
 async function observeRuntime(page: Page) {
   return page.evaluate(() => {
     const runtime = window.__reflectionLab;
-    const canvas = document.querySelector("canvas");
+    const canvas = document.querySelector(".viewport-canvas-wrap canvas");
     if (!runtime || !canvas) throw new Error("Actual runtime and Canvas are required");
     const native = runtime as unknown as NativeRuntimeObservation;
     const audio = native.audio;
@@ -204,7 +204,7 @@ async function readRuntimeInvariant(page: Page) {
     return {
       sameRuntime: runtime === probe.runtime,
       sameWorld: native.world === probe.world,
-      sameCanvas: document.querySelector("canvas") === probe.canvas,
+      sameCanvas: document.querySelector(".viewport-canvas-wrap canvas") === probe.canvas,
       sameAudioEngine: audio === probe.audio,
       sameAudioContext: (audio?.context ?? null) === probe.context,
       sameContinuousSources: [...probe.voices].every(([id, source]) => {
@@ -409,6 +409,13 @@ test("EN-02 English controls, dialogs, known diagnostics and offline preview rem
       exact: true,
     }),
   ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: "About Import audio",
+      description: /^PCM\/float WAV\./,
+      exact: true,
+    })
+    .focus();
   await expect(page.getByText("PCM/float WAV.", { exact: false })).toBeVisible();
   await page.getByRole("button", { name: "Import project JSON", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Import project JSON", exact: true });
@@ -655,7 +662,10 @@ test("EN-04 English desktop and 320px retain readable forms, visible monitoring 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await openWorkspace(page);
   await chooseLocale(page, "en");
-  await expect(page.locator("canvas")).toHaveAttribute("aria-label", /^3D scene\. Alt plus/);
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toHaveAttribute(
+    "aria-label",
+    /^3D scene\. Alt plus/,
+  );
   await page.screenshot({ path: info.outputPath("english-desktop.png"), timeout: 10_000 });
   await page.setViewportSize({ width: 320, height: 700 });
   await page
@@ -694,7 +704,10 @@ test("EN-04 English desktop and 320px retain readable forms, visible monitoring 
     .toBe(true);
   await page.getByRole("slider", { name: "Monitor gain", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("slider", { name: "Monitor gain", exact: true })).toHaveValue("0.19");
+  // R18: the monitor control is a whole-dB taper (default 0 dB); one keyboard step is +1 dB.
+  const monitorGain = page.getByRole("slider", { name: "Monitor gain", exact: true });
+  await expect(monitorGain).toHaveValue("1");
+  await expect(monitorGain).toHaveAttribute("aria-valuetext", "+1 dB");
   await page
     .getByRole("navigation", { name: "Main panels", exact: true })
     .getByRole("button", { name: "3D viewport", exact: true })

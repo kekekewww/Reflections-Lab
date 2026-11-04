@@ -1,0 +1,838 @@
+TAP version 13
+# Subtest: bootstrap exposes independent one-shot scheduler and raw evidence verifier
+ok 1 - bootstrap exposes independent one-shot scheduler and raw evidence verifier
+  ---
+  duration_ms: 3.0327
+  type: 'test'
+  ...
+# Subtest: bootstrap unmeasured timestamps remain null before any real callback
+ok 2 - bootstrap unmeasured timestamps remain null before any real callback
+  ---
+  duration_ms: 1.4774
+  type: 'test'
+  ...
+# Subtest: bootstrap schedules exactly one zero-requested-delay timer and records real callback clocks
+ok 3 - bootstrap schedules exactly one zero-requested-delay timer and records real callback clocks
+  ---
+  duration_ms: 0.9887
+  type: 'test'
+  ...
+# Subtest: restore cancels the owned pending timer once and ignores late canceled delivery
+ok 4 - restore cancels the owned pending timer once and ignores late canceled delivery
+  ---
+  duration_ms: 0.2885
+  type: 'test'
+  ...
+# Subtest: a duplicate callback cannot create a heartbeat or a second measurement
+ok 5 - a duplicate callback cannot create a heartbeat or a second measurement
+  ---
+  duration_ms: 0.232
+  type: 'test'
+  ...
+# Subtest: snapshot mutations cannot alter the scheduler's stored evidence
+ok 6 - snapshot mutations cannot alter the scheduler's stored evidence
+  ---
+  duration_ms: 0.1847
+  type: 'test'
+  ...
+# Subtest: bootstrap verifies actual unique timer and marks inside the complete raw owned task
+ok 7 - bootstrap verifies actual unique timer and marks inside the complete raw owned task
+  ---
+  duration_ms: 1.8455
+  type: 'test'
+  ...
+# Subtest: a bootstrap delivered exactly fifty ms after the original begin stays eligible
+ok 8 - a bootstrap delivered exactly fifty ms after the original begin stays eligible
+  ---
+  duration_ms: 0.4282
+  type: 'test'
+  ...
+# Subtest: the next Float64 above the fifty-ms boundary is rejected without epsilon
+ok 9 - the next Float64 above the fifty-ms boundary is rejected without epsilon
+  ---
+  duration_ms: 0.883
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing bootstrap cannot be rescued by advertised flags
+ok 10 - bootstrap rejects missing bootstrap cannot be rescued by advertised flags
+  ---
+  duration_ms: 0.694
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects unfired timer
+ok 11 - bootstrap rejects unfired timer
+  ---
+  duration_ms: 0.352
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects canceled timer
+ok 12 - bootstrap rejects canceled timer
+  ---
+  duration_ms: 0.2041
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects second schedule
+ok 13 - bootstrap rejects second schedule
+  ---
+  duration_ms: 0.1559
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects second fire
+ok 14 - bootstrap rejects second fire
+  ---
+  duration_ms: 0.1534
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects nonzero requested delay
+ok 15 - bootstrap rejects nonzero requested delay
+  ---
+  duration_ms: 0.2349
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects wrong collection
+ok 16 - bootstrap rejects wrong collection
+  ---
+  duration_ms: 0.1826
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects scheduled before the original begin
+ok 17 - bootstrap rejects scheduled before the original begin
+  ---
+  duration_ms: 0.1381
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects entry before schedule
+ok 18 - bootstrap rejects entry before schedule
+  ---
+  duration_ms: 0.1184
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit before entry
+ok 19 - bootstrap rejects exit before entry
+  ---
+  duration_ms: 0.1044
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit after the unchanged close
+ok 20 - bootstrap rejects exit after the unchanged close
+  ---
+  duration_ms: 0.0971
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects nonfinite entry
+ok 21 - bootstrap rejects nonfinite entry
+  ---
+  duration_ms: 0.1097
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects nonfinite exit
+ok 22 - bootstrap rejects nonfinite exit
+  ---
+  duration_ms: 0.1091
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing measured schedule
+ok 23 - bootstrap rejects missing measured schedule
+  ---
+  duration_ms: 0.108
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects entry changed to a clock after the real enter mark
+ok 24 - bootstrap rejects entry changed to a clock after the real enter mark
+  ---
+  duration_ms: 0.5464
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit changed to a clock before the real exit mark
+ok 25 - bootstrap rejects exit changed to a clock before the real exit mark
+  ---
+  duration_ms: 0.2431
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects aux entry fabricated early cannot hide the actual native mark clock
+ok 26 - bootstrap rejects aux entry fabricated early cannot hide the actual native mark clock
+  ---
+  duration_ms: 0.159
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects aux exit fabricated late cannot hide an exit mark before entry
+ok 27 - bootstrap rejects aux exit fabricated late cannot hide an exit mark before entry
+  ---
+  duration_ms: 0.1748
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects enter mark startTime unknown
+ok 28 - bootstrap rejects enter mark startTime unknown
+  ---
+  duration_ms: 0.1289
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit mark startTime unknown
+ok 29 - bootstrap rejects exit mark startTime unknown
+  ---
+  duration_ms: 0.1177
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects enter mark startTime nonfinite
+ok 30 - bootstrap rejects enter mark startTime nonfinite
+  ---
+  duration_ms: 0.1215
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit mark startTime nonfinite
+ok 31 - bootstrap rejects exit mark startTime nonfinite
+  ---
+  duration_ms: 0.123
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark clock ordering reversed
+ok 32 - bootstrap rejects mark clock ordering reversed
+  ---
+  duration_ms: 0.1521
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects enter mark clock after close
+ok 33 - bootstrap rejects enter mark clock after close
+  ---
+  duration_ms: 0.1692
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects exit mark clock after close
+ok 34 - bootstrap rejects exit mark clock after close
+  ---
+  duration_ms: 0.1259
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects bootstrap timer is another handle
+ok 35 - bootstrap rejects bootstrap timer is another handle
+  ---
+  duration_ms: 0.1099
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing TimerInstall
+ok 36 - bootstrap rejects missing TimerInstall
+  ---
+  duration_ms: 0.11
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing TimerFire
+ok 37 - bootstrap rejects missing TimerFire
+  ---
+  duration_ms: 0.1069
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects duplicate TimerInstall
+ok 38 - bootstrap rejects duplicate TimerInstall
+  ---
+  duration_ms: 0.1396
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects duplicate TimerFire
+ok 39 - bootstrap rejects duplicate TimerFire
+  ---
+  duration_ms: 0.1681
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall on another positive owner
+ok 40 - bootstrap rejects TimerInstall on another positive owner
+  ---
+  duration_ms: 0.1128
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire on another positive owner
+ok 41 - bootstrap rejects TimerFire on another positive owner
+  ---
+  duration_ms: 0.1182
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall another document
+ok 42 - bootstrap rejects TimerInstall another document
+  ---
+  duration_ms: 0.1355
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire another document
+ok 43 - bootstrap rejects TimerFire another document
+  ---
+  duration_ms: 0.1189
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall malformed present args
+ok 44 - bootstrap rejects TimerInstall malformed present args
+  ---
+  duration_ms: 0.1231
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire malformed present args
+ok 45 - bootstrap rejects TimerFire malformed present args
+  ---
+  duration_ms: 0.1176
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall unknown timerId
+ok 46 - bootstrap rejects TimerInstall unknown timerId
+  ---
+  duration_ms: 0.1216
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire unknown timerId
+ok 47 - bootstrap rejects TimerFire unknown timerId
+  ---
+  duration_ms: 0.1067
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall repeated timer
+ok 48 - bootstrap rejects TimerInstall repeated timer
+  ---
+  duration_ms: 0.1192
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall actual nonzero request
+ok 49 - bootstrap rejects TimerInstall actual nonzero request
+  ---
+  duration_ms: 0.1079
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall wrong category
+ok 50 - bootstrap rejects TimerInstall wrong category
+  ---
+  duration_ms: 0.1125
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire wrong category
+ok 51 - bootstrap rejects TimerFire wrong category
+  ---
+  duration_ms: 0.1041
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall invalid instant
+ok 52 - bootstrap rejects TimerInstall invalid instant
+  ---
+  duration_ms: 0.0998
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire missing duration
+ok 53 - bootstrap rejects TimerFire missing duration
+  ---
+  duration_ms: 1.052
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire negative duration
+ok 54 - bootstrap rejects TimerFire negative duration
+  ---
+  duration_ms: 0.3909
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall after Fire
+ok 55 - bootstrap rejects TimerInstall after Fire
+  ---
+  duration_ms: 0.2162
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerInstall before the unchanged begin
+ok 56 - bootstrap rejects TimerInstall before the unchanged begin
+  ---
+  duration_ms: 0.1348
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects TimerFire after the unchanged end
+ok 57 - bootstrap rejects TimerFire after the unchanged end
+  ---
+  duration_ms: 0.116
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing enter mark
+ok 58 - bootstrap rejects missing enter mark
+  ---
+  duration_ms: 0.1057
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects missing exit mark
+ok 59 - bootstrap rejects missing exit mark
+  ---
+  duration_ms: 0.0955
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects duplicate enter mark
+ok 60 - bootstrap rejects duplicate enter mark
+  ---
+  duration_ms: 0.1388
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects duplicate exit mark
+ok 61 - bootstrap rejects duplicate exit mark
+  ---
+  duration_ms: 0.1127
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark from another owner
+ok 62 - bootstrap rejects mark from another owner
+  ---
+  duration_ms: 0.1061
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark from another navigation
+ok 63 - bootstrap rejects mark from another navigation
+  ---
+  duration_ms: 0.104
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark unknown callTime
+ok 64 - bootstrap rejects mark unknown callTime
+  ---
+  duration_ms: 0.1058
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark nonfinite callTime
+ok 65 - bootstrap rejects mark nonfinite callTime
+  ---
+  duration_ms: 0.1091
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark physical callTime outside its Fire
+ok 66 - bootstrap rejects mark physical callTime outside its Fire
+  ---
+  duration_ms: 0.1097
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects enter and exit physical callTimes reversed
+ok 67 - bootstrap rejects enter and exit physical callTimes reversed
+  ---
+  duration_ms: 0.1023
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark wrong category
+ok 68 - bootstrap rejects mark wrong category
+  ---
+  duration_ms: 0.0968
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects mark mislabeled as an old V3 proof
+ok 69 - bootstrap rejects mark mislabeled as an old V3 proof
+  ---
+  duration_ms: 0.1014
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects native context unqualified
+ok 70 - bootstrap rejects native context unqualified
+  ---
+  duration_ms: 0.0922
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects native context wrong navigation
+ok 71 - bootstrap rejects native context wrong navigation
+  ---
+  duration_ms: 0.0874
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects changed document
+ok 72 - bootstrap rejects changed document
+  ---
+  duration_ms: 0.087
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects trace loss
+ok 73 - bootstrap rejects trace loss
+  ---
+  duration_ms: 0.088
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects trace close unknown
+ok 74 - bootstrap rejects trace close unknown
+  ---
+  duration_ms: 0.1067
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects no validated complete task
+ok 75 - bootstrap rejects no validated complete task
+  ---
+  duration_ms: 0.1347
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects native complete task absent from raw
+ok 76 - bootstrap rejects native complete task absent from raw
+  ---
+  duration_ms: 0.1346
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects raw task differs from the validated complete task
+ok 77 - bootstrap rejects raw task differs from the validated complete task
+  ---
+  duration_ms: 0.1231
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects task not complete
+ok 78 - bootstrap rejects task not complete
+  ---
+  duration_ms: 0.1365
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects task contains marks but not the whole Fire
+ok 79 - bootstrap rejects task contains marks but not the whole Fire
+  ---
+  duration_ms: 0.163
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects task another positive owner
+ok 80 - bootstrap rejects task another positive owner
+  ---
+  duration_ms: 0.1444
+  type: 'test'
+  ...
+# Subtest: bootstrap rejects task wrong category
+ok 81 - bootstrap rejects task wrong category
+  ---
+  duration_ms: 0.1213
+  type: 'test'
+  ...
+# Subtest: bootstrap returns controlled rejection for null ui
+ok 82 - bootstrap returns controlled rejection for null ui
+  ---
+  duration_ms: 0.1661
+  type: 'test'
+  ...
+# Subtest: bootstrap returns controlled rejection for null events
+ok 83 - bootstrap returns controlled rejection for null events
+  ---
+  duration_ms: 0.1012
+  type: 'test'
+  ...
+# Subtest: bootstrap returns controlled rejection for null context
+ok 84 - bootstrap returns controlled rejection for null context
+  ---
+  duration_ms: 0.1007
+  type: 'test'
+  ...
+# Subtest: the actual attempt02 missing bootstrap remains rejected and original raw bytes stay exact
+ok 85 - the actual attempt02 missing bootstrap remains rejected and original raw bytes stay exact
+  ---
+  duration_ms: 16.9313
+  type: 'test'
+  ...
+# Subtest: an extra stack field is rejected for the exact pinned no-stack capture config
+ok 86 - an extra stack field is rejected for the exact pinned no-stack capture config
+  ---
+  duration_ms: 0.3485
+  type: 'test'
+  ...
+# Subtest: a fully foreign document may independently reuse the same numeric timerId
+ok 87 - a fully foreign document may independently reuse the same numeric timerId
+  ---
+  duration_ms: 0.362
+  type: 'test'
+  ...
+# Subtest: quantized same-value callback clocks stay actual values rather than being fabricated
+ok 88 - quantized same-value callback clocks stay actual values rather than being fabricated
+  ---
+  duration_ms: 0.3046
+  type: 'test'
+  ...
+# Subtest: the versioned bootstrap page is separate from the frozen original semantic page
+ok 89 - the versioned bootstrap page is separate from the frozen original semantic page
+  ---
+  duration_ms: 0.6873
+  type: 'test'
+  ...
+# Subtest: versioned page keeps all original callbacks and schedules only one bootstrap before close
+ok 90 - versioned page keeps all original callbacks and schedules only one bootstrap before close
+  ---
+  duration_ms: 6.786
+  type: 'test'
+  ...
+# Subtest: an auxiliary early-entry claim cannot hide a captured timer and enter mark after fifty ms
+ok 91 - an auxiliary early-entry claim cannot hide a captured timer and enter mark after fifty ms
+  ---
+  duration_ms: 0.2898
+  type: 'test'
+  ...
+# Subtest: V3 runner exposes an explicit all-evidence success predicate
+ok 92 - V3 runner exposes an explicit all-evidence success predicate
+  ---
+  duration_ms: 1.4787
+  type: 'test'
+  ...
+# Subtest: V3 command exposes independent process-cleanup and bootstrap-evidence outcome
+ok 93 - V3 command exposes independent process-cleanup and bootstrap-evidence outcome
+  ---
+  duration_ms: 0.1154
+  type: 'test'
+  ...
+# Subtest: V3 runner success requires five actually true evidence values
+ok 94 - V3 runner success requires five actually true evidence values
+  ---
+  duration_ms: 0.3441
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects journalOracle.qualified false
+ok 95 - V3 runner rejects journalOracle.qualified false
+  ---
+  duration_ms: 0.1379
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects journalOracle.qualified null
+ok 96 - V3 runner rejects journalOracle.qualified null
+  ---
+  duration_ms: 0.043
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects journalOracle.qualified missing
+ok 97 - V3 runner rejects journalOracle.qualified missing
+  ---
+  duration_ms: 0.0798
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects journalOracle.qualified truthy string
+ok 98 - V3 runner rejects journalOracle.qualified truthy string
+  ---
+  duration_ms: 0.0413
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects strictNative.qualified false
+ok 99 - V3 runner rejects strictNative.qualified false
+  ---
+  duration_ms: 0.0422
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects strictNative.qualified null
+ok 100 - V3 runner rejects strictNative.qualified null
+  ---
+  duration_ms: 0.0365
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects strictNative.qualified missing
+ok 101 - V3 runner rejects strictNative.qualified missing
+  ---
+  duration_ms: 0.0392
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects strictNative.qualified truthy string
+ok 102 - V3 runner rejects strictNative.qualified truthy string
+  ---
+  duration_ms: 0.0386
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects nativeJournalCorroboration.qualified false
+ok 103 - V3 runner rejects nativeJournalCorroboration.qualified false
+  ---
+  duration_ms: 0.0415
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects nativeJournalCorroboration.qualified null
+ok 104 - V3 runner rejects nativeJournalCorroboration.qualified null
+  ---
+  duration_ms: 0.046
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects nativeJournalCorroboration.qualified missing
+ok 105 - V3 runner rejects nativeJournalCorroboration.qualified missing
+  ---
+  duration_ms: 0.0365
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects nativeJournalCorroboration.qualified truthy string
+ok 106 - V3 runner rejects nativeJournalCorroboration.qualified truthy string
+  ---
+  duration_ms: 0.0323
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects bootstrapCapture.qualified false
+ok 107 - V3 runner rejects bootstrapCapture.qualified false
+  ---
+  duration_ms: 0.035
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects bootstrapCapture.qualified null
+ok 108 - V3 runner rejects bootstrapCapture.qualified null
+  ---
+  duration_ms: 0.0317
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects bootstrapCapture.qualified missing
+ok 109 - V3 runner rejects bootstrapCapture.qualified missing
+  ---
+  duration_ms: 0.0337
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects bootstrapCapture.qualified truthy string
+ok 110 - V3 runner rejects bootstrapCapture.qualified truthy string
+  ---
+  duration_ms: 0.0317
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects numericCoverageComplete false
+ok 111 - V3 runner rejects numericCoverageComplete false
+  ---
+  duration_ms: 0.0403
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects numericCoverageComplete null
+ok 112 - V3 runner rejects numericCoverageComplete null
+  ---
+  duration_ms: 0.0338
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects numericCoverageComplete missing
+ok 113 - V3 runner rejects numericCoverageComplete missing
+  ---
+  duration_ms: 0.0372
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects numericCoverageComplete truthy string
+ok 114 - V3 runner rejects numericCoverageComplete truthy string
+  ---
+  duration_ms: 0.033
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects a missing journalOracle record
+ok 115 - V3 runner rejects a missing journalOracle record
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects a missing strictNative record
+ok 116 - V3 runner rejects a missing strictNative record
+  ---
+  duration_ms: 0.0363
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects a missing nativeJournalCorroboration record
+ok 117 - V3 runner rejects a missing nativeJournalCorroboration record
+  ---
+  duration_ms: 0.0394
+  type: 'test'
+  ...
+# Subtest: V3 runner rejects a missing bootstrapCapture record
+ok 118 - V3 runner rejects a missing bootstrapCapture record
+  ---
+  duration_ms: 0.0341
+  type: 'test'
+  ...
+# Subtest: an advertised bootstrap boolean cannot rescue a failed raw capture object
+ok 119 - an advertised bootstrap boolean cannot rescue a failed raw capture object
+  ---
+  duration_ms: 0.074
+  type: 'test'
+  ...
+# Subtest: V3 runner returns false for non-report null
+ok 120 - V3 runner returns false for non-report null
+  ---
+  duration_ms: 0.0725
+  type: 'test'
+  ...
+# Subtest: V3 runner returns false for non-report undefined
+ok 121 - V3 runner returns false for non-report undefined
+  ---
+  duration_ms: 0.034
+  type: 'test'
+  ...
+# Subtest: V3 runner returns false for non-report false
+ok 122 - V3 runner returns false for non-report false
+  ---
+  duration_ms: 0.0367
+  type: 'test'
+  ...
+# Subtest: V3 runner returns false for non-report qualified
+ok 123 - V3 runner returns false for non-report qualified
+  ---
+  duration_ms: 0.0369
+  type: 'test'
+  ...
+# Subtest: V3 complete bootstrap evidence preserves the original V2 actual cleanup outcome
+ok 124 - V3 complete bootstrap evidence preserves the original V2 actual cleanup outcome
+  ---
+  duration_ms: 0.3529
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap capture false rejects success while releasing actually closed resources
+ok 125 - V3 bootstrap capture false rejects success while releasing actually closed resources
+  ---
+  duration_ms: 0.2663
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap capture null rejects success while releasing actually closed resources
+ok 126 - V3 bootstrap capture null rejects success while releasing actually closed resources
+  ---
+  duration_ms: 0.1856
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap capture missing rejects success while releasing actually closed resources
+ok 127 - V3 bootstrap capture missing rejects success while releasing actually closed resources
+  ---
+  duration_ms: 0.0739
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap capture truthy string rejects success while releasing actually closed resources
+ok 128 - V3 bootstrap capture truthy string rejects success while releasing actually closed resources
+  ---
+  duration_ms: 0.1619
+  type: 'test'
+  ...
+# Subtest: V3 unconfirmed bootstrap restoration true rejects success after actual browser closure
+ok 129 - V3 unconfirmed bootstrap restoration true rejects success after actual browser closure
+  ---
+  duration_ms: 0.1553
+  type: 'test'
+  ...
+# Subtest: V3 unconfirmed bootstrap restoration null rejects success after actual browser closure
+ok 130 - V3 unconfirmed bootstrap restoration null rejects success after actual browser closure
+  ---
+  duration_ms: 0.0523
+  type: 'test'
+  ...
+# Subtest: V3 unconfirmed bootstrap restoration missing rejects success after actual browser closure
+ok 131 - V3 unconfirmed bootstrap restoration missing rejects success after actual browser closure
+  ---
+  duration_ms: 0.051
+  type: 'test'
+  ...
+# Subtest: V3 unconfirmed bootstrap restoration false string rejects success after actual browser closure
+ok 132 - V3 unconfirmed bootstrap restoration false string rejects success after actual browser closure
+  ---
+  duration_ms: 0.0437
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap evidence cannot rescue an unconfirmed forced process tree
+ok 133 - V3 bootstrap evidence cannot rescue an unconfirmed forced process tree
+  ---
+  duration_ms: 0.098
+  type: 'test'
+  ...
+# Subtest: bootstrap ordinary mark cannot backdate its event timestamp while retaining a valid callTime
+ok 134 - bootstrap ordinary mark cannot backdate its event timestamp while retaining a valid callTime
+  ---
+  duration_ms: 0.2182
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap restore state CANCELLED rejects success after actual closure
+ok 135 - V3 bootstrap restore state CANCELLED rejects success after actual closure
+  ---
+  duration_ms: 0.1271
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap restore state null rejects success after actual closure
+ok 136 - V3 bootstrap restore state null rejects success after actual closure
+  ---
+  duration_ms: 0.0403
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap restore state missing rejects success after actual closure
+ok 137 - V3 bootstrap restore state missing rejects success after actual closure
+  ---
+  duration_ms: 0.0441
+  type: 'test'
+  ...
+# Subtest: V3 bootstrap restore state truthy flag rejects success after actual closure
+ok 138 - V3 bootstrap restore state truthy flag rejects success after actual closure
+  ---
+  duration_ms: 0.0376
+  type: 'test'
+  ...
+1..138
+# tests 138
+# suites 0
+# pass 138
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 788.7529

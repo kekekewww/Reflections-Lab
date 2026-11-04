@@ -47,7 +47,13 @@ export function replayEventViews(artifact: RecordingArtifact, limit = 256): Even
         position.every((value) => typeof value === "number" && Number.isFinite(value))
           ? { positionM: [...position] as [number, number, number] }
           : {}),
-        detail: `RecordedOutput · ${artifact.runId}`,
+        detail:
+          `RecordedOutput · ${artifact.runId}` +
+          (typeof event.zoneId === "string"
+            ? " · Zone " + event.zoneId
+            : trigger && typeof trigger.zoneId === "string"
+              ? " · Zone " + trigger.zoneId
+              : ""),
         ...(diagnostic?.decision
           ? { decision: diagnostic.decision, assetId: diagnostic.assetId }
           : {}),

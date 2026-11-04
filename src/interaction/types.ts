@@ -27,6 +27,13 @@ export interface StagedPlacement {
   sceneRevision: number;
   geometryAcknowledged: boolean;
 }
+/** A first-person paint stroke on the frozen room; points are world positions, the first is the object's start. */
+export interface PaintStroke {
+  objectId: string;
+  pointsM: Vec3[];
+  /** Brush distance from the camera, 0.75..3 m. */
+  distanceM: number;
+}
 export interface InteractionSnapshot {
   mode: InteractionMode;
   pointerLocked: boolean;
@@ -43,6 +50,7 @@ export interface InteractionSnapshot {
   staged: StagedPlacement | null;
   notice: string | null;
   pending: boolean;
+  paint: PaintStroke | null;
 }
 export interface InteractionHostOptions {
   getWorld(): PhysicsWorld;
@@ -54,14 +62,29 @@ export interface InteractionHostOptions {
    * Run this trusted local guard after asynchronous preparation and the final
    * revision check, immediately before applying the candidate to the world.
    */
-  commitSceneOperations(operations: SceneOperation[], guard?: () => void): Promise<void>;
+  commitSceneOperations(
+    operations: SceneOperation[],
+    guard?: () => void,
+    policy?: "placement",
+  ): Promise<void>;
   onChange?(): void;
   onPause?(reason: string): void;
   onAudioFade?(reason: string): void;
   onLibrary?(): void;
   onNotice?(message: string): void;
-  /** Optional actual backend acknowledgement; absent means explicit acknowledgeStaged is required. */
-  confirmGeometry?(objectId: string, sceneRevision: number): boolean | Promise<boolean>;
+  /** A fresh stable ID and the current library shape, for right-button/sticky preview. */
+  createBuildDraft?(): SceneObject;
+  /** Runtime transport ownership is checked again by the synchronous apply guard. */
+  placementRefusal?(): string | null;
+  /** Bounded preparation lifetime; defaults to five seconds. */
+  placementTimeoutMs?: number;
+  /** Acknowledge the staged draft before it enters the live scene or owns any body/sound. */
+  confirmGeometry?(
+    objectId: string,
+    sceneRevision: number,
+    draft: SceneObject,
+    signal?: AbortSignal,
+  ): boolean | Promise<boolean>;
   lookSensitivity?: number;
   throwImpulseNs?: number;
   /** Defaults to the independent Scene listener position minus the 1.60m eye height. */

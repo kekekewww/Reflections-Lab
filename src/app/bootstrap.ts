@@ -54,6 +54,7 @@ function criticalPublicationState(view: LabViewModel): CriticalScalar[] {
     view.projectId,
     view.projectName,
     view.sceneRevision,
+    view.motion?.document.revision,
     view.workspace,
     view.runId,
     view.simulationState,
@@ -78,6 +79,8 @@ function criticalPublicationState(view: LabViewModel): CriticalScalar[] {
     view.monitor?.muted,
     view.monitor?.gainLinear,
     view.monitor?.mode,
+    view.monitor?.bufferPreset,
+    view.monitor?.rebuilding,
     view.monitor?.voiceLimit,
     view.monitor?.lateReverb?.enabled,
     view.monitor?.lateReverb?.decaySeconds,
@@ -89,6 +92,7 @@ function criticalPublicationState(view: LabViewModel): CriticalScalar[] {
     view.ai?.message,
     view.ai?.preview,
     view.ai?.canApply,
+    view.ai?.canUndo,
     view.ai?.selectedProvider,
     view.ai?.providerStatus?.status,
     view.ai?.providerStatus?.reason,
@@ -302,6 +306,48 @@ export async function mountReflectionLab(
       },
       getPose: (objectId) => (disposed ? undefined : created.getPose(objectId)),
       getFPSCamera: () => (disposed ? undefined : created.getFPSCamera()),
+      getRenderHost: () => (ownsElement() ? (created.getRenderHost?.() ?? null) : null),
+      getMotionWorkspace: () => (ownsElement() ? (created.getMotionWorkspace?.() ?? null) : null),
+      getAgentSession: () => (ownsElement() ? (created.getAgentSession?.() ?? null) : null),
+      getAudioDiagnostics: () => (ownsElement() ? (created.getAudioDiagnostics?.() ?? null) : null),
+      readLiveMonitor: (mode, input) =>
+        ownsElement() ? (created.readLiveMonitor?.(mode, input) ?? null) : null,
+      releaseLiveMonitor: () => {
+        if (ownsElement()) created.releaseLiveMonitor?.();
+      },
+      listRecordingRecovery: async () => {
+        assertCurrent();
+        const entries = await created.listRecordingRecovery();
+        assertCurrent();
+        return entries;
+      },
+      recoverRecording: async (sessionId) => {
+        assertCurrent();
+        try {
+          await created.recoverRecording(sessionId);
+          assertCurrent();
+        } finally {
+          flushCommand();
+        }
+      },
+      discardRecordingRecovery: async (sessionId) => {
+        assertCurrent();
+        try {
+          await created.discardRecordingRecovery(sessionId);
+          assertCurrent();
+        } finally {
+          flushCommand();
+        }
+      },
+      captureShortTake: async (durationSeconds) => {
+        assertCurrent();
+        try {
+          await created.captureShortTake(durationSeconds);
+          assertCurrent();
+        } finally {
+          flushCommand();
+        }
+      },
     };
     root = render(element, controller, (error) => {
       if (!ownsElement()) return;
@@ -312,13 +358,41 @@ export async function mountReflectionLab(
     });
     assertCurrent();
     let last = frameHost.now();
+    const readObservationWallTime = (): number | null => {
+      try {
+        const value = frameHost.now();
+        return Number.isFinite(value) && value >= 0 ? value : null;
+      } catch {
+        // An extra diagnostic clock read must not change the original RAF clock policy.
+        return null;
+      }
+    };
     const frame = (now: number) => {
       if (disposed) return;
       raf = null;
       try {
+        try {
+          created.observeRecordingFrame?.(last, now, readObservationWallTime());
+        } catch {
+          // A failing observer cannot prevent the original simulation advance.
+        }
         created.advance(Math.max(0, (now - last) / 1000));
         last = now;
-        flushPublications?.(now);
+        const flushStartedAt = readObservationWallTime();
+        try {
+          flushPublications?.(now);
+        } finally {
+          const flushFinishedAt = readObservationWallTime();
+          const flushElapsedMs =
+            flushStartedAt !== null && flushFinishedAt !== null && flushFinishedAt >= flushStartedAt
+              ? flushFinishedAt - flushStartedAt
+              : null;
+          try {
+            if (ownsElement()) created.observeRecordingHostFlush?.(flushElapsedMs);
+          } catch {
+            // Preserve a publication error, if any, and the original failure/teardown path.
+          }
+        }
         if (!disposed) raf = frameHost.request(frame);
       } catch (error) {
         fail(error);

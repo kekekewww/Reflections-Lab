@@ -94,3 +94,28 @@ test("rejected resume keeps simulation paused and reports why", async () => {
     app.dispose();
   }
 });
+
+test("R18 review: a Resume awaiting preview shutdown is dropped after exit or focus loss", async () => {
+  for (const cancel of ["exitFPS", "inputBlur"] as const) {
+    const app = await LabRuntime.create({ useWorker: false });
+    const internal = app as unknown as { staticPreview: { stop(): Promise<void> } };
+    const original = internal.staticPreview.stop;
+    try {
+      await app.dispatch({ type: "enterFPS" });
+      await app.dispatch({ type: "pointerLockChanged", locked: true });
+      const releases: Array<() => void> = [];
+      internal.staticPreview.stop = () => new Promise<void>((resolve) => releases.push(resolve));
+      const run = app.dispatch({ type: "run" });
+      await app.dispatch({ type: cancel });
+      releases.forEach((release) => release());
+      await run;
+      assert.notEqual(app.getSnapshot().simulationState, "running", cancel);
+      const tick = app.getSnapshot().tick;
+      for (let i = 0; i < 10; i++) app.advance(1 / 60);
+      assert.equal(app.getSnapshot().tick, tick, `${cancel}: time must stay frozen`);
+    } finally {
+      internal.staticPreview.stop = original;
+      app.dispose();
+    }
+  }
+});

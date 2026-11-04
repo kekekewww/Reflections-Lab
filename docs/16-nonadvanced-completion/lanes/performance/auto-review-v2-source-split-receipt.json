@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "action": "Derive independent V2 oracle source and run focused tests",
+  "initialAutoReview": "REJECTED_BEFORE_EXECUTION",
+  "reason": "Review interpreted the combined command as rewriting the fixed-SHA V1 oracle. The intended script read V1 and wrote a separate V2 path.",
+  "checksBeforeRetry": {
+    "v1Sha256": "25e82f87ed64e8ce538bfde85b0a5b7a28974ef38832484d8c96f0b1bf9f295f",
+    "v3Sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+    "v2TargetExisted": false
+  },
+  "saferAlternative": [
+    "Explicit literal Copy-Item from V1 to a new V2 destination after no-overwrite check",
+    "Only edit the independent V2 and new V4 candidate files",
+    "Recheck immutable V1 SHA before executing tests in a separate command"
+  ],
+  "resolution": "COMPLETED_WITH_SAFE_ALTERNATIVE",
+  "v1Unchanged": true,
+  "remainingApprovalBlock": false,
+  "subsequentFocusedTests": {
+    "tests": 97,
+    "pass": 97,
+    "fail": 0,
+    "raw": "native-v2-oracle-typed-null-green-r1.tap"
+  },
+  "formalQualification": "NOT_APPROVED"
+}

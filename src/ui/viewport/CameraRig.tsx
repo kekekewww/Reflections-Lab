@@ -2,6 +2,8 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { MOUSE, Quaternion, Vector3 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import type { GizmoBridge } from "./TransformGizmo.js";
+import { ObserverGestureOwnership } from "./observer-gesture.js";
 import type { LabController, LabViewModel, Workspace } from "../contracts.js";
 
 interface SavedView {
@@ -15,11 +17,13 @@ export function CameraRig({
   model,
   frameRequest,
   registerControlsCleanup,
+  bridge,
 }: {
   controller: LabController;
   model: LabViewModel;
   frameRequest: number;
   registerControlsCleanup: (dispose: () => void) => () => void;
+  bridge?: GizmoBridge;
 }) {
   const { camera, gl } = useThree();
   const controls = useRef<OrbitControls | null>(null);
@@ -34,6 +38,7 @@ export function CameraRig({
   useLayoutEffect(() => {
     const orbit = new OrbitControls(camera, gl.domElement);
     controls.current = orbit;
+    if (bridge) bridge.orbit = orbit;
     orbit.target.set(0, 1, 0);
     orbit.enableDamping = false;
     orbit.minDistance = 0.5;
@@ -45,11 +50,59 @@ export function CameraRig({
       quaternion: camera.quaternion.clone(),
       target: orbit.target.clone(),
     };
+    const gesture = new ObserverGestureOwnership();
+    let altPressed = false;
+    const syncGesture = () => {
+      orbit.mouseButtons.LEFT = altPressed || gesture.primaryOrbit ? MOUSE.ROTATE : null;
+      if (!bridge) return;
+      bridge.observerPointerId = gesture.pointerId;
+      if (bridge.controls)
+        bridge.controls.enabled =
+          mode.current === "editor" && gesture.permitsGizmo(bridge.pending.size);
+    };
     const alt = (event: KeyboardEvent) => {
-      orbit.mouseButtons.LEFT = event.altKey ? MOUSE.ROTATE : null;
+      altPressed = event.altKey;
+      syncGesture();
+    };
+    // Capture runs before either Three controls instance can acquire this pointer.
+    const observerDown = (event: PointerEvent) => {
+      altPressed = event.altKey;
+      gesture.begin({
+        pointerId: event.pointerId,
+        button: event.button,
+        altKey: event.altKey,
+        editor: mode.current === "editor",
+        gizmoDragging: Boolean(bridge?.dragging),
+      });
+      syncGesture();
+    };
+    const observerUp = (event: PointerEvent) => {
+      if (gesture.pointerId !== event.pointerId) return;
+      // Keep transforms disabled through all native pointer-up listeners.
+      queueMicrotask(() => {
+        if (!gesture.release(event.pointerId)) return;
+        if (bridge) bridge.suppressUntil = performance.now() + 300;
+        syncGesture();
+      });
     };
     const resetAlt = () => {
-      orbit.mouseButtons.LEFT = null;
+      altPressed = false;
+      const ownedPointer = gesture.pointerId;
+      gesture.cancel();
+      if (ownedPointer !== null && bridge) bridge.suppressUntil = performance.now() + 300;
+      // Public lifecycle methods clear native pointer bookkeeping without
+      // changing the last observer camera pose or resetting the scene.
+      orbit.disconnect();
+      orbit.connect(gl.domElement);
+      syncGesture();
+    };
+    const observerLostCapture = (event: PointerEvent) => {
+      if (gesture.pointerId !== event.pointerId) return;
+      queueMicrotask(() => {
+        // A normal pointer-up releases ownership first. Unexpected capture loss
+        // must also clear OrbitControls native state before hover can continue.
+        if (gesture.pointerId === event.pointerId) resetAlt();
+      });
     };
     const preserveZoom = (event: WheelEvent) => {
       if (event.ctrlKey || event.metaKey) event.stopImmediatePropagation();
@@ -57,6 +110,10 @@ export function CameraRig({
     window.addEventListener("keydown", alt);
     window.addEventListener("keyup", alt);
     window.addEventListener("blur", resetAlt);
+    gl.domElement.addEventListener("pointerdown", observerDown, true);
+    gl.domElement.addEventListener("pointercancel", observerUp, true);
+    gl.domElement.addEventListener("lostpointercapture", observerLostCapture, true);
+    window.addEventListener("pointerup", observerUp, true);
     gl.domElement.addEventListener("wheel", preserveZoom, { capture: true, passive: true });
     let disposed = false;
     const dispose = () => {
@@ -65,16 +122,23 @@ export function CameraRig({
       window.removeEventListener("keydown", alt);
       window.removeEventListener("keyup", alt);
       window.removeEventListener("blur", resetAlt);
+      gl.domElement.removeEventListener("pointerdown", observerDown, true);
+      gl.domElement.removeEventListener("pointercancel", observerUp, true);
+      gl.domElement.removeEventListener("lostpointercapture", observerLostCapture, true);
+      window.removeEventListener("pointerup", observerUp, true);
+      if (bridge?.observerPointerId === gesture.pointerId) bridge.observerPointerId = null;
+      gesture.cancel();
       gl.domElement.removeEventListener("wheel", preserveZoom, { capture: true });
       orbit.dispose();
       if (controls.current === orbit) controls.current = null;
+      if (bridge?.orbit === orbit) bridge.orbit = null;
     };
     const unregister = registerControlsCleanup(dispose);
     return () => {
       dispose();
       unregister();
     };
-  }, [camera, gl, registerControlsCleanup]);
+  }, [camera, gl, registerControlsCleanup, bridge]);
 
   useEffect(() => {
     const orbit = controls.current;

@@ -189,6 +189,17 @@ export class SoundProposalHost {
         changes.push(
           `將 ${operation.binding.objectId} 綁定至 ${operation.binding.profileId}@${operation.binding.profileRevision}`,
         );
+        for (const override of operation.binding.overrides) {
+          const target = `Binding覆寫 ${operation.binding.objectId} ${override.ruleId}`;
+          if (override.pitchSemitones !== undefined)
+            changes.push(
+              `${target}：音高 ${override.pitchSemitones > 0 ? "+" : ""}${override.pitchSemitones} 半音`,
+            );
+          if (override.gainLinear !== undefined)
+            changes.push(`${target}：增益 ×${override.gainLinear}`);
+          if (override.enabled !== undefined)
+            changes.push(`${target}：${override.enabled ? "啟用" : "停用"}`);
+        }
       } else if (operation.type === "RemoveBinding") {
         if (!next.bindings.some((binding) => binding.bindingId === operation.bindingId))
           throw new AgentError("UNKNOWN_BINDING", "欲移除的Binding不存在。");

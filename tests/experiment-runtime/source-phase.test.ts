@@ -12,6 +12,8 @@ import { AudioEngine } from "../../src/audio/index.js";
 import type { VoiceCursor } from "../../src/audio/types.js";
 import { solveAcoustics } from "../../src/acoustics/index.js";
 import { buildAcousticRequests } from "../../src/app/acoustic-input.js";
+import { acousticSceneSolverVersion } from "../../src/capabilities/acoustic-geometry.js";
+import { emitterGeometryPolicyPin } from "../../src/capabilities/emitter-geometry-policy.js";
 import {
   createDefaultBehaviors,
   createDefaultScene,
@@ -67,7 +69,12 @@ function fixtureConfiguration(disabled = false): RecordingConfiguration {
     generatorConfig: behaviors.profiles.map((profile) =>
       profile.rules.map((rule) => rule.generator),
     ),
-    solverConfig: { backendId: "custom-web-geometric", maxReflectionOrder: 1, maxPaths: 8 },
+    solverConfig: {
+      backendId: "custom-web-geometric",
+      maxReflectionOrder: 1,
+      maxPaths: 8,
+      ...emitterGeometryPolicyPin(),
+    },
     atmosphere,
     materialRegistry: DEFAULT_MATERIALS,
     assetManifest: [],
@@ -75,7 +82,7 @@ function fixtureConfiguration(disabled = false): RecordingConfiguration {
     geometrySnapshot: {},
     physicsVersion: "fixture-no-resimulation",
     backendId: "custom-web-geometric",
-    backendVersion: "1.0.0",
+    backendVersion: acousticSceneSolverVersion(scene),
     fixedDtS: 1 / 60,
     sampleRateHz: 48000,
   };

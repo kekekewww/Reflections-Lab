@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "fixtureVersion": "runtime-audio-resource-policy-fixture-v2",
+  "status": "FIXTURE_DEFAULT_CORRECTED_PRODUCT_UNCHANGED_TRUE_RED_PENDING",
+  "independentReviewer": "runtime_audio_options_red",
+  "oldSpec": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v1-original.test.txt",
+    "sha256": "4556f53f0a24941f9fd474f8a193ae8b4f888fe9545a197f252af8a53e7b40ea",
+    "bytes": 12248
+  },
+  "newSpec": {
+    "path": "tests/app/runtime-performance-options.test.ts",
+    "sha256": "71a607e753d93c01d72d70ed11b8dd6153eb31a6eb3ab6e929307f8cad992845",
+    "bytes": 12245
+  },
+  "onlyAssertionCorrection": {
+    "from": "bufferPreset interactive",
+    "to": "bufferPreset playback",
+    "source": "src/audio/buffer-preset.ts:2 DEFAULT_AUDIO_BUFFER_PRESET; readStored fallback12-18",
+    "condition": "Node fixture does not install window/localStorage or explicit audio preference; RuntimeOptions.storage is ProjectStore only. This is source/setup inspection plus actual RED playback value, not a separate environment probe."
+  },
+  "productSource": {
+    "src/audio/buffer-preset.ts": {
+      "sha256": "d13bd3382644c55867f7d0139b73d45ce9be89115684b6620ac58b4b431780e4",
+      "bytes": 1302,
+      "matchesEb45GitBytes": true
+    },
+    "src/audio/monitor-level.ts": {
+      "sha256": "659d80341a53a08ac93b05d08455496686455ef0a79b707aa263632e5ab72d5e",
+      "bytes": 1710,
+      "matchesEb45GitBytes": true
+    },
+    "src/app/runtime.ts": {
+      "sha256": "90decbfcf2d899e947a5b5f251044441136ce19c655e8637993bcd7d594c8c3e",
+      "bytes": 150153,
+      "matchesEb45GitBytes": true
+    }
+  },
+  "preservedRed": {
+    "path": "runtime-performance-options-red-r1.tap",
+    "tests": 22,
+    "pass": 0,
+    "fail": 22,
+    "exitCode": 1,
+    "qualification": "At least baseline rejection was the wrong fixture preset, not all22 are product-feature defects."
+  },
+  "defaultsUnchanged": {
+    "monitorGain": 1,
+    "headroomGain": 0.5,
+    "outputSafetyClip": true,
+    "monitorMode": "simulated",
+    "contentModel": "nativeReference",
+    "budget": "Original13 values24voices/8pathsPerVoice/96totalPaths"
+  },
+  "next": "Run corrected fixture true RED before product implementation; preserve original22 FAIL and preimage.",
+  "formal600Run": false,
+  "nativeBrowserRun": false
+}

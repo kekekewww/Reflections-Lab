@@ -2,13 +2,8 @@ import type { ComparisonRun } from "../../schemas/sound-behavior/types.js";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import acousticSchema from "../../schemas/acoustic-frame.schema.json" with { type: "json" };
 import { createScene } from "../scene/validate-scene.js";
-import {
-  canonicalBytes,
-  canonicalStringify,
-  immutableClone,
-  immutableCloneWithByteLength,
-  sha256Canonical,
-} from "./hash.js";
+import { canonicalBytes, canonicalStringify, immutableClone, sha256Canonical } from "./hash.js";
+import { discardRecordingFrameBytes, ownRecordingFrame } from "./recording-frame.js";
 import { normalizeSourcePhase } from "./source-phase.js";
 import { RecordingError } from "./types.js";
 import type {
@@ -271,6 +266,12 @@ async function computeFingerprints(
     }),
   );
   const actualPhysics = {
+    ...((scene.zones?.length ?? 0) > 0
+      ? {
+          zoneRegistry: scene.zones,
+          zoneProducerPolicy: "DerivedFixedStepBodyCenterWithHysteresis",
+        }
+      : {}),
     gravityMps2: scene.gravityMps2,
     seed: scene.seed,
     objects: scene.objects.map(
@@ -467,12 +468,7 @@ export class ExperimentRecorder {
 
   appendFrame(input: RecordingFrameInput): void {
     if (this.state !== "recording") fail("RECORDER_STATE", "只有 recording 狀態可以加入 frame。");
-    const captured = immutableCloneWithByteLength({
-      ...input,
-      runEpoch: input.runEpoch ?? this.runEpoch,
-      acousticFrames: input.acousticFrames ?? [],
-      acousticResultRefs: input.acousticResultRefs ?? [],
-    });
+    const captured = ownRecordingFrame(input, this.runEpoch);
     const frame: RecordingFrame = captured.value;
     const eventIds = validateFrame(
       frame,
@@ -491,6 +487,9 @@ export class ExperimentRecorder {
       this.interrupt("RECORDING_BUDGET");
       fail("RECORDING_BUDGET", "錄製預算耗盡；已保留不完整 trace，不標 Captured。");
     }
+    // The host enqueues synchronously after append. Retain at most the latest
+    // unconsumed encoding when a recorder is used without a persistence session.
+    discardRecordingFrameBytes(this.frames.at(-1));
     this.frames.push(frame);
     this.traceBytes += frameBytes;
     for (const eventId of eventIds) this.events.add(eventId);
@@ -525,6 +524,10 @@ export class ExperimentRecorder {
           : (this.frames.at(-1)!.tick - this.frames[0]!.tick) * this.configuration.fixedDtS,
       reason: this.reason,
     };
+  }
+  /** Last admitted frame is already deeply frozen; no new full-trace array is allocated. */
+  getLastFrame(): RecordingFrame | null {
+    return this.frames.at(-1) ?? null;
   }
   captureSealSnapshot(): RecordingSealSnapshot {
     if (this.finishResult || this.state === "finalizing")

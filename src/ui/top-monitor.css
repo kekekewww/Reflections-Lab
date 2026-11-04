@@ -1,0 +1,128 @@
+.top-monitor {
+  flex: 1 1 400px;
+  min-width: 0;
+  max-width: 640px;
+  padding: var(--spacing-1) var(--spacing-2);
+  color: var(--color-text-primary);
+  font-size: var(--typography-secondary);
+  contain: layout;
+}
+.top-monitor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+  min-height: var(--sizing-minimum-target);
+}
+.top-monitor-views {
+  display: flex;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.lab-app .top-monitor-views button {
+  min-width: var(--sizing-minimum-target);
+  min-height: var(--sizing-minimum-target);
+  padding: 0 var(--spacing-2);
+  color: var(--color-text-secondary);
+  font-size: var(--typography-secondary);
+  line-height: 1;
+  white-space: nowrap;
+}
+.lab-app .top-monitor-views button[aria-pressed="true"] {
+  background: var(--color-raised);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+@media (hover: hover) and (pointer: fine) {
+  .lab-app .top-monitor-views button:hover {
+    color: var(--color-text-primary);
+    background: var(--color-raised);
+  }
+}
+.lab-app .top-monitor-views button:active {
+  background: var(--color-panel);
+}
+.top-monitor-readout {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-family: var(--typography-mono);
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  text-align: right;
+  white-space: nowrap;
+}
+.top-monitor-channel {
+  flex: 0 0 auto;
+}
+.lab-app .top-monitor-channel select {
+  width: calc(2 * var(--sizing-minimum-target));
+  min-height: var(--sizing-minimum-target);
+  padding: 0 var(--spacing-1);
+  font-size: var(--typography-secondary);
+}
+.top-monitor-visual {
+  position: relative;
+  height: var(--sizing-monitor-strip);
+  margin-top: var(--spacing-1);
+  border: var(--border-divider) solid var(--color-border-subtle);
+  border-radius: var(--radius-control);
+  background: var(--color-canvas);
+}
+.top-monitor canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-control);
+}
+.top-monitor-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-2);
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: var(--typography-secondary);
+  text-align: center;
+  pointer-events: none;
+}
+.top-monitor-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .top-monitor {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: none;
+    order: 3;
+    padding-inline: 0;
+  }
+  .lab-app .top-monitor-views button {
+    padding-inline: var(--spacing-1);
+  }
+}
+.top-monitor-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-1);
+  padding: 0 var(--spacing-1);
+  color: var(--color-text-secondary);
+  font-size: var(--typography-secondary);
+  line-height: 1;
+  white-space: nowrap;
+}
+.top-monitor-caption span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -93,6 +93,15 @@ const schema = {
               },
             },
             validationMode: { const: "product" },
+            producerCapabilities: {
+              type: "object",
+              additionalProperties: false,
+              required: ["bounceProducer", "zoneProducer"],
+              properties: {
+                bounceProducer: { type: "boolean" },
+                zoneProducer: { type: "boolean" },
+              },
+            },
           },
         },
       },

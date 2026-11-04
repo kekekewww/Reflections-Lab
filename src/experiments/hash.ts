@@ -2,6 +2,13 @@ import { RecordingError } from "./types.js";
 
 /** Canonical plain JSON only: no runtime objects, sparse arrays, cycles, or nonfinite values. */
 export function canonicalStringify(value: unknown): string {
+  return stringifyCanonical(value);
+}
+
+function stringifyCanonical(
+  value: unknown,
+  onRootProperty?: (key: string, canonical: string) => void,
+): string {
   const ancestors = new Set<object>();
   const visit = (item: unknown, depth: number): string => {
     if (depth > 48) throw new RecordingError("JSON_DEPTH", "資料巢狀深度超過上限。");
@@ -45,7 +52,10 @@ export function canonicalStringify(value: unknown): string {
           const descriptor = Object.getOwnPropertyDescriptor(record, key);
           if (!descriptor || !("value" in descriptor))
             throw new RecordingError("NON_JSON", "不接受 accessor 欄位。");
-          return `${JSON.stringify(key)}:${visit(descriptor.value, depth + 1)}`;
+          const encodedKey = JSON.stringify(key);
+          const canonical = visit(descriptor.value, depth + 1);
+          if (depth === 0) onRootProperty?.(key, canonical);
+          return `${encodedKey}:${canonical}`;
         })
         .join(",")}}`;
     }
@@ -77,10 +87,36 @@ export function immutableClone<T>(value: T): T {
 }
 
 /** Reuse the validated canonical representation for both ownership and byte accounting. */
-export function immutableCloneWithByteLength<T>(value: T): { value: T; byteLength: number } {
+export function immutableCloneWithByteLength<T>(
+  value: T,
+  measureProperty?: keyof T,
+): { value: T; byteLength: number; propertyByteLength?: number } {
+  let propertyCanonical: string | undefined;
+  const canonical = stringifyCanonical(
+    value,
+    measureProperty === undefined
+      ? undefined
+      : (key, text) => {
+          if (key === measureProperty) propertyCanonical = text;
+        },
+  );
+  const clone = frozenCanonicalParse<T>(canonical);
+  return {
+    value: clone,
+    byteLength: new TextEncoder().encode(canonical).byteLength,
+    ...(propertyCanonical === undefined
+      ? {}
+      : {
+          propertyByteLength: new TextEncoder().encode(propertyCanonical).byteLength,
+        }),
+  };
+}
+
+/** The bytes and frozen clone come from exactly the same validated representation. */
+export function immutableCloneWithCanonicalBytes<T>(value: T): { value: T; bytes: ArrayBuffer } {
   const canonical = canonicalStringify(value);
   const clone = frozenCanonicalParse<T>(canonical);
-  return { value: clone, byteLength: new TextEncoder().encode(canonical).byteLength };
+  return { value: clone, bytes: new TextEncoder().encode(canonical).buffer };
 }
 
 export function canonicalBytes(value: unknown): number {

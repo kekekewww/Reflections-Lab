@@ -1,0 +1,104 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-011",
+  "title": "驗證短take離線renderer與chunk state carry",
+  "description": "已有types-only RenderBackend與WAV工具但無完整take renderer；多context硬接會失filter/delay/HRTF/IR/limiter state。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P2",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-008"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "短take明確取得相同asset bytes並驗hash/rate/channels，sample origin／phase／tail與獨立oracle相符；trace JSON不冒充PCM。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "chunk邊界delay/filter/HRTF/IR/limiter state與reference比較；未能等價者保留整段限制，不硬接contexts。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "峰值/輸出cap/cancel及失敗不發布completed；schema/格式需要變更另經compat gate，無cloud或Worklet強制依賴。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/render-contract.ts",
+    "src/audio/engine.ts",
+    "src/audio/wav.ts",
+    "src/app/recording-processor.ts",
+    "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/12-architecture-review/OFFLINE_RENDERING_RESEARCH.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/12-architecture-review/OFFLINE_RENDERING_RESEARCH.md",
+      "sha256": "889a59520b8ff61c47474e8d9092f10e06bfa8952d864091a3189ca0af19bb21",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.074Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "已有types-only RenderBackend與WAV工具但無完整take renderer；多context硬接會失filter/delay/HRTF/IR/limiter state。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "locator": "REC-04",
+      "classification": "CONFIRMED BY CODE at05d40; PROPOSED renderer",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa"
+    },
+    {
+      "path": "docs/12-architecture-review/OFFLINE_RENDERING_RESEARCH.md",
+      "locator": "既有offline/state/memory邊界",
+      "classification": "EXISTING RESEARCH",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "889a59520b8ff61c47474e8d9092f10e06bfa8952d864091a3189ca0af19bb21"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/render-contract.ts",
+    "src/audio/engine.ts",
+    "src/audio/wav.ts",
+    "src/app/recording-processor.ts"
+  ],
+  "proposed_solution": "沿用RenderBackend seam及pinned recording，先短local mix建立rational tick/sample origin、phase/preroll/tail oracle；證明後才評估chunk state carry與真正隔離stems。",
+  "alternatives": [
+    "維持trace export與即時replay功能，明示無PCM exporter。",
+    "短OfflineAudioContext整段作reference。",
+    "Worklet選用，不是此任務必需前置。"
+  ],
+  "expected_benefit": "提供可驗的未來輸出基礎並揭露RAM成本；本輪研究沒有實作renderer。",
+  "complexity": "高；sample排程、資產取得與native state等價。",
+  "performance_impact": "render throughput、peak PCM/encoder/trace與取消回收，快於實時只記實測。",
+  "audio_quality_impact": "同motion/events/listener/source phase；stems不可移除其他source物理互動；chunk seam需sample誤差與tail驗證。",
+  "latency_impact": "離線排程與interactive onset不同；輸出sample zero與物理delay不重複。",
+  "compatibility_regression_risk": "missing asset、native HRTF版本、fixed48000 recording metadata與actual context rate不同；長輸出可能OOM。",
+  "benchmark_plan": "解析direct impulse、pitch/loop cursor、filter/delay/IR tail、seek windows、source selection及單段/跨chunk比較；同輸出sample rate/format。",
+  "rollback_plan": "取消未完成輸出，保留pinned recording與完整資產；恢復無PCM-export能力或短reference backend，清理僅屬本job的暫存並保留有效輸出。",
+  "priority_rationale": "增加未來能力而非先解互動stutter；依既有recording正確性及資源證據後再做。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Offline/incremental APIs and memory limits differ; types-only contract is not support.",
+  "regression_risk": "Tail/history/phase/sample mapping and nonlinear stem semantics can regress.",
+  "candidate_commit": null
+}

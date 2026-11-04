@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "kind": "CORE_RENDER_BASIC_VERIFICATION",
+  "recordedAt": "2026-11-02T05:35:09.317Z",
+  "nodeVersion": "v22.17.0",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "unit",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/audio-runtime/render-fixture.test.ts",
+        "tests/audio-runtime/render-job.test.ts",
+        "tests/audio-runtime/render-pcm.test.ts",
+        "tests/audio-runtime/render-host.test.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 5513,
+      "output": "docs/14-core-pipeline/stages/06-render-unit.txt"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 21830,
+      "output": "docs/14-core-pipeline/stages/06-render-typecheck.txt"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "src/audio/render-contract.ts",
+        "src/audio/render-types.ts",
+        "src/audio/render-pcm.ts",
+        "src/audio/render-validation.ts",
+        "src/audio/render-preset.ts",
+        "src/audio/render-backend.ts",
+        "src/app/render-host.ts",
+        "src/ui/RenderPanel.tsx",
+        "tests/audio-runtime/render-fixture.ts",
+        "tests/audio-runtime/render-fixture.test.ts",
+        "tests/audio-runtime/render-job.test.ts",
+        "tests/audio-runtime/render-pcm.test.ts",
+        "tests/audio-runtime/render-host.test.ts",
+        "tests/browser/render/fixture.mjs",
+        "tests/browser/render/run.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 5687,
+      "output": "docs/14-core-pipeline/stages/06-render-lint.txt"
+    },
+    {
+      "name": "format",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src/audio/render-contract.ts",
+        "src/audio/render-types.ts",
+        "src/audio/render-pcm.ts",
+        "src/audio/render-validation.ts",
+        "src/audio/render-preset.ts",
+        "src/audio/render-backend.ts",
+        "src/app/render-host.ts",
+        "src/ui/RenderPanel.tsx",
+        "tests/audio-runtime/render-fixture.ts",
+        "tests/audio-runtime/render-fixture.test.ts",
+        "tests/audio-runtime/render-job.test.ts",
+        "tests/audio-runtime/render-pcm.test.ts",
+        "tests/audio-runtime/render-host.test.ts",
+        "tests/browser/render/fixture.mjs",
+        "tests/browser/render/run.mjs",
+        "tests/browser/render/index.html"
+      ],
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 1958,
+      "output": "docs/14-core-pipeline/stages/06-render-format.txt"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "tests/browser/render/run.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 12526,
+      "output": "docs/14-core-pipeline/stages/06-render-browser.txt"
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/audio/render-contract.ts",
+      "bytes": 7464,
+      "sha256": "96b632fff18b5bb0cba206d24effda44a28df7d61455ceea7e52b7ef7c6b91a8"
+    },
+    {
+      "path": "src/audio/render-types.ts",
+      "bytes": 1990,
+      "sha256": "46fbad110e6b7216063478a19fc1f89e0e73f32b0a8c3b294016e12d96a5f9f6"
+    },
+    {
+      "path": "src/audio/render-pcm.ts",
+      "bytes": 2791,
+      "sha256": "bdb1a26661038470749a78233469db7fa0ab7839ad97b52f88cba342cb75dcc9"
+    },
+    {
+      "path": "src/audio/render-validation.ts",
+      "bytes": 15587,
+      "sha256": "d9c91f790ac672e92c207d06b2847ee083a4f395dc40ffab752a9a24f22f3a99"
+    },
+    {
+      "path": "src/audio/render-preset.ts",
+      "bytes": 7109,
+      "sha256": "eb86e4f780440a9da638d30de6c9655f03e65978c5e81876456ee87d7af4c462"
+    },
+    {
+      "path": "src/audio/render-backend.ts",
+      "bytes": 21009,
+      "sha256": "bd839c9db1be468054ecdadcb238cc693a1a6792a81f9912797f1b44406d4f1d"
+    },
+    {
+      "path": "src/app/render-host.ts",
+      "bytes": 8010,
+      "sha256": "390b0c424ff83c4ede07e69be21f7b9415e4debfde71640559a99b3edb87e471"
+    },
+    {
+      "path": "src/ui/RenderPanel.tsx",
+      "bytes": 6575,
+      "sha256": "d4a32422d8b4381291b835b3e23f2d8e3b9ecd577aa21c657c1ca0448b66970f"
+    },
+    {
+      "path": "tests/audio-runtime/render-fixture.ts",
+      "bytes": 7746,
+      "sha256": "e753311101c1d33da4e3d0d9929b5a53797cf6524ef2104c27598ef5cdf430e4"
+    },
+    {
+      "path": "tests/audio-runtime/render-fixture.test.ts",
+      "bytes": 3676,
+      "sha256": "b89f024e50269b8e21ac424ee95ba4ad06dff35ffc78efe515d892a8788215ea"
+    },
+    {
+      "path": "tests/audio-runtime/render-job.test.ts",
+      "bytes": 5305,
+      "sha256": "5fe7fbe2485fc67eb790bc4a8ab84c621b49c2ec573c154819b31b66748ebf8b"
+    },
+    {
+      "path": "tests/audio-runtime/render-pcm.test.ts",
+      "bytes": 1844,
+      "sha256": "afca07f0088ced29c2079191efe91250d571788d95510ac1de975c8d1b5931e6"
+    },
+    {
+      "path": "tests/audio-runtime/render-host.test.ts",
+      "bytes": 1955,
+      "sha256": "0893cdc1747858feab355bd4efed225c97815de98c9d69f318756219802ea007"
+    },
+    {
+      "path": "tests/browser/render/fixture.mjs",
+      "bytes": 7477,
+      "sha256": "0a453779e353e86e1fdf6e731e64add0c9dff5ce93c93ff47fa8fd855e493ef0"
+    },
+    {
+      "path": "tests/browser/render/run.mjs",
+      "bytes": 2872,
+      "sha256": "1030b4c5b3e4976abdc239937cf123c59192a6a545d0060341d7e6d8bfed1e9e"
+    },
+    {
+      "path": "tests/browser/render/index.html",
+      "bytes": 182,
+      "sha256": "3e6eae5dca1f9477751dd7f18ab2321da5ecaa377e221c5f8c9e331386c3de75"
+    }
+  ],
+  "scope": "Core native short-take renderer and basic tests; no full V1, hearing, live Meta, or 600-second performance claim."
+}

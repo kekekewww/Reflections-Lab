@@ -692,7 +692,10 @@ test("EN-04 English desktop and 320px retain readable forms, visible monitoring 
     .toBe(true);
   await page.getByRole("slider", { name: "Monitor gain", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("slider", { name: "Monitor gain", exact: true })).toHaveValue("0.19");
+  // R18: the monitor control is a whole-dB taper (default 0 dB); one keyboard step is +1 dB.
+  const monitorGain = page.getByRole("slider", { name: "Monitor gain", exact: true });
+  await expect(monitorGain).toHaveValue("1");
+  await expect(monitorGain).toHaveAttribute("aria-valuetext", "+1 dB");
   await page
     .getByRole("navigation", { name: "Main panels", exact: true })
     .getByRole("button", { name: "3D viewport", exact: true })

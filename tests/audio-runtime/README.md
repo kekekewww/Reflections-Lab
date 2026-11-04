@@ -6,7 +6,7 @@ Chromium 原始 native 結果為 [native-audio-bank-verified-20261027.json](nati
 
 新增的原樣跨引擎執行整體 **FAIL**：Firefox157.0為8 PASS／1能量FAIL／9 API阻擋／7 aggregate未執行；Windows快取WebKit27.2為25 API阻擋。Firefox缺少測試用Offline suspend不能推論產品live Pause不支援；WebKit的觀測也不代表所有Safari平台。[跨引擎原始報告](../../artifacts/v1/audio-cross-engine-run-20261027053729781/verification.json)、[執行與分類說明](CROSS_ENGINE.md)。
 
-獨立版本的9圖原生參考已保存864000bytes完整PCM，確認此Firefox build的0.075s native Delay行為吻合事先固定的Float32分數延遲插值模型，並重現原能量；原`<1e-5`驗收仍是 **FAIL**。新`1e-7`僅用於模型逐sample診斷，沒有替換舊oracle或放寬門檻。[相容性與限制報告](../../artifacts/v1/audio-delay-reference-v1-run-20261027054851146/compatibility-summary.md)、[完整PCM](archive://14da3d7fdcdb5dc73d69b6420238689e22f3846e/f04028c02f6bb4f2eae35c5c31c7bb8ed3274467)、[執行前v1參考計畫](DELAY_REFERENCE_V1.md)。
+獨立版本的9圖原生參考已保存864000bytes完整PCM，確認此Firefox build的0.075s native Delay行為吻合事先固定的Float32分數延遲插值模型，並重現原能量；原`<1e-5`驗收仍是 **FAIL**。新`1e-7`僅用於模型逐sample診斷，沒有替換舊oracle或放寬門檻。[相容性與限制報告](../../artifacts/v1/audio-delay-reference-v1-run-20261027054851146/compatibility-summary.md)、[完整PCM](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/f04028c02f6bb4f2eae35c5c31c7bb8ed3274467)、[執行前v1參考計畫](DELAY_REFERENCE_V1.md)。
 
 Node 控制圖、排程、記憶體及負例結果見 [node-final-20261027.tap](node-final-20261027.tap)。FakeAudioContext 只記錄控制與連線，從未作為 native DSP 通過證據。新增的 pause、late reverb、asset、WAV 及 cursor regression 另由隔離代理實作與獨立執行。
 

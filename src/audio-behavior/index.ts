@@ -49,6 +49,7 @@ export type * from "./types.js";
 
 const interactionTriggers = new Set(["OnGrab", "OnRelease", "OnThrow", "OnDrop"]);
 const physicsTriggers = new Set(["OnImpact", "OnBounce"]);
+const zoneTriggers = new Set(["OnEnterZone", "OnExitZone"]);
 const discreteTriggers = new Set([
   "OnGrab",
   "OnRelease",
@@ -559,6 +560,21 @@ export function createBehaviorRuntime(
       )
         fail("INTERACTION_PROVENANCE", "Interaction event requires an accepted command ID");
       if (input.commandId) assertId(input.commandId);
+      if (input.zoneId !== undefined) {
+        assertId(input.zoneId, "zone ID");
+        if (!zoneTriggers.has(input.type) || !registry.context.zoneIds.includes(input.zoneId))
+          fail("ZONE_PROVENANCE", "Zone event must reference its registered region");
+      }
+      if (
+        input.accepted &&
+        zoneTriggers.has(input.type) &&
+        (input.source !== "zone" ||
+          (registry.context.producerCapabilities?.zoneProducer === true && !input.zoneId))
+      )
+        fail(
+          "ZONE_PROVENANCE",
+          "Accepted zone events require the zone producer and explicit region ID",
+        );
       if (
         input.accepted &&
         physicsTriggers.has(input.type) &&
@@ -675,7 +691,14 @@ export function createBehaviorRuntime(
       const object = objects.get(input.objectId)!;
       for (const instance of state.instances) {
         const { binding, rule } = resolve(instance);
-        if (instance.objectId === input.objectId && rule.lifecycle?.stopOn.includes(input.type))
+        if (
+          instance.objectId === input.objectId &&
+          rule.lifecycle?.stopOn.includes(input.type) &&
+          (!zoneTriggers.has(input.type) ||
+            rule.trigger.kind !== "discrete" ||
+            !rule.trigger.zoneId ||
+            rule.trigger.zoneId === input.zoneId)
+        )
           deactivate(result, instance, "LATCH_STOP_EVENT", {
             binding,
             rule,
@@ -692,7 +715,13 @@ export function createBehaviorRuntime(
         const profile = registry.profiles.get(binding.profileId)!;
         for (const original of profile.rules) {
           const rule = effectiveRule(binding, original);
-          if (rule.trigger.kind === "discrete" && rule.trigger.type === input.type)
+          if (
+            rule.trigger.kind === "discrete" &&
+            rule.trigger.type === input.type &&
+            (!zoneTriggers.has(input.type) ||
+              !rule.trigger.zoneId ||
+              rule.trigger.zoneId === input.zoneId)
+          )
             candidates.push({
               binding,
               profile,

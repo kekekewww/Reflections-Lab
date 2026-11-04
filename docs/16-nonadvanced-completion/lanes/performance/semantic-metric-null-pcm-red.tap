@@ -1,0 +1,662 @@
+TAP version 13
+# Subtest: a partially unobserved delivery distribution cannot become PASS by filtering null
+not ok 1 - a partially unobserved delivery distribution cannot become PASS by filtering null
+  ---
+  duration_ms: 1.5463
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'PASS'
+    - 'UNVERIFIED'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'UNVERIFIED'
+  actual: 'PASS'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:9:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: measured threshold failure survives alongside an unobserved sample
+not ok 2 - measured threshold failure survives alongside an unobserved sample
+  ---
+  duration_ms: 0.2265
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:14:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:17:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: all unobserved values preserve null quantiles and unavailable threshold evidence
+not ok 3 - all unobserved values preserve null quantiles and unavailable threshold evidence
+  ---
+  duration_ms: 0.3665
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:20:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== 3
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 3
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:27:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a fully measured zero distribution still passes the unchanged strict budget
+not ok 4 - a fully measured zero distribution still passes the unchanged strict budget
+  ---
+  duration_ms: 0.2086
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:31:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:36:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: bounded PCM capture module exists and registers its fixed diagnostic processor
+not ok 5 - bounded PCM capture module exists and registers its fixed diagnostic processor
+  ---
+  duration_ms: 1.7004
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\pcm-probe.spec.mjs:139:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    bounded PCM observer implementation must exist
+    
+    'object' !== 'string'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'string'
+  actual: 'object'
+  operator: 'strictEqual'
+  stack: |-
+    makeHarness (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/pcm-probe.spec.mjs:22:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/pcm-probe.spec.mjs:140:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: 17-frame native block is copied exactly without assuming a 128-frame quantum
+ok 6 - 17-frame native block is copied exactly without assuming a 128-frame quantum
+  ---
+  duration_ms: 0.1271
+  type: 'test'
+  ...
+# Subtest: varying native block lengths remain contiguous and transparent
+ok 7 - varying native block lengths remain contiguous and transparent
+  ---
+  duration_ms: 0.0645
+  type: 'test'
+  ...
+# Subtest: capture trims both window edges exactly while outside-window data is not overflow
+ok 8 - capture trims both window edges exactly while outside-window data is not overflow
+  ---
+  duration_ms: 0.0638
+  type: 'test'
+  ...
+# Subtest: missing input during the capture window cannot be published as measured silence
+ok 9 - missing input during the capture window cannot be published as measured silence
+  ---
+  duration_ms: 0.1192
+  type: 'test'
+  ...
+# Subtest: missing input wholly before the capture window does not corrupt later valid PCM
+ok 10 - missing input wholly before the capture window does not corrupt later valid PCM
+  ---
+  duration_ms: 0.0558
+  type: 'test'
+  ...
+# Subtest: missing source channel is explicit invalid capture rather than silently coerced channels
+ok 11 - missing source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.1493
+  type: 'test'
+  ...
+# Subtest: extra source channel is explicit invalid capture rather than silently coerced channels
+ok 12 - extra source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.0591
+  type: 'test'
+  ...
+# Subtest: missing output channel is explicit invalid capture rather than silently coerced channels
+ok 13 - missing output channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.2338
+  type: 'test'
+  ...
+# Subtest: NaN PCM is preserved as invalid evidence rather than normalized or hidden
+ok 14 - NaN PCM is preserved as invalid evidence rather than normalized or hidden
+  ---
+  duration_ms: 0.2754
+  type: 'test'
+  ...
+# Subtest: a context-frame gap is measured independently from input silence and hardware underrun
+ok 15 - a context-frame gap is measured independently from input silence and hardware underrun
+  ---
+  duration_ms: 0.0987
+  type: 'test'
+  ...
+# Subtest: overlapping render frames are invalid and never inflate captured frame count
+ok 16 - overlapping render frames are invalid and never inflate captured frame count
+  ---
+  duration_ms: 0.0394
+  type: 'test'
+  ...
+# Subtest: no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+ok 17 - no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+  ---
+  duration_ms: 0.0285
+  type: 'test'
+  ...
+# Subtest: inconsistent input/output block lengths fail without inventing a quantum
+ok 18 - inconsistent input/output block lengths fail without inventing a quantum
+  ---
+  duration_ms: 0.026
+  type: 'test'
+  ...
+# Subtest: unequal input channel lengths cannot be copied as complete stereo
+ok 19 - unequal input channel lengths cannot be copied as complete stereo
+  ---
+  duration_ms: 0.0259
+  type: 'test'
+  ...
+# Subtest: block-length metadata stays bounded to 16 values and reports its own overflow
+ok 20 - block-length metadata stays bounded to 16 values and reports its own overflow
+  ---
+  duration_ms: 0.0252
+  type: 'test'
+  ...
+# Subtest: the PCM pool is preallocated and process creates no new typed-array storage
+ok 21 - the PCM pool is preallocated and process creates no new typed-array storage
+  ---
+  duration_ms: 0.025
+  type: 'test'
+  ...
+# Subtest: cancel transfers no partial PCM and cannot publish completion later
+ok 22 - cancel transfers no partial PCM and cannot publish completion later
+  ---
+  duration_ms: 0.0264
+  type: 'test'
+  ...
+# Subtest: unknown control messages cannot rearm or enlarge the reserved PCM pool
+ok 23 - unknown control messages cannot rearm or enlarge the reserved PCM pool
+  ---
+  duration_ms: 0.0267
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: negative start
+ok 24 - invalid PCM reservation rejects before capture: negative start
+  ---
+  duration_ms: 0.0266
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: fractional start
+ok 25 - invalid PCM reservation rejects before capture: fractional start
+  ---
+  duration_ms: 0.0254
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero frames
+ok 26 - invalid PCM reservation rejects before capture: zero frames
+  ---
+  duration_ms: 0.0258
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite frames
+ok 27 - invalid PCM reservation rejects before capture: nonfinite frames
+  ---
+  duration_ms: 0.0254
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: duration cap plus one
+ok 28 - invalid PCM reservation rejects before capture: duration cap plus one
+  ---
+  duration_ms: 0.0256
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown channels
+ok 29 - invalid PCM reservation rejects before capture: unknown channels
+  ---
+  duration_ms: 0.0253
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero channels
+ok 30 - invalid PCM reservation rejects before capture: zero channels
+  ---
+  duration_ms: 0.031
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: missing frame count
+ok 31 - invalid PCM reservation rejects before capture: missing frame count
+  ---
+  duration_ms: 0.0254
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unsafe ending frame
+ok 32 - invalid PCM reservation rejects before capture: unsafe ending frame
+  ---
+  duration_ms: 0.0265
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown configuration
+ok 33 - invalid PCM reservation rejects before capture: unknown configuration
+  ---
+  duration_ms: 0.0243
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate above cap
+ok 34 - invalid PCM reservation rejects before capture: actual rate above cap
+  ---
+  duration_ms: 0.0267
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate below supported range
+ok 35 - invalid PCM reservation rejects before capture: actual rate below supported range
+  ---
+  duration_ms: 0.027
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite actual rate
+ok 36 - invalid PCM reservation rejects before capture: nonfinite actual rate
+  ---
+  duration_ms: 0.0255
+  type: 'test'
+  ...
+# Subtest: maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+ok 37 - maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+  ---
+  duration_ms: 0.0275
+  type: 'test'
+  ...
+# Subtest: probe-free fixture retains native RAF and cancel identities
+ok 38 - probe-free fixture retains native RAF and cancel identities
+  ---
+  duration_ms: 1.0825
+  type: 'test'
+  ...
+# Subtest: instrumented fixture still observes native callbacks by default
+ok 39 - instrumented fixture still observes native callbacks by default
+  ---
+  duration_ms: 0.7581
+  type: 'test'
+  ...
+# Subtest: probe-free callback cannot contribute a measured callback or proof mark
+ok 40 - probe-free callback cannot contribute a measured callback or proof mark
+  ---
+  duration_ms: 0.1736
+  type: 'test'
+  ...
+# Subtest: probe-free closed window keeps unobserved capture and UI counters null
+not ok 41 - probe-free closed window keeps unobserved capture and UI counters null
+  ---
+  duration_ms: 1.2399
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\probe-free-fixture.spec.mjs:34:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/probe-free-fixture.spec.mjs:39:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+not ok 42 - semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+  ---
+  duration_ms: 2.0611
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\semantic-pilot.spec.mjs:230:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/semantic-pilot.spec.mjs:231:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+ok 43 - independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+  ---
+  duration_ms: 1.5401
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 0
+ok 44 - semantic oracle accepts the full literal with actual handles beginning at 0
+  ---
+  duration_ms: 0.0884
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 100
+ok 45 - semantic oracle accepts the full literal with actual handles beginning at 100
+  ---
+  duration_ms: 0.057
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 700
+ok 46 - semantic oracle accepts the full literal with actual handles beginning at 700
+  ---
+  duration_ms: 0.0533
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+ok 47 - semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+  ---
+  duration_ms: 0.0729
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+ok 48 - semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+  ---
+  duration_ms: 0.0451
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback before its registration
+ok 49 - semantic oracle rejects callback before its registration
+  ---
+  duration_ms: 0.0986
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+ok 50 - semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+  ---
+  duration_ms: 0.1864
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+ok 51 - semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+  ---
+  duration_ms: 0.2563
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback handle differs from its native registration
+ok 52 - semantic oracle rejects callback handle differs from its native registration
+  ---
+  duration_ms: 0.0988
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects handle reuse across different registration labels
+ok 53 - semantic oracle rejects handle reuse across different registration labels
+  ---
+  duration_ms: 0.0376
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects string handles are not coerced
+ok 54 - semantic oracle rejects string handles are not coerced
+  ---
+  duration_ms: 0.0277
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+ok 55 - semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+  ---
+  duration_ms: 0.0248
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child fires inside the parent group with coherent total counts
+ok 56 - semantic oracle rejects nested child fires inside the parent group with coherent total counts
+  ---
+  duration_ms: 0.024
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested registration is falsely attributed to another callback
+ok 57 - semantic oracle rejects nested registration is falsely attributed to another callback
+  ---
+  duration_ms: 0.0248
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child was registered outside the frozen parent order
+ok 58 - semantic oracle rejects nested child was registered outside the frozen parent order
+  ---
+  duration_ms: 0.0304
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects measured callback misrepresented as pretrace
+ok 59 - semantic oracle rejects measured callback misrepresented as pretrace
+  ---
+  duration_ms: 0.024
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing callback is not repaired by receipt-derived counts
+ok 60 - semantic oracle rejects missing callback is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.0426
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+ok 61 - semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.0283
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+ok 62 - semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+  ---
+  duration_ms: 0.0268
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+ok 63 - semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+  ---
+  duration_ms: 0.0307
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+ok 64 - semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+  ---
+  duration_ms: 0.0259
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw bytes are not a canonical 16-character byte string
+ok 65 - semantic oracle rejects raw bytes are not a canonical 16-character byte string
+  ---
+  duration_ms: 0.0244
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nonfinite callback argument
+ok 66 - semantic oracle rejects nonfinite callback argument
+  ---
+  duration_ms: 0.0279
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime mark is silently changed into a normal mark
+ok 67 - semantic oracle rejects custom startTime mark is silently changed into a normal mark
+  ---
+  duration_ms: 0.0244
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime did not preserve its exact requested zero
+ok 68 - semantic oracle rejects custom startTime did not preserve its exact requested zero
+  ---
+  duration_ms: 0.0251
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom mark is attached to the wrong representative
+ok 69 - semantic oracle rejects custom mark is attached to the wrong representative
+  ---
+  duration_ms: 0.5193
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark name does not bind the independently observed callback bytes
+ok 70 - semantic oracle rejects mark name does not bind the independently observed callback bytes
+  ---
+  duration_ms: 0.0357
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark-name byte count is not an estimate
+ok 71 - semantic oracle rejects mark-name byte count is not an estimate
+  ---
+  duration_ms: 0.0286
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed group count differs from independent callback journal
+ok 72 - semantic oracle rejects claimed group count differs from independent callback journal
+  ---
+  duration_ms: 0.0289
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed callback handle differs from independent journal
+ok 73 - semantic oracle rejects claimed callback handle differs from independent journal
+  ---
+  duration_ms: 0.033
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing operation array is not empty success
+ok 74 - semantic oracle rejects missing operation array is not empty success
+  ---
+  duration_ms: 0.0238
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal schema
+ok 75 - semantic oracle rejects unknown journal schema
+  ---
+  duration_ms: 0.0239
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown scenario cannot inherit this qualification
+ok 76 - semantic oracle rejects unknown scenario cannot inherit this qualification
+  ---
+  duration_ms: 0.024
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal collection differs from actual collector
+ok 77 - semantic oracle rejects journal collection differs from actual collector
+  ---
+  duration_ms: 0.0235
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal field fails closed
+ok 78 - semantic oracle rejects unknown journal field fails closed
+  ---
+  duration_ms: 0.0231
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation field fails closed
+ok 79 - semantic oracle rejects unknown operation field fails closed
+  ---
+  duration_ms: 0.0258
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation kind fails closed
+ok 80 - semantic oracle rejects unknown operation kind fails closed
+  ---
+  duration_ms: 0.0242
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown mark field fails closed
+ok 81 - semantic oracle rejects unknown mark field fails closed
+  ---
+  duration_ms: 0.0234
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null journal
+ok 82 - semantic oracle returns controlled rejection for null journal
+  ---
+  duration_ms: 0.058
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for array journal
+ok 83 - semantic oracle returns controlled rejection for array journal
+  ---
+  duration_ms: 0.0248
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null operation
+ok 84 - semantic oracle returns controlled rejection for null operation
+  ---
+  duration_ms: 0.0245
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null mark
+ok 85 - semantic oracle returns controlled rejection for null mark
+  ---
+  duration_ms: 0.0253
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null collector output
+ok 86 - semantic oracle returns controlled rejection for null collector output
+  ---
+  duration_ms: 0.0235
+  type: 'test'
+  ...
+1..86
+# tests 86
+# suites 0
+# pass 79
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 708.8826

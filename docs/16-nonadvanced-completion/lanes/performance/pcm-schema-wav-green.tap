@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: bounded PCM capture module exists and registers its fixed diagnostic processor
+ok 1 - bounded PCM capture module exists and registers its fixed diagnostic processor
+  ---
+  duration_ms: 2.1429
+  type: 'test'
+  ...
+# Subtest: 17-frame native block is copied exactly without assuming a 128-frame quantum
+ok 2 - 17-frame native block is copied exactly without assuming a 128-frame quantum
+  ---
+  duration_ms: 2.5715
+  type: 'test'
+  ...
+# Subtest: varying native block lengths remain contiguous and transparent
+ok 3 - varying native block lengths remain contiguous and transparent
+  ---
+  duration_ms: 1.2843
+  type: 'test'
+  ...
+# Subtest: capture trims both window edges exactly while outside-window data is not overflow
+ok 4 - capture trims both window edges exactly while outside-window data is not overflow
+  ---
+  duration_ms: 1.1858
+  type: 'test'
+  ...
+# Subtest: missing input during the capture window cannot be published as measured silence
+ok 5 - missing input during the capture window cannot be published as measured silence
+  ---
+  duration_ms: 0.9953
+  type: 'test'
+  ...
+# Subtest: missing input wholly before the capture window does not corrupt later valid PCM
+ok 6 - missing input wholly before the capture window does not corrupt later valid PCM
+  ---
+  duration_ms: 0.9648
+  type: 'test'
+  ...
+# Subtest: missing source channel is explicit invalid capture rather than silently coerced channels
+ok 7 - missing source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.9644
+  type: 'test'
+  ...
+# Subtest: extra source channel is explicit invalid capture rather than silently coerced channels
+ok 8 - extra source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.2908
+  type: 'test'
+  ...
+# Subtest: missing output channel is explicit invalid capture rather than silently coerced channels
+ok 9 - missing output channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.9995
+  type: 'test'
+  ...
+# Subtest: NaN PCM is preserved as invalid evidence rather than normalized or hidden
+ok 10 - NaN PCM is preserved as invalid evidence rather than normalized or hidden
+  ---
+  duration_ms: 1.3861
+  type: 'test'
+  ...
+# Subtest: a context-frame gap is measured independently from input silence and hardware underrun
+ok 11 - a context-frame gap is measured independently from input silence and hardware underrun
+  ---
+  duration_ms: 1.2029
+  type: 'test'
+  ...
+# Subtest: overlapping render frames are invalid and never inflate captured frame count
+ok 12 - overlapping render frames are invalid and never inflate captured frame count
+  ---
+  duration_ms: 0.8414
+  type: 'test'
+  ...
+# Subtest: no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+ok 13 - no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+  ---
+  duration_ms: 0.8433
+  type: 'test'
+  ...
+# Subtest: inconsistent input/output block lengths fail without inventing a quantum
+ok 14 - inconsistent input/output block lengths fail without inventing a quantum
+  ---
+  duration_ms: 0.9043
+  type: 'test'
+  ...
+# Subtest: unequal input channel lengths cannot be copied as complete stereo
+ok 15 - unequal input channel lengths cannot be copied as complete stereo
+  ---
+  duration_ms: 0.8621
+  type: 'test'
+  ...
+# Subtest: block-length metadata stays bounded to 16 values and reports its own overflow
+ok 16 - block-length metadata stays bounded to 16 values and reports its own overflow
+  ---
+  duration_ms: 1.3798
+  type: 'test'
+  ...
+# Subtest: the PCM pool is preallocated and process creates no new typed-array storage
+ok 17 - the PCM pool is preallocated and process creates no new typed-array storage
+  ---
+  duration_ms: 1.1081
+  type: 'test'
+  ...
+# Subtest: cancel transfers no partial PCM and cannot publish completion later
+ok 18 - cancel transfers no partial PCM and cannot publish completion later
+  ---
+  duration_ms: 0.9602
+  type: 'test'
+  ...
+# Subtest: unknown control messages cannot rearm or enlarge the reserved PCM pool
+ok 19 - unknown control messages cannot rearm or enlarge the reserved PCM pool
+  ---
+  duration_ms: 0.8889
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: negative start
+ok 20 - invalid PCM reservation rejects before capture: negative start
+  ---
+  duration_ms: 0.9315
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: fractional start
+ok 21 - invalid PCM reservation rejects before capture: fractional start
+  ---
+  duration_ms: 0.7599
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero frames
+ok 22 - invalid PCM reservation rejects before capture: zero frames
+  ---
+  duration_ms: 0.6675
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite frames
+ok 23 - invalid PCM reservation rejects before capture: nonfinite frames
+  ---
+  duration_ms: 0.6188
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: duration cap plus one
+ok 24 - invalid PCM reservation rejects before capture: duration cap plus one
+  ---
+  duration_ms: 0.6353
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown channels
+ok 25 - invalid PCM reservation rejects before capture: unknown channels
+  ---
+  duration_ms: 0.631
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero channels
+ok 26 - invalid PCM reservation rejects before capture: zero channels
+  ---
+  duration_ms: 0.7088
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: missing frame count
+ok 27 - invalid PCM reservation rejects before capture: missing frame count
+  ---
+  duration_ms: 0.5823
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unsafe ending frame
+ok 28 - invalid PCM reservation rejects before capture: unsafe ending frame
+  ---
+  duration_ms: 0.6341
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown configuration
+ok 29 - invalid PCM reservation rejects before capture: unknown configuration
+  ---
+  duration_ms: 0.6776
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate above cap
+ok 30 - invalid PCM reservation rejects before capture: actual rate above cap
+  ---
+  duration_ms: 0.6968
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate below supported range
+ok 31 - invalid PCM reservation rejects before capture: actual rate below supported range
+  ---
+  duration_ms: 0.679
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite actual rate
+ok 32 - invalid PCM reservation rejects before capture: nonfinite actual rate
+  ---
+  duration_ms: 0.6602
+  type: 'test'
+  ...
+# Subtest: maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+ok 33 - maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+  ---
+  duration_ms: 0.889
+  type: 'test'
+  ...
+# Subtest: inherited cancel kind is not a valid own-key control message
+ok 34 - inherited cancel kind is not a valid own-key control message
+  ---
+  duration_ms: 0.8091
+  type: 'test'
+  ...
+# Subtest: diagnostic WAV encoder is accepted by the frozen independent Stage12 float-WAV parser
+ok 35 - diagnostic WAV encoder is accepted by the frozen independent Stage12 float-WAV parser
+  ---
+  duration_ms: 14.1888
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 117.0846

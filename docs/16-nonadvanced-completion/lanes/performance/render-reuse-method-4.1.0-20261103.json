@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "status": "SCOPED_IMPLEMENTATION_AND_NODE_VALIDATION_ONLY",
+  "observedAt": "2026-11-03T06:12:38.173Z",
+  "checkout": {
+    "branch": "codex/render-performance-20261103",
+    "head": "7975b07e627db6e8527b05ff2e4cf8deae03169b",
+    "dirtyImplementation": true,
+    "committed": false
+  },
+  "scope": "SolverPath資源重用；V4 CPU before endpoint順序與transitive source pins修補。Task0032與完整V1尚未完成。",
+  "method": {
+    "methodVersion": "4.1.0",
+    "reportSchemaVersion": 2,
+    "priorMethodVersion": "4.0.0",
+    "priorReportSchemaVersion": 1,
+    "probeOnBeforeEndpointOrder": "after-tracing-start-before-beginUI",
+    "probeOffBeforeEndpointOrder": "before-beginUI-no-tracing",
+    "excludesTracingStartPreparationCost": true,
+    "afterEndpointOrder": "AFTER_CLOSED_WINDOW_RPC_BEFORE_DISK_AND_TAIL",
+    "methodPinCount": 64,
+    "sourcePinInventory": "tests/browser/performance-method-v4.mjs",
+    "preservedSemanticApproval": "semantic-v3-c59df8c64fdfa846d6e22daf",
+    "approvalScope": "SEMANTIC_PRECONDITION_ONLY_NOT_NEW_PERFORMANCE_EVIDENCE",
+    "nativeCandidateRegistry": "Unchanged native trace qualification schema; independent of collector report schema."
+  },
+  "changes": [
+    "每個mounted SolverPath保留一條Line；Float32位置與lineDistance attributes、Float64原值比較cache依capacity重用，只有超容量才替換geometry。",
+    "geometry先dispose再逐attribute dispose，確保WebGL仍能釋放舊GPUbuffers；material僅Basic/Dashed型別切換時替換，清理idempotent。",
+    "維持原色彩、透明度、dash/gap、全部點與path cap；drawRange及boundingSphere依active points更新；選取dispatch與兩種節點球維持。",
+    "React layout effect於commit建立自有Line並掛到單獨selection group，避免abandoned render與StrictMode cleanup後復用已釋放資源。",
+    "V4採測試覆蓋的Tracing.start resolved→before endpoint完成→beginUI流程；失敗保留null endpoint，不捏造量測。",
+    "runner/preflight/profile使用同一完整方法source inventory；AST遞迴import/export/dynamic literal import檢查runner/profile兩個entry的所有relative imports。"
+  ],
+  "codePins": [
+    {
+      "path": "src/ui/viewport/SceneEntities.tsx",
+      "sha256": "a525d8ad92a32099eff875b2efa6da0ac21a32789c6830d1a7719cd96b5f5a43"
+    },
+    {
+      "path": "src/ui/viewport/solver-path-line.ts",
+      "sha256": "bf4e6906910dcb45464e384cb1c7d37e7bc7f73dc8f49af88c3870529e5b957e"
+    },
+    {
+      "path": "src/ui/viewport/solver-path-line.test.ts",
+      "sha256": "810a5ded8ecb73ad4b0e38ab25d24aeed034adda16a83bd8f2d1fe2352869ce6"
+    },
+    {
+      "path": "tests/browser/performance-method-v4.mjs",
+      "sha256": "0d8713f49eaa19e385eca8c8853526434c98e3998580371aadb48e37d25f6994"
+    },
+    {
+      "path": "tests/browser/performance-profile-contract-v4.mjs",
+      "sha256": "209be8f1c9dc9dc8ebfa3986d290d6a54feff0f65cde2e7ef93118a3470571a1"
+    },
+    {
+      "path": "tests/browser/performance-profile-v4.mjs",
+      "sha256": "79a9468e81a4147ab32de5febf3ac895f94b0eff86049c3358f7d7b8bf317ed2"
+    },
+    {
+      "path": "tests/browser/run-performance-v4.mjs",
+      "sha256": "4576dbdd1fa62a566ab1d1a123403ad4fc1174a2df62033edfb1d947a5cabbcb"
+    },
+    {
+      "path": "tests/integration/performance-v4-method-version.test.mjs",
+      "sha256": "46d5b4193e3ad013c6cfc10b224f66a012b957f1771e371d27133cbef4e6e2fc"
+    }
+  ],
+  "historicalReport": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/v4-wiring-01-evidence/native/verification.json",
+    "sha256": "54bd0ad185a6be4f25acbccd4c8a2b6f7c4fc9268af4265205505ec8570bec7e",
+    "unchangedFromHead": true
+  },
+  "validation": {
+    "checks": [
+      {
+        "command": "node --import tsx --test src/ui/viewport/*.test.ts",
+        "exitCode": 0,
+        "tests": 51,
+        "passed": 51,
+        "failed": 0,
+        "skipped": 0,
+        "log": ".cache/render-performance-20261103/viewport.txt"
+      },
+      {
+        "command": "node --import tsx --test src/ui/viewport/solver-path-line.test.ts",
+        "exitCode": 0,
+        "tests": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "log": ".cache/render-performance-20261103/new-path.txt"
+      },
+      {
+        "command": "node --import tsx --test tests/integration/performance-v4-method.test.mjs",
+        "exitCode": 0,
+        "tests": 611,
+        "passed": 611,
+        "failed": 0,
+        "skipped": 0,
+        "log": ".cache/render-performance-20261103/v4-existing.txt"
+      },
+      {
+        "command": "node --import tsx --test tests/integration/performance-v4-method-version.test.mjs",
+        "exitCode": 0,
+        "tests": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "log": ".cache/render-performance-20261103/v4-new.txt"
+      },
+      {
+        "command": "node --import tsx --test tests/performance-v3/native-boundary-v4.spec.mjs",
+        "exitCode": 0,
+        "tests": 102,
+        "passed": 102,
+        "failed": 0,
+        "skipped": 0,
+        "log": ".cache/render-performance-20261103/v4-native-boundary.txt"
+      },
+      {
+        "command": "npx tsc --noEmit -p .",
+        "exitCode": 0,
+        "tests": null,
+        "passed": null,
+        "failed": null,
+        "skipped": null,
+        "log": ".cache/render-performance-20261103/tsc.txt"
+      },
+      {
+        "command": "npx eslint src/ui/viewport/SceneEntities.tsx src/ui/viewport/solver-path-line.ts src/ui/viewport/solver-path-line.test.ts tests/browser/performance-method-v4.mjs tests/browser/performance-profile-contract-v4.mjs tests/browser/performance-profile-v4.mjs tests/browser/run-performance-v4.mjs tests/integration/performance-v4-method-version.test.mjs",
+        "exitCode": 0,
+        "tests": null,
+        "passed": null,
+        "failed": null,
+        "skipped": null,
+        "log": ".cache/render-performance-20261103/eslint.txt"
+      },
+      {
+        "command": "npx prettier --check src/ui/viewport/SceneEntities.tsx src/ui/viewport/solver-path-line.ts src/ui/viewport/solver-path-line.test.ts tests/browser/performance-method-v4.mjs tests/browser/performance-profile-contract-v4.mjs tests/browser/performance-profile-v4.mjs tests/browser/run-performance-v4.mjs tests/integration/performance-v4-method-version.test.mjs",
+        "exitCode": 0,
+        "tests": null,
+        "passed": null,
+        "failed": null,
+        "skipped": null,
+        "log": ".cache/render-performance-20261103/prettier.txt"
+      },
+      {
+        "command": "node scripts/setup/emil-skills.mjs --check",
+        "exitCode": 0,
+        "tests": null,
+        "passed": null,
+        "failed": null,
+        "skipped": null,
+        "log": ".cache/render-performance-20261103/emil-check.txt"
+      },
+      {
+        "command": "node scripts/setup/emil-skills.mjs --standards",
+        "exitCode": 0,
+        "tests": null,
+        "passed": null,
+        "failed": null,
+        "skipped": null,
+        "log": ".cache/render-performance-20261103/emil-standards.txt"
+      }
+    ],
+    "overlapNotice": "viewport51含新helper9；V4existing611與nativeboundary102有不同suite，數字按命令分列、不冒單一完整產品suite。",
+    "reference": "以Three原Line.computeLineDistances與Float32位置作獨立數值reference；真Three Raycaster驗active drawRange/bounds。",
+    "earlyAttempts": "新增V4測試初跑0/6、exit1，缺export與pin；helper新增檔前module-not-found。實作後各5/6、exit1，修正測試hex大小寫與舊report cdpSummary欄位路徑；初tsc exit1為新helper/test的strict型別，已修後重跑exit0。未改舊斷言/門檻/容差。"
+  },
+  "notRun": [
+    "npm ci / npm run check / bundles / servers / browsers / browser visuals / formal600s / probe on-off performance / native audio / hearing / new paid calls / deployment / Git stage/commit/push/reset/clean"
+  ],
+  "limits": [
+    "本輪只驗可重現node/resource/method行為；實際browser click/selection、視覺同等、GPU lifecycle與效能收益待Claude新build與量測。",
+    "WIRING-01原CPU PARTIAL/null、原raw與原負載/門檻/容量/容差不改；最新正式600秒尚未因本輪通過。",
+    "未以本輪窄修宣稱Task0032、非進階scope或V1整體完成。"
+  ],
+  "next": [
+    "Claude依新method4.1.0/source freeze執行真browser視覺/點選與同workload probe on/off及正式效能。",
+    "保留原歷史失敗，依獨立量測判定收益；不得降低256bodies/105objects/voices/pathcaps/vertices/precision/DPR/shadows/update rate。"
+  ]
+}

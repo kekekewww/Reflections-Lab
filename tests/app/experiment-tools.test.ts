@@ -1,3 +1,4 @@
+import { emitterGeometryPolicyPin } from "../../src/capabilities/emitter-geometry-policy.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { Ajv2020 } from "ajv/dist/2020.js";
@@ -18,7 +19,7 @@ import type { ExperimentRecorderOptions, RecordingArtifact } from "../../src/exp
 import type { SceneSpec } from "../../src/scene/types.js";
 import type { ToolRequest } from "../../src/ai/types.js";
 import type { AudioEvent } from "../../schemas/sound-behavior/types.js";
-import { SOLVER_VERSION } from "../../src/acoustics/index.js";
+import { acousticSceneSolverVersion } from "../../src/capabilities/acoustic-geometry.js";
 import { ExperimentRecorder } from "../../src/experiments/recorder.js";
 
 const ajv = new Ajv2020({ strict: true, allErrors: true, ownProperties: true });
@@ -35,7 +36,12 @@ function config(scene = createDefaultScene()): ExperimentRecorderOptions {
     generatorConfig: behavior.profiles.map((profile) =>
       profile.rules.map((rule) => rule.generator),
     ),
-    solverConfig: { backendId: "custom-web-geometric", maxReflectionOrder: 1, maxPaths: 8 },
+    solverConfig: {
+      backendId: "custom-web-geometric",
+      maxReflectionOrder: 1,
+      maxPaths: 8,
+      ...emitterGeometryPolicyPin(),
+    },
     atmosphere: {
       medium: "air",
       speedOfSoundMps: 343,
@@ -47,7 +53,7 @@ function config(scene = createDefaultScene()): ExperimentRecorderOptions {
     assetManifest: [],
     physicsVersion: "rapier-0.21.0",
     backendId: "custom-web-geometric",
-    backendVersion: SOLVER_VERSION,
+    backendVersion: acousticSceneSolverVersion(scene),
     fixedDtS: 1 / 60,
     sampleRateHz: 48000,
   };
@@ -336,7 +342,10 @@ test("fresh world explicitly projects binding generations without mutating the l
 test("capture and analysis cite immutable real artifacts; unsupported decay metrics remain null", async () => {
   const target = host(),
     recording = await run(target);
-  assert.equal(recording.configuration.backendVersion, SOLVER_VERSION);
+  assert.equal(
+    recording.configuration.backendVersion,
+    acousticSceneSolverVersion(recording.configuration.sceneSnapshot),
+  );
   assert.ok(
     recording.frames
       .flatMap((frame) => frame.acousticFrames)
@@ -371,7 +380,7 @@ test("capture and analysis cite immutable real artifacts; unsupported decay metr
   envelope(analysis);
   assert.equal(analysis.metrics.length, 48);
   for (const metric of analysis.metrics) {
-    assert.equal(metric.backendVersion, SOLVER_VERSION);
+    assert.equal(metric.backendVersion, recording.configuration.backendVersion);
     assert.ok(
       recording.frames
         .flatMap((frame) => frame.acousticFrames)
@@ -404,7 +413,7 @@ test("historical mislabeled backend versions remain intact and cannot produce fr
   assert.ok(
     historical.frames
       .flatMap((frame) => frame.acousticFrames)
-      .every((frame) => frame.backendVersion === SOLVER_VERSION),
+      .every((frame) => frame.backendVersion === original.configuration.backendVersion),
   );
   const target = host({
     getRecording: (runId) => (runId === historical.runId ? historical : null),

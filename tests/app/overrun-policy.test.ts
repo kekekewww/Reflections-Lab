@@ -24,7 +24,7 @@ test("recording overrun retains a paused capture for explicit resume and contigu
   try {
     await app.dispatch({ type: "recordToggle" });
     app.advance(0.5);
-    await new Promise<void>((resolve) => setTimeout(resolve, 50));
+    await app.flushRecordingEvaluation();
     await app.dispatch({ type: "selectObject", objectId: "ball" });
     const pausedTick = app.getSnapshot().tick;
     assert.equal(app.getSnapshot().simulationState, "paused");
@@ -46,6 +46,7 @@ test("recording overrun retains a paused capture for explicit resume and contigu
       const before = app.getSnapshot().tick;
       await app.dispatch({ type: "run" });
       app.advance(0);
+      await app.flushRecordingEvaluation();
       assert.ok(app.getSnapshot().tick > before && app.getSnapshot().tick <= before + 4);
     }
     await app.dispatch({ type: "pause" });

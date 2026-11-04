@@ -15,6 +15,7 @@ import {
 } from "../audio-behavior/profile-registry.js";
 import { canonicalStringify } from "./hash.js";
 import { stableHash } from "../physics/math.js";
+import { PRODUCT_SOUND_BEHAVIOR_PRODUCERS } from "../capabilities/sound-behavior.js";
 import type { RecordingConfiguration, RecordingFrame, SourcePhaseEvidence } from "./types.js";
 
 const NATIVE_MODEL = "AudioEngineEpochMappedSourceCursor; not hardware PCM read pointer";
@@ -184,6 +185,7 @@ export function normalizeSourcePhase(
         source: event.source,
         accepted: event.accepted,
         ...(event.commandId === undefined ? {} : { commandId: event.commandId }),
+        ...(event.zoneId === undefined ? {} : { zoneId: event.zoneId }),
         ...(event.contact === undefined ? {} : { contact: event.contact }),
       };
     };
@@ -264,7 +266,20 @@ export function normalizeSourcePhase(
                 objectId: object.id,
                 colliderId: `col-${stableHash(object.id)}`,
               })),
-              zoneIds: [],
+              zoneIds: (configuration.sceneSnapshot.zones ?? []).map((zone) => zone.id),
+              ...((configuration.sceneSnapshot.zones?.length ?? 0) > 0
+                ? { producerCapabilities: { ...PRODUCT_SOUND_BEHAVIOR_PRODUCERS } }
+                : {}),
+              ...((configuration.sceneSnapshot.zones?.length ?? 0) > 0
+                ? {
+                    zonePositions: Object.fromEntries(
+                      configuration.sceneSnapshot.zones!.map((zone) => [
+                        zone.id,
+                        [...zone.centerM] as [number, number, number],
+                      ]),
+                    ),
+                  }
+                : {}),
               assetRegistry: assets,
               validationMode: "product",
             },

@@ -131,7 +131,7 @@ test("IndexedDB retains verified encoded audio bytes and raw recording after pag
   const corruptedRecording = await page.evaluate(async (saved) => {
     const { BlobStore } = await import("/src/persistence/blob-store.ts");
     const database = await new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open(saved.databaseName, 1);
+      const request = indexedDB.open(saved.databaseName);
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
@@ -289,7 +289,7 @@ test("tampered IndexedDB bytes are rejected and failed new writes retain the pre
     const preserved = [...new Uint8Array((await store.loadAsset(input.assetId, sha256))!.bytes)];
     const unavailable = await store.loadAsset("asset.failed", sha256);
     const database = await new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open(databaseName, 1);
+      const request = indexedDB.open(databaseName);
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
@@ -315,7 +315,7 @@ test("tampered IndexedDB bytes are rejected and failed new writes retain the pre
     await store.saveAsset(input);
     const repaired = [...new Uint8Array((await store.loadAsset(input.assetId, sha256))!.bytes)];
     const stateDatabase = await new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open(databaseName, 1);
+      const request = indexedDB.open(databaseName);
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });

@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "stage_id": "S0",
+  "kind": "SCOPE_OWNERSHIP_LONG_SPEC_AND_BASELINE_FACTS_FREEZE",
+  "recorded_at": "2026-11-02T17:18:56.039Z",
+  "status": "COMPLETE_SCOPE_ONLY_NOT_PRODUCT_OR_PERFORMANCE_PASS",
+  "baseline_head": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "current_integration_head": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "scope": "PERF001–008/011/014 plus Task20/16 reconciliation and user complete ComputerUse/Playwright/pipeline; original dependencies/criteria/workload/tolerance preserved.",
+  "frozen_documents": [
+    {
+      "path": "docs/16-nonadvanced-completion/REQUEST_20261103.json",
+      "sha256": "d435aff1e917f7f0e38f2ebd4feefab760ee8dbef6b4110fb97f6fb87aa90d06",
+      "bytes": 3216
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/BASELINE_20261103.json",
+      "sha256": "3384403c6ba6c32bdb5f6fbfc63d2487bcb557d9c3645bab974bee706340b1fd",
+      "bytes": 16804
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/CONTRACT.md",
+      "sha256": "494db95f933fba6e4bf3e2e5b8ad7269276cc0ecc2d1cd2ef1757d71cb0049f9",
+      "bytes": 10222
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/TASK_OWNERSHIP.json",
+      "sha256": "547cf39cec35e8ece9e78432ad4d7da53fb46972d016dd298178bbd7d60cc040",
+      "bytes": 13989
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V1.json",
+      "sha256": "1fc567fc7810740db79230057c3709e532f8e0d1be294eb7c53504239a9394e0",
+      "bytes": 3491
+    }
+  ],
+  "prior_contract": {
+    "source_id": "NONADVANCED-CONTRACT-20261103-V1",
+    "preserved_copy": {
+      "path": "docs/16-nonadvanced-completion/history/CONTRACT.20261103.v1.md",
+      "sha256": "79bf0bbdff16c572d41ed8778d6aa2a8e504c7a82df4a6c8a22551d8f0a7c165",
+      "bytes": 8902
+    },
+    "policy": "V2 supersedes current canonical source while preserving exact V1 bytes; old task evidence moved to retained copy."
+  },
+  "actual_worktrees": [
+    {
+      "lane": "recording-storage",
+      "owner": "/root/implement_storage",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/recording-storage",
+      "branch": "codex/nonadvanced-recording-storage-20261103",
+      "head_at_observation": "48ca323d8e1fbcc4de4845ad64c1b06b6eaf58ff",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "acoustic-transport",
+      "owner": "/root/implement_acoustic",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/acoustic-transport",
+      "branch": "codex/nonadvanced-acoustic-transport-20261103",
+      "head_at_observation": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "audio-resources",
+      "owner": "/root/implement_audio",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/audio-resources",
+      "branch": "codex/nonadvanced-audio-resources-20261103",
+      "head_at_observation": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "asset-lifecycle",
+      "owner": "/root/implement_assets",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/asset-lifecycle",
+      "branch": "codex/nonadvanced-asset-lifecycle-20261103",
+      "head_at_observation": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "offline-render",
+      "owner": "/root/implement_long_render",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/offline-render",
+      "branch": "codex/nonadvanced-offline-render-20261103",
+      "head_at_observation": "48ca323d8e1fbcc4de4845ad64c1b06b6eaf58ff",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "baseline",
+      "owner": "/root/implement_perf",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "branch": "codex/nonadvanced-baseline-measure-20261103",
+      "head_at_observation": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    },
+    {
+      "lane": "meta-demo",
+      "owner": "/root/implement_meta",
+      "worktree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/meta-demo",
+      "branch": "codex/nonadvanced-meta-demo-20261103",
+      "head_at_observation": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+      "observed_at": "2026-11-02T17:18:56.039Z"
+    }
+  ],
+  "baseline_results": {
+    "typecheck": {
+      "exit": 0
+    },
+    "initial_default": {
+      "exit": 1,
+      "tests_reported": 1520,
+      "pass": 1517,
+      "aborted_files": 3,
+      "scope": "Resource-aborted files; cannot allocate memory/EPIPE/Windows status retained, not three proved assertion defects."
+    },
+    "targeted_resource_recheck": {
+      "exit": 0,
+      "tests": 19,
+      "pass": 19,
+      "scope": "Only three aborted files, not the whole suite."
+    },
+    "full_concurrency4": {
+      "exit": 1,
+      "tests": 1536,
+      "pass": 1535,
+      "fail": 1,
+      "duration_ms": 143958.6637
+    },
+    "original_default_retry": {
+      "exit": 1,
+      "tests": 1536,
+      "pass": 1535,
+      "fail": 1,
+      "skip": 0,
+      "duration_ms": 129798.5083,
+      "receipt": {
+        "kind": "ORIGINAL_DEFAULT_RUNTIME_SUITE_RETRY_AFTER_USER_REPORTED_MEMORY_RELEASE",
+        "sourceStart": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+        "sourceEnd": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+        "startedAtUtc": "2026-11-02T17:11:39.693Z",
+        "finishedAtUtc": "2026-11-02T17:13:49.659Z",
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "--import",
+          "tsx",
+          "--test",
+          "tests/scene/*.test.ts",
+          "tests/physics/*.test.ts",
+          "tests/interaction-runtime/*.test.ts",
+          "tests/audio-behavior/*.test.ts",
+          "tests/acoustics-runtime/*.test.ts",
+          "tests/audio-runtime/*.test.ts",
+          "tests/experiment-runtime/*.test.ts",
+          "tests/ai-runtime/*.test.ts",
+          "tests/app/*.test.ts",
+          "src/ui/*.test.ts",
+          "src/ui/viewport/*.test.ts",
+          "tests/audio-runtime/cross-engine-runner.test.mjs"
+        ],
+        "exitCode": 1,
+        "signal": null,
+        "raw": ".cache/nonadvanced-20261103/baseline/runtime-default-retry.txt",
+        "priorFailuresRetained": true,
+        "wslCause": "UNVERIFIED_USER_HYPOTHESIS"
+      }
+    },
+    "unique_repeated_failure": {
+      "test_index": 315,
+      "test_file": "tests/ai-runtime/meta-live-validation.test.ts",
+      "prior400_count": 0,
+      "expected": "PASSED",
+      "actual": "INCOMPLETE",
+      "scene_http_status": 400,
+      "error_code": "PROVIDER_REQUEST_FAILED",
+      "message": "Meta回覆不是完整JSON。",
+      "transport": "Injected remoteFetch fixture/local HTTP; no real inference API/new paid call",
+      "root_cause": "PENDING_META_OWNER; not established OOM/WSL"
+    },
+    "verdict": "Two complete suites still exit1. No baseline regression PASS, S1/PERF001/014 formal baseline or S2/candidate acceptance completion inferred."
+  },
+  "baseline_artifacts": [
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/typecheck.txt",
+      "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "bytes": 68
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/typecheck.exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime.txt",
+      "sha256": "2053126deb62352e1aba20c754cb9668226f8de488f71690c13226692079d2a9",
+      "bytes": 393540
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime.exit.txt",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "bytes": 1
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/receipt.json",
+      "sha256": "0047501b8754d6b54349f0325b5ab28e2ef5ef2ee9e9234025d3dedfbb7b207e",
+      "bytes": 427
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/resource-recheck.txt",
+      "sha256": "642f0fb1e86186c0942e333e4906e441d803057839b78dcb3c6574642eaae8f4",
+      "bytes": 5063
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/resource-recheck.exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-concurrency4.txt",
+      "sha256": "247997d23eb70aa86be0b5b3d1a5957b979c6157836bb5b28eea82fe9bdeb973",
+      "bytes": 377060
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-concurrency4.exit.txt",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "bytes": 1
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-concurrency4.receipt.json",
+      "sha256": "bc634948483e3cbc9dea8072863c79994605faf59b3d23d9c1cfa2f622c9a94e",
+      "bytes": 976
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-default-retry.txt",
+      "sha256": "539f05a8e84320ac94580d4286fe5354f1fac80c19b65a752584782d96c09c95",
+      "bytes": 377636
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-default-retry.exit.txt",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "bytes": 1
+    },
+    {
+      "path": ".cache/nonadvanced-20261103/baseline/runtime-default-retry.receipt.json",
+      "sha256": "75a2ad9f7e5471bf567b70eb42f8a9b940f699ab906545fcaa5ee65cfe76496e",
+      "bytes": 1026
+    }
+  ],
+  "interim_records": [
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-bootstrap-progress-20261103.json",
+      "sha256": "ccafcd853289584abeaa93e5b183a1884695efcac2979a64d48637ae60713cc8",
+      "bytes": 4172
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-runtime-concurrency4-observation-20261103.json",
+      "sha256": "c2c95383d831954499eae357e672a65aec06b9645a71277e1887c4a048994584",
+      "bytes": 2985
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/00-runtime-concurrency4-failure-triage-20261103.json",
+      "sha256": "2842a6b4a11e8d48bbe62161c3a831c64ec187177bbe8be4e10fae5c62ae4908",
+      "bytes": 2119
+    }
+  ],
+  "resource_status": "Full baseline exclusive lease RELEASED; smalltestA Meta focused, smalltestB audioRED, max2Node processes/testconcurrency1. Other heavy work unleased.",
+  "remaining": {
+    "S1": "NOT_COMPLETE",
+    "S2": "NOT_COMPLETE",
+    "original_PERF_tasks": "UNCHANGED_NOT_CLOSED",
+    "long_output": "FROZEN_SPEC_NOT_IMPLEMENTED_OR_VERIFIED",
+    "native": "NOT_RUN",
+    "Playwright": "NOT_RUN",
+    "formal_performance": "NOT_RUN",
+    "Claude": "NOT_RUN_AFTER_CODEX_HANDOFF",
+    "manual": "NOT_RUN_AFTER_CLAUDE",
+    "English": "DEFERRED_TO_FINAL_SOURCE_FREEZE"
+  },
+  "memory_writer_actions": "Metadata/source/contract only; no product tests/build/browser, no candidate code/index or commit.",
+  "ownership_frozen_copy": {
+    "path": "docs/16-nonadvanced-completion/history/TASK_OWNERSHIP.20261103.s0-v1.json",
+    "sha256": "547cf39cec35e8ece9e78432ad4d7da53fb46972d016dd298178bbd7d60cc040",
+    "reason": "S0 immutable exact copy; canonical TASK_OWNERSHIP is a dynamic stage/resource projection and later leases may change."
+  }
+}

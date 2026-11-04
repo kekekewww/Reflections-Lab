@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/02-architecture/DATA_CONTRACTS.md","sha256":"7f7ab891a027d353a882f965fe33224ed99760a8a3e7fb0a7fc7d3de54ab5ec0","translated_at":"2026-10-29T05:28:32Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/02-architecture/DATA_CONTRACTS.md","sha256":"e7f09b606043f8218455450c50a576fcf07f84d797ab67329b6faa6f27b9d6d5","translated_at":"2026-11-02T09:42:41.6508251+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/02-architecture/DATA_CONTRACTS.md`](../../02-architecture/DATA_CONTRACTS.md). Source SHA-256: `7f7ab891a027d353a882f965fe33224ed99760a8a3e7fb0a7fc7d3de54ab5ec0`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/02-architecture/DATA_CONTRACTS.md`](../../02-architecture/DATA_CONTRACTS.md). Source SHA-256: `e7f09b606043f8218455450c50a576fcf07f84d797ab67329b6faa6f27b9d6d5`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="資料與聲學後端契約"></a>
@@ -36,3 +36,8 @@ IR output must include sample rate, channels / ambisonic order, reference emissi
 Record `experimentId, tick, substep, sequence, bodyAId, bodyBId, contactId, worldPointM, normal, relativeVelocityMps, impulseNs?, forceN?, surfaceIds, materialPair, classification`. Force and impulse differ; store null when the engine API does not provide a value, and do not present force as Ns. Use simulation time, not `Date.now()`, as the basis for audio scheduling. Assign separate IDs to continuous emitters and contact voices.
 
 Contract limits and rejection: the initial scene supports at most 256 objects, 32 sources, 1 active listener, and a 200 m scene extent. These are conservative design budgets, not performance test conclusions. Reject NaN / Infinity, arbitrary external URLs, duplicate IDs, negative mass, and oversized operation arrays. See the [AI Tool Specifications](../08-ai/AI_TOOL_SCHEMAS.md) for dependent APIs.
+
+<!-- english-original-anchor --> <a id="2026-11-02-web-幾何模型請求補充"></a>
+## 2026-11-02 Web geometry-model request supplement
+
+Internal AcousticRequest may include analytic primitives (sphere/capsule), occlusion-only boxOccluders and modelVersion. All three geometry categories share the original surface budget; these are not additional Scene storage fields. Every source in a curved-geometry or dynamicReflector Scene uses web-geometric-primitives-1.0.0; purely legacy planar requests retain web-geometric-1.0.0. Invalid/contradictory pins are rejected. Existing saved AudioReplay can still play its pinned model and paths. New reevaluation and matched A/B must check the current model rather than reuse an old baseline. See the [bounded-model contract](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) for emitterObjectId's three states, self-exclusion, OBB admission and snapshot lifetime. AcousticFrame adds no invented paths or normal fields; dynamicReflectors capability is provided only when the actual request contains the corresponding role.

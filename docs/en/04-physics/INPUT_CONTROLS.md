@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/04-physics/INPUT_CONTROLS.md","sha256":"7cd4b0fd04c856f289e7f660c1acaa8ad979ec8bc7fddf5a5c645fc464f65706","translated_at":"2026-10-27T03:41:28.744971Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/04-physics/INPUT_CONTROLS.md","sha256":"caf76f150794d9bd86b9d6b0aa58b8b326403bc4dbf2bc038f2567851f001e9e","translated_at":"2026-10-30T03:20:00.000Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/04-physics/INPUT_CONTROLS.md`](../../04-physics/INPUT_CONTROLS.md). Source SHA-256: `7cd4b0fd04c856f289e7f660c1acaa8ad979ec8bc7fddf5a5c645fc464f65706`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/04-physics/INPUT_CONTROLS.md`](../../04-physics/INPUT_CONTROLS.md). Source SHA-256: `caf76f150794d9bd86b9d6b0aa58b8b326403bc4dbf2bc038f2567851f001e9e`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="輸入與控制映射"></a>
@@ -22,6 +22,10 @@ Convert input events to `actionId + pressed/released + sequence`; sample continu
 | --- | --- |
 | Mode toolbar / configurable shortcut | Enter Editor / FPS Simulation; show control instructions before entering FPS |
 | Press the “Start / Continue” button | Request Pointer Lock; resume action input only after success |
+| “Enter first person” acquires the lock | That click is the explicit start: once the entry transaction and the actual lock have both completed and the button is released, action input resumes directly; with a held object or ghost, stay paused until an explicit Resume (R18) |
+| Click the locked, paused view / `Enter` | Explicit Resume; the click takes effect on release and is never forwarded as throw / place |
+| Click the first-person view after the pointer was released | Explicitly request Pointer Lock again; never resume automatically on mouse movement |
+| Controls without pointer lock while the view has focus | `WASD` move, arrow keys look, `Enter` start / pause; never claim a native lock |
 | `Esc` / browser unlock | Clear all keys, stop stepping / control, retain the last valid Held / ghost, pause and display the reason; do not resume automatically |
 | blur / hidden | Same as above; cancel any uncommitted throw command; resuming requires an explicit action |
 | `B` | When Idle, switch FPS Simulation ↔ FPS Build; when Held, the user must first place gently / release or cancel the switch; do not intercept it in a text field |

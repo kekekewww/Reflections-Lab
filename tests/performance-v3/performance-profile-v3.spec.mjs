@@ -189,7 +189,7 @@ test("inherited wrapper preserves argument bits, returned handles, cancel, invok
   // Fake asynchronous native registration boundary only. Executes the exact derivative wrapper text.
   const create = new Function(
     "env",
-    `const {window, nativeRAF, nativeCancelRAF, previousRAF, previousCancelRAF, v3Proof, clock} = env;
+    `const {window, nativeRAF, nativeCancelRAF, previousRAF, previousCancelRAF, v3Proof, clock, probesEnabled} = env;
     let measuring = true, currentFrame = null, lastAudioSampleAt = -Infinity, startedAt = 0;
     const collectionWindow = {collectionId:'wrapper-literal'}, runtime = {world:{paused:false,tick:1}};
     const samples = {frame:new Map(), audioTelemetry:[], droppedSamples:0}, CAP = 90000;
@@ -203,6 +203,7 @@ test("inherited wrapper preserves argument bits, returned handles, cancel, invok
     previousRAF,
     previousCancelRAF,
     v3Proof: proof,
+    probesEnabled: true,
     clock: () => ++now,
   });
   const raw = 17.000000000000004;

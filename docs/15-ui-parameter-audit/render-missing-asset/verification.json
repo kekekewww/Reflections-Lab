@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "RENDER_JOB_MISSING_PINNED_ASSET_NEGATIVE",
+  "status": "PASS",
+  "recordedAtUtc": "2026-11-02T11:09:31.849Z",
+  "sourceCommit": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+  "test": "tests/audio-runtime/render-missing-asset.test.ts",
+  "testCount": 1,
+  "variants": [
+    "required pinned PCM entry absent",
+    "same asset ID with different revision",
+    "same asset ID with different hash"
+  ],
+  "positiveControl": "Real Behavior/solver/ExperimentRecorder sample recording and matching asset bank pass production verifyRenderInput. Original impulse PCM and actual WAVE SHA-256 are computed in the test.",
+  "negativeProof": [
+    "NativeOfflineRenderBackend.render returns failed/RENDER_ASSET_PIN with original job ID/hash",
+    "zero native AudioBuffer/context allocations",
+    "zero progress/file/manifest publication",
+    "recording and job canonical hashes unchanged"
+  ],
+  "commands": [
+    {
+      "command": "node --import tsx --test tests/audio-runtime/render-missing-asset.test.ts",
+      "raw": ".cache/render-missing-asset/focused-final.txt",
+      "exit": 0,
+      "result": "1/1 PASS, 0 skipped"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --skipLibCheck --jsx react-jsx --resolveJsonModule --lib 'ES2022,DOM,DOM.Iterable' --types node tests/audio-runtime/render-missing-asset.test.ts",
+      "raw": ".cache/render-missing-asset/typescript-final.txt",
+      "exit": 0
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js tests/audio-runtime/render-missing-asset.test.ts",
+      "raw": ".cache/render-missing-asset/eslint-final.txt",
+      "exit": 0
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check tests/audio-runtime/render-missing-asset.test.ts",
+      "raw": ".cache/render-missing-asset/prettier-final.txt",
+      "exit": 0
+    }
+  ],
+  "priorTypingFailure": "typescript.txt retains initial test-only number vs 44100|48000 compile failure. The new fixture uses an explicit 48000 literal; no production or numerical expected values changed.",
+  "sources": [
+    {
+      "path": "tests/audio-runtime/render-missing-asset.test.ts",
+      "sha256": "ef08fec3d345572e3b39c8bab257e1756b40839cbe0fccc5cdc83f4635a08080"
+    },
+    {
+      "path": "src/audio/render-backend.ts",
+      "sha256": "bd839c9db1be468054ecdadcb238cc693a1a6792a81f9912797f1b44406d4f1d"
+    },
+    {
+      "path": "src/audio/render-validation.ts",
+      "sha256": "d9c91f790ac672e92c207d06b2847ee083a4f395dc40ffab752a9a24f22f3a99"
+    },
+    {
+      "path": "src/audio/render-preset.ts",
+      "sha256": "eb86e4f780440a9da638d30de6c9655f03e65978c5e81876456ee87d7af4c462"
+    },
+    {
+      "path": "tests/audio-runtime/render-fixture.ts",
+      "sha256": "f42558be6d6d394e16813929113a11388462a1e613cd7e5799263e71a1ec0816"
+    }
+  ],
+  "raw": [
+    {
+      "path": ".cache/render-missing-asset/focused-first.txt",
+      "bytes": 378,
+      "sha256": "f808eb8e3fda226407a41d20f34ce2145ad77af20f66a083acedcc5f3af38974"
+    },
+    {
+      "path": ".cache/render-missing-asset/focused-final.txt",
+      "bytes": 378,
+      "sha256": "b6e58cfe020bca99de76e8d430b8b76c0248a66487a755a8650e489362b88b4b"
+    },
+    {
+      "path": ".cache/render-missing-asset/typescript.txt",
+      "bytes": 154,
+      "sha256": "41a46cace2073da4def7b82f9ecdb532650a8268a9fc9b0314399cd089371027"
+    },
+    {
+      "path": ".cache/render-missing-asset/typescript-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/render-missing-asset/eslint-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/render-missing-asset/prettier-final.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    }
+  ],
+  "limits": [
+    "Node preflight/atomic failure test only; FakeAudioBuffer owns original data and is not native DSP evidence.",
+    "No browser, broad runtime, Git index, product, protected fixture or Wiki edits by this task.",
+    "The one test covers three explicit variants; it is not counted as three separate tests."
+  ]
+}

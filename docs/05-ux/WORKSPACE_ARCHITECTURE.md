@@ -1,10 +1,22 @@
 # 工作區與狀態架構
 
-查核日期：2026-10-26（Asia/Taipei）。狀態：**研究完成／設計提案，正式 UI 尚未實作**。本文件中的資料型別是介面契約草案，須與正式 Domain Schema 合併；不是已運作 API。
+## 2026-11-03 最新需求：頂列改為四種可切換監測
+
+依[使用者原文與範圍紀錄](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/d6ca447d6ad71a49a3e081110a5702b6975ecd3a)（SHA-256：`ef5ec791276d668aec3f29877cc77d532d5452e2ebcf614af1d8f9f3efc4b5f2`）及 [Task0033](../../knowledge/tasks/RLAB-TASK-0033.json)，移除最上方 `Build scene / Interactive experiment / Inspect & compare` 三步工作區導覽，改為常駐、可切換的「音軌電平／頻譜／波形／處理負載」四種監測檢視。這是已確認的需求更新；本節不宣稱功能實作、真瀏覽器、數位音訊或效能驗收通過。
+
+本節取代的範圍限於**頂列三步導覽的入口與呈現**。下方原 `scene / simulation / analysis` 工作區資料、面板配置、觀察相機、儲存偏好與既有相容入口仍保留；不把移除頂列按鈕解讀為刪除這些狀態或改動場景／實驗模型。舊頂列 `Project／儲存狀態 ─ Scene | Simulation | Analysis ─ Run/Pause/Reset ─ AI` 保留於此作為被取代的歷史規格。
+
+頂列監測模式是本機檢視偏好，與內部 workspace、互動模式、模擬、錄製及 Raw／Simulated 監聽路由各自正交。切換本身不呼叫 Run／Pause／Resume／Reset／Record、不重設 runId／tick，不改選取或草稿；模擬依原 Running／Paused 狀態運作，不重建 AudioContext 或重啟聲源；既有焦點／pointer-lock 安全 guard 仍由輸入仲裁獨立處理，不能將其冒充模式切換的實驗命令。Master Mute、監聽音量與 Transport 仍須常駐可達。
+
+監測只讀真實、有界的資料：音軌電平、頻譜與波形標示來源、單位及觀測窗；未就緒、靜音／零訊號與不可取得分別顯示。負載名稱依真正量測範圍標示；聲學 solver 的 Worker 耗時不能稱為主執行緒耗時，control／render／Worker／native DSP 與整個程序 CPU 也不能混稱。未量測的 CPU／DSP 欄位顯示 unavailable，不填零或推算百分比。分析器按可見模式延遲啟用，切換與關閉只清理自有觀測資源；詳細資料契約見 [TopMonitor 元件](COMPONENT_SPEC.md#頂列監測-topmonitor2026-11-03-需求)。
+
+本次保留原數值容差、音訊預算、正式效能負載及其他驗收門檻。各條件的現況以 [Task0033](../../knowledge/tasks/RLAB-TASK-0033.json) 的來源綁定 evidence 為準，本頁不複製驗收旗標；Playwright 真瀏覽器驗證與 Computer Use 結果分列，原生 URL policy 阻擋不取代或阻止可執行的 Playwright 測試。
+
+歷史規格截點：2026-10-26（Asia/Taipei）；頂列入口依上方 2026-11-03 需求取代，其餘相容契約保留。當時狀態：**研究完成／設計提案，正式 UI 尚未實作**。本文件中的資料型別是介面契約草案，須與正式 Domain Schema 合併；不是已運作 API。
 
 ## 目標與使用者
 
-主要情境是評審或初學者建立小房間、移動持續發聲的球、投擲並比較材質。次要情境是具聲學背景的使用者查核路徑與結果。以「建立 → 操作 → 檢驗」為三個 Workspace；不用 Workspace 名稱暗示計算是否正在執行。
+主要情境是評審或初學者建立小房間、移動持續發聲的球、投擲並比較材質。次要情境是具聲學背景的使用者查核路徑與結果。2026-10-26 原規格以「建立 → 操作 → 檢驗」為三個 Workspace；2026-11-03 起不再以此作頂列導航，仍保留為內部配置與相容狀態，不用 Workspace 名稱暗示計算是否正在執行。
 
 使用者需求直接來自 Phase F。競品原理及查核限制見 [COMPETITIVE_UX_RESEARCH.md](COMPETITIVE_UX_RESEARCH.md)。以下選擇均為 Reflection Lab 的設計決策，並非競品已證明的效能或易用性結果。
 
@@ -12,14 +24,15 @@
 
 | 維度 | 值 | 擁有的資料 | 不能產生的副作用 |
 | --- | --- | --- | --- |
-| `workspace` | `scene / simulation / analysis` | 面板配置、上次寬度、圖表分頁 | 不重設物理、不清音源、不重新錄製 |
+| `workspace`（內部相容） | `scene / simulation / analysis` | 面板配置、上次寬度、圖表分頁 | 不重設物理、不清音源、不重新錄製 |
+| 頂列監測檢視（本機 view state） | 音軌電平／頻譜／波形／處理負載 | 顯示模式、唯讀觀測資料 | 不切 workspace、不執行 Transport／Record、不重建音訊或修改實驗 |
 | `simulationState` | `ready / running / paused / error` | `runId`、tick、暫停原因、backend 狀態 | 不決定面板開關 |
 | `interactionMode` | `editor / fps-interact / fps-build` | 相機控制、抓取／放置子狀態 | 不自行啟動音訊或模擬 |
 | `inputOwner` | `ui / viewport / modal` | 焦點、pointer lock、輸入路由 | 不能同時將同一按鍵送給 UI 和物理 |
 | `recordingState` | `idle / recording / finalized` | experiment ID、trace、缺口 | 不代表音訊設備正在輸出 |
 | `monitorState` | `blocked / muted / audible / error` | gain、Raw/Simulated、設備／context 狀態 | 不停止記錄或改動計算值 |
 
-進入另一 Workspace 只改第一列。離開 `fps-interact` 或 `fps-build` 必須先釋放輸入擁有權；若持有物件則在目前 tick 安全暫停並保留抓取狀態，顯示「持有中；恢復後繼續」，不暗中投擲。切換 Workspace 所需的安全暫停是**明示且有紀錄的 interaction guard**，並非 Workspace 自帶的 Reset。沒有進行 FPS 操作時可在 Running 中直接切 Analysis。
+相容入口進入另一 Workspace 只改 `workspace` 維度；頂列四模式不進入另一 Workspace，亦不沿用其切換 guard。離開 `fps-interact` 或 `fps-build` 必須先釋放輸入擁有權；若持有物件則在目前 tick 安全暫停並保留抓取狀態，顯示「持有中；恢復後繼續」，不暗中投擲。切換 Workspace 所需的安全暫停是**明示且有紀錄的 interaction guard**，並非 Workspace 自帶的 Reset。沒有進行 FPS 操作時可在 Running 中直接切 Analysis。
 
 ```mermaid
 stateDiagram-v2
@@ -45,7 +58,7 @@ UI 顯「已暫停；尾音已淡出」，錄製加入 pause/epoch/tail-cut mark
 ## 版面與可保留內容
 
 ```text
-┌ Project／儲存狀態 ─ Scene | Simulation | Analysis ─ Run/Pause/Reset ─ AI ┐
+┌ Project／儲存狀態 ─ 四模式監測 ─ Run/Pause/Reset ─ AI ──────────────────┐
 │ Scene Explorer / Library │                         │ Context Inspector │
 │                         │       3D Viewport       │                   │
 │                         │ HUD／選取／求解器狀態     │                   │
@@ -55,7 +68,9 @@ UI 顯「已暫停；尾音已淡出」，錄製加入 pause/epoch/tail-cut mark
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-| Workspace | 左欄 | 中央 | 右欄 | 下方 | 預設操作 |
+下表保留內部工作區／相容配置，不要求恢復已移除的頂列三步導覽。
+
+| 內部 Workspace | 左欄 | 中央 | 右欄 | 下方 | 預設操作 |
 | --- | --- | --- | --- | --- | --- |
 | Scene | Scene Explorer、Object Library | 軌道相機、gizmo、格線、放置檢查 | 物件／材質／物理／聲源 | 可收合事件紀錄、Transport | `editor`，自由視角；FPS 按鈕可切換 |
 | Simulation | 預設收合，Library 可開啟 | 乾淨 FPS／自由觀察，明示「進入第一人稱」 | 預設收合，必要時顯示摘要 | Transport、錄製、最近碰撞 | 預設仍為 `editor`；點擊進入才要求 lock |
@@ -123,12 +138,16 @@ type ResultContext = {
 
 ## 驗收（尚未執行）
 
-1. Running 中切 Scene→Analysis→Simulation，runId/tick 持續且未 Reset；持有物件時依安全 guard 暫停並顯示原因。
+1. 透過保留的內部相容入口，在 Running 中切 Scene→Analysis→Simulation，runId/tick 持續且未 Reset；持有物件時依安全 guard 暫停並顯示原因。
 2. Analysis 移動觀察相機不改 Listener；明示移動 Listener 才生成命令。
 3. 新增牆後舊聲學結果顯示過期；backend ack 前不得顯示更新完成。
 4. 只具 IR 的 backend 不出現可選幾何路徑；未提供的數值不是 0。
 5. Undo 場景命令與 Reset 模擬清楚分離；AI 批次命令可一次撤銷。
 6. 錄製跨工作區保留 ID、事件與暫停原因；裝置失焦或 pointer lock 遺失不會自動恢復輸入。
+7. 頂列不再提供三步工作區導航；四種監測可用滑鼠與鍵盤切換，有名稱、目前選取與可讀資料狀態，不遮住 Mute／Transport。
+8. 監測切換期間 run／tick、recording ID／事件、選取、草稿與音訊來源連續性有真測證據；模式選取不呼叫實驗命令或重建音訊。
+9. 以固定真訊號核對電平／頻譜／波形；負載明示真正的 Worker／control／render 等來源，缺值不是 0，無偽造整機 CPU 或 native DSP CPU。
+10. 監測分析器延遲啟用、有限取樣與清理有證據；Playwright 產品驗證、Computer Use、數位音訊與正式性能分列，尚未執行的項目保持 NOT RUN。
 
 ## 平台依據
 

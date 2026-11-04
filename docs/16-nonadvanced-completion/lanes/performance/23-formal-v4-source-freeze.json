@@ -1,0 +1,778 @@
+{
+  "schemaVersion": 1,
+  "method": "ORIGINAL_WORKLOAD_FORMAL_V4_PROFILE",
+  "status": "METHOD_SOURCE_FROZEN_PURE_TESTS_GREEN_AWAIT_FINAL_PRODUCT_MERGE_AND_HARDWARE_GO",
+  "observedAtUtc": "2026-11-03T02:33:26.3950311Z",
+  "observedHeadBeforeCommit": "540be353d1dd99f36aa8928873e43ffa15be460f",
+  "productFreeze": {
+    "status": "AWAIT_ROOT_FINAL_PRODUCT_SHA_NORMAL_MERGE",
+    "currentRuntimeComponentCommit": "540be353d1dd99f36aa8928873e43ffa15be460f",
+    "rootReportedRuntimeMerge": "1f3779",
+    "latestProductAlreadyNativeRun": false,
+    "comparison": "Same latest product source, same Levels/master-left; reference omitted undefined policy versus candidate DEFAULT virtualization only. This is not a native rerun of protected historical e25."
+  },
+  "registration": {
+    "newEntryOwner": "Root only",
+    "proposedEntry": "tests/integration/performance-v4-method.test.mjs",
+    "specs": [
+      {
+        "path": "tests/performance-v3/formal-v4-stream.spec.mjs",
+        "tests": 28
+      },
+      {
+        "path": "tests/performance-v3/performance-preview-v4.spec.mjs",
+        "tests": 11
+      },
+      {
+        "path": "tests/performance-v3/performance-profile-v4.spec.mjs",
+        "tests": 213
+      },
+      {
+        "path": "tests/performance-v3/probe-free-formal-v4.spec.mjs",
+        "tests": 15
+      },
+      {
+        "path": "tests/performance-v3/process-cpu-v4.spec.mjs",
+        "tests": 76
+      },
+      {
+        "path": "tests/performance-v3/process-times-v4.spec.mjs",
+        "tests": 141
+      },
+      {
+        "path": "tests/performance-v3/resource-policy-v4.spec.mjs",
+        "tests": 101
+      },
+      {
+        "path": "tests/performance-v3/preview-listen-v4.spec.mjs",
+        "tests": 26
+      }
+    ],
+    "total": 611,
+    "overlapWithOriginal964TestFiles": 0,
+    "referenceModuleImports": "New specs import unchanged V2/V3 pure evaluators/parser as references, not old spec files",
+    "originalV3EntryUnchanged": true,
+    "combined964Plus611NotRun": true
+  },
+  "validation": {
+    "file": "node",
+    "args": [
+      "--test",
+      "--test-concurrency=1",
+      "tests/performance-v3/formal-v4-stream.spec.mjs",
+      "tests/performance-v3/performance-preview-v4.spec.mjs",
+      "tests/performance-v3/performance-profile-v4.spec.mjs",
+      "tests/performance-v3/probe-free-formal-v4.spec.mjs",
+      "tests/performance-v3/process-cpu-v4.spec.mjs",
+      "tests/performance-v3/process-times-v4.spec.mjs",
+      "tests/performance-v3/resource-policy-v4.spec.mjs",
+      "tests/performance-v3/preview-listen-v4.spec.mjs"
+    ],
+    "exitCode": 0,
+    "tests": 611,
+    "pass": 611,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 6255.2786,
+    "raw": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-final-focused-r1.tap",
+    "format": {
+      "exitCode": 0,
+      "raw": [
+        "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r1.txt",
+        "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r2.txt"
+      ]
+    },
+    "lint": {
+      "initialExitCode": 1,
+      "initialFindings": [
+        "explicit Node URL import missing",
+        "unused test helper rewriteRequest"
+      ],
+      "finalExitCode": 0,
+      "raw": [
+        "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r1.txt",
+        "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r2.txt"
+      ],
+      "assertionsRelaxed": false
+    },
+    "typecheck": "Runtime-only component project tsc17415 actual0 recorded in20 receipt; no repeated project typecheck for this method freeze",
+    "browser": false,
+    "osCpuQuery": false,
+    "nativePcm": false,
+    "formal600": false
+  },
+  "preservedFailures": {
+    "immutableLegacyRejects": "Legacy V3 launcher qualification and native attempts01/02 retain original FAIL",
+    "newTrueRed": [
+      "new resource/policycap and preview15 actualFAIL then112GREEN",
+      "required gate inventory/profile identity/revision76 actualFAIL then213GREEN",
+      "TCP missing export plus4 falseNoListen actualFAIL then26GREEN",
+      "OS initial135:1 missing-export FAIL and134 explicitSKIP;138GREEN;3 integrityFAIL thenfinal141GREEN"
+    ],
+    "fixtureVersions": [
+      "profile-v4-before-tcp-fixture.test.txt + profile-v4-tcp-fixture-v2.json: three old positive controls lacked new explicit observed listener value; assertions retained",
+      "process-times-fixture-v1-before-afterhash.test.txt + .json: producer requestAfter hash added to synthetic positive environment; original138 exactbytes retained"
+    ],
+    "historicalFixtureReceiptHashes": "Authored-time currentSpec paths/hashes in historical fixture receipts are snapshots before later141/format; final current hashes are newMethodSourcePins. No old result was rewritten."
+  },
+  "semanticPrecondition": {
+    "recordPath": "docs/16-nonadvanced-completion/lanes/performance/VERSIONED_APPROVAL_RECORD-V4-SEMANTIC-03.json",
+    "recordSha256": "a9b46674b9e5225ba138f4f8014364d3c408f496946c0fe2236c5a5718a7824a",
+    "qualificationId": "semantic-v3-c59df8c64fdfa846d6e22daf",
+    "scope": "FORMAL_V4_SEMANTIC_PRECONDITION",
+    "rootAdoptionAtCommit": "07b9d993ae33ee819f284f8ee6b33691ef73fde4",
+    "runSourceCommit": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+    "evidenceCommit": "dc4aaa49f3ac0773c45263f35007018654034f8f",
+    "original44CurrentExact": true,
+    "approvedEvidence7CurrentExact": true,
+    "newMethodCoveredByOldNativeRun": false,
+    "oldRegistry44Modified": false
+  },
+  "immutableSourcePins": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.md",
+      "sha256": "9b7a4aa4021240bf57c406f6e475fe65458b39075245a627d632aa55f02e584b",
+      "bytes": 2921
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.json",
+      "sha256": "c768dcd8f2b36dddfd6148788ff068e024db6df5ae703b3030960816bc24251d",
+      "bytes": 17870
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.native-analysis.json",
+      "sha256": "5d12ab7e6c63975251979cfab30cff3d26d8e0e745a6d2b0c117f8ea360623a2",
+      "bytes": 8999
+    },
+    {
+      "path": ".node-version",
+      "sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98",
+      "bytes": 8
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.json",
+      "sha256": "683aee6aa34db2edb92d7364920f36cbeab4386a40a26a70d73ea4c42b0503b5",
+      "bytes": 19616
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.md",
+      "sha256": "7e94d8b3969427c766af5c7acabb834adf131364fcc1dca859082926c65ebbe8",
+      "bytes": 3769
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md",
+      "sha256": "bc5d9f8af4053753da369248d95191a6a0e129ec37028c462944156549246737",
+      "bytes": 3643
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-SEMANTIC-BOOTSTRAP-V3.md",
+      "sha256": "a872249635688d52a215b4d869632711c70f50e3b6068cb9709c6cb066e44bbd",
+      "bytes": 4484
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json",
+      "sha256": "9d03f774a8a5b340c5fe3d557947d9017e985f193f8ee579a86e88fc1db1bb03",
+      "bytes": 42638
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.json",
+      "sha256": "2f61e7976620cb7127074a3913be46a99f3e3f8a0497c9c9d7b0246cc13f6aad",
+      "bytes": 14341
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.md",
+      "sha256": "219090e9d857ef077a72d0ff162f465ec203dd27a9cb039cd426df534dd081db",
+      "bytes": 5369
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d",
+      "bytes": 31050
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.raw.json",
+      "sha256": "8c95e3bfdceef6a098abcc1102f493e51b4072bb0745b742a237b3d72187fe3e",
+      "bytes": 33304
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.trace.json.gz",
+      "sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72",
+      "bytes": 81393
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.raw.json",
+      "sha256": "dff5fa6d6e4260f3de546f570cc084cd965575e25525690baca753de34243c0e",
+      "bytes": 33245
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/pilot.trace.json.gz",
+      "sha256": "02e874df3350dbab25db5a9b10c7503bc2bc9bd65f26b87c613aa952fd767d0b",
+      "bytes": 85161
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt02-v4/native/verification.json",
+      "sha256": "9816901c42b618cd956b64366cf254e78bea9e009ff86fdf26cb3c2100a5a491",
+      "bytes": 50667
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+      "bytes": 103658
+    },
+    {
+      "path": "scripts/agents/process-runner.mjs",
+      "sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+      "bytes": 18201
+    },
+    {
+      "path": "tests/browser/performance-deadline-v1.mjs",
+      "sha256": "acdbf3414fcfa16659f14e5fb4b356171fc970fde737759d2a407d05b53b705f",
+      "bytes": 1032
+    },
+    {
+      "path": "tests/browser/performance-error-record-v3.mjs",
+      "sha256": "f7e1d1c0d27bf41440ef4cca65c7373d1aa3f47205032d2c701f51c070c2db5d",
+      "bytes": 5921
+    },
+    {
+      "path": "tests/browser/performance-native-boundary-v4.mjs",
+      "sha256": "55ccd030a3650b78c197f29c68f671ab8d4f344dd43864fbf97bb0b4e439ad8d",
+      "bytes": 5117
+    },
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+      "bytes": 33328
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4",
+      "bytes": 4183
+    },
+    {
+      "path": "tests/browser/performance-owned-cleanup-v3.mjs",
+      "sha256": "cdfb742d0d2e5b64e8c62d65ddd186c5a8109896a53bdd6641878fc78224ad43",
+      "bytes": 11236
+    },
+    {
+      "path": "tests/browser/performance-proof-v3.mjs",
+      "sha256": "41a17f0a28b06d647eb8e0c983d2a9059fe498c0421eae5cb1b9bc3b4f4909b0",
+      "bytes": 9341
+    },
+    {
+      "path": "tests/browser/performance-qualification-registry-v4.mjs",
+      "sha256": "5517664d3e9437257488414584c3dc7140572797103b7611269a98f125adc48d",
+      "bytes": 1497
+    },
+    {
+      "path": "tests/browser/performance-semantic-bootstrap-v1.mjs",
+      "sha256": "535a9d8054687f624bef0c7ea77d343e3791ed546c2f4a429e750cb2d6881dd5",
+      "bytes": 10812
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v1.mjs",
+      "sha256": "76cea89421f13e6c14d5a7774f1ebdc908d65625ff1d8dcc9f4ac01f2599ae67",
+      "bytes": 6386
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v2.mjs",
+      "sha256": "c6d211e3fe5f35231406fb1ace7385a6b33faf2ecfd020f9efbd8cdc30b93fd6",
+      "bytes": 5184
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v3.mjs",
+      "sha256": "73fa37a2a6cec68b6ff16cf9686fa93ade24bae075e3fd023f43e3a160f20fcb",
+      "bytes": 5480
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v1.mjs",
+      "sha256": "25e82f87ed64e8ce538bfde85b0a5b7a28974ef38832484d8c96f0b1bf9f295f",
+      "bytes": 10131
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v2.mjs",
+      "sha256": "271912625eeefe1f2bd0620757f947cb4beac2a8dd223c2ec26a62501f4c74ba",
+      "bytes": 10653
+    },
+    {
+      "path": "tests/browser/performance-semantic-oracle-v1.mjs",
+      "sha256": "cb7e0e85481494c81a358ae6074b913847d902c4acc30d820251ffc1c26561f7",
+      "bytes": 13622
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v1.mjs",
+      "sha256": "8f712452ba026711acb57ef07dd75631c02b552c0e4cbc4e37fbd8eddad28ab7",
+      "bytes": 5409
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v2.mjs",
+      "sha256": "8d38c6cb8c3c82dd8daac80ec8dd81d1040c6bf6ab969f4fa87649723309a44c",
+      "bytes": 6137
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v1.html",
+      "sha256": "eb4b7d3d685dc8758c73ec03fdfb68fab4020a4105ecf5deb369584fc7255cfd",
+      "bytes": 391
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v2.html",
+      "sha256": "4ae11c49b1bf76bdf2a3e24233e12da450f5892c67cb3dea48141a2adc3353b1",
+      "bytes": 391
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v2.mjs",
+      "sha256": "9cca2375741bd9f0226ba2353f606dc47510bf3095400db981f1f770e5c9438a",
+      "bytes": 22032
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v3.mjs",
+      "sha256": "fdf997d2ed0c8de124963dac04928a818961d504fb7828d788bc79f7e4d13273",
+      "bytes": 24836
+    },
+    {
+      "path": "tests/browser/performance-stream-v3.mjs",
+      "sha256": "064b3071d350f9bc3dc4f39682a21c1f1e19f68fd3929a9c147551a149abeaab",
+      "bytes": 7268
+    },
+    {
+      "path": "tests/performance-v3/native-boundary-v4.spec.mjs",
+      "sha256": "c87a4807004c326f976e49caca89e07a90a126e596924211aaf5d24597d14a96",
+      "bytes": 31735
+    },
+    {
+      "path": "tests/performance-v3/semantic-bootstrap-v3.spec.mjs",
+      "sha256": "8a1154d5f324545c71f55bc3c63b70331872b553773d547c9771a59e653f71fb",
+      "bytes": 36598
+    },
+    {
+      "path": "tests/performance-v3/semantic-pilot.spec.mjs",
+      "sha256": "55a1cebcab06d2510c37f473487659309a2839e23c42cde15bcb0430e4d226cd",
+      "bytes": 37383
+    }
+  ],
+  "nextPilot": {
+    "state": "NOT_RUN_REQUIRES_NEW_ROOT_HARDWARE_GO_AFTER_PRODUCT_MERGE",
+    "file": "node",
+    "script": "tests/browser/run-performance-v4.mjs",
+    "args": [
+      "--seconds",
+      "20",
+      "--phase",
+      "all",
+      "--physics-iterations",
+      "3000",
+      "--acoustic-iterations",
+      "600",
+      "--probe-mode",
+      "on",
+      "--qualification",
+      "semantic-v3-c59df8c64fdfa846d6e22daf",
+      "--top-monitor-mode",
+      "levels",
+      "--top-monitor-input",
+      "master-left",
+      "--audio-policy-arm",
+      "reference",
+      "--executable-path",
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "--output",
+      "artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01"
+    ],
+    "uiCollectionSeconds": 20,
+    "physicsIterations": 3000,
+    "acousticIterationsPerProfile": 600,
+    "acousticProfiles": 2,
+    "warmupSeconds": 10,
+    "estimatedWholeOperationSeconds": [
+      100,
+      150
+    ],
+    "wrapperTimeoutMs": 420000,
+    "nativeWatchdogMs": 260000,
+    "expectedActual600Gate": false,
+    "automaticBrowserPermission": false,
+    "failurePolicy": "One attempt, preserve exact reason/raw and actual owned cleanup; no blind retry"
+  },
+  "formalRun": {
+    "state": "NOT_RUN_SEPARATE_ROOT_GO_REQUIRED",
+    "uiSeconds": 600,
+    "phase": "all",
+    "physicsIterations": 3000,
+    "acousticIterations": 600,
+    "captureScheduleMs": [
+      10000,
+      300000,
+      580000
+    ],
+    "captureSecondsEach": 1,
+    "recorderMaxFrames": 18000,
+    "recorderMaxCapturedSecondsAt60Hz": 300,
+    "originalThresholdsAndCoreChanged": false,
+    "probeOffFormalQualified": false
+  },
+  "limits": {
+    "cpuScope": "Matched CDP-owned whole-process endpoint deltas only; source/executable hashes, Win32 success and creation FILETIME required; shared controls and interval uncertainty included",
+    "unknownCpu": "Null, never CDP failure-zero; no fixed600 denominator",
+    "nativeDspCpuMs": null,
+    "hardwareUnderruns": null,
+    "completeCanonicalDelivery": "NOT_MEASURED: known receive/native-consumer stages do not cover all browser dispatch and LabRuntime",
+    "pairedOverhead": "NOT_RUN",
+    "physicalDeviceAndHearing": "NOT_RUN",
+    "overallV1Complete": false
+  },
+  "newMethodSourcePins": [
+    {
+      "path": "tests/browser/performance-approved-qualifications-v4.mjs",
+      "sha256": "fe41541e07bb82e6c483899a534001d8ba8e7e1ce71907f3832037d87ea31aa5",
+      "bytes": 6173
+    },
+    {
+      "path": "tests/browser/performance-cli-v4.mjs",
+      "sha256": "2477100c7bef7d0fe5f5a6e4a853a9e99c1210292456ccba55dfd6f14332a146",
+      "bytes": 2465
+    },
+    {
+      "path": "tests/browser/performance-fixture-v4.html",
+      "sha256": "b8a867714445ad9b647842989336ba159372e03ff76ab949f1d257acf9684c37",
+      "bytes": 690
+    },
+    {
+      "path": "tests/browser/performance-fixture-v4.mjs",
+      "sha256": "543be0708bd11d3790fa27b5478bee559a960fd7dd68f63f1aac50197d5ae757",
+      "bytes": 68751
+    },
+    {
+      "path": "tests/browser/performance-native-formal-v4.mjs",
+      "sha256": "05f4c66ab31cde4446d1bb9ed5a2a06bd12464e2f5c266368366c5056823b10d",
+      "bytes": 6314
+    },
+    {
+      "path": "tests/browser/performance-observation-summary-v4.mjs",
+      "sha256": "53ede61ed3d6cb30027a18703af46ef507e69c81ac598cb23961418b46af6359",
+      "bytes": 7168
+    },
+    {
+      "path": "tests/browser/performance-process-cpu-v4.mjs",
+      "sha256": "82abea440a8fa34206f7ab0ad474844f6f7e1856c95c9f33ec168ff7f13a587e",
+      "bytes": 5234
+    },
+    {
+      "path": "tests/browser/performance-process-times-v4.mjs",
+      "sha256": "bf9404f8b80177249f2e9f5e57e7090a9e22950eef5ebf8ff7af42a91858ccd9",
+      "bytes": 16214
+    },
+    {
+      "path": "tests/browser/performance-process-times-v4.ps1",
+      "sha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+      "bytes": 7363
+    },
+    {
+      "path": "tests/browser/performance-profile-contract-v4.mjs",
+      "sha256": "728eb07cb7c462071b00dec2586a850545511d6a8dc3e0c674b568dc30c5c602",
+      "bytes": 9348
+    },
+    {
+      "path": "tests/browser/performance-profile-v4.mjs",
+      "sha256": "41e9daf7cc1bfbb64b61ab65681efe5210b7f36cc186aa9c2431a16733d0cd2f",
+      "bytes": 57638
+    },
+    {
+      "path": "tests/browser/performance-preview-listen-v4.mjs",
+      "sha256": "6a000dea8df3c30af868073a26f55d40a8c1ea40f887469b3447534a1f542bb6",
+      "bytes": 2287
+    },
+    {
+      "path": "tests/browser/performance-v4.vite.config.ts",
+      "sha256": "ac7c4017e36e510e0a30e902f380c4c56760e532af86aa1c462f174638ef9b3f",
+      "bytes": 529
+    },
+    {
+      "path": "tests/browser/run-performance-v4.mjs",
+      "sha256": "263a0199743066f387ee0a6999ca4525754bef4ef4e7dbf7a0752e09dee51ec0",
+      "bytes": 8354
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/VERSIONED_APPROVAL_RECORD-V4-SEMANTIC-03.json",
+      "sha256": "a9b46674b9e5225ba138f4f8014364d3c408f496946c0fe2236c5a5718a7824a",
+      "bytes": 13160
+    },
+    {
+      "path": "tests/performance-v3/formal-v4-stream.spec.mjs",
+      "sha256": "ca36712156c533f6820c1e1f34fce4f560f2bf5741fe5c008b172c58a5dc01d9",
+      "bytes": 23346
+    },
+    {
+      "path": "tests/performance-v3/performance-preview-v4.spec.mjs",
+      "sha256": "ae646d95fbaff3d0d54d4fcbc7be5401c55b460b192f74e01a69fb095d31ac86",
+      "bytes": 2330
+    },
+    {
+      "path": "tests/performance-v3/performance-profile-v4.spec.mjs",
+      "sha256": "ee052216e9a107503dd244210e2909f2cfc2b034fede360d876bf8a2f8797c8e",
+      "bytes": 49592
+    },
+    {
+      "path": "tests/performance-v3/probe-free-formal-v4.spec.mjs",
+      "sha256": "68b4d1d76548e798c20d7e57e52b720b1a185941d7dee615125031b31f7ccb0c",
+      "bytes": 20012
+    },
+    {
+      "path": "tests/performance-v3/process-cpu-v4.spec.mjs",
+      "sha256": "b0911b49eb388d79b2c8e5e8602f50864c4ea63acf678feea7b759a7f2164a53",
+      "bytes": 10268
+    },
+    {
+      "path": "tests/performance-v3/process-times-v4.spec.mjs",
+      "sha256": "2c3164ff2d714c72277a262d6e36d669ced954d397f227e3f43d5dde4487c280",
+      "bytes": 30047
+    },
+    {
+      "path": "tests/performance-v3/resource-policy-v4.spec.mjs",
+      "sha256": "6d3ab054da03c8c1530a85f3e34cafc1d3226585f977e575c881358ec4214ef2",
+      "bytes": 18677
+    },
+    {
+      "path": "tests/performance-v3/preview-listen-v4.spec.mjs",
+      "sha256": "18ed98cc4126cb5247c06cf0955fa3d30c951e5897d660390ee43ff587f00664",
+      "bytes": 9074
+    }
+  ],
+  "reviewAndMethodReports": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.md",
+      "sha256": "977c8f4e1072309b7a38576c2112e932f2ca68cc0e0604b5e4791bcfbc74b154",
+      "bytes": 6098
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.json",
+      "sha256": "5b2cf24376c8124cf3c3377233228fbc77b8b01f5cb56fd99794ffdb701dd1d8",
+      "bytes": 14483
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.md",
+      "sha256": "28d4c738e0aedab43049ce5654dc0772be9e67aaeed88e82769b62fb0e4285b1",
+      "bytes": 6069
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.json",
+      "sha256": "a13dd910b905976f41ea1340198b823d6625f9e6b6cf04ca96d9dc3f65e2899a",
+      "bytes": 17831
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/21-formal-v4-driver-source-review.md",
+      "sha256": "2edfdf352d149304cd69818fa15fc5b0a047a606dfb659a276520dd492d1a124",
+      "bytes": 8061
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/21-formal-v4-driver-source-review.json",
+      "sha256": "1ff6e54500c1ec03efccb869f706dd223328d33dc3091fbaefd3196ecad01443",
+      "bytes": 20442
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/22-owned-process-cpu-method.md",
+      "sha256": "e6e830bcfb86ca616a47d42e3ed21bcbd63b715ceb04223fc986a4f56c453262",
+      "bytes": 8444
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/22-owned-process-cpu-method.json",
+      "sha256": "2f91894ae8c2959b3b6b4387d2fd1587c4fdfa0fccaf9c72c9cd1b453bdfbf8e",
+      "bytes": 19479
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/23-formal-v4-source-freeze.md",
+      "sha256": "665c8f4e1bb80337069e5e4b7a0d70f64f0e6a6bcad34d1e2bfb474641500887",
+      "bytes": 4595
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-format-r1.txt",
+      "sha256": "576ce73f822f63f357f6c842912ee8b5c28b330f723d35a1a40e211a921807fa",
+      "bytes": 106
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-green-r1.tap",
+      "sha256": "3a9633515060cc7b80acf8cd2d39a0a11abf67930bacdc8854855d10db5616b5",
+      "bytes": 5862
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-green-r2.tap",
+      "sha256": "a389e39c1e36368e80ff9605d4891c160b53ca48ac28f0afe085b8f709f60c5e",
+      "bytes": 6357
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-lint-r1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-red-r1.tap",
+      "sha256": "55cdf95f685c70f38f637461cc7e4083d64930a12e8dc4c92e1ac83c819a4493",
+      "bytes": 6679
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-fixture-profile-preview-r1.tap",
+      "sha256": "466566855dd73045ec8ce0f6e2d9a1ac304fa441a7cea15b8fff6aad9051e528",
+      "bytes": 36069
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-cli-v4-audio-arm-green-r1.tap",
+      "sha256": "53ebcaf2e3187cc56671af35dec493dc43986108e77264b3d3921a00b223678b",
+      "bytes": 1543
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-cli-v4-audio-arm-red-r1.tap",
+      "sha256": "4093ed1b7340399f8d6f530fff1a77def878aa4e719e2f0e07dc94e20e5845ac",
+      "bytes": 4705
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-cli-v4-missing-value-red-r1.tap",
+      "sha256": "a890d3eddcbdca5814db8462f9905aadc4540824fa32170e0b6491d53f4e6e44",
+      "bytes": 2367
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-preview-v4-green-r1.tap",
+      "sha256": "0b99b324aaacf69c7cab9bf1508080227e6967673d4c332d6f5af2ea0ffb6c2f",
+      "bytes": 2014
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-profile-v4-cli-membership-process-green-r1.tap",
+      "sha256": "3b995ff178d7c2128bcf494a64a131a74001c0a104ed572d97723e89e01cc91e",
+      "bytes": 2020
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-profile-v4-membership-process-red-r1.tap",
+      "sha256": "44d23757e1f83d7aee308e110c4223c93f4f2edcfa01a1403657b66bedcb26a5",
+      "bytes": 4889
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/performance-profile-v4-red-r1.tap",
+      "sha256": "eb9d04e856c92442d83290f7811079215ff09332f11059cd6c2acf747102eb32",
+      "bytes": 24880
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/probe-free-formal-v4-red-r1.tap",
+      "sha256": "2316bb8dd8a0f75ed5d5f44c7b8c85ec75c9567a7b03f98bd3f4cc3248f0ee05",
+      "bytes": 9066
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-cpu-v4-green-r1.tap",
+      "sha256": "21e58c509c47f3228eb558b0e96c9fb27a428a02a58a9e7f62d66f485f4b2ee2",
+      "bytes": 15877
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-cpu-v4-red-r1.tap",
+      "sha256": "ab847791bece0b675f48d05ce8a051cfacc5595a4931381728d589dd958e507b",
+      "bytes": 17234
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/resource-policy-v4-red-r1.tap",
+      "sha256": "c8726c1a4c4cea8dc70668ecdec2c0f1133d7819b754d10e9b7349febcea7e1d",
+      "bytes": 23937
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/resource-policy-preview-v4-cap-red-r1.tap",
+      "sha256": "dfc2d33f4c3945728420b2d988c456a6f40df8fdb8cb44efeab940681c2f1443",
+      "bytes": 41270
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/resource-policy-preview-v4-cap-green-r1.tap",
+      "sha256": "002ec4bbff5230b4d6e2b6225e8d2b62e8f7aa6289216e39989779555e260f74",
+      "bytes": 25428
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-profile-v4-required-gates-red-r1.tap",
+      "sha256": "ffd97696438bfc53a998f6bc9e0c910c49c7694ac1ca04fd014a5d1618f7f831",
+      "bytes": 140044
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-profile-v4-required-gates-green-r1.tap",
+      "sha256": "36b442208fc1e6bc18b91ebbf04154a455fd6eda2c12fb8d50f5479c450f51a1",
+      "bytes": 50377
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/profile-v4-tcp-fixture-requirement-red-r1.tap",
+      "sha256": "78e69235f7f3f463219e647ecd04229a9a27d2e051c39cb2f97d4b9e443d5fd8",
+      "bytes": 53190
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/preview-listen-v4-red-r1.tap",
+      "sha256": "5c6257a2bd161e305862c542bae2289eb269b073e7ea8515ac58bc88a7553d86",
+      "bytes": 10565
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/preview-listen-v4-green-r1.tap",
+      "sha256": "161348d1c5bec9797889f49b8a37d6c20a994df7c15a9b0445acb1f19f1cf9e9",
+      "bytes": 6012
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-contract-listener-cpu-green-r1.tap",
+      "sha256": "5f65337eec560b974cceaf6c3a3ae79f0caa513474c4a7336cd9876068e05291",
+      "bytes": 72408
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-red-r1.tap",
+      "sha256": "7df1aa948b643d37c4424106b2ee3cebdd9f967473de8f89564d8c30e7d3afd6",
+      "bytes": 31626
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-green-r1.tap",
+      "sha256": "bfc736784c3a186c7ee6b1dc96b328cae08bb6658163f6cd0f71a3714f7a8b99",
+      "bytes": 30648
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-integrity-red-r1.tap",
+      "sha256": "960c142b456f41584be685ee06e219e32e6b9cbf9ab3a3348a9db99c79606c43",
+      "bytes": 34688
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r1.txt",
+      "sha256": "da207bf906bfa7aa1fa3b47ba4068005ef89f35d83101522b69a01c9300efcfb",
+      "bytes": 1131
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r2.txt",
+      "sha256": "4fd073f13c335a4d70bfc6c63d0f6db95b4583a081b3c3311e8096dce3dd7089",
+      "bytes": 125
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r1.txt",
+      "sha256": "f4f92deb9da3ba151bf851d5ccb2c8397655079f4d433445533bdcffc859dfd6",
+      "bytes": 392
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-final-focused-r1.tap",
+      "sha256": "eefe9e4d1037d0715dd9aa0787bdbe4d7664550fcc76ddf081c47beca9fdf38f",
+      "bytes": 139009
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/profile-v4-before-tcp-fixture.test.txt",
+      "sha256": "266b9b5235f631bffcb9388872b294b5a3e2cfffe1aeaf78e9c2429309c9f000",
+      "bytes": 46640
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/profile-v4-tcp-fixture-v2.json",
+      "sha256": "7cb36ad0ba21390e31c506223d2919c1baa186bbe7fb306fa0991ec9c12e313e",
+      "bytes": 1148
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-fixture-v1-before-afterhash.test.txt",
+      "sha256": "a977f4c1b945bec9a6d69a7ec3808ea99206401f13aceb345e18cdfe62eadd85",
+      "bytes": 25881
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-fixture-v1-before-afterhash.json",
+      "sha256": "3581c745fb7c6dc8601058411d8c127525fbf2c4439704ef33e79a7c73277153",
+      "bytes": 2177
+    }
+  ],
+  "protectedBaseline": {
+    "ref": "refs/heads/codex/nonadvanced-baseline-20261103",
+    "actualCommit": "e25f9f48302fd357b0f97a6f9bf8565f5916627c"
+  }
+}

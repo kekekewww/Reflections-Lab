@@ -1,0 +1,488 @@
+<!-- english-source: {"path":"docs/11-v1/PARAMETER_REFERENCE.md","sha256":"755f6130a409c7db07e5e924966eaffffe22dbc02c9da23741c2eba0cf76b81a","translated_at":"2026-11-02T11:35:57.978Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-original-anchor --> <a id="參數設定參考"></a>
+# Parameter reference
+
+This page describes every adjustable parameter in the Reflection Lab interface: its unit, range, default, effect, and when it takes effect. It is the complete version of the explanatory text on the main page; the interface keeps only field labels, values, status and warnings, and the detailed explanations live in hover tooltips and on this page.
+
+2026-11-02 update: values have been checked against formal code and schemas, including Motion, short audio Render, Zones, Agent workflow, and Diagnostics. Defaults mean new drafts/initial settings; saved values apply when an existing project is loaded. This is a parameter and state contract, not a measurement or a claim that every value combination passed. See the [core handoff](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md) for bounded actual DOM evidence, original failures, and correction receipts. The user has confirmed basic functionality; validation of the added scope is recorded separately.
+
+<!-- english-original-anchor --> <a id="閱讀方式"></a>
+## How to read this page
+
+- **Units**: SI throughout (m, kg, s, rad, Hz). Angle fields take degrees (deg) and are converted internally to a quaternion `[x,y,z,w]`. Monitor gain is a digital gain in dB; **dBFS is not dB SPL**.
+- **How changes apply**:
+  - **Scene command**: checks the revision, applies atomically, rebuilds the physics world and re-solves acoustics; can be undone.
+  - **Behaviour command**: stored as a draft first; Apply validates and commits it; can be undone.
+  - **Immediate**: takes effect at once and does not enter the undo history.
+- **When you can edit**: most Inspector and Scene list fields are editable only while the simulation is Ready or Paused and no replay is running; while running, the Inspector shows "Simulation is running; pause to edit structural settings".
+- **Evidence labels**: materials are labelled Measured / Derived / Tuned / Synthetic; acoustic models are labelled analytical / numerical approximation / perceptual approximation. All materials in this project are currently Synthetic (hand-set example coefficients); geometric acoustics is a numerical approximation, and HRTF and late reverb are perceptual approximations.
+
+<!-- english-original-anchor --> <a id="1-數字欄位的共同規則"></a>
+## 1. Shared number-field rules
+
+| Field type | Behaviour |
+| --- | --- |
+| Inspector number fields (position, dimensions, rotation, mass, temperature, reverb and so on) | Typing only edits a draft; Enter or leaving the field commits it. Esc restores the committed value. Empty, non-numeric or out-of-range values are not committed, and the field shows "Enter a finite number{bounds}". Nothing is committed while an input method is composing or when switching language. |
+| Rule number fields (volume, pitch, cooldown) | Every keystroke goes into the rule draft; Apply commits it. Out-of-range values show "Enter a finite number from {min} to {max}. Your draft is retained." Esc restores the value from when the field gained focus. |
+| Mapping editor number fields | A draft string; out-of-range values are only flagged, and the error list appears at the bottom of the mapping editor. |
+
+<!-- english-original-anchor --> <a id="2-物件-inspector"></a>
+## 2. Object Inspector
+
+Shown when an object is selected.
+
+<!-- english-original-anchor --> <a id="21-識別與操作"></a>
+### 2.1 Identity and actions
+
+| Parameter | Effect and when it applies | Notes |
+| --- | --- | --- |
+| Name | Read-only; shows the name or ID | There is no rename field in the interface yet. |
+| Duplicate | Scene command: copies the object with a new ID, offset +0.6 m (X) and +0.3 m (Y), and selects the copy | — |
+| Delete | Scene command: removes the object; can be undone. Pressing Delete in the editor does the same | — |
+
+<!-- english-original-anchor --> <a id="22-transform作者設定的初始姿態"></a>
+### 2.2 Transform (authored initial pose)
+
+| Parameter | Unit | Range / step | Default | Effect and when it applies |
+| --- | --- | --- | --- | --- |
+| Position X / Y / Z | m | −200 to 200, step 0.1 | New objects `[0, 2, 0]` | Scene command. Sets the initial pose; the live position while running comes from physics. |
+| Dimensions | m | 0.01 to 100, step 0.1 | Box and sphere `[0.5, 0.5, 0.5]`; capsule `[0.5, 1, 0.5]` | Scene command. A box has X / Y / Z fields that change both the collider and the acoustic faces; a sphere has a single Diameter field that changes all three axes together; a capsule has Diameter (X = Z) and Height (Y), and the height must not be less than the diameter; otherwise the field keeps your input and shows the reason. |
+| Rotation X / Y / Z | deg (XYZ Euler) | −360 to 360, step 1 | No rotation | Scene command; converted to a unit quaternion. |
+
+When scaling with the transform tool in the 3D view, the minimum size is 0.05 m; spheres scale uniformly and capsule width and depth stay linked.
+
+<!-- english-original-anchor --> <a id="23-剛體物理"></a>
+### 2.3 Rigid body physics
+
+| Parameter | Unit | Range / options | Default | Effect and when it applies |
+| --- | --- | --- | --- | --- |
+| Body mode | — | Dynamic · gravity enabled; Dynamic · no gravity; Fixed · immovable; Kinematic · prescribed motion | New objects Dynamic · gravity enabled; in the default scene the walls, floor and speaker are Fixed and the ball is Dynamic · gravity enabled | Scene command. Switching between the two Dynamic modes updates in place; other changes rebuild the physics world. No gravity is still a dynamic body that collides and can be pushed; Fixed is not affected by forces. Kinematic can be driven at fixed steps by Motion Move To, Move & Release, or a valid trajectory. Impulse accepts Dynamic only; Kinematic release requires explicitly choosing zero or transferred velocity, and the acceleration parameter applies only to Dynamic. |
+| Mass | kg | 0.001 to 10000, step 0.1 | New objects 1 kg; default ball 1 kg, fixed boxes 100 kg | Scene command. Disabled for Fixed. First person can only grab dynamic bodies of 0.1 to 20 kg. |
+| Friction coefficient | unitless | 0 to 2, step 0.05 | New objects 0.5; boxes 0.6, ball 0.4 | Scene command; collider friction using the Rapier default combine rule (inferred; Tuned / Synthetic). |
+| Restitution coefficient | unitless | 0 to 1, step 0.05 | New objects 0.4; boxes 0.15, ball 0.55 | Scene command; collision bounciness (Tuned / Synthetic). |
+| Speed | m/s | Read-only | — | Shown when velocity data exists. |
+
+<!-- english-original-anchor --> <a id="24-聲學材質"></a>
+### 2.4 Acoustic material
+
+| Parameter | Options | Default | Effect and when it applies |
+| --- | --- | --- | --- |
+| Surface material | Hard surface, Absorptive surface, Wood example, Metal example (all Synthetic) | New objects wood; in the default scene walls are hard, the floor is wood, the ball is metal and the speaker is absorptive | Scene command, then an acoustic re-solve. Each material has 7 bands from 125 to 8000 Hz; absorption + reflection + transmission = 1, transmission is 0 and scattering 0.1. The coefficients are hand-set examples, not measurements. |
+| Acoustic role | Exclude; Static reflecting surface; Dynamic occluder; Dynamic reflector (subject to backend support) | New objects Dynamic occluder; walls and floor Static reflecting surface; ball Dynamic occluder; speaker Exclude | Scene command, then a re-solve. Exclude is left out; only Fixed + Static reflecting surface performs static reflection, while the same role on non-Fixed bodies still only occludes. Dynamic occluder only occludes. Dynamic reflector performs first-order reflection and occlusion from the actual current pose instead of falling back to occlusion alone. |
+
+Boxes, spheres, and capsules can all edit the four materials and four roles above. Spheres/capsules use analytical closed-volume occlusion and bounded numerical specular positions. All three shapes share the geometry budget. Curved-surface focusing/caustics/curvature divergence, retarded time, and moving-boundary Doppler are not provided; see the [bounded model contract](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md).
+
+<!-- english-original-anchor --> <a id="3-listener環境"></a>
+## 3. Listener / environment
+
+Open it with "Listener / environment" in the Scene list.
+
+| Parameter | Unit | Range / options | Default | Effect and when it applies |
+| --- | --- | --- | --- | --- |
+| Receiver position | m | −200 to 200, step 0.1 | `[0, 1.6, 4]` | Scene command; the Listener becomes "Independent". In first person the Listener follows the head and the fields are disabled. |
+| Receiver orientation | deg (XYZ) | −360 to 360, step 1 | No rotation | Same as above. |
+| Propagation medium | — | Air; Vacuum · no airborne propagation | Air | Immediate: clears scheduled sound, starts a new run epoch and re-solves; not undoable. In vacuum there is no airborne propagation, and the path area explains this instead of showing 0; mechanical collisions remain. |
+| Air temperature | °C | −80 to 100, step 1 | 20 °C | Immediate; also sets the medium to air. Speed of sound c = √(1.4 × 287.05 × (273.15 + T)) (ideal gas, analytical). Disabled in vacuum. |
+| Speed of sound | m/s | Read-only | 343 m/s at 20 °C | Shows "Not provided" in vacuum. |
+| Backend / model | Read-only | — | Custom Web Geometric Core; Numerical approximation · first-order finite surfaces / zero-phase magnitude | — |
+
+Gravity (`[0, −9.81, 0]` m/s²) and band air absorption (currently all 0, Synthetic) have no interface fields.
+
+Environment settings persist with project save/load and JSON import/export, including the medium, temperature and explicit atmospheric-acoustic parameters. Loading an old project without an environment field restores the original Air/20 °C/343 m/s defaults rather than retaining hidden settings from the previous project. Environment changes still do not enter the ordinary scene undo history.
+
+<!-- english-original-anchor --> <a id="4-聲音行為"></a>
+## 4. Sound behaviours
+
+In the Sound behaviors section of the object Inspector. Edits are stored as drafts and kept when you change the selection; Apply checks the revision and commits them, and they can be undone.
+
+<!-- english-original-anchor --> <a id="41-分類與新增規則"></a>
+### 4.1 Classification and new rules
+
+| Parameter | Options | Default | Effect |
+| --- | --- | --- | --- |
+| Classification | Creative; Physical-inspired; Hybrid; Procedural | From the profile; Creative when there is none | Records design intent only and does not change synthesis; when the profile has no rules it adds one continuous (AlwaysOn) rule. |
+| Trigger for a new rule | 19 triggers; availability depends on trusted producers and a valid Zone registry | OnImpact | New-rule defaults: sine oscillator at 440 Hz, volume about 0.063 (−24 dBFS), pitch 0, fade-in 0.01 s, fade-out 0.06 s; discrete triggers use cooldown 0.08 s, a voice limit of 4 and a one-shot length of 0.22 s; continuous triggers use cooldown 0 and a limit of 1. |
+
+<!-- english-original-anchor --> <a id="42-規則卡"></a>
+### 4.2 Rule card
+
+| Parameter | Unit | Range / step | Default | Effect |
+| --- | --- | --- | --- | --- |
+| Enabled | — | On / off | On | Enables the rule; for a scene source it also syncs the playing state. Cannot be ticked when the object binding is disabled. |
+| Trigger | — | 19 options under the shared capability contract | Per rule | OnBounce is a Tuned separation subset for unmoved Fixed supports. OnEnterZone/OnExitZone require an explicit valid zoneId and a real producer; missing prerequisites show a reason and prevent Apply. |
+| Trigger zone | — | Registered zone ID | Select a zone first for new rules; retain existing values | Shown only for Zone triggers. New choices allow enabled zones only; existing disabled references remain visible. A missing ID does not silently select the first zone; see section 18. |
+| Sound asset | — | Procedural sound · Oscillator, or any imported asset that is ready | Procedural sound | Switching back to the oscillator resets it to a 440 Hz sine; with an asset, continuous triggers loop it. |
+| Volume | linear gain | 0 to 4, step 0.05 | About 0.063 | Rule volume. |
+| Pitch | semitones | −24 to 24, step 1 | 0 | Playback pitch offset. |
+| Cooldown | s | 0 to 10, step 0.05 | Discrete 0.08 s; continuous 0 | Minimum interval between two triggers of the same rule. |
+| Apply / Discard | — | — | — | Apply is disabled when a field is invalid, the draft is stale, a mapping has an error, nothing changed, or an unsupported trigger is enabled. |
+| Delete rule | — | — | — | Disabled while a draft exists; deleting the last rule also removes the object binding and profile. |
+| Preview scene acoustics | — | — | — | Previews this rule in the current static scene through the full acoustic chain; needs a paused simulation and no replay. Impact rules first need an admitted impact event selected in "Events & recording"; drafts must be applied first. |
+
+Rule priority (0 to 100), voice limit (1 to 16), fades (0 to 5 s), one-shot length (0.005 to 30 s), conditions, emitter position, and oscillator frequency and waveform have no interface fields; they can only be set in the project file.
+
+<!-- english-original-anchor --> <a id="43-參數映射"></a>
+### 4.3 Parameter mappings
+
+Map a physical quantity to a sound parameter. Each rule can have up to 8 mappings and only one per output parameter (so 3 in practice).
+
+| Parameter | Unit | Range / options | New-mapping default | Notes |
+| --- | --- | --- | --- | --- |
+| Input metric | Per metric | Source speed m/s, angular speed rad/s, normal impulse N·s, closing speed m/s, tangent speed m/s, slip speed m/s, contact support force N | Source speed (the default impact mapping uses closing speed) | Trigger and metric compatibility is checked on Apply. |
+| Output parameter | Per parameter | Gain (linear), pitch (semitones), filter cutoff frequency (Hz) | The first unused one | Outputs already in use are disabled. |
+| Input minimum / maximum | Input unit | 0 to 1e9; the minimum must be below the maximum | 0 / 10 | — |
+| Output minimum / maximum | Output unit | Gain 0 to 4, pitch −24 to 24, cutoff 20 to 20000 Hz; minimum not above maximum | Gain 0 / 1; pitch 0 / 12; cutoff 20 / 20000 (default impact mapping 0.025 / 0.25) | Values outside the parameter range cannot be applied. |
+| Interpolation | — | Linear; Step | Linear | — |
+| Parameter smoothing | s | 0 to 1, step 0.01 | 0.02 s (default impact mapping 0.015 s) | Smooths the sound parameter only; it does not change physics or propagation timing. |
+| Clamp | — | Always on | On | Cannot be turned off. |
+| Curve points x / y | normalized 0 to 1 | 2 to 16 points; first x = 0, last x = 1, x strictly increasing | `(0,0)`, `(1,1)` | A new point goes into the middle of the widest gap; the first and last points, and points at the minimum count, cannot be removed. The curve is an authored control curve, not an acoustic measurement. |
+
+<!-- english-original-anchor --> <a id="44-此物件覆寫"></a>
+### 4.4 Object overrides
+
+Affects only the current object's binding and keeps a draft separate from the rule.
+
+| Parameter | Unit | Range | Default | Effect |
+| --- | --- | --- | --- | --- |
+| Override enabled state | — | On / off | Inherited | Enables or disables the rule for this object only. |
+| Override volume | linear gain | 0 to 4, step 0.05 | Inherited (the default speaker overrides it to about 0.063) | — |
+| Override pitch | semitones | −24 to 24, step 1 | Inherited | — |
+| Apply / Discard / Clear saved overrides | — | — | — | Clear sets every field back to inherit. The Base and Effective columns show 6 significant digits; the full value is in the tooltip. |
+
+<!-- english-original-anchor --> <a id="45-草稿與預聽"></a>
+### 4.5 Drafts and preview
+
+- "Discard all behavior drafts for this project" clears the rule and override drafts of the current project.
+- "Stop preview" in the preview panel stops the independent preview at once; a preview never advances simulation time, recordings or events.
+
+<!-- english-original-anchor --> <a id="5-監聽monitor"></a>
+## 5. Monitor
+
+At the bottom of the page. Everything applies immediately, can be changed while running, and does not enter the undo history.
+
+| Parameter | Unit | Range / options | Default | Effect |
+| --- | --- | --- | --- | --- |
+| Enable listening / Mute monitor | — | Toggle | Not enabled | The first press creates the audio context and unmutes; later presses toggle mute. Mute only affects monitoring and does not pause physics. Enabling listening does not start the simulation. |
+| Audio buffer | — | Low latency; Balanced; Stable | Stable | Like a DAW buffer size: a larger buffer is less likely to drop out but delays sound more. Changing it safely restarts the audio engine (fade out, rebuild, restore monitor gain, mute, routing and reverb settings, then re-admit continuous sources); the choice is stored in this browser. It is refused with a reason during recording, replay or a pending placement. |
+| Scheduling lookahead | ms | Read-only; Low latency 60, Balanced 80, Stable 120 | — | Sound onsets such as impacts are scheduled this far ahead, so a brief main-thread stall does not make them late. It applies to onsets only and does not change how propagation delay is computed (emission time and propagation delay are each counted once). |
+| Device output latency | ms | Read-only | — | baseLatency + outputLatency as reported by the browser. |
+| Output underruns | count | Read-only | — | Output buffer underruns reported by the browser (like a DAW xrun counter); shows NOT_AVAILABLE, not 0, when the browser does not provide it. |
+| Monitor gain | dB (digital) | −40 to +12, step 1 | 0 dB | The selected preference is saved even before listening is enabled and is applied when the audio engine is created; changing it does not itself unmute the default mute state. Adjusts monitor gain. The master output keeps a fixed −6 dB headroom and a −3 dBFS limiter. dBFS is not dB SPL; actual loudness depends on the system and speaker volume. |
+| Monitor routing | — | Simulated; Raw reference | Simulated; the choice can be saved before enabling audio | Simulated goes through propagation, HRTF and reverb; Raw reference is a centred dry signal without propagation or HRTF that also bypasses reverb. Different levels between them are not an error. |
+| Synthetic late reverb | — | On / off | Off | Synthetic late reverb (perceptual approximation); toggling it stops a running preview. |
+| Synthetic decay time | s | 0.1 to 4, step 0.1 | 1.2 s | Time for a seeded noise IR to decay exponentially to −60 dB; not a measured RT60. |
+| Reverb wet gain | linear | 0 to 1, step 0.01 | 0.12 | Share of the wet reverb signal. |
+| Voices | Read-only | — | — | Current voices / limit (the limit shows 16 before audio is enabled). |
+
+<!-- english-original-anchor --> <a id="6-運算控制"></a>
+## 6. Simulation controls
+
+| Control | Effect |
+| --- | --- |
+| Start simulation / Pause / Resume simulation | Starts or pauses the physics simulation; disabled on error or during replay. In first person the interaction controls resume it. |
+| Reset | Interrupts any recording, rebuilds the physics world from the current scene revision and re-solves; it is not an undo and keeps sealed recordings. |
+| Undo / Redo | Command history of the scene and sound behaviours; it does not reverse simulation time. |
+
+The physics fixed step is 1/60 s and cannot be changed; the view interpolates between steps.
+
+<!-- english-original-anchor --> <a id="7-場景清單與聲音匯入"></a>
+## 7. Scene list and audio import
+
+| Control | Range / condition | Effect |
+| --- | --- | --- |
+| Search | Case-insensitive | Filters the list by name or ID. |
+| Add Box / Sphere / Capsule | Disabled while running | Editor: creates a new object at `[0, 2, 0]` and selects it. First person: only selects the shape used by right-click placement. |
+| Select object | — | The row badge shows held, fixed, 0 g (no gravity), kinematic or dynamic. |
+| Listener / environment | — | Opens section 3. |
+| Audition asset | Disabled while running or when the asset is not ready | Plays the dry sound outside the experiment record; needs a pause. |
+| Rights confirmation | Unticked by default, not stored | Must be ticked before importing audio. |
+| Import audio (WAV) | 1 B to 8 MiB; PCM 8 / 16 / 24 / 32-bit or float32; 8000 to 192000 Hz; by default up to 2 channels and 120 s; 64 MiB decoded in total; at most 64 assets | A failed import shows the reason (rights not confirmed, size, format, sample rate, channels, duration or memory limit). These are fixed validation boundaries at the product entry, not a guarantee that every file can be processed in real time on the target device. |
+
+<!-- english-original-anchor --> <a id="8-專案儲存匯入與匯出"></a>
+## 8. Saving, importing and exporting projects
+
+| Control | Effect and limits |
+| --- | --- |
+| Save (Ctrl / ⌘ + S) | Saves the project, available audio and completed recordings in this browser; the notice says whether storage is persistent. Data is lost when a private window closes. |
+| Load | Loads the project saved in this browser; reports when none exists. |
+| Export project | Downloads `reflection-lab-project.json`. |
+| Import project JSON | Choose a file in the dialog, up to 8 MiB; it first previews the name, scene revision, counts and the first 6000 characters, and full validation decides on Apply. Disabled while running or replaying. |
+| Export sealed recording | Downloads `<runId>.recording.json`; reports when there is no recording. |
+
+<!-- english-original-anchor --> <a id="9-錄製重播與-ab"></a>
+## 9. Recording, replay and A/B
+
+In the "Events & recording" analysis area (collapsed by default).
+
+| Control | Range | Effect and limits |
+| --- | --- | --- |
+| Start / stop recording | Hard limits 18000 frames (300 s at 60 Hz), 64 MiB, 100000 events, 2048 per frame | Recording never drops fixed-step ticks; under overload it pauses and keeps the backlog, and you can continue or stop and seal. Disabled during replay. The product passes no lower override; there is also a limit of 256 objects. When a complete budget is exhausted, an Interrupted prefix is retained instead of falsely claiming Captured. |
+| Replay / End replay | Needs a complete recording | Replays the recorded physics trajectory and events without re-running Rapier. |
+| Replay time | 0 to the recording length, s | Seeking is quantized to 1/60 s. |
+| Filter events | Text | Filters by type, object, rule, asset, decision reason or instance and shows the latest 200 matches. |
+| Save / update snapshots A and B | — | Pauses and stores the current conditions as a comparison snapshot. |
+| Comparison type | Acoustic A/B (default); Sound behavior A/B | Before comparing, the fixed conditions of both snapshots are checked. |
+| Check and compare | Available when both A and B exist | Runs the comparison and shows the result. |
+
+<!-- english-original-anchor --> <a id="10-實驗助理"></a>
+## 10. Experiment assistant
+
+| Parameter | Range / options | Default | Effect |
+| --- | --- | --- | --- |
+| Execution mode | Offline tools (no model); Meta Model API | Offline tools | Switching cancels the current proposal. Choosing Meta checks the server status; you can submit only when the server reports ready, a cost ceiling above 0 and a model ID. |
+| Re-check server status | — | — | Queries the provider status again. |
+| Experiment instruction | Up to 4000 characters; Ctrl / ⌘ + Enter submits | Empty | Produces an operation proposal; each session allows at most 12 planning turns or 120 s. |
+| Generate preview / Apply operations / Cancel preview | — | — | Apply goes through full validation and undoable commands; Cancel discards the proposal. |
+
+The Meta key, model and cost ceiling are configured only on the server and cannot be changed from the page.
+
+<!-- english-original-anchor --> <a id="11-3d-視窗"></a>
+## 11. 3D view
+
+<!-- english-original-anchor --> <a id="111-編輯器模式"></a>
+### 11.1 Editor mode
+
+| Control | Range / default | Effect |
+| --- | --- | --- |
+| Move / Rotate / Scale tool | Default Move; disabled without a selection | Each drag produces one change; available only in the editor, while Ready or Paused, and not during replay. Esc during a drag cancels it. |
+| Frame selection | — | Moves only the observer camera, not the Listener. |
+| Blocked candidates (not sent to audio) | Default off | Shows blocked candidate paths; at most 64 paths are drawn. |
+| Orbit / pan / zoom | Zoom distance 0.5 to 120 m | Alt + left drag or right drag orbits, middle button pans, the wheel zooms; Ctrl / ⌘ + wheel is left to browser zoom. |
+| Click empty space | — | Clears the selection (except while Alt is held or a transform change is still committing). |
+| Workspace tabs (Build scene, Interactive experiment, Inspect & compare) | Default Build scene | Each workspace remembers its own observer camera. |
+
+<!-- english-original-anchor --> <a id="112-第一人稱"></a>
+### 11.2 First person
+
+Starts after "Enter first person" and a successful mouse lock. The click that acquires the lock never grabs, throws or places.
+
+| Input | Context | Effect |
+| --- | --- | --- |
+| W / A / S / D | Running | Move; walking speed 2 m/s. |
+| Shift | Same | Sprint at 3.5 m/s. |
+| Mouse move | Mouse locked | Look; sensitivity 0.002 rad per unit, pitch limited to about ±87°. Not adjustable. |
+| Left button | Not holding | Grabs the first grabbable dynamic body (0.1 to 20 kg) within 3 m of the crosshair. |
+| Left button | Holding | Throws (fixed impulse 6 N·s). |
+| Left button | During a right-button preview | Cancels the preview without placing. |
+| Hold right button | Not holding | Shows a placement preview: it attaches to a surface the crosshair hits within the preview distance, otherwise it floats in mid-air; releasing the right button places. A quick click also places. |
+| Right button | Holding | Puts the object down (ends the grab and keeps the current velocity). |
+| Wheel | Holding or previewing | Adjusts the distance, about 0.75 to 3 m depending on object size; default 2 m. |
+| R | Hold while holding; toggle while previewing | While holding, rotates the object with the mouse; while previewing, toggles rotate mode so moving the mouse sideways rotates the preview in 15° steps. |
+| F | With a clear target | Freezes or unfreezes. |
+| G | Holding | Gentle place: finds a support point and lowers the object slowly; does nothing without support. |
+| E | Optional | Grabs or puts down (same as the left and right buttons). |
+| B | Optional | Cancels the placement preview. |
+| L | Running | Pauses and opens the object library to choose the placement shape, releasing the mouse. |
+| Enter | First person | Pauses or resumes. |
+| Esc | First person | Cancels the preview if there is one; otherwise releases the mouse and pauses safely. |
+| Tab | First person | Returns focus to the interface and pauses. |
+| Arrow keys | Alternative input with the view focused | Look in steps. |
+
+Placement rules: each release of the right button creates at most one object, and it can be undone. Objects placed in mid-air default to Dynamic · no gravity (they stay in the air but still collide); surface placements keep the default Dynamic · gravity enabled. The position must be within 3.5 m and must not overlap other bodies or the player. After a successful placement the simulation keeps its previous running state.
+
+Alternative input: after "Enable no-lock controls", the buttons below the view grab, put down, throw, start a placement preview, place and cancel the preview; each press of a movement button walks for 200 ms.
+
+<!-- english-original-anchor --> <a id="12-快捷鍵第一人稱以外"></a>
+## 12. Shortcuts outside first person
+
+| Key | Condition | Effect |
+| --- | --- | --- |
+| Ctrl / ⌘ + Z | Not in a text field | Undo |
+| Ctrl / ⌘ + Shift + Z | Same | Redo |
+| Ctrl / ⌘ + S | Same | Save |
+| Delete | Editor, object selected, not running | Delete the selected object |
+| Panel divider: drag, double-click, Home, ← → | Divider focused | Resize the panel; double-click or Home resets, arrow keys move 8 px. |
+| Analysis tabs: ← → Home End | Tab focused | Switch tabs |
+
+<!-- english-original-anchor --> <a id="13-版面與語言"></a>
+## 13. Layout and language
+
+| Parameter | Options | Default | Effect |
+| --- | --- | --- | --- |
+| Scene / Inspector panels | Show or hide | Shown | On narrow screens they become a single switchable pane. |
+| Analysis area | Expand or collapse | Collapsed | — |
+| Interface language | Traditional Chinese; English | Traditional Chinese (a stored choice wins) | Stored in this browser; also sets the page language. Runtime messages that are not catalogued appear in English as "Original technical detail" followed by the original text. |
+
+<!-- english-original-anchor --> <a id="14-固定值不可調整"></a>
+## 14. Fixed values (not adjustable)
+
+| Item | Value |
+| --- | --- |
+| Physics fixed step | 1/60 s |
+| Acoustic solver limits | Product requests default to at most 8 paths per source. Surfaces + primitives + boxOccluders share a budget of 256 geometry items and 10000 segment tests; boxes/spheres/capsules are supported. Excess geometry is explicitly rejected; exhausted test budgets conservatively reject unfinished visibility checks. |
+| Acoustic model | Numerical approximation · first-order finite planes and analytical sphere/capsule specular reflection, magnitude-only; quasi-static solving at the current snapshot, without a complete IR/RT60. |
+| Sound behaviour voice limit | 16 logical instances globally and 8 per object, shared by continuous and event sounds. Live AudioEngine separately defaults to 24 native voices; offline Render's limit of 16 counts output files. |
+| Default scene | 6.4 × 8.4 m floor, 4 m walls, one ball and one speaker playing a continuous 220 Hz tone at −24 dBFS |
+
+<!-- english-original-anchor --> <a id="15-目前限制與已知問題"></a>
+## 15. Current limitations and known issues
+
+- Dynamic reflection computes first-order specular reflection using actual snapshot position/orientation, without moving-boundary retarded-time/Doppler solving. Non-Fixed Static reflecting surface still only occludes; Dynamic reflector must be explicitly selected for reflection.
+- First person can only grab bodies of 0.1 to 20 kg; otherwise it shows "The first object hit is fixed, controlled or over the grab budget".
+- The transform tool minimum size is 0.05 m, while the Inspector field allows 0.01 m.
+- Object name, physics material, rule priority, voice limit, fades and oscillator frequency have no interface fields.
+- In the editor, right-dragging also orbits the camera.
+- These are tiered capacity and rejection boundaries, not real-time performance guarantees. WAV import permits at most 8 MiB, 2 channels, and 120 seconds; the decoded bank permits at most 64 MiB/64 assets. Recorder permits at most 18000 frames, 64 MiB trace, 256 objects, 100000 unique events, and 2048 events per frame; exhaustion retains an Interrupted prefix. Target-device long-duration performance and the original 600-second gate remain separate.
+
+<!-- english-original-anchor --> <a id="16-動作motion"></a>
+## 16. Motion
+
+Motion uses the selected object's existing rigid-body mode; this panel has no separate Dynamic/Kinematic switch. Form editing is disabled while simulation, recording, replay, or another motion is running. Number fields commit finite, in-range values on Enter or ordinary blur; Escape restores the committed value. Enter does not replace pressing Save.
+
+| Control / parameter | Unit, range / options | Initial value | Effect and state restrictions |
+| --- | --- | --- | --- |
+| Selected object | Read-only object ID | Current selection; a prompt when nothing is selected | Uses the Motion snapshot published together with Scene; this is not an object selector. |
+| Motion ID | Required; `[a-z][a-z0-9._-]{0,63}`, at most 64 characters | `motion.<objectId>` after selection (up to 64 characters) | Saving the same ID updates an existing motion; disabled without a selected object. |
+| Motion kind | `moveTo` Move to / `moveAndRelease` Move and release / `impulse` Apply impulse | `moveTo` | The panel has no `trajectory` option. |
+| Target position X / Y / Z | m; −200 to 200 on each axis; `step="any"` | Selected object's current position; `[0,1,0]` before selection | Shown only for move kinds. |
+| Impulse X / Y / Z | N·s; −1000 to 1000 on each axis; `step="any"` | `[0,1,0]` | Shown only for `impulse`. Vector magnitude must also not exceed Maximum impulse; valid individual axes are insufficient. Execution requires a dynamic body. |
+| Maximum speed | m/s; 0.01 to 3; `step="any"` | 1 | Shown only for move kinds. |
+| Maximum dynamic-control acceleration | m/s²; 0.1 to 100; `step="any"` | 12 | Shown only for move kinds; disabled for kinematic objects. |
+| Maximum impulse | N·s; 0.001 to 1000; `step="any"` | 10 | Shown for all three form kinds; sets the control/impulse boundary. |
+| Timeout | s; 0.1 to 60; `step="any"` | 10 | Stops on timeout and reports status; this does not guarantee reaching the target. |
+| Release velocity | dynamic: preserve actual velocity `preserve` / zero `zero`; kinematic: zero `zero` / transfer accepted trajectory velocity `transfer` | `preserve` when selecting dynamic; `zero` for kinematic | Shown only for `moveAndRelease`. Does not replace actual solved dynamic velocity with planned velocity. |
+| Post-release mode | `dynamicGravity` Gravity / `dynamicNoGravity` No gravity | `dynamicGravity` | Shown only for kinematic `moveAndRelease`. |
+| Save motion | Button | — | Disabled without a selected object, for fixed objects, or while editing is busy; validates the current registry revision. |
+| Undo / redo motion edit | Buttons | — | Require undo/redo history respectively, and editing must not be busy. |
+| Rebind to current scene | Button | — | Available only when the scene pin is stale and editing is not busy; does not automatically accept deleted objects. |
+| Export motions | JSON download | Current registry | Export is not disabled while editing is busy; there is no button to load a motion into the edit form. |
+| Import motions | JSON file, `application/json,.json` | — | Disabled while editing is busy; atomically replaces data after successful validation and retains original data on failure. Limit 1 MiB and 64 motions; the scene pin and objects must be valid. Rejects unknown fields, duplicate IDs, and foreign scenes. |
+| Run / remove each motion | Buttons | — | Run is disabled when the scene is stale or a run is active; runtime explicitly rejects other execution restrictions. Execution resumes simulation. Removal follows the editing-busy rules. |
+| Run status / cancel | Read-only status, elapsed ticks, reason; active runs have a Cancel button | At most the latest 4 visible records | States include `pending/running/reached/applied/blocked/timedOut/cancelled/invalidated`. Cancellation does not automatically pause; pause again before editing. |
+
+Additional Motion JSON capabilities have no corresponding panel fields. The following data contracts must not be described as UI controls:
+
+| Parameter available only through JSON import | Default / range and restrictions |
+| --- | --- |
+| `kind="trajectory"`, `samples` | Execution is kinematic only; 2 to 64 samples; time starts at 0 and strictly increases, with each sample at 0 to 30 s and the last time not exceeding timeout; each axis ±200 m; unit quaternion; each segment's speed must not exceed Maximum speed; the first sample must match actual pose tolerances. |
+| `targetOrientationQuaternion` | Move kinds only; `[x,y,z,w]` values each ±1, with magnitude differing from 1 by ≤1e−5. |
+| `maxAngularSpeedRadps` | Default 1 rad/s; 0.01 to 3 rad/s. |
+| `maxTorqueImpulseNms` | Default 1 N·m·s; 0.001 to 100 N·m·s. |
+| `positionToleranceM` | Default 0.025 m; 0.001 to 0.25 m. |
+| `velocityToleranceMps` | Default 0.08 m/s; 0.001 to 1 m/s. |
+| `settleTicks` | Default 3; integer 1 to 60. |
+| `source` | Default `user`; `user/ai`. |
+
+The registry limit of 64 motions and the limit of 8 running controllers are distinct; each object can have only one controller at a time. Fixed, held, disabled/non-active objects cannot execute motions, and impulse does not accept kinematic bodies. These limits do not mean the panel can start 8 motions together: the current list permits Run only when no run is active.
+
+<!-- english-original-anchor --> <a id="17-音訊匯出render"></a>
+## 17. Audio export (Render)
+
+This panel uses original sound decisions, paths, and pinned assets from a complete recording, through the real `OfflineAudioContext` / existing `AudioEngine`, to produce short float32 WAV excerpts. `busy` means preparing/running the 3-second capture or generating audio files.
+
+| Control / parameter | Unit, range / initial value | Effect and state restrictions |
+| --- | --- | --- |
+| Explanatory help | Open / close help | Explains short recordings, Wet, and pre-master stem semantics. |
+| Record 3 seconds | Fixed 3 s; no duration field | Shown only when production provides a capture port; disabled while busy; uses the same world, Motion hooks, and recorder. |
+| Preserve tail | s; 0 to 10; step 0.5; default 2 | Disabled while busy. Enter/blur commits valid values only; blank, non-finite, or out-of-range drafts disable Generate audio files and show a reason. Esc restores the committed value. Appends after the emission interval and does not reconstruct unknown earlier history. |
+| Per-source stems | Checked / unchecked; checked by default | Disabled while busy; selects recorded sound emissions grouped by original authored object. Unchecking still outputs mix, master, and dry. |
+| Generate audio files | Button | Disabled while busy, when the tail draft is invalid, or without a complete `captured` recording with frameCount>0. An invalid draft does not silently reuse the previous committed tail value to start a new job; generation is available only after correcting it or restoring it with Esc. Each run creates a new job with fixed sources and configuration. |
+| Cancel | Button | Shown only during `rendering`; permits cancelling preparation or a job not yet atomically published. Cancellation/failure does not expose partial new audio files; the previous completed output can remain downloadable. |
+| Propagated mix (Wet), Master output, Original content (Dry), stems | Per-file download buttons; read-only size | Appear only after the complete job is published. Names are generated automatically; no rename field. Output is stereo float32 PCM WAV at the recording's sample rate (44.1 or 48 kHz); the panel has no sample-rate/bit-depth selector. |
+| Download provenance and hash manifest | JSON manifest download | Shown only with published audio files; includes job, configuration, results, each file's SHA-256, control observations, and semantics. |
+| Status, progress, errors, boundary limitations | Read-only | Recording / completed count / downloadable; progress appears only while rendering. “Boundary limitations” appears only for `tailTruncated` or `historyIncomplete`; these are not adjustable parameters. |
+
+Each short-excerpt job has an emission interval of at most 30 s; the context, including pre-roll, emissions, and tail, is at most 45 s. There are at most 16 outputs (3 standard files plus at most 13 object stems). Estimated working memory is limited to 256 MiB and encoded output to 192 MiB; all budgets must be satisfied together, so this does not guarantee 16 files of arbitrary duration. Excessive stems are explicitly rejected; disable stems and generate again. These are backend validation boundaries, not editable panel budgets. The UI's Record 3 seconds does not provide an arbitrary 30-second duration field.
+
+Wet is direct sound + early reflections + configured Synthetic tail, before master; Dry is content before propagation/spatialization/master; Master applies the configured headroom, monitor, limiter, and safety graph. With identical sources, time, configuration, and seed, pre-master stems sum to Wet within floating-point error; individually processed nonlinear-master stems need not sum. Native HRTF coefficient identity is `browserManagedUnspecified`. This panel has no custom HRTF, listener replacement, separate late tap, time-window, chunks, normalize, master-setting, or output-format controls, and makes no claim of long-recording/ADM or unbounded rendering.
+
+<!-- english-original-anchor --> <a id="18-區域zones"></a>
+## 18. Zones
+
+A zone is an independent static event region, not a rigid body, collider, or acoustic surface. The panel stores at most 16 zones, counting enabled and disabled zones. Creation/editing is allowed only while simulation is paused, without recording/replay, and in the editor. Defaults below apply to a new draft; editing an existing zone reads its existing values.
+
+| Control | Unit / range | New-zone default | Effect, state, and restrictions |
+| --- | --- | --- | --- |
+| Add zone | At most 16 | No draft created | Opens an unsaved draft; disabled if a draft exists, a commit is pending, or the limit is reached. |
+| Zone ID | 1–64 characters; `^[a-z][a-z0-9._-]{0,63}$`; must not duplicate an existing ID | Lowest unused `zone.1`, `zone.2`… | Editable only during creation; existing IDs are read-only and editing cannot rename them. |
+| Name | 1–80 characters, not all whitespace | Traditional Chinese `新區域` / English “New zone” | Saving trims leading/trailing whitespace; the display name does not replace the stable ID. |
+| Shape | Axis-aligned box `aabb` / sphere `sphere` | `aabb` | Boxes have no rotation; after switching shape, only the dimensions of the current shape are saved. |
+| Enabled (draft) | Boolean | `true` | Committed together with Save zone; disabling stops enter/exit detection without deleting the zone or references. |
+| Center position X / Y / Z | m; −200–200 on each axis; `step="any"` | `[0, 1, 0]` | Must be finite; world coordinates, +Y up. |
+| Half-extents X / Y / Z | m; 0.05–50 on each axis; `step="any"` | `[1, 1, 1]` | Boxes only; each full side length is twice its half-extent. |
+| Radius | m; 0.05–50; `step="any"` | `1` | Spheres only. |
+| Boundary hysteresis | m; 0–0.25 and strictly below the smallest half-extent/radius; `step="any"` | `0.02` | Entry uses an inset boundary, exit an outset boundary; does not change the displayed wireframe size. |
+| Save zone | Action / form submit | — | Commits atomically when valid and current; disabled if invalid, stale, committing, or the editing state disallows it. Success requires a newer scene revision and matching zone contents; otherwise the draft is retained and an error appears. |
+| Cancel draft / Esc | Action | — | Discards uncommitted values; disabled during commit. Esc during IME composition does not cancel. |
+| Enable / disable in list | Boolean, immediate commit | Existing value | Can submit a toggle directly when no draft exists; still subject to paused/editor, revision, and registry guards. |
+| Edit / delete | Per-zone actions | — | Disabled with any draft or pending commit. Deletion first checks all rules: a trigger or emitter attachment referencing the zone returns `ZONE_IN_USE`, lists `profileId/ruleId`, and requires changing/removing the reference first. |
+| Global Undo / Redo | Shared scene actions | — | Successful creation, update, enable/disable, and deletion enter the shared scene history; the zone panel has no separate Undo buttons. |
+
+A draft retains the project identity, scene revision, and zone registry pin from its creation. Even if input fields remain editable, changes to Scene or the zone list prevent saving; cancel and edit again. Invalid input retains the original string and displays a validation message instead of silently restoring the old value. Zone data persists through formal Scene/Project save/import; the panel has no separate zone Import/Export buttons.
+
+`OnEnterZone` / `OnExitZone` rules require an explicit `zoneId`. New rules list only enabled zones. Existing rules continue showing their original disabled references, so disabled must not be mistaken for deleted. Sound remains object-attached by default; the zone-center anchor is used only when zone attachment is explicitly selected, and an existing center anchor for a disabled zone remains valid.
+
+The event model is labelled **Derived**: it samples valid object centers after each authoritative fixed step completes, not whole-collider overlap or continuous sweeps. For nominal boundary distance `d` and hysteresis `h`, an outside object enters at `d ≤ −h` and an inside object exits at `d > +h`. The first step after start/reset, rebuild, zone changes, or a position discontinuity only establishes a baseline and does not fabricate enter/exit events. Position-continuous mode changes or Motion release do not erase real crossings merely because mode changed. A fast crossing within one step can produce no event when both endpoint samples are outside. At most 16 zones × 256 poses; the per-step total of existing plus new events is limited to 2048, with explicit rejection on excess. This is not a performance promise.
+
+Editor wireframes show the **nominal region** only and are hidden in FPS or replay. Enabled/disabled zones use different colors/opacity. Wireframes have no picking/collision/acoustic effect and do not block selection of objects behind them. The sphere wireframe's 24×16 display segments do not approximate the producer's event boundary: the producer uses analytical distance.
+
+<!-- english-original-anchor --> <a id="19-agent-提案與實驗流程"></a>
+## 19. Agent proposals and experiment workflow
+
+The Agent tab shows both Operation proposals and a Host-computed Experiment workflow. They are distinct: proposals require explicit Apply; creating a baseline/candidate workflow does not itself call a model or automatically apply a proposal.
+
+| Control / data | Unit, range, and initial value | Effect, state dependencies, and restrictions |
+|---|---|---|
+| Execution mode (AI execution mode) | `offline` Offline tools (not a model) / `meta` Meta Model API; default `offline` | Switching is disabled while loading/running. Offline mode accepts only bounded local instructions, not model output. Meta proposals can be submitted only when server status is `ready`; unknown/loading/blocked/error does not pretend success. |
+| Recheck server status | Button, no number | Reads public provider status again; disabled while a proposal loads or status is being checked. Does not send a planning request or provide key/model/budget editors. |
+| Experiment instruction | Multiline text, initially empty; native `maxlength=4000` (UTF-16 code units) | Cannot submit trimmed-empty input; ordinary Enter inserts a line break, Ctrl/⌘+Enter submits; no submission during composition. An editable text field does not mean the submit gate is open. |
+| Generate operation preview | Button | Requires nonempty input, no loading, and an available provider; produces only validated differences without changing Scene. Unauthorized OS/code/key requests and unrecognized offline requests are explicitly rejected. |
+| Validated operation differences | Keyboard-focusable read-only text | Shown only when a preview exists; not a directly editable JSON input. |
+| Apply operations / Pause and apply operations | Button | Available when a preview exists, `canApply`, and not loading; while running, pauses first and applies atomically through the same Domain/revision guards. Rejects stale previews after Scene changes without overwriting newer edits. |
+| Cancel preview | Button | Available with a preview and no loading; clears the unapplied proposal without modifying Scene. This cancels a proposal; a running experiment uses the workflow cancellation below. |
+| Undo last AI application | Button | Requires `canUndo=true` and no loading; the proposal Host undoes the last applied Scene/Motion transaction and retains revision history, without reversing physics or sound that already occurred. |
+| Baseline experiment duration | s; UI min `1`, max `10`, step `1`; default `3` | Enter/blur commits a valid finite value; Escape restores uncommitted input. Spinner step is 1; Host additionally requires an integer multiple of `1/60 s` (for example, `1.01` fails), with no silent rounding. Disabled during running/cancelRequested. |
+| Create baseline experiment | Button | When not busy, runs bounded `RunSimulation → CaptureExperiment → AnalyzeAcousticResults` for current Scene. A successfully completed new baseline replaces the workflow's current baseline while retaining immutable tool-artifact provenance. Stops previews and pauses interactive simulation before execution. |
+| Compare current material with matched motion | Button | Requires no busy work and a completed comparable baseline. Reuses baseline settings and the original motion run trace, creates a candidate, then requires matched-motion comparison. Host validates Scene ID/seed, geometry/motion/source compatibility and other conditions; changing material does not waive other fixed conditions. |
+| Cancel experiment workflow | Button shown only during execution | Requests safe cancellation while running; repeated presses are disabled during `cancelRequested`, which keeps showing a wait state until Host confirmation. A cancellation request is not proof of termination. Completed steps are not falsely retracted. |
+| Traceable results | Read-only table: metric ID, value, unit, frequency Hz | Shows only metrics from successful Host results matching citation run/metric/artifact. Missing values show “Not provided”, with no fabricated zero or RT60. |
+| Step and result sources / Original Host explanation | Native details/summary disclosure | Shows baseline/candidate run IDs, tools, result status, recording IDs, original explanations, and metric/artifact citations; no manual edit or import/export buttons. |
+| Help controls | HelpTip for execution mode, Undo, instructions, operation preview, and experiment workflow | Mouse/focus shows the corresponding explanation; help buttons are not extra parameters. |
+
+Workflow defaults are sample rate `48000 Hz`, analyses `directArrivalTimeS` and `rt60S`, bands `[1000 Hz]`, `timeStepS=1/60`, and reflection order `1`. These are fixed program settings for this panel, without editable fields. The server manages Meta cost and account/network/live gates. Current acceptance uses a cost ceiling of 0; an offline closed loop or public status GET does not establish paid Meta live PASS. The UI has no API-key, model-name, context, or spending-limit editor, nor an entry for arbitrary OS/Repository execution.
+
+<!-- english-original-anchor --> <a id="20-音訊效能觀測diagnostics"></a>
+## 20. Audio performance observations (Diagnostics)
+
+This panel reads JavaScript control-thread costs and browser native output counters. Only one parameter changes observation state. Diagnostics do not exist before listening is enabled, and values show `—`; that does not mean a zero measurement.
+
+| Control / state | Range and initial value | Effect and restrictions |
+|---|---|---|
+| Enable cost observations | Checkbox `false/true`; unchecked and disabled before audio exists; AudioEngine diagnostics default to `true` when created | Operable only after listening is enabled. Turning it off stops new observations, retains existing control counters/samples, and shows “Observation disabled; retained data shown”. Re-enabling resumes sampling and restarts the native output delta window, without treating the gap as zero. |
+| Update costs and component counts | Details/summary; initially collapsed | Expands/collapses 11 read-only detail rows; no numeric input. |
+| Control-thread observation explanation | Focusable label + HelpTip | Explains scope and p95; does not change measurements. |
+| Late onset, accepted/rejected frames, browser native output explanations | 3 HelpTip buttons | Explain thresholds, counting units, and native-window rules; not parameters. |
+| Browser native output status | Read-only `NOT_OBSERVED / UNSUPPORTED / WARMUP / AVAILABLE / COUNTER_RESET` | Native values appear only when `AVAILABLE`. Missing, first-sample, and reset conditions retain their statuses instead of reporting zero. Compares only adjacent observations from the same AudioContext. |
+| Observation disabled; retained data shown | Read-only status text, only when enabled=false | Old data remains readable; does not imply new samples were collected. |
+
+| Read-only readings (19 total) | Unit / meaning |
+|---|---|
+| Late onsets / total onsets | Count / count; late only when over `1 ms` past scheduled onset; excludes acoustic propagation and device latency |
+| Accepted / rejected audio frames | Frames / frames; engine consumption classification, distinct from solver-delivery batches |
+| Frame-consumption p95, routing-control p95 | ms (2 summary cards) |
+| Output interruptions in window, interruption duration in window, observation window, device output latency | Count, ms, ms, ms (4 summary cards); shown only when native counters are available |
+| Onset lateness p95, Listener-control p95 | ms (2 detail rows) |
+| Solver-delivery batches, delivery-processing p95 | Batches, ms; explicitly reports when delivery observation is not connected rather than filling in values (2 detail rows) |
+| IR frequency-shape builds, IR frequency-shape reuses | Counts (2 detail rows) |
+| Scalar gain updated/skipped, delay updated/skipped, direction updated/skipped | Paired counts (3 detail rows) |
+| Retained samples, AudioContext generation | Retained frame-consumer count / capacity `128`; context generation (2 detail rows) |
+
+The panel has no refresh, counter-reset, p95/sample-capacity/native-status editors, or import/export buttons. p95 describes only the most recent retained samples, up to `128`. This page's numbers do not replace DSP callback CPU, PCM continuity, the 600-second performance gate, physical hearing tests, or sound-pressure calibration.
+
+<!-- english-original-anchor --> <a id="來源"></a>
+## Sources
+
+Values and behaviour come from the following code and schemas; if they disagree with this page, the code and reproducible tests win, and this page should be updated.
+
+- Inspector and sound behaviours: `src/ui/Inspector.tsx`, `src/ui/RuleCard.tsx`, `src/ui/MappingEditor.tsx`, `src/ui/mapping-model.ts`, `src/ui/BindingOverrideEditor.tsx`, `src/app/behavior-editor.ts`
+- Number fields: `src/ui/components.tsx`, `src/ui/number-field-policy.ts`
+- Scene and behaviour schemas: `schemas/scene.schema.json`, `schemas/sound-behavior/behavior-document.schema.json`, `src/scene/validate-scene.ts`
+- Defaults: `src/app/defaults.ts`, `src/app/runtime.ts`
+- Physics and interaction: `src/physics/physics-world.ts`, `src/physics/character-motor.ts`, `src/interaction/interaction-host.ts`, `src/ui/viewport/useFPSInput.ts`, `src/ui/viewport/gizmo-commit.ts`, `src/ui/viewport/CameraRig.tsx`
+- Acoustics and audio: `src/app/acoustic-input.ts`, `src/audio/engine.ts`, `src/audio/monitor-level.ts`, `src/audio/late-reverb.ts`, `src/audio/control.ts`, `src/audio/wav.ts`
+- Recording, projects and the assistant: `src/experiments/recorder.ts`, `src/persistence/validate-project.ts`, `src/ui/ProjectImport.tsx`, `src/ui/AnalysisDock.tsx`, `src/ai/offline-planner.ts`, `src/app/agent-session.ts`
+- New panels and state: `src/ui/MotionPanel.tsx`, `src/ui/RenderPanel.tsx`, `src/ui/ZonePanel.tsx`, `src/ui/zone-panel-model.ts`, `src/ui/PipelinePanels.tsx`, `src/ui/PerformancePanel.tsx`, `src/ui/audio-diagnostics-presentation.ts`
+- Motion/Render/Zone capabilities and capacity: `src/motion/registry.ts`, `src/motion/workspace.ts`, `src/audio/render-preset.ts`, `src/audio/render-validation.ts`, `src/audio/render-backend.ts`, `src/app/render-host.ts`, `src/physics/zone-producer.ts`, `src/capabilities/sound-behavior.ts`
+- Agent/diagnostics: `src/app/agent-experiment-workflow.ts`, `src/ui/pipeline-workflow-model.ts`, `src/audio/diagnostics.ts`, `src/audio/control.ts`
+- Interface text: `src/ui/locales/`
+- Related rules: [Acceptance amendments](ACCEPTANCE_AMENDMENTS.md), [Known limitations](../KNOWN_LIMITATIONS.md), [First-person interaction UX](../05-ux/FPS_INTERACTION_UX.md)

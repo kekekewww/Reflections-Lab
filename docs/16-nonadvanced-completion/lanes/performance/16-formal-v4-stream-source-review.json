@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "kind": "FORMAL_V4_STREAM_SOURCE_REVIEW",
+  "status": "NO_P1_P2_FOUND_SOURCE_REVIEW_ONLY",
+  "language": "zh-TW canonical MD; English structured technical evidence",
+  "reviewedHead": "dc4aaa49f3ac0773c45263f35007018654034f8f",
+  "reviewedHeadReadAtUtc": "2026-11-03T00:58:15.0645134+00:00",
+  "sourceCommitScope": "review-time checkout HEAD; the new analyzer/spec were untracked at review, not a newly claimed benchmark source commit",
+  "implementation": "tests/browser/performance-native-formal-v4.mjs",
+  "spec": "tests/performance-v3/formal-v4-stream.spec.mjs",
+  "reviewers": [
+    "/root/implement_perf/perf_evidence_audit",
+    "/root/implement_perf/perf_evidence_audit/formal_v4_final_readonly"
+  ],
+  "skill": {
+    "name": "codex-verification",
+    "path": ".agents/skills/codex-verification/SKILL.md",
+    "application": "Source/artifact/protected-pin audit only. Explicit parent prohibition on new processes takes precedence; no independent acceptance command executed in this review."
+  },
+  "scope": "Read-only source review plus two own review reports; not formal600 qualification, resource-ceiling stress, product completion or browser evidence",
+  "formalQualification": "NOT_APPROVED",
+  "formal600Run": false,
+  "findings": [],
+  "checkedInvariants": [
+    {
+      "id": "F16-01",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Single original streaming parser and unchanged ceilings",
+      "implementationLines": [
+        33,
+        75
+      ],
+      "details": "Exactly one parseTraceStream call; passes original FORMAL compressedBytes/decompressedBytes/events and timeoutMs=300000. Original parser keeps token/nesting/file-change/UTF-8/gzip/structure error behavior. No whole-file parse or second file parse is used by the adapter.",
+      "dependencies": [
+        {
+          "path": "tests/browser/performance-stream-v3.mjs",
+          "lines": [
+            18,
+            33
+          ]
+        },
+        {
+          "path": "tests/browser/performance-stream-v3.mjs",
+          "lines": [
+            208,
+            241
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F16-02",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Object/name/heap validation before pruning",
+      "implementationLines": [
+        35,
+        47
+      ],
+      "details": "Every callback increments raw ordinal, rejects null/array/primitive events and non-string or >512-character names, and checks heap before the retention predicate. The heap ceiling is original 2147483648 bytes."
+    },
+    {
+      "id": "F16-03",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Bounded retention without losing boundary or posting-site evidence",
+      "implementationLines": [
+        45,
+        64
+      ],
+      "details": "Keeps the original V3 relevant set plus every B/E regardless of owner/name and every known posting-site event regardless of owner/phase/name. All retained rows share the original 536870912-byte serialized limit; there is no extra allowance for B/E. Counts overlap by design and must not be added as disjoint event sets."
+    },
+    {
+      "id": "F16-04",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Original named task ceiling remains applicable before typed exclusion",
+      "implementationLines": [
+        48,
+        78
+      ],
+      "details": "All original task names are retained. Frozen V4 first runs original validateNativeV3 over the full retained candidate set; original TASK_CANDIDATE_CAP at 2000000 is a non-suppressible legacy reason. The classified B cannot reduce raw named-task eligibility into a pass.",
+      "dependencies": [
+        {
+          "path": "tests/browser/performance-native-v3.mjs",
+          "lines": [
+            272,
+            281
+          ]
+        },
+        {
+          "path": "tests/browser/performance-native-boundary-v4.mjs",
+          "lines": [
+            47,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F16-05",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Frozen typed boundary and unchanged numeric kernel",
+      "implementationLines": [
+        76,
+        79
+      ],
+      "details": "Passes original FORMAL_TRACE_CAPS to frozen validateNativeBoundaryV4; then passes its unchanged validatedTasks/begin/end to original formalNumericV3. No epsilon, clock offset, duration inference, rounding or span rewrite is added. Original 50ms numeric edge and 2-anchor binary64 mapping stay in the original kernel.",
+      "dependencies": [
+        {
+          "path": "tests/browser/performance-native-boundary-v4.mjs",
+          "lines": [
+            98,
+            117
+          ]
+        },
+        {
+          "path": "tests/browser/performance-numeric-formal-v3.mjs",
+          "lines": [
+            24,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F16-06",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Classification source identity and original raw ordinal",
+      "implementationLines": [
+        80,
+        89
+      ],
+      "details": "Validates retained index range/integer and reference identity retained[index]===entry.source before replacing eventIndex with the recorded raw index. Preserves source, duration:null and numericIncluded:false."
+    },
+    {
+      "id": "F16-07",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Full-stream counts separate from bounded input view",
+      "implementationLines": [
+        96,
+        114
+      ],
+      "details": "Top-level parsedTraceEvents/rawEventCount and nativeEligibility.rawEventCount use parser stats.events. Input-view/retained counts use retained.length. Named-task counts are accumulated before typed classification. Original V3 legacy rejection remains visible rather than being rewritten."
+    },
+    {
+      "id": "F16-08",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Numeric completeness gates measured coverage",
+      "implementationLines": [
+        117,
+        129
+      ],
+      "details": "coverage.complete requires native.qualified===true and numeric.complete===true. The original numeric function rejects native ineligibility and returns empty numeric arrays. No missing measurement is synthesized as zero."
+    },
+    {
+      "id": "F16-09",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "Controlled failure with unknown counts remaining unknown",
+      "implementationLines": [
+        133,
+        161
+      ],
+      "details": "Catch preserves the original error text as a rejection reason, full raw counts null, separate parsedEventsBeforeFailure, actual retained count, empty metric arrays, false completeness and null marked duration. A partially parsed prefix is not presented as the full stream."
+    },
+    {
+      "id": "F16-10",
+      "result": "SOURCE_CONFIRMED",
+      "requirement": "No short-run promotion",
+      "implementationLines": [
+        90,
+        95
+      ],
+      "details": "Both normal and failure paths explicitly ALGORITHM_ONLY, formal600Run:false and NOT_APPROVED. This adapter does not claim elapsed workload or approve the registry."
+    }
+  ],
+  "resourceCaps": {
+    "compressedBytes": 268435456,
+    "decompressedBytes": 2147483648,
+    "events": 8000000,
+    "relevantTasks": 2000000,
+    "metadataNameCharacters": 512,
+    "proofNameCharacters": 192,
+    "retainedSerializedBytes": 536870912,
+    "heapBytes": 2147483648,
+    "parserTimeoutMs": 300000,
+    "timeoutScope": "Parser only. This helper is not an end-to-end watchdog or hard continuous peak-memory limiter."
+  },
+  "specCoverage": [
+    {
+      "lines": [
+        97,
+        169
+      ],
+      "description": "Canonical committed short trace hashes, original full-raw V3 rejection, 3306 full events, 938 named vs 937 typed candidates, original source event2377, and bit-exact numeric reference from 47 original validated X spans."
+    },
+    {
+      "lines": [
+        172,
+        257
+      ],
+      "description": "Owned unknown B/E, wrong owner known site, malformed complete task outside window, null/array/scalar objects and exact 512/513 name edge."
+    },
+    {
+      "lines": [
+        258,
+        307
+      ],
+      "description": "Original gzip/CRC/truncation and duplicate traceEvents parser error, producer/executable mismatch, loss and unknown close."
+    },
+    {
+      "lines": [
+        310,
+        424
+      ],
+      "description": "Independent literal original caps; foreign unknown B/E retained +2 without new rejection; prune-before-boundary raw ordinal2378 with unchanged bits; unknown-name wrong-owner known-site X retained +1 while preserving frozen V4 non-rejection semantics."
+    }
+  ],
+  "artifactInspection": {
+    "executionByThisReview": false,
+    "existingRed": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-red-r1.tap",
+      "sha256": "55cdf95f685c70f38f637461cc7e4083d64930a12e8dc4c92e1ac83c819a4493",
+      "tests": 26,
+      "pass": 25,
+      "fail": 1,
+      "tapDurationMs": 301.3827,
+      "limitation": "Missing export is the genuine RED. Guarded downstream tests returned without their semantic assertions; their ok lines are not prior RED counterexample coverage."
+    },
+    "existingGreen": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-green-r1.tap",
+      "sha256": "3a9633515060cc7b80acf8cd2d39a0a11abf67930bacdc8854855d10db5616b5",
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "skipped": 0,
+      "tapDurationMs": 1519.7442,
+      "limitation": "Read the existing TAP; no command rerun in this review. TAP does not independently establish the original process exit code or 600-second workload."
+    },
+    "lint": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-lint-r1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "limitation": "Empty existing log was inspected; exit0 reported by parent, not independently rerun or established by this empty file."
+    },
+    "format": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-stream-format-r1.txt",
+      "sha256": "576ce73f822f63f357f6c842912ee8b5c28b330f723d35a1a40e211a921807fa",
+      "limitation": "Existing two-path formatter log inspected; no formatter executed in this review."
+    }
+  },
+  "sourcePins": [
+    {
+      "path": "tests/browser/performance-native-formal-v4.mjs",
+      "bytes": 6314,
+      "sha256": "05f4c66ab31cde4446d1bb9ed5a2a06bd12464e2f5c266368366c5056823b10d"
+    },
+    {
+      "path": "tests/performance-v3/formal-v4-stream.spec.mjs",
+      "bytes": 18190,
+      "sha256": "58cb77715c4f53262626554bcc8a9e05dccd416a312f7a36eaab643484f26e68"
+    },
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "bytes": 33328,
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782"
+    },
+    {
+      "path": "tests/browser/performance-native-boundary-v4.mjs",
+      "bytes": 5117,
+      "sha256": "55ccd030a3650b78c197f29c68f671ab8d4f344dd43864fbf97bb0b4e439ad8d"
+    },
+    {
+      "path": "tests/browser/performance-qualification-registry-v4.mjs",
+      "bytes": 1497,
+      "sha256": "5517664d3e9437257488414584c3dc7140572797103b7611269a98f125adc48d"
+    },
+    {
+      "path": "tests/browser/performance-stream-v3.mjs",
+      "bytes": 7268,
+      "sha256": "064b3071d350f9bc3dc4f39682a21c1f1e19f68fd3929a9c147551a149abeaab"
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "bytes": 4183,
+      "sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4"
+    }
+  ],
+  "frozenPinAudit": {
+    "receipt": "docs/16-nonadvanced-completion/lanes/performance/semantic-v3-source-freeze-receipt.json",
+    "freeze44Count": 44,
+    "freeze44Unchanged": true,
+    "freeze44Mismatches": [],
+    "original27Count": 27,
+    "original27Unchanged": true,
+    "original27Mismatches": [],
+    "method": "Read-only Get-FileHash comparison against committed receipt; this is provenance checking, not a test run."
+  },
+  "uncoveredMeaningfulGates": [
+    {
+      "priority": "NON_BLOCKING_TEST_COVERAGE",
+      "gate": "Failure after a retained prefix",
+      "proposal": "In a later authorized RED slot, a compact valid retained row followed by invalid raw schema can assert full counts stay null, parsedEventsBeforeFailure is a distinct positive prefix count, numeric arrays stay empty and coverage stays false. Existing source handles this; existing reject helper does not inspect these count fields.",
+      "implementationCorrectByReview": true,
+      "testsChanged": false
+    },
+    {
+      "priority": "NON_BLOCKING_TEST_COVERAGE",
+      "gate": "Native candidate with incomplete numeric edge coverage",
+      "proposal": "In a later authorized RED slot, establish independently a native-qualified fixture whose original numeric kernel reports incomplete coverage, then assert wrapper coverage false and no measured occupancy. Do not relax the original 50ms edge or fabricate 600 seconds.",
+      "implementationCorrectByReview": true,
+      "testsChanged": false
+    },
+    {
+      "priority": "NOT_RUN_RESOURCE_STRESS",
+      "gate": "Actual resource ceilings and 300-second timeout",
+      "proposal": "The short fixture does not exercise 256MiB gzip, 2GiB decoded/heap, 8M events, 2M named tasks, 512MiB retained or 300000ms parse pressure. Source guards were inspected. Do not manufacture huge fixtures or expand APIs in this review.",
+      "implementationCorrectByReview": true,
+      "testsChanged": false
+    }
+  ],
+  "limits": [
+    "The result is an independent source/artifact review, not a fresh acceptance execution.",
+    "The parser wall budget is not an end-to-end analysis watchdog; the future launcher must retain its explicit operation/watchdog/lease lifecycle.",
+    "Heap checks observe stages and per-event samples; this is not proof of a continuously bounded allocation peak.",
+    "No new source/spec, frozen input, category, registry, shared memory, original raw or old reject was changed by this review."
+  ],
+  "executions": {
+    "node": false,
+    "test": false,
+    "typecheck": false,
+    "build": false,
+    "browser": false,
+    "benchmark": false
+  },
+  "writes": [
+    "docs/16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.md",
+    "docs/16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.json"
+  ]
+}

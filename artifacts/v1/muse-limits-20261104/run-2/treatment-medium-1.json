@@ -1,0 +1,851 @@
+{
+  "offlineFixture": false,
+  "prompt": "Acoustic treatment: change the back wall to the soft material, add four thick soft panels on the side walls at ear height, put a wooden diffuser box behind the speaker, and move the listener to the middle of the room facing the speaker.",
+  "expect": {
+    "minAddedObjects": 5,
+    "toolCounts": {
+      "AddObject": 5,
+      "SetMaterial": 1,
+      "MoveListener": 1
+    },
+    "listenerFacingTarget": "speaker"
+  },
+  "settings": {
+    "modelId": "muse-spark-1.3",
+    "authorizationId": "artifact.meta-limits-20261104",
+    "effort": "medium",
+    "maxCompletionTokens": 16000,
+    "maxRounds": 3,
+    "stopAtUsd": 2,
+    "parallelToolCalls": true,
+    "maxInputBytes": 128000
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "responseId": "chatcmpl-01a1a5e1-b6ab-7343-afc8-f30ee5040602",
+      "modelId": "muse-spark-1.3",
+      "finishReason": "tool_calls",
+      "calls": 7,
+      "toolCounts": {
+        "SetMaterial": 1,
+        "AddObject": 5,
+        "MoveListener": 1
+      },
+      "failures": [
+        {
+          "callIndex": null,
+          "tool": null,
+          "code": "DOMAIN_INVALID",
+          "message": "場景驗證失敗：listener.main: quaternion 必須為單位長度。"
+        }
+      ],
+      "usage": {
+        "promptTokens": 4217,
+        "completionTokens": 4699,
+        "reasoningTokens": 3376,
+        "cachedTokens": 0
+      },
+      "elapsedMs": 32413,
+      "text": "Treating the back wall and adding panels, diffuser, and centering the listener."
+    },
+    {
+      "round": 2,
+      "responseId": "chatcmpl-01a1a5e2-1789-70dd-bd0f-1efd2e3eda6f",
+      "modelId": "muse-spark-1.3",
+      "finishReason": "tool_calls",
+      "calls": 7,
+      "toolCounts": {
+        "SetMaterial": 1,
+        "AddObject": 5,
+        "MoveListener": 1
+      },
+      "failures": [],
+      "usage": {
+        "promptTokens": 5894,
+        "completionTokens": 3941,
+        "reasoningTokens": 2610,
+        "cachedTokens": 4209
+      },
+      "elapsedMs": 24788,
+      "text": "Your acoustic treatment was rejected over rounding — I'll rebuild it with exact placement and orientation."
+    }
+  ],
+  "stopReason": "accepted",
+  "accepted": true,
+  "finalRequests": [
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-1",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "SetMaterial",
+      "arguments": {
+        "materialId": "material.soft",
+        "materialRegistryRevision": 1,
+        "objectId": "wall.back",
+        "scope": "acoustic"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-2",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "label": "Soft side panel left 1",
+        "massKg": 10,
+        "materialId": "material.soft",
+        "mode": "fixed",
+        "objectId": "panel.left-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -2.925,
+          1.4,
+          -1.5
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-3",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "label": "Soft side panel left 2",
+        "massKg": 10,
+        "materialId": "material.soft",
+        "mode": "fixed",
+        "objectId": "panel.left-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -2.925,
+          1.4,
+          0.5
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-4",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "label": "Soft side panel right 1",
+        "massKg": 10,
+        "materialId": "material.soft",
+        "mode": "fixed",
+        "objectId": "panel.right-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          2.925,
+          1.4,
+          -1.5
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-5",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "label": "Soft side panel right 2",
+        "massKg": 10,
+        "materialId": "material.soft",
+        "mode": "fixed",
+        "objectId": "panel.right-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          2.925,
+          1.4,
+          0.5
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-6",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.8,
+          1.8,
+          0.4
+        ],
+        "label": "Wooden diffuser box behind speaker",
+        "massKg": 50,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "diffuser.behind-speaker",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.5,
+          0.9,
+          -3
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.request-7",
+      "transactionId": "meta.plan-449ec7ff4a0ea42c6ce06824fdfa58bb4056136f.transaction",
+      "tool": "MoveListener",
+      "arguments": {
+        "listenerId": "listener.main",
+        "orientationQuaternion": [
+          0,
+          -0.3162277660168379,
+          0,
+          0.9486832980505138
+        ],
+        "positionM": [
+          0,
+          1.6,
+          0
+        ]
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    }
+  ],
+  "beforeScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "candidateScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 1,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      },
+      {
+        "id": "panel.left-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "positionM": [
+          -2.925,
+          1.4,
+          -1.5
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 10,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.soft",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "panel.left-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "positionM": [
+          -2.925,
+          1.4,
+          0.5
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 10,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.soft",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "panel.right-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "positionM": [
+          2.925,
+          1.4,
+          -1.5
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 10,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.soft",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "panel.right-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.15,
+          1.2,
+          1
+        ],
+        "positionM": [
+          2.925,
+          1.4,
+          0.5
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 10,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.soft",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "diffuser.behind-speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.8,
+          1.8,
+          0.4
+        ],
+        "positionM": [
+          1.5,
+          0.9,
+          -3
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 50,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        0
+      ],
+      "orientationQuaternion": [
+        0,
+        -0.3162277660168379,
+        0,
+        0.9486832980505138
+      ],
+      "attachment": "independent"
+    }
+  },
+  "score": {
+    "addedObjects": 5,
+    "addedSources": 0,
+    "toolCounts": {
+      "SetMaterial": 1,
+      "AddObject": 5,
+      "MoveListener": 1
+    },
+    "outsideRoom": 0,
+    "intersectingPairs": 0,
+    "unsupported": 0,
+    "listenerMovedM": 4,
+    "listenerInside": 0,
+    "paths": [],
+    "listenerFacingErrorDeg": 6.842773412630863,
+    "gridSpacingErrorM": null
+  },
+  "apply": {
+    "worked": true,
+    "error": null
+  },
+  "pathStarts": [],
+  "followUp": null,
+  "undo": {
+    "worked": true,
+    "error": null
+  },
+  "error": null,
+  "estimatedCost": {
+    "label": "Estimated at list price; not actual billing",
+    "usd": 0.04935875,
+    "knownUsageUsd": 0.04935875,
+    "roundsWithUsage": 2,
+    "coverage": "Reported usage in finished planner rounds only; failed or uncertain attempts may consume additional reservations.",
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+  }
+}

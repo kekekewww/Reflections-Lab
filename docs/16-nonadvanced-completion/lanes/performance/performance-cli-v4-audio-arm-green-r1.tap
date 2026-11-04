@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: audio resource policy arm defaults to the original reference without reducing any formal load
+ok 1 - audio resource policy arm defaults to the original reference without reducing any formal load
+  ---
+  duration_ms: 1.6402
+  type: 'test'
+  ...
+# Subtest: the candidate audio arm is an explicit option under the same original formal workload
+ok 2 - the candidate audio arm is an explicit option under the same original formal workload
+  ---
+  duration_ms: 0.1693
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm unknown
+ok 3 - audio policy arm is type/identity strict: --audio-policy-arm unknown
+  ---
+  duration_ms: 0.2863
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm
+ok 4 - audio policy arm is type/identity strict: --audio-policy-arm
+  ---
+  duration_ms: 0.0885
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+ok 5 - audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+  ---
+  duration_ms: 0.0773
+  type: 'test'
+  ...
+# Subtest: the bounded planner forwards the requested arm without claiming it is observed
+ok 6 - the bounded planner forwards the requested arm without claiming it is observed
+  ---
+  duration_ms: 0.5246
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 360.8377

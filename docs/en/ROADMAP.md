@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/ROADMAP.md","sha256":"4a1f35bde53d819636c38f1457c34f624151ababf68b3df3f3da8c067143a204","translated_at":"2026-10-29T14:22:37.346Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/ROADMAP.md","sha256":"268b5626a1231f803e7fd1039bbed0e176a83b0df9c1d01608574469dc3c47c8","translated_at":"2026-11-01T08:32:23.905Z","executor":"Codex","model_id":null,"links":"english-relative","translation_lineage":"Existing translations retained where unchanged; research additions and metadata refreshed by Codex"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/ROADMAP.md`](../ROADMAP.md). Source SHA-256: `4a1f35bde53d819636c38f1457c34f624151ababf68b3df3f3da8c067143a204`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/ROADMAP.md`](../ROADMAP.md). Source SHA-256: `268b5626a1231f803e7fd1039bbed0e176a83b0df9c1d01608574469dc3c47c8`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="2026-10-29-研究後可執行優先級"></a>
@@ -74,3 +74,10 @@ Second-order and higher reflections, advanced bands/angle-dependent impedance, d
 ## Daily Stop Conditions
 
 Every task has reproducible acceptance, sources, limits and rollback. Do not continue adding features while core collision/audio/data consistency remains unverified. Reserve the last two days for integration and submission preparation; adjust only if the user explicitly accepts the new risk. During this phase, the agent does not independently deploy, submit or accept legal terms.
+
+<!-- english-original-anchor --> <a id="2026-11-01-效能與緩衝獨立研究proposed"></a>
+## 2026-11-01 Independent Performance and Buffering Study (PROPOSED)
+
+The [research summary](13-performance-review/EXECUTIVE_SUMMARY.md), [full optimization roadmap](13-performance-review/OPTIMIZATION_ROADMAP.md) and [measurement plan](13-performance-review/MEASUREMENT_PLAN.md) support future decisions. New optimization tasks use the existing knowledge/tasks registry and remain BACKLOG; seven ADR proposals remain PROPOSED. No product development is automatically started.
+
+Start with reproducible attribution and recording/automation stability studies, then select larger worker, DSP or offline migrations from identical-load evidence. Preserve the formal MVP scope, acceptance/performance thresholds and previous failures. The600-second collection follows the user-selected non-formal research route; it establishes neither performance improvement nor full V1 qualification.

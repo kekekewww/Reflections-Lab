@@ -1,0 +1,899 @@
+{
+  "offlineFixture": false,
+  "prompt": "Build a dining table from separate parts: a top and four legs, with the legs on the floor and the top resting on them. Put a lamp on the table, made of a base and a shade.",
+  "expect": {
+    "minAddedObjects": 7,
+    "toolCounts": {
+      "AddObject": 7
+    }
+  },
+  "settings": {
+    "modelId": "muse-spark-1.3",
+    "authorizationId": "artifact.meta-limits-20261104",
+    "effort": "high",
+    "maxCompletionTokens": 16000,
+    "maxRounds": 3,
+    "stopAtUsd": 2.4,
+    "parallelToolCalls": true,
+    "maxInputBytes": 128000
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "responseId": "chatcmpl-01a1a5f3-8fb4-727b-b958-4a3d357f60f8",
+      "modelId": "muse-spark-1.3",
+      "finishReason": "tool_calls",
+      "calls": 7,
+      "toolCounts": {
+        "AddObject": 7
+      },
+      "failures": [],
+      "usage": {
+        "promptTokens": 4287,
+        "completionTokens": 4115,
+        "reasoningTokens": 2568,
+        "cachedTokens": 113
+      },
+      "elapsedMs": 27328,
+      "text": "Building your dining set — table top, four legs, and a two-part lamp — arranged to fit the room."
+    }
+  ],
+  "stopReason": "accepted",
+  "accepted": true,
+  "finalRequests": [
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-1",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "label": "dining table leg 1",
+        "massKg": 5,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "table.leg-01",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -0.16,
+          0.35,
+          0.69
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-2",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "label": "dining table leg 2",
+        "massKg": 5,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "table.leg-02",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.16,
+          0.35,
+          0.69
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-3",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "label": "dining table leg 3",
+        "massKg": 5,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "table.leg-03",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          -0.16,
+          0.35,
+          1.31
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-4",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "label": "dining table leg 4",
+        "massKg": 5,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "table.leg-04",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          1.16,
+          0.35,
+          1.31
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-5",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          1.6,
+          0.08,
+          0.9
+        ],
+        "label": "dining table top",
+        "massKg": 20,
+        "materialId": "material.wood",
+        "mode": "fixed",
+        "objectId": "table.top",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.74,
+          1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-6",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.22,
+          0.05,
+          0.22
+        ],
+        "label": "lamp base",
+        "massKg": 1.5,
+        "materialId": "material.metal",
+        "mode": "fixed",
+        "objectId": "lamp.base",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.805,
+          1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.request-7",
+      "transactionId": "meta.plan-f28e76d6aa9cb2b5da12f047d15fc1868f07747f.transaction",
+      "tool": "AddObject",
+      "arguments": {
+        "dimensionsM": [
+          0.32,
+          0.3,
+          0.32
+        ],
+        "label": "lamp shade",
+        "massKg": 1,
+        "materialId": "material.metal",
+        "mode": "fixed",
+        "objectId": "lamp.shade",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0.5,
+          0.98,
+          1
+        ],
+        "shape": "box"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    }
+  ],
+  "beforeScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "candidateScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 1,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      },
+      {
+        "id": "table.leg-01",
+        "shape": "box",
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "positionM": [
+          -0.16,
+          0.35,
+          0.69
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 5,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "table.leg-02",
+        "shape": "box",
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "positionM": [
+          1.16,
+          0.35,
+          0.69
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 5,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "table.leg-03",
+        "shape": "box",
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "positionM": [
+          -0.16,
+          0.35,
+          1.31
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 5,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "table.leg-04",
+        "shape": "box",
+        "dimensionsM": [
+          0.08,
+          0.7,
+          0.08
+        ],
+        "positionM": [
+          1.16,
+          0.35,
+          1.31
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 5,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "table.top",
+        "shape": "box",
+        "dimensionsM": [
+          1.6,
+          0.08,
+          0.9
+        ],
+        "positionM": [
+          0.5,
+          0.74,
+          1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 20,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "lamp.base",
+        "shape": "box",
+        "dimensionsM": [
+          0.22,
+          0.05,
+          0.22
+        ],
+        "positionM": [
+          0.5,
+          0.805,
+          1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 1.5,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "lamp.shade",
+        "shape": "box",
+        "dimensionsM": [
+          0.32,
+          0.3,
+          0.32
+        ],
+        "positionM": [
+          0.5,
+          0.98,
+          1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 1,
+        "friction": 0.6,
+        "restitution": 0.25,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "staticSurface"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "score": {
+    "addedObjects": 7,
+    "addedSources": 0,
+    "toolCounts": {
+      "AddObject": 7
+    },
+    "outsideRoom": 0,
+    "intersectingPairs": 0,
+    "unsupported": 0,
+    "arc": null,
+    "listenerMovedM": 0,
+    "listenerInside": 0,
+    "paths": [],
+    "listenerFacingErrorDeg": null,
+    "gridSpacingErrorM": null
+  },
+  "apply": {
+    "worked": true,
+    "error": null
+  },
+  "pathStarts": [],
+  "followUp": null,
+  "undo": {
+    "worked": true,
+    "error": null
+  },
+  "error": null,
+  "estimatedCost": {
+    "label": "Estimated at list price; not actual billing",
+    "usd": 0.0228475,
+    "knownUsageUsd": 0.0228475,
+    "roundsWithUsage": 1,
+    "coverage": "Reported usage in finished planner rounds only; failed or uncertain attempts may consume additional reservations.",
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+  }
+}

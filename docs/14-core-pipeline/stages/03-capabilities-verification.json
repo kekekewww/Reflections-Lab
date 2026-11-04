@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "stage": "03-capabilities",
+  "baseCommit": "429efb7597ec913bd879ecc05c29a6be7ad5175c",
+  "branch": "codex/pipeline-capabilities",
+  "recordedAt": "2026-11-02T05:18:59.0403386Z",
+  "scope": "Typed producer capabilities and actual PhysicsWorld OnBounce; Node and Rapier evidence only",
+  "tests": [
+    {
+      "command": "node --import tsx --test tests/app/producer-capabilities.test.ts tests/physics/bounce-producer.test.ts",
+      "exitCode": 0,
+      "tests": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    {
+      "command": "node --import tsx --test tests/physics/*.test.ts tests/audio-behavior/*.test.ts tests/app/defaults.test.ts tests/app/producer-capabilities.test.ts tests/app/behavior-editor.test.ts tests/app/support-anchor.test.ts tests/ai-runtime/sound-host.test.ts tests/ai-runtime/sound-provider.test.ts tests/ai-runtime/sound-server.test.ts tests/ai-runtime/session-sound-live.test.ts",
+      "exitCode": 0,
+      "tests": 255,
+      "passed": 255,
+      "failed": 0,
+      "evidence": "docs/14-core-pipeline/stages/03-capabilities-regression.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "evidence": "docs/14-core-pipeline/stages/03-capabilities-typecheck.txt"
+    },
+    {
+      "command": "Scoped ESLint over sourcePaths",
+      "exitCode": 0,
+      "evidence": "docs/14-core-pipeline/stages/03-capabilities-eslint.txt"
+    },
+    {
+      "command": "Scoped Prettier --check over sourcePaths",
+      "exitCode": 0,
+      "evidence": "docs/14-core-pipeline/stages/03-capabilities-format.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/capabilities/sound-behavior.ts",
+      "sha256": "4a5889657ee6b71d2d90cbfdffee310710e6be014ee38dd06052601d949ef092"
+    },
+    {
+      "path": "src/audio-behavior/types.ts",
+      "sha256": "bd6ee6a7350e21532965b4224f042d63855af6d55966c13ff22f72b8c97343d5"
+    },
+    {
+      "path": "src/audio-behavior/profile-registry.ts",
+      "sha256": "3475e90b35c1c4eb3ee4b12c8c893665101886d959e0f52541534879771bd330"
+    },
+    {
+      "path": "src/ai/sound-plan.ts",
+      "sha256": "5a77be9e0566f391522613a42168a529c3396a46d53904f4c87a6bb680487d0d"
+    },
+    {
+      "path": "src/ai/offline-sound-planner.ts",
+      "sha256": "49cde931300b55d490083411e35aab51890763c7f3c766453da71ae8925ba9f4"
+    },
+    {
+      "path": "src/physics/bounce-producer.ts",
+      "sha256": "35ae94968a36d1999e0397446f3ed52d51b292e0c303cb3feb1bdb7633c0b8d5"
+    },
+    {
+      "path": "src/physics/types.ts",
+      "sha256": "7b5e42febe29a6a1d1e8c6980ec902c0c501ec2fe59ab138c37f4039d5e1b830"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "8c2d1f690ca6f0f7d48434a5349e7fc7044f7f1272ad8ad490e25096a511f28c"
+    },
+    {
+      "path": "src/app/defaults.ts",
+      "sha256": "91c7a9ebaedac64c843bed78345ca8bde4abe3bf24e9c643fbc0ce7f07c065f6"
+    },
+    {
+      "path": "src/app/physics-behavior.ts",
+      "sha256": "9c30cdbd65c8dc44bd1bb1baceccca74d668c1c173425c7d9f7e26f5b1737592"
+    },
+    {
+      "path": "tests/app/producer-capabilities.test.ts",
+      "sha256": "d0bb0008d6fe7b85d78425cad187fa50310c7c1e28141d096de279719dc59f6c"
+    },
+    {
+      "path": "tests/physics/bounce-producer.test.ts",
+      "sha256": "348b054a11c4171a853c812a2df1c8e8a76ee799e5801204bb54776fc6167894"
+    }
+  ],
+  "limits": [
+    "Tuned bounce classification only for dynamic versus unchanged fixed support",
+    "Zone region registry and occupancy producer remain unsupported",
+    "Root integrates shared capability projection into UI",
+    "Motion applyMotionImpulses must invalidate pending bounce after validation",
+    "Browser UI, hardware hearing,600-second performance and Meta live NOT RUN"
+  ],
+  "evidenceNormalization": {
+    "originalCaptureCommit": "9efd9ceeede5cc21dbb441ed14445c7bccd124d4",
+    "change": "CRLF to LF in stage evidence only; test output lines and results preserved",
+    "reason": "cached diff check reported carriage-return trailing whitespace before the first stage commit; original bytes remain in that commit",
+    "finalDiffCheck": "PASS"
+  }
+}

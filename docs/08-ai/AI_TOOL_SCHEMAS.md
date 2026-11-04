@@ -6,7 +6,7 @@
 
 | 檔案 | 驗證對象 |
 | --- | --- |
-| `schemas/ai-tool-request.schema.json` | 12種請求 envelope 及 `$defs/<ToolName>` 參數；mutations 的 transactionId 必非 null；執行／分析工具必 null。 |
+| `schemas/ai-tool-request.schema.json` | 15種請求 envelope 及 `$defs/<ToolName>` 參數；mutations 的 transactionId 必非 null；執行／分析工具必 null。 |
 | `schemas/ai-tool-result.schema.json` | host／solver 回傳狀態、artifact IDs、metrics、錯誤與使用量。 |
 | `schemas/ai-scene-change-set.schema.json` | host 管理的交易紀錄與 preview／approval metadata。 |
 | `schemas/ai-provider-config.schema.json` | 無 secret 的 provider gate、能力查核與費用／資源預算。 |
@@ -26,6 +26,9 @@
 | ConfigureSoundSource | sourceId, objectId, signalId, mode, gainDbfs, referenceFrequencyHz | continuous／impact；−80至−6dBFS、20–20,000Hz；不自動開聲；stage。 |
 | MoveListener | listenerId, positionM, orientationQuaternion | 正式 listener；與 editor camera 分離；stage。 |
 | SetTrajectory | objectId, interpolation, samples | linearSlerp／recordedTrace；2–64點、0–30秒；有序時間、非 fixed、來源trace驗證；stage。 |
+| MoveObject | objectId, positionM, orientationQuaternion | 移動既有物件；物件不存在時拒絕；stage。 |
+| ResizeObject | objectId, dimensionsM | 調整既有物件尺寸，形狀不變；路徑一併重新綁定；stage。 |
+| RemoveObject | objectId | 移除物件，一併移除其聲源、聲音綁定與路徑；Undo 可回復；stage。 |
 | RunSimulation | backendId, durationS, timeStepS, seed, replayTraceId, maxReflectionOrder, sampleRateHz | 0.1–30秒、1/60或1/120步進、0–2階、44.1/48kHz；只執行受支援能力；回 run artifact。 |
 | CaptureExperiment | runId, label | 僅完成的 run；保存 immutable snapshot／metadata 引用，不能自行寫數值。 |
 | AnalyzeAcousticResults | runId, metrics, bandCentersHz | 最多8 metrics、6指定 bands；只分析實際 artifact，缺資料回 unavailable。 |

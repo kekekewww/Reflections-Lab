@@ -1,0 +1,62 @@
+{
+  "kind": "DOCUMENT_CONFLICT_HANDOFF",
+  "status": "CONFIRMED_POLICY_RESOLUTION_REQUESTED_TO_MEMORY_WRITER",
+  "source": "docs/05-ux/FPS_INTERACTION_UX.md",
+  "sourceSha256": "c591a093c11fc0b9f5a24c789063ed7130fae02e8af1070ff535387eab616aef",
+  "preimage": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/FPS_INTERACTION_UX.preimage.md.txt",
+  "oldGeneric": [
+    {
+      "line": 9,
+      "quote": "Esc 優先保留瀏覽器預設解鎖，不以 preventDefault 困住使用者。`pointerlockchange`、`pointerlockerror`、視窗 blur／visibilitychange 是權威事件。失去 lock 時立即清除按鍵／滑鼠按下狀態、取消尚未提交的投擲力、暫停於下一固定 tick；保持抓取或 ghost 的最後有效狀態並顯示「已暫停：滑鼠已釋放」。恢復需明示點擊，不在下一個滑鼠移動時自動恢復。"
+    },
+    {
+      "line": 107,
+      "quote": "| 退出 Simulation／Esc／blur | 下一安全 tick 暫停，保留 held/ghost 與 listener binding 快照 | 回來重驗 object 存在、revision、範圍與能力；失效則顯原因並回 Idle，不能套舊 handle |"
+    },
+    {
+      "line": 125,
+      "quote": "9. Holding／Ghost 中 Esc，重新取得 lock 後保留相同 object/draft 與有效距離；只有明示 Resume 才恢復物理，未重新投擲、建立或遺失選取。"
+    }
+  ],
+  "currentSpecific": [
+    {
+      "line": 33,
+      "quote": "| `ghostCancel` | 預覽中左鍵、Esc；B 為選用 | Ghost；只取消 preview；失焦、失去 lock 或暫停也會取消且不放置 | 「取消預覽」按鈕 |"
+    },
+    {
+      "line": 65,
+      "quote": "  Ghost --> UiFree: lock loss / 取消預覽，不放置"
+    }
+  ],
+  "implementation": "src/interaction/interaction-host.ts pauseControl calls abortPlacement -> cancelPreview; held lease is retained separately.",
+  "resolution": "Root confirmed current specific 33/65 and R18 policy: pause/blur/lock loss cancels uncommitted ghost without placement, preserves held state and requires explicit resume. Do not change product behavior to the obsolete generic ghost-preservation statements.",
+  "proposedEdits": [
+    {
+      "line": 9,
+      "suggestion": "保持抓取的最後有效狀態；取消尚未提交的 ghost 且不放置，顯示暫停原因。恢復需明示操作。"
+    },
+    {
+      "line": 107,
+      "suggestion": "下一安全 tick 暫停；保留 held 與 listener binding 快照，取消未提交的 ghost 而不放置；回來重驗 held，明示 Resume。"
+    },
+    {
+      "line": 125,
+      "suggestion": "Holding 中 Esc 解鎖後保留相同 object 與有效距離；Ghost 中 Esc 先取消 preview，再 Esc 可解鎖。中斷或暫停取消 ghost 不放置；重新取得 lock 的 click 不能重新投擲或建立。"
+    }
+  ],
+  "browserHistory": {
+    "wrongOracle": "native-paused-click-resume expected Cancel placement still visible after Enter pause; this is the final duplicate assertion, not proof that initial preview creation failed.",
+    "original": "full-253852f-initial/receipt.json",
+    "correction": "Assert pause removes Cancel placement, object count remains unchanged, primary down stays paused and release only resumes without recreating preview.",
+    "currentBrowserStatus": "CORRECTED_NOT_RERUN",
+    "retry": "six-d9dc624-initial/receipt.json"
+  },
+  "helpSearch": {
+    "files": [
+      "src/ui/locales/viewport.ts",
+      "src/ui/locales/help.ts"
+    ],
+    "result": "No current visible translation promising ghost preservation was found in the scoped search; writer should reconcile related canonical/English docs and any further help source references."
+  },
+  "ownership": "Interaction did not edit UX canonical or Wiki sources. Memory writer owns ConflictRecord, precise canonical corrections, English state/hash, and Wiki handoff."
+}

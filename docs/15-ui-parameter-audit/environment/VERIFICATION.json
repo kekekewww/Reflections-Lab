@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "taskId": "RLAB-TASK-0031",
+  "kind": "PROJECT_ATMOSPHERE_PERSISTENCE_FIX",
+  "status": "PASS_SCOPED_NODE_BUILD",
+  "recordedAt": "2026-11-02T07:38:29.983Z",
+  "sourceCommit": "59360da1b3e513fa7b80ca881d5214cf694867e4",
+  "branch": "codex/pipeline-environment",
+  "nodeVersion": "v22.17.0",
+  "source": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "49300f8b5e8ee499c343e98fa439c1d292040dd2e862b7b81c6ed8008ce4d0fc",
+      "bytes": 123677,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "src/persistence/types.ts",
+      "sha256": "fe0eb1621bce83ab426e00350e0245215812b437109365f97ffeea89faeb195f",
+      "bytes": 2485,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "src/persistence/index.ts",
+      "sha256": "06fcccc85f0f1678adbdcf70931447481d9894a260beedf920440c04c0746e36",
+      "bytes": 5048,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "src/persistence/validate-project.ts",
+      "sha256": "305a562b4acd69e9b066878c9c1193feb025b8969ed27ebf088ca2222a9dab3b",
+      "bytes": 17981,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "tests/app/environment-persistence.test.ts",
+      "sha256": "8dad2c64d30db4210707936d8c64ba5158db02af693adab594ae77c30cf51dc0",
+      "bytes": 8151,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "tests/experiment-runtime/project-atmosphere.test.ts",
+      "sha256": "21818d38f40a03989e2dbb36598c82a7f9103ced1a5fb5eb3d6f5c2a89a0ba9d",
+      "bytes": 3447,
+      "gitBlobMatches": true
+    },
+    {
+      "path": "docs/11-v1/PARAMETER_REFERENCE.md",
+      "sha256": "e81cc89f2e8de18e46095f15e8dca5eed6d7187ae2aeab1065969a2c5dc60c19",
+      "bytes": 25289,
+      "gitBlobMatches": true
+    }
+  ],
+  "initialUiFailure": {
+    "sourceCommit": "19db9f966d0c34b266243fb1c90a961feb3dcdd5",
+    "bundle": [
+      "http://127.0.0.1:4173/assets/index-BDGeI4Sd.js"
+    ],
+    "status": "FAIL",
+    "method": "Visible production UI only; Save, Export download, page reload and Load saved project"
+  },
+  "runs": [
+    {
+      "command": "node --import tsx --test tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 1,
+      "tests": 8,
+      "pass": 2,
+      "fail": 6,
+      "scope": "Before product implementation; unexecuted paused-view assertion corrected to formal simulationState later",
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/red.txt",
+        "sha256": "a1c06fb5dcd78370eb79b141c371907d3ff61309b6306d0bce73ce769f627b67"
+      }
+    },
+    {
+      "command": "node --import tsx --test tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skip": 0,
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/green.txt",
+        "sha256": "e6c84010e3805dcfb2a36122619bce8a5ba05991b2f87b60bf1228410c039894"
+      }
+    },
+    {
+      "command": "node --import tsx --test --test-concurrency=1 tests/experiment-runtime/persistence.test.ts tests/experiment-runtime/project.test.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/app-control-regressions.test.ts tests/app/runtime.test.ts tests/app/replay-atmosphere-source.test.ts tests/app/environment-persistence.test.ts tests/app/agent-experiment-workflow.test.ts",
+      "exitCode": 0,
+      "tests": 51,
+      "pass": 51,
+      "fail": 0,
+      "skip": 0,
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/regression.txt",
+        "sha256": "180f93bb487ae2f34b21b425dd14c297886f786dc32ae20094ac108c609a8fe3"
+      }
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/typecheck.txt",
+        "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4"
+      }
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/persistence/types.ts src/persistence/validate-project.ts src/persistence/index.ts src/app/runtime.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/lint.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/persistence/types.ts src/persistence/validate-project.ts src/persistence/index.ts src/app/runtime.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/format.txt",
+        "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+      }
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "note": "Existing Vite chunk-size warning retained; not a performance claim",
+      "output": {
+        "path": "docs/15-ui-parameter-audit/environment/build.txt",
+        "sha256": "0c150b36f0a095c63f89828feee61d274253d248d51c6f3f79ac8b0a544f995b"
+      }
+    }
+  ],
+  "independentReview": {
+    "method": "Separate read-only agent source + raw result review; not an independent rerun",
+    "result": "No blocking defect after partial-temperature and dispose guards"
+  },
+  "browser": {
+    "status": "NOT_RUN_AFTER_FIX",
+    "next": "Root merge + production rebuild + exclusive DOM lease"
+  },
+  "bundle": {
+    "path": "dist/assets/index-U-9pLSn2.js",
+    "sha256": "b36d8e28db977758d735f722fa0218b160c3e818a67be2b64e269f1c4faa2287",
+    "status": "BUILT_ONLY_NOT_BROWSER_TESTED"
+  },
+  "limitations": [
+    "No standalone npm run check in sparse branch",
+    "No native desktop input/hearing/device/performance or paid API claim",
+    "General Scene Undo intentionally does not restore atmosphere",
+    "One dispose test uses private drain fault injection"
+  ],
+  "countsNotAdditive": true,
+  "diffCheck": {
+    "command": "git diff --check",
+    "exitCode": 0
+  }
+}

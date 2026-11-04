@@ -1,4 +1,6 @@
 import { useId } from "react";
+import { HelpTip } from "./HelpTip.js";
+import { memoView } from "./view-stability.js";
 import type { BehaviorRuleView, BehaviorView, LabViewModel } from "./contracts.js";
 import {
   bindingDraftConflict,
@@ -31,7 +33,7 @@ const labelKeys = {
 const units = { enabled: "", gainLinear: "linear", pitchSemitones: "semitones" };
 
 /** The parent owns this draft so selection changes cannot erase raw input or errors. */
-export function BindingOverrideEditor({
+function BindingOverrideEditorView({
   model,
   behavior,
   rule,
@@ -90,7 +92,7 @@ export function BindingOverrideEditor({
                   : t("editor.binding.overridden")}
           </Badge>
         </summary>
-        <p className="micro-copy">{t("editor.binding.help")}</p>
+        <HelpTip topic={t("editor.binding.title")} content={t("editor.binding.help")} />
         {metadataProblem && (
           <p className="micro-copy" role="status">
             {message(metadataProblem)}
@@ -127,11 +129,18 @@ export function BindingOverrideEditor({
                       {t(labelKeys[field])}
                       {units[field] && <span className="field-unit"> {units[field]}</span>}
                     </th>
-                    <td className="numeric" title={valueTitle(rule.baseValues?.[field])}>
-                      {readout(rule.baseValues?.[field])}
+                    <td className="numeric">
+                      <HelpTip
+                        topic={t(labelKeys[field])}
+                        content={valueTitle(rule.baseValues?.[field])}
+                      >
+                        <span tabIndex={0}>{readout(rule.baseValues?.[field])}</span>
+                      </HelpTip>
                     </td>
-                    <td className="numeric" title={valueTitle(rule[field])}>
-                      {readout(rule[field])}
+                    <td className="numeric">
+                      <HelpTip topic={t(labelKeys[field])} content={valueTitle(rule[field])}>
+                        <span tabIndex={0}>{readout(rule[field])}</span>
+                      </HelpTip>
                     </td>
                     <td>
                       <label className="check-field">
@@ -241,19 +250,41 @@ export function BindingOverrideEditor({
             </button>
           </div>
         )}
-        <button
-          type="button"
-          className="text-button"
-          disabled={
-            editingDisabled || !!entry || currentOverride === null || currentOverride === undefined
+        <HelpTip
+          topic={t("editor.binding.clear")}
+          content={
+            entry
+              ? t("editor.binding.clearDraftFirst")
+              : currentOverride === null || currentOverride === undefined
+                ? t("help.noOverride")
+                : (entry ? t("editor.binding.clearDraftFirst") : t("editor.binding.clearHelp")) ||
+                  t("inspector.runningEditGuard")
           }
-          title={entry ? t("editor.binding.clearDraftFirst") : t("editor.binding.clearHelp")}
-          onClick={() => void onClear()}
         >
-          {t("editor.binding.clear")}
-        </button>
+          <button
+            type="button"
+            className="text-button"
+            disabled={
+              editingDisabled ||
+              !!entry ||
+              currentOverride === null ||
+              currentOverride === undefined
+            }
+            onClick={() => void onClear()}
+          >
+            {t("editor.binding.clear")}
+          </button>
+        </HelpTip>
         {entry && <p className="micro-copy">{t("editor.binding.clearDraftNotice")}</p>}
       </details>
     </section>
   );
 }
+
+export const BindingOverrideEditor = memoView(BindingOverrideEditorView, ({ model, ...props }) => [
+  props,
+  model.projectId,
+  model.projectName,
+  model.sceneRevision,
+  model.behaviors,
+]);

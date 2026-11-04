@@ -125,7 +125,7 @@ export class ReplayAudioHost {
     if (!engine || !this.artifact) return;
     this.validate(engine);
     const frame = this.latest ?? this.artifact.frames[0]!;
-    await engine.resume(this.time(frame));
+    if (!(await engine.resume(this.time(frame)))) return;
     if (this.restoreOnResume || this.attachedEngine !== engine) {
       engine.setEpoch(this.time(frame));
       this.route(frame, engine);

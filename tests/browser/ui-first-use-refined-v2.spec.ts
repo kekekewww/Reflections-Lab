@@ -8,13 +8,12 @@ for (const locale of ["zh-TW", "en"] as const) {
       .getByRole("combobox", { name: "介面語言 / Interface language", exact: true })
       .selectOption(locale);
     const english = locale === "en";
-    await expect(page.locator("canvas")).toBeVisible();
+    await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
     await expect(
       page.getByText(english ? "Independent preview" : "獨立預聽", { exact: true }),
     ).toHaveCount(0);
     const status = page.locator(".status-banner:not(.error-banner)");
-    await expect(status).toBeVisible();
-    await expect(status).not.toHaveText(/^\s*$/);
+    await expect(status).toHaveCount(0);
     await expect(
       page.getByRole("button", {
         name: english ? "Enter first person" : "進入第一人稱",

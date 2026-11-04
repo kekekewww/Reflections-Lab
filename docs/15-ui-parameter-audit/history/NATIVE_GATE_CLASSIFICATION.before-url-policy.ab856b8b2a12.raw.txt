@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "CONSERVATIVE_ACCEPTANCE_EVIDENCE_METHOD_CLASSIFICATION",
+  "recordedAt": "2026-11-02T10:28:06.124Z",
+  "authority": "Root explicitly agreed conservativeclassification; this isnot auser scopeamendment",
+  "task": "RLAB-TASK-0023",
+  "criterion": "AC-04",
+  "originalTextUnchanged": "透過computer-use操作產品匯出可供使用者聽的WAV，保存來源/設定/結果hash；不代填真人聽感。",
+  "verified": false,
+  "validationStatus": "PARTIAL_EXTERNAL_NATIVE_ACCESS",
+  "native": {
+    "previousAttempts": 2,
+    "retryAttempts": 1,
+    "totalAttempts": 3,
+    "inputSucceeded": false,
+    "status": "APP_APPROVAL_TIMEOUT_NOT_COMPLETED",
+    "receipt": "docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json"
+  },
+  "actualBrowserDom": {
+    "status": "PRODUCT_OPERATION_AND_DIGITAL_ARTIFACTS_PASS_AT_PINNED_PRIOR_SCOPES",
+    "receipts": [
+      "docs/14-core-pipeline/stages/09-ui-audio-verification.json",
+      "docs/14-core-pipeline/stages/10-final-ui-audio-verification.json"
+    ],
+    "latest49Wav": "PENDING_FINAL_UI_EXPORT",
+    "doesNotProve": "NativeComputerUseinput, physicalhearing orlatestbundleexportbeforeactualreceipt"
+  },
+  "closureRule": {
+    "currentTaskStatus": "IN_PROGRESS_WHILE_UNAFFECTED_WORK_PENDING",
+    "afterUnaffectedUiWavMainDone": "BLOCKED_ONLY_NATIVE_EXTERNAL_ACCESS_IF_STILL_UNAVAILABLE",
+    "otherTasks": "0024..0031 mayDONE when their ownactualcriteria/evidence fulfilled",
+    "claudeHuman": "IndependentClaudeverification/newfeaturehumanobservationnextstage, notalreadyexecutedrequirementforCodexfiniteimplementationtasks",
+    "noSilentWeakening": true,
+    "noInferredUserAmendment": true
+  },
+  "futureResolution": [
+    "Actualnativeaccess/input andrequiredoperation evidenced",
+    "Or explicituser acceptsDOMmethod asrequirementamendment, preservedwithnewusersource beforecriterion reevaluation"
+  ],
+  "limits": [
+    "No nativePASS orfullgoalcomplete inferred fromDOM/WAV.",
+    "Main/unaffectedimplementationshouldstillcomplete withinexistingauthorization.",
+    "OldV1/perf/science/device/Metalive gates unchanged."
+  ]
+}

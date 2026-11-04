@@ -1,6 +1,24 @@
 import type { MessageCatalog } from "../locale-types.js";
 
 export const coreMessages = {
+  "shell.audioBuffer": { "zh-TW": "音訊緩衝", en: "Audio buffer" },
+  "shell.audioOutputLatency": {
+    "zh-TW": "裝置輸出延遲（baseLatency + outputLatency）",
+    en: "Device output latency (baseLatency + outputLatency)",
+  },
+  "shell.audioBufferInteractive": { "zh-TW": "低延遲", en: "Low latency" },
+  "shell.audioBufferBalanced": { "zh-TW": "平衡", en: "Balanced" },
+  "shell.audioBufferPlayback": { "zh-TW": "穩定", en: "Stable" },
+  "shell.audioUnderruns": { "zh-TW": "輸出中斷 {count} 次", en: "Output underruns: {count}" },
+  "shell.audioUnderrunsUnavailable": {
+    "zh-TW": "輸出中斷：無量測資料（NOT_AVAILABLE）",
+    en: "Output underruns: NOT_AVAILABLE",
+  },
+  "shell.audioLookahead": { "zh-TW": "起音排程餘裕 {ms} ms", en: "Onset-only lookahead: {ms} ms" },
+  "shell.audioStaleAdmissions": {
+    "zh-TW": "沿用聲學快取啟動 {count} 次",
+    en: "Starts using cached acoustics: {count}",
+  },
   "shell.acousticStale": { "zh-TW": "聲學結果已過期", en: "Acoustic result is stale" },
   "shell.acousticPending": { "zh-TW": "聲學更新中", en: "Acoustic update pending" },
   "shell.monitorDetails": { "zh-TW": "監聽資訊", en: "Monitor details" },
@@ -69,6 +87,7 @@ export const coreMessages = {
     "zh-TW": "回到目前 Scene rev {revision} 的起始狀態；保留已錄製結果",
     en: "Return to the initial state of current Scene rev {revision}; retain recorded results",
   },
+  "shell.defaultProject": { "zh-TW": "聲音行為實驗", en: "Sound behavior lab" },
   "shell.reset": { "zh-TW": "重設", en: "Reset" },
   "shell.undo": { "zh-TW": "復原場景命令", en: "Undo scene command" },
   "shell.undoTitle": {

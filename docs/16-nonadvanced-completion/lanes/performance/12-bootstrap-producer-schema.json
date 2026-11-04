@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_AND_EXISTING_RAW_REVIEW_ONLY",
+  "acquiredAt": "2026-11-03T00:27:24.054339+00:00",
+  "observedHead": "12be0981caa043484b79ef2e0131a72851984012",
+  "chromiumRevision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+  "perfettoRevision": "403906f4adfbf287a02e5546f8430dcc9d56b649",
+  "browserExecutableSha256": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+  "traceCategories": [
+    "devtools.timeline",
+    "blink.user_timing",
+    "toplevel",
+    "v8",
+    "disabled-by-default-devtools.timeline.frame"
+  ],
+  "originalFrozenInputsModified": false,
+  "raw": {
+    "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/native/pilot.trace.json.gz",
+    "sha256": "02e874df3350dbab25db5a9b10c7503bc2bc9bd65f26b87c613aa952fd767d0b",
+    "events": 3565,
+    "ownedPid": 39104,
+    "ownedTid": 32064,
+    "document": {
+      "id": "173303774FFC4500664507A1555F7F65",
+      "loaderId": "719ABC1FD730B090E972EA8283C112AB",
+      "url": "http://127.0.0.1:53908/performance-semantic-pilot-v1.html"
+    },
+    "timerRows": [
+      {
+        "eventIndex": 2316,
+        "event": {
+          "args": {
+            "data": {
+              "frame": "173303774FFC4500664507A1555F7F65",
+              "singleShot": true,
+              "timeout": 0,
+              "timerId": 1
+            }
+          },
+          "cat": "devtools.timeline",
+          "name": "TimerInstall",
+          "ph": "I",
+          "pid": 39104,
+          "s": "t",
+          "tid": 32064,
+          "ts": 954578448,
+          "tts": 127020
+        }
+      },
+      {
+        "eventIndex": 2329,
+        "event": {
+          "args": {
+            "src_file": "third_party/blink/renderer/core/scheduler/dom_timer.cc",
+            "src_func": "DOMTimer",
+            "src_line": 356
+          },
+          "cat": "toplevel",
+          "dur": 5591,
+          "name": "ThreadControllerImpl::RunTask",
+          "ph": "X",
+          "pid": 39104,
+          "tdur": 5186,
+          "tid": 32064,
+          "ts": 954578569,
+          "tts": 127134
+        }
+      },
+      {
+        "eventIndex": 2330,
+        "event": {
+          "args": {
+            "data": {
+              "frame": "173303774FFC4500664507A1555F7F65",
+              "timerId": 1
+            }
+          },
+          "cat": "devtools.timeline",
+          "dur": 5582,
+          "name": "TimerFire",
+          "ph": "X",
+          "pid": 39104,
+          "tdur": 5179,
+          "tid": 32064,
+          "ts": 954578576,
+          "tts": 127140
+        }
+      }
+    ],
+    "scope": "These are the existing close timer from attempt02, not a new bootstrap run."
+  },
+  "sources": [
+    {
+      "id": "CHROMIUM-DOMTIMER",
+      "path": "third_party/blink/renderer/core/scheduler/dom_timer.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/scheduler/dom_timer.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/scheduler/dom_timer.cc?format=TEXT",
+      "sha256": "665d1217cbd4f5f2036c8ff76282e1bee273693a43fd95c747649f62171cbc76",
+      "bytes": 19256,
+      "lines": [
+        [
+          313,
+          363
+        ],
+        [
+          405,
+          425
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Single shot requests use DOMTimer; zero timeout selects the immediate timer task type if nesting clamp does not apply. Install is emitted after scheduling; scoped Fire encloses the callback lifecycle."
+    },
+    {
+      "id": "CHROMIUM-TIMER-DATA",
+      "path": "third_party/blink/renderer/core/inspector/inspector_trace_events.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/inspector/inspector_trace_events.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/inspector/inspector_trace_events.cc?format=TEXT",
+      "sha256": "01d1b788ad95ff4e47a05af0d336cc927e92fc95a0c6a109f193db923f1c1f1d",
+      "bytes": 75131,
+      "lines": [
+        [
+          130,
+          147
+        ],
+        [
+          988,
+          1021
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Generic timer data always writes timerId and conditionally writes frame for a LocalFrame. Install additionally writes timeout in milliseconds and singleShot, and optional stack-category data."
+    },
+    {
+      "id": "CHROMIUM-TIMELINE-MACROS",
+      "path": "third_party/blink/renderer/core/inspector/inspector_trace_events.h",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/inspector/inspector_trace_events.h",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/inspector/inspector_trace_events.h?format=TEXT",
+      "sha256": "b82be64701e195aace62aead7c4d26ce1cc1a081c29e9e2af21222f739f9e2c3",
+      "bytes": 21493,
+      "lines": [
+        [
+          145,
+          169
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Macros use devtools.timeline and place producer data under args.data; install is instant and fire scoped."
+    },
+    {
+      "id": "CHROMIUM-USER-TIMING",
+      "path": "third_party/blink/renderer/core/timing/performance_user_timing.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/timing/performance_user_timing.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/timing/performance_user_timing.cc?format=TEXT",
+      "sha256": "aa43c6136f743277fc4159fd12e936837c63c1ceebc104b96f7e6e0ed37fe17b",
+      "bytes": 15495,
+      "lines": [
+        [
+          75,
+          120
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Mark trace records separately preserve requested startTime and the physical callTime. Mark event timestamp may follow the mark requested time. Dynamic-name filtering would replace the event name and must not silently satisfy this pinned method."
+    },
+    {
+      "id": "CHROMIUM-MARK-NAVIGATION",
+      "path": "third_party/blink/renderer/core/timing/performance_timing.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/timing/performance_timing.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/core/timing/performance_timing.cc?format=TEXT",
+      "sha256": "562a5b6cd3508bf16ae97242e031190f65d1e7012cd059a96749f5bbdaa95c6f",
+      "bytes": 13235,
+      "lines": [
+        [
+          314,
+          316
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Window mark timing metadata writes navigationId from the document loader identity."
+    },
+    {
+      "id": "CHROMIUM-TIME-TRACE",
+      "path": "base/trace_event/traced_value_support.h",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/traced_value_support.h",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/traced_value_support.h?format=TEXT",
+      "sha256": "ffe00f89e390cde4ccc8297394674ecc1ac33a405c629e6f6695470efa839656",
+      "bytes": 8389,
+      "lines": [
+        [
+          128,
+          142
+        ]
+      ],
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "license": "BSD-style source header points to LICENSE",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "TimeTicks annotations serialize since-origin TimeDelta, and TimeDelta serializes integer microseconds."
+    },
+    {
+      "id": "CHROMIUM-DEPS",
+      "path": "DEPS",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS?format=TEXT",
+      "lines": [
+        [
+          2843,
+          2844
+        ]
+      ],
+      "sha256": "8778ffaa9a30b9e825b291978804c6c2e55a3ae829ff387b025592ffb9090e8e",
+      "bytes": 192396,
+      "totalLines": 5021,
+      "license": "Header does not separately specify a license",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Pins Perfetto revision 403906f4adfbf287a02e5546f8430dcc9d56b649.",
+      "reusedFrom": "semantic-01-independent-review.json"
+    },
+    {
+      "id": "CHROMIUM-TASK-ANNOTATOR-H",
+      "path": "base/task/common/task_annotator.h",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.h",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.h?format=TEXT",
+      "lines": [
+        [
+          102,
+          115
+        ]
+      ],
+      "sha256": "1c19ff8ebc72f44fbbe48e3e1adeae7f20b02ca9f51076e28dc63037e58a4188",
+      "bytes": 8589,
+      "totalLines": 229,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Scoped TRACE_EVENT uses category toplevel and supplied event_name around RunTaskImpl.",
+      "reusedFrom": "semantic-01-independent-review.json"
+    },
+    {
+      "id": "CHROMIUM-TASK-ANNOTATOR-CC",
+      "path": "base/task/common/task_annotator.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.cc?format=TEXT",
+      "lines": [
+        [
+          261,
+          264
+        ]
+      ],
+      "sha256": "b1f551f0be12e5dfca57b5ef858ba4f223b81bc9dec94c3e22c741297ed25f2c",
+      "bytes": 18096,
+      "totalLines": 475,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "The trace task records an interned task.posted_from location.",
+      "reusedFrom": "semantic-01-independent-review.json"
+    },
+    {
+      "id": "CHROMIUM-INTERNED-LOCATION",
+      "path": "base/trace_event/interned_args_helper.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/interned_args_helper.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/interned_args_helper.cc?format=TEXT",
+      "lines": [
+        [
+          34,
+          47
+        ]
+      ],
+      "sha256": "eda75a7c79c352629de1c5795d208618f84b6d1508e7e172e24d8bee76a3aa1e",
+      "bytes": 5480,
+      "totalLines": 157,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Interned source locations contain file, function and line number.",
+      "reusedFrom": "semantic-01-independent-review.json"
+    },
+    {
+      "id": "PERFETTO-JSON-EXPORTER",
+      "path": "src/trace_processor/export_json.cc",
+      "commit": "403906f4adfbf287a02e5546f8430dcc9d56b649",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc",
+      "fetchUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc?format=TEXT",
+      "lines": [
+        [
+          646,
+          660
+        ],
+        [
+          799,
+          809
+        ],
+        [
+          880,
+          908
+        ]
+      ],
+      "sha256": "dc3a3b53cc2df3cd66be8b331b805d31331c2a8dbcf42e3f58d6fe8a05377667",
+      "bytes": 66822,
+      "totalLines": 1724,
+      "license": "Apache License 2.0",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Exporter maps posting-location args to src_file/src_func/src_line. A synchronous thread slice with zero duration becomes I+s:t; positive duration becomes X+dur; negative unfinished duration becomes B without dur or end.",
+      "reusedFrom": "semantic-01-independent-review.json",
+      "reacquiredHttpStatus": 200,
+      "reacquiredSha256": "dc3a3b53cc2df3cd66be8b331b805d31331c2a8dbcf42e3f58d6fe8a05377667",
+      "additionalLines": [
+        [
+          880,
+          924
+        ]
+      ]
+    }
+  ],
+  "schema": {
+    "TimerInstall": {
+      "category": "devtools.timeline",
+      "observedPhase": "I",
+      "observedScope": "t",
+      "requiredOwnedWindowData": [
+        "timerId",
+        "frame",
+        "timeout",
+        "singleShot"
+      ],
+      "timerId": "integer ID scoped to execution context; match JS returned handle and actual native event",
+      "frame": "producer emits only if LocalFrame exists; required for this owned Window fixture",
+      "timeout": "effective requested timeout, milliseconds; not observed scheduler delay",
+      "singleShot": "boolean true for this one-shot fixture",
+      "optionalProducerData": "sampleTraceId and, conditionally, stackTrace only when disabled-by-default-devtools.timeline.stack is enabled; current frozen categories do not enable it"
+    },
+    "TimerFire": {
+      "category": "devtools.timeline",
+      "observedPhase": "X",
+      "data": [
+        "timerId",
+        "frame"
+      ],
+      "duration": "wall microseconds for the scoped event, not callback-only or CPU",
+      "navigationId": "not in timer payload; require document loader identity and mark navigationId separately"
+    },
+    "UserTimingMark": {
+      "category": "blink.user_timing",
+      "physicalTime": "args.data.callTime is integer microseconds from TimeTicks origin",
+      "requestedTime": "args.data.startTime is milliseconds relative to performance time origin and is distinct from trace ts",
+      "navigationId": "Window metadata is document LoaderId",
+      "actualCost": "mark tracing can collect a V8 sample and is included in the new fixture cost, never zero-cost telemetry"
+    },
+    "RunTask": {
+      "category": "toplevel",
+      "complete": "Use unchanged V3 accepted complete native spans, and require same owned pid/tid; no synthetic mark or TimerFire can replace native RunTask coverage",
+      "sourceLocation": "posting location, not proof of executing function or pure callback CPU"
+    }
+  },
+  "recommendedVerification": [
+    "Preserve all original journal and numeric gates, raw data, old failures, begin/end and the 50000us edge rule.",
+    "For the new fixture schedule exactly one requested 0ms timeout after the original begin; record actual request, callback entry/exit and scheduling delay separately.",
+    "Require a unique owned matching Install and completed Fire with the actual JS timer handle; wrong owner or owned-frame identity mismatch cannot be filtered into a success.",
+    "Do not borrow a foreign frame event that happens to reuse the same timer ID; timer ID alone is not a global identifier.",
+    "Require both bootstrap marks to have same owned pid/tid and current loader navigationId, physical callTime inside the matching completed Fire, Fire inside an unchanged accepted complete native RunTask and closed measurement window.",
+    "The Install data has no navigationId. Establish navigation with before/after document loader identities and Window mark navigation metadata.",
+    "Reject missing, multiple, wrong-category, malformed, nonfinite, early/late/unfinished evidence. A timer observed later than 50ms from the unchanged begin remains rejected.",
+    "Use separate auxiliary mark names outside the rlab-v3.observe prefix, so the fixed proof validator is not made to accept unknown proof marks.",
+    "A successful bootstrap only demonstrates a real post-begin task and the existing edge coverage gate; it cannot recover unrecorded resume-task CPU or prove there are no missing tasks throughout the window."
+  ],
+  "acquisitionLimits": {
+    "webTool": "Three pinned direct opens returned inaccessible/internal error; these are not evidence of source absence.",
+    "successfulMethod": "Ordinary Invoke-WebRequest HTTP200 with normal TLS; no certificate bypass",
+    "fullSourceRedistribution": false
+  },
+  "execution": {
+    "tests": "NOT RUN",
+    "node": "NOT RUN",
+    "browser": "NO NEW RUN",
+    "build": "NOT RUN",
+    "formal600": "NOT RUN",
+    "qualification": "NOT APPROVED"
+  },
+  "traceCategorySource": "tests/browser/performance-semantic-runner-v3.mjs includedCategories; same full list as fixed runner-v2"
+}

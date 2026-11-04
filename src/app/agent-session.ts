@@ -3,10 +3,16 @@ import { createSceneToolAdapter } from "../ai/scene-adapter.js";
 import { OfflinePlanner } from "../ai/offline-planner.js";
 import { OfflineSoundPlanner } from "../ai/offline-sound-planner.js";
 import { SoundProposalHost } from "../ai/sound-host.js";
-import { requestAgentPlan, requestSoundAgentPlan } from "../ai/client.js";
+import { cancelAgentRequest, requestAgentPlan, requestSoundAgentPlan } from "../ai/client.js";
+import { TrustedExperimentWorkflow } from "./agent-experiment-workflow.js";
+import type {
+  AgentExperimentSettings,
+  AgentExperimentWorkflowView,
+} from "./agent-experiment-workflow.js";
+import type { GroundingArtifact } from "../ai/grounding.js";
 import { AgentError, MUTATION_TOOLS } from "../ai/types.js";
 import { assertBoundedJson } from "../ai/validation.js";
-import type { AgentMaterial } from "../ai/scene-adapter.js";
+import type { AgentMaterial, MotionTransactionHooks } from "../ai/scene-adapter.js";
 import type {
   AgentAuditEntry,
   AgentPlan,
@@ -24,10 +30,15 @@ function soundIntent(prompt: string): boolean {
     /聲音行為|sound.?behavior|碰撞|撞擊|抓取|抓起|投擲|滾動|滑動|飛行|音效|發聲|鋼琴|電子音|oscillator|synth|impact|throw|grab|rolling|audio|profile/i.test(
       prompt,
     );
-  const createObject =
-    /建立|新增|加入|create|add/i.test(prompt) &&
-    /球|物件|方塊|牆|object|sphere|ball|box|wall/i.test(prompt);
-  return sound && !createObject;
+  // Sound words also name things in a scene, so a request to build or edit one stays a scene request.
+  const editScene =
+    /建立|新增|加入|移動|移除|刪除|搭建|擺放|create|add|build|arrange|furnish|move|remove|delete|resize/i.test(
+      prompt,
+    ) &&
+    /球|物件|方塊|牆|房間|舞台|椅|桌|鋼琴|喇叭|聽者|object|sphere|ball|box|wall|room|stage|chair|table|speaker|listener|piano/i.test(
+      prompt,
+    );
+  return sound && !editScene;
 }
 
 function assertProvenance(provenance: PlannerProvenance, mode: "offline" | "live"): void {
@@ -55,8 +66,11 @@ export interface AgentSessionView {
   status: "idle" | "loading" | "preview" | "error";
   message: string;
   preview?: string;
+  /** Muse's own words. Untrusted text: display only. */
+  note?: string;
   canApply: boolean;
   toolResults?: AgentToolResult[];
+  workflow?: AgentExperimentWorkflowView;
 }
 export interface AgentToolResult {
   requestId: string;
@@ -137,6 +151,7 @@ function resultMessage(entry: AgentToolResult): string {
     .join("\n");
 }
 export interface AgentSessionOptions {
+  motionTransaction?: MotionTransactionHooks;
   getScene(): SceneSpec;
   getBehaviorState(): SoundHostState;
   commitScene(
@@ -159,6 +174,8 @@ export interface AgentSessionOptions {
     assetLabels?: Record<string, string>;
   };
   runTool?(request: ToolRequest): Promise<unknown>;
+  resolveGroundingArtifact?(artifactId: string): GroundingArtifact | undefined;
+  cancelTool?(requestId?: string): boolean;
   /** Trusted host clock; used to enforce the fixed 120-second planning session. */
   now?(): number;
   onChange?(): void;
@@ -168,6 +185,10 @@ export class AgentSession {
   private readonly options: AgentSessionOptions;
   private readonly sceneHost: AgentHost;
   private readonly soundHost: SoundProposalHost;
+  private readonly workflow: TrustedExperimentWorkflow | null;
+  private workflowActive = false;
+  private planningGeneration = 0;
+  private activePlanner: { requestId: string; controller: AbortController } | null = null;
   private readonly planner = new OfflinePlanner();
   private readonly soundPlanner = new OfflineSoundPlanner();
   private readonly toolResults: AgentToolResult[] = [];
@@ -188,6 +209,7 @@ export class AgentSession {
     const adapter = createSceneToolAdapter({
       getScene: options.getScene,
       commitScene: options.commitScene,
+      ...(options.motionTransaction ? { motionTransaction: options.motionTransaction } : {}),
       get materials() {
         return options.getRegistries().materials;
       },
@@ -204,6 +226,23 @@ export class AgentSession {
       getState: options.getBehaviorState,
       commit: options.commitBehavior,
     });
+    this.workflow = options.resolveGroundingArtifact
+      ? new TrustedExperimentWorkflow({
+          getScene: options.getScene,
+          execute: async (request) => {
+            this.reserveTools(1, request.tool === "RunSimulation" ? 1 : 0);
+            return (await this.sceneHost.executeRead(request, {
+              provider: "offlineDeterministic",
+              modelId: null,
+              requestId: null,
+              label: "OFFLINE_DETERMINISTIC",
+            })) as import("./experiment-tools.js").ExperimentToolResult;
+          },
+          resolveGroundingArtifact: options.resolveGroundingArtifact,
+          ...(options.cancelTool ? { cancelTool: options.cancelTool } : {}),
+          onChange: () => options.onChange?.(),
+        })
+      : null;
   }
   private update(view: AgentSessionView): void {
     this.view = view;
@@ -247,7 +286,12 @@ export class AgentSession {
     this.callsUsed += calls;
     this.simulationsUsed += simulations;
   }
-  private async acceptScenePlan(plan: AgentPlan, mode: "offline" | "live"): Promise<void> {
+  private async acceptScenePlan(
+    plan: AgentPlan,
+    mode: "offline" | "live",
+    generation?: number,
+  ): Promise<void> {
+    if (generation !== undefined && generation !== this.planningGeneration) return;
     assertBoundedJson(plan, 256 * 1024);
     assertProvenance(plan.provenance, mode);
     if (!plan.requests.length) {
@@ -255,6 +299,7 @@ export class AgentSession {
         mode: plan.provenance.provider === "metaModelApi" ? "live" : "offline",
         status: "idle",
         message: [plan.summary, ...plan.warnings].join("\n"),
+        ...(plan.note ? { note: plan.note } : {}),
         canApply: false,
       });
       return;
@@ -267,6 +312,7 @@ export class AgentSession {
     if (!mutations.length) {
       const results: AgentToolResult[] = [];
       for (const request of plan.requests) {
+        if (generation !== undefined && generation !== this.planningGeneration) break;
         let entry: AgentToolResult;
         try {
           this.reserveTools(1, request.tool === "RunSimulation" ? 1 : 0);
@@ -295,6 +341,7 @@ export class AgentSession {
         // A later dependent operation must not run after an unknown, failed or pending result.
         if (entry.status !== "completed") break;
       }
+      if (generation !== undefined && generation !== this.planningGeneration) return;
       this.update({
         mode: plan.provenance.provider === "metaModelApi" ? "live" : "offline",
         status: results.some((entry) => ["blocked", "failed", "unknown"].includes(entry.status))
@@ -308,8 +355,14 @@ export class AgentSession {
       });
       return;
     }
-    this.reserveTools(mutations.length);
+    // A person sends each live request and approves each result, and the server ledger caps
+    // spending. The session allowance still bounds the offline planner and experiment tools.
+    if (mode === "offline") this.reserveTools(mutations.length);
     const preview = await this.sceneHost.stage(mutations, plan.provenance);
+    if (generation !== undefined && generation !== this.planningGeneration) {
+      this.sceneHost.cancel(preview.previewId);
+      return;
+    }
     this.pending = { kind: "scene", previewId: preview.previewId, digest: preview.digest };
     this.update({
       mode: plan.provenance.provider === "metaModelApi" ? "live" : "offline",
@@ -321,15 +374,25 @@ export class AgentSession {
         ...plan.warnings,
         ...preview.warnings,
       ].join("\n"),
+      ...(plan.note ? { note: plan.note } : {}),
       canApply: true,
     });
   }
-  private async acceptSoundPlan(plan: SoundAgentPlan, mode: "offline" | "live"): Promise<void> {
+  private async acceptSoundPlan(
+    plan: SoundAgentPlan,
+    mode: "offline" | "live",
+    generation?: number,
+  ): Promise<void> {
+    if (generation !== undefined && generation !== this.planningGeneration) return;
     assertBoundedJson(plan, 256 * 1024);
     assertProvenance(plan.provenance, mode);
-    this.reserveTools(plan.proposal.operations.length);
+    if (mode === "offline") this.reserveTools(plan.proposal.operations.length);
     // Server context is a snapshot; only this host can validate against current editor state.
     const preview = await this.soundHost.stage(plan.proposal, plan.provenance);
+    if (generation !== undefined && generation !== this.planningGeneration) {
+      this.soundHost.cancel(preview.previewId);
+      return;
+    }
     this.pending = { kind: "sound", previewId: preview.previewId, digest: preview.digest };
     this.update({
       mode,
@@ -379,25 +442,46 @@ export class AgentSession {
   private async submitLivePlan(prompt: string, sound: boolean): Promise<void> {
     if (this.view.status === "loading") return;
     this.cancelPending();
+    const generation = ++this.planningGeneration;
+    const requestId = `request.${globalThis.crypto.randomUUID()}`;
+    const controller = new AbortController();
+    this.activePlanner = { requestId, controller };
     this.update({
       mode: "unavailable",
       status: "loading",
-      message: "檢查本機Meta provider gate。",
+      message: "Muse正在規劃提案，通常需要10–60秒；場景尚未變更。",
       canApply: false,
     });
     try {
-      this.reservePlanningTurn();
       if (sound) {
         const registry = this.options.getRegistries();
-        const plan = await requestSoundAgentPlan(prompt, this.options.getBehaviorState(), {
-          ...(registry.selectedObjectId ? { selectedObjectId: registry.selectedObjectId } : {}),
-          ...(registry.assetLabels ? { assetLabels: registry.assetLabels } : {}),
-        });
-        await this.acceptSoundPlan(plan, "live");
-      } else
-        await this.acceptScenePlan(await requestAgentPlan(prompt, this.context(), "meta"), "live");
+        const plan = await requestSoundAgentPlan(
+          prompt,
+          this.options.getBehaviorState(),
+          {
+            ...(registry.selectedObjectId ? { selectedObjectId: registry.selectedObjectId } : {}),
+            ...(registry.assetLabels ? { assetLabels: registry.assetLabels } : {}),
+          },
+          controller.signal,
+          requestId,
+        );
+        if (generation !== this.planningGeneration || controller.signal.aborted) return;
+        await this.acceptSoundPlan(plan, "live", generation);
+      } else {
+        const plan = await requestAgentPlan(
+          prompt,
+          this.context(),
+          "meta",
+          controller.signal,
+          requestId,
+        );
+        if (generation !== this.planningGeneration || controller.signal.aborted) return;
+        await this.acceptScenePlan(plan, "live", generation);
+      }
     } catch (error) {
-      this.error(error);
+      if (generation === this.planningGeneration) this.error(error);
+    } finally {
+      if (this.activePlanner?.requestId === requestId) this.activePlanner = null;
     }
   }
   async apply(): Promise<void> {
@@ -426,6 +510,27 @@ export class AgentSession {
     this.pending = null;
   }
   cancel(): void {
+    if (this.workflowActive && this.workflow) {
+      this.workflow.cancel();
+      this.update({ ...this.view, message: "已請求停止實驗流程，等待Host確認目前工具結果。" });
+      return;
+    }
+    if (this.activePlanner) {
+      const { requestId, controller } = this.activePlanner;
+      this.planningGeneration++;
+      this.activePlanner = null;
+      controller.abort();
+      void cancelAgentRequest(requestId).catch(() => {
+        // Local acceptance is canceled even if transport cancellation cannot be acknowledged.
+      });
+      this.update({
+        mode: this.view.mode,
+        status: "idle",
+        canApply: false,
+        message: "已停止接受此提案；已送出的請求結果與費用由伺服器紀錄，不推定取消或退款。",
+      });
+      return;
+    }
     if (this.view.status === "loading") return;
     try {
       this.cancelPending();
@@ -458,7 +563,67 @@ export class AgentSession {
     }
   }
   getView(): AgentSessionView {
-    return structuredClone(this.view);
+    return structuredClone({
+      ...this.view,
+      ...(this.workflow ? { workflow: this.workflow.getView() } : {}),
+    });
+  }
+  canUndo(): boolean {
+    return this.lastApplied !== null && this.view.status !== "loading";
+  }
+  getWorkflowView(): AgentExperimentWorkflowView | null {
+    return this.workflow?.getView() ?? null;
+  }
+  /** Explicit host workflow; this never calls a model or auto-applies a proposed mutation. */
+  async runExperiment(settings: Partial<AgentExperimentSettings> = {}): Promise<void> {
+    await this.performWorkflow(() => this.workflow!.runBaseline(settings));
+  }
+  async compareExperiment(): Promise<void> {
+    await this.performWorkflow(() => this.workflow!.compareCandidate());
+  }
+  private async performWorkflow(
+    operation: () => Promise<AgentExperimentWorkflowView>,
+  ): Promise<void> {
+    if (this.view.status === "loading") return;
+    if (!this.workflow) {
+      this.error(new AgentError("CAPABILITY_UNSUPPORTED", "實驗流程需要可信artifact resolver。"));
+      return;
+    }
+    this.cancelPending();
+    this.workflowActive = true;
+    this.update({
+      mode: "offline",
+      status: "loading",
+      canApply: false,
+      message: "執行本機實驗流程；模型不產生量測數值。",
+    });
+    try {
+      const result = await operation();
+      const seen = new Set(this.toolResults.map((entry) => entry.requestId));
+      for (const step of result.steps) {
+        if (!step.result || seen.has(step.request.requestId)) continue;
+        this.toolResults.push(
+          describeToolResult(step.request, step.result, {
+            provider: "offlineDeterministic",
+            modelId: null,
+            requestId: null,
+            label: "OFFLINE_DETERMINISTIC",
+          }),
+        );
+      }
+      while (this.toolResults.length > 48) this.toolResults.shift();
+      this.update({
+        mode: "offline",
+        status: result.status === "failed" ? "error" : "idle",
+        canApply: false,
+        toolResults: this.getToolResults(),
+        message: result.explanation?.text ?? `實驗流程：${result.status}；結果與來源已保留。`,
+      });
+    } catch (error) {
+      this.error(error);
+    } finally {
+      this.workflowActive = false;
+    }
   }
   getToolResults(): AgentToolResult[] {
     return structuredClone(this.toolResults);

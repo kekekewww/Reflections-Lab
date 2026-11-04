@@ -1,0 +1,137 @@
+---
+id: RLAB-HANDOFF-aea1f160-bcbd-4053-8f5e-cd8fd13afa79
+title: R21：第一人稱滑鼠操作、音訊斷續修正與懸浮提示完成並保存交接；只剩真人重測
+type: handoff
+status: UNVERIFIED
+created_at: 2026-11-01T18:06:08.850Z
+updated_at: 2026-11-01T18:06:08.850Z
+sources: []
+related_tasks:
+  - RLAB-TASK-0022
+related_decisions: []
+supersedes: []
+tags: []
+---
+
+# R21：第一人稱滑鼠操作、音訊斷續修正與懸浮提示完成並保存交接；只剩真人重測
+
+Agent / Session：claude-code / r21-fps-audio-help-20261101
+
+任務：[RLAB-TASK-0022](../../tasks/RLAB-TASK-0022.json)
+
+Git：claude/meta-hack-r18-handoff-d292c8 / 05d40fd2d52f4b737f6acac61fa00356403c0038
+
+## 已完成
+
+- 記錄使用者 2026-11-01 回報（B1～B4 正常、B5 建造失敗、音訊斷續）與兩項需求變更：滑鼠操作與直接建造、說明文字改為懸浮提示
+- 第一人稱：左鍵抓取／投擲，按住右鍵預覽放開放置，持有時右鍵放下；空中放置為 dynamicNoGravity；放置自動完成 geometry ack 與啟用、一次一筆復原；錄製、重播與音訊重建期間拒絕放置；提示列移到 viewport 底部
+- 音訊：音訊緩衝預設（預設穩定）、只用於起始時間的排程餘裕、輸出中斷計數、有逾時保護的安全重建；移除每個物理步重複的參數自動化；狀態發布每幀最多一次
+- 說明文字：35 段改為 HelpTip 懸浮提示；球體單一直徑、膠囊直徑加高度；啟動時狀態列不再顯示說明；新增參數設定參考（中英）
+- 實作由 Codex（gpt-6.1-sol、xhigh）完成；Claude Code 協調、量測、文件與重跑驗證；三輪獨立審查（Claude 子代理，唯讀）共 1 BLOCKER、8 MAJOR、21 MINOR 全部修正
+- 量測找到並撤回一個退步：未來時間排程的參數漸變讓編輯器輸出中斷升到 74 次
+
+## 修改範圍與 hash
+
+- {"path":"src/app/behavior-diagnostics.ts","sha256":"deb024f1594cec3c5e72325531084f8f99026805b9a4446120b2091f2ea94ff2","state":"present"}
+- {"path":"src/app/bootstrap.ts","sha256":"31101de786ff6ee80e25b555802136c0d3910ad9744741adb5edce48a69bb5a5","state":"present"}
+- {"path":"src/app/replay-audio.ts","sha256":"69213a4e4698d2c7af3e9ef28b9c9578ab5b1b961a16e8c0bc67324b2e1dc20f","state":"present"}
+- {"path":"src/app/runtime.ts","sha256":"e14324019677af9bc25d642d6f357c64bb0172e8034a43ceba3d53a8b5994f0f","state":"present"}
+- {"path":"src/audio/control.ts","sha256":"3afa1252bccae701b5c7a6d51c68f5bb3f180120f3df65a30b12b98847859d24","state":"present"}
+- {"path":"src/audio/engine.ts","sha256":"46937e8957d7e09dcb81d492441f16e6aa12863d364da6b2d586e5cad8dac423","state":"present"}
+- {"path":"src/audio/routes.ts","sha256":"57da0e83cdf09dd549db7498aa81c1c0bdecd351063fa8023e08ed88d66320f9","state":"present"}
+- {"path":"src/audio/types.ts","sha256":"543b132ae44ab9a8ff36d72aae075b327932d4b632fcfe8dd6043d4e7174b9bd","state":"present"}
+- {"path":"src/interaction/interaction-host.ts","sha256":"e2ca52217cc66a97453d9ffdadb2efd2df14a159089d536e4aff77cceb6b37ef","state":"present"}
+- {"path":"src/interaction/types.ts","sha256":"36b480fe07e838019cf9afacb63fbd6d2fd87e701a28f9553e76dddcaf548bc1","state":"present"}
+- {"path":"src/physics/fixed-clock.ts","sha256":"064583c1b040a3243f95f562d95d3c90587c914b7b4e9d9278f36eb60e8d77a0","state":"present"}
+- {"path":"src/scene/validate-scene.ts","sha256":"39b0c5c467693a9a781147b993714f4479225c23566e5bb06b953c02d6ca7c05","state":"present"}
+- {"path":"src/ui/AnalysisDock.tsx","sha256":"b55d9147b829c9ab7d0de9538f01d935673a53c4c89acb205744e37889df237d","state":"present"}
+- {"path":"src/ui/App.tsx","sha256":"9788a59539805d6963372b2c603d4bef554ec28ed8a40ea54023c801418c4263","state":"present"}
+- {"path":"src/ui/BindingOverrideEditor.tsx","sha256":"2e6526f568b522d4dcdd7c3da60302369cf6f449a4daa99a00f61a2ff568ac35","state":"present"}
+- {"path":"src/ui/Inspector.tsx","sha256":"36c90056da5290bb5a38f66f402fb4e12f05ba88a459c0b29b16478960c6aec7","state":"present"}
+- {"path":"src/ui/MappingEditor.tsx","sha256":"44f48dc48c36b7c043ec381bd5cb91965de2a356fed3e12fc9261f451faa1c29","state":"present"}
+- {"path":"src/ui/ProjectImport.tsx","sha256":"ddfa344a73eebae37c2b3dabebdaf728de2179286e6045ec52cb9b1983093d18","state":"present"}
+- {"path":"src/ui/RuleCard.tsx","sha256":"c57fa87a6024f6be63cd33e79e5ce1d19b122d6d16b67e6e6df757793e52bdba","state":"present"}
+- {"path":"src/ui/SceneExplorer.tsx","sha256":"3c82cf69f5a1c7d4537de62b86e3cd51f097191d77bd85dfee814bb77cdf2e54","state":"present"}
+- {"path":"src/ui/Viewport.tsx","sha256":"a90fbfafa5d84ac0033f7108ed1b936ced7adfcd8c6a337755b7e9ceea7f70c8","state":"present"}
+- {"path":"src/ui/behavior-diagnostic-text.ts","sha256":"e480805a66b9053d1dfd0ff2aa7c48714695a7587c2fe6d767933aa24152fd7b","state":"present"}
+- {"path":"src/ui/components.tsx","sha256":"692188edc3afb0186f4bbdd8f3f863ada5bac6dafc47a188903fce98b10466d1","state":"present"}
+- {"path":"src/ui/contracts.ts","sha256":"357c538dfcfbada80089bf3e70ff36d759b27ce42887b14acc3c35174d323342","state":"present"}
+- {"path":"src/ui/locale-model.test.ts","sha256":"2b0e5822a8d87fd1f7f8c1e435cc34edd019e70da8af1576fd03694aea831ba9","state":"present"}
+- {"path":"src/ui/locale-model.ts","sha256":"d9ebca7d46713c2cb917e8949440574ecf21feef28f65c566314e5fb296dcce2","state":"present"}
+- {"path":"src/ui/locales/core.ts","sha256":"9c18551c0bc7c3963fa549b2c7466227024fb503927d3f25a590d32b68f085da","state":"present"}
+- {"path":"src/ui/locales/explorer.ts","sha256":"4456acead0c52a97eabcf24d403c47363f4dc27e9bcdabaea4dd69e4b2e59cc5","state":"present"}
+- {"path":"src/ui/locales/index.ts","sha256":"cbbdc68c222e0c15f6c79f7f1000c5a7d744e8ec250e36ca0c88129bcc7c101c","state":"present"}
+- {"path":"src/ui/locales/status.ts","sha256":"4d38337f74a7fec89f18e139446e5d2f9bf204df869b3c7674570501cb8cb6d5","state":"present"}
+- {"path":"src/ui/locales/viewport.ts","sha256":"3846b6d83de7c8136643bd476ba8d30bd5647d2b681dbb70ca21cc199ae9c2b0","state":"present"}
+- {"path":"src/ui/styles.css","sha256":"61730452a3d03a0e88607499f725463c78fe381fb3eab5052be769419c008b3e","state":"present"}
+- {"path":"src/ui/viewport/SceneEntities.tsx","sha256":"343370c64dd945e89832eb679ae73164892f88498a3de39f49d24a2e68174c3f","state":"present"}
+- {"path":"src/ui/viewport/fps-entry-coordination.test.ts","sha256":"5bf90dd4656c6cbd89dac070b0b7e5df2a734e0cba7c7719ea85046cab1183ff","state":"present"}
+- {"path":"src/ui/viewport/useFPSInput.ts","sha256":"aad985be346f8dce4fe767f20af9cb75ada3346fd1751017b3aff5791d72e714","state":"present"}
+- {"path":"tests/app/interaction-outcome-status.test.ts","sha256":"d65afd235461f0e9cebc85ad449f718e25d55baa3d473ba4de5546ef7bb5380a","state":"present"}
+- {"path":"tests/app/native-admission.test.ts","sha256":"a64e967b8cb76abc1a63fa420c8c3a8bb81586ee99a448dcb808bb7634a38f02","state":"present"}
+- {"path":"tests/app/replay-audio.test.ts","sha256":"63db1dd0c665443236315efd50f237cc59d68ae3f876fa864703693049341fc3","state":"present"}
+- {"path":"tests/app/view-projection.test.ts","sha256":"05e89cdaa942336e11649fe4a4068fdab78b3a1c522c9f5237a2dbdfd5c653e0","state":"present"}
+- {"path":"tests/audio-runtime/routes-response-reuse.test.ts","sha256":"d83abd4bc48edf816bc66617f7d9bc1dfa324701902a67a64aff6e48823415be","state":"present"}
+- {"path":"tests/browser/fps-entry-race-recovery.spec.ts","sha256":"d55d8ee0a62f534630908de813d3c8beb512944dc29aaf493cb94552febfc3d1","state":"present"}
+- {"path":"tests/browser/gizmo-lifecycle.spec.ts","sha256":"79c6a054b2893d19c7d36c100eac2e52a218a49f914d430ff2c9b8406b9beada","state":"present"}
+- {"path":"tests/browser/ui-first-use-refined-v2.spec.ts","sha256":"37a05b278c6618c02f3d2f92604eff8c8702d04a4efc27961095cab1eda2a8a8","state":"present"}
+- {"path":"tests/browser/ui-locale-refined-v2.spec.ts","sha256":"7655f68175c8d0ada1a82d2b0355e82bc29f5d407c1acc620b5dd0b1b49600bb","state":"present"}
+- {"path":"tests/browser/ui-refined-v2.spec.ts","sha256":"7d325aff020b1c3c7ce3cecaeccd2b9d170dc9c1a7b176bc2dbb97d2633a9c2c","state":"present"}
+- {"path":"tests/browser/ui.spec.ts","sha256":"963a12c1d0c794066a12b1a079c92f36d690120dd009403da785173339603641","state":"present"}
+- {"path":"tests/interaction-runtime/host.test.ts","sha256":"d627f7dcfea9cbc91aca4ba11b937b54909e1d3d01e84d6ba4b2588bb50d344a","state":"present"}
+- {"path":"src/audio/buffer-preset.ts","sha256":"d13bd3382644c55867f7d0139b73d45ce9be89115684b6620ac58b4b431780e4","state":"present"}
+- {"path":"src/ui/HelpTip.tsx","sha256":"6de8e0e9f26ec6ac6b2c9acabcf99d52d0364397a02656fda56a6fc10c8598f7","state":"present"}
+- {"path":"src/ui/help-tip.test.ts","sha256":"6fda1b5de0bb3a41630056eb53a1712b2a7b641ccd222773933d8fc32d01ade1","state":"present"}
+- {"path":"src/ui/locales/help.ts","sha256":"bbc86cf604ec8e8379ec6bf06ed267b66d1d29b43eda3694b76cebc16ded2a8c","state":"present"}
+- {"path":"src/ui/viewport-controls-review.test.ts","sha256":"0c06ae56f108e778add7705377c27b3730033b6e496f1e3104c6ad28d783a1af","state":"present"}
+- {"path":"tests/app/audio-review2.test.ts","sha256":"5b8de0465ee6e3af34cbf1e7ce2725b003f63f763b68ab9984673efb962a18ac","state":"present"}
+- {"path":"tests/app/audio-review3.test.ts","sha256":"6bf480f0e2bf46a10106744f0e96ebeeb17e68315c6bd139bf98b55f3c8a1b4d","state":"present"}
+- {"path":"tests/app/audio-smoothness.test.ts","sha256":"bf38376a11d3fc18b6573265ca3fde4e6414dcbd143bcdb5945af2c5b15b8162","state":"present"}
+- {"path":"tests/app/fps-placement.test.ts","sha256":"2bbabcea68632791b895d2d2f9d8f0f636766ed1fa7bac1778ca45cecedaba6d","state":"present"}
+- {"path":"tests/app/fps-review.test.ts","sha256":"181695f73a0b99ae3a31d661e3a54941c4922d4d83b87e756656ede738ea3708","state":"present"}
+- {"path":"tests/app/startup-status.test.ts","sha256":"b6317e3740a5935171ebaf9f73c56dff5f69104207cd3bf86b0efcbc101eac66","state":"present"}
+- {"path":"tests/audio-runtime/buffer-preset.test.ts","sha256":"5f1917934d1f2e7813d5d48588d16f4fbb3dc68c2dfc54b2f5016dace5c94f62","state":"present"}
+- {"path":"tests/audio-runtime/review2.test.ts","sha256":"1c5b249bc7a28c24c1fab783af6a2575794f45d87ef7c557f9006c1618397c1f","state":"present"}
+- {"path":"tests/audio-runtime/smoothness.test.ts","sha256":"8d1f7438253a18b1f59dc8ef2e5d6e58454187d70f1fbaf32b2d17ed8f1f968a","state":"present"}
+- {"path":"tests/browser/audio-smoothness/fixture.html","sha256":"b25296ff97684c59cc74fef48ac4bfa7ab484955900be3c6968e8bd3b5a64435","state":"present"}
+- {"path":"tests/browser/audio-smoothness/fixture.mjs","sha256":"3c26b962e25eea3cdc4ed4ed7837ae6de36c6815947366ac5d0db0cbb018d573","state":"present"}
+- {"path":"tests/browser/audio-smoothness/run.mjs","sha256":"7f646a6743180a24975980dbee3ee81908f4de07bb0f4fa70c1bf910f6ed84f1","state":"present"}
+- {"path":"tests/browser/audio-smoothness/tap-processor.js","sha256":"de7d7aad25f08061878ad5b9699358fb9c07cc7dc2247c918ab77c1744db397e","state":"present"}
+
+## 執行命令與結果
+
+- npm run check（R21 最終工作樹）：exit 0；收據 artifacts/v1/r21-final-20261101/npm-run-check.txt
+- unit：UI/viewport/interaction/race 175 pass；audio-runtime/app 526 pass；typecheck、lint、format:check exit 0
+- browser：ui-refined-v2 47、pointerlock-race 2、linked-workflow-v2 8、physics 2、storage 5、run-product-refined-v3 4（source/bundle provenance true）
+- 舊入口：npm run test:browser:ui 5 pass／8 fail、npm run test:browser:product 4 fail，與基準相同；舊 product 失敗封存移到 session scratchpad
+- 音訊平順度（headless、20 s、無擷取器，最終兩輪）：編輯器輸出中斷 19 → 1、第一人稱走動 14 → 1；物理約 0.64 → 0.95 倍即時
+
+## 證據
+
+- {"path":"docs/11-v1/USER_TEST_FEEDBACK_20261101-r21.json","sha256":"c5080ecb3aabbfbe1fb734b314092498ffd81842b7881a3dccb1e6ce7b5f044b","result":"R21 使用者回報：B1～B4 正常、B5 建造失敗、音訊斷續、參數文件與說明文字需求"}
+- {"path":"artifacts/v1/r21-final-20261101/verification.json","sha256":"b717b06d700a1d7e9151f152e6e927cc92b27090e17a27d0d050302acd384432","result":"R21 最終驗證紀錄：閘門、三輪獨立審查、音訊量測與待真人項目"}
+- {"path":"artifacts/v1/r21-final-20261101/npm-run-check.txt","sha256":"db7fd6208a4474bded17601892149724cfc6c821352f7703c9c83f10ee2bf98d","result":"R21 最終工作樹的 npm run check 收據，exit 0"}
+- {"path":"artifacts/v1/r21-final-20261101/gates.tsv","sha256":"d1f766967de80f8b9b498c7fd907ec88e69be6c0ef151c1da6d58923e050e4d5","result":"R21 最終工作樹的各閘門結束碼"}
+- {"path":"artifacts/v1/r21-audio-smoothness-20261101/final-notap-1/summary.json","sha256":"b8ccbde356c9a9797fe10733ffc27462789d05a4faaa96edbb47a337273c0aeb","result":"R21 最終音訊量測第 1 輪"}
+- {"path":"artifacts/v1/r21-audio-smoothness-20261101/final-notap-2/summary.json","sha256":"03695b3d64e6436b0f2bb240afb183d1951fee0f632b8e78bf6f61c09c7b14f3","result":"R21 最終音訊量測第 2 輪"}
+- {"path":"artifacts/v1/r21-audio-smoothness-20261101/baseline-r20-notap/summary.json","sha256":"8ea951d6f26a8b26f192357746f622df6bf8eb21ebe232deb874f2e9003b3aea","result":"R20 基準音訊量測"}
+- {"path":"docs/11-v1/ACCEPTANCE_AMENDMENTS.md","sha256":"86277ac416219466182bd1e3721c942633a46a1d7734b30c474933425b3766ff","result":"驗收補充：滑鼠操作與直接建造、懸浮提示"}
+- {"path":"docs/11-v1/PARAMETER_REFERENCE.md","sha256":"ddd7e8b64c2932dcf0959ca8fbb58774c778bd39e8ef30c6c6762ec7750eb85d","result":"參數設定參考"}
+- {"path":"docs/11-v1/FULL_TEST_PROCEDURE.md","sha256":"5b52edd90c8b216e8bf04eb751f6dbeb763fe444d2eeb9fb0d7b8d99e5a619c8","result":"完整測試流程（R19／R20／R21）"}
+- {"path":"docs/KNOWN_LIMITATIONS.md","sha256":"4b2f7c89f0c263d120b00cb49165d82ed52de8b0556e24b26106a95da81f711e","result":"R21 當前限制"}
+- {"path":"docs/05-ux/FPS_INTERACTION_UX.md","sha256":"c591a093c11fc0b9f5a24c789063ed7130fae02e8af1070ff535387eab616aef","result":"第一人稱互動 UX（R21 滑鼠操作）"}
+
+## 風險與未完成
+
+- 全部證據是 headless Chrome、CDP 輸入與程式碼審查；實體滑鼠右鍵、真人 Pointer Lock、Brave 上的實際聽感、觸控與螢幕閱讀器都未驗證
+- 物理與互動仍在主執行緒；若真實 GPU 瀏覽器仍卡頓，下一步是 Web Worker，這輪未實作
+- playbackStats 欄位名稱來自 Chrome 156；其他瀏覽器可能顯示 NOT_AVAILABLE
+- R21 變更尚未提交；分支未 push、未合併
+
+## 下一步
+
+- 使用者依 docs/11-v1/FULL_TEST_PROCEDURE.md 先做 B5、B6（R21 重點）與 B1 的懸浮提示，在正常100%比例、先調低實體音量
+- 依回報更新 RLAB-TASK-0022；失敗項目建立新 R 回報並先重現再修
+- 由使用者決定是否提交 R21 變更與合併本分支；不得把完整本地歷史 push 到公開 main
+
+原始事件：[aea1f160-bcbd-4053-8f5e-cd8fd13afa79](../../events/aea1f160-bcbd-4053-8f5e-cd8fd13afa79.json)

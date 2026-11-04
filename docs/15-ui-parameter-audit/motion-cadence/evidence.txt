@@ -1,0 +1,29 @@
+# Command: node --import tsx --test tests/app/motion-cadence.test.ts
+# Frozen product source reference: 9fcf3 (parent-declared source freeze)
+TAP version 13
+# Subtest: MotionWorkspace authored move, release and impulse have identical complete fixed-tick traces at 30/60/144 Hz render cadence
+ok 1 - MotionWorkspace authored move, release and impulse have identical complete fixed-tick traces at 30/60/144 Hz render cadence
+  ---
+  duration_ms: 614.6131
+  type: 'test'
+  ...
+# 60 Hz reference:240 actual fixed ticks; full trace SHA-256 76ac6e80c52b94bf13e702e5da8d9b61426fbb400481265bc11a18b4838aa355
+# 30 Hz:240 actual fixed ticks; exact full-trace and terminal equality with60 Hz; no overrun/discard
+# 144 Hz:240 actual fixed ticks; exact full-trace and terminal equality with60 Hz; no overrun/discard
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2028.8581
+
+# exit 0
+
+# Scoped format command: node node_modules/prettier/bin/prettier.cjs --check tests/app/motion-cadence.test.ts
+Checking formatting...
+All matched files use Prettier code style!
+
+# format exit 0

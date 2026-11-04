@@ -1,0 +1,638 @@
+TAP version 13
+# Subtest: V4 exposes a pure public resource-policy witness validator separately from configuration labels
+not ok 1 - V4 exposes a pure public resource-policy witness validator separately from configuration labels
+  ---
+  duration_ms: 2.8822
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:69:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'object'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'object'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:70:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: public reference resource witness retains the original 8-path budget and 24-voice cap
+ok 2 - public reference resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 0.2179
+  type: 'test'
+  ...
+# Subtest: public reference resource witness retains the original 32-path budget and 24-voice cap
+ok 3 - public reference resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 0.0894
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 8-path budget and 24-voice cap
+ok 4 - public candidate resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 0.0829
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 32-path budget and 24-voice cap
+ok 5 - public candidate resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 0.1657
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate requested but actual resource mode is reference
+ok 6 - resource witness rejects candidate requested but actual resource mode is reference
+  ---
+  duration_ms: 0.1003
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference requested but actual resource mode is candidate
+ok 7 - resource witness rejects reference requested but actual resource mode is candidate
+  ---
+  duration_ms: 0.146
+  type: 'test'
+  ...
+# Subtest: resource witness rejects software cursor representation
+ok 8 - resource witness rejects software cursor representation
+  ---
+  duration_ms: 0.0638
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown representation
+ok 9 - resource witness rejects unknown representation
+  ---
+  duration_ms: 0.3158
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable oscillator content
+ok 10 - resource witness rejects seekable oscillator content
+  ---
+  duration_ms: 0.3923
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable clock content
+ok 11 - resource witness rejects seekable clock content
+  ---
+  duration_ms: 0.1389
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown content
+ok 12 - resource witness rejects unknown content
+  ---
+  duration_ms: 0.0562
+  type: 'test'
+  ...
+# Subtest: resource witness rejects requested flags cannot rescue a reference graph
+ok 13 - resource witness rejects requested flags cannot rescue a reference graph
+  ---
+  duration_ms: 0.0409
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown requested arm
+ok 14 - resource witness rejects unknown requested arm
+  ---
+  duration_ms: 0.0369
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing requested arm
+ok 15 - resource witness rejects missing requested arm
+  ---
+  duration_ms: 0.0373
+  type: 'test'
+  ...
+# Subtest: resource witness rejects null requested arm
+ok 16 - resource witness rejects null requested arm
+  ---
+  duration_ms: 0.7718
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unsupported path cap
+ok 17 - resource witness rejects unsupported path cap
+  ---
+  duration_ms: 0.0631
+  type: 'test'
+  ...
+# Subtest: resource witness rejects path cap string
+ok 18 - resource witness rejects path cap string
+  ---
+  duration_ms: 0.0399
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing resource snapshot
+ok 19 - resource witness rejects missing resource snapshot
+  ---
+  duration_ms: 0.0396
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing telemetry
+ok 20 - resource witness rejects missing telemetry
+  ---
+  duration_ms: 0.0355
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing complete public budget
+ok 21 - resource witness rejects missing complete public budget
+  ---
+  duration_ms: 0.0359
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxVoices
+ok 22 - resource witness rejects changed original budget.maxVoices
+  ---
+  duration_ms: 0.0959
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxVoices
+ok 23 - resource witness rejects unknown original budget.maxVoices
+  ---
+  duration_ms: 0.0562
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSources
+ok 24 - resource witness rejects changed original budget.maxSources
+  ---
+  duration_ms: 0.0352
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSources
+ok 25 - resource witness rejects unknown original budget.maxSources
+  ---
+  duration_ms: 0.0343
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSourceFrames
+ok 26 - resource witness rejects changed original budget.maxSourceFrames
+  ---
+  duration_ms: 0.0343
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSourceFrames
+ok 27 - resource witness rejects unknown original budget.maxSourceFrames
+  ---
+  duration_ms: 0.035
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPathsPerVoice
+ok 28 - resource witness rejects changed original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0381
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPathsPerVoice
+ok 29 - resource witness rejects unknown original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0397
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxTotalPaths
+ok 30 - resource witness rejects changed original budget.maxTotalPaths
+  ---
+  duration_ms: 0.0408
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxTotalPaths
+ok 31 - resource witness rejects unknown original budget.maxTotalPaths
+  ---
+  duration_ms: 0.0439
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxDecodedBytes
+ok 32 - resource witness rejects changed original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.0359
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxDecodedBytes
+ok 33 - resource witness rejects unknown original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.0346
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetDurationSeconds
+ok 34 - resource witness rejects changed original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.0348
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetDurationSeconds
+ok 35 - resource witness rejects unknown original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.0342
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetChannels
+ok 36 - resource witness rejects changed original budget.maxAssetChannels
+  ---
+  duration_ms: 0.0871
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetChannels
+ok 37 - resource witness rejects unknown original budget.maxAssetChannels
+  ---
+  duration_ms: 0.0394
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPendingEvents
+ok 38 - resource witness rejects changed original budget.maxPendingEvents
+  ---
+  duration_ms: 0.0357
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPendingEvents
+ok 39 - resource witness rejects unknown original budget.maxPendingEvents
+  ---
+  duration_ms: 0.0366
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssets
+ok 40 - resource witness rejects changed original budget.maxAssets
+  ---
+  duration_ms: 0.0351
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssets
+ok 41 - resource witness rejects unknown original budget.maxAssets
+  ---
+  duration_ms: 0.0368
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxConcurrentDecodes
+ok 42 - resource witness rejects changed original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0346
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxConcurrentDecodes
+ok 43 - resource witness rejects unknown original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0434
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateSends
+ok 44 - resource witness rejects changed original budget.maxLateSends
+  ---
+  duration_ms: 0.0568
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateSends
+ok 45 - resource witness rejects unknown original budget.maxLateSends
+  ---
+  duration_ms: 0.036
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateReverbBytes
+ok 46 - resource witness rejects changed original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.0352
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateReverbBytes
+ok 47 - resource witness rejects unknown original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.0356
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: active rendered cap is reduced
+ok 48 - resource witness rejects resourceSnapshot: active rendered cap is reduced
+  ---
+  duration_ms: 0.2863
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: active rendered cap is reduced
+ok 49 - resource witness rejects telemetry: active rendered cap is reduced
+  ---
+  duration_ms: 0.0424
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+ok 50 - resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.0358
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+ok 51 - resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.0616
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+ok 52 - resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0412
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: internal arrivals consume the parent cap
+ok 53 - resource witness rejects telemetry: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0401
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+ok 54 - resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.043
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: all graphs silently omit internal arrivals
+ok 55 - resource witness rejects telemetry: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.0386
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+ok 56 - resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.035
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+ok 57 - resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.04
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+ok 58 - resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0355
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference gains the candidate virtual reserve
+ok 59 - resource witness rejects telemetry: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0385
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+ok 60 - resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0404
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference claims an explicit parent graph policy
+ok 61 - resource witness rejects telemetry: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0348
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+ok 62 - resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+  ---
+  duration_ms: 0.0863
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+ok 63 - resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0403
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+ok 64 - resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0386
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+ok 65 - resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+  ---
+  duration_ms: 0.0391
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+ok 66 - resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+  ---
+  duration_ms: 0.0414
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile is misinterpreted as 32 voices
+ok 67 - stress resource witness rejects stress profile is misinterpreted as 32 voices
+  ---
+  duration_ms: 0.0695
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile kept the default 96-path internal allowance
+ok 68 - stress resource witness rejects stress profile kept the default 96-path internal allowance
+  ---
+  duration_ms: 0.0397
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress candidate kept default 176-carrier cap
+ok 69 - stress resource witness rejects stress candidate kept default 176-carrier cap
+  ---
+  duration_ms: 0.0568
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count unknown
+ok 70 - resource witness rejects native source count unknown
+  ---
+  duration_ms: 0.0524
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count nonfinite
+ok 71 - resource witness rejects native source count nonfinite
+  ---
+  duration_ms: 0.036
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native graph count unknown
+ok 72 - resource witness rejects native graph count unknown
+  ---
+  duration_ms: 0.0392
+  type: 'test'
+  ...
+# Subtest: resource witness rejects active and tail counts cannot be combined into a fabricated zero
+ok 73 - resource witness rejects active and tail counts cannot be combined into a fabricated zero
+  ---
+  duration_ms: 0.0367
+  type: 'test'
+  ...
+# Subtest: resource witness rejects pending voice count unknown
+ok 74 - resource witness rejects pending voice count unknown
+  ---
+  duration_ms: 0.0356
+  type: 'test'
+  ...
+# Subtest: solver default reference omits the virtualization key and any substitute content model
+ok 75 - solver default reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.9102
+  type: 'test'
+  ...
+# Subtest: solver explicit reference omits the virtualization key and any substitute content model
+ok 76 - solver explicit reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.1571
+  type: 'test'
+  ...
+# Subtest: solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+not ok 77 - solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+  ---
+  duration_ms: 0.9434
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:187:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - {
+    -   fairnessSeconds: 1,
+    -   maxNativeGraphs: 48,
+    -   maxNativeVoices: 24,
+    -   maxVirtualVoices: 32,
+    -   minResidenceSeconds: 0.2,
+    -   priorityHysteresis: 0.1
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    maxNativeVoices: 24
+    maxNativeGraphs: 48
+    maxVirtualVoices: 32
+    minResidenceSeconds: 0.2
+    priorityHysteresis: 0.1
+    fairnessSeconds: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:189:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: solver rejects an unknown audioPolicyArm before constructing any engine
+not ok 78 - solver rejects an unknown audioPolicyArm before constructing any engine
+  ---
+  duration_ms: 0.3246
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:193:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: actual UI mount default reference calls LabRuntime.create with no options argument
+ok 79 - actual UI mount default reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 0.8389
+  type: 'test'
+  ...
+# Subtest: actual UI mount explicit reference calls LabRuntime.create with no options argument
+ok 80 - actual UI mount explicit reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 0.5712
+  type: 'test'
+  ...
+# Subtest: actual UI mount candidate passes typed DEFAULT without changing source content
+not ok 81 - actual UI mount candidate passes typed DEFAULT without changing source content
+  ---
+  duration_ms: 0.3924
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:217:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:221:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: actual UI mount rejects unknown arm before LabRuntime.create
+not ok 82 - actual UI mount rejects unknown arm before LabRuntime.create
+  ---
+  duration_ms: 0.2889
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:226:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:228:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: resource witness rejects candidate policy disabled from the public virtualization telemetry
+ok 83 - resource witness rejects candidate policy disabled from the public virtualization telemetry
+  ---
+  duration_ms: 0.0881
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+ok 84 - resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+  ---
+  duration_ms: 0.0446
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+ok 85 - resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0848
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+ok 86 - resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0561
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+ok 87 - resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.0393
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+ok 88 - resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+  ---
+  duration_ms: 0.0377
+  type: 'test'
+  ...
+1..88
+# tests 88
+# suites 0
+# pass 83
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 143.5634

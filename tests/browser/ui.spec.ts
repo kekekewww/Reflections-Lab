@@ -66,9 +66,13 @@ test("synthetic perceptual reverb is explicit and raw reference stays selectable
   await expect(enabled).not.toBeChecked();
   await enabled.check();
   await expect(enabled).toBeChecked();
-  await expect(
-    page.getByText("感知近似尾響；衰減參數不是測得的 RT60。Raw 參考旁路尾響。", { exact: true }),
-  ).toBeVisible();
+  // R21 (USER-R21-UI-02): the evidence label stays on the checkbox; the caveat moved into its
+  // tooltip, which keyboard focus must reveal.
+  await page.getByRole("button", { name: "說明：Synthetic late reverb", exact: true }).focus();
+  await expect(page.locator(".help-tip-bubble")).toHaveText(
+    "感知近似尾響；衰減參數不是測得的 RT60。Raw 參考旁路尾響。",
+  );
+  await page.keyboard.press("Escape");
   await page.getByRole("button", { name: "Raw 參考", exact: true }).click();
   await expect(page.getByRole("button", { name: "Raw 參考", exact: true })).toHaveAttribute(
     "aria-pressed",
@@ -78,7 +82,7 @@ test("synthetic perceptual reverb is explicit and raw reference stays selectable
   await expect(enabled).not.toBeChecked();
 });
 
-test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition throw", async ({
+test("actual pointer lock starts controls from the entry click, Enter toggles, Tab exits and no acquisition throw", async ({
   page,
 }) => {
   await page.addInitScript(() => {
@@ -106,15 +110,22 @@ test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition
   await openWorkspace(page);
   await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
-  await expect(page.getByRole("button", { name: /^(開始運算|繼續運算)$/ })).toBeVisible();
-  await page.keyboard.press("Enter");
+  // R18: a successful entry click is the explicit start; no hidden second Enter gate.
   await expect(
     page.locator(".transport-actions").getByRole("button", { name: "暫停", exact: true }),
   ).toBeVisible();
   await expect(page.locator(".run-status .subtle.mono")).not.toHaveText("tick 0");
+  await expect(page.getByText("WASD 移動 · 滑鼠轉向 · Enter 暫停 · Esc 釋放滑鼠")).toBeVisible();
+  const listenerZ = () =>
+    page.evaluate(() => window.__reflectionLab!.getSnapshot().listener.positionM[2]);
+  const start = await listenerZ();
+  await page.keyboard.down("w");
+  await expect.poll(listenerZ).toBeLessThan(start - 0.01);
+  await page.keyboard.up("w");
   await page.keyboard.press("Enter");
   await expect(page.getByRole("button", { name: "繼續運算", exact: true })).toBeVisible();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
+  await expect(page.getByText("已暫停 · 點擊畫面或按 Enter 繼續 · Esc 釋放滑鼠")).toBeVisible();
   await page.keyboard.press("Enter");
   await expect(
     page.locator(".transport-actions").getByRole("button", { name: "暫停", exact: true }),
@@ -129,7 +140,7 @@ test("actual pointer lock has explicit Enter resume, Tab exit and no acquisition
   await expect(page.getByRole("button", { name: "繼續運算", exact: true })).toBeVisible();
 });
 
-test("explicit alternative controls move the actual listener and enable a staged object", async ({
+test("explicit alternative controls move the actual listener and place a live object without Enable", async ({
   page,
 }, info) => {
   await openWorkspace(page);
@@ -155,14 +166,18 @@ test("explicit alternative controls move the actual listener and enable a staged
   await expect.poll(() => page.evaluate(() => document.pointerLockElement === null)).toBe(true);
   for (let index = 0; index < 20; index += 1)
     await page.getByRole("button", { name: "向下看", exact: true }).click();
-  await page.getByRole("button", { name: "切換建造", exact: true }).click();
+  const count = await page.locator(".object-list > li").count();
+  await page.getByRole("button", { name: "開始放置預覽", exact: true }).click();
   const place = page.getByRole("button", { name: "放置", exact: true });
   await expect(place).toBeEnabled();
   await place.click();
-  await expect(page.getByRole("button", { name: "啟用物件", exact: true })).toBeVisible();
-  await page.screenshot({ path: info.outputPath("staged.png"), timeout: 10_000 });
-  await page.getByRole("button", { name: "啟用物件", exact: true }).click();
+  await expect(page.locator(".object-list > li")).toHaveCount(count + 1);
   await expect(page.getByRole("button", { name: "啟用物件", exact: true })).toHaveCount(0);
+  await expect(
+    page.locator(".transport-actions").getByRole("button", { name: "暫停", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "開始放置預覽", exact: true })).toBeEnabled();
+  await page.screenshot({ path: info.outputPath("live-placement.png"), timeout: 10_000 });
   await expect(page.locator(".error-banner")).toHaveCount(0);
 });
 

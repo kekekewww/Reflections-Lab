@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "method": "READ_ONLY_SOURCE_AND_EXISTING_PLAYWRIGHT_TRACE",
+  "createdAt": "2026-11-03T00:46:03.982237+00:00",
+  "observedHead": "2e0ed4ed250c1d0e86e14c868c8f0d6a80b0ec52",
+  "sourceMutations": false,
+  "testsRunThisReview": false,
+  "browserRunThisReview": false,
+  "scope": "Investigate recording backpressure in Task0033 production attempt02; does not qualify throughput, native audio, performance, or complete recording pipeline.",
+  "evidence": [
+    {
+      "path": "test-results/top-monitor-production-attempt02/cases/top-monitor-production-swi-832e1-g-and-monotonic-public-tick/trace.zip",
+      "sha256": "4a9793f87b29dd52aedbd1309a84982391acf1b87a69b47d3325737eb3c422ce",
+      "bytes": 23061533
+    },
+    {
+      "path": "test-results/top-monitor-production-attempt02/cases/top-monitor-production-swi-832e1-g-and-monotonic-public-tick/error-context.md",
+      "sha256": "1f4dade2dca0f94ab7c7aae9067a942ee1d084d6c46b8ce676131c6d0f661047",
+      "bytes": 34774
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "93af85a8c2a0480e5b30c4340a58eb41dd779b34957fc71e7627bbaa0a582ed4",
+      "bytes": 146362
+    },
+    {
+      "path": "src/app/recording-host.ts",
+      "sha256": "90ada1015810e002ccb742f367dbb2e8a3cb7ab702333758264b73063deb1f54",
+      "bytes": 22103
+    },
+    {
+      "path": "src/app/recording-evaluation-lane.ts",
+      "sha256": "95e12775fdb6deda771c48e82c79dd66c7968eb5eca942cc7b1660d01887d136",
+      "bytes": 10853
+    },
+    {
+      "path": "src/app/recording-evaluation-client.ts",
+      "sha256": "c749965e93ae4e1cbdad185e4c666fa2abbe2a188b1d91eeaec521f68c711912",
+      "bytes": 11641
+    },
+    {
+      "path": "src/app/recording-evaluation.worker.ts",
+      "sha256": "9c33375f47c33f5f1a55df7b6a606093b0849bdfec91cab8d50824a5011e91c1",
+      "bytes": 2053
+    },
+    {
+      "path": "src/experiments/recording-persistence.ts",
+      "sha256": "4f72e1b7e774d9e30388b8c34a80e51768aac473f9ea9681904fda9d4d7a6991",
+      "bytes": 13136
+    },
+    {
+      "path": "src/persistence/blob-store.ts",
+      "sha256": "66c90a2aba332f09571e876af58bade2d22f3a20f53edf3544ab10ef236f5b40",
+      "bytes": 57875
+    },
+    {
+      "path": "tests/browser/top-monitor-production.spec.ts",
+      "sha256": "5968ce996303667a425512b3e0bbbf95c2ae591f0553c150407e4a30858a0b44",
+      "bytes": 26991
+    }
+  ],
+  "observedFacts": [
+    {
+      "id": "RF-01",
+      "result": "VERIFIED_TRACE",
+      "claim": "The product was already paused before the first Spectrum click.",
+      "details": {
+        "pausedSnapshotTimestampMs": 18019.87,
+        "tickGetterCompletedMs": 18032.645,
+        "tickGetterValue": "tick 85",
+        "spectrumProtocolCallStartMs": 18044.135,
+        "spectrumTestStepStartMs": 18043.679,
+        "minimumPreClickPauseLeadMs": 24.264999999999418
+      }
+    },
+    {
+      "id": "RF-02",
+      "result": "VERIFIED_TRACE_AND_SNAPSHOT",
+      "claim": "Global simulation time/tick is not the duration of this recording.",
+      "details": {
+        "globalTick": 85,
+        "globalSimulationSecondsDisplayed": 1.42,
+        "recordingSecondsDisplayed": 0.12,
+        "startRecordingClickStartMs": 17762.388,
+        "recordingActiveSnapshotMs": 17916.198,
+        "warningSnapshotMs": 18019.87,
+        "limits": "0.12 s is about seven 1/60 intervals, but UI eventCount is not frameCount and exact admission count was not recorded."
+      }
+    },
+    {
+      "id": "RF-03",
+      "result": "VERIFIED_SOURCE",
+      "claim": "Storage and evaluation backpressure share the evaluation-labelled callback/message. Screenshot text alone cannot identify the full queue.",
+      "locations": [
+        "src/app/recording-host.ts:143",
+        "src/app/recording-host.ts:170",
+        "src/app/runtime.ts:564"
+      ]
+    },
+    {
+      "id": "RF-04",
+      "result": "VERIFIED_SOURCE",
+      "claim": "Both bounded queues have maxFrames=8, maxBytes=33554432, lowWaterFrames=2, lowWaterBytes=8388608 and include in-flight ownership.",
+      "locations": [
+        "src/app/recording-evaluation-lane.ts:42",
+        "src/experiments/recording-persistence.ts:64"
+      ],
+      "limits": "No obvious counting defect was found by this review; this is not an executed capacity or throughput test."
+    },
+    {
+      "id": "RF-05",
+      "result": "VERIFIED_SOURCE",
+      "claim": "Evaluation Worker creation is deferred until the first capture job; persistence construction starts an asynchronous create and write waits for it.",
+      "locations": [
+        "src/app/recording-evaluation-client.ts:198",
+        "src/experiments/recording-persistence.ts:135",
+        "src/experiments/recording-persistence.ts:229"
+      ],
+      "limits": "Cold startup can consume the approximately 133 ms eight-frame admission window; actual cause is UNPROVEN."
+    }
+  ],
+  "traceExcerpts": [
+    {
+      "entry": "test.trace",
+      "type": "before",
+      "callId": "tuey@762",
+      "startTime": 17762.102,
+      "endTime": null,
+      "method": "pw:api",
+      "title": "Click",
+      "params": {
+        "locator": "getByRole('button', { name: '● Start recording', exact: true })"
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "after",
+      "callId": "tuey@762",
+      "startTime": null,
+      "endTime": 17916.703,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "before",
+      "callId": "tuey@768",
+      "startTime": 18020.991,
+      "endTime": null,
+      "method": "pw:api",
+      "title": "Get inner text",
+      "params": {
+        "locator": "locator('.run-status .subtle')"
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "after",
+      "callId": "tuey@768",
+      "startTime": null,
+      "endTime": 18042.563,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "before",
+      "callId": "tuey@771",
+      "startTime": 18043.679,
+      "endTime": null,
+      "method": "pw:api",
+      "title": "Click",
+      "params": {
+        "locator": "getByRole('region', { name: 'Live monitoring', exact: true }).getByRole('button', { name: 'Spectrum', exact: true })"
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "after",
+      "callId": "tuey@771",
+      "startTime": null,
+      "endTime": 18134.674,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "before",
+      "callId": "tuey@777",
+      "startTime": 18188.977,
+      "endTime": null,
+      "method": "expect",
+      "title": "Expect \"toBeVisible\"",
+      "params": {
+        "locator": "locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true })"
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "test.trace",
+      "type": "after",
+      "callId": "tuey@777",
+      "startTime": null,
+      "endTime": 33221.066,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true })\u001b[22m\n"
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "before",
+      "callId": "tuey@762",
+      "startTime": 17762.388,
+      "endTime": null,
+      "method": "click",
+      "title": null,
+      "params": {
+        "selector": "internal:role=button[name=\"● Start recording\"s]",
+        "strict": true
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "after",
+      "callId": "tuey@762",
+      "startTime": null,
+      "endTime": 17905.717,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "frame-snapshot",
+      "timestamp": 17916.198,
+      "matchedStrings": [
+        "Recording",
+        "Latest decision at tick 76",
+        "Recording"
+      ]
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "frame-snapshot",
+      "timestamp": 18019.87,
+      "matchedStrings": [
+        "Resume simulation",
+        "Paused",
+        "The recording evaluation queue is full. Paused at a complete tick boundary; resume after it drains.",
+        "The recording evaluation queue is full. Paused at a complete tick boundary; resume after it drains."
+      ]
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "before",
+      "callId": "tuey@768",
+      "startTime": 18021.33,
+      "endTime": null,
+      "method": "innerText",
+      "title": null,
+      "params": {
+        "selector": ".run-status .subtle",
+        "strict": true
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "after",
+      "callId": "tuey@768",
+      "startTime": null,
+      "endTime": 18032.645,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": {
+        "value": "tick 85"
+      },
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "before",
+      "callId": "tuey@771",
+      "startTime": 18044.135,
+      "endTime": null,
+      "method": "click",
+      "title": null,
+      "params": {
+        "selector": "internal:role=region[name=\"Live monitoring\"s] >> internal:role=button[name=\"Spectrum\"s]",
+        "strict": true
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "after",
+      "callId": "tuey@771",
+      "startTime": null,
+      "endTime": 18128.135,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "before",
+      "callId": "tuey@777",
+      "startTime": 18189.583,
+      "endTime": null,
+      "method": "expect",
+      "title": "Expect \"toBeVisible\"",
+      "params": {
+        "selector": ".transport-bar >> internal:role=button[name=\"Pause\"s]",
+        "expression": "to.be.visible",
+        "expectedValue": {
+          "value": {
+            "v": "undefined"
+          },
+          "handles": []
+        },
+        "isNot": false,
+        "timeout": 15000
+      },
+      "result": null,
+      "error": null
+    },
+    {
+      "entry": "2-trace.trace",
+      "type": "after",
+      "callId": "tuey@777",
+      "startTime": null,
+      "endTime": 33200.954,
+      "method": null,
+      "title": null,
+      "params": null,
+      "result": null,
+      "error": "Expect failed"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "RH-01",
+      "status": "UNPROVEN",
+      "claim": "First evaluation Worker module/processor initialization delays the first reply long enough to fill the eight-frame queue."
+    },
+    {
+      "id": "RH-02",
+      "status": "UNPROVEN",
+      "claim": "Initial storage session creation or first append delays persistence and then evaluation commit enough to hit a queue watermark."
+    },
+    {
+      "id": "RH-03",
+      "status": "UNPROVEN",
+      "claim": "Steady-state solve/clone/validation or storage service time is slower than production; startup preparation alone may not solve it."
+    }
+  ],
+  "minimalDiagnosticProposal": {
+    "status": "PROPOSED_NOT_IMPLEMENTED",
+    "productFiles": [
+      "src/app/recording-host.ts",
+      "src/app/runtime.ts"
+    ],
+    "origin": "Widen the internal onEvaluationBackpressure callback to receive evaluation|storage; pass the explicit literal from each existing queue callback. Existing zero-argument callbacks remain source-compatible.",
+    "capturePoint": "At the start of runtime onEvaluationBackpressure, before pauseCore, retain exactly one bounded diagnostic snapshot: origin, world.tick/simulation time, monotonic wall time, recording duration, evaluation telemetry and persistence telemetry. Keep the original pause behavior, capacities and watermark semantics unchanged.",
+    "readout": "Use the existing e2e debug runtime exposure for this diagnostic only, with an explicit read-only diagnostic getter or pinned retained snapshot. Do not present this method as production DOM verification; no hidden state mutation, no auto-resume, no queue polling in the audio callback.",
+    "optionalTiming": "If needed after identifying the lane, add bounded fixed fields for evaluation Worker create/first send/first reply and persistence create-ready/first append completion. Do not log each tick or collect an unbounded event list.",
+    "oneRun": {
+      "method": "One fresh owned browser/context, same scene, browser, DPR1, source/audio settings, 60Hz clock and default Levels header; use public Enable/Run/Start recording, make no header switch for a bounded 10s or until first guard. On first guard, immediately read the retained snapshot, then stop/finalize via public UI and await cleanup.",
+      "controls": "Root freezes source/bundle/executable and runs no competing heavy jobs. No cap raise, accepted tick omission, forced resume, fake clock, weaker expectation or retry.",
+      "interpretation": "A repeated guard without a header switch plus captured origin isolates this failure from the new mode click. Snapshot identifies the constrained lane; first-response timing is needed before declaring cold startup the root cause."
+    }
+  },
+  "conditionalReadinessContract": {
+    "status": "PROPOSED_ONLY_AFTER_LANE_DIAGNOSIS",
+    "worker": "A bounded prepare/ready handshake, with generation/id/timeout validation, completes before admitting recording ticks. It performs no acoustic solve/event generation, does not increment accepted/processed watermarks, and does not restart an existing ready worker.",
+    "storage": "If storage readiness is implicated, expose/await the existing session create promise while the physics producer remains paused; retain the empty candidate/session identity until creation is committed. Failed/cancelled creation cannot publish a recording or silently delete a prior valid artifact.",
+    "invariants": [
+      "Keep fixed dt 1/60, queue8/32MiB and low2/8MiB; do not drop or overwrite accepted ticks.",
+      "Use existing runtime transaction busy and pauseGeneration/live ownership checks before and after awaits. Dispose/reset/focus pause must prevent late readiness from resuming time.",
+      "A failed preparation is terminal for that owned preparation attempt; user retry begins a fresh bounded generation and cannot reuse a stale reply/session.",
+      "Publish preparing/pending state explicitly, preserve scene/run/source identity, and release acquired transport assets on failure/cancellation.",
+      "Steady-state overload still uses the original pause guard; preparation is not a claim that sustained throughput meets the original performance gate."
+    ]
+  },
+  "independentReview": {
+    "agent": "/root/recording_backpressure/queue_source_review",
+    "method": "Independent source and failure snapshot read only",
+    "conclusion": "Shared callback/message confirmed; no evident queue accounting bug; both cold-start hypotheses require actual telemetry."
+  },
+  "limits": [
+    "No product source edited, no test/browser run, and no performance or root-cause PASS claimed.",
+    "Existing failure and all numeric capacities/thresholds remain unchanged."
+  ]
+}

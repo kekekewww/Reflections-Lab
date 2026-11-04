@@ -1,0 +1,17 @@
+<!-- english-source: {"path":"docs/14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md","sha256":"1ce962e8a7c668ccf6a8fc7954e2a4c7957b025cf994754b942a226447a7f3a0","translated_at":"2026-11-02T14:26:45.832Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-notice:start -->
+> English translation of [`docs/14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md`](../../../../14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md). Source SHA-256: `1ce962e8a7c668ccf6a8fc7954e2a4c7957b025cf994754b942a226447a7f3a0`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+<!-- english-notice:end -->
+
+<!-- english-original-anchor --> <a id="尚未支援選項原差距與目前進度"></a>
+# Unsupported options: original gaps and current progress
+
+The original static gaps remain in [UNSUPPORTED_OPTIONS.initial-19db9f9.json](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/aa4c843ad0854630e2f5edef4cd6b2c6ad629817): OnEnterZone/OnExitZone had no producer, sphere/capsule did not enter acoustics, and selectable dynamicReflector was downgraded to an occluder. These three original capability gaps now have product implementations. Not every disabled state was treated as a defect.
+
+Curved geometry and dynamic reflection have eight bounded groups of49bde82 evidence: sphere/capsule material and role interaction, dimension limits, Project import/export, sphere seven-band reflection effects, and180 ticks of moving capsule/box reflectors. Initial failures and successes after harness correction remain separate; no exhaustive coverage of every shape × role × material combination is claimed. See [CURVED_PARAMETER_FINAL_49bde82.json](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/659ad53aec37d16b40be70a3d5991fd7b3a89cde).
+
+Zone authoring/occupancy/rule-zone selectors also have six distinct real9fc cases. The17 pipeline and five related Behavior families are joined to their exact raw observations, retaining initial failures and bounded physics limits. The current static source has refreshed to5010685, but old49/9fc evidence is not relabeled as a single501 run. See [UNSUPPORTED_OPTIONS.json](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/7ea6f22f4a28aff5c66bec4450fa21c418fa8622) for exact original sources and current evidence.
+
+Running/busy state, missing selection/artifacts/history, draft validation, physical inapplicability for Fixed/kinematic modes, absence of airborne sound in vacuum, and Meta account/secret/budget/browser-native capabilities remain legitimate states or external gates. Safeguards were not removed, data was not invented and paid access was not authorized to stand in for implementation. Unexposed API/schema candidates are not invented as clickable parameters.
+
+The501 combined scenario separately connects a moving sphere's reflections, Zone enter/exit and nonlinear mapping through180 continuous fixed steps, then actually downloads five WAV files and passes independent [Stage12](../12-final-integrated-ui-audio.md) verification. All217/217 central families now have bounded receipt joins. Two Audio nativeRejection conditions and one fallback unreachable through the current Host remain explicitly unobserved; these conditions are not counted as verified or as newly unimplemented features.

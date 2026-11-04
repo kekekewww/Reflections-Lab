@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "status": "RUNTIME_COMPONENT_SOURCE_AND_CONTROL_TESTS_VERIFIED",
+  "observedHeadBeforeCommit": "eb45d19aee08a3b68a768c82af4fa192ea0b26fc",
+  "observedAtUtc": "2026-11-03T02:07:59.0495996Z",
+  "ownership": "Root authorized limited RuntimeOptions/constructor/enableAudio and public diagnostic endpoints only",
+  "runtimeSemantics": {
+    "omittedPolicy": "Original undefined behavior: no virtualization key added",
+    "explicitFalse": "Forwarded false",
+    "candidate": "Validated finite scalar whitelist copied and frozen; only virtualization option forwarded",
+    "originalBudgetAndContentUnchanged": true,
+    "observationGetter": "ACTIVE shared endpoint: actual diagnostic polling, native time, bounded source traversal and copied DTO; not passive or free",
+    "diagnosticsSetter": "Strict boolean; no engine creation before enable; fail-closed before audio/disposed",
+    "recordingAndMonitorSectionsChanged": false
+  },
+  "validation": [
+    {
+      "command": "node --import tsx --test --test-concurrency=1 tests/app/runtime-performance-options.test.ts",
+      "raw": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-final-r1.tap",
+      "exitCode": 0,
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "durationMs": 4708.5141
+    },
+    {
+      "command": ".\\node_modules\\.bin\\prettier.cmd --write src/app/runtime.ts tests/app/runtime-performance-options.test.ts",
+      "exitCode": 0,
+      "raw": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-format-r1.txt"
+    },
+    {
+      "command": ".\\node_modules\\.bin\\eslint.cmd src/app/runtime.ts tests/app/runtime-performance-options.test.ts",
+      "exitCode": 0,
+      "raw": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-lint-r1.txt"
+    },
+    {
+      "command": ".\\node_modules\\.bin\\tsc.cmd --noEmit",
+      "toolSession": 17415,
+      "actualTerminalExitCode": 0,
+      "raw": "docs/16-nonadvanced-completion/lanes/performance/runtime-v4-project-typecheck-r1.txt",
+      "emptyStdout": "No diagnostics; exit independently read from terminal handle"
+    }
+  ],
+  "fixtureHistory": {
+    "original22FailPreserved": true,
+    "originalWrongPreset": "interactive",
+    "actualOriginalDefault": "playback",
+    "canonicalV1Path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v1-original.test.txt",
+    "canonicalV2Path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v2-before-endpoints.test.txt",
+    "correctionReceiptPreservedAsAuthored": true,
+    "historicalNewSpecPathMeaning": "runtime-options-fixture-correction-v2.json newSpec.path was the working22-case file at correction time; its71a607 hash now resolves to canonicalV2Path. The current test was later extended to25 and formatted. Do not compare the historical hash with the later25-case path.",
+    "corrected22Red": {
+      "pass": 2,
+      "fail": 20
+    },
+    "endpoint25Red": {
+      "pass": 2,
+      "fail": 23
+    }
+  },
+  "independentReview": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.json",
+    "status": "NO_P1_P2_REMAINING_SOURCE_REVIEW_ONLY",
+    "sourcePinsMatch": true
+  },
+  "unchangedSemantic": {
+    "qualificationId": "semantic-v3-c59df8c64fdfa846d6e22daf",
+    "original44CurrentPinsMatch": true,
+    "checkedCount": 44,
+    "nativeRunSourceCommitUnchanged": "03d665a720de4d1b32f1e0a4818d25a28e48d25d",
+    "newRuntimeApiCoveredByOldSemanticNativeProof": false
+  },
+  "limits": {
+    "browserRun": false,
+    "nativePcmProof": false,
+    "hardwareCpuMeasurement": false,
+    "formal600Run": false,
+    "overallV1Complete": false,
+    "newV4DriverStillInProgress": true
+  },
+  "files": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "9eb40faa9072b4ca4b48ff1824ae1233ff63373e2fceb6a38c605be35a6b0193",
+      "bytes": 153551
+    },
+    {
+      "path": "tests/app/runtime-performance-options.test.ts",
+      "sha256": "28976c82fe10e30562408f380d247caf6ce7f130c75795872d3901733b290694",
+      "bytes": 15096
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.json",
+      "sha256": "9ee1fa9bf5b7b770c99d67d4b3d1fe919a1215843125b30049ecc760db8e4d7f",
+      "bytes": 9883
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.md",
+      "sha256": "151c52b417c1c2c7f674fdf47d9b7cfa93e779e016704e1c80cd81512a75bc9f",
+      "bytes": 5098
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v1-original.test.txt",
+      "sha256": "4556f53f0a24941f9fd474f8a193ae8b4f888fe9545a197f252af8a53e7b40ea",
+      "bytes": 12248
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v2-before-endpoints.test.txt",
+      "sha256": "71a607e753d93c01d72d70ed11b8dd6153eb31a6eb3ab6e929307f8cad992845",
+      "bytes": 12245
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-correction-v2.json",
+      "sha256": "58def2d1f89a95428ddf230e343c49db17c014e0d0993ac6ef03a175c994135d",
+      "bytes": 2389
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-red-r1.tap",
+      "sha256": "601c46524b9b318959abe6ad277f4759989816227c3142a81fa0785390e1018a",
+      "bytes": 23036
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-fixture-v2-red-r1.tap",
+      "sha256": "3d35629c9cfaf7fd727bb51ca513fd0d692849ed1f1af37c95ef2311d4402089",
+      "bytes": 20865
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-endpoints-red-r1.tap",
+      "sha256": "aa6668ecceebadf53304af9ff9de9cf24f25a29ac227ca8d33e54b86329e2bf0",
+      "bytes": 24212
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-green-r1.tap",
+      "sha256": "3570a1a9380321f0c289fb2bde9755dbab3df1f6837f0eb890ed02ade7e4dd6e",
+      "bytes": 6021
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-final-r1.tap",
+      "sha256": "c902a6433c4b99653d13ed80c0369688b1c3068b2965b0d2d28cef0ef73e05ca",
+      "bytes": 6023
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-format-r1.txt",
+      "sha256": "cbc3b5c1d278fafe657e4d267b37f996dd6e9d8e1038c4226e93995fcaab71ae",
+      "bytes": 78
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-lint-r1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-v4-project-typecheck-r1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

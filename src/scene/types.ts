@@ -5,6 +5,26 @@ export type BodyMode = "dynamicGravity" | "dynamicNoGravity" | "fixed" | "kinema
 export type PrimitiveShape = "box" | "sphere" | "capsule";
 export type AcousticRole = "none" | "staticSurface" | "dynamicOccluder" | "dynamicReflector";
 
+export interface ObjectTrajectory {
+  /** 1..63 entries, each relative to the object's positionM. */
+  offsetsM: Vector3[];
+  /** 0.5..20 m/s. */
+  strengthMps: number;
+  /** 0..30 s. */
+  startDelayS: number;
+  faceAlongPath: boolean;
+}
+
+export const TRAJECTORY_LIMITS = {
+  maxOffsets: 63,
+  minStrengthMps: 0.5,
+  maxStrengthMps: 20,
+  defaultStrengthMps: 3,
+  maxStartDelayS: 30,
+  maxDurationS: 30,
+  maxPathsPerTake: 8,
+} as const;
+
 export interface SceneObject {
   id: string;
   shape: PrimitiveShape;
@@ -18,6 +38,7 @@ export interface SceneObject {
   physicsMaterialId: string;
   acousticMaterialId: string;
   acousticRole: AcousticRole;
+  trajectory?: ObjectTrajectory;
 }
 
 export interface SceneSource {
@@ -36,6 +57,18 @@ export interface SceneListener {
   attachment: "independent" | "fpsHead";
 }
 
+export interface SceneZoneBase {
+  id: string;
+  name: string;
+  enabled: boolean;
+  centerM: Vector3;
+  hysteresisM: number;
+}
+
+/** Static authored volume; occupancy uses body centres, not collider/sensor overlap. */
+export type SceneZone = SceneZoneBase &
+  ({ shape: "aabb"; halfExtentsM: Vector3 } | { shape: "sphere"; radiusM: number });
+
 export interface SceneSpec {
   schemaVersion: "1.0.0";
   sceneId: string;
@@ -47,6 +80,8 @@ export interface SceneSpec {
   objects: SceneObject[];
   sources: SceneSource[];
   listener: SceneListener;
+  /** Omitted legacy zones remain omitted through validation, cloning and serialization. */
+  zones?: SceneZone[];
 }
 
 export type SceneOperation =
@@ -58,7 +93,7 @@ export type SceneOperation =
     }
   | { type: "AddObject"; object: SceneObject }
   | { type: "RemoveObject"; objectId: string }
-  | { type: "UpdateObject"; objectId: string; patch: Partial<Omit<SceneObject, "id">> }
+  | { type: "UpdateObject"; objectId: string; patch: UpdateObjectPatch }
   | { type: "SetObjectMode"; objectId: string; mode: BodyMode }
   | {
       type: "SetPhysics";
@@ -81,6 +116,11 @@ export type SceneOperation =
   | { type: "RemoveSource"; sourceId: string }
   | { type: "SetListener"; listener: SceneListener }
   | { type: "SetGravity"; gravityMps2: Vector3 }
+  | { type: "AddZone"; zone: SceneZone }
+  | { type: "UpdateZone"; zone: SceneZone }
+  | { type: "RemoveZone"; zoneId: string }
+  /** null restores the absence of the optional property, unlike an explicitly authored empty array. */
+  | { type: "SetZones"; zones: SceneZone[] | null }
   | {
       type: "RestoreObject";
       object: SceneObject;
@@ -88,6 +128,11 @@ export type SceneOperation =
       sources: { source: SceneSource; index: number }[];
     }
   | { type: "RestoreSource"; source: SceneSource; index: number };
+
+/** `trajectory: null` deletes the key. */
+export type UpdateObjectPatch = Partial<Omit<SceneObject, "id" | "trajectory">> & {
+  trajectory?: ObjectTrajectory | null;
+};
 
 export interface SceneCommand {
   expectedSceneRevision: number;

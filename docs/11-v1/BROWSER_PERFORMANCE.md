@@ -2,7 +2,7 @@
 
 ## R17 C4：完整600秒資料，性能與持續負載未通過
 
-[實際收據](archive://14da3d7fdcdb5dc73d69b6420238689e22f3846e/f84b1a3ece40bc2fda71efb459380829a42c37f1)對應產品Git `cde1e2b0ed7c57228bfa64b01c262b6eeab3cba1`，程序exit0且來源／bundle／執行檔一致。UI raw600051.100ms、19498frames；trace marker600051.182ms，5201280events，96816437bytes gzip，原生資格與collection membership通過、無記錄到trace loss。這只確認資料可判讀；原生證據的歷史`formalQualification: NOT_APPROVED`欄位保留，不改寫成性能批准。
+[實際收據](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/f84b1a3ece40bc2fda71efb459380829a42c37f1)對應產品Git `cde1e2b0ed7c57228bfa64b01c262b6eeab3cba1`，程序exit0且來源／bundle／執行檔一致。UI raw600051.100ms、19498frames；trace marker600051.182ms，5201280events，96816437bytes gzip，原生資格與collection membership通過、無記錄到trace loss。這只確認資料可判讀；原生證據的歷史`formalQualification: NOT_APPROVED`欄位保留，不改寫成性能批准。
 
 Physics3000樣本負載有效，native step p95約4.8ms，原2ms目標FAIL。Default／stress worker p95約46.3／27.1ms；接收入口至實際native consumers的觀測delivery約12.4／28.7ms，原目標FAIL。此區間仍不包含browser pre-handler／OS派送及LabRuntime專有bookkeeping，完整delivery維持UNVERIFIED。Default／stress deadline misses130／226，stress measured path drops170；不以平均Hz或最大256paths宣稱持續負載通過。
 

@@ -1,0 +1,171 @@
+{
+  "id": "RLAB-TASK-0022",
+  "title": "R18 真人回報工程修補：第一人稱、場景直接操作與預設音量",
+  "description": "依 docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json 的 USER-R18-FPS-01、USER-R18-UI-01、USER-R18-AUDIO-01，在不放寬 V1-PHY-03／05／06、V1-UX-03、V1-BLD-01 與既有規格的前提下修補可重現的工程缺陷，保存可重跑證據並交真人重測。不取代 RLAB-TASK-0012／0020 的原 criteria；材質反射、第9節以後與裝置聽測仍屬原任務範圍。",
+  "status": "BLOCKED",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "USER-R18-FPS-01：真實瀏覽器重現第一人稱進入後不能移動；修補後進入點擊即可移動與轉向，Esc／blur 不自動恢復、取得鎖定的點擊不投擲；新回歸先 RED 後 GREEN",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+          "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+          "result": "FPS-01 reproduced on a5f2a90 (ready, tick 0, input dropped); after 5e56260 entry click runs, WASD/look move, Enter/click resume, Esc+click relock, 0 OnThrow; headless CDP input, not human"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-ui.txt",
+          "sha256": "f61875ea87fc65da05c69abfdadcd32248c1dfc6ae538457d3cefa5a3a37316f",
+          "result": "4 R18 hook regressions RED on the original hook"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-host.txt",
+          "sha256": "03d83991ff8b14c281872d4156636d4086539a16a47a3e460f75439e8359b887",
+          "result": "host safe-pause lock regression RED on the original host"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-ui-review.txt",
+          "sha256": "c1c6c2d0f3140e8d0c5278d91e27751652af2b6759cef0dd5e30d625eee786c4",
+          "result": "review round 1 FPS regressions RED before a333d86"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-runtime-run.txt",
+          "sha256": "cab782d411479690159a7a87f109aebffe5cd8a50384a098597bbdec33f5d8ec",
+          "result": "stale Resume after exit/inputBlur RED before a333d86"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-pending-resume.txt",
+          "sha256": "ed673c73b3bf492dea59d689280e17b3173f9adec53c0174a401d3f2f7e6de3c",
+          "result": "pending no-lock Resume handover RED before 4bcda82 (13 pass / 2 fail)"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "USER-R18-UI-01：編輯器可直接點選、移動、旋轉、縮放物件；一次拖曳只形成一個 revision 與一筆 Undo，Esc 取消不提交，運算中不硬改",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+          "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+          "result": "UI-01: gizmo move/rotate/scale; one patchObject per drag; Esc/pointercancel/lost capture/blur cancel; no overlap across mode change or remount; selection ignored while pending; ui-refined-v2 35/35 on 5e56260"
+        },
+        {
+          "path": "tests/browser/gizmo-lifecycle.spec.ts",
+          "sha256": "1f7d8f3381680a5b13b6fc15f55d0ed42939771d0ac2cacb956b10072fa96d64",
+          "result": "6 browser lifecycle regressions, all pass on 5e56260"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-gizmo-review2.txt",
+          "sha256": "22b98f140d9140cefcc2820335cb8195bd759b68aaceac940c2a62d008f17e6e",
+          "result": "mode change and post-dispose cancel RED before 4bcda82"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-gizmo-remount.txt",
+          "sha256": "68a12154fc3f96e9d8ef5878578c303fcd2407432bbabac312cef2971e53ab34",
+          "result": "remount during pending commit RED before 4de5698"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/red-gizmo-selection.txt",
+          "sha256": "1e612fd7103ca778f9fd9353616f3d9cfe257c3a9a5fce7dbbd5e6fcafa69b41",
+          "result": "selection change during pending commit RED before 5e56260"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "USER-R18-AUDIO-01：修補前後以同一數位量測方法記錄預設場景輸出，保留靜音／上限／平滑與 limiter；不推估裝置或 SPL",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+          "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+          "result": "Same AnalyserNode method: default peak -51.4 -> -28.7 dBFS; mute silent; -40 dB rms -83.1; stress +3.05 dBFS/6061 full-scale samples -> -0.31 dBFS/0 after the safety ceiling; digital dBFS only, no device/SPL"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/probes/measure-volume.mjs",
+          "sha256": "9c3ac72e27a215e2573d6a54359a212bef5b60c87398300e6b4b0a7629b0c587",
+          "result": "default-scene digital level probe"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/probes/measure-limiter-stress.mjs",
+          "sha256": "3c2c47506b7d076df64e1b6d5c5609111ac1d983e0b11666e6e12825e9a0d9a4",
+          "result": "extreme-gain stress probe"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "型別、lint、格式、runtime、build、授權、英文及現行 browser 入口通過；與基準相同的舊入口失敗另以基準重跑保留，不刪除或改寫",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/npm-run-check.txt",
+          "sha256": "20ea9b124f3177f8b42d6734f9f09a1995dd8284ff4791c7da30f1b4e79820d9",
+          "result": "npm run check exit 0 at 5e56260: research/integration 669, agents 82, prompts 12, wiki 54, design 14, sound-behaviors 34, datasets 18, runtime 1019, tsc, eslint, prettier, build, licenses and English PASS (309/309, 0 stale)"
+        },
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+          "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+          "result": "Current browser gates at 5e56260: ui-refined-v2 35, pointerlock-race 2, linked v2 8, physics 2, storage 5, product v3 4 with source/bundle provenance; legacy ui.spec 8 and product 4 failures identical on baseline a5f2a90, kept"
+        }
+      ]
+    },
+    {
+      "id": "AC-05",
+      "text": "獨立對抗式審查結果已處理或明列限制",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+          "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+          "result": "Four Codex adversarial review rounds (gpt-6.1-sol, xhigh, read-only): all confirmed findings fixed with RED/GREEN regressions; round 4 selection fix verified by regression and full gates, not re-reviewed; never-settling commit promise recorded as a hypothetical limitation"
+        },
+        {
+          "path": "docs/KNOWN_LIMITATIONS.md",
+          "sha256": "8fa6ea68e59ce4580a9484ba9388047297cad6f9b6e19c9d3b5e2fa95116b648",
+          "result": "R19 current limitations including the residual hypothetical gizmo limit"
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "text": "使用者依 R19 指引在正常100%比例實測第一人稱、直接操作與預設音量並回報",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "docs/11-v1/USER_TEST_FEEDBACK_20261029-r18.json",
+    "src/ui/viewport/useFPSInput.ts",
+    "src/interaction/interaction-host.ts",
+    "src/ui/viewport/TransformGizmo.tsx",
+    "src/audio/monitor-level.ts",
+    "docs/11-v1/HUMAN_TEST_GUIDE.md",
+    "src/audio/output-safety.ts",
+    "tests/browser/gizmo-lifecycle.spec.ts",
+    "artifacts/v1/r19-r18-repair-20261030/verification.json"
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/v1/r19-r18-repair-20261030/verification.json",
+      "sha256": "3c860729267658edb03e86665c2ca64efff27c93425e0a84662b97632ce56bbe",
+      "result": "R19 engineering repair record; final product commit 5e56260; all current browser gates pass"
+    },
+    {
+      "path": "artifacts/v1/r19-r18-repair-20261030/npm-run-check.txt",
+      "sha256": "20ea9b124f3177f8b42d6734f9f09a1995dd8284ff4791c7da30f1b4e79820d9",
+      "result": "npm run check exit 0 at 5e56260"
+    }
+  ],
+  "created_at": "2026-10-29T19:50:00.000Z",
+  "updated_at": "2026-10-29T21:42:01.212Z",
+  "blockers": [
+    "等待使用者依 docs/11-v1/HUMAN_TEST_GUIDE.md 在正常100%比例真人重測第一人稱、直接操作與預設音量（AC-06）；材質反射、第9節以後與裝置聽測仍屬原任務範圍"
+  ],
+  "last_summary": "R19 工程修補完成（產品截點 5e56260）：AC-01～05 已驗證（headless 自動證據、npm run check 通過、四輪 Codex 審查已處理）；只剩 AC-06 真人 R19 重測，因此 BLOCKED。"
+}

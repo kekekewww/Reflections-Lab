@@ -69,7 +69,7 @@ async function openWithDelayedListener(page: Page) {
   });
   await page.goto("/");
   await expect(page.getByRole("button", { name: "開始運算", exact: true })).toBeVisible();
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
   await page.evaluate(() => {
     const runtime = window.__reflectionLab;
     if (!runtime || !window.__pointerLockRace) throw new Error("E2E runtime unavailable");
@@ -116,7 +116,7 @@ test.afterEach(async ({ page }, info) => {
   });
 });
 
-test("first Enter reconciles actual native ownership before delayed notification and late delivery preserves held movement", async ({
+test("entry reconciles actual native ownership before delayed notification and late delivery preserves held movement", async ({
   page,
 }) => {
   await openWithDelayedListener(page);
@@ -131,9 +131,8 @@ test("first Enter reconciles actual native ownership before delayed notification
   await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
   await expect.poll(() => page.evaluate(() => window.__pointerLockRace!.queued())).toBe(1);
-  expect(await confirmationCount(page)).toBe(0);
-  expect((await snapshot(page)).simulationState).not.toBe("running");
-  await page.keyboard.press("Enter");
+  // R18: the completed entry observes the actual native owner while its notification
+  // is still held, confirms it once and starts controls without a second Enter.
   await expect.poll(async () => (await snapshot(page)).simulationState).toBe("running");
   expect(await confirmationCount(page)).toBe(1);
   const start = await snapshot(page);
@@ -183,19 +182,24 @@ test("Enter without native ownership and modified Enter during delayed notificat
   page,
 }) => {
   await openWithDelayedListener(page);
-  await page.locator("canvas").focus();
+  await page.locator(".viewport-canvas-wrap canvas").focus();
   await page.keyboard.press("Enter");
   expect((await snapshot(page)).simulationState).not.toBe("running");
   expect(await confirmationCount(page)).toBe(0);
   await page.getByRole("button", { name: "進入第一人稱", exact: true }).click();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement?.tagName)).toBe("CANVAS");
   await expect.poll(() => page.evaluate(() => window.__pointerLockRace!.queued())).toBe(1);
+  // The entry click starts controls once (R18); pause with Enter while the native
+  // notification is still held, then a modified Enter must not resume.
+  await expect.poll(async () => (await snapshot(page)).simulationState).toBe("running");
+  await page.keyboard.press("Enter");
+  await expect.poll(async () => (await snapshot(page)).simulationState).toBe("paused");
   await page.keyboard.press("Control+Enter");
   expect((await snapshot(page)).simulationState).not.toBe("running");
-  expect(await confirmationCount(page)).toBe(0);
+  expect(await confirmationCount(page)).toBe(1);
   await page.keyboard.press("Tab");
   await expect.poll(() => page.evaluate(() => document.pointerLockElement === null)).toBe(true);
   await page.evaluate(() => window.__pointerLockRace!.flush());
   expect((await snapshot(page)).simulationState).not.toBe("running");
-  expect(await confirmationCount(page)).toBe(0);
+  expect(await confirmationCount(page)).toBe(1);
 });

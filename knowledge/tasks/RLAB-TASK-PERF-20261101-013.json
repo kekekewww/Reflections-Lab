@@ -1,0 +1,102 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-013",
+  "title": "選用雲端長job與資源／成本admission研究",
+  "description": "client-first不需每user一台simulation server；長render尚無backend。雲端需獨立auth／tenant／durable budget與跨backend證據。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P2",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-011"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "另行授權、費用上限與source/licensing／tenant條件明確；未授權前不部署、不開服務、不發paid API或上傳音訊。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "global/tenant admission、durable reservation、uncertain attempts、cancel/commit競爭與private refs負面驗證完整。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "價格/region/quota/checked date與working inputs可重算；sample/backend限制及全部輸出核驗後才completed，不改本機性能FAIL。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/render-contract.ts",
+    "server",
+    "docs/12-architecture-review/cloud-cost-scenarios.json",
+    "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+    "docs/02-architecture/adr/015-client-first-and-render-contract.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+      "sha256": "01271dbc0e685b1aa9f0935ebbd21e337dfac1e9ce556347b1f115cdfefd3443",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/02-architecture/adr/015-client-first-and-render-contract.md",
+      "sha256": "53c8d8e329513fc3cb0facc75aa6ce8b835a7b1a50279a2c3cede7d13b91f494",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.079Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "client-first不需每user一台simulation server；長render尚無backend。雲端需獨立auth／tenant／durable budget與跨backend證據。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+      "locator": "CLOUD-01～05",
+      "classification": "RESEARCH; NOT DEPLOYED",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "01271dbc0e685b1aa9f0935ebbd21e337dfac1e9ce556347b1f115cdfefd3443"
+    },
+    {
+      "path": "docs/02-architecture/adr/015-client-first-and-render-contract.md",
+      "locator": "client-first與types-only seam",
+      "classification": "ACCEPTED ADR",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "53c8d8e329513fc3cb0facc75aa6ce8b835a7b1a50279a2c3cede7d13b91f494"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/render-contract.ts",
+    "server",
+    "docs/12-architecture-review/cloud-cost-scenarios.json"
+  ],
+  "proposed_solution": "僅在011有可驗renderer且另行授權後，以pinned descriptors/private refs、有限global/tenant queue、idempotent lease/attempt及durable cost reserve研究可替換job backend。",
+  "alternatives": [
+    "維持local短render並明示保持頁面開啟限制。",
+    "只保存job descriptor供重試，不上傳。",
+    "現有loopback server不能直接當公開服務。"
+  ],
+  "expected_benefit": "可能支援自願選擇的長輸出；不能改善本機interactive音訊或保證萬人容量。",
+  "complexity": "很高；security、billing、retry uncertainty與輸出核驗。",
+  "performance_impact": "upload/queue/startup/compute/commit/download分別量；attempt lifetime及RAM reservation納成本。",
+  "audio_quality_impact": "backend差異與HRTF/phase/sample對齊獨立驗；不宣稱與browser自動等價。",
+  "latency_impact": "端到端完成延遲含queue／network；不可當低延遲互動方案。",
+  "compatibility_regression_risk": "未授權上傳／費用、重試重複花費、tenant洩漏、uncertain attempts及partial outputs。",
+  "benchmark_plan": "離線cost replay／queue模拟先行；另授權後才小限額job auth、quota、cancel/retry/duplicate/worker loss、output hash及capability。",
+  "rollback_plan": "停新job admission，取消或保留uncertain attempts與reserve ledger，核對已commit輸出後回local-only；不刪tenant成果、不用重啟洗掉可能費用。",
+  "priority_rationale": "選用P2且依賴renderer與新增授權；有明確需求與成本證據後才做，不為本地stutter先建cloud。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Cloud backend/auth/storage features differ; no provider or plan is enabled here.",
+  "regression_risk": "Retries/cancellation may duplicate output or spend; preserve durable job/attempt identity.",
+  "candidate_commit": null
+}

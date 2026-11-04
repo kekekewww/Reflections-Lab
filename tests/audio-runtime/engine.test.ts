@@ -199,6 +199,23 @@ test("voice admission rejects lower priority then steals only the lowest priorit
   engine.dispose();
 });
 
+test("pause and resume without an enabled renderer toggle only the logical transport", async () => {
+  const context = new FakeAudioContext();
+  const engine = new AudioEngine({ context: context.asContext() });
+  try {
+    await engine.pause(0);
+    assert.equal(engine.isPaused, true);
+    assert.equal(await engine.resume(1 / 60), false, "no native renderer was resumed");
+    assert.equal(engine.isPaused, false, "a later Run must not stay logically paused");
+    assert.equal(engine.playVoice(voice(), frame()).reason, "AUDIO_NOT_ENABLED");
+    assert.equal(context.sources().length, 0);
+    await engine.enable(1 / 60);
+    assert.equal(engine.playVoice(voice(), frame()).accepted, true);
+  } finally {
+    engine.dispose();
+  }
+});
+
 test("stale and regressing acoustic frames cannot change an active route", async () => {
   const { context, engine } = await setup();
   engine.playVoice(voice(), frame({ poseTick: 10 }));

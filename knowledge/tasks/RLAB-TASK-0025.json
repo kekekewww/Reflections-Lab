@@ -1,0 +1,232 @@
+{
+  "id": "RLAB-TASK-0025",
+  "title": "Meta既有工具UI閉環核心",
+  "description": "本輪使用者已授權的有限核心實作；精確條件見 docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md。共用既有task系統，不等於全部14項優化或完整V1驗收。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "產品UI可依真Host完成提案/preview/apply/undo及有限run/capture/analyze/compare閉環，離線provider與live身份分開。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta.md",
+          "sha256": "cd85b0e37287f0a69fa64d48cbd9c639faea561f57cd7c005726c568f16a99a6",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md",
+          "sha256": "8dec2d859b512bd87cc51ddedfd16920f7173600c5cea7a4132accd5a4d71874",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-evidence/UI_WORKFLOW_RECEIPT.json",
+          "sha256": "52463bb7198003ecf544376b09dec2c590423788117e000715812dbf4376127b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md",
+          "sha256": "2b46c5b27ef7d440cef7d92ca6e127b30a1f2651e2cb77389e331bb877e704ae",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+          "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+          "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+          "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+          "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "schema/domain/revision/capability/budget、取消及錯誤流程有效，至少一個成功和一個拒絕UI/Host基本證據。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta.md",
+          "sha256": "cd85b0e37287f0a69fa64d48cbd9c639faea561f57cd7c005726c568f16a99a6",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md",
+          "sha256": "8dec2d859b512bd87cc51ddedfd16920f7173600c5cea7a4132accd5a4d71874",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-evidence/UI_WORKFLOW_RECEIPT.json",
+          "sha256": "52463bb7198003ecf544376b09dec2c590423788117e000715812dbf4376127b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md",
+          "sha256": "2b46c5b27ef7d440cef7d92ca6e127b30a1f2651e2cb77389e331bb877e704ae",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+          "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+          "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+          "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+          "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "不捏造結果或artifact、不新增付費請求；較廣Task0007/0014與Meta live限制保留，Claude後驗證入口可重現。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta.md",
+          "sha256": "cd85b0e37287f0a69fa64d48cbd9c639faea561f57cd7c005726c568f16a99a6",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md",
+          "sha256": "8dec2d859b512bd87cc51ddedfd16920f7173600c5cea7a4132accd5a4d71874",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/04-meta-ui-evidence/UI_WORKFLOW_RECEIPT.json",
+          "sha256": "52463bb7198003ecf544376b09dec2c590423788117e000715812dbf4376127b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md",
+          "sha256": "2b46c5b27ef7d440cef7d92ca6e127b30a1f2651e2cb77389e331bb877e704ae",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+          "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+          "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+          "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+          "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/14-core-pipeline/REQUEST_20261102.json",
+    "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+    "docs/14-core-pipeline/STAGES.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+      "sha256": "c407c71c78daccae3e1d1c84d076d35026aa727ad403b2462f5f724e9c6d6346",
+      "result": "Authorized implementation contract only; no completed implementation or test inferred"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/04-meta.md",
+      "sha256": "cd85b0e37287f0a69fa64d48cbd9c639faea561f57cd7c005726c568f16a99a6",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md",
+      "sha256": "8dec2d859b512bd87cc51ddedfd16920f7173600c5cea7a4132accd5a4d71874",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/04-meta-ui-evidence/UI_WORKFLOW_RECEIPT.json",
+      "sha256": "52463bb7198003ecf544376b09dec2c590423788117e000715812dbf4376127b",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md",
+      "sha256": "2b46c5b27ef7d440cef7d92ca6e127b30a1f2651e2cb77389e331bb877e704ae",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+      "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+      "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+      "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+      "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+      "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    }
+  ],
+  "created_at": "2026-11-02T05:04:33.815Z",
+  "updated_at": "2026-11-02T15:09:53.737Z",
+  "related_tasks": [
+    "RLAB-TASK-0023"
+  ],
+  "coordination": "Per-file ownership under docs/14-core-pipeline/STAGES.md; runtime and UI integration owned by root. Parallel independent development, integration validates runtime prerequisites.",
+  "blockers": [],
+  "last_summary": "原3criteria有限DONE：真產品UI提案/preview/apply/undo/run/capture/analyze/compare及取消/拒絕、49三案PASS2GET0POST；offline/live/Task0007/0014與Claude下一階段分開"
+}

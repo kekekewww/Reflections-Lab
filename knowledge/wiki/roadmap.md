@@ -4,7 +4,7 @@ title: 正式路線導覽
 type: roadmap
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T05:38:39.565Z
+updated_at: 2026-11-01T08:05:14.686Z
 sources:
   - SB-SRC-0007
   - SB-SRC-0010
@@ -12,9 +12,11 @@ sources:
   - SB-SRC-0001
   - V1-SRC-0010
   - AR-WIKI-bdabc250-7903063a
+  - PERF-SRC-ROADMAP-20261101
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0021
+  - RLAB-TASK-PERF-20261101-REVIEW
 related_decisions: []
 supersedes: []
 tags:
@@ -36,3 +38,7 @@ Task0011 M0已DONE，0006／0012／0013／0014沿原criteria收證；0016整體�
 [正式Roadmap](../../docs/ROADMAP.md)新增P0/P1/P2排序，原十日表保留歷史。P0維持現有demo並處理Task0020錄製熱路徑／性能、100%真人FPS/IME與裝置聽測；200%已移除。P1逐一做producer能力投影、Motion registry與短take local mix/stems；P2再做高階聲學/ADM/cloud長render。下一個Codex工程切片為有界record evaluation lane，原criteria不變。
 
 Task0021是本次獨立研究/整合/公開工作。原history含禁止產物，使用者已授權保留全部本地history、另建乾淨公開snapshot；需exact manifest、真small evidence closure、原始tests與完整安全scan，不把缺證據當PASS。
+
+## 2026-11-01 效能與緩衝研究
+
+[獨立研究入口](research/performance-buffer-review-20261101.md)與[非約束優化Roadmap](../../docs/13-performance-review/OPTIMIZATION_ROADMAP.md)已保存。14項未來優化保持BACKLOG、七份提案PROPOSED；未啟動產品優化、未改MVP或正式驗收，原FAIL保留。新研究不自動恢復其他暫停產品goal。

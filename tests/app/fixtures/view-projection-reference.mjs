@@ -237,7 +237,8 @@ export function originalPublish() {
       lateReverb: { ...this.reverbSettings },
       state: !audio ? "blocked" : audio.lastError ? "error" : audio.muted ? "muted" : "audible",
       muted: audio?.muted ?? true,
-      gainLinear: audio?.monitorGain ?? 0.18,
+      // R18 (2026-10-30): mirrors the changed product default monitor gain (was 0.18).
+      gainLinear: audio?.monitorGain ?? 1,
       mode: audio?.monitorMode ?? "simulated",
       activeVoices: audio?.activeVoices ?? 0,
       voiceLimit: audio?.budget.maxVoices ?? 16,

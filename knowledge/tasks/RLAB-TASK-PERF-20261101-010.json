@@ -1,0 +1,98 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-010",
+  "title": "選用custom PCM／AudioWorklet adapter可行性與等價研究",
+  "description": "原生graph不提供產品自訂callback控制；換Worklet可新增deadline、ring與native HRTF替代風險，尚無必要性證據。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P2",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-003",
+    "RLAB-TASK-PERF-20261101-004"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "啟動前提交native不足證據及能力範圍；callback不等physics/AI/network/storage、不做無界配置/log，實際block測試存在。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "ring/transfer ownership、generation、overflow/underflow與hold/fade、processor crash及native fallback可重現。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "sample/phase/tail、延遲與deadline證據分列，未等價能力標限制；不把Worklet列為011必要前置。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/engine.ts",
+    "src/audio/routes.ts",
+    "src/audio/render-contract.ts",
+    "docs/02-architecture/AUDIO_RUNTIME.md",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:34:22.906Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "原生graph不提供產品自訂callback控制；換Worklet可新增deadline、ring與native HRTF替代風險，尚無必要性證據。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "locator": "§3、§8與native能力邊界",
+      "classification": "CONFIRMED BY CODE at05d40; PROPOSED backend",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/engine.ts",
+    "src/audio/routes.ts",
+    "src/audio/render-contract.ts",
+    "docs/02-architecture/AUDIO_RUNTIME.md"
+  ],
+  "proposed_solution": "僅native方案不足時，以可選adapter驗有限PCM/ring或必要DSP；callback按實際block length、預配置、nonblocking，沒有輸入採明示hold/fade policy，native fallback保留。",
+  "alternatives": [
+    "繼續native graph及control去重。",
+    "只把非callback compute移Worker。",
+    "SAB／customHRTF不是自動必需，另過capability及license gate。"
+  ],
+  "expected_benefit": "可能提高部分DSP與buffer可觀測／控制能力；不保證比native快或音質更佳。",
+  "complexity": "很高；DSP、block邊界、backend等價與相容性。",
+  "performance_impact": "actual block deadline p95/p99/max、underruns、ring fill、CPU及copy成本，不能從128-frame常見值推定。",
+  "audio_quality_impact": "delay/gain/phase/HRTF/IR/limiter及tails需sample oracle；不同backend能力誠實標approximation。",
+  "latency_impact": "ring及lookahead添加的延遲分開，d/c只算一次。",
+  "compatibility_regression_risk": "callback配置／Atomics等待、半寫frame、cross-origin isolation、processor crash或browser不支援。",
+  "benchmark_plan": "impulse／sine／variable block、producer stalls、wrap/overflow/underflow、pause/resume/seek、context interruption、native reference及真device。",
+  "rollback_plan": "在明示fade boundary停adapter，drain／invalidate ring，關閉processor／worker並恢復native graph與相同可恢復logical cursor；無法等價續播時回報interrupted。",
+  "priority_rationale": "可逆adapter仍有高成本與品質風險，故選用P2而非所有優化前置。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Worklet/WASM/block lengths and native spatial DSP equivalence differ.",
+  "regression_risk": "Custom DSP may change energy, HRTF, limiter, delay or phase; preserve numerical/audio references.",
+  "candidate_commit": null,
+  "provenance_corrections": [
+    {
+      "at": "2026-11-01T08:34:22.906Z",
+      "previousCommit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "reason": "Rebind authored review evidence after LF normalization only; task remains unclaimed BACKLOG, all acceptance false"
+    }
+  ]
+}

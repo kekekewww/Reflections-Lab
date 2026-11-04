@@ -58,23 +58,32 @@ async function rig(
   const world = await PhysicsWorld.create(scene);
   let commitCount = 0;
   let beforeCommit: (() => Promise<void>) | null = null;
-  const commit = async (operations: SceneOperation[]) => {
+  const commit = async (operations: SceneOperation[], guard?: () => void, policy?: "placement") => {
+    const expected = scene.sceneRevision;
     if (beforeCommit) await beforeCommit();
+    assert.equal(scene.sceneRevision, expected);
+    guard?.();
     const candidate = applyCommand(scene, {
-      expectedSceneRevision: scene.sceneRevision,
+      expectedSceneRevision: expected,
       operations,
     }).scene;
+    const running = !world.paused;
+    if (policy === "placement") world.pause();
     world.applyScene(candidate);
+    if (policy === "placement" && running) world.resume();
     scene = candidate;
     commitCount++;
   };
   const pauses: string[] = [];
+  const fades: string[] = [];
   const host = new InteractionHost({
     getWorld: () => world,
     getScene: () => scene,
     commitSceneOperations: commit,
     onPause: (reason: string) => pauses.push(reason),
-    ...(options.confirmGeometry ? { confirmGeometry: options.confirmGeometry } : {}),
+    onAudioFade: (reason) => fades.push(reason),
+    createBuildDraft: () => object(`preview-${commitCount}`, { mode: "dynamicGravity" }),
+    confirmGeometry: options.confirmGeometry ?? (() => true),
   });
   const start = () => {
     host.enterFPS({ pointerLocked: true });
@@ -98,6 +107,7 @@ async function rig(
     getScene: () => scene,
     getCommitCount: () => commitCount,
     pauses,
+    fades,
     dispose: () => {
       host.dispose();
       world.dispose();
@@ -106,6 +116,19 @@ async function rig(
 }
 
 const norm = (v: readonly number[]) => Math.hypot(...v);
+test("review 9: non-placement commit rig preserves the running-world PAUSE_REQUIRED guard", async () => {
+  const r = await rig();
+  try {
+    r.start();
+    await assert.rejects(r.commit([{ type: "SetObjectMode", objectId: "ball", mode: "fixed" }]), {
+      code: "PAUSE_REQUIRED",
+    });
+    assert.equal(r.world.paused, false);
+    assert.equal(r.getScene().sceneRevision, 0);
+  } finally {
+    r.dispose();
+  }
+});
 const close = (a: number, b: number, tol = 1e-5) =>
   assert.ok(Math.abs(a - b) < tol, `${a} differs from ${b}`);
 
@@ -182,7 +205,7 @@ test("ordinary pause preserves actual lock and Held while clearing controls; exp
   }
 });
 
-test("ordinary pause preserves alternative input and the exact uncommitted ghost without activating it", async () => {
+test("ordinary pause preserves alternative input and cancels preview without activating it", async () => {
   const r = await rig([floor()]);
   try {
     r.host.enterFPS();
@@ -190,16 +213,15 @@ test("ordinary pause preserves alternative input and the exact uncommitted ghost
     assert.equal(r.host.resume(), true);
     r.host.beginBuild(object("paused-preview"));
     assert.equal(r.host.setGhostPose([1, 0.21, 1]), true);
-    const ghost = r.host.snapshot().ghost;
     r.host.pausePreservingInputMode("alternative button pause");
     const tick = r.world.tick;
     assert.equal(r.host.snapshot().alternativeInput, true);
     assert.equal(r.host.snapshot().pointerLocked, false);
-    assert.deepEqual(r.host.snapshot().ghost, ghost);
+    assert.equal(r.host.snapshot().ghost, null);
     r.step(10);
     assert.equal(r.world.tick, tick);
     assert.equal(r.host.resume(), true);
-    assert.deepEqual(r.host.snapshot().ghost, ghost);
+    assert.equal(r.host.snapshot().ghost, null);
     assert.equal(r.getCommitCount(), 0);
     assert.equal(
       r.world.snapshot().poses.some((pose) => pose.objectId === "paused-preview"),
@@ -346,13 +368,14 @@ test("first blocking wall prevents selecting and grabbing a dynamic body behind 
   }
 });
 
-test("Held freeze preserves the same body; resume is explicit and build switching is rejected", async () => {
+test("Held freeze preserves the same body; resume is explicit and placement preview is rejected", async () => {
   const r = await rig();
   try {
     r.start();
     assert.equal(r.host.grab(), true);
     const generation = r.world.getPose("ball").generation;
-    assert.equal(r.host.setBuild(true), false);
+    assert.equal(r.host.startPreview(), false);
+    assert.match(r.host.snapshot().notice ?? "", /釋放/);
     r.host.suspend("workspace-change");
     const before = r.world.snapshot();
     r.step(8);
@@ -413,28 +436,39 @@ test("resume rejects a saved Held generation after collider geometry was rebuilt
   }
 });
 
-test("Build commits one disabled fixed staged body and requires matching geometry acknowledgement before enable", async () => {
-  const r = await rig([floor()]);
+test("placement acknowledges a data-only staged draft then atomically enables the desired mode", async () => {
+  let r!: Awaited<ReturnType<typeof rig>>;
+  r = await rig([floor()], {
+    confirmGeometry: (id, revision) => {
+      assert.equal(id, "placed");
+      assert.equal(revision, r.getScene().sceneRevision + 1);
+      assert.equal(
+        r.getScene().objects.some((o) => o.id === id),
+        false,
+      );
+      assert.equal(
+        r.world.snapshot().poses.some((p) => p.objectId === id),
+        false,
+        "no body or collider before ack",
+      );
+      assert.equal(r.host.snapshot().staged?.geometryAcknowledged, false);
+      return true;
+    },
+  });
   try {
     r.start();
-    assert.equal(r.host.setBuild(true), true);
-    r.host.beginBuild(object("placed", { positionM: [1, 0.21, 1] }));
+    r.host.beginBuild(object("placed"));
     r.host.setGhostPose([1, 0.21, 1]);
-    assert.equal(r.host.snapshot().ghost?.valid, true);
     assert.equal(await r.host.place(), true);
-    assert.equal(r.world.paused, true);
+    assert.equal(r.world.paused, false);
     assert.equal(r.getCommitCount(), 1);
-    assert.equal(r.getScene().objects.find((o) => o.id === "placed")?.mode, "fixed");
-    assert.equal(r.world.getPose("placed").enabled, false);
-    r.host.setAlternativeInput(true);
-    assert.equal(r.host.resume(), false, "unacknowledged staged geometry must keep time paused");
-    assert.equal(await r.host.enableStaged(), false);
-    r.host.acknowledgeStaged("placed", r.getScene().sceneRevision);
-    assert.equal(r.host.resume(), false, "acknowledgement still requires explicit Enable");
-    assert.equal(await r.host.enableStaged(), true);
     assert.equal(r.getScene().objects.find((o) => o.id === "placed")?.mode, "dynamicNoGravity");
     assert.equal(r.world.getPose("placed").enabled, true);
-    assert.equal(r.world.paused, true, "enable must not silently resume the simulation");
+    assert.equal(r.host.snapshot().staged, null);
+    assert.equal(r.host.snapshot().ghost, null);
+    assert.deepEqual(r.pauses, []);
+    assert.deepEqual(r.fades, []);
+    assert.equal(r.host.resume(), true);
   } finally {
     r.dispose();
   }
@@ -452,7 +486,7 @@ test("invalid player-overlapping ghost cannot mutate the scene, and cancel affec
     assert.equal(r.getCommitCount(), 0);
     assert.equal(r.getScene().objects.length, 1);
     r.host.suspend("blur");
-    assert.ok(r.host.snapshot().ghost);
+    assert.equal(r.host.snapshot().ghost, null);
     r.host.cancelPreview();
     assert.equal(r.host.snapshot().ghost, null);
     assert.equal(r.getScene().objects.length, 1);
@@ -461,87 +495,65 @@ test("invalid player-overlapping ghost cannot mutate the scene, and cancel affec
   }
 });
 
-test("pending placement rejects duplicate input; stale geometry acknowledgement cannot enable a staged body", async () => {
-  const r = await rig([floor()]);
-  let release!: () => void;
-  const barrier = new Promise<void>((resolve) => {
+test("pending placement deduplicates input and rejects a revision changed during acknowledgement", async () => {
+  let release!: (ack: boolean) => void;
+  const ack = new Promise<boolean>((resolve) => {
     release = resolve;
   });
+  const r = await rig([floor()], { confirmGeometry: () => ack });
   try {
     r.start();
-    r.host.setBuild(true);
     r.host.beginBuild(object("pending"));
     r.host.setGhostPose([1, 0.21, 1]);
-    r.setCommitBarrier(() => barrier);
     const first = r.host.place();
     assert.equal(r.host.snapshot().ghost?.stage, "pending");
     assert.equal(await r.host.place(), false);
     assert.equal(r.getCommitCount(), 0);
-    release();
-    assert.equal(await first, true);
+    r.world.pause();
+    await r.commit([{ type: "AddObject", object: object("other", { positionM: [-2, 1, 0] }) }]);
+    r.world.resume();
+    release(true);
+    assert.equal(await first, false);
     assert.equal(r.getCommitCount(), 1);
-    r.host.acknowledgeStaged("pending", r.getScene().sceneRevision - 1);
-    assert.equal(await r.host.enableStaged(), false);
-    assert.equal(r.world.getPose("pending").enabled, false);
+    assert.equal(
+      r.getScene().objects.some((o) => o.id === "pending"),
+      false,
+    );
+    assert.equal(r.host.snapshot().staged, null);
+    assert.equal(r.host.resume(), true);
   } finally {
-    release();
+    release(false);
     r.dispose();
   }
 });
 
-test("pending placement cannot be canceled halfway; a completed staged cancel removes exactly one disabled body", async () => {
-  let releaseCommit!: () => void;
-  let releaseGeometry!: (acknowledged: boolean) => void;
-  const commitBarrier = new Promise<void>((resolve) => {
-    releaseCommit = resolve;
+test("pending placement cannot be duplicated or partly enabled; acknowledgement completes one live object", async () => {
+  let release!: (ack: boolean) => void;
+  const ack = new Promise<boolean>((resolve) => {
+    release = resolve;
   });
-  const geometryBarrier = new Promise<boolean>((resolve) => {
-    releaseGeometry = resolve;
-  });
-  const r = await rig([floor()], { confirmGeometry: () => geometryBarrier });
+  const r = await rig([floor()], { confirmGeometry: () => ack });
   try {
     r.start();
-    r.host.beginBuild(object("cancel-staged"));
+    r.host.beginBuild(object("pending-live"));
     r.host.setGhostPose([1, 0.21, 1]);
-    r.setCommitBarrier(() => commitBarrier);
     const placement = r.host.place();
     r.host.cancelPreview();
     assert.equal(r.host.snapshot().ghost?.stage, "pending");
-    assert.equal(await r.host.cancelStaged(), false);
-    releaseCommit();
-    // Let the committed entity reach its asynchronous backend acknowledgement.
-    await new Promise<void>((resolve) => setImmediate(resolve));
-    assert.equal(r.host.snapshot().pending, true);
-    assert.equal(r.world.getPose("cancel-staged").enabled, false);
-    assert.equal(await r.host.cancelStaged(), false);
-    assert.equal(await r.host.enableStaged(), false);
-    releaseGeometry(true);
+    assert.equal(await r.host.place(), false);
+    assert.equal(
+      r.world.snapshot().poses.some((o) => o.objectId === "pending-live"),
+      false,
+    );
+    assert.equal(r.getCommitCount(), 0);
+    release(true);
     assert.equal(await placement, true);
-    r.host.cancelPreview();
-    assert.equal(r.host.snapshot().staged?.objectId, "cancel-staged");
-    r.host.setAlternativeInput(true);
-    assert.equal(
-      r.host.resume(),
-      false,
-      "a geometry acknowledgement cannot replace explicit Enable",
-    );
-    assert.equal(r.world.paused, true);
-    assert.equal(await r.host.cancelStaged(), true);
-    assert.equal(await r.host.cancelStaged(), false);
+    assert.equal(r.world.getPose("pending-live").enabled, true);
+    assert.equal(r.getCommitCount(), 1);
     assert.equal(r.host.snapshot().staged, null);
-    assert.equal(
-      r.getScene().objects.some((entry) => entry.id === "cancel-staged"),
-      false,
-    );
-    assert.equal(
-      r.world.snapshot().poses.some((entry) => entry.objectId === "cancel-staged"),
-      false,
-    );
-    assert.equal(r.getCommitCount(), 2, "one Add and one Remove, with no duplicate cancellation");
-    assert.equal(r.world.paused, true);
+    assert.equal(r.host.resume(), true);
   } finally {
-    releaseCommit();
-    releaseGeometry(false);
+    release(false);
     r.dispose();
   }
 });
@@ -640,7 +652,7 @@ test("physical keys held through suspension cannot resume movement or drop the s
   }
 });
 
-test("a failed asynchronous geometry acknowledgement keeps one disabled staged object and remains recoverable", async () => {
+test("a failed asynchronous geometry acknowledgement leaves no object and Resume remains possible", async () => {
   const r = await rig([floor()], {
     confirmGeometry: async () => {
       throw new Error("injected backend acknowledgement failure");
@@ -648,25 +660,24 @@ test("a failed asynchronous geometry acknowledgement keeps one disabled staged o
   });
   try {
     r.start();
-    r.host.setBuild(true);
     r.host.beginBuild(object("ack-failure"));
     r.host.setGhostPose([1, 0.21, 1]);
-    await r.host.place();
-    const snapshot = r.host.snapshot();
-    assert.equal(snapshot.pending, false);
+    assert.equal(await r.host.place(), false);
+    assert.equal(r.host.snapshot().pending, false);
+    assert.equal(r.host.snapshot().ghost, null);
+    assert.equal(r.host.snapshot().staged, null);
+    assert.equal(r.world.paused, false);
     assert.equal(
-      snapshot.ghost,
-      null,
-      "a committed ID cannot simultaneously remain an uncommitted ghost",
+      r.world.snapshot().poses.some((p) => p.objectId === "ack-failure"),
+      false,
     );
-    assert.equal(snapshot.staged?.objectId, "ack-failure");
-    assert.equal(snapshot.staged?.geometryAcknowledged, false);
-    assert.equal(r.world.paused, true);
-    assert.equal(r.world.getPose("ack-failure").enabled, false);
-    assert.equal(r.getScene().objects.filter((o) => o.id === "ack-failure").length, 1);
-    r.host.acknowledgeStaged("ack-failure", r.getScene().sceneRevision);
-    assert.equal(await r.host.enableStaged(), true);
-    assert.equal(r.world.getPose("ack-failure").enabled, true);
+    assert.equal(
+      r.getScene().objects.some((o) => o.id === "ack-failure"),
+      false,
+    );
+    assert.equal(r.getCommitCount(), 0);
+    assert.match(r.host.snapshot().notice ?? "", /injected backend acknowledgement failure/);
+    assert.equal(r.host.resume(), true);
   } finally {
     r.dispose();
   }
@@ -724,3 +735,288 @@ test("a removed Gentle Place support cancels the pending placement without silen
     r.dispose();
   }
 });
+
+test("R18: transaction safe pauses keep the browser-owned lock so an explicit Resume works without alternative input", async () => {
+  const r = await rig([floor(), object("ball")]);
+  try {
+    r.start();
+    assert.equal(r.host.grab(), true);
+    assert.equal(await r.host.toggleFixed(), true);
+    assert.equal(r.world.paused, true);
+    assert.equal(r.host.snapshot().pointerLocked, true, "fixing never released the browser lock");
+    assert.equal(r.host.snapshot().alternativeInput, false);
+    assert.equal(r.host.resume(), true, "Enter/click Resume while the canvas stays locked");
+    assert.equal(r.host.setBuild(true), true);
+    r.host.beginBuild(object("placed", { positionM: [1, 0.21, 1] }));
+    r.host.setGhostPose([1, 0.21, 1]);
+    assert.equal(await r.host.place(), true);
+    assert.equal(r.host.snapshot().pointerLocked, true, "placement never released the lock");
+    assert.equal(r.world.getPose("placed").enabled, true);
+    assert.equal(r.world.paused, false, "placement continues without manual Enable");
+    assert.equal(r.host.resume(), true);
+    r.host.suspend("blur");
+    assert.equal(r.host.snapshot().pointerLocked, false, "focus loss still revokes the lock");
+    assert.equal(r.host.resume(), false);
+  } finally {
+    r.dispose();
+  }
+});
+
+test("R21: placement never traps Resume or requires leaving a build mode", async () => {
+  const r = await rig([floor()], { confirmGeometry: () => true });
+  try {
+    r.start();
+    r.host.handleKey("KeyB", true);
+    r.host.beginBuild(object("r21-placed"));
+    r.host.setGhostPose([1, 0.21, 1]);
+    assert.equal(await r.host.place(), true);
+    assert.equal(r.host.resume(), true);
+    r.host.handleKey("KeyB", false);
+    r.host.handleKey("KeyB", true);
+    assert.equal(r.host.snapshot().mode, "fps-interact");
+  } finally {
+    r.dispose();
+  }
+});
+
+test("R21: a fresh left press grabs the crosshair target", async () => {
+  const r = await rig();
+  try {
+    r.start();
+    r.host.handlePointer(0, false);
+    r.host.handlePointer(0, true);
+    assert.equal(r.world.heldObjectId, "ball");
+  } finally {
+    r.dispose();
+  }
+});
+
+test("R21: right hold starts a placement preview without B", async () => {
+  const r = await rig([floor()]);
+  try {
+    r.start();
+    r.host.handlePointer(2, false);
+    r.host.handlePointer(2, true);
+    assert.ok(r.host.snapshot().ghost, "right press must show the current shape");
+  } finally {
+    r.dispose();
+  }
+});
+
+test("R21: no surface produces a valid mid-air preview", async () => {
+  const r = await rig([floor()]);
+  try {
+    r.start();
+    r.host.beginBuild(object("r21-air", { mode: "dynamicGravity" }));
+    assert.equal(r.host.snapshot().ghost?.valid, true);
+    assert.equal(r.host.snapshot().ghost?.draft.mode, "dynamicNoGravity");
+  } finally {
+    r.dispose();
+  }
+});
+
+async function settled(r: Awaited<ReturnType<typeof rig>>) {
+  for (let i = 0; i < 100 && r.host.snapshot().pending; i++)
+    await new Promise<void>((resolve) => setImmediate(resolve));
+  assert.equal(r.host.snapshot().pending, false);
+}
+
+test("R21 suspension can cancel an acknowledgement that has not settled and Resume is available", async () => {
+  let release!: (ack: boolean) => void;
+  const ack = new Promise<boolean>((resolve) => {
+    release = resolve;
+  });
+  const r = await rig([floor()], { confirmGeometry: () => ack });
+  try {
+    r.start();
+    r.host.beginBuild(object("cancel-pending"));
+    const placing = r.host.place();
+    r.host.suspend("blur while waiting");
+    await new Promise<void>((resolve) => setImmediate(resolve));
+    assert.equal(r.host.snapshot().pending, false, "no backend response is needed to cancel");
+    assert.equal(await placing, false);
+    r.host.confirmPointerLock(true);
+    assert.equal(r.host.resume(), true);
+    release(true);
+    await new Promise<void>((resolve) => setImmediate(resolve));
+    assert.equal(r.getCommitCount(), 0, "late acknowledgement cannot resurrect placement");
+  } finally {
+    release(false);
+    r.dispose();
+  }
+});
+
+test("R21: left press throws Held once and right press drops in place with current velocity", async () => {
+  const r = await rig();
+  try {
+    r.start();
+    r.host.handlePointer(0, false);
+    r.host.handlePointer(2, false);
+    r.host.handlePointer(0, true);
+    r.host.handlePointer(0, false);
+    r.world.setVelocity("ball", [0.2, 0.3, 0.4]);
+    const velocity = r.world.getPose("ball").linearVelocityMetresPerSecond;
+    r.host.handlePointer(2, true);
+    assert.equal(r.world.heldObjectId, null);
+    assert.deepEqual(r.world.getPose("ball").linearVelocityMetresPerSecond, velocity);
+    assert.equal(r.host.snapshot().ghost, null);
+    r.host.handlePointer(2, false);
+    r.host.handlePointer(0, true);
+    r.host.handlePointer(0, false);
+    r.host.handlePointer(0, true);
+    r.host.handlePointer(0, true);
+    assert.equal(r.world.heldObjectId, null);
+    r.step();
+    assert.equal(r.world.snapshot().events.filter((e) => e.type === "OnThrow").length, 1);
+    assert.equal(r.world.snapshot().events.filter((e) => e.type === "OnDrop").length, 1);
+  } finally {
+    r.dispose();
+  }
+});
+
+for (const quick of [true, false])
+  test(`R21: ${quick ? "quick right click" : "right hold"} places one live object per release`, async () => {
+    const r = await rig([floor()]);
+    try {
+      r.start();
+      r.host.handlePointer(2, false);
+      r.host.handlePointer(2, true);
+      assert.equal(r.host.snapshot().ghost?.valid, true);
+      const pressPose = r.host.snapshot().ghost!.draft.positionM;
+      assert.equal(r.getScene().objects.length, 1);
+      if (!quick) {
+        r.host.handleWheel(100);
+        r.step(2);
+      }
+      const preview = r.host.snapshot().ghost!.draft;
+      r.host.handlePointer(2, false);
+      r.host.handlePointer(2, false);
+      await settled(r);
+      const placed = r.getScene().objects.find((o) => o.id === preview.id)!;
+      assert.ok(placed);
+      if (quick) assert.deepEqual(placed.positionM, pressPose);
+      assert.equal(placed.mode, "dynamicNoGravity");
+      assert.equal(r.world.getPose(placed.id).enabled, true);
+      assert.equal(r.host.snapshot().staged, null);
+      assert.equal(r.host.snapshot().ghost, null);
+      assert.equal(r.world.paused, false);
+      assert.equal(r.getCommitCount(), 1);
+    } finally {
+      r.dispose();
+    }
+  });
+
+test("R21: surface preview keeps the gravity draft mode and its tangent grid clearance", async () => {
+  const r = await rig([floor()]);
+  try {
+    r.start();
+    r.host.handlePointer(2, false);
+    r.host.handleLook(0, 500);
+    r.host.handlePointer(2, true);
+    const preview = r.host.snapshot().ghost!;
+    assert.equal(preview.surfaceObjectId, "floor");
+    assert.equal(preview.valid, true);
+    assert.equal(preview.draft.mode, "dynamicGravity");
+    r.host.handlePointer(2, false);
+    await settled(r);
+    assert.equal(r.world.getPose(preview.draft.id).mode, "dynamicGravity");
+    assert.equal(r.world.getPose(preview.draft.id).enabled, true);
+  } finally {
+    r.dispose();
+  }
+});
+
+for (const cause of ["Escape", "Tab", "blur", "lock-loss", "pause", "left-click"])
+  test(`R21: ${cause} cancels right hold without placing on its later release`, async () => {
+    const r = await rig([floor()]);
+    try {
+      r.start();
+      r.host.handlePointer(0, false);
+      r.host.handlePointer(2, false);
+      r.host.handlePointer(2, true);
+      assert.ok(r.host.snapshot().ghost);
+      if (cause === "Escape" || cause === "Tab") r.host.handleKey(cause, true);
+      else if (cause === "left-click") r.host.handlePointer(0, true);
+      else if (cause === "lock-loss") r.host.confirmPointerLock(false);
+      else if (cause === "pause") r.host.pausePreservingInputMode("user pause");
+      else r.host.suspend("blur");
+      assert.equal(r.host.snapshot().ghost, null);
+      r.host.handlePointer(2, false);
+      await settled(r);
+      assert.equal(r.getCommitCount(), 0);
+      assert.equal(r.getScene().objects.length, 1);
+      r.host.confirmPointerLock(true);
+      assert.equal(r.host.resume(), true);
+    } finally {
+      r.dispose();
+    }
+  });
+
+test("R21: both acquisition buttons consume their first release without grabbing or placing", async () => {
+  const r = await rig();
+  try {
+    r.start();
+    r.host.handlePointer(0, true);
+    r.host.handlePointer(2, true);
+    assert.equal(r.world.heldObjectId, null);
+    assert.equal(r.host.snapshot().ghost, null);
+    r.host.handlePointer(0, false);
+    r.host.handlePointer(2, false);
+    await settled(r);
+    assert.equal(r.getCommitCount(), 0);
+    assert.equal(r.world.snapshot().events.filter((e) => e.type === "OnThrow").length, 0);
+  } finally {
+    r.dispose();
+  }
+});
+
+for (const failure of [
+  "ack-false",
+  "overlap-at-ack",
+  "overlap-at-commit",
+  "commit-failure",
+  "blur-at-ack",
+])
+  test(`R21: ${failure} leaves no half-created object or hidden recovery step`, async () => {
+    let r!: Awaited<ReturnType<typeof rig>>;
+    r = await rig([floor(), object("blocker", { positionM: [-2, 1.6, 1] })], {
+      confirmGeometry: () => {
+        if (failure === "ack-false") return false;
+        if (failure === "overlap-at-ack") r.world.setVelocity("blocker", [120, 0, 0]);
+        if (failure === "overlap-at-ack") r.step();
+        if (failure === "blur-at-ack") r.host.suspend("blur during acknowledgement");
+        return true;
+      },
+    });
+    try {
+      r.start();
+      r.host.beginBuild(object("fail"));
+      r.host.setGhostPose([0, 1.6, 1]);
+      if (failure === "commit-failure")
+        r.setCommitBarrier(async () => {
+          throw new Error("injected commit failure");
+        });
+      if (failure === "overlap-at-commit")
+        r.setCommitBarrier(async () => {
+          r.world.setVelocity("blocker", [120, 0, 0]);
+          r.step();
+        });
+      assert.equal(await r.host.place(), false);
+      assert.equal(
+        r.getScene().objects.some((o) => o.id === "fail"),
+        false,
+      );
+      assert.equal(
+        r.world.snapshot().poses.some((o) => o.objectId === "fail"),
+        false,
+      );
+      assert.equal(r.host.snapshot().staged, null);
+      assert.equal(r.host.snapshot().pending, false);
+      assert.ok(r.host.snapshot().notice);
+      assert.equal(r.world.paused, failure === "blur-at-ack");
+      r.host.confirmPointerLock(true);
+      assert.equal(r.host.resume(), true);
+    } finally {
+      r.dispose();
+    }
+  });

@@ -8,7 +8,7 @@ The inventory includes all tracked and unignored project Markdown, including aut
 
 Each translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.
 
-Status: **STRUCTURAL_CHECKS_PASS**; 307/307 translated, 0 stale, 0 missing across 332 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
+Status: **STRUCTURAL_CHECKS_PASS**; 496/496 translated, 0 stale, 0 missing across 527 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
 
 ```powershell
 node scripts/validation/english-docs.mjs inventory
@@ -61,13 +61,16 @@ node scripts/validation/english-docs.mjs check
 | --- | --- | --- |
 | [`docs/00-project/ARCHITECTURE_REVIEW_AMENDMENTS.md`](../00-project/ARCHITECTURE_REVIEW_AMENDMENTS.md) | [English](00-project/ARCHITECTURE_REVIEW_AMENDMENTS.md) | Translated snapshot |
 | [`docs/00-project/ARCHITECTURE_REVIEW_REQUEST.md`](../00-project/ARCHITECTURE_REVIEW_REQUEST.md) | [English](00-project/ARCHITECTURE_REVIEW_REQUEST.md) | Translated snapshot |
+| [`docs/00-project/AUDIO_PATH_CLICKS_20261104.md`](../00-project/AUDIO_PATH_CLICKS_20261104.md) | [English](../00-project/AUDIO_PATH_CLICKS_20261104.md) | Already English / companion |
 | [`docs/00-project/BOOTSTRAP_EXECUTION_PLAN.md`](../00-project/BOOTSTRAP_EXECUTION_PLAN.md) | [English](00-project/BOOTSTRAP_EXECUTION_PLAN.md) | Translated snapshot |
 | [`docs/00-project/EXISTING_ASSETS_AUDIT.md`](../00-project/EXISTING_ASSETS_AUDIT.md) | [English](00-project/EXISTING_ASSETS_AUDIT.md) | Translated snapshot |
 | [`docs/00-project/FAILOVER_REQUEST.md`](../00-project/FAILOVER_REQUEST.md) | [English](00-project/FAILOVER_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/FILE_MANIFEST.md`](../00-project/FILE_MANIFEST.md) | [English](00-project/FILE_MANIFEST.md) | Translated snapshot |
 | [`docs/00-project/MASTER_REQUEST.md`](../00-project/MASTER_REQUEST.md) | [English](00-project/MASTER_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/META_API_VALIDATION_AUTH_20261027.md`](../00-project/META_API_VALIDATION_AUTH_20261027.md) | [English](00-project/META_API_VALIDATION_AUTH_20261027.md) | Translated snapshot |
+| [`docs/00-project/META_LIVE_DEMO_20261104.md`](../00-project/META_LIVE_DEMO_20261104.md) | [English](../00-project/META_LIVE_DEMO_20261104.md) | Already English / companion |
 | [`docs/00-project/MUSE_RESOURCE_UPDATE_20261027.md`](../00-project/MUSE_RESOURCE_UPDATE_20261027.md) | [English](00-project/MUSE_RESOURCE_UPDATE_20261027.md) | Translated snapshot |
+| [`docs/00-project/MUSE_SCENE_BUILDER_20261104.md`](../00-project/MUSE_SCENE_BUILDER_20261104.md) | [English](../00-project/MUSE_SCENE_BUILDER_20261104.md) | Already English / companion |
 | [`docs/00-project/PHASE1_FILE_MANIFEST.md`](../00-project/PHASE1_FILE_MANIFEST.md) | [English](00-project/PHASE1_FILE_MANIFEST.md) | Translated snapshot |
 | [`docs/00-project/PHASE2_FILE_MANIFEST.md`](../00-project/PHASE2_FILE_MANIFEST.md) | [English](00-project/PHASE2_FILE_MANIFEST.md) | Translated snapshot |
 | [`docs/00-project/PHASE2_REQUEST.md`](../00-project/PHASE2_REQUEST.md) | [English](00-project/PHASE2_REQUEST.md) | Translated snapshot |
@@ -75,6 +78,7 @@ node scripts/validation/english-docs.mjs check
 | [`docs/00-project/PHASE3_REQUEST.md`](../00-project/PHASE3_REQUEST.md) | [English](00-project/PHASE3_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/PROJECT_BASELINE.md`](../00-project/PROJECT_BASELINE.md) | [English](00-project/PROJECT_BASELINE.md) | Translated snapshot |
 | [`docs/00-project/PROJECT_PROVENANCE.md`](../00-project/PROJECT_PROVENANCE.md) | [English](00-project/PROJECT_PROVENANCE.md) | Translated snapshot |
+| [`docs/00-project/PUBLIC_SNAPSHOT_20261104.md`](../00-project/PUBLIC_SNAPSHOT_20261104.md) | [English](../00-project/PUBLIC_SNAPSHOT_20261104.md) | Already English / companion |
 | [`docs/00-project/SOUND_BEHAVIOR_FILE_MANIFEST.md`](../00-project/SOUND_BEHAVIOR_FILE_MANIFEST.md) | [English](00-project/SOUND_BEHAVIOR_FILE_MANIFEST.md) | Translated snapshot |
 | [`docs/00-project/SOUND_BEHAVIOR_REQUEST.md`](../00-project/SOUND_BEHAVIOR_REQUEST.md) | [English](00-project/SOUND_BEHAVIOR_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/V1_ENGLISH_FULL_DOCS_REQUEST_20261027.md`](../00-project/V1_ENGLISH_FULL_DOCS_REQUEST_20261027.md) | [English](00-project/V1_ENGLISH_FULL_DOCS_REQUEST_20261027.md) | Translated snapshot |
@@ -232,11 +236,14 @@ node scripts/validation/english-docs.mjs check
 | [`docs/11-v1/ACOUSTIC_DELIVERY.md`](../11-v1/ACOUSTIC_DELIVERY.md) | [English](11-v1/ACOUSTIC_DELIVERY.md) | Translated snapshot |
 | [`docs/11-v1/BROWSER_PERFORMANCE.md`](../11-v1/BROWSER_PERFORMANCE.md) | [English](11-v1/BROWSER_PERFORMANCE.md) | Translated snapshot |
 | [`docs/11-v1/CAPTURE_INPUT_OPTIMIZATION.md`](../11-v1/CAPTURE_INPUT_OPTIMIZATION.md) | [English](11-v1/CAPTURE_INPUT_OPTIMIZATION.md) | Translated snapshot |
+| [`docs/11-v1/CLAUDE_CODE_HANDOFF_20261030.md`](../11-v1/CLAUDE_CODE_HANDOFF_20261030.md) | [English](11-v1/CLAUDE_CODE_HANDOFF_20261030.md) | Translated snapshot |
 | [`docs/11-v1/ENGLISH_ACCEPTANCE.md`](../11-v1/ENGLISH_ACCEPTANCE.md) | [English](11-v1/ENGLISH_ACCEPTANCE.md) | Translated snapshot |
+| [`docs/11-v1/FULL_TEST_PROCEDURE.md`](../11-v1/FULL_TEST_PROCEDURE.md) | [English](11-v1/FULL_TEST_PROCEDURE.md) | Translated snapshot |
 | [`docs/11-v1/HUMAN_TEST_GUIDE.md`](../11-v1/HUMAN_TEST_GUIDE.md) | [English](11-v1/HUMAN_TEST_GUIDE.md) | Translated snapshot |
 | [`docs/11-v1/INTEGRATION_REVIEW.md`](../11-v1/INTEGRATION_REVIEW.md) | [English](11-v1/INTEGRATION_REVIEW.md) | Translated snapshot |
 | [`docs/11-v1/M0_IMPLEMENTATION.md`](../11-v1/M0_IMPLEMENTATION.md) | [English](11-v1/M0_IMPLEMENTATION.md) | Translated snapshot |
 | [`docs/11-v1/MOTION_HYSTERESIS.md`](../11-v1/MOTION_HYSTERESIS.md) | [English](11-v1/MOTION_HYSTERESIS.md) | Translated snapshot |
+| [`docs/11-v1/PARAMETER_REFERENCE.md`](../11-v1/PARAMETER_REFERENCE.md) | [English](11-v1/PARAMETER_REFERENCE.md) | Translated snapshot |
 | [`docs/11-v1/PHYSICS_ACCEPTANCE.md`](../11-v1/PHYSICS_ACCEPTANCE.md) | [English](11-v1/PHYSICS_ACCEPTANCE.md) | Translated snapshot |
 | [`docs/11-v1/PRODUCT_E2E.md`](../11-v1/PRODUCT_E2E.md) | [English](11-v1/PRODUCT_E2E.md) | Translated snapshot |
 | [`docs/11-v1/REQUIREMENT_EVIDENCE_20261027.md`](../11-v1/REQUIREMENT_EVIDENCE_20261027.md) | [English](11-v1/REQUIREMENT_EVIDENCE_20261027.md) | Translated snapshot |
@@ -279,6 +286,185 @@ node scripts/validation/english-docs.mjs check
 | [`docs/12-architecture-review/UI_UX_REVIEW.md`](../12-architecture-review/UI_UX_REVIEW.md) | [English](12-architecture-review/UI_UX_REVIEW.md) | Translated snapshot |
 | [`docs/12-architecture-review/VALIDATION_PLAN.md`](../12-architecture-review/VALIDATION_PLAN.md) | [English](12-architecture-review/VALIDATION_PLAN.md) | Translated snapshot |
 
+## 13-performance-review
+
+| Canonical document | English | State |
+| --- | --- | --- |
+| [`docs/13-performance-review/ACOUSTIC_WORKER_REVIEW.md`](../13-performance-review/ACOUSTIC_WORKER_REVIEW.md) | [English](13-performance-review/ACOUSTIC_WORKER_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md`](../13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md) | [English](13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md`](../13-performance-review/BROWSER_CLOUD_SCALABILITY.md) | [English](13-performance-review/BROWSER_CLOUD_SCALABILITY.md) | Translated snapshot |
+| [`docs/13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md`](../13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md) | [English](13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md`](../13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md) | [English](13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/CURRENT_RUNTIME_AUDIT.md`](../13-performance-review/CURRENT_RUNTIME_AUDIT.md) | [English](13-performance-review/CURRENT_RUNTIME_AUDIT.md) | Translated snapshot |
+| [`docs/13-performance-review/EXECUTIVE_SUMMARY.md`](../13-performance-review/EXECUTIVE_SUMMARY.md) | [English](13-performance-review/EXECUTIVE_SUMMARY.md) | Translated snapshot |
+| [`docs/13-performance-review/FINAL_REVIEW_REPORT.md`](../13-performance-review/FINAL_REVIEW_REPORT.md) | [English](13-performance-review/FINAL_REVIEW_REPORT.md) | Translated snapshot |
+| [`docs/13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md`](../13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md) | [English](13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md) | Translated snapshot |
+| [`docs/13-performance-review/INTEGRATION_REPORT.md`](../13-performance-review/INTEGRATION_REPORT.md) | [English](13-performance-review/INTEGRATION_REPORT.md) | Translated snapshot |
+| [`docs/13-performance-review/MEASUREMENT_PLAN.md`](../13-performance-review/MEASUREMENT_PLAN.md) | [English](13-performance-review/MEASUREMENT_PLAN.md) | Translated snapshot |
+| [`docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md`](../13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md) | [English](13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/OPTIMIZATION_ROADMAP.md`](../13-performance-review/OPTIMIZATION_ROADMAP.md) | [English](13-performance-review/OPTIMIZATION_ROADMAP.md) | Translated snapshot |
+| [`docs/13-performance-review/R21_MERGE_RECONCILIATION.md`](../13-performance-review/R21_MERGE_RECONCILIATION.md) | [English](13-performance-review/R21_MERGE_RECONCILIATION.md) | Translated snapshot |
+| [`docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md`](../13-performance-review/RECORDING_AND_RENDERING_REVIEW.md) | [English](13-performance-review/RECORDING_AND_RENDERING_REVIEW.md) | Translated snapshot |
+| [`docs/13-performance-review/REVIEW_CONTRACT.md`](../13-performance-review/REVIEW_CONTRACT.md) | [English](13-performance-review/REVIEW_CONTRACT.md) | Translated snapshot |
+| [`docs/13-performance-review/RISK_REGISTER.md`](../13-performance-review/RISK_REGISTER.md) | [English](13-performance-review/RISK_REGISTER.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-01-acoustic-snapshot-exchange.md`](../13-performance-review/proposals/ADR-PERF-01-acoustic-snapshot-exchange.md) | [English](13-performance-review/proposals/ADR-PERF-01-acoustic-snapshot-exchange.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-02-realtime-audio-scheduling.md`](../13-performance-review/proposals/ADR-PERF-02-realtime-audio-scheduling.md) | [English](13-performance-review/proposals/ADR-PERF-02-realtime-audio-scheduling.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-03-buffer-ownership-lifecycle.md`](../13-performance-review/proposals/ADR-PERF-03-buffer-ownership-lifecycle.md) | [English](13-performance-review/proposals/ADR-PERF-03-buffer-ownership-lifecycle.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-04-worker-communication.md`](../13-performance-review/proposals/ADR-PERF-04-worker-communication.md) | [English](13-performance-review/proposals/ADR-PERF-04-worker-communication.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-05-recording-backpressure.md`](../13-performance-review/proposals/ADR-PERF-05-recording-backpressure.md) | [English](13-performance-review/proposals/ADR-PERF-05-recording-backpressure.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-06-adaptive-voice-budget.md`](../13-performance-review/proposals/ADR-PERF-06-adaptive-voice-budget.md) | [English](13-performance-review/proposals/ADR-PERF-06-adaptive-voice-budget.md) | Translated snapshot |
+| [`docs/13-performance-review/proposals/ADR-PERF-07-dsp-graph-update.md`](../13-performance-review/proposals/ADR-PERF-07-dsp-graph-update.md) | [English](13-performance-review/proposals/ADR-PERF-07-dsp-graph-update.md) | Translated snapshot |
+
+## 14-core-pipeline
+
+| Canonical document | English | State |
+| --- | --- | --- |
+| [`docs/14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md`](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md) | [English](14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md) | Translated snapshot |
+| [`docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md`](../14-core-pipeline/IMPLEMENTATION_CONTRACT.md) | [English](14-core-pipeline/IMPLEMENTATION_CONTRACT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/STAGES.md`](../14-core-pipeline/STAGES.md) | [English](14-core-pipeline/STAGES.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/01-recording.md`](../14-core-pipeline/stages/01-recording.md) | [English](14-core-pipeline/stages/01-recording.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/02-audio.md`](../14-core-pipeline/stages/02-audio.md) | [English](14-core-pipeline/stages/02-audio.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/03-capabilities.md`](../14-core-pipeline/stages/03-capabilities.md) | [English](14-core-pipeline/stages/03-capabilities.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/04-meta-ui-evidence/initial-error-context.md`](../14-core-pipeline/stages/04-meta-ui-evidence/initial-error-context.md) | [English](14-core-pipeline/stages/04-meta-ui-evidence/initial-error-context.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/04-meta-ui-workflow-receipt.md`](../14-core-pipeline/stages/04-meta-ui-workflow-receipt.md) | [English](14-core-pipeline/stages/04-meta-ui-workflow-receipt.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/04-meta-workflow.md`](../14-core-pipeline/stages/04-meta-workflow.md) | [English](14-core-pipeline/stages/04-meta-workflow.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/04-meta.md`](../14-core-pipeline/stages/04-meta.md) | [English](14-core-pipeline/stages/04-meta.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/05-motion-generation-fix.md`](../14-core-pipeline/stages/05-motion-generation-fix.md) | [English](14-core-pipeline/stages/05-motion-generation-fix.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/05-motion.md`](../14-core-pipeline/stages/05-motion.md) | [English](14-core-pipeline/stages/05-motion.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/06-render.md`](../14-core-pipeline/stages/06-render.md) | [English](14-core-pipeline/stages/06-render.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/07-integration-ui.md`](../14-core-pipeline/stages/07-integration-ui.md) | [English](14-core-pipeline/stages/07-integration-ui.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/08-motion-experiment.md`](../14-core-pipeline/stages/08-motion-experiment.md) | [English](14-core-pipeline/stages/08-motion-experiment.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/09-integration-and-export.md`](../14-core-pipeline/stages/09-integration-and-export.md) | [English](14-core-pipeline/stages/09-integration-and-export.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/10-final-ui-export.md`](../14-core-pipeline/stages/10-final-ui-export.md) | [English](14-core-pipeline/stages/10-final-ui-export.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/CROSSWALK.md`](../14-core-pipeline/stages/11-ui-parameters/CROSSWALK.md) | [English](14-core-pipeline/stages/11-ui-parameters/CROSSWALK.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/HELP_CALLER_CROSSWALK.md`](../14-core-pipeline/stages/11-ui-parameters/HELP_CALLER_CROSSWALK.md) | [English](14-core-pipeline/stages/11-ui-parameters/HELP_CALLER_CROSSWALK.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/INVENTORY.md`](../14-core-pipeline/stages/11-ui-parameters/INVENTORY.md) | [English](14-core-pipeline/stages/11-ui-parameters/INVENTORY.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md`](../14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md) | [English](14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/behavior/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/behavior/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/behavior/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/behavior/assets/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/behavior/assets/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/behavior/assets/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/interaction/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/interaction/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/interaction/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/SERIAL_BROWSER_PLAN.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/SERIAL_BROWSER_PLAN.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/SERIAL_BROWSER_PLAN.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/dock/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/dock/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/dock/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/EXPORT_GATE_FINDING.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/events/EXPORT_GATE_FINDING.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/events/EXPORT_GATE_FINDING.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/REPLAY_LIFECYCLE_FIX.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/events/REPLAY_LIFECYCLE_FIX.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/events/REPLAY_LIFECYCLE_FIX.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/README.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/README.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/README.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/help-sweep/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/diagnostics/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/diagnostics/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/diagnostics/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/tail-validation/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/tail-validation/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/tail-validation/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/11-ui-parameters/pipeline/zones/REPORT.md`](../14-core-pipeline/stages/11-ui-parameters/pipeline/zones/REPORT.md) | [English](14-core-pipeline/stages/11-ui-parameters/pipeline/zones/REPORT.md) | Translated snapshot |
+| [`docs/14-core-pipeline/stages/12-final-integrated-ui-audio.md`](../14-core-pipeline/stages/12-final-integrated-ui-audio.md) | [English](14-core-pipeline/stages/12-final-integrated-ui-audio.md) | Translated snapshot |
+
+## 15-ui-parameter-audit
+
+| Canonical document | English | State |
+| --- | --- | --- |
+| [`docs/15-ui-parameter-audit/AMENDMENT_UNSUPPORTED_OPTIONS_20261102.md`](../15-ui-parameter-audit/AMENDMENT_UNSUPPORTED_OPTIONS_20261102.md) | [English](15-ui-parameter-audit/AMENDMENT_UNSUPPORTED_OPTIONS_20261102.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/BASELINE_UI_AUDIT_20261102.md`](../15-ui-parameter-audit/BASELINE_UI_AUDIT_20261102.md) | [English](15-ui-parameter-audit/BASELINE_UI_AUDIT_20261102.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/CONTRACT.md`](../15-ui-parameter-audit/CONTRACT.md) | [English](15-ui-parameter-audit/CONTRACT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/CURVES_IMPLEMENTATION_20261102.md`](../15-ui-parameter-audit/CURVES_IMPLEMENTATION_20261102.md) | [English](15-ui-parameter-audit/CURVES_IMPLEMENTATION_20261102.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md`](../15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md) | [English](15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md`](../15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md) | [English](15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md`](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) | [English](15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/REPORT.md`](../15-ui-parameter-audit/acoustic-geometry/REPORT.md) | [English](15-ui-parameter-audit/acoustic-geometry/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/builder/REPORT.md`](../15-ui-parameter-audit/acoustic-geometry/builder/REPORT.md) | [English](15-ui-parameter-audit/acoustic-geometry/builder/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/evidence/final-metadata-review.md`](../15-ui-parameter-audit/acoustic-geometry/evidence/final-metadata-review.md) | [English](15-ui-parameter-audit/acoustic-geometry/evidence/final-metadata-review.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/evidence/geometry-contract-report.md`](../15-ui-parameter-audit/acoustic-geometry/evidence/geometry-contract-report.md) | [English](15-ui-parameter-audit/acoustic-geometry/evidence/geometry-contract-report.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/integration-fix/REPORT.md`](../15-ui-parameter-audit/acoustic-geometry/integration-fix/REPORT.md) | [English](15-ui-parameter-audit/acoustic-geometry/integration-fix/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/integration-fix/metrics-population-report.md`](../15-ui-parameter-audit/acoustic-geometry/integration-fix/metrics-population-report.md) | [English](15-ui-parameter-audit/acoustic-geometry/integration-fix/metrics-population-report.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/integration-fix/source-phase-fixture-repair.md`](../15-ui-parameter-audit/acoustic-geometry/integration-fix/source-phase-fixture-repair.md) | [English](15-ui-parameter-audit/acoustic-geometry/integration-fix/source-phase-fixture-repair.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/reference/REFERENCE.md`](../15-ui-parameter-audit/acoustic-geometry/reference/REFERENCE.md) | [English](15-ui-parameter-audit/acoustic-geometry/reference/REFERENCE.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/reference/SOURCES.md`](../15-ui-parameter-audit/acoustic-geometry/reference/SOURCES.md) | [English](15-ui-parameter-audit/acoustic-geometry/reference/SOURCES.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/acoustic-geometry/review.md`](../15-ui-parameter-audit/acoustic-geometry/review.md) | [English](15-ui-parameter-audit/acoustic-geometry/review.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/controlled-capture-clock/REPORT.md`](../15-ui-parameter-audit/controlled-capture-clock/REPORT.md) | [English](15-ui-parameter-audit/controlled-capture-clock/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/environment/REPORT.md`](../15-ui-parameter-audit/environment/REPORT.md) | [English](15-ui-parameter-audit/environment/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/render-tail-validation/REPORT.md`](../15-ui-parameter-audit/render-tail-validation/REPORT.md) | [English](15-ui-parameter-audit/render-tail-validation/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/BASELINE.md`](../15-ui-parameter-audit/zones/BASELINE.md) | [English](15-ui-parameter-audit/zones/BASELINE.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/DETACHED.md`](../15-ui-parameter-audit/zones/DETACHED.md) | [English](15-ui-parameter-audit/zones/DETACHED.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/HANDOFF.md`](../15-ui-parameter-audit/zones/HANDOFF.md) | [English](15-ui-parameter-audit/zones/HANDOFF.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/POSITION.md`](../15-ui-parameter-audit/zones/POSITION.md) | [English](15-ui-parameter-audit/zones/POSITION.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/REPORT.md`](../15-ui-parameter-audit/zones/REPORT.md) | [English](15-ui-parameter-audit/zones/REPORT.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/domain.md`](../15-ui-parameter-audit/zones/domain.md) | [English](15-ui-parameter-audit/zones/domain.md) | Translated snapshot |
+| [`docs/15-ui-parameter-audit/zones/volumes.md`](../15-ui-parameter-audit/zones/volumes.md) | [English](15-ui-parameter-audit/zones/volumes.md) | Translated snapshot |
+
+## 16-nonadvanced-completion
+
+| Canonical document | English | State |
+| --- | --- | --- |
+| [`docs/16-nonadvanced-completion/CONTRACT.md`](../16-nonadvanced-completion/CONTRACT.md) | [English](16-nonadvanced-completion/CONTRACT.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md`](../16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md) | [English](16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md`](../16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md) | [English](16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md`](../16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md) | [English](16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/GIT_HANDOFF_NOTES.md`](../16-nonadvanced-completion/handoffs/claude-20261103/GIT_HANDOFF_NOTES.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/GIT_HANDOFF_NOTES.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/SCOPE_AUDIT.md`](../16-nonadvanced-completion/handoffs/claude-20261103/SCOPE_AUDIT.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/SCOPE_AUDIT.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/VERIFICATION_AUDIT.md`](../16-nonadvanced-completion/handoffs/claude-20261103/VERIFICATION_AUDIT.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/VERIFICATION_AUDIT.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md`](../16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/audio/NATIVE03_POSTMONITOR_RESULT.md`](../16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/audio/NATIVE03_POSTMONITOR_RESULT.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/audio/NATIVE03_POSTMONITOR_RESULT.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/ui/s4/CURRENT_RUNBOOK.md`](../16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/ui/s4/CURRENT_RUNBOOK.md) | [English](16-nonadvanced-completion/handoffs/claude-20261103/evidence/integration/docs/16-nonadvanced-completion/lanes/ui/s4/CURRENT_RUNBOOK.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/CONTRACT.20261103.v1.md`](../16-nonadvanced-completion/history/CONTRACT.20261103.v1.md) | [English](16-nonadvanced-completion/history/CONTRACT.20261103.v1.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/CONTRACT.20261103.v2.md`](../16-nonadvanced-completion/history/CONTRACT.20261103.v2.md) | [English](16-nonadvanced-completion/history/CONTRACT.20261103.v2.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/CONTRACT.20261103.v3.md`](../16-nonadvanced-completion/history/CONTRACT.20261103.v3.md) | [English](16-nonadvanced-completion/history/CONTRACT.20261103.v3.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.m1-v1.bfa9e2e8eb72.md`](../16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.m1-v1.bfa9e2e8eb72.md) | [English](16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.m1-v1.bfa9e2e8eb72.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m1.f1081e9a2aff.md`](../16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m1.f1081e9a2aff.md) | [English](16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m1.f1081e9a2aff.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m2.75f3077163e7.md`](../16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m2.75f3077163e7.md) | [English](16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m2.75f3077163e7.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m3.76df6e95cb63.md`](../16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m3.76df6e95cb63.md) | [English](16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m3.76df6e95cb63.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m4.a833e441c1be.md`](../16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m4.a833e441c1be.md) | [English](16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m4.a833e441c1be.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.m1-v1.aaac117d2f58.md`](../16-nonadvanced-completion/history/KNOWN_LIMITATIONS.m1-v1.aaac117d2f58.md) | [English](16-nonadvanced-completion/history/KNOWN_LIMITATIONS.m1-v1.aaac117d2f58.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m1.a1d81f071f5e.md`](../16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m1.a1d81f071f5e.md) | [English](16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m1.a1d81f071f5e.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m2.4724e42329a4.md`](../16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m2.4724e42329a4.md) | [English](16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m2.4724e42329a4.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m3.a1986f54145e.md`](../16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m3.a1986f54145e.md) | [English](16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m3.a1986f54145e.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m4.e79c1427d9b8.md`](../16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m4.e79c1427d9b8.md) | [English](16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m4.e79c1427d9b8.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.m1-v1.f74b07f8cb38.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.m1-v1.f74b07f8cb38.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.m1-v1.f74b07f8cb38.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m1.d7441f1616a2.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m1.d7441f1616a2.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m1.d7441f1616a2.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m2.9b9d1d06debc.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m2.9b9d1d06debc.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m2.9b9d1d06debc.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m3.92f9b9c2546f.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m3.92f9b9c2546f.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m3.92f9b9c2546f.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4-postnote.358467b9f95e.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4-postnote.358467b9f95e.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4-postnote.358467b9f95e.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4.96c6ba9e2622.md`](../16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4.96c6ba9e2622.md) | [English](16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4.96c6ba9e2622.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/integration/RUNTIME_FAILURES_20261103.md`](../16-nonadvanced-completion/lanes/integration/RUNTIME_FAILURES_20261103.md) | [English](16-nonadvanced-completion/lanes/integration/RUNTIME_FAILURES_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/integration/USER_REPORTED_FIXES_20261103.md`](../16-nonadvanced-completion/lanes/integration/USER_REPORTED_FIXES_20261103.md) | [English](16-nonadvanced-completion/lanes/integration/USER_REPORTED_FIXES_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md`](../16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md) | [English](16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/01-startup-red-pending.md`](../16-nonadvanced-completion/lanes/performance/01-startup-red-pending.md) | [English](16-nonadvanced-completion/lanes/performance/01-startup-red-pending.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/02-collector-probe-modes.md`](../16-nonadvanced-completion/lanes/performance/02-collector-probe-modes.md) | [English](16-nonadvanced-completion/lanes/performance/02-collector-probe-modes.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md`](../16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md) | [English](16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md`](../16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md) | [English](16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/05-semantic-source-freeze.md`](../16-nonadvanced-completion/lanes/performance/05-semantic-source-freeze.md) | [English](16-nonadvanced-completion/lanes/performance/05-semantic-source-freeze.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/06-semantic-attempt01.md`](../16-nonadvanced-completion/lanes/performance/06-semantic-attempt01.md) | [English](16-nonadvanced-completion/lanes/performance/06-semantic-attempt01.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/07-pcm-control-method-source.md`](../16-nonadvanced-completion/lanes/performance/07-pcm-control-method-source.md) | [English](16-nonadvanced-completion/lanes/performance/07-pcm-control-method-source.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/08-semantic-v2-source-freeze.md`](../16-nonadvanced-completion/lanes/performance/08-semantic-v2-source-freeze.md) | [English](16-nonadvanced-completion/lanes/performance/08-semantic-v2-source-freeze.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/09-original-entry-regression-fix.md`](../16-nonadvanced-completion/lanes/performance/09-original-entry-regression-fix.md) | [English](16-nonadvanced-completion/lanes/performance/09-original-entry-regression-fix.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/10-audio-render-trace-capability.md`](../16-nonadvanced-completion/lanes/performance/10-audio-render-trace-capability.md) | [English](16-nonadvanced-completion/lanes/performance/10-audio-render-trace-capability.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/11-semantic-attempt02-v4.md`](../16-nonadvanced-completion/lanes/performance/11-semantic-attempt02-v4.md) | [English](16-nonadvanced-completion/lanes/performance/11-semantic-attempt02-v4.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.md`](../16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.md) | [English](16-nonadvanced-completion/lanes/performance/12-bootstrap-producer-schema.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.md`](../16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.md) | [English](16-nonadvanced-completion/lanes/performance/13-bootstrap-v3-source-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/14-semantic-v3-source-freeze.md`](../16-nonadvanced-completion/lanes/performance/14-semantic-v3-source-freeze.md) | [English](16-nonadvanced-completion/lanes/performance/14-semantic-v3-source-freeze.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/15-semantic-attempt03-v4-bootstrap.md`](../16-nonadvanced-completion/lanes/performance/15-semantic-attempt03-v4-bootstrap.md) | [English](16-nonadvanced-completion/lanes/performance/15-semantic-attempt03-v4-bootstrap.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.md`](../16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.md) | [English](16-nonadvanced-completion/lanes/performance/16-formal-v4-stream-source-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.md`](../16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.md) | [English](16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.md`](../16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.md) | [English](16-nonadvanced-completion/lanes/performance/19-runtime-audio-policy-source-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/20-runtime-audio-policy-component-receipt.md`](../16-nonadvanced-completion/lanes/performance/20-runtime-audio-policy-component-receipt.md) | [English](16-nonadvanced-completion/lanes/performance/20-runtime-audio-policy-component-receipt.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/21-formal-v4-driver-source-review.md`](../16-nonadvanced-completion/lanes/performance/21-formal-v4-driver-source-review.md) | [English](16-nonadvanced-completion/lanes/performance/21-formal-v4-driver-source-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/22-owned-process-cpu-method.md`](../16-nonadvanced-completion/lanes/performance/22-owned-process-cpu-method.md) | [English](16-nonadvanced-completion/lanes/performance/22-owned-process-cpu-method.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/23-formal-v4-source-freeze.md`](../16-nonadvanced-completion/lanes/performance/23-formal-v4-source-freeze.md) | [English](16-nonadvanced-completion/lanes/performance/23-formal-v4-source-freeze.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/24-v4-wiring-01-source-pins.md`](../16-nonadvanced-completion/lanes/performance/24-v4-wiring-01-source-pins.md) | [English](16-nonadvanced-completion/lanes/performance/24-v4-wiring-01-source-pins.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/25-wiring-01-cpu-independent.md`](../16-nonadvanced-completion/lanes/performance/25-wiring-01-cpu-independent.md) | [English](16-nonadvanced-completion/lanes/performance/25-wiring-01-cpu-independent.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md`](../16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md) | [English](16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-SEMANTIC-BOOTSTRAP-V3.md`](../16-nonadvanced-completion/lanes/performance/ADR-PERF-SEMANTIC-BOOTSTRAP-V3.md) | [English](16-nonadvanced-completion/lanes/performance/ADR-PERF-SEMANTIC-BOOTSTRAP-V3.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md`](../16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md) | [English](16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.md`](../16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.md) | [English](16-nonadvanced-completion/lanes/performance/semantic-02-independent-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/performance/semantic-03-independent-review.md`](../16-nonadvanced-completion/lanes/performance/semantic-03-independent-review.md) | [English](16-nonadvanced-completion/lanes/performance/semantic-03-independent-review.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/lanes/ui/readability-pass-20261103/README.md`](../16-nonadvanced-completion/lanes/ui/readability-pass-20261103/README.md) | [English](16-nonadvanced-completion/lanes/ui/readability-pass-20261103/README.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.md`](../16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.md) | [English](16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_DRAFT_20261103.md`](../16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_DRAFT_20261103.md) | [English](16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_DRAFT_20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.md`](../16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.md) | [English](16-nonadvanced-completion/stages/01-candidate-integration-partial-20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.md`](../16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.md) | [English](16-nonadvanced-completion/stages/02-integration-validation-partial-20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.md`](../16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.md) | [English](16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.md) | Translated snapshot |
+| [`docs/16-nonadvanced-completion/stages/05-claude-continuation-final-20261103.md`](../16-nonadvanced-completion/stages/05-claude-continuation-final-20261103.md) | [English](16-nonadvanced-completion/stages/05-claude-continuation-final-20261103.md) | Translated snapshot |
+
 ## AGENTS.md
 
 | Canonical document | English | State |
@@ -320,6 +506,7 @@ node scripts/validation/english-docs.mjs check
 
 | Canonical document | English | State |
 | --- | --- | --- |
+| [`benchmarks/acoustic-transport/README.md`](../../benchmarks/acoustic-transport/README.md) | [English](benchmarks/acoustic-transport/README.md) | Translated snapshot |
 | [`benchmarks/muse/README.md`](../../benchmarks/muse/README.md) | [English](benchmarks/muse/README.md) | Translated snapshot |
 
 ## BOOTSTRAP_REPORT.md
@@ -380,39 +567,59 @@ node scripts/validation/english-docs.mjs check
 | [`knowledge/wiki/experiments/record-replay.md`](../../knowledge/wiki/experiments/record-replay.md) | [English](knowledge/wiki/experiments/record-replay.md) | Translated snapshot |
 | [`knowledge/wiki/experiments/sound-behavior-validation.md`](../../knowledge/wiki/experiments/sound-behavior-validation.md) | [English](knowledge/wiki/experiments/sound-behavior-validation.md) | Translated snapshot |
 | [`knowledge/wiki/experiments/steam-audio.md`](../../knowledge/wiki/experiments/steam-audio.md) | [English](knowledge/wiki/experiments/steam-audio.md) | Translated snapshot |
+| [`knowledge/wiki/features/core-pipeline-20261102.md`](../../knowledge/wiki/features/core-pipeline-20261102.md) | [English](knowledge/wiki/features/core-pipeline-20261102.md) | Translated snapshot |
 | [`knowledge/wiki/features/interactive-sandbox.md`](../../knowledge/wiki/features/interactive-sandbox.md) | [English](knowledge/wiki/features/interactive-sandbox.md) | Translated snapshot |
 | [`knowledge/wiki/features/meta-agent.md`](../../knowledge/wiki/features/meta-agent.md) | [English](knowledge/wiki/features/meta-agent.md) | Translated snapshot |
+| [`knowledge/wiki/features/nonadvanced-completion-20261103.md`](../../knowledge/wiki/features/nonadvanced-completion-20261103.md) | [English](knowledge/wiki/features/nonadvanced-completion-20261103.md) | Translated snapshot |
 | [`knowledge/wiki/features/sound-behaviors.md`](../../knowledge/wiki/features/sound-behaviors.md) | [English](knowledge/wiki/features/sound-behaviors.md) | Translated snapshot |
+| [`knowledge/wiki/features/trajectory-editor-mvp-20261104.md`](../../knowledge/wiki/features/trajectory-editor-mvp-20261104.md) | [English](knowledge/wiki/features/trajectory-editor-mvp-20261104.md) | Translated snapshot |
 | [`knowledge/wiki/goals.md`](../../knowledge/wiki/goals.md) | [English](knowledge/wiki/goals.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/016c6c42-8309-4278-876f-543cc922f7e7.md`](../../knowledge/wiki/handoffs/016c6c42-8309-4278-876f-543cc922f7e7.md) | [English](knowledge/wiki/handoffs/016c6c42-8309-4278-876f-543cc922f7e7.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md`](../../knowledge/wiki/handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md) | [English](knowledge/wiki/handoffs/07abc6e1-6d06-481b-b8ec-23bc01a9efdc.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/0c46d575-d5da-44c7-8615-424bb34a8982.md`](../../knowledge/wiki/handoffs/0c46d575-d5da-44c7-8615-424bb34a8982.md) | [English](knowledge/wiki/handoffs/0c46d575-d5da-44c7-8615-424bb34a8982.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/10390f1f-7f6e-4bd7-a7ec-a019cb0b28cc.md`](../../knowledge/wiki/handoffs/10390f1f-7f6e-4bd7-a7ec-a019cb0b28cc.md) | [English](knowledge/wiki/handoffs/10390f1f-7f6e-4bd7-a7ec-a019cb0b28cc.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/11429c4b-25e4-4204-a585-eb7ad8bbc228.md`](../../knowledge/wiki/handoffs/11429c4b-25e4-4204-a585-eb7ad8bbc228.md) | [English](knowledge/wiki/handoffs/11429c4b-25e4-4204-a585-eb7ad8bbc228.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/117efd63-cca1-486e-8061-b379685543bb.md`](../../knowledge/wiki/handoffs/117efd63-cca1-486e-8061-b379685543bb.md) | [English](knowledge/wiki/handoffs/117efd63-cca1-486e-8061-b379685543bb.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md`](../../knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md) | [English](knowledge/wiki/handoffs/14c04833-4a26-4407-b0d4-3de2d81d6597.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/1810193b-53ec-4ec6-93db-6033ad352c30.md`](../../knowledge/wiki/handoffs/1810193b-53ec-4ec6-93db-6033ad352c30.md) | [English](knowledge/wiki/handoffs/1810193b-53ec-4ec6-93db-6033ad352c30.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/1ff3f034-4c66-4f4c-9d7f-4da6a7a182be.md`](../../knowledge/wiki/handoffs/1ff3f034-4c66-4f4c-9d7f-4da6a7a182be.md) | [English](knowledge/wiki/handoffs/1ff3f034-4c66-4f4c-9d7f-4da6a7a182be.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.md`](../../knowledge/wiki/handoffs/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.md) | [English](knowledge/wiki/handoffs/24305d40-5b47-4d1f-b1af-06f88a8cdbc5.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/267ff0c2-8299-447e-a7e9-50f97e1b6f3b.md`](../../knowledge/wiki/handoffs/267ff0c2-8299-447e-a7e9-50f97e1b6f3b.md) | [English](knowledge/wiki/handoffs/267ff0c2-8299-447e-a7e9-50f97e1b6f3b.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/27af8ba2-6c19-41e2-866b-582f73ae75b4.md`](../../knowledge/wiki/handoffs/27af8ba2-6c19-41e2-866b-582f73ae75b4.md) | [English](knowledge/wiki/handoffs/27af8ba2-6c19-41e2-866b-582f73ae75b4.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md`](../../knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md) | [English](knowledge/wiki/handoffs/2c69e001-673d-45e4-b940-0209eb3fc34c.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/3807fc47-bd19-45e4-a2f9-39448e711a5a.md`](../../knowledge/wiki/handoffs/3807fc47-bd19-45e4-a2f9-39448e711a5a.md) | [English](knowledge/wiki/handoffs/3807fc47-bd19-45e4-a2f9-39448e711a5a.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.md`](../../knowledge/wiki/handoffs/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.md) | [English](knowledge/wiki/handoffs/38ebc27c-cc0c-4ba3-be8c-f36d80c1fd45.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/392bc8c2-6b33-456f-bb27-300d311adf02.md`](../../knowledge/wiki/handoffs/392bc8c2-6b33-456f-bb27-300d311adf02.md) | [English](knowledge/wiki/handoffs/392bc8c2-6b33-456f-bb27-300d311adf02.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/3b6a4626-300e-4879-991f-9723f3a02df9.md`](../../knowledge/wiki/handoffs/3b6a4626-300e-4879-991f-9723f3a02df9.md) | [English](knowledge/wiki/handoffs/3b6a4626-300e-4879-991f-9723f3a02df9.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md`](../../knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md) | [English](knowledge/wiki/handoffs/419ef922-a43e-46bd-9226-b0baacbc6b58.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/53d30f97-81ea-4a1e-839b-e9998d2217d0.md`](../../knowledge/wiki/handoffs/53d30f97-81ea-4a1e-839b-e9998d2217d0.md) | [English](knowledge/wiki/handoffs/53d30f97-81ea-4a1e-839b-e9998d2217d0.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/5c7bfd0f-61df-447c-9d28-b6881dc4e6e0.md`](../../knowledge/wiki/handoffs/5c7bfd0f-61df-447c-9d28-b6881dc4e6e0.md) | [English](knowledge/wiki/handoffs/5c7bfd0f-61df-447c-9d28-b6881dc4e6e0.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/6435ecef-fc88-437d-83bb-4e8b3100e8a4.md`](../../knowledge/wiki/handoffs/6435ecef-fc88-437d-83bb-4e8b3100e8a4.md) | [English](knowledge/wiki/handoffs/6435ecef-fc88-437d-83bb-4e8b3100e8a4.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/6573aaa5-dc46-47af-956b-14dc4b2a4240.md`](../../knowledge/wiki/handoffs/6573aaa5-dc46-47af-956b-14dc4b2a4240.md) | [English](knowledge/wiki/handoffs/6573aaa5-dc46-47af-956b-14dc4b2a4240.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md`](../../knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md) | [English](knowledge/wiki/handoffs/68cb57eb-8034-4b39-baf0-4970fe3abe2b.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/6afd82e5-407f-41ad-abc9-3a5f9ff04382.md`](../../knowledge/wiki/handoffs/6afd82e5-407f-41ad-abc9-3a5f9ff04382.md) | [English](knowledge/wiki/handoffs/6afd82e5-407f-41ad-abc9-3a5f9ff04382.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.md`](../../knowledge/wiki/handoffs/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.md) | [English](knowledge/wiki/handoffs/6c47cd5f-77b1-48d7-9d6b-a2788be3e5ce.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/7adfd53a-7cab-4c50-9a6c-077c468d9ef1.md`](../../knowledge/wiki/handoffs/7adfd53a-7cab-4c50-9a6c-077c468d9ef1.md) | [English](knowledge/wiki/handoffs/7adfd53a-7cab-4c50-9a6c-077c468d9ef1.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/89c071f0-a668-4c1f-ba86-5d885237ca49.md`](../../knowledge/wiki/handoffs/89c071f0-a668-4c1f-ba86-5d885237ca49.md) | [English](knowledge/wiki/handoffs/89c071f0-a668-4c1f-ba86-5d885237ca49.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.md`](../../knowledge/wiki/handoffs/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.md) | [English](knowledge/wiki/handoffs/8d9232e2-aec5-45c5-9e84-ead239d4a1f2.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/8e25e0c8-5443-4e3e-807c-ce63463d529a.md`](../../knowledge/wiki/handoffs/8e25e0c8-5443-4e3e-807c-ce63463d529a.md) | [English](knowledge/wiki/handoffs/8e25e0c8-5443-4e3e-807c-ce63463d529a.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/8eb8aafb-bcbf-417f-87ff-8eb0d96c0ec4.md`](../../knowledge/wiki/handoffs/8eb8aafb-bcbf-417f-87ff-8eb0d96c0ec4.md) | [English](knowledge/wiki/handoffs/8eb8aafb-bcbf-417f-87ff-8eb0d96c0ec4.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/9a987f6d-5394-4563-b278-15ed0352e93a.md`](../../knowledge/wiki/handoffs/9a987f6d-5394-4563-b278-15ed0352e93a.md) | [English](knowledge/wiki/handoffs/9a987f6d-5394-4563-b278-15ed0352e93a.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md`](../../knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md) | [English](knowledge/wiki/handoffs/a2deec12-b5b7-42ee-98d1-c9968fbbf3e7.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/aea1f160-bcbd-4053-8f5e-cd8fd13afa79.md`](../../knowledge/wiki/handoffs/aea1f160-bcbd-4053-8f5e-cd8fd13afa79.md) | [English](knowledge/wiki/handoffs/aea1f160-bcbd-4053-8f5e-cd8fd13afa79.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/b04e358b-d17b-420b-a9f6-a42f6658f285.md`](../../knowledge/wiki/handoffs/b04e358b-d17b-420b-a9f6-a42f6658f285.md) | [English](knowledge/wiki/handoffs/b04e358b-d17b-420b-a9f6-a42f6658f285.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md`](../../knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md) | [English](knowledge/wiki/handoffs/b5dc4583-f2e2-4edb-a37c-4ae59a63d8d6.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md`](../../knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md) | [English](knowledge/wiki/handoffs/b92b3225-3c77-478f-9111-f84d3ad7c34f.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/bb21c352-ee38-4f6f-9cd7-2977daf30d1a.md`](../../knowledge/wiki/handoffs/bb21c352-ee38-4f6f-9cd7-2977daf30d1a.md) | [English](knowledge/wiki/handoffs/bb21c352-ee38-4f6f-9cd7-2977daf30d1a.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md`](../../knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md) | [English](knowledge/wiki/handoffs/bef01763-78fa-47c9-9a35-b1182df2a54a.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md`](../../knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md) | [English](knowledge/wiki/handoffs/c0a3eb71-5f9d-4bef-8381-1c694ba2a499.md) | Translated snapshot |
-| [`knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md`](../../knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md) | [English](knowledge/wiki/handoffs/d1ee2550-be0b-44d6-9f34-4698d8dfd744.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md`](../../knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md) | [English](knowledge/wiki/handoffs/d3e4aa21-94e4-4c95-a906-70e42b62dcb7.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md`](../../knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md) | [English](knowledge/wiki/handoffs/dddd64a7-7e89-40db-95cc-5537daed88f5.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md`](../../knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md) | [English](knowledge/wiki/handoffs/df40834c-d2f5-4dc3-b2e1-7cdbad2eec85.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/e58b3e01-a529-4d7c-8bab-c7418773bbf8.md`](../../knowledge/wiki/handoffs/e58b3e01-a529-4d7c-8bab-c7418773bbf8.md) | [English](knowledge/wiki/handoffs/e58b3e01-a529-4d7c-8bab-c7418773bbf8.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md`](../../knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md) | [English](knowledge/wiki/handoffs/edc70cdf-0ab2-42e5-b632-a9d70725c1f6.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/f35275d2-8a00-40f1-a913-745a979877e6.md`](../../knowledge/wiki/handoffs/f35275d2-8a00-40f1-a913-745a979877e6.md) | [English](knowledge/wiki/handoffs/f35275d2-8a00-40f1-a913-745a979877e6.md) | Translated snapshot |
+| [`knowledge/wiki/handoffs/f679856a-5240-42e6-b2d6-e890d16f4646.md`](../../knowledge/wiki/handoffs/f679856a-5240-42e6-b2d6-e890d16f4646.md) | [English](knowledge/wiki/handoffs/f679856a-5240-42e6-b2d6-e890d16f4646.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/f7352adf-612b-40f3-9cf8-8acbba2c599d.md`](../../knowledge/wiki/handoffs/f7352adf-612b-40f3-9cf8-8acbba2c599d.md) | [English](knowledge/wiki/handoffs/f7352adf-612b-40f3-9cf8-8acbba2c599d.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/fba987da-df7b-4d64-b431-e04e13ebc278.md`](../../knowledge/wiki/handoffs/fba987da-df7b-4d64-b431-e04e13ebc278.md) | [English](knowledge/wiki/handoffs/fba987da-df7b-4d64-b431-e04e13ebc278.md) | Translated snapshot |
 | [`knowledge/wiki/handoffs/fd1a594d-8ead-4b52-aba6-89dcced0eb77.md`](../../knowledge/wiki/handoffs/fd1a594d-8ead-4b52-aba6-89dcced0eb77.md) | [English](knowledge/wiki/handoffs/fd1a594d-8ead-4b52-aba6-89dcced0eb77.md) | Translated snapshot |
@@ -427,10 +634,12 @@ node scripts/validation/english-docs.mjs check
 | [`knowledge/wiki/research/datasets-and-rights.md`](../../knowledge/wiki/research/datasets-and-rights.md) | [English](knowledge/wiki/research/datasets-and-rights.md) | Translated snapshot |
 | [`knowledge/wiki/research/interactive-sound-design.md`](../../knowledge/wiki/research/interactive-sound-design.md) | [English](knowledge/wiki/research/interactive-sound-design.md) | Translated snapshot |
 | [`knowledge/wiki/research/muse-models-and-quota.md`](../../knowledge/wiki/research/muse-models-and-quota.md) | [English](knowledge/wiki/research/muse-models-and-quota.md) | Translated snapshot |
+| [`knowledge/wiki/research/performance-buffer-review-20261101.md`](../../knowledge/wiki/research/performance-buffer-review-20261101.md) | [English](knowledge/wiki/research/performance-buffer-review-20261101.md) | Translated snapshot |
 | [`knowledge/wiki/roadmap.md`](../../knowledge/wiki/roadmap.md) | [English](knowledge/wiki/roadmap.md) | Translated snapshot |
 | [`knowledge/wiki/tasks.md`](../../knowledge/wiki/tasks.md) | [English](knowledge/wiki/tasks.md) | Translated snapshot |
 | [`knowledge/wiki/ui-ux/design-engineering.md`](../../knowledge/wiki/ui-ux/design-engineering.md) | [English](knowledge/wiki/ui-ux/design-engineering.md) | Translated snapshot |
 | [`knowledge/wiki/ui-ux/fps-grab-review.md`](../../knowledge/wiki/ui-ux/fps-grab-review.md) | [English](knowledge/wiki/ui-ux/fps-grab-review.md) | Translated snapshot |
+| [`knowledge/wiki/ui-ux/product-parameter-audit-20261102.md`](../../knowledge/wiki/ui-ux/product-parameter-audit-20261102.md) | [English](knowledge/wiki/ui-ux/product-parameter-audit-20261102.md) | Translated snapshot |
 | [`knowledge/wiki/ui-ux/review-history.md`](../../knowledge/wiki/ui-ux/review-history.md) | [English](knowledge/wiki/ui-ux/review-history.md) | Translated snapshot |
 
 ## KNOWN_LIMITATIONS.md
@@ -528,6 +737,9 @@ node scripts/validation/english-docs.mjs check
 | [`docs/superpowers/plans/2026-10-26-agent-harness.md`](../superpowers/plans/2026-10-26-agent-harness.md) | [English](superpowers/plans/2026-10-26-agent-harness.md) | Translated snapshot |
 | [`docs/superpowers/plans/2026-10-27-sound-behavior.md`](../superpowers/plans/2026-10-27-sound-behavior.md) | [English](superpowers/plans/2026-10-27-sound-behavior.md) | Translated snapshot |
 | [`docs/superpowers/plans/2026-10-27-v1-implementation.md`](../superpowers/plans/2026-10-27-v1-implementation.md) | [English](superpowers/plans/2026-10-27-v1-implementation.md) | Translated snapshot |
+| [`docs/superpowers/plans/2026-11-03-nonadvanced-completion.md`](../superpowers/plans/2026-11-03-nonadvanced-completion.md) | [English](superpowers/plans/2026-11-03-nonadvanced-completion.md) | Translated snapshot |
+| [`docs/superpowers/plans/2026-11-04-trajectory-editor.md`](../superpowers/plans/2026-11-04-trajectory-editor.md) | [English](../superpowers/plans/2026-11-04-trajectory-editor.md) | Already English / companion |
+| [`docs/superpowers/specs/2026-11-03-trajectory-editor-design.md`](../superpowers/specs/2026-11-03-trajectory-editor-design.md) | [English](../superpowers/specs/2026-11-03-trajectory-editor-design.md) | Already English / companion |
 
 ## tests
 
@@ -538,6 +750,9 @@ node scripts/validation/english-docs.mjs check
 | [`tests/audio-runtime/README.md`](../../tests/audio-runtime/README.md) | [English](tests/audio-runtime/README.md) | Translated snapshot |
 | [`tests/browser/device-hearing-v3/README.md`](../../tests/browser/device-hearing-v3/README.md) | [English](../../tests/browser/device-hearing-v3/README.md) | Already English / companion |
 | [`tests/browser/native-accessibility-report.md`](../../tests/browser/native-accessibility-report.md) | [English](tests/browser/native-accessibility-report.md) | Translated snapshot |
+| [`tests/browser/nonadvanced/recording-readiness/README.md`](../../tests/browser/nonadvanced/recording-readiness/README.md) | [English](tests/browser/nonadvanced/recording-readiness/README.md) | Translated snapshot |
+| [`tests/browser/nonadvanced/voice-asset/README.md`](../../tests/browser/nonadvanced/voice-asset/README.md) | [English](tests/browser/nonadvanced/voice-asset/README.md) | Translated snapshot |
+| [`tests/perf/acoustic-abcd/README.md`](../../tests/perf/acoustic-abcd/README.md) | [English](tests/perf/acoustic-abcd/README.md) | Translated snapshot |
 | [`tests/wiki/README.md`](../../tests/wiki/README.md) | [English](tests/wiki/README.md) | Translated snapshot |
 
 ## third_party

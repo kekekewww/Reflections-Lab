@@ -16,6 +16,9 @@ export interface PhysicsEvent {
     | "OnThrow"
     | "OnDrop"
     | "OnImpact"
+    | "OnBounce"
+    | "OnEnterZone"
+    | "OnExitZone"
     | "OnStartMoving"
     | "OnStopMoving"
     | "OnSleep"
@@ -24,7 +27,9 @@ export interface PhysicsEvent {
     | "ContactEnd"
     | "ContactInvalidated"
     | "BodyModeChanged";
-  source: "interaction" | "physics" | "state";
+  source: "interaction" | "physics" | "state" | "zone";
+  /** Stable authored region identity for zone occupancy events. */
+  zoneId?: string;
   accepted: boolean;
   positionMetres: Vec3;
   commandId?: string;

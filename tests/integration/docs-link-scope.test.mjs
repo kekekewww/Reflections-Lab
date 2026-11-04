@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
@@ -130,5 +131,57 @@ test("malformed local URL encoding still fails", { timeout: 30000 }, () => {
     const result = run();
     assert.equal(result.status, 1, result.output);
     assert.match(result.output, /malformed encoded target %ZZ\.md/);
+  });
+});
+
+const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+
+test(
+  "SHA-256-named document copies keep source links only while bytes match",
+  { timeout: 30000 },
+  () => {
+    fixture(({ write, run }) => {
+      const copy = Buffer.from("# Earlier status\n\n[Contract](CONTRACT.md)\n");
+      const name = `docs/history/STATUS.pre-m1.${sha(copy).slice(0, 12)}.md`;
+      write(name, copy);
+      const exact = run();
+      assert.equal(exact.status, 0, exact.output);
+      assert.match(
+        exact.output,
+        /Excluded byte-exact document copies \(1\): docs\/history\/STATUS/,
+      );
+      write(name, Buffer.concat([copy, Buffer.from("edited\n")]));
+      const edited = run();
+      assert.equal(edited.status, 1, edited.output);
+      assert.match(edited.output, /STATUS\.pre-m1\.[0-9a-f]{12}\.md:3: CONTRACT\.md/);
+      write("docs/history/OTHER.000000000000.md", "[Missing](missing.md)\n");
+      assert.match(run().output, /OTHER\.000000000000\.md:1: missing\.md/);
+    });
+  },
+);
+
+test("SNAPSHOT_INDEX-registered copies are verified by SHA-256", { timeout: 30000 }, () => {
+  fixture(({ write, run }) => {
+    const copy = Buffer.from("[Request](REQUEST.json)\n");
+    write("docs/history/CONTRACT.v1.md", copy);
+    const index = (entries) =>
+      write("docs/history/SNAPSHOT_INDEX.json", JSON.stringify({ byte_exact_documents: entries }));
+    index([{ path: "docs/history/CONTRACT.v1.md", sha256: sha(copy) }]);
+    const exact = run();
+    assert.equal(exact.status, 0, exact.output);
+    assert.match(
+      exact.output,
+      /Excluded byte-exact document copies \(1\): docs\/history\/CONTRACT\.v1\.md/,
+    );
+    write("docs/history/CONTRACT.v1.md", "[Request](REQUEST.json)\nedited\n");
+    const edited = run();
+    assert.equal(edited.status, 1, edited.output);
+    assert.match(edited.output, /CONTRACT\.v1\.md: bytes differ from the snapshot registered/);
+    assert.match(edited.output, /CONTRACT\.v1\.md:1: REQUEST\.json/);
+    index([{ path: "docs/history/GONE.md", sha256: sha(copy) }, { path: "docs/x.md" }]);
+    const invalid = run();
+    assert.equal(invalid.status, 1, invalid.output);
+    assert.match(invalid.output, /GONE\.md: registered snapshot is missing/);
+    assert.match(invalid.output, /snapshot entry needs a path and a sha256/);
   });
 });

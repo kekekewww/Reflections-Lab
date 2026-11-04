@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "kind": "R21_ORPHAN_HELPER_READ_ONLY_AUDIT",
+  "recordedAt": "2026-11-02T10:13:47.3007089+00:00",
+  "observedAt": "2026-11-02T18:13:43.1026864+08:00",
+  "executor": "/root/worktree_cleanup",
+  "scope": "Bounded local process metadata and installed official plugin source review only",
+  "worktree": "D:/Developing/Meta Hack/.claude/worktrees/meta-hack-r18-handoff-d292c8",
+  "broker": {
+    "pid": 20952,
+    "exists": true,
+    "name": "node.exe",
+    "createdAt": "2026-11-02T00:49:27.683258+08:00",
+    "reportedParentPid": 39308
+  },
+  "currentOccupantOfReportedParentPid": {
+    "pid": 39308,
+    "exists": true,
+    "name": "cmd.exe",
+    "createdAt": "2026-11-02T13:08:18.374252+08:00",
+    "parentPid": 36872
+  },
+  "parentPidReuse": {
+    "confirmed": true,
+    "meaning": "Current PID39308 was created after broker20952, so it cannot be that broker original parent; original parent no longer occupies this PID",
+    "doesNotProve": "Does not independently prove all Claude sessions or broker clients closed, and does not prove helper idle"
+  },
+  "claudeFrontendSearch": {
+    "matchingProcessCount": 0,
+    "method": "Process name plus bounded command-line classification; output excludes command lines, session IDs, endpoints and prompts",
+    "limit": "No match is supporting evidence only; other clients or detached helpers can remain"
+  },
+  "brokerDescendants": [
+    {
+      "depth": 1,
+      "pid": 48200,
+      "parentPid": 20952,
+      "name": "bash.exe",
+      "createdAt": "2026-11-02T00:49:27.747869+08:00",
+      "hasAppServerArgument": true
+    },
+    {
+      "depth": 2,
+      "pid": 47256,
+      "parentPid": 48200,
+      "name": "conhost.exe",
+      "createdAt": "2026-11-02T00:49:27.75265+08:00",
+      "hasAppServerArgument": false
+    },
+    {
+      "depth": 2,
+      "pid": 21804,
+      "parentPid": 48200,
+      "name": "bash.exe",
+      "createdAt": "2026-11-02T00:49:27.768434+08:00",
+      "hasAppServerArgument": true
+    },
+    {
+      "depth": 3,
+      "pid": 42532,
+      "parentPid": 21804,
+      "name": "sh.exe",
+      "createdAt": "2026-11-02T00:49:27.795815+08:00",
+      "hasAppServerArgument": true
+    },
+    {
+      "depth": 4,
+      "pid": 47124,
+      "parentPid": 42532,
+      "name": "node.exe",
+      "createdAt": "2026-11-02T00:49:27.961646+08:00",
+      "hasAppServerArgument": true
+    },
+    {
+      "depth": 5,
+      "pid": 42140,
+      "parentPid": 47124,
+      "name": "codex.exe",
+      "createdAt": "2026-11-02T00:49:28.02157+08:00",
+      "hasAppServerArgument": true
+    }
+  ],
+  "officialSourceReferences": [
+    {
+      "path": "C:\\Users\\kevin\\.claude\\plugins\\cache\\openai-codex\\codex\\1.0.4\\scripts\\app-server-broker.mjs",
+      "sha256": "21feb2d56d6c211ac86d5fd998c484ed7c104474c15bd06c16780e607b457878"
+    },
+    {
+      "path": "C:\\Users\\kevin\\.claude\\plugins\\cache\\openai-codex\\codex\\1.0.4\\scripts\\lib\\broker-lifecycle.mjs",
+      "sha256": "edda09d1c62b78293c8509b6c384ecf61c1ec8b0d382f22327e46f0c3eddf30f"
+    },
+    {
+      "path": "C:\\Users\\kevin\\.claude\\plugins\\cache\\openai-codex\\codex\\1.0.4\\scripts\\session-lifecycle-hook.mjs",
+      "sha256": "82f9dacbd903936f66a9d34932bb266e94b442496952a2e78705066627a0bc81"
+    },
+    {
+      "path": "C:\\Users\\kevin\\.claude\\plugins\\cache\\openai-codex\\codex\\1.0.4\\hooks\\hooks.json",
+      "sha256": "5a13eb91adf801a6b5bbd6c2063709507d311bc339fc42a3686c0552eed2b3f0"
+    }
+  ],
+  "officialSourceFacts": [
+    {
+      "source": "scripts/lib/broker-lifecycle.mjs",
+      "symbol": "spawnBrokerProcess",
+      "finding": "Starts broker with detached:true, ignored stdin, log stdout/stderr and child.unref(), allowing lifetime beyond launcher"
+    },
+    {
+      "source": "scripts/app-server-broker.mjs",
+      "symbol": "socket close/error handlers",
+      "finding": "Only remove socket ownership; reviewed broker file has no idle timeout or original-parent liveness monitor"
+    },
+    {
+      "source": "scripts/app-server-broker.mjs",
+      "symbol": "main CLI and shutdown",
+      "finding": "CLI exposes serve; shutdown is wired to internal broker/shutdown and SIGTERM/SIGINT, with appClient.close()"
+    },
+    {
+      "source": "hooks/hooks.json and scripts/session-lifecycle-hook.mjs",
+      "symbol": "SessionEnd/handleSessionEnd",
+      "finding": "Official lifecycle hook first requests broker shutdown, then cleans session jobs, tears down broker state and includes terminateProcessTree fallback; not a purely non-terminating or read-only path"
+    }
+  ],
+  "assessment": {
+    "classification": "DETACHED_ORPHAN_HELPER_POSSIBLE",
+    "supportedInference": "Process birth times and official detached lifecycle are consistent with a leftover helper after launcher exit",
+    "notEstablished": [
+      "No active broker client",
+      "No queued or running job",
+      "Claude session lifecycle cleanup completed",
+      "Safe to move or remove old worktree now"
+    ],
+    "activeClients": "NOT_INSPECTED",
+    "activeJobs": "NOT_INSPECTED",
+    "sessionOrLogContents": "NOT_READ",
+    "privateIpc": "NOT_USED",
+    "shutdownOrSignals": "NOT_INVOKED"
+  },
+  "priorAutomaticReview": {
+    "rejectedAction": "Move all old R21 worktree children and unregister while a known broker still uses the worktree as cwd",
+    "reason": "May invalidate an active process or race its data; broad old-worktree deletion authorization did not establish safe timing for this active process",
+    "workaroundAttempted": false,
+    "status": "Retained; new read-only evidence does not itself authorize termination or deletion"
+  },
+  "currentDecision": "RETAIN_OLD_R21_AND_C_PRIMARY",
+  "nextCondition": "No further cleanup until actual relevant processes are confirmed gone or a separately reviewed, explicitly authorized lifecycle repair is approved",
+  "preservedBackup": {
+    "receipt": "D:/Developing/Meta Hack/.worktree-archives/cleanup-20261102/r21-original.json",
+    "regularFileCount": 14206,
+    "bytes": 864943287,
+    "state": "Existing verified backup retained unchanged"
+  },
+  "mutations": {
+    "oldWorktreeMoved": false,
+    "oldWorktreeDeleted": false,
+    "gitRegistrationChanged": false,
+    "processKilled": false,
+    "internalRpcSent": false,
+    "officialHookInvoked": false,
+    "receiptOnly": true
+  }
+}

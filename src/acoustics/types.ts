@@ -18,6 +18,30 @@ export interface AcousticMaterial {
   phaseModel: "zeroPhaseMagnitudeOnly";
   bands: readonly AcousticMaterialBand[];
 }
+export type AcousticGeometryRole = "staticReflector" | "dynamicReflector" | "dynamicOccluder";
+
+/** One bounded analytic convex object; no tessellation or physics engine handles. */
+export interface AcousticPrimitive {
+  id: string;
+  kind: "sphere" | "capsule";
+  materialId: string;
+  role?: AcousticGeometryRole;
+  centerM: Vec3;
+  radiusM: number;
+  /** Capsule axis is unit length; sphere does not carry axis/halfLengthM. */
+  axis?: Vec3;
+  halfLengthM?: number;
+}
+
+/** Exact closed OBB used only for occlusion; never synthesizes reflector faces. */
+export interface AcousticBoxOccluder {
+  id: string;
+  materialId: string;
+  centerM: Vec3;
+  halfExtentsM: Vec3;
+  orientationQuaternion: readonly [number, number, number, number];
+}
+
 /** Planar, finite convex surface. Normal direction is ignored for two-sided surfaces. */
 export interface AcousticSurface {
   id: string;
@@ -25,8 +49,8 @@ export interface AcousticSurface {
   normal?: Vec3;
   materialId: string;
   twoSided?: boolean;
-  /** Moving snapshots may occlude, but are never promoted to moving reflectors. */
-  role?: "staticReflector" | "dynamicOccluder";
+  /** Dynamic reflectors are solved at the supplied snapshot, without retarded-time correction. */
+  role?: AcousticGeometryRole;
 }
 export interface AcousticEndpoint {
   id: string;
@@ -54,9 +78,15 @@ export interface AcousticRequest {
   poseTick: number;
   /** Stable topology namespace; change only when surface identities/topology change. */
   topologyId?: string;
+  /** Optional scene-wide pin so emitter self-exclusion cannot mix backend versions in one recording. */
+  modelVersion?: string;
   source: AcousticEndpoint;
   listener: AcousticEndpoint;
   surfaces: readonly AcousticSurface[];
+  /** Omitted in legacy planar-only requests to retain their serialized representation. */
+  primitives?: readonly AcousticPrimitive[];
+  /** Optional exact OBB occlusion compaction, still charged to the same geometry budget. */
+  boxOccluders?: readonly AcousticBoxOccluder[];
   materials: readonly AcousticMaterial[];
   atmosphere: Atmosphere;
   bandCentersHz?: readonly number[];
@@ -89,7 +119,12 @@ export interface AcousticFrame {
   listenerId: string;
   bandCentersHz: number[];
   gainQuantity: "pressureRatio";
-  capabilities: ("directParameters" | "individualReflectionPaths" | "dynamicOccluders")[];
+  capabilities: (
+    | "directParameters"
+    | "individualReflectionPaths"
+    | "dynamicOccluders"
+    | "dynamicReflectors"
+  )[];
   modelClass: "numericalApproximation";
   directDelayS: number | null;
   paths: AcousticPath[];

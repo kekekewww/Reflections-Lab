@@ -1,0 +1,559 @@
+{
+  "schemaVersion": "1.0.0",
+  "revision": 36,
+  "policy": {
+    "authorizationId": "artifact.meta-catalog-20261104-demo",
+    "modelId": "muse-spark-1.3",
+    "dataMode": "standard",
+    "budgetUsd": 1,
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "maxRequests": 12,
+    "maxAttemptsPerRequest": 1
+  },
+  "requests": [
+    {
+      "requestId": "request.2368abe0-8654-4af0-bf29-2f96bc79ef5e",
+      "requestSha256": "c2e825b5ba4b1fcaf3804a7383d87a9befffaf108f4e565ca5ab645476f583a3",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.2368abe0-8654-4af0-bf29-2f96bc79ef5e.attempt-1",
+          "reservedUnits": 23887500,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a44d-5f5a-717e-be68-3a47d7ecb95b",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 5170,
+              "completionTokens": 464
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a44d-5f5a-717e-be68-3a47d7ecb95b",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "正為球的撞擊音調高音高提案。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_e6d0aa1c-1046-4a37-9006-618cf6695fc7",
+                  "type": "function",
+                  "function": {
+                    "name": "ProposeSoundBehavior",
+                    "arguments": "{\"operations\":[{\"binding\":{\"bindingId\":\"binding.interactive.ball\",\"enabled\":true,\"objectGeneration\":2,\"objectId\":\"ball\",\"overrides\":[{\"enabled\":null,\"gainLinear\":null,\"pitchSemitones\":12.0,\"ruleId\":\"rule.impact\"}],\"profileId\":\"profile.interactive-tone\",\"profileRevision\":1},\"type\":\"AssignBinding\"}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 464,
+          "prompt_tokens": 5170,
+          "total_tokens": 5634,
+          "completion_tokens_details": {
+            "reasoning_tokens": 298
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.241a70e3-58ff-4a78-97e5-b9cc1c9736c4",
+      "requestSha256": "a547432dc57c42ad0774806223821a6a0794c60c03af5eb2d908c39280e923f7",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.241a70e3-58ff-4a78-97e5-b9cc1c9736c4.attempt-1",
+          "reservedUnits": 24146250,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a44f-d608-7663-ab00-91e339e550d3",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 5209,
+              "completionTokens": 502
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a44f-d608-7663-ab00-91e339e550d3",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "Ball impact 音高將上調 — 正在提出綁定覆寫。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_5230757e-4294-4861-bcb5-19f8760aa1df",
+                  "type": "function",
+                  "function": {
+                    "name": "ProposeSoundBehavior",
+                    "arguments": "{\"operations\":[{\"type\":\"RemoveBinding\",\"bindingId\":\"binding.interactive.ball\"},{\"type\":\"AssignBinding\",\"binding\":{\"bindingId\":\"binding.interactive.ball\",\"objectId\":\"ball\",\"objectGeneration\":2,\"profileId\":\"profile.interactive-tone\",\"profileRevision\":1,\"enabled\":true,\"overrides\":[{\"ruleId\":\"rule.impact\",\"enabled\":null,\"gainLinear\":null,\"pitchSemitones\":12}]}}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 502,
+          "prompt_tokens": 5209,
+          "total_tokens": 5711,
+          "completion_tokens_details": {
+            "reasoning_tokens": 316
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.e3d5e962-794d-4880-ac2a-2dfd95a25803",
+      "requestSha256": "a547432dc57c42ad0774806223821a6a0794c60c03af5eb2d908c39280e923f7",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.e3d5e962-794d-4880-ac2a-2dfd95a25803.attempt-1",
+          "reservedUnits": 24146250,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a454-852b-73c9-b470-4db140c64ee7",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 5209,
+              "completionTokens": 484
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a454-852b-73c9-b470-4db140c64ee7",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "Ball impact 音調偏低 — 我將為其加上高音覆寫。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_4bb33aa7-82e8-4f75-8513-375fe2ecccdb",
+                  "type": "function",
+                  "function": {
+                    "name": "ProposeSoundBehavior",
+                    "arguments": "{\"operations\":[{\"type\":\"RemoveBinding\",\"bindingId\":\"binding.interactive.ball\"},{\"type\":\"AssignBinding\",\"binding\":{\"bindingId\":\"binding.interactive.ball\",\"objectId\":\"ball\",\"objectGeneration\":2,\"profileId\":\"profile.interactive-tone\",\"profileRevision\":1,\"enabled\":true,\"overrides\":[{\"ruleId\":\"rule.impact\",\"enabled\":null,\"gainLinear\":null,\"pitchSemitones\":7.0}]}}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 484,
+          "prompt_tokens": 5209,
+          "total_tokens": 5693,
+          "completion_tokens_details": {
+            "reasoning_tokens": 296
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 5105
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.980f578a-61aa-4b58-befe-7d7f59ce74df",
+      "requestSha256": "3876ab2db74c9f1ae76e68c92efd31dc019d1c2efb827c37b65a044c571a7120",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.980f578a-61aa-4b58-befe-7d7f59ce74df.attempt-1",
+          "reservedUnits": 19250000,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a58f-7e31-757b-b906-9b9e20600301",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 4158,
+              "completionTokens": 597
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a58f-7e31-757b-b906-9b9e20600301",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "在揚聲器與聽者之間加一隻 1 米木箱 — 正在規劃放置位置。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_7c99f9d9-694d-41fc-baeb-53b59f9bb997",
+                  "type": "function",
+                  "function": {
+                    "name": "AddObject",
+                    "arguments": "{\"dimensionsM\":[1.0,1.0,1.0],\"label\":\"wooden box 1m between speaker and listener\",\"massKg\":5.0,\"materialId\":\"material.wood\",\"mode\":\"fixed\",\"objectId\":\"box.wood-1\",\"orientationQuaternion\":[0.0,0.0,0.0,1.0],\"positionM\":[0.75,0.5,1.0],\"shape\":\"box\"}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 597,
+          "prompt_tokens": 4158,
+          "total_tokens": 4755,
+          "completion_tokens_details": {
+            "reasoning_tokens": 340
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.ff59d44c-b11f-45d8-8128-6ba4c3270dfa",
+      "requestSha256": "f295c4e210bc1747186c0c58c26ab5627cad40b14deade4761a37d0cb6fa1007",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.ff59d44c-b11f-45d8-8128-6ba4c3270dfa.attempt-1",
+          "reservedUnits": 24486250,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a58f-d2c2-7703-b49c-494a3e207cd4",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 5308,
+              "completionTokens": 393
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a58f-d2c2-7703-b49c-494a3e207cd4",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "Ball impact 3× — preparing a binding override.",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_a727cead-c8ba-442c-9a8e-208138761330",
+                  "type": "function",
+                  "function": {
+                    "name": "ProposeSoundBehavior",
+                    "arguments": "{\"operations\":[{\"type\":\"RemoveBinding\",\"bindingId\":\"binding.interactive.ball\"},{\"type\":\"AssignBinding\",\"binding\":{\"bindingId\":\"binding.interactive.ball\",\"objectId\":\"ball\",\"objectGeneration\":1,\"profileId\":\"profile.interactive-tone\",\"profileRevision\":1,\"enabled\":true,\"overrides\":[{\"ruleId\":\"rule.impact\",\"enabled\":null,\"gainLinear\":0.189287203344058,\"pitchSemitones\":null}]}}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 393,
+          "prompt_tokens": 5308,
+          "total_tokens": 5701,
+          "completion_tokens_details": {
+            "reasoning_tokens": 207
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.9fc6bd66-eaeb-487a-80f4-f6767ce3400a",
+      "requestSha256": "7f9e7bf601a20b6884e800f2ca0d1ece8a0414a9cf8bf3317f9a284a1835b621",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.9fc6bd66-eaeb-487a-80f4-f6767ce3400a.attempt-1",
+          "reservedUnits": 18826250,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a591-7cb8-74a5-9190-44a43644c757",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 4058,
+              "completionTokens": 557
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a591-7cb8-74a5-9190-44a43644c757",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "在喇叭與聆聽者之間加一木箱 — 正在規劃地板上的位置。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_0a37b102-67f2-464a-8949-e43658424291",
+                  "type": "function",
+                  "function": {
+                    "name": "AddObject",
+                    "arguments": "{\"dimensionsM\":[1.0,1.0,1.0],\"label\":\"wooden box 1m between speaker and listener\",\"massKg\":10.0,\"materialId\":\"material.wood\",\"mode\":\"fixed\",\"objectId\":\"box.wooden-01\",\"orientationQuaternion\":[0.0,0.0,0.0,1.0],\"positionM\":[0.75,0.5,1.0],\"shape\":\"box\"}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 557,
+          "prompt_tokens": 4058,
+          "total_tokens": 4615,
+          "completion_tokens_details": {
+            "reasoning_tokens": 299
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.f2191ba6-e0d3-447b-b29d-f457555ac396",
+      "requestSha256": "0d38601fb32dba83aa3ed823a4297ca96d2781ff01761f9af2955bd1eb49154d",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.f2191ba6-e0d3-447b-b29d-f457555ac396.attempt-1",
+          "reservedUnits": 19210000,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a591-99ac-70fd-abc7-9c1d36bcddc3",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 4145,
+              "completionTokens": 297
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a591-99ac-70fd-abc7-9c1d36bcddc3",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "沿著聽者規劃慢速環繞，並提出受控的運動步驟供你預覽。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_a246aadf-ad2e-4f52-8e82-d04a96d87760",
+                  "type": "function",
+                  "function": {
+                    "name": "SetRigidBodyMode",
+                    "arguments": "{\"mode\":\"kinematic\",\"objectId\":\"ball\",\"velocityPolicy\":\"zero\"}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 297,
+          "prompt_tokens": 4145,
+          "total_tokens": 4442,
+          "completion_tokens_details": {
+            "reasoning_tokens": 182
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.61b3ec07-c20c-4e49-8a70-97d31839c145",
+      "requestSha256": "ab6791b688fa01cd6fc09d28a3cfe92a6bfb981554c47a1fbac1c3cebbbcad83",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.61b3ec07-c20c-4e49-8a70-97d31839c145.attempt-1",
+          "reservedUnits": 19181250,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a591-c253-7651-9032-a7fafba595fb",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 4141,
+              "completionTokens": 490
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a591-c253-7651-9032-a7fafba595fb",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "讓球動得更開、拉長到 12 秒 — 我來加寬它的軌跡。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_7048edb1-ae1e-4b5f-9460-986cf4aa278c",
+                  "type": "function",
+                  "function": {
+                    "name": "SetTrajectory",
+                    "arguments": "{\"interpolation\":\"linearSlerp\",\"objectId\":\"ball\",\"samples\":[{\"orientationQuaternion\":[0,0,0,1],\"positionM\":[-2.0,2.0,0.0],\"timeS\":0.0},{\"orientationQuaternion\":[0,0,0,1],\"positionM\":[2.0,2.0,0.0],\"timeS\":12.0}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 490,
+          "prompt_tokens": 4141,
+          "total_tokens": 4631,
+          "completion_tokens_details": {
+            "reasoning_tokens": 290
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    },
+    {
+      "requestId": "request.6c31203f-b00a-4474-b6b4-170315edd96a",
+      "requestSha256": "689319d7f991afd29a8d48835b9ef51a23bc14d7fac9504dcd98b4252e635c6c",
+      "state": "completed",
+      "attempts": [
+        {
+          "attemptId": "request.6c31203f-b00a-4474-b6b4-170315edd96a.attempt-1",
+          "reservedUnits": 24318750,
+          "status": "completed",
+          "settlement": {
+            "status": "completed",
+            "httpStatus": 200,
+            "responseId": "chatcmpl-01a1a592-4e84-7307-8ffd-871527f28cfb",
+            "modelId": "muse-spark-1.3",
+            "usage": {
+              "promptTokens": 5256,
+              "completionTokens": 531
+            }
+          }
+        }
+      ],
+      "response": {
+        "id": "chatcmpl-01a1a592-4e84-7307-8ffd-871527f28cfb",
+        "model": "muse-spark-1.3",
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "為球體撞擊音調高 7 個半音，我將以綁定覆寫提案。",
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "call_69d08625-9f11-4256-94a3-0b7aa9d068a9",
+                  "type": "function",
+                  "function": {
+                    "name": "ProposeSoundBehavior",
+                    "arguments": "{\"operations\":[{\"type\":\"RemoveBinding\",\"bindingId\":\"binding.interactive.ball\"},{\"type\":\"AssignBinding\",\"binding\":{\"bindingId\":\"binding.interactive.ball\",\"objectId\":\"ball\",\"objectGeneration\":1,\"profileId\":\"profile.interactive-tone\",\"profileRevision\":1,\"enabled\":true,\"overrides\":[{\"ruleId\":\"rule.impact\",\"enabled\":null,\"gainLinear\":null,\"pitchSemitones\":7}]}}]}"
+                  }
+                }
+              ],
+              "role": "assistant"
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 531,
+          "prompt_tokens": 5256,
+          "total_tokens": 5787,
+          "completion_tokens_details": {
+            "reasoning_tokens": 339
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "errorCode": null
+    }
+  ],
+  "actualBillingCostUsd": null,
+  "remainingCreditUsd": null
+}

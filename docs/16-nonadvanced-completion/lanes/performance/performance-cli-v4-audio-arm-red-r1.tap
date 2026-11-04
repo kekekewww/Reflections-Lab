@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: audio resource policy arm defaults to the original reference without reducing any formal load
+not ok 1 - audio resource policy arm defaults to the original reference without reducing any formal load
+  ---
+  duration_ms: 4.0729
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:562:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'reference'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'reference'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:565:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: the candidate audio arm is an explicit option under the same original formal workload
+not ok 2 - the candidate audio arm is an explicit option under the same original formal workload
+  ---
+  duration_ms: 0.2471
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:569:1'
+  failureType: 'testCodeFailure'
+  error: 'UNKNOWN_OPTION'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    parseProfileOptions (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-cli-v3.mjs:25:32)
+    Module.parseProfileOptionsV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-cli-v4.mjs:42:20)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:571:23)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm unknown
+ok 3 - audio policy arm is type/identity strict: --audio-policy-arm unknown
+  ---
+  duration_ms: 0.4294
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm
+ok 4 - audio policy arm is type/identity strict: --audio-policy-arm
+  ---
+  duration_ms: 0.1438
+  type: 'test'
+  ...
+# Subtest: audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+ok 5 - audio policy arm is type/identity strict: --audio-policy-arm reference --audio-policy-arm candidate
+  ---
+  duration_ms: 0.1211
+  type: 'test'
+  ...
+# Subtest: the bounded planner forwards the requested arm without claiming it is observed
+not ok 6 - the bounded planner forwards the requested arm without claiming it is observed
+  ---
+  duration_ms: 0.6434
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-profile-v4.spec.mjs:583:1'
+  failureType: 'testCodeFailure'
+  error: 'UNKNOWN_OPTION'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    parseProfileOptions (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-cli-v3.mjs:25:32)
+    parseProfileOptionsV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/performance-cli-v4.mjs:42:20)
+    Module.planPerformanceRunV4 (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/browser/run-performance-v4.mjs:30:19)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-profile-v4.spec.mjs:585:29)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 3
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 810.5871

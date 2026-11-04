@@ -1,0 +1,996 @@
+{
+  "schema_version": 1,
+  "kind": "M2_PERF_READ_ONLY_NEGATIVE_SEMANTIC_AND_UNQUALIFIED_METHOD_AUDIT",
+  "recorded_at": "2026-11-02T19:52:59.857Z",
+  "reader": "/root/nonadvanced_memory/m2_perf_reader",
+  "actions": "Readproject/Git/fixedreceipt/raw/trace andwriteonlythisauthorizedcache. No test,build,lint,browser/network,product/sharedmetadata/index writes.",
+  "integration": {
+    "parent_reported_start_HEAD": "41526a710d41947a45c46364eab5bf1b2f7eb162",
+    "observed_end_HEAD": "3a25185631d2200da892773a24cf7a3bcdd06a9e"
+  },
+  "baseline": {
+    "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+    "branch": "codex/nonadvanced-baseline-measure-20261103",
+    "tip": "de5b363a6c5545e852f1cc964528c50d0c359d77",
+    "tip_status": "?? artifacts/v1/perf-nonadvanced-20261103-legacy-reject-01/\n?? artifacts/v1/perf-nonadvanced-20261103-semantic-01/\n?? docs/16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md\n?? docs/16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md\n?? docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md\n?? docs/16-nonadvanced-completion/lanes/performance/audio-command-plan-r1.json\n?? docs/16-nonadvanced-completion/lanes/performance/audio-controls-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/collector-original-regression-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/focused-127-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/focused-95-green.tap\n?? docs/16-nonadvanced-completion/lanes/performance/method-components-unit-receipt.json\n?? docs/16-nonadvanced-completion/lanes/performance/metric-null-focused-green.tap\n?? docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-red-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/native-pcm-schema-red.tap\n?? docs/16-nonadvanced-completion/lanes/performance/native-v2-oracle-typed-null-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/native-v2-oracle-typed-null-red-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/original-audio-budget.json\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-artifact-oracle-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-control-format-r5.txt\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-format-r4.txt\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-lint-r4.txt\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-probe-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-runner-format-r6.txt\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-schema-wav-green.tap\n?? docs/16-nonadvanced-completion/lanes/performance/pcm-wave-bits-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/scoped-format-r3.txt\n?? docs/16-nonadvanced-completion/lanes/performance/scoped-lint-r1.txt\n?? docs/16-nonadvanced-completion/lanes/performance/scoped-lint-r2.txt\n?? docs/16-nonadvanced-completion/lanes/performance/scoped-lint-r3.txt\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-command-plan.json\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-format-r4.txt\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-frame-scope-red.tap\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-freeze-102-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-lint-r5.txt\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-metric-null-pcm-red.tap\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-oracle-green-r1.tap\n?? docs/16-nonadvanced-completion/lanes/performance/semantic-runner-plan.json\n?? tests/browser/performance-native-boundary-v4.mjs\n?? tests/browser/performance-qualification-registry-v4.mjs\n?? tests/browser/performance-semantic-native-oracle-v2.mjs\n?? tests/performance-v3/native-boundary-v4.spec.mjs",
+    "fixed_run_source": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+    "fixed_evidence_commit": "047d977f723db067cf703cf265c207855095420e",
+    "ancestry_at_parent_HEAD": {
+      "commit": "047d977f723db067cf703cf265c207855095420e",
+      "target": "41526a710d41947a45c46364eab5bf1b2f7eb162",
+      "exit": 1,
+      "is_ancestor": false
+    },
+    "ancestry_at_current_integration": {
+      "commit": "047d977f723db067cf703cf265c207855095420e",
+      "target": "3a25185631d2200da892773a24cf7a3bcdd06a9e",
+      "exit": 1,
+      "is_ancestor": false
+    },
+    "scope": "047commits14semantic-evidencefiles;V4/PCMnewmethoddocs/codecurrentlyuntrackedorworkingdirty,notcontainedin047orfrozen."
+  },
+  "actual_run": {
+    "legacy": {
+      "exit": 1,
+      "duration_ms": 967.092,
+      "error": "V3_UNSUPPORTED_NATIVE_LAUNCHER_SHA256",
+      "reachedBuild": false,
+      "reachedBrowser": false,
+      "formal_requested": true,
+      "formal600_executed": false
+    },
+    "semantic": {
+      "status": "UNVERIFIED_NOT_APPROVED",
+      "exit": 1,
+      "configured_watchdog_ms": 55000,
+      "operation_cap_ms": 45000,
+      "cleanup_cap_ms": 10000,
+      "actual_process_duration_ms": 4754.4203,
+      "actual_native_marker_window_us": 396760,
+      "actual_DOM_window_ms": 396.70000000298023,
+      "journal_qualified": true,
+      "strict_native_qualified": false,
+      "strict_reasons": [
+        "RENDERER_TASK_SCHEMA_OR_CATEGORY"
+      ],
+      "native_journal_qualified": false,
+      "production_observed_counts": null,
+      "native_analysis_status": "UNVERIFIED_NOT_APPROVED",
+      "not_a_55_second_workload": true,
+      "not_formal_performance_PASS_or_FAIL": true
+    },
+    "browser": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/156.0.8078.75",
+      "revision": "@861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "jsVersion": "15.6.75.25"
+    },
+    "executable": {
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "sha256Before": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+      "sha256After": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa"
+    },
+    "hardware": {
+      "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+      "logicalCpus": 32,
+      "totalMemoryBytes": 33959825408,
+      "gpuDevices": [
+        {
+          "vendorId": 4318,
+          "deviceId": 10336,
+          "subSysId": 349376579,
+          "revision": 161,
+          "vendorString": "",
+          "deviceString": "NVIDIA GeForce RTX 4070 Laptop GPU",
+          "driverVendor": "NVIDIA",
+          "driverVersion": "32.0.15.9200"
+        },
+        {
+          "vendorId": 32902,
+          "deviceId": 42888,
+          "subSysId": 349376579,
+          "revision": 4,
+          "vendorString": "",
+          "deviceString": "Intel(R) UHD Graphics",
+          "driverVendor": "",
+          "driverVersion": "32.0.101.6790"
+        },
+        {
+          "vendorId": 5140,
+          "deviceId": 140,
+          "subSysId": 0,
+          "revision": 0,
+          "vendorString": "",
+          "deviceString": "Microsoft Basic Render Driver",
+          "driverVendor": "",
+          "driverVersion": "10.0.26100.9711"
+        }
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.9200)"
+    },
+    "audio": {
+      "requested": false,
+      "sampleRate": null,
+      "hardwareBlockLength": null,
+      "deviceRoute": null,
+      "reason": "NO_AUDIO_REQUESTED_IN_SEMANTIC_PILOT"
+    },
+    "trace": {
+      "events": 3306,
+      "compressed_bytes": 81393,
+      "decoded_bytes": 834926,
+      "compressed_sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72",
+      "dataLossOccurred": false
+    },
+    "cleanup": {
+      "cleanupWallMs": 233,
+      "browserConnectedAfterCleanup": false,
+      "serverListeningAfterCleanup": false,
+      "cleanupErrors": [],
+      "restoration": {
+        "nativeRafIdentityUnchanged": true,
+        "nativeCancelIdentityUnchanged": true,
+        "pendingAfterRestore": 0,
+        "state": "CLOSED"
+      },
+      "outerProcessStopped": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "machineLeaseReleasable": true,
+      "limit": "actualownedbrowser/serverclosed;nullprocessTreeStoppedisnotOSkillproof."
+    },
+    "source_endpoint_scope": {
+      "sourceStable": true,
+      "executableStable": true,
+      "scope": "BEFORE_AND_AFTER_ENDPOINTS_ONLY_NOT_CONTINUOUS_FILE_MONITORING"
+    },
+    "formal600Run": false,
+    "paidCalls": 0
+  },
+  "raw_observations": {
+    "counts": {
+      "traceEvents": 3306,
+      "registeredJournalHandles": 26,
+      "journalCallbackEvents": 24,
+      "rawGroups": 13,
+      "groupSizes": [
+        2,
+        3,
+        2,
+        1,
+        3,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "ownedNative": {
+        "FireAnimationFrame": 24,
+        "RequestAnimationFrame": 23,
+        "CancelAnimationFrame": 1
+      },
+      "ownedTraceHandleCount": 25,
+      "unknownOwnedHandles": [],
+      "rendererTaskCount": 48,
+      "rendererCompleteXCount": 47,
+      "rendererOtherPhaseCount": 1,
+      "allRendererPhaseEEvents": []
+    },
+    "collection": {
+      "collectionId": "59ef6397-1002-45f1-a35e-a5b06b77f25c",
+      "documentId": "9062D6912304040F2612E98D72BDEB4C",
+      "pid": 72488,
+      "tid": 93008,
+      "beginEventIndex": 354,
+      "endEventIndex": 2278,
+      "beginUs": 99066898433,
+      "endUs": 99067295193,
+      "nativeMarkerDurationUs": 396760,
+      "performanceWindowMs": 396.70000000298023,
+      "lastOwnedFireEndUs": 99067294986,
+      "lastOwnedFireToEndGapUs": 207,
+      "beginMarkerPhysicalCallTimeUs": 99066898622,
+      "endMarkerPhysicalCallTimeUs": 99067295194
+    },
+    "owned_renderer_task_count": 48,
+    "offenders": [
+      {
+        "event_index": 2377,
+        "source_event": {
+          "args": {
+            "src_file": "cc/trees/proxy_impl.cc",
+            "src_func": "ScheduledActionSendBeginMainFrame",
+            "src_line": 849
+          },
+          "cat": "toplevel",
+          "name": "ThreadControllerImpl::RunTask",
+          "ph": "B",
+          "pid": 72488,
+          "tid": 93008,
+          "ts": 99067311504
+        },
+        "delta_from_original_end_us": 16311,
+        "duration": null,
+        "numeric_cost_not_inferred": true
+      }
+    ],
+    "observed_E_count": 0,
+    "role": "Read-onlyrawobservation, not originaloracle rerun.24callback/13group observationsdoNOTreplaceproductionobservedCounts:null.",
+    "original_rejection_correct": true,
+    "causal_limit": "The exported JSON lacks the original protobuf duration_ns and does not by itself establish why this slice was unfinished. Trace-stop right censoring is consistent with the observed post-window B but is not independently proven as the mechanism."
+  },
+  "artifact_pin_checks": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.raw.json",
+      "expected_sha256": "8c95e3bfdceef6a098abcc1102f493e51b4072bb0745b742a237b3d72187fe3e",
+      "expected_bytes": 33304,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.native-analysis.json",
+      "expected_sha256": "02ea5fd7b72d537fec0f3b4ecbcbca555bd6f9251b9781ff3a4ae1b8e415acde",
+      "expected_bytes": 6887,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.trace.json.gz",
+      "expected_sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72",
+      "expected_bytes": 81393,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "expected_sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d",
+      "expected_bytes": 31050,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/process.json",
+      "expected_sha256": "00e201733a358601aef84077f9894c2572e862136c923b5510f645a4fc70bc2a",
+      "expected_bytes": 1927,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/command.json",
+      "expected_sha256": "e74960c103dd7d53d22ffba410efa137528b14a36d910c85603e9a7ca90b4267",
+      "expected_bytes": 1321,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stdout.txt",
+      "expected_sha256": "4714b6298018948e52b93589bf6acf79ec119618fad302585494923c92b2169b",
+      "expected_bytes": 241,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stderr.txt",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_bytes": 0,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-command.json",
+      "expected_sha256": "91503505e9abea817a3493dfeed9e5c5cf313c35948fa90ef4e56574bb34c07a",
+      "expected_bytes": 2722,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-process.json",
+      "expected_sha256": "337e7a8b75ed2032915472b35f056a5ea0fd045af5b94199210c6aaba2961ba6",
+      "expected_bytes": 4373,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stdout.txt",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_bytes": 0,
+      "match": true,
+      "committed047_exact": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stderr.txt",
+      "expected_sha256": "dca121498c78593117e362f38a7a105223996fd59d90f439aed27e896257cb8e",
+      "expected_bytes": 540,
+      "match": true,
+      "committed047_exact": true
+    }
+  ],
+  "source_pin_checks": [
+    {
+      "path": "tests/browser/performance-semantic-command-v1.mjs",
+      "expected_sha256": "76cea89421f13e6c14d5a7774f1ebdc908d65625ff1d8dcc9f4ac01f2599ae67",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 6386
+    },
+    {
+      "path": "tests/browser/performance-deadline-v1.mjs",
+      "expected_sha256": "acdbf3414fcfa16659f14e5fb4b356171fc970fde737759d2a407d05b53b705f",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 1032
+    },
+    {
+      "path": "scripts/agents/process-runner.mjs",
+      "expected_sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 18201
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v1.mjs",
+      "expected_sha256": "1e9959f9f7576286af1178eed5184d52db200657949bb79fa9f9bedb75f1bba8",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 20304
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v1.mjs",
+      "expected_sha256": "8f712452ba026711acb57ef07dd75631c02b552c0e4cbc4e37fbd8eddad28ab7",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 5409
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v1.html",
+      "expected_sha256": "eb4b7d3d685dc8758c73ec03fdfb68fab4020a4105ecf5deb369584fc7255cfd",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 391
+    },
+    {
+      "path": "tests/browser/performance-semantic-oracle-v1.mjs",
+      "expected_sha256": "cb7e0e85481494c81a358ae6074b913847d902c4acc30d820251ffc1c26561f7",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 13622
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v1.mjs",
+      "expected_sha256": "25e82f87ed64e8ce538bfde85b0a5b7a28974ef38832484d8c96f0b1bf9f295f",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 10131
+    },
+    {
+      "path": "tests/browser/performance-proof-v3.mjs",
+      "expected_sha256": "41a17f0a28b06d647eb8e0c983d2a9059fe498c0421eae5cb1b9bc3b4f4909b0",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 9341
+    },
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "expected_sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 33328
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "expected_sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 4183
+    },
+    {
+      "path": "tests/browser/performance-stream-v3.mjs",
+      "expected_sha256": "064b3071d350f9bc3dc4f39682a21c1f1e19f68fd3929a9c147551a149abeaab",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 7268
+    },
+    {
+      "path": "tests/browser/performance-owned-cleanup-v3.mjs",
+      "expected_sha256": "cdfb742d0d2e5b64e8c62d65ddd186c5a8109896a53bdd6641878fc78224ad43",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 11236
+    },
+    {
+      "path": "tests/browser/performance-error-record-v3.mjs",
+      "expected_sha256": "f7e1d1c0d27bf41440ef4cca65c7373d1aa3f47205032d2c701f51c070c2db5d",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 5921
+    },
+    {
+      "path": "tests/performance-v3/semantic-pilot.spec.mjs",
+      "expected_sha256": "55a1cebcab06d2510c37f473487659309a2839e23c42cde15bcb0430e4d226cd",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 37383
+    },
+    {
+      "path": "package-lock.json",
+      "expected_sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 103658
+    },
+    {
+      "path": ".node-version",
+      "expected_sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98",
+      "source_bd64_git_matches": true,
+      "actual_run_archive_matches": true,
+      "archive_bytes": 8
+    }
+  ],
+  "V4": {
+    "ADR_status": "ROOT_AUTHORIZED_CANDIDATE_NOT_QUALIFIED_NOT_APPROVED",
+    "registry_status_observed": "NOT_QUALIFIED",
+    "registry_source_path": "tests/browser/performance-qualification-registry-v4.mjs",
+    "registry_git_status": "?? tests/browser/performance-qualification-registry-v4.mjs",
+    "registry_active_source_hash_recomputed": false,
+    "rule_scope": "Exactknownsame-owner/producer/launcherpost-windowB;finiteTSstrictly>end;known7fields/location;atmost1;duration:null/numericIncluded:false;allotherunknownformsreject.",
+    "no_original_schema_or_numeric_change_claim": "ADR says originalV3/rawrejection andnumericcore remain; no epsilon/rounding/clockshift/costzero/oldPASS.",
+    "fresh_semantic_pilot": "NOT_RUN",
+    "original20s_all_wiring": "NOT_RUN",
+    "formal_original600": "NOT_RUN",
+    "qualification": "NOT_QUALIFIED_NOT_APPROVED",
+    "method_adoption": false,
+    "activity": "V4ADR/parser/registry/specs untrackedworkingcandidate; no047orRootancestorclaim."
+  },
+  "method_and_PCM_source_ready": {
+    "method_components_status": "Uncommittedunit/sourcecutoffonly, notqualification",
+    "method_unit127": {
+      "fail": 0,
+      "raw": "focused-127-green-r1.tap",
+      "pass": 127,
+      "skip": 0,
+      "command": "node --test --test-concurrency=1 <six owned specs>",
+      "exitCode": 0
+    },
+    "method_original_regression280": {
+      "pass": 280,
+      "exitCode": 0,
+      "fail": 0,
+      "raw": "collector-original-regression-r1.tap"
+    },
+    "PCM_source_status": "SOURCE_READY_NATIVE_PCM_NOT_RUN",
+    "PCM_unit356": {
+      "command": "node --test --test-concurrency=1 <six explicitly registered owned performance specs>",
+      "exitCode": 0,
+      "tests": 356,
+      "pass": 356,
+      "fail": 0,
+      "skip": 0,
+      "raw": "focused-356-green-r1.tap"
+    },
+    "PCM_workload_scope": {
+      "formal600Replacement": false,
+      "engineOriginalBudgetFields": 13,
+      "defaultVoiceCap": 24,
+      "pathsPerVoice": 8,
+      "totalPaths": 96,
+      "captureSeconds": 3,
+      "cases": [
+        "steady",
+        "main-stall",
+        "late-onset",
+        "stale-frame",
+        "path-churn",
+        "voice-path-budget",
+        "digital-gap"
+      ],
+      "budgetControl": "32 requested paths and 36 admissions against default engine budget; not the formal stress32/256 workload",
+      "referenceContentModel": "nativeReference",
+      "candidateAdopted": false,
+      "candidateValidation": "NOT_RUN_NOT_QUALIFIED"
+    },
+    "probe_comparison": {
+      "on": [
+        "bounded PCM Worklet",
+        "500ms engine diagnostics polling",
+        "module setup and WAV encoding/report costs"
+      ],
+      "commonBothModes": [
+        "unity post-master control GainNode",
+        "bounded action journal and timer entry/wall observations",
+        "before/after native telemetry endpoints"
+      ],
+      "scope": "WHOLE_CASE_DESCRIPTIVE_ONLY",
+      "fullyObserverFreeFormalRun": false,
+      "nativeDspCpuMs": null,
+      "hardwareUnderrunEvents": null,
+      "physicalHearing": "NOT_RUN"
+    },
+    "actual_PCM": "NOT_RUN",
+    "source_typecheck": "NOT_RUN",
+    "build": "NOT_RUN",
+    "process_CPU_overhead": "NOT_RUN",
+    "formal600Run": false,
+    "notes": [
+      "Unitcountsaredifferentoverlappingscopes;donotaggregate127+280+356asglobaltests.",
+      "PCMdiagnosticWorkletcandidateisnotproductWorkletbackendadoption.",
+      "Noaudioinsemanticpilot;sampleRate/block/deviceRoute=null,not0or128fallback.",
+      "nativeDspCpuMs/hardwareUnderrunEvents=null;wholecasedescriptivemethodnotcallbackCPUorunobservedprocessRAM."
+    ]
+  },
+  "qualification_scope_read": {
+    "reader": "/root/nonadvanced_memory/m2_perf_reader/qualification_scope",
+    "method": "Independentread-onlycomparison ofBROWSER_PERFORMANCE,PERFORMANCE_BUDGET,V4ADR,qualificationplan,independentreview; no tools/tests executed.",
+    "conclusions": [
+      "V4Rootauthorizedcandidateimplementationonly;NOT_QUALIFIED/NOT_APPROVED;freshsemantic→original20swiring→original600pending.",
+      "V4classifiesexactoneknownpost-windowbegin-onlyB only;durationnull/numericIncludedfalse;no rawrewrite,nozero-cost,nooldattemptPASS.",
+      "OriginalXspancore,binary64anchors,caps/50000uscoverage/workload/tolerancespreserved.",
+      "Officialproducerchainrecordsupportsunfinishedslicetobegin-onlyB, butwhyunfinishednotproven. Officialsourcesnotrefetchedbythisreader."
+    ]
+  },
+  "artifacts": [
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01-receipt.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01-receipt.json",
+      "sha256": "8dba99c0450d921fef5857a2aab8f50eea98194c884d2f5f4d0cefad4492b23d",
+      "bytes": 7682,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_ACTUAL_NEGATIVE_RUN_RECEIPT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.raw.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.raw.json",
+      "sha256": "8c95e3bfdceef6a098abcc1102f493e51b4072bb0745b742a237b3d72187fe3e",
+      "bytes": 33304,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.native-analysis.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.native-analysis.json",
+      "sha256": "02ea5fd7b72d537fec0f3b4ecbcbca555bd6f9251b9781ff3a4ae1b8e415acde",
+      "bytes": 6887,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.trace.json.gz",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/pilot.trace.json.gz",
+      "sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72",
+      "bytes": 81393,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/native-verification.json",
+      "sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d",
+      "bytes": 31050,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/process.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/process.json",
+      "sha256": "00e201733a358601aef84077f9894c2572e862136c923b5510f645a4fc70bc2a",
+      "bytes": 1927,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/command.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/command.json",
+      "sha256": "e74960c103dd7d53d22ffba410efa137528b14a36d910c85603e9a7ca90b4267",
+      "bytes": 1321,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stdout.txt",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stdout.txt",
+      "sha256": "4714b6298018948e52b93589bf6acf79ec119618fad302585494923c92b2169b",
+      "bytes": 241,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {}
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stderr.txt",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {}
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-command.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-command.json",
+      "sha256": "91503505e9abea817a3493dfeed9e5c5cf313c35948fa90ef4e56574bb34c07a",
+      "bytes": 2722,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-process.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-process.json",
+      "sha256": "337e7a8b75ed2032915472b35f056a5ea0fd045af5b94199210c6aaba2961ba6",
+      "bytes": 4373,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stdout.txt",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {}
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stderr.txt",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-attempt01/legacy-stderr.txt",
+      "sha256": "dca121498c78593117e362f38a7a105223996fd59d90f439aed27e896257cb8e",
+      "bytes": 540,
+      "last_path_commit": "047d977f723db067cf703cf265c207855095420e",
+      "doc_raw_status": "",
+      "classification": "COMMITTED047_RAW_NEGATIVE_RUN_ARTIFACT",
+      "fixed_commit_requested": "047d977f723db067cf703cf265c207855095420e",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {}
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-source-freeze-v1.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-source-freeze-v1.json",
+      "sha256": "052ba6e19aa0cd24bf630c3441a85f18139dd8a59418f46b47dcd57e4f52f44a",
+      "bytes": 4536,
+      "last_path_commit": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "doc_raw_status": "",
+      "classification": "BD64_METHOD_SOURCE_OR_PURE_TEST_CUTOFF_NOT_BROWSER_QUALIFICATION",
+      "fixed_commit_requested": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-freeze-102-green-r2.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-freeze-102-green-r2.tap",
+      "sha256": "ef28d337b6cd3a09ceed8c713ed1966a1092a2c9b807f58dae1d1d5d5045bcbd",
+      "bytes": 23313,
+      "last_path_commit": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "doc_raw_status": "",
+      "classification": "BD64_METHOD_SOURCE_OR_PURE_TEST_CUTOFF_NOT_BROWSER_QUALIFICATION",
+      "fixed_commit_requested": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 102,
+        "pass": 102,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 231.9013
+      }
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-lint-r6.txt",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-lint-r6.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "last_path_commit": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "doc_raw_status": "",
+      "classification": "BD64_METHOD_SOURCE_OR_PURE_TEST_CUTOFF_NOT_BROWSER_QUALIFICATION",
+      "fixed_commit_requested": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {}
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-command-plan-r2.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-command-plan-r2.json",
+      "sha256": "3a716ed8f0e820b48b47a90ed0ed5c2210b6ac671ad176b60af4271e091bc70e",
+      "bytes": 71,
+      "last_path_commit": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "doc_raw_status": "",
+      "classification": "BD64_METHOD_SOURCE_OR_PURE_TEST_CUTOFF_NOT_BROWSER_QUALIFICATION",
+      "fixed_commit_requested": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+      "fixed_commit_exact": true,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md",
+      "sha256": "063a0d8cc514c947dc9d7e76ae0a87058f84870d75758674da623a283b4d7915",
+      "bytes": 3677,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/ADR-PERF-QUALIFICATION-V4.md",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md",
+      "sha256": "36da65cb77641028219705232fc26177de77b18b1037939afc66ba41701c663d",
+      "bytes": 4746,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/03-qualification-pcm-plan.md",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md",
+      "sha256": "8e41a683fd584b5240d9fdf86f4b6956e2abb74dca2fc2745650be7388720843",
+      "bytes": 4348,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/04-method-components-unit-cutoff.md",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/07-pcm-control-method-source.md",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/07-pcm-control-method-source.md",
+      "sha256": "53746832f1a1d8e7861916c9d6c567e1a5cb5a6ff7e9ebd9e0cf4ed36899e09b",
+      "bytes": 3153,
+      "last_path_commit": "de5b363a6c5545e852f1cc964528c50d0c359d77",
+      "doc_raw_status": "",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json",
+      "sha256": "9d03f774a8a5b340c5fe3d557947d9017e985f193f8ee579a86e88fc1db1bb03",
+      "bytes": 42638,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.json",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md",
+      "sha256": "02c6044e271d613b62791152f4230492aaf1eb5b946e87eb4ebd8a7a009942d7",
+      "bytes": 7745,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/semantic-01-independent-review.md",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/method-components-unit-receipt.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/method-components-unit-receipt.json",
+      "sha256": "ac080ed454d8e8182d85c5d974936d8d71a4be0135f48a939e590a6f3f97b5c3",
+      "bytes": 2508,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/method-components-unit-receipt.json",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/pcm-control-source-receipt-v1.json",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/pcm-control-source-receipt-v1.json",
+      "sha256": "98c127c3dbb8f614b11b690725aa97346a4fab81126172f9af84471be3f9d3ce",
+      "bytes": 5095,
+      "last_path_commit": "de5b363a6c5545e852f1cc964528c50d0c359d77",
+      "doc_raw_status": "",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification."
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/focused-127-green-r1.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/focused-127-green-r1.tap",
+      "sha256": "4aba96e9586c6159808123ede4373c06699ebb3e218031b2ee36e3b4e722732f",
+      "bytes": 29025,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/focused-127-green-r1.tap",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 127,
+        "pass": 127,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 997.6805
+      }
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/collector-original-regression-r1.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/collector-original-regression-r1.tap",
+      "sha256": "9fb0002cdd30be0659065835150c07c46ceb705e47373db407cf423136e39e45",
+      "bytes": 60000,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/collector-original-regression-r1.tap",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 280,
+        "pass": 280,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 17333.1897
+      }
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/focused-356-green-r1.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/focused-356-green-r1.tap",
+      "sha256": "c0972fff6cc5b14efa1a31908e73ad143dd7ff0763660b07cc62fca11bedc2d6",
+      "bytes": 76526,
+      "last_path_commit": "de5b363a6c5545e852f1cc964528c50d0c359d77",
+      "doc_raw_status": "",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 356,
+        "pass": 356,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 1362.5971
+      }
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-red-r1.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-red-r1.tap",
+      "sha256": "03b8f9d26a8c81dcc380ef7b42a5d8e1e6b63e24c78fa6eb944662663d13399f",
+      "bytes": 14884,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-red-r1.tap",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 69,
+        "pass": 67,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 175.0072
+      }
+    },
+    {
+      "tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline",
+      "path": "docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-green-r1.tap",
+      "absolute_path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-green-r1.tap",
+      "sha256": "e48e6cc258a8363d1a557b8209e8411ac3c64daefb89da11403b68c85862de6f",
+      "bytes": 13106,
+      "last_path_commit": null,
+      "doc_raw_status": "?? docs/16-nonadvanced-completion/lanes/performance/native-boundary-v4-green-r1.tap",
+      "classification": "UNCOMMITTED_OBSERVED_DOC_OR_UNIT_RAW_NOT_FROZEN_METHOD_OR_QUALIFICATION",
+      "fixed_commit_requested": null,
+      "fixed_commit_exact": false,
+      "binding": "Doc/raw artifact observation only; not current active product/method source pin or qualification.",
+      "tap_summary": {
+        "tests": 69,
+        "pass": 69,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 959.3874
+      }
+    }
+  ],
+  "not_run_or_not_claimed": [
+    "NewV4semanticqualification",
+    "20secondallwiringqualification",
+    "Originalfull600secondworkload",
+    "Currentproductsource/bundle/fullquality",
+    "ActualPCMcontrolledmethod/probeoffon/nativecallbackCPU/hardwareunderrun",
+    "Physicalhearing/SPL/OSorprocesstreeforcedstop",
+    "PERF001or014criterioncompletion/Task16/20/fullV1"
+  ],
+  "overall_verdict": "NEGATIVE_QUALIFICATION_EVIDENCE_RETAINED;V4_NOT_QUALIFIED;NO_PERFORMANCE_PASS_OR_ROOT_ADOPTION"
+}

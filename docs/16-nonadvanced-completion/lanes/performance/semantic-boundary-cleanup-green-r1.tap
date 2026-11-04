@@ -1,0 +1,622 @@
+TAP version 13
+# Subtest: semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+ok 1 - semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+  ---
+  duration_ms: 0.9576
+  type: 'test'
+  ...
+# Subtest: independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+ok 2 - independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+  ---
+  duration_ms: 1.5322
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 0
+ok 3 - semantic oracle accepts the full literal with actual handles beginning at 0
+  ---
+  duration_ms: 1.3501
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 100
+ok 4 - semantic oracle accepts the full literal with actual handles beginning at 100
+  ---
+  duration_ms: 0.5274
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 700
+ok 5 - semantic oracle accepts the full literal with actual handles beginning at 700
+  ---
+  duration_ms: 1.0144
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+ok 6 - semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+  ---
+  duration_ms: 0.6962
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+ok 7 - semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+  ---
+  duration_ms: 0.5706
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback before its registration
+ok 8 - semantic oracle rejects callback before its registration
+  ---
+  duration_ms: 0.4687
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+ok 9 - semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+  ---
+  duration_ms: 0.7797
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+ok 10 - semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+  ---
+  duration_ms: 0.9615
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback handle differs from its native registration
+ok 11 - semantic oracle rejects callback handle differs from its native registration
+  ---
+  duration_ms: 0.5028
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects handle reuse across different registration labels
+ok 12 - semantic oracle rejects handle reuse across different registration labels
+  ---
+  duration_ms: 0.4274
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects string handles are not coerced
+ok 13 - semantic oracle rejects string handles are not coerced
+  ---
+  duration_ms: 0.3809
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+ok 14 - semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+  ---
+  duration_ms: 0.1733
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child fires inside the parent group with coherent total counts
+ok 15 - semantic oracle rejects nested child fires inside the parent group with coherent total counts
+  ---
+  duration_ms: 0.4081
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested registration is falsely attributed to another callback
+ok 16 - semantic oracle rejects nested registration is falsely attributed to another callback
+  ---
+  duration_ms: 0.5414
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child was registered outside the frozen parent order
+ok 17 - semantic oracle rejects nested child was registered outside the frozen parent order
+  ---
+  duration_ms: 0.3287
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects measured callback misrepresented as pretrace
+ok 18 - semantic oracle rejects measured callback misrepresented as pretrace
+  ---
+  duration_ms: 0.3438
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing callback is not repaired by receipt-derived counts
+ok 19 - semantic oracle rejects missing callback is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.1875
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+ok 20 - semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.214
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+ok 21 - semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+  ---
+  duration_ms: 0.501
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+ok 22 - semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+  ---
+  duration_ms: 0.1962
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+ok 23 - semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+  ---
+  duration_ms: 0.178
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw bytes are not a canonical 16-character byte string
+ok 24 - semantic oracle rejects raw bytes are not a canonical 16-character byte string
+  ---
+  duration_ms: 0.3568
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nonfinite callback argument
+ok 25 - semantic oracle rejects nonfinite callback argument
+  ---
+  duration_ms: 0.3036
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime mark is silently changed into a normal mark
+ok 26 - semantic oracle rejects custom startTime mark is silently changed into a normal mark
+  ---
+  duration_ms: 0.3696
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime did not preserve its exact requested zero
+ok 27 - semantic oracle rejects custom startTime did not preserve its exact requested zero
+  ---
+  duration_ms: 0.3512
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom mark is attached to the wrong representative
+ok 28 - semantic oracle rejects custom mark is attached to the wrong representative
+  ---
+  duration_ms: 0.3533
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark name does not bind the independently observed callback bytes
+ok 29 - semantic oracle rejects mark name does not bind the independently observed callback bytes
+  ---
+  duration_ms: 0.3188
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark-name byte count is not an estimate
+ok 30 - semantic oracle rejects mark-name byte count is not an estimate
+  ---
+  duration_ms: 0.3825
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed group count differs from independent callback journal
+ok 31 - semantic oracle rejects claimed group count differs from independent callback journal
+  ---
+  duration_ms: 0.597
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed callback handle differs from independent journal
+ok 32 - semantic oracle rejects claimed callback handle differs from independent journal
+  ---
+  duration_ms: 0.3116
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing operation array is not empty success
+ok 33 - semantic oracle rejects missing operation array is not empty success
+  ---
+  duration_ms: 0.1365
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal schema
+ok 34 - semantic oracle rejects unknown journal schema
+  ---
+  duration_ms: 0.1567
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown scenario cannot inherit this qualification
+ok 35 - semantic oracle rejects unknown scenario cannot inherit this qualification
+  ---
+  duration_ms: 0.1267
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal collection differs from actual collector
+ok 36 - semantic oracle rejects journal collection differs from actual collector
+  ---
+  duration_ms: 0.2845
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal field fails closed
+ok 37 - semantic oracle rejects unknown journal field fails closed
+  ---
+  duration_ms: 0.1239
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation field fails closed
+ok 38 - semantic oracle rejects unknown operation field fails closed
+  ---
+  duration_ms: 0.3061
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation kind fails closed
+ok 39 - semantic oracle rejects unknown operation kind fails closed
+  ---
+  duration_ms: 0.4944
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown mark field fails closed
+ok 40 - semantic oracle rejects unknown mark field fails closed
+  ---
+  duration_ms: 0.4266
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null journal
+ok 41 - semantic oracle returns controlled rejection for null journal
+  ---
+  duration_ms: 0.1943
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for array journal
+ok 42 - semantic oracle returns controlled rejection for array journal
+  ---
+  duration_ms: 0.1346
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null operation
+ok 43 - semantic oracle returns controlled rejection for null operation
+  ---
+  duration_ms: 0.3199
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null mark
+ok 44 - semantic oracle returns controlled rejection for null mark
+  ---
+  duration_ms: 0.2981
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null collector output
+ok 45 - semantic oracle returns controlled rejection for null collector output
+  ---
+  duration_ms: 0.1291
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects optional product telemetry outside the frozen pilot: tick
+ok 46 - semantic oracle rejects optional product telemetry outside the frozen pilot: tick
+  ---
+  duration_ms: 0.3042
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects optional product telemetry outside the frozen pilot: rafCpuMs
+ok 47 - semantic oracle rejects optional product telemetry outside the frozen pilot: rafCpuMs
+  ---
+  duration_ms: 0.2671
+  type: 'test'
+  ...
+# Subtest: semantic native evidence exposes an oracle that verifies the actual trace itself
+ok 48 - semantic native evidence exposes an oracle that verifies the actual trace itself
+  ---
+  duration_ms: 0.0498
+  type: 'test'
+  ...
+# Subtest: independent native literal is eligible under the unchanged strict V3 parser
+ok 49 - independent native literal is eligible under the unchanged strict V3 parser
+  ---
+  duration_ms: 2.3955
+  type: 'test'
+  ...
+# Subtest: semantic native oracle accepts 24 fires and 23 requests with native handle base 0
+ok 50 - semantic native oracle accepts 24 fires and 23 requests with native handle base 0
+  ---
+  duration_ms: 1.3766
+  type: 'test'
+  ...
+# Subtest: semantic native oracle accepts 24 fires and 23 requests with native handle base 700
+ok 51 - semantic native oracle accepts 24 fires and 23 requests with native handle base 700
+  ---
+  duration_ms: 0.6455
+  type: 'test'
+  ...
+# Subtest: advertised false qualification cannot replace self-validation of valid raw native evidence
+ok 52 - advertised false qualification cannot replace self-validation of valid raw native evidence
+  ---
+  duration_ms: 0.6338
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects an unknown owned handle adds a 26th trace handle
+ok 53 - semantic native oracle rejects an unknown owned handle adds a 26th trace handle
+  ---
+  duration_ms: 1.1477
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects MC request lies outside the closed native window
+ok 54 - semantic native oracle rejects MC request lies outside the closed native window
+  ---
+  duration_ms: 0.6826
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects MC request lies outside its parent Fire span while still inside the window
+ok 55 - semantic native oracle rejects MC request lies outside its parent Fire span while still inside the window
+  ---
+  duration_ms: 0.8347
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects a nested request lies before its parent Fire span
+ok 56 - semantic native oracle rejects a nested request lies before its parent Fire span
+  ---
+  duration_ms: 0.6812
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects missing MC request leaves only 22 captured requests
+ok 57 - semantic native oracle rejects missing MC request leaves only 22 captured requests
+  ---
+  duration_ms: 0.8328
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects missing nonrepresentative request is not optional in this pilot
+ok 58 - semantic native oracle rejects missing nonrepresentative request is not optional in this pilot
+  ---
+  duration_ms: 0.6738
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects all captured requests are missing despite otherwise valid callback identity
+ok 59 - semantic native oracle rejects all captured requests are missing despite otherwise valid callback identity
+  ---
+  duration_ms: 0.6362
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects a claimed pretrace P0 request is captured inside the trace
+ok 60 - semantic native oracle rejects a claimed pretrace P0 request is captured inside the trace
+  ---
+  duration_ms: 0.9144
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects a claimed pretrace PC request is captured inside the trace
+ok 61 - semantic native oracle rejects a claimed pretrace PC request is captured inside the trace
+  ---
+  duration_ms: 0.7448
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects MC request belongs to a different document
+ok 62 - semantic native oracle rejects MC request belongs to a different document
+  ---
+  duration_ms: 0.7074
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects MC request category is not the native timeline category
+ok 63 - semantic native oracle rejects MC request category is not the native timeline category
+  ---
+  duration_ms: 0.6496
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects numeric category is controlled rejection instead of a split TypeError
+ok 64 - semantic native oracle rejects numeric category is controlled rejection instead of a split TypeError
+  ---
+  duration_ms: 0.8048
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects duplicate MC request is not hidden by a single valid candidate
+ok 65 - semantic native oracle rejects duplicate MC request is not hidden by a single valid candidate
+  ---
+  duration_ms: 0.6898
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects journal has fewer than 26 returned registration handles
+ok 66 - semantic native oracle rejects journal has fewer than 26 returned registration handles
+  ---
+  duration_ms: 0.3942
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects native evidence cannot repair an invalid callback label journal
+ok 67 - semantic native oracle rejects native evidence cannot repair an invalid callback label journal
+  ---
+  duration_ms: 0.475
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects a callback Fire belongs to another document
+ok 68 - semantic native oracle rejects a callback Fire belongs to another document
+  ---
+  duration_ms: 0.9922
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects context changed document loader
+ok 69 - semantic native oracle rejects context changed document loader
+  ---
+  duration_ms: 0.5801
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects advertised qualification cannot rescue missing actual Fire evidence
+ok 70 - semantic native oracle rejects advertised qualification cannot rescue missing actual Fire evidence
+  ---
+  duration_ms: 0.5929
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects advertised qualification cannot rescue trace data loss
+ok 71 - semantic native oracle rejects advertised qualification cannot rescue trace data loss
+  ---
+  duration_ms: 0.5725
+  type: 'test'
+  ...
+# Subtest: semantic native oracle rejects null raw event is controlled rejection
+ok 72 - semantic native oracle rejects null raw event is controlled rejection
+  ---
+  duration_ms: 0.6033
+  type: 'test'
+  ...
+# Subtest: semantic native oracle controls null journal
+ok 73 - semantic native oracle controls null journal
+  ---
+  duration_ms: 0.2047
+  type: 'test'
+  ...
+# Subtest: semantic native oracle controls null ui
+ok 74 - semantic native oracle controls null ui
+  ---
+  duration_ms: 0.1575
+  type: 'test'
+  ...
+# Subtest: semantic native oracle controls null events
+ok 75 - semantic native oracle controls null events
+  ---
+  duration_ms: 0.2868
+  type: 'test'
+  ...
+# Subtest: semantic native oracle controls null context
+ok 76 - semantic native oracle controls null context
+  ---
+  duration_ms: 0.2853
+  type: 'test'
+  ...
+# Subtest: semantic native oracle controls null marks
+ok 77 - semantic native oracle controls null marks
+  ---
+  duration_ms: 0.1585
+  type: 'test'
+  ...
+# Subtest: deadline helper exposes an operation factory with pre- and post-await checks
+ok 78 - deadline helper exposes an operation factory with pre- and post-await checks
+  ---
+  duration_ms: 0.3914
+  type: 'test'
+  ...
+# Subtest: expired deadline never starts the operation factory
+ok 79 - expired deadline never starts the operation factory
+  ---
+  duration_ms: 0.5182
+  type: 'test'
+  ...
+# Subtest: a synchronous operation that crosses the deadline cannot return success
+ok 80 - a synchronous operation that crosses the deadline cannot return success
+  ---
+  duration_ms: 0.213
+  type: 'test'
+  ...
+# Subtest: an awaited operation reaching the exact deadline cannot return success
+ok 81 - an awaited operation reaching the exact deadline cannot return success
+  ---
+  duration_ms: 0.1124
+  type: 'test'
+  ...
+# Subtest: an awaited operation finishing after the deadline cannot beat a delayed timer
+ok 82 - an awaited operation finishing after the deadline cannot beat a delayed timer
+  ---
+  duration_ms: 0.0844
+  type: 'test'
+  ...
+# Subtest: a factory completing within its deadline preserves its actual result
+ok 83 - a factory completing within its deadline preserves its actual result
+  ---
+  duration_ms: 0.0682
+  type: 'test'
+  ...
+# Subtest: a factory failure preserves the original error
+ok 84 - a factory failure preserves the original error
+  ---
+  duration_ms: 0.2217
+  type: 'test'
+  ...
+# Subtest: semantic command exposes separate pilot and machine-lease outcomes
+ok 85 - semantic command exposes separate pilot and machine-lease outcomes
+  ---
+  duration_ms: 0.0343
+  type: 'test'
+  ...
+# Subtest: forced timeout with tree proof false retains the machine lease even when direct child stopped
+ok 86 - forced timeout with tree proof false retains the machine lease even when direct child stopped
+  ---
+  duration_ms: 0.1624
+  type: 'test'
+  ...
+# Subtest: forced timeout with tree proof null retains the machine lease even when direct child stopped
+ok 87 - forced timeout with tree proof null retains the machine lease even when direct child stopped
+  ---
+  duration_ms: 0.0316
+  type: 'test'
+  ...
+# Subtest: confirmed owned-tree termination after timed_out may release the lease but cannot pass the pilot
+ok 88 - confirmed owned-tree termination after timed_out may release the lease but cannot pass the pilot
+  ---
+  duration_ms: 0.0414
+  type: 'test'
+  ...
+# Subtest: confirmed owned-tree termination after cancelled may release the lease but cannot pass the pilot
+ok 89 - confirmed owned-tree termination after cancelled may release the lease but cannot pass the pilot
+  ---
+  duration_ms: 0.0211
+  type: 'test'
+  ...
+# Subtest: confirmed owned-tree termination after output_limit may release the lease but cannot pass the pilot
+ok 90 - confirmed owned-tree termination after output_limit may release the lease but cannot pass the pilot
+  ---
+  duration_ms: 0.041
+  type: 'test'
+  ...
+# Subtest: unconfirmed process close cannot borrow a positive tree flag
+ok 91 - unconfirmed process close cannot borrow a positive tree flag
+  ---
+  duration_ms: 0.0409
+  type: 'test'
+  ...
+# Subtest: normal successful exit requires actual browser and server cleanup evidence
+ok 92 - normal successful exit requires actual browser and server cleanup evidence
+  ---
+  duration_ms: 0.0298
+  type: 'test'
+  ...
+# Subtest: a normal failed pilot with actual cleanup can still release the machine lease
+ok 93 - a normal failed pilot with actual cleanup can still release the machine lease
+  ---
+  duration_ms: 0.0358
+  type: 'test'
+  ...
+# Subtest: normal direct-child exit without child verification does not prove browser cleanup
+ok 94 - normal direct-child exit without child verification does not prove browser cleanup
+  ---
+  duration_ms: 0.0567
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for browser still connected
+ok 95 - normal exit retains the machine lease for browser still connected
+  ---
+  duration_ms: 0.0485
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for browser close unavailable
+ok 96 - normal exit retains the machine lease for browser close unavailable
+  ---
+  duration_ms: 0.0371
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for server still listening
+ok 97 - normal exit retains the machine lease for server still listening
+  ---
+  duration_ms: 0.0248
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for server close unavailable
+ok 98 - normal exit retains the machine lease for server close unavailable
+  ---
+  duration_ms: 0.0287
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for numeric zero is not a closed server observation
+ok 99 - normal exit retains the machine lease for numeric zero is not a closed server observation
+  ---
+  duration_ms: 0.0365
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for cleanup error
+ok 100 - normal exit retains the machine lease for cleanup error
+  ---
+  duration_ms: 0.031
+  type: 'test'
+  ...
+# Subtest: normal exit retains the machine lease for cleanup errors unavailable
+ok 101 - normal exit retains the machine lease for cleanup errors unavailable
+  ---
+  duration_ms: 0.0225
+  type: 'test'
+  ...
+# Subtest: missing process result returns a controlled unverified outcome
+ok 102 - missing process result returns a controlled unverified outcome
+  ---
+  duration_ms: 0.0246
+  type: 'test'
+  ...
+1..102
+# tests 102
+# suites 0
+# pass 102
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 139.7227

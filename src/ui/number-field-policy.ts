@@ -14,6 +14,18 @@ export type NumberFieldCommitDecision =
   | { readonly kind: "invalid" }
   | { readonly kind: "commit"; readonly value: number };
 
+/** Raw drafts may block dependent actions before a field is explicitly committed. */
+export function isNumberFieldDraftValid(
+  draft: Pick<NumberFieldDraft, "raw" | "min" | "max">,
+  invalidReason?: (value: number) => string | undefined,
+): boolean {
+  const decision = decideNumberFieldCommit(
+    { ...draft, dirty: true },
+    { type: "enter", isComposing: false },
+  );
+  return decision.kind === "commit" && !invalidReason?.(decision.value);
+}
+
 /** Presentation changes retain drafts; explicit field commits use the existing numeric rules. */
 export function decideNumberFieldCommit(
   draft: NumberFieldDraft,

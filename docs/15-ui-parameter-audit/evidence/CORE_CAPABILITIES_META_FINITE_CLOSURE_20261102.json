@@ -1,0 +1,1084 @@
+{
+  "schemaVersion": 1,
+  "kind": "MEMORY_READ_CAPABILITIES_AND_META_FINITE_CRITERIA",
+  "checkedAt": "2026-11-02T11:20:28.673Z",
+  "capabilities": {
+    "currentProductSource": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+    "consumers": [
+      {
+        "path": "src/capabilities/sound-behavior.ts",
+        "sha256": "4d422a7aaabf3afd2c5f759fca3b80f81b31fec0c7327cf60617e7736e7c4a48",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/ui/behavior-options.ts",
+        "sha256": "dd4c88a142b671dded160415b31cdfae378d7b68277d93c56f7bd10f27e00ab5",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/audio-behavior/profile-registry.ts",
+        "sha256": "27309f126213bbc75fe9b6f6d819c803bc850a416141c742d67f03383b485877",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/ai/offline-sound-planner.ts",
+        "sha256": "4aac0bdf29580c0dc96cc35a10d18b7d4b7fe736b4e4d4f1864d24bc6b2c294d",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/app/defaults.ts",
+        "sha256": "44ad3c711b437c051e801f4bc79e6d3a0f6ee3ac97a135df1a0bf4ad42d80c21",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/app/physics-behavior.ts",
+        "sha256": "4489340ee83f047ed9301f6e4493b69c8be9148b609c18caae134ca7037d62d2",
+        "matchesProduct9fc": true
+      },
+      {
+        "path": "src/persistence/validate-project.ts",
+        "sha256": "85fa68a23ec0e4feb47323dc9878cfaf80cf60b6126f633364bfdb2abd29b84e",
+        "matchesProduct9fc": true
+      }
+    ],
+    "originalStage03": "Node17and255overlap/realRapierBounce; historicalZoneunsupportedonlyatthatcutoff",
+    "currentZone": "Trueproducer/registryaddedinseparateTask0029; emptyregistry/hostunavailablestillcorrectrefusal",
+    "limitations": "BounceTunedunchangedfixedsupportsubset; noarbitrarydynamicsupportclaim"
+  },
+  "metaAgent": {
+    "sourceCommit": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+    "cases": [
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+        "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+        "case": "01-provider-prompt",
+        "status": "PASS",
+        "source": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+        "pageErrors": [],
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://127.0.0.1:4173/api/agent/status"
+          },
+          {
+            "method": "GET",
+            "url": "http://127.0.0.1:4173/api/agent/status"
+          }
+        ],
+        "blocked": [],
+        "outcomes": [
+          {
+            "control": "agent.preview-submit",
+            "scenario": "empty prompt and no baseline",
+            "actual": {
+              "generateDisabled": true,
+              "undoDisabled": true,
+              "compareDisabled": true
+            },
+            "at": "2026-11-02T10:23:55.960Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "whitespace rejected by keyboard submission",
+            "actual": {
+              "value": "  \n  ",
+              "previewCount": 0
+            },
+            "at": "2026-11-02T10:23:56.405Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "maxlength 4000 via real text input of 4001 code units",
+            "actual": {
+              "attemptedLength": 4001,
+              "retainedLength": 4000
+            },
+            "at": "2026-11-02T10:23:56.506Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "plain Enter inserts newline and does not submit",
+            "actual": {
+              "value": "material.hard\n",
+              "sceneUnchanged": true
+            },
+            "at": "2026-11-02T10:23:57.240Z"
+          },
+          {
+            "control": "agent.validated-diff",
+            "scenario": "Ctrl+Enter with selected floor; preview without mutation",
+            "actual": {
+              "text": "操作預覽\n尚未套用\n此為本機確定性指令示範，不是Meta模型輸出。\n未指定尺寸／位置使用可在預覽修改的系統預設。\n變更 floor 的acoustic材質為 material.hard\n套用操作\n取消預覽",
+              "revision": "場景版本 0 · 本機專案",
+              "keyboardFocusableDiffCount": 1
+            },
+            "at": "2026-11-02T10:23:57.834Z"
+          },
+          {
+            "control": "help.{callerTopic}",
+            "scenario": "per-caller hover/click/focus/Escape and blur/refocus",
+            "actual": {
+              "instanceId": "help.agent.provider",
+              "sourceCallerRefs": [
+                "src/ui/AnalysisDock.tsx:871"
+              ],
+              "label": "說明：執行方式",
+              "tooltip": "目前只使用本機受限指令，不會呼叫模型。離線結果不能證明 Meta 模型整合。",
+              "hoverObserved": true,
+              "clickObserved": true,
+              "focusObserved": true,
+              "escapeDismissed": true,
+              "tabBlurAndRefocusObserved": true
+            },
+            "at": "2026-11-02T10:23:59.266Z"
+          },
+          {
+            "control": "help.{callerTopic}",
+            "scenario": "per-caller hover/click/focus/Escape and blur/refocus",
+            "actual": {
+              "instanceId": "help.agent.undo",
+              "sourceCallerRefs": [
+                "src/ui/AnalysisDock.tsx:912"
+              ],
+              "label": "說明：復原上次 AI 套用",
+              "tooltip": "透過提案 Host 復原最後一次已套用的場景或動作交易，保留 revision 守衛；不倒轉已發生的物理或聲音。",
+              "hoverObserved": true,
+              "clickObserved": true,
+              "focusObserved": true,
+              "escapeDismissed": true,
+              "tabBlurAndRefocusObserved": true
+            },
+            "at": "2026-11-02T10:24:00.210Z"
+          },
+          {
+            "control": "help.{callerTopic}",
+            "scenario": "per-caller hover/click/focus/Escape and blur/refocus",
+            "actual": {
+              "instanceId": "help.agent.prompt",
+              "sourceCallerRefs": [
+                "src/ui/AnalysisDock.tsx:977"
+              ],
+              "label": "說明：實驗指令",
+              "tooltip": "Ctrl / ⌘ + Enter 送出；組字時不提交。",
+              "hoverObserved": true,
+              "clickObserved": true,
+              "focusObserved": true,
+              "escapeDismissed": true,
+              "tabBlurAndRefocusObserved": true
+            },
+            "at": "2026-11-02T10:24:01.630Z"
+          },
+          {
+            "control": "help.{callerTopic}",
+            "scenario": "per-caller hover/click/focus/Escape and blur/refocus",
+            "actual": {
+              "instanceId": "help.agent.preview",
+              "sourceCallerRefs": [
+                "src/ui/AnalysisDock.tsx:1011"
+              ],
+              "label": "說明：操作預覽",
+              "tooltip": "套用使用同一套 Domain 驗證與可撤銷命令；不讓模型執行 JavaScript、OS 操作或改寫 Repository。",
+              "hoverObserved": true,
+              "clickObserved": true,
+              "focusObserved": true,
+              "escapeDismissed": true,
+              "tabBlurAndRefocusObserved": true
+            },
+            "at": "2026-11-02T10:24:02.611Z"
+          },
+          {
+            "control": "help.{callerTopic}",
+            "scenario": "per-caller hover/click/focus/Escape and blur/refocus",
+            "actual": {
+              "instanceId": "help.workflow",
+              "sourceCallerRefs": [
+                "src/ui/PipelinePanels.tsx:169"
+              ],
+              "label": "說明：實驗流程",
+              "tooltip": "使用目前場景執行有限模擬、封存並分析結果。完成基準後，明確套用材質變更，再以原運動軌跡建立候選比較；不會自動套用提案或呼叫模型。",
+              "hoverObserved": true,
+              "clickObserved": true,
+              "focusObserved": true,
+              "escapeDismissed": true,
+              "tabBlurAndRefocusObserved": true
+            },
+            "at": "2026-11-02T10:24:03.617Z"
+          },
+          {
+            "control": "agent.cancel-preview",
+            "scenario": "keyboard cancel retains scene",
+            "actual": {
+              "sceneUnchanged": true,
+              "previewCount": 0
+            },
+            "at": "2026-11-02T10:24:04.093Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "Ctrl+Enter during Chrome composition does not submit",
+            "actual": {
+              "scope": "CDP Input.imeSetComposition, not OS/human IME",
+              "previewCount": 0,
+              "value": "material.hard",
+              "syntheticDOMEventsUsed": false
+            },
+            "at": "2026-11-02T10:24:04.405Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "normal submission resumes after browser composition cancels",
+            "actual": {
+              "scope": "Chrome input protocol plus keyboard",
+              "submittedPreviewThenCancelled": true
+            },
+            "at": "2026-11-02T10:24:04.777Z"
+          },
+          {
+            "control": "agent.preview-submit",
+            "scenario": "unrecognized bounded offline request",
+            "actual": {
+              "text": "尚未產生可套用操作。 離線指令示範尚未辨識這項要求；請使用Inspector，或輸入「新增一顆無重力發聲球」。",
+              "noPreview": true
+            },
+            "at": "2026-11-02T10:24:05.103Z"
+          },
+          {
+            "control": "agent.preview-submit",
+            "scenario": "out-of-scope OS/key request",
+            "actual": {
+              "text": "要求超出允許工具範圍，場景未變更。 這項要求超出場景／實驗工具權限；不會執行OS、程式或變更權限。",
+              "sceneUnchanged": true
+            },
+            "at": "2026-11-02T10:24:05.292Z"
+          },
+          {
+            "control": "agent.provider",
+            "scenario": "select Meta and observe real public status only",
+            "actual": {
+              "value": "meta",
+              "status": "Meta 伺服器 gate：已阻擋。NETWORK_DISABLED；Live validation NOT_RUN；剩餘額度未知。",
+              "planningEnabled": false,
+              "planningAttempted": false
+            },
+            "at": "2026-11-02T10:24:05.711Z"
+          },
+          {
+            "control": "agent.status-refresh",
+            "scenario": "pointer status refresh without planning",
+            "actual": {
+              "status": "Meta 伺服器 gate：已阻擋。NETWORK_DISABLED；Live validation NOT_RUN；剩餘額度未知。"
+            },
+            "at": "2026-11-02T10:24:06.317Z"
+          },
+          {
+            "control": "agent.provider",
+            "scenario": "keyboard Home/Enter returns offline",
+            "actual": {
+              "value": "offline",
+              "planningEnabled": true
+            },
+            "at": "2026-11-02T10:24:06.640Z"
+          },
+          {
+            "control": "agent.apply",
+            "scenario": "stale preview after a real Inspector revision change",
+            "actual": {
+              "previewSurvivedRevision": true,
+              "beforeExternalEdit": "場景版本 0 · 本機專案",
+              "afterRevision": "場景版本 1 · 本機專案",
+              "materialRemainsExternalEdit": "material.soft",
+              "visibleMessage": "REVISION_CONFLICT：場景已變動，請重新預覽。"
+            },
+            "at": "2026-11-02T10:24:07.620Z"
+          },
+          {
+            "control": "agent.prompt",
+            "scenario": "native OS composition unavailable in headless audit",
+            "actual": {
+              "status": "NOT_RUN",
+              "regularChineseInputObserved": true,
+              "syntheticDOMEventsUsed": false,
+              "browserCompositionGuard": "Separate CDP audit outcome above"
+            },
+            "at": "2026-11-02T10:24:08.061Z"
+          }
+        ],
+        "notRun": [
+          "native OS IME composition",
+          "Meta live planning",
+          "human keyboard/mouse",
+          "hearing",
+          "performance acceptance"
+        ]
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+        "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+        "case": "02-duration-cancel",
+        "status": "PASS",
+        "source": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+        "pageErrors": [],
+        "requests": [],
+        "blocked": [],
+        "outcomes": [
+          {
+            "control": "workflow.duration",
+            "scenario": "invalid Enter commit",
+            "actual": {
+              "input": "",
+              "ariaInvalid": "true",
+              "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+            },
+            "at": "2026-11-02T10:24:14.119Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "invalid Enter commit",
+            "actual": {
+              "input": "0",
+              "ariaInvalid": "true",
+              "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+            },
+            "at": "2026-11-02T10:24:14.592Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "invalid Enter commit",
+            "actual": {
+              "input": "-1",
+              "ariaInvalid": "true",
+              "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+            },
+            "at": "2026-11-02T10:24:14.866Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "invalid Enter commit",
+            "actual": {
+              "input": "11",
+              "ariaInvalid": "true",
+              "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+            },
+            "at": "2026-11-02T10:24:15.245Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "minimum 1s commits on blur",
+            "actual": {
+              "value": "1",
+              "invalid": false
+            },
+            "at": "2026-11-02T10:24:15.524Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "non-integral physics tick duration rejected by Host",
+            "actual": {
+              "value": "1.01",
+              "validity": {
+                "valid": false,
+                "stepMismatch": true,
+                "customInvalid": "false"
+              },
+              "error": "DOMAIN_INVALID：實驗時長必須是 1/60 秒的整數倍。"
+            },
+            "at": "2026-11-02T10:24:15.842Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "maximum 10s commits on Enter",
+            "actual": {
+              "value": "10",
+              "min": "1",
+              "max": "10",
+              "step": "1"
+            },
+            "at": "2026-11-02T10:24:16.160Z"
+          },
+          {
+            "control": "workflow.duration",
+            "scenario": "native keyboard step down/up",
+            "actual": {
+              "values": [
+                "10",
+                "9",
+                "10"
+              ],
+              "step": "1"
+            },
+            "at": "2026-11-02T10:24:16.590Z"
+          },
+          {
+            "control": "workflow.cancel",
+            "scenario": "keyboard cancel 10s bounded run with Host acknowledgement",
+            "actual": {
+              "text": "實驗流程\n實驗已停止\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\nHost 已確認取消；未執行後續步驟。\n\n尚未建立實驗基準。\n\n步驟與結果來源",
+              "busyControls": [
+                {
+                  "label": "說明：執行方式",
+                  "disabled": false
+                },
+                {
+                  "label": "AI 執行方式",
+                  "disabled": true
+                },
+                {
+                  "label": "重新檢查伺服器狀態",
+                  "disabled": true
+                },
+                {
+                  "label": "復原上次 AI 套用",
+                  "disabled": true
+                },
+                {
+                  "label": "說明：復原上次 AI 套用",
+                  "disabled": false
+                },
+                {
+                  "label": "",
+                  "disabled": false
+                },
+                {
+                  "label": "準備操作預覽…",
+                  "disabled": true
+                },
+                {
+                  "label": "說明：實驗指令",
+                  "disabled": false
+                },
+                {
+                  "label": "說明：實驗流程",
+                  "disabled": false
+                },
+                {
+                  "label": "基準實驗長度 s",
+                  "disabled": true
+                },
+                {
+                  "label": "建立基準實驗",
+                  "disabled": true
+                },
+                {
+                  "label": "以相同運動比較目前材質",
+                  "disabled": true
+                },
+                {
+                  "label": "取消實驗流程",
+                  "disabled": false
+                }
+              ],
+              "baselineMissingAfterCancel": true
+            },
+            "at": "2026-11-02T10:24:17.484Z"
+          }
+        ],
+        "notRun": [
+          "native OS IME composition",
+          "Meta live planning",
+          "human keyboard/mouse",
+          "hearing",
+          "performance acceptance"
+        ]
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+        "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+        "case": "03-closed-loop",
+        "status": "PASS",
+        "source": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+        "pageErrors": [],
+        "requests": [],
+        "blocked": [],
+        "outcomes": [
+          {
+            "control": "agent.apply",
+            "scenario": "simulation-state dependent action label",
+            "actual": {
+              "requestedRunning": true,
+              "buttonLabel": "暫停並套用操作",
+              "runningVariantObserved": true
+            },
+            "at": "2026-11-02T10:24:23.389Z"
+          },
+          {
+            "control": "agent.apply",
+            "scenario": "pointer explicit apply",
+            "actual": {
+              "material": "material.hard",
+              "beforeRevision": "場景版本 0 · 本機專案",
+              "afterRevision": "場景版本 1 · 本機專案",
+              "inspectorValue": "material.hard"
+            },
+            "at": "2026-11-02T10:24:23.970Z"
+          },
+          {
+            "control": "workflow.details",
+            "scenario": "pointer opens steps and provenance disclosure",
+            "actual": {
+              "open": true
+            },
+            "at": "2026-11-02T10:24:25.421Z"
+          },
+          {
+            "control": "workflow.baseline",
+            "scenario": "keyboard 1s baseline and pointer provenance disclosure",
+            "actual": {
+              "baselineId": "run.tool.ad841bb317378d808e023061464809f82fb073c6",
+              "rows": [
+                [
+                  "RunSimulation",
+                  "完成",
+                  "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+                ],
+                [
+                  "CaptureExperiment",
+                  "完成",
+                  "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+                ],
+                [
+                  "AnalyzeAcousticResults",
+                  "完成",
+                  "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+                ]
+              ],
+              "metrics": [
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "1000"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "1000"
+                ]
+              ],
+              "citations": [
+                "metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd",
+                "metric.434f2de8b7628654065b095d311a5c7285aea580 · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd"
+              ]
+            },
+            "at": "2026-11-02T10:24:25.515Z"
+          },
+          {
+            "control": "workflow.raw-explanation",
+            "scenario": "keyboard disclosure",
+            "actual": {
+              "text": "directArrivalTimeS：0.01706715921524334 s（Computed；metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.434f2de8b7628654065b095d311a5c7285aea580）"
+            },
+            "at": "2026-11-02T10:24:25.641Z"
+          },
+          {
+            "control": "workflow.details",
+            "scenario": "keyboard closes and restores disclosure state",
+            "actual": {
+              "restoredOpen": true
+            },
+            "at": "2026-11-02T10:24:25.886Z"
+          },
+          {
+            "control": "agent.apply",
+            "scenario": "simulation-state dependent action label",
+            "actual": {
+              "requestedRunning": false,
+              "buttonLabel": "套用操作",
+              "runningVariantObserved": false
+            },
+            "at": "2026-11-02T10:24:26.579Z"
+          },
+          {
+            "control": "agent.apply",
+            "scenario": "keyboard explicit apply",
+            "actual": {
+              "material": "material.soft",
+              "beforeRevision": "場景版本 1 · 本機專案",
+              "afterRevision": "場景版本 2 · 本機專案",
+              "inspectorValue": "material.soft"
+            },
+            "at": "2026-11-02T10:24:26.908Z"
+          },
+          {
+            "control": "workflow.compare",
+            "scenario": "pointer matched-motion comparison",
+            "actual": {
+              "runIds": [
+                "run.tool.ad841bb317378d808e023061464809f82fb073c6",
+                "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+              ],
+              "rows": [
+                [
+                  "RunSimulation",
+                  "完成",
+                  "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+                ],
+                [
+                  "CaptureExperiment",
+                  "完成",
+                  "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+                ],
+                [
+                  "AnalyzeAcousticResults",
+                  "完成",
+                  "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+                ],
+                [
+                  "CompareExperiments",
+                  "完成",
+                  "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+                ]
+              ],
+              "metrics": [
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "125"
+                ],
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "250"
+                ],
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "500"
+                ],
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "1000"
+                ],
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "2000"
+                ],
+                [
+                  "directArrivalTimeS",
+                  "0.017067",
+                  "s",
+                  "4000"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "125"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "250"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "500"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "1000"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "2000"
+                ],
+                [
+                  "rt60S",
+                  "未提供",
+                  "s",
+                  "4000"
+                ]
+              ],
+              "citations": [
+                "metric.a83e73a209e802bb67027db03e402bfa229dad40 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.117e8605f5419bb7875af4493ed3395d8c0c020e · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.45ccf7a70804c14f38d584737a83ffde569dce8c · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.994499a1d0d0596eafcc06248a699936123d132f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.cc9845805ec6769bd57baa89265fcef337c07b10 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.02c32a831625b70b2c62de616d28a63dabc896fb · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.fba6dfad8527dd2f87a628be54e0a29bebdb1a7f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.42a2973f6054b538e110c51db1b5a34f90035906 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.ef6f04e3980ba7637903c1af0e5ad5721e139dab · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.c5e457eecef3426d6bc5108d1c0c0f8ce2b9f542 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.747cedd614aa7bea06ac43d0071dfacee4cc60b8 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+                "metric.c23f9b80de698162d2c0ed692d12ad71d784a435 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412"
+              ]
+            },
+            "at": "2026-11-02T10:24:29.059Z"
+          },
+          {
+            "control": "agent.undo",
+            "scenario": "keyboard Host undo retains history revision semantics",
+            "actual": {
+              "before": "場景版本 2 · 本機專案",
+              "after": "場景版本 3 · 本機專案",
+              "restoredMaterial": "material.hard",
+              "secondUndoDisabled": true
+            },
+            "at": "2026-11-02T10:24:29.929Z"
+          },
+          {
+            "control": "workflow.compare",
+            "scenario": "geometry change cannot reuse baseline motion",
+            "actual": {
+              "error": "重用 motion trace 不能改質量、摩擦、反彈、重力、geometry／初始 pose、body mode 或 Listener；這些變更必須 fresh physics run。",
+              "rows": [
+                [
+                  "RunSimulation",
+                  "失敗",
+                  "run.tool.a9a4cbf35531bc8686a6fe355f8ecab9ffd539fd"
+                ]
+              ],
+              "fabricatedMetricsAbsent": true
+            },
+            "at": "2026-11-02T10:24:31.385Z"
+          }
+        ],
+        "notRun": [
+          "native OS IME composition",
+          "Meta live planning",
+          "human keyboard/mouse",
+          "hearing",
+          "performance acceptance"
+        ]
+      }
+    ],
+    "process": {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+      "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+      "sourceHint": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+      "gitIndexModified": false,
+      "productModified": false,
+      "exitCode": 0,
+      "attempt": "final-49bde82-01",
+      "teardown": {
+        "cliExitCode": 0,
+        "cliFinishedAt": "2026-11-02T10:24:34.4639505+00:00",
+        "check": "OWN_CONTROLLER_WORKER_DESCENDANTS",
+        "workerPids": [
+          90776
+        ],
+        "survivors": [],
+        "survivorCount": 0
+      },
+      "finishedAt": "2026-11-02T10:24:34.4639505+00:00",
+      "startedAt": "2026-11-02T10:23:51.0931881+00:00",
+      "command": "node node_modules/@playwright/test/cli.js test --config tests/browser/parameter-audit/pipeline-agent-audit.config.ts"
+    },
+    "manifest": {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/SOURCE_AND_EVIDENCE_MANIFEST.json",
+      "sha256": "019ccdc644410fb2fadb9d5969751d6a8b04c6d88d35186babfbdcd2ad39c77b",
+      "artifacts": 34,
+      "sourcePins": 5,
+      "ignoredTraces": 7,
+      "allMatch": true
+    },
+    "requests": {
+      "GET": 2,
+      "POST": 0
+    },
+    "artifacts": [
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-final-49bde82-01.json",
+        "bytes": 43945,
+        "sha256": "575b8eaac40e759dd273da4331f7794300c213cd1c25a212b316ba6bfef9d6da",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/01-provider-prompt-fixture-fix.json",
+        "bytes": 32906,
+        "sha256": "70a477f7fd20f0d1af66e267f3d24c1c5c8cbd525d05b33a347266d33edd09c7",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/02-duration-cancel-final-49bde82-01.json",
+        "bytes": 19176,
+        "sha256": "0bd8f66f60fe02d0a24a21ed2ece9dcac625fc1472878e890880bad0f15cdc01",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/03-closed-loop-final-49bde82-01.json",
+        "bytes": 42994,
+        "sha256": "bb3c126fc3fe63905b107d96d49067bda3193db5b0739c7cd35d7a6e7619dac1",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/baseline-completed-final-49bde82-01.png",
+        "bytes": 200969,
+        "sha256": "42596f6bcd1327b5ab5faf300ba8a96accfd9fd53e76472916c499f74a31846a",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/candidate-completed-final-49bde82-01.png",
+        "bytes": 200380,
+        "sha256": "85634b5446523741c0e6b88c516d3248a50ef3c3f2192de424d88c13e0253a73",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/CONTROL_INVENTORY.json",
+        "bytes": 1869,
+        "sha256": "cc3017bb585b0ab82d5c7beb69ad966e3ce0d1672a3bccbbefb5b9d7a5ead913",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/incompatible-rejected-final-49bde82-01.png",
+        "bytes": 211424,
+        "sha256": "0200feff11bac905fbd0b93da550b8e1e88dc2eb0feb5d7706c98e3d6de69f86",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/lease-interruption.json",
+        "bytes": 387,
+        "sha256": "312c91ee3f36167f274d9353013b234b7d1177decc4e2cbb09846c8cbc0cf384",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/OBSERVED_CONTROLS-final-49bde82-01.json",
+        "bytes": 51937,
+        "sha256": "8291a61672dfd1c3c808fe9075b1cfdbdbb4eb22fcb6b3da15a3b186641b97e5",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/own-process-check.json",
+        "bytes": 284,
+        "sha256": "7d5c1f9c7a050d768a8a732e4fb3e0e7252034f9d943bce9193c119086e28818",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/playwright-final-49bde82-01.json",
+        "bytes": 7867,
+        "sha256": "ca079e0bd33a6cf7011e1c0c04057f6a28413a434171bb9d521960aaa32ab9e4",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/playwright-initial.json",
+        "bytes": 5389,
+        "sha256": "4e2d5716b1fac8c999a3ca5279a05d55167a25688b557777e0f65d842ea7d3ca",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/preview-keyboard-final-49bde82-01.png",
+        "bytes": 184843,
+        "sha256": "ef74cdabdfcec178bab1b889317ad21c7ed2b7a8f83eda228949c3383844f78b",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/preview-keyboard-fixture-fix.png",
+        "bytes": 197100,
+        "sha256": "711cd0ce77f5148378cad1a6b56378f911ea1b9c5dc0f651bd82f0c0557c23fc",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/prompt-maximum-final-49bde82-01.png",
+        "bytes": 221749,
+        "sha256": "a48fdef7f4d5809adb688dfa692bfff1d82f027f1522c00528c86ed007cb101e",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/provider-status-final-49bde82-01.png",
+        "bytes": 193553,
+        "sha256": "3389db6d6295673a99f8fda28825d60f440c436f52395a675dcae125640fb1a9",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/provider-status-fixture-fix.png",
+        "bytes": 195983,
+        "sha256": "ca8c086e325e9d7cdaa6f29416829abd55e52af76a35389b6cea0c6b59470e10",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/README.md",
+        "bytes": 7636,
+        "sha256": "2b46c5b27ef7d440cef7d92ca6e127b30a1f2651e2cb77389e331bb877e704ae",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01-process.json",
+        "bytes": 758,
+        "sha256": "5dc2ec82da712c322c7a53b6fd4dc63d0f23ccf1a326439f67cd77f2aa5aee91",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-final-49bde82-01.txt",
+        "bytes": 661,
+        "sha256": "7b0d6336b34a96110853c1e8f372661af670d0f07ce1d499690a8cbae4ebe4d1",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-fixture-fix.txt",
+        "bytes": 347,
+        "sha256": "df229a6769c4ced95e98f2b8136ad50f7b7dbc04bc44dd94c66910e987531c52",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-initial-process.json",
+        "bytes": 287,
+        "sha256": "c445027cbe63845a1b5956c80a3abe94fc7272faa79cdd517bd7b9501e7896cc",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/run-initial.txt",
+        "bytes": 1356,
+        "sha256": "92fd44d3b2dee66151d08669517072ec20d8c4104300f2864c99e75ca4bf3a27",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-eslint-final-49bde82-01.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-eslint-prelease.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-eslint-selector-final.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-eslint.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-format-prelease-final.txt",
+        "bytes": 68,
+        "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-format-prelease.txt",
+        "bytes": 176,
+        "sha256": "ecb0c1089ec9ee385ef6c98cfe32b4b64d464fdfc690f7a62497f3626d19e5dd",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/scoped-format-selector-final.txt",
+        "bytes": 68,
+        "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/stale-preview-guard-final-49bde82-01.png",
+        "bytes": 189846,
+        "sha256": "9cf3195ac2863280df53ff7a75ed542297bcbd803001cb17076e621deb3ff6d2",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/STATIC_READY.json",
+        "bytes": 3816,
+        "sha256": "95daf42c6c36e9c5938716269523583c2ba00d4c934362ec532ba863affb2bcf",
+        "matches": true
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/agent/workflow-cancelled-final-49bde82-01.png",
+        "bytes": 188222,
+        "sha256": "6128b117da994d58b75e9865e7a00ceca5795330bb674b1e6f1d770cee606cf7",
+        "matches": true
+      }
+    ],
+    "sourcePins": [
+      {
+        "path": "tests/browser/parameter-audit/pipeline-agent-audit.config.ts",
+        "bytes": 1084,
+        "sha256": "0ce7796b9576a1de5714344b7760f2c0bb20c95fdc52411eac938600db0ec852",
+        "matches": true
+      },
+      {
+        "path": "tests/browser/parameter-audit/pipeline-agent-audit.spec.ts",
+        "bytes": 31639,
+        "sha256": "59fa8e97324580680612ec18f1346dd335efda8b7ea149b09ea1743c38cfa713",
+        "matches": true
+      },
+      {
+        "path": "src/ui/AnalysisDock.tsx",
+        "bytes": 38993,
+        "sha256": "c86e53341a83db0addc5072e7d4296651543706fc0dd2162bc023baf2ed829fb",
+        "matches": true
+      },
+      {
+        "path": "src/ui/PipelinePanels.tsx",
+        "bytes": 11177,
+        "sha256": "0338f8f55cde371209832e78387ffcc90650950c7f9d385e96e2cbb3dab7e817",
+        "matches": true
+      },
+      {
+        "path": "src/ui/HelpTip.tsx",
+        "bytes": 6217,
+        "sha256": "6de8e0e9f26ec6ac6b2c9acabcf99d52d0364397a02656fda56a6fc10c8598f7",
+        "matches": true
+      }
+    ],
+    "traces": [
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/final-49bde82-01/pipeline-agent-audit-full--18216--and-incompatible-rejection/trace.zip",
+        "bytes": 15489135,
+        "sha256": "602c14fe68662f39169b9709c68e9a0da9ee0f1919eddcade14b3dc56107014f",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/final-49bde82-01/pipeline-agent-audit-provi-b9582-ew-and-unsupported-controls/trace.zip",
+        "bytes": 26162900,
+        "sha256": "97249d4230f7aa8a71ed04e4daa7f23faedfe526d0ad42ef29365c0501acf887",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/final-49bde82-01/pipeline-agent-audit-workf-aaca5-r-keyboard-and-cancellation/trace.zip",
+        "bytes": 9626317,
+        "sha256": "f8a7ed18855daa01ea84dde0dd8c395835a2577969dfd6accbed9338faaf3b1d",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/fixture-fix/.playwright-artifacts-0/00d71d614d34d38f7a46367a94b74002.zip",
+        "bytes": 18952266,
+        "sha256": "cf089772513fd464b4ff70b334f58d7c4735c41432752ce6873560a9423ffb55",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/fixture-fix/.playwright-artifacts-0/5820dfb4d9e3fb00eea433b876bbf233.zip",
+        "bytes": 7874,
+        "sha256": "b9a33c43d5df7c9f84cd628ad497da27766a13d28d2a63a20577384f1c1bca0e",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/fixture-fix/.playwright-artifacts-0/f17cc94354f7f74138ac10e0e6bc81f2.zip",
+        "bytes": 12048,
+        "sha256": "691787338074d5b6d7ff25ba850928ab31bdb2bf0b62a8c0f9c8250b52322e18",
+        "matches": true
+      },
+      {
+        "path": ".cache/pipeline-agent-parameter-audit/fixture-fix/pipeline-agent-audit-provi-b9582-ew-and-unsupported-controls/trace.zip",
+        "bytes": 17151137,
+        "sha256": "ad712de662b2ab278793e514d2a1f1bf25a0590b7f08f612a47b2e607835f440",
+        "matches": true
+      }
+    ]
+  },
+  "status": "TASK0024_AND0025_ORIGINAL_FINITE_CRITERIA_HAVE_DIRECT_EVIDENCE",
+  "limits": [
+    "Readexistingraw/code/manifests/Gitpins; no writerbrowser/producttests.",
+    "Agent3cases49source notclaimedrerunat9fcfornewTailguard.",
+    "Noaddedpaidrequest,remainingquotaunknown;Task0007/0014andMetaLiveexternalgatesunchanged.",
+    "Native3timeouts/hearing/600s/fullV1/Main/full217familycrosswalknotclaimedbythesetwotasks."
+  ]
+}

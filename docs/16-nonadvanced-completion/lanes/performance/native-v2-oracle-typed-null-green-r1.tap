@@ -1,0 +1,592 @@
+TAP version 13
+# Subtest: V4 exposes the versioned boundary validator without changing original V3
+ok 1 - V4 exposes the versioned boundary validator without changing original V3
+  ---
+  duration_ms: 3.1674
+  type: 'test'
+  ...
+# Subtest: V4 exposes a NOT_QUALIFIED candidate policy with exact explicit producer and executable pins
+ok 2 - V4 exposes a NOT_QUALIFIED candidate policy with exact explicit producer and executable pins
+  ---
+  duration_ms: 0.1516
+  type: 'test'
+  ...
+# Subtest: committed semantic attempt01 bytes and original parser source are frozen
+ok 3 - committed semantic attempt01 bytes and original parser source are frozen
+  ---
+  duration_ms: 0.9019
+  type: 'test'
+  ...
+# Subtest: the same immutable original raw remains rejected by original strict V3
+ok 4 - the same immutable original raw remains rejected by original strict V3
+  ---
+  duration_ms: 17.9008
+  type: 'test'
+  ...
+# Subtest: V4 records the exact post-window B source without inventing a duration or mutating raw
+ok 5 - V4 records the exact post-window B source without inventing a duration or mutating raw
+  ---
+  duration_ms: 42.596
+  type: 'test'
+  ...
+# Subtest: V4 typed complete spans produce bit-exact original numeric reference values
+ok 6 - V4 typed complete spans produce bit-exact original numeric reference values
+  ---
+  duration_ms: 24.4241
+  type: 'test'
+  ...
+# Subtest: the next representable Float64 above end is outside; no epsilon is required
+ok 7 - the next representable Float64 above end is outside; no epsilon is required
+  ---
+  duration_ms: 21.8548
+  type: 'test'
+  ...
+# Subtest: V4 rejects a duration-unknown B at exact end
+ok 8 - V4 rejects a duration-unknown B at exact end
+  ---
+  duration_ms: 24.0667
+  type: 'test'
+  ...
+# Subtest: V4 rejects a duration-unknown B at next representable Float64 below end
+ok 9 - V4 rejects a duration-unknown B at next representable Float64 below end
+  ---
+  duration_ms: 26.3814
+  type: 'test'
+  ...
+# Subtest: V4 rejects a duration-unknown B at inside the measurement window
+ok 10 - V4 rejects a duration-unknown B at inside the measurement window
+  ---
+  duration_ms: 41.6857
+  type: 'test'
+  ...
+# Subtest: V4 rejects E is not silently paired or discarded
+ok 11 - V4 rejects E is not silently paired or discarded
+  ---
+  duration_ms: 47.9309
+  type: 'test'
+  ...
+# Subtest: V4 rejects I is not used to turn a begin into an instant
+ok 12 - V4 rejects I is not used to turn a begin into an instant
+  ---
+  duration_ms: 50.5956
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with numeric dur zero is not a zero-duration span
+ok 13 - V4 rejects B with numeric dur zero is not a zero-duration span
+  ---
+  duration_ms: 50.4883
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with null dur is not an absent duration
+ok 14 - V4 rejects B with null dur is not an absent duration
+  ---
+  duration_ms: 37.1906
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with undefined own dur is not an absent duration
+ok 15 - V4 rejects B with undefined own dur is not an absent duration
+  ---
+  duration_ms: 30.9745
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with positive dur is not promoted to X
+ok 16 - V4 rejects B with positive dur is not promoted to X
+  ---
+  duration_ms: 18.9566
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with negative dur is not a supported span
+ok 17 - V4 rejects B with negative dur is not a supported span
+  ---
+  duration_ms: 16.2766
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with thread-instant scope s is not the known export shape
+ok 18 - V4 rejects B with thread-instant scope s is not the known export shape
+  ---
+  duration_ms: 14.5611
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with null scope is not absent scope
+ok 19 - V4 rejects B with null scope is not absent scope
+  ---
+  duration_ms: 14.5064
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with another category
+ok 20 - V4 rejects B with another category
+  ---
+  duration_ms: 11.6038
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with expanded category list
+ok 21 - V4 rejects B with expanded category list
+  ---
+  duration_ms: 11.2086
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing category
+ok 22 - V4 rejects B with missing category
+  ---
+  duration_ms: 11.7237
+  type: 'test'
+  ...
+# Subtest: V4 rejects B renamed to RunTask is not the pinned producer event
+ok 23 - V4 rejects B renamed to RunTask is not the pinned producer event
+  ---
+  duration_ms: 10.8248
+  type: 'test'
+  ...
+# Subtest: V4 rejects unknown B name cannot vanish behind the task-name filter
+ok 24 - V4 rejects unknown B name cannot vanish behind the task-name filter
+  ---
+  duration_ms: 11.09
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with another positive pid cannot become an excluded task
+ok 25 - V4 rejects B with another positive pid cannot become an excluded task
+  ---
+  duration_ms: 9.9276
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with another positive tid cannot become an excluded task
+ok 26 - V4 rejects B with another positive tid cannot become an excluded task
+  ---
+  duration_ms: 9.5584
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with zero pid
+ok 27 - V4 rejects B with zero pid
+  ---
+  duration_ms: 8.7455
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing tid
+ok 28 - V4 rejects B with missing tid
+  ---
+  duration_ms: 8.9171
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with string tid
+ok 29 - V4 rejects B with string tid
+  ---
+  duration_ms: 9.2913
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing args
+ok 30 - V4 rejects B with missing args
+  ---
+  duration_ms: 8.5202
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with null args
+ok 31 - V4 rejects B with null args
+  ---
+  duration_ms: 9.5815
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with array args
+ok 32 - V4 rejects B with array args
+  ---
+  duration_ms: 9.6868
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with additional source args
+ok 33 - V4 rejects B with additional source args
+  ---
+  duration_ms: 10.3423
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with an added task annotator shape
+ok 34 - V4 rejects B with an added task annotator shape
+  ---
+  duration_ms: 10.7305
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing source file
+ok 35 - V4 rejects B with missing source file
+  ---
+  duration_ms: 9.8562
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with different nonempty source file
+ok 36 - V4 rejects B with different nonempty source file
+  ---
+  duration_ms: 10.5956
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing source function
+ok 37 - V4 rejects B with missing source function
+  ---
+  duration_ms: 10.3511
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with different nonempty source function
+ok 38 - V4 rejects B with different nonempty source function
+  ---
+  duration_ms: 11.4489
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with fractional source line
+ok 39 - V4 rejects B with fractional source line
+  ---
+  duration_ms: 10.6314
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with different positive source line
+ok 40 - V4 rejects B with different positive source line
+  ---
+  duration_ms: 10.6905
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing source line
+ok 41 - V4 rejects B with missing source line
+  ---
+  duration_ms: 11.0581
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with negative source line
+ok 42 - V4 rejects B with negative source line
+  ---
+  duration_ms: 10.6362
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with string source line
+ok 43 - V4 rejects B with string source line
+  ---
+  duration_ms: 12.0069
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with nonfinite timestamp
+ok 44 - V4 rejects B with nonfinite timestamp
+  ---
+  duration_ms: 11.8253
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with infinite timestamp
+ok 45 - V4 rejects B with infinite timestamp
+  ---
+  duration_ms: 12.4213
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with negative timestamp
+ok 46 - V4 rejects B with negative timestamp
+  ---
+  duration_ms: 13.3261
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with string timestamp
+ok 47 - V4 rejects B with string timestamp
+  ---
+  duration_ms: 15.3726
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with missing timestamp
+ok 48 - V4 rejects B with missing timestamp
+  ---
+  duration_ms: 15.538
+  type: 'test'
+  ...
+# Subtest: V4 rejects B with an unregistered top-level field
+ok 49 - V4 rejects B with an unregistered top-level field
+  ---
+  duration_ms: 17.1334
+  type: 'test'
+  ...
+# Subtest: V4 rejects two post-window B records are outside the finite candidate policy
+ok 50 - V4 rejects two post-window B records are outside the finite candidate policy
+  ---
+  duration_ms: 19.3452
+  type: 'test'
+  ...
+# Subtest: V4 rejects an unknown E cannot hide beside the valid known B
+ok 51 - V4 rejects an unknown E cannot hide beside the valid known B
+  ---
+  duration_ms: 22.779
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid complete renderer span remains rejected
+ok 52 - V4 rejects an invalid complete renderer span remains rejected
+  ---
+  duration_ms: 29.7996
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid complete renderer category remains rejected
+ok 53 - V4 rejects an invalid complete renderer category remains rejected
+  ---
+  duration_ms: 34.0573
+  type: 'test'
+  ...
+# Subtest: V4 rejects a different producer revision
+ok 54 - V4 rejects a different producer revision
+  ---
+  duration_ms: 27.0375
+  type: 'test'
+  ...
+# Subtest: V4 rejects a missing explicit producer revision
+ok 55 - V4 rejects a missing explicit producer revision
+  ---
+  duration_ms: 31.0033
+  type: 'test'
+  ...
+# Subtest: V4 rejects a different executable hash
+ok 56 - V4 rejects a different executable hash
+  ---
+  duration_ms: 27.1849
+  type: 'test'
+  ...
+# Subtest: V4 rejects a missing explicit executable hash
+ok 57 - V4 rejects a missing explicit executable hash
+  ---
+  duration_ms: 28.6692
+  type: 'test'
+  ...
+# Subtest: V4 rejects an advertised positive flag cannot rescue the wrong executable
+ok 58 - V4 rejects an advertised positive flag cannot rescue the wrong executable
+  ---
+  duration_ms: 26.5024
+  type: 'test'
+  ...
+# Subtest: V4 rejects trace data loss remains rejected
+ok 59 - V4 rejects trace data loss remains rejected
+  ---
+  duration_ms: 27.4292
+  type: 'test'
+  ...
+# Subtest: V4 rejects unknown stream closure remains rejected
+ok 60 - V4 rejects unknown stream closure remains rejected
+  ---
+  duration_ms: 21.6297
+  type: 'test'
+  ...
+# Subtest: V4 rejects document loader change remains rejected
+ok 61 - V4 rejects document loader change remains rejected
+  ---
+  duration_ms: 17.9112
+  type: 'test'
+  ...
+# Subtest: V4 rejects null raw event remains controlled rejection
+ok 62 - V4 rejects null raw event remains controlled rejection
+  ---
+  duration_ms: 15.7618
+  type: 'test'
+  ...
+# Subtest: exact event-count cap is accepted without expanding original SHORT caps
+ok 63 - exact event-count cap is accepted without expanding original SHORT caps
+  ---
+  duration_ms: 18.2747
+  type: 'test'
+  ...
+# Subtest: event-count cap minus one rejects before selection
+ok 64 - event-count cap minus one rejects before selection
+  ---
+  duration_ms: 13.0368
+  type: 'test'
+  ...
+# Subtest: all named task candidates count against the unchanged relevant-task cap
+ok 65 - all named task candidates count against the unchanged relevant-task cap
+  ---
+  duration_ms: 17.5799
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid or expanded cap contract null
+ok 66 - V4 rejects an invalid or expanded cap contract null
+  ---
+  duration_ms: 11.3335
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid or expanded cap contract []
+ok 67 - V4 rejects an invalid or expanded cap contract []
+  ---
+  duration_ms: 10.8348
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid or expanded cap contract {"compressedBytes":16777216,"decompressedBytes":67108864,"events":500001,"relevantTasks":200000,"metadataNameCharacters":512,"proofNameCharacters":192}
+ok 68 - V4 rejects an invalid or expanded cap contract {"compressedBytes":16777216,"decompressedBytes":67108864,"events":500001,"relevantTasks":200000,"metadataNameCharacters":512,"proofNameCharacters":192}
+  ---
+  duration_ms: 10.1987
+  type: 'test'
+  ...
+# Subtest: V4 rejects an invalid or expanded cap contract {"compressedBytes":16777216,"decompressedBytes":67108864,"events":500000,"relevantTasks":200001,"metadataNameCharacters":512,"proofNameCharacters":192}
+ok 69 - V4 rejects an invalid or expanded cap contract {"compressedBytes":16777216,"decompressedBytes":67108864,"events":500000,"relevantTasks":200001,"metadataNameCharacters":512,"proofNameCharacters":192}
+  ---
+  duration_ms: 11.0177
+  type: 'test'
+  ...
+# Subtest: semantic V2 exposes the full journal/native oracle without replacing V1
+ok 70 - semantic V2 exposes the full journal/native oracle without replacing V1
+  ---
+  duration_ms: 0.7679
+  type: 'test'
+  ...
+# Subtest: the historical V1 native oracle source remains at the exact run-source pin
+ok 71 - the historical V1 native oracle source remains at the exact run-source pin
+  ---
+  duration_ms: 0.4427
+  type: 'test'
+  ...
+# Subtest: semantic V2 inspects the real full set as candidate evidence only
+ok 72 - semantic V2 inspects the real full set as candidate evidence only
+  ---
+  duration_ms: 37.3099
+  type: 'test'
+  ...
+# Subtest: semantic V2 retains all 13 actual proof callTimes and the distinct custom startTime
+ok 73 - semantic V2 retains all 13 actual proof callTimes and the distinct custom startTime
+  ---
+  duration_ms: 19.3218
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects the actual captured MC cancel is missing, even though request and no-fire still match
+ok 74 - semantic V2 rejects the actual captured MC cancel is missing, even though request and no-fire still match
+  ---
+  duration_ms: 10.3284
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects unknown owned Request cannot hide beside the 23 expected requests
+ok 75 - semantic V2 rejects unknown owned Request cannot hide beside the 23 expected requests
+  ---
+  duration_ms: 11.3156
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects unknown owned Fire cannot hide beside the 24 expected fires
+ok 76 - semantic V2 rejects unknown owned Fire cannot hide beside the 24 expected fires
+  ---
+  duration_ms: 11.3586
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects unknown owned Cancel cannot hide beside the single expected cancel
+ok 77 - semantic V2 rejects unknown owned Cancel cannot hide beside the single expected cancel
+  ---
+  duration_ms: 12.1016
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects MC posttrace Request is outside its parent Fire
+ok 78 - semantic V2 rejects MC posttrace Request is outside its parent Fire
+  ---
+  duration_ms: 11.8723
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects MC posttrace Request is outside the collection window
+ok 79 - semantic V2 rejects MC posttrace Request is outside the collection window
+  ---
+  duration_ms: 13.4049
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects a nested Request occurs before its parent Fire
+ok 80 - semantic V2 rejects a nested Request occurs before its parent Fire
+  ---
+  duration_ms: 14.4475
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects a captured MC Cancel occurs outside its parent Fire
+ok 81 - semantic V2 rejects a captured MC Cancel occurs outside its parent Fire
+  ---
+  duration_ms: 13.0567
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects journal registration returned a different handle
+ok 82 - semantic V2 rejects journal registration returned a different handle
+  ---
+  duration_ms: 10.4302
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects journal cancel names another returned handle
+ok 83 - semantic V2 rejects journal cancel names another returned handle
+  ---
+  duration_ms: 10.5718
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects actual native Cancel instead targets the pretrace P1 handle
+ok 84 - semantic V2 rejects actual native Cancel instead targets the pretrace P1 handle
+  ---
+  duration_ms: 17.4043
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects custom proof physical callTime is one microsecond after its Fire
+ok 85 - semantic V2 rejects custom proof physical callTime is one microsecond after its Fire
+  ---
+  duration_ms: 14.2818
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects custom proof timestamp no longer demonstrates its requested startTime zero
+ok 86 - semantic V2 rejects custom proof timestamp no longer demonstrates its requested startTime zero
+  ---
+  duration_ms: 19.3273
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects an advertised journal flag cannot rescue a wrong callback handle
+ok 87 - semantic V2 rejects an advertised journal flag cannot rescue a wrong callback handle
+  ---
+  duration_ms: 13.8816
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects an advertised context flag cannot rescue a wrong executable
+ok 88 - semantic V2 rejects an advertised context flag cannot rescue a wrong executable
+  ---
+  duration_ms: 19.4736
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects unknown V4 B source location remains rejected by the full wrapper
+ok 89 - semantic V2 rejects unknown V4 B source location remains rejected by the full wrapper
+  ---
+  duration_ms: 20.7944
+  type: 'test'
+  ...
+# Subtest: semantic V2 rejects an unknown V4 B cannot hide beside the known boundary
+ok 90 - semantic V2 rejects an unknown V4 B cannot hide beside the known boundary
+  ---
+  duration_ms: 28.2517
+  type: 'test'
+  ...
+# Subtest: semantic V2 returns controlled rejection for null journal
+ok 91 - semantic V2 returns controlled rejection for null journal
+  ---
+  duration_ms: 40.6711
+  type: 'test'
+  ...
+# Subtest: semantic V2 returns controlled rejection for null ui
+ok 92 - semantic V2 returns controlled rejection for null ui
+  ---
+  duration_ms: 68.9583
+  type: 'test'
+  ...
+# Subtest: semantic V2 returns controlled rejection for null events
+ok 93 - semantic V2 returns controlled rejection for null events
+  ---
+  duration_ms: 144.1387
+  type: 'test'
+  ...
+# Subtest: semantic V2 returns controlled rejection for null context
+ok 94 - semantic V2 returns controlled rejection for null context
+  ---
+  duration_ms: 35.9622
+  type: 'test'
+  ...
+# Subtest: V4 positive evidence separates full raw and actually executed typed task counts
+ok 95 - V4 positive evidence separates full raw and actually executed typed task counts
+  ---
+  duration_ms: 24.5375
+  type: 'test'
+  ...
+# Subtest: wrong producer early rejection leaves the unexecuted typed task count null
+ok 96 - wrong producer early rejection leaves the unexecuted typed task count null
+  ---
+  duration_ms: 24.6069
+  type: 'test'
+  ...
+# Subtest: unsupported E early rejection cannot relabel raw counts as executed typed validation
+ok 97 - unsupported E early rejection cannot relabel raw counts as executed typed validation
+  ---
+  duration_ms: 27.5657
+  type: 'test'
+  ...
+1..97
+# tests 97
+# suites 0
+# pass 97
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2078.7763

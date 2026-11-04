@@ -1,0 +1,682 @@
+{
+  "schemaVersion": 1,
+  "area": "Meta Agent and trusted experiment workflow",
+  "attempt": "final-49bde82-01",
+  "case": "02-duration-cancel",
+  "sourceHintFromCoordinator": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+  "browser": "156.0.8078.75",
+  "baseURL": "http://127.0.0.1:4173",
+  "startedAt": "2026-11-02T10:24:12.139Z",
+  "scope": "Real production browser; UI pointer/keyboard and Chrome input composition protocol only. evaluate reads DOM only.",
+  "controls": [
+    {
+      "state": "initial-offline",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "3",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n離線指令示範可用；未使用Meta模型或額度。",
+      "visibleWorkflowText": "實驗流程\n尚未執行\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\n尚未建立實驗基準。"
+    },
+    {
+      "state": "workflow-stopped",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "10",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "步驟與結果來源",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n實驗流程：stopped；結果與來源已保留。",
+      "visibleWorkflowText": "實驗流程\n實驗已停止\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\nHost 已確認取消；未執行後續步驟。\n\n尚未建立實驗基準。\n\n步驟與結果來源"
+    }
+  ],
+  "outcomes": [
+    {
+      "control": "workflow.duration",
+      "scenario": "invalid Enter commit",
+      "actual": {
+        "input": "",
+        "ariaInvalid": "true",
+        "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+      },
+      "at": "2026-11-02T10:24:14.119Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "invalid Enter commit",
+      "actual": {
+        "input": "0",
+        "ariaInvalid": "true",
+        "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+      },
+      "at": "2026-11-02T10:24:14.592Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "invalid Enter commit",
+      "actual": {
+        "input": "-1",
+        "ariaInvalid": "true",
+        "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+      },
+      "at": "2026-11-02T10:24:14.866Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "invalid Enter commit",
+      "actual": {
+        "input": "11",
+        "ariaInvalid": "true",
+        "title": "請輸入 ≥ 1 ≤ 10的有限數值"
+      },
+      "at": "2026-11-02T10:24:15.245Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "minimum 1s commits on blur",
+      "actual": {
+        "value": "1",
+        "invalid": false
+      },
+      "at": "2026-11-02T10:24:15.524Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "non-integral physics tick duration rejected by Host",
+      "actual": {
+        "value": "1.01",
+        "validity": {
+          "valid": false,
+          "stepMismatch": true,
+          "customInvalid": "false"
+        },
+        "error": "DOMAIN_INVALID：實驗時長必須是 1/60 秒的整數倍。"
+      },
+      "at": "2026-11-02T10:24:15.842Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "maximum 10s commits on Enter",
+      "actual": {
+        "value": "10",
+        "min": "1",
+        "max": "10",
+        "step": "1"
+      },
+      "at": "2026-11-02T10:24:16.160Z"
+    },
+    {
+      "control": "workflow.duration",
+      "scenario": "native keyboard step down/up",
+      "actual": {
+        "values": [
+          "10",
+          "9",
+          "10"
+        ],
+        "step": "1"
+      },
+      "at": "2026-11-02T10:24:16.590Z"
+    },
+    {
+      "control": "workflow.cancel",
+      "scenario": "keyboard cancel 10s bounded run with Host acknowledgement",
+      "actual": {
+        "text": "實驗流程\n實驗已停止\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\nHost 已確認取消；未執行後續步驟。\n\n尚未建立實驗基準。\n\n步驟與結果來源",
+        "busyControls": [
+          {
+            "label": "說明：執行方式",
+            "disabled": false
+          },
+          {
+            "label": "AI 執行方式",
+            "disabled": true
+          },
+          {
+            "label": "重新檢查伺服器狀態",
+            "disabled": true
+          },
+          {
+            "label": "復原上次 AI 套用",
+            "disabled": true
+          },
+          {
+            "label": "說明：復原上次 AI 套用",
+            "disabled": false
+          },
+          {
+            "label": "",
+            "disabled": false
+          },
+          {
+            "label": "準備操作預覽…",
+            "disabled": true
+          },
+          {
+            "label": "說明：實驗指令",
+            "disabled": false
+          },
+          {
+            "label": "說明：實驗流程",
+            "disabled": false
+          },
+          {
+            "label": "基準實驗長度 s",
+            "disabled": true
+          },
+          {
+            "label": "建立基準實驗",
+            "disabled": true
+          },
+          {
+            "label": "以相同運動比較目前材質",
+            "disabled": true
+          },
+          {
+            "label": "取消實驗流程",
+            "disabled": false
+          }
+        ],
+        "baselineMissingAfterCancel": true
+      },
+      "at": "2026-11-02T10:24:17.484Z"
+    }
+  ],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4173/",
+      "sha256": "6975d8c4de2d76918521cd3fef524fc386dfb5e4f3945e17f4bfacf2e0e665a8",
+      "bytes": 755,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-DD1acLTT.js",
+      "sha256": "62baf5a939c581df46b9c35c66380713b751cafb83cb8673228ce44ddf6eb961",
+      "bytes": 772585,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-C4qRBPy8.js",
+      "sha256": "8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+      "bytes": 5116129,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7",
+      "bytes": 38307,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-DTboN9lz.js",
+      "sha256": "f1407aa7c49a2792e6879025e5e5d8188d68a186be9f3f0619594ae8cbdf39fd",
+      "bytes": 788649,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DyzyxVA_.js",
+      "sha256": "b520d715866cb76d58608fdb37b364a6c2d4db2c3c9903def831cd4ae9e5391e",
+      "bytes": 23785,
+      "status": 200
+    }
+  ],
+  "requests": [],
+  "blocked": [],
+  "pageErrors": [],
+  "status": "PASS",
+  "absentNotControls": [
+    "model",
+    "API key",
+    "budget",
+    "editable context"
+  ],
+  "notRun": [
+    "native OS IME composition",
+    "Meta live planning",
+    "human keyboard/mouse",
+    "hearing",
+    "performance acceptance"
+  ],
+  "finishedAt": "2026-11-02T10:24:17.975Z"
+}

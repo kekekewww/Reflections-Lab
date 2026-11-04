@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "fixtureVersion": "profile-v4-closed-child-environment-v2",
+  "scope": "Synthetic closedChild mock supplies actual false listener evidence as explicitly stipulated; not a real TCP measurement",
+  "before": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/profile-v4-before-tcp-fixture.test.txt",
+    "sha256": "266b9b5235f631bffcb9388872b294b5a3e2cfffe1aeaf78e9c2429309c9f000"
+  },
+  "after": {
+    "path": "tests/performance-v3/performance-profile-v4.spec.mjs",
+    "sha256": "0bdd681b0de9c2e32ce543c55ff5bdb466208b2fd6ccf8cb3f9a820e6b77a003"
+  },
+  "change": "Only add previewListeningAfterCleanup:false to closedChild positive-control environment; preserve every original assertion",
+  "preservedRed": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/profile-v4-tcp-fixture-requirement-red-r1.tap",
+    "tests": 213,
+    "pass": 210,
+    "fail": 3,
+    "exitCode": 1
+  },
+  "negativeUnknownEvidenceCases": "preview-listen-v4.spec.mjs null/missing/true/string cases still require refusal, actual26/26PASS",
+  "oldSemantic44Changed": false,
+  "formal600Run": false
+}

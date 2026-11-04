@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "kind": "FIXED_CURSOR_MODEL_P1_RECEIPT_READER_NOT_GLOBAL_ACCEPTANCE",
+  "reader": "/root/nonadvanced_memory/milestone_receipts",
+  "recorded_at": "2026-11-02T19:54:13.425Z",
+  "fixed_source_commit": "3a25185631d2200da892773a24cf7a3bcdd06a9e",
+  "git_commit": {
+    "parents": [
+      "41526a710d41947a45c46364eab5bf1b2f7eb162"
+    ],
+    "subject": "fix: preserve recording cursor model contract and phase evidence"
+  },
+  "receipt": {
+    "path": "docs/16-nonadvanced-completion/lanes/integration/CURSOR_MODEL_P1_FIX.json",
+    "bytes": 3202,
+    "sha256": "a0842c2a34bb6fc9c52b42b5a6a724241bb068801e5ee257e50890b9cfb44737"
+  },
+  "source_pin_checks_at_Git3a": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "beb10a0d83bcc7b37e5fdeda58bce3914d9c509fea00c0a80af8ac4106a03405",
+      "git_commit": "3a25185631d2200da892773a24cf7a3bcdd06a9e",
+      "actual_bytes": 143644,
+      "actual_sha256": "beb10a0d83bcc7b37e5fdeda58bce3914d9c509fea00c0a80af8ac4106a03405",
+      "sha_match": true
+    },
+    {
+      "path": "tests/app/pipeline-integration.test.ts",
+      "sha256": "277969aa1b4ba0440a7677412e39537cc5bbf21c12a6c39e83f89912f39c9f9c",
+      "git_commit": "3a25185631d2200da892773a24cf7a3bcdd06a9e",
+      "actual_bytes": 6816,
+      "actual_sha256": "277969aa1b4ba0440a7677412e39537cc5bbf21c12a6c39e83f89912f39c9f9c",
+      "sha_match": true
+    }
+  ],
+  "raw_pin_checks": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-id-red.txt",
+      "bytes": 1117,
+      "sha256": "0f16fa16198a2bdb57f12aa1ad2242b18114e6f4c62fd0377924e5aeab79a6e5",
+      "actual_bytes": 1117,
+      "actual_sha256": "0f16fa16198a2bdb57f12aa1ad2242b18114e6f4c62fd0377924e5aeab79a6e5",
+      "sha_match": true,
+      "bytes_match": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-id-red.exit.txt",
+      "bytes": 1,
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "actual_bytes": 1,
+      "actual_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "sha_match": true,
+      "bytes_match": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-green.txt",
+      "bytes": 7320,
+      "sha256": "4e4c99eff2f9c8a5e25a2ba0cddbf0013623fa0a03f31ec6b3cbed6c5dd66b7c",
+      "actual_bytes": 7320,
+      "actual_sha256": "4e4c99eff2f9c8a5e25a2ba0cddbf0013623fa0a03f31ec6b3cbed6c5dd66b7c",
+      "sha_match": true,
+      "bytes_match": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-green.exit.txt",
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "actual_bytes": 1,
+      "actual_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "sha_match": true,
+      "bytes_match": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-format.txt",
+      "bytes": 71,
+      "sha256": "b72f24e03492fcebc8156c2cfe65a7b6115f50634ca1c94aa898334b80351bf2",
+      "actual_bytes": 71,
+      "actual_sha256": "b72f24e03492fcebc8156c2cfe65a7b6115f50634ca1c94aa898334b80351bf2",
+      "sha_match": true,
+      "bytes_match": true
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-lint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_bytes": 0,
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha_match": true,
+      "bytes_match": true
+    }
+  ],
+  "root_declared_reason": "New descriptive cursorModel was not an accepted identifier in unchanged content-and-cursors-v2 validator, resulting in missing source-phase evidence.",
+  "root_declared_fix": "Keep original native cursorModel identifier; put evidence policy description in a separate audit field. Do not relax source-phase validator.",
+  "narrow_Git_diff_read": {
+    "introduced_cursorModel": "provenanceFilteredSourceClock; modeled clock, not hardware PCM read pointer",
+    "fixed_cursorModel": "AudioEngineEpochMappedSourceCursor; not hardware PCM read pointer",
+    "separate_cursorEvidencePolicy": "nativeCompleteOnly; virtualAndIncompleteAuditsSeparate",
+    "added_first_capture_assertions": [
+      "sourcePhaseEvidence.evidenceClass === logicalIntent",
+      "sourcePhaseEvidence.reason === LOGICAL_INTENT_ONLY"
+    ],
+    "source_phase_validator_modified": false
+  },
+  "unchanged_validator": {
+    "path": "src/experiments/source-phase.ts",
+    "expected_sha256": "5307c2039cac8f470ee14e34de371014d6bd8e18aa77881e1fd3613f3b3ee661",
+    "prior_Git_commit": "41526a710d41947a45c46364eab5bf1b2f7eb162",
+    "prior_sha256": "5307c2039cac8f470ee14e34de371014d6bd8e18aa77881e1fd3613f3b3ee661",
+    "fixed_Git_commit": "3a25185631d2200da892773a24cf7a3bcdd06a9e",
+    "fixed_sha256": "5307c2039cac8f470ee14e34de371014d6bd8e18aa77881e1fd3613f3b3ee661",
+    "bytes_equal": true,
+    "bytes": 30447
+  },
+  "RED": {
+    "raw": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-id-red.txt",
+      "bytes": 1117,
+      "sha256": "0f16fa16198a2bdb57f12aa1ad2242b18114e6f4c62fd0377924e5aeab79a6e5"
+    },
+    "TAP": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 3325.5799
+    },
+    "process_exit_file": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-id-red.exit.txt",
+      "bytes": 1,
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "value": 1
+    },
+    "actual_assertion": {
+      "expected": "logicalIntent",
+      "actual": "missing"
+    },
+    "method": "Actual controlledtake regression exposed lostsource-phaseevidence; not native/hardwaretrace"
+  },
+  "GREEN": {
+    "raw": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-green.txt",
+      "bytes": 7320,
+      "sha256": "4e4c99eff2f9c8a5e25a2ba0cddbf0013623fa0a03f31ec6b3cbed6c5dd66b7c"
+    },
+    "TAP": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 16091.0938
+    },
+    "process_exit_file": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-green.exit.txt",
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "value": 0
+    },
+    "added_invariant": "Real controlled take retains logicalIntent and LOGICAL_INTENT_ONLY evidence when native audio is disabled.",
+    "scope": "32scopedNodeintegrationregressions withfirstcapturelogicalevidenceassertion; notnativeDSP, browserproductmatrixorfullruntime."
+  },
+  "static_checks": {
+    "declared": {
+      "scopedFormatExit": 0,
+      "globalTypecheck": "NOT_RERUN_FOR_THIS_PATCH; next full latest-source check pending",
+      "scopedLintExit": 0
+    },
+    "format_raw": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-format.txt",
+      "bytes": 71,
+      "sha256": "b72f24e03492fcebc8156c2cfe65a7b6115f50634ca1c94aa898334b80351bf2"
+    },
+    "lint_raw": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/cursor-model-fix/cursor-model-lint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit_scope": "Format/lint0arefixedreceiptdeclarations; no independentprocess-exitfilesforthese2staticsteps. Emptylintrawdoesnotaloneproveexitstatus.",
+    "global_typecheck": "NOT_RERUN_FOR_THIS_PATCH"
+  },
+  "command_scope": {
+    "P1_receipt_has_command_field": false,
+    "P1_exact_command_record": "NOT_PRESENT_IN_RECEIPT_OR_6_RAW_ARTIFACTS",
+    "prior_M2_command_context_only": "node --import tsx --test --test-concurrency=1 tests/app/runtime-asset-lease-lifecycle.test.ts tests/app/recording-recovery-runtime.test.ts tests/app/voice-cursor-evidence.test.ts tests/app/pipeline-integration.test.ts",
+    "limits": "ThepriorM2fourfilecommandiscontext, notindependentproofthesameexactnewP1CLIargswereexecuted. NeedRootoperatoractualcommandifexactnewcommandprovenanceisrequired."
+  },
+  "prior_M2_preservation": {
+    "receipt": {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/ROOT_RUNTIME_INTEGRATION_M2.json",
+      "bytes": 11061,
+      "sha256": "40d0b82af3686117fd3e54b698bdee19ecf697cb99e620a08be6c503019e0b74"
+    },
+    "source_commit": "41526a710d41947a45c46364eab5bf1b2f7eb162",
+    "scope": "PriorM232PASSdidnotassertevidenceClass. Historicalsourceandrawnotmodifiedandnotretroactivelyupgraded."
+  },
+  "limits": [
+    "Original M2 32PASS did not check evidenceClass; its scope remains historical, not overwritten.",
+    "No native, browser, PCM, performance, full check or Claude completion is claimed."
+  ],
+  "reader_action_limits": "OnlyreadfixedGitobjects/receipts/raw/narrowdiffandwritethisassignedcache. No test/lint/build/browser/English/sharedfile/source/task/indexaction. No currentactivecodepins."
+}

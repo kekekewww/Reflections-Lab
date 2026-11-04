@@ -98,7 +98,7 @@ Raw 是**乾音參考模式**，與「實驗 A/B」不同。Raw/Simulated 的明
 
 | 觸發 | 即時行為 | 恢復／資料處理 |
 | --- | --- | --- |
-| Esc、lock loss、blur | 清 inputs，安全暫停，顯原因；不額外 throw/drop | 明示重新進入＋Resume；持有快照／ghost 保留 |
+| Esc、lock loss、blur | 清 inputs，安全暫停，顯原因；保留held快照，取消未提交ghost且不放置；不額外 throw/drop | 明示重新進入＋Resume；需要放置時重新開始preview |
 | audio device/context error | monitor 停止，物理可繼續；顯「無聲，仍記錄」 | 使用者選恢復；record trace 有缺口，不宣稱完整錄音 |
 | acoustic worker timeout | 最後結果標 stale、停發新 frame | 重試／降 fidelity／切 fallback；切 backend 產生新的結果 metadata |
 | Document 未存／磁碟失敗 | 顯「場景未儲存」，保留記憶體 | Retry／另存／匯出；不得覆蓋為空檔 |

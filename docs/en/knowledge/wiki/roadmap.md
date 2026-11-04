@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/roadmap.md","sha256":"e15b5b189315479e18279732625cfe2e25f32e847e26c95cffa9eac1d04a58e3","translated_at":"2026-10-29T05:40:57Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/roadmap.md","sha256":"53de681a029bb58aa1a7f7f296afb16ece6ee62af9f7eb12b99603ee07036284","translated_at":"2026-11-01T08:32:24.037Z","executor":"Codex","model_id":null,"translation_lineage":"Existing translations retained where unchanged; research additions and metadata refreshed by Codex","links":"english-relative"} -->
 ---
 id: RLAB-KB-0005
 title: Production roadmap guide
 type: roadmap
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-29T05:38:39.565Z
+updated_at: 2026-11-01T08:05:14.686Z
 sources:
   - SB-SRC-0007
   - SB-SRC-0010
@@ -13,9 +13,11 @@ sources:
   - SB-SRC-0001
   - V1-SRC-0010
   - AR-WIKI-bdabc250-7903063a
+  - PERF-SRC-ROADMAP-20261101
 related_tasks:
   - RLAB-TASK-0006
   - RLAB-TASK-0021
+  - RLAB-TASK-PERF-20261101-REVIEW
 related_decisions: []
 supersedes: []
 tags:
@@ -24,7 +26,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/roadmap.md`](../../../../knowledge/wiki/roadmap.md). Source SHA-256: `e15b5b189315479e18279732625cfe2e25f32e847e26c95cffa9eac1d04a58e3`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/roadmap.md`](../../../../knowledge/wiki/roadmap.md). Source SHA-256: `53de681a029bb58aa1a7f7f296afb16ece6ee62af9f7eb12b99603ee07036284`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="正式路線與目前驗收"></a>
@@ -42,3 +44,8 @@ Next, resolve overload in complete product E2E recording/test observation costs,
 The [formal Roadmap](../../ROADMAP.md) adds P0/P1/P2 priorities, retaining the original ten-day table as history. P0 preserves the existing demo and addresses Task0020's recording hot path / performance, physical FPS/IME at 100% scale, and device listening tests; 200% was removed. P1 addresses producer-capability projection, Motion registry, and short-take local mix/stems one by one; P2 follows with advanced acoustics/ADM/long cloud renders. The next Codex engineering slice is a bounded record-evaluation lane, with original criteria unchanged.
 
 Task0021 covers this independent research / integration / publication work. Original history contains prohibited artifacts; the user authorized preserving all local history and creating a separate clean public snapshot. It requires an exact manifest, genuine small-evidence closure, original tests, and a complete safety scan; missing evidence is not treated as PASS.
+
+<!-- english-original-anchor --> <a id="2026-11-01-效能與緩衝研究"></a>
+## 2026-11-01 Performance and Buffering Study
+
+The [independent study](research/performance-buffer-review-20261101.md) and [non-binding optimization roadmap](../../13-performance-review/OPTIMIZATION_ROADMAP.md) are saved. All14future optimizations remain BACKLOG and seven proposals remain PROPOSED. No product optimization starts; MVP/formal gates and prior failures remain unchanged. This research does not automatically resume other paused product goals.

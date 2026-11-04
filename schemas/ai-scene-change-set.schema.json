@@ -11,7 +11,7 @@
     "sceneId": {"$ref": "ai-tool-request.schema.json#/$defs/id"},
     "baseRevision": {"type": "integer", "minimum": 0},
     "status": {"enum": ["drafted", "validated", "previewed", "awaitingApproval", "applied", "reverted", "rejected", "expired", "conflict", "failed"]},
-    "operations": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"allOf": [{"$ref": "ai-tool-request.schema.json"}, {"type": "object", "properties": {"tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory"]}}}]}},
+    "operations": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"allOf": [{"$ref": "ai-tool-request.schema.json"}, {"type": "object", "properties": {"tool": {"enum": ["CreateScene", "AddObject", "SetMaterial", "SetRigidBodyMode", "ConfigureSoundSource", "MoveListener", "SetTrajectory", "MoveObject", "ResizeObject", "RemoveObject"]}}}]}},
     "beforeSnapshotId": {"anyOf": [{"$ref": "ai-tool-request.schema.json#/$defs/id"}, {"type": "null"}]},
     "previewDigest": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
     "approvedDigest": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},

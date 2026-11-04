@@ -21,6 +21,41 @@ import { stableHash } from "../../src/physics/math.js";
 import { FakeAudioContext } from "../audio-runtime/fake-context.js";
 
 const DT = 1 / 60;
+
+for (const boundary of ["fade", "native resume"])
+  test(`review3 2: cancelled replay resume during ${boundary} retains seek restoration`, async () => {
+    const artifact = await capture({ start: 21, end: 24 });
+    await engineFixture(async (engine, context) => {
+      const host = new ReplayAudioHost({ getEngine: () => engine, getAssets: () => [] });
+      await host.begin(artifact);
+      const pausing = engine.pause(21 * DT);
+      await host.seek(artifact.frames[2]!);
+      let release: (() => void) | undefined;
+      if (boundary === "native resume") {
+        await pausing;
+        context.resume = () =>
+          new Promise<void>((resolve) => {
+            release = resolve;
+          });
+      }
+      const resuming = host.resume();
+      if (boundary === "native resume") await new Promise<void>((resolve) => setImmediate(resolve));
+      await engine.pause(23 * DT);
+      release?.();
+      await resuming;
+      assert.equal(engine.getTelemetry().activeVoices, 0);
+      context.resume = async () => {
+        context.state = "running";
+      };
+      await host.resume();
+      assert.equal(
+        engine.getTelemetry().activeVoices,
+        1,
+        "next Run must restore the seeked continuous source",
+      );
+      await host.stop();
+    });
+  });
 const close = (actual: number, expected: number) =>
   assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} ≈ ${expected}`);
 

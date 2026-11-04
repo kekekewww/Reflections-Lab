@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "method": "owned-cdp-pid-win32-process-times-v4",
+  "status": "SOURCE_IMPLEMENTED_PARENT_UNIT_CHECKS_RECORDED_NATIVE_NOT_RUN",
+  "recordedAt": "2026-11-03T02:24:18.588257+00:00",
+  "researchAsOf": "2026-11-03T02:16:36Z",
+  "researchAgent": "formal_cpu_endpoint_tests/systeminfo_primary_source",
+  "observedCheckoutHeadAtSourceRead": "540be353d1dd99f36aa8928873e43ffa15be460f",
+  "primarySources": [
+    {
+      "id": "W1",
+      "title": "OpenProcess",
+      "repository": "MicrosoftDocs/sdk-api",
+      "revision": "656e9656bfaef34dd29cd7ee9e1146aec17e924c",
+      "path": "sdk-api-src/content/processthreadsapi/nf-processthreadsapi-openprocess.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/sdk-api/656e9656bfaef34dd29cd7ee9e1146aec17e924c/sdk-api-src/content/processthreadsapi/nf-processthreadsapi-openprocess.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 6630,
+      "sourceSha256": "7201ba3494356422dfd75d102c601ef9d74ab57784de84c9acfbd07f71fdc427",
+      "lines": [
+        "69-103"
+      ],
+      "meaning": "OpenProcess accepts an exact PID and desired access; false inheritance is explicit. Failure is NULL and requires immediate error capture.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    },
+    {
+      "id": "W2",
+      "title": "GetProcessTimes",
+      "repository": "MicrosoftDocs/sdk-api",
+      "revision": "656e9656bfaef34dd29cd7ee9e1146aec17e924c",
+      "path": "sdk-api-src/content/processthreadsapi/nf-processthreadsapi-getprocesstimes.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/sdk-api/656e9656bfaef34dd29cd7ee9e1146aec17e924c/sdk-api-src/content/processthreadsapi/nf-processthreadsapi-getprocesstimes.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 5934,
+      "sourceSha256": "4c62c27d32b5e0e442d7b41e62247a88fe7c2b2632fbbcdd241c86ff24e1f460",
+      "lines": [
+        "71-108"
+      ],
+      "meaning": "A successful BOOL validates creation and all-thread kernel/user counters from the same process handle. CPU counters use 100-nanosecond units; success zero is valid and aggregate CPU may exceed elapsed wall time.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    },
+    {
+      "id": "W3",
+      "title": "GetLastError",
+      "repository": "MicrosoftDocs/sdk-api",
+      "revision": "656e9656bfaef34dd29cd7ee9e1146aec17e924c",
+      "path": "sdk-api-src/content/errhandlingapi/nf-errhandlingapi-getlasterror.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/sdk-api/656e9656bfaef34dd29cd7ee9e1146aec17e924c/sdk-api-src/content/errhandlingapi/nf-errhandlingapi-getlasterror.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 4707,
+      "sourceSha256": "3b1a3e82d3c279de81eafe42143941930fbc6d7650e6b26bd9ae898ff585b91f",
+      "lines": [
+        "60-76"
+      ],
+      "meaning": "Save an API failure error immediately before later calls can overwrite it. Successful calls do not make stale error values a failure.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    },
+    {
+      "id": "W4",
+      "title": "CloseHandle",
+      "repository": "MicrosoftDocs/sdk-api",
+      "revision": "656e9656bfaef34dd29cd7ee9e1146aec17e924c",
+      "path": "sdk-api-src/content/handleapi/nf-handleapi-closehandle.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/sdk-api/656e9656bfaef34dd29cd7ee9e1146aec17e924c/sdk-api-src/content/handleapi/nf-handleapi-closehandle.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 7266,
+      "sourceSha256": "c0cd1b25e7d35a8f4fb020cfba13b9ee5b3643a332e7c1f592b507746e1e794b",
+      "lines": [
+        "67-108"
+      ],
+      "meaning": "Close each real successfully opened process handle exactly once; preserve failure. Closing a handle does not terminate its process.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    },
+    {
+      "id": "W5",
+      "title": "FILETIME",
+      "repository": "MicrosoftDocs/sdk-api",
+      "revision": "656e9656bfaef34dd29cd7ee9e1146aec17e924c",
+      "path": "sdk-api-src/content/minwinbase/ns-minwinbase-filetime.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/sdk-api/656e9656bfaef34dd29cd7ee9e1146aec17e924c/sdk-api-src/content/minwinbase/ns-minwinbase-filetime.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 4587,
+      "sourceSha256": "e89d88d9727e59bd8cd3131dd9feb83956ca9e7e6e83f7e676dd40b04ccf6ecf",
+      "lines": [
+        "57-78"
+      ],
+      "meaning": "Combine high and low DWORD fields as unsigned 64-bit. Calendar FILETIME uses a 1601 UTC epoch and 100-nanosecond units; the format does not promise measurement resolution.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    },
+    {
+      "id": "W6",
+      "title": "Process security and access rights",
+      "repository": "MicrosoftDocs/win32",
+      "revision": "ca8274decead49403d70ceeed4af8d4ca74eaf11",
+      "path": "desktop-src/ProcThread/process-security-and-access-rights.md",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/process-security-and-access-rights",
+      "fixedSourceUrl": "https://raw.githubusercontent.com/MicrosoftDocs/win32/ca8274decead49403d70ceeed4af8d4ca74eaf11/desktop-src/ProcThread/process-security-and-access-rights.md",
+      "httpStatus": 200,
+      "fixedSourceHttpStatus": 200,
+      "sourceBytes": 21628,
+      "sourceSha256": "4074adbc739dc190736def83b30bb7f54fb454c7f52bf878cb6915778a4dd86f",
+      "lines": [
+        "39-44"
+      ],
+      "meaning": "PROCESS_QUERY_LIMITED_INFORMATION (0x1000) is sufficient for GetProcessTimes; no all-access or privilege elevation is needed.",
+      "transport": "normal TLS HTTPS",
+      "fullTextCopied": false
+    }
+  ],
+  "methodContract": {
+    "whitelist": "Only id/type pairs copied from the owned browser CDP SystemInfo.getProcessInfo response. No Get-Process/GetProcessById/EnumProcesses or wider OS process enumeration.",
+    "maximumProcesses": 1024,
+    "pidRange": {
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "nativeAccessMask": "0x1000 PROCESS_QUERY_LIMITED_INFORMATION",
+    "inheritHandle": false,
+    "nativeCallsPerWhitelistedPid": "One OpenProcess, one same-handle GetProcessTimes after successful open, one CloseHandle in finally after successful open.",
+    "validity": "Native BOOL success flags and null success error fields are required. API failure, invalid/missing schema or evidence, changed source/request bytes, PID/type or creation identity changes, counter reset, nonfinite derived values and incomplete process sets retain null canonical totals.",
+    "filetimeEncoding": "Unsigned uint64 decimal strings, compared exactly for creation identity. Kernel and user ticks are subtracted using BigInt separately before summing and converting to CPU seconds.",
+    "equation": "deltaCpuSeconds = sum_i((userAfter_i-userBefore_i)+(kernelAfter_i-kernelBefore_i)) / 10000000; cpuToWallRatio = deltaCpuSeconds / (wallMilliseconds/1000)",
+    "successZero": "A true Win32 successful query with zero user/kernel counters is measured zero. Chromium CDP cumulative zero remains ambiguous and is never upgraded without actual Win32 successful reads.",
+    "unitAndResolution": "CPU tick unit is 100 nanoseconds. Neither FILETIME shape nor units imply 100ns measurement resolution.",
+    "window": "Both arms use the same two boundary protocols, before tracing/collection to after closed raw measurement window and before tail cleanup. The driver supplies its actual shared monotonic wall interval, never the literal formal duration as denominator.",
+    "chronology": "The before endpoint must end no later than the after endpoint starts. Individual start/end brackets must also be finite, nonnegative and ordered.",
+    "hardwareUnderruns": null,
+    "nativeDspCpuMs": null
+  },
+  "boundedExecution": {
+    "fixedScript": "tests/browser/performance-process-times-v4.ps1",
+    "executable": "Caller-pinned absolute powershell.exe or pwsh.exe; no installed version/path assumed by this report.",
+    "argv": [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-File",
+      "<fixed helper>",
+      "-InputPath",
+      "<owned wx request path>"
+    ],
+    "shell": false,
+    "windowsHide": true,
+    "executionPolicyBypass": false,
+    "encodedOrShellCommand": false,
+    "requestBytesMaximum": 262144,
+    "combinedOutputBytesMaximum": 1048576,
+    "watchdogTimeoutMs": 5000,
+    "runner": "scripts/agents/process-runner.mjs",
+    "runnerSha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+    "timeoutMeaning": "5000ms triggers stopping, not an absolute receipt deadline. Existing runner may add taskkill timeout 2500ms plus close proof wait 3000ms.",
+    "stopping": "Forced timeout/cancel/output-cap requires confirmed owned process-tree stop for helperLeaseReleasable. Ordinary closed helper reports direct_process with tree status null; no machine lease or unrelated browser cleanup is asserted.",
+    "requestIntegrity": "Create a new wx bounded JSON request; retain exact bytes/path and before/after hashes. The pure summarizer independently requires the after hash to equal the original raw-request hash.",
+    "sourceIntegrity": "Hash the fixed helper and selected executable before and after the child; paired endpoints require the same paths and source hashes. Preserve output SHA and actual monotonic brackets.",
+    "failure": "Policy blocks, API errors, child failure, output limit, timeout or missing stop proof are preserved. No bypass or fallback enumeration."
+  },
+  "implementationSources": [
+    {
+      "path": "tests/browser/performance-process-times-v4.mjs",
+      "sha256": "bf9404f8b80177249f2e9f5e57e7090a9e22950eef5ebf8ff7af42a91858ccd9",
+      "bytes": 16214,
+      "status": "FINAL_PARENT_FORMAT_AND_LINT_SOURCE_READ_VERIFIED"
+    },
+    {
+      "path": "tests/browser/performance-process-times-v4.ps1",
+      "sha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+      "bytes": 7363,
+      "status": "FINAL_PARENT_FORMAT_AND_LINT_SOURCE_READ_VERIFIED"
+    },
+    {
+      "path": "tests/performance-v3/process-times-v4.spec.mjs",
+      "sha256": "2c3164ff2d714c72277a262d6e36d669ced954d397f227e3f43d5dde4487c280",
+      "bytes": 30047,
+      "status": "FINAL_PARENT_FORMAT_AND_LINT_SOURCE_READ_VERIFIED"
+    }
+  ],
+  "verification": {
+    "author": {
+      "nodeTestsRun": false,
+      "nativeWin32QueriesRun": false,
+      "browserRun": false,
+      "psScriptExecuted": false,
+      "globalChecksRun": false
+    },
+    "parentRuns": [
+      {
+        "stage": "initial red",
+        "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-red-r1.tap",
+        "sha256": "7df1aa948b643d37c4424106b2ee3cebdd9f967473de8f89564d8c30e7d3afd6",
+        "exitCode": 1,
+        "tests": 135,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 134,
+        "durationMs": 155.7379,
+        "meaning": "One mandatory missing-export failure; 134 explicit skips are not behavior evidence."
+      },
+      {
+        "stage": "initial green with independent process-set coverage",
+        "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-green-r1.tap",
+        "sha256": "bfc736784c3a186c7ee6b1dc96b328cae08bb6658163f6cd0f71a3714f7a8b99",
+        "exitCode": 0,
+        "tests": 138,
+        "pass": 138,
+        "fail": 0,
+        "skipped": 0,
+        "durationMs": 640.8269,
+        "meaning": "Literal DTO and injected-runner unit fixtures only."
+      },
+      {
+        "stage": "independent integrity findings red",
+        "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-integrity-red-r1.tap",
+        "sha256": "960c142b456f41584be685ee06e219e32e6b9cbf9ab3a3348a9db99c79606c43",
+        "exitCode": 1,
+        "tests": 141,
+        "pass": 138,
+        "fail": 3,
+        "skipped": 0,
+        "durationMs": 490.1185,
+        "meaning": "Exact failure of overlap/reversed boundary ordering and failed-request-integrity capture revival."
+      }
+    ],
+    "finalIntegrityGreen": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-final-focused-r1.tap",
+      "sha256": "eefe9e4d1037d0715dd9aa0787bdbe4d7664550fcc76ddf081c47beca9fdf38f",
+      "bytes": 139009,
+      "executor": "parent /root/implement_perf",
+      "parentReportedExitCode": 0,
+      "tests": 611,
+      "pass": 611,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 6255.2786,
+      "includesProcessTimesCases": 141,
+      "includesCdpCpuCases": 76,
+      "scope": "Focused multi-spec unit suite; literal/injected CPU fixtures only. The author read the actual TAP and final source hashes; no test was rerun here.",
+      "exactMultiSpecCommand": null,
+      "commandLimit": "The exact focused multi-spec argv is not printed in the TAP; this record does not invent it."
+    },
+    "finalFormatAndLint": {
+      "executor": "parent /root/implement_perf",
+      "formatR1": {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r1.txt",
+        "sha256": "da207bf906bfa7aa1fa3b47ba4068005ef89f35d83101522b69a01c9300efcfb",
+        "bytes": 1131,
+        "parentReportedExitCode": 0,
+        "scope": "Parent formatted owned V4 source/test files."
+      },
+      "lintR1": {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r1.txt",
+        "sha256": "f4f92deb9da3ba151bf851d5ccb2c8397655079f4d433445533bdcffc859dfd6",
+        "bytes": 392,
+        "exitCode": 1,
+        "findings": [
+          "performance-profile-v4.mjs URL undefined; parent fixed driver URL import.",
+          "process-times-v4.spec.mjs rewriteRequest defined but unused; parent removed the unused test helper."
+        ],
+        "noAssertionRelaxation": true
+      },
+      "formatR2": {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-format-r2.txt",
+        "sha256": "4fd073f13c335a4d70bfc6c63d0f6db95b4583a081b3c3311e8096dce3dd7089",
+        "bytes": 125,
+        "parentReportedExitCode": 0,
+        "scope": "Both touched files reported unchanged after the lint-only edits."
+      },
+      "lintR2": {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/formal-v4-lint-r2.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "parentReportedExitCode": 0,
+        "scope": "Empty raw output plus parent actual terminal exit0; empty output alone is not success evidence."
+      },
+      "exactCommands": null,
+      "commandLimit": "Raw formatting/lint stdout does not include exact argv; process terminal exits are reported by parent."
+    },
+    "nativeWindowsReaderStatus": "NOT RUN",
+    "formal600Status": "NOT RUN BY THIS METHOD REPORT",
+    "fixtureAmendment": "docs/16-nonadvanced-completion/lanes/performance/process-times-fixture-v1-before-afterhash.json",
+    "fixturePreimage": "docs/16-nonadvanced-completion/lanes/performance/process-times-fixture-v1-before-afterhash.test.txt",
+    "independentSourceReview": {
+      "agent": "formal_cpu_endpoint_tests/systeminfo_primary_source",
+      "findings": [
+        {
+          "id": "REQUEST_AFTER_HASH_REVIVAL",
+          "severity": "P1",
+          "redEvidence": "process-times-v4-integrity-red-r1.tap",
+          "closure": "readCapture independently requires requestAfterSha256===requestSha256===raw request digest."
+        },
+        {
+          "id": "PAIRED_ENDPOINT_CHRONOLOGY",
+          "severity": "P2",
+          "redEvidence": "process-times-v4-integrity-red-r1.tap",
+          "closure": "summarize requires before.endedMonotonicMs<=after.startedMonotonicMs."
+        }
+      ],
+      "closureReviewedSourceSha256": "4e191f5e36b42f124e2368b5f1cee45d10b1ce993dd63dcc43f386153d692e43",
+      "finalFormattedSourceReview": {
+        "status": "READ_ONLY_HASH_AND_TARGETED_SOURCE_CONFIRMATION_COMPLETE",
+        "sourceSha256": "bf9404f8b80177249f2e9f5e57e7090a9e22950eef5ebf8ff7af42a91858ccd9",
+        "sourceBytes": 16214,
+        "hashGateLines": "176-180",
+        "chronologyGateLines": "375-377",
+        "psSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+        "psBytes": 7363,
+        "psUnchanged": true,
+        "testsOrNativeQueriesRunByReviewer": false
+      },
+      "nativeRun": false
+    }
+  },
+  "limits": [
+    "This is cumulative all-thread CPU for the typed CDP-owned endpoint PID sets, not renderer-only, audio callback, DSP, hardware underrun, hearing or product GUI evidence.",
+    "Matching two endpoint PID/type/creation sets does not prove no transient processes existed between them. A CDP list and a later Win32 open remain sequential observations; CDP supplies no creation epoch to close that initial ownership race.",
+    "PowerShell cold start/Add-Type compilation/IPC and sampling skew have cost. This method records helper duration and boundaries; it does not measure external helper/Node CPU or assert zero instrumentation overhead.",
+    "Readings are per-process sequential calls, not an atomic machine snapshot. Ratios may exceed one on multiple threads/cores.",
+    "Native failures remain unknown. A successful unit fixture cannot establish installed PowerShell/.NET version, Win32 availability, actual hardware rate or native CPU values.",
+    "No source proof or unit result adopts formal qualification, overwrites prior failures, changes original V3/frozen44 sources, lowers workload/voice/path/geometry/capture caps, relaxes numeric/core/50ms gates or replaces a real 600-second measurement.",
+    "The original CDP-only source method report 18 is historical and unchanged. Old audio-runner zero assumptions are not retroactively corrected into native evidence."
+  ],
+  "approval": {
+    "formal600ApprovedByThisReport": false,
+    "nativeRunApprovedByThisReport": false,
+    "sourceMethodAdoption": null
+  },
+  "upstreamUse": {
+    "fullSourceCopied": false,
+    "thirdPartyBinaryVendored": false,
+    "use": "Source URL/version/hash metadata and short paraphrases only."
+  },
+  "finalizedAt": "2026-11-03T02:27:04.498516+00:00",
+  "historical18Integrity": {
+    "unchanged": true,
+    "readVerified": [
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.md",
+        "sha256": "28d4c738e0aedab43049ce5654dc0772be9e67aaeed88e82769b62fb0e4285b1",
+        "bytes": 6069
+      },
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/performance/18-process-cpu-source-method.json",
+        "sha256": "a13dd910b905976f41ea1340198b823d6625f9e6b6cf04ca96d9dc3f65e2899a",
+        "bytes": 17831
+      }
+    ]
+  }
+}

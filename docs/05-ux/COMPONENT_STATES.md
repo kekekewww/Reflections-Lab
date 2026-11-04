@@ -30,6 +30,6 @@
 
 非同步讀模型另有 `idle/loading/ready/empty/stale/error/unsupported`。缺 Listener 是可修復前置條件；未支援 `individualPaths` 是 unsupported；沒有符合篩選的路徑才是 empty；求解異常是 error。各自提供原因，不顯示假的零值或裝飾聲線。
 
-Modal 開啟時先釋放 FPS 輸入、安全暫停並保留 held/ghost；focus 移入、背景不可操作、關閉回 trigger，不自動重鎖。Popover 不全面困住 Tab；Esc 只關閉最上層且不再投擲／丟棄。拖曳有 pointer capture、取消及數字／按鈕替代；掉線或 command revision 失配時保留輸入並重新驗證。Undo/Redo 區分文字編輯、Scene transaction 和 runtime Replay，細節以 Workspace／Physics 規格為準。
+Modal 開啟時先釋放 FPS 輸入、安全暫停並保留 held 快照，取消尚未提交的 ghost 且不放置；focus 移入、背景不可操作、關閉回 trigger，不自動重鎖。Popover 不全面困住 Tab；Esc 只關閉最上層且不再投擲／丟棄。拖曳有 pointer capture、取消及數字／按鈕替代；掉線或 command revision 失配時保留輸入並重新驗證。Undo/Redo 區分文字編輯、Scene transaction 和 runtime Replay，細節以 Workspace／Physics 規格為準。
 
 每次 UI review 必須記錄：元件、七態實際畫面／鍵盤結果、額外態與 async 態、token 差異、錯誤復原、視覺證據檔、browser/OS/zoom、motion/performance 結果及未跑項目。沒有畫面時只記 `STATIC REVIEW`，不得填 `VISUAL PASS`。

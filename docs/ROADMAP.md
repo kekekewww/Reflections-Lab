@@ -64,3 +64,9 @@
 ## 每日停止條件
 
 每個 task 都有可重現 acceptance、來源、limits與rollback；未過核心碰撞／audio／資料一致性時，不繼續堆新功能。最後兩天專供整合與提交準備，使用者明確接受新風險才調整；代理本階段不自行部署、提交或接受法律條款。
+
+## 2026-11-01 效能與緩衝獨立研究（PROPOSED）
+
+[研究摘要](13-performance-review/EXECUTIVE_SUMMARY.md)、[完整優化Roadmap](13-performance-review/OPTIMIZATION_ROADMAP.md)與[量測計畫](13-performance-review/MEASUREMENT_PLAN.md)提供後續決策依據。新增優化任務沿用既有knowledge/tasks，均為BACKLOG；七份ADR提案維持PROPOSED，沒有自動啟動產品開發。
+
+先做可重現歸因與錄製／automation穩定性研究，再依同負載證據選擇較大worker、DSP或offline遷移；原正式MVP範圍、驗收／性能門檻與既有失敗結果不變。本輪600秒收集採用使用者選擇的非正式研究路線，不代表性能改善或完整V1通過。

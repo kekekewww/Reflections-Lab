@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "reviewMethod": "Independent Python standard library raw JSON/gzip reconstruction; no production JavaScript imported or executed",
+  "reviewedAt": "2026-11-03T00:22:53.842014+00:00",
+  "sourceObservedHead": "94cb2c49b5b00be5c777978b660eb1f9cf4c5f3e",
+  "protectedBaselineObservedHead": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "status": "NUMERIC_COVERAGE_REJECTION_CONFIRMED_PRESERVE_FAILURE",
+  "formalQualification": "NOT_APPROVED",
+  "formal600Run": false,
+  "newNativeCaptureOrRetryPerformed": false,
+  "rawInputs": [
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/native/verification.json",
+      "sha256": "9816901c42b618cd956b64366cf254e78bea9e009ff86fdf26cb3c2100a5a491",
+      "bytes": 50667
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/native/pilot.native-analysis.json",
+      "sha256": "5d12ab7e6c63975251979cfab30cff3d26d8e0e745a6d2b0c117f8ea360623a2",
+      "bytes": 8999
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/native/pilot.raw.json",
+      "sha256": "dff5fa6d6e4260f3de546f570cc084cd965575e25525690baca753de34243c0e",
+      "bytes": 33245
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/native/pilot.trace.json.gz",
+      "sha256": "02e874df3350dbab25db5a9b10c7503bc2bc9bd65f26b87c613aa952fd767d0b",
+      "bytes": 85161
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-02-v4/process.json",
+      "sha256": "11a74c762aba42d98918a3ee6eaee6ad38b154258e2998f4327cb8d7053c6c61",
+      "bytes": 2256
+    }
+  ],
+  "decodedBytes": 892375,
+  "rawTraceEventCount": 3565,
+  "sourcePins": [
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+      "bytes": 33328
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4",
+      "bytes": 4183
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v1.mjs",
+      "sha256": "8f712452ba026711acb57ef07dd75631c02b552c0e4cbc4e37fbd8eddad28ab7",
+      "bytes": 5409
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v2.mjs",
+      "sha256": "9cca2375741bd9f0226ba2353f606dc47510bf3095400db981f1f770e5c9438a",
+      "bytes": 22032
+    },
+    {
+      "path": "tests/browser/performance-semantic-command-v2.mjs",
+      "sha256": "c6d211e3fe5f35231406fb1ace7385a6b33faf2ecfd020f9efbd8cdc30b93fd6",
+      "bytes": 5184
+    },
+    {
+      "path": "tests/browser/performance-profile.mjs",
+      "sha256": "df86db94c6654399851ec1e3a4a240bc5821aee8dfa0745180d404c8cdf23c9c",
+      "bytes": 53647
+    }
+  ],
+  "nativeOwner": {
+    "pid": 39104,
+    "tid": 32064,
+    "navigationId": "719ABC1FD730B090E972EA8283C112AB"
+  },
+  "observedLayers": {
+    "journalQualified": true,
+    "strictNativeQualified": true,
+    "originalRawV3Qualified": true,
+    "V4ClassificationCount": 0,
+    "nativeJournalQualified": true,
+    "numericCoverageComplete": false,
+    "pilotSucceeded": false,
+    "machineLeaseReleasable": true
+  },
+  "originalNumericPredicate": {
+    "source": "tests/browser/performance-native-v3.mjs:550",
+    "thresholdUs": 50000,
+    "expression": "selected.length > 0 && selected[0][0] - begin <= 50000 && end - selected.at(-1)[1] <= 50000",
+    "checks": {
+      "selectedNonempty": true,
+      "firstSelectedStartMinusBeginLe50000Us": false,
+      "endMinusLastSelectedStopLe50000Us": true
+    },
+    "beginUs": 953965750,
+    "endUs": 954578676,
+    "firstSelectedClippedStartUs": 954017620,
+    "lastSelectedClippedStopUs": 954578676,
+    "leadingGapUs": 51870,
+    "leadingGapExcessUs": 1870,
+    "trailingGapUs": 0,
+    "independentComplete": false,
+    "mainTaskOccupancyMsPublished": []
+  },
+  "taskEvidence": {
+    "ownedNamedTasks": 52,
+    "ownedNamedTaskPhases": {
+      "X": 52,
+      "I": 0,
+      "B": 0,
+      "E": 0
+    },
+    "selectedTasks": 41,
+    "mergedTasks": 41,
+    "firstSelected": {
+      "eventIndex": 226,
+      "event": {
+        "args": {
+          "chrome_task_annotator": {
+            "delay_policy": "FLEXIBLE_NO_SOONER",
+            "task_delay_us": 200000
+          },
+          "src_file": "extensions/renderer/script_injection_manager.cc",
+          "src_func": "DidDispatchDOMContentLoadedEvent",
+          "src_line": 190
+        },
+        "cat": "toplevel",
+        "dur": 91,
+        "name": "ThreadControllerImpl::RunTask",
+        "ph": "X",
+        "pid": 39104,
+        "tdur": 75,
+        "tid": 32064,
+        "ts": 954017620,
+        "tts": 110338
+      },
+      "clipped": [
+        954017620,
+        954017711
+      ]
+    },
+    "lastSelected": {
+      "eventIndex": 2329,
+      "event": {
+        "args": {
+          "src_file": "third_party/blink/renderer/core/scheduler/dom_timer.cc",
+          "src_func": "DOMTimer",
+          "src_line": 356
+        },
+        "cat": "toplevel",
+        "dur": 5591,
+        "name": "ThreadControllerImpl::RunTask",
+        "ph": "X",
+        "pid": 39104,
+        "tdur": 5186,
+        "tid": 32064,
+        "ts": 954578569,
+        "tts": 127134
+      },
+      "clipped": [
+        954578569,
+        954578676
+      ]
+    },
+    "precedingInspectorTask": {
+      "eventIndex": 156,
+      "event": {
+        "args": {
+          "src_file": "third_party/blink/renderer/core/inspector/inspector_task_runner.cc",
+          "src_func": "AppendTask",
+          "src_line": 40
+        },
+        "cat": "toplevel",
+        "dur": 1509,
+        "name": "ThreadControllerImpl::RunTask",
+        "ph": "X",
+        "pid": 39104,
+        "tdur": 1446,
+        "tid": 32064,
+        "ts": 953963435,
+        "tts": 101609
+      },
+      "stopUs": 953964944,
+      "stopBeforeBeginUs": 806
+    },
+    "beginMark": {
+      "eventIndex": 168,
+      "event": {
+        "args": {
+          "data": {
+            "callTime": 953966047,
+            "navigationId": "719ABC1FD730B090E972EA8283C112AB",
+            "sampleTraceId": 8609666191991334,
+            "startTime": 193.6000000000931
+          }
+        },
+        "cat": "blink.user_timing",
+        "name": "reflection-profile.begin.7eeb77b4-ffdf-40f9-a3c7-7f2920646840",
+        "ph": "I",
+        "pid": 39104,
+        "s": "t",
+        "tid": 32064,
+        "ts": 953965750,
+        "tts": 104244
+      }
+    },
+    "endMark": {
+      "eventIndex": 2338,
+      "event": {
+        "args": {
+          "data": {
+            "callTime": 954578677,
+            "navigationId": "719ABC1FD730B090E972EA8283C112AB",
+            "sampleTraceId": 8609666191991288,
+            "startTime": 806.5
+          }
+        },
+        "cat": "blink.user_timing",
+        "name": "reflection-profile.end.7eeb77b4-ffdf-40f9-a3c7-7f2920646840",
+        "ph": "I",
+        "pid": 39104,
+        "s": "t",
+        "tid": 32064,
+        "ts": 954578676,
+        "tts": 127239
+      }
+    }
+  },
+  "numericReconstruction": {
+    "independentMergedTaskArraysExact": true,
+    "independentPerformanceBinsBinary64Equal": true,
+    "independentNativeBoundariesBinary64Equal": true,
+    "performanceBins": [
+      193.60000000009313,
+      273.5,
+      605.9,
+      622.6,
+      639.2,
+      672.5,
+      689.1,
+      705.7,
+      722.5,
+      739.1,
+      755.7,
+      772.4,
+      789.1,
+      805.7,
+      806.5
+    ],
+    "nativeBoundariesUs": [
+      953965750.0,
+      954045653.3894598,
+      954378067.4902921,
+      954394768.1987274,
+      954411368.9029205,
+      954444670.315549,
+      954461271.0197423,
+      954477871.7239354,
+      954494672.4366128,
+      954511273.140806,
+      954527873.8449992,
+      954544574.5534345,
+      954561275.2618698,
+      954577875.966063,
+      954578676.0
+    ],
+    "firstRawRafTimestampMs": 273.5,
+    "firstCallbackObservedNowMs": 597.2000000000698,
+    "originPerformanceMs": 193.60000000009313,
+    "durationPerformanceMs": 612.8999999999069
+  },
+  "sourceSequence": {
+    "page": "performance-semantic-page-v1.mjs:140-163 registers PC(cancelled), P0/P1 before debugger; after resume immediately marks begin in that same existing prepareAndPause invocation",
+    "runner": "performance-semantic-runner-v2.mjs:271-294 starts native trace while paused, then resumes; no fresh task boundary handshake for the begin mark",
+    "proven": "This raw has no selected complete RunTask overlapping begin; the first selected task begins 51.870ms after begin",
+    "notProven": [
+      "Why the native scheduler waited 51.870ms to the first selected task",
+      "That tracing lost data: raw metadata reports no data loss, which is distinct from edge coverage",
+      "That a longer or immediate retry would be qualified",
+      "That the source posting location identifies the executing function CPU"
+    ]
+  },
+  "repairProposal": {
+    "status": "ROOT_APPROVED_SOURCE_AND_VM_UNIT_ONLY_NOT_IMPLEMENTED_NOT_NATIVE_QUALIFIED",
+    "scope": "A separately versioned semantic bootstrap/page only; keep original begin/end, 26 registrations, 24 callbacks, 13 timestamp groups, 50000us coverage predicate, numeric kernel and original formal600 workload",
+    "preferredIdea": "Immediately after the unchanged begin/OPEN sequence on resume, schedule exactly one owned setTimeout(0) bootstrap. Save bounded auxiliary scheduled/entry/exit and actual delay evidence outside the original journal/UI proof, and require the actual TimerInstall -> TimerFire -> auxiliary entry/exit marks on the owned document/renderer inside the collection window and a complete captured native RunTask. Include its real cost in unchangedNumericV3. If actual dispatch is too late for original coverage, keep FAIL. No heartbeat and no retry loop.",
+    "reviewAssessment": "No inherent cheating or hard blocker identified under these constraints. This adds one explicit measurement bootstrap task; it cannot recover a missing enclosing task around the resumed pretrace invocation, and must not be advertised as proof of all CPU inside the collection window. The 50000us original rule remains an edge eligibility rule.",
+    "doNotUse": [
+      "Retrospectively moving begin/end or substituting callback observedNow for raw RAF timestamp",
+      "Synthetic task durations, fake zero timing or injecting task rows into native input",
+      "Repeated heartbeat tasks until an eligible boundary appears",
+      "Treating requested setTimeout(0) as observed zero delay",
+      "Dropping malformed or inside-window unfinished native tasks",
+      "Auxiliary names beginning rlab-v3.observe., which the unchanged validator treats as proof names",
+      "Passing a different bootstrap configuration as same formal product workload"
+    ],
+    "requiredTests": [
+      "Exact attempt02 remains numeric.complete=false with gap51870us",
+      "50000us edge remains inclusive and the next binary64 value above it rejects",
+      "Exactly one bootstrap schedule, fire, entry and exit; duplicate/missing/late bootstrap, wrong owner/frame/navigation, wrong timerId, nonfinite or reordered timing rejects",
+      "TimerInstall singleShot=true and timeout=0 are requested settings; observed install/fire latency remains separate actual evidence",
+      "Exactly 26 original journal registrations, 24 callbacks, 13 timestamp groups, 23 captured requests, one measured cancel and custom E0 mark remain unchanged",
+      "Bootstrap callback has no additional RAF/cancel registration and all real RunTask spans remain in original numeric input",
+      "Cleanup cancels the one pending bootstrap and keeps real errors if it never fires"
+    ],
+    "nativePlan": "After source review and a new explicit version/freeze, at most one scheduled fresh native attempt; no immediate same-source retry",
+    "alternativeRejected": "Moving the begin into a fresh task is larger and risks pretrace P0/P1 firing first; preserve the original begin/end instead.",
+    "authority": "Parent relayed Root approval for preserving original begin/end plus exactly one post-begin timeout0 bootstrap; no permission to move window or retry native capture"
+  },
+  "cleanupObserved": {
+    "cleanupErrors": [],
+    "cleanupWallMs": 584,
+    "browserConnectedAfterCleanup": false,
+    "serverListeningAfterCleanup": false,
+    "restoration": {
+      "nativeRafIdentityUnchanged": true,
+      "nativeCancelIdentityUnchanged": true,
+      "pendingAfterRestore": 0,
+      "state": "CLOSED"
+    },
+    "endpointPins": {
+      "sourceStable": true,
+      "executableStable": true,
+      "scope": "BEFORE_AND_AFTER_ENDPOINTS_ONLY_NOT_CONTINUOUS_FILE_MONITORING"
+    }
+  },
+  "limits": [
+    "Review is source and actual raw reconstruction only; no new native/browser/Node/tests/build performed",
+    "The latest semantic pilot failed; native method remains unqualified for original formal600",
+    "This review does not certify product UI load, digital PCM, physical hardware output or hearing"
+  ],
+  "bootstrapSchemaEvidence": {
+    "scope": "Existing final close timer from attempt02 is schema evidence only, not an executed bootstrap",
+    "install": {
+      "eventIndex": 2316,
+      "owner": "39104:32064",
+      "name": "TimerInstall",
+      "ph": "I",
+      "cat": "devtools.timeline",
+      "argsData": {
+        "frame": "173303774FFC4500664507A1555F7F65",
+        "singleShot": true,
+        "timeout": 0,
+        "timerId": 1
+      },
+      "ts": 954578448
+    },
+    "fire": {
+      "eventIndex": 2330,
+      "owner": "39104:32064",
+      "name": "TimerFire",
+      "ph": "X",
+      "cat": "devtools.timeline",
+      "argsData": {
+        "frame": "173303774FFC4500664507A1555F7F65",
+        "timerId": 1
+      },
+      "ts": 954578576,
+      "dur": 5582
+    },
+    "identityRule": "Use actual timerId + exact frame + renderer owner; Timer args carry frame id, not navigationId. Corroborate navigation through owned mark/document pin. Do not infer TimerFire means all device or render work is measured."
+  }
+}

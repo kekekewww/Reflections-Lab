@@ -1,0 +1,1476 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "SEMANTIC-01-INDEPENDENT-REVIEW-20261103",
+  "status": "ROOT_CAUSE_REVIEW_ONLY_ORIGINAL_QUALIFICATION_REMAINS_REJECTED",
+  "createdAt": "2026-11-02T19:28:49.365521+00:00",
+  "observedHead": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+  "observedHeadScope": "LEGACY_RUN_SOURCE_COMMIT_ALIAS; use reviewObservedHead for the separately timestamped latest review HEAD observation",
+  "runSourceCommit": "bd64e4fba73b3a8d2ead6b6cca9d984c67299e81",
+  "reviewObservedHead": "047d977f723db067cf703cf265c207855095420e",
+  "reviewObservedHeadReadAt": "2026-11-02T19:37:30.8047856Z",
+  "executor": "Codex independent read-only sub-agent",
+  "modelId": null,
+  "run": "artifacts/v1/perf-nonadvanced-20261103-semantic-01",
+  "runMetadata": {
+    "startedAt": "2026-11-02T19:24:52.878Z",
+    "completedAt": "2026-11-02T19:24:57.216Z",
+    "executable": {
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "sha256Before": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+      "sha256After": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa"
+    },
+    "traceMetadata": {
+      "dataLossOccurred": false,
+      "stream": "1",
+      "traceFormat": "json",
+      "streamCompression": "gzip"
+    },
+    "browserDeviceAudio": {
+      "requested": false,
+      "sampleRate": null,
+      "hardwareBlockLength": null,
+      "deviceRoute": null,
+      "reason": "NO_AUDIO_REQUESTED_IN_SEMANTIC_PILOT"
+    },
+    "host": {
+      "node": "v22.17.0",
+      "nodeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "platform": "win32",
+      "arch": "x64",
+      "osRelease": "10.0.26200",
+      "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+      "logicalCpus": 32,
+      "totalMemoryBytes": 33959825408,
+      "browserVersion": "156.0.8078.75",
+      "browserVersionReceipt": {
+        "protocolVersion": "1.3",
+        "product": "Chrome/156.0.8078.75",
+        "revision": "@861389936bf33ea77529ee5dcc0605e68f6bb620",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "jsVersion": "15.6.75.25"
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "deviceScaleFactor": 1
+      },
+      "debuggerIntervention": "EXACT_PRETRACE_PENDING_PILOT_ONLY_NOT_PERFORMANCE"
+    },
+    "endpointPins": {
+      "sourceStable": true,
+      "executableStable": true,
+      "scope": "BEFORE_AND_AFTER_ENDPOINTS_ONLY_NOT_CONTINUOUS_FILE_MONITORING"
+    },
+    "cleanupWallMs": 233,
+    "browserConnectedAfterCleanup": false,
+    "serverListeningAfterCleanup": false,
+    "cleanupErrors": []
+  },
+  "reviewMethod": "INDEPENDENT_PYTHON_READ_ONLY_OBSERVATION_NOT_QUALIFICATION",
+  "inputPins": [
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/pilot.raw.json",
+      "bytes": 33304,
+      "sha256": "8c95e3bfdceef6a098abcc1102f493e51b4072bb0745b742a237b3d72187fe3e"
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/pilot.trace.json.gz",
+      "bytes": 81393,
+      "sha256": "c4481687bfbcb7657a1f0a55d91f48b1e57d68c2736ea6de7a8dcfb40f887b72"
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/pilot.native-analysis.json",
+      "bytes": 6887,
+      "sha256": "02ea5fd7b72d537fec0f3b4ecbcbca555bd6f9251b9781ff3a4ae1b8e415acde"
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/verification.json",
+      "bytes": 31050,
+      "sha256": "4984cb50b038cd1a909b21ea28b58819c7c1ed017458f13bb809a0b97753ca2d"
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/source-snapshot/tests/browser/performance-native-v3.mjs",
+      "bytes": 33328,
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782"
+    }
+  ],
+  "collection": {
+    "collectionId": "59ef6397-1002-45f1-a35e-a5b06b77f25c",
+    "documentId": "9062D6912304040F2612E98D72BDEB4C",
+    "pid": 72488,
+    "tid": 93008,
+    "beginEventIndex": 354,
+    "endEventIndex": 2278,
+    "beginUs": 99066898433,
+    "endUs": 99067295193,
+    "nativeMarkerDurationUs": 396760,
+    "performanceWindowMs": 396.70000000298023,
+    "lastOwnedFireEndUs": 99067294986,
+    "lastOwnedFireToEndGapUs": 207,
+    "beginMarkerPhysicalCallTimeUs": 99066898622,
+    "endMarkerPhysicalCallTimeUs": 99067295194
+  },
+  "counts": {
+    "traceEvents": 3306,
+    "registeredJournalHandles": 26,
+    "journalCallbackEvents": 24,
+    "rawGroups": 13,
+    "groupSizes": [
+      2,
+      3,
+      2,
+      1,
+      3,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "ownedNative": {
+      "FireAnimationFrame": 24,
+      "RequestAnimationFrame": 23,
+      "CancelAnimationFrame": 1
+    },
+    "ownedTraceHandleCount": 25,
+    "unknownOwnedHandles": [],
+    "rendererTaskCount": 48,
+    "rendererCompleteXCount": 47,
+    "rendererOtherPhaseCount": 1,
+    "allRendererPhaseEEvents": []
+  },
+  "unsupportedRendererTasks": [
+    {
+      "eventIndex": 2377,
+      "event": {
+        "args": {
+          "src_file": "cc/trees/proxy_impl.cc",
+          "src_func": "ScheduledActionSendBeginMainFrame",
+          "src_line": 849
+        },
+        "cat": "toplevel",
+        "name": "ThreadControllerImpl::RunTask",
+        "ph": "B",
+        "pid": 72488,
+        "tid": 93008,
+        "ts": 99067311504
+      },
+      "deltaAfterWindowEndUs": 16311
+    }
+  ],
+  "nativeSetObservations": [
+    {
+      "label": "PC",
+      "handle": 1,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestEvents": [],
+      "fireEvents": [],
+      "cancelEvents": [],
+      "parentFire": null,
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "P0",
+      "handle": 2,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestEvents": [],
+      "fireEvents": [
+        {
+          "eventIndex": 849,
+          "tsUs": 99067094977,
+          "durUs": 2206
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": null,
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "P1",
+      "handle": 3,
+      "phase": "pretrace",
+      "parentLabel": null,
+      "requestEvents": [],
+      "fireEvents": [
+        {
+          "eventIndex": 903,
+          "tsUs": 99067097185,
+          "durUs": 129
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": null,
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "A0",
+      "handle": 4,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestEvents": [
+        {
+          "eventIndex": 899,
+          "tsUs": 99067097060,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 975,
+          "tsUs": 99067107888,
+          "durUs": 431
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067094977,
+        "durUs": 2206
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "A1",
+      "handle": 5,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestEvents": [
+        {
+          "eventIndex": 900,
+          "tsUs": 99067097130,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 980,
+          "tsUs": 99067108320,
+          "durUs": 63
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067094977,
+        "durUs": 2206
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "A2",
+      "handle": 6,
+      "phase": "measured",
+      "parentLabel": "P0",
+      "requestEvents": [
+        {
+          "eventIndex": 902,
+          "tsUs": 99067097148,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 983,
+          "tsUs": 99067108384,
+          "durUs": 185
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067094977,
+        "durUs": 2206
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "B0",
+      "handle": 7,
+      "phase": "measured",
+      "parentLabel": "A2",
+      "requestEvents": [
+        {
+          "eventIndex": 986,
+          "tsUs": 99067108506,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1059,
+          "tsUs": 99067111875,
+          "durUs": 244
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067108384,
+        "durUs": 185
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "B1",
+      "handle": 8,
+      "phase": "measured",
+      "parentLabel": "A2",
+      "requestEvents": [
+        {
+          "eventIndex": 987,
+          "tsUs": 99067108557,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1065,
+          "tsUs": 99067112120,
+          "durUs": 149
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067108384,
+        "durUs": 185
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "MC",
+      "handle": 9,
+      "phase": "measured",
+      "parentLabel": "B1",
+      "requestEvents": [
+        {
+          "eventIndex": 1068,
+          "tsUs": 99067112174,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [],
+      "cancelEvents": [
+        {
+          "eventIndex": 1069,
+          "tsUs": 99067112220,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "parentFire": {
+        "tsUs": 99067112120,
+        "durUs": 149
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "C0",
+      "handle": 10,
+      "phase": "measured",
+      "parentLabel": "B1",
+      "requestEvents": [
+        {
+          "eventIndex": 1071,
+          "tsUs": 99067112239,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1271,
+          "tsUs": 99067128709,
+          "durUs": 770
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067112120,
+        "durUs": 149
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "D0",
+      "handle": 11,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestEvents": [
+        {
+          "eventIndex": 1283,
+          "tsUs": 99067129370,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1557,
+          "tsUs": 99067165564,
+          "durUs": 310
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067128709,
+        "durUs": 770
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "D1",
+      "handle": 12,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestEvents": [
+        {
+          "eventIndex": 1287,
+          "tsUs": 99067129454,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1563,
+          "tsUs": 99067165875,
+          "durUs": 79
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067128709,
+        "durUs": 770
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "D2",
+      "handle": 13,
+      "phase": "measured",
+      "parentLabel": "C0",
+      "requestEvents": [
+        {
+          "eventIndex": 1288,
+          "tsUs": 99067129463,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1566,
+          "tsUs": 99067165955,
+          "durUs": 92
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067128709,
+        "durUs": 770
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "E0",
+      "handle": 14,
+      "phase": "measured",
+      "parentLabel": "D2",
+      "requestEvents": [
+        {
+          "eventIndex": 1569,
+          "tsUs": 99067166011,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1648,
+          "tsUs": 99067178423,
+          "durUs": 256
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067165955,
+        "durUs": 92
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "E1",
+      "handle": 15,
+      "phase": "measured",
+      "parentLabel": "D2",
+      "requestEvents": [
+        {
+          "eventIndex": 1570,
+          "tsUs": 99067166039,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1653,
+          "tsUs": 99067178680,
+          "durUs": 49
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067165955,
+        "durUs": 92
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "F0",
+      "handle": 16,
+      "phase": "measured",
+      "parentLabel": "E1",
+      "requestEvents": [
+        {
+          "eventIndex": 1656,
+          "tsUs": 99067178710,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1748,
+          "tsUs": 99067194941,
+          "durUs": 213
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067178680,
+        "durUs": 49
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "G0",
+      "handle": 17,
+      "phase": "measured",
+      "parentLabel": "F0",
+      "requestEvents": [
+        {
+          "eventIndex": 1752,
+          "tsUs": 99067195117,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1807,
+          "tsUs": 99067211726,
+          "durUs": 164
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067194941,
+        "durUs": 213
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "G1",
+      "handle": 18,
+      "phase": "measured",
+      "parentLabel": "F0",
+      "requestEvents": [
+        {
+          "eventIndex": 1753,
+          "tsUs": 99067195144,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1812,
+          "tsUs": 99067211890,
+          "durUs": 17
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067194941,
+        "durUs": 213
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "H0",
+      "handle": 19,
+      "phase": "measured",
+      "parentLabel": "G0",
+      "requestEvents": [
+        {
+          "eventIndex": 1811,
+          "tsUs": 99067211874,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1879,
+          "tsUs": 99067228249,
+          "durUs": 191
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067211726,
+        "durUs": 164
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "H1",
+      "handle": 20,
+      "phase": "measured",
+      "parentLabel": "G1",
+      "requestEvents": [
+        {
+          "eventIndex": 1815,
+          "tsUs": 99067211904,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 1887,
+          "tsUs": 99067228441,
+          "durUs": 48
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067211890,
+        "durUs": 17
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "I0",
+      "handle": 21,
+      "phase": "measured",
+      "parentLabel": "H1",
+      "requestEvents": [
+        {
+          "eventIndex": 1890,
+          "tsUs": 99067228471,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2018,
+          "tsUs": 99067244944,
+          "durUs": 219
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067228441,
+        "durUs": 48
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "J0",
+      "handle": 22,
+      "phase": "measured",
+      "parentLabel": "I0",
+      "requestEvents": [
+        {
+          "eventIndex": 2022,
+          "tsUs": 99067245133,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2109,
+          "tsUs": 99067261545,
+          "durUs": 111
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067244944,
+        "durUs": 219
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "J1",
+      "handle": 23,
+      "phase": "measured",
+      "parentLabel": "I0",
+      "requestEvents": [
+        {
+          "eventIndex": 2023,
+          "tsUs": 99067245154,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2116,
+          "tsUs": 99067261657,
+          "durUs": 31
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067244944,
+        "durUs": 219
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "K0",
+      "handle": 24,
+      "phase": "measured",
+      "parentLabel": "J1",
+      "requestEvents": [
+        {
+          "eventIndex": 2124,
+          "tsUs": 99067261678,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2168,
+          "tsUs": 99067278184,
+          "durUs": 130
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067261657,
+        "durUs": 31
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "L0",
+      "handle": 25,
+      "phase": "measured",
+      "parentLabel": "K0",
+      "requestEvents": [
+        {
+          "eventIndex": 2174,
+          "tsUs": 99067278296,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2246,
+          "tsUs": 99067294830,
+          "durUs": 103
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067278184,
+        "durUs": 130
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    },
+    {
+      "label": "L1",
+      "handle": 26,
+      "phase": "measured",
+      "parentLabel": "K0",
+      "requestEvents": [
+        {
+          "eventIndex": 2176,
+          "tsUs": 99067278309,
+          "cat": "devtools.timeline",
+          "ph": "I"
+        }
+      ],
+      "fireEvents": [
+        {
+          "eventIndex": 2253,
+          "tsUs": 99067294934,
+          "durUs": 52
+        }
+      ],
+      "cancelEvents": [],
+      "parentFire": {
+        "tsUs": 99067278184,
+        "durUs": 130
+      },
+      "checks": {
+        "requestCount": true,
+        "fireCount": true,
+        "noUnexpectedCancel": true,
+        "threadIdentity": true,
+        "closedWindow": true,
+        "requestParentSpan": true,
+        "cancelParentSpan": true
+      }
+    }
+  ],
+  "proofMarkObservations": [
+    {
+      "ordinal": 1,
+      "handle": 2,
+      "markEventIndex": 898,
+      "markTsUs": 99067096878,
+      "physicalCallTimeUs": 99067096884,
+      "fireTsUs": 99067094977,
+      "fireDurUs": 2206,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 2,
+      "handle": 4,
+      "markEventIndex": 979,
+      "markTsUs": 99067108207,
+      "physicalCallTimeUs": 99067108213,
+      "fireTsUs": 99067107888,
+      "fireDurUs": 431,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 3,
+      "handle": 7,
+      "markEventIndex": 1064,
+      "markTsUs": 99067112045,
+      "physicalCallTimeUs": 99067112061,
+      "fireTsUs": 99067111875,
+      "fireDurUs": 244,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 4,
+      "handle": 10,
+      "markEventIndex": 1282,
+      "markTsUs": 99067129240,
+      "physicalCallTimeUs": 99067129250,
+      "fireTsUs": 99067128709,
+      "fireDurUs": 770,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 5,
+      "handle": 11,
+      "markEventIndex": 1560,
+      "markTsUs": 99067165785,
+      "physicalCallTimeUs": 99067165789,
+      "fireTsUs": 99067165564,
+      "fireDurUs": 310,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 6,
+      "handle": 14,
+      "markEventIndex": 33,
+      "markTsUs": 99066512284,
+      "physicalCallTimeUs": 99067178607,
+      "fireTsUs": 99067178423,
+      "fireDurUs": 256,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": true
+    },
+    {
+      "ordinal": 7,
+      "handle": 16,
+      "markEventIndex": 1751,
+      "markTsUs": 99067195057,
+      "physicalCallTimeUs": 99067195063,
+      "fireTsUs": 99067194941,
+      "fireDurUs": 213,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 8,
+      "handle": 17,
+      "markEventIndex": 1810,
+      "markTsUs": 99067211818,
+      "physicalCallTimeUs": 99067211823,
+      "fireTsUs": 99067211726,
+      "fireDurUs": 164,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 9,
+      "handle": 19,
+      "markEventIndex": 1885,
+      "markTsUs": 99067228379,
+      "physicalCallTimeUs": 99067228382,
+      "fireTsUs": 99067228249,
+      "fireDurUs": 191,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 10,
+      "handle": 21,
+      "markEventIndex": 2021,
+      "markTsUs": 99067245059,
+      "physicalCallTimeUs": 99067245062,
+      "fireTsUs": 99067244944,
+      "fireDurUs": 219,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 11,
+      "handle": 22,
+      "markEventIndex": 2112,
+      "markTsUs": 99067261618,
+      "physicalCallTimeUs": 99067261620,
+      "fireTsUs": 99067261545,
+      "fireDurUs": 111,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 12,
+      "handle": 24,
+      "markEventIndex": 2173,
+      "markTsUs": 99067278257,
+      "physicalCallTimeUs": 99067278261,
+      "fireTsUs": 99067278184,
+      "fireDurUs": 130,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    },
+    {
+      "ordinal": 13,
+      "handle": 25,
+      "markEventIndex": 2251,
+      "markTsUs": 99067294900,
+      "physicalCallTimeUs": 99067294902,
+      "fireTsUs": 99067294830,
+      "fireDurUs": 103,
+      "physicalCallTimeWithinFire": true,
+      "physicalCallTimeWithinWindow": true,
+      "markTsBeforeWindow": false
+    }
+  ],
+  "allIndependentNativeSetChecks": true,
+  "allPhysicalProofMarkChecks": true,
+  "customE0": {
+    "ordinal": 6,
+    "handle": 14,
+    "markEventIndex": 33,
+    "markTsUs": 99066512284,
+    "physicalCallTimeUs": 99067178607,
+    "fireTsUs": 99067178423,
+    "fireDurUs": 256,
+    "physicalCallTimeWithinFire": true,
+    "physicalCallTimeWithinWindow": true,
+    "markTsBeforeWindow": true
+  },
+  "originalQualification": {
+    "status": "UNVERIFIED_NOT_APPROVED",
+    "journal": true,
+    "strictNative": false,
+    "strictReasons": [
+      "RENDERER_TASK_SCHEMA_OR_CATEGORY"
+    ],
+    "nativeCorroboration": false,
+    "formalQualification": "NOT_APPROVED"
+  },
+  "frozenOriginalPredicate": {
+    "path": "artifacts/v1/perf-nonadvanced-20261103-semantic-01/native/source-snapshot/tests/browser/performance-native-v3.mjs",
+    "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782",
+    "lineRanges": [
+      [
+        291,
+        291
+      ],
+      [
+        292,
+        318
+      ]
+    ],
+    "interpretation": "Every same-renderer task candidate is validated before overlap selection. B is neither the accepted I form nor an X span with finite nonnegative dur, so the old rejection is correct even when the event starts after the window."
+  },
+  "officialProducerSources": [
+    {
+      "id": "CHROMIUM-CONTROLLER",
+      "path": "base/task/sequence_manager/thread_controller_with_message_pump_impl.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/sequence_manager/thread_controller_with_message_pump_impl.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/sequence_manager/thread_controller_with_message_pump_impl.cc?format=TEXT",
+      "lines": [
+        [
+          476,
+          484
+        ]
+      ],
+      "sha256": "7a87812c9ce63d5362e1f5c41ed3f656e9be0b7a23cd836c6eb8e22411685721",
+      "bytes": 29550,
+      "totalLines": 765,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "TaskAnnotator.RunTask receives the exact ThreadControllerImpl::RunTask event name."
+    },
+    {
+      "id": "CHROMIUM-TASK-ANNOTATOR-H",
+      "path": "base/task/common/task_annotator.h",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.h",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.h?format=TEXT",
+      "lines": [
+        [
+          102,
+          115
+        ]
+      ],
+      "sha256": "1c19ff8ebc72f44fbbe48e3e1adeae7f20b02ca9f51076e28dc63037e58a4188",
+      "bytes": 8589,
+      "totalLines": 229,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Scoped TRACE_EVENT uses category toplevel and supplied event_name around RunTaskImpl."
+    },
+    {
+      "id": "CHROMIUM-TASK-ANNOTATOR-CC",
+      "path": "base/task/common/task_annotator.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/task/common/task_annotator.cc?format=TEXT",
+      "lines": [
+        [
+          261,
+          264
+        ]
+      ],
+      "sha256": "b1f551f0be12e5dfca57b5ef858ba4f223b81bc9dec94c3e22c741297ed25f2c",
+      "bytes": 18096,
+      "totalLines": 475,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "The trace task records an interned task.posted_from location."
+    },
+    {
+      "id": "CHROMIUM-INTERNED-LOCATION",
+      "path": "base/trace_event/interned_args_helper.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/interned_args_helper.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/interned_args_helper.cc?format=TEXT",
+      "lines": [
+        [
+          34,
+          47
+        ]
+      ],
+      "sha256": "eda75a7c79c352629de1c5795d208618f84b6d1508e7e172e24d8bee76a3aa1e",
+      "bytes": 5480,
+      "totalLines": 157,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Interned source locations contain file, function and line number."
+    },
+    {
+      "id": "CHROMIUM-DEPS",
+      "path": "DEPS",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS?format=TEXT",
+      "lines": [
+        [
+          2843,
+          2844
+        ]
+      ],
+      "sha256": "8778ffaa9a30b9e825b291978804c6c2e55a3ae829ff387b025592ffb9090e8e",
+      "bytes": 192396,
+      "totalLines": 5021,
+      "license": "Header does not separately specify a license",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Pins Perfetto revision 403906f4adfbf287a02e5546f8430dcc9d56b649."
+    },
+    {
+      "id": "CHROMIUM-PROXY-POSTSITE",
+      "path": "cc/trees/proxy_impl.cc",
+      "commit": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/cc/trees/proxy_impl.cc",
+      "fetchUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/cc/trees/proxy_impl.cc?format=TEXT",
+      "lines": [
+        [
+          806,
+          806
+        ],
+        [
+          848,
+          851
+        ]
+      ],
+      "sha256": "aec8b6c79c86e93598d6a83da5f6e19848f24559892c080ed69c75aa01fa7a5b",
+      "bytes": 42455,
+      "totalLines": 1123,
+      "license": "BSD-style; source header points to LICENSE",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "ScheduledActionSendBeginMainFrame posts FROM_HERE at line 849 and binds ProxyMain::BeginMainFrame."
+    },
+    {
+      "id": "PERFETTO-JSON-EXPORTER",
+      "path": "src/trace_processor/export_json.cc",
+      "commit": "403906f4adfbf287a02e5546f8430dcc9d56b649",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc",
+      "fetchUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc?format=TEXT",
+      "lines": [
+        [
+          646,
+          660
+        ],
+        [
+          799,
+          809
+        ],
+        [
+          880,
+          908
+        ]
+      ],
+      "sha256": "dc3a3b53cc2df3cd66be8b331b805d31331c2a8dbcf42e3f58d6fe8a05377667",
+      "bytes": 66822,
+      "totalLines": 1724,
+      "license": "Apache License 2.0",
+      "httpStatus": 200,
+      "tlsVerification": "ENABLED_NORMAL_WINDOWS_OS_TRUST",
+      "acquiredBy": "producer_schema_source read-only sub-agent",
+      "fullSourceCopiedIntoRepository": false,
+      "meaning": "Exporter maps posting-location args to src_file/src_func/src_line. A synchronous thread slice with zero duration becomes I+s:t; positive duration becomes X+dur; negative unfinished duration becomes B without dur or end."
+    }
+  ],
+  "primarySourceAcquisition": {
+    "successfulMethod": "Windows Invoke-WebRequest with ordinary TLS verification",
+    "historicalFailedMethods": [
+      "web tool inaccessible/cache-miss paths",
+      "Python local trust-store certificate verification failure",
+      "one temporary controller HTTP 503"
+    ],
+    "interpretation": "These failed attempts are not evidence that the pinned source is absent; the HTTP 200 decoded-source hashes above are authoritative for this review."
+  },
+  "conclusions": {
+    "offenderCount": 1,
+    "categoryChanged": false,
+    "phaseObserved": "B",
+    "durationUs": null,
+    "originalRejectionCorrect": true,
+    "producerInterpretation": "The pinned producer/exporter chain supports unfinished synchronous thread slices exported as B without an end event. The exact raw posting-location arguments match the pinned Chromium source.",
+    "causalLimit": "The exported JSON lacks the original protobuf duration_ns and does not by itself establish why this slice was unfinished. Trace-stop right censoring is consistent with the observed post-window B but is not independently proven as the mechanism.",
+    "nonQualificationObservations": "Native-set and callTime checks are independent observations only. The production native oracle intentionally stopped at the original strict rejection; its observedCounts stays null and is not replaced by this review."
+  },
+  "proposedMethodDecision": {
+    "status": "PROPOSED_NOT_APPLIED",
+    "requires": [
+      "Separate versioned method ADR or equivalent accepted method contract",
+      "Finite positive/negative fixtures and independent review",
+      "A producer registry entry bound to exact Chromium and Perfetto versions and source hashes",
+      "A fresh semantic pilot, then unchanged 20-second all wiring qualification, then original full 600-second workload"
+    ],
+    "narrowCandidate": [
+      "Keep immutable complete raw trace and classify every same-renderer task before selecting numeric intervals.",
+      "Retain all existing X/I schema, identity, category, capacity and collection checks.",
+      "Only a separately supported known ThreadControllerImpl::RunTask B with cat exactly toplevel, same owned pid/tid, finite ts strictly greater than the native end, absent dur, and exact bounded posting-location argument shape may be a proposed post-window begin-only class.",
+      "Initially freeze the actually verified source-location values; unknown category, extra/invalid arguments, E, B at or before the end, negative/nonfinite values and unknown identity remain rejected.",
+      "Record begin-only duration as null and numericIncluded=false; never fabricate a zero duration or remove the original event.",
+      "Use the original numeric core on the unchanged complete spans, with no epsilon, clock shift, rebinning, rounding, duration scaling, workload or threshold change.",
+      "Retain the old V3 module, old launcher/producer pin, old rejection and this raw result unchanged."
+    ],
+    "acceptanceOfCandidate": false
+  },
+  "closureAlternatives": [
+    {
+      "option": "Bounded source-fixed renderer quiescence/freeze handshake after the end mark before trace close",
+      "tradeoff": "Could reduce trailing unfinished tasks while keeping the old parser. Adds a post-window lifecycle intervention and needs fresh evidence; it does not guarantee absence of begin-only events and cannot justify deleting events or selecting only a successful rerun."
+    },
+    {
+      "option": "A new native trace/protobuf collection and explicit completed-slice model",
+      "tradeoff": "More direct access to slice completeness, but substantially larger parser/provenance/resource validation scope. It cannot retroactively reconstruct this JSON's missing duration."
+    }
+  ],
+  "processOutcome": {
+    "exitCode": 1,
+    "durationMs": 4754.4203,
+    "machineLeaseReleasable": true,
+    "pilotSucceeded": false,
+    "processTreeStopped": null,
+    "stopScope": "direct_process",
+    "reason": "Normal child exit with actual browser disconnected, owned server not listening and zero cleanup errors; no claim of forced process-tree termination."
+  },
+  "scope": {
+    "productSourceModified": false,
+    "testSourceModified": false,
+    "oldTraceModified": false,
+    "oldQualificationModified": false,
+    "unitTests": "NOT RUN",
+    "browser": "NO NEW RUN; existing semantic-01 raw reviewed only",
+    "build": "NOT RUN",
+    "format": "NOT RUN",
+    "audioDeviceOrHearing": "NOT RUN; no audio requested by pilot",
+    "formal600": "NOT RUN BY THIS REVIEW",
+    "newQualification": "NOT RUN / NOT APPROVED"
+  }
+}

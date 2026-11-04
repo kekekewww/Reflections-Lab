@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "scope": "Production browser DOM flow; deterministic offline planner and trusted experiment host",
+  "notVerified": [
+    "Meta live/provider API",
+    "human keyboard/mouse",
+    "hearing",
+    "performance acceptance"
+  ],
+  "baseURL": "http://127.0.0.1:4173",
+  "startedAt": "2026-11-02T06:25:40.678Z",
+  "browser": "156.0.8078.75",
+  "operations": "Only visible UI input/clicks; DOM is read for evidence. No runtime/test bridge.",
+  "blockedRequests": [],
+  "agentRequests": [],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "assetReceipts": [
+    {
+      "url": "http://127.0.0.1:4173/",
+      "sha256": "d84934a348c55a10370cabc23416cf6338fa88cfd66ecfb42153e6626e076a9c",
+      "bytes": 755
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-CsQTPNJk.js",
+      "sha256": "a8a4950a569a02a93ae1dbf7dc664440458eee928ee99ca1fafe897d7a9d1be0",
+      "bytes": 5089556
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7",
+      "bytes": 38307
+    }
+  ],
+  "stages": [
+    {
+      "kind": "proposal-preview-apply",
+      "materialId": "material.hard",
+      "beforeRevision": "場景版本 0 · 本機專案",
+      "afterRevision": "場景版本 1 · 本機專案",
+      "previewText": "操作預覽\n尚未套用\n此為本機確定性指令示範，不是Meta模型輸出。\n未指定尺寸／位置使用可在預覽修改的系統預設。\n變更 floor 的acoustic材質為 material.hard\n套用操作\n取消預覽",
+      "previewDidNotMutateScene": true,
+      "explicitApply": true,
+      "hostUndoAvailable": true
+    },
+    {
+      "kind": "baseline",
+      "durationS": 1,
+      "runId": "run.tool.29a09c8556e4804d220d0df102e0543610ea05c1",
+      "rows": [
+        [
+          "RunSimulation",
+          "完成",
+          "run.tool.29a09c8556e4804d220d0df102e0543610ea05c1"
+        ],
+        [
+          "CaptureExperiment",
+          "完成",
+          "run.tool.29a09c8556e4804d220d0df102e0543610ea05c1"
+        ],
+        [
+          "AnalyzeAcousticResults",
+          "完成",
+          "run.tool.29a09c8556e4804d220d0df102e0543610ea05c1"
+        ]
+      ],
+      "metrics": [
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "1000"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "1000"
+        ]
+      ],
+      "citations": [
+        "metric.a619189e5c032b8e23678cdbbbf028ef303b1b28 · artifact.grounding.186c60dfb06daa81cda1c34cf919b41f8cabe49f",
+        "metric.21e2b1623f02952e233dcdbb8d26a902965ff734 · artifact.grounding.186c60dfb06daa81cda1c34cf919b41f8cabe49f"
+      ],
+      "explanation": "directArrivalTimeS：0.01706715921524334 s（Computed；metric.a619189e5c032b8e23678cdbbbf028ef303b1b28）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.21e2b1623f02952e233dcdbb8d26a902965ff734）",
+      "visibleText": "實驗流程\n實驗完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n可追溯結果\nHost 計算結果\n指標\t數值\t單位\t頻率 Hz\ndirectArrivalTimeS\t0.017067\ts\t1000\nrt60S\t未提供\ts\t1000\n步驟與結果來源\n基準\nrun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\n工具\t結果\t錄製\nRunSimulation\t完成\trun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\nCaptureExperiment\t完成\trun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\nAnalyzeAcousticResults\t完成\trun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\n原始 Host 說明\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.a619189e5c032b8e23678cdbbbf028ef303b1b28）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.21e2b1623f02952e233dcdbb8d26a902965ff734）\nmetric.a619189e5c032b8e23678cdbbbf028ef303b1b28 · artifact.grounding.186c60dfb06daa81cda1c34cf919b41f8cabe49f\nmetric.21e2b1623f02952e233dcdbb8d26a902965ff734 · artifact.grounding.186c60dfb06daa81cda1c34cf919b41f8cabe49f"
+    },
+    {
+      "kind": "proposal-preview-apply",
+      "materialId": "material.soft",
+      "beforeRevision": "場景版本 1 · 本機專案",
+      "afterRevision": "場景版本 2 · 本機專案",
+      "previewText": "操作預覽\n尚未套用\n此為本機確定性指令示範，不是Meta模型輸出。\n未指定尺寸／位置使用可在預覽修改的系統預設。\n變更 floor 的acoustic材質為 material.soft\n套用操作\n取消預覽",
+      "previewDidNotMutateScene": true,
+      "explicitApply": true,
+      "hostUndoAvailable": true
+    },
+    {
+      "kind": "candidate-and-comparison",
+      "baselineRunId": "run.tool.29a09c8556e4804d220d0df102e0543610ea05c1",
+      "candidateRunId": "run.tool.c3b925507a2600f708d0df36d4fee4916623b3ea",
+      "rows": [
+        [
+          "RunSimulation",
+          "完成",
+          "run.tool.c3b925507a2600f708d0df36d4fee4916623b3ea"
+        ],
+        [
+          "CaptureExperiment",
+          "完成",
+          "run.tool.c3b925507a2600f708d0df36d4fee4916623b3ea"
+        ],
+        [
+          "AnalyzeAcousticResults",
+          "完成",
+          "run.tool.c3b925507a2600f708d0df36d4fee4916623b3ea"
+        ],
+        [
+          "CompareExperiments",
+          "完成",
+          "run.tool.c3b925507a2600f708d0df36d4fee4916623b3ea"
+        ]
+      ],
+      "metrics": [
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "125"
+        ],
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "250"
+        ],
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "500"
+        ],
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "1000"
+        ],
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "2000"
+        ],
+        [
+          "directArrivalTimeS",
+          "0.017067",
+          "s",
+          "4000"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "125"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "250"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "500"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "1000"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "2000"
+        ],
+        [
+          "rt60S",
+          "未提供",
+          "s",
+          "4000"
+        ]
+      ],
+      "citations": [
+        "metric.e4d30f9cdf1075d910eddadf67713c18a5774a0f · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.455597c2c94d0a304da19602c9954b6f7140ea6a · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.8210c922c8879268d99372f01dab99c654711948 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.b5af79b819c45f830ca292da652924c840ab3fd9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.89ab12f9968fe0d473d75ce43dd13281246ade27 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.24eae034026f204ebef1a547e71a747f7a57fda3 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.c7d934510e6cf07643ab3f63b4ffe8d1b4b3b7b9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.8dd0af7c73fb617aa37f27a8d82b2e241e7655de · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.3a56630bedbf421872565c53d38bb4b41ccd140c · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.b701d3f82cb76bb871e97a3658878f13835d36d9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.e7d7b0c50cf684e4c2eeb7ac106f3ff47bb641b3 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39",
+        "metric.944857b9128f632e0c441b26ad5d21c03e41ef24 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39"
+      ],
+      "explanation": "directArrivalTimeS：0.01706715921524334 s（Computed；metric.e4d30f9cdf1075d910eddadf67713c18a5774a0f）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.455597c2c94d0a304da19602c9954b6f7140ea6a）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.8210c922c8879268d99372f01dab99c654711948）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.b5af79b819c45f830ca292da652924c840ab3fd9）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.89ab12f9968fe0d473d75ce43dd13281246ade27）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.24eae034026f204ebef1a547e71a747f7a57fda3）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.c7d934510e6cf07643ab3f63b4ffe8d1b4b3b7b9）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.8dd0af7c73fb617aa37f27a8d82b2e241e7655de）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.3a56630bedbf421872565c53d38bb4b41ccd140c）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.b701d3f82cb76bb871e97a3658878f13835d36d9）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.e7d7b0c50cf684e4c2eeb7ac106f3ff47bb641b3）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.944857b9128f632e0c441b26ad5d21c03e41ef24）",
+      "visibleText": "實驗流程\n實驗完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n可追溯結果\nHost 計算結果\n指標\t數值\t單位\t頻率 Hz\ndirectArrivalTimeS\t0.017067\ts\t125\ndirectArrivalTimeS\t0.017067\ts\t250\ndirectArrivalTimeS\t0.017067\ts\t500\ndirectArrivalTimeS\t0.017067\ts\t1000\ndirectArrivalTimeS\t0.017067\ts\t2000\ndirectArrivalTimeS\t0.017067\ts\t4000\nrt60S\t未提供\ts\t125\nrt60S\t未提供\ts\t250\nrt60S\t未提供\ts\t500\nrt60S\t未提供\ts\t1000\nrt60S\t未提供\ts\t2000\nrt60S\t未提供\ts\t4000\n步驟與結果來源\n基準\nrun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\n候選\nrun.tool.c3b925507a2600f708d0df36d4fee4916623b3ea\n工具\t結果\t錄製\nRunSimulation\t完成\trun.tool.c3b925507a2600f708d0df36d4fee4916623b3ea\nCaptureExperiment\t完成\trun.tool.c3b925507a2600f708d0df36d4fee4916623b3ea\nAnalyzeAcousticResults\t完成\trun.tool.c3b925507a2600f708d0df36d4fee4916623b3ea\nCompareExperiments\t完成\trun.tool.c3b925507a2600f708d0df36d4fee4916623b3ea\n原始 Host 說明\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.e4d30f9cdf1075d910eddadf67713c18a5774a0f）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.455597c2c94d0a304da19602c9954b6f7140ea6a）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.8210c922c8879268d99372f01dab99c654711948）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.b5af79b819c45f830ca292da652924c840ab3fd9）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.89ab12f9968fe0d473d75ce43dd13281246ade27）\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.24eae034026f204ebef1a547e71a747f7a57fda3）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.c7d934510e6cf07643ab3f63b4ffe8d1b4b3b7b9）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.8dd0af7c73fb617aa37f27a8d82b2e241e7655de）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.3a56630bedbf421872565c53d38bb4b41ccd140c）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.b701d3f82cb76bb871e97a3658878f13835d36d9）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.e7d7b0c50cf684e4c2eeb7ac106f3ff47bb641b3）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.944857b9128f632e0c441b26ad5d21c03e41ef24）\nmetric.e4d30f9cdf1075d910eddadf67713c18a5774a0f · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.455597c2c94d0a304da19602c9954b6f7140ea6a · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.8210c922c8879268d99372f01dab99c654711948 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.b5af79b819c45f830ca292da652924c840ab3fd9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.89ab12f9968fe0d473d75ce43dd13281246ade27 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.24eae034026f204ebef1a547e71a747f7a57fda3 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.c7d934510e6cf07643ab3f63b4ffe8d1b4b3b7b9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.8dd0af7c73fb617aa37f27a8d82b2e241e7655de · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.3a56630bedbf421872565c53d38bb4b41ccd140c · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.b701d3f82cb76bb871e97a3658878f13835d36d9 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.e7d7b0c50cf684e4c2eeb7ac106f3ff47bb641b3 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39\nmetric.944857b9128f632e0c441b26ad5d21c03e41ef24 · artifact.grounding.5b8ea864b882dcd5f181031295c9298840f66f39"
+    },
+    {
+      "kind": "explicit-host-undo",
+      "beforeRevision": "場景版本 2 · 本機專案",
+      "afterRevision": "場景版本 3 · 本機專案",
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n已復原提案並建立新revision；已播放的聲音不會倒轉。"
+    },
+    {
+      "kind": "out-of-scope-instruction-rejected",
+      "sceneRevisionUnchanged": true,
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n要求超出允許工具範圍，場景未變更。 這項要求超出場景／實驗工具權限；不會執行OS、程式或變更權限。"
+    },
+    {
+      "kind": "incompatible-geometry-comparison-rejected",
+      "previewText": "操作預覽\n尚未套用\n此為本機確定性指令示範，不是Meta模型輸出。\n未指定尺寸／位置使用可在預覽修改的系統預設。\n材質使用現有registry：金屬示範 · Synthetic（material.metal）。\n新增 plan.3-d50706d5-4.object-1：box／dynamicGravity\n套用操作\n取消預覽",
+      "error": "重用 motion trace 不能改質量、摩擦、反彈、重力、geometry／初始 pose、body mode 或 Listener；這些變更必須 fresh physics run。",
+      "rows": [
+        [
+          "RunSimulation",
+          "失敗",
+          "run.tool.b47fdd48bd62b808069ee8ca95fbf8a829a866bc"
+        ]
+      ],
+      "visibleWorkflowText": "實驗流程\n實驗未完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\n重用 motion trace 不能改質量、摩擦、反彈、重力、geometry／初始 pose、body mode 或 Listener；這些變更必須 fresh physics run。\n\n步驟與結果來源\n基準\nrun.tool.29a09c8556e4804d220d0df102e0543610ea05c1\n工具\t結果\t錄製\nRunSimulation\t失敗\trun.tool.b47fdd48bd62b808069ee8ca95fbf8a829a866bc",
+      "fabricatedMetricTableAbsent": true
+    }
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-11-02T06:25:54.955Z"
+}

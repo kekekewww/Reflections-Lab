@@ -1,0 +1,967 @@
+// Owned-PID Win32 source contract. Literal DTOs and an injected runner only.
+// These tests never launch PowerShell, query a process, or claim native CPU evidence.
+import test from "node:test";
+import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { tmpdir } from "node:os";
+import { join, resolve, sep } from "node:path";
+
+const moduleUrl = new URL("../browser/performance-process-times-v4.mjs", import.meta.url);
+const candidate = existsSync(moduleUrl) ? await import(moduleUrl.href) : {};
+const exportsRequired = [
+  "planProcessTimesCaptureV4",
+  "captureProcessTimesEndpointV4",
+  "summarizeProcessTimesDeltaV4",
+];
+const available = exportsRequired.every((name) => typeof candidate[name] === "function");
+const method = "WIN32_GET_PROCESS_TIMES_V4";
+const scope = "OWNED_BROWSER_SHARED_ENDPOINTS_BEFORE_TRACE_TO_CLOSED_WINDOW_BEFORE_TAIL";
+const powerShellPath = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
+const helperPath = "C:\\fixed\\performance-process-times-v4.ps1";
+const sha = (value) => createHash("sha256").update(value).digest("hex");
+const clone = (value) => structuredClone(value);
+const cdp = (...processInfo) => ({ processInfo });
+const owner = (id = 101, type = "browser") => ({ id, type, cpuTime: 0 });
+const settings = (boundary = "before") => ({
+  requestId: `owned-cpu-${boundary}`,
+  boundary,
+  scope,
+  powerShellPath,
+  inputPath: `C:\\owned\\${boundary}.json`,
+  cwd: "C:\\owned",
+});
+const request = (boundary = "before", rows = [owner()]) => ({
+  schemaVersion: 1,
+  method,
+  requestId: `owned-cpu-${boundary}`,
+  boundary,
+  scope,
+  processes: rows.map(({ id, type }) => ({ id, type })),
+});
+const measuredRow = (id = 101, type = "browser", user = "10000000", kernel = "5000000") => ({
+  id,
+  type,
+  openSucceeded: true,
+  querySucceeded: true,
+  closeSucceeded: true,
+  openErrorCode: null,
+  queryErrorCode: null,
+  closeErrorCode: null,
+  creationTimeFileTimeTicks: "133000000000000001",
+  userTimeTicks: user,
+  kernelTimeTicks: kernel,
+});
+const processResult = (stdout) => ({
+  exit_code: 0,
+  signal: null,
+  timed_out: false,
+  cancelled: false,
+  process_stopped: true,
+  stdout,
+  stderr: "",
+  duration_ms: 8,
+  output_limit: false,
+  spawn_error: null,
+  stop_scope: "direct_process",
+  process_tree_stopped: null,
+});
+function captured(
+  boundary = "before",
+  rows = [measuredRow()],
+  owners = rows.map(({ id, type }) => ({ id, type })),
+) {
+  const rawRequest = request(boundary, owners);
+  const requestJson = JSON.stringify(rawRequest);
+  const stdout = JSON.stringify({
+    schemaVersion: 1,
+    method,
+    requestId: rawRequest.requestId,
+    processes: rows,
+  });
+  return {
+    request: rawRequest,
+    requestJson,
+    process: processResult(stdout),
+    // Literal source-pin fixtures validate the format, not the local executable.
+    pins: {
+      helper: { path: helperPath, beforeSha256: "a".repeat(64), afterSha256: "a".repeat(64) },
+      powerShell: {
+        path: powerShellPath,
+        beforeSha256: "b".repeat(64),
+        afterSha256: "b".repeat(64),
+      },
+    },
+    artifacts: {
+      requestSha256: sha(requestJson),
+      requestAfterSha256: sha(requestJson),
+      stdoutSha256: sha(stdout),
+    },
+    timing: {
+      startedMonotonicMs: boundary === "before" ? 100 : 1092,
+      endedMonotonicMs: boundary === "before" ? 108 : 1100,
+    },
+    helperLeaseReleasable: true,
+  };
+}
+function rewriteReply(endpoint, mutate) {
+  const reply = JSON.parse(endpoint.process.stdout);
+  mutate(reply);
+  endpoint.process.stdout = JSON.stringify(reply);
+  endpoint.artifacts.stdoutSha256 = sha(endpoint.process.stdout);
+  return endpoint;
+}
+function summarize(before, after, options = { wallMilliseconds: 1000, scope }) {
+  return candidate.summarizeProcessTimesDeltaV4(before, after, options);
+}
+function unknown(before, after, options = { wallMilliseconds: 1000, scope }) {
+  let result;
+  assert.doesNotThrow(() => {
+    result = summarize(before, after, options);
+  });
+  assert.notEqual(result.status, "OBSERVED");
+  assert.equal(result.completeCoverage, false);
+  assert.equal(result.totalCpuSeconds, null);
+  assert.equal(result.cpuToWallRatio, null);
+  assert.equal(result.nativeDspCpuMs, null);
+  assert.equal(result.hardwareUnderruns, null);
+  assert.doesNotThrow(
+    () => JSON.stringify(result),
+    "BigInt raw arithmetic must remain JSON-safe at the boundary",
+  );
+  return result;
+}
+function behavior(name, run) {
+  test(name, { skip: !available }, run);
+}
+
+test("owned-PID CPU method exposes its separate planner, capture boundary and summarizer", () => {
+  for (const name of exportsRequired) assert.equal(typeof candidate[name], "function", name);
+});
+
+behavior(
+  "the fixed file plan copies only typed CDP-owned PIDs and does not trust CDP CPU zero",
+  () => {
+    const input = cdp(owner(101), { ...owner(202, "renderer"), arbitraryCommand: "never execute" });
+    const original = clone(input);
+    const plan = candidate.planProcessTimesCaptureV4(input, settings());
+    assert.deepEqual(plan.request, request("before", input.processInfo));
+    assert.equal(plan.requestJson, JSON.stringify(plan.request));
+    assert.deepEqual(input, original);
+    assert.equal(plan.processPlan.file, powerShellPath);
+    assert.deepEqual(plan.processPlan.args.slice(0, 4), [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-File",
+    ]);
+    assert.match(
+      plan.processPlan.args[4].replaceAll("\\", "/"),
+      /\/tests\/browser\/performance-process-times-v4\.ps1$/,
+    );
+    assert.deepEqual(plan.processPlan.args.slice(5), ["-InputPath", settings().inputPath]);
+    assert.equal(plan.processPlan.cwd, settings().cwd);
+    assert.equal(plan.processPlan.timeoutMs, 5000);
+    assert.equal(plan.processPlan.maxOutputBytes, 1024 * 1024);
+    assert.ok(Buffer.byteLength(plan.requestJson) <= 256 * 1024);
+    assert.ok(
+      !plan.processPlan.args.some((arg) =>
+        /encodedcommand|executionpolicy|bypass|^-command$/i.test(arg),
+      ),
+    );
+    assert.ok(
+      !plan.processPlan.args.some((arg) => arg.includes("processes")),
+      "JSON belongs in the wx request artifact",
+    );
+  },
+);
+
+behavior(
+  "OS whitelist planning needs id/type rather than Chromium's ambiguous CPU validity",
+  () => {
+    const plan = candidate.planProcessTimesCaptureV4(cdp({ id: 101, type: "browser" }), settings());
+    assert.deepEqual(plan.request.processes, [{ id: 101, type: "browser" }]);
+  },
+);
+
+for (const [name, input] of [
+  ["missing response", undefined],
+  ["null response", null],
+  ["array response", []],
+  ["missing list", {}],
+  ["nonarray list", { processInfo: {} }],
+  ["empty list", cdp()],
+  ["null row", cdp(null)],
+  ["string PID", cdp(owner("101"))],
+  ["fractional PID", cdp(owner(1.5))],
+  ["zero PID", cdp(owner(0))],
+  ["negative PID", cdp(owner(-1))],
+  ["PID beyond DWORD", cdp(owner(4294967296))],
+  ["empty type", cdp(owner(101, ""))],
+  ["nonstring type", cdp(owner(101, false))],
+  ["control character type", cdp(owner(101, "browser\ncommand"))],
+  ["oversized type", cdp(owner(101, "x".repeat(129)))],
+  ["duplicate same type", cdp(owner(), owner())],
+  ["duplicate PID changed type", cdp(owner(), owner(101, "renderer"))],
+]) {
+  behavior(`planner rejects ${name} without an all-process enumeration fallback`, () => {
+    assert.throws(() => candidate.planProcessTimesCaptureV4(input, settings()));
+  });
+}
+
+for (const [name, change] of [
+  ["relative executable", { powerShellPath: "pwsh.exe" }],
+  ["unapproved executable basename", { powerShellPath: "C:\\Windows\\cmd.exe" }],
+  ["script as executable", { powerShellPath: "C:\\owned\\runner.ps1" }],
+  ["NUL executable", { powerShellPath: `${powerShellPath}\0` }],
+  ["relative input", { inputPath: "before.json" }],
+  ["relative cwd", { cwd: "." }],
+  ["unsafe request identity", { requestId: "../escape" }],
+  ["oversized request identity", { requestId: "x".repeat(65) }],
+  ["missing boundary", { boundary: undefined }],
+  ["unknown boundary", { boundary: "middle" }],
+  ["missing scope", { scope: undefined }],
+  ["empty scope", { scope: "" }],
+  ["oversized scope", { scope: "x".repeat(257) }],
+]) {
+  behavior(`planner rejects ${name} without constructing shell text`, () => {
+    assert.throws(() =>
+      candidate.planProcessTimesCaptureV4(cdp(owner()), { ...settings(), ...change }),
+    );
+  });
+}
+
+behavior(
+  "the full 1024 typed-PID observation cap is preserved and 1025 is rejected before execution",
+  () => {
+    const rows = Array.from({ length: 1024 }, (_, index) => owner(index + 1, "renderer"));
+    assert.equal(
+      candidate.planProcessTimesCaptureV4(cdp(...rows), settings()).request.processes.length,
+      1024,
+    );
+    assert.throws(() => candidate.planProcessTimesCaptureV4(cdp(...rows, owner(1025)), settings()));
+  },
+);
+
+behavior(
+  "same creation FILETIME and full PID/type sets produce user plus kernel deltas over actual wall time",
+  () => {
+    const before = captured("before", [
+      measuredRow(),
+      measuredRow(202, "renderer", "40000000", "10000000"),
+    ]);
+    const after = captured("after", [
+      measuredRow(202, "renderer", "50000000", "20000000"),
+      measuredRow(101, "browser", "20000000", "10000000"),
+    ]);
+    const original = clone({ before, after });
+    const result = summarize(before, after, { wallMilliseconds: 500, scope });
+    // Browser +1.5s, renderer +2s; 100ns ticks are divided by 10,000,000 once.
+    assert.equal(result.status, "OBSERVED");
+    assert.equal(result.completeCoverage, true);
+    assert.equal(result.totalCpuSeconds, 3.5);
+    assert.equal(result.cpuToWallRatio, 7, "multi-thread CPU may exceed wall time");
+    assert.equal(result.wallMilliseconds, 500);
+    assert.equal(result.scope, scope);
+    assert.equal(result.nativeDspCpuMs, null);
+    assert.equal(result.hardwareUnderruns, null);
+    assert.deepEqual({ before, after }, original);
+  },
+);
+
+behavior(
+  "successful Win32 zero counters are actual zero rather than the CDP failure sentinel",
+  () => {
+    const result = summarize(
+      captured("before", [measuredRow(101, "browser", "0", "0")]),
+      captured("after", [measuredRow(101, "browser", "0", "0")]),
+    );
+    assert.equal(result.status, "OBSERVED");
+    assert.equal(result.completeCoverage, true);
+    assert.equal(result.totalCpuSeconds, 0);
+    assert.equal(result.cpuToWallRatio, 0);
+  },
+);
+
+behavior(
+  "subtracting exact 64-bit decimal counters before Number conversion preserves small CPU deltas",
+  () => {
+    const before = captured("before", [measuredRow(101, "browser", "9007199254740993000", "0")]);
+    const after = captured("after", [measuredRow(101, "browser", "9007199254741003000", "0")]);
+    const result = summarize(before, after);
+    assert.equal(result.status, "OBSERVED");
+    assert.equal(result.totalCpuSeconds, 0.001);
+    assert.equal(result.cpuToWallRatio, 0.001);
+  },
+);
+
+behavior("one 100ns CPU tick remains a nonzero measured delta", () => {
+  const result = summarize(
+    captured("before", [measuredRow(101, "browser", "0", "0")]),
+    captured("after", [measuredRow(101, "browser", "1", "0")]),
+  );
+  assert.equal(result.totalCpuSeconds, 0.0000001);
+});
+
+behavior(
+  "creation FILETIME strings that collapse to the same Number still detect PID reuse",
+  () => {
+    const before = captured(),
+      after = captured("after");
+    rewriteReply(after, (reply) => {
+      reply.processes[0].creationTimeFileTimeTicks = "133000000000000002";
+    });
+    unknown(before, after);
+  },
+);
+
+for (const field of ["userTimeTicks", "kernelTimeTicks"]) {
+  behavior(`${field} reset cannot be cancelled by growth in the other counter`, () => {
+    const before = captured("before", [measuredRow(101, "browser", "100", "100")]);
+    const after = captured("after", [measuredRow(101, "browser", "1000", "1000")]);
+    rewriteReply(after, (reply) => {
+      reply.processes[0][field] = "99";
+    });
+    unknown(before, after);
+  });
+}
+
+for (const [name, mutate] of [
+  [
+    "new owned PID",
+    (value) => {
+      value.request.processes.push({ id: 303, type: "utility" });
+    },
+  ],
+  [
+    "disappeared owned PID",
+    (value) => {
+      value.request.processes = [];
+    },
+  ],
+  [
+    "changed owned type",
+    (value) => {
+      value.request.processes[0].type = "renderer";
+    },
+  ],
+  [
+    "swapped boundary",
+    (value) => {
+      value.request.boundary = "before";
+    },
+  ],
+  [
+    "different scope",
+    (value) => {
+      value.request.scope = "OTHER_INTERVAL";
+    },
+  ],
+]) {
+  behavior(`${name} cannot report a surviving matched subtotal as whole-browser CPU`, () => {
+    const after = captured("after");
+    mutate(after);
+    after.requestJson = JSON.stringify(after.request);
+    after.artifacts.requestSha256 = sha(after.requestJson);
+    unknown(captured(), after);
+  });
+}
+
+behavior(
+  "two individually valid endpoints with a disappeared process cannot expose the surviving subtotal",
+  () => {
+    unknown(captured("before", [measuredRow(), measuredRow(202, "renderer")]), captured("after"));
+  },
+);
+behavior(
+  "two individually valid endpoints with a new process cannot expose the old matched subtotal",
+  () => {
+    unknown(captured(), captured("after", [measuredRow(), measuredRow(202, "renderer")]));
+  },
+);
+behavior(
+  "two individually valid endpoints with a changed process type cannot inherit a counter",
+  () => {
+    unknown(captured(), captured("after", [measuredRow(101, "renderer")]));
+  },
+);
+
+for (const [name, mutate] of [
+  [
+    "wrong version",
+    (reply) => {
+      reply.schemaVersion = 2;
+    },
+  ],
+  [
+    "wrong method",
+    (reply) => {
+      reply.method = "CDP_CPU";
+    },
+  ],
+  [
+    "wrong request identity",
+    (reply) => {
+      reply.requestId = "another-request";
+    },
+  ],
+  [
+    "missing rows",
+    (reply) => {
+      delete reply.processes;
+    },
+  ],
+  [
+    "duplicate rows",
+    (reply) => {
+      reply.processes.push(clone(reply.processes[0]));
+    },
+  ],
+  [
+    "unowned PID",
+    (reply) => {
+      reply.processes.push(measuredRow(303, "utility"));
+    },
+  ],
+  [
+    "unowned replacement PID",
+    (reply) => {
+      reply.processes[0].id = 303;
+    },
+  ],
+  [
+    "wrong type",
+    (reply) => {
+      reply.processes[0].type = "renderer";
+    },
+  ],
+  [
+    "missing row",
+    (reply) => {
+      reply.processes = [];
+    },
+  ],
+  [
+    "open failed",
+    (reply) => {
+      Object.assign(reply.processes[0], {
+        openSucceeded: false,
+        openErrorCode: 5,
+        querySucceeded: null,
+        closeSucceeded: null,
+      });
+    },
+  ],
+  [
+    "query failed",
+    (reply) => {
+      Object.assign(reply.processes[0], { querySucceeded: false, queryErrorCode: 5 });
+    },
+  ],
+  [
+    "close failed",
+    (reply) => {
+      Object.assign(reply.processes[0], { closeSucceeded: false, closeErrorCode: 6 });
+    },
+  ],
+  [
+    "string success flag",
+    (reply) => {
+      reply.processes[0].querySucceeded = "true";
+    },
+  ],
+  [
+    "missing success flag",
+    (reply) => {
+      delete reply.processes[0].openSucceeded;
+    },
+  ],
+  [
+    "error on advertised success",
+    (reply) => {
+      reply.processes[0].queryErrorCode = 5;
+    },
+  ],
+  [
+    "missing success error code",
+    (reply) => {
+      delete reply.processes[0].closeErrorCode;
+    },
+  ],
+]) {
+  behavior(`reply ${name} keeps canonical totals unknown`, () =>
+    unknown(captured(), rewriteReply(captured("after"), mutate)),
+  );
+}
+
+for (const field of ["creationTimeFileTimeTicks", "userTimeTicks", "kernelTimeTicks"]) {
+  for (const [name, value] of [
+    ["missing", undefined],
+    ["null", null],
+    ["Number loses uint64 identity", 133000000000000001],
+    ["negative", "-1"],
+    ["fractional", "1.5"],
+    ["exponent", "1e7"],
+    ["whitespace", " 1"],
+    ["leading zero", "01"],
+    ["uint64 overflow", "18446744073709551616"],
+  ]) {
+    behavior(`${field} ${name} cannot be coerced into a native measurement`, () => {
+      unknown(
+        captured(),
+        rewriteReply(captured("after"), (reply) => {
+          reply.processes[0][field] = value;
+        }),
+      );
+    });
+  }
+}
+behavior("a real Win32 ULONG maximum is representable as a typed owned PID", () => {
+  const result = candidate.planProcessTimesCaptureV4(cdp(owner(4294967295)), settings());
+  assert.equal(result.request.processes[0].id, 4294967295);
+});
+
+behavior("source or executable identities cannot change between the paired CPU endpoints", () => {
+  const differentExecutable = captured("after");
+  differentExecutable.pins.powerShell.beforeSha256 = "c".repeat(64);
+  differentExecutable.pins.powerShell.afterSha256 = "c".repeat(64);
+  unknown(captured(), differentExecutable);
+  const differentHelper = captured("after");
+  differentHelper.pins.helper.path = "C:\\fixed\\another-helper.ps1";
+  unknown(captured(), differentHelper);
+});
+
+behavior("creation FILETIME zero is not a valid native process identity", () => {
+  unknown(
+    captured(),
+    rewriteReply(captured("after"), (reply) => {
+      reply.processes[0].creationTimeFileTimeTicks = "0";
+    }),
+  );
+});
+
+for (const [name, mutate] of [
+  [
+    "nonzero exit",
+    (value) => {
+      value.process.exit_code = 1;
+    },
+  ],
+  [
+    "signal",
+    (value) => {
+      value.process.signal = "SIGTERM";
+    },
+  ],
+  [
+    "timeout",
+    (value) => {
+      value.process.timed_out = true;
+    },
+  ],
+  [
+    "cancellation",
+    (value) => {
+      value.process.cancelled = true;
+    },
+  ],
+  [
+    "output cap",
+    (value) => {
+      value.process.output_limit = true;
+    },
+  ],
+  [
+    "spawn error",
+    (value) => {
+      value.process.spawn_error = { code: "ENOENT" };
+    },
+  ],
+  [
+    "unconfirmed stop",
+    (value) => {
+      value.process.process_stopped = false;
+    },
+  ],
+  [
+    "string stopped",
+    (value) => {
+      value.process.process_stopped = "true";
+    },
+  ],
+  [
+    "missing process stop",
+    (value) => {
+      delete value.process.process_stopped;
+    },
+  ],
+  [
+    "missing process proof",
+    (value) => {
+      value.process = null;
+    },
+  ],
+  [
+    "unparseable stdout",
+    (value) => {
+      value.process.stdout = "native failure before JSON";
+      value.artifacts.stdoutSha256 = sha(value.process.stdout);
+    },
+  ],
+  [
+    "multiple JSON replies",
+    (value) => {
+      value.process.stdout += `\n${value.process.stdout}`;
+      value.artifacts.stdoutSha256 = sha(value.process.stdout);
+    },
+  ],
+  [
+    "oversized stdout",
+    (value) => {
+      value.process.stdout = " ".repeat(1024 * 1024 + 1);
+      value.artifacts.stdoutSha256 = sha(value.process.stdout);
+    },
+  ],
+  [
+    "changed helper bytes",
+    (value) => {
+      value.pins.helper.afterSha256 = "c".repeat(64);
+    },
+  ],
+  [
+    "changed executable bytes",
+    (value) => {
+      value.pins.powerShell.afterSha256 = "c".repeat(64);
+    },
+  ],
+  [
+    "missing helper pin",
+    (value) => {
+      delete value.pins.helper;
+    },
+  ],
+  [
+    "invalid source hash",
+    (value) => {
+      value.pins.helper.beforeSha256 = true;
+    },
+  ],
+  [
+    "changed raw request bytes",
+    (value) => {
+      value.requestJson += " ";
+    },
+  ],
+  [
+    "changed parsed request",
+    (value) => {
+      value.request.processes[0].id = 303;
+    },
+  ],
+  [
+    "changed stdout bytes",
+    (value) => {
+      value.process.stdout += " ";
+    },
+  ],
+]) {
+  behavior(`${name} cannot be repaired by advertised valid/status/zero fields`, () => {
+    const after = captured("after");
+    mutate(after);
+    after.status = "OBSERVED";
+    after.valid = true;
+    after.totalCpuSeconds = 0;
+    unknown(captured(), after);
+  });
+}
+
+for (const [name, options] of [
+  ["null options", null],
+  ["missing wall", { scope }],
+  ["string wall", { scope, wallMilliseconds: "1000" }],
+  ["zero wall", { scope, wallMilliseconds: 0 }],
+  ["negative wall", { scope, wallMilliseconds: -1 }],
+  ["infinite wall", { scope, wallMilliseconds: Infinity }],
+  ["NaN wall", { scope, wallMilliseconds: NaN }],
+  ["underflow wall conversion", { scope, wallMilliseconds: Number.MIN_VALUE }],
+  ["missing scope", { wallMilliseconds: 1000 }],
+  ["different scope", { scope: "OTHER_INTERVAL", wallMilliseconds: 1000 }],
+]) {
+  behavior(`${name} stays unknown rather than borrowing the formal 600-second duration`, () =>
+    unknown(captured(), captured("after"), options),
+  );
+}
+
+behavior("overlapping endpoint brackets cannot advertise a chronological CPU interval", () => {
+  const before = captured(),
+    after = captured("after");
+  after.timing.startedMonotonicMs = before.timing.endedMonotonicMs - 1;
+  unknown(before, after);
+});
+behavior("individually ordered endpoints in reverse chronology remain unknown", () => {
+  const before = captured(),
+    after = captured("after");
+  before.timing = { startedMonotonicMs: 1000, endedMonotonicMs: 1008 };
+  after.timing = { startedMonotonicMs: 100, endedMonotonicMs: 108 };
+  unknown(before, after);
+});
+
+behavior("ratio overflow with finite nonzero wall seconds remains explicit unknown", () => {
+  unknown(
+    captured(),
+    captured("after", [
+      measuredRow(101, "browser", "18446744073709551615", "18446744073709551615"),
+    ]),
+    { scope, wallMilliseconds: 1e-300 },
+  );
+});
+behavior("missing endpoints return JSON-safe null metrics", () => {
+  unknown(undefined, undefined);
+  unknown(null, captured("after"));
+  unknown(captured(), null);
+});
+
+async function withCaptureFiles(run) {
+  const directory = await mkdtemp(join(tmpdir(), "reflection-owned-cpu-spec-"));
+  const executable = join(directory, "pwsh.exe");
+  await writeFile(executable, "not an executable; injected runner must be used\n", { flag: "wx" });
+  try {
+    await run(directory, executable);
+  } finally {
+    const absolute = resolve(directory),
+      temporaryRoot = resolve(tmpdir());
+    assert.ok(
+      absolute.startsWith(`${temporaryRoot}${sep}`),
+      "cleanup stays within the verified test temp root",
+    );
+    await rm(absolute, { recursive: true, force: true });
+  }
+}
+const captureSettings = (directory, executable, requestId = "owned-spec-before") => ({
+  directory,
+  powerShellPath: executable,
+  label: "before",
+  boundary: "before",
+  requestId,
+  scope,
+});
+async function replyFromPlan(plan, overrides = {}) {
+  const input = await readFile(plan.args.at(-1), "utf8");
+  const rawRequest = JSON.parse(input);
+  const stdout = JSON.stringify({
+    schemaVersion: 1,
+    method,
+    requestId: rawRequest.requestId,
+    processes: rawRequest.processes.map(({ id, type }) => measuredRow(id, type)),
+  });
+  return { ...processResult(stdout), ...overrides };
+}
+
+behavior(
+  "capture writes one bounded wx request and hashes real bytes before/after an injected runner",
+  async () => {
+    await withCaptureFiles(async (directory, executable) => {
+      let count = 0,
+        observedPlan;
+      const result = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        {
+          runProcess: async (plan) => {
+            count++;
+            observedPlan = plan;
+            return await replyFromPlan(plan);
+          },
+        },
+      );
+      assert.equal(count, 1);
+      assert.equal(result.status, "OBSERVED");
+      assert.equal(result.helperLeaseReleasable, true);
+      assert.equal(observedPlan.file, executable);
+      assert.equal(observedPlan.cwd, directory);
+      assert.equal(observedPlan.timeoutMs, 5000);
+      assert.equal(observedPlan.maxOutputBytes, 1024 * 1024);
+      const rawRequest = await readFile(result.artifacts.requestPath, "utf8");
+      assert.equal(rawRequest, result.requestJson);
+      assert.equal(result.artifacts.requestSha256, sha(rawRequest));
+      assert.equal(result.artifacts.stdoutSha256, sha(result.process.stdout));
+      assert.equal(result.pins.powerShell.beforeSha256, sha(await readFile(executable)));
+      assert.equal(result.pins.powerShell.afterSha256, result.pins.powerShell.beforeSha256);
+      assert.equal(
+        result.pins.helper.beforeSha256,
+        sha(
+          await readFile(new URL("../browser/performance-process-times-v4.ps1", import.meta.url)),
+        ),
+      );
+      assert.equal(result.pins.helper.afterSha256, result.pins.helper.beforeSha256);
+      assert.ok(Number.isFinite(result.timing.startedMonotonicMs));
+      assert.ok(result.timing.endedMonotonicMs >= result.timing.startedMonotonicMs);
+      assert.equal(result.nativeDspCpuMs, null);
+      assert.equal(result.hardwareUnderruns, null);
+    });
+  },
+);
+
+behavior(
+  "capture does not overwrite an existing request artifact or launch a second helper",
+  async () => {
+    await withCaptureFiles(async (directory, executable) => {
+      let count = 0;
+      const dependencies = {
+        runProcess: async (plan) => {
+          count++;
+          return await replyFromPlan(plan);
+        },
+      };
+      const first = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        dependencies,
+      );
+      const second = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        dependencies,
+      );
+      assert.equal(count, 1);
+      assert.notEqual(second.status, "OBSERVED");
+      assert.equal(second.helperLeaseReleasable, true, "no second process started");
+      assert.equal(await readFile(first.artifacts.requestPath, "utf8"), first.requestJson);
+    });
+  },
+);
+
+behavior("invalid whitelist never invokes even the injected runner", async () => {
+  await withCaptureFiles(async (directory, executable) => {
+    let count = 0;
+    const result = await candidate.captureProcessTimesEndpointV4(
+      cdp(owner(), owner()),
+      captureSettings(directory, executable),
+      {
+        runProcess: async () => {
+          count++;
+          throw new Error("should never run");
+        },
+      },
+    );
+    assert.equal(count, 0);
+    assert.notEqual(result.status, "OBSERVED");
+    assert.equal(result.helperLeaseReleasable, true);
+  });
+});
+
+for (const [name, resultPatch, releasable] of [
+  [
+    "timeout with only direct-child proof",
+    { timed_out: true, stop_scope: "direct_process", process_tree_stopped: false },
+    false,
+  ],
+  [
+    "timeout with confirmed tree stop",
+    { timed_out: true, stop_scope: "process_tree", process_tree_stopped: true },
+    true,
+  ],
+  [
+    "output cap with no stop proof",
+    {
+      output_limit: true,
+      process_stopped: false,
+      stop_scope: "unconfirmed",
+      process_tree_stopped: false,
+    },
+    false,
+  ],
+  [
+    "cancelled with confirmed tree stop",
+    { cancelled: true, stop_scope: "process_tree", process_tree_stopped: true },
+    true,
+  ],
+  ["ordinary API failure", { exit_code: 1 }, true],
+]) {
+  behavior(`capture ${name} separates unknown data from helper release`, async () => {
+    await withCaptureFiles(async (directory, executable) => {
+      const result = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        {
+          runProcess: async (plan) => await replyFromPlan(plan, resultPatch),
+        },
+      );
+      assert.notEqual(result.status, "OBSERVED", "successful JSON cannot override runner failure");
+      assert.equal(result.helperLeaseReleasable, releasable);
+      assert.equal(result.nativeDspCpuMs, null);
+      assert.equal(result.hardwareUnderruns, null);
+    });
+  });
+}
+
+behavior("a thrown runner leaves helper stop unproved rather than assuming cleanup", async () => {
+  await withCaptureFiles(async (directory, executable) => {
+    const result = await candidate.captureProcessTimesEndpointV4(
+      cdp(owner()),
+      captureSettings(directory, executable),
+      {
+        runProcess: async () => {
+          throw new Error("runner transport failed after possible spawn");
+        },
+      },
+    );
+    assert.notEqual(result.status, "OBSERVED");
+    assert.equal(result.helperLeaseReleasable, false);
+  });
+});
+
+behavior(
+  "a changed request file stays unverified when a failed capture is later summarized",
+  async () => {
+    await withCaptureFiles(async (directory, executable) => {
+      const before = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        {
+          runProcess: async (plan) => {
+            const response = await replyFromPlan(plan);
+            const inputPath = plan.args.at(-1);
+            await writeFile(inputPath, `${await readFile(inputPath, "utf8")} `);
+            return response;
+          },
+        },
+      );
+      assert.notEqual(before.status, "OBSERVED", "producer detects the changed raw request file");
+      assert.notEqual(before.artifacts.requestAfterSha256, before.artifacts.requestSha256);
+      const after = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        {
+          ...captureSettings(directory, executable, "owned-spec-after"),
+          label: "after",
+          boundary: "after",
+        },
+        { runProcess: async (plan) => await replyFromPlan(plan) },
+      );
+      assert.equal(after.status, "OBSERVED", "the paired endpoint is independently valid");
+      unknown(before, after);
+    });
+  },
+);
+
+behavior(
+  "executable mutation during collection invalidates data even after normal helper close",
+  async () => {
+    await withCaptureFiles(async (directory, executable) => {
+      const result = await candidate.captureProcessTimesEndpointV4(
+        cdp(owner()),
+        captureSettings(directory, executable),
+        {
+          runProcess: async (plan) => {
+            await writeFile(executable, "changed executable bytes\n");
+            return await replyFromPlan(plan);
+          },
+        },
+      );
+      assert.notEqual(result.status, "OBSERVED");
+      assert.equal(result.helperLeaseReleasable, true);
+      assert.notEqual(result.pins.powerShell.beforeSha256, result.pins.powerShell.afterSha256);
+    });
+  },
+);

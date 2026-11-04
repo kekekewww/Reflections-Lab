@@ -1,14 +1,13 @@
-<!-- english-source: {"path":"knowledge/wiki/features/meta-agent.md","sha256":"4f7bfdb0143c72e5c23c69bedee3c5abdd1f829515250e6099f5badd02599d4f","translated_at":"2026-10-27T21:21:43.911123Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/features/meta-agent.md","sha256":"efb8b55d28d367d278c1ddcc96fbfe1793f743146a48ed69e08db64ad9291856","translated_at":"2026-11-04T12:01:57.075Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 ---
 id: RLAB-KB-0010
 title: Meta Experiment Agent status
 type: feature
 status: ACCEPTED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-27T21:17:04.111Z
+updated_at: 2026-11-04T11:55:03.526Z
 sources:
   - RLAB-SRC-0032
-  - RLAB-SRC-0033
   - RLAB-SRC-0058
   - RLAB-P3-SRC-0012
   - SB-SRC-0021
@@ -20,8 +19,12 @@ sources:
   - V1-SRC-0006
   - V1-SRC-0025
   - V1-SRC-0031
+  - PUB-META-LIVE-DEMO-20261104-V2-9fe178157176
+  - AI-TOOL-SCHEMAS-20261104-V2
+  - PUB-MUSE-SCENE-BUILDER-20261104-V2-74258bf5990e
 related_tasks:
   - RLAB-TASK-0016
+  - RLAB-TASK-0034
 related_decisions:
   - ADR-008
 supersedes: []
@@ -33,11 +36,18 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/features/meta-agent.md`](../../../../../knowledge/wiki/features/meta-agent.md). Source SHA-256: `4f7bfdb0143c72e5c23c69bedee3c5abdd1f829515250e6099f5badd02599d4f`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/features/meta-agent.md`](../../../../../knowledge/wiki/features/meta-agent.md). Source SHA-256: `efb8b55d28d367d278c1ddcc96fbfe1793f743146a48ed69e08db64ad9291856`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="meta-agent安全工具已實作sound-live部分通過"></a>
 # Meta Agent: safe tools implemented; Sound Live partially passed
+
+<!-- english-original-anchor --> <a id="2026-11-04真實-sound-提案首次經產品畫面通過"></a>
+## 2026-11-04: a real Sound proposal passed through the product UI for the first time
+
+The user confirmed that the demo must show Meta AI and approved a new US$1 budget (separate ledger, capped at 12 requests). [Record](../../../../00-project/META_LIVE_DEMO_20261104.md): `muse-spark-1.3` proposed `RemoveBinding` plus `AssignBinding` through the product UI; the local Host validated and previewed it, and it took effect only after Apply. Recording the same motion again gave matching motion and physics events (apart from per-run IDs), and the ball's 4 impacts went from pitch 0 to +7 semitones. [Summary](../../../../../research/v1/meta-live-ui-20261104/summary.json).
+
+This is headless Chrome and event-record evidence, not listening by a person or a real GPU. The model chose different values for the same prompt (+12, +7). Scene proposals were verified on 2026-11-04 by the [multi-step scene builder](../../../../00-project/MUSE_SCENE_BUILDER_20261104.md); Meta-planned simulation remains unverified; statements below that product UI Live has not passed describe those earlier points in time only. Actual billing and credit remain unknown.
 
 Production src/ai and server provide schema/registry/units/revision/capability/budget gates, stage/preview, trusted asset pins, and atomic Apply/inverse. The original 12 tools and 5 Sound proposal categories are separate. Incompletely supported capabilities such as PreviewSceneChanges/SetTrajectory explicitly reject requests; they do not pretend completion. The offline deterministic planner explicitly labels its provenance and cannot be called Meta output.
 

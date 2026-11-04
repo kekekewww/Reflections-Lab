@@ -6,12 +6,14 @@ import type {
   InteractionHostOptions,
   InteractionMode,
   InteractionSnapshot,
+  PaintStroke,
   StagedPlacement,
 } from "./types.js";
 import { InteractionError } from "./types.js";
 import {
   add,
   axisAngle,
+  boundingRadius,
   cameraRotation,
   clamp,
   dot,
@@ -37,6 +39,10 @@ interface HeldLease {
 const geometryKey = (o: SceneObject): string => JSON.stringify([o.shape, o.dimensionsM, o.mode]);
 const dynamic = (mode: BodyMode): boolean =>
   mode === "dynamicGravity" || mode === "dynamicNoGravity";
+/** The brush leaves a new stroke point once it has moved this far. */
+const PAINT_STEP_M = 0.05;
+/** Bounds one stroke's memory; at 5 cm per point this is over 200 m of brush travel. */
+const MAX_STROKE_POINTS = 4096;
 
 /** Input is a proposal only: Rapier remains the authority for all body movement. */
 export class InteractionHost {
@@ -52,6 +58,11 @@ export class InteractionHost {
   private readonly blockedUntilRelease = new Set<string>();
   private readonly buttons = new Set<number>();
   private primaryReleaseBarrier = true;
+  private secondaryReleaseBarrier = true;
+  private rightPreview = false;
+  private placementEpoch = 0;
+  private cancelPendingPlacement: (() => void) | null = null;
+  private draftMode: BodyMode = "dynamicGravity";
   private heldLease: HeldLease | null = null;
   private holdDistance = 2;
   private heldRotation: Quaternion = [0, 0, 0, 1];
@@ -67,6 +78,7 @@ export class InteractionHost {
   private gentleCurrent: Vec3 | null = null;
   private gentleSupport: { objectId: string; generation: number } | null = null;
   private readonly unlockedModes = new Map<string, { mode: BodyMode; generation: number }>();
+  private paint: (PaintStroke & { radiusM: number }) | null = null;
   private readonly lookSensitivity: number;
   private readonly throwImpulse: number;
   private disposed = false;
@@ -90,10 +102,14 @@ export class InteractionHost {
   private changed(): void {
     this.options.onChange?.();
   }
-  private say(message: string): false {
+  /** Every user-facing outcome goes through onNotice; a bare field write is never shown. */
+  private inform(message: string): void {
     this.notice = message;
     this.options.onNotice?.(message);
     this.changed();
+  }
+  private say(message: string): false {
+    this.inform(message);
     return false;
   }
   private command(action: string): string {
@@ -102,13 +118,12 @@ export class InteractionHost {
   private object(id: string): SceneObject | undefined {
     return this.options.getScene().objects.find((o) => o.id === id);
   }
+  /** Controls own the input while time runs, or during a paint stroke on the frozen room. */
   private active(): boolean {
     return (
       this.mode !== "editor" &&
       (this.pointerLocked || this.alternativeInput) &&
-      !this.suspended &&
-      !this.pending &&
-      !this.world().paused
+      (this.paint !== null || (!this.suspended && !this.world().paused))
     );
   }
   private camera() {
@@ -133,11 +148,13 @@ export class InteractionHost {
   private target(): Vec3 {
     return add(this.camera().positionM, mul(this.forward(), this.holdDistance));
   }
+  /** Also abandons a paint stroke: a pause, Resume or lost lock or focus never saves it. */
   private clearInput(): void {
     for (const code of this.physicalKeys) this.blockedUntilRelease.add(code);
     this.keys.clear();
     this.buttons.clear();
     this.rotationToggle = false;
+    this.paint = null;
     this.world().setPlayerInput({ forward: 0, right: 0, yaw: this.yaw, sprint: false });
   }
   private captureLease(): void {
@@ -182,6 +199,7 @@ export class InteractionHost {
     this.captureLease();
     this.pointerLocked = options.pointerLocked ?? false;
     this.primaryReleaseBarrier = true;
+    this.secondaryReleaseBarrier = true;
     this.changed();
     return true;
   }
@@ -190,6 +208,7 @@ export class InteractionHost {
     if (locked) {
       this.pointerLocked = true;
       this.primaryReleaseBarrier = true;
+      this.secondaryReleaseBarrier = true;
       this.keys.clear();
       this.buttons.clear();
       this.changed();
@@ -215,7 +234,6 @@ export class InteractionHost {
     if (this.mode === "editor" || (!this.pointerLocked && !this.alternativeInput))
       return this.say("必須先進入第一人稱，並取得滑鼠鎖定或明確選用輔助操作。");
     if (this.pending) return this.say("交易尚未完成。");
-    if (this.staged) return this.say("請先明確啟用或取消待啟用物件，再繼續模擬。");
     if (this.heldLease) {
       const saved = this.heldLease,
         object = this.object(saved.objectId);
@@ -274,12 +292,14 @@ export class InteractionHost {
   private pauseControl(reason: string, releasePointer: boolean): void {
     const world = this.world();
     this.captureLease();
+    this.abortPlacement();
     world.pause();
     this.suspended = true;
     if (releasePointer) this.pointerLocked = false;
     this.pauseReason = reason;
     this.clearInput();
     this.primaryReleaseBarrier = true;
+    this.secondaryReleaseBarrier = true;
     this.options.onAudioFade?.(reason);
     this.options.onPause?.(reason);
     this.changed();
@@ -289,12 +309,11 @@ export class InteractionHost {
     this.mode = "editor";
     this.changed();
   }
+  /** Compatibility alias only; B and old callers can never enter a separate mode. */
   setBuild(build: boolean): boolean {
-    if (this.world().heldObjectId) return this.say("持有物件時不能切換建造；請明確釋放或輕放。");
     if (this.pending) return this.say("放置交易尚未完成。");
-    this.mode = build ? "fps-build" : "fps-interact";
-    this.rotationToggle = false;
-    this.gentleTarget = null;
+    this.mode = "fps-interact";
+    if (!build) this.cancelPreview();
     this.changed();
     return true;
   }
@@ -309,11 +328,16 @@ export class InteractionHost {
     }
     if (this.physicalKeys.has(code)) return;
     this.physicalKeys.add(code);
+    if (code === "Escape" && this.ghost?.stage === "preview") {
+      this.cancelPreview();
+      return;
+    }
     if (code === "Escape" || code === "Tab") {
       this.suspend(code === "Tab" ? "已切換至介面焦點" : "使用者暫停第一人稱");
       return;
     }
-    if (!this.active()) {
+    // A key pressed during a stroke is not an action on the frozen room.
+    if (!this.active() || this.paint) {
       this.blockedUntilRelease.add(code);
       return;
     }
@@ -322,14 +346,14 @@ export class InteractionHost {
     if (code === "KeyE") {
       if (this.world().heldObjectId) this.drop();
       else this.grab();
-    } else if (code === "KeyB") this.setBuild(this.mode !== "fps-build");
+    } else if (code === "KeyB") this.cancelPreview();
     else if (code === "KeyG") this.gentlePlace();
     else if (code === "KeyF") void this.toggleFixed().catch((error) => this.say(String(error)));
-    else if (code === "KeyL" && this.mode === "fps-build") {
-      this.suspend("物件資料庫已開啟");
+    else if (code === "KeyL") {
+      // Releasing the browser lock belongs to the library UI; the host only pauses.
+      this.pausePreservingInputMode("物件資料庫已開啟");
       this.options.onLibrary?.();
-    } else if (code === "KeyR" && this.mode === "fps-build")
-      this.rotationToggle = !this.rotationToggle;
+    } else if (code === "KeyR" && this.ghost) this.rotationToggle = !this.rotationToggle;
     this.changed();
   }
   setRotationToggle(enabled: boolean): void {
@@ -342,7 +366,10 @@ export class InteractionHost {
     if (!this.active()) return;
     const dx = clamp(movementX, -500, 500) * this.lookSensitivity,
       dy = clamp(movementY, -500, 500) * this.lookSensitivity;
-    if (this.mode === "fps-build" && this.ghost && this.rotationToggle) {
+    if (this.paint) {
+      this.turn(dx, dy);
+      this.paintBrush(this.paint);
+    } else if (this.ghost?.stage === "preview" && this.rotationToggle) {
       this.ghostAngle -= dx;
       this.updateGhost();
     } else if (this.world().heldObjectId && (this.keys.has("KeyR") || this.rotationToggle)) {
@@ -353,34 +380,128 @@ export class InteractionHost {
       this.world().updateGrabTarget(this.target(), this.heldRotation);
       this.gentleTarget = null;
     } else {
-      this.yaw =
-        ((((this.yaw - dx + Math.PI) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2)) - Math.PI;
-      this.pitch = clamp(this.pitch - dy, -Math.PI / 2 + 0.05, Math.PI / 2 - 0.05);
+      this.turn(dx, dy);
       if (this.ghost) this.updateGhost();
     }
     this.changed();
+  }
+  private turn(dx: number, dy: number): void {
+    this.yaw =
+      ((((this.yaw - dx + Math.PI) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2)) - Math.PI;
+    this.pitch = clamp(this.pitch - dy, -Math.PI / 2 + 0.05, Math.PI / 2 - 0.05);
+  }
+  /**
+   * Paint the object's path with the crosshair on the frozen room. The brush starts at the
+   * object's distance from the camera; `startM` is its start position in the starting layout.
+   */
+  beginPaint(objectId: string, startM: Vec3): void {
+    const object = this.object(objectId);
+    if (!object) throw new InteractionError("UNKNOWN_OBJECT", "物件已移除。");
+    const start = vector(startM, "startM");
+    this.paint = {
+      objectId,
+      pointsM: [start],
+      distanceM: clamp(norm(sub(start, this.camera().positionM)), 0.75, 3),
+      radiusM: boundingRadius(object),
+    };
+    this.changed();
+  }
+  /** The raw stroke, its start first; clears the stroke. Empty when none is in progress. */
+  endPaint(): Vec3[] {
+    const stroke = this.paint?.pointsM ?? [];
+    this.paint = null;
+    this.changed();
+    return stroke;
+  }
+  get painting(): boolean {
+    return this.paint !== null;
+  }
+  /**
+   * The brush is the crosshair at the stroke's distance. A surface within that distance plus the
+   * object's clearance (bounding radius + 1 cm) holds the brush off it by that clearance; the
+   * brush is then pushed clear of any fixed geometry it still comes near, so a stroke sweeping
+   * along a wall or into a corner slides along it and never puts the object into it. The object
+   * never blocks its own ray or pushes its own brush.
+   */
+  private paintBrush(paint: PaintStroke & { radiusM: number }): void {
+    const world = this.world(),
+      eye = this.camera().positionM,
+      forward = this.forward(),
+      clearance = paint.radiusM + 0.01;
+    const hit = world.raycast(eye, forward, paint.distanceM + clearance, [paint.objectId]);
+    const brush = world.clearFromFixed(
+      hit
+        ? add(hit.pointMetres, mul(hit.normal, clearance))
+        : add(eye, mul(forward, paint.distanceM)),
+      clearance,
+      paint.objectId,
+    );
+    const last = paint.pointsM[paint.pointsM.length - 1]!;
+    if (norm(sub(brush, last)) >= PAINT_STEP_M && paint.pointsM.length < MAX_STROKE_POINTS)
+      paint.pointsM.push(brush);
   }
   handlePointer(button: number, pressed: boolean): void {
     if (!Number.isSafeInteger(button) || button < 0 || button > 4)
       throw new InteractionError("INVALID_INPUT", "無效滑鼠按鈕。");
     if (!pressed) {
-      this.buttons.delete(button);
+      const wasPressed = this.buttons.delete(button);
       if (button === 0) this.primaryReleaseBarrier = false;
+      if (button === 2) {
+        this.secondaryReleaseBarrier = false;
+        const place = wasPressed && this.rightPreview && this.active();
+        this.rightPreview = false;
+        if (place)
+          void this.place(true).catch((error) => {
+            this.notice = `放置失敗：${error instanceof Error ? error.message : String(error)}`;
+            try {
+              this.options.onNotice?.(this.notice);
+              this.changed();
+            } catch {
+              /* Observer failure cannot escape a floating DOM transaction. */
+            }
+          });
+      }
       return;
     }
     if (this.buttons.has(button)) return;
     this.buttons.add(button);
-    if (!this.active() || (button === 0 && this.primaryReleaseBarrier)) return;
+    if (
+      !this.active() ||
+      this.paint ||
+      (button === 0 && this.primaryReleaseBarrier) ||
+      (button === 2 && this.secondaryReleaseBarrier)
+    )
+      return;
     if (button === 0) {
-      if (this.mode === "fps-build") void this.place().catch((error) => this.say(String(error)));
-      else this.throw();
+      if (this.ghost) this.cancelPreview();
+      else if (this.world().heldObjectId) this.throw();
+      else this.grab();
+    } else if (button === 2) {
+      if (this.world().heldObjectId) this.drop();
+      else this.rightPreview = this.startPreview();
     }
-    if (button === 2 && this.mode === "fps-build") this.cancelPreview();
+  }
+  startPreview(): boolean {
+    const refusal = this.options.placementRefusal?.();
+    if (refusal) return this.say(refusal);
+    if (this.pending) return this.say("放置交易尚未完成。");
+    if (this.world().heldObjectId) return this.say("請先明確釋放持有物件。");
+    if (!this.active() || this.paint) return this.say("放置預覽需要運行中的第一人稱控制。");
+    const draft = this.options.createBuildDraft?.();
+    return draft ? this.beginBuild(draft) : this.say("物件預覽目前不可用。");
   }
   handleWheel(deltaY: number): void {
     finite(deltaY, "wheel delta");
     if (!this.active()) return;
-    if (this.world().heldObjectId || this.ghost) {
+    if (this.paint) {
+      // The same step and range as the hold distance; the next look paints at the new depth.
+      this.paint.distanceM = clamp(
+        this.paint.distanceM + clamp(deltaY, -100, 100) * 0.002,
+        0.75,
+        3,
+      );
+      this.changed();
+    } else if (this.world().heldObjectId || this.ghost) {
       const object = this.world().heldObjectId
         ? this.object(this.world().heldObjectId!)
         : this.ghost?.draft;
@@ -394,8 +515,10 @@ export class InteractionHost {
   }
 
   grab(): boolean {
+    if (this.pending) return this.say("放置交易尚未完成。");
+    this.cancelPreview();
     const world = this.world();
-    if (!this.active() || this.mode !== "fps-interact")
+    if (!this.active() || this.paint || this.mode !== "fps-interact")
       return this.say("抓取需要正在運行的第一人稱互動模式。");
     if (world.heldObjectId) return this.say("已有持有物件。");
     const camera = this.camera(),
@@ -429,7 +552,8 @@ export class InteractionHost {
     return accepted;
   }
   throw(): boolean {
-    if (!this.active() || this.mode !== "fps-interact")
+    if (this.pending) return this.say("放置交易尚未完成。");
+    if (!this.active() || this.paint || this.mode !== "fps-interact")
       return this.say("投擲需要運行中的第一人稱互動。");
     const accepted = this.world().throwHeld(
       this.forward(),
@@ -471,8 +595,7 @@ export class InteractionHost {
       objectId: hit.objectId,
       generation: world.getPose(hit.objectId).generation,
     };
-    this.notice = "正在低速輕放";
-    this.changed();
+    this.inform("正在低速輕放");
     return true;
   }
   private refreshGentleSupport(): boolean {
@@ -534,7 +657,11 @@ export class InteractionHost {
       this.unlockedModes.delete(id);
       target = "fixed";
     } else return this.say("受控運動物件需先在Inspector明確解除控制。");
-    this.suspend(target === "fixed" ? "正在固定物件" : "正在解除固定，速度預設為零");
+    // A transaction pause does not release the browser's lock; claiming so made
+    // the explicit Enter/click Resume fail while the canvas stayed locked (R18).
+    this.pausePreservingInputMode(
+      target === "fixed" ? "正在固定物件" : "正在解除固定，速度預設為零",
+    );
     this.pending = true;
     this.changed();
     const rememberAppliedMode = () => {
@@ -595,8 +722,9 @@ export class InteractionHost {
         unlockPlacement(target);
       }
       rememberAppliedMode();
-      this.notice =
-        target === "fixed" ? "已固定；另按繼續才恢復模擬" : "已解除固定，初速為零；另按繼續";
+      this.inform(
+        target === "fixed" ? "已固定；另按繼續才恢復模擬" : "已解除固定，初速為零；另按繼續",
+      );
       return true;
     } catch (error) {
       // An adapter's observer can fail after its atomic document/body commit.
@@ -610,8 +738,11 @@ export class InteractionHost {
           const pose = world.getPose(id);
           if (pose.mode === target && pose.generation === generation) {
             rememberAppliedMode();
+            const detail = error instanceof Error ? error.message : String(error);
             return this.say(
-              `${target === "fixed" ? "已固定" : "已解除固定"}；模擬保持暫停，但後續同步失敗：${error instanceof Error ? error.message : String(error)}`,
+              target === "fixed"
+                ? `已固定；模擬保持暫停，但後續同步失敗：${detail}`
+                : `已解除固定；模擬保持暫停，但後續同步失敗：${detail}`,
             );
           }
         }
@@ -624,11 +755,14 @@ export class InteractionHost {
   }
 
   beginBuild(draft: SceneObject): boolean {
+    const refusal = this.options.placementRefusal?.();
+    if (refusal) return this.say(refusal);
     if (this.world().heldObjectId) return this.say("請先明確釋放持有物件。");
     if (this.pending || this.staged) return this.say("請先完成或取消目前放置。");
     if (this.options.getScene().objects.some((o) => o.id === draft.id))
       return this.say("預覽必須使用新的穩定物件ID。");
-    this.mode = "fps-build";
+    this.mode = "fps-interact";
+    this.draftMode = draft.mode;
     this.ghost = {
       draft: structuredClone(draft),
       valid: false,
@@ -653,6 +787,7 @@ export class InteractionHost {
     this.ghost.draft.orientationQuaternion = quaternion(orientation);
     this.ghostManual = true;
     this.ghost.surfaceObjectId = null;
+    this.ghost.draft.mode = "dynamicNoGravity";
     this.validateGhost();
     this.changed();
     return this.ghost.valid;
@@ -685,14 +820,20 @@ export class InteractionHost {
     }
     const camera = this.camera(),
       hit = this.world().raycast(camera.positionM, this.forward(), this.holdDistance);
-    if (!hit) {
-      this.ghost.valid = false;
-      this.ghost.reason = "沒有可放置表面";
-      this.ghost.surfaceObjectId = null;
-      return;
-    }
     const step = Math.PI / 12,
       angle = Math.round(this.ghostAngle / step) * step;
+    if (!hit) {
+      this.ghost.draft.positionM = add(
+        camera.positionM,
+        mul(this.forward(), this.holdDistance),
+      ).map((value) => Math.round(value / 0.1) * 0.1) as Vec3;
+      this.ghost.draft.orientationQuaternion = axisAngle([0, 1, 0], angle);
+      this.ghost.draft.mode = "dynamicNoGravity";
+      this.ghost.surfaceObjectId = null;
+      this.validateGhost();
+      return;
+    }
+    this.ghost.draft.mode = this.draftMode;
     const rotation = surfaceRotation(hit.normal, angle);
     const outward = supportRadius(this.ghost.draft, hit.normal, rotation) + 0.01;
     let position = add(hit.pointMetres, mul(hit.normal, outward));
@@ -723,153 +864,124 @@ export class InteractionHost {
     this.ghost.surfaceObjectId = hit.objectId;
     this.validateGhost();
   }
-  async place(): Promise<boolean> {
-    if (!this.ghost || this.pending || this.staged) return false;
-    this.updateGhost();
-    if (!this.ghost.valid) return this.say(`無法放置：${this.ghost.reason}`);
-    this.suspend("放置確認：已安全暫停，建立待啟用物件");
-    this.validateGhost();
-    if (!this.ghost.valid) return this.say(`位置已被占用：${this.ghost.reason}`);
-    const beforeRevision = this.options.getScene().sceneRevision;
+  async place(releaseTriggered = false): Promise<boolean> {
+    if (!this.ghost || this.pending) return false;
     const ghost = this.ghost,
-      desiredMode = ghost.draft.mode,
-      draft = { ...structuredClone(ghost.draft), mode: "fixed" as const };
-    ghost.stage = "pending";
-    this.pending = true;
-    this.changed();
+      world = this.world();
+    const epoch = this.placementEpoch;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const preparationAbort = new AbortController();
+    let started = false;
     try {
-      await this.options.commitSceneOperations([{ type: "AddObject", object: draft }]);
-      const world = this.world();
-      world.pause();
-      world.setObjectEnabled(draft.id, false);
+      const refusal = this.options.placementRefusal?.();
+      if (refusal) throw new InteractionError(refusal, refusal);
+      this.updateGhost();
+      if (!ghost.valid) {
+        const reason = ghost.reason;
+        if (releaseTriggered) this.cancelPreview();
+        return this.say(`無法放置：${reason}`);
+      }
+      const draft = structuredClone(ghost.draft);
+      const revision = this.options.getScene().sceneRevision;
+      const guard = () => {
+        const refusal = this.options.placementRefusal?.();
+        if (refusal) throw new InteractionError(refusal, refusal);
+        if (
+          this.disposed ||
+          this.world() !== world ||
+          this.placementEpoch !== epoch ||
+          this.options.getScene().sceneRevision !== revision
+        )
+          throw new InteractionError("REVISION_CONFLICT", "放置已取消或場景版本已變更。");
+        if (world.paused || !this.active())
+          throw new InteractionError("PLACEMENT_PAUSED", "放置已取消或場景版本已變更。");
+        if (norm(sub(draft.positionM, this.camera().positionM)) > 3.5)
+          throw new InteractionError("OUT_OF_RANGE", "放置位置超出範圍");
+        if (!world.validatePlacement(draft).valid)
+          throw new InteractionError("OVERLAP", "待啟用位置已被占用。");
+      };
+      const cancelled = new Promise<never>((_, reject) => {
+        this.cancelPendingPlacement = () =>
+          reject(new InteractionError("PLACEMENT_CANCELLED", "放置已取消或場景版本已變更。"));
+        timer = setTimeout(
+          () => {
+            this.placementEpoch++;
+            reject(new InteractionError("PLACEMENT_TIMEOUT", "PLACEMENT_TIMEOUT"));
+          },
+          clamp(this.options.placementTimeoutMs ?? 5000, 1, 30000),
+        );
+      });
+      // Staging is copied data only, and every observer/setup failure is inside the cleanup scope.
+      started = true;
       this.staged = {
         objectId: draft.id,
-        desiredMode,
-        sceneRevision: this.options.getScene().sceneRevision,
+        desiredMode: draft.mode,
+        sceneRevision: revision + 1,
         geometryAcknowledged: false,
       };
-      this.ghost = null;
-      this.ghostManual = false;
-      if (this.options.confirmGeometry) {
-        try {
-          const stagedRevision = this.staged.sceneRevision;
-          const acknowledged = await this.options.confirmGeometry(draft.id, stagedRevision);
-          this.staged.geometryAcknowledged =
-            acknowledged && this.options.getScene().sceneRevision === stagedRevision;
-        } catch (error) {
-          // Document/body creation succeeded. Keep one disabled, repairable staged
-          // entity rather than resurrecting a second preview with the same ID.
-          this.staged.geometryAcknowledged = false;
-          this.notice = `幾何確認失敗；物件保持待啟用，可重試或取消：${error instanceof Error ? error.message : String(error)}`;
-          return true;
-        }
-      }
-      this.notice = "已建立待啟用物件；幾何確認後需明確啟用，再另按繼續。";
+      ghost.stage = "pending";
+      this.pending = true;
+      // Attach the cancellation handler before invoking user-supplied observers/preparation.
+      const preparation = (async () => {
+        this.changed();
+        guard();
+        const acknowledged = await this.options.confirmGeometry?.(
+          draft.id,
+          revision + 1,
+          draft,
+          preparationAbort.signal,
+        );
+        if (!acknowledged)
+          throw new InteractionError("GEOMETRY_ACK", "幾何確認未完成；已取消放置。");
+        guard();
+        this.staged!.geometryAcknowledged = true;
+        await this.options.commitSceneOperations(
+          [{ type: "AddObject", object: draft }],
+          guard,
+          "placement",
+        );
+      })();
+      await Promise.race([preparation, cancelled]);
+      this.inform("物件已放置，可直接操作。");
       return true;
     } catch (error) {
-      const committed = this.object(draft.id);
-      if (committed && this.options.getScene().sceneRevision > beforeRevision) {
-        // The adapter must commit atomically, but a later runtime observer may
-        // still fail. Retain a single explicit recovery state and fail closed.
-        this.world().pause();
-        try {
-          this.world().setObjectEnabled(draft.id, false);
-        } catch {
-          /* Recovery remains explicit below. */
-        }
-        this.staged = {
-          objectId: draft.id,
-          desiredMode,
-          sceneRevision: this.options.getScene().sceneRevision,
-          geometryAcknowledged: false,
-        };
-        this.ghost = null;
-      } else {
-        ghost.stage = "preview";
-        this.ghost = ghost;
-      }
+      if (this.disposed) return false;
+      if (
+        error instanceof Error &&
+        ["PLACEMENT_TRANSPORT", "PLACEMENT_TIMEOUT", "PLACEMENT_AUDIO_RESTART"].includes(
+          error.message,
+        )
+      )
+        return this.say(error.message);
       return this.say(`放置失敗：${error instanceof Error ? error.message : String(error)}`);
     } finally {
-      this.pending = false;
-      this.changed();
-    }
-  }
-  acknowledgeStaged(objectId: string, sceneRevision: number): boolean {
-    if (
-      !this.staged ||
-      this.staged.objectId !== objectId ||
-      this.staged.sceneRevision !== sceneRevision ||
-      this.options.getScene().sceneRevision !== sceneRevision
-    )
-      return this.say("幾何確認的物件／版本已失效。");
-    this.staged.geometryAcknowledged = true;
-    this.changed();
-    return true;
-  }
-  async enableStaged(): Promise<boolean> {
-    const staged = this.staged;
-    if (!staged || this.pending) return false;
-    if (!staged.geometryAcknowledged) return this.say("尚待聲學幾何確認，不能啟用。");
-    const object = this.object(staged.objectId),
-      world = this.world();
-    if (!object || this.options.getScene().sceneRevision !== staged.sceneRevision)
-      return this.say("待啟用物件或場景版本已變更，請重新確認。");
-    if (!world.validatePlacement(object, object.id).valid) return this.say("待啟用位置已被占用。");
-    this.pending = true;
-    this.changed();
-    try {
-      await this.options.commitSceneOperations([
-        { type: "SetObjectMode", objectId: object.id, mode: staged.desiredMode },
-      ]);
-      this.world().pause();
-      this.world().setObjectEnabled(object.id, true);
-      this.staged = null;
-      this.notice = "物件已啟用；模擬仍暫停，另按繼續。";
-      return true;
-    } catch (error) {
-      // A failed final enable must never leave an untracked active body.
-      try {
-        this.world().pause();
-        this.world().setObjectEnabled(object.id, false);
-      } catch {
-        /* The recovery notice still identifies the object. */
+      if (timer) clearTimeout(timer);
+      preparationAbort.abort();
+      if (started || releaseTriggered) {
+        this.cancelPendingPlacement = null;
+        this.staged = null;
+        this.ghost = null;
+        this.ghostManual = false;
+        this.rightPreview = false;
+        this.rotationToggle = false;
+        this.pending = false;
+        if (!this.disposed) this.changed();
       }
-      if (this.object(object.id)) {
-        this.staged = {
-          ...staged,
-          sceneRevision: this.options.getScene().sceneRevision,
-          geometryAcknowledged: false,
-        };
-      }
-      return this.say(`啟用失敗：${error instanceof Error ? error.message : String(error)}`);
-    } finally {
-      this.pending = false;
-      this.changed();
     }
   }
   cancelPreview(): void {
+    this.rightPreview = false;
     if (this.pending) return;
     this.ghost = null;
     this.ghostManual = false;
     this.rotationToggle = false;
     this.changed();
   }
-  async cancelStaged(): Promise<boolean> {
-    if (!this.staged || this.pending) return false;
-    const staged = this.staged;
-    this.pending = true;
-    try {
-      await this.options.commitSceneOperations([
-        { type: "RemoveObject", objectId: staged.objectId },
-      ]);
-      this.staged = null;
-      return true;
-    } catch (error) {
-      return this.say(`取消待啟用物件失敗：${String(error)}`);
-    } finally {
-      this.pending = false;
-      this.changed();
-    }
+  /** Runtime pauses also invalidate preparation already awaiting a host operation. */
+  abortPlacement(): void {
+    this.placementEpoch++;
+    this.cancelPendingPlacement?.();
+    this.cancelPreview();
   }
 
   beforeStep(): void {
@@ -932,10 +1044,18 @@ export class InteractionHost {
       staged: this.staged,
       notice: this.notice,
       pending: this.pending,
+      paint: this.paint
+        ? {
+            objectId: this.paint.objectId,
+            pointsM: this.paint.pointsM,
+            distanceM: this.paint.distanceM,
+          }
+        : null,
     });
   }
   dispose(): void {
     if (this.disposed) return;
+    this.cancelPendingPlacement?.();
     this.clearInput();
     this.disposed = true;
     this.keys.clear();

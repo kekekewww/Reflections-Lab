@@ -1,0 +1,395 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "native-recorded-take-render-completes",
+      "pass": true,
+      "evidence": {
+        "jobId": "render.browser-sum",
+        "jobSha256": "f079487b8d27fffdf8d24d0a5b0bb82662c17e596b00c79cf443328ac5bcf183",
+        "outputs": [
+          {
+            "artifact": {
+              "id": "render.browser-sum.mix",
+              "sha256": "4e255a45ecc49a5adaaff94758b3149e4e43829cf968dbc41d0deae567c27153"
+            },
+            "channels": 2,
+            "clipping": {
+              "clippedSampleCount": 0,
+              "stage": "float32OutputConversion"
+            },
+            "encoding": "float32Pcm",
+            "frames": 24000,
+            "historyIncomplete": false,
+            "peakLinear": 0.0192217119038105,
+            "requestId": "mix",
+            "sampleRateHz": 48000,
+            "samplesOutsideUnitRange": 0,
+            "tailTruncated": false
+          },
+          {
+            "artifact": {
+              "id": "render.browser-sum.master",
+              "sha256": "784674f9aa2750efa3e2551ca6138b1afa49254b1c963eeeb2b822a743a458e1"
+            },
+            "channels": 2,
+            "clipping": {
+              "clippedSampleCount": 0,
+              "stage": "float32OutputConversion"
+            },
+            "encoding": "float32Pcm",
+            "frames": 24000,
+            "historyIncomplete": false,
+            "peakLinear": 0.011729657649993896,
+            "requestId": "master",
+            "sampleRateHz": 48000,
+            "samplesOutsideUnitRange": 0,
+            "tailTruncated": false
+          },
+          {
+            "artifact": {
+              "id": "render.browser-sum.dry",
+              "sha256": "e6f725bb22b5849a43d5fba753d911f225870be4b88d4d6c495ac60a20042a0f"
+            },
+            "channels": 2,
+            "clipping": {
+              "clippedSampleCount": 0,
+              "stage": "float32OutputConversion"
+            },
+            "encoding": "float32Pcm",
+            "frames": 24000,
+            "historyIncomplete": false,
+            "peakLinear": 0.12446699291467667,
+            "requestId": "dry",
+            "sampleRateHz": 48000,
+            "samplesOutsideUnitRange": 0,
+            "tailTruncated": false
+          },
+          {
+            "artifact": {
+              "id": "render.browser-sum.stem-46219de459d8-ball",
+              "sha256": "7735e29c23799052e65f560fc869b6fc06eb0ec2e759cd77a17d0143038e3d7f"
+            },
+            "channels": 2,
+            "clipping": {
+              "clippedSampleCount": 0,
+              "stage": "float32OutputConversion"
+            },
+            "encoding": "float32Pcm",
+            "frames": 24000,
+            "historyIncomplete": false,
+            "peakLinear": 0.0133279487490654,
+            "requestId": "stem-46219de459d8-ball",
+            "sampleRateHz": 48000,
+            "samplesOutsideUnitRange": 0,
+            "tailTruncated": false
+          },
+          {
+            "artifact": {
+              "id": "render.browser-sum.stem-be569a2d963a-speaker",
+              "sha256": "fa99dfd73c035bcb402b7aedb192d753f327a05cd660371f4de0e167cf669489"
+            },
+            "channels": 2,
+            "clipping": {
+              "clippedSampleCount": 0,
+              "stage": "float32OutputConversion"
+            },
+            "encoding": "float32Pcm",
+            "frames": 24000,
+            "historyIncomplete": false,
+            "peakLinear": 0.011436164379119873,
+            "requestId": "stem-be569a2d963a-speaker",
+            "sampleRateHz": 48000,
+            "samplesOutsideUnitRange": 0,
+            "tailTruncated": false
+          }
+        ],
+        "provenance": {
+          "backend": {
+            "id": "native-offline-recorded",
+            "version": "1.0.0"
+          },
+          "capabilities": [
+            "offlinePcm",
+            "emissionSelection"
+          ],
+          "engine": {
+            "id": "AudioEngine/nativeWebAudio",
+            "version": "recorded-native-v1"
+          },
+          "finishedAtUtc": "2026-11-02T05:35:07.917Z",
+          "limitations": [
+            "Native AudioEngine render of captured VoiceIntent/path data; not captured hardware PCM.",
+            "Source onsets retain the recorded epoch. Dynamic graph/parameter controls are applied at observed native render-quantum boundaries, not sampleScheduledControls.",
+            "Native HRTF/limiter coefficients and latency are browser managed and not asset-pinned.",
+            "Wet/propagated mix includes direct, early and configured Synthetic late reverb; it is not a separate late-only tap.",
+            "Working-memory admission is a conservative estimate; native allocation failure remains explicit."
+          ],
+          "startedAtUtc": "2026-11-02T05:35:06.673Z"
+        },
+        "status": "completed"
+      }
+    },
+    {
+      "id": "native-pre-master-object-stems-sum-to-mix",
+      "pass": true,
+      "evidence": {
+        "stemIds": [
+          "stem-46219de459d8-ball",
+          "stem-be569a2d963a-speaker"
+        ],
+        "maximumError": 5.122274160385132e-9,
+        "mixPeak": 0.0192217119038105,
+        "frames": 24000
+      }
+    },
+    {
+      "id": "float-WAVE-files-hash-match-atomic-manifest",
+      "pass": true,
+      "evidence": {
+        "hashes": [
+          {
+            "id": "mix",
+            "pass": true
+          },
+          {
+            "id": "master",
+            "pass": true
+          },
+          {
+            "id": "dry",
+            "pass": true
+          },
+          {
+            "id": "stem-46219de459d8-ball",
+            "pass": true
+          },
+          {
+            "id": "stem-be569a2d963a-speaker",
+            "pass": true
+          }
+        ],
+        "observations": [
+          {
+            "actualControlSample": 768,
+            "controlOffsetFrames": -32,
+            "requestedSample": 800,
+            "tick": 2
+          },
+          {
+            "actualControlSample": 1536,
+            "controlOffsetFrames": -64,
+            "requestedSample": 1600,
+            "tick": 3
+          },
+          {
+            "actualControlSample": 2304,
+            "controlOffsetFrames": -96,
+            "requestedSample": 2400,
+            "tick": 4
+          },
+          {
+            "actualControlSample": 3200,
+            "controlOffsetFrames": 0,
+            "requestedSample": 3200,
+            "tick": 5
+          },
+          {
+            "actualControlSample": 3968,
+            "controlOffsetFrames": -32,
+            "requestedSample": 4000,
+            "tick": 6
+          },
+          {
+            "actualControlSample": 4736,
+            "controlOffsetFrames": -64,
+            "requestedSample": 4800,
+            "tick": 7
+          },
+          {
+            "actualControlSample": 5504,
+            "controlOffsetFrames": -96,
+            "requestedSample": 5600,
+            "tick": 8
+          },
+          {
+            "actualControlSample": 6400,
+            "controlOffsetFrames": 0,
+            "requestedSample": 6400,
+            "tick": 9
+          },
+          {
+            "actualControlSample": 7168,
+            "controlOffsetFrames": -32,
+            "requestedSample": 7200,
+            "tick": 10
+          },
+          {
+            "actualControlSample": 7936,
+            "controlOffsetFrames": -64,
+            "requestedSample": 8000,
+            "tick": 11
+          },
+          {
+            "actualControlSample": 8704,
+            "controlOffsetFrames": -96,
+            "requestedSample": 8800,
+            "tick": 12
+          },
+          {
+            "actualControlSample": 9600,
+            "controlOffsetFrames": 0,
+            "requestedSample": 9600,
+            "tick": 13
+          },
+          {
+            "actualControlSample": 10368,
+            "controlOffsetFrames": -32,
+            "requestedSample": 10400,
+            "tick": 14
+          },
+          {
+            "actualControlSample": 11136,
+            "controlOffsetFrames": -64,
+            "requestedSample": 11200,
+            "tick": 15
+          },
+          {
+            "actualControlSample": 11904,
+            "controlOffsetFrames": -96,
+            "requestedSample": 12000,
+            "tick": 16
+          },
+          {
+            "actualControlSample": 12800,
+            "controlOffsetFrames": 0,
+            "requestedSample": 12800,
+            "tick": 17
+          },
+          {
+            "actualControlSample": 13568,
+            "controlOffsetFrames": -32,
+            "requestedSample": 13600,
+            "tick": 18
+          },
+          {
+            "actualControlSample": 14336,
+            "controlOffsetFrames": -64,
+            "requestedSample": 14400,
+            "tick": 19
+          },
+          {
+            "actualControlSample": 19200,
+            "controlOffsetFrames": 0,
+            "requestedSample": 19200,
+            "tick": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-job-id-hash-is-idempotent",
+      "pass": true,
+      "evidence": {
+        "reusedStatus": "completed"
+      }
+    },
+    {
+      "id": "same-job-id-different-content-is-rejected",
+      "pass": true,
+      "evidence": {
+        "status": "failed",
+        "jobId": "render.browser-sum",
+        "jobSha256": "bcbdf2056119075efc1ace55a376e53a771a6ecb6d401f7663087e4cda7b47b7",
+        "code": "RENDER_JOB_ID_REUSED",
+        "reason": "The same render job ID was reused with different content.",
+        "limitations": []
+      }
+    },
+    {
+      "id": "pinned-sample-onset-and-propagation-delay-once",
+      "pass": true,
+      "evidence": {
+        "expectedDirect": 2654,
+        "expectedDry": 2080,
+        "directPeak": 2654,
+        "dryPeak": 2080,
+        "absoluteDelayS": 0.011949796811614692
+      }
+    },
+    {
+      "id": "cancel-between-outputs-prevents-partial-publication",
+      "pass": true,
+      "evidence": {
+        "code": "RENDER_CANCELLED",
+        "jobId": "render.browser-cancel",
+        "jobSha256": "e62bbcfe5e6164e47ad3374ca5a74105f0d91824cf74d0c97b944a956e98ff78",
+        "limitations": [
+          "Native AudioEngine render of captured VoiceIntent/path data; not captured hardware PCM.",
+          "Source onsets retain the recorded epoch. Dynamic graph/parameter controls are applied at observed native render-quantum boundaries, not sampleScheduledControls.",
+          "Native HRTF/limiter coefficients and latency are browser managed and not asset-pinned.",
+          "Wet/propagated mix includes direct, early and configured Synthetic late reverb; it is not a separate late-only tap.",
+          "Working-memory admission is a conservative estimate; native allocation failure remains explicit."
+        ],
+        "reason": "Render cancelled before publication.",
+        "status": "cancelled"
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "limitations": [
+    "Actual headless Chrome OfflineAudioContext output; no hearing or device latency claim.",
+    "Controls have recorded render-quantum offsets; source onset/absolute propagation are tested independently.",
+    "No full V1 or 600-second performance claim."
+  ],
+  "errors": [],
+  "revision": "55d40fd76e4f62243a46a3bd1bddec84c36da035",
+  "sourceState": "Working render changes on audio seam commit; exact hashes below",
+  "browserVersion": "156.0.8078.75",
+  "sources": [
+    {
+      "path": "src/audio/render-backend.ts",
+      "sha256": "bd839c9db1be468054ecdadcb238cc693a1a6792a81f9912797f1b44406d4f1d"
+    },
+    {
+      "path": "src/audio/render-contract.ts",
+      "sha256": "96b632fff18b5bb0cba206d24effda44a28df7d61455ceea7e52b7ef7c6b91a8"
+    },
+    {
+      "path": "src/audio/render-pcm.ts",
+      "sha256": "bdb1a26661038470749a78233469db7fa0ab7839ad97b52f88cba342cb75dcc9"
+    },
+    {
+      "path": "src/audio/render-preset.ts",
+      "sha256": "eb86e4f780440a9da638d30de6c9655f03e65978c5e81876456ee87d7af4c462"
+    },
+    {
+      "path": "src/audio/render-types.ts",
+      "sha256": "46fbad110e6b7216063478a19fc1f89e0e73f32b0a8c3b294016e12d96a5f9f6"
+    },
+    {
+      "path": "src/audio/render-validation.ts",
+      "sha256": "d9c91f790ac672e92c207d06b2847ee083a4f395dc40ffab752a9a24f22f3a99"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "92775af39335ffb37e760a657da79dd0bd03b69647815043c5b2d1ce4470491d"
+    },
+    {
+      "path": "src/audio/routes.ts",
+      "sha256": "5eb43069cee37d8ce0a1b8399a8790e016f30a6152d7a7715a4e1af1dc19f9d0"
+    },
+    {
+      "path": "tests/audio-runtime/render-fixture.ts",
+      "sha256": "e753311101c1d33da4e3d0d9929b5a53797cf6524ef2104c27598ef5cdf430e4"
+    },
+    {
+      "path": "tests/browser/render/fixture.mjs",
+      "sha256": "0a453779e353e86e1fdf6e731e64add0c9dff5ce93c93ff47fa8fd855e493ef0"
+    },
+    {
+      "path": "tests/browser/render/run.mjs",
+      "sha256": "1030b4c5b3e4976abdc239937cf123c59192a6a545d0060341d7e6d8bfed1e9e"
+    }
+  ]
+}

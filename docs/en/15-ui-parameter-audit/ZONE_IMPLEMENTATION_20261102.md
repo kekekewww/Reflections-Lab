@@ -1,0 +1,39 @@
+<!-- english-source: {"path":"docs/15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md","sha256":"9542151872cc6d34fb9c371a9606dcc29e71a8c2a155fcd53c437575338bf574","translated_at":"2026-11-02T09:15:05.468Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-notice:start -->
+> English translation of [`docs/15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md`](../../15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md). Source SHA-256: `9542151872cc6d34fb9c371a9606dcc29e71a8c2a155fcd53c437575338bf574`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+<!-- english-notice:end -->
+
+<!-- english-original-anchor --> <a id="zone能力已合入固定步核心與原子作者設定真ui仍待驗"></a>
+# Zone capability merged: fixed-step core and atomic authoring; actual UI still awaits verification
+
+Date: 2026-11-02. Task0029's final feature tip `12786c74e4bc52e378f49f7b21da7987e768562c` is an ancestor of root's normal merge `d9dc624fdfa7ba0f73195b888335c1dd7b1d920f`. Root reports46 focused cases PASS, build0 and served `index-Cla4CyjN.js`. These last three observations still require root's execution receipts; the memory writer did not rerun them. Curves has not yet merged. Actual Zone UI/record-replay/WAV and latest integration evidence remain pending; Task0029/0028/Main are not closed.
+
+<!-- english-original-anchor --> <a id="各固定截點與原結果"></a>
+## Pinned phase snapshots and original results
+
+| Snapshot | Official source | Direct scope |
+| --- | --- | --- |
+| fa4c314 | [REPORT](zones/REPORT.md), [evidence](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/faa8f7809b6154300ae40fd4ad2a6e59ed9de704), [domain](zones/domain.md) | Optional Scene zones/atomic authoring commands/actual Rapier fixed-step producer/shared caps and AI/Host/record-replay; original raw501/501,0 skip, build0 |
+| d35112f | [DETACHED](zones/DETACHED.md) and its evidence | Detached emitters retain owner-geometry occlusion and original voice/stem/budget ownership; Project zone references; raw92/92,0 skip, including five new cases, build0 |
+| a22c978 | [volumes](zones/volumes.md) and verification | Editor-only nominal3D wireframes, hidden in FPS/replay, real Three raycast pass-through and resource disposal; recorded Node6/6/type/lint |
+|20bf09a | [BASELINE](zones/BASELINE.md) and evidence | Atomic stale-draft/runtime rejection after Project imports with identical metadata and different contents; raw57/57,0 skip; build NOT RUN at this snapshot |
+|12786c74 | [POSITION](zones/POSITION.md), [HANDOFF](zones/HANDOFF.md), [final pins](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/de0bebf5f02c6d4a16138403e14080c0a791d334) | Continuous mode changes during actual Motion release retain zone edges; raw RED1/5,4 FAIL→GREEN17/17 (including five new cases)→related76/76,0 skip; build0 includes earlier wireframe/stale work |
+
+The sets overlap and must not be summed. Each local bundle applies only to its original source. Final local `index-Bem6B9u0.js` is not root's served `index-Cla4CyjN.js`, nor a future bundle after Curves integration.
+
+<!-- english-original-anchor --> <a id="現行語義與容量"></a>
+## Current semantics and capacity
+
+- Absent optional Scene.zones does not insert[]; legacy canonical bytes/hashes remain unchanged. Explicit[] and absence are distinguishable in authored data and can be restored by Undo. At most16 static AABB/sphere regions have stable IDs unique across entities. Invalid parameters/hysteresis/unknown fields/sparse JSON/the17th region are explicitly rejected.
+- After Rapier completes a fixed step, body-center occupancy generates `OnEnterZone`/`OnExitZone`, with zoneId and actual positions retained in raw/normalized events. This is Derived sampling+hysteresis, not whole-collider overlap or continuous swept crossing. A single outside→outside step can produce no event.
+- Start/reset, creation, enable, authored teleport/geometry/registry and other position discontinuities establish a baseline and must not invent enter/exit. POSITION supersedes BASELINE's first-step limitation after mode changes: position-continuous setMode/Motion release retains actual crossings, while multiple mode changes after teleport cannot erase the baseline. Existing Bounce/render generic-discontinuity semantics are unchanged. The marker exists only in internal records/transient Sets, outside persistent schemas/hashes.
+- Producer caps are16 regions×256 poses,4096 occupancy-Map keys,256 marker-Set IDs and a shared2048 total event cap; over-cap work is rejected. These are capacity policies, not device frame-time/GPU/audio-performance claims.
+- The same trusted registry reaches UI/AI/Preview/Host and record/source-phase, requiring an explicit valid zoneId. Disabled regions retain references/center anchors but produce no occupancy. Changing registry geometry/enabled/hysteresis for A/B requires fresh physics recording rather than reusing old motion.
+- DETACHED supersedes the source-level TODO at fa4's end: emitterObjectId undefined retains legacy self-exclusion, null does not exclude the owner, and string names an explicit actual emitter body. Original logical owners/stems are unchanged. The complete Curves builder must retain all three states when merged; null must not incorrectly fall back through??.
+
+<!-- english-original-anchor --> <a id="獨立記憶讀核與尚待"></a>
+## Independent memory reconciliation and pending work
+
+The [reconciliation JSON](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/26ecb8e184a85ec14aaf835ac8c936cc86e16c17) checks124 source entries phase by phase (121 distinct commit/path queries,68 distinct content hashes) and50 original evidence entries, with all SHAs matching. Original raw TAP was read to confirm501/92/57/RED1 PASS4 FAIL/GREEN17/regression76 and their0 skips. This is reading existing files/Git, not new test execution. Early domain-typecheck work-in-progress failures, missing stdout for the stale-state reproduction and fixture-precondition FAILs are not rewritten as complete PASS.
+
+Task0029 AC01 authoring Domain/schema and AC02 actual-producer fixed boundaries have direct basic evidence. End-to-end UI, complete persistence/replay/audio-file integration and final source/crosswalk/English/Claude work remain pending. Root needs actual-DOM tests against new source for add/edit/delete/disable, invalid/stale/ZONE_IN_USE, Project-reference save/reload, picking behind wireframes, no residual FPS/replay volumes and record/replay/WAV. Node/SSR/Three do not establish browser visuals, native input, hearing, formal600-second performance, Meta live or every V1 requirement. Budget0; no new paid requests/push/deployment.

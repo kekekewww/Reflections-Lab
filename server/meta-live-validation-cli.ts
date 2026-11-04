@@ -31,6 +31,7 @@ import {
 import { payloadHash } from "./meta-live-payload-preview.js";
 import type { ReviewedMetaPayloads } from "./meta-live-payload-preview.js";
 import { sanitizeMetaHttpDiagnostic } from "./meta-http-diagnostic.js";
+import { inspectBoundedMetaResponse } from "./meta-response-body.js";
 
 const MODEL = "muse-spark-1.3";
 const PRICE_SOURCE = "https://dev.meta.ai/docs/pricing-rate-limits";
@@ -56,30 +57,6 @@ function safeId(value: unknown): string | null {
     !/LLM_/i.test(value)
     ? value
     : null;
-}
-async function boundedJson(response: Response): Promise<unknown> {
-  if (!response.body) throw new AgentError("PROVIDER_REQUEST_FAILED", "回覆沒有body。");
-  const reader = response.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let bytes = 0;
-  try {
-    for (;;) {
-      const result = await reader.read();
-      if (result.done) break;
-      bytes += result.value.byteLength;
-      if (bytes > 256 * 1024) throw new AgentError("INPUT_LIMIT", "回覆超出大小限制。");
-      chunks.push(result.value);
-    }
-  } finally {
-    void reader.cancel().catch(() => {});
-  }
-  const all = new Uint8Array(bytes);
-  let offset = 0;
-  for (const chunk of chunks) {
-    all.set(chunk, offset);
-    offset += chunk.length;
-  }
-  return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(all));
 }
 
 /** Real product HTTP -> Session -> trusted hosts. Only remoteFetch can perform paid transport. */
@@ -202,11 +179,13 @@ export async function runMetaLiveValidation(
     paidRequests++;
     let settled = false;
     try {
-      const response = await options.remoteFetch(input, { ...init, redirect: "error" });
+      let response = await options.remoteFetch(input, { ...init, redirect: "error" });
       let value: Record<string, unknown> = {};
       let diagnostic = sanitizeMetaHttpDiagnostic(null, options.apiKey);
       try {
-        const parsed = await boundedJson(response.clone());
+        const inspected = await inspectBoundedMetaResponse(response);
+        response = inspected.response;
+        const parsed = JSON.parse(inspected.text);
         if (response.ok) {
           value = object(parsed);
           noSecret(value);
@@ -347,9 +326,11 @@ export async function runMetaLiveValidation(
   const base = `http://127.0.0.1:${address.port}`;
   globalThis.fetch = async (input, init) => {
     const product = typeof input === "string" && input.startsWith("/api/");
-    const response = await nativeFetch(product ? base + input : input, init);
+    let response = await nativeFetch(product ? base + input : input, init);
     if (product) {
-      const value = await boundedJson(response.clone());
+      const inspected = await inspectBoundedMetaResponse(response);
+      response = inspected.response;
+      const value = JSON.parse(inspected.text);
       noSecret(value);
       const item = { phase, route: input, httpStatus: response.status, value };
       productPlans.push(item);

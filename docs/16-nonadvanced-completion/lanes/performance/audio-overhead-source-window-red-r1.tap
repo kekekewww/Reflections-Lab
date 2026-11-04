@@ -1,0 +1,1064 @@
+TAP version 13
+# Subtest: a partially unobserved delivery distribution cannot become PASS by filtering null
+ok 1 - a partially unobserved delivery distribution cannot become PASS by filtering null
+  ---
+  duration_ms: 4.8839
+  type: 'test'
+  ...
+# Subtest: measured threshold failure survives alongside an unobserved sample
+ok 2 - measured threshold failure survives alongside an unobserved sample
+  ---
+  duration_ms: 0.8836
+  type: 'test'
+  ...
+# Subtest: all unobserved values preserve null quantiles and unavailable threshold evidence
+ok 3 - all unobserved values preserve null quantiles and unavailable threshold evidence
+  ---
+  duration_ms: 0.8439
+  type: 'test'
+  ...
+# Subtest: a fully measured zero distribution still passes the unchanged strict budget
+ok 4 - a fully measured zero distribution still passes the unchanged strict budget
+  ---
+  duration_ms: 0.5971
+  type: 'test'
+  ...
+# Subtest: controlled audio exposes source/control verification independent of collection status and PCM
+ok 5 - controlled audio exposes source/control verification independent of collection status and PCM
+  ---
+  duration_ms: 25.1602
+  type: 'test'
+  ...
+# Subtest: controlled steady/on validates its actual action and endpoint matrix
+ok 6 - controlled steady/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 21.1596
+  type: 'test'
+  ...
+# Subtest: controlled steady/off validates its actual action and endpoint matrix
+ok 7 - controlled steady/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 1.8167
+  type: 'test'
+  ...
+# Subtest: controlled main-stall/on validates its actual action and endpoint matrix
+ok 8 - controlled main-stall/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 4.7419
+  type: 'test'
+  ...
+# Subtest: controlled main-stall/off validates its actual action and endpoint matrix
+ok 9 - controlled main-stall/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 3.5571
+  type: 'test'
+  ...
+# Subtest: controlled late-onset/on validates its actual action and endpoint matrix
+ok 10 - controlled late-onset/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 3.2326
+  type: 'test'
+  ...
+# Subtest: controlled late-onset/off validates its actual action and endpoint matrix
+ok 11 - controlled late-onset/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 3.4561
+  type: 'test'
+  ...
+# Subtest: controlled stale-frame/on validates its actual action and endpoint matrix
+ok 12 - controlled stale-frame/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 2.1227
+  type: 'test'
+  ...
+# Subtest: controlled stale-frame/off validates its actual action and endpoint matrix
+ok 13 - controlled stale-frame/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 1.0279
+  type: 'test'
+  ...
+# Subtest: controlled path-churn/on validates its actual action and endpoint matrix
+ok 14 - controlled path-churn/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 3.2135
+  type: 'test'
+  ...
+# Subtest: controlled path-churn/off validates its actual action and endpoint matrix
+ok 15 - controlled path-churn/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 1.5519
+  type: 'test'
+  ...
+# Subtest: controlled voice-path-budget/on validates its actual action and endpoint matrix
+ok 16 - controlled voice-path-budget/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 2.6513
+  type: 'test'
+  ...
+# Subtest: controlled voice-path-budget/off validates its actual action and endpoint matrix
+ok 17 - controlled voice-path-budget/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 1.2498
+  type: 'test'
+  ...
+# Subtest: controlled digital-gap/on validates its actual action and endpoint matrix
+ok 18 - controlled digital-gap/on validates its actual action and endpoint matrix
+  ---
+  duration_ms: 0.7175
+  type: 'test'
+  ...
+# Subtest: controlled digital-gap/off validates its actual action and endpoint matrix
+ok 19 - controlled digital-gap/off validates its actual action and endpoint matrix
+  ---
+  duration_ms: 0.4863
+  type: 'test'
+  ...
+# Subtest: unfrozen carrier capacity remains unverified without inventing a requirement for logical voice drops
+ok 20 - unfrozen carrier capacity remains unverified without inventing a requirement for logical voice drops
+  ---
+  duration_ms: 2.2265
+  type: 'test'
+  ...
+# Subtest: PCM failure remains separate from successfully verified source/control
+ok 21 - PCM failure remains separate from successfully verified source/control
+  ---
+  duration_ms: 0.886
+  type: 'test'
+  ...
+# Subtest: control verification rejects unexecuted main stall
+ok 22 - control verification rejects unexecuted main stall
+  ---
+  duration_ms: 1.4283
+  type: 'test'
+  ...
+# Subtest: control verification rejects unexecuted late event
+ok 23 - control verification rejects unexecuted late event
+  ---
+  duration_ms: 0.6012
+  type: 'test'
+  ...
+# Subtest: control verification rejects unexecuted stale update
+ok 24 - control verification rejects unexecuted stale update
+  ---
+  duration_ms: 0.622
+  type: 'test'
+  ...
+# Subtest: control verification rejects unexecuted path update
+ok 25 - control verification rejects unexecuted path update
+  ---
+  duration_ms: 0.7507
+  type: 'test'
+  ...
+# Subtest: control verification rejects unexecuted budget pressure
+ok 26 - control verification rejects unexecuted budget pressure
+  ---
+  duration_ms: 0.5887
+  type: 'test'
+  ...
+# Subtest: control verification rejects missing primary admission
+ok 27 - control verification rejects missing primary admission
+  ---
+  duration_ms: 0.5322
+  type: 'test'
+  ...
+# Subtest: control verification rejects primary rejected
+ok 28 - control verification rejects primary rejected
+  ---
+  duration_ms: 0.4614
+  type: 'test'
+  ...
+# Subtest: control verification rejects primary scheduled in past
+ok 29 - control verification rejects primary scheduled in past
+  ---
+  duration_ms: 0.9898
+  type: 'test'
+  ...
+# Subtest: control verification rejects control operation threw
+ok 30 - control verification rejects control operation threw
+  ---
+  duration_ms: 2.284
+  type: 'test'
+  ...
+# Subtest: control verification rejects cleanup threw
+ok 31 - control verification rejects cleanup threw
+  ---
+  duration_ms: 1.3813
+  type: 'test'
+  ...
+# Subtest: control verification rejects context not closed
+ok 32 - control verification rejects context not closed
+  ---
+  duration_ms: 1.3877
+  type: 'test'
+  ...
+# Subtest: control verification rejects context close unknown
+ok 33 - control verification rejects context close unknown
+  ---
+  duration_ms: 1.463
+  type: 'test'
+  ...
+# Subtest: control verification rejects context closed with rejection
+ok 34 - control verification rejects context closed with rejection
+  ---
+  duration_ms: 1.0447
+  type: 'test'
+  ...
+# Subtest: control verification rejects context had not reached audio end
+ok 35 - control verification rejects context had not reached audio end
+  ---
+  duration_ms: 0.6587
+  type: 'test'
+  ...
+# Subtest: control verification rejects telemetry overflow
+ok 36 - control verification rejects telemetry overflow
+  ---
+  duration_ms: 0.8815
+  type: 'test'
+  ...
+# Subtest: control verification rejects unknown case
+ok 37 - control verification rejects unknown case
+  ---
+  duration_ms: 1.0372
+  type: 'test'
+  ...
+# Subtest: control verification rejects unknown source model
+ok 38 - control verification rejects unknown source model
+  ---
+  duration_ms: 0.6817
+  type: 'test'
+  ...
+# Subtest: control verification rejects source model label differs
+ok 39 - control verification rejects source model label differs
+  ---
+  duration_ms: 0.5499
+  type: 'test'
+  ...
+# Subtest: control verification rejects unknown probe mode
+ok 40 - control verification rejects unknown probe mode
+  ---
+  duration_ms: 0.3396
+  type: 'test'
+  ...
+# Subtest: control verification rejects reference silently enables virtualization
+ok 41 - control verification rejects reference silently enables virtualization
+  ---
+  duration_ms: 0.5153
+  type: 'test'
+  ...
+# Subtest: control verification rejects reduced original voice budget
+ok 42 - control verification rejects reduced original voice budget
+  ---
+  duration_ms: 0.402
+  type: 'test'
+  ...
+# Subtest: control verification rejects raised original path budget
+ok 43 - control verification rejects raised original path budget
+  ---
+  duration_ms: 0.4073
+  type: 'test'
+  ...
+# Subtest: control verification rejects source-frame cap changed
+ok 44 - control verification rejects source-frame cap changed
+  ---
+  duration_ms: 0.4006
+  type: 'test'
+  ...
+# Subtest: control verification rejects source budget unavailable
+ok 45 - control verification rejects source budget unavailable
+  ---
+  duration_ms: 0.4377
+  type: 'test'
+  ...
+# Subtest: control verification rejects extra unknown original budget
+ok 46 - control verification rejects extra unknown original budget
+  ---
+  duration_ms: 0.4404
+  type: 'test'
+  ...
+# Subtest: control verification rejects source became muted
+ok 47 - control verification rejects source became muted
+  ---
+  duration_ms: 0.4028
+  type: 'test'
+  ...
+# Subtest: control verification rejects source context stopped
+ok 48 - control verification rejects source context stopped
+  ---
+  duration_ms: 0.3933
+  type: 'test'
+  ...
+# Subtest: control verification rejects unsupported DSP CPU invented as zero
+ok 49 - control verification rejects unsupported DSP CPU invented as zero
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: control verification rejects unsupported hardware quantum invented as 128
+ok 50 - control verification rejects unsupported hardware quantum invented as 128
+  ---
+  duration_ms: 0.4286
+  type: 'test'
+  ...
+# Subtest: control verification rejects required on diagnostics missing
+ok 51 - control verification rejects required on diagnostics missing
+  ---
+  duration_ms: 0.3794
+  type: 'test'
+  ...
+# Subtest: control verification rejects late counter moved backwards
+ok 52 - control verification rejects late counter moved backwards
+  ---
+  duration_ms: 0.3511
+  type: 'test'
+  ...
+# Subtest: control verification rejects foreign solver source
+ok 53 - control verification rejects foreign solver source
+  ---
+  duration_ms: 0.3419
+  type: 'test'
+  ...
+# Subtest: control verification rejects solver result unavailable
+ok 54 - control verification rejects solver result unavailable
+  ---
+  duration_ms: 0.5221
+  type: 'test'
+  ...
+# Subtest: control verification rejects invented path rather than finite solver evidence
+ok 55 - control verification rejects invented path rather than finite solver evidence
+  ---
+  duration_ms: 0.9427
+  type: 'test'
+  ...
+# Subtest: control verification rejects hidden additional intervention
+ok 56 - control verification rejects hidden additional intervention
+  ---
+  duration_ms: 0.5904
+  type: 'test'
+  ...
+# Subtest: control verification rejects stall only advertised 150ms but executed zero
+ok 57 - control verification rejects stall only advertised 150ms but executed zero
+  ---
+  duration_ms: 0.8435
+  type: 'test'
+  ...
+# Subtest: control verification rejects stall shorter than bounded intervention
+ok 58 - control verification rejects stall shorter than bounded intervention
+  ---
+  duration_ms: 0.5703
+  type: 'test'
+  ...
+# Subtest: control verification rejects late action without actual late onset
+ok 59 - control verification rejects late action without actual late onset
+  ---
+  duration_ms: 0.5775
+  type: 'test'
+  ...
+# Subtest: control verification rejects late event rejected
+ok 60 - control verification rejects late event rejected
+  ---
+  duration_ms: 0.4998
+  type: 'test'
+  ...
+# Subtest: control verification rejects stale action without consumer refusal
+ok 61 - control verification rejects stale action without consumer refusal
+  ---
+  duration_ms: 0.4529
+  type: 'test'
+  ...
+# Subtest: control verification rejects on stale diagnostics disagree with native endpoint
+ok 62 - control verification rejects on stale diagnostics disagree with native endpoint
+  ---
+  duration_ms: 0.4345
+  type: 'test'
+  ...
+# Subtest: control verification rejects path birth did not add a reflection
+ok 63 - control verification rejects path birth did not add a reflection
+  ---
+  duration_ms: 0.6354
+  type: 'test'
+  ...
+# Subtest: control verification rejects path death did not remove reflection
+ok 64 - control verification rejects path death did not remove reflection
+  ---
+  duration_ms: 1.0611
+  type: 'test'
+  ...
+# Subtest: control verification rejects path update changed source
+ok 65 - control verification rejects path update changed source
+  ---
+  duration_ms: 0.9084
+  type: 'test'
+  ...
+# Subtest: control verification rejects path update changed direct identity
+ok 66 - control verification rejects path update changed direct identity
+  ---
+  duration_ms: 0.7818
+  type: 'test'
+  ...
+# Subtest: control verification rejects missing death action
+ok 67 - control verification rejects missing death action
+  ---
+  duration_ms: 0.5721
+  type: 'test'
+  ...
+# Subtest: control verification rejects budget only attempted 35 admissions
+ok 68 - control verification rejects budget only attempted 35 admissions
+  ---
+  duration_ms: 1.0336
+  type: 'test'
+  ...
+# Subtest: control verification rejects reference had no voice rejection
+ok 69 - control verification rejects reference had no voice rejection
+  ---
+  duration_ms: 1.0785
+  type: 'test'
+  ...
+# Subtest: control verification rejects no actual path pressure
+ok 70 - control verification rejects no actual path pressure
+  ---
+  duration_ms: 1.2475
+  type: 'test'
+  ...
+# Subtest: control verification rejects solver pressure had only direct path
+ok 71 - control verification rejects solver pressure had only direct path
+  ---
+  duration_ms: 1.0555
+  type: 'test'
+  ...
+# Subtest: control verification rejects off cannot substitute zero diagnostics
+ok 72 - control verification rejects off cannot substitute zero diagnostics
+  ---
+  duration_ms: 0.6042
+  type: 'test'
+  ...
+# Subtest: control verification rejects off misses stale consumer outcome
+ok 73 - control verification rejects off misses stale consumer outcome
+  ---
+  duration_ms: 0.5833
+  type: 'test'
+  ...
+# Subtest: control verification rejects off introduces repeated polling
+ok 74 - control verification rejects off introduces repeated polling
+  ---
+  duration_ms: 0.9841
+  type: 'test'
+  ...
+# Subtest: control verification rejects injected gap outside capture
+ok 75 - control verification rejects injected gap outside capture
+  ---
+  duration_ms: 0.5867
+  type: 'test'
+  ...
+# Subtest: control verification rejects injected gap not the declared 100ms
+ok 76 - control verification rejects injected gap not the declared 100ms
+  ---
+  duration_ms: 0.4949
+  type: 'test'
+  ...
+# Subtest: control verification contains null receipt
+ok 77 - control verification contains null receipt
+  ---
+  duration_ms: 0.2631
+  type: 'test'
+  ...
+# Subtest: control verification contains array receipt
+ok 78 - control verification contains array receipt
+  ---
+  duration_ms: 0.1302
+  type: 'test'
+  ...
+# Subtest: controlled overhead exposes a same-condition ABBA summary instead of a performance PASS
+not ok 79 - controlled overhead exposes a same-condition ABBA summary instead of a performance PASS
+  ---
+  duration_ms: 3.9366
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:332:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:333:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: ABBA reports the two raw observations per mode and exact descriptive whole-case mean differences
+ok 80 - ABBA reports the two raw observations per mode and exact descriptive whole-case mean differences
+  ---
+  duration_ms: 1.3741
+  type: 'test'
+  ...
+# Subtest: equal measured costs are legitimate descriptive zero differences
+ok 81 - equal measured costs are legitimate descriptive zero differences
+  ---
+  duration_ms: 0.3861
+  type: 'test'
+  ...
+# Subtest: measured negative on-minus-off cost remains a negative observation without clamping
+ok 82 - measured negative on-minus-off cost remains a negative observation without clamping
+  ---
+  duration_ms: 0.2638
+  type: 'test'
+  ...
+# Subtest: ABBA preserves missing process endpoint as unavailable CPU rather than filtering it into a full comparison
+ok 83 - ABBA preserves missing process endpoint as unavailable CPU rather than filtering it into a full comparison
+  ---
+  duration_ms: 0.3538
+  type: 'test'
+  ...
+# Subtest: ABBA preserves partial process coverage as unavailable CPU rather than filtering it into a full comparison
+ok 84 - ABBA preserves partial process coverage as unavailable CPU rather than filtering it into a full comparison
+  ---
+  duration_ms: 0.1467
+  type: 'test'
+  ...
+# Subtest: ABBA preserves unknown matched CPU as unavailable CPU rather than filtering it into a full comparison
+ok 85 - ABBA preserves unknown matched CPU as unavailable CPU rather than filtering it into a full comparison
+  ---
+  duration_ms: 0.0981
+  type: 'test'
+  ...
+# Subtest: ABBA preserves nonfinite matched CPU as unavailable CPU rather than filtering it into a full comparison
+ok 86 - ABBA preserves nonfinite matched CPU as unavailable CPU rather than filtering it into a full comparison
+  ---
+  duration_ms: 0.123
+  type: 'test'
+  ...
+# Subtest: ABBA preserves negative matched CPU as unavailable CPU rather than filtering it into a full comparison
+ok 87 - ABBA preserves negative matched CPU as unavailable CPU rather than filtering it into a full comparison
+  ---
+  duration_ms: 0.1057
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare ABAB order instead of the frozen ABBA
+ok 88 - ABBA does not compare ABAB order instead of the frozen ABBA
+  ---
+  duration_ms: 0.1724
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare only a two-observation smoke
+ok 89 - ABBA does not compare only a two-observation smoke
+  ---
+  duration_ms: 0.3527
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare extra unmatched observation
+ok 90 - ABBA does not compare extra unmatched observation
+  ---
+  duration_ms: 0.3196
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare duplicate artifact tag
+ok 91 - ABBA does not compare duplicate artifact tag
+  ---
+  duration_ms: 0.2169
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare wall duration unavailable
+ok 92 - ABBA does not compare wall duration unavailable
+  ---
+  duration_ms: 0.2002
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare wall duration nonfinite
+ok 93 - ABBA does not compare wall duration nonfinite
+  ---
+  duration_ms: 0.1865
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare negative wall duration
+ok 94 - ABBA does not compare negative wall duration
+  ---
+  duration_ms: 0.6003
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare sample probe identity differs from receipt
+ok 95 - ABBA does not compare sample probe identity differs from receipt
+  ---
+  duration_ms: 0.3256
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare source configuration differs
+ok 96 - ABBA does not compare source configuration differs
+  ---
+  duration_ms: 0.2028
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare solver input material revision differs
+ok 97 - ABBA does not compare solver input material revision differs
+  ---
+  duration_ms: 0.1617
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare solver input seed-like unknown property differs
+ok 98 - ABBA does not compare solver input seed-like unknown property differs
+  ---
+  duration_ms: 0.1602
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare original source budget changed
+ok 99 - ABBA does not compare original source budget changed
+  ---
+  duration_ms: 0.2161
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare frame count differs
+ok 100 - ABBA does not compare frame count differs
+  ---
+  duration_ms: 0.1682
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare channel count differs
+ok 101 - ABBA does not compare channel count differs
+  ---
+  duration_ms: 0.15
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare control failed despite advertised qualification
+ok 102 - ABBA does not compare control failed despite advertised qualification
+  ---
+  duration_ms: 0.1005
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare source control action was never observed
+ok 103 - ABBA does not compare source control action was never observed
+  ---
+  duration_ms: 0.2172
+  type: 'test'
+  ...
+# Subtest: ABBA does not compare context failed to close
+ok 104 - ABBA does not compare context failed to close
+  ---
+  duration_ms: 0.1937
+  type: 'test'
+  ...
+# Subtest: valid source controls at two actual rates still cannot become a same-rate overhead comparison
+ok 105 - valid source controls at two actual rates still cannot become a same-rate overhead comparison
+  ---
+  duration_ms: 0.5603
+  type: 'test'
+  ...
+# Subtest: two valid budget-pressure outcomes with different admission counts are distinct workloads
+ok 106 - two valid budget-pressure outcomes with different admission counts are distinct workloads
+  ---
+  duration_ms: 0.5835
+  type: 'test'
+  ...
+# Subtest: reference and provisional carrier results remain separate groups
+ok 107 - reference and provisional carrier results remain separate groups
+  ---
+  duration_ms: 0.6526
+  type: 'test'
+  ...
+# Subtest: ABBA contains null samples
+ok 108 - ABBA contains null samples
+  ---
+  duration_ms: 0.7421
+  type: 'test'
+  ...
+# Subtest: ABBA contains non-array samples
+ok 109 - ABBA contains non-array samples
+  ---
+  duration_ms: 0.2564
+  type: 'test'
+  ...
+# Subtest: continuous control workload cannot qualify with activeVoices=0 after capture in on mode
+not ok 110 - continuous control workload cannot qualify with activeVoices=0 after capture in on mode
+  ---
+  duration_ms: 1.1497
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: continuous control workload cannot qualify with activeSources=0 after capture in on mode
+not ok 111 - continuous control workload cannot qualify with activeSources=0 after capture in on mode
+  ---
+  duration_ms: 0.6705
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: continuous control workload cannot qualify with activePaths=0 after capture in on mode
+not ok 112 - continuous control workload cannot qualify with activePaths=0 after capture in on mode
+  ---
+  duration_ms: 0.9242
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: continuous control workload cannot qualify with activeVoices=0 after capture in off mode
+not ok 113 - continuous control workload cannot qualify with activeVoices=0 after capture in off mode
+  ---
+  duration_ms: 1.3144
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: continuous control workload cannot qualify with activeSources=0 after capture in off mode
+not ok 114 - continuous control workload cannot qualify with activeSources=0 after capture in off mode
+  ---
+  duration_ms: 0.8931
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: continuous control workload cannot qualify with activePaths=0 after capture in off mode
+not ok 115 - continuous control workload cannot qualify with activePaths=0 after capture in off mode
+  ---
+  duration_ms: 0.7853
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:462:71'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:466:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: on-mode primary admission must actually advance the onset counter
+not ok 116 - on-mode primary admission must actually advance the onset counter
+  ---
+  duration_ms: 1.0838
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:469:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:473:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled source starts from the same fresh zero-voice endpoint
+not ok 117 - controlled source starts from the same fresh zero-voice endpoint
+  ---
+  duration_ms: 1.4166
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:475:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:481:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled main-stall executed after the PCM window cannot qualify despite coherent counters
+not ok 118 - controlled main-stall executed after the PCM window cannot qualify despite coherent counters
+  ---
+  duration_ms: 1.4152
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:483:102'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:498:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled late-onset executed after the PCM window cannot qualify despite coherent counters
+not ok 119 - controlled late-onset executed after the PCM window cannot qualify despite coherent counters
+  ---
+  duration_ms: 0.619
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:483:102'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:498:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled stale-frame executed after the PCM window cannot qualify despite coherent counters
+not ok 120 - controlled stale-frame executed after the PCM window cannot qualify despite coherent counters
+  ---
+  duration_ms: 0.4372
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:483:102'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:498:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled path-churn executed after the PCM window cannot qualify despite coherent counters
+not ok 121 - controlled path-churn executed after the PCM window cannot qualify despite coherent counters
+  ---
+  duration_ms: 0.4464
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:483:102'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:498:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: controlled voice-path-budget executed after the PCM window cannot qualify despite coherent counters
+not ok 122 - controlled voice-path-budget executed after the PCM window cannot qualify despite coherent counters
+  ---
+  duration_ms: 0.7827
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:483:102'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:498:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a control operation ending after the saved wall window is independently invalid
+not ok 123 - a control operation ending after the saved wall window is independently invalid
+  ---
+  duration_ms: 0.7384
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\attribution-metrics.spec.mjs:500:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejectedControl (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:198:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/attribution-metrics.spec.mjs:507:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..123
+# tests 123
+# suites 0
+# pass 108
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1158.4615

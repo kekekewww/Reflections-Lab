@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "kind": "CURRENT_PRODUCT_FINDINGS_AND_VERSIONED_RETEST_INDEX",
+  "recordedAt": "2026-11-02T15:01:00.634Z",
+  "status": "FINITE_PRODUCT_UI_QUALITY_AND_LOCAL_MAIN_COMPLETE_NATIVE_METHOD_EXTERNALLY_BLOCKED",
+  "sourceCommit": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+  "entry": "index-Nm7oRfzL.js",
+  "entrySha256": "baf2542885944b5becf2138fa40e13831d04a1ce7dc1b9f03d3a845d6731706a",
+  "previousInterim": {
+    "path": "docs/15-ui-parameter-audit/ACTIVE_FINDINGS_20261102.json",
+    "sha256": "3a52697194cbc7225077ea1fff9de83a2c5f5b507d40ee8cac33dfd48d2a78ac"
+  },
+  "findings": [
+    {
+      "id": "MONITOR-PREENABLE-PREFS",
+      "repairCommit": "f6abb936a8c7c87ff8eb5e6587260b837e6b67ae",
+      "status": "FIXED_WITH_VERSIONED_REAL_DOM_AND_RENDER_MANIFEST",
+      "result": "Before audio enable, visible gain preferences silently no-op. Desired preferences are now retained; actual -40dB exports monitorGain0.01; reverb actual pointer true and Space false verified.",
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md",
+          "sha256": "42505e2ef714eae487dcfbb4736604e519dd3e2ac268a97909fec4df30542dd8"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/attempts/final-9fcf3f0-01/02-monitor-reverb-cross-receipt.json",
+          "sha256": "d675b6887c14b28da507cbc268781bedc52343193fbd9baf71da3c9a294d27eb"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/attempts/final-9fcf3f0-01/02-min-tail-receipt.json",
+          "sha256": "d32e4a621480f3d372f2704a2a3b25e9784e2b13883c39c4a5998636d14ea171"
+        }
+      ]
+    },
+    {
+      "id": "CAMERA-TRANSFORM-GESTURE-OWNERSHIP",
+      "repairCommit": "5360cfd697bb3bb9aaa485404f56bee309a076b2",
+      "status": "FIXED_WITH_VERSIONED_INTERACTION_UI",
+      "result": "Alt-camera/gizmo gesture ownership and held gentle-place corrected; later lostcapture and ref retirement fixes retained. Broader59family evidence and last49 selected regressions have separately pinned versions.",
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/REPORT.md",
+          "sha256": "f3b90e9b7c0e9a1cf096e27e4ea2048123c2566dd2686f4bacb0bf87c5bc9f21"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/FAMILY_COVERAGE.json",
+          "sha256": "1ca206d324cd211e46ac8877ab29e5a9ca813080533141e40feb52b95a1da02f"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/FINAL_RECEIPT.json",
+          "sha256": "8901810e6bc90af77e95a632229d67b33e3f38e63217a650309b5db0d3371812"
+        }
+      ]
+    },
+    {
+      "id": "REPLAY-SEEK-END-RECORD-STALE-FRAME",
+      "repairCommit": "f095fca",
+      "status": "FIXED_WITH_REAL_DOM_FLOW_AND_LIFECYCLE_TESTS",
+      "result": "Seek before playback and natural-end stale replayFrame corrected; versioned probes and later final public events workflow retained with original FAIL.",
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/seek-before-replay-receipt.json",
+          "sha256": "1905d24e0782b48a884be5fe4cbdf866c11a3f3bf842a2f46132d10622b22271"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/natural-replay-end-receipt.json",
+          "sha256": "441f9cac9994623a41dde25b0d741a7478b7578b0c0302755b98d88bc27bcf75"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/REPORT.md",
+          "sha256": "6db79c496d915139b27cce5a9e5ed8c72ce24498edb82764962271e34940806e"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/finalized-receipt.json",
+          "sha256": "625181c083a8b36031b12fc5cde03b290c209fb2fea6726e113d691acc7d0a74"
+        }
+      ]
+    },
+    {
+      "id": "PROJECT-ENVIRONMENT-PERSISTENCE",
+      "repairCommit": "a10b7419908ecd88fd26d96dc354ca5659796986",
+      "status": "FIXED_WITH_FOUR_REAL_DOM_CASES",
+      "result": "vacuum35.5 save/reload no longer becomes air20; save/load/reload, exact Project export/import and legacy defaults have actual a10 receipts; not relabelled501 reruns.",
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+          "sha256": "7a60eaac81f51b4df62662b001248b3d63f3508e411a30d7b511c3a1910881ca"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+          "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7"
+        }
+      ]
+    },
+    {
+      "id": "VISIBLE-UNSUPPORTED-CAPABILITIES",
+      "repairCommit": null,
+      "status": "IMPLEMENTED_WITH_VERSIONED_REAL_DOM_AND_FINAL_COMBINED",
+      "result": "Zone authoring/real enter-exit, sphere/capsule material and roles, real snapshot dynamic reflections are implemented. Six9fcZonecases and eight49curvegroups, then final501 combined180ticks/dynamicpaths/5WAV evidence are separately pinned.",
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ZONE_UI_FINAL_RECONCILIATION_20261102.json",
+          "sha256": "ae3d7b246cd713b7ec60b91b98a8bae960880d6a6bc34dc18431ab337a172d90"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/CURVED_PARAMETER_FINAL_49bde82.json",
+          "sha256": "39fc74819d5963f27ed4bfca82d0418772e16528d0361ff90daa9ac294190e43"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/TAIL_COMBINED_5010685_RECONCILIATION_20261102.json",
+          "sha256": "ec8efe4e415feb0e191760247d525d3cc3768dc89d7d0702f15bae2dc82e4362"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/12-final-integrated-ui-audio-verification.json",
+          "sha256": "fb5ec0635e0d043b3d849ec8de291d71696a9b2bc6a382e63e4fbbc39bab96fa"
+        }
+      ]
+    },
+    {
+      "id": "IMMUTABLE-EXPORT-PERSIST-BUSY",
+      "repairCommit": "253852f",
+      "status": "FIXED_WITH_REAL_PUBLIC_UI_EXPORT",
+      "result": "Sealed immutable artifact export is handled read-only during persistence busy without TRANSACTION_BUSY; Save feedback corrected. New public fullflow downloads succeed and final501 recording/project/audio downloads are independently byte-checked.",
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/REPORT.md",
+          "sha256": "6db79c496d915139b27cce5a9e5ed8c72ce24498edb82764962271e34940806e"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/events/final-49bde82-01/finalized-receipt.json",
+          "sha256": "625181c083a8b36031b12fc5cde03b290c209fb2fea6726e113d691acc7d0a74"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/TAIL_COMBINED_5010685_RECONCILIATION_20261102.json",
+          "sha256": "ec8efe4e415feb0e191760247d525d3cc3768dc89d7d0702f15bae2dc82e4362"
+        }
+      ]
+    },
+    {
+      "id": "FPS-RECORD-PLACEMENT-AWAIT-RACE",
+      "repairCommit": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+      "status": "FIXED_WITH_TARGETED_AND_LATER_PUBLIC_CAPTURE",
+      "result": "Record now aborts pending placement before async prerequisites while retaining pause/resume/replay guards; targeted34 and subsequent fullruntime/browser scopes remain separate.",
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_49BDE82_RECONCILIATION.json",
+          "sha256": "6a80423e9423afa90c5c4d1cf2cbd55a254ed15d3d911a964fb880b6bf4f6336"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/REPORT.md",
+          "sha256": "f719f60f0ca7a106ad2b4ad750b5e775c391394172b9d2e39de34f9ab3015007"
+        }
+      ]
+    },
+    {
+      "id": "CONTROLLED-SHORT-TAKE-WALL-CLOCK-DEBT",
+      "repairCommit": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+      "status": "FIXED_WITH_REAL_RETEST",
+      "result": "After natural overload Stop5ticks, a fresh public3s capture records180 contiguousticks6..185 and can replay. Exactlyone controlled fixed tick does not add, consume or clear wall-clock debt; ordinary overload/discard and exact-step guards remain.",
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/controlled-capture-clock/REPORT.md",
+          "sha256": "df11cdc6194f43f02ed1875256ba06edfdf0c91bf5736bc9844bbce15a0223b1"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CONTROLLED_CLOCK_UI_RETEST_9FCF3F0_20261102.json",
+          "sha256": "86abad1b1dfacb80eb20da36ab4a9e13b5891dc76ce82a8a172950eb5c85aae2"
+        }
+      ]
+    },
+    {
+      "id": "TAIL-INVALID-RAW-DRAFT-INTENT",
+      "repairCommit": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+      "status": "FIXED_WITH_REAL_501_FOCUSED_RETEST",
+      "result": "Invalid10.5/10.50/blank drafts block Generate and retain prior output; Escape restores0; valid.25 and10 render3.25s and13s with exact tailframes. Native spinner step is not domain quantization.",
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/tail-validation/REPORT.md",
+          "sha256": "5512b58588f5e5d2edad6d588db23499c8395e3988e14f2613aa7ae09d0e106e"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/tail-validation/attempts/final-5010685-01/tail-validation-receipt.json",
+          "sha256": "88bd2f41751e2084357d2f7950ab13d554197f481404d7c3d690388820a6e441"
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    "Task0023 onlyliteralAC04 nativeprojectoperation/export blockedbyURLpolicy; actualDOM/digital5WAVPASS separate.",
+    "Claudeindependentrevalidation/adjustment thenhumannewfeatureobservation nextstage, notpreviousprerequisite.",
+    "R21brokeralivejobsunknown/Cprimaryattachment retained; broaderoldV1/performance/science/device/livegates remain separately.",
+    "Task0022 historicalliteralR19AC06metadatareconcile, notbasicmanualretestprerequisite."
+  ],
+  "limits": [
+    "Each report/raw keeps its original source and execution method; not every scope was rerun on501.",
+    "This is an evidence index/read synthesis, not a new browser/test execution.",
+    "Pre-master float outputs may exceed+/-1; Stage12 measures exact manifestcounts without normalization; historyIncomplete true all5 remains.",
+    "FullV1/science/hearing/device/600secondperformance/Meta live not inferred; no paidAPI/push/deployment."
+  ],
+  "finiteUiJoin": {
+    "families": 217,
+    "evidencedFiniteFamilies": 217,
+    "pendingFamilies": 0,
+    "helpCallerSites": 71,
+    "publicReachableCallerPass": 68,
+    "unobservedConditions": 3,
+    "evidence": {
+      "path": "docs/15-ui-parameter-audit/evidence/HELP_FINAL_ROOT_RECONCILIATION.json",
+      "sha256": "061a0b39948a2797b339ebc4de6e9cb1b3882033be96b25d3c022d7ab5e01ef8"
+    }
+  },
+  "nativeFinalReceipt": {
+    "path": "docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json",
+    "sha256": "d7dad0381b549c365fa7334efb78f996e681fc82ddfa40ad4648ba93dc404264"
+  },
+  "finalFullCheck": {
+    "path": "docs/15-ui-parameter-audit/evidence/FINAL_FULL_CHECK_FAD14CC_20261102.json",
+    "sha256": "2800f30c1e6c502af7ebbb8b6202d87905e89e2fbc0aa7cc0f6db611ff3ba6de",
+    "exitCode": 0,
+    "observedHead": "fad14cc6ae4a521c23876e3833200e3d8e98a4c8",
+    "product": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+    "runtime": {
+      "tests": 1536,
+      "pass": 1536,
+      "fail": 0,
+      "skip": 0
+    },
+    "englishAtCheck": {
+      "required": 417,
+      "translated": 417,
+      "missing": 0,
+      "stale": 0,
+      "errors": 0,
+      "warnings": 15
+    }
+  },
+  "localMain": {
+    "path": "docs/15-ui-parameter-audit/evidence/MAIN_FIRST_FAST_FORWARD_20261102.json",
+    "sha256": "dc2e9b4b08d37d6d4ff41b95e0eb2ab78a86cab294f5e15ad46649145441b1a9",
+    "integrationCutoff": "fe663ca9f384d247bcd89b331936f6be202c761f",
+    "branch": "main",
+    "originalUntrackedExact": 129,
+    "preservedSnapshot": "4ba43781bebbe7f93e4c66075019cb1371befa35"
+  }
+}

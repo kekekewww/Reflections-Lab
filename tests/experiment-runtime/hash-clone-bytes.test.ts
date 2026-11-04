@@ -90,6 +90,14 @@ test("UTF-8 byte accounting distinguishes encoded bytes from JavaScript string l
   );
 });
 
+test("selected root-property bytes match the old encoder without another property traversal", () => {
+  const input = { frame: { label: 'requests🧪"' }, requests: [{ text: "聲音\n\ud800", z: -0 }] };
+  const result = immutableCloneWithByteLength(input, "requests");
+  assert.equal(result.propertyByteLength, baseline.canonicalBytes(input.requests));
+  assert.equal(result.byteLength, baseline.canonicalBytes(input));
+  assert.deepEqual(result.value, baseline.immutableClone(input));
+});
+
 test("new helper owns and deeply freezes its clone without freezing or retaining the input", () => {
   const input = { nested: { values: [1, { label: "原始" }] } };
   const result = immutableCloneWithByteLength(input);

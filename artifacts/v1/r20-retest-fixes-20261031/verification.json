@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "kind": "AGENT_REPAIR_VERIFICATION",
+  "recordedAt": "2026-10-31T12:34:43.132Z",
+  "scope": "Repairs for the five product issues found by the R20 automated retest (artifacts/v1/agent-retest-20261031/verification.json), plus defects found by three Codex review rounds of those repairs",
+  "executor": {
+    "mainThread": "Claude Code, claude-opus-5-5 (diagnosis, RED tests, implementation, review merge, docs)",
+    "adversarialReview": "Codex companion via Claude Code subagents; model gpt-6.1-sol, effort xhigh, read-only (no edits, servers, browsers or installs)"
+  },
+  "git": {
+    "branch": "claude/meta-hack-r18-handoff-d292c8",
+    "base": "4a905b1724992f6a85e6765392c4525ef6a344c7",
+    "state": "uncommitted working tree on the base at recording time; see the commit that adds this file for the exact source"
+  },
+  "fixes": [
+    {
+      "finding": "AGENT-RETEST-01",
+      "summary": "Parameterized runtime, interaction and recording messages now translate: catalogued status.template.* entries matched as anchored whole-message templates; a {detail} value is formatted recursively up to depth 4; unknown details keep the original-detail label",
+      "files": ["src/ui/locale-model.ts", "src/ui/locales/status.ts", "src/interaction/interaction-host.ts", "src/app/recording-host.ts"],
+      "regressions": ["src/ui/locale-model.test.ts: parameterized notices translate (incl. 20000-deep nesting)", "src/ui/locale-model.test.ts: every status literal in the three hosts has an English form"],
+      "red": "red-locale.txt"
+    },
+    {
+      "finding": "AGENT-RETEST-02",
+      "summary": "Interaction outcomes (fix/unfix, staged, enabled, gentle place, geometry acknowledgement failure) go through onNotice; while the live world waits they become the pause reason and expire once live time runs; replay keeps its own explanation",
+      "files": ["src/interaction/interaction-host.ts", "src/app/runtime.ts"],
+      "regressions": ["tests/app/interaction-outcome-status.test.ts: freeze outcome; placement and activation outcomes"],
+      "red": "red-interaction-outcome.txt"
+    },
+    {
+      "finding": "AGENT-RETEST-03",
+      "summary": "B entering build mode starts the same box placement preview as the HUD control (createBuildDraft option); leaving build mode drops an unconfirmed preview",
+      "files": ["src/interaction/interaction-host.ts", "src/interaction/types.ts", "src/app/runtime.ts"],
+      "regressions": ["tests/app/interaction-outcome-status.test.ts: B starts the same placement preview and leaving build drops it"],
+      "red": "red-interaction-outcome.txt"
+    },
+    {
+      "finding": "AGENT-RETEST-04",
+      "summary": "Spheres and capsules stay outside the box-only acoustic geometry; the Inspector disables their surface material and acoustic role and shows a visible note linked by aria-describedby",
+      "files": ["src/ui/Inspector.tsx", "src/ui/locales/inspector.ts"],
+      "regressions": ["tests/browser/ui-refined-v2.spec.ts: curved bodies state that they take no part in geometric acoustics; boxes stay editable"],
+      "red": "red-curved-acoustic-note.txt",
+      "abandonedApproach": "An inscribed-box occluder proxy for spheres/capsules (with a solver version bump) was implemented test-first (red-acoustic-shapes.txt) and reverted before any commit: tests/app/active-rule-view.test.ts (105 objects) failed with 'Complete acoustic geometry exceeds the surface budget' and tests/app/recording-processor.test.ts asserts curved bodies stay out of the geometry; adding per-frame solver work on top of the retained R17 performance FAIL was also rejected. No existing test was changed for it."
+    },
+    {
+      "finding": "AGENT-RETEST-05",
+      "summary": "The R3F canvas fallback text is aria-hidden without role=alert, so Chrome no longer exposes 'WebGL unavailable' to assistive technology while WebGL works; CanvasBoundary still announces real failures",
+      "files": ["src/ui/Viewport.tsx"],
+      "regressions": ["tests/browser/ui-refined-v2.spec.ts: the WebGL-unavailable fallback stays out of the accessibility tree (CDP Accessibility.getFullAXTree)"],
+      "red": "red-webgl-fallback.txt"
+    }
+  ],
+  "adversarialReview": [
+    {
+      "round": 1,
+      "confirmed": "3 MINOR: a paused-time outcome outlived a later pause and recording start; a replay-time refusal replaced the replay explanation; unbounded detail recursion",
+      "outcome": "fixed: pausedInteractionNotice expiry in publish(), replay excluded from pause-reason routing, MAX_DETAIL_DEPTH 4 with top-level-only caching; RED in red-review-round1.txt"
+    },
+    {
+      "round": 2,
+      "confirmed": "2 MINOR: recording start (and, as the deterministic test showed, run) cleared pauseReason after awaiting audio, erasing a pause that landed meanwhile; a replay-time refusal reappeared after returning to live time",
+      "outcome": "fixed: the reason is cleared right after time resumes, before any await, in run (live and replay) and recording start; replay-time messages also expire once live time runs; RED in red-review-round2.txt"
+    },
+    {
+      "round": 3,
+      "confirmed": "none; both round-2 items RESOLVED (reproduced); Proxy audio stub judged non-vacuous",
+      "outcome": "no change"
+    }
+  ],
+  "gates": [
+    {
+      "command": "TSX_DISABLE_CACHE=1 node --import tsx --test src/ui/*.test.ts src/ui/viewport/*.test.ts tests/app/fps-entry-race.test.ts tests/interaction-runtime/*.test.ts",
+      "result": "137 pass / 0 fail (R19: 135)"
+    },
+    {
+      "command": "TSX_DISABLE_CACHE=1 node --import tsx --test tests/audio-runtime/*.test.ts tests/app/*.test.ts",
+      "result": "445 pass / 0 fail (R19: 437)"
+    },
+    {
+      "command": "npm run test:runtime",
+      "result": "1029 pass / 0 fail (R19: 1019)"
+    },
+    {
+      "command": "node tests/browser/build-ui-preview.mjs && npx playwright test --config tests/browser/ui-refined-v2.config.ts",
+      "result": "37 passed (35 + 2 new)"
+    },
+    {
+      "command": "npx playwright test --config tests/browser/pointerlock-race.config.ts",
+      "result": "2 passed"
+    },
+    {
+      "command": "npx playwright test --config tests/browser/linked-workflow-v2.config.ts",
+      "result": "8 passed"
+    },
+    {
+      "command": "npm run test:browser:physics",
+      "result": "2 passed"
+    },
+    {
+      "command": "npm run test:browser:storage",
+      "result": "5 passed; archive artifacts/v1/storage-browser-20261031121423854 (untracked)"
+    },
+    {
+      "command": "node tests/browser/build-product-preview.mjs && node tests/browser/run-product-refined-v3.mjs",
+      "result": "4 passed; sourceMatchesBuildAtStart, sourceStableDuringRun, bundleStableDuringRun all true; archive artifacts/v1/product-e2e-chrome-20261031T121446Z (untracked)"
+    },
+    {
+      "command": "npm run test:browser:ui (legacy ui.spec)",
+      "result": "5 passed / 8 failed, same as baseline a5f2a90 and R19"
+    },
+    {
+      "command": "npm run test:browser:product (legacy product-e2e.spec)",
+      "result": "4 failed, same as baseline a5f2a90 and R19; archive moved to the session scratchpad"
+    },
+    {
+      "command": "npm run check (first final attempt)",
+      "result": "exit 1 in test:wiki: 2 tests hit Windows EPERM renaming temp files under .cache; npm run test:wiki then passed 54/54 twice; see finalCheck for the full rerun"
+    }
+  ],
+  "exploratoryRerun": "cd .cache/agent-retest && SPEC=<b1,b4,b5,b7,b9,b11,b12>.spec.ts npx playwright test --config pw.config.ts: all 7 specs passed; 60 step entries: 44 PASS, 16 NOTE, 0 FAIL. B5.4 freeze outcome shown and cleared after Enter; B5.5a B key gives a valid box preview; B7.3 box blocks the direct path, sphere does not (documented); B9.1 recorded 9.58 s in 15.8 s wall time with 6 workload pauses (earlier the same day 0.82 s in 6.1 s; cause of the variation not determined); remaining NOTEs are the exploratory script still checking the procedure wording that this round corrected",
+  "existingTestsChanged": "none; new tests only (8 runtime, 2 locale, 2 browser)",
+  "preservedArchives": "Legacy product-e2e failure archives produced by today's runs (4 expected failures each, identical to baseline a5f2a90) were moved to the session scratchpad preserved-run-archives, as in R19, because their error-context.md files enter the English inventory; nothing was deleted",
+  "notFixed": [
+    "Headless recording repeatedly pauses for the fixed-step workload limit (AGENT-RETEST-06): 0.82 s recorded in 6.1 s wall time earlier on 2026-10-31, 9.58 s in 15.8 s with 6 pauses in the final rerun; cause of the variation not determined; consistent with the retained R17 performance FAIL; not changed",
+    "A recording start dispatched just before a window blur still resumes time after the blur (blur does not cancel an in-flight recording start); pre-existing, found while writing the round-2 regression, not changed",
+    "Explanatory text from AI proposals and experiment tools is not yet catalogued for English"
+  ],
+  "notRun": ["human Pointer Lock and physical keyboard/mouse", "listening", "Hi-x65 / D3V device listening", "600-second performance profile", "native accessibility runner", "Meta live"],
+  "finalCheck": "npm run check is run after the Wiki ingest that pins this file; its receipt is artifacts/v1/r20-retest-fixes-20261031/npm-run-check.txt, recorded in the R20 Wiki handoff and RLAB-TASK-0022 evidence, so this pinned record does not go stale",
+  "limitations": "All browser evidence is headless Chrome with synthetic input; RLAB-TASK-0022 AC-06 (human retest) stays open"
+}

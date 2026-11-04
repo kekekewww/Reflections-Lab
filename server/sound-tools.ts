@@ -155,7 +155,20 @@ export function createMetaSoundFunctionTools(): unknown[] {
 /** Removes null only where the original schema explicitly made a property optional. */
 export function decodeSoundOperations(input: unknown): SoundBehaviorOperation[] {
   assertBoundedJson(input, 256 * 1024);
-  if (!validateStrict(input))
+  const compatibleInput = structuredClone(input);
+  const upgradeLegacyTrigger = (value: unknown): void => {
+    if (Array.isArray(value)) {
+      for (const child of value) upgradeLegacyTrigger(child);
+      return;
+    }
+    if (!value || typeof value !== "object") return;
+    const node = value as Record<string, unknown>;
+    if (node.kind === "discrete" && typeof node.type === "string" && !Object.hasOwn(node, "zoneId"))
+      node.zoneId = null;
+    for (const child of Object.values(node)) upgradeLegacyTrigger(child);
+  };
+  upgradeLegacyTrigger(compatibleInput);
+  if (!validateStrict(compatibleInput))
     throw new AgentError(
       "SCHEMA_INVALID",
       "Meta Sound參數不符合strict tool契約。",
@@ -188,7 +201,7 @@ export function decodeSoundOperations(input: unknown): SoundBehaviorOperation[] 
     }
     return value;
   };
-  const decoded = restore(originalArguments, input);
+  const decoded = restore(originalArguments, compatibleInput);
   if (!validateOriginal(decoded))
     throw new AgentError(
       "SCHEMA_INVALID",

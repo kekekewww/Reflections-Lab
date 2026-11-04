@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  // Keep caches local when worktrees share installed dependencies.
+  cacheDir: ".cache/vite",
   // Browser evidence profiles may contain unrelated HTML; scan only the app entry.
   optimizeDeps: { entries: ["index.html"] },
   server: {

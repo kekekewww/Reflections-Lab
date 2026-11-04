@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/agent/propose**", (route) => route.abort("blockedbyclient"));
   await page.route("https://api.meta.ai/**", (route) => route.abort("blockedbyclient"));
   await page.goto("/");
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
   await expect.poll(() => page.evaluate(() => !!window.__reflectionLab)).toBe(true);
   await page.getByRole("combobox", { name: locale, exact: true }).selectOption("en");
 });
@@ -24,7 +24,7 @@ test("actual canvas object picking shares stable ID with Explorer and Inspector 
   await page.getByRole("button", { name: "Frame selection", exact: true }).click();
   await objectButton(page, "speaker").click();
   // The observer remains framed on ball: click the real rendered sphere, not a runtime selection command.
-  const box = await page.locator("canvas").boundingBox();
+  const box = await page.locator(".viewport-canvas-wrap canvas").boundingBox();
   expect(box).not.toBeNull();
   await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
   await expect.poll(async () => (await snapshot(page)).selectedObjectId).toBe("ball");
@@ -101,7 +101,7 @@ test("actual solver paths link table and canvas by stable ID and disclose units 
   );
   // Projection uses the documented actual default camera, measured canvas bounds and real solver vertices.
   // The click is delivered to the canvas through Playwright. No R3F/DOM/selection handler is invoked directly.
-  const bounds = await page.locator("canvas").boundingBox();
+  const bounds = await page.locator(".viewport-canvas-wrap canvas").boundingBox();
   const camera = new PerspectiveCamera(50, bounds!.width / bounds!.height, 0.05, 250);
   camera.position.set(8, 6, 10);
   camera.lookAt(0, 1, 0);
@@ -176,6 +176,9 @@ test("real unavailable propagation preserves path identity and null metrics with
     window.__reflectionLab!.dispatch({ type: "setAtmosphere", medium: "vacuum" }),
   );
   await expect(page.locator(".path-table")).toHaveCount(0);
+  // Removing old paths also happens in pending. Wait for the actual worker result
+  // before asserting its unavailable state and null metrics.
+  await expect.poll(async () => (await snapshot(page)).acoustic.state).toBe("unavailable");
   expect((await snapshot(page)).acoustic.state).toBe("unavailable");
   await expect(page.locator(".paths-panel")).toContainText(/vacuum/i);
   await expect(page.locator(".paths-panel")).not.toContainText("No paths to display yet");

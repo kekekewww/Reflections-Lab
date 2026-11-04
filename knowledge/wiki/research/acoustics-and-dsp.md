@@ -4,7 +4,7 @@ title: 聲學與DSP綜合知識
 type: research
 status: VERIFIED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-26T17:54:59.738Z
+updated_at: 2026-11-02T09:45:40.484Z
 sources:
   - RLAB-SRC-0006
   - RLAB-SRC-0007
@@ -13,8 +13,13 @@ sources:
   - RLAB-SRC-0009
   - SB-SRC-0002
   - SB-SRC-0001
+  - CG-DATA-CONTRACTS-20261102-V1
+  - CG-ACOUSTIC-VALIDATION-20261102-V1
+  - CG-EVIDENCE-LEDGER-20261102-V1
 related_tasks:
   - RLAB-TASK-0001
+  - RLAB-TASK-0030
+  - RLAB-TASK-0028
 related_decisions: []
 supersedes: []
 tags:
@@ -23,6 +28,9 @@ tags:
   - DSP
   - research
 ---
+
+
+
 
 # 聲學／DSP：可追溯結論與實作界線
 
@@ -39,3 +47,8 @@ tags:
 
 
 Sound研究把發聲內容與傳播分開，Web Audio生命周期／Worklet block新claims SB-AUD-C01/02為DOC/SPEC review，不是audio實測；新Ledger68sources/66claims，原Phase1數量保留歷史。Physical-inspired sample屬perceptual，不是自然振動。參見[來源與限制](interactive-sound-design.md)。
+
+
+## Curves/動態反射正式來源接續（b4 candidate）
+
+Curves7bb已正常mergea06，後續gizmo sourceb4；Root全程式check/最終UI仍進行。正式DataContracts／AcousticValidation／Ledger已用新source接續，舊exactGit原版存docs15/history，原研究/Task0021證據不回寫。新增解析sphere/capsule與真snapshot dynamicReflector、共同256budget，105objects例289項真FAIL後以exactOBB遮蔽物表示為124，未改fixture/cap。模型/政策pins與舊Replay/新重評相容性見[模型契約](../../../docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md)，curvature focusing/fullwave等未建模不冒科學/性能PASS。

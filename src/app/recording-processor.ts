@@ -1,5 +1,7 @@
+import { hasCurrentEmitterGeometryPolicy } from "../capabilities/emitter-geometry-policy.js";
 import type { SoundBehaviorDocument } from "../../schemas/sound-behavior/types.js";
 import { solveAcoustics } from "../acoustics/index.js";
+import { acousticSceneSolverVersion } from "../capabilities/acoustic-geometry.js";
 import type { AcousticMaterial, Atmosphere, SolverBudget } from "../acoustics/types.js";
 import { createBehaviorRuntime } from "../audio-behavior/index.js";
 import type {
@@ -17,6 +19,7 @@ import type { RecordingConfiguration, RecordingFrame } from "../experiments/type
 import { createScene } from "../scene/index.js";
 import type { SceneSpec } from "../scene/types.js";
 import { buildAcousticRequests } from "./acoustic-input.js";
+import { behaviorAcousticSource } from "./behavior-acoustic-source.js";
 import type { AcousticSourceInput } from "./acoustic-input.js";
 import { makeBehaviorContext } from "./defaults.js";
 
@@ -86,6 +89,32 @@ export class RecordingProcessor {
         "CAPABILITY_UNSUPPORTED",
         "重評需要明確的 scene、behavior、atmosphere 與 material registry。",
       );
+    if (
+      baseline &&
+      canonicalStringify(baseline.sceneSnapshot.zones ?? []) !==
+        canonicalStringify((changes.sceneSnapshot as SceneSpec).zones ?? [])
+    )
+      throw new RecordingError(
+        "ZONE_REGISTRY_CHANGED",
+        "區域配置變更需要fresh physics run；不能沿用原區域進出事件重評。",
+      );
+    if (
+      !baseline &&
+      (((changes.sceneSnapshot as SceneSpec).zones?.length ?? 0) > 0 ||
+        inputFrame.events.some((event) => event.source === "zone"))
+    )
+      throw new RecordingError(
+        "ZONE_BASELINE_REQUIRED",
+        "區域事件重評需要原始配置以核對固定區域registry。",
+      );
+    if (
+      !hasCurrentEmitterGeometryPolicy(changes.behaviorConfig, changes.solverConfig) ||
+      (baseline && !hasCurrentEmitterGeometryPolicy(baseline.behaviorConfig, baseline.solverConfig))
+    )
+      throw new RecordingError(
+        "CAPABILITY_UNSUPPORTED",
+        "固定或區域音源需要明確的新遮蔽政策；舊錄製仍可原樣重播，請重新錄製後比較。",
+      );
     const signature = canonicalStringify({ changes, baseline: baseline ?? null });
     const savedState =
       record(captured.runtimeSnapshot) && record(captured.runtimeSnapshot.state)
@@ -121,6 +150,11 @@ export class RecordingProcessor {
     let run = this.run;
     if (!run || run.id !== changes.runId) {
       const scene = createScene(changes.sceneSnapshot);
+      if (baseline && baseline.backendVersion !== acousticSceneSolverVersion(scene))
+        throw new RecordingError(
+          "CAPABILITY_UNSUPPORTED",
+          "曲面或動態反射重評需要相同的新模型基準；舊錄製可原樣重播，請先重新錄製再比較。",
+        );
       // Use the captured generation verbatim. A current authoring binding for a
       // different generation must fail validation rather than being reconciled.
       const context = makeBehaviorContext(scene, inputFrame.objects, this.options.getAssets());
@@ -274,11 +308,7 @@ export class RecordingProcessor {
             (instance) =>
               [
                 instance.instanceId,
-                {
-                  id: instance.instanceId,
-                  objectId: instance.objectId,
-                  positionM: instance.positionMetres,
-                },
+                behaviorAcousticSource(changes.behaviorConfig as SoundBehaviorDocument, instance),
               ] as const,
           ),
       );

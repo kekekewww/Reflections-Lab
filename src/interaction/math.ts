@@ -75,6 +75,13 @@ export function supportRadius(
     (Math.abs(dot(rotate([0, 0, 1], q), n)) * d[2]) / 2
   );
 }
+/** Radius of a sphere about the centre that holds the whole body; a box uses half its diagonal. */
+export function boundingRadius(object: SceneObject): number {
+  const d = object.dimensionsM;
+  if (object.shape === "sphere") return d[0] / 2;
+  if (object.shape === "capsule") return Math.max(d[0], d[1]) / 2;
+  return Math.hypot(...d) / 2;
+}
 export function surfaceRotation(normal: Vec3, yaw: number): Quaternion {
   const up: Vec3 = [0, 1, 0],
     n = normalize(normal),

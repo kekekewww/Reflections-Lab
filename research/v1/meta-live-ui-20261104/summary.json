@@ -1,0 +1,158 @@
+{
+  "scope": "Real muse-spark-1.3 request through the product UI in headless Chrome with software WebGL.",
+  "notVerified": [
+    "Listening by a person or on real audio hardware",
+    "A real GPU browser or real-time performance",
+    "Actual billing or remaining credit",
+    "Scene proposals and Meta-planned simulation runs"
+  ],
+  "prompt": "Raise the pitch of the ball's impact sound",
+  "replySeconds": 6.7,
+  "proposalMode": "live",
+  "proposalPreview": "聲音參數為創意設定，不代表量測聲壓或物件真實振動。\n解除Binding binding.interactive.ball\n將 ball 綁定至 profile.interactive-tone@1\nBinding覆寫 ball rule.impact：音高 +7 半音\nServer驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。",
+  "browserCalledMetaDirectly": false,
+  "consoleErrors": [],
+  "resumesOfDocumentedRecordingPauses": 20,
+  "requests": [
+    {
+      "httpStatus": 200,
+      "responseId": "chatcmpl-01a1a44d-5f5a-717e-be68-3a47d7ecb95b",
+      "modelId": "muse-spark-1.3",
+      "promptTokens": 5170,
+      "completionTokens": 464,
+      "estimatedUsd": 0.0084345,
+      "operations": [
+        "AssignBinding"
+      ],
+      "pitchSemitones": 12
+    },
+    {
+      "httpStatus": 200,
+      "responseId": "chatcmpl-01a1a44f-d608-7663-ab00-91e339e550d3",
+      "modelId": "muse-spark-1.3",
+      "promptTokens": 5209,
+      "completionTokens": 502,
+      "estimatedUsd": 0.00864475,
+      "operations": [
+        "RemoveBinding",
+        "AssignBinding"
+      ],
+      "pitchSemitones": 12
+    },
+    {
+      "httpStatus": 200,
+      "responseId": "chatcmpl-01a1a454-852b-73c9-b470-4db140c64ee7",
+      "modelId": "muse-spark-1.3",
+      "promptTokens": 5209,
+      "completionTokens": 484,
+      "estimatedUsd": 0.00856825,
+      "operations": [
+        "RemoveBinding",
+        "AssignBinding"
+      ],
+      "pitchSemitones": 7
+    }
+  ],
+  "requestOutcomes": [
+    "Request 1: valid function call; the local Host refused it with DUPLICATE_ID because the instructions did not yet state the remove-then-assign rule. Nothing was applied.",
+    "Request 2: valid proposal after the instruction fix (+12 semitones); the rehearsal script stopped before reading the applied result.",
+    "Request 3: the full rehearsal below, passed (+7 semitones)."
+  ],
+  "totalEstimatedUsd": 0.025647499999999997,
+  "behaviourRevision": {
+    "before": 0,
+    "after": 1
+  },
+  "ballBinding": {
+    "before": {
+      "bindingId": "binding.interactive.ball",
+      "objectId": "ball",
+      "objectGeneration": 2,
+      "profileId": "profile.interactive-tone",
+      "profileRevision": 1,
+      "enabled": true,
+      "overrides": []
+    },
+    "after": {
+      "bindingId": "binding.interactive.ball",
+      "objectId": "ball",
+      "objectGeneration": 2,
+      "profileId": "profile.interactive-tone",
+      "profileRevision": 1,
+      "enabled": true,
+      "overrides": [
+        {
+          "ruleId": "rule.impact",
+          "pitchSemitones": 7
+        }
+      ]
+    }
+  },
+  "takes": {
+    "frames": {
+      "before": 114,
+      "after": 112
+    },
+    "startTick": {
+      "before": 1,
+      "after": 1
+    },
+    "lastCommonTick": 112,
+    "posesIdenticalThroughLastCommonTick": true,
+    "physicsEventsIdenticalThroughLastCommonTickIgnoringPerRunIds": true,
+    "ballImpactStarts": {
+      "before": [
+        {
+          "tick": 51,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 0,
+          "gainLinear": 0.09281395792961122
+        },
+        {
+          "tick": 64,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 0,
+          "gainLinear": 0.04541013361527407
+        },
+        {
+          "tick": 93,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 0,
+          "gainLinear": 0.0717750317381527
+        },
+        {
+          "tick": 98,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 0,
+          "gainLinear": 0.031689063343583956
+        }
+      ],
+      "after": [
+        {
+          "tick": 51,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 7,
+          "gainLinear": 0.09281395792961122
+        },
+        {
+          "tick": 64,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 7,
+          "gainLinear": 0.04541013361527407
+        },
+        {
+          "tick": 93,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 7,
+          "gainLinear": 0.0717750317381527
+        },
+        {
+          "tick": 98,
+          "ruleId": "rule.impact",
+          "pitchSemitones": 7,
+          "gainLinear": 0.031689063343583956
+        }
+      ]
+    }
+  }
+}

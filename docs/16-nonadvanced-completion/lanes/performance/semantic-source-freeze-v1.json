@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "method": "native-raf-semantic-pilot-v1",
+  "status": "SOURCE_FROZEN_BROWSER_NOT_RUN",
+  "observedHeadBeforeCommit": "494d580d0865fd38bfcb5caa2a9896b225672ee3",
+  "source": [
+    {
+      "path": "tests/browser/performance-semantic-command-v1.mjs",
+      "sha256": "76cea89421f13e6c14d5a7774f1ebdc908d65625ff1d8dcc9f4ac01f2599ae67"
+    },
+    {
+      "path": "tests/browser/performance-deadline-v1.mjs",
+      "sha256": "acdbf3414fcfa16659f14e5fb4b356171fc970fde737759d2a407d05b53b705f"
+    },
+    {
+      "path": "scripts/agents/process-runner.mjs",
+      "sha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109"
+    },
+    {
+      "path": "tests/browser/performance-semantic-runner-v1.mjs",
+      "sha256": "1e9959f9f7576286af1178eed5184d52db200657949bb79fa9f9bedb75f1bba8"
+    },
+    {
+      "path": "tests/browser/performance-semantic-page-v1.mjs",
+      "sha256": "8f712452ba026711acb57ef07dd75631c02b552c0e4cbc4e37fbd8eddad28ab7"
+    },
+    {
+      "path": "tests/browser/performance-semantic-pilot-v1.html",
+      "sha256": "eb4b7d3d685dc8758c73ec03fdfb68fab4020a4105ecf5deb369584fc7255cfd"
+    },
+    {
+      "path": "tests/browser/performance-semantic-oracle-v1.mjs",
+      "sha256": "cb7e0e85481494c81a358ae6074b913847d902c4acc30d820251ffc1c26561f7"
+    },
+    {
+      "path": "tests/browser/performance-semantic-native-oracle-v1.mjs",
+      "sha256": "25e82f87ed64e8ce538bfde85b0a5b7a28974ef38832484d8c96f0b1bf9f295f"
+    },
+    {
+      "path": "tests/browser/performance-proof-v3.mjs",
+      "sha256": "41a17f0a28b06d647eb8e0c983d2a9059fe498c0421eae5cb1b9bc3b4f4909b0"
+    },
+    {
+      "path": "tests/browser/performance-native-v3.mjs",
+      "sha256": "3d7810c63edc309df6b306debe6417ed13d73b6e899a7950043439b787421782"
+    },
+    {
+      "path": "tests/browser/performance-numeric-formal-v3.mjs",
+      "sha256": "93e4005ab4fc93c110a7f39d8e5272434f5f6b92500ab98e9f0e4a96588913e4"
+    },
+    {
+      "path": "tests/browser/performance-stream-v3.mjs",
+      "sha256": "064b3071d350f9bc3dc4f39682a21c1f1e19f68fd3929a9c147551a149abeaab"
+    },
+    {
+      "path": "tests/browser/performance-owned-cleanup-v3.mjs",
+      "sha256": "cdfb742d0d2e5b64e8c62d65ddd186c5a8109896a53bdd6641878fc78224ad43"
+    },
+    {
+      "path": "tests/browser/performance-error-record-v3.mjs",
+      "sha256": "f7e1d1c0d27bf41440ef4cca65c7373d1aa3f47205032d2c701f51c070c2db5d"
+    },
+    {
+      "path": "tests/performance-v3/semantic-pilot.spec.mjs",
+      "sha256": "55a1cebcab06d2510c37f473487659309a2839e23c42cde15bcb0430e4d226cd"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "15a6ad3f0fb014f290925c16399b23b08a2d437e8598b9531e295281b6d4d844"
+    },
+    {
+      "path": ".node-version",
+      "sha256": "157c2eb0de1187ac028e89bcff580f1feab7eea2a280b110998c9472e19b4d98"
+    }
+  ],
+  "validation": [
+    {
+      "command": "node --test --test-concurrency=1 tests/performance-v3/semantic-pilot.spec.mjs",
+      "exitCode": 0,
+      "tests": 102,
+      "pass": 102,
+      "fail": 0,
+      "raw": "semantic-freeze-102-green-r2.tap"
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js <eight owned semantic files>",
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "raw": "semantic-lint-r6.txt"
+    },
+    {
+      "command": "node tests/browser/performance-semantic-command-v1.mjs --plan",
+      "exitCode": 0,
+      "raw": "semantic-command-plan-r2.json"
+    }
+  ],
+  "redEvidence": [
+    {
+      "raw": "semantic-boundary-cleanup-red-r1.tap",
+      "exitCode": 1,
+      "fail": 2,
+      "scope": "Missing deadline module and process outcome exports. Other guarded new assertions were not exercised until implementation."
+    }
+  ],
+  "limits": {
+    "operationMs": 45000,
+    "cleanupMs": 10000,
+    "sharedCleanupOperationsMs": 8000,
+    "receiptReserveMs": 2000,
+    "ownedChildWatchdogMs": 55000,
+    "maxCallbacks": 128,
+    "maxCompressedTraceBytes": 8388608,
+    "maxDecodedTraceBytes": 33554432,
+    "maxEvents": 200000
+  },
+  "independentSourceReview": {
+    "agent": "perf_evidence_audit",
+    "status": "NO_REMAINING_P1_SOURCE_REVIEW_ONLY",
+    "actualBrowserQualification": false
+  },
+  "nativePilot": "NOT_RUN",
+  "legacyLauncherRejection": "NOT_RUN_NEW_RECEIPT_REQUIRED",
+  "newQualificationRegistry": "NOT_CREATED_NOT_APPROVED",
+  "formal600Run": false,
+  "overallV1Complete": false,
+  "paidCalls": 0
+}

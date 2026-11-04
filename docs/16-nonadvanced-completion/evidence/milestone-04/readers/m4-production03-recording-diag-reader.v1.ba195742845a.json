@@ -1,0 +1,1117 @@
+{
+  "schemaVersion": 1,
+  "reader": "/root/nonadvanced_memory/criteria_read",
+  "recordedAtUtc": "2026-11-03T02:14:37.5153383Z",
+  "purpose": "Read-only M4 fixed evidence integrity and interpretation. No task closure or current source qualification.",
+  "workspace": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration",
+  "observedRootHead": "1f3779fa392d5a0f545066cacfcc92c4d0e47410",
+  "evidenceClasses": {
+    "production03": "PLAYWRIGHT_PUBLIC_PRODUCTION_DOM",
+    "diagnostic02and03": "E2E_READ_ONLY_RUNTIME_DIAGNOSTIC_WITH_PUBLIC_UI_INPUT",
+    "thisReader": "Fixed document/raw/metadata review only; no new browser, test, DSP, build or quality execution"
+  },
+  "productScope": {
+    "productionBuildHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+    "productionBuildSourceTree": "91a9e60e921bf03143eb0a4d695a295913d86da5",
+    "diagnostic02SourceHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+    "diagnostic03SourceHead": "da9c564aa3a07eaff101859dab6a9880a7547958",
+    "diagnosticBuildHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+    "laterRootMergedCommits": [
+      "b8d5a5f1a0913cf2d9e61fe96fdf2986a9d6e43e",
+      "69644885be7d94fffd9602f8afc32c2f85424455",
+      "50c3644ba003a31e10e75ff5fe99beccb99c11aa",
+      "d67377f73f0e5a4eeb0ca24df4155ec1f5853e7e",
+      "540be353d1dd99f36aa8928873e43ffa15be460f"
+    ],
+    "laterCommitsAreAncestorsOfFixedRootHead": true,
+    "warning": "Store b8/696 already merged. Browser evidence qualifies the frozen b7 builds and recorded pins; it does not newly qualify later runtime finite-policy code or whole moving Root HEAD."
+  },
+  "production03": {
+    "reportExpectedSha256": "40a5294004a212a26de00ed6c6442ef2a113d51f2455d847c2fbc593058db371",
+    "reportActualSha256": "40a5294004a212a26de00ed6c6442ef2a113d51f2455d847c2fbc593058db371",
+    "actualExitCode": 1,
+    "stats": {
+      "startTime": "2026-11-03T01:58:55.615Z",
+      "duration": 112852.92099999999,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "blocked monitor switches all views with pointer, keyboard, channel and locale without starting the scene",
+        "status": "passed",
+        "durationMs": 14126,
+        "errors": []
+      },
+      {
+        "title": "real master/source levels, spectrum, waveform and load remain usable through mute and pause",
+        "status": "passed",
+        "durationMs": 23802,
+        "errors": []
+      },
+      {
+        "title": "switching views and channels preserves a live recording and monotonic public tick",
+        "status": "failed",
+        "durationMs": 29959,
+        "errors": [
+          {
+            "location": {
+              "file": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\tests\\browser\\top-monitor-production.spec.ts",
+              "column": 7,
+              "line": 519
+            },
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.transport-bar').getByRole('button', { name: 'Pause', exact: true })\u001b[22m\n\n\n  517 |     await expect(\n  518 |       page.locator(\".transport-bar\").getByRole(\"button\", { name: \"Pause\", exact: true }),\n> 519 |     ).toBeVisible();\n      |       ^\n  520 |     await expect\n  521 |       .poll(() => tick(page), { message: `recorded fixed ticks must advance in ${name}` })\n  522 |       .toBeGreaterThan(previousTick);\n    at D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\tests\\browser\\top-monitor-production.spec.ts:519:7"
+          }
+        ]
+      },
+      {
+        "title": "header modes fit 390/929/1440 CSS px and footer controls remain reachable",
+        "status": "passed",
+        "durationMs": 30681,
+        "errors": []
+      },
+      {
+        "title": "switching all monitor views preserves the selected object and an unsaved valid zone draft",
+        "status": "passed",
+        "durationMs": 5649,
+        "errors": []
+      }
+    ],
+    "caseCount": 5,
+    "passed": 4,
+    "failed": 1,
+    "productPinsPerCase": 20,
+    "harnessPinsPerCase": 2,
+    "allCaseSourcesUnchanged": true,
+    "allCaseHttpMatchesDisk": true,
+    "httpEvidence": "Index HTML and entry JS response status/hash assertions, not 20 separately fetched product source files",
+    "observations": [
+      {
+        "initialTick": 0,
+        "finalTick": 0,
+        "blocked": true,
+        "locale": "zh-TW",
+        "selectedMode": "waveform",
+        "channel": "master-right"
+      },
+      {
+        "width": 390,
+        "viewportControlsNonOverlapping": true,
+        "viewportButtonBounds": [
+          {
+            "name": "Move",
+            "x": 97.625,
+            "y": 356,
+            "width": 47.75,
+            "height": 32
+          },
+          {
+            "name": "Rotate",
+            "x": 153.375,
+            "y": 356,
+            "width": 54.171875,
+            "height": 32
+          },
+          {
+            "name": "Scale",
+            "x": 215.546875,
+            "y": 356,
+            "width": 47.921875,
+            "height": 32
+          },
+          {
+            "name": "Frame selection",
+            "x": 271.46875,
+            "y": 356,
+            "width": 106.53125,
+            "height": 32
+          },
+          {
+            "name": "Enter first person",
+            "x": 264.140625,
+            "y": 396,
+            "width": 113.859375,
+            "height": 44
+          }
+        ],
+        "frameSelectionClicked": true
+      },
+      {
+        "width": 390,
+        "deviceScaleFactor": 1,
+        "geometry": [
+          {
+            "mode": "levels",
+            "bounds": {
+              "x": 12,
+              "y": 88,
+              "width": 366,
+              "height": 89
+            }
+          },
+          {
+            "mode": "spectrum",
+            "bounds": {
+              "x": 12,
+              "y": 88,
+              "width": 366,
+              "height": 89
+            }
+          },
+          {
+            "mode": "waveform",
+            "bounds": {
+              "x": 12,
+              "y": 88,
+              "width": 366,
+              "height": 89
+            }
+          },
+          {
+            "mode": "load",
+            "bounds": {
+              "x": 12,
+              "y": 88,
+              "width": 366,
+              "height": 89
+            }
+          }
+        ],
+        "footerControlsReachable": true
+      },
+      {
+        "width": 929,
+        "viewportControlsNonOverlapping": true,
+        "viewportButtonBounds": [
+          {
+            "name": "Move",
+            "x": 514.765625,
+            "y": 224,
+            "width": 47.75,
+            "height": 32
+          },
+          {
+            "name": "Rotate",
+            "x": 570.515625,
+            "y": 224,
+            "width": 54.171875,
+            "height": 32
+          },
+          {
+            "name": "Scale",
+            "x": 632.6875,
+            "y": 224,
+            "width": 47.921875,
+            "height": 32
+          },
+          {
+            "name": "Frame selection",
+            "x": 688.609375,
+            "y": 224,
+            "width": 106.53125,
+            "height": 32
+          },
+          {
+            "name": "Enter first person",
+            "x": 803.140625,
+            "y": 218,
+            "width": 113.859375,
+            "height": 44
+          }
+        ],
+        "frameSelectionClicked": true
+      },
+      {
+        "width": 929,
+        "deviceScaleFactor": 1,
+        "geometry": [
+          {
+            "mode": "levels",
+            "bounds": {
+              "x": 159.015625,
+              "y": 0,
+              "width": 461.984375,
+              "height": 89
+            }
+          },
+          {
+            "mode": "spectrum",
+            "bounds": {
+              "x": 159.015625,
+              "y": 0,
+              "width": 461.984375,
+              "height": 89
+            }
+          },
+          {
+            "mode": "waveform",
+            "bounds": {
+              "x": 159.015625,
+              "y": 0,
+              "width": 461.984375,
+              "height": 89
+            }
+          },
+          {
+            "mode": "load",
+            "bounds": {
+              "x": 159.015625,
+              "y": 0,
+              "width": 461.984375,
+              "height": 89
+            }
+          }
+        ],
+        "footerControlsReachable": true
+      },
+      {
+        "width": 1440,
+        "viewportControlsNonOverlapping": true,
+        "viewportButtonBounds": [
+          {
+            "name": "Move",
+            "x": 717.765625,
+            "y": 183,
+            "width": 47.75,
+            "height": 32
+          },
+          {
+            "name": "Rotate",
+            "x": 773.515625,
+            "y": 183,
+            "width": 54.171875,
+            "height": 32
+          },
+          {
+            "name": "Scale",
+            "x": 835.6875,
+            "y": 183,
+            "width": 47.921875,
+            "height": 32
+          },
+          {
+            "name": "Frame selection",
+            "x": 891.609375,
+            "y": 183,
+            "width": 106.53125,
+            "height": 32
+          },
+          {
+            "name": "Enter first person",
+            "x": 1006.140625,
+            "y": 177,
+            "width": 113.859375,
+            "height": 44
+          }
+        ],
+        "frameSelectionClicked": true
+      },
+      {
+        "width": 1440,
+        "deviceScaleFactor": 1,
+        "geometry": [
+          {
+            "mode": "levels",
+            "bounds": {
+              "x": 380.484375,
+              "y": 0,
+              "width": 562,
+              "height": 89
+            }
+          },
+          {
+            "mode": "spectrum",
+            "bounds": {
+              "x": 380.484375,
+              "y": 0,
+              "width": 562,
+              "height": 89
+            }
+          },
+          {
+            "mode": "waveform",
+            "bounds": {
+              "x": 380.484375,
+              "y": 0,
+              "width": 562,
+              "height": 89
+            }
+          },
+          {
+            "mode": "load",
+            "bounds": {
+              "x": 380.484375,
+              "y": 0,
+              "width": 562,
+              "height": 89
+            }
+          }
+        ],
+        "footerControlsReachable": true
+      },
+      {
+        "phase": "audible",
+        "meters": [
+          {
+            "label": "Master L",
+            "peak": -43.2,
+            "rms": -46.2
+          },
+          {
+            "label": "Master R",
+            "peak": -43.2,
+            "rms": -46.2
+          },
+          {
+            "label": "speaker",
+            "peak": -24,
+            "rms": -26.9
+          }
+        ]
+      },
+      {
+        "phase": "Spectrum",
+        "canvas": {
+          "width": 518,
+          "height": 40,
+          "drawnPixels": 2820,
+          "accentPixels": 267,
+          "signalVerticalSpan": 10,
+          "checksum": 3160304459
+        },
+        "summary": "Native Blackman FFT of the selected Master channel. The horizontal axis is logarithmic Hz; each column retains the band peak in dBFS, not whole-window RMS. Master L: — dBFS peak, — dBFS RMS. Master R: — dBFS peak, — dBFS RMS. speaker: — dBFS peak, — dBFS RMS. Up to 6 source tracks; 0. Warming: 1.",
+        "tick": 212
+      },
+      {
+        "phase": "Waveform",
+        "canvas": {
+          "width": 518,
+          "height": 40,
+          "drawnPixels": 2554,
+          "accentPixels": 656,
+          "signalVerticalSpan": 19,
+          "checksum": 3890501647
+        },
+        "summary": "Actual time-domain samples from the selected Master channel. Time window in ms, digital amplitude, with display gain and true axis bounds labeled; each pixel preserves minimum and maximum samples. Master L: -43.2 dBFS peak, -46.2 dBFS RMS. Master R: -37.2 dBFS peak, -40.2 dBFS RMS. speaker: -24.0 dBFS peak, -27.1 dBFS RMS. Up to 6 source tracks; 1.",
+        "tick": 361
+      },
+      {
+        "phase": "measured-load-values",
+        "fields": [
+          "frameIntervalMs",
+          "physicsMs",
+          "acousticWorkerMs",
+          "audioControlMs"
+        ],
+        "values": [
+          200.3,
+          6.4,
+          1.3,
+          0.8
+        ]
+      },
+      {
+        "phase": "Load",
+        "canvas": {
+          "width": 518,
+          "height": 40,
+          "drawnPixels": 2657,
+          "accentPixels": 124,
+          "signalVerticalSpan": 12,
+          "checksum": 4002614547
+        },
+        "summary": "Frame interval: 200.3 ms. Physics step: 6.4 ms. Last solver: 1.3 ms. Audio control: 0.8 ms. Measured timings in ms. Frame interval is the time between adjacent RAF callbacks. Physics step and audio control are measured on the main thread; physics includes its wrapper and snapshot processing. Last solver is the latest acoustic Worker computation. These are not whole-system or native DSP CPU percentages.",
+        "tick": 469
+      },
+      {
+        "phase": "muted",
+        "meters": [
+          {
+            "label": "Master L",
+            "peak": "-Infinity",
+            "rms": "-Infinity"
+          },
+          {
+            "label": "Master R",
+            "peak": "-Infinity",
+            "rms": "-Infinity"
+          },
+          {
+            "label": "speaker",
+            "peak": -24,
+            "rms": -26.9
+          }
+        ]
+      },
+      {
+        "phase": "paused",
+        "summary": "Digital sample peak and RMS in dBFS, not sound pressure SPL. Master L/R are after the limiter and mute; up to six source tracks are before propagation. Virtual and pending voices have no native level observation. Independent preview and audition outputs are not included. Master L: -43.2 dBFS peak, -46.2 dBFS RMS. Master R: -37.2 dBFS peak, -40.2 dBFS RMS. speaker: -24.0 dBFS peak, -27.1 dBFS RMS. Up to 6 source tracks; 1.",
+        "tick": 662
+      },
+      {
+        "selectedObject": "speaker",
+        "fourViewsPreservedUnsavedDraft": true,
+        "draft": {
+          "id": "zone.monitor-draft",
+          "name": "Monitor draft — 尚未儲存",
+          "shape": "sphere",
+          "radiusM": "2.5"
+        },
+        "initialTick": 0,
+        "finalTick": 0,
+        "sceneRevisionTextUnchanged": true,
+        "explicitlyCancelledWithoutSaving": true
+      }
+    ],
+    "actualFailure": {
+      "case": "live recording while switching views",
+      "modeAtFailure": "Spectrum / Master R",
+      "publicTick": 87,
+      "publicSimulationTimeSeconds": 1.45,
+      "recordingState": "Recording",
+      "transportState": "Paused / Resume simulation",
+      "publicReason": "Recording is paused with its fixed-step backlog retained. Resume processing in batches, or explicitly stop and archive the contiguous data captured so far. The fixed-step workload limit was exceeded. Recording is paused; no recording ticks were discarded.",
+      "causeStatus": "Verified public fixed-step workload guard, distinct from attempt02 evaluation-queue-full reason; cause of actual frame delay not independently isolated by this UI suite",
+      "unchangedRequirement": "Full four-view live recording continuity and successful finalize remain unverified; no Resume, weakened cap, tolerance, or dropped tick was added"
+    },
+    "cleanup": {
+      "runnerTerminal": true,
+      "observedWorkerIds": [
+        64064,
+        75976
+      ],
+      "remainingDirectOwnedProcesses": [],
+      "scope": "Main/worker PID and direct-child inspection; Playwright runner completed fixture teardown before process exit"
+    },
+    "pageErrors": [],
+    "attemptedModelCalls": [],
+    "artifacts": [
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/top-monitor-browser/ATTEMPT03_REPORT.json",
+        "sha256": "40a5294004a212a26de00ed6c6442ef2a113d51f2455d847c2fbc593058db371",
+        "bytes": 15417
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/actual-output.txt",
+        "sha256": "01e99845a0f03c911fc1eaf1ddd7b60d162063bcac4f2567be3dd2f18f6273b8",
+        "bytes": 5466
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/results.json",
+        "sha256": "c5d59b1614dcaa6dc255cf6690eb4cdfb086c754d33e6e5b89b1c7f48220acc6",
+        "bytes": 27905
+      },
+      {
+        "path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/integration/.cache/nonadvanced-20261103/root/top-monitor-production-build-attempt05.json",
+        "sha256": "698602a3b414238a97f2363c360bba3a01d72d8a152538943cc2352115ffce8b",
+        "bytes": 5617
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/source/top-monitor-production.spec.ts",
+        "sha256": "fad9b34785404f2fc565d384a011c80ca30b02fb8ad955a0b2c06cf32768ea74",
+        "bytes": 32223,
+        "hashMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/source/top-monitor-production.config.ts",
+        "sha256": "a68f683685b0bc8ee700393d885536bbb9d5f9fbf5c5b489278f1b8a23e7a1ff",
+        "bytes": 1179,
+        "hashMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases/top-monitor-production-swi-832e1-g-and-monotonic-public-tick/error-context.md",
+        "sha256": "f30bd9f761e0c37bc9ac41cb1df4d4a932c25038e71bc1d187183503152f0e18",
+        "bytes": 34651
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases/top-monitor-production-swi-832e1-g-and-monotonic-public-tick/trace.zip",
+        "sha256": "f92ca2978d06011254387c7dd276b9194f518bc8111ca777ebcbd1a5ed6be430",
+        "bytes": 22537597
+      }
+    ],
+    "caseReceiptArtifacts": [
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases\\top-monitor-production-swi-de2dd-an-unsaved-valid-zone-draft\\production-receipt.json",
+        "sha256": "8ea1683217ffb48ff25dfdd6d5c21354b7dcdbf28f76eade20637b6ebafaa8d6",
+        "bytes": 5824
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases\\top-monitor-production-rea-c451c-able-through-mute-and-pause\\production-receipt.json",
+        "sha256": "a1ad3652d1e9232eef61f2c1af66c6d28f036575c591c07fa04a74cee49f7be3",
+        "bytes": 9658
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases\\top-monitor-production-swi-832e1-g-and-monotonic-public-tick\\production-receipt.json",
+        "sha256": "001a38e4a32d2a7246bcca6c17e990a34acba9258d27363260ae35785cb394d0",
+        "bytes": 5189
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases\\top-monitor-production-blo-451cb--without-starting-the-scene\\production-receipt.json",
+        "sha256": "db2a3fee6e99cb170bbc97bc2a395c7df4cbd75e0300016f93c26a86362fa88e",
+        "bytes": 5588
+      },
+      {
+        "path": "test-results/top-monitor-production-attempt03/cases\\top-monitor-production-hea-1faad-r-controls-remain-reachable\\production-receipt.json",
+        "sha256": "8e3108941f5980ff25ce4882f94d267b4653d78512f551707a57761b0fd82d09",
+        "bytes": 14472
+      }
+    ],
+    "subreview": {
+      "reader": "/root/nonadvanced_memory/criteria_read/m4_production_raw_check",
+      "result": "No report/raw substantive contradiction. Fixed build 7 asset hash/bytes and saved spec/config match. Every case has unchanged 20 product +2 harness source pins; all20 products match build receipt.",
+      "notes": "5 fixed cases 4 PASS/1 FAIL; real load 200.3/6.4/1.3/0.8, mute Master -Infinity with source -24, 4-mode unsaved zone draft preserved. Full recording continuity/finalize failed. Final auxiliary result enumeration loop was stopped; no product test was run."
+    }
+  },
+  "diagnosticReceipts": [
+    {
+      "attempt": "02",
+      "receipt": {
+        "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/DIAGNOSTIC_ATTEMPT02_RECEIPT.json",
+        "sha256": "e75fe21dfe082a90535d672b386639beec139a48595de186a5ca2785cbdc40d2",
+        "bytes": 7454
+      },
+      "method": "E2E_READ_ONLY_RUNTIME_DIAGNOSTIC_WITH_PUBLIC_UI_INPUT",
+      "outcome": "OTHER_PAUSE_OBSERVED",
+      "collectionExitCode": 0,
+      "productionRecordingAcceptance": "NOT PASSED: fixed-step overload",
+      "actualSourceHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+      "buildReceiptHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+      "caseDurationMs": 13457,
+      "sourceBeforeCount": 19,
+      "sourceAfterCount": 19,
+      "sourceBeforeAfterExact": true,
+      "productSourceCount": 17,
+      "productPinsMatchBuild": true,
+      "bundleMatchesBuild": true,
+      "observations": [
+        {
+          "phase": "before_recording",
+          "state": {
+            "tick": 46,
+            "simulationState": "running",
+            "recording": {
+              "state": "idle",
+              "eventCount": 0,
+              "durationSeconds": 0,
+              "replayTimeSeconds": 0,
+              "canReplay": false,
+              "hasArtifact": false
+            },
+            "performanceTimeOrigin": 1793671040102.6,
+            "observedAtWallMs": 5376.4000000003725
+          }
+        },
+        {
+          "phase": "observation_end",
+          "elapsedWallMs": 1442.1122000000014,
+          "browserObservationStartedAtMs": 5428.5,
+          "pollCount": 1,
+          "headerMode": "levels",
+          "state": {
+            "tick": 77,
+            "simulationState": "paused",
+            "pauseReason": "固定步負載超限，已暫停；未丟棄錄製 tick",
+            "recording": {
+              "state": "recording",
+              "eventCount": 6,
+              "durationSeconds": 0.06666666666666667,
+              "replayTimeSeconds": 0,
+              "canReplay": false,
+              "hasArtifact": false
+            },
+            "observedAtWallMs": 7206.4000000003725
+          }
+        },
+        {
+          "phase": "sealed_prefix",
+          "artifact": {
+            "runId": "recording.6beca5e9-13de-4fdf.capture.1",
+            "status": "captured",
+            "frameCount": 5,
+            "startTick": 73,
+            "endTick": 77,
+            "artifactSha256": "6663bf425c1785a5ae2305b1deaab58a24289876fcbf790de968edf3dd49eaa4"
+          }
+        }
+      ],
+      "firstPressure": null,
+      "pageErrors": [],
+      "modelRequests": [],
+      "publicStopCompleted": true,
+      "cleanup": {
+        "knownWorker74244Present": false,
+        "browserLeaseReleased": true,
+        "inspectionSession24126ExitCode": 0,
+        "firstProcessInspection": "No diagnostic Node or Playwright temporary Chrome profile; only inspection pwsh matched its own literal filter",
+        "rootPreviewStopped": false,
+        "rootPreviewAddress": "127.0.0.1",
+        "testSession96161ExitCode": 0,
+        "rootPreviewPort": 5241,
+        "rootPreviewPid": 65772,
+        "observedAt": "2026-11-03T01:59:40.2725656Z"
+      },
+      "limits": [
+        "Diagnostic collection PASS is not production recording/throughput PASS",
+        "No second browser attempt",
+        "Unknown clocks/watermarks retained as null",
+        "Global world tick and observation duration are not recording duration",
+        "Trace/polling have nonzero observation cost",
+        "Do not clear debt, skip the first frame or weaken guard to pass"
+      ]
+    },
+    {
+      "attempt": "03",
+      "receipt": {
+        "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/DIAGNOSTIC_ATTEMPT03_RECEIPT.json",
+        "sha256": "cab26c81dd8139b935cf0f98fccbe78303f851547e7c460ee1cd54d237c20004",
+        "bytes": 9290
+      },
+      "method": "E2E_READ_ONLY_RUNTIME_DIAGNOSTIC_WITH_PUBLIC_UI_INPUT",
+      "outcome": "FIRST_GUARD_OBSERVED",
+      "collectionExitCode": 0,
+      "productionRecordingAcceptance": "NOT PASSED: storage high-water pause",
+      "actualSourceHead": "da9c564aa3a07eaff101859dab6a9880a7547958",
+      "buildReceiptHead": "b7ade6727f50bac4544dd8d933729b6a13880a14",
+      "caseDurationMs": 11737,
+      "sourceBeforeCount": 19,
+      "sourceAfterCount": 19,
+      "sourceBeforeAfterExact": true,
+      "productSourceCount": 17,
+      "productPinsMatchBuild": true,
+      "bundleMatchesBuild": true,
+      "observations": [
+        {
+          "phase": "before_recording",
+          "state": {
+            "tick": 35,
+            "simulationState": "running",
+            "recording": {
+              "state": "idle",
+              "eventCount": 0,
+              "durationSeconds": 0,
+              "replayTimeSeconds": 0,
+              "canReplay": false,
+              "hasArtifact": false
+            },
+            "performanceTimeOrigin": 1793671602284,
+            "observedAtWallMs": 4581.100000000559
+          }
+        },
+        {
+          "phase": "observation_end",
+          "elapsedWallMs": 1628.1517999999996,
+          "browserObservationStartedAtMs": 5024,
+          "pollCount": 2,
+          "headerMode": "levels",
+          "state": {
+            "tick": 71,
+            "simulationState": "paused",
+            "pauseReason": "錄製評估佇列已滿，已在完整 tick 邊界暫停；處理後可繼續。",
+            "recording": {
+              "state": "recording",
+              "eventCount": 14,
+              "durationSeconds": 0.16666666666666666,
+              "replayTimeSeconds": 0,
+              "canReplay": false,
+              "hasArtifact": false
+            },
+            "observedAtWallMs": 6676.600000000559
+          }
+        },
+        {
+          "phase": "sealed_prefix",
+          "artifact": {
+            "runId": "recording.ef9a6960-a3e9-4c53.capture.1",
+            "status": "captured",
+            "frameCount": 14,
+            "startTick": 58,
+            "endTick": 71,
+            "artifactSha256": "d0144ee85c1666968780c4fa589b650ec2d73cb97c4a07895c6dd977e5fa597b"
+          }
+        }
+      ],
+      "firstPressure": {
+        "schemaVersion": 1,
+        "origin": "storage",
+        "captureRunId": "recording.ef9a6960-a3e9-4c53.capture.1",
+        "runEpoch": "epoch.27fd49f1-737c-4068",
+        "sceneRevision": 0,
+        "worldTick": 71,
+        "simulationTimeSeconds": 1.1833333333333333,
+        "recordingDurationSeconds": 0.11666666666666667,
+        "observedAtWallMs": 6050.9000000003725,
+        "evaluation": {
+          "state": "accepting",
+          "acceptedFrames": 14,
+          "committedFrames": 7,
+          "acceptedTick": 71,
+          "committedTick": 64,
+          "pendingFrames": 7,
+          "reservedBytes": 1404202,
+          "peakPendingFrames": 7,
+          "peakReservedBytes": 1404202,
+          "backpressured": false,
+          "lastError": null
+        },
+        "persistence": {
+          "sessionId": "recording.f51d154c-4aae-4a17-8941-512af16b8754",
+          "state": "accepting",
+          "acceptedFrames": 8,
+          "processedFrames": 8,
+          "persistedFrames": 0,
+          "publishedFrames": 0,
+          "acceptedTick": 65,
+          "processedTick": 65,
+          "persistedTick": null,
+          "publishedTick": null,
+          "pendingFrames": 8,
+          "reservedBytes": 149600,
+          "peakPendingFrames": 8,
+          "peakReservedBytes": 149600,
+          "backpressured": true,
+          "error": null
+        },
+        "evaluationReadiness": {
+          "mode": "worker",
+          "workerGeneration": 0,
+          "workerActive": true,
+          "workerCreateCount": 1,
+          "firstWorkerCreatedAtWallMs": 5253,
+          "firstWorkerPostedAtWallMs": 5846.799999999814,
+          "firstWorkerProtocolReplyAtWallMs": 5854,
+          "workerPrepared": true,
+          "preparing": false,
+          "preparePostedAtWallMs": 5253,
+          "firstPreparedAckAtWallMs": 5784.799999999814
+        },
+        "persistenceReadiness": {
+          "sessionId": "recording.f51d154c-4aae-4a17-8941-512af16b8754",
+          "createStartedAtWallMs": 5793.200000000186,
+          "createReadyAtWallMs": 6046.799999999814,
+          "createFailedAtWallMs": null,
+          "firstAppendStartedAtWallMs": 6046.799999999814,
+          "firstAppendCompletedAtWallMs": null,
+          "createError": null
+        },
+        "diagnosticError": null
+      },
+      "pageErrors": [],
+      "modelRequests": [],
+      "publicStopCompleted": true,
+      "cleanup": {
+        "observedAt": "2026-11-03T02:07:19.9265754Z",
+        "knownWorker27156Present": false,
+        "ownedDiagnosticProcesses": [],
+        "rootPreviewPid65772Present": true,
+        "rootPreviewStopped": false
+      },
+      "limits": [
+        "Collection PASS does not make recording throughput or headed acceptance PASS",
+        "Headless02 fixed-step overload and headed03 storage pressure are different observed failures, not proof of a unique headless/GPU cause",
+        "Prepared ACK only module/handler-ready, not fast solver/DSP",
+        "Storage create was ready only 4.1ms before guard and first append incomplete; cannot declare create the sole bottleneck",
+        "Global tick71 and observation elapsed time are not recording duration",
+        "No second headed run, no source/harness change, no cap or threshold relaxation",
+        "Root preview retained and no non-owned browser/window touched"
+      ]
+    }
+  ],
+  "diagnosticPinAudit": [
+    {
+      "attempt": "02",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt02-evidence/diagnostic.json",
+      "sha256": "91c2d1e670b7363216921178340306405843497b060517e4ad331bfed214148f",
+      "bytes": 9154,
+      "expectedSha256": "91c2d1e670b7363216921178340306405843497b060517e4ad331bfed214148f",
+      "expectedBytes": 9154,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt02-evidence/results.json",
+      "sha256": "53e1e1ced5b347c00343b014d2ade43ac72f9c37a5bf041408e608e7fa5ddad7",
+      "bytes": 6682,
+      "expectedSha256": "53e1e1ced5b347c00343b014d2ade43ac72f9c37a5bf041408e608e7fa5ddad7",
+      "expectedBytes": 6682,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt02-evidence/actual-output.txt",
+      "sha256": "91791fb289c5e55ab885096b5b146470a25ec414dad768e120fa0d030f08ee2d",
+      "bytes": 386,
+      "expectedSha256": "91791fb289c5e55ab885096b5b146470a25ec414dad768e120fa0d030f08ee2d",
+      "expectedBytes": 386,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt02-evidence/actual-exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1,
+      "expectedSha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "expectedBytes": 1,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt02-evidence/e2e-build-attempt02.json",
+      "sha256": "26ac2a406712388c815730ae37942223925bad293218ed59ef314ecf51fc0913",
+      "bytes": 5158,
+      "expectedSha256": "26ac2a406712388c815730ae37942223925bad293218ed59ef314ecf51fc0913",
+      "expectedBytes": 5158,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\test-results\\recording-readiness-attempt02\\cases\\diagnostic-observe-the-fir-52d0e-ged-for-at-most-ten-seconds\\trace.zip",
+      "sha256": "0e1d479022a8c852aa9ec0363da83738b3af6f3e8e0fdd93251c9c493f1358d0",
+      "bytes": 16808863,
+      "expectedSha256": "0e1d479022a8c852aa9ec0363da83738b3af6f3e8e0fdd93251c9c493f1358d0",
+      "expectedBytes": 16808863,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "02",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\test-results\\recording-readiness-attempt02\\cases\\diagnostic-observe-the-fir-52d0e-ged-for-at-most-ten-seconds\\guard-or-ten-seconds.png",
+      "sha256": "637e66d97963d01d9d8a25a4313aafb5f91374680edfc8c1b4cdf85345a47e3a",
+      "bytes": 231236,
+      "expectedSha256": "637e66d97963d01d9d8a25a4313aafb5f91374680edfc8c1b4cdf85345a47e3a",
+      "expectedBytes": 231236,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/diagnostic.json",
+      "sha256": "4bd81b1c1ed7c3824d999b1a07d2e0ca5a08a2872a546a47f8e9b181c21cd5a0",
+      "bytes": 11211,
+      "expectedSha256": "4bd81b1c1ed7c3824d999b1a07d2e0ca5a08a2872a546a47f8e9b181c21cd5a0",
+      "expectedBytes": 11211,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/results.json",
+      "sha256": "df8608ae2c8aab6dc295c7a1eabeaca6f7d66f6e30d3dcf15f66fd056b3fcf01",
+      "bytes": 6701,
+      "expectedSha256": "df8608ae2c8aab6dc295c7a1eabeaca6f7d66f6e30d3dcf15f66fd056b3fcf01",
+      "expectedBytes": 6701,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/actual-output.txt",
+      "sha256": "6cae92eba27c066b7ad2195b2442a60486a2b475f6667321989a702a44584fb3",
+      "bytes": 386,
+      "expectedSha256": "6cae92eba27c066b7ad2195b2442a60486a2b475f6667321989a702a44584fb3",
+      "expectedBytes": 386,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/actual-exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1,
+      "expectedSha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "expectedBytes": 1,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/e2e-build-attempt02.json",
+      "sha256": "26ac2a406712388c815730ae37942223925bad293218ed59ef314ecf51fc0913",
+      "bytes": 5158,
+      "expectedSha256": "26ac2a406712388c815730ae37942223925bad293218ed59ef314ecf51fc0913",
+      "expectedBytes": 5158,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/precheck.json",
+      "sha256": "6a898b4203f6013a24db246032c198cd02cabf82b9376853961f67d982a36fdb",
+      "bytes": 738,
+      "expectedSha256": "6a898b4203f6013a24db246032c198cd02cabf82b9376853961f67d982a36fdb",
+      "expectedBytes": 738,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/cleanup.json",
+      "sha256": "93cd53bb3fe980f6b72885a4f59fe93f8d96b3ed37a3ae3788106b0164d2c850",
+      "bytes": 195,
+      "expectedSha256": "93cd53bb3fe980f6b72885a4f59fe93f8d96b3ed37a3ae3788106b0164d2c850",
+      "expectedBytes": 195,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/diagnostic-attempt03-evidence/unrelated-docs.diff.txt",
+      "sha256": "826fd500fdd5a8b8344f7ef17cd96ce6ccb63a94a2bad20a6247bea500213a49",
+      "bytes": 25461,
+      "expectedSha256": "826fd500fdd5a8b8344f7ef17cd96ce6ccb63a94a2bad20a6247bea500213a49",
+      "expectedBytes": 25461,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\test-results\\recording-readiness-attempt03\\cases\\diagnostic-observe-the-fir-52d0e-ged-for-at-most-ten-seconds\\trace.zip",
+      "sha256": "5715128350c02a8ae4bf3f6f861e8b0d56ca75a504d44e943f76ae6e3cfcdb52",
+      "bytes": 16481989,
+      "expectedSha256": "5715128350c02a8ae4bf3f6f861e8b0d56ca75a504d44e943f76ae6e3cfcdb52",
+      "expectedBytes": 16481989,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "attempt": "03",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration\\test-results\\recording-readiness-attempt03\\cases\\diagnostic-observe-the-fir-52d0e-ged-for-at-most-ten-seconds\\guard-or-ten-seconds.png",
+      "sha256": "8e28470d933da99d71fbe62ceefd9b135ea2cc25487487ed0575d76016b2703e",
+      "bytes": 226098,
+      "expectedSha256": "8e28470d933da99d71fbe62ceefd9b135ea2cc25487487ed0575d76016b2703e",
+      "expectedBytes": 226098,
+      "hashMatches": true,
+      "bytesMatch": true
+    }
+  ],
+  "diagnosticPinAuditSummary": {
+    "copiedArtifactPins": 13,
+    "externalLocalTraceAndPngPins": 4,
+    "totalPins": 17,
+    "allHashAndBytesMatch": true,
+    "externalArtifactsAreLocalOnlyNotClaimedInGit": true
+  },
+  "diagnosticBuildAssetAudit": [
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/App-DP4WMzuC.css",
+      "sha256": "a36c53a941010f9288b30fa0a2dbf7ad100deff9e3b11e9d581b4eccbf6df5f4",
+      "bytes": 40520,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/App-vJ3c5His.js",
+      "sha256": "be0dda058aca707ec4679ce64f57c427705361c392cf65ed00253b1db7964e52",
+      "bytes": 815696,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/acoustic-worker-DSZwrbOP.js",
+      "sha256": "e950612fe85db1d10ce25f23d071a2f5bce3f37e500c06df643d9bf610b113aa",
+      "bytes": 27224,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/index-CLzpGm6G.js",
+      "sha256": "55c80283573fcb873c40f93c759efffdf29d0a5996bed988f4dc5b9be0e2b7d4",
+      "bytes": 5272094,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/locale-model-CznmEpNq.js",
+      "sha256": "b9827384d5e9116ec69b9047dab202af9265f5be27a43315d3a811369908cdc6",
+      "bytes": 784764,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/recording-evaluation.worker-CNQEpKI0.js",
+      "sha256": "849dd865c83483eee073d3e82269c62a42bb6581308dfc489f4cb437bb71ea27",
+      "bytes": 238232,
+      "hashMatches": true,
+      "bytesMatch": true
+    },
+    {
+      "path": ".cache/recording-readiness/e2e-dist-attempt02/assets/recording-seal.worker-CcB9Grt7.js",
+      "sha256": "75152e27bf3494cbc9146dbaa2eb2cc2770af74486cac97c49a0338bbb14f7e8",
+      "bytes": 228508,
+      "hashMatches": true,
+      "bytesMatch": true
+    }
+  ],
+  "diagnosticIndexAudit": {
+    "path": ".cache/recording-readiness/e2e-dist-attempt02/index.html",
+    "sha256": "44d60fe48f6cb9490bd449302be9fafabb26b839eb7d1296766f1d4a2eae9bf6",
+    "bytes": 755,
+    "hashMatches": true
+  },
+  "diagnosticSourceSnapshots": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/prepare-source-evidence/attempt02-diagnostic.spec.ts.txt",
+      "sha256": "360f726635e83b115e83c7e9ae4fd0f87a2033e9c41b63dbb545864b92ada1a3",
+      "bytes": 11869
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/prepare-source-evidence/attempt02-diagnostic.config.ts.txt",
+      "sha256": "891c3fcad4cab973129e80fbf038d460d6c6cbe3afb0476f5f9f6a49ecd43acc",
+      "bytes": 2008
+    }
+  ],
+  "interpretation": {
+    "productionRecording": "At failure, global tick87/60=1.45s, not recording duration. Fixed-step backlog/workload guard is visible. Spectrum/Master R at failure does not establish switch causality. No automatic Resume or cap/tolerance relaxation.",
+    "diagnostic02": "Headless original Levels/noResume: OTHER_PAUSE_OBSERVED at global tick77, fixed-step overload. Pressure snapshot absent: readiness and watermarks unknown/null, not zero. Stop sealed captured5 frames tick73..77, not full recording acceptance.",
+    "diagnostic03": "Only official headed comparison: FIRST_GUARD_OBSERVED origin=storage. Evaluation accepted14/committed7/pending7, backpressured=false; storage accepted8/processed8/persisted0/pending8, backpressured=true. Stop sealed captured14 frames tick58..71, not full recording acceptance.",
+    "timing": {
+      "clock": "Same Window performance clock",
+      "preparePostToAckMs": 531.7999999998137,
+      "firstEvaluationPostToProtocolReplyMs": 7.2000000001862645,
+      "storageCreateToReadyMs": 253.59999999962747,
+      "storageReadyToGuardMs": 4.1000000005587935,
+      "firstAppendCompletionAtGuard": null,
+      "awaitSemantics": "Fixed b7 Git runtime/host/persistence objects read: prepare ACK is awaited before recorder.start/world.resume; persistence backend.create promise starts during synchronous recorder.start and is not awaited before resume.",
+      "notCpu": "Promise/API roundtrip includes scheduling, clone, solve; neither exclusive Worker CPU nor DSP time. Prepared ACK is module/handler ready, not fast solver proof."
+    },
+    "durations": "Diag03 guard recording duration 0.1166667, observation-end duration0.1666667, and sealed14-frame span13/60 are different observations; neither global tick71 nor 1.628s observation elapsed is recording duration.",
+    "causality": "Headless fixed-step overload and headed storage pressure are two observed failures. No unique headless/GPU/CPU/cold-start/storage-create causal claim. Storage ready4.1ms before guard and append incomplete does not isolate sole bottleneck.",
+    "cleanup": "Receipts show only directly owned diagnostic/browser processes gone and lease released, while Root preview PID65772 stays. This is scoped cleanup evidence, not every system process or broader runtime acceptance.",
+    "diagnosticHttp": "19 disk source pins (17 product +2 harness) equal before/after and product pins match fixed build. HTTP hash assertions cover index and entry bundle only, not 19 source HTTP requests."
+  },
+  "acceptanceRecommendation": {
+    "task0033AC02": false,
+    "task0033AC06": false,
+    "task0033AC07": false,
+    "otherTask0033Criteria": "No reversal of prior explicit parent composite adjudication. This reader does not promote any new whole criterion based on production03 subset or diagnostic collection.",
+    "originalGates": "Original PERF numerical tolerances, queues/caps, workloads, 600-second failure and all original acceptance conditions remain unchanged; no original task closure.",
+    "nativeAndFullPipeline": "No new native Computer Use, numerical DSP, phase, hearing, long export, full pipeline, formal600, whole V1 or final Claude handoff completion evidence from these diagnostics."
+  },
+  "findings": [
+    {
+      "severity": "WORDING_PRECISION",
+      "detail": "Write N source pins plus bundle HTTP hashes. Do not turn pin counts20/19 into20/19 source HTTP requests."
+    },
+    {
+      "severity": "SCOPE_LIMIT",
+      "detail": "Frozen b7 production/e2e builds remain separate from later merged Root source. Store b8 is already merged; later runtime540be has no new browser qualification from these runs."
+    }
+  ],
+  "operations": {
+    "readOnlyReview": true,
+    "historicalGitObjectRead": "Only fixed b7 runtime/recording-host/recording-persistence excerpts; no active source file hashes",
+    "newTestsRun": false,
+    "newBrowserRun": false,
+    "newBuildOrGlobalTypecheck": false,
+    "sharedDocsKnowledgeIndexMutation": false,
+    "onlyWrite": "This own-cache JSON"
+  }
+}

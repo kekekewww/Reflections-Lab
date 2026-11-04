@@ -82,12 +82,13 @@ export async function requestSoundAgentPlan(
   state: SoundHostState,
   options: SoundPlannerOptions = {},
   signal?: AbortSignal,
+  requestId = `request.${globalThis.crypto.randomUUID()}`,
 ): Promise<SoundAgentPlan> {
   return readResponse<SoundAgentPlan>(
     await fetch("/api/agent/propose-sound", {
       method: "POST",
       credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-Reflection-Request-ID": requestId },
       body: JSON.stringify({ prompt, state, options, mode: "meta" }),
       ...(signal ? { signal } : {}),
     }),
@@ -100,12 +101,31 @@ export async function requestAgentPlan(
   context: PlannerContext,
   mode: "offline" | "meta" = "offline",
   signal?: AbortSignal,
+  requestId = `request.${globalThis.crypto.randomUUID()}`,
 ): Promise<AgentPlan> {
   const response = await fetch("/api/agent/propose", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "X-Reflection-Request-ID": requestId },
     body: JSON.stringify({ prompt, context, mode }),
     ...(signal ? { signal } : {}),
   });
   return readResponse<AgentPlan>(response);
+}
+
+/** Cancellation requests stop dispatch; they do not assert a refund or a known transport outcome. */
+export async function cancelAgentRequest(requestId: string): Promise<{
+  requestId: string;
+  state: "cancelRequested" | "completed" | "failed";
+  outcomeConfirmed: boolean;
+}> {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$/.test(requestId))
+    throw new AgentError("SCHEMA_INVALID", "Planner requestId格式無效。");
+  return readResponse(
+    await fetch("/api/agent/cancel", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ requestId }),
+    }),
+  );
 }

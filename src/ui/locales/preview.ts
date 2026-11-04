@@ -29,8 +29,9 @@ export const previewMessages = {
     en: "Raw monitoring: centered dry audio; scene propagation and HRTF are bypassed.",
   },
   "preview.simulated": {
-    "zh-TW": "Simulated 監聽：Custom Acoustic Core → AudioEngine；傳播延遲與 HRTF 各一次。",
-    en: "Simulated monitoring: Custom Acoustic Core → AudioEngine; propagation delay and HRTF are each applied once.",
+    "zh-TW":
+      "Simulated 監聽：Custom Acoustic Core → AudioEngine；傳播延遲一次；HRTF 只用於直達路徑，其他路徑與迴響送出使用立體聲定位。",
+    en: "Simulated monitoring: Custom Acoustic Core → AudioEngine; propagation delay is applied once; HRTF is used on the direct path only, and other paths and the reverb send use stereo panning.",
   },
   "preview.muted": {
     "zh-TW": "監聽已靜音；使用常駐監聽控制調整。",
@@ -39,6 +40,7 @@ export const previewMessages = {
   "preview.details": { "zh-TW": "預聽快照與來源", en: "Preview snapshot and provenance" },
   "preview.identity": { "zh-TW": "預聽 ID／獨立 epoch", en: "Preview ID / independent epoch" },
   "preview.object": { "zh-TW": "物件／世代／位置（m）", en: "Object / generation / position (m)" },
+  "preview.origin.zoneCenter": { "zh-TW": "明確指定區域中心", en: "Explicit zone-center anchor" },
   "preview.origin.objectOffset": { "zh-TW": "物件相對位置", en: "Object-relative position" },
   "preview.origin.fixed": { "zh-TW": "已設定固定位置", en: "Authored fixed position" },
   "preview.origin.capturedContact": {

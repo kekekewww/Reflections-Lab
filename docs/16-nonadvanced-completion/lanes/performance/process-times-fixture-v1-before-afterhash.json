@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "FIXTURE_ENVIRONMENT_AMENDMENT_SOURCE_ONLY",
+  "recordedAt": "2026-11-03T02:21:38.972109+00:00",
+  "preimage": {
+    "path": "docs/16-nonadvanced-completion/lanes/performance/process-times-fixture-v1-before-afterhash.test.txt",
+    "sha256": "a977f4c1b945bec9a6d69a7ec3808ea99206401f13aceb345e18cdfe62eadd85",
+    "bytes": 25881,
+    "cases": 138,
+    "preservationMethod": "Reconstructed from the current 140-case source by removing only the two newly authored ordering blocks; byte-exact SHA256 verified against the independently recorded pre-edit 138-case a977f4c1b945bec9a6d69a7ec3808ea99206401f13aceb345e18cdfe62eadd85 before writing. No Git preimage or 138-case raw execution is fabricated."
+  },
+  "parentActualPriorGreen": {
+    "command": "node --test --test-concurrency=1 tests/performance-v3/process-times-v4.spec.mjs",
+    "rawPath": "docs/16-nonadvanced-completion/lanes/performance/process-times-v4-green-r1.tap",
+    "reportedExitCode": 0,
+    "reportedTests": 138,
+    "reportedPass": 138,
+    "reportedDurationMs": 640.8269,
+    "executor": "parent /root/implement_perf"
+  },
+  "fixtureVersionBefore": 1,
+  "fixtureVersionAfter": 2,
+  "positiveEnvironmentChange": "captured() includes requestAfterSha256 equal to original canonical request bytes hash; rewriteRequest() keeps the helper fixture hash coherent. No existing assertion removed or relaxed.",
+  "negativeCasesAdded": [
+    "two individually valid endpoint intervals overlap",
+    "two individually valid endpoint intervals are reversed",
+    "producer rejects a mutated wx request file and pure summary must not revive that failed endpoint"
+  ],
+  "redPending": true,
+  "implementationStrictGatesStillAbsent": true,
+  "nativeProcessQueryRunByAuthor": false,
+  "testsRunByAuthor": false,
+  "currentSpec": {
+    "path": "tests/performance-v3/process-times-v4.spec.mjs",
+    "sha256": "44d524fb8d341fbe9606e1bfd2911dbdeba3543e614484dc641a1191d12defbe",
+    "cases": 141
+  },
+  "limits": [
+    "Literal/injected source fixtures are not Win32 native evidence.",
+    "No frozen V3/44 source, original CPU thresholds, formal duration, or product workload changed."
+  ]
+}

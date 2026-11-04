@@ -1,0 +1,83 @@
+{
+  "id": "RLAB-TASK-0034",
+  "title": "軌跡編輯器 hackathon MVP",
+  "description": "使用者 2026-11-04 要求：讓每個有聲音的物件可編輯軌跡（編輯器 T／Shift+T、第一人稱 Ctrl＋左鍵繪製），開始或錄製時物件沿軌跡移動後交回物理，以錄下聲音到達聆聽者的變化。設計與計畫見 docs/superpowers；hackathon MVP，細修由使用者事後指示。",
+  "status": "READY",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "依核准設計實作編輯器、第一人稱繪製與開始／錄製／重設行為，並有 runtime、物理、UI 與真瀏覽器自動化測試；完整 npm run check 通過。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "tests/browser/trajectory-editor.spec.ts",
+          "sha256": "decbcb04476eec73ddc4873278c517c9c571574599fb35b08890049d268289bf",
+          "result": "真瀏覽器 3/3（798cc420），連續三輪"
+        },
+        {
+          "path": "tests/app/trajectory-runtime.test.ts",
+          "sha256": "79564b0d766a74f418443515589132bf68764f209f745caf7f706f89f87a6cec",
+          "result": "runtime 行為測試；npm run check 884e99b4 exit 0、test:runtime 2381/2381"
+        },
+        {
+          "path": "docs/11-v1/PARAMETER_REFERENCE.md",
+          "sha256": "5694681cfb2599b794085a6cb07bbc7dc152e9e827d2ecbb50bc7257baa5d611",
+          "result": "§21 記錄實作的按鍵、欄位、表格與上限"
+        }
+      ],
+      "verified_scope": "自動化與 headless Chrome；不含真 GPU、真人滑鼠鎖定或聽感。"
+    },
+    {
+      "id": "AC-02",
+      "text": "使用者人工測試設計的三個展示流程（編輯器錄製、第一人稱繪製、Shift+T）並確認可用。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/KNOWN_LIMITATIONS.md",
+          "sha256": "8fa6ea68e59ce4580a9484ba9388047297cad6f9b6e19c9d3b5e2fa95116b648",
+          "result": "2026-11-04 段列出未驗項目；待使用者人工測試"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "展示的 Meta AI 步驟：真實 Muse 請求經產品畫面提出聲音提案，本機 Host 驗證後才套用，同一段運動再錄一次只有聲音改變。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/00-project/META_LIVE_DEMO_20261104.md",
+          "sha256": "9fe1781571769403fb9bd37fc16657e6e50fbff3d9162dd79f245c915b0c19a3",
+          "result": "核准、結果與限制"
+        },
+        {
+          "path": "research/v1/meta-live-ui-20261104/summary.json",
+          "sha256": "94f68ef3d97c5cbe41fe98d0405124d0f87f117587bbb157400f88754bf29069",
+          "result": "真實回應 ID、運動相同、音高 0→+7"
+        }
+      ],
+      "verified_scope": "headless Chrome、軟體 WebGL 與事件紀錄；不含人耳聽測、真 GPU 或實際帳單。"
+    }
+  ],
+  "relevant_files": [
+    "docs/superpowers/specs/2026-11-03-trajectory-editor-design.md",
+    "docs/superpowers/plans/2026-11-04-trajectory-editor.md",
+    "src/motion/trajectory-path.ts",
+    "src/motion/path-runner.ts",
+    "src/app/runtime.ts",
+    "src/ui/inspector-trajectory.tsx",
+    "src/ui/viewport/TrajectoryCurves.tsx"
+  ],
+  "evidence": [
+    {
+      "path": "docs/KNOWN_LIMITATIONS.md",
+      "sha256": "8fa6ea68e59ce4580a9484ba9388047297cad6f9b6e19c9d3b5e2fa95116b648",
+      "result": "限制與未驗項目"
+    }
+  ],
+  "created_at": "2026-11-03T22:04:56.883Z",
+  "updated_at": "2026-11-04T02:22:09.508Z",
+  "last_summary": "加入經產品畫面的真實 Muse 聲音步驟；人工測試仍待使用者"
+}

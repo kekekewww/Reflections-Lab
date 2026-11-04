@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "freeze_id": "NONADVANCED-LONG-OUTPUT-20261103-V3",
+  "frozen_at": "2026-11-02T20:00:59.008Z",
+  "authority": "RootexplicitM2clarification:public60s=3600acceptedframes;3601inclusiveisindependentcapacityfixture, never+1tickrenderwindow.",
+  "status": "ROOT_APPROVED_FRAME_SEMANTICS_CLARIFICATION_SPEC_NOT_PRODUCT_PASS",
+  "sample_rate_Hz": 48000,
+  "channels": 2,
+  "sample_encoding": "IEEE754_FLOAT32_WAV",
+  "owners": 2,
+  "capture": {
+    "duration_seconds": 60,
+    "fixed_rate_Hz": 60,
+    "public_expected_accepted_frames": 3600,
+    "public_duration_grid": "60secondsonoriginal1/60sgrid; actualhost-authoredstart/endpinsrequired; countdoesnotaddanextraticktoRenderJobwindow",
+    "independent_capacity_fixture": {
+      "expected_frame_count_inclusive": 3601,
+      "start_tick": 0,
+      "end_tick": 3600,
+      "independent_of_public_capture": true,
+      "requirement": "Prove3601inclusivefixtureandmetadatafitoriginal64MiB/canonicalhashschema. Thisisnotpublic60s3601acceptedframes."
+    },
+    "original_frame_cap": 18000,
+    "original_byte_cap": 67108864,
+    "requirement": "Validatepublic3600acceptedframesthroughrealcapture/replay/pipelineandseparatelyvalidate3601inclusivecapacityfixture. Do notrelaxschema/validator or shift sampleorigin/renderwindow."
+  },
+  "output": {
+    "signal_duration_seconds": 60,
+    "tail_default_seconds": 2,
+    "total_duration_seconds": 62,
+    "total_frames_per_WAV": 2976000,
+    "outputs": [
+      "master",
+      "raw",
+      "simulated",
+      "owner-stem-A",
+      "owner-stem-B"
+    ],
+    "WAV_count": 5,
+    "manifest_count": 1,
+    "PCM_bytes_per_WAV": 23808000,
+    "WAV_header_bytes": 56,
+    "WAV_bytes_each": 23808056,
+    "WAV_bytes_total": 119040280,
+    "owner_identity": "Two real stable owner IDs in the frozen source fixture; A/B labels denote matrix positions, not generated persistent IDs.",
+    "requirement": "Actual5WAV+manifest downloads and independent frame/rate/channel/hash/finite/peak/stem-sum/reference checks; no historical5second substitution."
+  },
+  "bounds": {
+    "max_context_seconds": 75,
+    "tail_seconds": {
+      "minimum": 0,
+      "maximum": 10
+    },
+    "max_output_files": 16,
+    "working_memory_bytes": 268435456,
+    "output_bytes": 201326592,
+    "PCM_chunk_frames": 32768,
+    "expected_chunks_for_62s_per_tap": 91,
+    "expected_final_chunk_frames": 26880,
+    "output_bytes_scope": "Per-job WAV bytes only; manifest has separate2MiB cap; not total IDB/page/transaction overhead.",
+    "per_job_WAV_bytes": 201326592,
+    "per_job_manifest_bytes": 2097152,
+    "aggregate_archive_WAV_plus_manifest_bytes": 402653184,
+    "maximum_archived_jobs": 64
+  },
+  "DSP_state": {
+    "method": "One complete native OfflineAudioContext per tap; control/encode/persist chunks preserve the continuous single-graph DSP history.",
+    "release_policy": "Process taps sequentially and release each full native PCM buffer before next tap where ownership permits; account assets/native buffers/staging/output residency in actual peak.",
+    "not_claimed": [
+      "infinite streaming",
+      "constant memory",
+      "lossless state carry by concatenating separate contexts",
+      "unmeasured native callback CPU as zero"
+    ],
+    "reference_requirements": [
+      "Exact global sample origin, phase/pitch/cursor and single propagation delay",
+      "Chunk boundaries and whole output compared with independent full-span reference",
+      "Delay/filter/HRTF/IR/limiter state, motion/path birth/death and tails remain continuous",
+      "Original2e-6stem-sum tolerance and other original numerical/reference limits unchanged",
+      "Actual caps/cancel/quota/crash/incomplete publication tests; failure never Completed"
+    ]
+  },
+  "implementation_owner": "/root/implement_long_render",
+  "recording_storage_owner": "/root/implement_storage",
+  "acceptance_status": {
+    "long_capture": "PUBLIC60SECOND_PIPELINE_NOT_ADJUDICATED",
+    "native_OAC_long_render": "EXECUTED_COMPONENT_ATTEMPT02_OVERALL_ERROR_57OF58",
+    "five_WAV_exports": "DOWNLOAD_BATCH_INCOMPLETE_14OF16_COMPLETE",
+    "boundary_and_whole_reference": "ORIGINAL_WHOLE63_MASTER_FAIL_RETAINED",
+    "actual_peak_memory": "NOT_MEASURED_ADMISSION_ESTIMATE_ONLY",
+    "Computer_Use": "URL_POLICY_BLOCKED_ZERO_CURRENT_INPUT",
+    "Playwright": "COMPONENT_RUNS_NOT_FULL_PRODUCT_MATRIX",
+    "archive_admission_boundaries": "NOT_RUN",
+    "aggregate_plus_manifest_boundaries": "NOT_RUN",
+    "maximum64jobs_metadata_bound": "NOT_RUN",
+    "old_valid_preservation": "NOT_RUN",
+    "archive_recovery_publication": "NOT_RUN",
+    "public_archive_recover_download_delete_discard_UI": "NOT_RUN",
+    "physical_IDB_overhead": "UNMEASURED",
+    "public_capture3600_frames": "NOT_ADJUDICATED_DIRECT_PRODUCT_EVIDENCE_PENDING",
+    "independent_capacity3601_fixture": "SEPARATE_FIXTURE_EVIDENCE_REQUIRED",
+    "long_native_whole_original_master": "ACTUAL_FAILURE_RETAINED_UNDER2e-6",
+    "public_product_long_UI_pipeline": "NOT_RUN_OR_INCOMPLETE"
+  },
+  "change_policy": "New version with explicit Root agreement and original criteria preservation; no quiet workload/cap/tolerance reduction.",
+  "supersedes_document": {
+    "freeze_id": "NONADVANCED-LONG-OUTPUT-20261103-V2",
+    "path": "docs/16-nonadvanced-completion/LONG_OUTPUT_FREEZE_20261103_V2.json",
+    "sha256": "026d31d9adb6124806de9acb09ff5fe87ed005e0abe76edf49149935feb03b5e",
+    "scope": "Clarifiespubliccapturecountvsindependentinclusivecapacityfixture. AllV2output/DSP/archive/bytes/caps/numericalgatesunchanged; V1/V2originalbytesretained."
+  },
+  "archive_policy": {
+    "aggregate_accounting": "Charge WAV plus manifest bytes across retained archive jobs; maximum384MiB. This is defined payload accounting, not a claim of total IndexedDB page/filesystem/transaction overhead.",
+    "per_job_accounting": "WAV payload maximum192MiB per job; manifest separate maximum2MiB.",
+    "metadata_bound": "Maximum64 archived jobs, including bounded metadata/list enumeration; no unbounded metadata growth.",
+    "valid_preservation": "Keep old valid jobs. Reject newly over-cap admission/publication with explicit reason; never silently delete valid jobs to admit another.",
+    "failure_semantics": "Quota/cap/cancel/crash/incomplete jobs never publishCompleted; recover/discard must not corrupt retained valid jobs.",
+    "public_UI": [
+      "Archive list and state/progress/rejection reason",
+      "Recover eligible retained/incomplete jobs with explicit state",
+      "Download retained WAV files and manifest",
+      "Explicit user delete of selected archive job",
+      "Explicit discard of incomplete/staged job"
+    ],
+    "UI_authority": "Normal product controls in Root sharedUI integration; bothComputerUse andPlaywright verification still required.",
+    "physical_storage_overhead": "UNMEASURED_NOT_INCLUDED_IN_PAYLOAD_CAP_CLAIM",
+    "implementation_status": "IN_PROGRESS_NOT_ACCEPTED"
+  },
+  "publication_note": "M2Root-approvedframeclarification afterP1converged3a251; originalV1/V2bytespreserved. Specificationandcomponentfailurefactsdonotprovefullpublicproductpipeline.",
+  "frame_semantics_clarification": {
+    "public60second_capture": "3600acceptedframes",
+    "inclusive_capacity_fixture": "3601entriesonlyasseparatecapacityfixture",
+    "render_window_seconds": 60,
+    "tail_default_seconds": 2,
+    "total_render_seconds": 62,
+    "frames_per_WAV": 2976000,
+    "extra_tick_added": false,
+    "sample_origin_and_source_cursors": "Originalcanonicalcontractandreferencesunchanged",
+    "status": "SPECIFICATION_CLARIFICATION_NOT_MEASUREMENT"
+  }
+}

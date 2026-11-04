@@ -1,4 +1,4 @@
-import type { AcousticSurface, Vec3 } from "./types.js";
+import type { AcousticGeometryRole, AcousticSurface, Vec3 } from "./types.js";
 
 export const EPSILON_M = 1e-7;
 export const add = (a: Vec3, b: Vec3): [number, number, number] => [
@@ -33,7 +33,7 @@ export interface PreparedSurface {
   windingNormal: Vec3;
   vertices: readonly Vec3[];
   twoSided: boolean;
-  role: "staticReflector" | "dynamicOccluder";
+  role: AcousticGeometryRole;
 }
 
 export function insidePolygon(point: Vec3, surface: PreparedSurface): boolean {
@@ -83,7 +83,7 @@ export interface BoxSurfaceInput {
   dimensionsM: Vec3;
   orientationQuaternion?: readonly [number, number, number, number];
   materialId: string;
-  role?: "staticReflector" | "dynamicOccluder";
+  role?: AcousticGeometryRole;
 }
 
 /** Exact planar faces for an oriented box; this does not approximate curved objects. */
@@ -95,6 +95,7 @@ export function createBoxSurfaces(input: BoxSurfaceInput): AcousticSurface[] {
     !/^[a-z][a-z0-9._-]{0,63}$/.test(materialId) ||
     (input.role !== undefined &&
       input.role !== "staticReflector" &&
+      input.role !== "dynamicReflector" &&
       input.role !== "dynamicOccluder") ||
     positionM.length !== 3 ||
     !Array.from(positionM).every(Number.isFinite) ||

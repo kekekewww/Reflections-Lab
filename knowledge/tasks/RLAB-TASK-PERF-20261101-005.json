@@ -1,0 +1,102 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-005",
+  "title": "量測geometry／payload成本與revision快取、transfer候選",
+  "description": "重複geometry DTO、payload大小計算、structured clone、main validation及dispatch均可耗時，尚不能指認copy是主瓶頸。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-004"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "同revision及相同輸入solver結果／validation與reference一致，stale geometry可拒收。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "transfer只移交owned buffers，包含in-flight容量；detach、return、crash、cancel與reuse generation皆有負面測試。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "只有同負載copy／allocation及age證明才採納；SAB保持選用且不默加隔離headers。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/app/acoustic-service.ts",
+    "src/app/acoustic-worker.ts",
+    "src/app/runtime.ts",
+    "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "sha256": "a86516222eb39f8cf8e12be54cd54731a2524c07e6855ef86fab55387748969c",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/src__app__acoustic-service.ts.11ae54162cda.historical.raw.txt",
+      "sha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-02T09:45:40.484Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "重複geometry DTO、payload大小計算、structured clone、main validation及dispatch均可耗時，尚不能指認copy是主瓶頸。",
+  "evidence_basis": [
+    {
+      "path": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "locator": "資料傳輸／SAB與隔離",
+      "classification": "EXISTING RESEARCH",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "a86516222eb39f8cf8e12be54cd54731a2524c07e6855ef86fab55387748969c"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/src__app__acoustic-service.ts.11ae54162cda.historical.raw.txt",
+      "locator": "payloadBytes／postMessage",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "11ae54162cda01d60b800cc18455321408217a057c6a2106ed0ee65e77e5e647"
+    }
+  ],
+  "affected_modules": [
+    "src/app/acoustic-service.ts",
+    "src/app/acoustic-worker.ts",
+    "src/app/runtime.ts"
+  ],
+  "proposed_solution": "先比較immutable geometry依revision快取及小型pose DTO；有證copy成本時再試TypedArray transfer pool，明定detach／return／generation／validation。",
+  "alternatives": [
+    "維持structured clone作reference。",
+    "只快取static geometry／payload bytes，不改protocol。",
+    "SAB僅另有證據與相容性門檻後評估。"
+  ],
+  "expected_benefit": "可能降低重複serialization及配置；不先假設zero-copy或dispatch消失。",
+  "complexity": "中至高；protocol ownership及buffer歸還。",
+  "performance_impact": "compute、encode、copy、dispatch、validate、consume與bytes／in-flight pool分開。",
+  "audio_quality_impact": "相同geometry／bands／source/listener／path oracle，不能量化前擅自降精度。",
+  "latency_impact": "transfer不消除message queue delay；看age tails及pool等待。",
+  "compatibility_regression_risk": "detached UI權威array、stale geometry、錯誤byteLength與cross-origin isolation資源相容性。",
+  "benchmark_plan": "static/moving geometry、revision churn、最大合法payload、pool耗盡／worker terminate、cold/warm與clone reference。",
+  "rollback_plan": "停止新發送、等待或取消所有pool ownership，重建有限clone DTO路徑並失效快取；不transfer Scene／UI權威。",
+  "priority_rationale": "有明確serialization機制但收益未量；先有001與004所有權語義再做，避免先上SAB。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Transfer detaches buffers; SAB requires separately approved cross-origin isolation.",
+  "regression_risk": "Moving occluders require pose-aware geometry; ownership reuse must not corrupt Scene/UI.",
+  "candidate_commit": null,
+  "last_summary": "Historicalpinnedevidencepath relocated toexactGitartifact; originalhash/results/status/dependencies/criteriaunchanged. NoBACKLOGclaim/newtests."
+}

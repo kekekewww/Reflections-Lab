@@ -1,5 +1,6 @@
 import type { AcousticMaterial } from "../acoustics/types.js";
 import type { BehaviorAsset, BehaviorContext } from "../audio-behavior/types.js";
+import { PRODUCT_SOUND_BEHAVIOR_PRODUCERS } from "../capabilities/sound-behavior.js";
 import type { BodyPose } from "../physics/types.js";
 import { stableHash } from "../physics/math.js";
 import { createScene } from "../scene/index.js";
@@ -248,7 +249,15 @@ export function makeBehaviorContext(
       colliderId: `col-${stableHash(object.id)}`,
       objectId: object.id,
     })),
-    zoneIds: [],
+    zoneIds: (validated.zones ?? []).map((zone) => zone.id),
+    ...((validated.zones?.length ?? 0) > 0
+      ? {
+          zonePositions: Object.fromEntries(
+            validated.zones!.map((zone) => [zone.id, [...zone.centerM] as Vec3]),
+          ),
+        }
+      : {}),
+    producerCapabilities: { ...PRODUCT_SOUND_BEHAVIOR_PRODUCERS },
     assetRegistry: structuredClone([...assets]),
     validationMode: "product",
   };

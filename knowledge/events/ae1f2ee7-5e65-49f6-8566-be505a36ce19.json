@@ -1,0 +1,287 @@
+{
+  "id": "ae1f2ee7-5e65-49f6-8566-be505a36ce19",
+  "type": "checkpoint",
+  "created_at": "2026-11-03T07:54:42.498Z",
+  "agent": "claude-code-opus-5-5",
+  "session": "claude-nonadvanced-20261103",
+  "summary": "Claude接手中段：長輸出原whole63 gate修正PASS；錄製多項瓶頸修補但冷啟IDB延遲仍會暫停；full check仍7個runtime測試失敗；S4/ComputerUse/600秒/英文/Main未完成",
+  "task_id": "RLAB-TASK-0032",
+  "details": {
+    "agent": "claude-code-opus-5-5",
+    "session": "claude-nonadvanced-20261103",
+    "task_id": "RLAB-TASK-0032",
+    "summary": "Claude接手中段：長輸出原whole63 gate修正PASS；錄製多項瓶頸修補但冷啟IDB延遲仍會暫停；full check仍7個runtime測試失敗；S4/ComputerUse/600秒/英文/Main未完成",
+    "completed": [
+      "Merged recording-readiness observer, offline-render paired-v3/startup-v3, baseline WIRING-01 pins; archived 173 baseline evidence files byte-identical",
+      "validate:docs fixed: byte-exact SHA-named/SNAPSHOT_INDEX copies excluded with hash verification; canonical requirement-evidence links repointed to committed aliases",
+      "Long output: Chrome native fan-in summation order measured nondeterministic (>2 inputs); 2-input junction chains (ca8fb1b7) make product master/mix/dry bit-identical to independent whole63 references; long-render attempt05 PASS 58/58, 5 product WAV hashes stable across runs",
+      "Recording: storage appends pipelined (89b6d0fa), evaluation batched (22157358) and pipelined two deep (cdacdeb3), single encode (66452eb9), UI re-render reduction (c2c4c0bd), HelpTip/reply-task long-task fixes (93bc7748); queue guards no longer from CPU",
+      "PERF-004/005 A/B/C/D Node+Chrome exact 1052/1052, keep clone reference; PERF-006/007 Node+OAC 0 error/0 onset, keep reference policies",
+      "V4 method 4.1.0 (CPU before endpoint after Tracing.start; transitive pin) and SolverPath resource reuse merged"
+    ],
+    "commands": [
+      {
+        "command": "node tests/browser/nonadvanced/long-render/run.mjs (offline-render tree, attempt05)",
+        "result": "PASS 58/58; whole63 master maxError 0; downloads 62.8s/90s; parser PASS"
+      },
+      {
+        "command": "recording diagnostic attempts 05-10 (tests/browser/nonadvanced/recording-readiness/diagnostic.config.ts)",
+        "result": "All FIRST_GUARD/OTHER_PAUSE within 0.1-0.5s; latest cause cold IndexedDB first writes 100-230ms in fresh profiles; not throughput PASS"
+      },
+      {
+        "command": "top-monitor production attempt07/08",
+        "result": "4/5 PASS each; recording continuity case paused (fixed-step tick47, then evaluation queue tick97)"
+      },
+      {
+        "command": "npm run check (check-03 at 18dbc908)",
+        "result": "exit1: test:runtime 2262/2269, 7 failures (active-rule oracle 633, integration control graph 876/877/880, renderer rejection 941, two-slot lane late replies 1024, native control graph 1162); later steps not reached"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md",
+        "sha256": "a329f38a1cbd5f2ddcbbfa922067c3756caff2810a838f9ac54fb470f0d33599",
+        "result": "Long-output attempt05 PASS receipt"
+      },
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/long-render/FANIN_PROBE_20261103.md",
+        "sha256": "dfcc65a818329c38c1b2fe2f4f0496784b0a7c4ca34a15c7aa8e75589eae0e7c",
+        "result": "Fan-in summation-order mechanism probe"
+      },
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/RECORDING_STARTUP_IDB_RECEIPT.md",
+        "sha256": "38f8f0ff6735938254f9eb82b4a40379f376c8d7e56efa19b4d5def61d46f917",
+        "result": "Remaining recording pause: cold IndexedDB first writes"
+      },
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/recording-readiness/DIAGNOSTIC_ATTEMPT08_RECEIPT.md",
+        "sha256": "262d304152816c45f41992ef071e60bc0854e2835f2a46e29c149c0c80909e6d",
+        "result": "Main-thread attribution"
+      },
+      {
+        "path": "docs/16-nonadvanced-completion/lanes/acoustic/ABCD_COMPARISON_20261103.md",
+        "sha256": "ff0dcf186f7ebf87fab472600d5dc65352b930d8034cb2d55230ca132b0529ed",
+        "result": "A/B/C/D comparison report"
+      }
+    ],
+    "risks": [
+      "7 test:runtime failures after recording pipelining/batching must be fixed before freeze",
+      "S4 22 routes, Codex Computer Use, formal 600s, product E2E x3 + 10 reset/import/dispose, English (31 missing/12 stale), crosswalk 51 rows, Main merge NOT_RUN",
+      "Wiki writes by Codex archived in .cache/claude-20261103/codex-wiki-writes-*/ (not merged)"
+    ],
+    "next_steps": [
+      "Fix 7 runtime failures; rerun npm run check",
+      "Freeze source; production build 4173; formal V4 --formal-600; product E2E; S4 --lanes all; then Codex Computer Use (brief in Claude scratchpad codex-brief-computer-use.md)",
+      "English finalize, crosswalk, handoff/now, merge integration into local main (no push)"
+    ],
+    "modified_files": [
+      {
+        "path": "src/app/acoustic-worker.ts",
+        "sha256": "7ec858429d80cd36fb87950d0fa11e300460cdc0d9d8a275d0a27fcd3c4d29df",
+        "state": "present"
+      },
+      {
+        "path": "src/app/bootstrap.ts",
+        "sha256": "427e724bce6bcf8902234f1fd4f6ca9c75a89471b8872bf12efe301d39d63947",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-advance-diagnostics.ts",
+        "sha256": "b42c5070940ea66ca1823605ae1bf5f2bf4e16bfba95be33d224bab5949d1bc4",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-evaluation-client.ts",
+        "sha256": "6b324eea7641226a14503cf2c681dc8e6ab8370d7c58056093e60859be2bdd90",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-evaluation-lane.ts",
+        "sha256": "a98d60f79148ab4a9598c2806745743631300e4a3043e964b47196ff596328ca",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-evaluation-limits.ts",
+        "sha256": "f736003e6dcfaebbc14880377af7226a6b03fd025d67344ebaf8432928a13e3d",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-evaluation.worker.ts",
+        "sha256": "e15bd5e1fbe661313d00f3b2b66268e0ccd8db37c3d5432dd4ea495eebd18364",
+        "state": "present"
+      },
+      {
+        "path": "src/app/recording-host.ts",
+        "sha256": "7bea54ae2f6d7b96f2606bbef6ed353ec04bf24c027d7944528604923fb4d2fb",
+        "state": "present"
+      },
+      {
+        "path": "src/app/runtime.ts",
+        "sha256": "d054e6ae5cab16216c606871dad1815103613990585e5de7d8e3ae48c48c1e9b",
+        "state": "present"
+      },
+      {
+        "path": "src/audio/deterministic-mix.ts",
+        "sha256": "e7d42017c81dc264bed7ce786fdf1ce2b50977c003d622a314b2da79b0da1de2",
+        "state": "present"
+      },
+      {
+        "path": "src/audio/engine.ts",
+        "sha256": "2455af6fe8b6955b3c839a71f012ee01dc28b45b1328a9adcc1274836826963a",
+        "state": "present"
+      },
+      {
+        "path": "src/audio/late-reverb.ts",
+        "sha256": "5a90c252085beb2b9690dd4c5737494a32d11c0afd439f1584bd977271a3f842",
+        "state": "present"
+      },
+      {
+        "path": "src/audio/routes.ts",
+        "sha256": "f17780fde6482962d891cff950adbb8ea5155254414fce3c7bc219d0004c6833",
+        "state": "present"
+      },
+      {
+        "path": "src/experiments/hash.ts",
+        "sha256": "3eedfc460c325e5661e5e4679c3df9c45f8af2722db91faf73d91c2a498371dc",
+        "state": "present"
+      },
+      {
+        "path": "src/experiments/recorder.ts",
+        "sha256": "7242e7ef45c700eeb9443bd8252deca80872e76eb395b3f11044be4b7f961661",
+        "state": "present"
+      },
+      {
+        "path": "src/experiments/recording-commit-diagnostics.ts",
+        "sha256": "d71fd9737da86fa93e07c3b3a55e525e1a20523c418808e66ddfe00b6f63a2c9",
+        "state": "present"
+      },
+      {
+        "path": "src/experiments/recording-frame.ts",
+        "sha256": "787c722fadbc4d295e5f0f4562705e6038b4953ebcb32c2c43b17cc0e2e02840",
+        "state": "present"
+      },
+      {
+        "path": "src/experiments/recording-persistence.ts",
+        "sha256": "a38bbc19e5e3be750866b4cbf2d468dde00de70ff264b61b564234db9e89a303",
+        "state": "present"
+      },
+      {
+        "path": "src/persistence/blob-store.ts",
+        "sha256": "a2bbdc13a62421e0b07dd650620fc8b16f1d3af3e8e2b79e7b9846d2dafae437",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/AnalysisDock.tsx",
+        "sha256": "1d2dcf97fd7ba5e0922a2cdf33fbba14543b4bd970147537792fe6c8748e34e5",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/App.tsx",
+        "sha256": "083bdce603d9397587f18a8e0a92eb87aaa4664e0b2db4342a7fe826e09ccb9f",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/BindingOverrideEditor.tsx",
+        "sha256": "5790762960eb8a1e529a631fe980e5d17797575456868431e0c6c95d0cb50033",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/HelpTip.tsx",
+        "sha256": "d37fc48ad5fa9da9d7aecd1d5d67425b880651dcb871e3b671eafa4e96d2b9f6",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/Inspector.tsx",
+        "sha256": "1b4f75c6626ff84a905fb83df17b0cb20d9333c1c6228b3425d45b2714b16072",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/MappingEditor.tsx",
+        "sha256": "fe2abb9056fe146e7b5cdb72d86a2cfcefe472aaf1d77ad9ee0df0f56ffafb08",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/PerformancePanel.tsx",
+        "sha256": "2e1ada15672792de27268a931b303122276c5570a29c69558034e31ddd1a6128",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/PipelinePanels.tsx",
+        "sha256": "405a8f7b1b2d278804840d289288a9a8a62e288abde799b3a183ee565aea0e0e",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/RuleCard.tsx",
+        "sha256": "85a46198525f27eaeaf62cde798705612718e8cf72a771d031676442a2c98c76",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/SceneExplorer.tsx",
+        "sha256": "2c95feb30585438f64bab602ce680af3fc5b9c2f264fcfd0baa05ead560b4ca7",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/audio-diagnostics-presentation.ts",
+        "sha256": "b980e19d782b10dafb8fb1171aab562d929eaeb09f24af4c68a569e6a2923f26",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/binding-drafts.ts",
+        "sha256": "81ade58c0b08f6486a1a3e1a1b5e5b55f021a8f5f946bdf1638353b8cbb23cd5",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/components.tsx",
+        "sha256": "e562ac0238b58b1196b856ecc60376e52bb10662df3519993e518c77be207ab9",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/help-tip.test.ts",
+        "sha256": "8ba070d4820d1f8dcc5d8105fce6bd399ed0663633268389397b224a41ec52cd",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/locales/status.ts",
+        "sha256": "2fe2c705d4862505f1acb519798b3570ca4096e96a8cbf387f2cb5e65f6cf13f",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/view-output-equivalence.test.ts",
+        "sha256": "22dbebe064297807cc7bac3402b047835b857a068526fab45b05e7dfe077abea",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/view-stability.test.ts",
+        "sha256": "7309aa074a8a7323a8a44a3b1a9e2c1f07b644918ab3e56039e6bceb75e59c3c",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/view-stability.ts",
+        "sha256": "29df8243a5322222ec6eb54b7944056af499349ae620ca79fa77f47c2381b875",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/viewport/SceneEntities.tsx",
+        "sha256": "a525d8ad92a32099eff875b2efa6da0ac21a32789c6830d1a7719cd96b5f5a43",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/viewport/solver-path-line.test.ts",
+        "sha256": "810a5ded8ecb73ad4b0e38ab25d24aeed034adda16a83bd8f2d1fe2352869ce6",
+        "state": "present"
+      },
+      {
+        "path": "src/ui/viewport/solver-path-line.ts",
+        "sha256": "bf4e6906910dcb45464e384cb1c7d37e7bc7f73dc8f49af88c3870529e5b957e",
+        "state": "present"
+      }
+    ],
+    "git": {
+      "branch": "codex/nonadvanced-integration-20261103",
+      "head": "18dbc908eb9a871a77a15ac2f2b7ae6aeab028e3",
+      "status": "M docs/en/11-v1/REQUIREMENT_EVIDENCE_20261027.md\n M docs/en/16-nonadvanced-completion/evidence/milestone-04/root-worker-native-en/COMPONENT_SPEC.fd7c953b4e51.md\n M docs/en/16-nonadvanced-completion/evidence/milestone-04/root-worker-native-en/WORKSPACE_ARCHITECTURE.bad970977ec7.md\n M docs/en/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.m1-v1.bfa9e2e8eb72.md\n M docs/en/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m1.f1081e9a2aff.md\n M docs/en/16-nonadvanced-completion/history/IMPLEMENTATION_STATUS.pre-m4.a833e441c1be.md\n M docs/en/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.m1-v1.aaac117d2f58.md\n M docs/en/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m1.a1d81f071f5e.md\n M docs/en/16-nonadvanced-completion/history/KNOWN_LIMITATIONS.pre-m3.a1986f54145e.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.m1-v1.f74b07f8cb38.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m1.d7441f1616a2.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m2.9b9d1d06debc.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m3.92f9b9c2546f.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4-postnote.358467b9f95e.md\n M docs/en/16-nonadvanced-completion/history/NEXT_ENGINEERING_TASK.pre-m4.96c6ba9e2622.md\n M docs/en/16-nonadvanced-completion/lanes/recording-readiness/DIAGNOSTIC_SOURCE.md\n M docs/en/IMPLEMENTATION_STATUS.md\n M docs/en/KNOWN_LIMITATIONS.md\n M docs/en/NEXT_ENGINEERING_TASK.md\n M docs/en/index.md\n M docs/en/knowledge/wiki/blockers/open-questions.md\n M docs/en/knowledge/wiki/features/core-pipeline-20261102.md\n M docs/en/knowledge/wiki/features/nonadvanced-completion-20261103.md\n M docs/en/knowledge/wiki/index.md\n M docs/en/knowledge/wiki/now.md\n M docs/en/knowledge/wiki/research/performance-buffer-review-20261101.md\n M docs/en/knowledge/wiki/ui-ux/design-engineering.md\n M docs/en/manifest.json\n M docs/en/validation.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/command.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/acoustic-productDefault.raw.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/acoustic-stress256.raw.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/build-manifest.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/build.stderr.txt\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/build.stdout.txt\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/App-DP4WMzuC.css\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/App-LKagPK6V.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/App-LKagPK6V.js.map\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/acoustic-worker-ICZ1LCMs.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/acoustic-worker-ICZ1LCMs.js.map\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/performance-fixture-v4-DuDGNSbK.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/performance-fixture-v4-DuDGNSbK.js.map\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/recording-evaluation.worker-CNQEpKI0.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/recording-evaluation.worker-CNQEpKI0.js.map\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/recording-seal.worker-CcB9Grt7.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/recording-seal.worker-CcB9Grt7.js.map\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/assets/rolldown-runtime-BWaJ3C7D.js\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/favicon.ico\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/favicon.svg\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/bundle/tests/browser/performance-fixture-v4.html\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/cpu/after-20261103T070111676Z.after.process-times-request.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/cpu/before-20261103T070111676Z.before.process-times-request.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/physics.raw.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/preview.log.txt\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/ui.finish-tail.raw.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/ui.raw.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/ui.trace-analysis.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/ui.trace.json.gz\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/native/verification.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/process.json\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/stderr.txt\n?? artifacts/v1/perf-nonadvanced-20261103-v4-claude-pilot-01/stdout.txt",
+      "worktree": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\integration"
+    },
+    "execution_note": "命令與結果由操作者提供；檔案 hash 與 Git 狀態由工具現場取得。"
+  }
+}

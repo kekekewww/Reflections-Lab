@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "kind": "BOOTSTRAP_PROGRESS_NOT_FULL_BASELINE_PASS",
+  "recorded_at": "2026-11-02T17:02:43.312Z",
+  "baseline_head": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+  "root_plan": {
+    "path": "docs/superpowers/plans/2026-11-03-nonadvanced-completion.md",
+    "sha256": "de03854f91217d6608d18a675cf9d191d6c909e19f26dc7c4feca59fb57ec1d5",
+    "bytes": 17243
+  },
+  "source_of_execution": "Root executed runs; memory agent read actual raw/exit/receipt, no product tests run by memory agent.",
+  "typecheck": {
+    "exit": 0,
+    "evidence": [
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/typecheck.txt",
+        "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+        "bytes": 68
+      },
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/typecheck.exit.txt",
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "bytes": 1
+      }
+    ]
+  },
+  "initial_runtime": {
+    "exit": 1,
+    "reported": {
+      "tests": 1520,
+      "pass": 1517,
+      "fail": 3
+    },
+    "classification": "RESOURCE_ABORTED_FILES_NOT_THREE_ASSERTION_FAILURES",
+    "observed_signals": {
+      "cannot_allocate_memory": true,
+      "EPIPE": true,
+      "windows_status_3221226505": true
+    },
+    "evidence": [
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/runtime.txt",
+        "sha256": "2053126deb62352e1aba20c754cb9668226f8de488f71690c13226692079d2a9",
+        "bytes": 393540
+      },
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/runtime.exit.txt",
+        "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+        "bytes": 1
+      },
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/receipt.json",
+        "sha256": "0047501b8754d6b54349f0325b5ab28e2ef5ef2ee9e9234025d3dedfbb7b207e",
+        "bytes": 427
+      }
+    ],
+    "verdict": "Original exit1 retained; incomplete suite, not baseline PASS and not proof of a product assertion defect."
+  },
+  "targeted_resource_recheck": {
+    "exit": 0,
+    "reported": {
+      "tests": 19,
+      "pass": 19,
+      "fail": 0
+    },
+    "scope": "Only three initially aborted test files under concurrency1, Root actual execution; not the full1536 runtime suite.",
+    "summary_confirmed": true,
+    "evidence": [
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/resource-recheck.txt",
+        "sha256": "642f0fb1e86186c0942e333e4906e441d803057839b78dcb3c6574642eaae8f4",
+        "bytes": 5063
+      },
+      {
+        "path": ".cache/nonadvanced-20261103/baseline/resource-recheck.exit.txt",
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "bytes": 1
+      }
+    ]
+  },
+  "full_runtime_recheck": {
+    "status": "PENDING_ROOT_RUN_AND_RECEIPT",
+    "requirement": "All original files/fixtures/tolerances with bounded process concurrency; original resource failure remains preserved."
+  },
+  "source_product_diff_at_observation": "",
+  "not_run": {
+    "native_computer_use": "NOT_RUN",
+    "playwright_current_candidate": "NOT_RUN",
+    "formal_performance_current_candidate": "NOT_RUN",
+    "long_recording_output_current_candidate": "NOT_RUN",
+    "claude_independent_current_run": "NOT_RUN",
+    "manual_after_claude": "NOT_RUN"
+  },
+  "bootstrap_independent_review": {
+    "reviewer": "/root/nonadvanced_memory/criteria_read",
+    "method": "Read-only comparison of12 original task bytes/dependencies/criterion id+text+verified/status against BASELINE; documentation scope review.",
+    "result": "No substantive scope reduction or false acceptance promotion found.",
+    "limits": "No product tests/browser or physics/acoustic/performance claim; exact owners/long matrix still pending."
+  },
+  "known_limits": [
+    "Root source still e25 before integration; no source PASS inferred from metadata",
+    "Root exact owner/worktree assignments and long matrix are pending S0 freeze",
+    "Historical1536/217/fiveWAV and600secondFAIL remain historical",
+    "Raw execution artifacts listed in ignored.cache are local files; this record does not claim every artifact is Git-contained"
+  ]
+}

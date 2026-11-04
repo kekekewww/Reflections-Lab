@@ -51,6 +51,7 @@ export default [
       "src/**/*.ts",
       "src/**/*.tsx",
       "server/**/*.ts",
+      "benchmarks/muse-limits/**/*.ts",
       "tests/**/*.ts",
       "vite.config.ts",
       "playwright.config.ts",

@@ -1,4 +1,6 @@
 import { useId, useRef } from "react";
+import { HelpTip } from "./HelpTip.js";
+import { memoView } from "./view-stability.js";
 import { mapParameter } from "../audio-behavior/profile-registry.js";
 import type { SoundParameterMapping } from "./contracts.js";
 import { useLocale } from "./locale.js";
@@ -173,7 +175,7 @@ function CurveChart({ mapping }: { mapping: SoundParameterMapping }) {
   );
 }
 
-export function MappingEditor({
+function MappingEditorView({
   state,
   disabled,
   onChange,
@@ -196,7 +198,13 @@ export function MappingEditor({
   );
   return (
     <section className="mapping-editor" aria-label={t("editor.mapping.editorLabel")}>
-      <p className="micro-copy">{t("editor.mapping.instructions", { zero: n(0), one: n(1) })}</p>
+      <header className="section-header">
+        <h4>{t("editor.mapping.editorLabel")}</h4>
+        <HelpTip
+          topic={t("editor.mapping.editorLabel")}
+          content={t("editor.mapping.instructions", { zero: n(0), one: n(1) })}
+        />
+      </header>
       {state.mappings.map((mapping) => {
         const inputUnit = inputPresentation[mapping.input].unit;
         const outputUnit = t(targetUnitKeys[mapping.target]);
@@ -341,7 +349,10 @@ export function MappingEditor({
                 />
               </label>
             </div>
-            <p className="micro-copy">{t("editor.mapping.clampHelp", { zero: n(0) })}</p>
+            <HelpTip
+              topic={t("editor.mapping.smoothingLabel")}
+              content={t("editor.mapping.clampHelp", { zero: n(0) })}
+            />
             {canonical ? (
               <CurveChart mapping={canonical} />
             ) : (
@@ -365,7 +376,10 @@ export function MappingEditor({
                     outputUnit,
                   })}
                 </output>
-                <span className="micro-copy">{t("editor.mapping.midpointHelp")}</span>
+                <HelpTip
+                  topic={t("editor.mapping.midpointAria")}
+                  content={t("editor.mapping.midpointHelp")}
+                />
               </p>
             )}
             <p className="micro-copy">
@@ -451,18 +465,24 @@ export function MappingEditor({
                 ))}
               </tbody>
             </table>
-            <button
-              type="button"
-              disabled={disabled || !canonical || mapping.curve.length >= MAX_CURVE_POINTS}
-              title={
-                canonical
-                  ? t("editor.mapping.pointLimit", { count: n(MAX_CURVE_POINTS) })
-                  : t("editor.mapping.fixCurveFirst")
+            <HelpTip
+              topic={t("editor.mapping.addPoint")}
+              content={
+                disabled
+                  ? t("inspector.runningEditGuard")
+                  : (canonical
+                      ? t("editor.mapping.pointLimit", { count: n(MAX_CURVE_POINTS) })
+                      : t("editor.mapping.fixCurveFirst")) || t("inspector.runningEditGuard")
               }
-              onClick={() => update(mapping.key, { curve: insertCurvePoint(mapping).curve })}
             >
-              {t("editor.mapping.addPoint")}
-            </button>
+              <button
+                type="button"
+                disabled={disabled || !canonical || mapping.curve.length >= MAX_CURVE_POINTS}
+                onClick={() => update(mapping.key, { curve: insertCurvePoint(mapping).curve })}
+              >
+                {t("editor.mapping.addPoint")}
+              </button>
+            </HelpTip>
           </article>
         );
       })}
@@ -480,12 +500,21 @@ export function MappingEditor({
       >
         {t("editor.mapping.addMapping")}
       </button>
-      <p className="micro-copy">
-        {t("editor.mapping.countHelp", {
+      <span className="mapping-count">
+        {t("help.mappingCount", {
           count: n(state.mappings.length),
           maximum: n(MAX_MAPPINGS),
         })}
-      </p>
+        <HelpTip
+          topic={t("editor.mapping.addMapping")}
+          content={t("editor.mapping.countHelp", {
+            count: n(state.mappings.length),
+            maximum: n(MAX_MAPPINGS),
+          })}
+        />
+      </span>
     </section>
   );
 }
+
+export const MappingEditor = memoView(MappingEditorView);

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "freeze_id": "NONADVANCED-LONG-OUTPUT-20261103-V1",
+  "frozen_at": "2026-11-02T17:18:56.039Z",
+  "authority": "Root integration coordinator explicitly approved v1; implement_long_render validates and implements. A frozen specification is not product PASS.",
+  "status": "FROZEN_SPECIFICATION_NOT_IMPLEMENTED_OR_VERIFIED",
+  "sample_rate_Hz": 48000,
+  "channels": 2,
+  "sample_encoding": "IEEE754_FLOAT32_WAV",
+  "owners": 2,
+  "capture": {
+    "duration_seconds": 60,
+    "fixed_rate_Hz": 60,
+    "start_tick": 0,
+    "end_tick": 3600,
+    "expected_frame_count_inclusive": 3601,
+    "original_frame_cap": 18000,
+    "original_byte_cap": 67108864,
+    "requirement": "Prove actual3601-frame trace including metadata/admission fits original64MiB; original caps unchanged."
+  },
+  "output": {
+    "signal_duration_seconds": 60,
+    "tail_default_seconds": 2,
+    "total_duration_seconds": 62,
+    "total_frames_per_WAV": 2976000,
+    "outputs": [
+      "master",
+      "raw",
+      "simulated",
+      "owner-stem-A",
+      "owner-stem-B"
+    ],
+    "WAV_count": 5,
+    "manifest_count": 1,
+    "PCM_bytes_per_WAV": 23808000,
+    "WAV_header_bytes": 56,
+    "WAV_bytes_each": 23808056,
+    "WAV_bytes_total": 119040280,
+    "owner_identity": "Two real stable owner IDs in the frozen source fixture; A/B labels denote matrix positions, not generated persistent IDs.",
+    "requirement": "Actual5WAV+manifest downloads and independent frame/rate/channel/hash/finite/peak/stem-sum/reference checks; no historical5second substitution."
+  },
+  "bounds": {
+    "max_context_seconds": 75,
+    "tail_seconds": {
+      "minimum": 0,
+      "maximum": 10
+    },
+    "max_output_files": 16,
+    "working_memory_bytes": 268435456,
+    "output_bytes": 201326592,
+    "PCM_chunk_frames": 32768,
+    "expected_chunks_for_62s_per_tap": 91,
+    "expected_final_chunk_frames": 26880
+  },
+  "DSP_state": {
+    "method": "One complete native OfflineAudioContext per tap; control/encode/persist chunks preserve the continuous single-graph DSP history.",
+    "release_policy": "Process taps sequentially and release each full native PCM buffer before next tap where ownership permits; account assets/native buffers/staging/output residency in actual peak.",
+    "not_claimed": [
+      "infinite streaming",
+      "constant memory",
+      "lossless state carry by concatenating separate contexts",
+      "unmeasured native callback CPU as zero"
+    ],
+    "reference_requirements": [
+      "Exact global sample origin, phase/pitch/cursor and single propagation delay",
+      "Chunk boundaries and whole output compared with independent full-span reference",
+      "Delay/filter/HRTF/IR/limiter state, motion/path birth/death and tails remain continuous",
+      "Original2e-6stem-sum tolerance and other original numerical/reference limits unchanged",
+      "Actual caps/cancel/quota/crash/incomplete publication tests; failure never Completed"
+    ]
+  },
+  "implementation_owner": "/root/implement_long_render",
+  "recording_storage_owner": "/root/implement_storage",
+  "acceptance_status": {
+    "long_capture": "NOT_RUN",
+    "native_OAC_long_render": "NOT_RUN",
+    "five_WAV_exports": "NOT_RUN",
+    "boundary_and_whole_reference": "NOT_RUN",
+    "actual_peak_memory": "NOT_RUN",
+    "Computer_Use": "NOT_RUN",
+    "Playwright": "NOT_RUN"
+  },
+  "change_policy": "New version with explicit Root agreement and original criteria preservation; no quiet workload/cap/tolerance reduction."
+}

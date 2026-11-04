@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: formal V4 exposes a streamed analyzer independently of the frozen V3 module
+ok 1 - formal V4 exposes a streamed analyzer independently of the frozen V3 module
+  ---
+  duration_ms: 0.6826
+  type: 'test'
+  ...
+# Subtest: formal streaming fixture is the exact committed short raw and still fails original V3
+ok 2 - formal streaming fixture is the exact committed short raw and still fails original V3
+  ---
+  duration_ms: 13.8053
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves full raw counts, exact caps, source indexes and numeric bits
+ok 3 - formal V4 stream preserves full raw counts, exact caps, source indexes and numeric bits
+  ---
+  duration_ms: 122.949
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name owned B is validated before retention selection
+ok 4 - formal V4 stream rejects unknown-name owned B is validated before retention selection
+  ---
+  duration_ms: 81.135
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name owned E is validated before retention selection
+ok 5 - formal V4 stream rejects unknown-name owned E is validated before retention selection
+  ---
+  duration_ms: 158.4879
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects known pinned source cannot be discarded because its owner changed
+ok 6 - formal V4 stream rejects known pinned source cannot be discarded because its owner changed
+  ---
+  duration_ms: 186.0615
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects unknown-name known source on another owner is not filtered away
+ok 7 - formal V4 stream rejects unknown-name known source on another owner is not filtered away
+  ---
+  duration_ms: 74.9653
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects invalid complete task outside window remains rejected
+ok 8 - formal V4 stream rejects invalid complete task outside window remains rejected
+  ---
+  duration_ms: 57.3886
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign non-object before retention
+ok 9 - formal V4 stream rejects foreign non-object before retention
+  ---
+  duration_ms: 51.4625
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign array object before retention
+ok 10 - formal V4 stream rejects foreign array object before retention
+  ---
+  duration_ms: 57.5408
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign number before retention
+ok 11 - formal V4 stream rejects foreign number before retention
+  ---
+  duration_ms: 48.2564
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign non-string name before retention
+ok 12 - formal V4 stream rejects foreign non-string name before retention
+  ---
+  duration_ms: 63.0177
+  type: 'test'
+  ...
+# Subtest: formal V4 stream rejects foreign name 512 plus one before retention
+ok 13 - formal V4 stream rejects foreign name 512 plus one before retention
+  ---
+  duration_ms: 67.0194
+  type: 'test'
+  ...
+# Subtest: formal V4 name cap accepts the exact 512-character foreign-name edge
+ok 14 - formal V4 name cap accepts the exact 512-character foreign-name edge
+  ---
+  duration_ms: 329.0886
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for bad gzip header
+ok 15 - formal V4 preserves the original stream error for bad gzip header
+  ---
+  duration_ms: 61.495
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for duplicate traceEvents keys
+ok 16 - formal V4 preserves the original stream error for duplicate traceEvents keys
+  ---
+  duration_ms: 33.0457
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for truncated gzip
+ok 17 - formal V4 preserves the original stream error for truncated gzip
+  ---
+  duration_ms: 23.8001
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves the original stream error for gzip CRC mismatch
+ok 18 - formal V4 preserves the original stream error for gzip CRC mismatch
+  ---
+  duration_ms: 94.5997
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for producer mismatch
+ok 19 - formal V4 stream preserves rejection for producer mismatch
+  ---
+  duration_ms: 45.7078
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for executable mismatch
+ok 20 - formal V4 stream preserves rejection for executable mismatch
+  ---
+  duration_ms: 44.2759
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for native trace loss
+ok 21 - formal V4 stream preserves rejection for native trace loss
+  ---
+  duration_ms: 48.3713
+  type: 'test'
+  ...
+# Subtest: formal V4 stream preserves rejection for unknown trace close
+ok 22 - formal V4 stream preserves rejection for unknown trace close
+  ---
+  duration_ms: 57.5889
+  type: 'test'
+  ...
+# Subtest: formal V4 uses the exact original formal resource ceilings
+ok 23 - formal V4 uses the exact original formal resource ceilings
+  ---
+  duration_ms: 0.3199
+  type: 'test'
+  ...
+# Subtest: formal V4 retains unknown B and E from another owner without inventing a rejection
+ok 24 - formal V4 retains unknown B and E from another owner without inventing a rejection
+  ---
+  duration_ms: 433.8462
+  type: 'test'
+  ...
+# Subtest: formal V4 maps classifications to changed raw ordinals after pruning an earlier event
+ok 25 - formal V4 maps classifications to changed raw ordinals after pruning an earlier event
+  ---
+  duration_ms: 107.5617
+  type: 'test'
+  ...
+# Subtest: formal V4 retains unknown complete events at the pinned posting site on another owner
+ok 26 - formal V4 retains unknown complete events at the pinned posting site on another owner
+  ---
+  duration_ms: 93.1593
+  type: 'test'
+  ...
+# Subtest: formal V4 preserves native-qualified but numerically incomplete canonical attempt02
+ok 27 - formal V4 preserves native-qualified but numerically incomplete canonical attempt02
+  ---
+  duration_ms: 62.6813
+  type: 'test'
+  ...
+# Subtest: formal V4 does not present a retained prefix as the full raw count after schema failure
+ok 28 - formal V4 does not present a retained prefix as the full raw count after schema failure
+  ---
+  duration_ms: 17.2039
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2534.4147

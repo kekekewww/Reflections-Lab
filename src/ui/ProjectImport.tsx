@@ -1,4 +1,5 @@
-﻿import { useRef, useState } from "react";
+import { HelpTip } from "./HelpTip.js";
+import { useRef, useState } from "react";
 import { MAX_PROJECT_BYTES } from "../persistence/validate-project.js";
 import type { LabController } from "./contracts.js";
 import { Icon } from "./components.js";
@@ -83,20 +84,27 @@ export function ProjectImportButton({
   };
   return (
     <>
-      <button
-        ref={trigger}
-        type="button"
-        className="icon-button"
-        disabled={disabled}
-        title={t(disabled ? "projectImport.pauseFirst" : "projectImport.reviewFirst")}
-        aria-label={t("projectImport.title")}
-        onClick={() => {
-          reset();
-          dialog.current?.showModal();
-        }}
+      <HelpTip
+        topic={t("projectImport.title")}
+        content={
+          t(disabled ? "projectImport.pauseFirst" : "projectImport.reviewFirst") ||
+          t("inspector.runningEditGuard")
+        }
       >
-        <Icon name="upload" />
-      </button>
+        <button
+          ref={trigger}
+          type="button"
+          className="icon-button"
+          disabled={disabled}
+          aria-label={t("projectImport.title")}
+          onClick={() => {
+            reset();
+            dialog.current?.showModal();
+          }}
+        >
+          <Icon name="upload" />
+        </button>
+      </HelpTip>
       <dialog
         ref={dialog}
         className="project-import-dialog"
@@ -110,8 +118,13 @@ export function ProjectImportButton({
           trigger.current?.focus();
         }}
       >
-        <h2 id="project-import-title">{t("projectImport.title")}</h2>
-        <p className="section-copy">{t("projectImport.introduction")}</p>
+        <div className="help-heading">
+          <h2>
+            <span id="project-import-title">{t("projectImport.title")}</span>
+          </h2>
+          <HelpTip topic={t("projectImport.title")} content={t("projectImport.introduction")} />
+        </div>
+        <p className="inline-warning">{t("help.projectReplaces")}</p>
         <label className="select-field">
           <span>{t("projectImport.fileLimit")}</span>
           <input
@@ -155,9 +168,12 @@ export function ProjectImportButton({
                   assets: count(draft.assetCount),
                   recordings: count(draft.recordingCount),
                 })}
+                <HelpTip
+                  topic={t("projectImport.contentSummary")}
+                  content={t("projectImport.validationHelp")}
+                />
               </dd>
             </dl>
-            <p className="micro-copy">{t("projectImport.validationHelp")}</p>
             <details>
               <summary>{t("projectImport.inspectJson")}</summary>
               <pre tabIndex={0}>{draft.text.slice(0, 6000)}</pre>

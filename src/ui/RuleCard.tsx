@@ -1,4 +1,6 @@
 import { useId, useMemo, useRef } from "react";
+import { HelpTip } from "./HelpTip.js";
+import { memoView } from "./view-stability.js";
 import behaviorSchema from "../../schemas/sound-behavior/behavior-document.schema.json" with { type: "json" };
 import type { BehaviorRuleView, LabViewModel } from "./contracts.js";
 import type { RuleDraftEntry } from "./rule-drafts.js";
@@ -7,7 +9,7 @@ import {
   triggerName,
   triggerOptions,
   unsupportedTriggerReason,
-  unsupportedTriggerReasons,
+  isZoneTrigger,
 } from "./behavior-options.js";
 import { Badge, Icon } from "./components.js";
 import { MappingEditor } from "./MappingEditor.js";
@@ -101,7 +103,7 @@ function RuleNumberField({
   );
 }
 
-export function RuleCard({
+function RuleCardView({
   rule,
   model,
   entry,
@@ -154,7 +156,11 @@ export function RuleCard({
     () => createMappingDraft(rule.mappings ?? []),
     [mappingSignature],
   );
-  const unsupported = unsupportedTriggerReason(draft.trigger, t);
+  const zones = model.zones ?? [];
+  const zonesForTrigger = zones.filter((zone) => zone.enabled || zone.id === draft.zoneId);
+  const zoneTrigger = isZoneTrigger(draft.trigger);
+  const missingZone = zoneTrigger && !zones.some((zone) => zone.id === draft.zoneId);
+  const unsupported = unsupportedTriggerReason(draft.trigger, t, zones);
   const editDisabled = disabled || pending;
   const invalid = (["gainLinear", "pitchSemitones", "cooldownSeconds"] as const).some((field) =>
     invalidRuleNumber(field, entry?.inputValues?.[field] ?? String(draft[field])),
@@ -171,21 +177,41 @@ export function RuleCard({
             type="checkbox"
             checked={draft.enabled}
             disabled={editDisabled || bindingEnabled === false}
-            title={bindingEnabled === false ? t("editor.rule.bindingDisabled") : undefined}
             onChange={(event) => change({ enabled: event.target.checked })}
           />
           <strong>{triggerName(draft.trigger, t)}</strong>
         </label>
-        <button
-          type="button"
-          className="icon-button subtle-button"
-          disabled={editDisabled || dirty}
-          title={dirty ? t("editor.rule.deleteDraftFirst") : t("editor.rule.delete")}
-          aria-label={t("editor.rule.deleteAria", { id: rule.id })}
-          onClick={onDelete}
+        {draft.trigger === "OnBounce" && !unsupported && (
+          <HelpTip topic={triggerName(draft.trigger, t)} content={t("pipeline.bounce.help")} />
+        )}
+        {bindingEnabled === false && (
+          <HelpTip
+            topic={t("editor.parameter.enabled")}
+            content={t("editor.rule.bindingDisabled")}
+          />
+        )}
+        <HelpTip
+          topic={t("editor.rule.deleteAria", { id: rule.id })}
+          content={
+            dirty
+              ? t("editor.rule.deleteDraftFirst")
+              : pending
+                ? t("editor.rule.pending")
+                : disabled
+                  ? t("inspector.runningEditGuard")
+                  : t("editor.rule.delete")
+          }
         >
-          <Icon name="trash" size={14} />
-        </button>
+          <button
+            type="button"
+            className="icon-button subtle-button"
+            disabled={editDisabled || dirty}
+            aria-label={t("editor.rule.deleteAria", { id: rule.id })}
+            onClick={onDelete}
+          >
+            <Icon name="trash" size={14} />
+          </button>
+        </HelpTip>
       </header>
       <div className="rule-identity">
         <code>{rule.id}</code>
@@ -218,33 +244,44 @@ export function RuleCard({
           <br />
           {t("analysis.decision.instance")}: <code>{rule.nativeRejection.instanceId}</code>
           <br />
-          {t("analysis.native.scope")}
+          <HelpTip
+            topic={t("analysis.native.logicalActive")}
+            content={t("analysis.native.scope")}
+          />
         </p>
       )}
       {onPreview && (
         <div className="draft-actions">
-          <button
-            type="button"
-            className="outline-button compact-button"
-            disabled={
-              disabled ||
-              pending ||
-              dirty ||
-              previewDisabled ||
-              model.recording.state === "replaying"
+          <HelpTip
+            topic={t("preview.sceneAction")}
+            content={
+              pending
+                ? t("editor.rule.pending")
+                : model.recording.state === "replaying"
+                  ? t("analysis.recording.stopReplayFirst")
+                  : (dirty || previewDisabled
+                      ? t("preview.applyFirst")
+                      : disabled
+                        ? t("preview.pauseFirst")
+                        : t("preview.help")) || t("inspector.runningEditGuard")
             }
-            title={
-              dirty || previewDisabled
-                ? t("preview.applyFirst")
-                : disabled
-                  ? t("preview.pauseFirst")
-                  : t("preview.help")
-            }
-            onClick={onPreview}
           >
-            <Icon name="sound" size={14} />
-            {t("preview.sceneAction")}
-          </button>
+            <button
+              type="button"
+              className="outline-button compact-button"
+              disabled={
+                disabled ||
+                pending ||
+                dirty ||
+                previewDisabled ||
+                model.recording.state === "replaying"
+              }
+              onClick={onPreview}
+            >
+              <Icon name="sound" size={14} />
+              {t("preview.sceneAction")}
+            </button>
+          </HelpTip>
         </div>
       )}
       {unsupported && (
@@ -255,21 +292,52 @@ export function RuleCard({
         <select
           value={draft.trigger}
           disabled={editDisabled}
-          onChange={(event) => change({ trigger: event.target.value })}
+          onChange={(event) => {
+            const next = { ...draft, trigger: event.target.value };
+            if (!isZoneTrigger(next.trigger) || !isZoneTrigger(draft.trigger)) delete next.zoneId;
+            onDraft(next);
+          }}
         >
           {triggerOptions.map(([id]) => (
             <option
               value={id}
               key={id}
-              disabled={!!unsupportedTriggerReasons[id]}
-              title={unsupportedTriggerReason(id, t)}
+              disabled={!!unsupportedTriggerReason(id, t, zonesForTrigger)}
+              title={unsupportedTriggerReason(id, t, zonesForTrigger)}
             >
               {triggerName(id, t)} · {id}
-              {unsupportedTriggerReasons[id] ? t("editor.rule.unsupportedSuffix") : ""}
+              {unsupportedTriggerReason(id, t, zonesForTrigger)
+                ? t("editor.rule.unsupportedSuffix")
+                : ""}
             </option>
           ))}
         </select>
       </label>
+      {zoneTrigger && (
+        <label className="select-field">
+          <span>{t("editor.zone.label")}</span>
+          <select
+            value={draft.zoneId ?? ""}
+            disabled={editDisabled}
+            aria-invalid={missingZone}
+            onChange={(event) => change({ zoneId: event.target.value })}
+          >
+            <option value="">{t("editor.zone.choose")}</option>
+            {zones.map((zone) => (
+              <option
+                key={zone.id}
+                value={zone.id}
+                disabled={!zone.enabled && zone.id !== draft.zoneId}
+              >
+                {zone.name} · {zone.id}
+                {!zone.enabled ? t("editor.zone.disabledSuffix") : ""}
+              </option>
+            ))}
+          </select>
+          <HelpTip topic={t("editor.zone.label")} content={t("editor.zone.help")} />
+          {missingZone && <span className="field-message">{t("editor.zone.required")}</span>}
+        </label>
+      )}
       <label className="select-field">
         <span>{t("editor.rule.asset")}</span>
         <select
@@ -320,7 +388,7 @@ export function RuleCard({
           disabled={editDisabled}
           onChange={(raw) => onNumber("cooldownSeconds", raw)}
         />
-        <p className="micro-copy">{t("editor.rule.curveHelp")}</p>
+        <HelpTip topic={t("editor.mapping.editorLabel")} content={t("editor.rule.curveHelp")} />
       </div>
       <MappingEditor
         state={entry?.mappingDraft ?? committedMappings}
@@ -357,6 +425,7 @@ export function RuleCard({
               editDisabled ||
               stale ||
               invalid ||
+              missingZone ||
               !!entry?.mappingError ||
               entry?.changedFields?.length === 0 ||
               (!!unsupported && draft.enabled)
@@ -370,3 +439,10 @@ export function RuleCard({
     </article>
   );
 }
+
+export const RuleCard = memoView(RuleCardView, ({ model, ...props }) => [
+  props,
+  model.assets,
+  model.zones,
+  model.recording.state,
+]);

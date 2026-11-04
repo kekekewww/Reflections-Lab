@@ -1,5 +1,12 @@
+import {
+  LEGACY_ACOUSTIC_MODEL_VERSION,
+  acousticRequestSolverVersion,
+  EXTENDED_ACOUSTIC_MODEL_VERSION,
+} from "../capabilities/acoustic-geometry.js";
 import { MAX_PROPAGATION_SECONDS } from "./limits.js";
 import type {
+  AcousticPrimitive,
+  AcousticBoxOccluder,
   AcousticMaterialBand,
   AcousticFrame,
   AcousticMaterial,
@@ -19,8 +26,11 @@ import {
   unit,
 } from "./geometry.js";
 import type { PreparedSurface } from "./geometry.js";
+import { primitiveReflectionPoint, primitiveSegmentIntersection } from "./primitives.js";
+import { boxOccluderSegmentIntersection } from "./box-volume.js";
 
-export const SOLVER_VERSION = "web-geometric-1.0.0";
+export const SOLVER_VERSION = LEGACY_ACOUSTIC_MODEL_VERSION;
+export const EXTENDED_SOLVER_VERSION = EXTENDED_ACOUSTIC_MODEL_VERSION;
 export const DEFAULT_BANDS_HZ = Object.freeze([125, 250, 500, 1000, 2000, 4000, 8000]);
 export class AcousticSolverError extends Error {
   constructor(
@@ -95,9 +105,12 @@ function prepareSurface(raw: AcousticRequest["surfaces"][number]): PreparedSurfa
     "twoSided must be boolean",
   );
   requireValue(
-    raw.role === undefined || raw.role === "staticReflector" || raw.role === "dynamicOccluder",
+    raw.role === undefined ||
+      raw.role === "staticReflector" ||
+      raw.role === "dynamicReflector" ||
+      raw.role === "dynamicOccluder",
     "INVALID_SURFACE_ROLE",
-    "Only static reflectors or snapshot dynamic occluders are supported",
+    "Only explicit static/dynamic reflectors or snapshot dynamic occluders are supported",
   );
   for (let i = 0; i < vertices.length; i++) {
     const v = vertices[i]!,
@@ -139,6 +152,136 @@ function prepareSurface(raw: AcousticRequest["surfaces"][number]): PreparedSurfa
     role: raw.role ?? "staticReflector",
   };
 }
+function preparePrimitive(raw: AcousticPrimitive): AcousticPrimitive {
+  requireValue(
+    raw &&
+      typeof raw === "object" &&
+      !Array.isArray(raw) &&
+      (Object.getPrototypeOf(raw) === Object.prototype || Object.getPrototypeOf(raw) === null),
+    "INVALID_PRIMITIVE",
+    "Primitive must be a plain JSON object",
+  );
+  const fields = new Set([
+    "id",
+    "kind",
+    "materialId",
+    "role",
+    "centerM",
+    "radiusM",
+    "axis",
+    "halfLengthM",
+  ]);
+  requireValue(
+    Object.keys(raw).every((key) => fields.has(key)),
+    "INVALID_PRIMITIVE",
+    "Unknown primitive field",
+  );
+  requireValue(
+    validSurfaceId(raw.id) &&
+      validId(raw.materialId) &&
+      vector(raw.centerM) &&
+      (raw.kind === "sphere" || raw.kind === "capsule") &&
+      finite(raw.radiusM, EPSILON_M, 50) &&
+      raw.radiusM > EPSILON_M &&
+      (raw.role === undefined ||
+        ["staticReflector", "dynamicReflector", "dynamicOccluder"].includes(raw.role)),
+    "INVALID_PRIMITIVE",
+    "Primitive identity, shape, material, center, radius or role is invalid",
+  );
+  const prepared: AcousticPrimitive = {
+    id: raw.id,
+    kind: raw.kind,
+    materialId: raw.materialId,
+    centerM: [...raw.centerM],
+    radiusM: raw.radiusM,
+    role: raw.role ?? "staticReflector",
+  };
+  if (raw.kind === "sphere") {
+    requireValue(
+      raw.axis === undefined && raw.halfLengthM === undefined,
+      "INVALID_PRIMITIVE",
+      "Sphere does not carry capsule fields",
+    );
+  } else {
+    requireValue(
+      vector(raw.axis) &&
+        Math.abs(length(raw.axis) - 1) < 1e-6 &&
+        finite(raw.halfLengthM, 0, 50) &&
+        2 * (raw.radiusM + raw.halfLengthM) <= 100,
+      "INVALID_PRIMITIVE",
+      "Capsule needs a unit axis and bounded nonnegative half-length",
+    );
+    prepared.axis = unit(raw.axis);
+    prepared.halfLengthM = raw.halfLengthM;
+  }
+  const axis = prepared.axis ?? [0, 0, 0],
+    halfLength = prepared.halfLengthM ?? 0;
+  requireValue(
+    prepared.centerM.every(
+      (value, i) =>
+        Math.abs(value) + prepared.radiusM + Math.abs(axis[i]!) * halfLength <= 200 + EPSILON_M,
+    ),
+    "INVALID_PRIMITIVE",
+    "Complete primitive volume must remain within the acoustic scene bounds",
+  );
+  return prepared;
+}
+
+function prepareBoxOccluder(raw: AcousticBoxOccluder): AcousticBoxOccluder {
+  requireValue(
+    raw &&
+      typeof raw === "object" &&
+      !Array.isArray(raw) &&
+      (Object.getPrototypeOf(raw) === Object.prototype || Object.getPrototypeOf(raw) === null),
+    "INVALID_BOX_OCCLUDER",
+    "Box occluder must be a plain object",
+  );
+  const allowed = new Set(["id", "materialId", "centerM", "halfExtentsM", "orientationQuaternion"]);
+  requireValue(
+    Object.keys(raw).every((key) => allowed.has(key)) &&
+      validSurfaceId(raw.id) &&
+      validId(raw.materialId) &&
+      vector(raw.centerM) &&
+      vector(raw.halfExtentsM) &&
+      raw.halfExtentsM.every((value) => value > EPSILON_M && value <= 50),
+    "INVALID_BOX_OCCLUDER",
+    "Invalid box occluder identity or dimensions",
+  );
+  const q = raw.orientationQuaternion;
+  requireValue(
+    Array.isArray(q) &&
+      q.length === 4 &&
+      Array.from(q).every((value) => finite(value, -1.000001, 1.000001)) &&
+      Math.abs(Math.hypot(...q) - 1) < 1e-6,
+    "INVALID_BOX_OCCLUDER",
+    "Box occluder needs a unit quaternion",
+  );
+  const norm = Math.hypot(...q),
+    [x, y, z, w] = q.map((value) => value / norm) as [number, number, number, number];
+  const rotation = [
+    [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
+    [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
+    [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
+  ];
+  requireValue(
+    raw.centerM.every(
+      (value, i) =>
+        Math.abs(value) +
+          rotation[i]!.reduce((sum, entry, j) => sum + Math.abs(entry) * raw.halfExtentsM[j]!, 0) <=
+        200 + EPSILON_M,
+    ),
+    "INVALID_BOX_OCCLUDER",
+    "Complete box occluder must remain within acoustic scene bounds",
+  );
+  return {
+    id: raw.id,
+    materialId: raw.materialId,
+    centerM: [...raw.centerM],
+    halfExtentsM: [...raw.halfExtentsM],
+    orientationQuaternion: [x, y, z, w],
+  };
+}
+
 function materialMap(
   materials: AcousticRequest["materials"],
   bands: readonly number[],
@@ -288,8 +431,59 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
     "DUPLICATE_SURFACE",
     "Surface IDs must be unique",
   );
+  const rawPrimitives = request.primitives === undefined ? [] : request.primitives;
+  requireValue(Array.isArray(rawPrimitives), "INVALID_PRIMITIVES", "Primitives must be an array");
+  requireValue(
+    surfaces.length + rawPrimitives.length <= maxSurfaces,
+    "SURFACE_BUDGET",
+    "Complete planar plus primitive geometry exceeds the configured budget",
+  );
+  const primitives = Array.from(rawPrimitives, preparePrimitive).sort((a, b) =>
+    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
+  );
+  requireValue(
+    new Set([...surfaces, ...primitives].map((entry) => entry.id)).size ===
+      surfaces.length + primitives.length,
+    "DUPLICATE_SURFACE",
+    "Geometry IDs must be unique across planar surfaces and primitives",
+  );
+  const rawBoxes = request.boxOccluders === undefined ? [] : request.boxOccluders;
+  requireValue(Array.isArray(rawBoxes), "INVALID_BOX_OCCLUDERS", "Box occluders must be an array");
+  requireValue(
+    surfaces.length + primitives.length + rawBoxes.length <= maxSurfaces,
+    "SURFACE_BUDGET",
+    "Complete geometry exceeds the shared configured budget",
+  );
+  const boxOccluders = Array.from(rawBoxes, prepareBoxOccluder).sort((a, b) =>
+    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
+  );
+  requireValue(
+    new Set([...surfaces, ...primitives, ...boxOccluders].map((entry) => entry.id)).size ===
+      surfaces.length + primitives.length + boxOccluders.length,
+    "DUPLICATE_SURFACE",
+    "All geometry identities must be unique",
+  );
+  const hasDynamicReflectors = [...surfaces, ...primitives].some(
+    (entry) => entry.role === "dynamicReflector",
+  );
+  requireValue(
+    request.modelVersion === undefined ||
+      request.modelVersion === SOLVER_VERSION ||
+      request.modelVersion === EXTENDED_SOLVER_VERSION,
+    "INVALID_MODEL_VERSION",
+    "Unknown acoustic model pin",
+  );
+  const needsExtendedModel =
+    primitives.length > 0 || boxOccluders.length > 0 || hasDynamicReflectors;
+  requireValue(
+    !(needsExtendedModel && request.modelVersion === SOLVER_VERSION),
+    "MODEL_CAPABILITY_MISMATCH",
+    "Legacy model cannot contain curved primitives or dynamic reflectors",
+  );
+  const extendedModel = needsExtendedModel || request.modelVersion === EXTENDED_SOLVER_VERSION;
+  const solverVersion = acousticRequestSolverVersion(request);
   const materials = materialMap(request.materials, bands);
-  for (const s of surfaces)
+  for (const s of [...surfaces, ...primitives, ...boxOccluders])
     requireValue(
       materials.has(s.materialId),
       "UNKNOWN_MATERIAL",
@@ -334,6 +528,17 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
     `Pressure reference distance is 1m; geometric gain is capped below ${minimumDistance}m (finite near-field engineering approximation, not calibrated SPL).`,
     "No impulse response or late decay was solved; RT60, DRR and clarity metrics are unavailable.",
   ];
+  if (extendedModel)
+    limitations[0] =
+      "Numerical geometric approximation: finite planar and analytic sphere/capsule first-order specular paths at the supplied snapshot; no retarded-time solution.";
+  if (primitives.length)
+    limitations.push(
+      "Curved specular points solve the geometric reflection law, but 1/pathLength pressure omits curvature divergence, focusing, caustics and surface waves; opaque volumes, no solid transmission. Each sphere uses at most 48 bisections and each capsule at most three such candidates.",
+    );
+  if (boxOccluders.length)
+    limitations.push(
+      "Exact closed OBB occluder volumes compact eligible box occluders within the unchanged shared geometry budget; these volumes do not generate reflection paths or invented surface normals.",
+    );
   const frame: AcousticFrame = {
     schemaVersion: "1.0.0",
     requestId: request.requestId,
@@ -341,12 +546,17 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
     geometryRevision: request.geometryRevision,
     poseTick: request.poseTick,
     backendId: "custom-web-geometric",
-    backendVersion: SOLVER_VERSION,
+    backendVersion: solverVersion,
     sourceId: request.source.id,
     listenerId: request.listener.id,
     bandCentersHz: bands,
     gainQuantity: "pressureRatio",
-    capabilities: ["directParameters", "individualReflectionPaths", "dynamicOccluders"],
+    capabilities: [
+      "directParameters",
+      "individualReflectionPaths",
+      "dynamicOccluders",
+      ...(hasDynamicReflectors ? ["dynamicReflectors" as const] : []),
+    ],
     modelClass: "numericalApproximation",
     directDelayS: null,
     paths: [],
@@ -424,6 +634,24 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
       if (segmentIntersection(a, b, surface))
         return { visible: false, blockerId: surface.id, complete: true };
     }
+    for (const primitive of primitives) {
+      if (diagnostics.segmentTests >= maxSegmentTests) {
+        diagnostics.budgetExceeded = true;
+        return { visible: false, complete: false };
+      }
+      diagnostics.segmentTests++;
+      if (primitiveSegmentIntersection(a, b, primitive))
+        return { visible: false, blockerId: primitive.id, complete: true };
+    }
+    for (const box of boxOccluders) {
+      if (diagnostics.segmentTests >= maxSegmentTests) {
+        diagnostics.budgetExceeded = true;
+        return { visible: false, complete: false };
+      }
+      diagnostics.segmentTests++;
+      if (boxOccluderSegmentIntersection(a, b, box))
+        return { visible: false, blockerId: box.id, complete: true };
+    }
     return { visible: true, complete: true };
   };
   const makePath = (
@@ -448,7 +676,7 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
       return spreading * reflection * 10 ** ((-absorption[i]! * distance) / 20);
     });
     return {
-      id: `${SOLVER_VERSION}|${request.topologyId ?? "default"}|${request.source.id}|${request.listener.id}|${surfaceIds.length ? surfaceIds.join(">") : "direct"}`,
+      id: `${solverVersion}|${request.topologyId ?? "default"}|${request.source.id}|${request.listener.id}|${surfaceIds.length ? surfaceIds.join(">") : "direct"}`,
       sourceId: request.source.id,
       listenerId: request.listener.id,
       surfaceIds,
@@ -495,6 +723,35 @@ export function solveAcoustics(request: AcousticRequest): AcousticSolution {
       [source, hit, listener],
       [surface.id],
       materials.get(surface.materialId)!,
+    );
+    if (path) paths.push(path);
+  }
+  for (const primitive of primitives) {
+    if (primitive.role === "dynamicOccluder") continue;
+    if (diagnostics.segmentTests >= maxSegmentTests) {
+      diagnostics.budgetExceeded = true;
+      break;
+    }
+    diagnostics.evaluatedReflectionCandidates++;
+    const reflected = primitiveReflectionPoint(source, listener, primitive);
+    if (!reflected) {
+      diagnostics.rejectedReflectionCount++;
+      continue;
+    }
+    const first = trace(source, reflected.point);
+    if (!first.visible) {
+      diagnostics.rejectedReflectionCount++;
+      continue;
+    }
+    const last = trace(reflected.point, listener);
+    if (!last.visible) {
+      diagnostics.rejectedReflectionCount++;
+      continue;
+    }
+    const path = makePath(
+      [source, reflected.point, listener],
+      [primitive.id],
+      materials.get(primitive.materialId)!,
     );
     if (path) paths.push(path);
   }

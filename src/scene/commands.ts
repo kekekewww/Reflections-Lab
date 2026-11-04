@@ -23,6 +23,7 @@ const objectPatchKeys = [
   "physicsMaterialId",
   "acousticMaterialId",
   "acousticRole",
+  "trajectory",
 ];
 const sourcePatchKeys = ["objectId", "signalId", "mode", "gainDbfs", "playing"];
 
@@ -135,6 +136,22 @@ function validateCommand(command: unknown): asserts command is SceneCommand {
       case "SetGravity":
         keys(operation, ["type", "gravityMps2"], ["type", "gravityMps2"]);
         break;
+      case "AddZone":
+      case "UpdateZone":
+        keys(operation, ["type", "zone"], ["type", "zone"]);
+        requireRecord(operation.zone);
+        break;
+      case "RemoveZone":
+        keys(operation, ["type", "zoneId"], ["type", "zoneId"]);
+        break;
+      case "SetZones":
+        keys(operation, ["type", "zones"], ["type", "zones"]);
+        if (
+          operation.zones !== null &&
+          (!Array.isArray(operation.zones) || operation.zones.length > 16)
+        )
+          throw new SceneError("INVALID_COMMAND", "SetZones 必須為最多16個區域或null。");
+        break;
       case "RestoreObject": {
         keys(
           operation,
@@ -176,7 +193,7 @@ function validateCommand(command: unknown): asserts command is SceneCommand {
       default:
         throw new SceneError("UNKNOWN_OPERATION", "不支援的場景操作。");
     }
-    for (const field of ["objectId", "sourceId"])
+    for (const field of ["objectId", "sourceId", "zoneId"])
       if (Object.hasOwn(operation, field) && typeof operation[field] !== "string")
         throw new SceneError("INVALID_COMMAND", "Domain ID 必須為字串。");
   }
@@ -195,7 +212,8 @@ function ensureIdAvailable(scene: SceneSpec, id: string): void {
   if (
     scene.listener.id === id ||
     scene.objects.some((object) => object.id === id) ||
-    scene.sources.some((source) => source.id === id)
+    scene.sources.some((source) => source.id === id) ||
+    (scene.zones ?? []).some((zone) => zone.id === id)
   ) {
     throw new SceneError("DUPLICATE_ID", `Domain ID 已存在：${id}`);
   }
@@ -212,8 +230,41 @@ function objectInverse(object: SceneObject): SceneOperation {
   return { type: "UpdateObject", objectId: id, patch };
 }
 
+function zoneInverse(scene: SceneSpec): SceneOperation {
+  return {
+    type: "SetZones",
+    zones: scene.zones === undefined ? null : structuredClone(scene.zones),
+  };
+}
+
 function execute(scene: SceneSpec, operation: SceneOperation): SceneOperation {
   switch (operation.type) {
+    case "AddZone": {
+      ensureIdAvailable(scene, operation.zone.id);
+      const inverse = zoneInverse(scene);
+      (scene.zones ??= []).push(structuredClone(operation.zone));
+      return inverse;
+    }
+    case "UpdateZone": {
+      const index = scene.zones?.findIndex((zone) => zone.id === operation.zone.id) ?? -1;
+      if (index < 0) throw new SceneError("UNKNOWN_ID", `區域不存在：${operation.zone.id}`);
+      const inverse = zoneInverse(scene);
+      scene.zones![index] = structuredClone(operation.zone);
+      return inverse;
+    }
+    case "RemoveZone": {
+      const index = scene.zones?.findIndex((zone) => zone.id === operation.zoneId) ?? -1;
+      if (index < 0) throw new SceneError("UNKNOWN_ID", `區域不存在：${operation.zoneId}`);
+      const inverse = zoneInverse(scene);
+      scene.zones!.splice(index, 1);
+      return inverse;
+    }
+    case "SetZones": {
+      const inverse = zoneInverse(scene);
+      if (operation.zones === null) delete scene.zones;
+      else scene.zones = structuredClone(operation.zones);
+      return inverse;
+    }
     case "SetTransform": {
       const object = objectAt(scene, operation.objectId),
         inverse = objectInverse(object);
@@ -257,7 +308,15 @@ function execute(scene: SceneSpec, operation: SceneOperation): SceneOperation {
     case "UpdateObject": {
       const object = objectAt(scene, operation.objectId),
         inverse = objectInverse(object);
-      Object.assign(object, structuredClone(operation.patch));
+      const { trajectory, ...rest } = structuredClone(operation.patch);
+      Object.assign(object, rest);
+      if ("trajectory" in operation.patch) {
+        // Undo must also remove a trajectory the object did not have before.
+        if (inverse.type === "UpdateObject" && !("trajectory" in inverse.patch))
+          inverse.patch.trajectory = null;
+        if (trajectory === null) delete object.trajectory;
+        else if (trajectory !== undefined) object.trajectory = trajectory;
+      }
       return inverse;
     }
     case "SetObjectMode": {

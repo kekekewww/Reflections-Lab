@@ -305,3 +305,101 @@ test("an old renderer's queued or late fatal error cannot report into a fresh mo
   assert.equal(fresh.callbacks.size, 1);
   current.dispose();
 });
+
+test("mounted live monitor ports preserve receiver and inputs without dispatching, then close on disposal", async () => {
+  const f = fixture();
+  f.runtime.readLiveMonitor = function (mode, input) {
+    assert.equal(this, f.runtime);
+    f.events.push("monitor:" + mode + ":" + input);
+    return null;
+  };
+  f.runtime.releaseLiveMonitor = function () {
+    assert.equal(this, f.runtime);
+    f.events.push("monitor.release");
+  };
+  const mounted = await mountReflectionLab(f.element, f.options);
+  f.events.length = 0;
+  assert.equal(f.view().readLiveMonitor?.("waveform", "master-right"), null);
+  f.view().releaseLiveMonitor?.();
+  assert.deepEqual(f.events, ["monitor:waveform:master-right", "monitor.release"]);
+  mounted.dispose();
+  f.events.length = 0;
+  assert.equal(f.view().readLiveMonitor?.("levels"), null);
+  f.view().releaseLiveMonitor?.();
+  assert.deepEqual(f.events, []);
+});
+
+test("mounted recovery ports forward stable session IDs and reject stale view operations", async () => {
+  const f = fixture();
+  f.runtime.listRecordingRecovery = async function () {
+    assert.equal(this, f.runtime);
+    f.events.push("recovery.list");
+    return [];
+  };
+  f.runtime.recoverRecording = async function (id) {
+    assert.equal(this, f.runtime);
+    f.events.push("recovery.restore:" + id);
+  };
+  f.runtime.discardRecordingRecovery = async function (id) {
+    assert.equal(this, f.runtime);
+    f.events.push("recovery.discard:" + id);
+  };
+  const mounted = await mountReflectionLab(f.element, f.options);
+  f.events.length = 0;
+  assert.deepEqual(await f.view().listRecordingRecovery?.(), []);
+  await f.view().recoverRecording?.("stable-session");
+  await f.view().discardRecordingRecovery?.("stable-session");
+  assert.deepEqual(f.events, [
+    "recovery.list",
+    "recovery.restore:stable-session",
+    "recovery.discard:stable-session",
+  ]);
+  mounted.dispose();
+  f.events.length = 0;
+  await assert.rejects(f.view().listRecordingRecovery!(), { name: "AbortError" });
+  await assert.rejects(f.view().recoverRecording!("stable-session"), { name: "AbortError" });
+  await assert.rejects(f.view().discardRecordingRecovery!("stable-session"), {
+    name: "AbortError",
+  });
+  assert.deepEqual(f.events, []);
+});
+
+test("pending recovery completion cannot publish or return data after its mount is replaced", async () => {
+  for (const operation of ["list", "recover", "discard"] as const) {
+    const f = fixture();
+    let settle!: () => void;
+    const gate = new Promise<void>((resolve) => {
+      settle = resolve;
+    });
+    f.runtime.listRecordingRecovery = async () => {
+      await gate;
+      return [];
+    };
+    f.runtime.recoverRecording = async () => {
+      await gate;
+    };
+    f.runtime.discardRecordingRecovery = async () => {
+      await gate;
+    };
+    const mounted = await mountReflectionLab(f.element, f.options);
+    const view = f.view();
+    const pending =
+      operation === "list"
+        ? view.listRecordingRecovery!()
+        : operation === "recover"
+          ? view.recoverRecording!("late-session")
+          : view.discardRecordingRecovery!("late-session");
+    mounted.dispose();
+    f.runtime.getSnapshot = () => {
+      throw new Error("must not read a freed runtime");
+    };
+    const fresh = fixture(f.element);
+    const replacement = await mountReflectionLab(f.element, fresh.options);
+    f.events.length = 0;
+    settle();
+    await assert.rejects(pending, { name: "AbortError" });
+    assert.deepEqual(f.events, [], operation);
+    assert.equal(fresh.callbacks.size, 1);
+    replacement.dispose();
+  }
+});

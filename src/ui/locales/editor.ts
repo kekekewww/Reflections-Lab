@@ -115,12 +115,28 @@ export const editorMessages = {
   "editor.trigger.OnStartMoving": { "zh-TW": "開始移動", en: "On start moving" },
   "editor.trigger.OnStopMoving": { "zh-TW": "停止移動", en: "On stop moving" },
   "editor.trigger.OnEnterZone": { "zh-TW": "進入區域", en: "On enter zone" },
+  "editor.zone.label": { "zh-TW": "事件區域", en: "Event zone" },
+  "editor.zone.choose": { "zh-TW": "選擇區域", en: "Choose a zone" },
+  "editor.zone.required": {
+    "zh-TW": "請明確選擇已註冊區域。",
+    en: "Explicitly choose a registered zone.",
+  },
+  "editor.zone.none": {
+    "zh-TW": "先在「區域」頁新增並啟用區域。",
+    en: "Create and enable a zone in the Zones tab first.",
+  },
+  "editor.zone.disabledSuffix": { "zh-TW": "（停用，不產生事件）", en: " (disabled; no events)" },
+  "editor.zone.help": {
+    "zh-TW":
+      "Derived：以物件中心在固定步完成後跨越所選區域邊界觸發；初始在內只建立基準。此選擇只篩選事件，不會移動物件上的聲源。停用區域保留規則參照，但不產生進出事件。",
+    en: "Derived: crossings use the body center after a fixed step. Initial occupancy establishes a baseline. This selection filters events and does not move the object-attached sound source. Disabled zones retain rule references but produce no crossing events.",
+  },
   "editor.trigger.OnExitZone": { "zh-TW": "離開區域", en: "On exit zone" },
   "editor.trigger.OnSleep": { "zh-TW": "休眠時", en: "On sleep" },
   "editor.trigger.OnWake": { "zh-TW": "喚醒時", en: "On wake" },
   "editor.trigger.unsupported.OnBounce": {
-    "zh-TW": "目前物理 bridge 未產生 OnBounce；請使用 OnImpact。",
-    en: "The physics bridge does not currently produce OnBounce; use OnImpact.",
+    "zh-TW": "此執行環境尚未提供 OnBounce producer；請使用 OnImpact。",
+    en: "This execution context does not provide an OnBounce producer; use OnImpact.",
   },
   "editor.trigger.unsupported.OnEnterZone": {
     "zh-TW": "目前物理 bridge 尚未產生區域進入事件。",

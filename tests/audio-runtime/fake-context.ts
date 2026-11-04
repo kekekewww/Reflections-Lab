@@ -62,10 +62,16 @@ export class FakeNode {
     readonly context: FakeAudioContext,
   ) {}
   connect(destination: FakeNode) {
+    this.context.graphCalls.push({ method: "connect", source: this, destination });
     this.connections.push(destination);
     return destination;
   }
   disconnect(destination?: FakeNode) {
+    this.context.graphCalls.push({
+      method: "disconnect",
+      source: this,
+      ...(destination ? { destination } : {}),
+    });
     if (destination) {
       const index = this.connections.indexOf(destination);
       if (index >= 0) this.connections.splice(index, 1);
@@ -158,6 +164,10 @@ export class FakeCompressorNode extends FakeNode {
   readonly release = new FakeAudioParam(0.25);
   reduction = 0;
 }
+export class FakeWaveShaperNode extends FakeNode {
+  curve: Float32Array | null = null;
+  oversample: OverSampleType = "none";
+}
 export class FakeAnalyserNode extends FakeNode {
   fftSize = 2048;
   frequencyBinCount = 1024;
@@ -201,6 +211,11 @@ export class FakeAudioContext {
   readonly baseLatency = 0.005;
   readonly outputLatency = 0.01;
   readonly nodes: FakeNode[] = [];
+  readonly graphCalls: {
+    method: "connect" | "disconnect";
+    source: FakeNode;
+    destination?: FakeNode;
+  }[] = [];
   readonly destination = this.record(new FakeNode("destination", this));
   readonly listener = {
     positionX: new FakeAudioParam(),
@@ -246,6 +261,9 @@ export class FakeAudioContext {
   }
   createAnalyser() {
     return this.record(new FakeAnalyserNode("analyser", this));
+  }
+  createWaveShaper() {
+    return this.record(new FakeWaveShaperNode("waveshaper", this));
   }
   createBuffer(channels: number, length: number, sampleRate: number) {
     return new FakeAudioBuffer(channels, length, sampleRate);

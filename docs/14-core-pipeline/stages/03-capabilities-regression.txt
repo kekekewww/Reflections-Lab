@@ -1,0 +1,1540 @@
+TAP version 13
+# Subtest: live Sound intent uses the sound endpoint, stages locally, and requires Apply before committing
+ok 1 - live Sound intent uses the sound endpoint, stages locally, and requires Apply before committing
+  ---
+  duration_ms: 114.305
+  type: 'test'
+  ...
+# Subtest: explicit live Sound entry rejects stale revisions, forged assets, and incomplete provenance
+ok 2 - explicit live Sound entry rejects stale revisions, forged assets, and incomplete provenance
+  ---
+  duration_ms: 14.7687
+  type: 'test'
+  ...
+# Subtest: a blocked Sound provider remains unavailable and never falls back to an offline proposal
+ok 3 - a blocked Sound provider remains unavailable and never falls back to an offline proposal
+  ---
+  duration_ms: 8.1155
+  type: 'test'
+  ...
+# Subtest: a Sound response cannot stage after the local document or object generation changes during transport
+ok 4 - a Sound response cannot stage after the local document or object generation changes during transport
+  ---
+  duration_ms: 82.4914
+  type: 'test'
+  ...
+# Subtest: provider status helper uses the same-origin endpoint and retains the explicit blocked gate
+ok 5 - provider status helper uses the same-origin endpoint and retains the explicit blocked gate
+  ---
+  duration_ms: 50.8041
+  type: 'test'
+  ...
+# Subtest: client rejects malformed status and classifies empty API errors without claiming a live result
+ok 6 - client rejects malformed status and classifies empty API errors without claiming a live result
+  ---
+  duration_ms: 72.8468
+  type: 'test'
+  ...
+# Subtest: Sound proposal creates and binds a profile only after explicit Apply, with new document revisions on Undo
+ok 7 - Sound proposal creates and binds a profile only after explicit Apply, with new document revisions on Undo
+  ---
+  duration_ms: 362.456
+  type: 'test'
+  ...
+# Subtest: strict Sound schema refuses unknown operation, JavaScript and model-supplied approval
+ok 8 - strict Sound schema refuses unknown operation, JavaScript and model-supplied approval
+  ---
+  duration_ms: 5.9409
+  type: 'test'
+  ...
+# Subtest: unknown asset, forged asset hash and stale object generation fail without modifying the document
+ok 9 - unknown asset, forged asset hash and stale object generation fail without modifying the document
+  ---
+  duration_ms: 8.1775
+  type: 'test'
+  ...
+# Subtest: sample pins are derived from the trusted registry and committed atomically with the operations
+ok 10 - sample pins are derived from the trusted registry and committed atomically with the operations
+  ---
+  duration_ms: 8.4031
+  type: 'test'
+  ...
+# Subtest: asset readiness and rights are rechecked before Apply
+ok 11 - asset readiness and rights are rechecked before Apply
+  ---
+  duration_ms: 14.0457
+  type: 'test'
+  ...
+# Subtest: profile replacement requires explicit rebind and cannot leave old profile revision references
+ok 12 - profile replacement requires explicit rebind and cannot leave old profile revision references
+  ---
+  duration_ms: 9.1818
+  type: 'test'
+  ...
+# Subtest: deleting a referenced profile is rejected until its binding is explicitly removed
+ok 13 - deleting a referenced profile is rejected until its binding is explicitly removed
+  ---
+  duration_ms: 9.034
+  type: 'test'
+  ...
+# Subtest: scene revision, document revision and exact preview digest are all preconditions
+ok 14 - scene revision, document revision and exact preview digest are all preconditions
+  ---
+  duration_ms: 11.7057
+  type: 'test'
+  ...
+# Subtest: exact proposal retries are idempotent and changed payload with the same ID is refused
+ok 15 - exact proposal retries are idempotent and changed payload with the same ID is refused
+  ---
+  duration_ms: 8.7271
+  type: 'test'
+  ...
+# Subtest: expired and canceled previews cannot Apply, and external mutations cannot edit internal candidates
+ok 16 - expired and canceled previews cannot Apply, and external mutations cannot edit internal candidates
+  ---
+  duration_ms: 30.1184
+  type: 'test'
+  ...
+# Subtest: Undo refuses to replace a later behavior edit
+ok 17 - Undo refuses to replace a later behavior edit
+  ---
+  duration_ms: 7.2805
+  type: 'test'
+  ...
+# Subtest: host operation budgets are stricter than schema capacity
+ok 18 - host operation budgets are stricter than schema capacity
+  ---
+  duration_ms: 1.6278
+  type: 'test'
+  ...
+# Subtest: offline Sound planner never invents a piano sample and labels oscillator fallback
+ok 19 - offline Sound planner never invents a piano sample and labels oscillator fallback
+  ---
+  duration_ms: 13.0413
+  type: 'test'
+  ...
+# Subtest: offline Sound planner uses only selected existing objects and produces reusable valid rules
+ok 20 - offline Sound planner uses only selected existing objects and produces reusable valid rules
+  ---
+  duration_ms: 4.8036
+  type: 'test'
+  ...
+# Subtest: a new offline submission after Cancel receives a fresh proposal ID
+ok 21 - a new offline submission after Cancel receives a fresh proposal ID
+  ---
+  duration_ms: 16.0327
+  type: 'test'
+  ...
+# Subtest: offline sound intent cannot request OS, repository, billing or policy authority
+ok 22 - offline sound intent cannot request OS, repository, billing or policy authority
+  ---
+  duration_ms: 3.5445
+  type: 'test'
+  ...
+# Subtest: Meta Sound default zero budget rejects before any transport dispatch
+ok 23 - Meta Sound default zero budget rejects before any transport dispatch
+  ---
+  duration_ms: 39.0351
+  type: 'test'
+  ...
+# Subtest: Meta Sound accepts only operations and fills immutable envelope from the host snapshot
+ok 24 - Meta Sound accepts only operations and fills immutable envelope from the host snapshot
+  ---
+  duration_ms: 104.6553
+  type: 'test'
+  ...
+# Subtest: Meta Sound rejects a numbered choices object and non-assistant messages
+ok 25 - Meta Sound rejects a numbered choices object and non-assistant messages
+  ---
+  duration_ms: 4.3304
+  type: 'test'
+  ...
+# Subtest: Sound provider schema keeps every object closed, requires nullable fields, and stays within ten container levels
+ok 26 - Sound provider schema keeps every object closed, requires nullable fields, and stays within ten container levels
+  ---
+  duration_ms: 398.2631
+  type: 'test'
+  ...
+# Subtest: provider grammar omits uniqueItems while original Sound validation rejects duplicate lifecycle stops
+ok 27 - provider grammar omits uniqueItems while original Sound validation rejects duplicate lifecycle stops
+  ---
+  duration_ms: 88.9604
+  type: 'test'
+  ...
+# Subtest: wire-valid duplicate operations, binding IDs, and rule IDs are rejected by the trusted Sound host
+ok 28 - wire-valid duplicate operations, binding IDs, and rule IDs are rejected by the trusted Sound host
+  ---
+  duration_ms: 408.4436
+  type: 'test'
+  ...
+# Subtest: optional null decoding preserves required null rejection, explicit false, and real zero
+ok 29 - optional null decoding preserves required null rejection, explicit false, and real zero
+  ---
+  duration_ms: 130.1583
+  type: 'test'
+  ...
+# Subtest: one Meta Sound call can exercise all five original operations without committing
+ok 30 - one Meta Sound call can exercise all five original operations without committing
+  ---
+  duration_ms: 293.1681
+  type: 'test'
+  ...
+# Subtest: strict Sound arguments reject unknown operations, extra fields, and model-supplied host metadata
+ok 31 - strict Sound arguments reject unknown operations, extra fields, and model-supplied host metadata
+  ---
+  duration_ms: 39.9874
+  type: 'test'
+  ...
+# Subtest: Sound preflight refuses forged or missing asset pins and stale object generations
+ok 32 - Sound preflight refuses forged or missing asset pins and stale object generations
+  ---
+  duration_ms: 29.3192
+  type: 'test'
+  ...
+# Subtest: Sound preflight rejects stale profile revisions, unknown objects, and unauthorized assets
+ok 33 - Sound preflight rejects stale profile revisions, unknown objects, and unauthorized assets
+  ---
+  duration_ms: 13.8638
+  type: 'test'
+  ...
+# Subtest: Sound input validates exact keys, selected IDs, revisions and product context before transport
+ok 34 - Sound input validates exact keys, selected IDs, revisions and product context before transport
+  ---
+  duration_ms: 1.961
+  type: 'test'
+  ...
+# Subtest: Sound refuses unknown tools, text-only replies, refusals, truncation, incomplete JSON, and simultaneous calls
+ok 35 - Sound refuses unknown tools, text-only replies, refusals, truncation, incomplete JSON, and simultaneous calls
+  ---
+  duration_ms: 9.2253
+  type: 'test'
+  ...
+# Subtest: Sound calls share the original turn/cost gates and transient retry policy
+ok 36 - Sound calls share the original turn/cost gates and transient retry policy
+  ---
+  duration_ms: 72.8735
+  type: 'test'
+  ...
+# Subtest: Sound transport preserves HTTP classifications when an error response is JSON null
+ok 37 - Sound transport preserves HTTP classifications when an error response is JSON null
+  ---
+  duration_ms: 3.848
+  type: 'test'
+  ...
+# Subtest: nested strict unions retain conditions, sample/oscillator, all emitters, mappings, and bounded latch semantics
+ok 38 - nested strict unions retain conditions, sample/oscillator, all emitters, mappings, and bounded latch semantics
+  ---
+  duration_ms: 278.6807
+  type: 'test'
+  ...
+# Subtest: Sound route with the default zero-budget gate returns blocked and performs zero model fetches
+ok 39 - Sound route with the default zero-budget gate returns blocked and performs zero model fetches
+  ---
+  duration_ms: 488.9146
+  type: 'test'
+  ...
+# Subtest: Sound route rejects extra authority, invalid documents, and cross-origin requests before model transport
+ok 40 - Sound route rejects extra authority, invalid documents, and cross-origin requests before model transport
+  ---
+  duration_ms: 36.3406
+  type: 'test'
+  ...
+# Subtest: Sound endpoint uses an actual function-call fixture and returns host-fixed proposal metadata
+ok 41 - Sound endpoint uses an actual function-call fixture and returns host-fixed proposal metadata
+  ---
+  duration_ms: 190.5131
+  type: 'test'
+  ...
+# Subtest: rule edits are atomic and increase document/profile revisions and binding pins
+ok 42 - rule edits are atomic and increase document/profile revisions and binding pins
+  ---
+  duration_ms: 28.0499
+  type: 'test'
+  ...
+# Subtest: editing a shared preset changes only the selected object's effective rules
+ok 43 - editing a shared preset changes only the selected object's effective rules
+  ---
+  duration_ms: 11.3866
+  type: 'test'
+  ...
+# Subtest: an old binding override cannot silently mask an Inspector rule edit
+ok 44 - an old binding override cannot silently mask an Inspector rule edit
+  ---
+  duration_ms: 2.9993
+  type: 'test'
+  ...
+# Subtest: new object without a binding can add a legal contact rule
+ok 45 - new object without a binding can add a legal contact rule
+  ---
+  duration_ms: 3.436
+  type: 'test'
+  ...
+# Subtest: invalid triggers, missing assets, NaN and injected patch keys leave original data intact
+ok 46 - invalid triggers, missing assets, NaN and injected patch keys leave original data intact
+  ---
+  duration_ms: 5.4013
+  type: 'test'
+  ...
+# Subtest: sample selection pins only the trusted registry version and produces a finite one-shot
+ok 47 - sample selection pins only the trusted registry version and produces a finite one-shot
+  ---
+  duration_ms: 5.257
+  type: 'test'
+  ...
+# Subtest: changing a sample rule to continuous updates loop/lifetime and preserves valid authoring
+ok 48 - changing a sample rule to continuous updates loop/lifetime and preserves valid authoring
+  ---
+  duration_ms: 5.502
+  type: 'test'
+  ...
+# Subtest: speed/impact mappings use bounded domain metrics and reject unsupported trigger context
+ok 49 - speed/impact mappings use bounded domain metrics and reject unsupported trigger context
+  ---
+  duration_ms: 7.6876
+  type: 'test'
+  ...
+# Subtest: remove rule clears binding overrides and material overrides referencing it
+ok 50 - remove rule clears binding overrides and material overrides referencing it
+  ---
+  duration_ms: 6.3902
+  type: 'test'
+  ...
+# Subtest: preset choice remains an authored classification and does not invent vibration or assets
+ok 51 - preset choice remains an authored classification and does not invent vibration or assets
+  ---
+  duration_ms: 3.7277
+  type: 'test'
+  ...
+# Subtest: reconcile drops deleted bindings and updates actual generations without mutating source
+ok 52 - reconcile drops deleted bindings and updates actual generations without mutating source
+  ---
+  duration_ms: 3.0504
+  type: 'test'
+  ...
+# Subtest: full Inspector drafts accept read-only telemetry without serializing it into rules
+ok 53 - full Inspector drafts accept read-only telemetry without serializing it into rules
+  ---
+  duration_ms: 3.7196
+  type: 'test'
+  ...
+# Subtest: flattening per-rule overrides retains the independent binding enabled gate
+ok 54 - flattening per-rule overrides retains the independent binding enabled gate
+  ---
+  duration_ms: 2.3684
+  type: 'test'
+  ...
+# Subtest: deleting the final rule removes its binding and profile without affecting others
+ok 55 - deleting the final rule removes its binding and profile without affecting others
+  ---
+  duration_ms: 2.3019
+  type: 'test'
+  ...
+# Subtest: continuous samples changed to discrete oscillators get a finite valid lifetime
+ok 56 - continuous samples changed to discrete oscillators get a finite valid lifetime
+  ---
+  duration_ms: 3.6316
+  type: 'test'
+  ...
+# Subtest: new sample versions require readiness, rights, finite duration and valid hashes
+ok 57 - new sample versions require readiness, rights, finite duration and valid hashes
+  ---
+  duration_ms: 5.1599
+  type: 'test'
+  ...
+# Subtest: long object IDs still produce bounded local profile and binding identities
+ok 58 - long object IDs still produce bounded local profile and binding identities
+  ---
+  duration_ms: 2.9362
+  type: 'test'
+  ...
+# Subtest: ambiguous rule ownership and revision overflow fail atomically
+ok 59 - ambiguous rule ownership and revision overflow fail atomically
+  ---
+  duration_ms: 3.0448
+  type: 'test'
+  ...
+# Subtest: reconcile preserves caller revisions, retains sample pins, and never guesses missing poses
+ok 60 - reconcile preserves caller revisions, retains sample pins, and never guesses missing poses
+  ---
+  duration_ms: 4.7843
+  type: 'test'
+  ...
+# Subtest: gain-only full Inspector apply retains authored emitter, sample version/offset and mapping curve
+ok 61 - gain-only full Inspector apply retains authored emitter, sample version/offset and mapping curve
+  ---
+  duration_ms: 4.8077
+  type: 'test'
+  ...
+# Subtest: custom canonical curves preserve midpoint output and are isolated from later draft edits
+ok 62 - custom canonical curves preserve midpoint output and are isolated from later draft edits
+  ---
+  duration_ms: 6.9523
+  type: 'test'
+  ...
+# Subtest: custom step pitch and cutoff curves retain canonical units and target bounds
+ok 63 - custom step pitch and cutoff curves retain canonical units and target bounds
+  ---
+  duration_ms: 8.177
+  type: 'test'
+  ...
+# Subtest: invalid custom curve ranges, points, metrics and executable keys fail atomically
+ok 64 - invalid custom curve ranges, points, metrics and executable keys fail atomically
+  ---
+  duration_ms: 290.3407
+  type: 'test'
+  ...
+# Subtest: binding overrides take precedence for one object without changing a shared profile
+ok 65 - binding overrides take precedence for one object without changing a shared profile
+  ---
+  duration_ms: 24.2949
+  type: 'test'
+  ...
+# Subtest: binding override replacement and clear restore inheritance without rewriting profile defaults
+ok 66 - binding override replacement and clear restore inheritance without rewriting profile defaults
+  ---
+  duration_ms: 15.8748
+  type: 'test'
+  ...
+# Subtest: a dedicated canonical curve edit keeps binding overrides and isolates a shared profile
+ok 67 - a dedicated canonical curve edit keeps binding overrides and isolates a shared profile
+  ---
+  duration_ms: 6.7776
+  type: 'test'
+  ...
+# Subtest: invalid binding override payloads never mutate profiles, bindings or document revisions
+ok 68 - invalid binding override payloads never mutate profiles, bindings or document revisions
+  ---
+  duration_ms: 8.56
+  type: 'test'
+  ...
+# Subtest: stale scene or behavior stamps reject curve and override edits without discarding their draft
+ok 69 - stale scene or behavior stamps reject curve and override edits without discarding their draft
+  ---
+  duration_ms: 3.7681
+  type: 'test'
+  ...
+# Subtest: the behavior evaluator uses authored curve output after profile and binding base values
+ok 70 - the behavior evaluator uses authored curve output after profile and binding base values
+  ---
+  duration_ms: 12.8798
+  type: 'test'
+  ...
+# Subtest: LabRuntime dispatch, Undo and Redo preserve custom curves and binding override history
+ok 71 - LabRuntime dispatch, Undo and Redo preserve custom curves and binding override history
+  ---
+  duration_ms: 715.9143
+  type: 'test'
+  ...
+# Subtest: source-owned rule override and clear synchronize Scene playing atomically and undo together
+ok 72 - source-owned rule override and clear synchronize Scene playing atomically and undo together
+  ---
+  duration_ms: 249.1161
+  type: 'test'
+  ...
+# Subtest: default SceneSpec passes the production validator with linked sources and independent listener
+ok 73 - default SceneSpec passes the production validator with linked sources and independent listener
+  ---
+  duration_ms: 9.4122
+  type: 'test'
+  ...
+# Subtest: default material bands conserve A/R/T and retain explicit Synthetic provenance
+ok 74 - default material bands conserve A/R/T and retain explicit Synthetic provenance
+  ---
+  duration_ms: 0.6428
+  type: 'test'
+  ...
+# Subtest: oscillator defaults create a real behavior runtime without fixture or missing assets
+ok 75 - oscillator defaults create a real behavior runtime without fixture or missing assets
+  ---
+  duration_ms: 67.5471
+  type: 'test'
+  ...
+# Subtest: behavior context uses actual body generations and trusted registry without aliases
+ok 76 - behavior context uses actual body generations and trusted registry without aliases
+  ---
+  duration_ms: 33.2311
+  type: 'test'
+  ...
+# Subtest: physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+ok 77 - physics adapter derives SI speed magnitudes and keeps unknown contact states unknown
+  ---
+  duration_ms: 47.3842
+  type: 'test'
+  ...
+# Subtest: contact begins and fast motion never fabricate an impact or throw
+ok 78 - contact begins and fast motion never fabricate an impact or throw
+  ---
+  duration_ms: 70.5431
+  type: 'test'
+  ...
+# Subtest: accepted discrete physics inputs preserve provenance, contact location and impulse units
+ok 79 - accepted discrete physics inputs preserve provenance, contact location and impulse units
+  ---
+  duration_ms: 62.0214
+  type: 'test'
+  ...
+# Subtest: unavailable contact data stay unknown and rejected commands are never marked accepted
+ok 80 - unavailable contact data stay unknown and rejected commands are never marked accepted
+  ---
+  duration_ms: 30.5277
+  type: 'test'
+  ...
+# Subtest: default impact emits at the contact and does not stop its independent continuous source
+ok 81 - default impact emits at the contact and does not stop its independent continuous source
+  ---
+  duration_ms: 56.7828
+  type: 'test'
+  ...
+# Subtest: Scene source playing and dBFS gain control their default continuous binding
+ok 82 - Scene source playing and dBFS gain control their default continuous binding
+  ---
+  duration_ms: 8.9486
+  type: 'test'
+  ...
+# Subtest: real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+ok 83 - real Rapier falling-ball contact reaches the default behavior with canonical collider ownership
+  ---
+  duration_ms: 956.8178
+  type: 'test'
+  ...
+# Subtest: producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+ok 84 - producer support contact stays the continuous anchor when a stronger impact occurs elsewhere
+  ---
+  duration_ms: 2.9268
+  type: 'test'
+  ...
+# Subtest: one JSON-safe capability projection distinguishes evaluator knowledge from installed producers
+ok 85 - one JSON-safe capability projection distinguishes evaluator knowledge from installed producers
+  ---
+  duration_ms: 6.8274
+  type: 'test'
+  ...
+# Subtest: producer declarations require own boolean flags and reject unknown capability grants
+ok 86 - producer declarations require own boolean flags and reject unknown capability grants
+  ---
+  duration_ms: 1.8779
+  type: 'test'
+  ...
+# Subtest: product context advertises only the producers connected to PhysicsWorld
+ok 87 - product context advertises only the producers connected to PhysicsWorld
+  ---
+  duration_ms: 18.5552
+  type: 'test'
+  ...
+# Subtest: authoring and activation reject the same enabled unsupported producer without changing the document
+ok 88 - authoring and activation reject the same enabled unsupported producer without changing the document
+  ---
+  duration_ms: 140.8305
+  type: 'test'
+  ...
+# Subtest: latch stops and zone emitters cannot bypass the capability check
+ok 89 - latch stops and zone emitters cannot bypass the capability check
+  ---
+  duration_ms: 10.0471
+  type: 'test'
+  ...
+# Subtest: offline planner exposes unsupported intent instead of silently turning it into AlwaysOn
+ok 90 - offline planner exposes unsupported intent instead of silently turning it into AlwaysOn
+  ---
+  duration_ms: 63.1019
+  type: 'test'
+  ...
+# Subtest: closed planner wire accepts explicit producer flags and rejects malformed or extra grants
+ok 91 - closed planner wire accepts explicit producer flags and rejects malformed or extra grants
+  ---
+  duration_ms: 45.5565
+  type: 'test'
+  ...
+# Subtest: trusted Sound Host rejects an unsupported zone proposal before preview or commit
+ok 92 - trusted Sound Host rejects an unsupported zone proposal before preview or commit
+  ---
+  duration_ms: 44.891
+  type: 'test'
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+ok 93 - producer support contact owns continuous metrics despite stronger impact (support J=0.8)
+  ---
+  duration_ms: 3.3143
+  type: 'test'
+  ...
+# Subtest: producer support contact owns continuous metrics despite stronger impact (support J=null)
+ok 94 - producer support contact owns continuous metrics despite stronger impact (support J=null)
+  ---
+  duration_ms: 0.592
+  type: 'test'
+  ...
+# Subtest: another participant's pose contact cannot replace the object's own producer contact
+ok 95 - another participant's pose contact cannot replace the object's own producer contact
+  ---
+  duration_ms: 0.6675
+  type: 'test'
+  ...
+# Subtest: event-only contact fallback keeps its deterministic impulse and pair ordering
+ok 96 - event-only contact fallback keeps its deterministic impulse and pair ordering
+  ---
+  duration_ms: 0.6766
+  type: 'test'
+  ...
+# Subtest: rolling and impact intents keep distinct emitter, material and parent-event provenance
+ok 97 - rolling and impact intents keep distinct emitter, material and parent-event provenance
+  ---
+  duration_ms: 21.6528
+  type: 'test'
+  ...
+# Subtest: active-rule projection matches initial and empty state without changing the full snapshot method
+ok 98 - active-rule projection matches initial and empty state without changing the full snapshot method
+  ---
+  duration_ms: 17.5701
+  type: 'test'
+  ...
+# Subtest: active-rule projection preserves shared-profile binding and rule order, including restored order
+ok 99 - active-rule projection preserves shared-profile binding and rule order, including restored order
+  ---
+  duration_ms: 51.4159
+  type: 'test'
+  ...
+# Subtest: continuous start, update, gate closure and fade cleanup keep projection and decisions identical
+ok 100 - continuous start, update, gate closure and fade cleanup keep projection and decisions identical
+  ---
+  duration_ms: 28.0775
+  type: 'test'
+  ...
+# Subtest: one-shot deduplication, cooldown and lifetime keep existing active-rule semantics
+ok 101 - one-shot deduplication, cooldown and lifetime keep existing active-rule semantics
+  ---
+  duration_ms: 296.3379
+  type: 'test'
+  ...
+# Subtest: bounded latch start, retrigger, stop, deadline and positional updates keep projection identical
+ok 102 - bounded latch start, retrigger, stop, deadline and positional updates keep projection identical
+  ---
+  duration_ms: 10.4668
+  type: 'test'
+  ...
+# Subtest: finite priority admission and stealing expose authoritative active state
+ok 103 - finite priority admission and stealing expose authoritative active state
+  ---
+  duration_ms: 7.1869
+  type: 'test'
+  ...
+# Subtest: known and unknown notifyEnded calls preserve active-rule state without reconstructing lifecycle
+ok 104 - known and unknown notifyEnded calls preserve active-rule state without reconstructing lifecycle
+  ---
+  duration_ms: 3.9087
+  type: 'test'
+  ...
+# Subtest: projection containers are detached and retained values survive later lifecycle and reset
+ok 105 - projection containers are detached and retained values survive later lifecycle and reset
+  ---
+  duration_ms: 2.3676
+  type: 'test'
+  ...
+# Subtest: repeated projection reads are pure initially, while paused, and during replacement epoch gate
+ok 106 - repeated projection reads are pure initially, while paused, and during replacement epoch gate
+  ---
+  duration_ms: 22.5367
+  type: 'test'
+  ...
+# Subtest: valid restore and stale or corrupted rejection keep projection tied to current full state
+ok 107 - valid restore and stale or corrupted rejection keep projection tied to current full state
+  ---
+  duration_ms: 4.6628
+  type: 'test'
+  ...
+# Subtest: reset and successful or rejected document replacement read newly assigned bindings
+ok 108 - reset and successful or rejected document replacement read newly assigned bindings
+  ---
+  duration_ms: 4.2909
+  type: 'test'
+  ...
+# Subtest: bounded failure after active IDs mutate rolls back full state, trace and projection exactly
+ok 109 - bounded failure after active IDs mutate rolls back full state, trace and projection exactly
+  ---
+  duration_ms: 2.4101
+  type: 'test'
+  ...
+# Subtest: AlwaysOn survives motion, held state and independent impact one-shots
+ok 110 - AlwaysOn survives motion, held state and independent impact one-shots
+  ---
+  duration_ms: 36.5725
+  type: 'test'
+  ...
+# Subtest: duplicate normalized event IDs do not replay a one-shot
+ok 111 - duplicate normalized event IDs do not replay a one-shot
+  ---
+  duration_ms: 10.1267
+  type: 'test'
+  ...
+# Subtest: out-of-order inputs are processed by tick and sequence
+ok 112 - out-of-order inputs are processed by tick and sequence
+  ---
+  duration_ms: 17.0683
+  type: 'test'
+  ...
+# Subtest: shared profile bindings maintain separate continuous instances and state
+ok 113 - shared profile bindings maintain separate continuous instances and state
+  ---
+  duration_ms: 46.024
+  type: 'test'
+  ...
+# Subtest: binding and rule enabled overrides gate emission
+ok 114 - binding and rule enabled overrides gate emission
+  ---
+  duration_ms: 73.1014
+  type: 'test'
+  ...
+# Subtest: unknown state does not satisfy a false state condition
+ok 115 - unknown state does not satisfy a false state condition
+  ---
+  duration_ms: 32.6846
+  type: 'test'
+  ...
+# Subtest: missing metrics are not silently replaced with zero
+ok 116 - missing metrics are not silently replaced with zero
+  ---
+  duration_ms: 57.7824
+  type: 'test'
+  ...
+# Subtest: piecewise mapping interpolates, steps, and clamps explicit ranges
+ok 117 - piecewise mapping interpolates, steps, and clamps explicit ranges
+  ---
+  duration_ms: 5.7543
+  type: 'test'
+  ...
+# Subtest: cooldown uses ceil(seconds / fixedDt), independent of skipped render frames
+ok 118 - cooldown uses ceil(seconds / fixedDt), independent of skipped render frames
+  ---
+  duration_ms: 11.8351
+  type: 'test'
+  ...
+# Subtest: global and per-object caps hold through a burst with deterministic output
+ok 119 - global and per-object caps hold through a burst with deterministic output
+  ---
+  duration_ms: 20.9155
+  type: 'test'
+  ...
+# Subtest: pause neither advances the logical clock nor manufactures moving/release edges
+ok 120 - pause neither advances the logical clock nor manufactures moving/release edges
+  ---
+  duration_ms: 5.759
+  type: 'test'
+  ...
+# Subtest: snapshot restore produces the same subsequent event and voice decisions
+ok 121 - snapshot restore produces the same subsequent event and voice decisions
+  ---
+  duration_ms: 14.9635
+  type: 'test'
+  ...
+# Subtest: reset starts a new epoch and permits the same raw event ID exactly once
+ok 122 - reset starts a new epoch and permits the same raw event ID exactly once
+  ---
+  duration_ms: 6.3712
+  type: 'test'
+  ...
+# Subtest: accepted Throw starts a bounded latch; impact stops it and airborne does not rearm it
+ok 123 - accepted Throw starts a bounded latch; impact stops it and airborne does not rearm it
+  ---
+  duration_ms: 2.6779
+  type: 'test'
+  ...
+# Subtest: latch timeout stops at its deadline, not after an unbounded loop
+ok 124 - latch timeout stops at its deadline, not after an unbounded loop
+  ---
+  duration_ms: 1.5248
+  type: 'test'
+  ...
+# Subtest: speed and an unaccepted input cannot masquerade as Throw
+ok 125 - speed and an unaccepted input cannot masquerade as Throw
+  ---
+  duration_ms: 0.7725
+  type: 'test'
+  ...
+# Subtest: stale scene/profile/object references and unavailable assets are rejected
+ok 126 - stale scene/profile/object references and unavailable assets are rejected
+  ---
+  duration_ms: 1.9821
+  type: 'test'
+  ...
+# Subtest: a stopped continuous instance fades and is cleaned without restarting
+ok 127 - a stopped continuous instance fades and is cleaned without restarting
+  ---
+  duration_ms: 1.4271
+  type: 'test'
+  ...
+# Subtest: sample/oscillator lifetime is finite and malformed mappings are rejected
+ok 128 - sample/oscillator lifetime is finite and malformed mappings are rejected
+  ---
+  duration_ms: 1.2553
+  type: 'test'
+  ...
+# Subtest: material-pair selection changes the selected generator while retaining contact provenance
+ok 129 - material-pair selection changes the selected generator while retaining contact provenance
+  ---
+  duration_ms: 1.8189
+  type: 'test'
+  ...
+# Subtest: object attachment offsets follow the object's quaternion transform
+ok 130 - object attachment offsets follow the object's quaternion transform
+  ---
+  duration_ms: 0.8257
+  type: 'test'
+  ...
+# Subtest: preview and staged objects never create active emissions
+ok 131 - preview and staged objects never create active emissions
+  ---
+  duration_ms: 0.9463
+  type: 'test'
+  ...
+# Subtest: invalid frame values are rejected atomically without advancing state
+ok 132 - invalid frame values are rejected atomically without advancing state
+  ---
+  duration_ms: 1.2832
+  type: 'test'
+  ...
+# Subtest: restore rejects corrupted checkpoint revisions and nonfinite values
+ok 133 - restore rejects corrupted checkpoint revisions and nonfinite values
+  ---
+  duration_ms: 1.1367
+  type: 'test'
+  ...
+# Subtest: a latched object-attached source follows the object without restarting
+ok 134 - a latched object-attached source follows the object without restarting
+  ---
+  duration_ms: 1.206
+  type: 'test'
+  ...
+# Subtest: restore cannot remove a one-shot deadline or inject an unvalidated generator
+ok 135 - restore cannot remove a one-shot deadline or inject an unvalidated generator
+  ---
+  duration_ms: 1.9672
+  type: 'test'
+  ...
+# Subtest: bounded recent-ID eviction cannot replay an older input in the same tick
+ok 136 - bounded recent-ID eviction cannot replay an older input in the same tick
+  ---
+  duration_ms: 1.511
+  type: 'test'
+  ...
+# Subtest: document replacement requires a new epoch and cannot reuse old emission identities
+ok 137 - document replacement requires a new epoch and cannot reuse old emission identities
+  ---
+  duration_ms: 1.6687
+  type: 'test'
+  ...
+# Subtest: restore closes instance object and profile identity against its binding
+ok 138 - restore closes instance object and profile identity against its binding
+  ---
+  duration_ms: 1.793
+  type: 'test'
+  ...
+# Subtest: restore requires latch provenance for a latched rule
+ok 139 - restore requires latch provenance for a latched rule
+  ---
+  duration_ms: 1.0959
+  type: 'test'
+  ...
+# Subtest: restoring a wrapper cannot clear document replacement's new-epoch requirement
+ok 140 - restoring a wrapper cannot clear document replacement's new-epoch requirement
+  ---
+  duration_ms: 0.825
+  type: 'test'
+  ...
+# Subtest: a live continuous voice fades when a required mapping metric becomes unknown
+ok 141 - a live continuous voice fades when a required mapping metric becomes unknown
+  ---
+  duration_ms: 1.2781
+  type: 'test'
+  ...
+# Subtest: WhileAirborne is not satisfied while Held even if the producer's airborne flag is true
+ok 142 - WhileAirborne is not satisfied while Held even if the producer's airborne flag is true
+  ---
+  duration_ms: 0.6646
+  type: 'test'
+  ...
+# Subtest: unknown contact provenance methods are rejected even without a contact-subscribing rule
+ok 143 - unknown contact provenance methods are rejected even without a contact-subscribing rule
+  ---
+  duration_ms: 0.6822
+  type: 'test'
+  ...
+# Subtest: an object-attached one-shot follows its source for its finite lifetime
+ok 144 - an object-attached one-shot follows its source for its finite lifetime
+  ---
+  duration_ms: 1.0793
+  type: 'test'
+  ...
+# Subtest: all committed start, update, and stop emissions pass the frozen audio-event domain validator
+ok 145 - all committed start, update, and stop emissions pass the frozen audio-event domain validator
+  ---
+  duration_ms: 7013.6285
+  type: 'test'
+  ...
+# Subtest: all normalized inputs require a known producer source
+ok 146 - all normalized inputs require a known producer source
+  ---
+  duration_ms: 10.0133
+  type: 'test'
+  ...
+# Subtest: authoring can retain unavailable asset descriptors while activation remains strict
+ok 147 - authoring can retain unavailable asset descriptors while activation remains strict
+  ---
+  duration_ms: 14.4826
+  type: 'test'
+  ...
+# Subtest: authoring retains mapping bounds and finite material-pair oscillator requirements
+ok 148 - authoring retains mapping bounds and finite material-pair oscillator requirements
+  ---
+  duration_ms: 44.0882
+  type: 'test'
+  ...
+# Subtest: equal-priority mixed-case identity ties use codepoint order independent of input arrays
+ok 149 - equal-priority mixed-case identity ties use codepoint order independent of input arrays
+  ---
+  duration_ms: 36.1685
+  type: 'test'
+  ...
+# Subtest: bounce needs an accepted parent impact, separation, and outgoing canonical contact velocity
+ok 150 - bounce needs an accepted parent impact, separation, and outgoing canonical contact velocity
+  ---
+  duration_ms: 9.4853
+  type: 'test'
+  ...
+# Subtest: canonical object order does not change the emitting owner or separation sign
+ok 151 - canonical object order does not change the emitting owner or separation sign
+  ---
+  duration_ms: 1.7324
+  type: 'test'
+  ...
+# Subtest: sliding off a ledge or ending contact without a parent is not a bounce
+ok 152 - sliding off a ledge or ending contact without a parent is not a bounce
+  ---
+  duration_ms: 1.1653
+  type: 'test'
+  ...
+# Subtest: contact point speed transports the impact local anchor through rotation
+ok 153 - contact point speed transports the impact local anchor through rotation
+  ---
+  duration_ms: 1.3175
+  type: 'test'
+  ...
+# Subtest: dynamic pairs and changed fixed supports remain unclassified
+ok 154 - dynamic pairs and changed fixed supports remain unclassified
+  ---
+  duration_ms: 0.9197
+  type: 'test'
+  ...
+# Subtest: mode, generation, held, discontinuity, revision and epoch changes invalidate causality
+ok 155 - mode, generation, held, discontinuity, revision and epoch changes invalidate causality
+  ---
+  duration_ms: 1.7377
+  type: 'test'
+  ...
+# Subtest: accepted interaction, command impulse invalidation and new contact episodes clear pending bounce
+ok 156 - accepted interaction, command impulse invalidation and new contact episodes clear pending bounce
+  ---
+  duration_ms: 1.5737
+  type: 'test'
+  ...
+# Subtest: window and candidate budget are finite; reset removes old evidence
+ok 157 - window and candidate budget are finite; reset removes old evidence
+  ---
+  duration_ms: 1.9776
+  type: 'test'
+  ...
+# Subtest: Rapier bounce is a raw physics event consumed unchanged by the behavior adapter and evaluator
+ok 158 - Rapier bounce is a raw physics event consumed unchanged by the behavior adapter and evaluator
+  ---
+  duration_ms: 1411.8827
+  type: 'test'
+  ...
+# Subtest: capsule falls to a real floor and reports a bounded eye height
+ok 159 - capsule falls to a real floor and reports a bounded eye height
+  ---
+  duration_ms: 507.6236
+  type: 'test'
+  ...
+# Subtest: wall stops the capsule instead of moving the camera through the collider
+ok 160 - wall stops the capsule instead of moving the camera through the collider
+  ---
+  duration_ms: 303.9332
+  type: 'test'
+  ...
+# Subtest: diagonal input does not exceed 2m/s and yaw preserves -Z forward
+ok 161 - diagonal input does not exceed 2m/s and yaw preserves -Z forward
+  ---
+  duration_ms: 15.1615
+  type: 'test'
+  ...
+# Subtest: sprint is bounded at 3.5m/s and invalid input cannot schedule movement
+ok 162 - sprint is bounded at 3.5m/s and invalid input cannot schedule movement
+  ---
+  duration_ms: 6.9528
+  type: 'test'
+  ...
+# Subtest: blocked spawn/reset is rejected atomically and disposal releases the capsule
+ok 163 - blocked spawn/reset is rejected atomically and disposal releases the capsule
+  ---
+  duration_ms: 2.6701
+  type: 'test'
+  ...
+# Subtest: new world queries cannot move the capsule into an unprimed wall or floor
+ok 164 - new world queries cannot move the capsule into an unprimed wall or floor
+  ---
+  duration_ms: 2.9104
+  type: 'test'
+  ...
+# Subtest: newly committed obstacles are guarded before their first broad-phase update
+ok 165 - newly committed obstacles are guarded before their first broad-phase update
+  ---
+  duration_ms: 1.4047
+  type: 'test'
+  ...
+# Subtest: impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+ok 166 - impact emitter uses the fixed support's actual contact witness rather than a penetrated midpoint
+  ---
+  duration_ms: 961.7866
+  type: 'test'
+  ...
+# Subtest: each pose projection visits each contact pair once and rebuilds after pair changes
+ok 167 - each pose projection visits each contact pair once and rebuilds after pair changes
+  ---
+  duration_ms: 944.4453
+  type: 'test'
+  ...
+# Subtest: contact index matches retained scan reference for actual support, wall scrape and slip transitions
+ok 168 - contact index matches retained scan reference for actual support, wall scrape and slip transitions
+  ---
+  duration_ms: 64.4533
+  type: 'test'
+  ...
+# Subtest: contact index matches rotated support reference (support sorts first)
+ok 169 - contact index matches rotated support reference (support sorts first)
+  ---
+  duration_ms: 202.1359
+  type: 'test'
+  ...
+# Subtest: contact index matches rotated support reference (body sorts first)
+ok 170 - contact index matches rotated support reference (body sorts first)
+  ---
+  duration_ms: 149.2856
+  type: 'test'
+  ...
+# Subtest: projection-only synthetic ties, nulls, unknown slip and nested copies preserve original selection
+ok 171 - projection-only synthetic ties, nulls, unknown slip and nested copies preserve original selection
+  ---
+  duration_ms: 29.0375
+  type: 'test'
+  ...
+# Subtest: 30, 60 and 144 Hz rendering each execute 600 identical fixed steps in ten seconds
+ok 172 - 30, 60 and 144 Hz rendering each execute 600 identical fixed steps in ten seconds
+  ---
+  duration_ms: 8.4969
+  type: 'test'
+  ...
+# Subtest: initial pause and explicit pause freeze ticks and do not accumulate paused wall time
+ok 173 - initial pause and explicit pause freeze ticks and do not accumulate paused wall time
+  ---
+  duration_ms: 0.3737
+  type: 'test'
+  ...
+# Subtest: interactive catch-up is bounded and reports discarded wall time without skipping ticks
+ok 174 - interactive catch-up is bounded and reports discarded wall time without skipping ticks
+  ---
+  duration_ms: 0.3819
+  type: 'test'
+  ...
+# Subtest: recording overload pauses with backlog intact and explicit resume can drain it
+ok 175 - recording overload pauses with backlog intact and explicit resume can drain it
+  ---
+  duration_ms: 0.342
+  type: 'test'
+  ...
+# Subtest: reset returns the clock to a paused initial epoch
+ok 176 - reset returns the clock to a paused initial epoch
+  ---
+  duration_ms: 0.3842
+  type: 'test'
+  ...
+# Subtest: invalid clock configuration and wall deltas are rejected
+ok 177 - invalid clock configuration and wall deltas are rejected
+  ---
+  duration_ms: 1.2086
+  type: 'test'
+  ...
+# Subtest: a failed physics callback does not commit that tick or consume its pending time
+ok 178 - a failed physics callback does not commit that tick or consume its pending time
+  ---
+  duration_ms: 0.3313
+  type: 'test'
+  ...
+# Subtest: a custom 120 Hz fixed step remains independent of 60 Hz rendering
+ok 179 - a custom 120 Hz fixed step remains independent of 60 Hz rendering
+  ---
+  duration_ms: 0.3367
+  type: 'test'
+  ...
+# Subtest: pause requested at a physics boundary stops catch-up and preserves pending time
+ok 180 - pause requested at a physics boundary stops catch-up and preserves pending time
+  ---
+  duration_ms: 0.492
+  type: 'test'
+  ...
+# Subtest: a completed fixed tick uses full projections only for post-step motion and the public snapshot
+ok 181 - a completed fixed tick uses full projections only for post-step motion and the public snapshot
+  ---
+  duration_ms: 612.0602
+  type: 'test'
+  ...
+# Subtest: history is a detached current six-field read across same-tick velocity, sleep, modes and enable changes
+ok 182 - history is a detached current six-field read across same-tick velocity, sleep, modes and enable changes
+  ---
+  duration_ms: 23.9969
+  type: 'test'
+  ...
+# Subtest: history and interpolation rebase at geometry generation and reset without changing retained snapshots
+ok 183 - history and interpolation rebase at geometry generation and reset without changing retained snapshots
+  ---
+  duration_ms: 265.9388
+  type: 'test'
+  ...
+# Subtest: full snapshots, motion/contact events, grab and interpolation match the frozen pre-change fixedStep
+ok 184 - full snapshots, motion/contact events, grab and interpolation match the frozen pre-change fixedStep
+  ---
+  duration_ms: 593.1574
+  type: 'test'
+  ...
+# Subtest: narrow interpolation matches the frozen full-public subset and avoids full body projections
+ok 185 - narrow interpolation matches the frozen full-public subset and avoids full body projections
+  ---
+  duration_ms: 726.7973
+  type: 'test'
+  ...
+# Subtest: narrow transforms copy current native poses on same-tick edits and include fixed/staged/disabled bodies
+ok 186 - narrow transforms copy current native poses on same-tick edits and include fixed/staged/disabled bodies
+  ---
+  duration_ms: 187.2199
+  type: 'test'
+  ...
+# Subtest: quaternion hemisphere, missing previous, generation and discontinuity use exactly the full-public branches
+ok 187 - quaternion hemisphere, missing previous, generation and discontinuity use exactly the full-public branches
+  ---
+  duration_ms: 14.4929
+  type: 'test'
+  ...
+# Subtest: author transform, geometry replacement and reset preserve fresh generation rebases and retained DTOs
+ok 188 - author transform, geometry replacement and reset preserve fresh generation rebases and retained DTOs
+  ---
+  duration_ms: 33.1343
+  type: 'test'
+  ...
+# Subtest: moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+ok 189 - moving uses fixed-step enter/exit hysteresis and two low-speed samples before stop
+  ---
+  duration_ms: 643.1619
+  type: 'test'
+  ...
+# Subtest: snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+ok 190 - snapshot/interpolation reads cannot advance motion state or absorb the next movement edge
+  ---
+  duration_ms: 2.8207
+  type: 'test'
+  ...
+# Subtest: spinning has radian-per-second hysteresis independent of linear speed
+ok 191 - spinning has radian-per-second hysteresis independent of linear speed
+  ---
+  duration_ms: 2.6565
+  type: 'test'
+  ...
+# Subtest: actual supported sphere retains rolling/sliding through the slip band and transitions without both
+ok 192 - actual supported sphere retains rolling/sliding through the slip band and transitions without both
+  ---
+  duration_ms: 381.0174
+  type: 'test'
+  ...
+# Subtest: normal-axis spin plus slow contact translation cannot be mislabeled rolling
+ok 193 - normal-axis spin plus slow contact translation cannot be mislabeled rolling
+  ---
+  duration_ms: 27.3126
+  type: 'test'
+  ...
+# Subtest: a fixed support does not become a sliding object when a dynamic sphere scrapes it
+ok 194 - a fixed support does not become a sliding object when a dynamic sphere scrapes it
+  ---
+  duration_ms: 16.4168
+  type: 'test'
+  ...
+# Subtest: a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+ok 195 - a sphere rolling on the floor while scraping a wall anchors sliding to the actual high-slip wall
+  ---
+  duration_ms: 38.6248
+  type: 'test'
+  ...
+# Subtest: held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+ok 196 - held and pause are orthogonal to motion; mode/lifecycle changes clear stale gates
+  ---
+  duration_ms: 6.3269
+  type: 'test'
+  ...
+# Subtest: reset, replacement and remove/re-add start fresh bounded generation state
+ok 197 - reset, replacement and remove/re-add start fresh bounded generation state
+  ---
+  duration_ms: 7.2435
+  type: 'test'
+  ...
+# Subtest: paused construction, fixed 60Hz freefall, reset and disposed lifetime
+ok 198 - paused construction, fixed 60Hz freefall, reset and disposed lifetime
+  ---
+  duration_ms: 825.2639
+  type: 'test'
+  ...
+# Subtest: four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+ok 199 - four body modes use real solver behavior; gravity changes preserve velocity and lock/unlock zero it
+  ---
+  duration_ms: 116.7681
+  type: 'test'
+  ...
+# Subtest: one falling sphere emits one impact at real contact, while support does not repeat impacts
+ok 200 - one falling sphere emits one impact at real contact, while support does not repeat impacts
+  ---
+  duration_ms: 100.1734
+  type: 'test'
+  ...
+# Subtest: mode-change invalidation recovers resting support without inventing a second impact
+ok 201 - mode-change invalidation recovers resting support without inventing a second impact
+  ---
+  duration_ms: 59.5654
+  type: 'test'
+  ...
+# Subtest: grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 202 - grab 0.1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 243.9237
+  type: 'test'
+  ...
+# Subtest: grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+ok 203 - grab 1kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 42.6447
+  type: 'test'
+  ...
+# Subtest: grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+ok 204 - grab 5kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 18.5059
+  type: 'test'
+  ...
+# Subtest: grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+ok 205 - grab 20kg has finite force/torque budgets and preserves dynamic collision mode
+  ---
+  duration_ms: 10.1496
+  type: 'test'
+  ...
+# Subtest: held target behind wall is clamped without penetrating or teleporting object
+ok 206 - held target behind wall is clamped without penetrating or teleporting object
+  ---
+  duration_ms: 43.9732
+  type: 'test'
+  ...
+# Subtest: NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+ok 207 - NoGravity drop preserves solver momentum; throw is explicit, command-bound and speed limited
+  ---
+  duration_ms: 2.6805
+  type: 'test'
+  ...
+# Subtest: ray returns first blocking wall rather than a grabbable sphere behind it
+ok 208 - ray returns first blocking wall rather than a grabbable sphere behind it
+  ---
+  duration_ms: 2.0468
+  type: 'test'
+  ...
+# Subtest: placement uses actual shape clearance, staged body stays inactive until enabled
+ok 209 - placement uses actual shape clearance, staged body stays inactive until enabled
+  ---
+  duration_ms: 5.0465
+  type: 'test'
+  ...
+# Subtest: scene application validates before mutation, requires pause and preserves unedited solver poses
+ok 210 - scene application validates before mutation, requires pause and preserves unedited solver poses
+  ---
+  duration_ms: 3.4394
+  type: 'test'
+  ...
+# Subtest: interpolation is bounded and snapshot mutations cannot write solver state
+ok 211 - interpolation is bounded and snapshot mutations cannot write solver state
+  ---
+  duration_ms: 1.4882
+  type: 'test'
+  ...
+# Subtest: 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+ok 212 - 30Hz render advance observes every 60Hz snapshot and keeps first-step throw/impact events
+  ---
+  duration_ms: 61.3967
+  type: 'test'
+  ...
+# Subtest: throwing step observer pauses safely after committing exactly the already-solved tick
+ok 213 - throwing step observer pauses safely after committing exactly the already-solved tick
+  ---
+  duration_ms: 15.3925
+  type: 'test'
+  ...
+# Subtest: invalid kinematic orientation rejects the entire target without leaving a pending translation
+ok 214 - invalid kinematic orientation rejects the entire target without leaving a pending translation
+  ---
+  duration_ms: 1.3516
+  type: 'test'
+  ...
+# Subtest: held geometry replacement cannot resume an old generation grip without explicit release
+ok 215 - held geometry replacement cannot resume an old generation grip without explicit release
+  ---
+  duration_ms: 3.7982
+  type: 'test'
+  ...
+# Subtest: editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+ok 216 - editing gravity wakes sleeping dynamic bodies so the new acceleration actually applies
+  ---
+  duration_ms: 474.6857
+  type: 'test'
+  ...
+# Subtest: player reads stay live and isolated without projecting body poses
+ok 217 - player reads stay live and isolated without projecting body poses
+  ---
+  duration_ms: 1001.2875
+  type: 'test'
+  ...
+# Subtest: actual capsule 20 degree ramp respects the configured 45 degree climb limit
+ok 218 - actual capsule 20 degree ramp respects the configured 45 degree climb limit
+  ---
+  duration_ms: 948.9052
+  type: 'test'
+  ...
+# Subtest: actual capsule 60 degree ramp respects the configured 45 degree climb limit
+ok 219 - actual capsule 60 degree ramp respects the configured 45 degree climb limit
+  ---
+  duration_ms: 19.6745
+  type: 'test'
+  ...
+# Subtest: actual capsule 0.7m doorway uses real radius and controller skin
+ok 220 - actual capsule 0.7m doorway uses real radius and controller skin
+  ---
+  duration_ms: 362.302
+  type: 'test'
+  ...
+# Subtest: actual capsule 0.4m doorway uses real radius and controller skin
+ok 221 - actual capsule 0.4m doorway uses real radius and controller skin
+  ---
+  duration_ms: 59.8444
+  type: 'test'
+  ...
+# Subtest: 12m/s capped Throw with CCD cannot traverse a 0.01m wall with a 0.02m sphere
+ok 222 - 12m/s capped Throw with CCD cannot traverse a 0.01m wall with a 0.02m sphere
+  ---
+  duration_ms: 38.3874
+  type: 'test'
+  ...
+# Subtest: rotated contact uses canonical world normal and v+omega cross r (support sorts first)
+ok 223 - rotated contact uses canonical world normal and v+omega cross r (support sorts first)
+  ---
+  duration_ms: 9.9928
+  type: 'test'
+  ...
+# Subtest: rotated contact uses canonical world normal and v+omega cross r (body sorts first)
+ok 224 - rotated contact uses canonical world normal and v+omega cross r (body sorts first)
+  ---
+  duration_ms: 4.2295
+  type: 'test'
+  ...
+# Subtest: flat box multipoint impact aggregates positive manifold impulses once per pair in N s
+ok 225 - flat box multipoint impact aggregates positive manifold impulses once per pair in N s
+  ---
+  duration_ms: 61.7282
+  type: 'test'
+  ...
+# Subtest: simultaneous corner contacts retain separate domain pairs, normals and episodes
+ok 226 - simultaneous corner contacts retain separate domain pairs, normals and episodes
+  ---
+  duration_ms: 349.7748
+  type: 'test'
+  ...
+# Subtest: pinned real Rapier resimulation produces the same 120 per-tick state hashes twice on this machine
+ok 227 - pinned real Rapier resimulation produces the same 120 per-tick state hashes twice on this machine
+  ---
+  duration_ms: 1488.2641
+  type: 'test'
+  ...
+# Subtest: 30/60/144 Hz rendering has identical real fixed-step states and interpolation does not mutate the solver
+ok 228 - 30/60/144 Hz rendering has identical real fixed-step states and interpolation does not mutate the solver
+  ---
+  duration_ms: 537.1417
+  type: 'test'
+  ...
+# Subtest: ten real app reset/export/import roundtrips rebase serialized generation pins without mutating live authoring
+ok 229 - ten real app reset/export/import roundtrips rebase serialized generation pins without mutating live authoring
+  ---
+  duration_ms: 3911.2896
+  type: 'test'
+  ...
+# Subtest: actual Host KeyF remembers NoGravity, zeros Lock/Unlock velocities and cannot unlock a target through a wall
+ok 230 - actual Host KeyF remembers NoGravity, zeros Lock/Unlock velocities and cannot unlock a target through a wall
+  ---
+  duration_ms: 21.7228
+  type: 'test'
+  ...
+# Subtest: actual Host KeyF keeps an overlapped locked body fixed until unlock clearance is restored
+ok 231 - actual Host KeyF keeps an overlapped locked body fixed until unlock clearance is restored
+  ---
+  duration_ms: 4.0725
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 232 - held 0.1 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 68.6359
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 233 - held 0.1 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 56.0365
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 234 - held 0.1 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 438.185
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 235 - held 0.1 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 67.3916
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 236 - held 0.1 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 151.1259
+  type: 'test'
+  ...
+# Subtest: held 0.1 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 237 - held 0.1 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 448.2555
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 238 - held 1 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 45.0284
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 239 - held 1 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 28.32
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 240 - held 1 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 86.4765
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 241 - held 1 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 398.1016
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 242 - held 1 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 171.6242
+  type: 'test'
+  ...
+# Subtest: held 1 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 243 - held 1 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 523.0663
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 244 - held 5 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 107.0859
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 245 - held 5 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 59.7106
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 246 - held 5 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 402.1116
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 247 - held 5 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 86.7797
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 248 - held 5 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 137.3429
+  type: 'test'
+  ...
+# Subtest: held 5 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 249 - held 5 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 530.807
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 250 - held 20 kg dynamicGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 59.1333
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 251 - held 20 kg dynamicNoGravity thin-wall: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 97.1744
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 252 - held 20 kg dynamicGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 485.3875
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 253 - held 20 kg dynamicNoGravity corner: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 50.5977
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 254 - held 20 kg dynamicGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 548.5989
+  type: 'test'
+  ...
+# Subtest: held 20 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+ok 255 - held 20 kg dynamicNoGravity stack: finite servo, collision retained, 15 Hz catch-up is bounded
+  ---
+  duration_ms: 544.0433
+  type: 'test'
+  ...
+1..255
+# tests 255
+# suites 0
+# pass 255
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23830.7455

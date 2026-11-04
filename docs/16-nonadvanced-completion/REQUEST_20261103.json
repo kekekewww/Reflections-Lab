@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "request_id": "NONADVANCED-USER-20261103",
+  "recorded_at": "2026-11-02T16:58:38.444Z",
+  "authority": "Confirmed current user request; core quotation relayed verbatim by Root from active goal objective",
+  "core_user_text_verbatim": "好，我還沒有給Claude Code驗證與修改，請以最新提交為基準，實作你所提出的方案，最後再彙整記憶與交接檔案，我再題交給Claude之後，在進行最後的人工驗證。\n本次目標 : 完成進階功能候選以外的實作與驗證，並且完成COMPUTER USE 與 PLAYWRITE 完整驗證，包含操作模式、UI正確性、參數可用性、完整管線測試、記憶紀錄與階段性紀錄、CLAUDE交接完整內容。",
+  "annotation1": {
+    "is_verbatim": false,
+    "meaning": "Refers to the prior proposal table, not to an arbitrary new reduced candidate list.",
+    "included_table_rows": [
+      "Task0020/Task0016 overall acceptance and evidence reconciliation",
+      "PERF-001/014 attribution and formal baseline",
+      "PERF-002/003 existing optimization validation",
+      "PERF-004/005 exchange and geometry",
+      "PERF-006/007 voice and asset management",
+      "PERF-008/011 long recording and long output"
+    ],
+    "excluded_advanced_row": [
+      "RLAB-TASK-0015",
+      "RLAB-TASK-PERF-20261101-009",
+      "RLAB-TASK-PERF-20261101-010",
+      "RLAB-TASK-PERF-20261101-012"
+    ]
+  },
+  "baseline": {
+    "commit": "e25f9f48302fd357b0f97a6f9bf8565f5916627c",
+    "branch": "codex/nonadvanced-integration-20261103",
+    "record": "docs/16-nonadvanced-completion/BASELINE_20261103.json"
+  },
+  "included_existing_tasks": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-002",
+    "RLAB-TASK-PERF-20261101-003",
+    "RLAB-TASK-PERF-20261101-004",
+    "RLAB-TASK-PERF-20261101-005",
+    "RLAB-TASK-PERF-20261101-006",
+    "RLAB-TASK-PERF-20261101-007",
+    "RLAB-TASK-PERF-20261101-008",
+    "RLAB-TASK-PERF-20261101-011",
+    "RLAB-TASK-PERF-20261101-014",
+    "RLAB-TASK-0016",
+    "RLAB-TASK-0020"
+  ],
+  "new_umbrella_task": "RLAB-TASK-0032",
+  "excluded_or_not_authorized": {
+    "advanced_tasks": [
+      "RLAB-TASK-0015",
+      "RLAB-TASK-PERF-20261101-009",
+      "RLAB-TASK-PERF-20261101-010",
+      "RLAB-TASK-PERF-20261101-012"
+    ],
+    "cloud_task": "RLAB-TASK-PERF-20261101-013",
+    "new_paid_api_budget": 0,
+    "push": false,
+    "deployment": false,
+    "external_terms_acceptance": false
+  },
+  "verification_order": [
+    "Codex implementation, complete Computer Use and Playwright verification, reproducible numerical/audio/performance checks and stage records",
+    "Freeze final source, refresh memory/English and complete Claude handoff",
+    "Claude Code independently verifies and modifies; NOT_RUN at request capture",
+    "User performs final manual observation/hearing verification after Claude"
+  ],
+  "scope_preservation": "Original dependencies, acceptance criteria, workloads, numerical tolerances and historical failures remain authoritative. New UI and pipeline requirements supplement them; unsupported/null is never converted to zero or PASS.",
+  "initial_current_run_status": "ACTIVE_SCOPE_ACCEPTED; ALL_PRODUCT_TESTS_NOT_RUN"
+}

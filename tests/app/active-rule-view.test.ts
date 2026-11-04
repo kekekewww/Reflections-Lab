@@ -19,6 +19,7 @@ interface RuntimeProbe {
   requests: PrivateMethod;
   disposed: boolean;
   audio: unknown;
+  recorder: { persistence: { flush(): Promise<void> } | null };
 }
 interface Counts {
   publish: number;
@@ -273,6 +274,10 @@ async function workload(fullSnapshotOracle: boolean, large: boolean) {
     const advance = async (count: number): Promise<void> => {
       for (let i = 0; i < count; i++) {
         runtime.advance(1 / 60);
+        await runtime.flushRecordingEvaluation();
+        // Storage appends hash on the WebCrypto thread pool; wait for them so both
+        // workloads publish each append completion before the next fixed tick.
+        await internals.recorder.persistence?.flush();
         await settle();
       }
     };

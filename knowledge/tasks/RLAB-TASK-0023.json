@@ -1,0 +1,552 @@
+{
+  "id": "RLAB-TASK-0023",
+  "title": "六項核心實作、基本驗證與本地整合",
+  "description": "本輪使用者已授權的有限核心實作；精確條件見 docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md。共用既有task系統，不等於全部14項優化或完整V1驗收。",
+  "status": "BLOCKED",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "Stage01 錄製/A-B 有界 evaluation 已接線；固定trace與既有reference對照、queue/epoch/cancel/stop負例有實際基本測試證據。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/01-recording.md",
+          "sha256": "24fafd921228e7ecda9c9faf85c6bcc5e1903e689fb520e6aa92411a145e9c84",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/01-recording-test-results.jsonl",
+          "sha256": "27e323cd6083be3a1d66c131d9d054bb7d2448b5c8b84638a361118f27fecf7e",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_5010685_RECONCILIATION_20261102.json",
+          "sha256": "3f3fc9b99cc5e2b21480d0618b867aade34c5808b422cca73462a4f4c17d6460",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "Stage02 成本/native音訊更新已接線；unsupported為null、來源固定、參數更新/生命期有數位基本證據，不宣稱原性能門檻解除。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/02-audio.md",
+          "sha256": "d7982995b2353987eda4759151a24bb14b4ae8f056553c0b9fecf5208000549a",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/02-audio-oac.json",
+          "sha256": "222b8e8e4a687ca4aad807cc7a3a53af9c1bcfb2b5f96582c0ce622b42aec94e",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md",
+          "sha256": "412cce84c9cf553cce375778f27304f190e6e926bad76b56de54454c675d42d2",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "Stage03..06 核心與產品UI完成實際接線，能力/Meta/Motion/Renderer的有限條件均有可重現基本證據。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/motion-cadence/verification.json",
+          "sha256": "5161b910024243a3e707625b2830c99d85ab8ebc706ad3bd6f4fa2082dbe9b97",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/RENDER_FINITE_CLOSURE_20261102.json",
+          "sha256": "d0c3946d1fb48375c7b7a8ee3f6d6dc864155ff088c6718a60fd9a810a4ae0d5",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/12-final-integrated-ui-audio-verification.json",
+          "sha256": "fb5ec0635e0d043b3d849ec8de291d71696a9b2bc6a382e63e4fbbc39bab96fa",
+          "result": "Fixedoriginalcomponent+sourceboundedcurrentintegrationevidence; noallbrowseron501 orfullperformanceclaim"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "透過computer-use操作產品匯出可供使用者聽的WAV，保存來源/設定/結果hash；不代填真人聽感。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json",
+          "sha256": "d7dad0381b549c365fa7334efb78f996e681fc82ddfa40ad4648ba93dc404264",
+          "result": "Literalcriterionunchangedfalse; historical3timeouts, fourthnativeCtrlNsucceededonly, productoperation/exportblockedURLpolicy; DOM/WAVseparate"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/formal-current-20261102/docs__15-ui-parameter-audit__NATIVE_GATE_CLASSIFICATION_20261102.json.f5a1c5bc8c11.raw.txt",
+          "sha256": "f5a1c5bc8c110f6e697babdef1b2aac90a7a4a938b2604980aa25e5e8619c2f4",
+          "result": "Literalcriterionunchangedfalse; historical3timeouts, fourthnativeCtrlNsucceededonly, productoperation/exportblockedURLpolicy; DOM/WAVseparate; Preservedexactpre-mainclassification/findings snapshot beforefinalcurrentversion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json",
+          "sha256": "d7dad0381b549c365fa7334efb78f996e681fc82ddfa40ad4648ba93dc404264",
+          "result": "Originalnativecriterion falseonly externalURLpolicy; actualDOM/audiofiles not relabellednative"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/NATIVE_GATE_CLASSIFICATION_20261102.json",
+          "sha256": "edb98b2f97e6569a75c0076715118745912bbe5aa33dcd1d00b13720f9467f28",
+          "result": "Originalnativecriterion falseonly externalURLpolicy; actualDOM/audiofiles not relabellednative"
+        }
+      ],
+      "validation_status": "PARTIAL_EXTERNAL_NATIVE_ACCESS"
+    },
+    {
+      "id": "AC-05",
+      "text": "各stage版本/命令/退出碼/限制、來源/task/Wiki與英文已同步，完整Claude交接可接手；Claude後驗證及原未解門檻明列。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/MAIN_FIRST_FAST_FORWARD_20261102.json",
+          "sha256": "dc2e9b4b08d37d6d4ff41b95e0eb2ab78a86cab294f5e15ad46649145441b1a9",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/FINAL_FULL_CHECK_FAD14CC_20261102.json",
+          "sha256": "2800f30c1e6c502af7ebbb8b6202d87905e89e2fbc0aa7cc0f6db611ff3ba6de",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/FINAL_MAIN_TASK_CLOSURE_20261102.json",
+          "sha256": "5eec72caefe8d8b266b0495b6ca467eb6c7783859a5a68edec4fcb907735065e",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.a36002bec9bd.raw.txt",
+          "sha256": "a36002bec9bd54b21f10870ec9321cb8f3ccda3b12b8fb73aabe029716f17391",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.6331e88b7232.raw.txt",
+          "sha256": "6331e88b723297286346712b105bd90e0c165457cbea222f587e1b60f44880a5",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.f1081e9a2aff.raw.txt",
+          "sha256": "f1081e9a2affa0db57189472df3729aebebcc77744553fc59fb0c8affdcfe185",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.83f09cd5ab40.raw.txt",
+          "sha256": "83f09cd5ab40e6083b58351d4c2114918d9eb5e33afafece3a6a4527e1742ab4",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.d7441f1616a2.raw.txt",
+          "sha256": "d7441f1616a2f442c5581d15e69c7b02dac5bb0a71eb188bd7f635b3b0350e28",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.72aaff1de820.raw.txt",
+          "sha256": "72aaff1de82094d9180ac15f6833309c08600684454ae35f776bb03b81e722d3",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.a1d81f071f5e.raw.txt",
+          "sha256": "a1d81f071f5e92d173be8aa5857c7e7fc9144a025716c2b56ccf0b047cf18e10",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.7bb09139e067.raw.txt",
+          "sha256": "7bb09139e067a7e141edff48ce8a1ce1d464cd095255de7f0d27e334ec6313e7",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.d66811a46232.raw.txt",
+          "sha256": "d66811a46232a0fc32d5fc65999199ae341d1024324e60b580537fef33387457",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.48fface6d88b.raw.txt",
+          "sha256": "48fface6d88b62a50647cf0f7d253c7a200fece7972ca0ed83f06b1889d79da6",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.d1cd7decf6f3.raw.txt",
+          "sha256": "d1cd7decf6f38c2c5c0da0fa81ca13c4006946ab4de1c7be13337632d10ceda6",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.c4b62b16cb81.raw.txt",
+          "sha256": "c4b62b16cb811cb5c1ecb34af33792e8ea6be33ea6c6c3f3d513e753de3238bc",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.f04250660624.raw.txt",
+          "sha256": "f04250660624a587a401c7a628a3846e72e8831848d04eb0db68f1fe114356ac",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.54c0365b027e.raw.txt",
+          "sha256": "54c0365b027e0e06fdf91a55a8738d021c97b8a341195e28835f9150b2c71063",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.496ed0fde543.raw.txt",
+          "sha256": "496ed0fde5433d9492c65108cda8e2b0a8fe9e7e807ce1c52e510125ba0cbcf4",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.55506305c853.raw.txt",
+          "sha256": "55506305c853d460278074876f2acac7420246dddc5cf354db259ba54ef1353c",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.0fbaa6ed8d37.raw.txt",
+          "sha256": "0fbaa6ed8d3755baeedb66efde5ccbc934c237368dcf8a4b4d051917e0747c8f",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.6d42a92b6aa9.raw.txt",
+          "sha256": "6d42a92b6aa9a9221ce1e4286054a223f048e6e750239f0db31583d7c88b2795",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "text": "保留原分支與既有未提交內容，在已授權的本地main完成正常整合；沒有push、部署、歷史改寫或新付費請求。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/MAIN_FIRST_FAST_FORWARD_20261102.json",
+          "sha256": "dc2e9b4b08d37d6d4ff41b95e0eb2ab78a86cab294f5e15ad46649145441b1a9",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/FINAL_FULL_CHECK_FAD14CC_20261102.json",
+          "sha256": "2800f30c1e6c502af7ebbb8b6202d87905e89e2fbc0aa7cc0f6db611ff3ba6de",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/FINAL_MAIN_TASK_CLOSURE_20261102.json",
+          "sha256": "5eec72caefe8d8b266b0495b6ca467eb6c7783859a5a68edec4fcb907735065e",
+          "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.a36002bec9bd.raw.txt",
+          "sha256": "a36002bec9bd54b21f10870ec9321cb8f3ccda3b12b8fb73aabe029716f17391",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.6331e88b7232.raw.txt",
+          "sha256": "6331e88b723297286346712b105bd90e0c165457cbea222f587e1b60f44880a5",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.f1081e9a2aff.raw.txt",
+          "sha256": "f1081e9a2affa0db57189472df3729aebebcc77744553fc59fb0c8affdcfe185",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.83f09cd5ab40.raw.txt",
+          "sha256": "83f09cd5ab40e6083b58351d4c2114918d9eb5e33afafece3a6a4527e1742ab4",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.d7441f1616a2.raw.txt",
+          "sha256": "d7441f1616a2f442c5581d15e69c7b02dac5bb0a71eb188bd7f635b3b0350e28",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.72aaff1de820.raw.txt",
+          "sha256": "72aaff1de82094d9180ac15f6833309c08600684454ae35f776bb03b81e722d3",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.a1d81f071f5e.raw.txt",
+          "sha256": "a1d81f071f5e92d173be8aa5857c7e7fc9144a025716c2b56ccf0b047cf18e10",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.7bb09139e067.raw.txt",
+          "sha256": "7bb09139e067a7e141edff48ce8a1ce1d464cd095255de7f0d27e334ec6313e7",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.d66811a46232.raw.txt",
+          "sha256": "d66811a46232a0fc32d5fc65999199ae341d1024324e60b580537fef33387457",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.48fface6d88b.raw.txt",
+          "sha256": "48fface6d88b62a50647cf0f7d253c7a200fece7972ca0ed83f06b1889d79da6",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.d1cd7decf6f3.raw.txt",
+          "sha256": "d1cd7decf6f38c2c5c0da0fa81ca13c4006946ab4de1c7be13337632d10ceda6",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.c4b62b16cb81.raw.txt",
+          "sha256": "c4b62b16cb811cb5c1ecb34af33792e8ea6be33ea6c6c3f3d513e753de3238bc",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.f04250660624.raw.txt",
+          "sha256": "f04250660624a587a401c7a628a3846e72e8831848d04eb0db68f1fe114356ac",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.54c0365b027e.raw.txt",
+          "sha256": "54c0365b027e0e06fdf91a55a8738d021c97b8a341195e28835f9150b2c71063",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.496ed0fde543.raw.txt",
+          "sha256": "496ed0fde5433d9492c65108cda8e2b0a8fe9e7e807ce1c52e510125ba0cbcf4",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.55506305c853.raw.txt",
+          "sha256": "55506305c853d460278074876f2acac7420246dddc5cf354db259ba54ef1353c",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.0fbaa6ed8d37.raw.txt",
+          "sha256": "0fbaa6ed8d3755baeedb66efde5ccbc934c237368dcf8a4b4d051917e0747c8f",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.6d42a92b6aa9.raw.txt",
+          "sha256": "6d42a92b6aa9a9221ce1e4286054a223f048e6e750239f0db31583d7c88b2795",
+          "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/14-core-pipeline/REQUEST_20261102.json",
+    "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+    "docs/14-core-pipeline/STAGES.md",
+    "docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json",
+    "docs/15-ui-parameter-audit/NATIVE_GATE_CLASSIFICATION_20261102.json"
+  ],
+  "evidence": [
+    {
+      "path": "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+      "sha256": "c407c71c78daccae3e1d1c84d076d35026aa727ad403b2462f5f724e9c6d6346",
+      "result": "Authorized implementation contract only; no completed implementation or test inferred"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json",
+      "sha256": "95ace4025be3ff86f9e7ce232bc002d5d63fcc403a9a019792a43e629304ebc1",
+      "result": "Third totalnative access attempt notcompleted/noinput; DOMmethod/export receipts remainseparate; no nativePASS"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/NATIVE_GATE_CLASSIFICATION.before-url-policy.ab856b8b2a12.raw.txt",
+      "sha256": "ab856b8b2a12090decb7d654adc877d40dd93d47b13be89912435115183c1b45",
+      "result": "OriginalAC04unchanged/verifiedfalse; externalnative3timeouts0input;DOMpositivesseparate; HistoricalexactclassificationbytesbeforefourthURLpolicyreceipt"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/NATIVE_ACCESS_RETRY_20261102.json",
+      "sha256": "95ace4025be3ff86f9e7ce232bc002d5d63fcc403a9a019792a43e629304ebc1",
+      "result": "NativeNOT_COMPLETED;0input;previous2/current1=total3"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/01-recording.md",
+      "sha256": "24fafd921228e7ecda9c9faf85c6bcc5e1903e689fb520e6aa92411a145e9c84",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/01-recording-test-results.jsonl",
+      "sha256": "27e323cd6083be3a1d66c131d9d054bb7d2448b5c8b84638a361118f27fecf7e",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_5010685_RECONCILIATION_20261102.json",
+      "sha256": "3f3fc9b99cc5e2b21480d0618b867aade34c5808b422cca73462a4f4c17d6460",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/02-audio.md",
+      "sha256": "d7982995b2353987eda4759151a24bb14b4ae8f056553c0b9fecf5208000549a",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/02-audio-oac.json",
+      "sha256": "222b8e8e4a687ca4aad807cc7a3a53af9c1bcfb2b5f96582c0ce622b42aec94e",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/monitor/REPORT.md",
+      "sha256": "412cce84c9cf553cce375778f27304f190e6e926bad76b56de54454c675d42d2",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+      "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/motion-cadence/verification.json",
+      "sha256": "5161b910024243a3e707625b2830c99d85ab8ebc706ad3bd6f4fa2082dbe9b97",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/RENDER_FINITE_CLOSURE_20261102.json",
+      "sha256": "d0c3946d1fb48375c7b7a8ee3f6d6dc864155ff088c6718a60fd9a810a4ae0d5",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/12-final-integrated-ui-audio-verification.json",
+      "sha256": "fb5ec0635e0d043b3d849ec8de291d71696a9b2bc6a382e63e4fbbc39bab96fa",
+      "result": "Originalfinitecorecriteriondirectproof"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json",
+      "sha256": "d7dad0381b549c365fa7334efb78f996e681fc82ddfa40ad4648ba93dc404264",
+      "result": "ActualnativeexternalURLpolicyblockingreceipt; notreclassifiedDOMnativePASS"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/formal-current-20261102/docs__15-ui-parameter-audit__NATIVE_GATE_CLASSIFICATION_20261102.json.f5a1c5bc8c11.raw.txt",
+      "sha256": "f5a1c5bc8c110f6e697babdef1b2aac90a7a4a938b2604980aa25e5e8619c2f4",
+      "result": "ActualnativeexternalURLpolicyblockingreceipt; notreclassifiedDOMnativePASS; Preservedexactpre-mainclassification/findings snapshot beforefinalcurrentversion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/MAIN_FIRST_FAST_FORWARD_20261102.json",
+      "sha256": "dc2e9b4b08d37d6d4ff41b95e0eb2ab78a86cab294f5e15ad46649145441b1a9",
+      "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/FINAL_FULL_CHECK_FAD14CC_20261102.json",
+      "sha256": "2800f30c1e6c502af7ebbb8b6202d87905e89e2fbc0aa7cc0f6db611ff3ba6de",
+      "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/FINAL_MAIN_TASK_CLOSURE_20261102.json",
+      "sha256": "5eec72caefe8d8b266b0495b6ca467eb6c7783859a5a68edec4fcb907735065e",
+      "result": "Actualnormal localMain integration/check0 and currentcanonical/curatedWiki/English criterionproof; preservedoriginaluntracked/snapshot/source"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.a36002bec9bd.raw.txt",
+      "sha256": "a36002bec9bd54b21f10870ec9321cb8f3ccda3b12b8fb73aabe029716f17391",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-CLAUDE_CODE_HANDOFF_20261102.md.6331e88b7232.raw.txt",
+      "sha256": "6331e88b723297286346712b105bd90e0c165457cbea222f587e1b60f44880a5",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.f1081e9a2aff.raw.txt",
+      "sha256": "f1081e9a2affa0db57189472df3729aebebcc77744553fc59fb0c8affdcfe185",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-IMPLEMENTATION_STATUS.md.83f09cd5ab40.raw.txt",
+      "sha256": "83f09cd5ab40e6083b58351d4c2114918d9eb5e33afafece3a6a4527e1742ab4",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.d7441f1616a2.raw.txt",
+      "sha256": "d7441f1616a2f442c5581d15e69c7b02dac5bb0a71eb188bd7f635b3b0350e28",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-NEXT_ENGINEERING_TASK.md.72aaff1de820.raw.txt",
+      "sha256": "72aaff1de82094d9180ac15f6833309c08600684454ae35f776bb03b81e722d3",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.a1d81f071f5e.raw.txt",
+      "sha256": "a1d81f071f5e92d173be8aa5857c7e7fc9144a025716c2b56ccf0b047cf18e10",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-KNOWN_LIMITATIONS.md.7bb09139e067.raw.txt",
+      "sha256": "7bb09139e067a7e141edff48ce8a1ce1d464cd095255de7f0d27e334ec6313e7",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.d66811a46232.raw.txt",
+      "sha256": "d66811a46232a0fc32d5fc65999199ae341d1024324e60b580537fef33387457",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-STAGES.md.48fface6d88b.raw.txt",
+      "sha256": "48fface6d88b62a50647cf0f7d253c7a200fece7972ca0ed83f06b1889d79da6",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.d1cd7decf6f3.raw.txt",
+      "sha256": "d1cd7decf6f38c2c5c0da0fa81ca13c4006946ab4de1c7be13337632d10ceda6",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-now.md.c4b62b16cb81.raw.txt",
+      "sha256": "c4b62b16cb811cb5c1ecb34af33792e8ea6be33ea6c6c3f3d513e753de3238bc",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.f04250660624.raw.txt",
+      "sha256": "f04250660624a587a401c7a628a3846e72e8831848d04eb0db68f1fe114356ac",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-core-pipeline-20261102.md.54c0365b027e.raw.txt",
+      "sha256": "54c0365b027e0e06fdf91a55a8738d021c97b8a341195e28835f9150b2c71063",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.496ed0fde543.raw.txt",
+      "sha256": "496ed0fde5433d9492c65108cda8e2b0a8fe9e7e807ce1c52e510125ba0cbcf4",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-product-parameter-audit-20261102.md.55506305c853.raw.txt",
+      "sha256": "55506305c853d460278074876f2acac7420246dddc5cf354db259ba54ef1353c",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.0fbaa6ed8d37.raw.txt",
+      "sha256": "0fbaa6ed8d3755baeedb66efde5ccbc934c237368dcf8a4b4d051917e0747c8f",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/post-main-open-questions.md.6d42a92b6aa9.raw.txt",
+      "sha256": "6d42a92b6aa9a9221ce1e4286054a223f048e6e750239f0db31583d7c88b2795",
+      "result": "ExactcurrentcanonicalorEnglishclosurebytes; laterNow/CLIhandoffbookkeeping cannotstale thisfixedcriterion"
+    }
+  ],
+  "created_at": "2026-11-02T05:04:33.815Z",
+  "updated_at": "2026-11-02T15:09:43.131Z",
+  "related_tasks": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-002",
+    "RLAB-TASK-PERF-20261101-003",
+    "RLAB-TASK-PERF-20261101-014",
+    "RLAB-TASK-0024",
+    "RLAB-TASK-0025",
+    "RLAB-TASK-0026",
+    "RLAB-TASK-0027"
+  ],
+  "coordination": "Per-file ownership under docs/14-core-pipeline/STAGES.md; runtime and UI integration owned by root. Parallel independent development, integration validates runtime prerequisites.",
+  "last_summary": "原AC01/02/03/05/06verified，僅原AC04native方法受URLpolicy外部阻擋；全部不受影響實作/217UI/五WAV/完整check0/Main已完成，Task23只因此BLOCKED，Claude獨立後驗證與人工為下一階段",
+  "blockers": [
+    {
+      "id": "NATIVE_PROJECT_EXPORT_URL_POLICY",
+      "scope": "AC-04 only",
+      "status": "EXTERNAL_BLOCKED",
+      "reason": "FourthonlyuserapprovedCtrlN succeeded; toolstoppedComputerUse forWindowsURLconfidence, no nativeprojectoperation/export; all unaffectedcore/UI/quality/localMain andhandoffcompleted.",
+      "receipt": "docs/15-ui-parameter-audit/NATIVE_FINAL_RECHECK_20261102.json",
+      "sha256": "d7dad0381b549c365fa7334efb78f996e681fc82ddfa40ad4648ba93dc404264"
+    }
+  ]
+}

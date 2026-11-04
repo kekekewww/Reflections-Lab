@@ -14,6 +14,10 @@
 | --- | --- |
 | 模式工具列／可設定快捷鍵 | 進 Editor / FPS Simulation；進 FPS 先顯示控制說明 |
 | 在「開始／繼續」按鈕按下 | 申請 Pointer Lock；成功後才恢復動作輸入 |
+| 「進入第一人稱」成功鎖定 | 該次點擊即為明示開始：entry 交易與實際 lock 都完成、按鍵已 release 後直接恢復動作輸入；持有物或 ghost 時維持暫停等待明示 Resume（R18） |
+| 已鎖定且暫停時點擊畫面／`Enter` | 明示 Resume；點擊在 release 時生效且不轉送為 throw／place |
+| 已釋放滑鼠時點擊第一人稱畫面 | 明示重新申請 Pointer Lock；不在滑鼠移動時自動恢復 |
+| 免鎖定操作且畫面有焦點 | `WASD` 移動、方向鍵轉向、`Enter` 開始／暫停；不宣稱取得原生 lock |
 | `Esc`／瀏覽器 unlock | 清所有鍵、停止步進／控制、保留最後有效 Held／ghost，暫停並顯示原因；不自動恢復 |
 | blur / hidden | 同上；取消尚未提交的 throw 命令（若有）；resume 需明確動作 |
 | `B` | Idle 時 FPS Simulation ↔ FPS Build；Held 時先由使用者輕放／釋放或取消切換；文字欄位內不攔截 |

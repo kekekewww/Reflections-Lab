@@ -1,0 +1,583 @@
+{
+  "recordedAt": "2026-11-01T08:02:07.247Z",
+  "baseline": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "claimsLedger": {
+    "path": "docs/13-performance-review/evidence/claims.json",
+    "sha256": "fb994ec1f716461e88a74aa147c3f2d499f35ac9fcefa17d601c46a7fe0acc5c"
+  },
+  "documents": [
+    {
+      "path": "docs/13-performance-review/ACOUSTIC_WORKER_REVIEW.md",
+      "sha256": "7aea174c3633dc689070a44588a78cb2229b69e6bf532289cf509c9949d89719"
+    },
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    },
+    {
+      "path": "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+      "sha256": "01271dbc0e685b1aa9f0935ebbd21e337dfac1e9ce556347b1f115cdfefd3443"
+    },
+    {
+      "path": "docs/13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md",
+      "sha256": "bec8afc7012af8fdb2127ef29f36a0a1df8be4bcb1a71a09a490e8331c925127"
+    },
+    {
+      "path": "docs/13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md",
+      "sha256": "15da0fa3b63885acc632859abbff89579d79d1513c39e3d0ce7c0619a5a5b362"
+    },
+    {
+      "path": "docs/13-performance-review/CURRENT_RUNTIME_AUDIT.md",
+      "sha256": "0dbd7968c8234b2f84e49c649ee759a10c8e97d4c9280e32f8d353f4e26de186"
+    },
+    {
+      "path": "docs/13-performance-review/EXECUTIVE_SUMMARY.md",
+      "sha256": "2776eac42c8e486f967e78bbb527bee93c6a75bba05ea4cd6e74065bffa5599b"
+    },
+    {
+      "path": "docs/13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "sha256": "a03c05a783912c28d860c93804bd95af2427989a60751b233d398995031a8873"
+    },
+    {
+      "path": "docs/13-performance-review/MEASUREMENT_PLAN.md",
+      "sha256": "e534768d139b4b16cab2cfe51770aed346b72c08028c13beb1520fc61faf8384"
+    },
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723"
+    },
+    {
+      "path": "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+      "sha256": "47737554f47116da6cccb8a87ed61a49bb2ecab4622ac5238451a17524964c2d"
+    },
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa"
+    },
+    {
+      "path": "docs/13-performance-review/REVIEW_CONTRACT.md",
+      "sha256": "c8eaa8f711267118e957db42e1be58ac094477a2ab603bcd68d99d4c2d1806a9"
+    },
+    {
+      "path": "docs/13-performance-review/RISK_REGISTER.md",
+      "sha256": "1131e6ab38abd5ee18a635cb646830edfdfb5f325527ed6381464ebc4b349247"
+    }
+  ],
+  "officialSourceRecords": [
+    {
+      "id": "PERF-OFFICIAL-20261101-01",
+      "title": "Web Audio API REC2021",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "authors": "W3C",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "REC2021-06-17",
+      "evidence_locator": "Control/render threads; source lifecycle, scheduling, convolution, offline rendering",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-02",
+      "title": "AudioWorklet design pattern",
+      "url": "https://developer.chrome.com/blog/audio-worklet-design-pattern",
+      "authors": "Chrome for Developers",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "page accessed2026-11-01; historical design article",
+      "evidence_locator": "Block adaptation, ringbuffer and realtime budget limits",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-03",
+      "title": "AudioWorkletProcessor.process",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/process",
+      "authors": "MDN contributors",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "page accessed2026-11-01",
+      "evidence_locator": "Actual array length, processor lifetime; no universal fixed128 assumption",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-04",
+      "title": "AudioPlaybackStats",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioPlaybackStats",
+      "authors": "MDN contributors",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "experimental API; page accessed2026-11-01",
+      "evidence_locator": "Output underrun and latency definitions, feature detection and live update scope",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-05",
+      "title": "JUCE AbstractFifo",
+      "url": "https://docs.juce.com/master/classjuce_1_1AbstractFifo.html",
+      "authors": "JUCE",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "master docs accessed2026-11-01",
+      "evidence_locator": "Single-reader/single-writer indexing; caller owns data; resize restrictions",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-06",
+      "title": "How Latency Works",
+      "url": "https://help.ableton.com/hc/en-us/articles/360010545559-How-Latency-Works",
+      "authors": "Ableton",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "allLiveversions; accessed2026-11-01",
+      "evidence_locator": "Buffer, device, plugin and monitoring latency",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-07",
+      "title": "REAPER User Guide",
+      "url": "https://dlx.reaper.fm/userguide/html/",
+      "authors": "REAPER/Cockos user-guide authors",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "7.84 November2026; accessed2026-11-01",
+      "evidence_locator": "Sections6.14–6.15,21.3,22.6.2,22.6.8; primary-source review in industry report",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-08",
+      "title": "FMOD resource management",
+      "url": "https://www.fmod.com/docs/2.04/api/managing-resources-in-the-core-api.html",
+      "authors": "FMOD",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "2.04; accessed2026-11-01",
+      "evidence_locator": "Virtual channels and software mixing budgets",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-09",
+      "title": "Wwise virtual voices",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=SDK&id=concept_virtualvoices.html",
+      "authors": "Audiokinetic",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "2025.1.12_9287; accessed2026-11-01",
+      "evidence_locator": "Virtual return modes and CPU/memory/timeline tradeoffs",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    },
+    {
+      "id": "PERF-OFFICIAL-20261101-10",
+      "title": "OPFS",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system",
+      "authors": "MDN contributors",
+      "year": null,
+      "publication_type": "OFFICIAL_DOCUMENTATION",
+      "access_level": "RELEVANT_PRIMARY_PASSAGES_REVIEWED",
+      "version": "page accessed2026-11-01",
+      "evidence_locator": "Origin-private storage, worker sync handles, flush/close and recovery limits",
+      "review_date": "2026-11-01",
+      "sha256": null,
+      "license": "Original vendor/specification terms; linked factual paraphrase only; no full copy distributed",
+      "access_limits": "Dynamic remote content not byte-pinned; specification/version status and local browser support remain separate"
+    }
+  ],
+  "citedLinks": [
+    {
+      "title": "HTML structured data",
+      "url": "https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializewithtransfer",
+      "cited_by": "ACOUSTIC_WORKER_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "W3C §2.2–2.3",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/#control-thread-and-rendering-thread",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN lifecycle",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "W3C Web Audio 2021 Recommendation §1.5.3／§2.2–2.3",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN AudioBufferSourceNode",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "start",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN cancelAndHoldAtTime",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/cancelAndHoldAtTime",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN Convolver buffer",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/buffer",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "normalize",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/normalize",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN AudioContext constructor",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/AudioContext",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "W3C Web Audio 1.1 WD，2026-09-22，AudioPlaybackStats",
+      "url": "https://www.w3.org/TR/2026/WD-webaudio-1.1-20260922/#AudioPlaybackStats",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN AudioPlaybackStats",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioPlaybackStats",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Chrome Audio worklet design pattern，2018",
+      "url": "https://developer.chrome.com/blog/audio-worklet-design-pattern",
+      "cited_by": "AUDIO_GRAPH_DSP_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Chrome Page Lifecycle",
+      "url": "https://developer.chrome.com/docs/web-platform/page-lifecycle-api",
+      "cited_by": "BROWSER_CLOUD_SCALABILITY.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "WHATWG Workers",
+      "url": "https://html.spec.whatwg.org/multipage/workers.html",
+      "cited_by": "BROWSER_CLOUD_SCALABILITY.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Cloud Run官方計費",
+      "url": "https://cloud.google.com/run/pricing",
+      "cited_by": "BROWSER_CLOUD_SCALABILITY.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "JUCE AbstractFifo",
+      "url": "https://docs.juce.com/master/classjuce_1_1AbstractFifo.html",
+      "cited_by": "BUFFER_ARCHITECTURE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Web Audio REC 2021",
+      "url": "https://www.w3.org/TR/2021/REC-webaudio-20210617/",
+      "cited_by": "CLOCK_AND_SCHEDULING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "High Resolution Time",
+      "url": "https://www.w3.org/TR/hr-time-3/",
+      "cited_by": "CLOCK_AND_SCHEDULING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "HTML Workers",
+      "url": "https://html.spec.whatwg.org/multipage/workers.html",
+      "cited_by": "CURRENT_RUNTIME_AUDIT.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "HTML Event loops",
+      "url": "https://html.spec.whatwg.org/multipage/webappapis.html#event-loops",
+      "cited_by": "CURRENT_RUNTIME_AUDIT.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S01：官方 HTML User Guide",
+      "url": "https://dlx.reaper.fm/userguide/html/",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S02：How Latency Works",
+      "url": "https://help.ableton.com/hc/en-us/articles/360010545559-How-Latency-Works",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S03：Monitoring FAQ",
+      "url": "https://help.ableton.com/hc/en-us/articles/209072249-Reduced-Latency-When-Monitoring-FAQ",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S04：Reduce monitoring latency",
+      "url": "https://help.ableton.com/hc/en-us/articles/360011924559-How-to-reduce-latency-while-monitoring",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S05：Live’s CPU Meter",
+      "url": "https://help.ableton.com/hc/en-us/articles/360019151379-Live-s-CPU-Meter",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S06：Multi-core FAQ",
+      "url": "https://help.ableton.com/hc/en-us/articles/209067649-Multi-core-performance-in-Ableton-Live-FAQ",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S07：Crackles and dropouts",
+      "url": "https://help.ableton.com/hc/en-us/articles/209070329-How-to-avoid-crackles-and-audio-dropouts",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S08：System DSP buffer",
+      "url": "https://www.fmod.com/docs/2.04/api/core-api-system.html#system_setdspbuffersize",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S09：System stream buffer／decode buffer",
+      "url": "https://www.fmod.com/docs/2.04/api/core-api-system.html#system_setstreambuffersize",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S10：Loading and playing sounds",
+      "url": "https://www.fmod.com/docs/2.04/api/loading-and-playing-sounds-in-the-core-api.html",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S11：Virtual voice system",
+      "url": "https://www.fmod.com/docs/2.04/api/managing-resources-in-the-core-api.html#virtual-voice-system",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S12：Understanding virtual voices",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=SDK&id=concept_virtualvoices.html",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S13：Advanced settings",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=Help&id=advanced_settings_tab_actor_mixer_objects",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S14：Voice starvation",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=Help&id=ErrorCode_VoiceStarving",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S15：Source starvation",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=Help&id=ErrorCode_StreamingSourceStarving",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S16：Optimizing CPU",
+      "url": "https://www.audiokinetic.com/en/public-library/2025.1.12_9287/?source=Help&id=optimizing_cpu",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S17：AbstractFifo",
+      "url": "https://docs.juce.com/master/classjuce_1_1AbstractFifo.html",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S18：AudioIODeviceCallback",
+      "url": "https://docs.juce.com/master/classjuce_1_1AudioIODeviceCallback.html",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S19：Audio worklet design pattern",
+      "url": "https://developer.chrome.com/blog/audio-worklet-design-pattern",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S20：Web Audio 1.1 ED",
+      "url": "https://webaudio.github.io/web-audio-api/",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S21：Configurable render quantum",
+      "url": "https://chromestatus.com/feature/5078190552907776",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S22：Playback statistics",
+      "url": "https://chromestatus.com/feature/5172818344148992",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IND-S23：Profiling Web Audio",
+      "url": "https://web.dev/articles/profiling-web-audio-apps-in-chrome",
+      "cited_by": "INDUSTRY_AUDIO_ARCHITECTURES.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "MDN定義",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioPlaybackStats",
+      "cited_by": "MEASUREMENT_PLAN.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Web Audio規格",
+      "url": "https://webaudio.github.io/web-audio-api/#AudioPlaybackStats",
+      "cited_by": "MEASUREMENT_PLAN.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Chrome 記憶體文件",
+      "url": "https://developer.chrome.com/docs/devtools/memory-problems",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Three.js renderer.info",
+      "url": "https://threejs.org/docs/pages/WebGLRenderer",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "disposal manual",
+      "url": "https://threejs.org/manual/pages/how-to-dispose-of-objects.html",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Khronos timer query",
+      "url": "https://registry.khronos.org/webgl/extensions/EXT_disjoint_timer_query_webgl2/",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Mozilla power profiling",
+      "url": "https://firefox-source-docs.mozilla.org/performance/power_profiling_overview.html",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Chrome團隊說明",
+      "url": "https://web.dev/articles/monitor-total-page-memory-usage",
+      "cited_by": "MEMORY_AND_RESOURCE_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "IndexedDB 3.0 Editor’s Draft（2026-10-30）",
+      "url": "https://w3c.github.io/IndexedDB/#transaction-lifetime",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "File System Standard",
+      "url": "https://fs.spec.whatwg.org/#api-filesystemsyncaccesshandle-flush",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "OPFS 官方說明",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "Storage Standard",
+      "url": "https://storage.spec.whatwg.org/#dom-storagemanager-estimate",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "配額說明",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    },
+    {
+      "title": "官方 API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext",
+      "cited_by": "RECORDING_AND_RENDERING_REVIEW.md",
+      "access_evidence": "See document version/access notes; link extraction is not a reachability test"
+    }
+  ],
+  "coverageLimits": "File hashes/links are provenance, not proof that all source files or all browser/device conditions were tested.",
+  "provenanceRuling": "Supplemental ledger registered through existing Wiki, retaining global ledger/task history hashes; no unrelated accepted/scientific claim superseded",
+  "priorVersions": [
+    {
+      "commit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "claimsLedger": {
+        "path": "docs/13-performance-review/evidence/claims.json",
+        "sha256": "fb994ec1f716461e88a74aa147c3f2d499f35ac9fcefa17d601c46a7fe0acc5c"
+      },
+      "document": {
+        "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+        "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+      }
+    }
+  ]
+}

@@ -11,6 +11,10 @@ import { AgentError } from "./types.js";
 import type { PlannerProvenance } from "./types.js";
 import type { SoundHostState } from "./sound-host.js";
 import { assertBoundedJson } from "./validation.js";
+import {
+  assertSupportedSoundTrigger,
+  validateSoundProducerCapabilities,
+} from "../capabilities/sound-behavior.js";
 
 export interface OfflineSoundPlannerOptions {
   selectedObjectId?: string;
@@ -57,6 +61,8 @@ export class OfflineSoundPlanner {
         "離線解析器未辨識聲音行為要求；請使用Inspector設定。",
       );
     assertBoundedJson(state, 1024 * 1024);
+    if (state.context.producerCapabilities !== undefined)
+      validateSoundProducerCapabilities(state.context.producerCapabilities);
     if (
       options.selectedObjectId &&
       !state.context.objects.some((item) => item.objectId === options.selectedObjectId)
@@ -86,7 +92,11 @@ export class OfflineSoundPlanner {
         prompt,
       );
     let trigger: SoundTrigger;
-    if (latched) trigger = { kind: "discrete", type: "OnThrow" };
+    if (/進入.{0,6}區域|enter.{0,6}zone/i.test(prompt))
+      trigger = { kind: "discrete", type: "OnEnterZone" };
+    else if (/離開.{0,6}區域|exit.{0,6}zone|leave.{0,6}zone/i.test(prompt))
+      trigger = { kind: "discrete", type: "OnExitZone" };
+    else if (latched) trigger = { kind: "discrete", type: "OnThrow" };
     else if (/滾動|rolling/i.test(prompt)) trigger = { kind: "continuous", type: "WhileRolling" };
     else if (/滑動|摩擦|sliding/i.test(prompt))
       trigger = { kind: "continuous", type: "WhileSliding" };
@@ -100,6 +110,19 @@ export class OfflineSoundPlanner {
     else if (/旋轉|spinning/i.test(prompt)) trigger = { kind: "continuous", type: "WhileSpinning" };
     else if (/移動|moving/i.test(prompt)) trigger = { kind: "continuous", type: "WhileMoving" };
     else trigger = { kind: "continuous", type: "AlwaysOn" };
+    assertSupportedSoundTrigger(trigger.type, {
+      ...state.context.producerCapabilities,
+      zoneIds: state.context.zoneIds,
+    });
+    if (trigger.kind === "discrete" && ["OnEnterZone", "OnExitZone"].includes(trigger.type)) {
+      const matches = state.context.zoneIds.filter((id) => prompt.includes(id));
+      if (matches.length !== 1)
+        throw new AgentError(
+          "ZONE_ID_REQUIRED",
+          "區域聲音要求必須明確指定一個現有區域ID，不能猜測區域。",
+        );
+      trigger.zoneId = matches[0]!;
+    }
     const isContact = ["OnImpact", "OnBounce", "WhileRolling", "WhileSliding"].includes(
       trigger.type,
     );
@@ -147,7 +170,13 @@ export class OfflineSoundPlanner {
       ? state.document.profiles.find((profile) => profile.profileId === existingBinding.profileId)
       : undefined;
     const profileId = existingProfile?.profileId ?? `sound.profile-${fingerprint}`;
-    const existingRule = existingProfile?.rules.find((rule) => rule.trigger.type === trigger.type);
+    const existingRule = existingProfile?.rules.find(
+      (rule) =>
+        rule.trigger.type === trigger.type &&
+        (trigger.kind !== "discrete" ||
+          !trigger.zoneId ||
+          (rule.trigger.kind === "discrete" && rule.trigger.zoneId === trigger.zoneId)),
+    );
     const ruleId = existingRule?.ruleId ?? `sound.rule-${fingerprint}`;
     const rule: SoundBehaviorRule = {
       ruleId,

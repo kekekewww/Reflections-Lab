@@ -1,0 +1,96 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-003",
+  "title": "分離native scalar／shape／delay／direction更新壓力",
+  "description": "主基準相同target可重送automation；gain變更仍可能碰FIR key／copy；R21已做deadband／coalescing，不能重複補丁或沿用初版短樣本。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "最後量測與受驗source hashes一致；初版R21負面短樣本及修補後NOT RUN邊界保留。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "scalar／shape／delay／direction各有oracle；exact suppression與deadband誤差獨立報告，path ID、birth/death、tail及一次傳播延遲不變。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "相同負載control／upload／consumer與output證據支持選擇；沒有測得收益或出現新gap／phase問題時不採納。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/engine.ts",
+    "src/audio/routes.ts",
+    "src/audio/control.ts",
+    "src/audio/band-filter.ts",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:34:22.900Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "主基準相同target可重送automation；gain變更仍可能碰FIR key／copy；R21已做deadband／coalescing，不能重複補丁或沿用初版短樣本。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "locator": "§2、§4、§5",
+      "classification": "CONFIRMED BY CODE; R21 DIRTY SUPPLEMENT",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/engine.ts",
+    "src/audio/routes.ts",
+    "src/audio/control.ts",
+    "src/audio/band-filter.ts"
+  ],
+  "proposed_solution": "先固定最後R21 commit或明示dirty snapshot重新量；exact unchanged-target suppression與近似deadband分名，依歸因分離scalar pressure gain、normalized shape、delay與direction更新責任，保留既有cache及雙bank。",
+  "alternatives": [
+    "維持既有R21修補，只補回歸與量測。",
+    "只增lookahead：不能減control成本且增加onset latency。",
+    "重寫FIR／HRTF：成本較高且現無必要證據。"
+  ],
+  "expected_benefit": "減少可證冗餘control／kernel copy／IR upload，可能降低main與native負擔；不承諾改善百分比。",
+  "complexity": "中至高；比較與smooth語義會影響perceptual trajectory。",
+  "performance_impact": "分消息數、FIR命中／copy、IR upload、node churn與consumer p95/p99，保留probe成本。",
+  "audio_quality_impact": "raw solver真值、pressure／energy、normalized shape與group delay不混淆；deadband是有誤差的render策略。",
+  "latency_impact": "continuous ramps維持明確currentTime政策；lookahead只按已驗onset契約，不重複加d/c。",
+  "compatibility_regression_risk": "early R21 future automation已有回歸修補；exact相等和epsilon混用可能吞掉合法變化或延遲target。",
+  "benchmark_plan": "warm/cold cache、scalar-only、shape-change、zero gain、moving/teleport、stable listener、IR churn與R21最後修補重測；同輸入比較raw paths與rendered envelope/phase。",
+  "rollback_plan": "停止新策略並清理尚未套用target，讓既有route完成crossfade／tail，再恢復已驗automation政策；不得重啟所有continuous sources來掩蓋錯誤。",
+  "priority_rationale": "直接影響使用者音訊且有明確code候選；已有R21修補可當對照，較換backend低風險。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Native automation/convolver behavior varies by browser and output context.",
+  "regression_risk": "Gain/shape/delay/direction changes may alter arrival, group delay, tails or click continuity.",
+  "candidate_commit": null,
+  "provenance_corrections": [
+    {
+      "at": "2026-11-01T08:34:22.900Z",
+      "previousCommit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "reason": "Rebind authored review evidence after LF normalization only; task remains unclaimed BACKLOG, all acceptance false"
+    }
+  ]
+}

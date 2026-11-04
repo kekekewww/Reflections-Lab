@@ -1,0 +1,995 @@
+TAP version 13
+# Subtest: V4 exposes a separately testable owned preview readiness predicate
+ok 1 - V4 exposes a separately testable owned preview readiness predicate
+  ---
+  duration_ms: 0.9372
+  type: 'test'
+  ...
+# Subtest: only the expected ready URL from a still-live owned child is ready
+ok 2 - only the expected ready URL from a still-live owned child is ready
+  ---
+  duration_ms: 0.3005
+  type: 'test'
+  ...
+# Subtest: V4 does not treat EADDRINUSE containing the port as a ready owned server
+ok 3 - V4 does not treat EADDRINUSE containing the port as a ready owned server
+  ---
+  duration_ms: 0.1518
+  type: 'test'
+  ...
+# Subtest: V4 does not treat another host on the same port as a ready owned server
+ok 4 - V4 does not treat another host on the same port as a ready owned server
+  ---
+  duration_ms: 0.0855
+  type: 'test'
+  ...
+# Subtest: V4 does not treat a port with the same numeric prefix as a ready owned server
+ok 5 - V4 does not treat a port with the same numeric prefix as a ready owned server
+  ---
+  duration_ms: 0.0836
+  type: 'test'
+  ...
+# Subtest: V4 does not treat already exited owned child as a ready owned server
+ok 6 - V4 does not treat already exited owned child as a ready owned server
+  ---
+  duration_ms: 0.0674
+  type: 'test'
+  ...
+# Subtest: V4 does not treat terminated owned child as a ready owned server
+ok 7 - V4 does not treat terminated owned child as a ready owned server
+  ---
+  duration_ms: 0.0564
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown exit state as a ready owned server
+ok 8 - V4 does not treat unknown exit state as a ready owned server
+  ---
+  duration_ms: 0.0542
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown signal state as a ready owned server
+ok 9 - V4 does not treat unknown signal state as a ready owned server
+  ---
+  duration_ms: 0.2391
+  type: 'test'
+  ...
+# Subtest: additional V4 owned-preview rejection: an error sentence merely contains the expected root URL
+not ok 10 - additional V4 owned-preview rejection: an error sentence merely contains the expected root URL
+  ---
+  duration_ms: 1.1395
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:39:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:41:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 owned-preview rejection: a Local announcement points below the expected root URL
+not ok 11 - additional V4 owned-preview rejection: a Local announcement points below the expected root URL
+  ---
+  duration_ms: 0.3315
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\performance-preview-v4.spec.mjs:39:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/performance-preview-v4.spec.mjs:41:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V4 exposes a pure public resource-policy witness validator separately from configuration labels
+ok 12 - V4 exposes a pure public resource-policy witness validator separately from configuration labels
+  ---
+  duration_ms: 2.7374
+  type: 'test'
+  ...
+# Subtest: public reference resource witness retains the original 8-path budget and 24-voice cap
+ok 13 - public reference resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 1.8891
+  type: 'test'
+  ...
+# Subtest: public reference resource witness retains the original 32-path budget and 24-voice cap
+ok 14 - public reference resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 0.8282
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 8-path budget and 24-voice cap
+ok 15 - public candidate resource witness retains the original 8-path budget and 24-voice cap
+  ---
+  duration_ms: 0.5515
+  type: 'test'
+  ...
+# Subtest: public candidate resource witness retains the original 32-path budget and 24-voice cap
+ok 16 - public candidate resource witness retains the original 32-path budget and 24-voice cap
+  ---
+  duration_ms: 1.4447
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate requested but actual resource mode is reference
+ok 17 - resource witness rejects candidate requested but actual resource mode is reference
+  ---
+  duration_ms: 0.8209
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference requested but actual resource mode is candidate
+ok 18 - resource witness rejects reference requested but actual resource mode is candidate
+  ---
+  duration_ms: 0.5172
+  type: 'test'
+  ...
+# Subtest: resource witness rejects software cursor representation
+ok 19 - resource witness rejects software cursor representation
+  ---
+  duration_ms: 0.2282
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown representation
+ok 20 - resource witness rejects unknown representation
+  ---
+  duration_ms: 0.5356
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable oscillator content
+ok 21 - resource witness rejects seekable oscillator content
+  ---
+  duration_ms: 0.6564
+  type: 'test'
+  ...
+# Subtest: resource witness rejects seekable clock content
+ok 22 - resource witness rejects seekable clock content
+  ---
+  duration_ms: 0.3044
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown content
+ok 23 - resource witness rejects unknown content
+  ---
+  duration_ms: 0.1501
+  type: 'test'
+  ...
+# Subtest: resource witness rejects requested flags cannot rescue a reference graph
+ok 24 - resource witness rejects requested flags cannot rescue a reference graph
+  ---
+  duration_ms: 0.1306
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown requested arm
+ok 25 - resource witness rejects unknown requested arm
+  ---
+  duration_ms: 0.1082
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing requested arm
+ok 26 - resource witness rejects missing requested arm
+  ---
+  duration_ms: 0.1134
+  type: 'test'
+  ...
+# Subtest: resource witness rejects null requested arm
+ok 27 - resource witness rejects null requested arm
+  ---
+  duration_ms: 0.0982
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unsupported path cap
+ok 28 - resource witness rejects unsupported path cap
+  ---
+  duration_ms: 0.0975
+  type: 'test'
+  ...
+# Subtest: resource witness rejects path cap string
+ok 29 - resource witness rejects path cap string
+  ---
+  duration_ms: 0.0977
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing resource snapshot
+ok 30 - resource witness rejects missing resource snapshot
+  ---
+  duration_ms: 0.0907
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing telemetry
+ok 31 - resource witness rejects missing telemetry
+  ---
+  duration_ms: 0.088
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing complete public budget
+ok 32 - resource witness rejects missing complete public budget
+  ---
+  duration_ms: 0.088
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxVoices
+ok 33 - resource witness rejects changed original budget.maxVoices
+  ---
+  duration_ms: 0.1477
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxVoices
+ok 34 - resource witness rejects unknown original budget.maxVoices
+  ---
+  duration_ms: 0.1122
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSources
+ok 35 - resource witness rejects changed original budget.maxSources
+  ---
+  duration_ms: 0.0804
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSources
+ok 36 - resource witness rejects unknown original budget.maxSources
+  ---
+  duration_ms: 0.0782
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxSourceFrames
+ok 37 - resource witness rejects changed original budget.maxSourceFrames
+  ---
+  duration_ms: 0.0992
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxSourceFrames
+ok 38 - resource witness rejects unknown original budget.maxSourceFrames
+  ---
+  duration_ms: 0.101
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPathsPerVoice
+ok 39 - resource witness rejects changed original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0815
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPathsPerVoice
+ok 40 - resource witness rejects unknown original budget.maxPathsPerVoice
+  ---
+  duration_ms: 0.0866
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxTotalPaths
+ok 41 - resource witness rejects changed original budget.maxTotalPaths
+  ---
+  duration_ms: 0.1908
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxTotalPaths
+ok 42 - resource witness rejects unknown original budget.maxTotalPaths
+  ---
+  duration_ms: 0.1693
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxDecodedBytes
+ok 43 - resource witness rejects changed original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.2795
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxDecodedBytes
+ok 44 - resource witness rejects unknown original budget.maxDecodedBytes
+  ---
+  duration_ms: 0.15
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetDurationSeconds
+ok 45 - resource witness rejects changed original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.1081
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetDurationSeconds
+ok 46 - resource witness rejects unknown original budget.maxAssetDurationSeconds
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssetChannels
+ok 47 - resource witness rejects changed original budget.maxAssetChannels
+  ---
+  duration_ms: 0.0975
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssetChannels
+ok 48 - resource witness rejects unknown original budget.maxAssetChannels
+  ---
+  duration_ms: 0.1091
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxPendingEvents
+ok 49 - resource witness rejects changed original budget.maxPendingEvents
+  ---
+  duration_ms: 0.1397
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxPendingEvents
+ok 50 - resource witness rejects unknown original budget.maxPendingEvents
+  ---
+  duration_ms: 0.0758
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxAssets
+ok 51 - resource witness rejects changed original budget.maxAssets
+  ---
+  duration_ms: 0.091
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxAssets
+ok 52 - resource witness rejects unknown original budget.maxAssets
+  ---
+  duration_ms: 0.0799
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxConcurrentDecodes
+ok 53 - resource witness rejects changed original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0753
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxConcurrentDecodes
+ok 54 - resource witness rejects unknown original budget.maxConcurrentDecodes
+  ---
+  duration_ms: 0.0712
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateSends
+ok 55 - resource witness rejects changed original budget.maxLateSends
+  ---
+  duration_ms: 0.1025
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateSends
+ok 56 - resource witness rejects unknown original budget.maxLateSends
+  ---
+  duration_ms: 0.0899
+  type: 'test'
+  ...
+# Subtest: resource witness rejects changed original budget.maxLateReverbBytes
+ok 57 - resource witness rejects changed original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.069
+  type: 'test'
+  ...
+# Subtest: resource witness rejects unknown original budget.maxLateReverbBytes
+ok 58 - resource witness rejects unknown original budget.maxLateReverbBytes
+  ---
+  duration_ms: 0.0734
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: active rendered cap is reduced
+ok 59 - resource witness rejects resourceSnapshot: active rendered cap is reduced
+  ---
+  duration_ms: 0.156
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: active rendered cap is reduced
+ok 60 - resource witness rejects telemetry: active rendered cap is reduced
+  ---
+  duration_ms: 0.0756
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+ok 61 - resource witness rejects resourceSnapshot: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.0708
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+ok 62 - resource witness rejects telemetry: parent graph cap erases the original retiring allowance
+  ---
+  duration_ms: 0.0678
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+ok 63 - resource witness rejects resourceSnapshot: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0737
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: internal arrivals consume the parent cap
+ok 64 - resource witness rejects telemetry: internal arrivals consume the parent cap
+  ---
+  duration_ms: 0.0727
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+ok 65 - resource witness rejects resourceSnapshot: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.9158
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: all graphs silently omit internal arrivals
+ok 66 - resource witness rejects telemetry: all graphs silently omit internal arrivals
+  ---
+  duration_ms: 0.3429
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+ok 67 - resource witness rejects resourceSnapshot: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.1181
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+ok 68 - resource witness rejects telemetry: candidate carrier cap omits the virtual reserve
+  ---
+  duration_ms: 0.0877
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+ok 69 - resource witness rejects resourceSnapshot: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0813
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference gains the candidate virtual reserve
+ok 70 - resource witness rejects telemetry: reference gains the candidate virtual reserve
+  ---
+  duration_ms: 0.0732
+  type: 'test'
+  ...
+# Subtest: resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+ok 71 - resource witness rejects resourceSnapshot: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0728
+  type: 'test'
+  ...
+# Subtest: resource witness rejects telemetry: reference claims an explicit parent graph policy
+ok 72 - resource witness rejects telemetry: reference claims an explicit parent graph policy
+  ---
+  duration_ms: 0.0683
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+ok 73 - resource witness rejects missing public capacity activeRenderedCap instead of inventing a value
+  ---
+  duration_ms: 0.1502
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+ok 74 - resource witness rejects missing public capacity nativeGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0765
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+ok 75 - resource witness rejects missing public capacity internalArrivalGraphBudget instead of inventing a value
+  ---
+  duration_ms: 0.0718
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+ok 76 - resource witness rejects missing public capacity nativeGraphTotalBudget instead of inventing a value
+  ---
+  duration_ms: 0.0703
+  type: 'test'
+  ...
+# Subtest: resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+ok 77 - resource witness rejects missing public capacity nativeCarrierBudget instead of inventing a value
+  ---
+  duration_ms: 0.0712
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile is misinterpreted as 32 voices
+ok 78 - stress resource witness rejects stress profile is misinterpreted as 32 voices
+  ---
+  duration_ms: 0.1316
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress profile kept the default 96-path internal allowance
+ok 79 - stress resource witness rejects stress profile kept the default 96-path internal allowance
+  ---
+  duration_ms: 0.087
+  type: 'test'
+  ...
+# Subtest: stress resource witness rejects stress candidate kept default 176-carrier cap
+ok 80 - stress resource witness rejects stress candidate kept default 176-carrier cap
+  ---
+  duration_ms: 0.0907
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count unknown
+ok 81 - resource witness rejects native source count unknown
+  ---
+  duration_ms: 0.1123
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native source count nonfinite
+ok 82 - resource witness rejects native source count nonfinite
+  ---
+  duration_ms: 0.113
+  type: 'test'
+  ...
+# Subtest: resource witness rejects native graph count unknown
+ok 83 - resource witness rejects native graph count unknown
+  ---
+  duration_ms: 0.0915
+  type: 'test'
+  ...
+# Subtest: resource witness rejects active and tail counts cannot be combined into a fabricated zero
+ok 84 - resource witness rejects active and tail counts cannot be combined into a fabricated zero
+  ---
+  duration_ms: 0.0898
+  type: 'test'
+  ...
+# Subtest: resource witness rejects pending voice count unknown
+ok 85 - resource witness rejects pending voice count unknown
+  ---
+  duration_ms: 0.0893
+  type: 'test'
+  ...
+# Subtest: solver default reference omits the virtualization key and any substitute content model
+ok 86 - solver default reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.3234
+  type: 'test'
+  ...
+# Subtest: solver explicit reference omits the virtualization key and any substitute content model
+ok 87 - solver explicit reference omits the virtualization key and any substitute content model
+  ---
+  duration_ms: 0.1541
+  type: 'test'
+  ...
+# Subtest: solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+ok 88 - solver candidate passes the actual typed DEFAULT policy under the new audioPolicyArm config
+  ---
+  duration_ms: 0.1063
+  type: 'test'
+  ...
+# Subtest: solver rejects an unknown audioPolicyArm before constructing any engine
+ok 89 - solver rejects an unknown audioPolicyArm before constructing any engine
+  ---
+  duration_ms: 0.2566
+  type: 'test'
+  ...
+# Subtest: actual UI mount default reference calls LabRuntime.create with no options argument
+ok 90 - actual UI mount default reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 1.1931
+  type: 'test'
+  ...
+# Subtest: actual UI mount explicit reference calls LabRuntime.create with no options argument
+ok 91 - actual UI mount explicit reference calls LabRuntime.create with no options argument
+  ---
+  duration_ms: 0.7578
+  type: 'test'
+  ...
+# Subtest: actual UI mount candidate passes typed DEFAULT without changing source content
+ok 92 - actual UI mount candidate passes typed DEFAULT without changing source content
+  ---
+  duration_ms: 0.2682
+  type: 'test'
+  ...
+# Subtest: actual UI mount rejects unknown arm before LabRuntime.create
+ok 93 - actual UI mount rejects unknown arm before LabRuntime.create
+  ---
+  duration_ms: 0.4795
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate policy disabled from the public virtualization telemetry
+ok 94 - resource witness rejects candidate policy disabled from the public virtualization telemetry
+  ---
+  duration_ms: 0.2133
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+ok 95 - resource witness rejects candidate DEFAULT policy unknown from the public virtualization telemetry
+  ---
+  duration_ms: 0.131
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+ok 96 - resource witness rejects candidate residence differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.1069
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+ok 97 - resource witness rejects candidate hysteresis differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.1152
+  type: 'test'
+  ...
+# Subtest: resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+ok 98 - resource witness rejects candidate fairness differs from DEFAULT from the public virtualization telemetry
+  ---
+  duration_ms: 0.125
+  type: 'test'
+  ...
+# Subtest: resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+ok 99 - resource witness rejects reference unexpectedly enables a candidate policy from the public virtualization telemetry
+  ---
+  duration_ms: 0.1182
+  type: 'test'
+  ...
+# Subtest: additional V4 observed-cap rejection: candidate sources exceed the original 176-carrier capacity
+not ok 100 - additional V4 observed-cap rejection: candidate sources exceed the original 176-carrier capacity
+  ---
+  duration_ms: 2.7127
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: reference sources exceed the original 144-source capacity
+not ok 101 - additional V4 observed-cap rejection: reference sources exceed the original 144-source capacity
+  ---
+  duration_ms: 1.3939
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: stress candidate sources exceed 336 rather than inheriting the default cap
+not ok 102 - additional V4 observed-cap rejection: stress candidate sources exceed 336 rather than inheriting the default cap
+  ---
+  duration_ms: 3.0905
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: parent graphs exceed the original active-plus-retiring capacity 48
+not ok 103 - additional V4 observed-cap rejection: parent graphs exceed the original active-plus-retiring capacity 48
+  ---
+  duration_ms: 0.322
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: default internal-arrival graphs exceed 96
+not ok 104 - additional V4 observed-cap rejection: default internal-arrival graphs exceed 96
+  ---
+  duration_ms: 0.2536
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: stress internal-arrival graphs exceed 256
+not ok 105 - additional V4 observed-cap rejection: stress internal-arrival graphs exceed 256
+  ---
+  duration_ms: 0.244
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: native slots do not equal the separately observed parent and internal graphs
+not ok 106 - additional V4 observed-cap rejection: native slots do not equal the separately observed parent and internal graphs
+  ---
+  duration_ms: 0.3493
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: native slots exceed all graph capacity instead of being truncated
+not ok 107 - additional V4 observed-cap rejection: native slots exceed all graph capacity instead of being truncated
+  ---
+  duration_ms: 0.2182
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: public parent-graph endpoints disagree
+not ok 108 - additional V4 observed-cap rejection: public parent-graph endpoints disagree
+  ---
+  duration_ms: 0.5414
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: public internal-arrival endpoints disagree
+not ok 109 - additional V4 observed-cap rejection: public internal-arrival endpoints disagree
+  ---
+  duration_ms: 0.3144
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: active voices exceed the unchanged 24-voice capacity
+not ok 110 - additional V4 observed-cap rejection: active voices exceed the unchanged 24-voice capacity
+  ---
+  duration_ms: 0.2162
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: default active paths exceed the original total 96
+not ok 111 - additional V4 observed-cap rejection: default active paths exceed the original total 96
+  ---
+  duration_ms: 0.2812
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: additional V4 observed-cap rejection: stress active paths exceed the original total 256
+not ok 112 - additional V4 observed-cap rejection: stress active paths exceed the original total 256
+  ---
+  duration_ms: 0.205
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\resource-policy-v4.spec.mjs:306:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    rejected (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:65:10)
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/resource-policy-v4.spec.mjs:308:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..112
+# tests 112
+# suites 0
+# pass 97
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1282.4442

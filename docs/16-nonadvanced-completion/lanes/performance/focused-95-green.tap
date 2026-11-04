@@ -1,0 +1,580 @@
+TAP version 13
+# Subtest: unknown service-handler timing keeps total delivery unavailable
+ok 1 - unknown service-handler timing keeps total delivery unavailable
+  ---
+  duration_ms: 8.186
+  type: 'test'
+  ...
+# Subtest: a measured zero handler remains a valid zero contribution
+ok 2 - a measured zero handler remains a valid zero contribution
+  ---
+  duration_ms: 1.7306
+  type: 'test'
+  ...
+# Subtest: collector persists bounded diagnostic evidence without renaming control symptoms as output
+ok 3 - collector persists bounded diagnostic evidence without renaming control symptoms as output
+  ---
+  duration_ms: 4.7463
+  type: 'test'
+  ...
+# Subtest: probe-free acoustic run keeps all 21 warmup/measured batches and native consumers without receive or route probes
+ok 4 - probe-free acoustic run keeps all 21 warmup/measured batches and native consumers without receive or route probes
+  ---
+  duration_ms: 3.5249
+  type: 'test'
+  ...
+# Subtest: a partially unobserved delivery distribution cannot become PASS by filtering null
+ok 5 - a partially unobserved delivery distribution cannot become PASS by filtering null
+  ---
+  duration_ms: 0.7777
+  type: 'test'
+  ...
+# Subtest: measured threshold failure survives alongside an unobserved sample
+ok 6 - measured threshold failure survives alongside an unobserved sample
+  ---
+  duration_ms: 0.1412
+  type: 'test'
+  ...
+# Subtest: all unobserved values preserve null quantiles and unavailable threshold evidence
+ok 7 - all unobserved values preserve null quantiles and unavailable threshold evidence
+  ---
+  duration_ms: 0.1105
+  type: 'test'
+  ...
+# Subtest: a fully measured zero distribution still passes the unchanged strict budget
+ok 8 - a fully measured zero distribution still passes the unchanged strict budget
+  ---
+  duration_ms: 0.1557
+  type: 'test'
+  ...
+# Subtest: bounded PCM capture module exists and registers its fixed diagnostic processor
+ok 9 - bounded PCM capture module exists and registers its fixed diagnostic processor
+  ---
+  duration_ms: 2.6089
+  type: 'test'
+  ...
+# Subtest: 17-frame native block is copied exactly without assuming a 128-frame quantum
+ok 10 - 17-frame native block is copied exactly without assuming a 128-frame quantum
+  ---
+  duration_ms: 3.3217
+  type: 'test'
+  ...
+# Subtest: varying native block lengths remain contiguous and transparent
+ok 11 - varying native block lengths remain contiguous and transparent
+  ---
+  duration_ms: 1.7188
+  type: 'test'
+  ...
+# Subtest: capture trims both window edges exactly while outside-window data is not overflow
+ok 12 - capture trims both window edges exactly while outside-window data is not overflow
+  ---
+  duration_ms: 1.4999
+  type: 'test'
+  ...
+# Subtest: missing input during the capture window cannot be published as measured silence
+ok 13 - missing input during the capture window cannot be published as measured silence
+  ---
+  duration_ms: 1.2881
+  type: 'test'
+  ...
+# Subtest: missing input wholly before the capture window does not corrupt later valid PCM
+ok 14 - missing input wholly before the capture window does not corrupt later valid PCM
+  ---
+  duration_ms: 1.1932
+  type: 'test'
+  ...
+# Subtest: missing source channel is explicit invalid capture rather than silently coerced channels
+ok 15 - missing source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.145
+  type: 'test'
+  ...
+# Subtest: extra source channel is explicit invalid capture rather than silently coerced channels
+ok 16 - extra source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.6176
+  type: 'test'
+  ...
+# Subtest: missing output channel is explicit invalid capture rather than silently coerced channels
+ok 17 - missing output channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.3304
+  type: 'test'
+  ...
+# Subtest: NaN PCM is preserved as invalid evidence rather than normalized or hidden
+ok 18 - NaN PCM is preserved as invalid evidence rather than normalized or hidden
+  ---
+  duration_ms: 1.4733
+  type: 'test'
+  ...
+# Subtest: a context-frame gap is measured independently from input silence and hardware underrun
+ok 19 - a context-frame gap is measured independently from input silence and hardware underrun
+  ---
+  duration_ms: 1.1566
+  type: 'test'
+  ...
+# Subtest: overlapping render frames are invalid and never inflate captured frame count
+ok 20 - overlapping render frames are invalid and never inflate captured frame count
+  ---
+  duration_ms: 1.0307
+  type: 'test'
+  ...
+# Subtest: no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+ok 21 - no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+  ---
+  duration_ms: 0.9865
+  type: 'test'
+  ...
+# Subtest: inconsistent input/output block lengths fail without inventing a quantum
+ok 22 - inconsistent input/output block lengths fail without inventing a quantum
+  ---
+  duration_ms: 1.0479
+  type: 'test'
+  ...
+# Subtest: unequal input channel lengths cannot be copied as complete stereo
+ok 23 - unequal input channel lengths cannot be copied as complete stereo
+  ---
+  duration_ms: 1.1523
+  type: 'test'
+  ...
+# Subtest: block-length metadata stays bounded to 16 values and reports its own overflow
+ok 24 - block-length metadata stays bounded to 16 values and reports its own overflow
+  ---
+  duration_ms: 1.7231
+  type: 'test'
+  ...
+# Subtest: the PCM pool is preallocated and process creates no new typed-array storage
+ok 25 - the PCM pool is preallocated and process creates no new typed-array storage
+  ---
+  duration_ms: 1.3863
+  type: 'test'
+  ...
+# Subtest: cancel transfers no partial PCM and cannot publish completion later
+ok 26 - cancel transfers no partial PCM and cannot publish completion later
+  ---
+  duration_ms: 1.1287
+  type: 'test'
+  ...
+# Subtest: unknown control messages cannot rearm or enlarge the reserved PCM pool
+ok 27 - unknown control messages cannot rearm or enlarge the reserved PCM pool
+  ---
+  duration_ms: 1.0576
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: negative start
+ok 28 - invalid PCM reservation rejects before capture: negative start
+  ---
+  duration_ms: 1.2348
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: fractional start
+ok 29 - invalid PCM reservation rejects before capture: fractional start
+  ---
+  duration_ms: 0.8979
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero frames
+ok 30 - invalid PCM reservation rejects before capture: zero frames
+  ---
+  duration_ms: 0.8413
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite frames
+ok 31 - invalid PCM reservation rejects before capture: nonfinite frames
+  ---
+  duration_ms: 0.7617
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: duration cap plus one
+ok 32 - invalid PCM reservation rejects before capture: duration cap plus one
+  ---
+  duration_ms: 0.8064
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown channels
+ok 33 - invalid PCM reservation rejects before capture: unknown channels
+  ---
+  duration_ms: 0.8219
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero channels
+ok 34 - invalid PCM reservation rejects before capture: zero channels
+  ---
+  duration_ms: 0.8312
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: missing frame count
+ok 35 - invalid PCM reservation rejects before capture: missing frame count
+  ---
+  duration_ms: 0.8471
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unsafe ending frame
+ok 36 - invalid PCM reservation rejects before capture: unsafe ending frame
+  ---
+  duration_ms: 0.8252
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown configuration
+ok 37 - invalid PCM reservation rejects before capture: unknown configuration
+  ---
+  duration_ms: 0.8193
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate above cap
+ok 38 - invalid PCM reservation rejects before capture: actual rate above cap
+  ---
+  duration_ms: 0.8588
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate below supported range
+ok 39 - invalid PCM reservation rejects before capture: actual rate below supported range
+  ---
+  duration_ms: 0.8211
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite actual rate
+ok 40 - invalid PCM reservation rejects before capture: nonfinite actual rate
+  ---
+  duration_ms: 0.7834
+  type: 'test'
+  ...
+# Subtest: maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+ok 41 - maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+  ---
+  duration_ms: 1.0414
+  type: 'test'
+  ...
+# Subtest: probe-free fixture retains native RAF and cancel identities
+ok 42 - probe-free fixture retains native RAF and cancel identities
+  ---
+  duration_ms: 1.5179
+  type: 'test'
+  ...
+# Subtest: instrumented fixture still observes native callbacks by default
+ok 43 - instrumented fixture still observes native callbacks by default
+  ---
+  duration_ms: 1.0578
+  type: 'test'
+  ...
+# Subtest: probe-free callback cannot contribute a measured callback or proof mark
+ok 44 - probe-free callback cannot contribute a measured callback or proof mark
+  ---
+  duration_ms: 0.2615
+  type: 'test'
+  ...
+# Subtest: probe-free closed window keeps unobserved capture and UI counters null
+ok 45 - probe-free closed window keeps unobserved capture and UI counters null
+  ---
+  duration_ms: 0.9864
+  type: 'test'
+  ...
+# Subtest: probe-free physics tick 0 preserves every impulse/wake action without timing or sleep probes
+ok 46 - probe-free physics tick 0 preserves every impulse/wake action without timing or sleep probes
+  ---
+  duration_ms: 5.272
+  type: 'test'
+  ...
+# Subtest: probe-free physics tick 1 preserves every impulse/wake action without timing or sleep probes
+ok 47 - probe-free physics tick 1 preserves every impulse/wake action without timing or sleep probes
+  ---
+  duration_ms: 1.6923
+  type: 'test'
+  ...
+# Subtest: probe-free physics tick 30 preserves every impulse/wake action without timing or sleep probes
+ok 48 - probe-free physics tick 30 preserves every impulse/wake action without timing or sleep probes
+  ---
+  duration_ms: 2.017
+  type: 'test'
+  ...
+# Subtest: semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+ok 49 - semantic pilot exposes a real operation-journal oracle, independent of plan metadata
+  ---
+  duration_ms: 1.3419
+  type: 'test'
+  ...
+# Subtest: independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+ok 50 - independent literal fixes 24 callbacks, 13 twin groups, both cancellations and pretrace counts
+  ---
+  duration_ms: 2.2088
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 0
+ok 51 - semantic oracle accepts the full literal with actual handles beginning at 0
+  ---
+  duration_ms: 2.0268
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 100
+ok 52 - semantic oracle accepts the full literal with actual handles beginning at 100
+  ---
+  duration_ms: 1.373
+  type: 'test'
+  ...
+# Subtest: semantic oracle accepts the full literal with actual handles beginning at 700
+ok 53 - semantic oracle accepts the full literal with actual handles beginning at 700
+  ---
+  duration_ms: 0.7529
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+ok 54 - semantic oracle rejects cancelled measured callback fires while total count and claimed receipt remain coherent
+  ---
+  duration_ms: 1.4626
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+ok 55 - semantic oracle rejects cancelled pretrace callback fires while total count remains 24
+  ---
+  duration_ms: 0.9823
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback before its registration
+ok 56 - semantic oracle rejects callback before its registration
+  ---
+  duration_ms: 0.721
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+ok 57 - semantic oracle rejects callback label is duplicated despite a self-consistent receipt
+  ---
+  duration_ms: 1.4091
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+ok 58 - semantic oracle rejects unknown callback label cannot be advertised as another valid native frame
+  ---
+  duration_ms: 0.9653
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects callback handle differs from its native registration
+ok 59 - semantic oracle rejects callback handle differs from its native registration
+  ---
+  duration_ms: 0.7682
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects handle reuse across different registration labels
+ok 60 - semantic oracle rejects handle reuse across different registration labels
+  ---
+  duration_ms: 0.7444
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects string handles are not coerced
+ok 61 - semantic oracle rejects string handles are not coerced
+  ---
+  duration_ms: 0.6854
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+ok 62 - semantic oracle rejects twin identity changes even though journal and proof share the new bytes
+  ---
+  duration_ms: 0.3928
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child fires inside the parent group with coherent total counts
+ok 63 - semantic oracle rejects nested child fires inside the parent group with coherent total counts
+  ---
+  duration_ms: 0.9027
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested registration is falsely attributed to another callback
+ok 64 - semantic oracle rejects nested registration is falsely attributed to another callback
+  ---
+  duration_ms: 0.5311
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nested child was registered outside the frozen parent order
+ok 65 - semantic oracle rejects nested child was registered outside the frozen parent order
+  ---
+  duration_ms: 0.4926
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects measured callback misrepresented as pretrace
+ok 66 - semantic oracle rejects measured callback misrepresented as pretrace
+  ---
+  duration_ms: 0.5403
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing callback is not repaired by receipt-derived counts
+ok 67 - semantic oracle rejects missing callback is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.2985
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+ok 68 - semantic oracle rejects duplicate invocation is not repaired by receipt-derived counts
+  ---
+  duration_ms: 0.3199
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+ok 69 - semantic oracle rejects journal callback cap cannot be hidden behind a short proof
+  ---
+  duration_ms: 0.8464
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+ok 70 - semantic oracle rejects raw Float64 bytes do not describe their numeric argument
+  ---
+  duration_ms: 0.6478
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+ok 71 - semantic oracle rejects observed Float64 bytes do not describe the native clock observation
+  ---
+  duration_ms: 0.3135
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects raw bytes are not a canonical 16-character byte string
+ok 72 - semantic oracle rejects raw bytes are not a canonical 16-character byte string
+  ---
+  duration_ms: 0.247
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects nonfinite callback argument
+ok 73 - semantic oracle rejects nonfinite callback argument
+  ---
+  duration_ms: 0.4276
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime mark is silently changed into a normal mark
+ok 74 - semantic oracle rejects custom startTime mark is silently changed into a normal mark
+  ---
+  duration_ms: 0.5696
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom startTime did not preserve its exact requested zero
+ok 75 - semantic oracle rejects custom startTime did not preserve its exact requested zero
+  ---
+  duration_ms: 0.5406
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects custom mark is attached to the wrong representative
+ok 76 - semantic oracle rejects custom mark is attached to the wrong representative
+  ---
+  duration_ms: 0.5365
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark name does not bind the independently observed callback bytes
+ok 77 - semantic oracle rejects mark name does not bind the independently observed callback bytes
+  ---
+  duration_ms: 0.4998
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects mark-name byte count is not an estimate
+ok 78 - semantic oracle rejects mark-name byte count is not an estimate
+  ---
+  duration_ms: 1.1326
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed group count differs from independent callback journal
+ok 79 - semantic oracle rejects claimed group count differs from independent callback journal
+  ---
+  duration_ms: 0.6035
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects claimed callback handle differs from independent journal
+ok 80 - semantic oracle rejects claimed callback handle differs from independent journal
+  ---
+  duration_ms: 0.5188
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects missing operation array is not empty success
+ok 81 - semantic oracle rejects missing operation array is not empty success
+  ---
+  duration_ms: 0.2343
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal schema
+ok 82 - semantic oracle rejects unknown journal schema
+  ---
+  duration_ms: 0.2742
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown scenario cannot inherit this qualification
+ok 83 - semantic oracle rejects unknown scenario cannot inherit this qualification
+  ---
+  duration_ms: 0.2379
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects journal collection differs from actual collector
+ok 84 - semantic oracle rejects journal collection differs from actual collector
+  ---
+  duration_ms: 0.4695
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown journal field fails closed
+ok 85 - semantic oracle rejects unknown journal field fails closed
+  ---
+  duration_ms: 0.215
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation field fails closed
+ok 86 - semantic oracle rejects unknown operation field fails closed
+  ---
+  duration_ms: 0.7683
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown operation kind fails closed
+ok 87 - semantic oracle rejects unknown operation kind fails closed
+  ---
+  duration_ms: 0.5694
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects unknown mark field fails closed
+ok 88 - semantic oracle rejects unknown mark field fails closed
+  ---
+  duration_ms: 0.5735
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null journal
+ok 89 - semantic oracle returns controlled rejection for null journal
+  ---
+  duration_ms: 0.3198
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for array journal
+ok 90 - semantic oracle returns controlled rejection for array journal
+  ---
+  duration_ms: 0.2213
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null operation
+ok 91 - semantic oracle returns controlled rejection for null operation
+  ---
+  duration_ms: 0.5884
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null mark
+ok 92 - semantic oracle returns controlled rejection for null mark
+  ---
+  duration_ms: 0.4801
+  type: 'test'
+  ...
+# Subtest: semantic oracle returns controlled rejection for null collector output
+ok 93 - semantic oracle returns controlled rejection for null collector output
+  ---
+  duration_ms: 0.212
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects optional product telemetry outside the frozen pilot: tick
+ok 94 - semantic oracle rejects optional product telemetry outside the frozen pilot: tick
+  ---
+  duration_ms: 0.8258
+  type: 'test'
+  ...
+# Subtest: semantic oracle rejects optional product telemetry outside the frozen pilot: rafCpuMs
+ok 95 - semantic oracle rejects optional product telemetry outside the frozen pilot: rafCpuMs
+  ---
+  duration_ms: 0.5373
+  type: 'test'
+  ...
+1..95
+# tests 95
+# suites 0
+# pass 95
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1230.2277

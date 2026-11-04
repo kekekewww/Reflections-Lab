@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: omitting the runtime resource policy preserves the original undefined engine option
+ok 1 - omitting the runtime resource policy preserves the original undefined engine option
+  ---
+  duration_ms: 139.3618
+  type: 'test'
+  ...
+# Subtest: explicit false is forwarded without changing the reference budget or source content
+ok 2 - explicit false is forwarded without changing the reference budget or source content
+  ---
+  duration_ms: 18.0068
+  type: 'test'
+  ...
+# Subtest: the explicit default candidate reaches the actual engine with original primary capacity
+ok 3 - the explicit default candidate reaches the actual engine with original primary capacity
+  ---
+  duration_ms: 14.9462
+  type: 'test'
+  ...
+# Subtest: runtime owns an immutable scalar copy before the caller mutates its policy or options
+ok 4 - runtime owns an immutable scalar copy before the caller mutates its policy or options
+  ---
+  duration_ms: 12.8328
+  type: 'test'
+  ...
+# Subtest: optional graph and carrier bounds stay omitted and derive from the unchanged budget
+ok 5 - optional graph and carrier bounds stay omitted and derive from the unchanged budget
+  ---
+  duration_ms: 11.6477
+  type: 'test'
+  ...
+# Subtest: a null-prototype scalar policy is accepted without inheriting unrelated configuration
+ok 6 - a null-prototype scalar policy is accepted without inheriting unrelated configuration
+  ---
+  duration_ms: 9.8043
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: true instead of an explicit policy
+ok 7 - runtime rejects unsafe resource policy before audio allocation: true instead of an explicit policy
+  ---
+  duration_ms: 1.6228
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: null
+ok 8 - runtime rejects unsafe resource policy before audio allocation: null
+  ---
+  duration_ms: 0.9809
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: array
+ok 9 - runtime rejects unsafe resource policy before audio allocation: array
+  ---
+  duration_ms: 1.5505
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: string
+ok 10 - runtime rejects unsafe resource policy before audio allocation: string
+  ---
+  duration_ms: 2.6621
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: custom prototype
+ok 11 - runtime rejects unsafe resource policy before audio allocation: custom prototype
+  ---
+  duration_ms: 1.0845
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: missing required scalar
+ok 12 - runtime rejects unsafe resource policy before audio allocation: missing required scalar
+  ---
+  duration_ms: 0.8911
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: NaN scalar
+ok 13 - runtime rejects unsafe resource policy before audio allocation: NaN scalar
+  ---
+  duration_ms: 0.8292
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: infinite scalar
+ok 14 - runtime rejects unsafe resource policy before audio allocation: infinite scalar
+  ---
+  duration_ms: 0.9197
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: numeric string
+ok 15 - runtime rejects unsafe resource policy before audio allocation: numeric string
+  ---
+  duration_ms: 0.9466
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: unrelated engine budget
+ok 16 - runtime rejects unsafe resource policy before audio allocation: unrelated engine budget
+  ---
+  duration_ms: 0.9017
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: hidden unknown configuration
+ok 17 - runtime rejects unsafe resource policy before audio allocation: hidden unknown configuration
+  ---
+  duration_ms: 0.9513
+  type: 'test'
+  ...
+# Subtest: runtime rejects unsafe resource policy before audio allocation: symbol key
+ok 18 - runtime rejects unsafe resource policy before audio allocation: symbol key
+  ---
+  duration_ms: 0.8414
+  type: 'test'
+  ...
+# Subtest: runtime rejects the maxNativeVoices policy accessor without invoking it
+ok 19 - runtime rejects the maxNativeVoices policy accessor without invoking it
+  ---
+  duration_ms: 0.9148
+  type: 'test'
+  ...
+# Subtest: runtime rejects the maxNativeCarriers policy accessor without invoking it
+ok 20 - runtime rejects the maxNativeCarriers policy accessor without invoking it
+  ---
+  duration_ms: 0.836
+  type: 'test'
+  ...
+# Subtest: runtime rejects an outer audioResourcePolicy accessor without invoking it
+ok 21 - runtime rejects an outer audioResourcePolicy accessor without invoking it
+  ---
+  duration_ms: 1.4117
+  type: 'test'
+  ...
+# Subtest: resource policy does not replace pre-enable monitor gain or routing choices
+ok 22 - resource policy does not replace pre-enable monitor gain or routing choices
+  ---
+  duration_ms: 10.1005
+  type: 'test'
+  ...
+# Subtest: shared resource observation before audio is unavailable and cannot create an engine
+ok 23 - shared resource observation before audio is unavailable and cannot create an engine
+  ---
+  duration_ms: 4.1421
+  type: 'test'
+  ...
+# Subtest: shared resource observation is actual by-value data and diagnostics flag is type strict
+ok 24 - shared resource observation is actual by-value data and diagnostics flag is type strict
+  ---
+  duration_ms: 12.6719
+  type: 'test'
+  ...
+# Subtest: disposed shared audio endpoints do not touch the retained native context
+ok 25 - disposed shared audio endpoints do not touch the retained native context
+  ---
+  duration_ms: 8.2391
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1750.8608

@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "kind": "WINDOWS_COMPUTER_USE_MATRIX_ATTEMPT",
+  "attempt": "attempt-01",
+  "language": "zh-TW",
+  "recordedAt": "2026-11-03T11:03:21Z",
+  "timestampSemantics": "recordedAt and each assessedAt are report registration time obtained after the refusal. Actual per-call timestamps were not captured; execution timestamps are null rather than inferred.",
+  "overallStatus": "BLOCKED",
+  "method": {
+    "name": "Windows Computer Use",
+    "runtime": "node_repl / @oai/sky",
+    "productInteractionMethod": "native mouse/keyboard only; no product input reached",
+    "playwrightUsed": false,
+    "devtoolsOrCdpUsed": false,
+    "scriptedDomUsed": false,
+    "privateIpcUsed": false,
+    "hearingTest": false,
+    "productActionsObserved": 0,
+    "separateFromPlaywrightEvidence": true
+  },
+  "target": {
+    "url": "http://127.0.0.1:4173/",
+    "urlObservedOnScreen": false,
+    "sourceCommitFromUserAndReceipt": "544d8d9fe7d4c87a62e093a64fb54eb2584826d7",
+    "srcTreeFromUserAndReceipt": "0d9554956dec35b1b7d340f8ad7c206147e1cbd4",
+    "bundlePath": ".cache/top-monitor-production-attempt09",
+    "buildReceiptPath": "docs/16-nonadvanced-completion/lanes/top-monitor-browser/attempt09-evidence/build-receipt.json",
+    "buildReceiptSha256": "03a2ccb899d60482b83d980f1ff62c2e58b01ac584615e1b8f97d729b5ce38aa",
+    "buildReceiptRead": true,
+    "servedBundleIndependentlyVerified": false,
+    "requiredWindowsDisplayScalePercent": 100,
+    "observedWindowsDisplayScalePercent": null,
+    "observedBrowserZoomPercent": null,
+    "scale200Required": false,
+    "browser": "Google Chrome",
+    "browserVersion": null,
+    "returnedWindow": {"app": "Chrome", "id": 71198, "title": "未命名 - Google Chrome"}
+  },
+  "blockingReason": {
+    "type": "TOOL_WINDOWS_BROWSER_URL_CONFIDENCE_POLICY",
+    "exactMessage": "Computer Use has been stopped for this turn because it could not determine the current browser URL on Windows with enough confidence to enforce policy. Stop your work and send a final message noting why Computer Use ended.",
+    "toolIsError": true,
+    "allNativeCallsStoppedAfterMessage": true,
+    "policyBypassAttempted": false,
+    "isObservedProductFailure": false,
+    "toolLimitsPath": "TOOL_LIMITS.md"
+  },
+  "toolEntryLog": [
+    {"sequence": 1, "action": "Initialize @oai/sky", "status": "PASS", "attemptedAt": null, "observation": "工具初始化回覆成功，無產品畫面。"},
+    {"sequence": 2, "action": "list_apps and list_windows", "status": "PASS", "attemptedAt": null, "observation": "未列出瀏覽器視窗；未讀取其他應用程式內容。"},
+    {"sequence": 3, "action": "launch_app installed Chrome and list_windows", "status": "PASS", "attemptedAt": null, "observation": "回傳唯一 Chrome 視窗 id 71198；僅工具入口成功，不算產品 PASS。"},
+    {"sequence": 4, "action": "Request get_window, activate_window, get_window_state screenshot sequence", "status": "BLOCKED", "attemptedAt": null, "observation": "回傳 URL 政策停止訊息；不知序列內哪個呼叫停止，沒有 screenshot 或 WindowState。"}
+  ],
+  "summary": {"countingUnit": "nine fixed matrix groups only; toolEntryLog excluded", "PASS": 0, "FAIL": 0, "BLOCKED": 1, "NOT_RUN": 8, "total": 9},
+  "steps": [
+    {
+      "id": "01", "group": "startup", "status": "BLOCKED",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "工具因 URL 政策停止，未回傳任何 screenshot payload。",
+      "observation": "已啟動 Chrome；取得狀態前受阻，未輸入 URL。不能判定頁面可否載入。",
+      "checks": [
+        {"name": "Windows 100% display scale and page load", "status": "NOT_RUN"},
+        {"name": "繁中 and English selector changes labels", "status": "NOT_RUN"},
+        {"name": "Help opens on hover/focus and displays text", "status": "NOT_RUN"},
+        {"name": "Disabled control exposes reason", "status": "NOT_RUN"}
+      ]
+    },
+    {
+      "id": "02", "group": "editor", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未進入 Editor、選取或修改參數。",
+      "checks": [
+        {"name": "Select in scene explorer", "status": "NOT_RUN"},
+        {"name": "Select in viewport", "status": "NOT_RUN"},
+        {"name": "Keyboard legal numeric edit", "status": "NOT_RUN"},
+        {"name": "Illegal numeric value and validation", "status": "NOT_RUN"},
+        {"name": "Exact boundary value and validation", "status": "NOT_RUN"},
+        {"name": "Undo and Redo restore values", "status": "NOT_RUN"}
+      ],
+      "changedObjectId": null, "changedParameter": null, "originalValue": null, "changedValue": null
+    },
+    {
+      "id": "03", "group": "build", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未放置物件或取消預覽。",
+      "checks": [
+        {"name": "Placement Ghost to Staged to Active", "status": "NOT_RUN"},
+        {"name": "Escape cancels placement", "status": "NOT_RUN"}
+      ]
+    },
+    {
+      "id": "04", "group": "fps", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未進入 FPS；沒有移動、滑鼠或 pointer lock 證據。",
+      "checks": [
+        {"name": "Enter FPS", "status": "NOT_RUN"},
+        {"name": "WASD movement", "status": "NOT_RUN"},
+        {"name": "Mouse look", "status": "NOT_RUN"},
+        {"name": "Pick up/drop if available", "status": "NOT_RUN"},
+        {"name": "Escape exit; visible cursor, focus and pointer lock released; page usable", "status": "NOT_RUN"}
+      ]
+    },
+    {
+      "id": "05", "group": "top-monitor", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未觀察監測器或操作其控制。",
+      "checks": [
+        {"name": "Mouse switches Levels/Spectrum/Waveform/Load", "status": "NOT_RUN"},
+        {"name": "Keyboard switches Levels/Spectrum/Waveform/Load", "status": "NOT_RUN"},
+        {"name": "Change channel", "status": "NOT_RUN"},
+        {"name": "Mute/unmute", "status": "NOT_RUN"},
+        {"name": "Values or unavailable states displayed", "status": "NOT_RUN"}
+      ]
+    },
+    {
+      "id": "06", "group": "simulation-recording", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未聆聽、模擬或錄製，guard 與 Recording saved 均未觀察。",
+      "checks": [
+        {"name": "Enable listening and start simulation", "status": "NOT_RUN"},
+        {"name": "Start recording and observe for at least 60 seconds", "status": "NOT_RUN"},
+        {"name": "Observe pause/guard and elapsed recording time", "status": "NOT_RUN"},
+        {"name": "Stop and confirm Recording saved", "status": "NOT_RUN"},
+        {"name": "Replay", "status": "NOT_RUN"},
+        {"name": "A/B if offered", "status": "NOT_RUN"}
+      ],
+      "recordingWallSeconds": null, "recordingDisplayedSeconds": null, "guardMessage": null
+    },
+    {
+      "id": "07", "group": "render-export", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未開啟 render/export，無本次下載檔。",
+      "checks": [
+        {"name": "Open render/export UI", "status": "NOT_RUN"},
+        {"name": "Render master/raw/simulated/stems", "status": "NOT_RUN"},
+        {"name": "Download and note names/sizes/destination without opening other apps", "status": "NOT_RUN"}
+      ],
+      "downloads": [], "downloadFolder": null
+    },
+    {
+      "id": "08", "group": "project-persistence", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未保存、重整或匯入匯出；第 2 組沒有變更物件可核對。",
+      "checks": [
+        {"name": "Save project", "status": "NOT_RUN"},
+        {"name": "Reload page and load project", "status": "NOT_RUN"},
+        {"name": "Export project file", "status": "NOT_RUN"},
+        {"name": "Import project file", "status": "NOT_RUN"},
+        {"name": "Step 2 object/parameter survives", "status": "NOT_RUN"}
+      ]
+    },
+    {
+      "id": "09", "group": "meta-offline-fixture", "status": "NOT_RUN",
+      "assessedAt": "2026-11-03T11:03:21Z", "startedAt": null, "endedAt": null,
+      "screenshotPaths": [], "screenshotUnavailableReason": "入口已受政策阻擋；未再操作或擷取。",
+      "observation": "未開啟面板；不能確認 UI 登入提示狀態，未要求任何 Meta/live/paid 呼叫。",
+      "checks": [
+        {"name": "Confirm offline/fixture mode", "status": "NOT_RUN"},
+        {"name": "Preview", "status": "NOT_RUN"},
+        {"name": "Apply and rollback if available", "status": "NOT_RUN"},
+        {"name": "Confirm no network sign-in requested", "status": "NOT_RUN"}
+      ],
+      "paidOrLiveCallsRequested": false, "signInPromptObserved": null
+    }
+  ],
+  "screenshotRequirement": {
+    "fulfilled": false,
+    "files": [],
+    "reason": "No screenshot was returned before the tool ended Computer Use. Missing evidence is explicit; no fabricated or borrowed screenshot."
+  },
+  "scopeCompliance": {
+    "reportWriteRoot": "docs/16-nonadvanced-completion/lanes/computer-use/attempt-01/",
+    "sourceOrTestsModified": false,
+    "knowledgeModified": false,
+    "docsEnModified": false,
+    "stagedOrCommittedByThisAttempt": false,
+    "serverStartedOrBuildRun": false,
+    "privateTabContentsRead": false,
+    "credentialsEnteredOrTermsAccepted": false,
+    "networkTrafficIndependentlyMeasured": false
+  },
+  "limits": [
+    "Only tool-entry success was observed; no product PASS or product FAIL is asserted.",
+    "No screenshot file could be produced; every group explicitly records the omission.",
+    "This does not complete V1, formal performance, scientific validation, Meta live integration or a hearing test."
+  ]
+}

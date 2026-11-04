@@ -24,7 +24,7 @@ Web Audio的AudioParam排程值為float。Mozilla索引版DelayNode以float換�
 
 原跨引擎Firefox8 PASS／1 FAIL／9 API阻擋／7 aggregate未執行保持不變。缺少的是測試排程所需的`OfflineAudioContext.suspend`，不能推論產品live Freeze/Pause不支援；游標／pause的未執行案例仍未驗證。Windows快取WebKit27.2缺少AudioContext／OfflineAudioContext的觀測也不代表所有Safari平台。
 
-完整output PCM為9×2×12000samples／864000bytes；[reference-result.json](archive://14da3d7fdcdb5dc73d69b6420238689e22f3846e/f04028c02f6bb4f2eae35c5c31c7bb8ed3274467)保存每sample數值、native readback、prediction與UA。[verification.json](verification.json)保存實際版本、PID、22份來源before/after hashes（`sourceStable=true`），含原15份audio／native suite。context、browser client、BrowserServer與Vite都正常close；[process-cleanup.json](process-cleanup.json)的elevated唯讀CIM查核為0個matching browser程序。瀏覽器時段已交還，沒有額外重跑、產品修改、原fixture修改或prefs變更。
+完整output PCM為9×2×12000samples／864000bytes；[reference-result.json](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/f04028c02f6bb4f2eae35c5c31c7bb8ed3274467)保存每sample數值、native readback、prediction與UA。[verification.json](verification.json)保存實際版本、PID、22份來源before/after hashes（`sourceStable=true`），含原15份audio／native suite。context、browser client、BrowserServer與Vite都正常close；[process-cleanup.json](process-cleanup.json)的elevated唯讀CIM查核為0個matching browser程序。瀏覽器時段已交還，沒有額外重跑、產品修改、原fixture修改或prefs變更。
 
 Runner限制：本機Vite dynamic import／createServer目前沒有個別deadline；native/protocol/render/cleanup stages有固定deadline，本次實際完成用時8859ms。若後續圖拋錯，先前已完成PCM沒有逐圖checkpoint回host；本次9圖均完整取得，未遇到此路徑。這些限制在測量後read-only review指出，未透過重跑或改碼掩蓋。
 

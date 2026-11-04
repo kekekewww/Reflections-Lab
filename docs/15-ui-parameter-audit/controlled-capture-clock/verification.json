@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "kind": "EXACT_CONTROLLED_CAPTURE_CLOCK_REPAIR",
+  "createdAtUtc": "2026-11-02T10:47:03.268Z",
+  "baseCommitAtOriginalAndFocusedRuns": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+  "gitHeadAtReceipt": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+  "implementationWasUncommittedDuringFocusedRuns": true,
+  "sourcePins": {
+    "src/app/runtime.ts": "388a1fd1bc206d029783a2886064cee0fe09a30d42a0abd03196f017e2b78325",
+    "src/physics/fixed-clock.ts": "68e5173a3fbbf96920dceb49282254fc04ccbc671410894c49b06619e4010a78",
+    "src/physics/physics-world.ts": "119b9ed086525f216caea4b2f6510682339f224cd20edefc8e325f84a02b7690",
+    "tests/physics/fixed-clock.test.ts": "67ffc72fd13dd0c553c52f63c0b2c9389a1d778c693fe5c1504c64a077e9e899",
+    "tests/physics/controlled-step.test.ts": "c682b8f9a3fd1c7464d15f4bd84f7943eb5348f307c1870d8f86c6f1eae9274a",
+    "tests/app/pipeline-integration.test.ts": "5777f728e8ef2cd4021079038cea6ab2f5160f0e3b1da5345dcce985f2d922d3"
+  },
+  "status": "FOCUSED_PASS_INTEGRATION_BROWSER_RETEST_PENDING",
+  "originalRealUiReceipt": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-02/motion-recording-and-replay-authoring-dependencies/receipt.json",
+  "runs": [
+    {
+      "name": "true Runtime original RED",
+      "command": "node --import tsx --test --test-name-pattern 'after recording overload' tests/app/pipeline-integration.test.ts",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-original-red.txt"
+    },
+    {
+      "name": "focused final",
+      "command": "node --import tsx --test tests/physics/fixed-clock.test.ts tests/physics/controlled-step.test.ts tests/app/pipeline-integration.test.ts tests/app/replay-lifecycle.test.ts tests/app/recording-export-lifecycle.test.ts",
+      "exitCode": 0,
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "skip": 0,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-final.txt"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/typecheck.txt"
+    },
+    {
+      "name": "scoped ESLint",
+      "exitCode": 0,
+      "paths": [
+        "src/app/runtime.ts",
+        "src/physics/fixed-clock.ts",
+        "src/physics/physics-world.ts",
+        "tests/physics/fixed-clock.test.ts",
+        "tests/physics/controlled-step.test.ts",
+        "tests/app/pipeline-integration.test.ts"
+      ],
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/eslint.txt"
+    },
+    {
+      "name": "scoped Prettier",
+      "exitCode": 0,
+      "paths": [
+        "src/app/runtime.ts",
+        "src/physics/fixed-clock.ts",
+        "src/physics/physics-world.ts",
+        "tests/physics/fixed-clock.test.ts",
+        "tests/physics/controlled-step.test.ts",
+        "tests/app/pipeline-integration.test.ts"
+      ],
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/prettier.txt"
+    }
+  ],
+  "legacyBodies": [
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "unchanged": true,
+      "sha256": "ef18334aba8f2f57e32676ea9f1888f5cea1622cffcd781768b61f2276880e6d"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "unchanged": true,
+      "sha256": "352de3faf10673aa0737cd35d84084bfb8bfb771c90ae85c0eb4a83669b015a3"
+    }
+  ],
+  "semantics": [
+    "Manual step requests exactly one complete physics tick, independent of new admitted wall time.",
+    "Pending wall-time debt and total dropped-wall-time counters remain bitwise unchanged.",
+    "The original wall-time catchup, recording-overrun pause and interactive discard algorithms are unchanged.",
+    "Before-solver failures commit no tick; after-solver or external observer failures commit the completed tick once and pause before propagation.",
+    "Controlled Runtime does not shift audio epochs for imaginary wall-time discard; existing scene/pause/cancel/exact-frame guards remain."
+  ],
+  "proofFiles": [
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/eslint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-final.txt",
+      "bytes": 9468,
+      "sha256": "66ea6759f7d8256983f95baafb64d2dc085785ba11cdd3e8cdb3b143a011b69e"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-first.txt",
+      "bytes": 4925,
+      "sha256": "e93afe3f2db13471f803d948871d0574a6550617fc1c181ee2995cfcc525b700"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/prettier.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-first-green.txt",
+      "bytes": 1314,
+      "sha256": "c1728040f340768ad9627975491151a1d413aa5882a1ff1bb8f2214a849a9a19"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-original-red.txt",
+      "bytes": 1039,
+      "sha256": "8ccded6cb9009ac6b712963f0fd8f25e75fa00ddc0cf1c2092754690343ef481"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__app__runtime.ts.preimage.txt",
+      "bytes": 134414,
+      "sha256": "7c6ffebe392dc252b14f507062257321bbea61927b0da531c9ce3ac6ce4d3111"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__physics__fixed-clock.ts.preimage.txt",
+      "bytes": 5295,
+      "sha256": "064583c1b040a3243f95f562d95d3c90587c914b7b4e9d9278f36eb60e8d77a0"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__physics__physics-world.ts.preimage.txt",
+      "bytes": 54103,
+      "sha256": "da4c138029493d93a0dcc33459cdce75f97cc863000e77053883fe56b36b25e7"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/tests__app__pipeline-integration.test.ts.preimage.txt",
+      "bytes": 2534,
+      "sha256": "266ecba13d6282af9fececdeb7439a0847d9a61d1f040549c1c77323dc391a30"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/tests__physics__fixed-clock.test.ts.preimage.txt",
+      "bytes": 5741,
+      "sha256": "f70e33eae21b9b6b9095ddcb6398dc1efa8f819b667b30c844c8681bea3725fe"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/typecheck.txt",
+      "bytes": 68,
+      "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4"
+    }
+  ],
+  "limitations": [
+    "No browser test was run by this repair agent; root must rebuild and retest the real overload→Stop→capture UI case.",
+    "No realtime throughput, native computer-use, hearing or overall V1 acceptance is inferred.",
+    "After-step fault injection proves safe pause/interrupt and clock/world alignment, not automatic Runtime behavior-state recovery; normal reset is the recovery boundary for an internal observer fault.",
+    "No legacy numerical reference or tolerance was changed; no Scene or clock reset, debt clearing, maxCatchUp override or tick loss was used."
+  ]
+}

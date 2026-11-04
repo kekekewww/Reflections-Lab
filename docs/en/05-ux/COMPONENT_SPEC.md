@@ -1,12 +1,19 @@
-<!-- english-source: {"path":"docs/05-ux/COMPONENT_SPEC.md","sha256":"d7455c5c298b978b69dbe08e3e21cc953e8c571b10e0d0b6c2d8505a4127db05","translated_at":"2026-10-27T03:45:00Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/05-ux/COMPONENT_SPEC.md","sha256":"4ea3fe0e4aaa246336399a00211f7925a305a14a268e626430579ca55f9e77b4","translated_at":"2026-11-03T02:04:21.272Z","executor":"Codex","model_id":null,"links":"english-relative","status":"current"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/05-ux/COMPONENT_SPEC.md`](../../05-ux/COMPONENT_SPEC.md). Source SHA-256: `d7455c5c298b978b69dbe08e3e21cc953e8c571b10e0d0b6c2d8505a4127db05`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/05-ux/COMPONENT_SPEC.md`](../../05-ux/COMPONENT_SPEC.md). Source SHA-256: `4ea3fe0e4aaa246336399a00211f7925a305a14a268e626430579ca55f9e77b4`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="介面元件與資料規格"></a>
 # Interface Component and Data Specifications
 
-Review date: 2026-10-26. Status: **Design complete / implementation and component tests NOT RUN**. The following is a draft UI read model and interaction contract; the Domain schema, backend contract, and DSP specifications are the authoritative sources for numerical and capability definitions. Components must not fabricate acoustic data.
+<!-- english-original-anchor --> <a id="2026-11-03-頂列監測需求與取代範圍"></a>
+## Top-Bar Monitoring Requirement and Superseded Scope, 2026-11-03
+
+Following the [user's original request](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/d6ca447d6ad71a49a3e081110a5702b6975ecd3a) (SHA-256: `ef5ec791276d668aec3f29877cc77d532d5452e2ebcf614af1d8f9f3efc4b5f2`) and [Task0033](../../../knowledge/tasks/RLAB-TASK-0033.json), replace the three-step `Build scene / Interactive experiment / Inspect & compare` navigation with switchable track-level, spectrum, waveform, and processing-load monitoring. This section supersedes the original 2026-10-26 ProjectBar specification for top-bar Workspace/switch-Workspace entry points. Internal Workspace layouts, compatibility states, and existing data remain; see [Workspace architecture](WORKSPACE_ARCHITECTURE.md).
+
+This updates requirements and component contracts; it is not an implementation or browser PASS claim. Switching among the four modes changes only the local view: it sends no Transport/Record commands, changes no scene or recording, and restarts no source. Original audio routing, numeric tolerances, budgets, formal performance workloads, and all other gates remain.
+
+Historical specification snapshot: 2026-10-26; the top-bar entry points are superseded by the 2026-11-03 requirement above, while other contracts remain. Status at that time: **Design complete / implementation and component tests NOT RUN**. The following is a draft UI read model and interaction contract; the Domain schema, backend contract, and DSP specifications are the authoritative sources for numerical and capability definitions. Components must not fabricate acoustic data.
 
 <!-- english-original-anchor --> <a id="共通契約"></a>
 ## Shared Contracts
@@ -22,7 +29,8 @@ For the shared `SelectionRef`, see [WORKSPACE_ARCHITECTURE.md](WORKSPACE_ARCHITE
 
 | Component / priority | Inputs and main states | Actions and outputs | Keyboard / accessibility and failure |
 | --- | --- | --- | --- |
-| **ProjectBar** P0 | project, document dirty, save status, Workspace | Switch Workspace, save, export; no Reset | Explicit labels / focus order; save failure supports Retry |
+| **ProjectBar** P0 | project, document dirty, save status | Save, export; the top bar no longer provides three-step Workspace navigation | Explicit labels / focus order; save failure supports Retry |
+| **TopMonitor** P1 | Four view modes, real audio readings / processing load with identified sources, data state | Switch only track levels / spectrum / waveform / processing load; send no experiment commands | Distinguishable names, selection, and focus; readable chart summaries; reasons for unmeasured data |
 | **SimulationTransport** P0 | Ready/Running/Paused/Error, runId/tick, pause cause | Run/Pause/Resume/Reset; Capture/record are separate | Do not rely only on a triangle icon; Reset identifies the target revision; disabled actions due to errors have reasons |
 | **SceneExplorer** P0 | object tree, selection, filter, lock/visibility | Select, rename, duplicate, delete, reparent (show only with Domain support) | Arrow-key tree pattern, F2 / explicit rename; deletion supports Undo; hidden does not mean disabled/muted |
 | **ObjectLibrary** P0 | primitive/preset, source/license, search/filter | Selection creates a draft; Scene or FPS ghost | Keyboard list selection, Enter to select; asset loading/error must not create a partial object |
@@ -43,6 +51,26 @@ For the shared `SelectionRef`, see [WORKSPACE_ARCHITECTURE.md](WORKSPACE_ARCHITE
 | **Status/EvidenceBadge** P1 | provenance/validation/capability/freshness | Expand sources, model assumptions, and limitations | Badges include text; no percentage without confidence data |
 
 SceneExplorer visibility refers to rendering; physics enabled, acoustic participating, and emitter muted must be separate fields. Hiding a wall must not silently let sound pass through it. A multi-selection Inspector displays mixed values rather than presenting the first object's value as shared by all. A pinned Inspector has a pin icon and data version so users do not mistake it for the new selection.
+
+<!-- english-original-anchor --> <a id="頂列監測-topmonitor2026-11-03-需求"></a>
+## Top-Bar Monitoring: TopMonitor (2026-11-03 Requirement)
+
+TopMonitor uses the original top-bar space, offers four switchable modes, and identifies the current mode. It is a read-only monitoring component. MonitorStrip's Enable listening, Master Mute, monitor gain, and Raw/Simulated remain independent audio controls; monitoring tabs must not replace them or change their values when charts switch. Data belongs to an observational read model, is not written into Scene, trace, or results, and does not drive physics/audio clocks through per-frame React state updates.
+
+| Mode | Real data and required explanations | Missing values and prohibited substitutes |
+| --- | --- | --- |
+| Track levels | Separate rows by stable source/track IDs; show the actually provided peak/RMS, measurement tap/channel path, units, and observation window. Digital levels use an explicit reference such as dBFS. | Keep muted, true zero, not-ready, and unavailable distinct. Do not fabricate 0 dBFS without data or infer dB SPL. |
+| Spectrum | Actual audio frequency-domain data; frequency in Hz, sample rate, FFT/window, and amplitude reference are inspectable. Identify the track/mix tap. | No decorative spectrum without data; do not present normalized RIR or solver energy as the current audio spectrum. |
+| Waveform | Actual audio time samples; identify the time window, digital amplitude, and track/mix tap, with bounded sampling/drawing. | No illustrative sine wave without data. Do not silently normalize/clip to conceal differences in actual samples, or claim verified digital output. |
+| Processing load | Name each measurement by source, unit, scope, and time window. Distinguish solver Worker time, control-side update time, and display-frame interval. | Do not call Worker solver time main-thread time. Control time/frame interval is not whole-process CPU or native DSP CPU. Unmeasured or unsupported data displays unavailable rather than zero or a fabricated CPU percentage. |
+
+Audio not enabled, no valid signal, observation disabled, a removed source, stale data, and errors need readable states; an empty plot is not a reason. Technical details such as data sources and FFT/observation windows may live in expandable information, while units, sources, and reasons for unavailable current readings remain inspectable. Do not automatically enable listening or play sources to obtain a chart.
+
+Analysers are created/activated lazily only for visible modes needing audio data, using bounded observation and buffered sampling; inactive modes do not keep reading. Explicitly bounded reuse is allowed. Switching and dispose stop owned subscriptions and release owned observation resources without disconnecting the actual audio path or recreating AudioContext. The processing-load view must not create unnecessary audio analysers. Measure added observation cost separately; do not claim performance improvement or budget compliance before obtaining cost evidence.
+
+Mode controls have clear labels, selected state, and visible focus. Preserve existing keyboard/IME/Esc arbitration without intercepting scene shortcuts. Charts provide textual/numeric summaries rather than per-frame `aria-live` announcements. Validate layout at normal 100% display scale with existing narrow-screen/keyboard/reduced-motion requirements; saving space must not obscure Mute, Transport, or focus.
+
+The current status of each criterion comes from source-bound evidence in [Task0033](../../../knowledge/tasks/RLAB-TASK-0033.json); this page does not duplicate acceptance flags. Validation must cover all four modes in a real Playwright browser, both languages, keyboard focus, data states, recording and source continuity, and cleanup; check digital readings against fixed signals. Record Computer Use URL-policy stops separately as method limitations; they do not prevent executable Playwright validation. Static documents, component unit tests, or plausible-looking charts cannot replace complete-product, digital-audio, or formal-performance acceptance.
 
 <!-- english-original-anchor --> <a id="三類-inspector-範例"></a>
 ## Examples of Three Inspector Types
@@ -113,7 +141,7 @@ Simulation Pause separately uses `Freeze-and-fade` from the Workspace document: 
 
 Level match is an optional monitoring aid, off by default; show the gain offset and method, and do not modify raw metrics / scene source gain. Multi-source/impact comparisons bind to the same captured event stream so Raw/Simulated do not play different collisions. Raw does not mean unmuted, and it is not a free-field model. If "direct-only with HRTF retained" is offered later, give it a separate name and routing without changing the Raw definition.
 
-Monitoring is muted by default. After the user clicks enable, the suggested starting gain is -18 dB relative to unity (a product default, not a calibrated safe sound pressure). Master Mute is keyboard-reachable in every Workspace and does not change source/physics/record trace. A clip meter indicates digital clipping only; it cannot estimate headphone dB SPL, and even a limiter cannot be claimed to guarantee hearing safety. Arbitrary assets may contain excessive transients, so clear volume controls, explicit enablement, and avoiding sudden gain increases when switching modes are interface requirements. Without exposure measurements, display "actual SPL/exposure unknown." No playback tests were performed in this review.
+Monitoring is muted by default. After the user clicks enable, the starting monitor gain is 0 dB relative to unity; the control is shown in whole dB from -40 to +12 dB. Master-mix headroom is -6 dB, followed by the -3 dBFS limiter and finally an output safety ceiling that is exactly linear below -1 dBFS and stays below full scale (a product default, not a calibrated safe sound pressure). Adjusted on 2026-10-30 after the R18 user report that the default sound was too quiet: the former suggested -18 dB stacked with -14 dB headroom left the default scene's digital output peak near -51 dBFS; after the change it is about -29 dBFS. Master Mute is keyboard-reachable in every Workspace and does not change source/physics/record trace. A clip meter indicates digital clipping only; it cannot estimate headphone dB SPL, and even a limiter cannot be claimed to guarantee hearing safety. Arbitrary assets may contain excessive transients, so clear volume controls, explicit enablement, and avoiding sudden gain increases when switching modes are interface requirements. Without exposure measurements, display "actual SPL/exposure unknown." No playback tests were performed in this review.
 
 <!-- english-original-anchor --> <a id="可及性與高密度互動"></a>
 ## Accessibility and High-Density Interaction
@@ -127,6 +155,9 @@ WCAG 2.2 is a design goal, not conformance verified in this review. AA text/non-
 
 - object/path/event/IR selection is consistent across 3D, tables, and Inspector; deleted/invalid references do not point to another object.
 - Unavailable values show reasons instead of 0; error, stale, not calculated, and unsupported are distinguishable.
+- Four-mode monitoring replaces three-step top-bar navigation. Switching sends no experiment commands, restarts no source, and loses no recording/selection/draft; original internal Workspace compatibility behavior remains.
+- Real audio levels/spectrum/waveform have fixed-signal evidence and identified sources, units, and observation windows. Processing-load Worker/control/render scopes are explicit; unmeasured CPU/DSP displays neither fabricated percentages nor zero.
+- Verify lazy monitoring analysers, bounded sampling, and switching/dispose cleanup. Playwright, Computer Use, digital-audio, and formal-performance results are separate; unit tests or static review do not replace them.
 - Switching the same source between Raw/Simulated does not change tick/seed/source playhead; level matching does not change results.
 - Listener follow and observer camera each have explicit states; unsupported HRTF is not shown as enabled.
 - Material bands, attenuation definitions, and solver mapping are traceable; debug candidate paths do not enter audio.

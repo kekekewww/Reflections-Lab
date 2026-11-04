@@ -3,6 +3,20 @@
 
 # Reflection Lab
 
+## 最新：Muse 多步驟場景建構（2026-11-04）
+
+一句指令可讓 Muse（Meta Model API）規劃最多 32 步的場景提案，並可新增、移動、調整尺寸與移除物件。App 先以與手動編輯相同的物理與場景規則檢查；若有步驟失敗，Muse 會讀取錯誤並重試。通過後顯示預覽，按下 Apply 才生效；Apply 後立即按 Undo 可復原。Muse 也能改變聲音規則與寫入路徑，新增的表面會進入聲學路徑。結果與限制見[紀錄](docs/00-project/MUSE_SCENE_BUILDER_20261104.md)，此公開快照的範圍見[說明](docs/00-project/PUBLIC_SNAPSHOT_20261104.md)。
+
+需要自己的 Meta Model API 金鑰。金鑰只留在本機伺服器：
+
+```powershell
+npm ci
+npm run build
+npm run demo:live -- --key-file "<path to the server-only key file>"
+```
+
+然後開啟 `http://127.0.0.1:4173`，在 Meta experiment agent 分頁選擇 Meta Model API。這是即時近似，不是量測；完整第一版、效能與真人聽測門檻尚未完成。
+
 [English README](README.en.md) · [English user guide](docs/11-v1/USER_GUIDE.en.md)
 
 介面可透過上方語言選單切換繁體中文／English，語言偏好保存在本機；兩種語言共用場景、聲音與驗收資料。全套英文文件已建立原文／譯文hash與current／stale對照，前次完整檢查已確認當時258份鏡像全數current、0 missing／stale／errors；本次與後續變更仍依最新報告同步。範圍見[英文補充驗收](docs/11-v1/ENGLISH_ACCEPTANCE.md)。

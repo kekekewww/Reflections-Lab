@@ -1,0 +1,734 @@
+TAP version 13
+# Subtest: bounded PCM capture module exists and registers its fixed diagnostic processor
+ok 1 - bounded PCM capture module exists and registers its fixed diagnostic processor
+  ---
+  duration_ms: 2.4807
+  type: 'test'
+  ...
+# Subtest: 17-frame native block is copied exactly without assuming a 128-frame quantum
+ok 2 - 17-frame native block is copied exactly without assuming a 128-frame quantum
+  ---
+  duration_ms: 2.0404
+  type: 'test'
+  ...
+# Subtest: varying native block lengths remain contiguous and transparent
+ok 3 - varying native block lengths remain contiguous and transparent
+  ---
+  duration_ms: 1.3851
+  type: 'test'
+  ...
+# Subtest: capture trims both window edges exactly while outside-window data is not overflow
+ok 4 - capture trims both window edges exactly while outside-window data is not overflow
+  ---
+  duration_ms: 1.1635
+  type: 'test'
+  ...
+# Subtest: missing input during the capture window cannot be published as measured silence
+ok 5 - missing input during the capture window cannot be published as measured silence
+  ---
+  duration_ms: 1.0287
+  type: 'test'
+  ...
+# Subtest: missing input wholly before the capture window does not corrupt later valid PCM
+ok 6 - missing input wholly before the capture window does not corrupt later valid PCM
+  ---
+  duration_ms: 0.953
+  type: 'test'
+  ...
+# Subtest: missing source channel is explicit invalid capture rather than silently coerced channels
+ok 7 - missing source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.4551
+  type: 'test'
+  ...
+# Subtest: extra source channel is explicit invalid capture rather than silently coerced channels
+ok 8 - extra source channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 0.9065
+  type: 'test'
+  ...
+# Subtest: missing output channel is explicit invalid capture rather than silently coerced channels
+ok 9 - missing output channel is explicit invalid capture rather than silently coerced channels
+  ---
+  duration_ms: 1.0016
+  type: 'test'
+  ...
+# Subtest: NaN PCM is preserved as invalid evidence rather than normalized or hidden
+ok 10 - NaN PCM is preserved as invalid evidence rather than normalized or hidden
+  ---
+  duration_ms: 1.1295
+  type: 'test'
+  ...
+# Subtest: a context-frame gap is measured independently from input silence and hardware underrun
+ok 11 - a context-frame gap is measured independently from input silence and hardware underrun
+  ---
+  duration_ms: 0.9938
+  type: 'test'
+  ...
+# Subtest: overlapping render frames are invalid and never inflate captured frame count
+ok 12 - overlapping render frames are invalid and never inflate captured frame count
+  ---
+  duration_ms: 0.8198
+  type: 'test'
+  ...
+# Subtest: no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+ok 13 - no input or output length is explicit invalid evidence, never a synthetic 128-frame block
+  ---
+  duration_ms: 0.7819
+  type: 'test'
+  ...
+# Subtest: inconsistent input/output block lengths fail without inventing a quantum
+ok 14 - inconsistent input/output block lengths fail without inventing a quantum
+  ---
+  duration_ms: 0.7762
+  type: 'test'
+  ...
+# Subtest: unequal input channel lengths cannot be copied as complete stereo
+ok 15 - unequal input channel lengths cannot be copied as complete stereo
+  ---
+  duration_ms: 0.817
+  type: 'test'
+  ...
+# Subtest: block-length metadata stays bounded to 16 values and reports its own overflow
+ok 16 - block-length metadata stays bounded to 16 values and reports its own overflow
+  ---
+  duration_ms: 1.3616
+  type: 'test'
+  ...
+# Subtest: the PCM pool is preallocated and process creates no new typed-array storage
+ok 17 - the PCM pool is preallocated and process creates no new typed-array storage
+  ---
+  duration_ms: 1.2916
+  type: 'test'
+  ...
+# Subtest: cancel transfers no partial PCM and cannot publish completion later
+ok 18 - cancel transfers no partial PCM and cannot publish completion later
+  ---
+  duration_ms: 1.0912
+  type: 'test'
+  ...
+# Subtest: unknown control messages cannot rearm or enlarge the reserved PCM pool
+ok 19 - unknown control messages cannot rearm or enlarge the reserved PCM pool
+  ---
+  duration_ms: 0.8271
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: negative start
+ok 20 - invalid PCM reservation rejects before capture: negative start
+  ---
+  duration_ms: 1.0683
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: fractional start
+ok 21 - invalid PCM reservation rejects before capture: fractional start
+  ---
+  duration_ms: 0.7005
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero frames
+ok 22 - invalid PCM reservation rejects before capture: zero frames
+  ---
+  duration_ms: 0.6176
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite frames
+ok 23 - invalid PCM reservation rejects before capture: nonfinite frames
+  ---
+  duration_ms: 0.5849
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: duration cap plus one
+ok 24 - invalid PCM reservation rejects before capture: duration cap plus one
+  ---
+  duration_ms: 0.6887
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown channels
+ok 25 - invalid PCM reservation rejects before capture: unknown channels
+  ---
+  duration_ms: 0.5969
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: zero channels
+ok 26 - invalid PCM reservation rejects before capture: zero channels
+  ---
+  duration_ms: 0.618
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: missing frame count
+ok 27 - invalid PCM reservation rejects before capture: missing frame count
+  ---
+  duration_ms: 0.5952
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unsafe ending frame
+ok 28 - invalid PCM reservation rejects before capture: unsafe ending frame
+  ---
+  duration_ms: 0.6267
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: unknown configuration
+ok 29 - invalid PCM reservation rejects before capture: unknown configuration
+  ---
+  duration_ms: 0.6151
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate above cap
+ok 30 - invalid PCM reservation rejects before capture: actual rate above cap
+  ---
+  duration_ms: 0.913
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: actual rate below supported range
+ok 31 - invalid PCM reservation rejects before capture: actual rate below supported range
+  ---
+  duration_ms: 0.6701
+  type: 'test'
+  ...
+# Subtest: invalid PCM reservation rejects before capture: nonfinite actual rate
+ok 32 - invalid PCM reservation rejects before capture: nonfinite actual rate
+  ---
+  duration_ms: 0.6206
+  type: 'test'
+  ...
+# Subtest: maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+ok 33 - maximum actual rate and ten-second stereo reservation fit the explicit 32 MiB cap
+  ---
+  duration_ms: 0.8628
+  type: 'test'
+  ...
+# Subtest: inherited cancel kind is not a valid own-key control message
+ok 34 - inherited cancel kind is not a valid own-key control message
+  ---
+  duration_ms: 0.8664
+  type: 'test'
+  ...
+# Subtest: diagnostic WAV encoder is accepted by the frozen independent Stage12 float-WAV parser
+ok 35 - diagnostic WAV encoder is accepted by the frozen independent Stage12 float-WAV parser
+  ---
+  duration_ms: 18.224
+  type: 'test'
+  ...
+# Subtest: PCM artifact module exposes a real byte-and-capture oracle rather than plan metadata
+not ok 36 - PCM artifact module exposes a real byte-and-capture oracle rather than plan metadata
+  ---
+  duration_ms: 0.9242
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\pcm-probe.spec.mjs:580:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/pcm-probe.spec.mjs:581:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: independent phase-separated stereo bytes retain a true measured zero gap count
+ok 37 - independent phase-separated stereo bytes retain a true measured zero gap count
+  ---
+  duration_ms: 0.0914
+  type: 'test'
+  ...
+# Subtest: 500 manually inserted silent stereo frames preserve actual 44100 Hz and global origin
+ok 38 - 500 manually inserted silent stereo frames preserve actual 44100 Hz and global origin
+  ---
+  duration_ms: 0.1208
+  type: 'test'
+  ...
+# Subtest: 500 manually inserted silent stereo frames preserve actual 48000 Hz and global origin
+ok 39 - 500 manually inserted silent stereo frames preserve actual 48000 Hz and global origin
+  ---
+  duration_ms: 0.026
+  type: 'test'
+  ...
+# Subtest: one silent channel is not an all-channel digital gap
+ok 40 - one silent channel is not an all-channel digital gap
+  ---
+  duration_ms: 0.0214
+  type: 'test'
+  ...
+# Subtest: gap threshold uses the actual 17-frame shortest block at 16 silent frames
+ok 41 - gap threshold uses the actual 17-frame shortest block at 16 silent frames
+  ---
+  duration_ms: 0.0208
+  type: 'test'
+  ...
+# Subtest: gap threshold uses the actual 17-frame shortest block at 17 silent frames
+ok 42 - gap threshold uses the actual 17-frame shortest block at 17 silent frames
+  ---
+  duration_ms: 0.0194
+  type: 'test'
+  ...
+# Subtest: first and last sample zero runs retain half-open active-window boundaries
+ok 43 - first and last sample zero runs retain half-open active-window boundaries
+  ---
+  duration_ms: 0.0212
+  type: 'test'
+  ...
+# Subtest: complete all-zero PCM remains measured silence rather than invalid or unavailable data
+ok 44 - complete all-zero PCM remains measured silence rather than invalid or unavailable data
+  ---
+  duration_ms: 0.0223
+  type: 'test'
+  ...
+# Subtest: other native output observations cannot become PCM-probe hardware or DSP CPU measurements
+ok 45 - other native output observations cannot become PCM-probe hardware or DSP CPU measurements
+  ---
+  duration_ms: 0.0216
+  type: 'test'
+  ...
+# Subtest: valid 22050 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+ok 46 - valid 22050 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+  ---
+  duration_ms: 0.0186
+  type: 'test'
+  ...
+# Subtest: valid 96000 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+ok 47 - valid 96000 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+  ---
+  duration_ms: 0.0182
+  type: 'test'
+  ...
+# Subtest: valid 384000 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+ok 48 - valid 384000 Hz capture is explicitly unsupported by the frozen 44.1/48 kHz byte reference
+  ---
+  duration_ms: 0.0178
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing case result
+ok 49 - PCM artifact rejects missing case result
+  ---
+  duration_ms: 0.0209
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing capture metadata
+ok 50 - PCM artifact rejects missing capture metadata
+  ---
+  duration_ms: 0.0219
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null capture metadata
+ok 51 - PCM artifact rejects null capture metadata
+  ---
+  duration_ms: 0.0204
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects invalid capture status
+ok 52 - PCM artifact rejects invalid capture status
+  ---
+  duration_ms: 0.0215
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects not observed probe off
+ok 53 - PCM artifact rejects not observed probe off
+  ---
+  duration_ms: 0.0184
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null capture status
+ok 54 - PCM artifact rejects null capture status
+  ---
+  duration_ms: 0.0324
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects short captured packet
+ok 55 - PCM artifact rejects short captured packet
+  ---
+  duration_ms: 0.0347
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null captured frame count
+ok 56 - PCM artifact rejects null captured frame count
+  ---
+  duration_ms: 0.0226
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects capture window shifted one frame
+ok 57 - PCM artifact rejects capture window shifted one frame
+  ---
+  duration_ms: 0.0206
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects last context frame not complete
+ok 58 - PCM artifact rejects last context frame not complete
+  ---
+  duration_ms: 0.0288
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null first context frame
+ok 59 - PCM artifact rejects null first context frame
+  ---
+  duration_ms: 0.0226
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects timeline duration and capture disagree
+ok 60 - PCM artifact rejects timeline duration and capture disagree
+  ---
+  duration_ms: 0.0185
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects reserved bytes are not PCM ownership
+ok 61 - PCM artifact rejects reserved bytes are not PCM ownership
+  ---
+  duration_ms: 0.037
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects declared WAV bytes differ from actual
+ok 62 - PCM artifact rejects declared WAV bytes differ from actual
+  ---
+  duration_ms: 0.0195
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects declared WAV frame count differs
+ok 63 - PCM artifact rejects declared WAV frame count differs
+  ---
+  duration_ms: 0.0227
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects declared WAV channel count differs
+ok 64 - PCM artifact rejects declared WAV channel count differs
+  ---
+  duration_ms: 0.0258
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects declared WAV rate differs
+ok 65 - PCM artifact rejects declared WAV rate differs
+  ---
+  duration_ms: 0.1075
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects capture channel count differs
+ok 66 - PCM artifact rejects capture channel count differs
+  ---
+  duration_ms: 0.0357
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects capture rate differs
+ok 67 - PCM artifact rejects capture rate differs
+  ---
+  duration_ms: 0.0196
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects metadata reasons claim an invalid capture
+ok 68 - PCM artifact rejects metadata reasons claim an invalid capture
+  ---
+  duration_ms: 0.0188
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null reasons are not a clean capture
+ok 69 - PCM artifact rejects null reasons are not a clean capture
+  ---
+  duration_ms: 0.0226
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects empty observed block list
+ok 70 - PCM artifact rejects empty observed block list
+  ---
+  duration_ms: 0.0192
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null observed block list
+ok 71 - PCM artifact rejects null observed block list
+  ---
+  duration_ms: 0.0206
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects zero observed block
+ok 72 - PCM artifact rejects zero observed block
+  ---
+  duration_ms: 0.0364
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects fractional observed block
+ok 73 - PCM artifact rejects fractional observed block
+  ---
+  duration_ms: 0.1311
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects nonfinite observed block
+ok 74 - PCM artifact rejects nonfinite observed block
+  ---
+  duration_ms: 0.0224
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects unbounded block history
+ok 75 - PCM artifact rejects unbounded block history
+  ---
+  duration_ms: 0.0219
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing blockLengthOverflowCount is not an observed zero
+ok 76 - PCM artifact rejects missing blockLengthOverflowCount is not an observed zero
+  ---
+  duration_ms: 0.7701
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null blockLengthOverflowCount is not an observed zero
+ok 77 - PCM artifact rejects null blockLengthOverflowCount is not an observed zero
+  ---
+  duration_ms: 0.0389
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive blockLengthOverflowCount disqualifies completeness
+ok 78 - PCM artifact rejects positive blockLengthOverflowCount disqualifies completeness
+  ---
+  duration_ms: 0.0166
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing missingInputFrames is not an observed zero
+ok 79 - PCM artifact rejects missing missingInputFrames is not an observed zero
+  ---
+  duration_ms: 0.016
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null missingInputFrames is not an observed zero
+ok 80 - PCM artifact rejects null missingInputFrames is not an observed zero
+  ---
+  duration_ms: 0.016
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive missingInputFrames disqualifies completeness
+ok 81 - PCM artifact rejects positive missingInputFrames disqualifies completeness
+  ---
+  duration_ms: 0.0161
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing channelMismatchFrames is not an observed zero
+ok 82 - PCM artifact rejects missing channelMismatchFrames is not an observed zero
+  ---
+  duration_ms: 0.0151
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null channelMismatchFrames is not an observed zero
+ok 83 - PCM artifact rejects null channelMismatchFrames is not an observed zero
+  ---
+  duration_ms: 0.0144
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive channelMismatchFrames disqualifies completeness
+ok 84 - PCM artifact rejects positive channelMismatchFrames disqualifies completeness
+  ---
+  duration_ms: 0.0159
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing nonFiniteSamples is not an observed zero
+ok 85 - PCM artifact rejects missing nonFiniteSamples is not an observed zero
+  ---
+  duration_ms: 0.015
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null nonFiniteSamples is not an observed zero
+ok 86 - PCM artifact rejects null nonFiniteSamples is not an observed zero
+  ---
+  duration_ms: 0.0186
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive nonFiniteSamples disqualifies completeness
+ok 87 - PCM artifact rejects positive nonFiniteSamples disqualifies completeness
+  ---
+  duration_ms: 0.015
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing renderFrameGapFrames is not an observed zero
+ok 88 - PCM artifact rejects missing renderFrameGapFrames is not an observed zero
+  ---
+  duration_ms: 0.0155
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null renderFrameGapFrames is not an observed zero
+ok 89 - PCM artifact rejects null renderFrameGapFrames is not an observed zero
+  ---
+  duration_ms: 0.015
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive renderFrameGapFrames disqualifies completeness
+ok 90 - PCM artifact rejects positive renderFrameGapFrames disqualifies completeness
+  ---
+  duration_ms: 0.0149
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing overlapFrames is not an observed zero
+ok 91 - PCM artifact rejects missing overlapFrames is not an observed zero
+  ---
+  duration_ms: 0.0157
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null overlapFrames is not an observed zero
+ok 92 - PCM artifact rejects null overlapFrames is not an observed zero
+  ---
+  duration_ms: 0.0151
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive overlapFrames disqualifies completeness
+ok 93 - PCM artifact rejects positive overlapFrames disqualifies completeness
+  ---
+  duration_ms: 0.0152
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects missing overflowFrames is not an observed zero
+ok 94 - PCM artifact rejects missing overflowFrames is not an observed zero
+  ---
+  duration_ms: 0.0143
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null overflowFrames is not an observed zero
+ok 95 - PCM artifact rejects null overflowFrames is not an observed zero
+  ---
+  duration_ms: 0.0156
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects positive overflowFrames disqualifies completeness
+ok 96 - PCM artifact rejects positive overflowFrames disqualifies completeness
+  ---
+  duration_ms: 0.0146
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects short RIFF packet
+ok 97 - PCM artifact rejects short RIFF packet
+  ---
+  duration_ms: 0.0144
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects truncated data payload
+ok 98 - PCM artifact rejects truncated data payload
+  ---
+  duration_ms: 0.0143
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects wrong RIFF identity
+ok 99 - PCM artifact rejects wrong RIFF identity
+  ---
+  duration_ms: 0.0143
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects wrong WAVE identity
+ok 100 - PCM artifact rejects wrong WAVE identity
+  ---
+  duration_ms: 0.014
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects forged RIFF byte size
+ok 101 - PCM artifact rejects forged RIFF byte size
+  ---
+  duration_ms: 0.0147
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects integer PCM masquerading as float
+ok 102 - PCM artifact rejects integer PCM masquerading as float
+  ---
+  duration_ms: 0.0229
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects header channel mismatch
+ok 103 - PCM artifact rejects header channel mismatch
+  ---
+  duration_ms: 0.0151
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects header rate mismatch
+ok 104 - PCM artifact rejects header rate mismatch
+  ---
+  duration_ms: 0.0193
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects forged byte rate
+ok 105 - PCM artifact rejects forged byte rate
+  ---
+  duration_ms: 0.0146
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects forged block alignment
+ok 106 - PCM artifact rejects forged block alignment
+  ---
+  duration_ms: 0.0148
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects wrong float bit width
+ok 107 - PCM artifact rejects wrong float bit width
+  ---
+  duration_ms: 0.015
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects wrong fact sample count
+ok 108 - PCM artifact rejects wrong fact sample count
+  ---
+  duration_ms: 0.0145
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects data size disagrees with exact frame count
+ok 109 - PCM artifact rejects data size disagrees with exact frame count
+  ---
+  duration_ms: 0.0146
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects NaN sample cannot be hidden behind a zero nonfinite counter
+ok 110 - PCM artifact rejects NaN sample cannot be hidden behind a zero nonfinite counter
+  ---
+  duration_ms: 0.0157
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects null bytes without throwing or measured-zero summaries
+ok 111 - PCM artifact rejects null bytes without throwing or measured-zero summaries
+  ---
+  duration_ms: 0.0149
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects text bytes without throwing or measured-zero summaries
+ok 112 - PCM artifact rejects text bytes without throwing or measured-zero summaries
+  ---
+  duration_ms: 0.0157
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects empty bytes without throwing or measured-zero summaries
+ok 113 - PCM artifact rejects empty bytes without throwing or measured-zero summaries
+  ---
+  duration_ms: 0.0152
+  type: 'test'
+  ...
+# Subtest: PCM artifact rejects duration cap plus one even with self-consistent bytes and metadata
+ok 114 - PCM artifact rejects duration cap plus one even with self-consistent bytes and metadata
+  ---
+  duration_ms: 0.0148
+  type: 'test'
+  ...
+# Subtest: PCM artifact bounds the byte input before accepting a giant or ambiguous RIFF packet
+ok 115 - PCM artifact bounds the byte input before accepting a giant or ambiguous RIFF packet
+  ---
+  duration_ms: 0.0151
+  type: 'test'
+  ...
+# Subtest: nonzero capture cross-checks the unchanged Stage12 byte reference on the same original bytes
+ok 116 - nonzero capture cross-checks the unchanged Stage12 byte reference on the same original bytes
+  ---
+  duration_ms: 0.0149
+  type: 'test'
+  ...
+# Subtest: valid full silence preserves the frozen Stage12 nonzero rejection instead of repairing the reference input
+ok 117 - valid full silence preserves the frozen Stage12 nonzero rejection instead of repairing the reference input
+  ---
+  duration_ms: 0.0149
+  type: 'test'
+  ...
+1..117
+# tests 117
+# suites 0
+# pass 116
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 135.5337

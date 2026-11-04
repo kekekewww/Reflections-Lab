@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "reflection-lab-visible-unsupported-options-v1",
+  "status": "ORIGINAL_VISIBLE_FEATURE_GAPS_IMPLEMENTED_WITH_FINITE_PRODUCT_EVIDENCE",
+  "capturedAtUtc": "2026-11-02T11:40:41.751Z",
+  "observedHead": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+  "userScope": "使用者要求也實作尚未支援的可見選項；不把正常狀態保護、物理不適用或帳號/硬體外部gate誤當功能缺失。",
+  "featureGaps": [
+    {
+      "id": "missing.zone-triggers",
+      "visibleOptions": ["OnEnterZone", "OnExitZone"],
+      "semanticFamilyIds": ["behavior.newTrigger", "behavior.addRule", "rule.trigger.{ruleId}"],
+      "classification": "PRODUCT_FEATURE_NOT_IMPLEMENTED",
+      "sources": [
+        {
+          "path": "src/capabilities/sound-behavior.ts",
+          "symbol": "PRODUCT_SOUND_BEHAVIOR_PRODUCERS",
+          "fact": "zoneProducer:false；getSoundBehaviorCapabilities回ZONE_PRODUCER_UNAVAILABLE"
+        },
+        {
+          "path": "src/ui/behavior-options.ts",
+          "symbol": "unsupportedTriggerReasons",
+          "fact": "共用能力投影兩項disabled reason"
+        },
+        {
+          "path": "src/ui/Inspector.tsx",
+          "symbol": "SoundEditor",
+          "fact": "新增trigger option disabled且Add拒絕"
+        },
+        {
+          "path": "src/ui/RuleCard.tsx",
+          "symbol": "RuleCard trigger select",
+          "fact": "現有規則trigger option disabled"
+        }
+      ],
+      "requiredCore": "有界版本化實際Zone區域與可信occupancy producer，真固定步enter/exit事件、revision/generation/reset/cancel/dedup，UI作者與共享能力/Host/record-replay/AI同步。不能只把zoneProducer設true或拿evaluator支援冒充接線。",
+      "currentStatus": "PASS_FINITE_NEW_BROWSER_AND_FIXED_STEP_EVIDENCE",
+      "currentEvidence": {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/zones/parameter-inventory.json",
+        "sourceCommit": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+        "scope": "六個不同case；authoring/references/real fixed-step enter-exit/replay/AB，五個behavior zone相關family追加新分支。不是samecleanrun/全部物理邊界。"
+      }
+    },
+    {
+      "id": "missing.curved-acoustic-geometry",
+      "visibleOptions": [
+        "sphere: acousticMaterial",
+        "sphere: acousticRole",
+        "capsule: acousticMaterial",
+        "capsule: acousticRole"
+      ],
+      "semanticFamilyIds": [
+        "object.acousticMaterial",
+        "object.acousticRole",
+        "explorer.add.{shape}"
+      ],
+      "classification": "PRODUCT_FEATURE_NOT_IMPLEMENTED",
+      "sources": [
+        {
+          "path": "src/ui/Inspector.tsx",
+          "symbol": "acoustic material/role selects",
+          "fact": "disabled={!canEdit || object.shape!==box}"
+        },
+        {
+          "path": "src/ui/locales/inspector.ts",
+          "symbol": "inspector.curvedAcousticNote",
+          "fact": "明示球體/膠囊不遮擋不反射"
+        },
+        {
+          "path": "src/app/acoustic-input.ts",
+          "symbol": "buildAcousticRequests",
+          "fact": "object.shape!==box直接return []"
+        }
+      ],
+      "requiredCore": "對sphere/capsule提供可追溯且有界的遮擋/反射幾何表示與材質角色作用、更新同live/replay/A-B輸入，再移除對應UI限制；標numerical/perceptual approximation，保留真geometry/path來源與預算。",
+      "regressionConcern": "既有105-object測試clone sphere dynamicOccluder；不能以每球大量facets直接突破256 surfaces後silent drop，亦不能改oracle製造PASS。",
+      "currentStatus": "PASS_FINITE_NEW_BROWSER_AND_SOLVER_EVIDENCE",
+      "currentEvidence": {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/CURVED_PARAMETER_FINAL_49bde82.json",
+        "sourceCommit": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+        "scope": "八組bounded cases來自首次四PASS與harness修正後四PASS；sphere/capsule材料角色、sphere真反射、capsule/box動態反射，不宣稱全部Cartesian。"
+      }
+    },
+    {
+      "id": "missing.dynamic-reflection",
+      "visibleOptions": ["dynamicReflector"],
+      "semanticFamilyIds": ["object.acousticRole"],
+      "classification": "VISIBLE_ENABLED_OPTION_DEGRADES_TO_OTHER_ROLE",
+      "sources": [
+        {
+          "path": "src/ui/Inspector.tsx",
+          "symbol": "acousticRole select",
+          "fact": "dynamicReflector option存在且box時enabled"
+        },
+        {
+          "path": "src/ui/locales/inspector.ts",
+          "symbol": "inspector.acousticRole.dynamicReflector",
+          "fact": "標動態反射面（依後端能力）"
+        },
+        {
+          "path": "src/app/acoustic-input.ts",
+          "symbol": "buildAcousticRequests role mapping",
+          "fact": "只有fixed&&staticSurface送staticReflector，其他所有角色送dynamicOccluder"
+        },
+        {
+          "path": "src/acoustics/solver.ts",
+          "symbol": "reflection candidate loop",
+          "fact": "dynamicOccluder直接continue，不產reflection path"
+        }
+      ],
+      "requiredCore": "在明確snapshot/quasi-static近似下真正產生moving reflector有效反射path與穩定ID、每tick姿態/方向/once-delay更新；不能只改label或把角色留成occluder。若無retarded-time/Doppler求解需明示限制。",
+      "currentStatus": "PASS_FINITE_NEW_BROWSER_AND_SOLVER_EVIDENCE",
+      "currentEvidence": {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/CURVED_PARAMETER_FINAL_49bde82.json",
+        "sourceCommit": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+        "scope": "八組bounded cases來自首次四PASS與harness修正後四PASS；sphere/capsule材料角色、sphere真反射、capsule/box動態反射，不宣稱全部Cartesian。"
+      }
+    }
+  ],
+  "notFeatureGaps": [
+    {
+      "id": "state.disabled",
+      "examples": [
+        "running/replaying/busy/pending",
+        "missing selection/artifact/asset",
+        "Undo/Redo尚無history",
+        "mapping target已使用",
+        "草稿invalid/stale或curve endpoint不可刪",
+        "render/cancel狀態保護"
+      ],
+      "reason": "狀態前提或資料不變性；滿足合法前提即可測可用，不應移除保護。"
+    },
+    {
+      "id": "physical.not-applicable",
+      "examples": [
+        "fixed body的mass編輯/force motion",
+        "kinematic body套用dynamic impulse或acceleration",
+        "fpsHead attachment下直接編輯Listener",
+        "vacuum下air temperature與airborne propagation",
+        "staticSurface反射語意要求fixed body"
+      ],
+      "reason": "物理/控制權不適用；應清楚說明或停用不相容選項，不應以違反物理的假行為實作。Motion impulse在kinematic的可見組合需另核UI是否說明/提前限制。"
+    },
+    {
+      "id": "external.meta-live",
+      "examples": [
+        "Meta server未ready",
+        "credentials/account entitlement",
+        "network/budget gate=0"
+      ],
+      "reason": "既有provider/Host已實作，需外部先決；新付費/secret/權限沒有授權，不能以fake live取代。"
+    },
+    {
+      "id": "external.browser-native",
+      "examples": [
+        "native output counters AVAILABLE/UNSUPPORTED/WARMUP/COUNTER_RESET",
+        "device output latency",
+        "browser-managed HRTF",
+        "native Pointer Lock不可得"
+      ],
+      "reason": "硬體/瀏覽器能力或唯讀觀測狀態；不是可編輯產品選項。保留實際狀態與替代操作，不虛構API數據。"
+    },
+    {
+      "id": "absent.not-exposed",
+      "examples": [
+        "Meta model/key/budget/context editors",
+        "Performance refresh",
+        "Mapping clamp toggle",
+        "curve SVG drag",
+        "render pure-late/ADM/custom asset HRTF options",
+        "full sound schema fade/voiceLimit/priority/oscillator frequency"
+      ],
+      "reason": "目前沒有可見控制，不把內部schema候選/API unsupported當成已曝光選項。未來需求另列，不自動擴張本次UI參數範圍。"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "src/capabilities/sound-behavior.ts",
+      "sha256": "4d422a7aaabf3afd2c5f759fca3b80f81b31fec0c7327cf60617e7736e7c4a48"
+    },
+    {
+      "path": "src/ui/behavior-options.ts",
+      "sha256": "dd4c88a142b671dded160415b31cdfae378d7b68277d93c56f7bd10f27e00ab5"
+    },
+    {
+      "path": "src/ui/Inspector.tsx",
+      "sha256": "fe16108026c05d4ef8b7237b63aaf8f60ce25199d050843ee6a885a17a1f66d7"
+    },
+    {
+      "path": "src/ui/RuleCard.tsx",
+      "sha256": "7d81e19a241eb33c6a854c487cfb6112ea2f0b886485d2760a146fab2e05d4c9"
+    },
+    {
+      "path": "src/app/acoustic-input.ts",
+      "sha256": "f9c6cc11e12676aea45c2bd09ce238faec3bc3ed347359acbe290fbfa72c9a5b"
+    },
+    {
+      "path": "src/acoustics/solver.ts",
+      "sha256": "bb06e300ba9528306c6d1420ef7a15c77fbaaa4d1ba7c4c226399a4144fcf20f"
+    },
+    {
+      "path": "src/ui/locales/inspector.ts",
+      "sha256": "c9b5a4d3b2743514a85655ead2da3008a6c4bdde107d1fe80cd8f8fc8cb83b21"
+    },
+    {
+      "path": "src/ui/MotionPanel.tsx",
+      "sha256": "c39c0fe259b6ee70e743442edd50d340c59cfa199a276ac675a2fad83f015fe7"
+    },
+    {
+      "path": "src/motion/workspace.ts",
+      "sha256": "54c321ef1fb7df48e7f6f5223ff6dc5dc3091e93874eaaeb8451f37882ae770e"
+    }
+  ],
+  "currentImplementationReview": {
+    "observedHead": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+    "capturedAtUtc": "2026-11-02T11:40:41.751Z",
+    "status": "CORE_IMPLEMENTED_WITH_VERSIONED_FINITE_BROWSER_EVIDENCE",
+    "baselinePreservedAt": "docs/14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.initial-19db9f9.json",
+    "sourceProofs": [
+      {
+        "feature": "missing.zone-triggers",
+        "path": "src/capabilities/sound-behavior.ts",
+        "fact": "zoneProducer true；ZonePanel registry authoring/Rule zone selectors present",
+        "sha256": "4d422a7aaabf3afd2c5f759fca3b80f81b31fec0c7327cf60617e7736e7c4a48"
+      },
+      {
+        "feature": "missing.curved-acoustic-geometry",
+        "path": "src/app/acoustic-input.ts",
+        "fact": "analytic primitive geometry and supportsAcousticShape gate present; UI sphere/capsule不再停用",
+        "sha256": "f9c6cc11e12676aea45c2bd09ce238faec3bc3ed347359acbe290fbfa72c9a5b"
+      },
+      {
+        "feature": "missing.dynamic-reflection",
+        "path": "src/capabilities/acoustic-geometry.ts",
+        "fact": "acousticSnapshotRole明確投影dynamicReflector；非單純降成occluder",
+        "sha256": "13309dc0b4e75aa169777404f39a16d1b6359bbd6e4b961622433aa709f4e9e9"
+      }
+    ],
+    "browserQualification": "當前source501；原三功能缺口皆有各自49／9fc有限新真證據；不改標501單次全跑。最後UI Tail/Help/scroll/Zone可見分支獨立見crosswalk。",
+    "reviewedAtUtc": "2026-11-02T10:31:51.768Z"
+  },
+  "baselineGapSnapshot": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/UNSUPPORTED_OPTIONS.initial-19db9f9.json",
+    "observedHead": "f6abb936a8c7c87ff8eb5e6587260b837e6b67ae",
+    "capturedAtUtc": "2026-11-02T07:14:03.366Z",
+    "sourcePins": [
+      {
+        "path": "src/capabilities/sound-behavior.ts",
+        "sha256": "4a5889657ee6b71d2d90cbfdffee310710e6be014ee38dd06052601d949ef092"
+      },
+      {
+        "path": "src/ui/behavior-options.ts",
+        "sha256": "b8ec1e8a85f9dea5f6eaddda51947f3f21a38084b2d8d4dc6ee3f17b2f306f95"
+      },
+      {
+        "path": "src/ui/Inspector.tsx",
+        "sha256": "36c90056da5290bb5a38f66f402fb4e12f05ba88a459c0b29b16478960c6aec7"
+      },
+      {
+        "path": "src/ui/RuleCard.tsx",
+        "sha256": "0b145dc5477d76c49f68c11ba92333eba3d2bc4071137e3d341c3ef5ba1dded8"
+      },
+      {
+        "path": "src/app/acoustic-input.ts",
+        "sha256": "03b2e94840a50914a4cc3133a72402198e6bebec46806dac0df7b1c52b1fb9c1"
+      },
+      {
+        "path": "src/acoustics/solver.ts",
+        "sha256": "81bf485d565cbe15ddacf944130346b55c4048c1cc54dfd4e7ff7b5f7eda83d4"
+      },
+      {
+        "path": "src/ui/locales/inspector.ts",
+        "sha256": "f5c9af71af7eefba655f986ee063f437f980c416a7d331258586191539ea6c82"
+      },
+      {
+        "path": "src/ui/MotionPanel.tsx",
+        "sha256": "c39c0fe259b6ee70e743442edd50d340c59cfa199a276ac675a2fad83f015fe7"
+      },
+      {
+        "path": "src/motion/workspace.ts",
+        "sha256": "54c321ef1fb7df48e7f6f5223ff6dc5dc3091e93874eaaeb8451f37882ae770e"
+      }
+    ],
+    "qualification": "featureGaps原始sources屬歷史缺口，不因current刷新轉成新source證據。"
+  },
+  "reviewedAtUtc": "2026-11-02T14:19:27.879Z",
+  "baselineClassificationPolicy": "featureGaps[].classification and sources describe the preserved original gap, not current feature availability; use currentStatus/currentEvidence for current state.",
+  "finalFamilyCrosswalk": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/CROSSWALK.json",
+    "finiteEvidencedFamilies": 217,
+    "familyCount": 217,
+    "scope": "Finite versioned behavior; not full V1 or external/native conditions."
+  },
+  "finalIntegratedPipeline": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/render-performance/render/combined-attempts/final-5010685-01/combined-receipt.json",
+    "sourceCommit": "5010685ebfd6bb482aa37e1d82e5f64418b55d9b",
+    "independentAudio": "docs/14-core-pipeline/stages/12-final-integrated-ui-audio-verification.json"
+  }
+}

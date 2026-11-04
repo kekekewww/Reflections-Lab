@@ -1,0 +1,853 @@
+{
+  "case": "03-cancel-max-tail",
+  "auditAttempt": "final-9fcf3f0-01",
+  "startedAt": "2026-11-02T11:02:23.976Z",
+  "status": "PASS",
+  "browser": "156.0.8078.75",
+  "sourceAssets": [
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-DD1acLTT.js",
+      "bytes": 772585,
+      "sha256": "62baf5a939c581df46b9c35c66380713b751cafb83cb8673228ce44ddf6eb961"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-DO7iDxDy.js",
+      "bytes": 5116927,
+      "sha256": "5c75259d334399afeab1c53a5d32e0e7a3b4067f862b245836fdd542b96e7819"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "bytes": 38307,
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-DTboN9lz.js",
+      "bytes": 788649,
+      "sha256": "f1407aa7c49a2792e6879025e5e5d8188d68a186be9f3f0619594ae8cbdf39fd"
+    },
+    {
+      "url": "http://127.0.0.1:4173/",
+      "bytes": 755,
+      "sha256": "80f03523379a17865845fd2b214cf4bef6dd2a0dcf8ee7da1ec24108178d53d2"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DyzyxVA_.js",
+      "bytes": 23785,
+      "sha256": "b520d715866cb76d58608fdb37b364a6c2d4db2c3c9903def831cd4ae9e5391e"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-DO7iDxDy.js",
+      "bytes": 5116927,
+      "sha256": "5c75259d334399afeab1c53a5d32e0e7a3b4067f862b245836fdd542b96e7819"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "bytes": 38307,
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/recording-evaluation.worker-DILgIwNr.js",
+      "bytes": 237198,
+      "sha256": "99edee0c4d147c28119e1d68e1f4fcadb92db5c21dcf9dc28487d9441a82fc19"
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/recording-seal.worker-CwIOCKDF.js",
+      "bytes": 228461,
+      "sha256": "52a20baf33bb1df4bd515e1d3f4fcebc6bfb31efc3b188f1585b621ffee28495"
+    }
+  ],
+  "actions": [
+    {
+      "control": "setup.alwaysOn",
+      "objectId": "speaker",
+      "modality": "pointer",
+      "outcome": "Added enabled deterministic procedural oscillator through Inspector UI",
+      "ruleText": "持續發聲\nrule.AlwaysOn\n等待觸發\n場景聲學預聽\n觸發條件\n持續發聲 · AlwaysOn\n移動期間 · WhileMoving\n飛行期間 · WhileAirborne\n滾動期間 · WhileRolling\n滑動期間 · WhileSliding\n旋轉期間 · WhileSpinning\n持有期間 · WhileHeld\n抓取時 · OnGrab\n放手時 · OnRelease\n投擲時 · OnThrow\n放下時 · OnDrop\n撞擊時 · OnImpact\n彈跳時 · OnBounce\n開始移動 · OnStartMoving\n停止移動 · OnStopMoving\n進入區域 · OnEnterZone（未支援）\n離開區域 · OnExitZone（未支援）\n休眠時 · OnSleep\n喚醒時 · OnWake\n聲音素材\n程序音 · Oscillator\n音量\nlinear\n音高\nsemitones\n冷卻時間\ns\n參數映射曲線編輯器\n新增參數映射0/8 條映射"
+    },
+    {
+      "control": "setup.alwaysOn",
+      "objectId": "ball",
+      "modality": "pointer",
+      "outcome": "Added enabled deterministic procedural oscillator through Inspector UI",
+      "ruleText": "持續發聲\nrule.AlwaysOn\n等待觸發\n場景聲學預聽\n觸發條件\n持續發聲 · AlwaysOn\n移動期間 · WhileMoving\n飛行期間 · WhileAirborne\n滾動期間 · WhileRolling\n滑動期間 · WhileSliding\n旋轉期間 · WhileSpinning\n持有期間 · WhileHeld\n抓取時 · OnGrab\n放手時 · OnRelease\n投擲時 · OnThrow\n放下時 · OnDrop\n撞擊時 · OnImpact\n彈跳時 · OnBounce\n開始移動 · OnStartMoving\n停止移動 · OnStopMoving\n進入區域 · OnEnterZone（未支援）\n離開區域 · OnExitZone（未支援）\n休眠時 · OnSleep\n喚醒時 · OnWake\n聲音素材\n程序音 · Oscillator\n音量\nlinear\n音高\nsemitones\n冷卻時間\ns\n參數映射曲線編輯器\n新增參數映射0/8 條映射"
+    },
+    {
+      "control": "render.capture-short",
+      "modality": "pointer",
+      "outcome": "Recorded through visible 3-second capture action; render became enabled"
+    },
+    {
+      "control": "render.cancel",
+      "modality": "pointer while rendering",
+      "outcome": "Cancel exits busy state and preserves last completely published manifest, without partial replacement"
+    },
+    {
+      "control": "render.downloads-and-manifest",
+      "outcome": "All visible WAV outputs downloaded independently with manifest hashes, finite nonzero float32 samples and requested duration",
+      "files": [
+        {
+          "bytes": 4992056,
+          "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-mix.wav",
+          "id": "mix",
+          "sha256": "3e7fc584fc19c2925e175bfbeb3f23695b04f83755fe0eb4eee3b3bbb4b5ff72"
+        },
+        {
+          "bytes": 4992056,
+          "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-master.wav",
+          "id": "master",
+          "sha256": "97acaa326b4b358da0ebf4bda9399285679b8540accdb1591de3dcd75d1a03f6"
+        },
+        {
+          "bytes": 4992056,
+          "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-dry.wav",
+          "id": "dry",
+          "sha256": "41688ea6c37ceb1f1aaf8520365c5b2cf814431cb63aded9b9578c5b9d020731"
+        }
+      ],
+      "window": {
+        "boundaryPolicy": "reportUnresolvedHistoryAndTruncatedTail",
+        "endTickExclusive": 181,
+        "outputOrigin": "windowStart",
+        "preRollFrames": 0,
+        "startTick": 1,
+        "tailFrames": 480000
+      }
+    },
+    {
+      "control": "render.tail",
+      "input": 10,
+      "outcome": "Maximum accepted; retry output has requested 13-second clock"
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "initial",
+      "at": "2026-11-02T11:02:26.016Z",
+      "text": "音訊匯出\n離線WAV\n錄製3秒\n產生音檔\n保留尾響\ns\n各聲源分軌\n\n先錄製一段完整片段。",
+      "controls": [
+        {
+          "index": 0,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "說明：音訊匯出",
+          "text": "",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 1,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "錄製3秒",
+          "text": "錄製3秒",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 2,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "產生音檔",
+          "text": "產生音檔",
+          "value": "",
+          "checked": null,
+          "disabled": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 3,
+          "tag": "input",
+          "type": "number",
+          "id": "",
+          "label": "保留尾響 s",
+          "text": "",
+          "value": "2",
+          "checked": null,
+          "disabled": false,
+          "min": "0",
+          "max": "10",
+          "step": "0.5",
+          "ariaInvalid": "false"
+        },
+        {
+          "index": 4,
+          "tag": "input",
+          "type": "checkbox",
+          "id": "",
+          "label": "各聲源分軌",
+          "text": "",
+          "value": "on",
+          "checked": true,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        }
+      ]
+    },
+    {
+      "label": "after-capture",
+      "at": "2026-11-02T11:02:39.617Z",
+      "text": "音訊匯出\n離線WAV\n錄製3秒\n產生音檔\n保留尾響\ns\n各聲源分軌",
+      "controls": [
+        {
+          "index": 0,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "說明：音訊匯出",
+          "text": "",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 1,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "錄製3秒",
+          "text": "錄製3秒",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 2,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "產生音檔",
+          "text": "產生音檔",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 3,
+          "tag": "input",
+          "type": "number",
+          "id": "",
+          "label": "保留尾響 s",
+          "text": "",
+          "value": "0",
+          "checked": null,
+          "disabled": false,
+          "min": "0",
+          "max": "10",
+          "step": "0.5",
+          "ariaInvalid": "false"
+        },
+        {
+          "index": 4,
+          "tag": "input",
+          "type": "checkbox",
+          "id": "",
+          "label": "各聲源分軌",
+          "text": "",
+          "value": "on",
+          "checked": false,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        }
+      ]
+    },
+    {
+      "label": "completed",
+      "at": "2026-11-02T11:02:52.120Z",
+      "text": "音訊匯出\n可下載\n錄製3秒\n產生音檔\n保留尾響\ns\n各聲源分軌\n傳播後混音（Wet）\n1.10 MB\n邊界限制\n主輸出\n1.10 MB\n邊界限制\n原始內容（Dry）\n1.10 MB\n邊界限制\n下載來源與雜湊清單",
+      "controls": [
+        {
+          "index": 0,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "說明：音訊匯出",
+          "text": "",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 1,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "錄製3秒",
+          "text": "錄製3秒",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 2,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "產生音檔",
+          "text": "產生音檔",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 3,
+          "tag": "input",
+          "type": "number",
+          "id": "",
+          "label": "保留尾響 s",
+          "text": "",
+          "value": "0",
+          "checked": null,
+          "disabled": false,
+          "min": "0",
+          "max": "10",
+          "step": "0.5",
+          "ariaInvalid": "false"
+        },
+        {
+          "index": 4,
+          "tag": "input",
+          "type": "checkbox",
+          "id": "",
+          "label": "各聲源分軌",
+          "text": "",
+          "value": "on",
+          "checked": false,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 5,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 mix",
+          "text": "傳播後混音（Wet）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 6,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 master",
+          "text": "主輸出",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 7,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 dry",
+          "text": "原始內容（Dry）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 8,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載來源與雜湊清單",
+          "text": "下載來源與雜湊清單",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        }
+      ]
+    },
+    {
+      "label": "rendering-before-cancel",
+      "observed": true,
+      "buttons": [
+        {
+          "text": "",
+          "disabled": false
+        },
+        {
+          "text": "錄製3秒",
+          "disabled": true
+        },
+        {
+          "text": "產生音檔",
+          "disabled": true
+        },
+        {
+          "text": "取消",
+          "disabled": false
+        },
+        {
+          "text": "傳播後混音（Wet）",
+          "disabled": false
+        },
+        {
+          "text": "主輸出",
+          "disabled": false
+        },
+        {
+          "text": "原始內容（Dry）",
+          "disabled": false
+        },
+        {
+          "text": "下載來源與雜湊清單",
+          "disabled": false
+        }
+      ],
+      "fields": [
+        {
+          "label": "保留尾響 s",
+          "disabled": true,
+          "value": "10"
+        },
+        {
+          "label": "各聲源分軌",
+          "disabled": true,
+          "value": "on"
+        }
+      ],
+      "progress": {
+        "value": 0,
+        "max": 3
+      }
+    },
+    {
+      "label": "after-cancel",
+      "at": "2026-11-02T11:02:59.266Z",
+      "text": "音訊匯出\n離線WAV\n錄製3秒\n產生音檔\n保留尾響\ns\n各聲源分軌\n\nRENDER_CANCELLED: Render cancelled before publication.\n\n傳播後混音（Wet）\n1.10 MB\n邊界限制\n主輸出\n1.10 MB\n邊界限制\n原始內容（Dry）\n1.10 MB\n邊界限制\n下載來源與雜湊清單",
+      "controls": [
+        {
+          "index": 0,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "說明：音訊匯出",
+          "text": "",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 1,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "錄製3秒",
+          "text": "錄製3秒",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 2,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "產生音檔",
+          "text": "產生音檔",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 3,
+          "tag": "input",
+          "type": "number",
+          "id": "",
+          "label": "保留尾響 s",
+          "text": "",
+          "value": "10",
+          "checked": null,
+          "disabled": false,
+          "min": "0",
+          "max": "10",
+          "step": "0.5",
+          "ariaInvalid": "false"
+        },
+        {
+          "index": 4,
+          "tag": "input",
+          "type": "checkbox",
+          "id": "",
+          "label": "各聲源分軌",
+          "text": "",
+          "value": "on",
+          "checked": false,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 5,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 mix",
+          "text": "傳播後混音（Wet）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 6,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 master",
+          "text": "主輸出",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 7,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 dry",
+          "text": "原始內容（Dry）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 8,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載來源與雜湊清單",
+          "text": "下載來源與雜湊清單",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        }
+      ]
+    },
+    {
+      "label": "completed",
+      "at": "2026-11-02T11:03:14.196Z",
+      "text": "音訊匯出\n可下載\n錄製3秒\n產生音檔\n保留尾響\ns\n各聲源分軌\n傳播後混音（Wet）\n4.76 MB\n主輸出\n4.76 MB\n原始內容（Dry）\n4.76 MB\n下載來源與雜湊清單",
+      "controls": [
+        {
+          "index": 0,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "說明：音訊匯出",
+          "text": "",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 1,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "錄製3秒",
+          "text": "錄製3秒",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 2,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "產生音檔",
+          "text": "產生音檔",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 3,
+          "tag": "input",
+          "type": "number",
+          "id": "",
+          "label": "保留尾響 s",
+          "text": "",
+          "value": "10",
+          "checked": null,
+          "disabled": false,
+          "min": "0",
+          "max": "10",
+          "step": "0.5",
+          "ariaInvalid": "false"
+        },
+        {
+          "index": 4,
+          "tag": "input",
+          "type": "checkbox",
+          "id": "",
+          "label": "各聲源分軌",
+          "text": "",
+          "value": "on",
+          "checked": false,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 5,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 mix",
+          "text": "傳播後混音（Wet）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 6,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 master",
+          "text": "主輸出",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 7,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載 dry",
+          "text": "原始內容（Dry）",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        },
+        {
+          "index": 8,
+          "tag": "button",
+          "type": "button",
+          "id": "",
+          "label": "下載來源與雜湊清單",
+          "text": "下載來源與雜湊清單",
+          "value": "",
+          "checked": null,
+          "disabled": false,
+          "min": null,
+          "max": null,
+          "step": null,
+          "ariaInvalid": null
+        }
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "control": "下載來源與雜湊清單",
+      "filename": "render-3f29a034-efda-4422-9ac7-f3a5088fe31a.manifest.json",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\cancel-before\\render-3f29a034-efda-4422-9ac7-f3a5088fe31a.manifest.json",
+      "bytes": 21879,
+      "sha256": "5b7b6bd8d181fa038e890a79d7563089ea692e33931b0ab00d66cfb954b510e9",
+      "modality": "pointer"
+    },
+    {
+      "control": "下載來源與雜湊清單",
+      "filename": "render-3f29a034-efda-4422-9ac7-f3a5088fe31a.manifest.json",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\cancel-after\\render-3f29a034-efda-4422-9ac7-f3a5088fe31a.manifest.json",
+      "bytes": 21879,
+      "sha256": "5b7b6bd8d181fa038e890a79d7563089ea692e33931b0ab00d66cfb954b510e9",
+      "modality": "pointer"
+    },
+    {
+      "control": "下載 mix",
+      "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-mix.wav",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\max-tail-retry\\render-1ef59b99-9153-4efc-856c-6d488e1691db-mix.wav",
+      "bytes": 4992056,
+      "sha256": "3e7fc584fc19c2925e175bfbeb3f23695b04f83755fe0eb4eee3b3bbb4b5ff72",
+      "modality": "pointer",
+      "wav": {
+        "format": "float32PCM",
+        "channels": 2,
+        "sampleRateHz": 48000,
+        "frames": 624000,
+        "durationS": 13,
+        "peakLinear": 0.06647559255361557,
+        "rms": 0.010590854230936225,
+        "nonfinite": 0
+      }
+    },
+    {
+      "control": "下載 master",
+      "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-master.wav",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\max-tail-retry\\render-1ef59b99-9153-4efc-856c-6d488e1691db-master.wav",
+      "bytes": 4992056,
+      "sha256": "97acaa326b4b358da0ebf4bda9399285679b8540accdb1591de3dcd75d1a03f6",
+      "modality": "keyboard Enter",
+      "wav": {
+        "format": "float32PCM",
+        "channels": 2,
+        "sampleRateHz": 48000,
+        "frames": 624000,
+        "durationS": 13,
+        "peakLinear": 0.04046928882598877,
+        "rms": 0.006437103961748573,
+        "nonfinite": 0
+      }
+    },
+    {
+      "control": "下載 dry",
+      "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db-dry.wav",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\max-tail-retry\\render-1ef59b99-9153-4efc-856c-6d488e1691db-dry.wav",
+      "bytes": 4992056,
+      "sha256": "41688ea6c37ceb1f1aaf8520365c5b2cf814431cb63aded9b9578c5b9d020731",
+      "modality": "pointer",
+      "wav": {
+        "format": "float32PCM",
+        "channels": 2,
+        "sampleRateHz": 48000,
+        "frames": 624000,
+        "durationS": 13,
+        "peakLinear": 0.3290858864784241,
+        "rms": 0.052198890913919674,
+        "nonfinite": 0
+      }
+    },
+    {
+      "control": "下載來源與雜湊清單",
+      "filename": "render-1ef59b99-9153-4efc-856c-6d488e1691db.manifest.json",
+      "path": "D:\\Developing\\Meta Hack\\.worktrees\\integration\\.cache\\ui-parameter-audit-render\\final-9fcf3f0-01\\max-tail-retry\\render-1ef59b99-9153-4efc-856c-6d488e1691db.manifest.json",
+      "bytes": 22071,
+      "sha256": "ae77d2ffc791220236ecee6f534db0a85aa586e1660ff0b509d7a34fb02a1064",
+      "modality": "keyboard Enter"
+    }
+  ],
+  "blockedRequests": [],
+  "agentRequests": [],
+  "pageErrors": [],
+  "findings": [],
+  "finishedAt": "2026-11-02T11:03:17.378Z"
+}

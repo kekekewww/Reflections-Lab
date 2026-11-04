@@ -1,0 +1,35 @@
+# 六項核心分工與證據流程
+
+日期：2026-11-02。依 [實作契約](IMPLEMENTATION_CONTRACT.md)，本頁是本輪協作邊界，不是另一套任務系統。正式狀態仍在 `knowledge/tasks/`；各實作 agent 只寫自己的產品檔與 stage 報告，不直接改共享 Wiki／tasks／sources／log。
+
+## 目前交付截點（2026-11-02）
+
+產品程式5010685／entryindex-Nm7oRfzL已通過1536完整runtime與分開format／type／build／licenses；[最新Stage12](stages/12-final-integrated-ui-audio.md)已有真DOM180連續ticks、Zone／非線性曲線／移動球反射與逐一5WAV下載，獨立RIFF5/5PASS。下表保留原分工與各component固定source，不能將原收據改標全501重跑。後續Zone、曲面與Project環境切片及最後UI217/217有限收據join（68公開HelpcallerPASS／3條件未觀測）見[目前交接](CLAUDE_CODE_HANDOFF_20261102.md)與[缺陷修復入口](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/8469bfd6009ac9f4d664456a2efb99a161148dfd)。最後Help／scroll／overlay已真補證；[新完整check](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/2f387d58e834799d809cbbdaab03e2afd2cb4194)exit0及[本機main](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/529524649ac8b7fbff91d919bf6dcab6403b7865)實際整合於 `fe663ca9f384d247bcd89b331936f6be202c761f`。Task24..31含28有限DONE，Task23只因原nativeAC04外部gate列BLOCKED，下一步Claude獨立重驗及新增功能人工觀察。前三次native存取逾時後第四輪只建立獨立視窗成功，產品操作被WindowsURLpolicy停止；原生與真DOM方法分開，不冒完整V1、600秒性能、聽測或Meta live。
+
+| Stage | 交付 | Task／原任務關聯 | 所有權與報告 |
+| --- | --- | --- | --- |
+| 01 | 錄製／A-B 有界 evaluation | Task0023 AC-01；PERF-001／002／014 | Recording agent；`stages/01-recording.md` |
+| 02 | 成本觀測／native 音訊更新 | Task0023 AC-02；PERF-001／003／014 | Audio agent；`stages/02-audio.md` |
+| 03 | 共用能力與最小 Bounce producer | Task0024；原 Sound／Meta 能力條款 | Capabilities／physics agent，實際程式分檔由 root 仲裁；`stages/03-capabilities.md` |
+| 04 | Meta 工具 UI 閉環 | Task0025；不代替 Task0007／0014 | Meta agent 負責 domain／provider seam，root 負責 UI／runtime；`stages/04-meta.md` |
+| 05 | Motion authoring／SetTrajectory | Task0026 | Motion agent；root 接 UI／runtime；`stages/05-motion.md` |
+| 06 | 30 秒／16 outputs 短 take renderer | Task0027；不代替完整 PERF-011 | Renderer agent；root 接 UI／runtime及 computer-use 匯出；`stages/06-render.md` |
+
+共用 `src/app/runtime.ts`、UI、測試入口與跨域型別由 root 整合；同一檔案不由多 agent 同時修改。實作 agent 在自己的專案內工作樹提交可 cherry-pick 的程式與自有 stage 報告；不得提交、覆寫或刪除共享 `node_modules/`／artifacts junction 的原內容。
+
+## Stage 報告必要欄位
+
+- 實際 executor／可核實 model、branch／commit、source／bundle hash與工具版本；未知值寫 UNKNOWN。
+- 實作範圍、輸入／輸出契約、支援與 unsupported 能力、回退／取消與已知限制。
+- 真正執行的命令、退出碼、PASS／FAIL／NOT RUN、測試資料與不可變結果路徑／hash；不可只貼 agent 自評。
+- root 尚須接線的 API／檔案與必要的基本整合檢查。若 source 變動，原收據保留版本，不能改成適用新 bytes。
+
+## 記憶單一 writer
+
+由 core memory writer 在整合工作樹依序登錄 `CORE-STAGE-01..06-20261102-Vn` 來源，將證據接回既有正式 task 與本輪 Task0023..0027；每階段以實際 `expected_hash` ingest，重要整合完成才 checkpoint。所有 owner token 留在合作鎖用途，不貼入報告。
+
+本輪使用者授權來源為 `CORE-REQ-20261102`，契約來源為 `CORE-CONTRACT-20261102-V1`；任何內容變更另建來源版本與 supersedes，不覆寫歷史 hash。待整合末統一同步英文、驗證 Wiki／英文狀態並保存 Claude 完整接手入口。Claude 獨立重驗與新增真人聽測尚未執行前均維持 NOT RUN，不把基本測試成功擴大成完整 V1 驗收。
+
+## 整合補充
+
+07-integration-ui與08-motion-experiment分別記錄跨核心UI原子發布與作者Motion實際進入實驗；這是Task0023整合證據，不是新增第七/第八項產品核心。UI原browser、後續atomic SSR/ports與root最後輸出保留不同source範圍。最終main SHA、root品質/匯出與Claude重驗依實際收據，不由component報告推定完成。

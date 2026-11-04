@@ -27,3 +27,7 @@
 Arrival test 是把距離／聲速換為 nearest sample，量化誤差至多半個 sample；未實作 fractional-delay 濾波器。傳播 delay、DSP processing delay 與 device latency 必須分開報告。DRR、C50、C80、BRIR、HRTF、convolution、FDN、Doppler resampling 與 audible click 測試仍為 NOT RUN。
 
 來源與適用條件由 [`EVIDENCE_LEDGER.json`](../../research/EVIDENCE_LEDGER.json) 與 [ACOUSTIC_THEORY](../../research/theory/ACOUSTIC_THEORY.md) 維護。`validate:research` 檢查 metadata、ID 與 fixture claim 追溯；它不會證明論文內容或授權判讀正確。
+
+## 2026-11-02 曲面與移動反射器補充
+
+Task0030 新增球／膠囊解析體積遮蔽及有限一階鏡面候選、dynamicReflector 真 snapshot 反射；舊平面 reference／容差保留。有限共同可見弧推導、獨立 reference、固定工作量、曲率振幅與移動邊界限制見[模型契約](../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md)及 CG-REF-001～005。這是幾何路徑近似，不宣稱 focusing／caustics／diffraction／Doppler／solid transmission。V0–V5 與各收據需分開閱讀，不能由單元測試推成實體量測或整體產品通過。

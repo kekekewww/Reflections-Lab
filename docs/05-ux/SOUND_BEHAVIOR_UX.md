@@ -1,8 +1,8 @@
 # Sound Behavior：Inspector、預聽與實驗檢查
 
-日期：2026-10-27（Asia/Taipei）。狀態：**設計提案／靜態研究；正式 UI、使用者測試、browser、音訊及效能驗收全部 NOT RUN**。本頁決定編輯與檢查流程，不是新的 runtime、token 或資料 schema 權威。
+2026-11-02 現況更新（原設計日期2026-10-27，Asia/Taipei）：Event Rules Inspector、有限預聽與實驗流程已有產品實作及分項證據；原設計研究的 NOT RUN 只描述當時截點。當前驗證仍按實際來源／範圍分列，不代表本頁所有規劃、真人、音訊或效能驗收通過，見[參數參考](../11-v1/PARAMETER_REFERENCE.md)與[核心交接](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md)。本頁規範編輯與檢查流程，不是新的 runtime、token 或資料 schema 權威。
 
-本次使用者要求以 Codex 為主要開發者，Muse Code 為可選工具；產品內 Meta Muse Agent 仍須使用同一套經驗證的編輯流程。人工操作不依賴 API 存取或模型額度。本頁不安裝 UI library，也不開始正式介面實作。
+依已確認開發政策，Codex 為主要開發者，Muse Code 為可選工具；產品內 Meta Muse Agent 仍須使用同一套經驗證的編輯流程。人工操作不依賴 API 存取或模型額度。本頁保留設計依據，不自行引入另一套 UI library 或工作系統。
 
 ## 1. 設計建議與既有工作區
 
@@ -37,7 +37,7 @@
   [素材乾音預聽] [場景聲學預聽] [停止預聽]
 ```
 
-P0 入口只提供已實作且有驗收的 Always On、On Grab、On Throw、While Airborne、On Impact 與必要參數。其他連續／離散 trigger 依 registry 與功能階段顯示為尚未支援，附原因；不能因 schema 有 enum 就在產品上顯示可用。`While Airborne` 的 runtime 狀態不從「速度大於零」猜測，`On Throw` 只能由已接受的投擲命令產生，判定來源見 [Event Model](../10-sound-behaviors/EVENT_MODEL.md)。
+目前產品共用能力 registry 有19種 trigger：continuous 為 AlwaysOn、WhileMoving、WhileAirborne、WhileRolling、WhileSliding、WhileSpinning、WhileHeld；discrete 為 OnGrab、OnRelease、OnThrow、OnDrop、OnImpact、OnBounce、OnStartMoving、OnStopMoving、OnEnterZone、OnExitZone、OnSleep、OnWake。UI、AI preview 與 Host 共用可信 producer 宣告；不能只因 schema 有 enum 就視為可用。OnBounce 僅涵蓋接受撞擊後與未移動／未旋轉 Fixed 支撐分離的 Tuned 子集；Zone 需要真 registry 與明確 zoneId，以固定步物件中心及 hysteresis 產生 Derived 進出事件，快速 outside→outside 可無事件。缺 producer／registry 時如實停用並顯原因；新增 Zone 規則只提供啟用區域，既有停用引用不被刪除。`WhileAirborne` 不從「速度大於零」猜測，`OnThrow` 只能由已接受投擲命令產生，判定見 [Event Model](../10-sound-behaviors/EVENT_MODEL.md)與[Zone 交付](../15-ui-parameter-audit/zones/HANDOFF.md)。
 
 | 區域 | 編輯行為 | 應提供的回饋 |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ P1 的 A/B 先 Capture 固定 trajectory＋normalized events，再選不同 prof
 | 成本 | 重用既有 Inspector、asset picker、數字欄及 command transaction | 另需 node/port typing、連線／cycle 驗證、compile、layout、縮放、鍵盤連線、Undo／除錯 |
 | 初學者理解 | 直接回答「何時、發什麼、從哪裡」，但仍需實測 | 畫布可能方便理解依賴，也可能增加導航成本；不能先宣稱更容易 |
 | 驗證／可追溯 | stable rule IDs 與欄位錯誤，可直接連到 event | node ID／port ID／compile error需能回指 rule或受保護IR，圖的位置不是 runtime 語意 |
-| 本次採用 | 設計提案；UI尚未實作 | 只保留研究與解鎖條件，不安裝 library或複製商業範例 |
+| 原2026-10-27採用記錄 | 設計提案；當時UI尚未實作，現況見頁首及參數參考 | 只保留研究與解鎖條件，不安裝 library或複製商業範例 |
 
 React Flow 可列為未來 P2 呈現層候選：官方文件有 keyboard／screen-reader支援、節點資料流與連線cycle檢查範例，repo核心採MIT。這不提供 Reflection Lab 的音訊排程、domain驗證或即時DSP；其資料流示例也不能放進audio callback。版本、React相容性與發行license需採用時精確鎖定；本次未安裝或效能驗證，也未將Pro範例的權利混同核心MIT。[Accessibility](https://reactflow.dev/learn/advanced-use/accessibility)、[Computing flows](https://reactflow.dev/learn/advanced-use/computing-flows)、[Cycle validation](https://reactflow.dev/examples/interaction/prevent-cycles)、[核心LICENSE](https://github.com/xyflow/xyflow/blob/main/LICENSE)（查核2026-10-27）。
 
@@ -142,13 +142,15 @@ Graph解鎖前須有已驗證的 event/runtime、可量測的作者困難，以�
 
 ## 8. 可及性、FPS 仲裁與壓力案例
 
-依 [InputRouter](../04-physics/INPUT_CONTROLS.md) 與 [FPS UX](FPS_INTERACTION_UX.md)：開Inspector／asset picker前釋放pointer lock，在安全tick暫停並保留Held／ghost；關閉後焦點回原控制，不自動重鎖或drop。Tab保留焦點，文字與IME擁有WASD／E／R／Delete／Undo；第一次lock click不兼作Throw。Esc只處理最上層／瀏覽器退出，不同時刪rule或釋放物件。
+依 [InputRouter](../04-physics/INPUT_CONTROLS.md) 與 [FPS UX](FPS_INTERACTION_UX.md)：開Inspector／asset picker前釋放pointer lock，在安全tick暫停並保留Held快照，取消尚未提交的ghost且不放置；關閉後焦點回原控制，需明示恢復，不自動重鎖或drop。Tab保留焦點，文字與IME擁有WASD／E／R／Delete／Undo；第一次lock click不兼作Throw。Esc只處理最上層／瀏覽器退出，不同時刪rule或釋放物件。
 
 Rule cards優先使用原生button／select／number input，icon有accessible name；拖曳curve點另有point table與數字操作，asset選單可完整鍵盤使用。Enter／Space只作用於焦點所在控制，focus改變不自動audition。刪rule可Undo；文字框Delete不刪物件。選取／值更新／鍵盤回饋即時；Reduced Motion移除非必要位移，不改fade或物理／audio時間。重要狀態可有節制announcement，不逐tick播報voice或meter。
 
 Stress沿用 [既有矩陣](UI_STRESS_TESTS.md) 與 [量測規範](PERFORMANCE_STANDARDS.md)：長繁中素材名稱、同名但不同ID、最大合法rules／bindings及超限一筆、missingasset、burst events、voice stealing、slowdecode、solverstale、API失敗、快速切選取、200%zoom、keyboard-only、IME、pointerlock失去、Pause/Resume。可虛擬化runtime列表、視圖聚合timeline，不減少原始event ledger；降級數量／抑制原因可見，Mute／Pause始終可到達。數量與效能門檻只讀schema及正式預算，不從此研究外推容量保證。
 
-## 9. 實作後驗收計畫
+## 9. 原2026-10-27實作後驗收計畫
+
+以下 NOT RUN 保留原設計截點，不是最新產品結果；實際 finite-case／source 證據依頁首連結另記，不平移為這十個完整案例全部通過。
 
 | Case | 操作與可檢查預期 | 證據 | 本次 |
 | --- | --- | --- | --- |
@@ -171,4 +173,4 @@ Stress沿用 [既有矩陣](UI_STRESS_TESTS.md) 與 [量測規範](PERFORMANCE_S
 
 ## v1 Apply邊界補充
 
-v1 runtime草案只解析目前revision；Apply或刪除採pause→fade/drain舊voices→原子新revision→newrunEpoch，未做retired-version/tombstone。Draft slider／audition不代表無縫修改running profile；普通pose／mapping輸入更新不改profile、不重建AlwaysOn。產品host與音訊此流程仍NOT RUN。
+v1 runtime草案只解析目前revision；Apply或刪除採pause→fade/drain舊voices→原子新revision→newrunEpoch，未做retired-version/tombstone。Draft slider／audition不代表無縫修改running profile；普通pose／mapping輸入更新不改profile、不重建AlwaysOn。原2026-10-27草案當時的產品 host／音訊流程為 NOT RUN；目前有限正式流程與分項收據見頁首連結，不據此推定完整多版本 live editing 或聽測通過。

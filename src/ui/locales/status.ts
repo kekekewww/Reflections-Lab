@@ -5,6 +5,306 @@ import type { MessageCatalog } from "../locale-types.js";
  * original technical details. No code is inferred when the read model lost it.
  */
 export const statusMessages = {
+  "status.recording.cleanupPending": {
+    "zh-TW": "前一次錄製準備仍在清理；請稍後重試。",
+    en: "The previous recording preparation is still being cleaned up. Try again shortly.",
+  },
+  "status.recording.captureCancelled": {
+    "zh-TW": "錄製準備已取消。",
+    en: "Recording preparation was cancelled.",
+  },
+  "status.recording.storageNotReady": {
+    "zh-TW": "錄製儲存尚未就緒。",
+    en: "Recording storage is not ready yet.",
+  },
+  "status.recording.acceptedProtected": {
+    "zh-TW": "錄製已接納影格，不能丟棄完整資料。",
+    en: "Recording has accepted complete frames. Stop and save them before starting again.",
+  },
+  "status.recording.captureTimeout": {
+    "zh-TW": "錄製準備逾時；請重試。",
+    en: "Recording preparation timed out. Try again.",
+  },
+  "status.recording.storageTimeoutRange": {
+    "zh-TW": "錄製儲存準備逾時須大於 0 且不超過 10000 ms。",
+    en: "Recording storage preparation requires a timeout greater than zero and no longer than 10 seconds.",
+  },
+  "status.recording.storageOwner": {
+    "zh-TW": "錄製儲存準備已有另一個等待擁有者。",
+    en: "Another operation is already preparing recording storage. Wait for it to finish.",
+  },
+  "status.recording.storageCancelled": {
+    "zh-TW": "錄製儲存準備已取消。",
+    en: "Recording storage preparation was cancelled.",
+  },
+  "status.recording.storageTimeout": {
+    "zh-TW": "錄製儲存準備逾時。",
+    en: "Recording storage preparation timed out. Try again after cleanup finishes.",
+  },
+  "status.recording.storageUnsupported": {
+    "zh-TW": "錄製儲存不支援就緒確認。",
+    en: "This recording storage cannot confirm it is ready. Recording was not started.",
+  },
+  "status.recording.storageFailedInterrupt": {
+    "zh-TW": "錄製儲存已失敗；請先中斷目前錄製。",
+    en: "Recording storage failed. Interrupt the current recording first.",
+  },
+  "status.recording.storageDraining": {
+    "zh-TW": "錄製儲存仍在處理；降到低水位後才可繼續。",
+    en: "Recording storage is still writing. You can continue once it drains to the low-water mark.",
+  },
+  "status.recording.storageInterruptedPrefix": {
+    "zh-TW": "已保留中斷的錄製儲存前綴：{detail}；先前有效成果保留。",
+    en: "The interrupted recording storage prefix was kept: {detail}. Earlier valid results are kept.",
+  },
+  "status.recording.preparing": { "zh-TW": "正在準備錄製…", en: "Preparing recording…" },
+  "status.recording.prepareTimeout": {
+    "zh-TW": "錄製評估準備逾時。",
+    en: "Recording preparation timed out. Try recording again.",
+  },
+  "status.recording.prepareCancelled": {
+    "zh-TW": "錄製評估準備已取消。",
+    en: "Recording preparation was cancelled.",
+  },
+  "status.recording.prepareOwner": {
+    "zh-TW": "另一個操作正在準備錄製評估。",
+    en: "Another operation is preparing recording. Wait for it to finish or cancel it first.",
+  },
+  "status.recording.prepareCreateFailed": {
+    "zh-TW": "錄製評估工作者建立失敗。",
+    en: "The recording worker could not be created. Try recording again.",
+  },
+  "status.recording.prepareSendFailed": {
+    "zh-TW": "錄製評估準備傳送失敗。",
+    en: "Recording preparation could not be sent to the worker. Try again.",
+  },
+  "status.recording.prepareProtocol": {
+    "zh-TW": "錄製評估準備回覆協定無效。",
+    en: "The recording worker returned an invalid preparation acknowledgement. Recording was not started.",
+  },
+  "status.recording.prepareErrorProtocol": {
+    "zh-TW": "錄製評估準備錯誤回覆無效。",
+    en: "The recording worker returned an invalid preparation error. Recording was not started.",
+  },
+  "status.recording.prepareWorkerBusy": {
+    "zh-TW": "錄製評估 Worker 正在處理工作。",
+    en: "The recording worker is busy. Try recording again after the current operation.",
+  },
+  "status.recording.prepareRequestProtocol": {
+    "zh-TW": "錄製 Worker 準備協定無效。",
+    en: "The recording worker received an invalid preparation request. Recording was not started.",
+  },
+  "status.recording.workerFailed": {
+    "zh-TW": "錄製評估 Worker 失敗。",
+    en: "The recording worker failed. Stop any active recording and try again.",
+  },
+  "status.recording.workerMessageFailed": {
+    "zh-TW": "錄製評估 Worker 回覆無法解碼。",
+    en: "The recording worker reply could not be decoded.",
+  },
+  "status.recording.evaluationClosed": {
+    "zh-TW": "錄製評估已關閉。",
+    en: "Recording evaluation has been closed.",
+  },
+  "status.recording.evaluationBusy": {
+    "zh-TW": "錄製評估已有進行中的工作。",
+    en: "Recording evaluation is busy with another operation.",
+  },
+  "status.recording.zoneRegistryChanged": {
+    "zh-TW": "區域配置變更需要fresh physics run；不能沿用原區域進出事件重評。",
+    en: "Changing the zone registry requires a fresh physics run; captured zone crossings cannot be reused for reprocessing.",
+  },
+  "status.recording.zoneBaselineRequired": {
+    "zh-TW": "區域事件重評需要原始配置以核對固定區域registry。",
+    en: "Reprocessing zone events requires the original configuration to verify the fixed zone registry.",
+  },
+  "status.recording.emitterPolicyRequired": {
+    "zh-TW": "固定或區域音源需要明確的新遮蔽政策；舊錄製仍可原樣重播，請重新錄製後比較。",
+    en: "Fixed or zone emitters require an explicit current occlusion policy. Older recordings can still replay unchanged; record a new take before comparing.",
+  },
+  "status.recording.modelBaselineRequired": {
+    "zh-TW": "曲面或動態反射重評需要相同的新模型基準；舊錄製可原樣重播，請先重新錄製再比較。",
+    en: "Reprocessing curved or dynamic reflections requires a baseline with the same current model. Older recordings can replay unchanged; record a new take before comparing.",
+  },
+  "status.runtime.zoneRevisionConflict": {
+    "zh-TW": "REVISION_CONFLICT：區域草稿已過期，請重新讀取。",
+    en: "REVISION_CONFLICT: the zone draft is stale; reload it before editing.",
+  },
+  "status.runtime.zoneEditBlocked": {
+    "zh-TW": "ZONE_EDIT_BLOCKED：請暫停並結束錄製／重播，在編輯器修改區域。",
+    en: "ZONE_EDIT_BLOCKED: pause simulation, finish recording or replay, and edit zones in the editor.",
+  },
+  "status.runtime.zoneInUsePrefix": {
+    "zh-TW": "ZONE_IN_USE：請先改選或移除引用此區域的規則：",
+    en: "ZONE_IN_USE: retarget or remove the rules referencing this zone first: ",
+  },
+  "status.runtime.zoneInUse": {
+    "zh-TW": "ZONE_IN_USE：請先改選或移除引用此區域的規則：{rules}",
+    en: "ZONE_IN_USE: retarget or remove the rules referencing this zone first: {rules}",
+  },
+  "status.pipeline.evalPressure": {
+    "zh-TW": "錄製評估佇列已滿，已在完整 tick 邊界暫停；處理後可繼續。",
+    en: "The recording evaluation queue is full. Paused at a complete tick boundary; resume after it drains.",
+  },
+  "status.pipeline.toolRun": {
+    "zh-TW": "實驗工具：有界模擬與分析",
+    en: "Experiment tools: bounded simulation and analysis",
+  },
+  "status.pipeline.toolCompare": {
+    "zh-TW": "實驗工具：相同運動比較",
+    en: "Experiment tools: matched-motion comparison",
+  },
+  "status.pipeline.evalStale": {
+    "zh-TW": "錄製已切換；不接納舊評估結果。",
+    en: "The recording changed; old evaluation results are not admitted.",
+  },
+  "status.pipeline.evalMissing": {
+    "zh-TW": "沒有可用的錄製求解器。",
+    en: "No recording evaluator is available.",
+  },
+  "status.pipeline.evalAdmission": {
+    "zh-TW": "錄製評估接納失敗。",
+    en: "Recording evaluation admission failed.",
+  },
+  "status.pipeline.evalLowWater": {
+    "zh-TW": "錄製評估仍在處理；降到低水位後才可繼續。",
+    en: "Recording evaluation is still processing. Resume when the queue falls below its low-water mark.",
+  },
+  "status.pipeline.evalFailed": {
+    "zh-TW": "錄製評估已失敗；請先停止並保存完整前綴。",
+    en: "Recording evaluation failed. Stop first to preserve the complete prefix.",
+  },
+  "status.pipeline.evalFailureDetail": {
+    "zh-TW": "錄製評估失敗；已保留完整前綴：{detail}",
+    en: "Recording evaluation failed; the complete prefix was preserved: {detail}",
+  },
+
+  "status.pipeline.shortTakeCapturing": {
+    "zh-TW": "短 take：由固定步進控制錄製",
+    en: "Short take: recording with controlled fixed steps",
+  },
+  "status.pipeline.shortTakeReady": {
+    "zh-TW": "短 take 已完成；可在音訊匯出產生混音與各聲源音檔。",
+    en: "Short take completed. Generate the mix and source audio files in Audio export.",
+  },
+  "status.pipeline.shortTakePaused": {
+    "zh-TW": "短 take 已完成；模擬保持暫停",
+    en: "Short take completed; the simulation remains paused",
+  },
+
+  "status.scene.revision": {
+    "zh-TW": "sceneRevision 必須為安全整數。",
+    en: "sceneRevision must be a safe integer.",
+  },
+  "status.scene.duplicate": {
+    "zh-TW": "{object}: 重複 domain ID。",
+    en: "{object}: Duplicate domain ID.",
+  },
+  "status.scene.quaternion": {
+    "zh-TW": "{object}: quaternion 必須為單位長度。",
+    en: "{object}: Quaternion must have unit length.",
+  },
+  "status.scene.reference": {
+    "zh-TW": "{object}: 物件參照不存在。",
+    en: "{object}: Referenced object does not exist.",
+  },
+  "status.scene.invalid": { "zh-TW": "場景驗證失敗。", en: "Scene validation failed." },
+  "status.scene.detail": {
+    "zh-TW": "場景驗證失敗：{detail}",
+    en: "Scene validation failed: {detail}",
+  },
+  "status.scene.sphere": {
+    "zh-TW": "{object}: 球體三軸直徑必須相同。",
+    en: "{object}: Sphere diameter must be equal on all three axes.",
+  },
+  "status.scene.capsule": {
+    "zh-TW": "{object}: 膠囊直徑 X 與 Z 必須相同，高度 Y 必須大於或等於直徑。",
+    en: "{object}: Capsule diameters X and Z must match; height Y must be at least the diameter.",
+  },
+  "status.code.PLACEMENT_TRANSPORT": {
+    "zh-TW": "錄製（含暫停）或重播期間無法預覽或放置；請先結束錄製或返回即時場景。",
+    en: "Placement preview and placement are unavailable during recording (including paused takes) or replay. Stop recording or return to the live scene first.",
+  },
+  "status.code.PLACEMENT_AUDIO_RESTART": {
+    "zh-TW": "音訊重啟期間無法預覽或放置；請等待重啟完成。",
+    en: "Placement preview and placement are unavailable while audio is restarting. Wait for the restart to finish.",
+  },
+  "status.code.PLACEMENT_TIMEOUT": {
+    "zh-TW": "放置準備逾時，已取消；可繼續操作或重試。",
+    en: "Placement preparation timed out and was cancelled. Continue operating or try again.",
+  },
+  "status.code.AUDIO_BUFFER_UNSAFE": {
+    "zh-TW": "錄製、重播或交易進行中，無法重啟音訊；請先結束目前操作。",
+    en: "Audio cannot restart during recording, replay or a pending transaction. Finish the current operation first.",
+  },
+  "status.code.AUDIO_BUFFER_BUSY": {
+    "zh-TW": "音訊正在重啟或清理，請稍後再試。",
+    en: "Audio is restarting or draining. Try again when it finishes.",
+  },
+  "status.code.AUDIO_BUFFER_INVALID": {
+    "zh-TW": "音訊緩衝選項無效。",
+    en: "Invalid audio buffer preset.",
+  },
+  "status.code.AUDIO_BUFFER_EXTERNAL_CONTEXT": {
+    "zh-TW": "此音訊裝置由外部管理，無法在此重啟。",
+    en: "This audio context is externally managed and cannot restart here.",
+  },
+  "status.code.AUDIO_BUFFER_RESTART_FAILED": {
+    "zh-TW": "音訊重啟失敗，已安全暫停；請重新啟用聆聽。",
+    en: "Audio restart failed and transport paused safely. Enable listening again.",
+  },
+  "status.interaction.previewRunning": {
+    "zh-TW": "放置預覽需要運行中的第一人稱控制。",
+    en: "Placement preview requires running first-person controls.",
+  },
+  "status.interaction.previewUnavailable": {
+    "zh-TW": "物件預覽目前不可用。",
+    en: "Object preview is currently unavailable.",
+  },
+  "status.interaction.placementCancelled": {
+    "zh-TW": "放置已取消或場景版本已變更。",
+    en: "Placement was cancelled or the scene revision changed.",
+  },
+  "status.interaction.ackCancelled": {
+    "zh-TW": "幾何確認未完成；已取消放置。",
+    en: "Geometry was not acknowledged; placement was cancelled.",
+  },
+  "status.interaction.placed": {
+    "zh-TW": "物件已放置，可直接操作。",
+    en: "Object placed and ready to interact with.",
+  },
+  "status.interaction.shapeSelected": {
+    "zh-TW": "已選擇放置形狀；繼續後按住右鍵預覽。",
+    en: "Placement shape selected. Resume, then hold the right button to preview.",
+  },
+  "status.interaction.paintTransport": {
+    "zh-TW": "錄製或重播期間無法繪製軌跡；請先結束錄製或返回即時場景。",
+    en: "A path cannot be painted during recording or replay. Stop recording or return to the live scene first.",
+  },
+  "status.interaction.paintNothingAimed": {
+    "zh-TW": "三公尺內沒有對準的物件；請以準心對準有聲音的物件。",
+    en: "Nothing is aimed at within 3 m. Aim the crosshair at an object with sound.",
+  },
+  "status.interaction.paintNotAudible": {
+    "zh-TW": "只有有聲音的物件可以繪製軌跡；此物件沒有聲音行為或聲源。",
+    en: "Only objects with sound can have a painted path. This object has no sound behavior or sound source.",
+  },
+  "status.interaction.takeRestarted": {
+    "zh-TW": "場景已變更；物件回到起始位置，重新開始這段 take。",
+    en: "The scene changed, so objects returned to the starting layout and the take restarted.",
+  },
+  "status.interaction.paintedBlocked": {
+    "zh-TW": "這條軌跡碰到固定幾何，不會執行；回到編輯器按 T 調整。",
+    en: "This path meets fixed geometry and will not run. Go back to the editor and press T to adjust it.",
+  },
+  "status.interaction.paintedTooLong": {
+    "zh-TW": "這條軌跡以目前強度移動太久，不會執行；回到編輯器按 T 提高強度或縮短軌跡。",
+    en: "This path takes too long at its Strength and will not run. Go back to the editor and press T to raise Strength or shorten the path.",
+  },
+  "status.interaction.paintedTooMany": {
+    "zh-TW": "同一段可執行的軌跡已達上限，這條不會執行；回到編輯器清除其他物件的軌跡。",
+    en: "The take already runs as many paths as it can, so this path will not run. Go back to the editor and clear another object's path.",
+  },
   "status.interaction.canvasUnavailable": {
     "zh-TW": "三維畫面尚未準備好；請重試三維顯示後再進入第一人稱。",
     en: "The 3D view is not ready. Retry the 3D view before entering first person.",
@@ -546,6 +846,143 @@ export const statusMessages = {
     "zh-TW": "檢查本機Meta provider gate。",
     en: "Checking the local Meta provider gate.",
   },
+  "status.agent.museWorking": {
+    "zh-TW": "Muse正在規劃提案，通常需要10–60秒；場景尚未變更。",
+    en: "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+  },
+  "status.agent.proposalTooLong": {
+    "zh-TW": "PROPOSAL_TOO_LONG：Muse的提案過長而被截斷，沒有可用內容；請縮小要求或分次提出。",
+    en: "Muse's proposal was too long and got cut off, so none of it can be used. Ask for less, or split it into steps. [PROPOSAL_TOO_LONG]",
+  },
+  "status.preview.moveListener": {
+    "zh-TW": "移動正式Listener；編輯camera保持獨立。",
+    en: "Move the listener. The editor camera stays separate.",
+  },
+  "status.preview.replaceWarning": {
+    "zh-TW": "此操作替換現有物件與聲源；套用前請檢查，Undo可回復Scene。",
+    en: "This replaces the current objects and sound sources. Check before applying; Undo can restore the scene.",
+  },
+  "status.preview.motionAuthored": {
+    "zh-TW": "Motion is authored only; starting it requires an explicit local run action.",
+    en: "The path is saved but not playing. Press play in the Motion tab to run it.",
+  },
+  "status.agent.proposalRejected": {
+    "zh-TW": "PROPOSAL_REJECTED：Muse修正後仍未通過驗證：{detail}",
+    en: "Muse's corrected proposal still failed validation: {detail} [PROPOSAL_REJECTED]",
+  },
+  "status.preview.add": {
+    "zh-TW": "新增 {id}：{shape}／{mode}",
+    en: "Add {id}: {shape}, {mode}",
+  },
+  "status.preview.move": {
+    "zh-TW": "移動 {id} 到 [{position}]",
+    en: "Move {id} to [{position}]",
+  },
+  "status.preview.resize": {
+    "zh-TW": "調整 {id} 尺寸為 {size} m",
+    en: "Resize {id} to {size} m",
+  },
+  "status.preview.removeWithBoth": {
+    "zh-TW": "移除 {id}；一併移除聲源 {sources}；一併移除路徑 {paths}",
+    en: "Remove {id}, with its sound sources {sources} and paths {paths}",
+  },
+  "status.preview.removeWithSources": {
+    "zh-TW": "移除 {id}；一併移除聲源 {sources}",
+    en: "Remove {id}, with its sound sources {sources}",
+  },
+  "status.preview.removeWithPaths": {
+    "zh-TW": "移除 {id}；一併移除路徑 {paths}",
+    en: "Remove {id}, with its paths {paths}",
+  },
+  "status.preview.remove": {
+    "zh-TW": "移除 {id}",
+    en: "Remove {id}",
+  },
+  "status.preview.material": {
+    "zh-TW": "變更 {id} 的{scope}材質為 {material}",
+    en: "Set {id} material ({scope}) to {material}",
+  },
+  "status.preview.mode": {
+    "zh-TW": "將 {id} 設為 {mode}（速度歸零）",
+    en: "Set {id} to {mode}, with velocity zero",
+  },
+  "status.preview.source": {
+    "zh-TW": "設定 {id} 聲源 {source}：{signal}／{mode}；非量測振動聲",
+    en: "Set sound source {source} on {id}: {signal}, {mode}. This isn't measured vibration sound.",
+  },
+  "status.preview.roomWithPaths": {
+    "zh-TW": "建立固定六面房間 {size} m；{material}；一併移除路徑 {paths}",
+    en: "Create a six-sided room, {size} m, {material}, and remove the paths {paths}",
+  },
+  "status.preview.room": {
+    "zh-TW": "建立固定六面房間 {size} m；{material}",
+    en: "Create a six-sided room, {size} m, {material}",
+  },
+  "status.preview.surfaceWarning": {
+    "zh-TW": "此操作變更房間表面 {id}，會影響聲學與物理；套用前請檢查。",
+    en: "This changes the room surface {id}, which affects acoustics and physics. Check before applying.",
+  },
+  "status.preview.movedPathWarning": {
+    "zh-TW": "{id} 已有路徑，起點不再符合新位置；需要新的路徑才能播放。",
+    en: "{id} already has a path, and it no longer starts at the new position. It needs a new path before it can play.",
+  },
+  "status.preview.motionLine": {
+    "zh-TW": "Motion {action}: {count} samples / {seconds} s",
+    en: "Path {action}: {count} points over {seconds} s",
+  },
+  "status.agent.metaProposed": {
+    "zh-TW": "Meta提出受限工具，尚待本地預覽與人員套用。",
+    en: "Muse's proposal is ready below. Nothing changes until you apply it.",
+  },
+  "status.agent.metaProposedNothing": {
+    "zh-TW": "Meta未提出可驗證操作，場景未變更。",
+    en: "Muse didn't propose any changes, so the scene is unchanged.",
+  },
+  "status.agent.acousticBudget": {
+    "zh-TW":
+      "ACOUSTIC_BUDGET：這個提案會讓場景有 {count} 個聲學面，超過上限 {limit}，聲音會因此停止；每個方塊算 6 面，球體與膠囊算 1 面。請減少物件。",
+    en: "This proposal would give the scene {count} acoustic surfaces, over the limit of {limit}, and the sound would stop. Each box counts as 6 and each sphere or capsule as 1. Use fewer objects. [ACOUSTIC_BUDGET]",
+  },
+  "status.agent.soundCreative": {
+    "zh-TW": "聲音參數為創意設定，不代表量測聲壓或物件真實振動。",
+    en: "Sound settings are creative choices; they do not represent measured sound pressure or real object vibration.",
+  },
+  "status.agent.soundServerScope": {
+    "zh-TW": "Server驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。",
+    en: "The server check covers only the snapshot it received; the local Sound Host validates and previews it again.",
+  },
+  "status.template.agentMetaSound": {
+    "zh-TW": "Meta Sound提案：{count}個受限操作，等待本機Host預覽與套用。",
+    en: "Meta Sound proposal: {count} bounded actions, waiting for local Host preview and Apply.",
+  },
+  "status.template.agentLocalSound": {
+    "zh-TW": "本機Sound提案：{object} → {trigger}；等待預覽與套用。",
+    en: "Local sound proposal: {object} → {trigger}; waiting for preview and Apply.",
+  },
+  "status.template.agentRemoveBinding": {
+    "zh-TW": "解除Binding {binding}",
+    en: "Remove binding {binding}",
+  },
+  "status.template.agentBind": {
+    "zh-TW": "將 {object} 綁定至 {profile}",
+    en: "Bind {object} to {profile}",
+  },
+  "status.template.agentOverridePitch": {
+    "zh-TW": "Binding覆寫 {object} {rule}：音高 {semitones} 半音",
+    en: "{object} · {rule}: pitch {semitones} semitones",
+  },
+  "status.template.agentOverrideGain": {
+    "zh-TW": "Binding覆寫 {object} {rule}：增益 ×{gain}",
+    en: "{object} · {rule}: gain ×{gain}",
+  },
+  "status.template.agentOverrideOn": {
+    "zh-TW": "Binding覆寫 {object} {rule}：啟用",
+    en: "{object} · {rule}: enabled",
+  },
+  "status.template.agentOverrideOff": {
+    "zh-TW": "Binding覆寫 {object} {rule}：停用",
+    en: "{object} · {rule}: disabled",
+  },
   "status.agent.applied": {
     "zh-TW": "提案已由Host套用並建立新revision；可使用復原。",
     en: "The Host applied the proposal and created a new revision; Undo is available.",
@@ -557,6 +994,54 @@ export const statusMessages = {
   "status.agent.undone": {
     "zh-TW": "已復原提案並建立新revision；已播放的聲音不會倒轉。",
     en: "The proposal was undone and a new revision was created. Sounds that already played are not reversed.",
+  },
+  "status.recovery.unsafe": {
+    "zh-TW": "RECOVERY_UNSAFE：請先暫停，並結束錄製、重播與其他操作。",
+    en: "RECOVERY_UNSAFE: Pause first and finish capture, replay and other operations.",
+  },
+  "status.recovery.active": {
+    "zh-TW": "RECOVERY_ACTIVE：這份錄製仍由其他工作階段使用。",
+    en: "RECOVERY_ACTIVE: This recording is still in use by another session.",
+  },
+  "status.recovery.missing": {
+    "zh-TW": "RECOVERY_MISSING：找不到這份中斷錄製。",
+    en: "RECOVERY_MISSING: This interrupted recording could not be found.",
+  },
+  "status.recovery.empty": {
+    "zh-TW": "RECOVERY_EMPTY：這份錄製尚無可復原的完整影格。",
+    en: "RECOVERY_EMPTY: This recording has no complete persisted frames to recover.",
+  },
+  "status.recovery.identity": {
+    "zh-TW": "RECOVERY_IDENTITY：復原資料的來源與所選記錄不符。",
+    en: "RECOVERY_IDENTITY: The recovery data source does not match the selected recording.",
+  },
+  "status.recovery.state": {
+    "zh-TW": "RECOVERY_STATE：只能載入已驗證的中斷錄製。",
+    en: "RECOVERY_STATE: Only a verified interrupted recording can be loaded.",
+  },
+  "status.template.policyDenied": {
+    "zh-TW": "POLICY_DENIED：{detail}",
+    en: "POLICY_DENIED: {detail}",
+  },
+  "status.template.providerRequestFailed": {
+    "zh-TW": "PROVIDER_REQUEST_FAILED：{detail}",
+    en: "PROVIDER_REQUEST_FAILED: {detail}",
+  },
+  "status.client.metaCredential": {
+    "zh-TW": "Meta回覆含禁止的credential資料，未接受或保存內容。",
+    en: "The Meta response contains forbidden credential data. Its content was not accepted or saved.",
+  },
+  "status.client.metaEnvelope": {
+    "zh-TW": "Meta回覆缺失、拒絕或角色無效，未套用變更。",
+    en: "The Meta response is missing, refused, or has an invalid role. No changes were applied.",
+  },
+  "status.client.metaIncomplete": {
+    "zh-TW": "Meta回覆未完整完成，未接受提案。",
+    en: "The Meta response did not finish completely. No proposal was accepted.",
+  },
+  "status.client.metaUtf8": {
+    "zh-TW": "Meta回覆不是有效UTF-8，未接受內容。",
+    en: "The Meta response is not valid UTF-8. Its content was not accepted.",
   },
   "status.client.incompleteJson": {
     "zh-TW": "本機API未回傳完整JSON；尚未接受提案。",
@@ -881,8 +1366,8 @@ export const statusMessages = {
     en: "A Meta request is already in progress; it cannot be dispatched again.",
   },
   "status.provider.READY_REQUIRES_EXPLICIT_REQUEST": {
-    "zh-TW": "READY_REQUIRES_EXPLICIT_REQUEST；Live validation NOT_RUN；剩餘額度未知。",
-    en: "The server gate is ready but requires an explicit request. [READY_REQUIRES_EXPLICIT_REQUEST] Live validation: NOT_RUN; remaining credit is unknown.",
+    "zh-TW": "READY_REQUIRES_EXPLICIT_REQUEST；只有提交指令才會呼叫模型；剩餘額度未知。",
+    en: "The server gate is ready; a model request is sent only when you submit an instruction. [READY_REQUIRES_EXPLICIT_REQUEST] Remaining credit is unknown.",
   },
   "status.provider.NETWORK_DISABLED": {
     "zh-TW": "NETWORK_DISABLED；Live validation NOT_RUN；剩餘額度未知。",
@@ -1037,6 +1522,22 @@ export const statusMessages = {
   "status.code.STOP_REPLAY_REQUIRED": {
     "zh-TW": "STOP_REPLAY_REQUIRED",
     en: "Return to the live scene before recording.",
+  },
+  "status.code.TRAJECTORY_NOT_AUDIBLE": {
+    "zh-TW": "只有有聲音的物件可以設定軌跡；此物件沒有聲音行為或聲源。",
+    en: "Only objects with sound can have a path. This object has no sound behavior or sound source.",
+  },
+  "status.code.TRAJECTORY_USE_SET_TRAJECTORY": {
+    "zh-TW": "軌跡只能透過軌跡編輯修改，不能以一般物件修改變更。",
+    en: "A path changes only through the path editor, not through a general object edit.",
+  },
+  "status.code.MOTION_PATH_ACTIVE": {
+    "zh-TW": "此物件正沿軌跡移動；請等軌跡結束或重設後再使用動作面板。",
+    en: "This object is following its path. Use the Motion panel after the path ends or after Reset.",
+  },
+  "status.code.PLAYER_RESPAWN_BLOCKED": {
+    "zh-TW": "物件已回到起始位置，但有物件與你站的位置重疊，無法保留玩家位置；請換個位置再試。",
+    en: "Objects returned to the starting layout, but one overlaps where you stand, so your position could not be kept. Step to another spot and try again.",
   },
   "status.code.REPLAY_UNAVAILABLE": {
     "zh-TW": "REPLAY_UNAVAILABLE",
@@ -1357,10 +1858,156 @@ export const statusMessages = {
     "zh-TW": "GRAVITY_MODE_CHANGED_CANCELLED",
     en: "The gravity-mode change cancelled the pending acoustic request.",
   },
+  "status.template.catchUpDropped": {
+    "zh-TW": "互動追趕上限：捨棄 {seconds} s 牆鐘時間；固定步長保持1/60 s。",
+    en: "Interaction catch-up limit: dropped {seconds} s of wall-clock time; the fixed step stays 1/60 s.",
+  },
+  "status.template.audioAdmission": {
+    "zh-TW": "音訊 admission：{code}",
+    en: "Audio admission: {code}",
+  },
+  "status.template.projectLoaded": {
+    "zh-TW": "專案已載入；已驗證 {count} 份錄製與本機可用音檔。",
+    en: "Project loaded; verified {count} recordings and the locally available audio files.",
+  },
+  "status.template.audioSavedForProject": {
+    "zh-TW": "已核對並保存 {file}；請再次套用待匯入的專案，保留原asset ID與revision。",
+    en: "Verified and saved {file}. Apply the pending project again to keep its original asset ID and revision.",
+  },
+  "status.template.audioSaved": {
+    "zh-TW": "已解碼並保存 {file}；hash涵蓋原WAV位元組，監聽仍需另行啟用。",
+    en: "Decoded and saved {file}. The hash covers the original WAV bytes; enable listening separately.",
+  },
+  "status.template.metaStatus": {
+    "zh-TW": "{detail}；Live validation {state}；剩餘額度未知。",
+    en: "{detail}; live validation {state}; remaining credit unknown.",
+  },
+  "status.template.enterFailed": {
+    "zh-TW": "無法進入第一人稱：{detail}",
+    en: "Cannot enter first person: {detail}",
+  },
+  "status.template.resumeFailed": {
+    "zh-TW": "無法恢復：{detail}",
+    en: "Cannot resume: {detail}",
+  },
+  "status.template.frozenSyncFailed": {
+    "zh-TW": "已固定；模擬保持暫停，但後續同步失敗：{detail}",
+    en: "Fixed; the simulation stays paused, but the follow-up sync failed: {detail}",
+  },
+  "status.template.unfrozenSyncFailed": {
+    "zh-TW": "已解除固定；模擬保持暫停，但後續同步失敗：{detail}",
+    en: "Unfixed; the simulation stays paused, but the follow-up sync failed: {detail}",
+  },
+  "status.template.modeChangeFailed": {
+    "zh-TW": "模式交易失敗：{detail}",
+    en: "Mode change failed: {detail}",
+  },
+  "status.template.cannotPlace": {
+    "zh-TW": "無法放置：{detail}",
+    en: "Cannot place: {detail}",
+  },
+  "status.template.placeOccupied": {
+    "zh-TW": "位置已被占用：{detail}",
+    en: "The position is occupied: {detail}",
+  },
+  "status.template.geometryAckFailed": {
+    "zh-TW": "幾何確認失敗；物件保持待啟用，可重試或取消：{detail}",
+    en: "Geometry confirmation failed; the object stays staged and you can retry or cancel: {detail}",
+  },
+  "status.template.placeFailed": {
+    "zh-TW": "放置失敗：{detail}",
+    en: "Placement failed: {detail}",
+  },
+  "status.template.enableFailed": {
+    "zh-TW": "啟用失敗：{detail}",
+    en: "Activation failed: {detail}",
+  },
+  "status.template.cancelStagedFailed": {
+    "zh-TW": "取消待啟用物件失敗：{detail}",
+    en: "Cancelling the staged object failed: {detail}",
+  },
+  "status.template.recordingInterrupted": {
+    "zh-TW": "已中斷：{detail}",
+    en: "Interrupted: {detail}",
+  },
+  "status.template.recordingDiscarded": {
+    "zh-TW": "已丟棄未能封存的錄製：{detail}；先前有效成果保留。",
+    en: "Discarded a recording that could not be sealed: {detail}. The previous valid result is kept.",
+  },
+  "status.template.comparisonMismatch": {
+    "zh-TW": "無法作相同條件比較：{fields}",
+    en: "Cannot compare under the same conditions: {fields}",
+  },
 } as const satisfies MessageCatalog;
 
 /** Exact finite raw-message matches only; no substring or generic regex translation. */
 export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessages>> = {
+  "前一次錄製準備仍在清理；請稍後重試。": "status.recording.cleanupPending",
+  "錄製準備已取消。": "status.recording.captureCancelled",
+  "錄製儲存尚未就緒。": "status.recording.storageNotReady",
+  "錄製已接納影格，不能丟棄完整資料。": "status.recording.acceptedProtected",
+  "錄製準備逾時；請重試。": "status.recording.captureTimeout",
+  "錄製儲存準備逾時須大於 0 且不超過 10000 ms。": "status.recording.storageTimeoutRange",
+  "錄製儲存準備已有另一個等待擁有者。": "status.recording.storageOwner",
+  "錄製儲存準備已取消。": "status.recording.storageCancelled",
+  "錄製儲存準備逾時。": "status.recording.storageTimeout",
+  "錄製儲存已失敗；請先中斷目前錄製。": "status.recording.storageFailedInterrupt",
+  "錄製儲存仍在處理；降到低水位後才可繼續。": "status.recording.storageDraining",
+  "錄製儲存不支援就緒確認。": "status.recording.storageUnsupported",
+  "正在準備錄製…": "status.recording.preparing",
+  "錄製評估準備逾時。": "status.recording.prepareTimeout",
+  "錄製評估準備已取消。": "status.recording.prepareCancelled",
+  "另一個操作正在準備錄製評估。": "status.recording.prepareOwner",
+  "錄製評估工作者建立失敗。": "status.recording.prepareCreateFailed",
+  "錄製評估準備傳送失敗。": "status.recording.prepareSendFailed",
+  "錄製評估準備回覆協定無效。": "status.recording.prepareProtocol",
+  "錄製評估準備錯誤回覆無效。": "status.recording.prepareErrorProtocol",
+  "錄製評估 Worker 正在處理工作。": "status.recording.prepareWorkerBusy",
+  "錄製 Worker 準備協定無效。": "status.recording.prepareRequestProtocol",
+  "錄製評估 Worker 失敗。": "status.recording.workerFailed",
+  "錄製評估 Worker 回覆無法解碼。": "status.recording.workerMessageFailed",
+  "錄製評估已關閉。": "status.recording.evaluationClosed",
+  "錄製評估已有進行中的工作。": "status.recording.evaluationBusy",
+  "區域配置變更需要fresh physics run；不能沿用原區域進出事件重評。":
+    "status.recording.zoneRegistryChanged",
+  "區域事件重評需要原始配置以核對固定區域registry。": "status.recording.zoneBaselineRequired",
+  "固定或區域音源需要明確的新遮蔽政策；舊錄製仍可原樣重播，請重新錄製後比較。":
+    "status.recording.emitterPolicyRequired",
+  "曲面或動態反射重評需要相同的新模型基準；舊錄製可原樣重播，請先重新錄製再比較。":
+    "status.recording.modelBaselineRequired",
+  "REVISION_CONFLICT：區域草稿已過期，請重新讀取。": "status.runtime.zoneRevisionConflict",
+  "ZONE_EDIT_BLOCKED：請暫停並結束錄製／重播，在編輯器修改區域。": "status.runtime.zoneEditBlocked",
+  "ZONE_IN_USE：請先改選或移除引用此區域的規則：": "status.runtime.zoneInUsePrefix",
+  "錄製評估佇列已滿，已在完整 tick 邊界暫停；處理後可繼續。": "status.pipeline.evalPressure",
+  "實驗工具：有界模擬與分析": "status.pipeline.toolRun",
+  "實驗工具：相同運動比較": "status.pipeline.toolCompare",
+  "錄製已切換；不接納舊評估結果。": "status.pipeline.evalStale",
+  "沒有可用的錄製求解器。": "status.pipeline.evalMissing",
+  "錄製評估接納失敗。": "status.pipeline.evalAdmission",
+  "錄製評估仍在處理；降到低水位後才可繼續。": "status.pipeline.evalLowWater",
+  "錄製評估已失敗；請先停止並保存完整前綴。": "status.pipeline.evalFailed",
+
+  "短 take：由固定步進控制錄製": "status.pipeline.shortTakeCapturing",
+  "短 take 已完成；可在音訊匯出產生混音與各聲源音檔。": "status.pipeline.shortTakeReady",
+  "短 take 已完成；模擬保持暫停": "status.pipeline.shortTakePaused",
+
+  "sceneRevision 必須為安全整數。": "status.scene.revision",
+  "場景驗證失敗。": "status.scene.invalid",
+  "放置預覽需要運行中的第一人稱控制。": "status.interaction.previewRunning",
+  "物件預覽目前不可用。": "status.interaction.previewUnavailable",
+  "放置已取消或場景版本已變更。": "status.interaction.placementCancelled",
+  "幾何確認未完成；已取消放置。": "status.interaction.ackCancelled",
+  "物件已放置，可直接操作。": "status.interaction.placed",
+  "已選擇放置形狀；繼續後按住右鍵預覽。": "status.interaction.shapeSelected",
+  "錄製或重播期間無法繪製軌跡；請先結束錄製或返回即時場景。": "status.interaction.paintTransport",
+  "三公尺內沒有對準的物件；請以準心對準有聲音的物件。": "status.interaction.paintNothingAimed",
+  "只有有聲音的物件可以繪製軌跡；此物件沒有聲音行為或聲源。": "status.interaction.paintNotAudible",
+  "場景已變更；物件回到起始位置，重新開始這段 take。": "status.interaction.takeRestarted",
+  "這條軌跡碰到固定幾何，不會執行；回到編輯器按 T 調整。": "status.interaction.paintedBlocked",
+  "這條軌跡以目前強度移動太久，不會執行；回到編輯器按 T 提高強度或縮短軌跡。":
+    "status.interaction.paintedTooLong",
+  "同一段可執行的軌跡已達上限，這條不會執行；回到編輯器清除其他物件的軌跡。":
+    "status.interaction.paintedTooMany",
   "PROJECT_CHANGED：原專案已切換；草稿保留。": "status.inspector.projectChanged",
   "STALE_RULE：原規則已變更或移除；草稿保留，請檢視後明示放棄再重新編輯。":
     "status.inspector.ruleChanged",
@@ -1383,7 +2030,7 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
   "金屬示範 · Synthetic": "status.material.metal",
   "手工設定的示範頻帶係數；非材質量測、非振動合成。A+R+T=1，零透射。": "status.material.conditions",
   "已有Meta請求進行中，不能重複派送。": "status.server.requestActive",
-  "READY_REQUIRES_EXPLICIT_REQUEST；Live validation NOT_RUN；剩餘額度未知。":
+  "READY_REQUIRES_EXPLICIT_REQUEST；只有提交指令才會呼叫模型；剩餘額度未知。":
     "status.provider.READY_REQUIRES_EXPLICIT_REQUEST",
   "NETWORK_DISABLED；Live validation NOT_RUN；剩餘額度未知。": "status.provider.NETWORK_DISABLED",
   "AUTHENTICATION_NOT_CONFIGURED；Live validation NOT_RUN；剩餘額度未知。":
@@ -1558,10 +2205,32 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
   "不能在同一提案混合場景變更與實驗執行。": "status.agent.mixedProposal",
   "Host未回傳可確認的工具結果。": "status.agent.hostResultMissing",
   "本機解析與驗證提案中；沒有模型呼叫。": "status.agent.parsingOffline",
+  "Muse正在規劃提案，通常需要10–60秒；場景尚未變更。": "status.agent.museWorking",
+  "PROPOSAL_TOO_LONG：Muse的提案過長而被截斷，沒有可用內容；請縮小要求或分次提出。":
+    "status.agent.proposalTooLong",
+  "移動正式Listener；編輯camera保持獨立。": "status.preview.moveListener",
+  "此操作替換現有物件與聲源；套用前請檢查，Undo可回復Scene。": "status.preview.replaceWarning",
+  "Motion is authored only; starting it requires an explicit local run action.":
+    "status.preview.motionAuthored",
+  "Meta提出受限工具，尚待本地預覽與人員套用。": "status.agent.metaProposed",
+  "Meta未提出可驗證操作，場景未變更。": "status.agent.metaProposedNothing",
   "檢查本機Meta provider gate。": "status.agent.checkingProvider",
+  "聲音參數為創意設定，不代表量測聲壓或物件真實振動。": "status.agent.soundCreative",
+  "Server驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。":
+    "status.agent.soundServerScope",
   "提案已由Host套用並建立新revision；可使用復原。": "status.agent.applied",
   "提案已取消，沒有套用變更。": "status.agent.cancelled",
   "已復原提案並建立新revision；已播放的聲音不會倒轉。": "status.agent.undone",
+  "RECOVERY_UNSAFE：請先暫停，並結束錄製、重播與其他操作。": "status.recovery.unsafe",
+  "RECOVERY_ACTIVE：這份錄製仍由其他工作階段使用。": "status.recovery.active",
+  "RECOVERY_MISSING：找不到這份中斷錄製。": "status.recovery.missing",
+  "RECOVERY_EMPTY：這份錄製尚無可復原的完整影格。": "status.recovery.empty",
+  "RECOVERY_IDENTITY：復原資料的來源與所選記錄不符。": "status.recovery.identity",
+  "RECOVERY_STATE：只能載入已驗證的中斷錄製。": "status.recovery.state",
+  "Meta回覆含禁止的credential資料，未接受或保存內容。": "status.client.metaCredential",
+  "Meta回覆缺失、拒絕或角色無效，未套用變更。": "status.client.metaEnvelope",
+  "Meta回覆未完整完成，未接受提案。": "status.client.metaIncomplete",
+  "Meta回覆不是有效UTF-8，未接受內容。": "status.client.metaUtf8",
   "本機API未回傳完整JSON；尚未接受提案。": "status.client.incompleteJson",
   "Planner暫時不可用，手動操作仍可使用。": "status.client.unavailable",
   "本機API回傳格式無效；尚未接受提案或provider狀態。": "status.client.schemaInvalid",
@@ -1641,6 +2310,14 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
  * The renderer must keep the original code and diagnostic detail visible.
  */
 export const statusCodeKeys: Readonly<Record<string, keyof typeof statusMessages>> = {
+  PLACEMENT_AUDIO_RESTART: "status.code.PLACEMENT_AUDIO_RESTART",
+  PLACEMENT_TRANSPORT: "status.code.PLACEMENT_TRANSPORT",
+  PLACEMENT_TIMEOUT: "status.code.PLACEMENT_TIMEOUT",
+  AUDIO_BUFFER_UNSAFE: "status.code.AUDIO_BUFFER_UNSAFE",
+  AUDIO_BUFFER_BUSY: "status.code.AUDIO_BUFFER_BUSY",
+  AUDIO_BUFFER_INVALID: "status.code.AUDIO_BUFFER_INVALID",
+  AUDIO_BUFFER_EXTERNAL_CONTEXT: "status.code.AUDIO_BUFFER_EXTERNAL_CONTEXT",
+  AUDIO_BUFFER_RESTART_FAILED: "status.code.AUDIO_BUFFER_RESTART_FAILED",
   PROJECT_CHANGED: "status.code.PROJECT_CHANGED",
   STALE_RULE: "status.code.STALE_RULE",
   INCOMPATIBLE_EXPERIMENTS: "status.code.INCOMPATIBLE_EXPERIMENTS",
@@ -1673,6 +2350,10 @@ export const statusCodeKeys: Readonly<Record<string, keyof typeof statusMessages
   REVERB_BOUNDS: "status.code.REVERB_BOUNDS",
   ASSET_NOT_READY: "status.code.ASSET_NOT_READY",
   STOP_REPLAY_REQUIRED: "status.code.STOP_REPLAY_REQUIRED",
+  TRAJECTORY_NOT_AUDIBLE: "status.code.TRAJECTORY_NOT_AUDIBLE",
+  TRAJECTORY_USE_SET_TRAJECTORY: "status.code.TRAJECTORY_USE_SET_TRAJECTORY",
+  MOTION_PATH_ACTIVE: "status.code.MOTION_PATH_ACTIVE",
+  PLAYER_RESPAWN_BLOCKED: "status.code.PLAYER_RESPAWN_BLOCKED",
   REPLAY_UNAVAILABLE: "status.code.REPLAY_UNAVAILABLE",
   NO_RECORDING: "status.code.NO_RECORDING",
   INVALID_SEEK_TIME: "status.code.INVALID_SEEK_TIME",
@@ -1756,3 +2437,66 @@ export const statusCodeKeys: Readonly<Record<string, keyof typeof statusMessages
   AUTHORING_CANCELLED: "status.code.AUTHORING_CANCELLED",
   GRAVITY_MODE_CHANGED_CANCELLED: "status.code.GRAVITY_MODE_CHANGED_CANCELLED",
 };
+
+/** Catalogued parameterized messages. Each zh-TW template, anchored over the whole
+ * raw message, is the match; a {detail} value is itself formatted, so an unknown
+ * detail keeps its original text under the explicit original-detail label.
+ */
+export const templateStatusKeys: readonly (keyof typeof statusMessages)[] = [
+  "status.template.agentMetaSound",
+  "status.template.agentLocalSound",
+  "status.template.agentRemoveBinding",
+  "status.template.agentBind",
+  "status.template.agentOverridePitch",
+  "status.template.agentOverrideGain",
+  "status.template.agentOverrideOn",
+  "status.template.agentOverrideOff",
+  "status.template.policyDenied",
+  "status.template.providerRequestFailed",
+  "status.runtime.zoneInUse",
+  "status.pipeline.evalFailureDetail",
+  "status.recording.storageInterruptedPrefix",
+  "status.scene.detail",
+  "status.scene.sphere",
+  "status.scene.capsule",
+  "status.scene.duplicate",
+  "status.scene.quaternion",
+  "status.scene.reference",
+  "status.template.catchUpDropped",
+  "status.template.audioAdmission",
+  "status.template.projectLoaded",
+  "status.template.audioSavedForProject",
+  "status.template.audioSaved",
+  "status.template.metaStatus",
+  "status.template.enterFailed",
+  "status.template.resumeFailed",
+  "status.template.frozenSyncFailed",
+  "status.template.unfrozenSyncFailed",
+  "status.template.modeChangeFailed",
+  "status.template.cannotPlace",
+  "status.template.placeOccupied",
+  "status.template.geometryAckFailed",
+  "status.template.placeFailed",
+  "status.template.enableFailed",
+  "status.template.cancelStagedFailed",
+  "status.template.recordingInterrupted",
+  "status.template.recordingDiscarded",
+  "status.template.comparisonMismatch",
+  "status.agent.acousticBudget",
+  "status.agent.proposalRejected",
+  "status.preview.add",
+  "status.preview.move",
+  "status.preview.resize",
+  "status.preview.removeWithBoth",
+  "status.preview.removeWithSources",
+  "status.preview.removeWithPaths",
+  "status.preview.remove",
+  "status.preview.material",
+  "status.preview.mode",
+  "status.preview.source",
+  "status.preview.roomWithPaths",
+  "status.preview.room",
+  "status.preview.surfaceWarning",
+  "status.preview.movedPathWarning",
+  "status.preview.motionLine",
+];

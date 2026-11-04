@@ -9,6 +9,7 @@ export default defineConfig({
     "ui-locale-refined-v2.spec.ts",
     "ui-first-use-refined-v2.spec.ts",
     "fps-entry-race-recovery.spec.ts",
+    "gizmo-lifecycle.spec.ts",
   ],
   webServer: {
     ...base.webServer,

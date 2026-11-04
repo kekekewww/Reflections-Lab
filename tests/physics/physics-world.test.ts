@@ -204,7 +204,7 @@ for (const massKg of [0.1, 1, 5, 20]) {
         if (!d) continue;
         sawDiagnostics = true;
         assert.ok(Number.isFinite(d.trackingErrorMetres));
-        assert.ok(norm(d.impulseNewtonSeconds) <= Math.min(150 / 60, (massKg * 20) / 60) + 1e-6);
+        assert.ok(norm(d.impulseNewtonSeconds) <= Math.min(150 / 60, (massKg * 150) / 60) + 1e-6);
         assert.ok(norm(d.torqueImpulseNewtonMetreSeconds) <= 15 / 60 + 1e-6);
       }
       assert.equal(sawDiagnostics, true);

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { memoView } from "./view-stability.js";
 import { acousticPathPresentation } from "./acoustic-presentation.js";
 import { Euler, Quaternion as ThreeQuaternion } from "three";
 import type {
@@ -22,13 +23,20 @@ import {
   triggerName,
   triggerOptions,
   unsupportedTriggerReason,
-  unsupportedTriggerReasons,
+  isZoneTrigger,
 } from "./behavior-options.js";
 import { validateMappingDraft, type MappingDraftState } from "./mapping-model.js";
 import { BindingOverrideEditor } from "./BindingOverrideEditor.js";
 import { applyBindingDraft, createBindingDraft, type BindingDraftEntry } from "./binding-drafts.js";
 import { useLocale } from "./locale.js";
+import { HelpTip } from "./HelpTip.js";
+import { supportsAcousticShape } from "../capabilities/acoustic-geometry.js";
 import { previewErrorKeys } from "./locales/preview.js";
+import {
+  TrajectorySection,
+  closedTrajectoryUi,
+  type TrajectoryUiState,
+} from "./inspector-trajectory.js";
 
 const modes = [
   { value: "dynamicGravity", labelKey: "inspector.bodyMode.dynamicGravity" },
@@ -56,6 +64,7 @@ const draftKey = (projectKey: string, objectId: string, ruleId: string) =>
   JSON.stringify([projectKey, ruleDraftKey(objectId, ruleId)]);
 const scalarFields = [
   "trigger",
+  "zoneId",
   "enabled",
   "generator",
   "assetId",
@@ -126,6 +135,65 @@ function VectorFields({
   );
 }
 
+export function DimensionsFields({
+  object,
+  disabled,
+  onCommit,
+}: {
+  object: ObjectView;
+  disabled: boolean;
+  onCommit: (dimensions: Vector3) => void;
+}) {
+  const { t } = useLocale();
+  if (object.shape === "box")
+    return (
+      <VectorFields
+        label={t("inspector.dimensions")}
+        value={object.dimensionsM}
+        min={0.01}
+        max={100}
+        disabled={disabled}
+        onCommit={onCommit}
+      />
+    );
+  const [diameter, height] = object.dimensionsM;
+  return (
+    <fieldset className="vector-fields">
+      <legend>
+        {t("inspector.dimensions")} <span className="field-unit">m</span>
+      </legend>
+      <div className={object.shape === "capsule" ? "two-fields" : undefined}>
+        <NumberField
+          label={t("help.diameter")}
+          unit="m"
+          value={diameter}
+          min={0.01}
+          max={100}
+          disabled={disabled}
+          invalidReason={(next) =>
+            object.shape === "capsule" && next > height ? t("help.heightInvalid") : undefined
+          }
+          onCommit={(next) =>
+            onCommit(object.shape === "sphere" ? [next, next, next] : [next, height, next])
+          }
+        />
+        {object.shape === "capsule" && (
+          <NumberField
+            label={t("help.height")}
+            unit="m"
+            value={height}
+            min={0.01}
+            max={100}
+            disabled={disabled}
+            invalidReason={(next) => (next < diameter ? t("help.heightInvalid") : undefined)}
+            onCommit={(next) => onCommit([diameter, next, diameter])}
+          />
+        )}
+      </div>
+    </fieldset>
+  );
+}
+
 function RotationFields({
   value,
   onCommit,
@@ -175,7 +243,7 @@ function RotationFields({
   );
 }
 
-function SoundEditor({
+function SoundEditorView({
   controller,
   model,
   object,
@@ -229,19 +297,26 @@ function SoundEditor({
 }) {
   const { t, n } = useLocale();
   const [trigger, setTrigger] = useState("OnImpact");
+  const [newZoneId, setNewZoneId] = useState("");
+  const availableZones = (model.zones ?? []).filter((zone) => zone.enabled);
+  const missingNewZone =
+    isZoneTrigger(trigger) && !availableZones.some((zone) => zone.id === newZoneId);
   const behavior = model.behaviors.find((profile) => profile.objectId === object.id);
-  const canEdit = model.simulationState !== "running" && model.recording.state !== "replaying";
+  const canEdit =
+    model.simulationState !== "running" &&
+    model.recording.state !== "replaying" &&
+    model.recording.state !== "recording";
   const canAuthor = canEdit && !!behavior?.bindingId && behavior.documentRevision !== undefined;
   return (
     <Section
       title={t("inspector.behaviors")}
+      help={t("inspector.behaviorDescription")}
       aside={
         <Badge kind="accent">
           {t("inspector.ruleCount", { count: n(behavior?.rules.length ?? 0) })}
         </Badge>
       }
     >
-      <p className="section-copy">{t("inspector.behaviorDescription")}</p>
       <label className="select-field">
         <span>{t("inspector.classification")}</span>
         <select
@@ -249,7 +324,11 @@ function SoundEditor({
           value={behavior?.presetKind ?? "creative"}
           onChange={(event) => {
             const kind = event.target.value as BehaviorView["presetKind"];
-            void controller.dispatch({ type: "setPreset", objectId: object.id, presetKind: kind });
+            void controller.dispatch({
+              type: "setPreset",
+              objectId: object.id,
+              presetKind: kind,
+            });
           }}
         >
           <option value="creative">{t("inspector.classification.creative")}</option>
@@ -258,77 +337,49 @@ function SoundEditor({
           <option value="procedural">{t("inspector.classification.procedural")}</option>
         </select>
       </label>
-      <details className="inspector-help">
-        <summary>{t("inspector.moreDetails")}</summary>
-        <p className="micro-copy">{t("inspector.classificationHelp")}</p>
-        {behavior && (
-          <p className="micro-copy">
-            <code>{behavior.profileId}</code> · profile r{behavior.revision} · binding{" "}
-            <code>{behavior.bindingId ?? t("inspector.notProvided")}</code> · document r
-            {behavior.documentRevision ?? t("inspector.notProvided")}
-          </p>
-        )}
-      </details>
+      <HelpTip topic={t("inspector.classification")} content={t("inspector.classificationHelp")} />
+      {behavior && (
+        <p className="micro-copy">
+          <code>{behavior.profileId}</code> ·{" "}
+          {t("help.profileRevision", { revision: behavior.revision })} · {t("help.binding")}{" "}
+          <code>{behavior.bindingId ?? t("inspector.notProvided")}</code> ·{" "}
+          {t("help.documentRevision", {
+            revision: behavior.documentRevision ?? t("inspector.notProvided"),
+          })}
+        </p>
+      )}
       {behavior && !canAuthor && canEdit && (
         <p className="inline-error" role="status">
           {t("inspector.authoringMetadataMissing")}
         </p>
       )}
-      {behavior?.rules.map((rule) => {
-        const key = draftKey(projectKey, object.id, rule.id);
-        return (
-          <div className="behavior-rule-group" key={`${object.id}/${rule.id}`}>
-            <RuleCard
-              rule={rule}
-              model={model}
-              disabled={!canAuthor}
-              entry={drafts[key]}
-              currentProfileId={behavior.profileId}
-              currentRevision={behavior.revision}
-              currentSceneRevision={model.sceneRevision}
-              currentDocumentRevision={behavior.documentRevision}
-              bindingEnabled={behavior.bindingEnabled}
-              previewDisabled={!!bindingDrafts[key]}
-              onPreview={() => {
-                if (behavior.bindingId)
-                  void controller.dispatch({
-                    type: "previewRule",
-                    objectId: object.id,
-                    bindingId: behavior.bindingId,
-                    ruleId: rule.id,
-                  });
-              }}
-              onDraft={(value) => onDraft(key, object.id, behavior.revision, rule, value)}
-              onNumber={(field, raw) =>
-                onNumber(key, object.id, behavior.revision, rule, field, raw)
-              }
-              onMappings={(state) => onMappings(key, object.id, behavior.revision, rule, state)}
-              onDiscard={() => onDiscard(key)}
-              onApply={() => onApply(key)}
-              onDelete={() =>
-                void controller.dispatch({
-                  type: "removeRule",
-                  objectId: object.id,
-                  ruleId: rule.id,
-                })
-              }
-            />
-            <BindingOverrideEditor
-              model={model}
-              behavior={behavior}
-              rule={rule}
-              entry={bindingDrafts[key]}
-              disabled={!canAuthor}
-              onChange={(entry) => onBindingChange(key, entry)}
-              onApply={() => onBindingApply(key)}
-              onDiscard={() => onBindingDiscard(key)}
-              onClear={() => onBindingClear(key, behavior, rule)}
-            />
-          </div>
-        );
-      })}
+      {behavior?.rules.map((rule) => (
+        <SoundRuleGroup
+          key={`${object.id}/${rule.id}`}
+          controller={controller}
+          model={model}
+          object={object}
+          projectKey={projectKey}
+          drafts={drafts}
+          bindingDrafts={bindingDrafts}
+          onDraft={onDraft}
+          onNumber={onNumber}
+          onMappings={onMappings}
+          onDiscard={onDiscard}
+          onApply={onApply}
+          onBindingChange={onBindingChange}
+          onBindingApply={onBindingApply}
+          onBindingDiscard={onBindingDiscard}
+          onBindingClear={onBindingClear}
+          behavior={behavior}
+          rule={rule}
+        />
+      ))}
       {!behavior?.rules.length && (
-        <div className="empty-state compact">{t("inspector.noBehaviors")}</div>
+        <div className="empty-state compact">
+          {t("help.noBehaviors")}
+          <HelpTip topic={t("inspector.behaviors")} content={t("inspector.noBehaviors")} />
+        </div>
       )}
       <div className="add-rule-row">
         <label className="sr-only" htmlFor="new-trigger">
@@ -344,36 +395,196 @@ function SoundEditor({
             <option
               value={id}
               key={id}
-              disabled={!!unsupportedTriggerReasons[id]}
-              title={unsupportedTriggerReason(id, t)}
+              disabled={!!unsupportedTriggerReason(id, t, availableZones)}
+              title={unsupportedTriggerReason(id, t, availableZones)}
             >
               {triggerName(id, t)}
-              {unsupportedTriggerReasons[id] ? t("inspector.unsupportedSuffix") : ""}
+              {unsupportedTriggerReason(id, t, availableZones)
+                ? t("inspector.unsupportedSuffix")
+                : ""}
             </option>
           ))}
         </select>
-        <button
-          type="button"
-          className="outline-button"
-          disabled={!canEdit || !!unsupportedTriggerReasons[trigger]}
-          onClick={() =>
-            void controller.dispatch({ type: "addRule", objectId: object.id, trigger })
+        {isZoneTrigger(trigger) && (
+          <label className="select-field">
+            <span>{t("editor.zone.label")}</span>
+            <select
+              value={newZoneId}
+              disabled={!canEdit}
+              onChange={(event) => setNewZoneId(event.target.value)}
+            >
+              <option value="">{t("editor.zone.choose")}</option>
+              {availableZones.map((zone) => (
+                <option key={zone.id} value={zone.id}>
+                  {zone.name} · {zone.id}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <HelpTip
+          topic={t("inspector.addRule")}
+          content={
+            !canEdit
+              ? t("help.pauseBeforeRule")
+              : unsupportedTriggerReason(trigger, t, availableZones) ||
+                (missingNewZone ? t("editor.zone.required") : t("inspector.addRule"))
           }
         >
-          <Icon name="plus" />
-          {t("inspector.addRule")}
-        </button>
+          <button
+            type="button"
+            className="outline-button"
+            disabled={
+              !canEdit || !!unsupportedTriggerReason(trigger, t, availableZones) || missingNewZone
+            }
+            onClick={() =>
+              void controller.dispatch({
+                type: "addRule",
+                objectId: object.id,
+                trigger,
+                ...(isZoneTrigger(trigger) ? { zoneId: newZoneId } : {}),
+              })
+            }
+          >
+            <Icon name="plus" />
+            {t("inspector.addRule")}
+          </button>
+        </HelpTip>
       </div>
-      <details className="inspector-help">
-        <summary>{t("inspector.moreDetails")}</summary>
-        <p className="micro-copy">{t("inspector.physicalInspiredHelp")}</p>
-        <p className="micro-copy">{t("inspector.unsupportedTriggers")}</p>
-      </details>
+      <HelpTip
+        topic={t("inspector.newTrigger")}
+        content={`${t("inspector.physicalInspiredHelp")} ${t("inspector.unsupportedTriggers")}`}
+      />
     </Section>
   );
 }
 
-function PreviewInspector({
+const SoundEditor = memoView(SoundEditorView, ({ model, object, ...props }) => [
+  props,
+  object.id,
+  model.projectId,
+  model.projectName,
+  model.sceneRevision,
+  model.behaviors,
+  model.assets,
+  model.zones,
+  model.simulationState,
+  model.recording.state,
+]);
+
+function SoundRuleGroupView({
+  controller,
+  model,
+  object,
+  projectKey,
+  drafts,
+  bindingDrafts,
+  onDraft,
+  onNumber,
+  onMappings,
+  onDiscard,
+  onApply,
+  onBindingChange,
+  onBindingApply,
+  onBindingDiscard,
+  onBindingClear,
+  behavior,
+  rule,
+}: Parameters<typeof SoundEditor>[0] & { behavior: BehaviorView; rule: BehaviorRuleView }) {
+  const key = draftKey(projectKey, object.id, rule.id);
+  const canAuthor =
+    model.simulationState !== "running" &&
+    model.recording.state !== "replaying" &&
+    model.recording.state !== "recording" &&
+    !!behavior.bindingId &&
+    behavior.documentRevision !== undefined;
+  const preview = useCallback(() => {
+    if (behavior.bindingId)
+      void controller.dispatch({
+        type: "previewRule",
+        objectId: object.id,
+        bindingId: behavior.bindingId,
+        ruleId: rule.id,
+      });
+  }, [controller, object.id, behavior.bindingId, rule.id]);
+  const draft = useCallback(
+    (value: BehaviorRuleView) => onDraft(key, object.id, behavior.revision, rule, value),
+    [onDraft, key, object.id, behavior.revision, rule],
+  );
+  const number = useCallback(
+    (field: NumericRuleField, raw: string) =>
+      onNumber(key, object.id, behavior.revision, rule, field, raw),
+    [onNumber, key, object.id, behavior.revision, rule],
+  );
+  const mappings = useCallback(
+    (state: MappingDraftState) => onMappings(key, object.id, behavior.revision, rule, state),
+    [onMappings, key, object.id, behavior.revision, rule],
+  );
+  const discard = useCallback(() => onDiscard(key), [onDiscard, key]);
+  const apply = useCallback(() => onApply(key), [onApply, key]);
+  const remove = useCallback(
+    () => void controller.dispatch({ type: "removeRule", objectId: object.id, ruleId: rule.id }),
+    [controller, object.id, rule.id],
+  );
+  const bindingChange = useCallback(
+    (entry: BindingDraftEntry) => onBindingChange(key, entry),
+    [onBindingChange, key],
+  );
+  const bindingApply = useCallback(() => onBindingApply(key), [onBindingApply, key]);
+  const bindingDiscard = useCallback(() => onBindingDiscard(key), [onBindingDiscard, key]);
+  const bindingClear = useCallback(
+    () => onBindingClear(key, behavior, rule),
+    [onBindingClear, key, behavior, rule],
+  );
+  return (
+    <div className="behavior-rule-group" key={`${object.id}/${rule.id}`}>
+      <RuleCard
+        rule={rule}
+        model={model}
+        disabled={!canAuthor}
+        entry={drafts[key]}
+        currentProfileId={behavior.profileId}
+        currentRevision={behavior.revision}
+        currentSceneRevision={model.sceneRevision}
+        currentDocumentRevision={behavior.documentRevision}
+        bindingEnabled={behavior.bindingEnabled}
+        previewDisabled={!!bindingDrafts[key]}
+        onPreview={preview}
+        onDraft={draft}
+        onNumber={number}
+        onMappings={mappings}
+        onDiscard={discard}
+        onApply={apply}
+        onDelete={remove}
+      />
+      <BindingOverrideEditor
+        model={model}
+        behavior={behavior}
+        rule={rule}
+        entry={bindingDrafts[key]}
+        disabled={!canAuthor}
+        onChange={bindingChange}
+        onApply={bindingApply}
+        onDiscard={bindingDiscard}
+        onClear={bindingClear}
+      />
+    </div>
+  );
+}
+
+const SoundRuleGroup = memoView(SoundRuleGroupView, ({ model, object, ...props }) => [
+  props,
+  object.id,
+  model.assets,
+  model.zones,
+  model.projectId,
+  model.projectName,
+  model.sceneRevision,
+  model.behaviors,
+  model.simulationState,
+  model.recording.state,
+]);
+function PreviewInspectorView({
   model,
   controller,
 }: {
@@ -388,11 +599,11 @@ function PreviewInspector({
   if (!preview || (preview.status === "idle" && !metadata && !preview.error && !errorKey))
     return null;
   return (
-    <Section title={t("preview.title")}>
-      <details className="inspector-help">
-        <summary>{t("inspector.moreDetails")}</summary>
-        <p className="micro-copy">{t("preview.help")}</p>
-      </details>
+    <Section
+      title={t("preview.title")}
+      help={`${t("preview.help")} ${t("preview.limit")}`}
+      aside={<span className="evidence-tag">{t("help.notFormalMeasurement")}</span>}
+    >
       <p className="micro-copy" role="status">
         {t(`preview.state.${preview.status}`)}
       </p>
@@ -430,13 +641,14 @@ function PreviewInspector({
               <div>
                 <dt>{t("preview.identity")}</dt>
                 <dd>
-                  <code>{metadata.previewId}</code> · epoch 0 s
+                  <code>{metadata.previewId}</code> · {t("help.epoch")}
                 </dd>
               </div>
               <div>
                 <dt>{t("preview.object")}</dt>
                 <dd>
-                  <code>{metadata.objectId}</code> · generation {metadata.generation} · [
+                  <code>{metadata.objectId}</code> ·{" "}
+                  {t("help.generation", { generation: metadata.generation })} · [
                   {metadata.source.positionM.map((value) => n(value)).join(", ")}] ·{" "}
                   {t(`preview.origin.${metadata.source.origin}`)}
                 </dd>
@@ -444,8 +656,9 @@ function PreviewInspector({
               <div>
                 <dt>{t("preview.scene")}</dt>
                 <dd>
-                  <code>{metadata.sceneId}</code> r{metadata.sceneRevision} · tick{" "}
-                  {metadata.poseTick}
+                  <code>{metadata.sceneId}</code> ·{" "}
+                  {t("help.sceneRevision", { revision: metadata.sceneRevision })} ·{" "}
+                  {t("help.tick", { tick: metadata.poseTick })}
                 </dd>
               </div>
               <div>
@@ -472,7 +685,8 @@ function PreviewInspector({
                       <code>{metadata.contact.runId}</code> ·{" "}
                       <code>{metadata.contact.runEpoch}</code> ·{" "}
                       <code>{metadata.contact.inputEventId}</code> ·{" "}
-                      <code>{metadata.contact.audioEventId}</code> · tick {metadata.contact.tick} ·{" "}
+                      <code>{metadata.contact.audioEventId}</code> ·{" "}
+                      {t("help.tick", { tick: metadata.contact.tick })} ·{" "}
                       <code>{metadata.contact.pairKey}</code>
                     </>
                   ) : (
@@ -484,222 +698,279 @@ function PreviewInspector({
                 <dt>{t("preview.solver")}</dt>
                 <dd>
                   <code>{metadata.solver.backendId}</code> v{metadata.solver.backendVersion} ·{" "}
-                  <code>{metadata.solver.requestId}</code> · scene r{metadata.solver.sceneRevision}{" "}
-                  / geometry r{metadata.solver.geometryRevision} / tick {metadata.solver.poseTick} ·{" "}
-                  {metadata.solver.pathCount} paths · {metadata.solver.capabilities.join(", ")}
+                  <code>{metadata.solver.requestId}</code> ·{" "}
+                  {t("help.sceneRevision", { revision: metadata.solver.sceneRevision })} /{" "}
+                  {t("help.geometryRevision", { revision: metadata.solver.geometryRevision })} /{" "}
+                  {t("help.tick", { tick: metadata.solver.poseTick })} ·{" "}
+                  {t("help.paths", { count: metadata.solver.pathCount })} ·{" "}
+                  {metadata.solver.capabilities.join(", ")}
                 </dd>
               </div>
             </dl>
           </details>
-          <p className="micro-copy">{t("preview.limit")}</p>
         </>
       )}
     </Section>
   );
 }
 
-export function Inspector({
+const PreviewInspector = memoView(PreviewInspectorView, ({ model, ...props }) => [
+  props,
+  model.preview,
+  model.error,
+  model.monitor.state,
+]);
+
+function InspectorView({
   controller,
   model,
   showListener = false,
   transactionController = controller,
+  trajectory = closedTrajectoryUi,
+  onTrajectoryChange,
 }: {
   controller: LabController;
   model: LabViewModel;
   showListener?: boolean;
   transactionController?: LabController;
+  trajectory?: TrajectoryUiState;
+  onTrajectoryChange?: (update: (current: TrajectoryUiState) => TrajectoryUiState) => void;
 }) {
   const { t, n, message } = useLocale();
   const projectKey = model.projectId ?? model.projectName;
   const [drafts, setDrafts] = useState<Record<string, EditorRuleDraft>>({});
   const [bindingDrafts, setBindingDrafts] = useState<Record<string, BindingDraftEntry>>({});
   const [bindingError, setBindingError] = useState("");
-  const createDraft = (
-    objectId: string,
-    revision: number,
-    rule: BehaviorRuleView,
-  ): EditorRuleDraft => ({
-    projectKey,
-    profileId: model.behaviors.find((profile) => profile.objectId === objectId)?.profileId ?? "",
-    bindingId: model.behaviors.find((profile) => profile.objectId === objectId)?.bindingId ?? "",
-    expectedSceneRevision: model.sceneRevision,
-    expectedBehaviorRevision:
-      model.behaviors.find((profile) => profile.objectId === objectId)?.documentRevision ?? -1,
-    objectId,
-    ruleId: rule.id,
-    baseline: structuredClone(rule),
-    value: structuredClone(rule),
-    baseRevision: revision,
-    pending: false,
-    error: "",
-    inputValues: {},
-    changedFields: [],
-  });
-  const updateDraft = (
-    key: string,
-    objectId: string,
-    revision: number,
-    rule: BehaviorRuleView,
-    value: BehaviorRuleView,
-  ) => {
-    setDrafts((current) => {
-      const entry = current[key] ?? createDraft(objectId, revision, rule);
-      return entry.pending
-        ? current
-        : {
-            ...current,
-            [key]: {
-              ...entry,
-              value,
-              changedFields: changedRuleFields(entry.baseline, value),
-              error: "",
-            },
-          };
-    });
-  };
-  const updateNumber = (
-    key: string,
-    objectId: string,
-    revision: number,
-    rule: BehaviorRuleView,
-    field: NumericRuleField,
-    raw: string,
-  ) => {
-    setDrafts((current) => {
-      const entry = current[key] ?? createDraft(objectId, revision, rule);
-      if (entry.pending) return current;
-      const value = invalidRuleNumber(field, raw)
-        ? entry.value
-        : { ...entry.value, [field]: Number(raw) };
-      return {
-        ...current,
-        [key]: {
-          ...entry,
-          value,
-          changedFields: changedRuleFields(entry.baseline, value),
-          inputValues: { ...entry.inputValues, [field]: raw },
-          error: "",
-        },
-      };
-    });
-  };
-  const updateMappings = (
-    key: string,
-    objectId: string,
-    revision: number,
-    rule: BehaviorRuleView,
-    state: MappingDraftState,
-  ) => {
-    setDrafts((current) => {
-      const entry = current[key] ?? createDraft(objectId, revision, rule);
-      if (entry.pending) return current;
-      const validation = validateMappingDraft(state);
-      const value = validation.value ? { ...entry.value, mappings: validation.value } : entry.value;
-      return {
-        ...current,
-        [key]: {
-          ...entry,
-          value,
-          mappingDraft: state,
-          mappingError: validation.errors.join("；"),
-          changedFields: changedRuleFields(entry.baseline, value),
-          error: "",
-        },
-      };
-    });
-  };
-  const discardDraft = (key: string) =>
-    setDrafts((current) => {
-      if (current[key]?.pending) return current;
-      const next = { ...current };
-      delete next[key];
-      return next;
-    });
-  const applyDraft = async (key: string) => {
-    const entry = drafts[key];
-    if (!entry || entry.pending) return;
-    setDrafts((current) => ({ ...current, [key]: { ...entry, pending: true, error: "" } }));
-    try {
-      const snapshot = transactionController.getSnapshot();
-      if ((snapshot.projectId ?? snapshot.projectName) !== entry.projectKey)
-        throw new Error("PROJECT_CHANGED：原專案已切換；草稿保留。");
-      const profile = snapshot.behaviors.find((item) => item.objectId === entry.objectId);
-      const rule = profile?.rules.find((item) => item.id === entry.ruleId);
-      if (
-        !profile ||
-        !rule ||
-        profile.profileId !== entry.profileId ||
-        profile.revision !== entry.baseRevision ||
-        snapshot.sceneRevision !== entry.expectedSceneRevision ||
-        profile.documentRevision !== entry.expectedBehaviorRevision ||
-        !sameEditableRule(entry.baseline, rule)
-      )
-        throw new Error("STALE_RULE：原規則已變更或移除；草稿保留，請檢視後明示放棄再重新編輯。");
-      await applyRuleDraft(transactionController, entry.objectId, entry.ruleId, entry);
+  const bindingModel = useMemo(
+    () => ({
+      projectName: model.projectName,
+      ...(model.projectId === undefined ? {} : { projectId: model.projectId }),
+      sceneRevision: model.sceneRevision,
+    }),
+    [model.projectName, model.projectId, model.sceneRevision],
+  );
+  const createDraft = useCallback(
+    (objectId: string, revision: number, rule: BehaviorRuleView): EditorRuleDraft => ({
+      projectKey,
+      profileId: model.behaviors.find((profile) => profile.objectId === objectId)?.profileId ?? "",
+      bindingId: model.behaviors.find((profile) => profile.objectId === objectId)?.bindingId ?? "",
+      expectedSceneRevision: model.sceneRevision,
+      expectedBehaviorRevision:
+        model.behaviors.find((profile) => profile.objectId === objectId)?.documentRevision ?? -1,
+      objectId,
+      ruleId: rule.id,
+      baseline: structuredClone(rule),
+      value: structuredClone(rule),
+      baseRevision: revision,
+      pending: false,
+      error: "",
+      inputValues: {},
+      changedFields: [],
+    }),
+    [projectKey, model.behaviors, model.sceneRevision],
+  );
+  const updateDraft = useCallback(
+    (
+      key: string,
+      objectId: string,
+      revision: number,
+      rule: BehaviorRuleView,
+      value: BehaviorRuleView,
+    ) => {
       setDrafts((current) => {
+        const entry = current[key] ?? createDraft(objectId, revision, rule);
+        return entry.pending
+          ? current
+          : {
+              ...current,
+              [key]: {
+                ...entry,
+                value,
+                changedFields: changedRuleFields(entry.baseline, value),
+                error: "",
+              },
+            };
+      });
+    },
+    [createDraft],
+  );
+  const updateNumber = useCallback(
+    (
+      key: string,
+      objectId: string,
+      revision: number,
+      rule: BehaviorRuleView,
+      field: NumericRuleField,
+      raw: string,
+    ) => {
+      setDrafts((current) => {
+        const entry = current[key] ?? createDraft(objectId, revision, rule);
+        if (entry.pending) return current;
+        const value = invalidRuleNumber(field, raw)
+          ? entry.value
+          : { ...entry.value, [field]: Number(raw) };
+        return {
+          ...current,
+          [key]: {
+            ...entry,
+            value,
+            changedFields: changedRuleFields(entry.baseline, value),
+            inputValues: { ...entry.inputValues, [field]: raw },
+            error: "",
+          },
+        };
+      });
+    },
+    [createDraft],
+  );
+  const updateMappings = useCallback(
+    (
+      key: string,
+      objectId: string,
+      revision: number,
+      rule: BehaviorRuleView,
+      state: MappingDraftState,
+    ) => {
+      setDrafts((current) => {
+        const entry = current[key] ?? createDraft(objectId, revision, rule);
+        if (entry.pending) return current;
+        const validation = validateMappingDraft(state);
+        const value = validation.value
+          ? { ...entry.value, mappings: validation.value }
+          : entry.value;
+        return {
+          ...current,
+          [key]: {
+            ...entry,
+            value,
+            mappingDraft: state,
+            mappingError: validation.errors.join("；"),
+            changedFields: changedRuleFields(entry.baseline, value),
+            error: "",
+          },
+        };
+      });
+    },
+    [createDraft],
+  );
+  const discardDraft = useCallback(
+    (key: string) =>
+      setDrafts((current) => {
+        if (current[key]?.pending) return current;
         const next = { ...current };
         delete next[key];
         return next;
-      });
-    } catch (error) {
-      setDrafts((current) => ({
-        ...current,
-        [key]: {
-          ...entry,
-          pending: false,
-          error: error instanceof Error ? error.message : "套用失敗；草稿保留。",
-        },
-      }));
-    }
-  };
+      }),
+    [],
+  );
+  const applyDraft = useCallback(
+    async (key: string) => {
+      const entry = drafts[key];
+      if (!entry || entry.pending) return;
+      setDrafts((current) => ({ ...current, [key]: { ...entry, pending: true, error: "" } }));
+      try {
+        const snapshot = transactionController.getSnapshot();
+        if ((snapshot.projectId ?? snapshot.projectName) !== entry.projectKey)
+          throw new Error("PROJECT_CHANGED：原專案已切換；草稿保留。");
+        const profile = snapshot.behaviors.find((item) => item.objectId === entry.objectId);
+        const rule = profile?.rules.find((item) => item.id === entry.ruleId);
+        if (
+          !profile ||
+          !rule ||
+          profile.profileId !== entry.profileId ||
+          profile.revision !== entry.baseRevision ||
+          snapshot.sceneRevision !== entry.expectedSceneRevision ||
+          profile.documentRevision !== entry.expectedBehaviorRevision ||
+          !sameEditableRule(entry.baseline, rule)
+        )
+          throw new Error("STALE_RULE：原規則已變更或移除；草稿保留，請檢視後明示放棄再重新編輯。");
+        await applyRuleDraft(transactionController, entry.objectId, entry.ruleId, entry);
+        setDrafts((current) => {
+          const next = { ...current };
+          delete next[key];
+          return next;
+        });
+      } catch (error) {
+        setDrafts((current) => ({
+          ...current,
+          [key]: {
+            ...entry,
+            pending: false,
+            error: error instanceof Error ? error.message : "套用失敗；草稿保留。",
+          },
+        }));
+      }
+    },
+    [drafts, transactionController],
+  );
   const currentDrafts = Object.values(drafts).filter((entry) => entry.projectKey === projectKey);
   const currentBindingDrafts = Object.values(bindingDrafts).filter(
     (entry) => entry.projectKey === projectKey,
   );
-  const storeBindingDraft = (key: string, entry: BindingDraftEntry) =>
-    setBindingDrafts((current) => (current[key]?.pending ? current : { ...current, [key]: entry }));
-  const discardBindingDraft = (key: string) =>
-    setBindingDrafts((current) => {
-      if (current[key]?.pending) return current;
-      const next = { ...current };
-      delete next[key];
-      return next;
-    });
-  const submitBindingEntry = async (key: string, entry: BindingDraftEntry) => {
-    if (entry.pending) return;
-    setBindingError("");
-    setBindingDrafts((current) => ({ ...current, [key]: { ...entry, pending: true, error: "" } }));
-    try {
-      await applyBindingDraft(transactionController, entry);
+  const storeBindingDraft = useCallback(
+    (key: string, entry: BindingDraftEntry) =>
+      setBindingDrafts((current) =>
+        current[key]?.pending ? current : { ...current, [key]: entry },
+      ),
+    [],
+  );
+  const discardBindingDraft = useCallback(
+    (key: string) =>
       setBindingDrafts((current) => {
+        if (current[key]?.pending) return current;
         const next = { ...current };
         delete next[key];
         return next;
-      });
-    } catch (error) {
+      }),
+    [],
+  );
+  const submitBindingEntry = useCallback(
+    async (key: string, entry: BindingDraftEntry) => {
+      if (entry.pending) return;
+      setBindingError("");
       setBindingDrafts((current) => ({
         ...current,
-        [key]: {
-          ...entry,
-          pending: false,
-          error: error instanceof Error ? error.message : "物件覆寫套用失敗；草稿保留。",
-        },
+        [key]: { ...entry, pending: true, error: "" },
       }));
-    }
-  };
-  const applyBinding = async (key: string) => {
-    const entry = bindingDrafts[key];
-    if (entry) await submitBindingEntry(key, entry);
-  };
-  const clearBinding = async (key: string, behavior: BehaviorView, rule: BehaviorRuleView) => {
-    try {
-      const entry = createBindingDraft(model, behavior, rule);
-      entry.fields = { enabled: false, gainLinear: false, pitchSemitones: false };
-      await submitBindingEntry(key, entry);
-    } catch (error) {
-      setBindingError(error instanceof Error ? error.message : "無法準備清除覆寫。");
-    }
-  };
+      try {
+        await applyBindingDraft(transactionController, entry);
+        setBindingDrafts((current) => {
+          const next = { ...current };
+          delete next[key];
+          return next;
+        });
+      } catch (error) {
+        setBindingDrafts((current) => ({
+          ...current,
+          [key]: {
+            ...entry,
+            pending: false,
+            error: error instanceof Error ? error.message : "物件覆寫套用失敗；草稿保留。",
+          },
+        }));
+      }
+    },
+    [transactionController],
+  );
+  const applyBinding = useCallback(
+    async (key: string) => {
+      const entry = bindingDrafts[key];
+      if (entry) await submitBindingEntry(key, entry);
+    },
+    [bindingDrafts, submitBindingEntry],
+  );
+  const clearBinding = useCallback(
+    async (key: string, behavior: BehaviorView, rule: BehaviorRuleView) => {
+      try {
+        const entry = createBindingDraft(bindingModel, behavior, rule);
+        entry.fields = { enabled: false, gainLinear: false, pitchSemitones: false };
+        await submitBindingEntry(key, entry);
+      } catch (error) {
+        setBindingError(error instanceof Error ? error.message : "無法準備清除覆寫。");
+      }
+    },
+    [bindingModel, submitBindingEntry],
+  );
   const object = showListener
     ? undefined
     : model.objects.find((entry) => entry.id === model.selectedObjectId);
@@ -713,6 +984,17 @@ export function Inspector({
       label: id,
       dataClass: t("inspector.sourceNotProvided"),
     }));
+  const acousticNoteIds = object
+    ? [
+        object.shape !== "box" ? "acoustic-shape-note-" + object.id : null,
+        object.acousticRole === "dynamicReflector" ? "acoustic-motion-note-" + object.id : null,
+        object.acousticRole === "staticSurface" && object.mode !== "fixed"
+          ? "acoustic-static-note-" + object.id
+          : null,
+      ]
+        .filter(Boolean)
+        .join(" ") || undefined
+    : undefined;
   const materialLabel = (material: { id: string; label: string }) => {
     const demo = demoMaterialLabels[material.id as keyof typeof demoMaterialLabels];
     return demo?.label === material.label ? t(demo.key) : material.label;
@@ -721,7 +1003,9 @@ export function Inspector({
     <aside className="inspector" aria-label={t("inspector.aria")}>
       <header className="panel-header">
         <h2>{t("inspector.title")}</h2>
-        <Badge>{object ? object.shape : "Listener"}</Badge>
+        <Badge>
+          {object ? t(`explorer.primitive.${object.shape}`) : t("inspector.audioListener")}
+        </Badge>
       </header>
       <PreviewInspector model={model} controller={controller} />
       {!!(currentDrafts.length + currentBindingDrafts.length) && (
@@ -806,6 +1090,7 @@ export function Inspector({
           </div>
           <Section
             title={t("inspector.transform")}
+            help={t("inspector.authorPoseHelp")}
             aside={<Badge>{t("inspector.authorSettings")}</Badge>}
           >
             <VectorFields
@@ -816,11 +1101,8 @@ export function Inspector({
                 patch({ type: "patchObject", objectId: object.id, patch: { positionM } })
               }
             />
-            <VectorFields
-              label={t("inspector.dimensions")}
-              value={object.dimensionsM}
-              min={0.01}
-              max={100}
+            <DimensionsFields
+              object={object}
               disabled={!canEdit}
               onCommit={(dimensionsM) =>
                 patch({ type: "patchObject", objectId: object.id, patch: { dimensionsM } })
@@ -837,12 +1119,8 @@ export function Inspector({
                 })
               }
             />
-            <details className="inspector-help">
-              <summary>{t("inspector.moreDetails")}</summary>
-              <p className="micro-copy">{t("inspector.authorPoseHelp")}</p>
-            </details>
           </Section>
-          <Section title={t("inspector.rigidBody")}>
+          <Section title={t("inspector.rigidBody")} help={t("inspector.noGravityHelp")}>
             <label className="select-field">
               <span>{t("inspector.bodyModeLabel")}</span>
               <select
@@ -913,11 +1191,21 @@ export function Inspector({
                 </code>
               </div>
             )}
-            <details className="inspector-help">
-              <summary>{t("inspector.moreDetails")}</summary>
-              <p className="micro-copy">{t("inspector.noGravityHelp")}</p>
-            </details>
           </Section>
+          <TrajectorySection
+            object={object}
+            status={model.trajectoryStatus[object.id]}
+            state={trajectory}
+            dispatch={(action) => controller.dispatch(action)}
+            disabled={!canEdit}
+            onSelectPoint={(index) =>
+              onTrajectoryChange?.((current) =>
+                current.editingObjectId === object.id
+                  ? { ...current, selectedPointIndex: index }
+                  : current,
+              )
+            }
+          />
           <Section
             title={t("inspector.acousticMaterial")}
             aside={
@@ -927,11 +1215,27 @@ export function Inspector({
               </Badge>
             }
           >
+            {object.shape !== "box" && (
+              <p className="micro-copy" id={`acoustic-shape-note-${object.id}`}>
+                {t("inspector.curvedAcousticNote")}
+              </p>
+            )}
+            {object.acousticRole === "dynamicReflector" && (
+              <p className="micro-copy" id={"acoustic-motion-note-" + object.id}>
+                {t("inspector.dynamicReflectorNote")}
+              </p>
+            )}
+            {object.acousticRole === "staticSurface" && object.mode !== "fixed" && (
+              <p className="micro-copy" id={"acoustic-static-note-" + object.id}>
+                {t("inspector.movingStaticSurfaceNote")}
+              </p>
+            )}
             <label className="select-field">
               <span>{t("inspector.surfaceMaterial")}</span>
               <select
                 aria-label={t("inspector.acousticMaterial")}
-                disabled={!canEdit}
+                aria-describedby={acousticNoteIds}
+                disabled={!canEdit || !supportsAcousticShape(object.shape)}
                 value={object.acousticMaterialId}
                 onChange={(event) =>
                   patch({
@@ -951,7 +1255,8 @@ export function Inspector({
             <label className="select-field">
               <span>{t("inspector.acousticRole")}</span>
               <select
-                disabled={!canEdit}
+                aria-describedby={acousticNoteIds}
+                disabled={!canEdit || !supportsAcousticShape(object.shape)}
                 value={object.acousticRole}
                 onChange={(event) =>
                   patch({
@@ -962,7 +1267,9 @@ export function Inspector({
                 }
               >
                 <option value="none">{t("inspector.acousticRole.none")}</option>
-                <option value="staticSurface">{t("inspector.acousticRole.staticSurface")}</option>
+                <option value="staticSurface" disabled={object.mode !== "fixed"}>
+                  {t("inspector.acousticRole.staticSurface")}
+                </option>
                 <option value="dynamicOccluder">
                   {t("inspector.acousticRole.dynamicOccluder")}
                 </option>
@@ -1003,6 +1310,7 @@ export function Inspector({
           </div>
           <Section
             title={t("inspector.receiverPosition")}
+            help={t("inspector.listenerPoseHelp")}
             aside={
               <Badge>
                 {model.listener.attachment === "fpsHead"
@@ -1030,12 +1338,8 @@ export function Inspector({
                 })
               }
             />
-            <details className="inspector-help">
-              <summary>{t("inspector.moreDetails")}</summary>
-              <p className="micro-copy">{t("inspector.listenerPoseHelp")}</p>
-            </details>
           </Section>
-          <Section title={t("inspector.environment")}>
+          <Section title={t("inspector.environment")} help={t("inspector.vacuumHelp")}>
             <div className="readout-line">
               <span>{t("inspector.backend")}</span>
               <code>{model.acoustic.backend}</code>
@@ -1056,7 +1360,10 @@ export function Inspector({
                 }
                 onChange={(event) => {
                   if (event.target.value === "air" || event.target.value === "vacuum")
-                    void controller.dispatch({ type: "setAtmosphere", medium: event.target.value });
+                    void controller.dispatch({
+                      type: "setAtmosphere",
+                      medium: event.target.value,
+                    });
                 }}
               >
                 <option value="" disabled>
@@ -1080,10 +1387,6 @@ export function Inspector({
                 }
               />
             )}
-            <details className="inspector-help">
-              <summary>{t("inspector.moreDetails")}</summary>
-              <p className="micro-copy">{t("inspector.vacuumHelp")}</p>
-            </details>
             <div className="readout-line">
               <span>{t("inspector.speedOfSound")}</span>
               <code>
@@ -1092,17 +1395,43 @@ export function Inspector({
                   : `${n(model.acoustic.speedOfSoundMps, { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false })} m/s`}
               </code>
             </div>
-            <p className="section-copy">{message(model.acoustic.model)}</p>
+            <Badge>{t("help.acousticModel")}</Badge>
+            <HelpTip topic={t("analysis.detail.model")} content={message(model.acoustic.model)} />
             <Badge kind={model.acoustic.state === "ready" ? "success" : "warning"}>
               {t(acousticStateKeys[acousticPathPresentation(model)])}
             </Badge>
           </Section>
           <div className="empty-state">
             <Icon name="target" size={30} />
-            <p>{t("inspector.selectObjectHelp")}</p>
+            <span>{t("help.noSelection")}</span>
+            <HelpTip topic={t("inspector.title")} content={t("inspector.selectObjectHelp")} />
           </div>
         </>
       )}
     </aside>
   );
 }
+
+export const Inspector = memoView(InspectorView, ({ model, showListener, ...props }) => [
+  props,
+  showListener,
+  model.projectId,
+  model.projectName,
+  model.sceneRevision,
+  model.selectedObjectId,
+  showListener ? undefined : model.objects.find((object) => object.id === model.selectedObjectId),
+  model.selectedObjectId === null ? undefined : model.trajectoryStatus[model.selectedObjectId],
+  model.materialOptions ? undefined : model.objects.map((object) => object.acousticMaterialId),
+  model.materialOptions,
+  model.behaviors,
+  model.assets,
+  model.zones,
+  model.recording.state,
+  model.simulationState,
+  model.listener,
+  model.acoustic,
+  model.paths.length,
+  model.preview,
+  model.error,
+  model.monitor.state,
+]);

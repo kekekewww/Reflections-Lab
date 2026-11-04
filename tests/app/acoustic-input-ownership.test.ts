@@ -4,7 +4,16 @@ import { buildAcousticRequests } from "../../src/app/acoustic-input.js";
 import type { AcousticInput } from "../../src/app/acoustic-input.js";
 import type { AcousticMaterial } from "../../src/acoustics/types.js";
 import { createDefaultScene, DEFAULT_MATERIALS } from "../../src/app/defaults.js";
-import type { Vec3 } from "../../src/scene/types.js";
+import type { SceneSpec, Vec3 } from "../../src/scene/types.js";
+
+function ballPose(scene: SceneSpec) {
+  const object = scene.objects.find((entry) => entry.id === "ball")!;
+  return {
+    objectId: object.id,
+    positionM: [...object.positionM] as Vec3,
+    orientationQuaternion: [...object.orientationQuaternion] as [number, number, number, number],
+  };
+}
 
 function fixture(): AcousticInput {
   const scene = createDefaultScene();
@@ -18,7 +27,10 @@ function fixture(): AcousticInput {
   });
   return {
     scene,
-    poses: [{ objectId: "blocker", positionM: [1, 2, 3], orientationQuaternion: [0, 0, 0, 1] }],
+    poses: [
+      { objectId: "blocker", positionM: [1, 2, 3], orientationQuaternion: [0, 0, 0, 1] },
+      ballPose(scene),
+    ],
     sources: [
       { id: "voice.z", objectId: "speaker", positionM: [1, 1, -1] },
       { id: "voice.a", objectId: "ball", positionM: [-1, 1, 0] },
@@ -92,6 +104,7 @@ test("dynamic snapshot rotation and translation are fresh on every call with the
       positionM: [1, 2, 3],
       orientationQuaternion: [0, Math.SQRT1_2, 0, Math.SQRT1_2],
     },
+    ballPose(input.scene),
   ];
   const first = buildAcousticRequests(input)[0]!;
   const firstFace = first.surfaces.find((surface) => surface.id === "blocker.px")!;
@@ -101,6 +114,7 @@ test("dynamic snapshot rotation and translation are fresh on every call with the
   const firstBefore = structuredClone(first);
   input.poses = [
     { objectId: "blocker", positionM: [5, 2, 3], orientationQuaternion: [0, 0, 0, 1] },
+    ballPose(input.scene),
   ];
   input.tick++;
   const second = buildAcousticRequests(input)[0]!;
@@ -114,7 +128,7 @@ test("dynamic snapshot rotation and translation are fresh on every call with the
 
 test("a moving source owner may omit its excluded geometry pose, but another voice cannot", () => {
   const input = fixture();
-  input.poses = [];
+  input.poses = [ballPose(input.scene)];
   input.sources = [{ id: "voice.owner", objectId: "blocker", positionM: [1, 2, 3] }];
   const own = buildAcousticRequests(input);
   assert.equal(own.length, 1);
@@ -132,7 +146,7 @@ test("a moving source owner may omit its excluded geometry pose, but another voi
 test("per-source surface caps count only that owner's actual excluded faces", () => {
   const input = fixture();
   input.sources = [{ id: "voice.floor", objectId: "floor", positionM: [0, 0, 0] }];
-  input.budget = { maxSurfaces: 24 };
+  input.budget = { maxSurfaces: 25 };
   const floor = buildAcousticRequests(input)[0]!;
   assert.equal(floor.surfaces.length, 24);
   assert.equal(
@@ -141,7 +155,7 @@ test("per-source surface caps count only that owner's actual excluded faces", ()
   );
   input.sources = [{ id: "voice.speaker", objectId: "speaker", positionM: [1, 1, -1] }];
   assert.throws(() => buildAcousticRequests(input), { code: "SURFACE_BUDGET" });
-  input.budget = { maxSurfaces: 30 };
+  input.budget = { maxSurfaces: 31 };
   assert.equal(buildAcousticRequests(input)[0]!.surfaces.length, 30);
 });
 

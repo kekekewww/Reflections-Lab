@@ -28,6 +28,7 @@ const reasons: Record<string, MessageKey> = {
   BINDING_DISABLED: "analysis.decision.bindingDisabled",
 };
 const nativeReasons: Record<string, MessageKey> = {
+  RESTART_GAP: "help.restartGap",
   SOURCE_BUDGET: "analysis.native.sourceBudget",
   VOICE_PRIORITY_BUDGET: "analysis.native.voiceBudget",
 };

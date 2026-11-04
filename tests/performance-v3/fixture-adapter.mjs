@@ -72,7 +72,11 @@ export function makeFixtureHost(options = {}) {
     if (options.cancelError) throw options.cancelError;
     return options.cancelValue ?? "native-cancel-value";
   };
-  const window = { requestAnimationFrame: previousRAF, cancelAnimationFrame: previousCancelRAF };
+  const window = {
+    requestAnimationFrame: previousRAF,
+    cancelAnimationFrame: previousCancelRAF,
+    __performanceProfileConfig: { probeMode: options.probeMode ?? "on" },
+  };
   const performance = {
     now: () => ++time,
     mark(name) {

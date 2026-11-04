@@ -70,8 +70,10 @@ function unusedId(stem: string, existing: readonly string[]): string {
   return `${stem}.${suffix}`;
 }
 
-function newRule(ruleId: string, type: string): SoundBehaviorRule {
+function newRule(ruleId: string, type: string, zoneId?: string): SoundBehaviorRule {
   const selectedTrigger = trigger(type);
+  if (selectedTrigger.kind === "discrete" && ["OnEnterZone", "OnExitZone"].includes(type) && zoneId)
+    selectedTrigger.zoneId = zoneId;
   return {
     ruleId,
     enabled: true,
@@ -159,6 +161,7 @@ function sampleGenerator(
 const patchKeys = new Set([
   "id",
   "trigger",
+  "zoneId",
   "enabled",
   "assetId",
   "generator",
@@ -200,6 +203,16 @@ function patchRule(
     rule.emitter = contactTriggers.has(rule.trigger.type)
       ? { attachment: "contact", aggregation: "impulseWeighted" }
       : { attachment: "object", offsetMetres: [0, 0, 0] };
+  }
+  if (rule.trigger.kind === "discrete") {
+    if (["OnEnterZone", "OnExitZone"].includes(rule.trigger.type)) {
+      if ("zoneId" in patch) {
+        if (typeof patch.zoneId !== "string" || !patch.zoneId)
+          fail("ZONE_ID_REQUIRED", "Zone trigger requires an explicit region ID");
+        rule.trigger.zoneId = patch.zoneId;
+      }
+    } else if ("zoneId" in patch && patch.zoneId !== undefined)
+      fail("ZONE_TRIGGER_MISMATCH", "Only zone triggers accept a zone ID");
   }
   for (const key of [
     "enabled",
@@ -402,6 +415,7 @@ export function editBehaviors(
             profile.rules.map((entry) => entry.ruleId),
           ),
           action.trigger,
+          action.zoneId,
         ),
       );
       break;

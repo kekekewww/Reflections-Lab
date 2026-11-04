@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "USER_AUTHORIZED_FULL_PRODUCT_UI_PARAMETER_AUDIT",
+  "recordedAt": "2026-11-02T06:47:04.079Z",
+  "userFacingDate": "2026-11-02",
+  "language": "zh-TW",
+  "originalRequest": "做完所有驗證之後，實際操作，用各種可能的方式點擊介面中所有參數，確保皆可用，不可用記錄並思考如何通過及實作。",
+  "authority": "Direct user instruction relayed by root in the active chat; scope expansion after six-core basic work",
+  "scope": "All existing product UI, not only six new core tabs; actual browser pointer/keyboard, valid/invalid/bounds, state/persistence/undo, defect repair",
+  "baselineCommit": "19db9f966d0c34b266243fb1c90a961feb3dcdd5",
+  "originalCoreEvidenceRetained": true,
+  "priorBasicHumanConfirmationRetained": true,
+  "mainClosure": "DEFERRED_UNTIL_EXPANDED_AUDIT",
+  "nativeInput": {
+    "status": "APP_APPROVAL_TIMEOUT_NOT_COMPLETED",
+    "brave": "NOT_VERIFIED",
+    "fallback": "Real browser tools and production DOM; method/browser boundaries explicit"
+  },
+  "lanes": {
+    "scene": "docs/14-core-pipeline/stages/11-ui-parameters/scene",
+    "behavior": "docs/14-core-pipeline/stages/11-ui-parameters/behavior",
+    "interaction": "docs/14-core-pipeline/stages/11-ui-parameters/interaction",
+    "pipeline": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline",
+    "monitor": "docs/14-core-pipeline/stages/11-ui-parameters/monitor"
+  },
+  "inventory": "docs/14-core-pipeline/stages/11-ui-parameters/INVENTORY.json",
+  "initialFindings": [
+    {
+      "id": "UI-AUDIT-MONITOR-GAIN-01",
+      "authority": "Root actual UI report",
+      "status": "CONFIRMED_FAIL_REPAIR_AUTHORIZED",
+      "observation": "Monitor gain is operable before AudioEngine enable but optional engine call silently does nothing",
+      "authorizedRepair": "Store desired runtime prefs while preserving default mute; actual browser retest required"
+    },
+    {
+      "id": "UI-AUDIT-MONITOR-MODE-01",
+      "authority": "Root suspicion, not confirmed",
+      "status": "SUSPECTED_NOT_VERIFIED",
+      "observation": "Raw/Sim may have the same pre-enable no-op; verify before classifying"
+    }
+  ],
+  "limits": [
+    "No unsupported feature is falsely enabled to manufacture coverage.",
+    "Normal100% remains the display requirement; no native200% gate added.",
+    "No new paid Meta/network budget, push, deployment or destructive cleanup inferred.",
+    "Actual browser interaction is separate from native Brave/human/hearing/science/performance acceptance.",
+    "Original six-core/basic-human evidence is not retroactively rewritten as failed."
+  ]
+}

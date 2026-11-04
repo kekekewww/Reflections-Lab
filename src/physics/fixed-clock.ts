@@ -88,6 +88,37 @@ export class FixedClock {
     this.suspended = true;
   }
 
+  /** Predict interactive discard before observers emit audio in this advance. */
+  previewDroppedWallTime(wallDeltaSeconds: number): number {
+    if (
+      this.suspended ||
+      this.mode !== "interactive" ||
+      !Number.isFinite(wallDeltaSeconds) ||
+      wallDeltaSeconds < 0
+    )
+      return 0;
+    const steps = Math.floor(
+      (this.accumulatedSeconds + wallDeltaSeconds + this.fixedDtSeconds * 1e-10) /
+        this.fixedDtSeconds,
+    );
+    return Math.max(0, steps - this.maxCatchUpSteps) * this.fixedDtSeconds;
+  }
+
+  /**
+   * One explicit recording step, independent of admitted wall time. Pending wall
+   * time remains queued for a later advance(); no debt or discard is rewritten.
+   */
+  advanceControlledStep(step: () => void): FixedClockAdvance {
+    if (typeof step !== "function") throw new TypeError("A fixed-step callback is required");
+    if (this.suspended) return this.result(0, 0, false);
+    if (this.currentMode !== "recording") throw new Error("RECORDING_MODE_REQUIRED");
+    if (this.currentTick >= Number.MAX_SAFE_INTEGER)
+      throw new RangeError("Fixed-clock time exceeds the safely representable range");
+    step();
+    this.currentTick += 1;
+    return this.result(1, 0, false);
+  }
+
   advance(wallDeltaSeconds: number, step: () => void): FixedClockAdvance {
     if (!Number.isFinite(wallDeltaSeconds) || wallDeltaSeconds < 0) {
       throw new RangeError("wallDeltaSeconds must be finite and nonnegative");

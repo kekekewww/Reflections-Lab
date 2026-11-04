@@ -2,6 +2,7 @@ import type { SoundBehaviorDocument } from "../../schemas/sound-behavior/types.j
 import type { ProjectEditorMetadata } from "../persistence/types.js";
 import type { SceneSpec } from "../scene/types.js";
 import type { BehaviorRuleView, BehaviorView, EventView, ObjectView } from "../ui/contracts.js";
+import { audibleObjectIds } from "./audible-objects.js";
 
 type AuthoringRuleView = Omit<
   BehaviorRuleView,
@@ -31,6 +32,8 @@ function immutableCopy<T>(value: T): T {
 export class ViewProjection {
   private objectScene: SceneSpec | undefined;
   private objectMetadata: ProjectEditorMetadata | undefined;
+  private objectBehaviors: SoundBehaviorDocument | undefined;
+  private objectAudibleKey: string | undefined;
   private objectViews: ObjectView[] = [];
   private behaviorDocument: SoundBehaviorDocument | undefined;
   private behaviorViews: AuthoringBehaviorView[] = [];
@@ -50,18 +53,30 @@ export class ViewProjection {
     return views;
   }
 
-  objects(scene: SceneSpec, metadata: ProjectEditorMetadata | undefined): ObjectView[] {
-    if (scene !== this.objectScene || metadata !== this.objectMetadata) {
+  objects(
+    scene: SceneSpec,
+    metadata: ProjectEditorMetadata | undefined,
+    behaviors: SoundBehaviorDocument,
+  ): ObjectView[] {
+    const unchanged = scene === this.objectScene && metadata === this.objectMetadata;
+    if (unchanged && behaviors === this.objectBehaviors) return this.objectViews;
+    this.objectBehaviors = behaviors;
+    const audible = audibleObjectIds(scene, behaviors);
+    // Behaviour edits that leave audibility unchanged keep the same object views.
+    const audibleKey = [...audible].sort().join("\n");
+    if (!unchanged || audibleKey !== this.objectAudibleKey) {
       const views = immutableCopy(
         scene.objects.map((object) => ({
           ...object,
           name:
             metadata?.objectLabels.find((entry) => entry.objectId === object.id)?.label ??
             object.id,
+          audible: audible.has(object.id),
         })),
       );
       this.objectScene = scene;
       this.objectMetadata = metadata;
+      this.objectAudibleKey = audibleKey;
       this.objectViews = views;
     }
     return this.objectViews;
@@ -83,6 +98,9 @@ export class ViewProjection {
             rules: profile.rules.map((rule) => ({
               id: rule.ruleId,
               trigger: rule.trigger.type,
+              ...(rule.trigger.kind === "discrete" && rule.trigger.zoneId
+                ? { zoneId: rule.trigger.zoneId }
+                : {}),
               enabled:
                 binding.enabled &&
                 (binding.overrides.find((override) => override.ruleId === rule.ruleId)?.enabled ??

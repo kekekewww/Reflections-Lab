@@ -1,17 +1,30 @@
-<!-- english-source: {"path":"docs/05-ux/WORKSPACE_ARCHITECTURE.md","sha256":"0bc02011aab1e9ec009b53d976e08343b5c2507cea48bf798c938e8c8309e247","translated_at":"2026-10-27T03:45:00Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/05-ux/WORKSPACE_ARCHITECTURE.md","sha256":"c50a261960140fae29fea2f365866c57906ca25ed141813100837ee61b10401e","translated_at":"2026-11-03T02:03:57.084Z","executor":"Codex","model_id":null,"links":"english-relative","status":"current"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/05-ux/WORKSPACE_ARCHITECTURE.md`](../../05-ux/WORKSPACE_ARCHITECTURE.md). Source SHA-256: `0bc02011aab1e9ec009b53d976e08343b5c2507cea48bf798c938e8c8309e247`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/05-ux/WORKSPACE_ARCHITECTURE.md`](../../05-ux/WORKSPACE_ARCHITECTURE.md). Source SHA-256: `c50a261960140fae29fea2f365866c57906ca25ed141813100837ee61b10401e`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="工作區與狀態架構"></a>
 # Workspace and State Architecture
 
-Review date: 2026-10-26 (Asia/Taipei). Status: **Research complete / design proposal; the production UI has not yet been implemented**. The data types in this document are draft interface contracts that must be merged with the formal Domain Schema; they are not working APIs.
+<!-- english-original-anchor --> <a id="2026-11-03-最新需求頂列改為四種可切換監測"></a>
+## Latest Requirement, 2026-11-03: Four Switchable Top-Bar Monitoring Views
+
+Following the [user's original request and scope record](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/d6ca447d6ad71a49a3e081110a5702b6975ecd3a) (SHA-256: `ef5ec791276d668aec3f29877cc77d532d5452e2ebcf614af1d8f9f3efc4b5f2`) and [Task0033](../../../knowledge/tasks/RLAB-TASK-0033.json), remove the topmost three-step `Build scene / Interactive experiment / Inspect & compare` Workspace navigation and replace it with persistent, switchable track-level, spectrum, waveform, and processing-load monitoring views. This is a confirmed requirement update; this section does not claim implementation or successful real-browser, digital-audio, or performance acceptance.
+
+This section supersedes only the **entry points and presentation of the three-step top-bar navigation**. The original `scene / simulation / analysis` Workspace data, panel layouts, observer cameras, saved preferences, and existing compatibility entry points below remain. Removing the top-bar buttons does not delete these states or change the scene/experiment model. The former `Project / save status — Scene | Simulation | Analysis — Run/Pause/Reset — AI` top bar is retained here as a superseded historical specification.
+
+The top-bar monitoring mode is a local view preference, orthogonal to internal Workspace, interaction mode, simulation, recording, and Raw/Simulated monitoring routing. Switching itself must not call Run/Pause/Resume/Reset/Record, reset runId/tick, or change selection or drafts. Simulation continues in its existing Running/Paused state, without recreating AudioContext or restarting sources. Existing focus/pointer-lock safety guards remain independently owned by input arbitration; they must not be presented as experiment commands caused by monitoring-mode selection. Master Mute, monitoring volume, and Transport must remain persistently reachable.
+
+Monitoring reads only real, bounded data. Track levels, spectrum, and waveform identify the source, units, and observation window; not-ready, muted/true-zero, and unavailable states are distinct. Load labels reflect the actual measurement scope. Acoustic solver time in a Worker must not be called main-thread time; control, render, Worker, native DSP, and whole-process CPU must remain distinct. Unmeasured CPU/DSP fields display unavailable rather than zero or an inferred percentage. Analysers activate lazily for the visible mode; switching and closing clean up only the component's own observation resources. See the [TopMonitor component](COMPONENT_SPEC.md#%E9%A0%82%E5%88%97%E7%9B%A3%E6%B8%AC-topmonitor2026-11-03-%E9%9C%80%E6%B1%82) for the detailed data contract.
+
+Original numeric tolerances, audio budgets, formal performance workloads, and other acceptance gates remain unchanged. The current status of each condition comes from source-bound evidence in [Task0033](../../../knowledge/tasks/RLAB-TASK-0033.json); this page does not duplicate acceptance flags. Real Playwright browser validation and Computer Use results are recorded separately. A native URL-policy block neither replaces nor prevents executable Playwright tests.
+
+Historical specification snapshot: 2026-10-26 (Asia/Taipei); the top-bar entry points are superseded by the 2026-11-03 requirement above, while other compatibility contracts remain. Status at that time: **Research complete / design proposal; the production UI has not yet been implemented**. The data types in this document are draft interface contracts that must be merged with the formal Domain Schema; they are not working APIs.
 
 <!-- english-original-anchor --> <a id="目標與使用者"></a>
 ## Goals and Users
 
-The primary scenario is a judge or beginner building a small room, moving a continuously sounding sphere, throwing it, and comparing materials. The secondary scenario is a user with an acoustics background inspecting paths and results. The three Workspaces follow "create → interact → inspect"; Workspace names do not imply whether computation is running.
+The primary scenario is a judge or beginner building a small room, moving a continuously sounding sphere, throwing it, and comparing materials. The secondary scenario is a user with an acoustics background inspecting paths and results. The original 2026-10-26 specification used three Workspaces for "create → interact → inspect." From 2026-11-03, these no longer serve as top-bar navigation; they remain internal layouts and compatibility states. Workspace names do not imply whether computation is running.
 
 User requirements come directly from Phase F. For competitor principles and review limitations, see [COMPETITIVE_UX_RESEARCH.md](COMPETITIVE_UX_RESEARCH.md). All choices below are Reflection Lab design decisions, not performance or usability outcomes proven by competing products.
 
@@ -20,14 +33,15 @@ User requirements come directly from Phase F. For competitor principles and revi
 
 | Dimension | Values | Data owned | Side effects it must not cause |
 | --- | --- | --- | --- |
-| `workspace` | `scene / simulation / analysis` | Panel layout, previous widths, chart tabs | No physics reset, source clearing, or re-recording |
+| `workspace` (internal compatibility) | `scene / simulation / analysis` | Panel layout, previous widths, chart tabs | No physics reset, source clearing, or re-recording |
+| Top-bar monitoring view (local view state) | Track levels / spectrum / waveform / processing load | Display mode, read-only observations | No Workspace switching, Transport/Record actions, audio reconstruction, or experiment changes |
 | `simulationState` | `ready / running / paused / error` | `runId`, tick, pause reason, backend state | Does not determine whether panels are open |
 | `interactionMode` | `editor / fps-interact / fps-build` | Camera controls, grab/place substates | Does not start audio or simulation by itself |
 | `inputOwner` | `ui / viewport / modal` | Focus, pointer lock, input routing | Must not send the same key to both UI and physics |
 | `recordingState` | `idle / recording / finalized` | experiment ID, trace, gaps | Does not mean the audio device is outputting sound |
 | `monitorState` | `blocked / muted / audible / error` | gain, Raw/Simulated, device/context state | Does not stop recording or change computed values |
 
-Entering another Workspace changes only the first row. Leaving `fps-interact` or `fps-build` must first release input ownership. If an object is held, pause safely at the current tick, retain the grab state, and show "Holding; continues after resume"; do not throw it silently. A safety pause required for Workspace switching is an **explicit, recorded interaction guard**, not a Reset inherent to the Workspace. When no FPS interaction is taking place, users can switch directly to Analysis while Running.
+Entering another Workspace through a compatibility entry point changes only the `workspace` dimension. The four top-bar modes do not enter another Workspace or inherit its switching guard. Leaving `fps-interact` or `fps-build` must first release input ownership. If an object is held, pause safely at the current tick, retain the grab state, and show "Holding; continues after resume"; do not throw it silently. A safety pause required for Workspace switching is an **explicit, recorded interaction guard**, not a Reset inherent to the Workspace. When no FPS interaction is taking place, users can switch directly to Analysis while Running.
 
 ```mermaid
 stateDiagram-v2
@@ -55,7 +69,7 @@ The UI displays "Paused; tails faded out," and recording adds pause/epoch/tail-c
 ## Layout and Retained Content
 
 ```text
-┌ Project／儲存狀態 ─ Scene | Simulation | Analysis ─ Run/Pause/Reset ─ AI ┐
+┌ Project／儲存狀態 ─ 四模式監測 ─ Run/Pause/Reset ─ AI ──────────────────┐
 │ Scene Explorer / Library │                         │ Context Inspector │
 │                         │       3D Viewport       │                   │
 │                         │ HUD／選取／求解器狀態     │                   │
@@ -65,7 +79,9 @@ The UI displays "Paused; tails faded out," and recording adds pause/epoch/tail-c
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-| Workspace | Left | Center | Right | Bottom | Default interaction |
+The following table retains internal Workspace/compatibility layouts; it does not require restoring the removed three-step top-bar navigation.
+
+| Internal Workspace | Left | Center | Right | Bottom | Default interaction |
 | --- | --- | --- | --- | --- | --- |
 | Scene | Scene Explorer, Object Library | Orbit camera, gizmo, grid, placement checks | Object/material/physics/source | Collapsible event log, Transport | `editor`, free view; the FPS button can switch modes |
 | Simulation | Collapsed by default; Library can be opened | Clean FPS/free observation, explicit "Enter first person" | Collapsed by default; summary shown when needed | Transport, recording, recent collisions | Remains `editor` by default; request lock only after clicking enter |
@@ -138,12 +154,16 @@ Autosave Document, Workspace preferences, and key bindings; runtime/results requ
 <!-- english-original-anchor --> <a id="驗收尚未執行"></a>
 ## Acceptance (Not Yet Executed)
 
-1. Switch Scene→Analysis→Simulation while Running; runId/tick continue without Reset. When an object is held, pause according to the safety guard and show the reason.
+1. Through the retained internal compatibility entry points, switch Scene→Analysis→Simulation while Running; runId/tick continue without Reset. When an object is held, pause according to the safety guard and show the reason.
 2. Moving the observer camera in Analysis does not change the Listener; only an explicit Listener move creates a command.
 3. After adding a wall, old acoustic results show as stale; do not display update completion before backend ack.
 4. A backend supporting only IR does not expose selectable geometric paths; missing numeric values are not 0.
 5. Undo for scene commands and Reset for simulation are clearly separate; an AI command batch can be undone once as a whole.
 6. Recording preserves IDs, events, and pause reasons across Workspaces; device focus loss or pointer-lock loss does not automatically restore input.
+7. The top bar no longer offers three-step Workspace navigation. All four monitoring modes support mouse and keyboard selection, with names, current selection, and readable data states, without obscuring Mute/Transport.
+8. Actual tests must demonstrate that run/tick, recording IDs/events, selection, drafts, and audio-source continuity are retained during monitoring-mode switching. Selecting a mode does not call experiment commands or reconstruct audio.
+9. Check levels/spectrum/waveform against fixed real signals. Load labels identify their actual Worker/control/render sources; missing values are not zero, and neither whole-system CPU nor native DSP CPU is fabricated.
+10. Provide evidence for lazy analyser activation, bounded sampling, and cleanup. Playwright product validation, Computer Use, digital audio, and formal performance results are separate; unexecuted items remain NOT RUN.
 
 <!-- english-original-anchor --> <a id="平台依據"></a>
 ## Platform References

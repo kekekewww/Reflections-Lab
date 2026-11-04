@@ -119,28 +119,31 @@ for (const [name, gains, centers] of [
     );
     assert.equal(f.context.uploads.length, 1, "unchanged requested IR must not be reuploaded");
     assert.equal(f.route.convolvers[targetBank(f.route)].buffer, first);
-    assert.equal(param(f.route.delay.delayTime).automation.length - delayEvents, 12);
-    assert.equal(param(f.route.panner.positionX).automation.length - positionEvents, 12);
+    assert.equal(param(f.route.delay.delayTime).automation.length - delayEvents, 0);
+    assert.equal(param(f.route.panner.positionX).automation.length - positionEvents, 0);
     const last = param(f.route.gain.gain).automation.at(-1)!;
     assert.equal(last.method, "linearRampToValueAtTime");
     assert.equal(last.value, Math.max(...gains) * 16);
     assert.equal(last.time, 0.4 + 0.02);
   });
 
-test("reused IR still accepts the original20ms scale ramp and gates in-progress changes", () => {
+test("reused IR accepts each scalar target independently of the spectral transition gate", () => {
   const f = fixture();
   update(
     f,
     0.1,
     responseA.map((value) => value * 2),
   );
-  const accepted = [...param(f.route.gain.gain).automation];
   update(
     f,
     0.11,
     responseA.map((value) => value * 4),
   );
-  assert.deepEqual(param(f.route.gain.gain).automation, accepted);
+  assert.deepEqual(param(f.route.gain.gain).automation.at(-1), {
+    method: "linearRampToValueAtTime",
+    value: 4,
+    time: 0.11 + 0.02,
+  });
   update(
     f,
     0.121,
@@ -150,7 +153,7 @@ test("reused IR still accepts the original20ms scale ramp and gates in-progress 
   assert.deepEqual(param(f.route.gain.gain).automation.at(-1), {
     method: "linearRampToValueAtTime",
     value: 4,
-    time: 0.121 + 0.02,
+    time: 0.11 + 0.02,
   });
 });
 

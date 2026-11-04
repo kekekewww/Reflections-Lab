@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "MEMORY_READ_REAL_UI_CONTROLLED_CLOCK_REGRESSION",
+  "checkedAt": "2026-11-02T11:03:11.927Z",
+  "status": "FIXED_WITH_REAL_RETEST",
+  "sourceCommit": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+  "entry": "index-DO7iDxDy.js",
+  "entrySha256": "5c75259d334399afeab1c53a5d32e0e7a3b4067f862b245836fdd542b96e7819",
+  "receipt": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-9fcf3f0-02/motion-recording-and-replay-authoring-dependencies/receipt.json",
+    "sha256": "a00000e7b86e00c637ea524e74f8eeb56017a9dfdd142c53754027e344cc6579",
+    "status": "PASS",
+    "pageErrors": [],
+    "apiRequests": []
+  },
+  "process": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-9fcf3f0-02-process.json",
+    "sha256": "6ba1b9ae2c065d80a4927ffffac3b77a8fea646311bf32500f056d6fc3d7a0bb",
+    "exitCode": 0,
+    "productSourceModified": false
+  },
+  "downloads": [
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-9fcf3f0-02/sealed-overload-prefix-recording.1b4960c7-d0d4-4fda.capture.1.recording.json",
+      "sha256": "8d5996d711b391813355af444bc454b8a6a26405e12292990c1ab1c1c2c94b79",
+      "matches": true,
+      "runId": "recording.1b4960c7-d0d4-4fda.capture.1",
+      "status": "captured",
+      "frameCount": 5,
+      "startTick": 1,
+      "endTick": 5,
+      "actualFrames": 5,
+      "consecutive": true,
+      "artifactSha256Matches": true
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-9fcf3f0-02/controlled-after-overload-recording.86fa73bc-d835-4ab5.capture.2.recording.json",
+      "sha256": "dd4be565f195fafbd54cb882feb47b80f5d23425d9e25a8b0b8818fc2a96ada6",
+      "matches": true,
+      "runId": "recording.86fa73bc-d835-4ab5.capture.2",
+      "status": "captured",
+      "frameCount": 180,
+      "startTick": 6,
+      "endTick": 185,
+      "actualFrames": 180,
+      "consecutive": true,
+      "artifactSha256Matches": true
+    }
+  ],
+  "steps": [
+    {
+      "kind": "natural-overload-precondition",
+      "observed": true,
+      "guardLines": [
+        "錄製已暫停並保留固定步欠帳；可繼續逐批處理，或明確停止並封存目前連續資料。",
+        "固定步負載超限，已暫停；未丟棄錄製 tick",
+        "固定步負載超限，已暫停；未丟棄錄製 tick"
+      ],
+      "meaning": "Real safety/load limit, not performance-health evidence."
+    },
+    {
+      "kind": "recording-prefix",
+      "tick": "tick 5",
+      "notice": "繼續運算\n重設\n已暫停\n0.08 s\ntick 5\n● 記錄中\n場景\n檢查器",
+      "method": "Respect explicit fixed-step overload pause; stop and retain the continuous prefix."
+    },
+    {
+      "kind": "bounded-public-capture",
+      "method": "Audio export Capture 3 seconds",
+      "observedSliderMaxS": 2.9833333333333334,
+      "verifiedFrameCount": 180,
+      "verifiedConsecutiveTicks": true,
+      "sealedPrefixRunId": "recording.1b4960c7-d0d4-4fda.capture.1",
+      "controlledRunId": "recording.86fa73bc-d835-4ab5.capture.2",
+      "purpose": "Public UI exact180-frame replay source after real natural overload; does not relax protection or claim performance health."
+    }
+  ],
+  "independentNodeReview": {
+    "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/independent-review.json",
+    "sha256": "5805e812e725796a0c13fab2ca07a759ae5b325845be1cb1b8454217a4bbf7e6",
+    "scope": "9owner-authoredfocusedtests independentlyexecuted; additionalreviewer-authoredfractiondebt/priorDiscardprobePASS"
+  },
+  "limits": [
+    "ExistingpublicDOM/downloadreceiptsreadandJSONparsed; writerdidnotrunnewbrowser.",
+    "Naturaloverload remainsa real safety/performancebound; controlledstepcorrectnessisnotperformancehealth.",
+    "Original49productFAIL,firstnew9fcstatusoracleharnessFAILandallpreimagespreserved.",
+    "OnlyaffectedMotioncase rerunat9fcf; otherfiveMotioncasesremainfixed49receipts.",
+    "Nativeappmethod/hearing/600s/fullV1gatesnotproven; remainingpipeline11casespending."
+  ]
+}

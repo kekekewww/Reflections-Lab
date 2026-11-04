@@ -1,0 +1,104 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-008",
+  "title": "研究無損chunk encode／storage及seal copy所有權",
+  "description": "append、seal、prepared save及replay有多份表示；transfer不等於消除main copy/parse。長take受現有caps限制。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-002"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "純copy優化保留canonical artifact/hash/schema；若chunk持久格式改變，先交compat/migration正負fixture、版本與rollback方案才可採納。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "accepted/processed/persisted/published水位、全tick連續、bounded容量及transaction completion可驗；失敗標interrupted/incomplete且不刪舊有效成果。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "量capture→seal→save→replay峰值與主緒成本；store caps與實際RAM/磁碟估計分開，原600秒FAIL保留。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/experiments/recorder.ts",
+    "src/experiments/recording-worker-client.ts",
+    "src/persistence/blob-store.ts",
+    "src/app/replay-audio.ts",
+    "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.071Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "append、seal、prepared save及replay有多份表示；transfer不等於消除main copy/parse。長take受現有caps限制。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+      "locator": "REC-01～03",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "00cf7cbe657eb06d56d4c491ef6578d7dc0ffd39daa7414d828e4facd6ad10fa"
+    },
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "locator": "MEM-01／02／05",
+      "classification": "ANALYTICAL; NOT MEASURED peaks",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723"
+    }
+  ],
+  "affected_modules": [
+    "src/experiments/recorder.ts",
+    "src/experiments/recording-worker-client.ts",
+    "src/persistence/blob-store.ts",
+    "src/app/replay-audio.ts"
+  ],
+  "proposed_solution": "先量stage/backing ownership並去可證冗餘copy；候選lossless encode/persist chunks具有限bytes/slots與watermarks，先存內容後發布manifest；若持久格式/hash改變另設明確migration gate。",
+  "alternatives": [
+    "維持canonical整段artifact，僅縮短copy生命期。",
+    "以worker encode但保留原完整驗證。",
+    "OPFS僅在IDB瓶頸與恢復需求證實後另選。"
+  ],
+  "expected_benefit": "可能降低封存峰值與主緒stop時間；不能保證任意長錄製或斷電零遺失。",
+  "complexity": "高；quota/crash/commit／相容性與重播owners。",
+  "performance_impact": "每stage峰值、bytes/frame、bytes/sim-second、in-flight pool、drain時間及wall/sim時間分報。",
+  "audio_quality_impact": "無損保留全部ticks/events/cursors與raw聲學證據；不可為memory budget省略內容。",
+  "latency_impact": "保存ack與Captured分開；backpressure可暫停，不覆寫trace。",
+  "compatibility_regression_risk": "IDB/OPFS無跨API原子commit；chunk hash不等於現有canonical artifact hash。",
+  "benchmark_plan": "小／最大合法frame、上限trace、seal/save/load/replay/A-B重疊、quota不足、close/cancel/worker crash及恢復；原格式往返／hash reference。",
+  "rollback_plan": "停止producer，固定最後完整tick，drain或保留可辨識staging；停用chunk backend並回canonical整段路徑，保留新舊格式讀取及所有已commit內容。",
+  "priority_rationale": "緊接002處理不同責任；收益可能大但migration風險高，先做不改格式的copy縮減。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Storage/OPFS/durability APIs differ and require feature checks.",
+  "regression_risk": "Chunk publication can lose complete artifacts or change hashes; keep atomic verified manifest.",
+  "candidate_commit": null
+}

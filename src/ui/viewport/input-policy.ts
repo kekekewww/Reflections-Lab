@@ -46,3 +46,14 @@ export function isTypingElement(element: Element | null): boolean {
     "input, textarea, select, button, dialog, [role='dialog'], [contenteditable]:not([contenteditable='false'])",
   );
 }
+
+/**
+ * Text entry owns the keyboard. Unlike isTypingElement, buttons, toggles and
+ * sliders are not included: the no-lock alternative controls are buttons.
+ */
+export function isTextEntryElement(element: Element | null): boolean {
+  if (!element) return false;
+  return !!element.closest(
+    "input:not([type='button']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='submit']):not([type='reset']), textarea, select, dialog, [role='dialog'], [contenteditable]:not([contenteditable='false'])",
+  );
+}

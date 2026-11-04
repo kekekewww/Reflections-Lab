@@ -1,0 +1,27 @@
+# 曲面／動態反射已合入：有限模型與驗證界線
+
+日期：2026-11-02。Task0030來源 `7bb4883ab26df43f58c7bdebdce5365e3dd669d3` 已合入 `a06c96e44e878dd7cfd488867cd065021aa736c5`，其後gizmo final candidate為 `b4bacf6d51f8b47ab1908cda3c7e8f28ddd1590a`。完整root程式品質、最後browser與WAV仍等其實際收據；不是整體V1／裝置／性能／Meta live完成。
+
+## 已實作的有限能力
+
+[正式模型契約](acoustic-geometry/MODEL_CONTRACT.md)描述解析sphere/capsule閉體遮擋、有界一階鏡面位置與dynamicReflector當次真pose，Inspector角色/材質不僅假enable。球每候選最多48次二分、膠囊最多144；moving staticSurface仍保持遮擋而非暗升dynamicReflector。pressure magnitude仍為有限ray-path 1/r與既有材料/空氣近似，未加入curvature divergence/focusing/caustics、繞射、低頻全波、retarded-time或moving-boundary Doppler。
+
+幾何共同原maxSurfaces=256不升高。原105-object fixture加入曲面後289項是真budget FAIL；extended模型只將不反射的dynamicOccluder boxes改解析OBB後124項可接受、123明確拒絕，球/膠囊不刪、reflecting boxes仍保六真平面。原fixture/reference/tolerance保持。
+
+Scene-wide model pin、Worker回覆backend/path-prefix身分、unconditional caller emitterGeometryPolicy與三態emitterObjectId分開：undefined沿legacy owner、null detached不排遠端owner、string明示實體且需有效pose。Zone helper先合入，root source-only審查b4確認四caller與完整builder接線、RecordingProcessor同時保Zone registry與新policy gates；該審查沒有新增執行測試，不等於root全PASS。
+
+## 原始分項結果，不相加
+
+[REPORT](acoustic-geometry/REPORT.md)與[verification](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/19c5744fc259e2a177d9c9b5c8cb81d2f8bb0a4c)保存：focused171/171；舊analytic17/17；獨立reference9＋kernel/OBB15為24；fault contract13；純box/policy10；build/lint/format0。各組重疊，不加總。獨立review作者曾實作math，故明示隔離整合review而非完全獨立作者；另外九個reference由其他代理用預指定答案/value-only方法建立。
+
+原錯backendVersion回覆被接受是真finding，修後相同fault回覆明確ACOUSTIC_REPLY_IDENTITY、completed0/failed1/transport terminated；原/修後raw都留。[metadata review](acoustic-geometry/evidence/final-metadata-review.md)與[math review](acoustic-geometry/review.md)各自scope分列，不把故障注入當真browser。
+
+擴大npm test仍為650PASS/12sparse歷史artifact ENOENT、exit1；初fullruntime為PARTIAL/owned process停止，均不改PASS。Root完整checkout另跑quality，原fullcheck在Wiki7metadata錯誤exit1、補程式type/eslint0後format1及後續runtime/build/license分開保留，不能拼成單次npmcheck0。
+
+## 獨立記憶讀核與來源
+
+[讀核JSON](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/f4319fba1b61aec937fde6ed87ecc03e61123542)確認原31 working-source pins全部與後來7bb Git blobs吻合，實際讀8個raw命令輸出及171/17/650+12/PARTIAL結果；原receipt observedHEAD=f6只是當時基底，不冒稱包含新source。正式Ledger原sources/claims全部逐筆保持，僅82→88 sources、74→79 claims新增；CG-REF001–005與六來源是文獻索引／主張條件，並非量測。
+
+V0/V1只限指定契約/數學reference；V2僅FakeAudioContext/transport，本分支未跑真browser PCM；V3外部solver/全波、V4正式裝置deadline/完整性能、V5真人聽測/校準RIR/SPL NOT RUN。歷史review末bullet對V層級名稱有筆誤，保留原文/原hash，以正式ACOUSTIC_VALIDATION與MODEL_CONTRACT的層級為準；沒有因此改任何測試結果或提升驗證。
+
+Task0030幾何/動態pose/有限budget基本條件AC02..04有直接證據；實際productionDOM材質/角色/動態/capture/replay/export、最後current checks、inventory/crosswalk與英文/Claude交接仍待。Claude獨立後驗證及新功能真人觀察屬下一階段，不要求已執行才完成Codex本次有限實作/基本驗證任務。原R18/R21基本人工確認不重設為未完成。

@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "owner": "/root/pipeline_ui/zones_parameter_audit",
+  "status": "SIX_DISTINCT_CASES_PASS_SCOPED_METHODS_WITH_RETAINED_FAILURES",
+  "browser": {
+    "executed": true,
+    "launches": 4,
+    "leaseRequiredEnv": "PIPELINE_ZONES_BROWSER_LEASE=granted"
+  },
+  "method": "Only UI pointer/keyboard/upload/download; evaluate reads DOM. No HostInternal/runtime bridge/model calls.",
+  "sourceContracts": [
+    "fa4c3142ba56fa420608b3b1e4a87cc6143b322d",
+    "d35112fca69081499b1ada098d86f69d5b2fbbee",
+    "12786c74e4bc52e378f49f7b21da7987e768562c"
+  ],
+  "canonicalInventory": "docs/14-core-pipeline/stages/11-ui-parameters/INVENTORY.json",
+  "controls": [
+    {
+      "id": "dock.tab.zones",
+      "kind": "tab",
+      "methods": [
+        "pointer",
+        "Home",
+        "End",
+        "ArrowLeft",
+        "ArrowRight"
+      ],
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "dependency": "Eight tabs after Zones integration; zones suffix",
+      "semanticFamilyIds": [
+        "dock.tab.zones"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.add",
+      "kind": "button",
+      "methods": [
+        "pointer"
+      ],
+      "cases": [
+        "01-authoring-bounds",
+        "03-import-rejections",
+        "06-disabled-anchor-availability"
+      ],
+      "disabled": "running/noneditor/recording/replaying/pending/existing draft/count >=16",
+      "semanticFamilyIds": [
+        "zone.add"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/03-import-rejections-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.enabled.{zoneId}",
+      "kind": "checkbox",
+      "methods": [
+        "pointer"
+      ],
+      "cases": [
+        "04-rule-references",
+        "06-disabled-anchor-availability"
+      ],
+      "disabled": "blocked/pending/existing draft",
+      "semanticFamilyIds": [
+        "zone.enabled.{zoneId}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/04-rule-references-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.edit.{zoneId}",
+      "kind": "button",
+      "methods": [
+        "pointer"
+      ],
+      "cases": [
+        "01-authoring-bounds",
+        "02-history-stale",
+        "05-events-replay-ab"
+      ],
+      "disabled": "blocked/pending/existing draft",
+      "semanticFamilyIds": [
+        "zone.edit.{zoneId}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/02-history-stale-receipt.json",
+        "final-9fcf3f0-03/05-events-replay-ab-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.remove.{zoneId}",
+      "kind": "button",
+      "methods": [
+        "pointer"
+      ],
+      "cases": [
+        "04-rule-references",
+        "06-disabled-anchor-availability"
+      ],
+      "guard": "ZONE_IN_USE lists profile/rule references, including disabled references",
+      "semanticFamilyIds": [
+        "zone.remove.{zoneId}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/04-rule-references-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.id",
+      "kind": "text",
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9._-]{0,63}$",
+      "cases": [
+        "01-authoring-bounds",
+        "03-import-rejections"
+      ],
+      "notes": "Custom validation, no native required/pattern. Existing ID disabled. Zone duplicates prechecked; cross-entity duplicates atomically rejected by Host.",
+      "semanticFamilyIds": [
+        "zone.id"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/03-import-rejections-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.name",
+      "kind": "text",
+      "maxLength": 80,
+      "cases": [
+        "01-authoring-bounds",
+        "02-history-stale"
+      ],
+      "notes": "Custom trim/nonempty; name saved trimmed. Native length uses JS/HTML string units.",
+      "semanticFamilyIds": [
+        "zone.name"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/02-history-stale-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.shape",
+      "kind": "select",
+      "options": [
+        "aabb",
+        "sphere"
+      ],
+      "cases": [
+        "01-authoring-bounds",
+        "03-import-rejections"
+      ],
+      "semanticFamilyIds": [
+        "zone.shape"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/03-import-rejections-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.draft-enabled",
+      "kind": "checkbox",
+      "cases": [
+        "01-authoring-bounds",
+        "06-disabled-anchor-availability"
+      ],
+      "semanticFamilyIds": [
+        "zone.draft-enabled"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.center.{axis}",
+      "kind": "number",
+      "instances": [
+        "X",
+        "Y",
+        "Z"
+      ],
+      "min": -200,
+      "max": 200,
+      "step": "any",
+      "unit": "m",
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "methods": [
+        "fill",
+        "native ArrowUp/Down representative X",
+        "native spinner pointer representative X"
+      ],
+      "notes": "All axes min/max/blank/out-of-range; do not extrapolate X stepper results to other field instances.",
+      "semanticFamilyIds": [
+        "zone.center.{axis}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.half-extents.{axis}",
+      "kind": "number",
+      "instances": [
+        "X",
+        "Y",
+        "Z"
+      ],
+      "min": 0.05,
+      "max": 50,
+      "step": "any",
+      "unit": "m",
+      "visible": "aabb",
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "semanticFamilyIds": [
+        "zone.half-extents.{axis}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.radius",
+      "kind": "number",
+      "min": 0.05,
+      "max": 50,
+      "step": "any",
+      "unit": "m",
+      "visible": "sphere",
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "semanticFamilyIds": [
+        "zone.radius"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.hysteresis",
+      "kind": "number",
+      "min": 0,
+      "max": 0.25,
+      "step": "any",
+      "unit": "m",
+      "relation": "strictly below minimum half extent or radius",
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "semanticFamilyIds": [
+        "zone.hysteresis"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.save",
+      "kind": "submit-button",
+      "methods": [
+        "pointer",
+        "Enter form submit"
+      ],
+      "cases": [
+        "01-authoring-bounds",
+        "02-history-stale"
+      ],
+      "disabled": "invalid/stale/blocked/pending; required registryPin and revision sent by UI",
+      "semanticFamilyIds": [
+        "zone.save"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/02-history-stale-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.cancel",
+      "kind": "button",
+      "methods": [
+        "pointer"
+      ],
+      "cases": [
+        "01-authoring-bounds",
+        "02-history-stale"
+      ],
+      "semanticFamilyIds": [
+        "zone.cancel"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-02/02-history-stale-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.escape",
+      "kind": "keyboard",
+      "methods": [
+        "Escape"
+      ],
+      "cases": [
+        "01-authoring-bounds"
+      ],
+      "dependency": "draft exists, not pending, not composing",
+      "semanticFamilyIds": [
+        "zone.escape"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.overlay.{zoneId}",
+      "kind": "READ_ONLY",
+      "cases": [
+        "01-authoring-bounds",
+        "06-disabled-anchor-availability"
+      ],
+      "notes": "Nominal volume wireframe; editor only, absent during replay/FPS, enabled accent/disabled muted; source no-op raycast. Visual/picking result NOT_RUN until actual browser screenshots/review; no DOM control fabricated.",
+      "semanticFamilyIds": [
+        "zone.overlay.{zoneId}"
+      ],
+      "actualOutcome": "EDITOR_SCREENSHOTS_INSPECTED_NO_CANVAS_PICK_OR_FPS_VISIBILITY_GATE",
+      "actualEvidence": [
+        "final-9fcf3f0-02/01-authoring-bounds-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "behavior.newZoneId",
+      "kind": "select",
+      "cases": [
+        "04-rule-references",
+        "05-events-replay-ab"
+      ],
+      "options": "Only enabled authored zones; explicit choice required for new enter/exit rule",
+      "semanticFamilyIds": [
+        "behavior.newZoneId"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/04-rule-references-receipt.json",
+        "final-9fcf3f0-03/05-events-replay-ab-receipt.json"
+      ]
+    },
+    {
+      "id": "rule.zone.{ruleId}",
+      "kind": "select",
+      "cases": [
+        "04-rule-references",
+        "05-events-replay-ab"
+      ],
+      "options": "Enabled zones plus current disabled reference; switching non-zone trigger clears zoneId",
+      "semanticFamilyIds": [
+        "rule.zone.{ruleId}"
+      ],
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/04-rule-references-receipt.json",
+        "final-9fcf3f0-03/05-events-replay-ab-receipt.json"
+      ]
+    },
+    {
+      "id": "rule.emitterAttachment",
+      "kind": "ABSENT_NOT_A_CONTROL",
+      "semanticFamilyIds": [],
+      "cases": [
+        "06-disabled-anchor-availability"
+      ],
+      "notes": "Explicit zone anchor authored via legitimate exported Project JSON and actual import UI. Never injected into runtime/Host.",
+      "actualOutcome": "SOURCE_CONFIRMED_ABSENT_LEGAL_PROJECT_UI_ANCHOR_PATH_PASS",
+      "actualEvidence": [
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.producer.trace",
+      "kind": "READ_ONLY",
+      "semanticFamilyIds": [],
+      "cases": [
+        "05-events-replay-ab",
+        "06-disabled-anchor-availability"
+      ],
+      "notes": "Actual downloaded raw frames.physicsEvents and normalized behaviorSnapshot.inputFrame.events source=zone/zoneId, logical audio positions. Not hearing/hardware PCM.",
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-03/05-events-replay-ab-receipt.json",
+        "final-9fcf3f0-04/06-disabled-anchor-availability-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.history-and-persistence",
+      "kind": "SHARED_CONTROLS",
+      "semanticFamilyIds": [],
+      "cases": [
+        "02-history-stale",
+        "03-import-rejections"
+      ],
+      "notes": "Scene Undo/Redo, project save/load, review-and-apply JSON import, export. Roundtrip includes newly added Zone rule, not just region.",
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-02/02-history-stale-receipt.json",
+        "final-9fcf3f0-02/03-import-rejections-receipt.json"
+      ]
+    },
+    {
+      "id": "zone.comparison",
+      "kind": "SHARED_CONTROLS",
+      "semanticFamilyIds": [],
+      "cases": [
+        "05-events-replay-ab"
+      ],
+      "notes": "Unchanged complete registry B succeeds. Any canonical registry change, including name/order, is conservatively rejected; do not claim rename-only B positive.",
+      "actualOutcome": "PASS_FOR_RECORDED_METHODS_AND_OBSERVED_STATES_ONLY",
+      "actualEvidence": [
+        "final-9fcf3f0-03/05-events-replay-ab-receipt.json"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "01-authoring-bounds",
+      "title": "zone eight-tab navigation and all raw authoring bounds"
+    },
+    {
+      "id": "02-history-stale",
+      "title": "zone history persistence with rule references and same-revision stale drafts"
+    },
+    {
+      "id": "03-import-rejections",
+      "title": "zone project capacity and closed-schema import failures preserve authoring"
+    },
+    {
+      "id": "04-rule-references",
+      "title": "zone rule selectors retain disabled references and guard removal"
+    },
+    {
+      "id": "05-events-replay-ab",
+      "title": "real zone enter exit recording replay and fixed-registry behavior comparison"
+    },
+    {
+      "id": "06-disabled-anchor-availability",
+      "title": "disabled volume keeps an explicit JSON-authored zone anchor and blocks editor during replay"
+    }
+  ],
+  "limits": [
+    "Six distinct cases passed across attempts02/03/04 on the same9fc HTTP bytes; not a clean single-run6/6.",
+    "No performance/hearing/Meta live/native OS IME claims; actual queue-full pause at tick201 remains retained.",
+    "Fast sampled outside-to-outside, teleport/generation baselines and FPS-mode guards were not forced through internals; Node core owns those contracts.",
+    "Wireframe screenshots were inspected offline; no canvas-pick interception or replay/FPS pixel absence browser claim.",
+    "Later product builds are separate source checkpoints; these receipts remain pinned9fc/DO7."
+  ],
+  "staticQuality": {
+    "browser": "Superseded by actual six-case receipts; see verification-summary.json",
+    "peerReview": "read-only; corrections applied",
+    "testList": "NOT_RUN",
+    "format": "PASS 3 files",
+    "eslint": "PASS 3 files"
+  },
+  "testedProductSource": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+  "actualEntrySha256": "5c75259d334399afeab1c53a5d32e0e7a3b4067f862b245836fdd542b96e7819",
+  "unexercisedBranches": [
+    "FPS authoring-blocked condition",
+    "Transient pending/no-ack fault injection",
+    "Fast outside-to-outside traversal and teleport/generation physical edge cases",
+    "Volume overlay mouse-pick interception and replay/FPS pixel absence"
+  ]
+}

@@ -14,6 +14,7 @@ export interface RuleDraftEntry {
   mappingError?: string;
   changedFields?: (
     | "trigger"
+    | "zoneId"
     | "enabled"
     | "generator"
     | "assetId"
@@ -37,6 +38,10 @@ export function ruleDraftKey(objectId: string, ruleId: string): string {
 export function editableRulePatch(rule: BehaviorRuleView): Partial<BehaviorRuleView> {
   return {
     trigger: rule.trigger,
+    ...((rule.trigger === "OnEnterZone" || rule.trigger === "OnExitZone") &&
+    rule.zoneId !== undefined
+      ? { zoneId: rule.zoneId }
+      : {}),
     enabled: rule.enabled,
     ...(rule.generator !== undefined ? { generator: rule.generator } : {}),
     ...(rule.generator !== "oscillator" && rule.assetId !== undefined
@@ -93,6 +98,7 @@ function sameMappings(a: BehaviorRuleView, b: BehaviorRuleView): boolean {
 export function sameEditableRule(a: BehaviorRuleView, b: BehaviorRuleView): boolean {
   return (
     a.trigger === b.trigger &&
+    a.zoneId === b.zoneId &&
     a.enabled === b.enabled &&
     a.generator === b.generator &&
     (a.generator === "oscillator" || a.assetId === b.assetId) &&

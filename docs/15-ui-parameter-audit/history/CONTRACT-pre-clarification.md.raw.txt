@@ -1,0 +1,52 @@
+# 全產品 UI 參數實際操作與缺陷修復契約
+
+日期：2026-11-02（台灣時間）。範圍由[最新使用者要求](REQUEST_20261102.json)新增；正式task為 `RLAB-TASK-0028`。本輪在六core基本驗證之後擴及全部既有產品UI，本地main結案暫緩。原六core證據與使用者基本功能正常的確認保留其原時間／範圍。
+
+## 範圍與權威
+
+以正常100%顯示比例的正式production UI為準。涵蓋三個workspace、所有可達頁籤／面板／Inspector、工具列／選單／對話框／tooltip、Scene／Project／asset匯入匯出、FPS／Build／selection／transform、物理／材質／聲源／behavior、record/replay/A-B、Meta、Motion、renderer與monitor等全部既有控制，不限新六個tab。
+
+原V1驗收、已確認補充、design system／tokens／component／輸入與Domain契約繼續有效。數值範圍與預設值從實際schema／domain／canonical參數來源核對；不得複製一套新token或降低驗收／reference／容差。
+
+採用ux-engineering／reflection-lab-design-system及break-ui的可追溯、真實／schema邊界方法。最新使用者指示已授權實際操作及缺陷修復；不為上游技能的greeting、dev-only toggle、report後停止或200%章節另設前置。參數測試從真UI資料入口進入，不改markup／執行隱藏runtime bridge來造成功。
+
+## 五lane與單一共享記憶
+
+| Lane | Owner | 報告位置與主要責任 |
+| --- | --- | --- |
+| scene | ui_params_scene | `docs/14-core-pipeline/stages/11-ui-parameters/scene/`；場景／Inspector／物件／材質及可歸屬scene的工具與檔案入口 |
+| behavior | behavior audit agent | 同根 `behavior/`；聲源／資產／行為作者與能力、有效／無效規則 |
+| interaction | interaction audit agent | 同根 `interaction/`；FPS／Build／抓投／transform／focus／pointer與替代控制 |
+| pipeline | pipeline_ui及分檔child | 同根 `pipeline/`；record/replay/A-B、Meta、Motion、renderer、workflow UI及其參數 |
+| monitor | audio_core | 同根 `monitor/`；音訊enable／mute／gain／Raw-Sim／buffer／重建及尚未enable的desired prefs |
+
+靜態總盤點為同根 `INVENTORY.json`／Markdown；它是覆蓋分母與定位索引，不是實際browser PASS。每lane使用獨立browser context／資料／可辨認場景，防止local state／錄製／素材互相污染。跨lane共用runtime、NumberField及controller由root指定唯一檔案owner；不得同時覆寫同檔。只有memory writer序列更新Wiki／sources／task／log，root掌控Git index與整合。
+
+## 每個控制項的有限操作矩陣
+
+每列使用穩定semantic control ID與可定位selector／accessible name，列出workspace／tab／可見條件、參數label／單位／type／預設／min／max／step／pattern與權威來源。只讀欄位、disabled／unsupported狀態也列入分母，不能為提高coverage而消失。
+
+1. **真pointer與keyboard**：實際click／focus／Tab／Shift-Tab／Enter／Space／Arrow，及元件適用的drag／range／select／文字選取、輸入／貼上、blur／Esc／快速重送／取消。非適用的手勢記N/A與原因；browser DOM／CDP與真人／native input分開。
+2. **有效與邊界**：預設表單可儲存；代表合法值、精確min/max、合理小數／正負／零、合法ID與繁中／英文／真實長文字。核對HTMLstep/pattern與Domain一致，不只看input value變了。
+3. **非法與拒絕**：空值、超界、非有限／非法格式、重複ID／stale／無效引用與不支援組合。UI需回報可理解原因，保存最後有效狀態；失敗交易不暗改scene、不得把未知值當零。
+4. **狀態與生命期**：依功能適用範圍測無選取／有效選取、paused／running、recording／replay、切tab／workspace、focus／blur、取消／reset、重建／retry與快速重複。確認沒有未預期reset／source重啟／幽靈提交／雙重命令。
+5. **持久化與復原**：依正式契約區分session/view prefs、Scene、Project、recording與asset。該持久化者測save/load／reload／import-export；可Undo者測原子revision/undo/redo。非持久或非Undo控制明示scope，不強迫把runtime engine objects寫進Scene。
+6. **結果確實生效**：以可見狀態、模型／結果、revision、檔案／artifact或適當既有數位測試核對。只把值填進input、只有SSR／碼審或按鈕存在不能標真操作PASS。
+
+矩陣是本輪可審核的有限覆蓋；沒有跑的狀態／組合標NOT RUN，不宣稱無窮輸入／所有組合已窮舉。科學、DSP、性能與實體裝置仍用各自正式方法，UI可操作不能替代它們。
+
+## 結果、缺陷與修補
+
+每列至少記source／bundle／browser／viewport／locale、操作步驟與輸入、前置／前後狀態、結果、原始收據／hash及限制。狀態使用PASS、FAIL、NOT RUN、BLOCKED、EXPECTED_DISABLED／UNSUPPORTED；disabled／unsupported需列原因、可解除條件與具體實作路徑，不以假enable換成功。
+
+FAIL先保存原結果及source，再記根因、修補、targeted regression與真UI重測。可修復的no-op、預設invalid、資料未發布、交易／focus等問題持續修；尚未支援或需要native/裝置者如實保留，不將其偷偷排除coverage。原人工基本功能正常不因新擴充發現而改寫為原回報失敗。
+
+初始已確認問題：monitor在AudioEngine未enable時gain可操作卻靜默no-op，root已授權修desired prefs且保持default mute。Raw/Sim有相同疑慮但尚未確認，先驗證後分類；不把疑慮先寫成已證實缺陷。
+
+## 證據與結案
+
+- Native computer-use目前app approval timeout，Brave原生操作未完成；本輪可用真Browser工具／production DOM完成其可測scope，Browser/OS／真人差異明示，不能改標Brave/native成功。
+- 測試資料由真UI入口載入，使用原創／授權明確fixture；Meta仍offline/fixture、預算0，無新付費／部署／push授權。
+- 五lane與靜態分母逐項對帳，報告每個狀態數量、缺口與修補前後，不只報一個總PASS。未解阻斷影響結案，合法unsupported列在功能限制與後續實作，不抹除。
+- 修補後做受影響source的基本／targeted／build與真DOM重驗；最後保留code品質、完整check English失敗及後續語言PASS的不同命令。code source再變，不借舊PASS冒新bytes。
+- 更新canonical參數說明／必要UX規格、來源/task/Wiki/英文與Claude交接；完整main SHA與整合落點只有實際完成後才填。Task0028覆蓋與修補完成前不把本輪全產品UI審核或本地main結案。

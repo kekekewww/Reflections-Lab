@@ -171,13 +171,12 @@ function recordedAttachment(value, suffix, depth = 0) {
     return true;
   return Object.values(value).some((child) => recordedAttachment(child, suffix, depth + 1));
 }
-function terminalGeneratedSource(text) {
+function terminalGeneratedSource(text, title = "Test source") {
+  const heading = new RegExp(`^ {0,3}# ${title}[ \\t]*(?:\\r?\\n|$)`, "m");
   const chunks = segments(text);
-  const index = chunks.findLastIndex(
-    (chunk) => !chunk.code && /^ {0,3}# Test source[ \t]*(?:\r?\n|$)/m.test(chunk.text),
-  );
+  const index = chunks.findLastIndex((chunk) => !chunk.code && heading.test(chunk.text));
   if (index < 0) return false;
-  const marker = chunks[index].text.match(/^ {0,3}# Test source[ \t]*(?:\r?\n|$)/m);
+  const marker = chunks[index].text.match(heading);
   const tail = [
     { code: false, text: chunks[index].text.slice(marker.index + marker[0].length) },
     ...chunks.slice(index + 1),
@@ -316,12 +315,20 @@ export function classifyArtifactMarkdown(root, source, bytes) {
   if (browser) {
     const text = bytes.toString("utf8"),
       sections = headings(text),
+      titles = sections.map((heading) => heading.title).join("|"),
       expected = ["Instructions", "Test info", "Error details", "Page snapshot", "Test source"];
+    // Playwright omits the page snapshot when no page could be captured, and the test
+    // source when the failure location is outside the spec (for example a test timeout).
+    const variant = [
+      expected,
+      expected.filter((title) => title !== "Page snapshot"),
+      expected.filter((title) => title !== "Test source"),
+    ].find((value) => titles === value.join("|"));
     const evidence = readEvidenceJSON(root, `${browser[1]}/results.json`);
     if (
       sections.every((heading) => heading.level === 1) &&
-      sections.map((heading) => heading.title).join("|") === expected.join("|") &&
-      terminalGeneratedSource(text) &&
+      variant &&
+      terminalGeneratedSource(text, variant.at(-1)) &&
       text.includes("Following Playwright test failed.") &&
       evidence &&
       Array.isArray(evidence.value.suites) &&
@@ -667,8 +674,11 @@ function linkErrors(root, target, text) {
       }),
   ];
 }
+/** Development agents that may author translations; provenance records the actual one. */
+const TRANSLATION_EXECUTORS = new Set(["Codex", "Claude Code"]);
 function notice(body, entry) {
-  const text = `<!-- english-notice:start -->\n> English translation of [\`${entry.source}\`](${rel(entry.target, entry.source)}). Source SHA-256: \`${entry.translated_source_sha256}\`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.\n<!-- english-notice:end -->\n\n`;
+  const executor = `Executor: ${entry.executor ?? "Codex"}; ${entry.model_id ? `model ID ${entry.model_id}` : "model ID unavailable"}.`;
+  const text = `<!-- english-notice:start -->\n> English translation of [\`${entry.source}\`](${rel(entry.target, entry.source)}). Source SHA-256: \`${entry.translated_source_sha256}\`. ${executor} Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.\n<!-- english-notice:end -->\n\n`;
   const fm = body.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);
   return fm ? fm[0] + "\n" + text + body.slice(fm[0].length).replace(/^\s*\n/, "") : text + body;
 }
@@ -793,7 +803,10 @@ export function validateEnglishDocs(
     entry.translated_at = parsed.metadata.translated_at ?? null;
     entry.executor = parsed.metadata.executor ?? null;
     entry.model_id = parsed.metadata.model_id ?? null;
-    if (!Number.isFinite(Date.parse(entry.translated_at)) || entry.executor !== "Codex")
+    if (
+      !Number.isFinite(Date.parse(entry.translated_at)) ||
+      !TRANSLATION_EXECUTORS.has(entry.executor)
+    )
       entry.errors.push({ code: "INVALID_TRANSLATION_METADATA" });
     if (entry.translated_source_sha256 !== source.source_sha256)
       entry.errors.push({

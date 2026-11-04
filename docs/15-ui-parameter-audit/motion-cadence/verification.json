@@ -1,0 +1,82 @@
+{
+  "kind": "MOTION_FIXED_TICK_CADENCE_VERIFICATION",
+  "recordedAt": "2026-11-02T11:08:34.300Z",
+  "sourceCommit": "9fcf3",
+  "sourceCommitAuthority": "Parent-declared frozen product source; this task performed no Git mutation or command",
+  "test": "tests/app/motion-cadence.test.ts",
+  "command": "node --import tsx --test tests/app/motion-cadence.test.ts",
+  "exitCode": 0,
+  "status": "PASS",
+  "tests": 1,
+  "passed": 1,
+  "format": {
+    "command": "node node_modules/prettier/bin/prettier.cjs --check tests/app/motion-cadence.test.ts",
+    "exitCode": 0,
+    "scope": "only the new test file; no formatting mutation needed"
+  },
+  "runtime": {
+    "node": "v22.17.0",
+    "rapier": "0.21.0"
+  },
+  "sourceStableDuringRun": true,
+  "sourceHashes": [
+    {
+      "path": "tests/app/motion-cadence.test.ts",
+      "sha256": "a40b8e975def40c32f9a7c3d7b0c3aa25f407a3be447e21e86250c9174d70639"
+    },
+    {
+      "path": "src/motion/workspace.ts",
+      "sha256": "54c321ef1fb7df48e7f6f5223ff6dc5dc3091e93874eaaeb8451f37882ae770e"
+    },
+    {
+      "path": "src/motion/registry.ts",
+      "sha256": "2b95f640fe91aa6529c4716dd20ed7c5c93003c038c6974c0aa2c9c1f524cdcc"
+    },
+    {
+      "path": "src/motion/types.ts",
+      "sha256": "688cda0a200ce80f62a3d8b60e43594b73bbdbbcf965a52f12297326bbef5bb3"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "119b9ed086525f216caea4b2f6510682339f224cd20edefc8e325f84a02b7690"
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "68e5173a3fbbf96920dceb49282254fc04ccbc671410894c49b06619e4010a78"
+    }
+  ],
+  "cadencesHz": [
+    30,
+    60,
+    144
+  ],
+  "wallDurationSecondsPerCadence": 4,
+  "fixedDtSeconds": 0.016666666666666666,
+  "actualFixedTicksPerCadence": 240,
+  "traceSha256": "76ac6e80c52b94bf13e702e5da8d9b61426fbb400481265bc11a18b4838aa355",
+  "comparison": "Direct deepStrictEqual of all240 fixed-tick physics snapshots and published Motion receipt/read models, terminal receipts and final state; tick1..240; no offsets, retiming, resampling, rounding or new numerical tolerance",
+  "excludedFields": [
+    "MotionRunReceipt.runId only"
+  ],
+  "authoredActions": [
+    "dynamic MoveTo",
+    "kinematic MoveAndRelease with actual accepted-velocity transfer",
+    "one-shot bounded impulse"
+  ],
+  "terminalStates": [
+    "reached",
+    "reached",
+    "applied"
+  ],
+  "droppedWallTimeSeconds": 0,
+  "overruns": 0,
+  "evidence": {
+    "path": "docs/15-ui-parameter-audit/motion-cadence/evidence.txt",
+    "sha256": "381de873b2002feb133140fa3467dc2e12c11c5738a3a445d2b24372ba1123e2"
+  },
+  "limitations": [
+    "Same pinned Node/Rapier environment fixed-step regression; not a cross-platform determinism guarantee.",
+    "Motion public read-model progress is published every six ticks; every actual physics tick and all published receipt transitions/terminal states are sampled and compared.",
+    "No browser, audio, wall-clock performance or overall V1 completion claim."
+  ]
+}

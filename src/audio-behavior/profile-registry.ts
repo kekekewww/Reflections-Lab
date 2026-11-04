@@ -10,6 +10,10 @@ import type {
   SoundAssetReference,
 } from "../../schemas/sound-behavior/types.js";
 import { BehaviorRuntimeError, type BehaviorContext } from "./types.js";
+import {
+  assertSupportedBehaviorDocument,
+  validateSoundProducerCapabilities,
+} from "../capabilities/sound-behavior.js";
 
 const ajv = new Ajv2020({ strict: true, strictNumbers: true, allErrors: true });
 ajv.addSchema(schema);
@@ -143,6 +147,13 @@ function buildProfileRegistry(
   if (!documentValidator(input)) fail("SCHEMA", ajv.errorsText(documentValidator.errors));
   const document = structuredClone(input);
   const context = structuredClone(hostContext);
+  if (context.producerCapabilities !== undefined) {
+    validateSoundProducerCapabilities(context.producerCapabilities);
+    assertSupportedBehaviorDocument(document, {
+      ...context.producerCapabilities,
+      zoneIds: context.zoneIds,
+    });
+  }
   assertFinite(context.sceneRevision, 0, 2147483647, "sceneRevision");
   if (!Number.isInteger(context.sceneRevision))
     fail("INVALID_REVISION", "sceneRevision must be integer");
@@ -184,6 +195,13 @@ function buildProfileRegistry(
     const pairs = new Set<string>();
     for (const rule of profile.rules) {
       const contact = contactTriggers.has(rule.trigger.type);
+      if (rule.trigger.kind === "discrete" && rule.trigger.zoneId !== undefined) {
+        assertId(rule.trigger.zoneId, "zone ID");
+        if (!["OnEnterZone", "OnExitZone"].includes(rule.trigger.type))
+          fail("ZONE_TRIGGER_MISMATCH", "Only zone triggers can select a zone ID");
+        if (!context.zoneIds.includes(rule.trigger.zoneId))
+          fail("UNKNOWN_ZONE", "Trigger zone is not registered");
+      }
       if (contact !== (rule.emitter.attachment === "contact"))
         fail("CONTACT_EMITTER_REQUIRED", "Contact trigger/anchor mismatch");
       if (rule.emitter.attachment === "zone" && !context.zoneIds.includes(rule.emitter.zoneId))

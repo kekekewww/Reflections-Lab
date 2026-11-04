@@ -1,0 +1,688 @@
+{
+  "schema": "reflection-lab-audio-render-trace-capability-source-review-v1",
+  "status": "SOURCE_CAPABILITY_REVIEW_ONLY",
+  "language": "zh-TW",
+  "scope": "Pinned Chromium/Perfetto primary-source research; not a browser, hardware, CPU, deadline, probe-overhead, hearing, formal600 or qualification result",
+  "requestedProducerRevision": "861389936bf33ea77529ee5dcc0605e68f6bb620",
+  "perfettoRevision": "403906f4adfbf287a02e5546f8430dcc9d56b649",
+  "researchObservedHead": "94cb2c49b5b00be5c777978b660eb1f9cf4c5f3e",
+  "researchObservedHeadReadAtUtc": "2026-11-03T00:24:07.4734199+00:00",
+  "nativeDspCpuMs": null,
+  "nativeDspCpuStatus": "NOT_MEASURED",
+  "executableSha256": null,
+  "executableScope": "No browser launched and no executable identity newly verified by this research",
+  "formalQualification": "NOT_APPROVED",
+  "formal600Run": false,
+  "mutations": {
+    "frozen27": false,
+    "productSource": false,
+    "formalCategories": false,
+    "qualificationRegistry": false,
+    "memory": false
+  },
+  "executions": {
+    "node": false,
+    "unit": false,
+    "typecheck": false,
+    "build": false,
+    "browser": false,
+    "benchmark": false,
+    "hardware": false,
+    "officialSourceReadOnly": true
+  },
+  "findings": [
+    {
+      "id": "CPU-SOURCE-01",
+      "status": "SOURCE_DEFINED_CONDITIONAL_CAPABILITY",
+      "claim": "Chromium's legacy TraceConfig conversion enables thread-time sampling and a timestamp multiplier of 1000. Track-event adaptation also enables sampling when unspecified. This is configuration capability, not proof of actual fields in a captured event.",
+      "sources": [
+        {
+          "id": "trace-config",
+          "lines": [
+            802,
+            833
+          ]
+        },
+        {
+          "id": "config",
+          "lines": [
+            190,
+            201
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CPU-SOURCE-02",
+      "status": "SOURCE_DEFINED_CONDITIONAL_CAPABILITY",
+      "claim": "For current-thread-track events, Perfetto reads cumulative current-thread CPU time and writes deltas when sampling is enabled; subsampling can omit individual samples. The config documents the quantity as total thread CPU since thread creation, not elapsed wall time.",
+      "sources": [
+        {
+          "id": "track-config",
+          "lines": [
+            87,
+            100
+          ]
+        },
+        {
+          "id": "internal",
+          "lines": [
+            598,
+            614
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CPU-SOURCE-03",
+      "status": "SOURCE_PLATFORM_LIMIT",
+      "claim": "On Windows non-ARM64, the pinned implementation converts QueryThreadCycleTime using a calibrated TSC frequency and can return an empty value if calibration is zero. ARM64 uses kernel plus user GetThreadTimes. This source does not establish measurement accuracy or successful sampling on this machine.",
+      "sources": [
+        {
+          "id": "time",
+          "lines": [
+            126,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CPU-SOURCE-04",
+      "status": "SOURCE_DEFINED_JSON_SEMANTICS",
+      "claim": "JSON ts/dur/tts/tdur are integer microseconds converted from nanoseconds. A completed positive-duration thread slice exports X and dur; tts and tdur require available thread-time values. An unfinished slice exports B without a duration. Missing tdur must remain unknown and cannot be replaced with dur or zero. Present zero is still quantized data, not proof of zero cost.",
+      "sources": [
+        {
+          "id": "export",
+          "lines": [
+            799,
+            804
+          ]
+        },
+        {
+          "id": "export",
+          "lines": [
+            851,
+            914
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCOPE-SOURCE-01",
+      "status": "SCOPED_INCLUSIVE_TIMING",
+      "claim": "TRACE_EVENT is a scope-closed slice. Callback, context graph and node/worklet scopes include nested work. Parent and child CPU durations must not be summed; child wall duration must not be subtracted from parent CPU duration.",
+      "sources": [
+        {
+          "id": "track-macro",
+          "lines": [
+            391,
+            393
+          ]
+        }
+      ],
+      "inference": "The accounting restrictions follow from the scoped/inclusive nesting and distinct wall/thread CPU quantities; actual nesting and tids must still be established in raw data."
+    },
+    {
+      "id": "IDENTITY-SOURCE-01",
+      "status": "IDENTITY_NOT_YET_ESTABLISHED",
+      "claim": "The inspected Inspector graph events expose generated node/context UUIDs and topology, and context metadata includes sampleRate, callbackBufferSize and renderQuantumSize. Inspected native render events do not carry those UUIDs. Node SetHandler has a pointer relationship only inside the inspected DEBUG_AUDIONODE_REFERENCES stderr block. Therefore event names and graph UUIDs alone do not establish which handler or worklet belongs to this PCM tap; this is not a claim that every possible mapping mechanism is unavailable.",
+      "sources": [
+        {
+          "id": "inspector",
+          "lines": [
+            153,
+            164
+          ]
+        },
+        {
+          "id": "inspector",
+          "lines": [
+            238,
+            248
+          ]
+        },
+        {
+          "id": "inspector-uuid",
+          "lines": [
+            12,
+            16
+          ]
+        },
+        {
+          "id": "node-identity",
+          "lines": [
+            95,
+            110
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TAP-SOURCE-01",
+      "status": "NO_EXCLUSIVE_CPU_EVIDENCE",
+      "claim": "The inspected worklet scopes are able to time worklet processing conditionally, but lack processor-specific arguments. An isolated diagnostic fixture may establish identity externally; the existing multi-node product/probe graph cannot be attributed by name alone. A probe-off/on delta estimates total perturbation under matched conditions and does not by itself prove pure DSP or the tap's exclusive CPU.",
+      "sources": [
+        {
+          "id": "worklet-handler",
+          "lines": [
+            114,
+            118
+          ]
+        },
+        {
+          "id": "worklet-process",
+          "lines": [
+            472,
+            477
+          ]
+        },
+        {
+          "id": "worklet-process",
+          "lines": [
+            563,
+            569
+          ]
+        }
+      ]
+    }
+  ],
+  "localSourcePins": [
+    {
+      "path": "tests/browser/performance-profile-v3.mjs",
+      "bytes": 45142,
+      "sha256": "374968466e606258601acfb5bfdc9d827e7afd9638da60907466594b8f5927f3"
+    },
+    {
+      "path": "tests/browser/performance-audio-attribution-v1.mjs",
+      "bytes": 25439,
+      "sha256": "488e6c49a4f6645ea7b59c2100a59814fae83ece558315ab8a2ad7e5b9a1b9ba"
+    },
+    {
+      "path": "src/audio/diagnostics.ts",
+      "bytes": 13916,
+      "sha256": "e6080aa1478ab300cff11b8f568bef9468e02f94422aaab78003f50ed30c2951"
+    }
+  ],
+  "currentFormalCategoryEvidence": {
+    "path": "tests/browser/performance-profile-v3.mjs",
+    "lines": [
+      783,
+      798
+    ],
+    "categories": [
+      "devtools.timeline",
+      "blink.user_timing",
+      "toplevel",
+      "v8",
+      "disabled-by-default-devtools.timeline.frame"
+    ],
+    "audioCategoriesIncluded": false,
+    "changed": false
+  },
+  "currentMetricEvidence": [
+    {
+      "path": "src/audio/diagnostics.ts",
+      "lines": [
+        88,
+        92
+      ],
+      "field": "unmeasured.nativeDspCpuMs",
+      "value": null
+    },
+    {
+      "path": "src/audio/diagnostics.ts",
+      "lines": [
+        318,
+        322
+      ],
+      "field": "unmeasured.nativeDspCpuMs",
+      "value": null
+    }
+  ],
+  "tapEvidence": {
+    "path": "tests/browser/performance-audio-attribution-v1.mjs",
+    "lines": [
+      389,
+      402
+    ],
+    "processorName": "reflection-performance-pcm-probe-v1",
+    "scope": "An added AudioWorklet probe branch with silent sink; this local processor name is not automatically present in the native trace scopes."
+  },
+  "measurementRequirements": [
+    "Obtain an explicitly versioned diagnostic trace under an authorized exclusive machine lease. Preserve the original 600-second wall workload, voices, paths, geometry, capture, original thresholds and all old rejects. The categories below are research proposals only.",
+    "Pin browser product/revision, executable path/SHA256, hardware/OS/architecture, actual audio output device/rate/buffer/quantum, document/context lifetime, served source/archive and trace producer/exporter. Do not infer 48kHz or 128 frames from event names.",
+    "Verify each retained event's category/name/schema, pid/tid/context/graph ownership, exact measurement-window coverage, completed scope, finite nonnegative timestamps and CPU fields; preserve original raw ordinals and all unknown/unfinished/lost evidence. A B or missing CPU endpoint cannot be assigned an invented duration.",
+    "Confirm actual raw audio events contain compatible tts/tdur and all required endpoints. Report sample count, missing/unfinished counts, quantization and units. Source defaults alone cannot make CPU coverage complete.",
+    "Name a verified inclusive scope (output callback, context graph render, or worklet process) before reporting its thread CPU. Do not label an inclusive graph value as native-only DSP without independently validated identity and separation.",
+    "Measure the tracing/probe perturbation with a probe-free comparison under the same workload and capture conditions; changing the graph to install the PCM tap has a cost. Source research does not quantify that cost.",
+    "Keep nativeDspCpuMs null until a separately reviewed method defines its exact scope and actual trace supports complete CPU evidence. Do not modify the frozen registry/categories or promote a short diagnostic run into formal600 qualification."
+  ],
+  "proposedDiagnosticCategoriesOnly": [
+    "webaudio",
+    "disabled-by-default-webaudio.audionode",
+    "disabled-by-default-audio-worklet"
+  ],
+  "sourceProvenance": {
+    "retrieval": "Normal-TLS read-only HTTPS Invoke-WebRequest against official Gitiles format=TEXT; hashes cover decoded upstream UTF-8 source bytes, not HTML/base64 response.",
+    "archivePolicy": "No full upstream sources copied into the repository. Report retains source identities, line references and own paraphrase only.",
+    "limitations": [
+      "Source capability is not proof of shipped binary equivalence, enabled runtime category, successful CPU sampling, thread attribution, audio delivery or hardware hearing.",
+      "No repository product/test source, existing category list, frozen27 pins or registry was changed."
+    ],
+    "sourceReviewContributors": [
+      "/root/implement_perf/perf_evidence_audit",
+      "/root/implement_perf/perf_evidence_audit/audio_producer_sources"
+    ]
+  },
+  "sources": [
+    {
+      "id": "deps",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS",
+      "http": 200,
+      "bytes": 192396,
+      "sha256": "8778ffaa9a30b9e825b291978804c6c2e55a3ae829ff387b025592ffb9090e8e",
+      "lines": 5022,
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/DEPS?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "trace-config",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/trace_config.cc",
+      "http": 200,
+      "bytes": 28773,
+      "sha256": "285160223ccfed0b3226d2d475d091f7a785cf463fda36e63a38ae7b5daa733c",
+      "lines": 837,
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/base/trace_event/trace_config.cc?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "config",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/services/tracing/public/cpp/perfetto/perfetto_config.cc",
+      "http": 200,
+      "bytes": 15307,
+      "sha256": "0ed33bef6db1d5d665d78dc6ccb78f242424f461bac9721565da8560ee7e7f62",
+      "lines": 361,
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/services/tracing/public/cpp/perfetto/perfetto_config.cc?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "track-config",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/protos/perfetto/config/track_event/track_event_config.proto",
+      "http": 200,
+      "bytes": 3880,
+      "sha256": "f5b6e905c4de95510d078444691f9698ab1f49d39dccd552129b545df16da256",
+      "lines": 107,
+      "retrievalUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/protos/perfetto/config/track_event/track_event_config.proto?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "internal",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/tracing/internal/track_event_internal.cc",
+      "http": 200,
+      "bytes": 25078,
+      "sha256": "c2939b1663639427d51fd8f940490cce478f9c21e691810192dbf05e57195fde",
+      "lines": 663,
+      "retrievalUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/tracing/internal/track_event_internal.cc?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "time",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/base/time.cc",
+      "http": 200,
+      "bytes": 8279,
+      "sha256": "e0f427cb33997802685f58b813c2648cbd70ac009c7fcd21f81d8841ed37d0c6",
+      "lines": 217,
+      "retrievalUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/base/time.cc?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "export",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc",
+      "http": 200,
+      "bytes": 66822,
+      "sha256": "dc3a3b53cc2df3cd66be8b331b805d31331c2a8dbcf42e3f58d6fe8a05377667",
+      "lines": 1725,
+      "retrievalUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/src/trace_processor/export_json.cc?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "track-macro",
+      "url": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/include/perfetto/tracing/track_event.h",
+      "http": 200,
+      "bytes": 19991,
+      "sha256": "0eefec965318a2208af955531eb84b7c3e2f321401ea3098f5bf98dcf678d3a8",
+      "lines": 452,
+      "retrievalUrl": "https://chromium.googlesource.com/external/github.com/google/perfetto/+/403906f4adfbf287a02e5546f8430dcc9d56b649/include/perfetto/tracing/track_event.h?format=TEXT",
+      "lineCountConvention": "UTF-8 decoded source split on LF; final empty entry may be included"
+    },
+    {
+      "id": "destination",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/platform/audio/audio_destination.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/platform/audio/audio_destination.cc?format=TEXT",
+      "http": 200,
+      "bytes": 35592,
+      "sha256": "0d22eca8967d74437ed409181ccb5b4ec98b0c2dd6b0ddb52a86f4892194d26f",
+      "lineRanges": [
+        [
+          125,
+          139
+        ],
+        [
+          153,
+          153
+        ],
+        [
+          681,
+          716
+        ],
+        [
+          747,
+          775
+        ],
+        [
+          787,
+          828
+        ]
+      ],
+      "licenseNote": "Google 2010 redistribution header; upstream conditions retained by link; no source copied",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "context-render",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/realtime_audio_destination_handler.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/realtime_audio_destination_handler.cc?format=TEXT",
+      "http": 200,
+      "bytes": 22572,
+      "sha256": "736ffc8352d6e47ee866f0cb02616aac235a078a9b3f9802458d4b96c90ac9af",
+      "lineRanges": [
+        [
+          216,
+          225
+        ],
+        [
+          242,
+          298
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "node-render",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_handler.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_handler.cc?format=TEXT",
+      "http": 200,
+      "bytes": 21247,
+      "sha256": "7b1d1f545444db1bf51a701b6134ec67d2a25f2c496336518e5fc7fd4ba337e1",
+      "lineRanges": [
+        [
+          298,
+          339
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "worklet-handler",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_worklet_handler.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_worklet_handler.cc?format=TEXT",
+      "http": 200,
+      "bytes": 12821,
+      "sha256": "cf2da22d88fbaf7cfc90297a5268cfcbe9452f07f05b3afed18b0fa1df42e38c",
+      "lineRanges": [
+        [
+          114,
+          118
+        ],
+        [
+          194,
+          195
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "worklet-process",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_worklet_processor.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_worklet_processor.cc?format=TEXT",
+      "http": 200,
+      "bytes": 25632,
+      "sha256": "aa24eba9a0121cca6e98b9f7e25e8fb91b9b03123d9f6d70031b0af406d04c0b",
+      "lineRanges": [
+        [
+          472,
+          477
+        ],
+        [
+          563,
+          569
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "audio-context",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_context.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_context.cc?format=TEXT",
+      "http": 200,
+      "bytes": 91806,
+      "sha256": "980f46243fb40b306fb49ef18408716ad65723b6adf39ed801c0f30d0c266ad3",
+      "lineRanges": [
+        [
+          656,
+          657
+        ],
+        [
+          1591,
+          1628
+        ],
+        [
+          1672,
+          1687
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "inspector",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/inspector_web_audio_agent.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/inspector_web_audio_agent.cc?format=TEXT",
+      "http": 200,
+      "bytes": 8980,
+      "sha256": "eaec841fc4ea0053ad7e8ec34377bb37a974b69433d5a008483c65e46f1fef1c",
+      "lineRanges": [
+        [
+          113,
+          121
+        ],
+        [
+          153,
+          164
+        ],
+        [
+          238,
+          248
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "inspector-uuid",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/inspector_helper_mixin.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/inspector_helper_mixin.cc?format=TEXT",
+      "http": 200,
+      "bytes": 754,
+      "sha256": "0522f0efee81f650b901905e01c44fba683d893ec170de440b4837e8a4ab5980",
+      "lineRanges": [
+        [
+          12,
+          16
+        ]
+      ],
+      "licenseNote": "Chromium Authors BSD-style header",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    },
+    {
+      "id": "node-identity",
+      "url": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_node.cc",
+      "retrievalUrl": "https://chromium.googlesource.com/chromium/src/+/861389936bf33ea77529ee5dcc0605e68f6bb620/third_party/blink/renderer/modules/webaudio/audio_node.cc?format=TEXT",
+      "http": 200,
+      "bytes": 22717,
+      "sha256": "c158acb7bb03920f2fc24e156de13ef36e8bc3b298b36fd8579b5cdecbfe9e53",
+      "lineRanges": [
+        [
+          52,
+          56
+        ],
+        [
+          95,
+          110
+        ],
+        [
+          209,
+          215
+        ]
+      ],
+      "licenseNote": "Google 2010 redistribution header; upstream conditions retained by link; no source copied",
+      "retrieval": "Independent read-only source audit; normal TLS, decoded Gitiles base64 source"
+    }
+  ],
+  "renderEventCapabilities": [
+    {
+      "category": "webaudio",
+      "name": "AudioDestination::Render",
+      "sources": [
+        {
+          "id": "destination",
+          "lines": [
+            125,
+            153
+          ]
+        }
+      ],
+      "observedSourceArguments": [
+        "frames",
+        "playout_delay (ms)",
+        "delay_timestamp (ms)"
+      ],
+      "sourceScope": "Audio-device callback, including output/FIFO work. Actual frames come from output bus. Worklet configuration can move graph rendering to another thread.",
+      "identityLimit": "No context UUID or node UUID in this event's arguments.",
+      "quantumLimit": "Output callback frames are not necessarily a single graph quantum and must not be assumed to be 128."
+    },
+    {
+      "category": "webaudio",
+      "name": "AudioDestination::RequestRender",
+      "sources": [
+        {
+          "id": "destination",
+          "lines": [
+            681,
+            716
+          ]
+        },
+        {
+          "id": "destination",
+          "lines": [
+            747,
+            828
+          ]
+        }
+      ],
+      "observedSourceArgumentSummary": "Requested/render/FIFO frame counts and delays; detailed future schema must be derived from raw output, not this summary.",
+      "sourceScope": "May process multiple render_quantum_frames_ iterations; graph pull, resampler and FIFO work are within the function scope.",
+      "identityLimit": "Actual thread and nesting must be established from trace pid/tid; do not assume identical ownership to output callback."
+    },
+    {
+      "category": "webaudio",
+      "name": "RealtimeAudioDestinationHandler::Render",
+      "sources": [
+        {
+          "id": "context-render",
+          "lines": [
+            216,
+            298
+          ]
+        }
+      ],
+      "observedSourceArguments": [
+        "frames",
+        "playout_delay (ms)"
+      ],
+      "sourceScope": "Context-render scope includes pre/post/deferred tasks, graph and automatic-node pulls, copy/silence, audibility/volume and sample/clock updates.",
+      "identityLimit": "No context UUID in these render arguments. It is inclusive context-render scope, not established native-exclusive DSP."
+    },
+    {
+      "category": "disabled-by-default-webaudio.audionode",
+      "name": "AudioHandler::ProcessIfNecessary",
+      "sources": [
+        {
+          "id": "node-render",
+          "lines": [
+            298,
+            339
+          ]
+        }
+      ],
+      "observedSourceArguments": [
+        "this",
+        "node type"
+      ],
+      "sourceScope": "Scope includes upstream PullInputs and cached-processing check; nested handlers overlap.",
+      "identityLimit": "Native handler address is not automatically the CDP node UUID. Summing spans does not produce exclusive node CPU."
+    },
+    {
+      "category": "disabled-by-default-webaudio.audionode",
+      "name": "AudioWorkletHandler::Process",
+      "sources": [
+        {
+          "id": "worklet-handler",
+          "lines": [
+            114,
+            118
+          ]
+        }
+      ],
+      "observedSourceArguments": [],
+      "sourceScope": "Worklet handler process wrapper.",
+      "identityLimit": "TRACE_EVENT0 supplies no processor name or node UUID."
+    },
+    {
+      "category": "disabled-by-default-audio-worklet",
+      "name": "AudioWorkletProcessor::Process",
+      "sources": [
+        {
+          "id": "worklet-process",
+          "lines": [
+            472,
+            477
+          ]
+        }
+      ],
+      "observedSourceArguments": [],
+      "sourceScope": "Worklet processor wrapper.",
+      "identityLimit": "TRACE_EVENT0 supplies no processor name or node UUID."
+    },
+    {
+      "category": "disabled-by-default-audio-worklet",
+      "name": "AudioWorkletProcessor::Process (author script execution)",
+      "sources": [
+        {
+          "id": "worklet-process",
+          "lines": [
+            563,
+            569
+          ]
+        }
+      ],
+      "observedSourceArguments": [],
+      "sourceScope": "Narrower author-script call, nested within processor wrapper; not all worklet overhead.",
+      "identityLimit": "TRACE_EVENT0 supplies no processor name or node UUID."
+    }
+  ]
+}

@@ -45,3 +45,5 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     throw new Error("V3_QUALIFIER_EXECUTION_NOT_IMPLEMENTED_OR_AUTHORIZED");
   process.stdout.write(JSON.stringify(qualificationPlan, null, 2) + "\n");
 }
+export { validateSemanticPilotJournal } from "./performance-semantic-oracle-v1.mjs";
+export { verifySemanticNativeEvidence } from "./performance-semantic-native-oracle-v1.mjs";

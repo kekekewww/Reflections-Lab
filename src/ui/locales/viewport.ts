@@ -1,6 +1,26 @@
 import type { MessageCatalog } from "../locale-types.js";
 
 export const viewportMessages = {
+  "viewport.hint.idle": {
+    "zh-TW": "左鍵 抓取 · 按住右鍵 預覽，放開 放置 · L 物件庫 · Enter 暫停 · Esc 釋放滑鼠",
+    en: "Left click Grab · Hold right button Preview, release Place · L Library · Enter Pause · Esc Release pointer",
+  },
+  "viewport.hint.holding": {
+    "zh-TW": "左鍵 投擲 · 右鍵 放下 · 滾輪 距離 · 按住 R 旋轉 · F 固定",
+    en: "Left click Throw · Right click Drop · Wheel Distance · Hold R Rotate · F Freeze",
+  },
+  "viewport.hint.preview": {
+    "zh-TW": "放開右鍵 放置 · 左鍵／Esc 取消 · 滾輪 距離 · R 旋轉",
+    en: "Release right button Place · Left click / Esc Cancel · Wheel Distance · R Rotate",
+  },
+  "viewport.hint.sticky": {
+    "zh-TW": "放置／取消預覽 · 滾輪 距離 · R 旋轉",
+    en: "Place / Cancel preview · Wheel Distance · R Rotate",
+  },
+  "viewport.attachment.surface": { "zh-TW": "貼附表面", en: "Surface attached" },
+  "viewport.attachment.air": { "zh-TW": "空中（無重力）", en: "Mid-air (no gravity)" },
+  "viewport.action.startPlacement": { "zh-TW": "開始放置預覽", en: "Start placement preview" },
+  "viewport.action.grabCancelPreview": { "zh-TW": "取消預覽並抓取", en: "Cancel preview and grab" },
   "viewport.region": { "zh-TW": "三維場景", en: "3D scene" },
   "viewport.eyebrow": { "zh-TW": "VIEWPORT", en: "VIEWPORT" },
   "viewport.mode.build": { "zh-TW": "第一人稱建造", en: "First-person build" },
@@ -34,7 +54,7 @@ export const viewportMessages = {
   "viewport.status.running": { "zh-TW": "運算中", en: "Running" },
   "viewport.status.paused": { "zh-TW": "已暫停", en: "Paused" },
   "viewport.status.ready": { "zh-TW": "準備就緒", en: "Ready" },
-  "viewport.time": { "zh-TW": "tick {tick} · {seconds} s", en: "tick {tick} · {seconds} s" },
+  "viewport.details.summary": { "zh-TW": "視圖資訊", en: "View details" },
   "viewport.acoustic.ready": { "zh-TW": "Computed", en: "Computed" },
   "viewport.acoustic.idle": { "zh-TW": "尚無聲學結果", en: "No acoustic result" },
   "viewport.acoustic.empty": { "zh-TW": "已求解 · 無路徑", en: "Computed · No paths" },
@@ -68,22 +88,26 @@ export const viewportMessages = {
   "viewport.placement.invalid": { "zh-TW": "× 無法放置", en: "× Placement blocked" },
   "viewport.placement.reason": { "zh-TW": "：{reason}", en: ": {reason}" },
   "viewport.input.running": {
-    "zh-TW": "WASD 移動 · Enter 暫停 · Esc 釋放滑鼠",
-    en: "WASD move · Enter pause · Esc release pointer",
+    "zh-TW": "WASD 移動 · 滑鼠轉向 · Enter 暫停 · Esc 釋放滑鼠",
+    en: "WASD move · Mouse look · Enter pause · Esc release pointer",
   },
   "viewport.input.paused": {
-    "zh-TW": "按 Enter 開始，再用 WASD 移動、滑鼠轉向 · Esc 釋放滑鼠",
-    en: "Press Enter to start, then use WASD to move and the mouse to look · Esc releases pointer",
+    "zh-TW": "已暫停 · 點擊畫面或按 Enter 繼續 · Esc 釋放滑鼠",
+    en: "Paused · Click the view or press Enter to resume · Esc releases the pointer",
+  },
+  "viewport.input.ready": {
+    "zh-TW": "準備就緒 · 點擊畫面或按 Enter 開始這一段 · Esc 釋放滑鼠",
+    en: "Ready · Click the view or press Enter to start the take · Esc releases the pointer",
   },
   "viewport.input.alternative": {
-    "zh-TW": "免鎖定操作已啟用；請使用繼續運算與下方按鈕",
-    en: "Controls without pointer lock are enabled. Use Resume and the buttons below.",
+    "zh-TW": "免鎖定操作：點選畫面後用 WASD 移動、方向鍵轉向、Enter 開始／暫停；也可用下方按鈕",
+    en: "Controls without pointer lock: click the view, then use WASD to move, arrow keys to look and Enter to start or pause, or use the buttons below.",
   },
   "viewport.input.unlocked": {
-    "zh-TW": "滑鼠未鎖定；請明示啟用控制方式",
-    en: "Pointer is unlocked. Explicitly enable a control mode.",
+    "zh-TW": "滑鼠已釋放 · 點擊畫面或「啟用滑鼠控制」重新鎖定",
+    en: "Pointer released · Click the view or Enable mouse control to lock it again",
   },
-  "viewport.input.enablePointer": { "zh-TW": "啟用滑鼠控制", en: "Enable pointer control" },
+  "viewport.input.enablePointer": { "zh-TW": "啟用滑鼠控制", en: "Enable mouse control" },
   "viewport.input.lockUnavailable": {
     "zh-TW": "瀏覽器未提供滑鼠鎖定，仍可使用下方按鈕操作。",
     en: "Pointer lock is unavailable in this browser. You can still use the buttons below.",
@@ -122,11 +146,12 @@ export const viewportMessages = {
   },
   "viewport.alternative.resume": { "zh-TW": "開始第一人稱操作", en: "Start first-person controls" },
   "viewport.action.grab": { "zh-TW": "抓取", en: "Grab" },
-  "viewport.action.release": { "zh-TW": "釋放", en: "Release" },
+  "viewport.action.release": { "zh-TW": "放下", en: "Release" },
   "viewport.action.throw": { "zh-TW": "投擲", en: "Throw" },
   "viewport.action.place": { "zh-TW": "放置", en: "Place" },
+  "viewport.action.gentlePlace": { "zh-TW": "輕放", en: "Gentle place" },
   "viewport.action.enableStaged": { "zh-TW": "啟用物件", en: "Enable object" },
-  "viewport.action.cancelPlacement": { "zh-TW": "取消放置", en: "Cancel placement" },
+  "viewport.action.cancelPlacement": { "zh-TW": "取消預覽", en: "Cancel placement" },
   "viewport.action.toInteract": { "zh-TW": "切換互動", en: "Switch to interaction" },
   "viewport.action.toBuild": { "zh-TW": "切換建造", en: "Switch to build" },
   "viewport.movement.summary": {
@@ -143,4 +168,12 @@ export const viewportMessages = {
   "viewport.look.right": { "zh-TW": "向右看", en: "Look right" },
   "viewport.look.up": { "zh-TW": "向上看", en: "Look up" },
   "viewport.look.down": { "zh-TW": "向下看", en: "Look down" },
+  "viewport.gizmo.aria": { "zh-TW": "變形操作", en: "Transform tool" },
+  "viewport.gizmo.move": { "zh-TW": "移動", en: "Move" },
+  "viewport.gizmo.rotate": { "zh-TW": "旋轉", en: "Rotate" },
+  "viewport.gizmo.scale": { "zh-TW": "縮放", en: "Scale" },
+  "viewport.gizmo.locked": {
+    "zh-TW": "暫停後可拖曳／縮放",
+    en: "Pause to drag or scale",
+  },
 } as const satisfies MessageCatalog;

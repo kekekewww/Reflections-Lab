@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "classification": "CONFIRMED_UI_REPRO_PRODUCT_CANDIDATE_OWNER_REVIEW_REQUIRED",
+  "sourceCommit": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+  "actualEntry": {
+    "url": "http://127.0.0.1:4173/assets/index-C4qRBPy8.js",
+    "bytes": 5116129,
+    "sha256": "8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123"
+  },
+  "actualAppChunk": {
+    "url": "http://127.0.0.1:4173/assets/App-DTboN9lz.js",
+    "bytes": 788649,
+    "sha256": "f1407aa7c49a2792e6879025e5e5d8188d68a186be9f3f0619594ae8cbdf39fd"
+  },
+  "browser": "156.0.8078.75",
+  "startedAt": "2026-11-02T10:31:16.793Z",
+  "finishedAt": "2026-11-02T10:31:53.093Z",
+  "method": "Only public DOM UI; no HostInternal/bridge/clock injection/reset/retry workaround.",
+  "steps": [
+    "Fresh browser context; open4173; Motion tab; select ball.",
+    "Save default moveTo as motion.audit.recording-gate. This is a definition only; do not Run it.",
+    "Events tab -> Start recording; Motion tab -> assert Save/Import disabled and Export enabled; snapshot.",
+    "Observed live recording safely paused from fixed-step load with debt preserved; in attempt02 captured header tick7 (attempt01 independently paused tick5).",
+    "Events -> Stop recording; wait Stop disappears and Replay enabled (continuous prefix sealed).",
+    "Audio export -> Capture3seconds; wait button becomes enabled again; Events tab.",
+    "Observed SHORT_TAKE_INTERRUPTED: fixed step did not complete; tick10; interrupted artifact0.03s and not replayable."
+  ],
+  "beforeShortTake": {
+    "kind": "recording-prefix",
+    "tick": "tick 7",
+    "notice": "繼續運算\n重設\n已暫停\n0.12 s\ntick 7\n● 記錄中\n場景\n檢查器",
+    "method": "Respect explicit fixed-step overload pause; stop and retain the continuous prefix."
+  },
+  "afterShortTake": {
+    "tick": 10,
+    "uiTimeS": 0.17,
+    "recordingDurationText": "0.03 s",
+    "status": "中斷紀錄已封存；不可重播",
+    "error": "SHORT_TAKE_INTERRUPTED: fixed step did not complete"
+  },
+  "domainIds": {
+    "actionId": "motion.audit.recording-gate",
+    "motionRunId": null,
+    "motionRunReason": "Action was saved but never Run; no Motion run created.",
+    "recordingRunId": null,
+    "recordingRunReason": "Not exposed by rendered DOM; no recording export was clicked before failure, so do not invent it."
+  },
+  "distinction": {
+    "original01": "Real observed fixed-step safety/load guard, known performance limit; not a fake harness event.",
+    "harness01": "Passive wait for tick180 was invalid because UI explicitly paused and required Continue or Stop.",
+    "candidate02": "After explicit Stop sealed the prefix, a NEW public controlled take failed its exact-one-step guard. Do not weaken guard, silently reset scene, or claim healthy performance."
+  },
+  "sourceReferences": [
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "symbol": "FixedClock.setMode / advance",
+      "note": "setMode changes mode only; pause and mode transition preserve accumulatedSeconds; advance consumes accumulatedSeconds+delta up to catch-up budget."
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "symbol": "captureShortTake",
+      "note": "pauseCore -> setMode(recording) -> startTick snapshot -> advance(1/60,true), then requires latest.tick===startTick+index+1 and not paused."
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "symbol": "recordToggle stop / setClockMode",
+      "note": "Stop seals and switches to interactive policy; no accumulator-segment reset visible in this path."
+    }
+  ],
+  "hypothesis": "Residual wall-time debt survives Stop/mode transition and makes the next controlled advance consume multiple fixed steps. Hypothesis for owner regression; UI failure itself directly observed.",
+  "files": {
+    "receipt": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-02/motion-recording-and-replay-authoring-dependencies/receipt.json",
+    "stdout": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-02-console.txt",
+    "process": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-02-process.json",
+    "playwright": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/playwright-final-49bde82-02.json",
+    "trace": "test-results/parameter-audit-motion/final-49bde82-02/pipeline-motion-audit-moti-6a93c-play-authoring-dependencies/trace.zip",
+    "traceSha256": "49ddea4e515dbbe0151cbfb3bfca6aa980ca8a0f419a322666cc912def2dab60",
+    "screenshot": "test-results/parameter-audit-motion/final-49bde82-02/pipeline-motion-audit-moti-6a93c-play-authoring-dependencies/test-failed-1.png",
+    "firstFivePass": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-01",
+    "firstLoadGuard": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/final-49bde82-01/motion-recording-and-replay-authoring-dependencies/receipt.json"
+  },
+  "pageErrors": [],
+  "apiRequests": [],
+  "browserExited": true,
+  "cleanup": "CIM0 for worker77664/children/Motion CLI; lease released."
+}

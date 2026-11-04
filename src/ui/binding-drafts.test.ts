@@ -22,6 +22,9 @@ function snapshot(override: SoundRuleOverride | null = null): LabViewModel {
     simTimeSeconds: 0,
     runId: null,
     objects: [],
+    trajectoryStatus: {},
+    pathRuns: [],
+    paint: null,
     selectedObjectId: "ball",
     listener: {
       id: "listener",

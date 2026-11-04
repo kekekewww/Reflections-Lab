@@ -1,6 +1,6 @@
 # Sound Behavior 架構與整合界線
 
-2026-10-29：架構已採納，正式 evaluator／bridge／Inspector／Audio integration 已有實作與分項證據；完整 V1 尚未完成。以下設計包含尚無 producer 的事件與後續能力，不能將整份規劃讀成已實作。當前 code／test／gap 見[研究](../12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md)；[結案報告](SOUND_BEHAVIOR_REPORT.md)只保留原研究／draft 範圍。決策見[ADR-014](../02-architecture/adr/014-sound-behavior-system.md)，事件／schema／UX維持唯一正式來源，不重複閾值或 token。
+2026-11-02 更新：架構已採納，正式有限 evaluator／bridge／Inspector／native SourceGraph integration 已實作。19種 trigger 的產品 producer 已接線，Bounce 與 Zone 仍有明示的固定支撐／中心取樣界線；可用性由共用能力表、可信 Host 宣告與有效 Zone registry 決定，見[區域交付](../15-ui-parameter-audit/zones/HANDOFF.md)。完整 V1 尚未完成。以下保留原設計中的後續 Graph／多版本狀態等規範，不表示整份規劃均已實作。當前 code／test／gap 見[研究](../12-architecture-review/SOUND_BEHAVIOR_RESEARCH.md)；[結案報告](SOUND_BEHAVIOR_REPORT.md)只保留原研究／draft 範圍。決策見[ADR-014](../02-architecture/adr/014-sound-behavior-system.md)，事件／schema／UX維持唯一正式來源，不重複閾值或 token。
 
 ## 分層與責任
 
@@ -31,7 +31,7 @@ flowchart LR
 | Renderer | 同一發聲的direct／early／late、spatialization、headroom、生命週期 | 再算一次distance／delay／Doppler／HRTF |
 | AI／Recorder | 合法候選、preview／undo、trace及實際結果引用 | 音訊callback阻塞、任意shell、LLM製造測量值 |
 
-既有Rapier world、Scene command host、AcousticFrame、audio clocks與domain IDs仍是權威，新增的是行為作者／事件橋接層。主程式尚未實作，沒有因draft validator通過而產生可播放的產品。
+既有 Rapier world、Scene command host、AcousticFrame、audio clocks 與 domain IDs 仍是權威；新增的是行為作者／事件橋接層。原研究／draft 階段的「主程式尚未實作」已由有限正式 runtime 取代；目前產品實作、Node／實際 DOM 與數位產物各有獨立收據，見[核心交接](../14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md)。draft validator、文件、單項數學成功仍不能代替產品、聽測或整體 V1 驗收。
 
 ## Event Rules＋正交狀態，而非單一FSM或大Graph
 

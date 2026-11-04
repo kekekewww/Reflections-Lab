@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": 1,
+  "area": "Meta Agent and trusted experiment workflow",
+  "attempt": "final-49bde82-01",
+  "case": "03-closed-loop",
+  "sourceHintFromCoordinator": "49bde82be6f9def5058bc8f3076e105fcdfd535d; served index-C4qRBPy8.js SHA256 8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+  "browser": "156.0.8078.75",
+  "baseURL": "http://127.0.0.1:4173",
+  "startedAt": "2026-11-02T10:24:20.535Z",
+  "scope": "Real production browser; UI pointer/keyboard and Chrome input composition protocol only. evaluate reads DOM only.",
+  "controls": [
+    {
+      "state": "initial-offline",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "3",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": true,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n離線指令示範可用；未使用Meta模型或額度。",
+      "visibleWorkflowText": "實驗流程\n尚未執行\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\n尚未建立實驗基準。"
+    },
+    {
+      "state": "baseline-completed",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "material.hard",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "1",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "步驟與結果來源",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "原始 Host 說明",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.434f2de8b7628654065b095d311a5c7285aea580）",
+      "visibleWorkflowText": "實驗流程\n實驗完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n可追溯結果\nHost 計算結果\n指標\t數值\t單位\t頻率 Hz\ndirectArrivalTimeS\t0.017067\ts\t1000\nrt60S\t未提供\ts\t1000\n步驟與結果來源\n基準\nrun.tool.ad841bb317378d808e023061464809f82fb073c6\n工具\t結果\t錄製\nRunSimulation\t完成\trun.tool.ad841bb317378d808e023061464809f82fb073c6\nCaptureExperiment\t完成\trun.tool.ad841bb317378d808e023061464809f82fb073c6\nAnalyzeAcousticResults\t完成\trun.tool.ad841bb317378d808e023061464809f82fb073c6\n原始 Host 說明\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.434f2de8b7628654065b095d311a5c7285aea580）\nmetric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd\nmetric.434f2de8b7628654065b095d311a5c7285aea580 · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd"
+    },
+    {
+      "state": "candidate-completed",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "material.soft",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "1",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "步驟與結果來源",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "原始 Host 說明",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\ndirectArrivalTimeS：0.01706715921524334 s（Computed；metric.a83e73a209e802bb67027db03e402bfa229dad40） directArrivalTimeS：0.01706715921524334 s（Computed；metric.117e8605f5419bb7875af4493ed3395d8c0c020e） directArrivalTimeS：0.01706715921524334 s（Computed；metric.45ccf7a70804c14f38d584737a83ffde569dce8c） directArrivalTimeS：0.01706715921524334 s（Computed；metric.994499a1d0d0596eafcc06248a699936123d132f） directArrivalTimeS：0.01706715921524334 s（Computed；metric.cc9845805ec6769bd57baa89265fcef337c07b10） directArrivalTimeS：0.01706715921524334 s（Computed；metric.02c32a831625b70b2c62de616d28a63dabc896fb） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.fba6dfad8527dd2f87a628be54e0a29bebdb1a7f） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.42a2973f6054b538e110c51db1b5a34f90035906） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.ef6f04e3980ba7637903c1af0e5ad5721e139dab） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.c5e457eecef3426d6bc5108d1c0c0f8ce2b9f542） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.747cedd614aa7bea06ac43d0071dfacee4cc60b8） rt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.c23f9b80de698162d2c0ed692d12ad71d784a435）",
+      "visibleWorkflowText": "實驗流程\n實驗完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n可追溯結果\nHost 計算結果\n指標\t數值\t單位\t頻率 Hz\ndirectArrivalTimeS\t0.017067\ts\t125\ndirectArrivalTimeS\t0.017067\ts\t250\ndirectArrivalTimeS\t0.017067\ts\t500\ndirectArrivalTimeS\t0.017067\ts\t1000\ndirectArrivalTimeS\t0.017067\ts\t2000\ndirectArrivalTimeS\t0.017067\ts\t4000\nrt60S\t未提供\ts\t125\nrt60S\t未提供\ts\t250\nrt60S\t未提供\ts\t500\nrt60S\t未提供\ts\t1000\nrt60S\t未提供\ts\t2000\nrt60S\t未提供\ts\t4000\n步驟與結果來源\n基準\nrun.tool.ad841bb317378d808e023061464809f82fb073c6\n候選\nrun.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb\n工具\t結果\t錄製\nRunSimulation\t完成\trun.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb\nCaptureExperiment\t完成\trun.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb\nAnalyzeAcousticResults\t完成\trun.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb\nCompareExperiments\t完成\trun.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb\n原始 Host 說明\nmetric.a83e73a209e802bb67027db03e402bfa229dad40 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.117e8605f5419bb7875af4493ed3395d8c0c020e · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.45ccf7a70804c14f38d584737a83ffde569dce8c · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.994499a1d0d0596eafcc06248a699936123d132f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.cc9845805ec6769bd57baa89265fcef337c07b10 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.02c32a831625b70b2c62de616d28a63dabc896fb · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.fba6dfad8527dd2f87a628be54e0a29bebdb1a7f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.42a2973f6054b538e110c51db1b5a34f90035906 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.ef6f04e3980ba7637903c1af0e5ad5721e139dab · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.c5e457eecef3426d6bc5108d1c0c0f8ce2b9f542 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.747cedd614aa7bea06ac43d0071dfacee4cc60b8 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412\nmetric.c23f9b80de698162d2c0ed692d12ad71d784a435 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412"
+    },
+    {
+      "state": "incompatible-rejected",
+      "inventory": [
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：執行方式",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_32_",
+          "options": null
+        },
+        {
+          "tag": "select",
+          "id": null,
+          "type": null,
+          "label": "AI 執行方式",
+          "value": "offline",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": [
+            {
+              "value": "offline",
+              "label": "離線工具（非模型）",
+              "disabled": false
+            },
+            {
+              "value": "meta",
+              "label": "Meta Model API",
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "重新檢查伺服器狀態",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "復原上次 AI 套用",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_33_",
+          "options": null
+        },
+        {
+          "tag": "textarea",
+          "id": "experiment-agent-prompt",
+          "type": null,
+          "label": "實驗指令",
+          "value": "新增一個方塊",
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": "4000",
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "experiment-agent-provider-status",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "submit",
+          "label": "產生操作預覽",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗指令",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_34_",
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "說明：實驗流程",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": "_r_35_",
+          "options": null
+        },
+        {
+          "tag": "input",
+          "id": null,
+          "type": "number",
+          "label": "基準實驗長度 s",
+          "value": "1",
+          "disabled": false,
+          "visible": true,
+          "min": "1",
+          "max": "10",
+          "step": "1",
+          "maxLength": null,
+          "ariaInvalid": "false",
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "建立基準實驗",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "button",
+          "id": null,
+          "type": "button",
+          "label": "以相同運動比較目前材質",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "type": null,
+          "label": "步驟與結果來源",
+          "value": null,
+          "disabled": false,
+          "visible": true,
+          "min": null,
+          "max": null,
+          "step": null,
+          "maxLength": null,
+          "ariaInvalid": null,
+          "title": null,
+          "describedBy": null,
+          "options": null
+        }
+      ],
+      "visibleAgentText": "由意圖到可驗證操作\n離線工具 · 非模型輸出\n執行方式\n離線工具（非模型）\nMeta Model API\n重新檢查伺服器狀態\n復原上次 AI 套用\n\nMeta 伺服器 gate：尚未檢查。尚未查詢本機Meta provider狀態；未呼叫模型。\n\n實驗指令\n產生操作預覽\n\n實驗流程：failed；結果與來源已保留。",
+      "visibleWorkflowText": "實驗流程\n實驗未完成\n基準實驗長度\ns\n建立基準實驗\n以相同運動比較目前材質\n\n重用 motion trace 不能改質量、摩擦、反彈、重力、geometry／初始 pose、body mode 或 Listener；這些變更必須 fresh physics run。\n\n步驟與結果來源\n基準\nrun.tool.ad841bb317378d808e023061464809f82fb073c6\n工具\t結果\t錄製\nRunSimulation\t失敗\trun.tool.a9a4cbf35531bc8686a6fe355f8ecab9ffd539fd"
+    }
+  ],
+  "outcomes": [
+    {
+      "control": "agent.apply",
+      "scenario": "simulation-state dependent action label",
+      "actual": {
+        "requestedRunning": true,
+        "buttonLabel": "暫停並套用操作",
+        "runningVariantObserved": true
+      },
+      "at": "2026-11-02T10:24:23.389Z"
+    },
+    {
+      "control": "agent.apply",
+      "scenario": "pointer explicit apply",
+      "actual": {
+        "material": "material.hard",
+        "beforeRevision": "場景版本 0 · 本機專案",
+        "afterRevision": "場景版本 1 · 本機專案",
+        "inspectorValue": "material.hard"
+      },
+      "at": "2026-11-02T10:24:23.970Z"
+    },
+    {
+      "control": "workflow.details",
+      "scenario": "pointer opens steps and provenance disclosure",
+      "actual": {
+        "open": true
+      },
+      "at": "2026-11-02T10:24:25.421Z"
+    },
+    {
+      "control": "workflow.baseline",
+      "scenario": "keyboard 1s baseline and pointer provenance disclosure",
+      "actual": {
+        "baselineId": "run.tool.ad841bb317378d808e023061464809f82fb073c6",
+        "rows": [
+          [
+            "RunSimulation",
+            "完成",
+            "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+          ],
+          [
+            "CaptureExperiment",
+            "完成",
+            "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+          ],
+          [
+            "AnalyzeAcousticResults",
+            "完成",
+            "run.tool.ad841bb317378d808e023061464809f82fb073c6"
+          ]
+        ],
+        "metrics": [
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "1000"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "1000"
+          ]
+        ],
+        "citations": [
+          "metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd",
+          "metric.434f2de8b7628654065b095d311a5c7285aea580 · artifact.grounding.cfe8a0cbb5d9f6a8e503b9dbc13840c584fac4dd"
+        ]
+      },
+      "at": "2026-11-02T10:24:25.515Z"
+    },
+    {
+      "control": "workflow.raw-explanation",
+      "scenario": "keyboard disclosure",
+      "actual": {
+        "text": "directArrivalTimeS：0.01706715921524334 s（Computed；metric.9a098bf15cf9526f3a85ed4de1c1e6b2f71eb53d）\nrt60S：未提供；本機 Rapier／Behavior／幾何聲學的 Computed 結果；未建立音訊裝置，非聽測、房間量測或 Meta live 證據。；VALID_IR_REQUIRED：有限路徑及 Synthetic late reverb 不構成完整可分析 IR，不能推導 decay／DRR／clarity。（metric.434f2de8b7628654065b095d311a5c7285aea580）"
+      },
+      "at": "2026-11-02T10:24:25.641Z"
+    },
+    {
+      "control": "workflow.details",
+      "scenario": "keyboard closes and restores disclosure state",
+      "actual": {
+        "restoredOpen": true
+      },
+      "at": "2026-11-02T10:24:25.886Z"
+    },
+    {
+      "control": "agent.apply",
+      "scenario": "simulation-state dependent action label",
+      "actual": {
+        "requestedRunning": false,
+        "buttonLabel": "套用操作",
+        "runningVariantObserved": false
+      },
+      "at": "2026-11-02T10:24:26.579Z"
+    },
+    {
+      "control": "agent.apply",
+      "scenario": "keyboard explicit apply",
+      "actual": {
+        "material": "material.soft",
+        "beforeRevision": "場景版本 1 · 本機專案",
+        "afterRevision": "場景版本 2 · 本機專案",
+        "inspectorValue": "material.soft"
+      },
+      "at": "2026-11-02T10:24:26.908Z"
+    },
+    {
+      "control": "workflow.compare",
+      "scenario": "pointer matched-motion comparison",
+      "actual": {
+        "runIds": [
+          "run.tool.ad841bb317378d808e023061464809f82fb073c6",
+          "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+        ],
+        "rows": [
+          [
+            "RunSimulation",
+            "完成",
+            "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+          ],
+          [
+            "CaptureExperiment",
+            "完成",
+            "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+          ],
+          [
+            "AnalyzeAcousticResults",
+            "完成",
+            "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+          ],
+          [
+            "CompareExperiments",
+            "完成",
+            "run.tool.9f0013f38764214f4e5ef38af2e297b0d00f14eb"
+          ]
+        ],
+        "metrics": [
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "125"
+          ],
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "250"
+          ],
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "500"
+          ],
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "1000"
+          ],
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "2000"
+          ],
+          [
+            "directArrivalTimeS",
+            "0.017067",
+            "s",
+            "4000"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "125"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "250"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "500"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "1000"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "2000"
+          ],
+          [
+            "rt60S",
+            "未提供",
+            "s",
+            "4000"
+          ]
+        ],
+        "citations": [
+          "metric.a83e73a209e802bb67027db03e402bfa229dad40 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.117e8605f5419bb7875af4493ed3395d8c0c020e · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.45ccf7a70804c14f38d584737a83ffde569dce8c · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.994499a1d0d0596eafcc06248a699936123d132f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.cc9845805ec6769bd57baa89265fcef337c07b10 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.02c32a831625b70b2c62de616d28a63dabc896fb · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.fba6dfad8527dd2f87a628be54e0a29bebdb1a7f · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.42a2973f6054b538e110c51db1b5a34f90035906 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.ef6f04e3980ba7637903c1af0e5ad5721e139dab · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.c5e457eecef3426d6bc5108d1c0c0f8ce2b9f542 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.747cedd614aa7bea06ac43d0071dfacee4cc60b8 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412",
+          "metric.c23f9b80de698162d2c0ed692d12ad71d784a435 · artifact.grounding.e896bdf6d0d991114ee419013921156836021412"
+        ]
+      },
+      "at": "2026-11-02T10:24:29.059Z"
+    },
+    {
+      "control": "agent.undo",
+      "scenario": "keyboard Host undo retains history revision semantics",
+      "actual": {
+        "before": "場景版本 2 · 本機專案",
+        "after": "場景版本 3 · 本機專案",
+        "restoredMaterial": "material.hard",
+        "secondUndoDisabled": true
+      },
+      "at": "2026-11-02T10:24:29.929Z"
+    },
+    {
+      "control": "workflow.compare",
+      "scenario": "geometry change cannot reuse baseline motion",
+      "actual": {
+        "error": "重用 motion trace 不能改質量、摩擦、反彈、重力、geometry／初始 pose、body mode 或 Listener；這些變更必須 fresh physics run。",
+        "rows": [
+          [
+            "RunSimulation",
+            "失敗",
+            "run.tool.a9a4cbf35531bc8686a6fe355f8ecab9ffd539fd"
+          ]
+        ],
+        "fabricatedMetricsAbsent": true
+      },
+      "at": "2026-11-02T10:24:31.385Z"
+    }
+  ],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4173/",
+      "sha256": "6975d8c4de2d76918521cd3fef524fc386dfb5e4f3945e17f4bfacf2e0e665a8",
+      "bytes": 755,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/locale-model-DD1acLTT.js",
+      "sha256": "62baf5a939c581df46b9c35c66380713b751cafb83cb8673228ce44ddf6eb961",
+      "bytes": 772585,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/index-C4qRBPy8.js",
+      "sha256": "8d4f079ed98894648a0da35092471f730644128a2e3d569dc5fb191210b84123",
+      "bytes": 5116129,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-BUh_Rw7f.css",
+      "sha256": "43eeadbe959e78ed8e4135d8ff885bed898c527fe5a51bce1aab504c316892b7",
+      "bytes": 38307,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/App-DTboN9lz.js",
+      "sha256": "f1407aa7c49a2792e6879025e5e5d8188d68a186be9f3f0619594ae8cbdf39fd",
+      "bytes": 788649,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/acoustic-worker-DyzyxVA_.js",
+      "sha256": "b520d715866cb76d58608fdb37b364a6c2d4db2c3c9903def831cd4ae9e5391e",
+      "bytes": 23785,
+      "status": 200
+    }
+  ],
+  "requests": [],
+  "blocked": [],
+  "pageErrors": [],
+  "status": "PASS",
+  "absentNotControls": [
+    "model",
+    "API key",
+    "budget",
+    "editable context"
+  ],
+  "notRun": [
+    "native OS IME composition",
+    "Meta live planning",
+    "human keyboard/mouse",
+    "hearing",
+    "performance acceptance"
+  ],
+  "finishedAt": "2026-11-02T10:24:31.915Z"
+}

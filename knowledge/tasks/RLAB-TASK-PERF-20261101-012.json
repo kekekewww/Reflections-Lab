@@ -1,0 +1,104 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-012",
+  "title": "評估GPU／高階反射／多listener與能源收益",
+  "description": "進階能力可能增加幾何與傳輸負載；目前無同負載GPU或能耗收益證據，不能由CPU占用推出功率。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P3",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-014"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "新功能需求與資源預算另獲採納，原profile不降低負載或改門檻。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "科學oracle、tolerance、units與capability分backend保存；不生成未求解paths或捏造跨browser等價。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "CPU/GPU/energy證據定義清楚，未量W/J不報省電百分比；無收益保持原core。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/acoustics",
+    "src/app/acoustic-worker.ts",
+    "src/ui/viewport",
+    "docs/06-validation/ACOUSTIC_VALIDATION.md",
+    "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+    "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "sha256": "efc3d1546515361902da061f00d27705203e1678828fdf558af742365744d1ae",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.077Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "進階能力可能增加幾何與傳輸負載；目前無同負載GPU或能耗收益證據，不能由CPU占用推出功率。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "locator": "MEM-04",
+      "classification": "NOT MEASURED GPU/power",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723"
+    },
+    {
+      "path": "docs/12-architecture-review/CUSTOM_ACOUSTIC_CORE_RESEARCH.md",
+      "locator": "模型／higher-order與動態能力限制",
+      "classification": "EXISTING RESEARCH",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "efc3d1546515361902da061f00d27705203e1678828fdf558af742365744d1ae"
+    }
+  ],
+  "affected_modules": [
+    "src/acoustics",
+    "src/app/acoustic-worker.ts",
+    "src/ui/viewport",
+    "docs/06-validation/ACOUSTIC_VALIDATION.md"
+  ],
+  "proposed_solution": "P0穩定且另有功能需求後才做隔離比較；GPU capability／non-disjoint timing、higher-order reference、multi-listener budgets與energy量測各自驗證，不一起改solver/render。",
+  "alternatives": [
+    "維持單listener有限階CPU core。",
+    "先減可證重複geometry／payload工作。",
+    "僅做CPU/GPU/wakeups proxy，明示不等於W/J。"
+  ],
+  "expected_benefit": "可能開啟新容量／能力，收益未量；不是本輪MVP或性能通過捷徑。",
+  "complexity": "很高；科學reference、backend、相容性與新維度負載。",
+  "performance_impact": "CPU/GPU/wall/transfer分列，async GPU query僅採available且non-disjoint；維持原單listener比較。",
+  "audio_quality_impact": "energy/power/pressure、A/R/T與scattering守恆及path來源oracle；IR不冒充individual paths。",
+  "latency_impact": "GPU submit/queue/readback與額外listener更新age另量。",
+  "compatibility_regression_risk": "驅動/browser不支援、浮點誤差、GPU contention、增加功耗與近似能力誤標。",
+  "benchmark_plan": "原單listener baseline加獨立高階／多listener擴充案例；解析反射/遮擋/能量reference、GPU timing與實際W/J或明示proxy。",
+  "rollback_plan": "停止新backend工作並失效其generation，回原CPU／單listener有限階能力；保留原Scene與trace，不將新近似結果偽裝為舊backend。",
+  "priority_rationale": "功能與科學成本高、依賴多且使用者收益未證，列P3；基礎資源量測已由001/014承擔。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "WebGPU/timestamps/device thermal counters vary; explicit CPU fallback required.",
+  "regression_risk": "New approximation/backend capabilities must not masquerade as unchanged acoustic quality.",
+  "candidate_commit": null
+}

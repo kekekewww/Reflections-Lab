@@ -77,7 +77,10 @@ test("real Rapier cooldown rejection retains raw impact/contact and captured rep
     });
     await app.dispatch({ type: "recordToggle" });
     await app.dispatch({ type: "run" });
-    for (let tick = 0; tick < 230; tick++) app.advance(1 / 60);
+    for (let tick = 0; tick < 230; tick++) {
+      app.advance(1 / 60);
+      await app.flushRecordingEvaluation();
+    }
     await app.dispatch({ type: "pause" });
     await app.dispatch({ type: "recordToggle" });
     assert.ok(!app.getSnapshot().error);

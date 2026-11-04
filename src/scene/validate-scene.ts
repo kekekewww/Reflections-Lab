@@ -31,6 +31,14 @@ export function assertJsonValue(input: unknown): void {
     if (!Array.isArray(value) && prototype !== Object.prototype && prototype !== null) {
       throw new SceneError("INVALID_JSON", "只接受一般 JSON object。");
     }
+    if (Array.isArray(value)) {
+      const arrayKeys = Object.keys(value);
+      if (
+        arrayKeys.length !== value.length ||
+        arrayKeys.some((key, index) => key !== String(index))
+      )
+        throw new SceneError("INVALID_JSON", "不接受稀疏陣列或陣列額外欄位。");
+    }
     seen.add(value);
     for (const key of Object.keys(value)) {
       if (["__proto__", "constructor", "prototype"].includes(key))
@@ -60,7 +68,12 @@ export function sceneValidationErrors(input: unknown): string[] {
   const errors: string[] = [];
   if (!Number.isSafeInteger(scene.sceneRevision)) errors.push("sceneRevision 必須為安全整數。");
   const ids = new Set<string>();
-  for (const entity of [...scene.objects, ...scene.sources, scene.listener]) {
+  for (const entity of [
+    ...scene.objects,
+    ...scene.sources,
+    scene.listener,
+    ...(scene.zones ?? []),
+  ]) {
     if (ids.has(entity.id)) errors.push(`${entity.id}: 重複 domain ID。`);
     ids.add(entity.id);
   }
@@ -77,14 +90,19 @@ export function sceneValidationErrors(input: unknown): string[] {
     if (object.shape === "sphere" && (width !== height || width !== depth))
       errors.push(`${object.id}: 球體三軸直徑必須相同。`);
     if (object.shape === "capsule" && (width !== depth || height < width))
-      errors.push(`${object.id}: capsule 外接尺寸不合法。`);
+      errors.push(`${object.id}: 膠囊直徑 X 與 Z 必須相同，高度 Y 必須大於或等於直徑。`);
+  }
+  for (const zone of scene.zones ?? []) {
+    const smallestRadius = zone.shape === "aabb" ? Math.min(...zone.halfExtentsM) : zone.radiusM;
+    if (zone.hysteresisM >= smallestRadius)
+      errors.push(`${zone.id}: hysteresis 必須小於半徑或最小半尺寸。`);
   }
   return errors;
 }
 
 export function validateScene(input: unknown): asserts input is SceneSpec {
   const errors = sceneValidationErrors(input);
-  if (errors.length) throw new SceneError("INVALID_SCENE", "場景驗證失敗。", errors);
+  if (errors.length) throw new SceneError("INVALID_SCENE", `場景驗證失敗：${errors[0]}`, errors);
 }
 
 export function createScene(input: unknown): SceneSpec {

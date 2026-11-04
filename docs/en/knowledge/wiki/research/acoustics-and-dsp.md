@@ -1,11 +1,11 @@
-<!-- english-source: {"path":"knowledge/wiki/research/acoustics-and-dsp.md","sha256":"417bc810fadcf4b0e10be3559547815e186e8bd059b584dd77864bd0de1bc88b","translated_at":"2026-10-27T03:44:07.128220Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/research/acoustics-and-dsp.md","sha256":"9dc2b760c680f09fc45b3e6a773c609f49d4137e0537519a2c6e7eb1ff6f3a69","translated_at":"2026-11-02T09:59:41.275Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0011
 title: Consolidated acoustics and DSP knowledge
 type: research
 status: VERIFIED
 created_at: 2026-10-25T19:46:51.310610+00:00
-updated_at: 2026-10-26T17:54:59.738Z
+updated_at: 2026-11-02T09:45:40.484Z
 sources:
   - RLAB-SRC-0006
   - RLAB-SRC-0007
@@ -14,8 +14,13 @@ sources:
   - RLAB-SRC-0009
   - SB-SRC-0002
   - SB-SRC-0001
+  - CG-DATA-CONTRACTS-20261102-V1
+  - CG-ACOUSTIC-VALIDATION-20261102-V1
+  - CG-EVIDENCE-LEDGER-20261102-V1
 related_tasks:
   - RLAB-TASK-0001
+  - RLAB-TASK-0030
+  - RLAB-TASK-0028
 related_decisions: []
 supersedes: []
 tags:
@@ -26,7 +31,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/research/acoustics-and-dsp.md`](../../../../../knowledge/wiki/research/acoustics-and-dsp.md). Source SHA-256: `417bc810fadcf4b0e10be3559547815e186e8bd059b584dd77864bd0de1bc88b`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/research/acoustics-and-dsp.md`](../../../../../knowledge/wiki/research/acoustics-and-dsp.md). Source SHA-256: `9dc2b760c680f09fc45b3e6a773c609f49d4137e0537519a2c6e7eb1ff6f3a69`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="聲學dsp可追溯結論與實作界線"></a>
@@ -45,3 +50,9 @@ Original equations and conditions are in [ACOUSTIC_THEORY](../../../research/the
 
 
 Sound research separates generated sound content from propagation. The new Web Audio lifecycle/Worklet block claims SB-AUD-C01/02 are DOC/SPEC review, not measured audio tests. The new Ledger has 68sources/66claims; the original Phase1 counts remain historical. Physical-inspired samples are perceptual, not natural vibration. See [sources and limits](interactive-sound-design.md).
+
+
+<!-- english-original-anchor --> <a id="curves動態反射正式來源接續b4-candidate"></a>
+## Curves/dynamic-reflection official-source continuation (b4 candidate)
+
+Curves7bb has merged normally as mergea06, followed by gizmo sourceb4; root's full-code check/final UI validation are still in progress. Official DataContracts/AcousticValidation/Ledger now continue through new sources. Exact original Git versions are saved under docs15/history; original research/Task0021 evidence is not rewritten. Added analytical sphere/capsule geometry and real-snapshot dynamicReflector share the 256 budget. The 105-object case genuinely failed at 289 items; exact OBB occluder representation reduced it to 124 without changing the fixture/cap. See the [model contract](../../../15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md) for model/policy pins and old-Replay/new-reevaluation compatibility. Unmodeled curvature focusing/fullwave and other effects do not become scientific/performance PASS.

@@ -1,11 +1,13 @@
 import { createServer } from "node:http";
+import { createHash, randomUUID } from "node:crypto";
 import type { IncomingMessage, Server, ServerResponse } from "node:http";
 import { AgentError } from "../src/ai/types.js";
 import type { PlannerContext } from "../src/ai/types.js";
 import { OfflinePlanner } from "../src/ai/offline-planner.js";
-import { assertBoundedJson } from "../src/ai/validation.js";
+import { assertBoundedJson, canonicalJson } from "../src/ai/validation.js";
 import { validateScene } from "../src/scene/index.js";
 import { DEFAULT_META_CONFIG, MetaProvider } from "./meta-provider.js";
+import { proposeScene } from "./scene-preflight.js";
 import type { MetaProviderConfig } from "./meta-provider.js";
 import { validateSoundPlannerInput } from "../src/ai/sound-plan.js";
 import type { SoundPlannerInput } from "../src/ai/sound-plan.js";
@@ -124,6 +126,15 @@ export function createAgentServer(options: AgentServerOptions = {}): Server {
   const origins = new Set(options.allowedOrigins ?? LOCAL_ORIGINS);
   const maxBytes = options.maxBodyBytes ?? 256 * 1024;
   let active = 0;
+  const requests = new Map<
+    string,
+    {
+      hash: string;
+      controller: AbortController;
+      result: Promise<unknown>;
+      state: "running" | "completed" | "failed";
+    }
+  >();
   return createServer((request, response) => {
     void (async () => {
       const origin = request.headers.origin;
@@ -150,6 +161,27 @@ export function createAgentServer(options: AgentServerOptions = {}): Server {
         });
         return;
       }
+      if (request.method === "POST" && path === "/api/agent/cancel") {
+        const value = await readBody(request, 1024);
+        if (
+          !value ||
+          typeof value !== "object" ||
+          Array.isArray(value) ||
+          Object.keys(value).some((key) => key !== "requestId") ||
+          typeof (value as { requestId?: unknown }).requestId !== "string"
+        )
+          throw new AgentError("SCHEMA_INVALID", "取消請求只接受requestId。");
+        const requestId = (value as { requestId: string }).requestId;
+        const entry = requests.get(requestId);
+        if (!entry) throw new AgentError("UNKNOWN_ID", "找不到此本機Planner請求。");
+        if (entry.state === "running") entry.controller.abort();
+        json(response, 200, {
+          requestId,
+          state: entry.state === "running" ? "cancelRequested" : entry.state,
+          outcomeConfirmed: entry.state !== "running",
+        });
+        return;
+      }
       if (
         request.method !== "POST" ||
         !["/api/agent/propose", "/api/agent/propose-sound"].includes(path)
@@ -157,25 +189,77 @@ export function createAgentServer(options: AgentServerOptions = {}): Server {
         json(response, 404, { error: { code: "UNKNOWN_ROUTE", message: "找不到此API。" } });
         return;
       }
-      if (active >= 1) throw new AgentError("TRANSACTION_BUSY", "已有一個Planner請求進行中。");
-      active++;
-      try {
-        const value = await readBody(request, maxBytes);
-        let plan;
-        if (path === "/api/agent/propose-sound") {
-          const input = soundPlannerInput(value);
-          plan = await provider.planSound(input.prompt, input.state, input.options);
-        } else {
-          const input = plannerInput(value);
-          plan =
-            input.mode === "meta"
-              ? await provider.plan(input.prompt, input.context)
-              : offline.plan(input.prompt, input.context);
-        }
-        json(response, 200, plan);
-      } finally {
-        active--;
+      const value = await readBody(request, maxBytes);
+      const suppliedId = request.headers["x-reflection-request-id"];
+      if (
+        suppliedId !== undefined &&
+        (typeof suppliedId !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$/.test(suppliedId))
+      )
+        throw new AgentError("SCHEMA_INVALID", "Planner requestId格式無效。");
+      const requestId = suppliedId ?? `request.${randomUUID()}`;
+      const hash = createHash("sha256").update(canonicalJson({ path, value })).digest("hex");
+      const old = requests.get(requestId);
+      if (old) {
+        if (old.hash !== hash)
+          throw new AgentError("DOMAIN_INVALID", "同一requestId不能改變Planner內容。");
+        response.setHeader("X-Reflection-Request-ID", requestId);
+        json(response, 200, await old.result);
+        return;
       }
+      if (active >= 1) throw new AgentError("TRANSACTION_BUSY", "已有一個Planner請求進行中。");
+      if (requests.size >= 128)
+        throw new AgentError("BUDGET_EXCEEDED", "Planner請求紀錄已達容量上限。");
+      const controller = new AbortController();
+      const perform = async () => {
+        active++;
+        try {
+          let plan;
+          if (path === "/api/agent/propose-sound") {
+            const input = soundPlannerInput(value);
+            plan = await provider.planSound(input.prompt, input.state, input.options, {
+              requestId,
+              signal: controller.signal,
+            });
+          } else {
+            const input = plannerInput(value);
+            plan =
+              input.mode === "meta"
+                ? provider.buildsScenes()
+                  ? await proposeScene(provider, input.prompt, input.context, {
+                      requestId,
+                      signal: controller.signal,
+                    })
+                  : await provider.plan(input.prompt, input.context, {
+                      requestId,
+                      signal: controller.signal,
+                    })
+                : offline.plan(input.prompt, input.context);
+          }
+          if (controller.signal.aborted)
+            throw new AgentError("CANCELED", "Planner請求已取消，未接受提案。");
+          return plan;
+        } finally {
+          active--;
+        }
+      };
+      const result = Promise.resolve().then(perform);
+      const entry = {
+        hash,
+        controller,
+        result,
+        state: "running" as "running" | "completed" | "failed",
+      };
+      requests.set(requestId, entry);
+      void result.then(
+        () => {
+          entry.state = "completed";
+        },
+        () => {
+          entry.state = "failed";
+        },
+      );
+      response.setHeader("X-Reflection-Request-ID", requestId);
+      json(response, 200, await result);
     })().catch((error) => {
       const known = error instanceof AgentError;
       const code = known ? error.code : "SCHEMA_INVALID";

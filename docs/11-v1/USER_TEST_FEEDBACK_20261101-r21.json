@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "kind": "USER_REPORTED_MANUAL_TEST_FEEDBACK",
+  "recordedAt": "2026-11-01T00:00:00.000Z",
+  "userFacingDate": "2026-11-01",
+  "language": "zh-TW",
+  "guide": {
+    "kind": "repository_procedure",
+    "path": "docs/11-v1/FULL_TEST_PROCEDURE.md",
+    "sectionScope": "B1 through B5 reported; B6 through B14 not reported in this round",
+    "urlProvidedInGuide": "http://127.0.0.1:5173/"
+  },
+  "provenance": {
+    "authority": "Direct human feedback",
+    "browser": "Brave Browser (version not captured)",
+    "repositoryHeadAtRecording": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+    "testedBrowserBundleHash": null,
+    "actualTestedRevision": "UNKNOWN_NOT_CAPTURED; the user started npm run dev themself after the R20 commits",
+    "deviceRoute": null,
+    "DAC": null,
+    "physicalVolume": null,
+    "agentReproduction": "Build-exit trap explained by code reading (interaction-host place/resume/handleKey); RED tests pending in artifacts/v1/r21-fps-controls-20261101/"
+  },
+  "originalFeedback": [
+    "Brave Browser 2026/11/01",
+    "B1 正常",
+    "B2 正常",
+    "B3 正常",
+    "B4 正常",
+    "B5 建造模式非常不直覺，首先，為甚麼我不能在空間中建立物件，只能在物體表面上建立物件。其次，建造物件的邏輯非常奇怪，按下B之後，建造物件，我不應該需要點擊確認之後才可以繼續建造或操作物件，我應該要可以直接操作的。最後，進入建造模式之後我就沒辦法退出建造模式了，我也找不到任何方法，我應該是要點擊B之後就可以直接退出。操作上也沒有明確的指示。整體操作提示框就卡在那邊也非常的難以操作，可以放在一個應該要可以不影響視覺的地方，像是下方工具列。",
+    "先處理這些問題，後續我再進行測試與回報。實作時，優先使用codex 6.1 sol xhigh。",
+    "此外，也處理效能問題，音訊會斷斷續續的，不知道是因為計算量過大，還是所有的計算都只使用同一個thread，請盡可能讓音訊在使用時是可以像是DAW那樣可以邊運算邊順利渲染音訊的，我不認為這個專案對電腦的負載有這麼大。",
+    "另外，在第一人稱模式的操控，應該要可以有是左鍵點擊皆可以直接抓取物件，右鍵可以建造，不需要使用或W是B這類的快捷鍵，操作上非常不順暢。",
+    "另外你請你為所有參數的詳細設定寫一個Documentation ，然後刪除專案本體頁面中的所有說明文字，或者是讓這些說明文字作為替代文字，當滑鼠懸浮在上面時再顯示。"
+  ],
+  "userChoices": [
+    {
+      "question": "左鍵改成抓取物件後，拿著物件時要怎麼投擲和放下？",
+      "answer": "左鍵投擲、右鍵放下"
+    },
+    {
+      "question": "右鍵建造要怎麼運作？",
+      "answer": "按住右鍵預覽、放開放置"
+    },
+    {
+      "question": "在空中放置的物件，預設行為要怎樣？",
+      "answer": "停在空中但仍可碰撞"
+    }
+  ],
+  "statusRules": {
+    "reportedNormal": "USER_REPORTED_NO_ISSUE",
+    "meaning": "User reports no issue for the named section; not independent reproduction, numerical or scientific validation, or blanket acceptance.",
+    "unreportedSections": "NOT_TESTED_THIS_ROUND",
+    "unsupportedInferences": [
+      "Do not mark B6 through B14 PASS",
+      "Do not infer a device route, volume, machine load or tested bundle hash",
+      "The audio stutter observation is not a measurement; its cause is unverified"
+    ]
+  },
+  "findings": [
+    {
+      "id": "USER-R21-BUILD-01",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSection": "B5",
+      "observation": "只能在物體表面上建立物件，不能在空間中建立。",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-BUILD-02",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSection": "B5",
+      "observation": "放置後必須按確認（啟用與另按繼續）才能繼續建造或操作物件。",
+      "requirementChange": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md 2026-11-01",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-BUILD-03",
+      "status": "FAILED_USER_REPORT",
+      "severity": "BLOCKER",
+      "manualSection": "B5",
+      "observation": "進入建造模式後無法退出，找不到任何方法。",
+      "rootCause": "place() 安全暫停並留下待啟用物件；待啟用時 resume() 拒絕繼續；暫停時 handleKey 忽略包括 B 在內的所有按鍵；唯一出口「啟用物件」按鈕在滑鼠鎖定時無法點擊。由程式碼閱讀得出，RED 測試待補。",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-BUILD-04",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSection": "B5",
+      "observation": "操作沒有明確指示；提示框擋在畫面中，應移到下方工具列等不影響視覺的位置。",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-FPS-02",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "manualSection": "B4/B5",
+      "observation": "第一人稱應以左鍵直接抓取物件、右鍵建造，不需要 E 或 B 等快捷鍵；目前操作不順暢。",
+      "requirementChange": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md 2026-11-01",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-AUDIO-02",
+      "status": "USABILITY_ISSUE_USER_REPORT",
+      "observation": "音訊斷斷續續；使用者要求像 DAW 一樣邊運算邊順利渲染音訊。",
+      "userHypothesis": "計算量過大，或所有計算都在同一個執行緒",
+      "agentDiagnosis": "Code reading: samples render on the browser audio thread through native nodes, but every voice start and route change is driven from the main thread with no scheduling lookahead; stale solve batches are dropped. Unmeasured on the user's machine.",
+      "calibration": "UNKNOWN; no device, buffer size or CPU load captured",
+      "repairStatus": "IN_PROGRESS"
+    },
+    {
+      "id": "USER-R21-UI-02",
+      "status": "USER_REQUIREMENT",
+      "observation": "為所有參數的詳細設定寫一份說明文件；主頁面的說明文字刪除，或改成滑鼠懸浮時才顯示的提示。",
+      "agentInterpretation": "Static helper text moves into hover and keyboard-focus tooltips that remain available to assistive technology; field labels, values, status, errors, safety warnings and short evidence tags stay visible. The full reference lives in the new parameter documentation.",
+      "repairStatus": "IN_PROGRESS"
+    }
+  ],
+  "scopeResults": [
+    { "scope": "B1 啟動、語言與版面", "status": "USER_REPORTED_NO_ISSUE" },
+    { "scope": "B2 場景直接操作", "status": "USER_REPORTED_NO_ISSUE" },
+    { "scope": "B3 物理運算", "status": "USER_REPORTED_NO_ISSUE" },
+    { "scope": "B4 第一人稱", "status": "USER_REPORTED_NO_ISSUE" },
+    { "scope": "B5 抓取、投擲、固定與建造", "status": "FAILED_USER_REPORT" },
+    { "scope": "B6 through B14", "status": "NOT_TESTED_THIS_ROUND" }
+  ]
+}

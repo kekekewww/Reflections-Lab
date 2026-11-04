@@ -96,7 +96,11 @@ test("lazy context creation preserves monitor and mute controls selected before 
     );
     assert.equal(gains[0]?.gain.value, 1, "raw bus must match selected raw mode");
     assert.equal(gains[1]?.gain.value, 0, "simulated bus must be muted in raw mode");
-    assert.equal(gains[5]?.gain.value, 1, "master mute must match selected unmuted state");
+    const limiter = context.nodes.find((node) => node.kind === "compressor");
+    assert.ok(limiter);
+    const mute = gains.find((node) => node.connections.includes(limiter));
+    assert.ok(mute);
+    assert.equal(mute.gain.value, 1, "master mute must match selected unmuted state");
   } finally {
     engine.dispose();
     if (previous) Object.defineProperty(globalThis, "AudioContext", previous);
@@ -224,11 +228,9 @@ test("zero authored attack does not silently discard a first-sample impulse", as
   await engine.enable(0);
   try {
     engine.playVoice({ ...fixtureVoice(), fadeInSeconds: 0 }, fixtureFrame());
-    const gains = context.nodes.filter(
-      (node): node is FakeGainNode => node instanceof FakeGainNode,
-    );
-    const envelope = gains[7];
-    assert.ok(envelope);
+    const contentGain = context.sources()[0]?.connections[0];
+    const envelope = contentGain?.connections[0];
+    assert.ok(envelope instanceof FakeGainNode);
     assert.equal(
       envelope.gain.automation.some(
         (a) => a.method === "setValueAtTime" && a.time === 0 && a.value === 1,

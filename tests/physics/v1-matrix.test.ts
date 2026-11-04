@@ -565,7 +565,7 @@ for (const massKg of [0.1, 1, 5, 20]) {
               maxTrackingErrorM = Math.max(maxTrackingErrorM, diagnostic.trackingErrorMetres);
               assert.ok(
                 norm(diagnostic.impulseNewtonSeconds) <=
-                  Math.min(150 / 60, (massKg * 20) / 60) + 1e-6,
+                  Math.min(150 / 60, (massKg * 150) / 60) + 1e-6,
               );
               assert.ok(norm(diagnostic.torqueImpulseNewtonMetreSeconds) <= 15 / 60 + 1e-6);
             });

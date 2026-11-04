@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "kind": "MEMORY_ONLY_ENVIRONMENT_COMPONENT_SOURCE_AND_RAW_RECONCILIATION",
+  "checkedAt": "2026-11-02T07:53:55.323Z",
+  "sourceCommit": "59360da1b3e513fa7b80ca881d5214cf694867e4",
+  "report": "docs/15-ui-parameter-audit/environment/REPORT.md",
+  "verification": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+  "status": "FIXED_COMPONENT_RAW_AND_GIT_HASH_MATCH_BROWSER_PENDING",
+  "sourceCount": 7,
+  "source": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "49300f8b5e8ee499c343e98fa439c1d292040dd2e862b7b81c6ed8008ce4d0fc",
+      "bytes": 123677,
+      "gitBlobMatches": true,
+      "actualGitSha256": "49300f8b5e8ee499c343e98fa439c1d292040dd2e862b7b81c6ed8008ce4d0fc"
+    },
+    {
+      "path": "src/persistence/types.ts",
+      "sha256": "fe0eb1621bce83ab426e00350e0245215812b437109365f97ffeea89faeb195f",
+      "bytes": 2485,
+      "gitBlobMatches": true,
+      "actualGitSha256": "fe0eb1621bce83ab426e00350e0245215812b437109365f97ffeea89faeb195f"
+    },
+    {
+      "path": "src/persistence/index.ts",
+      "sha256": "06fcccc85f0f1678adbdcf70931447481d9894a260beedf920440c04c0746e36",
+      "bytes": 5048,
+      "gitBlobMatches": true,
+      "actualGitSha256": "06fcccc85f0f1678adbdcf70931447481d9894a260beedf920440c04c0746e36"
+    },
+    {
+      "path": "src/persistence/validate-project.ts",
+      "sha256": "305a562b4acd69e9b066878c9c1193feb025b8969ed27ebf088ca2222a9dab3b",
+      "bytes": 17981,
+      "gitBlobMatches": true,
+      "actualGitSha256": "305a562b4acd69e9b066878c9c1193feb025b8969ed27ebf088ca2222a9dab3b"
+    },
+    {
+      "path": "tests/app/environment-persistence.test.ts",
+      "sha256": "8dad2c64d30db4210707936d8c64ba5158db02af693adab594ae77c30cf51dc0",
+      "bytes": 8151,
+      "gitBlobMatches": true,
+      "actualGitSha256": "8dad2c64d30db4210707936d8c64ba5158db02af693adab594ae77c30cf51dc0"
+    },
+    {
+      "path": "tests/experiment-runtime/project-atmosphere.test.ts",
+      "sha256": "21818d38f40a03989e2dbb36598c82a7f9103ced1a5fb5eb3d6f5c2a89a0ba9d",
+      "bytes": 3447,
+      "gitBlobMatches": true,
+      "actualGitSha256": "21818d38f40a03989e2dbb36598c82a7f9103ced1a5fb5eb3d6f5c2a89a0ba9d"
+    },
+    {
+      "path": "docs/11-v1/PARAMETER_REFERENCE.md",
+      "sha256": "e81cc89f2e8de18e46095f15e8dca5eed6d7187ae2aeab1065969a2c5dc60c19",
+      "bytes": 25289,
+      "gitBlobMatches": true,
+      "actualGitSha256": "e81cc89f2e8de18e46095f15e8dca5eed6d7187ae2aeab1065969a2c5dc60c19"
+    }
+  ],
+  "runs": [
+    {
+      "command": "node --import tsx --test tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 1,
+      "path": "docs/15-ui-parameter-audit/environment/red.txt",
+      "expected": "a1c06fb5dcd78370eb79b141c371907d3ff61309b6306d0bce73ce769f627b67",
+      "actual": "a1c06fb5dcd78370eb79b141c371907d3ff61309b6306d0bce73ce769f627b67",
+      "tapSummaries": [
+        "# tests 8",
+        "# pass 2",
+        "# fail 6",
+        "# skipped 0"
+      ]
+    },
+    {
+      "command": "node --import tsx --test tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/green.txt",
+      "expected": "e6c84010e3805dcfb2a36122619bce8a5ba05991b2f87b60bf1228410c039894",
+      "actual": "e6c84010e3805dcfb2a36122619bce8a5ba05991b2f87b60bf1228410c039894",
+      "tapSummaries": [
+        "# tests 11",
+        "# pass 11",
+        "# fail 0",
+        "# skipped 0"
+      ]
+    },
+    {
+      "command": "node --import tsx --test --test-concurrency=1 tests/experiment-runtime/persistence.test.ts tests/experiment-runtime/project.test.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/app-control-regressions.test.ts tests/app/runtime.test.ts tests/app/replay-atmosphere-source.test.ts tests/app/environment-persistence.test.ts tests/app/agent-experiment-workflow.test.ts",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/regression.txt",
+      "expected": "180f93bb487ae2f34b21b425dd14c297886f786dc32ae20094ac108c609a8fe3",
+      "actual": "180f93bb487ae2f34b21b425dd14c297886f786dc32ae20094ac108c609a8fe3",
+      "tapSummaries": [
+        "# tests 51",
+        "# pass 51",
+        "# fail 0",
+        "# skipped 0"
+      ]
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/typecheck.txt",
+      "expected": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "actual": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "tapSummaries": null
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js src/persistence/types.ts src/persistence/validate-project.ts src/persistence/index.ts src/app/runtime.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/lint.txt",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tapSummaries": null
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/persistence/types.ts src/persistence/validate-project.ts src/persistence/index.ts src/app/runtime.ts tests/experiment-runtime/project-atmosphere.test.ts tests/app/environment-persistence.test.ts",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/format.txt",
+      "expected": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "actual": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "tapSummaries": null
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "path": "docs/15-ui-parameter-audit/environment/build.txt",
+      "expected": "0c150b36f0a095c63f89828feee61d274253d248d51c6f3f79ac8b0a544f995b",
+      "actual": "0c150b36f0a095c63f89828feee61d274253d248d51c6f3f79ac8b0a544f995b",
+      "tapSummaries": null
+    }
+  ],
+  "limits": [
+    "Read-only pinnedGit/raw verification, not a new product test or browser run.",
+    "Green11 is included in regression51; counts are not additive.",
+    "Current integration runtime may contain later independent repairs; old pinned source proof is not fresh browser/main acceptance."
+  ],
+  "counts": {
+    "pinnedGitSources": 7,
+    "rawOutputRuns": 7
+  },
+  "metadataCorrection": "Earlier source title and Wiki/task draft said8rawoutputs. Actual runs array has7output-bearing commands; diffCheck is metadata without a raw output. No source, hash, command or test result is changed."
+}

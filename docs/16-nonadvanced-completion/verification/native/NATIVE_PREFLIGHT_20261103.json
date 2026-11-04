@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "ROOT_TOOL_REPORTED_NATIVE_PREFLIGHT_NOT_PRODUCT_PASS",
+  "recorded_at": "2026-11-02T17:21:45.108Z",
+  "evidence_method": "Root directly reported actual tool outcomes; memory agent did not read or reconstruct raw tool payloads.",
+  "operator": "/root",
+  "prerequisites_reported": [
+    "ComputerUse skill/guidance/api/confirmations read",
+    "node_repl sky initialized"
+  ],
+  "observations_in_order": [
+    {
+      "method": "sky list_windows",
+      "result": "No Reflection window initially"
+    },
+    {
+      "method": "Playwright browser_tabs",
+      "isolated_context": "reflection-nonadvanced-native-preflight-20261103",
+      "URL": "http://127.0.0.1:4173",
+      "bundle": "index-Nm7oRfzL.js",
+      "scope": "Old production bundle entry qualification/navigation only; not new candidate validation"
+    },
+    {
+      "method": "sky list_windows",
+      "result": "Unique Chrome window id594750 titledReflectionLab"
+    },
+    {
+      "method": "sky get_window",
+      "result": "Succeeded"
+    },
+    {
+      "method": "sky get_window_state",
+      "requested": [
+        "screenshot",
+        "text"
+      ],
+      "result": "POLICY_STOPPED",
+      "policy_message": "could not determine current browser URL on Windows with enough confidence"
+    }
+  ],
+  "native_input_count": 0,
+  "screenshot_or_parameter_validation": "NOT_RUN",
+  "Playwright_coverage": "NAVIGATION_ONLY_NOT_FULL_MATRIX",
+  "native_product_validation": "NOT_PASSED",
+  "disposition": "Root stopped that native turn as the tool required and did not retry the same policy. Unaffected engineering continues in later automatic turn.",
+  "goal_status": "ACTIVE_UNAFFECTED_WORK_REMAINS; not globally blocked",
+  "historical_separation": "Separate from prior privateBrave/approval-timeout/CtrlN observations; none rewritten or counted as current native input.",
+  "limits": [
+    "No native screen/parameter/gesture/product pipeline PASS",
+    "Old entry bundle not a new candidate/source freeze PASS",
+    "Playwright navigate does not replace native or complete Playwright matrix",
+    "No privateIPC or policy bypass; no same-policy retry by memory agent"
+  ]
+}

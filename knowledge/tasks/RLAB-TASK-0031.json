@@ -1,0 +1,540 @@
+{
+  "id": "RLAB-TASK-0031",
+  "title": "正式Project環境參數持久化與載入原子修復",
+  "description": "Task0028全產品真UI發現vacuum35.5保存重載回air20。依root指派由environment_persistence在專案內environment樹修正式Project欄位/驗證與生命期，不只localprefs；原FAIL與affected真UI重驗保留，尚未完成。",
+  "status": "DONE",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "作者環境（medium/temperature等實際可編輯欄位）納入正式Project契約、驗證與保存/載入/匯入匯出；不是只存local view prefs，缺欄舊Project有明示兼容預設，不靜默更動既有Scene/recording hashes。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+          "sha256": "6c4f71bc1e81365ecee84daf895f293d18205665ff6c7f8d4e9579140f020aba",
+          "result": "Read pinned59360daNode11/51includingatomicnegative/legacy/undo/recording/replaytests, no rerun"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+          "sha256": "89cc257947fa3c6dec2cd486fd8ea083b5cbca9e55267223ae7ebf160e036676",
+          "result": "a10actualproductionDOM4/4fixed environment scope; raw assets/exportfields; not allproduct"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/evidence-manifest.json",
+          "sha256": "23cd6d128e805f474c81e5df1477adc9a50109d656c8c4d46d964c124c487115",
+          "result": "Frozen19files including originalUX/state observations; no originalFAIL deleted"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+          "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7",
+          "result": "Independentmemory19hash and actualvacuum/legacyExport field reconciliation, not browser rerun"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+          "sha256": "c751bbfea68ccb96ce11fe3e7ff91748576db0afa1abc76e23a30d0c3173e3bd",
+          "result": "a10environment scoped UI retest vs historicalFAIL/Node, remainingUX/crosswalk/English explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "環境更新/非法Project載入依正式數值/模型邊界驗證，拒絕後保留最後有效Project/runtime/view，不NaN/未知當零/半套用；跨Project與reset不洩漏前一環境。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+          "sha256": "6c4f71bc1e81365ecee84daf895f293d18205665ff6c7f8d4e9579140f020aba",
+          "result": "Read pinned59360daNode11/51includingatomicnegative/legacy/undo/recording/replaytests, no rerun"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+          "sha256": "89cc257947fa3c6dec2cd486fd8ea083b5cbca9e55267223ae7ebf160e036676",
+          "result": "a10actualproductionDOM4/4fixed environment scope; raw assets/exportfields; not allproduct"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/evidence-manifest.json",
+          "sha256": "23cd6d128e805f474c81e5df1477adc9a50109d656c8c4d46d964c124c487115",
+          "result": "Frozen19files including originalUX/state observations; no originalFAIL deleted"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+          "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7",
+          "result": "Independentmemory19hash and actualvacuum/legacyExport field reconciliation, not browser rerun"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+          "sha256": "c751bbfea68ccb96ce11fe3e7ff91748576db0afa1abc76e23a30d0c3173e3bd",
+          "result": "a10environment scoped UI retest vs historicalFAIL/Node, remainingUX/crosswalk/English explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "真production DOM重現並修復vacuum35.5 save/reload→air20原FAIL；save/load/reload及Project JSON export/import、適用undo/生命期/新建預設有實際前後值與檔案證據。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+          "sha256": "6c4f71bc1e81365ecee84daf895f293d18205665ff6c7f8d4e9579140f020aba",
+          "result": "Read pinned59360daNode11/51includingatomicnegative/legacy/undo/recording/replaytests, no rerun"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+          "sha256": "89cc257947fa3c6dec2cd486fd8ea083b5cbca9e55267223ae7ebf160e036676",
+          "result": "a10actualproductionDOM4/4fixed environment scope; raw assets/exportfields; not allproduct"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/evidence-manifest.json",
+          "sha256": "23cd6d128e805f474c81e5df1477adc9a50109d656c8c4d46d964c124c487115",
+          "result": "Frozen19files including originalUX/state observations; no originalFAIL deleted"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+          "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7",
+          "result": "Independentmemory19hash and actualvacuum/legacyExport field reconciliation, not browser rerun"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+          "sha256": "c751bbfea68ccb96ce11fe3e7ff91748576db0afa1abc76e23a30d0c3173e3bd",
+          "result": "a10environment scoped UI retest vs historicalFAIL/Node, remainingUX/crosswalk/English explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "text": "載入環境確實作用於當前聲學/音訊/diagnostics，vacuum/air語義正確；record/replay/A-B沿其固定環境來源與條件，不因Project載入偷改已錄製基準或borrow別的source。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+          "sha256": "6c4f71bc1e81365ecee84daf895f293d18205665ff6c7f8d4e9579140f020aba",
+          "result": "Read pinned59360daNode11/51includingatomicnegative/legacy/undo/recording/replaytests, no rerun"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+          "sha256": "89cc257947fa3c6dec2cd486fd8ea083b5cbca9e55267223ae7ebf160e036676",
+          "result": "a10actualproductionDOM4/4fixed environment scope; raw assets/exportfields; not allproduct"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/evidence-manifest.json",
+          "sha256": "23cd6d128e805f474c81e5df1477adc9a50109d656c8c4d46d964c124c487115",
+          "result": "Frozen19files including originalUX/state observations; no originalFAIL deleted"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+          "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7",
+          "result": "Independentmemory19hash and actualvacuum/legacyExport field reconciliation, not browser rerun"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+          "sha256": "c751bbfea68ccb96ce11fe3e7ff91748576db0afa1abc76e23a30d0c3173e3bd",
+          "result": "a10environment scoped UI retest vs historicalFAIL/Node, remainingUX/crosswalk/English explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-05",
+      "text": "基本validator/unit/runtime/受影響build與production DOM正負/邊界測試已跑，固定code/bundle/browser/命令/退出碼/收據；五laneinventory/pins/crosswalk刷新，保留原FAIL。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/FINAL_PARAMETER_COVERAGE_5010685.json",
+          "sha256": "4cbc9632e3d89a4687f0ee8f1e75365b38636614ba7716be07faea5c2c7e64c0",
+          "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/CROSSWALK.json",
+          "sha256": "dd129cf0c67c031289c3624a0daaa0e65b84aa3d630d33407e2161ef2359afad",
+          "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/PENDING_COVERAGE.json",
+          "sha256": "c7bd9b1910b59af201c3c2cb718a23306b5aff83cca13418ace04e994d3b6fba",
+          "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_5010685_RECONCILIATION_20261102.json",
+          "sha256": "3f3fc9b99cc5e2b21480d0618b867aade34c5808b422cca73462a4f4c17d6460",
+          "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/HELP_FINAL_ROOT_RECONCILIATION.json",
+          "sha256": "061a0b39948a2797b339ebc4de6e9cb1b3882033be96b25d3c022d7ab5e01ef8",
+          "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "text": "正式Project/環境參數說明、能力/兼容限制、stage報告、task/Wiki/English/Claude交接同步；與Task0028/main全範圍結案分開，不冒完整科學/裝置/性能/Meta-live通過。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/FINITE_UI_SLICES_PREMAIN_CLOSURE_20261102.json",
+          "sha256": "c50bd1c1eaf83e01dd3ed7aeb73c18a351c6e14c0371c5bd87580dc2160e9f3d",
+          "result": "OriginalfiniteDoc/Wiki/English/Claudehandoffcriterion supportsclosure; exactpreMainsnapshots andcurrentdomainEnglish0errors, generatednavigation refresh follows taskmetadata only"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-PARAMETER_REFERENCE.md.755f6130a409.raw.txt",
+          "sha256": "755f6130a409c7db07e5e924966eaffffe22dbc02c9da23741c2eba0cf76b81a",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-PARAMETER_REFERENCE.md.a32b7e2ebb2e.raw.txt",
+          "sha256": "a32b7e2ebb2e29513981fc51fa0eb4270e9d53ef06eb0582f8911b398725ba7e",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-KNOWN_LIMITATIONS.md.9f58d489a2f8.raw.txt",
+          "sha256": "9f58d489a2f8b3dda09ad0b4c3dd105462f9f38ad15d7265128db0a4a0f230cd",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-KNOWN_LIMITATIONS.md.7282322c3111.raw.txt",
+          "sha256": "7282322c31116752ca169b63b7c34b9ecd3b536fd174260973989713d002485e",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CLAUDE_CODE_HANDOFF_20261102.md.3db0ab4bb152.raw.txt",
+          "sha256": "3db0ab4bb1525fb076866ac292a86a19414a7b7de2b2076be42beb1a48116ef0",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CLAUDE_CODE_HANDOFF_20261102.md.ab96cbe00aed.raw.txt",
+          "sha256": "ab96cbe00aed3ab8aa815deceac8bb297ac79f84e98a67e89baf972fe186b491",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-HANDOFF.md.eed26f17af96.raw.txt",
+          "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-HANDOFF.md.885abf8a6e05.raw.txt",
+          "sha256": "885abf8a6e05faea2e06e76252d7244fb972be0bad84d37e43e8ed96bca8f29b",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ZONE_IMPLEMENTATION_20261102.md.f079ae4b50b9.raw.txt",
+          "sha256": "f079ae4b50b97552dd8e4708255fb6d165c5586aeb4bb93322e12129dadaed20",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ZONE_IMPLEMENTATION_20261102.md.dce32f16839b.raw.txt",
+          "sha256": "dce32f16839bdd79ee826dd63c5f1235acca89f7e1ab875c41a7980093c2a901",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-MODEL_CONTRACT.md.e3cd40caad12.raw.txt",
+          "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-MODEL_CONTRACT.md.6f38a99f16af.raw.txt",
+          "sha256": "6f38a99f16af608a038932b0b03ddbe7e5fc231721d447f3e790068af056a9e2",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CURVES_IMPLEMENTATION_20261102.md.7893b1b55fe8.raw.txt",
+          "sha256": "7893b1b55fe88dba32f8062f5269d74d010456149c44121c4515b018aa92c5d8",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CURVES_IMPLEMENTATION_20261102.md.0c0ac7044c9b.raw.txt",
+          "sha256": "0c0ac7044c9badfa5b1509026573da2d7c11dd0689883770ab601b05214c205c",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ENVIRONMENT_UI_RETEST_20261102.md.7a60eaac81f5.raw.txt",
+          "sha256": "7a60eaac81f51b4df62662b001248b3d63f3508e411a30d7b511c3a1910881ca",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ENVIRONMENT_UI_RETEST_20261102.md.f6416f8b8694.raw.txt",
+          "sha256": "f6416f8b8694ef9177f85b1213c75085b343387cf2f24ea82203259d7030e01c",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-product-parameter-audit-20261102.md.a9382a8e8c5f.raw.txt",
+          "sha256": "a9382a8e8c5f49b4d27741c80a36b4f04df1382f9e1df8bc8d7f03e7b32df9c9",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-product-parameter-audit-20261102.md.dd2b3c0a1b9c.raw.txt",
+          "sha256": "dd2b3c0a1b9c498f2729ca25d50cf9003776adc3d550bfce46c34ab6b0c3e738",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-core-pipeline-20261102.md.ab2c7bc3e355.raw.txt",
+          "sha256": "ab2c7bc3e355fa831bb5a9bf52d3083e852e482baf7c86427f59a3602d63b62c",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-core-pipeline-20261102.md.bc695324071f.raw.txt",
+          "sha256": "bc695324071f4604e1419146accdf26726b1e425973f9c685699bc4bdc4907ae",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-now.md.a0945317c13c.raw.txt",
+          "sha256": "a0945317c13cdb2d1d2d9141670c0b4d0a1f06d7bd02f9190f7e360810bb45b6",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-now.md.c1f982616d49.raw.txt",
+          "sha256": "c1f982616d494501f0d5ce6ff3211961378b12c403a69000c6081f4582b0d77d",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-open-questions.md.acaa56b58108.raw.txt",
+          "sha256": "acaa56b58108d5c84c2592c42c69e77a46dedb5e8d70750ad907653bde18cd15",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-open-questions.md.f0aaf0537421.raw.txt",
+          "sha256": "f0aaf05374210a23c6ae2d140c8f864009b2f2dd265eeac063167d94c260962a",
+          "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/11-ui-parameters/FINAL_PARAMETER_COVERAGE_5010685.json",
+          "sha256": "4cbc9632e3d89a4687f0ee8f1e75365b38636614ba7716be07faea5c2c7e64c0",
+          "result": "217/217finitefamilyjoin0pending/68publicHelp3conditionalunobserved, versionedsource/retstlimits explicit"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/15-ui-parameter-audit/ENVIRONMENT_PERSISTENCE_ASSIGNMENT_20261102.json",
+    "docs/15-ui-parameter-audit/CONTRACT.md",
+    "src/persistence/types.ts",
+    "src/persistence/validate-project.ts",
+    "src/app/runtime.ts",
+    "src/acoustics/types.ts",
+    "docs/14-core-pipeline/stages/11-ui-parameters/scene",
+    "docs/15-ui-parameter-audit/environment/REPORT.md",
+    "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+    "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_COMPONENT_RECONCILIATION.json",
+    "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+    "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+    "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json"
+  ],
+  "evidence": [
+    {
+      "path": "docs/15-ui-parameter-audit/ENVIRONMENT_PERSISTENCE_ASSIGNMENT_20261102.json",
+      "sha256": "c8c328dc8c11a08a3e126ea24579d4e2387ba9e6bc157828b0af6bab21f8fd5d",
+      "result": "Root-reported confirmed UI failure and assigned repair; no implementation/test PASS inferred"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/environment/REPORT.md",
+      "sha256": "6c6f848c051d8c52194c457ad59b20478f9dedf1f06fc598a69657536ff2e1df",
+      "result": "Merged59360da component:11/11 plus51/51 including11 andbuildPASS; originalUIFAIL preserved, browserNOTRUN"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/environment/VERIFICATION.json",
+      "sha256": "6c4f71bc1e81365ecee84daf895f293d18205665ff6c7f8d4e9579140f020aba",
+      "result": "Pinnedsource/raw run receipt, counts nonadditive, fixbrowserNOTRUN"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/ENVIRONMENT_COMPONENT_RECONCILIATION-before-count-correction.json.raw.txt",
+      "sha256": "b8ed074e9fb3942d48024a876fcd794c0de08884a079847dea48b22204dff0b5",
+      "result": "Historical reconciliation contains7rawoutputruns; earlier metadata said8inerror, corrected below without changing tests/hashes"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_COMPONENT_RECONCILIATION.json",
+      "sha256": "30f22c30e37e1da967f2afa92f07e27db474f419eca9b2ee7afce2ede94c7799",
+      "result": "Corrected explicitcount7pinnedGit sources/7rawoutputruns; diffCheck separatemetadata; browserpending"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/summary.json",
+      "sha256": "89cc257947fa3c6dec2cd486fd8ea083b5cbca9e55267223ae7ebf160e036676",
+      "result": "a10actualproductionDOM4/4fixed environment scope; raw assets/exportfields; not allproduct"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/environment-final-a10/evidence-manifest.json",
+      "sha256": "23cd6d128e805f474c81e5df1477adc9a50109d656c8c4d46d964c124c487115",
+      "result": "Frozen19files including originalUX/state observations; no originalFAIL deleted"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/ENVIRONMENT_UI_A10_RECONCILIATION.json",
+      "sha256": "e9170f8831e34a7becfd8b5c10bfbe01a5746219a35b47ee5997ce38001033a7",
+      "result": "Independentmemory19hash and actualvacuum/legacyExport field reconciliation, not browser rerun"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/ENVIRONMENT_UI_RETEST_20261102.md",
+      "sha256": "c751bbfea68ccb96ce11fe3e7ff91748576db0afa1abc76e23a30d0c3173e3bd",
+      "result": "a10environment scoped UI retest vs historicalFAIL/Node, remainingUX/crosswalk/English explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/FINAL_PARAMETER_COVERAGE_5010685.json",
+      "sha256": "4cbc9632e3d89a4687f0ee8f1e75365b38636614ba7716be07faea5c2c7e64c0",
+      "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/CROSSWALK.json",
+      "sha256": "dd129cf0c67c031289c3624a0daaa0e65b84aa3d630d33407e2161ef2359afad",
+      "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/PENDING_COVERAGE.json",
+      "sha256": "c7bd9b1910b59af201c3c2cb718a23306b5aff83cca13418ace04e994d3b6fba",
+      "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CANDIDATE_5010685_RECONCILIATION_20261102.json",
+      "sha256": "3f3fc9b99cc5e2b21480d0618b867aade34c5808b422cca73462a4f4c17d6460",
+      "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/HELP_FINAL_ROOT_RECONCILIATION.json",
+      "sha256": "061a0b39948a2797b339ebc4de6e9cb1b3882033be96b25d3c022d7ab5e01ef8",
+      "result": "Final217/217 finitefamilyjoin0pending, 29sourcepins/11finalinputs; 68publicHelpPASS/3notobserved, actualscroll/qualitativeZoneimages; full1536/runtime/build separate scopes"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/FINITE_UI_SLICES_PREMAIN_CLOSURE_20261102.json",
+      "sha256": "c50bd1c1eaf83e01dd3ed7aeb73c18a351c6e14c0371c5bd87580dc2160e9f3d",
+      "result": "OriginalfiniteDoc/Wiki/English/Claudehandoffcriterion supportsclosure; exactpreMainsnapshots andcurrentdomainEnglish0errors, generatednavigation refresh follows taskmetadata only"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-PARAMETER_REFERENCE.md.755f6130a409.raw.txt",
+      "sha256": "755f6130a409c7db07e5e924966eaffffe22dbc02c9da23741c2eba0cf76b81a",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-PARAMETER_REFERENCE.md.a32b7e2ebb2e.raw.txt",
+      "sha256": "a32b7e2ebb2e29513981fc51fa0eb4270e9d53ef06eb0582f8911b398725ba7e",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-KNOWN_LIMITATIONS.md.9f58d489a2f8.raw.txt",
+      "sha256": "9f58d489a2f8b3dda09ad0b4c3dd105462f9f38ad15d7265128db0a4a0f230cd",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-KNOWN_LIMITATIONS.md.7282322c3111.raw.txt",
+      "sha256": "7282322c31116752ca169b63b7c34b9ecd3b536fd174260973989713d002485e",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CLAUDE_CODE_HANDOFF_20261102.md.3db0ab4bb152.raw.txt",
+      "sha256": "3db0ab4bb1525fb076866ac292a86a19414a7b7de2b2076be42beb1a48116ef0",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CLAUDE_CODE_HANDOFF_20261102.md.ab96cbe00aed.raw.txt",
+      "sha256": "ab96cbe00aed3ab8aa815deceac8bb297ac79f84e98a67e89baf972fe186b491",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-HANDOFF.md.eed26f17af96.raw.txt",
+      "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-HANDOFF.md.885abf8a6e05.raw.txt",
+      "sha256": "885abf8a6e05faea2e06e76252d7244fb972be0bad84d37e43e8ed96bca8f29b",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ZONE_IMPLEMENTATION_20261102.md.f079ae4b50b9.raw.txt",
+      "sha256": "f079ae4b50b97552dd8e4708255fb6d165c5586aeb4bb93322e12129dadaed20",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ZONE_IMPLEMENTATION_20261102.md.dce32f16839b.raw.txt",
+      "sha256": "dce32f16839bdd79ee826dd63c5f1235acca89f7e1ab875c41a7980093c2a901",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-MODEL_CONTRACT.md.e3cd40caad12.raw.txt",
+      "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-MODEL_CONTRACT.md.6f38a99f16af.raw.txt",
+      "sha256": "6f38a99f16af608a038932b0b03ddbe7e5fc231721d447f3e790068af056a9e2",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CURVES_IMPLEMENTATION_20261102.md.7893b1b55fe8.raw.txt",
+      "sha256": "7893b1b55fe88dba32f8062f5269d74d010456149c44121c4515b018aa92c5d8",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-CURVES_IMPLEMENTATION_20261102.md.0c0ac7044c9b.raw.txt",
+      "sha256": "0c0ac7044c9badfa5b1509026573da2d7c11dd0689883770ab601b05214c205c",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ENVIRONMENT_UI_RETEST_20261102.md.7a60eaac81f5.raw.txt",
+      "sha256": "7a60eaac81f51b4df62662b001248b3d63f3508e411a30d7b511c3a1910881ca",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-ENVIRONMENT_UI_RETEST_20261102.md.f6416f8b8694.raw.txt",
+      "sha256": "f6416f8b8694ef9177f85b1213c75085b343387cf2f24ea82203259d7030e01c",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-product-parameter-audit-20261102.md.a9382a8e8c5f.raw.txt",
+      "sha256": "a9382a8e8c5f49b4d27741c80a36b4f04df1382f9e1df8bc8d7f03e7b32df9c9",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-product-parameter-audit-20261102.md.dd2b3c0a1b9c.raw.txt",
+      "sha256": "dd2b3c0a1b9c498f2729ca25d50cf9003776adc3d550bfce46c34ab6b0c3e738",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-core-pipeline-20261102.md.ab2c7bc3e355.raw.txt",
+      "sha256": "ab2c7bc3e355fa831bb5a9bf52d3083e852e482baf7c86427f59a3602d63b62c",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-core-pipeline-20261102.md.bc695324071f.raw.txt",
+      "sha256": "bc695324071f4604e1419146accdf26726b1e425973f9c685699bc4bdc4907ae",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-now.md.a0945317c13c.raw.txt",
+      "sha256": "a0945317c13cdb2d1d2d9141670c0b4d0a1f06d7bd02f9190f7e360810bb45b6",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-now.md.c1f982616d49.raw.txt",
+      "sha256": "c1f982616d494501f0d5ce6ff3211961378b12c403a69000c6081f4582b0d77d",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-open-questions.md.acaa56b58108.raw.txt",
+      "sha256": "acaa56b58108d5c84c2592c42c69e77a46dedb5e8d70750ad907653bde18cd15",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/pre-main-open-questions.md.f0aaf0537421.raw.txt",
+      "sha256": "f0aaf05374210a23c6ae2d140c8f864009b2f2dd265eeac063167d94c260962a",
+      "result": "ExactcanonicalorEnglishclosurebytes withdate/source/limits preserved; notnewtestexecution"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/11-ui-parameters/FINAL_PARAMETER_COVERAGE_5010685.json",
+      "sha256": "4cbc9632e3d89a4687f0ee8f1e75365b38636614ba7716be07faea5c2c7e64c0",
+      "result": "217/217finitefamilyjoin0pending/68publicHelp3conditionalunobserved, versionedsource/retstlimits explicit"
+    }
+  ],
+  "related_tasks": [
+    "RLAB-TASK-0028",
+    "RLAB-TASK-0023",
+    "RLAB-TASK-0030"
+  ],
+  "baseline_commit": "f6abb936a8c7c87ff8eb5e6587260b837e6b67ae",
+  "implementation_assignment": {
+    "lead": "environment_persistence",
+    "branch": "codex/pipeline-environment",
+    "worktree": "D:/Developing/Meta Hack/.worktrees/environment"
+  },
+  "created_at": "2026-11-02T07:20:59.285Z",
+  "updated_at": "2026-11-02T15:10:24.809Z",
+  "last_summary": "原全部有限criteria已DONE：真實作/原基本與版本化productionUI/217crosswalk及canonical/taskWiki/English/Claude交接皆固定證據；最後文件引用exactclosurecopy，Main/Claude後驗證/完整V1與外部gate另處理，不新增原無Main前置",
+  "blockers": []
+}

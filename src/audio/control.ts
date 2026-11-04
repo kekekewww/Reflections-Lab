@@ -62,6 +62,21 @@ export function smooth(param: AudioParam, value: number, time: number, duration 
   else param.linearRampToValueAtTime(value, time + duration);
 }
 
+// Compare requested targets, not param.value (which can be mid-ramp in a browser).
+const targets = new WeakMap<AudioParam, number>();
+export function smoothTarget(
+  param: AudioParam,
+  value: number,
+  time: number,
+  duration = 0.05,
+  epsilon = 1e-5,
+): boolean {
+  if (Math.abs((targets.get(param) ?? param.value) - value) <= epsilon) return false;
+  smooth(param, value, time, duration);
+  targets.set(param, value);
+  return true;
+}
+
 export function vector(value: readonly number[], name: string): [number, number, number] {
   if (value.length !== 3) throw new AudioEngineError("INVALID_VECTOR", name);
   return value.map((v) => finite(v, name, -1e6, 1e6)) as [number, number, number];

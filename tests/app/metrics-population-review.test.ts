@@ -311,6 +311,7 @@ test("independent metrics population: conflicting duplicate queries for one tick
     assert.equal(frame.acousticFrames.length, 1);
     const conflicting = solveAcoustics({
       requestId: "query.conflicting-playing-source",
+      modelVersion: frame.acousticFrames[0]!.backendVersion,
       sceneRevision: frame.sceneRevision,
       geometryRevision: frame.sceneRevision,
       poseTick: frame.tick,
@@ -327,6 +328,8 @@ test("independent metrics population: conflicting duplicate queries for one tick
       materials: DEFAULT_MATERIALS,
       atmosphere: { medium: "air", speedOfSoundMps: 343 },
     }).frame;
+    assert.equal(conflicting.backendId, frame.acousticFrames[0]!.backendId);
+    assert.equal(conflicting.backendVersion, frame.acousticFrames[0]!.backendVersion);
     recorder.appendFrame({
       ...frame,
       acousticFrames: [...frame.acousticFrames, conflicting],

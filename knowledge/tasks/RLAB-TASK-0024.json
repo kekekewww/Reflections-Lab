@@ -1,0 +1,232 @@
+{
+  "id": "RLAB-TASK-0024",
+  "title": "共用產品能力與最小靜態支撐Bounce核心",
+  "description": "本輪使用者已授權的有限核心實作；精確條件見 docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md。共用既有task系統，不等於全部14項優化或完整V1驗收。",
+  "status": "DONE",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "UI/AI/Preview/Host消費同一機讀能力來源，真實unsupported及原因一致；正負例證據存在。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities.md",
+          "sha256": "12906db0beaa7c1c85e5d621e36985f5de2a87290c9dd52c7601626d96836653",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-verification.json",
+          "sha256": "d699184f4f812930939184590eddddcb7522a7c133a2ecfe5542aa279acd0ef2",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-regression.txt",
+          "sha256": "340db1f4c9bdc9a4c32b40147cd85faef451c0cdf00b9338505b90f6dd060cec",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/07-integration-ui.md",
+          "sha256": "05b7d1309a1916d0c965c5e102e7d7912e1d94b86e745137867464f4b29374cb",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/zones/HANDOFF.md",
+          "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md",
+          "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__11-v1__PARAMETER_REFERENCE.md.7dc6c1f90ce8.raw.txt",
+          "sha256": "7dc6c1f90ce825592c8fdca535592a0fef664ad52aa4e598b36226cf7467008b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/11-v1/PARAMETER_REFERENCE.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__KNOWN_LIMITATIONS.md.7ebfc1192ba5.raw.txt",
+          "sha256": "7ebfc1192ba5dd9a2f08bd86f28b49ab8166efa52cc56c472a98a1be99512e04",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/KNOWN_LIMITATIONS.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "text": "OnBounce來自真PhysicsWorld接觸/運動資料與明示靜態支撐子集；false positive、重送及不支援資料有基本回歸。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities.md",
+          "sha256": "12906db0beaa7c1c85e5d621e36985f5de2a87290c9dd52c7601626d96836653",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-verification.json",
+          "sha256": "d699184f4f812930939184590eddddcb7522a7c133a2ecfe5542aa279acd0ef2",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-regression.txt",
+          "sha256": "340db1f4c9bdc9a4c32b40147cd85faef451c0cdf00b9338505b90f6dd060cec",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/07-integration-ui.md",
+          "sha256": "05b7d1309a1916d0c965c5e102e7d7912e1d94b86e745137867464f4b29374cb",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/zones/HANDOFF.md",
+          "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md",
+          "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__11-v1__PARAMETER_REFERENCE.md.7dc6c1f90ce8.raw.txt",
+          "sha256": "7dc6c1f90ce825592c8fdca535592a0fef664ad52aa4e598b36226cf7467008b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/11-v1/PARAMETER_REFERENCE.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__KNOWN_LIMITATIONS.md.7ebfc1192ba5.raw.txt",
+          "sha256": "7ebfc1192ba5dd9a2f08bd86f28b49ab8166efa52cc56c472a98a1be99512e04",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/KNOWN_LIMITATIONS.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "產品UI/工具拒絕行為已接線；zone與未覆蓋幾何/支撐不冒充實作，能力與限制文件和來源一致。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities.md",
+          "sha256": "12906db0beaa7c1c85e5d621e36985f5de2a87290c9dd52c7601626d96836653",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-verification.json",
+          "sha256": "d699184f4f812930939184590eddddcb7522a7c133a2ecfe5542aa279acd0ef2",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/03-capabilities-regression.txt",
+          "sha256": "340db1f4c9bdc9a4c32b40147cd85faef451c0cdf00b9338505b90f6dd060cec",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/14-core-pipeline/stages/07-integration-ui.md",
+          "sha256": "05b7d1309a1916d0c965c5e102e7d7912e1d94b86e745137867464f4b29374cb",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/zones/HANDOFF.md",
+          "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md",
+          "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__11-v1__PARAMETER_REFERENCE.md.7dc6c1f90ce8.raw.txt",
+          "sha256": "7dc6c1f90ce825592c8fdca535592a0fef664ad52aa4e598b36226cf7467008b",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/11-v1/PARAMETER_REFERENCE.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__KNOWN_LIMITATIONS.md.7ebfc1192ba5.raw.txt",
+          "sha256": "7ebfc1192ba5dd9a2f08bd86f28b49ab8166efa52cc56c472a98a1be99512e04",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/KNOWN_LIMITATIONS.md"
+        },
+        {
+          "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+          "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+          "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/14-core-pipeline/REQUEST_20261102.json",
+    "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+    "docs/14-core-pipeline/STAGES.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/14-core-pipeline/IMPLEMENTATION_CONTRACT.md",
+      "sha256": "c407c71c78daccae3e1d1c84d076d35026aa727ad403b2462f5f724e9c6d6346",
+      "result": "Authorized implementation contract only; no completed implementation or test inferred"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/03-capabilities.md",
+      "sha256": "12906db0beaa7c1c85e5d621e36985f5de2a87290c9dd52c7601626d96836653",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/03-capabilities-verification.json",
+      "sha256": "d699184f4f812930939184590eddddcb7522a7c133a2ecfe5542aa279acd0ef2",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/03-capabilities-regression.txt",
+      "sha256": "340db1f4c9bdc9a4c32b40147cd85faef451c0cdf00b9338505b90f6dd060cec",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/14-core-pipeline/stages/07-integration-ui.md",
+      "sha256": "05b7d1309a1916d0c965c5e102e7d7912e1d94b86e745137867464f4b29374cb",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/zones/HANDOFF.md",
+      "sha256": "eed26f17af9621a8cfc787b1b738e1500bd719163116e3a2a29f5e238373762e",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/acoustic-geometry/MODEL_CONTRACT.md",
+      "sha256": "e3cd40caad12ed9bef8601d7fa0b4121a7ac31fc88f4009fa09ce77689bd8b5b",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__11-v1__PARAMETER_REFERENCE.md.7dc6c1f90ce8.raw.txt",
+      "sha256": "7dc6c1f90ce825592c8fdca535592a0fef664ad52aa4e598b36226cf7467008b",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/11-v1/PARAMETER_REFERENCE.md"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/history/task-closure-20261102/docs__KNOWN_LIMITATIONS.md.7ebfc1192ba5.raw.txt",
+      "sha256": "7ebfc1192ba5dd9a2f08bd86f28b49ab8166efa52cc56c472a98a1be99512e04",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit; Exactclosurebytes of docs/KNOWN_LIMITATIONS.md"
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/evidence/CORE_CAPABILITIES_META_FINITE_CLOSURE_20261102.json",
+      "sha256": "cfaa859054a63c49fe644bbc2c27de0f807be8a39b79951b4d756360d1afbbd5",
+      "result": "Originalfinitecriterion evidence; source/version/browser/Node/performanceboundaries explicit"
+    }
+  ],
+  "created_at": "2026-11-02T05:04:33.815Z",
+  "updated_at": "2026-11-02T15:09:48.617Z",
+  "related_tasks": [
+    "RLAB-TASK-0023"
+  ],
+  "coordination": "Per-file ownership under docs/14-core-pipeline/STAGES.md; runtime and UI integration owned by root. Parallel independent development, integration validates runtime prerequisites.",
+  "blockers": [],
+  "last_summary": "原有限criteria已以固定source/原始結果與版本化UI證據DONE；參數/限制引用使用exactclosurecopy，後續canonical更新不改歷史，不追加Main或Claude已執行前置"
+}

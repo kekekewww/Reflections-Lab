@@ -33,7 +33,7 @@ export type DiscreteTriggerType =
   | "OnWake";
 
 export type ContinuousSoundTrigger = { kind: "continuous"; type: ContinuousTriggerType };
-export type DiscreteSoundTrigger = { kind: "discrete"; type: DiscreteTriggerType };
+export type DiscreteSoundTrigger = { kind: "discrete"; type: DiscreteTriggerType; zoneId?: Id };
 export type SoundTrigger = ContinuousSoundTrigger | DiscreteSoundTrigger;
 
 export type MetricInput =

@@ -1,0 +1,360 @@
+{
+  "recordedAt": "2026-11-01T08:48:35.627Z",
+  "baseline": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "reviewBranch": "review/performance-buffer-20261101",
+  "reviewShaAtComparison": "23b93b3213f95a8055816d40004f6409ab825601",
+  "targetBranch": "claude/meta-hack-r18-handoff-d292c8",
+  "targetPath": "D:/Developing/Meta Hack/.claude/worktrees/meta-hack-r18-handoff-d292c8",
+  "latestTargetHead": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "mergeBase": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "targetCommittedChangesSinceBaseline": "",
+  "targetStatus": " M docs/05-ux/FPS_INTERACTION_UX.md\n M docs/11-v1/ACCEPTANCE_AMENDMENTS.md\n M docs/11-v1/FULL_TEST_PROCEDURE.md\n M docs/11-v1/USER_GUIDE.en.md\n M docs/KNOWN_LIMITATIONS.md\n M docs/en/05-ux/FPS_INTERACTION_UX.md\n M docs/en/11-v1/ACCEPTANCE_AMENDMENTS.md\n M docs/en/11-v1/FULL_TEST_PROCEDURE.md\n M docs/en/KNOWN_LIMITATIONS.md\n M src/app/bootstrap.ts\n M src/app/runtime.ts\n M src/audio/control.ts\n M src/audio/engine.ts\n M src/audio/routes.ts\n M src/audio/types.ts\n M src/interaction/interaction-host.ts\n M src/interaction/types.ts\n M src/scene/validate-scene.ts\n M src/ui/AnalysisDock.tsx\n M src/ui/App.tsx\n M src/ui/BindingOverrideEditor.tsx\n M src/ui/Inspector.tsx\n M src/ui/MappingEditor.tsx\n M src/ui/ProjectImport.tsx\n M src/ui/RuleCard.tsx\n M src/ui/SceneExplorer.tsx\n M src/ui/Viewport.tsx\n M src/ui/components.tsx\n M src/ui/contracts.ts\n M src/ui/locale-model.test.ts\n M src/ui/locale-model.ts\n M src/ui/locales/core.ts\n M src/ui/locales/explorer.ts\n M src/ui/locales/index.ts\n M src/ui/locales/status.ts\n M src/ui/locales/viewport.ts\n M src/ui/styles.css\n M src/ui/viewport/SceneEntities.tsx\n M src/ui/viewport/fps-entry-coordination.test.ts\n M src/ui/viewport/useFPSInput.ts\n M tests/app/interaction-outcome-status.test.ts\n M tests/app/native-admission.test.ts\n M tests/app/view-projection.test.ts\n M tests/audio-runtime/routes-response-reuse.test.ts\n M tests/browser/fps-entry-race-recovery.spec.ts\n M tests/browser/linked-workflow-v2.spec.ts\n M tests/browser/ui-refined-v2.spec.ts\n M tests/browser/ui.spec.ts\n M tests/interaction-runtime/host.test.ts\n?? .claude/launch.json\n?? artifacts/v1/physics-acceptance-20261029/\n?? artifacts/v1/physics-acceptance-20261031/\n?? artifacts/v1/product-e2e-chrome-20261029T193522Z/\n?? artifacts/v1/product-e2e-chrome-20261029T200721Z/\n?? artifacts/v1/product-e2e-chrome-20261029T202220Z/\n?? artifacts/v1/product-e2e-chrome-20261029T202717Z/\n?? artifacts/v1/product-e2e-chrome-20261029T205828Z/\n?? artifacts/v1/product-e2e-chrome-20261029T212208Z/\n?? artifacts/v1/product-e2e-chrome-20261031T105953Z/\n?? artifacts/v1/product-e2e-chrome-20261031T114717Z/\n?? artifacts/v1/product-e2e-chrome-20261031T121446Z/\n?? artifacts/v1/r21-audio-smoothness-20261101/\n?? artifacts/v1/r21-fps-controls-20261101/\n?? artifacts/v1/r21-helptips-20261101/\n?? artifacts/v1/storage-browser-20261029191957701/\n?? artifacts/v1/storage-browser-20261029202457949/\n?? artifacts/v1/storage-browser-20261029205804346/\n?? artifacts/v1/storage-browser-20261029212144489/\n?? artifacts/v1/storage-browser-20261031105931409/\n?? artifacts/v1/storage-browser-20261031114653239/\n?? artifacts/v1/storage-browser-20261031121423854/\n?? docs/11-v1/PARAMETER_REFERENCE.md\n?? docs/11-v1/USER_TEST_FEEDBACK_20261101-r21.json\n?? docs/en/11-v1/PARAMETER_REFERENCE.md\n?? experiments/sound-behavior-spike/physics-results-2026-10-29T19-19-17-494Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-29T19-41-52-705Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-29T21-36-40-980Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-31T09-52-55-847Z.json\n?? experiments/sound-behavior-spike/physics-results-2026-10-31T12-40-04-579Z.json\n?? src/audio/buffer-preset.ts\n?? src/ui/HelpTip.tsx\n?? src/ui/help-tip.test.ts\n?? src/ui/locales/help.ts\n?? src/ui/viewport-controls-review.test.ts\n?? tests/app/audio-review2.test.ts\n?? tests/app/audio-smoothness.test.ts\n?? tests/app/fps-placement.test.ts\n?? tests/app/fps-review.test.ts\n?? tests/audio-runtime/buffer-preset.test.ts\n?? tests/audio-runtime/review2.test.ts\n?? tests/audio-runtime/smoothness.test.ts\n?? tests/browser/audio-smoothness/",
+  "currentTargetDirty": [
+    {
+      "path": "docs/05-ux/FPS_INTERACTION_UX.md",
+      "sha256": "c591a093c11fc0b9f5a24c789063ed7130fae02e8af1070ff535387eab616aef"
+    },
+    {
+      "path": "docs/11-v1/ACCEPTANCE_AMENDMENTS.md",
+      "sha256": "86277ac416219466182bd1e3721c942633a46a1d7734b30c474933425b3766ff"
+    },
+    {
+      "path": "docs/11-v1/FULL_TEST_PROCEDURE.md",
+      "sha256": "105e6f56e4c6b85185a8f1996588de879bb04d005cb10fe81cc15e8c320e981d"
+    },
+    {
+      "path": "docs/11-v1/USER_GUIDE.en.md",
+      "sha256": "353cca78015e6608ba9b11bc2e9bc8de7ad5c0e525d32405de7cf1fb5e5494e0"
+    },
+    {
+      "path": "docs/KNOWN_LIMITATIONS.md",
+      "sha256": "a489d2c651bb82f30562d4d11ad1176455a5541ddbd6c682ccbf2c7f36f0e34d"
+    },
+    {
+      "path": "docs/en/05-ux/FPS_INTERACTION_UX.md",
+      "sha256": "3c793915540580dc948d16671f65e50d1e974e4b9895ce41b27e406b8ab55de3"
+    },
+    {
+      "path": "docs/en/11-v1/ACCEPTANCE_AMENDMENTS.md",
+      "sha256": "eb2549b5780f7e0332275d054319a43eb7f979562d7b2511fd51963f731d057f"
+    },
+    {
+      "path": "docs/en/11-v1/FULL_TEST_PROCEDURE.md",
+      "sha256": "f93ddfe45921430a3bd26f44ead24237f8258a52d5a2ccb82aa7d0e42c4eaa49"
+    },
+    {
+      "path": "docs/en/KNOWN_LIMITATIONS.md",
+      "sha256": "271c98382d838d94b3389a11232c93dd7699d10d8e9d79fc17cf47623ebfaadd"
+    },
+    {
+      "path": "src/app/bootstrap.ts",
+      "sha256": "31101de786ff6ee80e25b555802136c0d3910ad9744741adb5edce48a69bb5a5"
+    },
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "769f0aa17d9e6acb428c4f864b68ecf8b77e31038227a14fff9e6c38fca6185d"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "sha256": "3afa1252bccae701b5c7a6d51c68f5bb3f180120f3df65a30b12b98847859d24"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "518d71ba7701a30154583aabca1802563a337bfa8cf907efaeacf0373d685ea2"
+    },
+    {
+      "path": "src/audio/routes.ts",
+      "sha256": "57da0e83cdf09dd549db7498aa81c1c0bdecd351063fa8023e08ed88d66320f9"
+    },
+    {
+      "path": "src/audio/types.ts",
+      "sha256": "543b132ae44ab9a8ff36d72aae075b327932d4b632fcfe8dd6043d4e7174b9bd"
+    },
+    {
+      "path": "src/interaction/interaction-host.ts",
+      "sha256": "86ede8fcdf930585c19e36e17b314db4f2594da6e46ab0c44de5c391c2b43f1f"
+    },
+    {
+      "path": "src/interaction/types.ts",
+      "sha256": "36b480fe07e838019cf9afacb63fbd6d2fd87e701a28f9553e76dddcaf548bc1"
+    },
+    {
+      "path": "src/scene/validate-scene.ts",
+      "sha256": "39b0c5c467693a9a781147b993714f4479225c23566e5bb06b953c02d6ca7c05"
+    },
+    {
+      "path": "src/ui/AnalysisDock.tsx",
+      "sha256": "30c6b505e0b490b766261ff913b914a55e4bba5caa571c91bd22fd0f34e465e4"
+    },
+    {
+      "path": "src/ui/App.tsx",
+      "sha256": "9788a59539805d6963372b2c603d4bef554ec28ed8a40ea54023c801418c4263"
+    },
+    {
+      "path": "src/ui/BindingOverrideEditor.tsx",
+      "sha256": "2e6526f568b522d4dcdd7c3da60302369cf6f449a4daa99a00f61a2ff568ac35"
+    },
+    {
+      "path": "src/ui/Inspector.tsx",
+      "sha256": "9557803eba35946ebd9fde1deb05fba515d67b37a79b41c34f23982b504378ab"
+    },
+    {
+      "path": "src/ui/MappingEditor.tsx",
+      "sha256": "44f48dc48c36b7c043ec381bd5cb91965de2a356fed3e12fc9261f451faa1c29"
+    },
+    {
+      "path": "src/ui/ProjectImport.tsx",
+      "sha256": "d601e8527a22aed6f0c14f57cb605108b8ba2c7ed9446d29e85b67a99e35a388"
+    },
+    {
+      "path": "src/ui/RuleCard.tsx",
+      "sha256": "c57fa87a6024f6be63cd33e79e5ce1d19b122d6d16b67e6e6df757793e52bdba"
+    },
+    {
+      "path": "src/ui/SceneExplorer.tsx",
+      "sha256": "c0666ed3dc5eccd70f1fafc82e4aef56e2c71ca86c8f29720c2a7e7d82cc71d7"
+    },
+    {
+      "path": "src/ui/Viewport.tsx",
+      "sha256": "a90fbfafa5d84ac0033f7108ed1b936ced7adfcd8c6a337755b7e9ceea7f70c8"
+    },
+    {
+      "path": "src/ui/components.tsx",
+      "sha256": "dd98cf350cdb5a902a00b688c84ed71776293bc957f0342ffa4b621896deb4a9"
+    },
+    {
+      "path": "src/ui/contracts.ts",
+      "sha256": "82cb939c01a4c34f8e82e9fe775067193e3b94f39b610056dda726c899fc284f"
+    },
+    {
+      "path": "src/ui/locale-model.test.ts",
+      "sha256": "2b0e5822a8d87fd1f7f8c1e435cc34edd019e70da8af1576fd03694aea831ba9"
+    },
+    {
+      "path": "src/ui/locale-model.ts",
+      "sha256": "d9ebca7d46713c2cb917e8949440574ecf21feef28f65c566314e5fb296dcce2"
+    },
+    {
+      "path": "src/ui/locales/core.ts",
+      "sha256": "9c18551c0bc7c3963fa549b2c7466227024fb503927d3f25a590d32b68f085da"
+    },
+    {
+      "path": "src/ui/locales/explorer.ts",
+      "sha256": "4456acead0c52a97eabcf24d403c47363f4dc27e9bcdabaea4dd69e4b2e59cc5"
+    },
+    {
+      "path": "src/ui/locales/index.ts",
+      "sha256": "cbbdc68c222e0c15f6c79f7f1000c5a7d744e8ec250e36ca0c88129bcc7c101c"
+    },
+    {
+      "path": "src/ui/locales/status.ts",
+      "sha256": "60ce678fd88e8549ff3d47e6419beb88a905bffb1b90da57919d8b43b562fc65"
+    },
+    {
+      "path": "src/ui/locales/viewport.ts",
+      "sha256": "3846b6d83de7c8136643bd476ba8d30bd5647d2b681dbb70ca21cc199ae9c2b0"
+    },
+    {
+      "path": "src/ui/styles.css",
+      "sha256": "861f2b2fd0865253458ecf058256e95636c1a9d24c4a59db71be047f9b2c029a"
+    },
+    {
+      "path": "src/ui/viewport/SceneEntities.tsx",
+      "sha256": "343370c64dd945e89832eb679ae73164892f88498a3de39f49d24a2e68174c3f"
+    },
+    {
+      "path": "src/ui/viewport/fps-entry-coordination.test.ts",
+      "sha256": "5bf90dd4656c6cbd89dac070b0b7e5df2a734e0cba7c7719ea85046cab1183ff"
+    },
+    {
+      "path": "src/ui/viewport/useFPSInput.ts",
+      "sha256": "aad985be346f8dce4fe767f20af9cb75ada3346fd1751017b3aff5791d72e714"
+    },
+    {
+      "path": "tests/app/interaction-outcome-status.test.ts",
+      "sha256": "d65afd235461f0e9cebc85ad449f718e25d55baa3d473ba4de5546ef7bb5380a"
+    },
+    {
+      "path": "tests/app/native-admission.test.ts",
+      "sha256": "a64e967b8cb76abc1a63fa420c8c3a8bb81586ee99a448dcb808bb7634a38f02"
+    },
+    {
+      "path": "tests/app/view-projection.test.ts",
+      "sha256": "05e89cdaa942336e11649fe4a4068fdab78b3a1c522c9f5237a2dbdfd5c653e0"
+    },
+    {
+      "path": "tests/audio-runtime/routes-response-reuse.test.ts",
+      "sha256": "d83abd4bc48edf816bc66617f7d9bc1dfa324701902a67a64aff6e48823415be"
+    },
+    {
+      "path": "tests/browser/fps-entry-race-recovery.spec.ts",
+      "sha256": "d55d8ee0a62f534630908de813d3c8beb512944dc29aaf493cb94552febfc3d1"
+    },
+    {
+      "path": "tests/browser/linked-workflow-v2.spec.ts",
+      "sha256": "cbafc5bb601dc8a422a4edcb24efaa563742458ac6037a56c92e997fcc0ae272"
+    },
+    {
+      "path": "tests/browser/ui-refined-v2.spec.ts",
+      "sha256": "6f194209a8fe8399430b35eae9f6ca5d58b677c9b6010b3c01e905dfeb8fce03"
+    },
+    {
+      "path": "tests/browser/ui.spec.ts",
+      "sha256": "3b224d08b632a5ff242cf5caaa20b099420aef945aa915edb43b41c1ef9929c6"
+    },
+    {
+      "path": "tests/interaction-runtime/host.test.ts",
+      "sha256": "d627f7dcfea9cbc91aca4ba11b937b54909e1d3d01e84d6ba4b2588bb50d344a"
+    }
+  ],
+  "originalHead": "a5f2a9098971ed8facb3b024b7539d2a9b1135f6",
+  "originalBranch": "codex/sound-behavior-research",
+  "originalStatus": " M docs/en/index.md\n M docs/en/knowledge/wiki/index.md\n M docs/en/knowledge/wiki/log.md\n M docs/en/knowledge/wiki/now.md\n M docs/en/manifest.json\n M docs/en/source-inventory.json\n M docs/en/validation.json\n M knowledge/sources/manifest.json\n M knowledge/wiki/index.md\n M knowledge/wiki/log.md\n M knowledge/wiki/now.md\n?? artifacts/v1/physics-acceptance-20261029/\n?? artifacts/v1/product-e2e-chrome-20261029T140617Z/\n?? artifacts/v1/storage-browser-20261029140834221/\n?? docs/11-v1/CLAUDE_CODE_HANDOFF_20261030.md\n?? docs/en/11-v1/CLAUDE_CODE_HANDOFF_20261030.md\n?? docs/en/knowledge/wiki/handoffs/11429c4b-25e4-4204-a585-eb7ad8bbc228.md\n?? experiments/sound-behavior-spike/physics-results-2026-10-29T13-52-02-231Z.json\n?? knowledge/events/11429c4b-25e4-4204-a585-eb7ad8bbc228.json\n?? knowledge/events/2e106002-39ab-4030-b360-5b55f589f08a.json\n?? knowledge/transactions/71cff52e-341f-48a1-8165-48d9cf1fdad5.json\n?? knowledge/transactions/bb00f37a-48d3-4129-a893-8bf888e1ec5e.json\n?? knowledge/wiki/handoffs/11429c4b-25e4-4204-a585-eb7ad8bbc228.md",
+  "reviewTrackedFiles": [
+    "docs/ROADMAP.md",
+    "docs/en/ROADMAP.md",
+    "docs/en/index.md",
+    "docs/en/knowledge/wiki/index.md",
+    "docs/en/knowledge/wiki/log.md",
+    "docs/en/knowledge/wiki/now.md",
+    "docs/en/knowledge/wiki/roadmap.md",
+    "docs/en/knowledge/wiki/tasks.md",
+    "docs/en/manifest.json",
+    "docs/en/source-inventory.json",
+    "docs/en/validation.json",
+    "knowledge/sources/manifest.json",
+    "knowledge/wiki/index.md",
+    "knowledge/wiki/log.md",
+    "knowledge/wiki/now.md",
+    "knowledge/wiki/roadmap.md",
+    "knowledge/wiki/tasks.md"
+  ],
+  "reviewAddedFiles": [
+    "docs/13-performance-review/ACOUSTIC_WORKER_REVIEW.md",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+    "docs/13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md",
+    "docs/13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md",
+    "docs/13-performance-review/CURRENT_RUNTIME_AUDIT.md",
+    "docs/13-performance-review/EXECUTIVE_SUMMARY.md",
+    "docs/13-performance-review/FINAL_REVIEW_REPORT.md",
+    "docs/13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md",
+    "docs/13-performance-review/INTEGRATION_REPORT.md",
+    "docs/13-performance-review/MEASUREMENT_PLAN.md",
+    "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/13-performance-review/REVIEW_CONTRACT.md",
+    "docs/13-performance-review/RISK_REGISTER.md",
+    "docs/13-performance-review/evidence/claims.json",
+    "docs/13-performance-review/evidence/historical-link-copy.json",
+    "docs/13-performance-review/evidence/independent-review.json",
+    "docs/13-performance-review/evidence/integration-comparison.json",
+    "docs/13-performance-review/evidence/integration-readiness.json",
+    "docs/13-performance-review/evidence/measurement-summary-v1.json",
+    "docs/13-performance-review/evidence/measurement-summary.json",
+    "docs/13-performance-review/evidence/newline-correction.json",
+    "docs/13-performance-review/evidence/planning-state.json",
+    "docs/13-performance-review/evidence/preflight.json",
+    "docs/13-performance-review/evidence/research-index.json",
+    "docs/13-performance-review/evidence/scope-audit.json",
+    "docs/13-performance-review/evidence/scope-prefinal.json",
+    "docs/13-performance-review/evidence/validation-closure.json",
+    "docs/13-performance-review/evidence/validation-corrected.json",
+    "docs/13-performance-review/evidence/validation-payload.json",
+    "docs/13-performance-review/evidence/validation-prefinal.json",
+    "docs/13-performance-review/evidence/validation.json",
+    "docs/13-performance-review/evidence/whitespace-check.json",
+    "docs/13-performance-review/evidence/window-tail-supplement.json",
+    "docs/13-performance-review/proposals/ADR-PERF-01-acoustic-snapshot-exchange.md",
+    "docs/13-performance-review/proposals/ADR-PERF-02-realtime-audio-scheduling.md",
+    "docs/13-performance-review/proposals/ADR-PERF-03-buffer-ownership-lifecycle.md",
+    "docs/13-performance-review/proposals/ADR-PERF-04-worker-communication.md",
+    "docs/13-performance-review/proposals/ADR-PERF-05-recording-backpressure.md",
+    "docs/13-performance-review/proposals/ADR-PERF-06-adaptive-voice-budget.md",
+    "docs/13-performance-review/proposals/ADR-PERF-07-dsp-graph-update.md",
+    "docs/en/13-performance-review/ACOUSTIC_WORKER_REVIEW.md",
+    "docs/en/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/en/13-performance-review/BROWSER_CLOUD_SCALABILITY.md",
+    "docs/en/13-performance-review/BUFFER_ARCHITECTURE_REVIEW.md",
+    "docs/en/13-performance-review/CLOCK_AND_SCHEDULING_REVIEW.md",
+    "docs/en/13-performance-review/CURRENT_RUNTIME_AUDIT.md",
+    "docs/en/13-performance-review/EXECUTIVE_SUMMARY.md",
+    "docs/en/13-performance-review/FINAL_REVIEW_REPORT.md",
+    "docs/en/13-performance-review/INDUSTRY_AUDIO_ARCHITECTURES.md",
+    "docs/en/13-performance-review/INTEGRATION_REPORT.md",
+    "docs/en/13-performance-review/MEASUREMENT_PLAN.md",
+    "docs/en/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+    "docs/en/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/en/13-performance-review/RECORDING_AND_RENDERING_REVIEW.md",
+    "docs/en/13-performance-review/REVIEW_CONTRACT.md",
+    "docs/en/13-performance-review/RISK_REGISTER.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-01-acoustic-snapshot-exchange.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-02-realtime-audio-scheduling.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-03-buffer-ownership-lifecycle.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-04-worker-communication.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-05-recording-backpressure.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-06-adaptive-voice-budget.md",
+    "docs/en/13-performance-review/proposals/ADR-PERF-07-dsp-graph-update.md",
+    "docs/en/knowledge/wiki/handoffs/6573aaa5-dc46-47af-956b-14dc4b2a4240.md",
+    "docs/en/knowledge/wiki/research/performance-buffer-review-20261101.md",
+    "knowledge/events/2d3757af-9c50-425c-a560-5f861425225e.json",
+    "knowledge/events/2f22d4f1-999c-43cd-a2fb-fc24c39cca6f.json",
+    "knowledge/events/45658211-3814-4b9c-a1e2-3ff459344c0d.json",
+    "knowledge/events/46862272-dc2b-4cd3-a724-43378df6d7f8.json",
+    "knowledge/events/4af6aba7-b27f-4f70-ba2e-472d001a3d64.json",
+    "knowledge/events/54250b52-96c3-469a-8417-df25ae4fbe04.json",
+    "knowledge/events/6573aaa5-dc46-47af-956b-14dc4b2a4240.json",
+    "knowledge/events/9db3b999-79d1-4073-ad20-1d34ab715067.json",
+    "knowledge/events/a5826bf6-fb04-4b07-b0fd-368aa1157fc8.json",
+    "knowledge/events/a6762b8e-2922-4b54-a3cf-563927b6d3d5.json",
+    "knowledge/events/d13956b0-a201-4d40-aa92-3adb1428ddfc.json",
+    "knowledge/events/f6e839e9-5cb6-4e83-b13f-06fe6d0f0ce3.json",
+    "knowledge/events/fec05ecb-e6fa-416b-b758-7248073ae097.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-001.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-002.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-003.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-004.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-005.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-006.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-007.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-008.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-009.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-010.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-011.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-012.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-013.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-014.json",
+    "knowledge/tasks/RLAB-TASK-PERF-20261101-REVIEW.json",
+    "knowledge/transactions/36280b50-7256-4c0e-a5ca-c9ab159ce360.json",
+    "knowledge/transactions/3656a533-03b2-48f5-9456-4af826ee8dc6.json",
+    "knowledge/transactions/431d1d82-17ef-46a1-9911-cf64f663d1f0.json",
+    "knowledge/transactions/48baa82b-42ea-41a9-a8ff-7bfb0e0e6faf.json",
+    "knowledge/transactions/5a2fa07b-7286-42e6-9380-67c6de6afa48.json",
+    "knowledge/transactions/75f575a3-9551-4df9-9301-355419b09348.json",
+    "knowledge/transactions/830817a8-8af7-4744-9745-7bad2980b592.json",
+    "knowledge/transactions/a134dc88-1bdf-4a44-b43f-01d5ba2f1153.json",
+    "knowledge/transactions/a5c2f71e-cd02-47fe-a6cb-f1a27d30bbb9.json",
+    "knowledge/transactions/a69e173b-48d7-48a6-877b-f76c16b32a27.json",
+    "knowledge/transactions/b00f6cff-9423-43ad-8e45-cd6b4acf48e2.json",
+    "knowledge/transactions/b9c821d9-80c7-402b-8b4b-c1381567e8df.json",
+    "knowledge/transactions/cfb2d76c-124e-46e1-81ec-5d56d2b9ed6e.json",
+    "knowledge/transactions/d717e402-2714-4afc-b549-d609ea203b8d.json",
+    "knowledge/wiki/handoffs/6573aaa5-dc46-47af-956b-14dc4b2a4240.md",
+    "knowledge/wiki/research/performance-buffer-review-20261101.md"
+  ],
+  "protectedDiff": "",
+  "mergeExecuted": false,
+  "mergeDecision": "BLOCKED_TARGET_DIRTY_PREPARE_PATCH",
+  "notes": [
+    "No stash/reset/clean/force/push/deploy",
+    "Original and target workspaces only inspected",
+    "R21 dirty edits not imported",
+    "Reconcile generated indexes and English metadata if target advances",
+    "Current target dirty hashes are a read-only endpoint inventory; not imported into review. Earlier inventories remain in prior Git versions."
+  ],
+  "reviewHead": "23b93b3213f95a8055816d40004f6409ab825601",
+  "latestTargetBranch": "claude/meta-hack-r18-handoff-d292c8",
+  "targetCommitsSinceBaseline": "",
+  "reviewSnapshotScope": "Committed payload HEAD plus final working-tree closure metadata; final commit/full patch receipt is generated outside Git after commit. All listed added files include this comparison and final scope/validation receipts."
+}

@@ -1,5 +1,12 @@
 import type { BehaviorAsset } from "../audio-behavior/types.js";
 import { AudioAssetStore } from "../audio/assets.js";
+import {
+  AssetLeaseTracker,
+  uniquePcmBytes,
+  type AudioAssetLease,
+  type AssetEvictionResult,
+  type AssetResidencySnapshot,
+} from "../audio/asset-leases.js";
 import { AudioEngine } from "../audio/engine.js";
 import { makeBudget } from "../audio/control.js";
 import type { AudioAssetBankEntry, AudioAssetDescriptor, AudioBudget } from "../audio/types.js";
@@ -28,7 +35,17 @@ interface InternalBank {
   generation: number;
   engine: AudioEngine | null;
 }
+interface AssetEngineResidency {
+  acquireAssets?(assetIds: readonly string[], reason: string): AudioAssetLease;
+  restoreAssets?(entries: readonly AudioAssetBankEntry[]): AudioAssetDescriptor[];
+  evictAssets?(assetIds?: readonly string[], targetBytes?: number): AssetEvictionResult;
+}
 interface Stage {
+  generation: number;
+  entries: AudioAssetBankEntry[];
+  decodeReservedBytes: number;
+  knownStagingBytes: number;
+  stores: Set<AudioAssetStore>;
   budget: AudioBudget;
   rate: number;
   contexts: Map<number, AssetStagingContext>;
@@ -82,6 +99,13 @@ export class AssetHost {
   private prepared: InternalBank | null = null;
   private generation = 0;
   private busy = false;
+  private disposed = false;
+  private readonly leases = new AssetLeaseTracker();
+  private readonly stages = new Set<Stage>();
+  private readonly recency = new Map<string, number>();
+  private accessSequence = 0;
+  private operationGeneration = 0;
+  private highWaterBytes = 0;
 
   constructor(options: {
     store?: BlobStore;
@@ -112,6 +136,234 @@ export class AssetHost {
   getAssets(): BehaviorAsset[] {
     return this.registry(this.projectAssets, this.entries, this.approved);
   }
+  /** Legacy snapshot. New asynchronous borrowers must use acquireAssetBank and release it. */
+  getAssetBank(): readonly AudioAssetBankEntry[] {
+    return this.entries.map((entry) => ({ ...entry, metadata: clone(entry.metadata) }));
+  }
+  private touch(assetIds: readonly string[]): void {
+    for (const id of assetIds) this.recency.set(id, ++this.accessSequence);
+  }
+  private allOwnedBuffers(): AudioBuffer[] {
+    return [
+      ...this.entries.map((entry) => entry.buffer),
+      ...this.leases.entries().map((entry) => entry.buffer),
+      ...(this.prepared?.entries ?? []).map((entry) => entry.buffer),
+      ...[...this.stages].flatMap((stage) => [
+        ...stage.currentBuffers,
+        ...stage.buffers,
+        ...stage.reusable.values(),
+        ...stage.entries.map((entry) => entry.buffer),
+        ...[...stage.stores].flatMap((store) =>
+          store.list().map((asset) => store.get(asset.assetId)!.buffer),
+        ),
+      ]),
+    ];
+  }
+  getResidency(): AssetResidencySnapshot {
+    const retainedBytes = uniquePcmBytes(this.allOwnedBuffers());
+    const decodeReservedBytes = [...this.stages].reduce(
+      (sum, stage) =>
+        sum +
+        stage.decodeReservedBytes +
+        [...stage.stores].reduce(
+          (total, store) => total + store.getResidency().decodeReservedBytes,
+          0,
+        ),
+      0,
+    );
+    const knownStagingBytes = [...this.stages].reduce(
+      (sum, stage) =>
+        sum +
+        stage.knownStagingBytes +
+        [...stage.stores].reduce(
+          (total, store) => total + store.getResidency().knownStagingBytes,
+          0,
+        ),
+      0,
+    );
+    this.highWaterBytes = Math.max(
+      this.highWaterBytes,
+      retainedBytes + decodeReservedBytes + knownStagingBytes,
+    );
+    return {
+      residentBytes: uniquePcmBytes(this.entries.map((entry) => entry.buffer)),
+      leasedBytes: uniquePcmBytes(this.leases.entries().map((entry) => entry.buffer)),
+      retainedBytes,
+      decodeReservedBytes,
+      knownStagingBytes,
+      leaseCount: this.leases.count,
+      residentAssets: this.entries.length,
+      highWaterBytes: this.highWaterBytes,
+      nativeDecoderScratchBytes: null,
+    };
+  }
+  /** Cancel publication, while native decode reservations remain owned until settlement. */
+  cancelPending(): void {
+    this.generation++;
+    this.invalidate();
+  }
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.cancelPending();
+    this.entries = [];
+    this.recency.clear();
+    this.getResidency();
+  }
+  private assertCurrent(stage: Stage): void {
+    if (stage.generation !== this.generation || this.disposed)
+      fail("ASSET_CANCELLED", "Asset transaction was cancelled before publication");
+  }
+  /** Retain exact immutable pins for recording/replay/offline work, with atomic cold restore. */
+  acquireAssetBank(reason = "offline", assetIds?: readonly string[]): Promise<AudioAssetLease> {
+    return this.exclusive(async () => {
+      const ids = [
+        ...new Set(
+          assetIds ??
+            this.projectAssets
+              .filter((asset) => asset.storage !== "generatedDescriptor" || isBuiltin(asset))
+              .map((asset) => asset.assetId),
+        ),
+      ];
+      const refs = ids.map((id) => {
+        const asset = this.projectAssets.find((candidate) => candidate.assetId === id);
+        if (!asset || (asset.storage === "generatedDescriptor" && !isBuiltin(asset)))
+          fail("ASSET_UNKNOWN", `Asset does not name decoded sample PCM: ${id}`);
+        return asset;
+      });
+      // Validate the borrower before decoding or publishing any candidate.
+      const validation = this.leases.acquire([], reason);
+      validation.release();
+      const stage = this.stage();
+      const additions = stage.entries;
+      for (const asset of refs) {
+        const resident = this.entries.some(
+          (entry) =>
+            entry.assetId === asset.assetId &&
+            entry.metadata.revision === asset.revision &&
+            entry.metadata.sha256 === asset.sha256,
+        );
+        if (resident) {
+          if (
+            !isBuiltin(asset) &&
+            !this.approved.has(asset.sha256) &&
+            !(await this.isConfirmed(asset.sha256))
+          )
+            fail("ASSET_RIGHTS_UNVERIFIED", `Local rights are unconfirmed: ${asset.assetId}`);
+          this.assertCurrent(stage);
+          continue;
+        }
+        this.assertCurrent(stage);
+        let buffer: AudioBuffer;
+        if (isBuiltin(asset)) {
+          buffer = await this.builtinBuffer(asset, stage);
+        } else {
+          const stored = await this.store.loadAsset(asset.assetId, asset.sha256);
+          this.assertCurrent(stage);
+          if (!stored)
+            fail("ASSET_REQUIRED_MISSING", `Original WAV is unavailable: ${asset.assetId}`);
+          stage.knownStagingBytes += stored.bytes.byteLength;
+          this.getResidency();
+          try {
+            if (
+              stored.metadata.revision !== asset.revision ||
+              stored.bytes.byteLength !== asset.byteLength
+            )
+              fail(
+                "ASSET_REFERENCE_MISMATCH",
+                `Stored immutable reference differs: ${asset.assetId}`,
+              );
+            if (
+              !(
+                this.approved.has(asset.sha256) ||
+                (stored.metadata.origin === "imported" &&
+                  stored.metadata.license === USER_CONFIRMED) ||
+                (await this.isConfirmed(asset.sha256))
+              )
+            )
+              fail("ASSET_RIGHTS_UNVERIFIED", `Local rights are unconfirmed: ${asset.assetId}`);
+            // Validate every alias independently before sharing the same immutable PCM backing.
+            buffer =
+              stage.reusable.get(contentKey(asset)) ?? (await this.decode(stored.bytes, stage));
+          } finally {
+            stage.knownStagingBytes -= stored.bytes.byteLength;
+          }
+        }
+        this.assertCurrent(stage);
+        additions.push(this.entry(asset, this.retain(stage, buffer, contentKey(asset))));
+      }
+      this.assertCurrent(stage);
+      const next = [
+        ...this.entries.filter(
+          (entry) => !additions.some((item) => item.assetId === entry.assetId),
+        ),
+        ...additions,
+      ];
+      this.checkBank(next, stage.budget);
+      const engine = this.getEngine();
+      const borrowed = ids.map((id) => next.find((entry) => entry.assetId === id)!);
+      if (engine) {
+        const adapter = engine as AudioEngine & AssetEngineResidency;
+        const toRestore = borrowed.filter(
+          (entry) => engine.getAssetBuffer(entry.assetId) !== entry.buffer,
+        );
+        if (toRestore.length) {
+          if (adapter.restoreAssets) adapter.restoreAssets(toRestore);
+          else engine.replaceAssets(next);
+        }
+      }
+      const engineLease = (engine as (AudioEngine & AssetEngineResidency) | null)?.acquireAssets?.(
+        ids,
+        reason,
+      );
+      // No await after publication: cancellation cannot expose a partial multi-ID lease.
+      const lease = this.leases.acquire(borrowed, reason, () => engineLease?.release());
+      this.entries = next;
+      for (const asset of refs) this.approved.add(asset.sha256);
+      this.touch(ids);
+      this.getResidency();
+      return lease;
+    });
+  }
+  evictUnused(targetBytes = 0, assetIds?: readonly string[]): AssetEvictionResult {
+    if (this.busy) fail("ASSET_HOST_BUSY", "Wait for staged asset work before eviction");
+    if (!Number.isSafeInteger(targetBytes) || targetBytes < 0)
+      fail("ASSET_RESIDENCY_TARGET", "PCM target must be a nonnegative safe integer");
+    this.invalidate();
+    const before = this.getResidency().retainedBytes;
+    const scope = assetIds ? new Set(assetIds) : null;
+    const protectedAssetIds: string[] = [],
+      evictedAssetIds: string[] = [];
+    const candidates = [...this.entries]
+      .filter((entry) => !scope || scope.has(entry.assetId))
+      .sort((a, b) => (this.recency.get(a.assetId) ?? 0) - (this.recency.get(b.assetId) ?? 0));
+    for (const candidate of candidates) {
+      if (this.getResidency().residentBytes <= targetBytes) break;
+      if (this.leases.has(candidate.assetId, candidate.buffer)) {
+        protectedAssetIds.push(candidate.assetId);
+        continue;
+      }
+      const engine = this.getEngine() as (AudioEngine & AssetEngineResidency) | null;
+      if (engine?.getAssetBuffer(candidate.assetId)) {
+        // The engine knows native/virtual/retiring references; its decision is authoritative.
+        const result = engine.evictAssets?.([candidate.assetId], 0);
+        if (!result?.evictedAssetIds.includes(candidate.assetId)) {
+          protectedAssetIds.push(candidate.assetId);
+          continue;
+        }
+      }
+      this.entries = this.entries.filter((entry) => entry !== candidate);
+      this.recency.delete(candidate.assetId);
+      evictedAssetIds.push(candidate.assetId);
+    }
+    const after = this.getResidency();
+    return {
+      evictedAssetIds,
+      protectedAssetIds,
+      releasedBytes: Math.max(0, before - after.retainedBytes),
+      residentBytes: after.residentBytes,
+    };
+  }
   private registry(
     assets: readonly ProjectAsset[],
     entries: readonly AudioAssetBankEntry[],
@@ -135,12 +387,25 @@ export class AssetHost {
     });
   }
   private async exclusive<T>(operation: () => Promise<T>): Promise<T> {
+    if (this.disposed) fail("ASSET_HOST_DISPOSED", "Asset host has been disposed");
     if (this.busy) fail("ASSET_HOST_BUSY", "An asset transaction is already in progress");
     this.busy = true;
+    this.operationGeneration = this.generation;
     try {
       return await operation();
     } finally {
+      for (const stage of this.stages) {
+        stage.currentBuffers.clear();
+        stage.buffers.clear();
+        stage.reusable.clear();
+        stage.contexts.clear();
+        stage.entries.length = 0;
+        for (const store of stage.stores) store.clear();
+        stage.stores.clear();
+      }
+      this.stages.clear();
       this.busy = false;
+      this.getResidency();
     }
   }
   private invalidate(): void {
@@ -167,7 +432,12 @@ export class AssetHost {
       );
       if (local) reusable.set(contentKey(asset), local.buffer);
     }
-    return {
+    const stage: Stage = {
+      generation: this.operationGeneration,
+      entries: [],
+      decodeReservedBytes: 0,
+      knownStagingBytes: 0,
+      stores: new Set(),
       budget,
       rate: engine?.getAssetSampleRate() ?? 48000,
       contexts: new Map(),
@@ -177,9 +447,16 @@ export class AssetHost {
       newBytes: 0,
       reusable,
     };
+    this.stages.add(stage);
+    this.getResidency();
+    return stage;
   }
   private capacity(stage: Stage, reservation = 0): void {
-    if (stage.currentBytes + stage.newBytes + reservation > stage.budget.maxDecodedBytes)
+    this.assertCurrent(stage);
+    if (
+      uniquePcmBytes(this.allOwnedBuffers()) + stage.decodeReservedBytes + reservation >
+      stage.budget.maxDecodedBytes
+    )
       fail(
         "DECODED_MEMORY_BUDGET",
         "Current decoded assets plus staged PCM exceed the budget; existing bank retained",
@@ -202,22 +479,97 @@ export class AssetHost {
       stage.buffers.add(buffer);
     }
     stage.reusable.set(key, buffer);
+    this.getResidency();
     return buffer;
   }
   private async decode(bytes: ArrayBuffer, stage: Stage): Promise<AudioBuffer> {
-    const wave = preflightWave(bytes, stage.budget, stage.rate);
+    // A persisted sample keeps its WAVE rate/channels across live-device context changes.
+    const wave = preflightWave(bytes, stage.budget);
     this.capacity(stage, wave.decodedBytes);
-    const decoded = await this.context(stage).decodeAudioData(bytes.slice(0));
+    stage.decodeReservedBytes += wave.decodedBytes;
+    // Input plus the native decoder copy coexist. Scratch inside the browser is unknown.
+    const stagingBytes = bytes.byteLength * (stage.knownStagingBytes >= bytes.byteLength ? 1 : 2);
+    stage.knownStagingBytes += stagingBytes;
+    this.getResidency();
+    let decoded: AudioBuffer;
+    try {
+      decoded = await this.context(stage, wave.sampleRate).decodeAudioData(bytes.slice(0));
+      this.assertCurrent(stage);
+    } finally {
+      stage.decodeReservedBytes -= wave.decodedBytes;
+      stage.knownStagingBytes -= stagingBytes;
+    }
     if (
       decoded.numberOfChannels !== wave.channels ||
       !Number.isSafeInteger(decoded.length) ||
       decoded.length < 1 ||
-      decoded.sampleRate !== stage.rate ||
+      decoded.sampleRate !== wave.sampleRate ||
       pcmBytes(decoded) > wave.decodedBytes ||
-      Math.abs(decoded.duration - wave.durationSeconds) > 1 / wave.sampleRate + 1 / stage.rate
+      Math.abs(decoded.duration - wave.durationSeconds) > 2 / wave.sampleRate
     )
       fail("WAV_DECODE_MISMATCH", "Native WAVE decoding did not match the bounded preflight");
     return decoded;
+  }
+  private async verifyBuiltin(
+    asset: ProjectAsset,
+    buffer: AudioBuffer,
+    stage: Stage,
+  ): Promise<void> {
+    const data = buffer.numberOfChannels === 1 ? buffer.getChannelData(0) : null;
+    if (
+      !data ||
+      buffer.sampleRate !== asset.generator!.sampleRateHz ||
+      pcmBytes(buffer) !== asset.byteLength
+    )
+      fail("ASSET_PCM_HASH", `Existing builtin buffer does not match pinned PCM: ${asset.assetId}`);
+    this.capacity(stage, asset.byteLength);
+    stage.knownStagingBytes += asset.byteLength;
+    this.getResidency();
+    try {
+      let hashInput: ArrayBuffer | null = new Float32Array(data).buffer;
+      let hash: string;
+      try {
+        hash = await digest(hashInput);
+      } finally {
+        hashInput = null;
+      }
+      this.assertCurrent(stage);
+      if (hash !== asset.sha256)
+        fail(
+          "ASSET_PCM_HASH",
+          `Existing builtin buffer does not match pinned PCM: ${asset.assetId}`,
+        );
+      await regenerateBuiltinAsset(asset);
+      this.assertCurrent(stage);
+    } finally {
+      stage.knownStagingBytes -= asset.byteLength;
+    }
+  }
+  private async builtinBuffer(asset: ProjectAsset, stage: Stage): Promise<AudioBuffer> {
+    this.capacity(stage, asset.byteLength * 2);
+    stage.decodeReservedBytes += asset.byteLength;
+    stage.knownStagingBytes += asset.byteLength;
+    this.getResidency();
+    try {
+      const regenerated = await regenerateBuiltinAsset(asset);
+      this.assertCurrent(stage);
+      if (!regenerated) fail("ASSET_GENERATOR", `Builtin cannot be regenerated: ${asset.assetId}`);
+      const buffer = this.context(stage, regenerated.sampleRateHz).createBuffer(
+        1,
+        regenerated.bytesPCM.length,
+        regenerated.sampleRateHz,
+      );
+      buffer.copyToChannel(regenerated.bytesPCM, 0);
+      // Convert the reservation to retained PCM without double admitting its own credit.
+      stage.buffers.add(buffer);
+      stage.newBytes += pcmBytes(buffer);
+      stage.reusable.set(contentKey(asset), buffer);
+      return buffer;
+    } finally {
+      stage.decodeReservedBytes -= asset.byteLength;
+      stage.knownStagingBytes -= asset.byteLength;
+      this.getResidency();
+    }
   }
   private entry(asset: ProjectAsset, buffer: AudioBuffer): AudioAssetBankEntry {
     return {
@@ -288,7 +640,7 @@ export class AssetHost {
       const candidate = validateProject(project),
         engine = this.getEngine(),
         stage = this.stage(engine);
-      const entries: AudioAssetBankEntry[] = [],
+      const entries = stage.entries,
         approved = new Set<string>(),
         required = this.required(candidate);
       for (const asset of candidate.assets) {
@@ -314,30 +666,10 @@ export class AssetHost {
         if (isBuiltin(asset)) {
           if (!buffer) {
             // The exact Float32 waveform and its AudioBuffer coexist briefly during copying.
-            this.capacity(stage, asset.byteLength * 2);
-            const regenerated = await regenerateBuiltinAsset(asset);
-            if (!regenerated)
-              fail("ASSET_GENERATOR", `Builtin cannot be regenerated: ${asset.assetId}`);
-            buffer = this.context(stage).createBuffer(
-              1,
-              regenerated.bytesPCM.length,
-              regenerated.sampleRateHz,
-            );
-            buffer.copyToChannel(regenerated.bytesPCM, 0);
+            buffer = await this.builtinBuffer(asset, stage);
           } else {
             // A raw engine descriptor is insufficient evidence for a builtin PCM claim.
-            const data = buffer.numberOfChannels === 1 ? buffer.getChannelData(0) : null;
-            if (
-              !data ||
-              buffer.sampleRate !== asset.generator!.sampleRateHz ||
-              pcmBytes(buffer) !== asset.byteLength ||
-              (await digest(new Float32Array(data).buffer)) !== asset.sha256
-            )
-              fail(
-                "ASSET_PCM_HASH",
-                `Existing builtin buffer does not match pinned PCM: ${asset.assetId}`,
-              );
-            await regenerateBuiltinAsset(asset);
+            await this.verifyBuiltin(asset, buffer, stage);
           }
           approved.add(asset.sha256);
         } else {
@@ -373,6 +705,7 @@ export class AssetHost {
         entries.push(this.entry(asset, this.retain(stage, buffer, contentKey(asset))));
         this.checkBank(entries, stage.budget);
       }
+      this.assertCurrent(stage);
       const assets = this.registry(candidate.assets, entries, approved);
       for (const assetId of required) {
         const asset = assets.find((value) => value.assetId === assetId);
@@ -392,7 +725,7 @@ export class AssetHost {
       });
       this.prepared = {
         token,
-        entries,
+        entries: [...entries],
         projectAssets: candidate.assets,
         approved,
         generation: this.generation,
@@ -414,6 +747,7 @@ export class AssetHost {
       // replaceAssets validates the entire bank before mutating its engine-owned store.
       pending.engine?.replaceAssets(pending.entries);
       this.entries = [...pending.entries];
+      this.touch(this.entries.map((entry) => entry.assetId));
       this.projectAssets = clone(pending.projectAssets);
       this.approved = new Set(pending.approved);
       this.generation++;
@@ -462,8 +796,13 @@ export class AssetHost {
         fail("ASSET_SIZE_LIMIT", "WAV import must be 1..8MiB");
       this.invalidate();
       const pending = pendingProject ? validateProject(pendingProject) : null;
-      const bytes = await file.arrayBuffer(),
-        sha256 = await digest(bytes);
+      const stage = this.stage();
+      const bytes = await file.arrayBuffer();
+      this.assertCurrent(stage);
+      stage.knownStagingBytes += bytes.byteLength;
+      this.getResidency();
+      const sha256 = await digest(bytes);
+      this.assertCurrent(stage);
       if (bytes.byteLength !== file.size)
         fail("ASSET_SIZE_LIMIT", "File bytes do not match the declared length");
       const pendingMatches =
@@ -500,8 +839,7 @@ export class AssetHost {
         ];
       if (targets.some((asset) => asset.byteLength !== bytes.byteLength))
         fail("ASSET_REFERENCE_MISMATCH", "Matching SHA has inconsistent project byte length");
-      const stage = this.stage(),
-        reuse = stage.reusable.get(contentKey(targets[0]!));
+      const reuse = stage.reusable.get(contentKey(targets[0]!));
       const finalCount = pending
         ? targets.length
         : this.entries.filter((entry) => !targets.some((asset) => asset.assetId === entry.assetId))
@@ -509,7 +847,7 @@ export class AssetHost {
       if (finalCount > stage.budget.maxAssets)
         fail("ASSET_COUNT_BUDGET", "Decoded asset count exceeds the bank budget");
       // Always preflight even when reusing existing decoded PCM.
-      preflightWave(bytes, stage.budget, stage.rate);
+      preflightWave(bytes, stage.budget);
       const buffer = reuse ?? (await this.decode(bytes, stage));
       this.retain(stage, buffer, contentKey(targets[0]!));
       const additions = targets.map((asset) => this.entry(asset, buffer));
@@ -545,9 +883,11 @@ export class AssetHost {
           revision: 1,
         },
       });
+      this.assertCurrent(stage);
       if (!pendingMatches.length) {
         this.getEngine()?.replaceAssets(nextEntries);
         this.entries = nextEntries;
+        this.touch(targets.map((asset) => asset.assetId));
         this.projectAssets = [
           ...this.projectAssets.filter(
             (asset) => !targets.some((target) => target.assetId === asset.assetId),
@@ -591,16 +931,7 @@ export class AssetHost {
           mint.push(id);
           continue;
         }
-        this.capacity(stage, existing.byteLength * 2);
-        const regenerated = await regenerateBuiltinAsset(existing);
-        if (!regenerated) fail("ASSET_GENERATOR", `Builtin cannot be regenerated: ${id}`);
-        const buffer = this.context(stage).createBuffer(
-          1,
-          regenerated.bytesPCM.length,
-          regenerated.sampleRateHz,
-        );
-        buffer.copyToChannel(regenerated.bytesPCM, 0);
-        this.retain(stage, buffer, contentKey(existing));
+        const buffer = await this.builtinBuffer(existing, stage);
         refs.push(clone(existing));
         additions.push(this.entry(existing, buffer));
       }
@@ -610,10 +941,19 @@ export class AssetHost {
             "ASSET_RATE_UNSUPPORTED",
             "V1 new builtin descriptors support 44100/48000Hz PCM only",
           );
-        this.capacity(stage, Math.round(rate * 1.75) * 4);
+        this.capacity(stage, Math.round(rate * 2.75) * 4);
         const context = this.context(stage),
-          stagingStore = new AudioAssetStore(context as BaseAudioContext, stage.budget);
+          stagingStore = new AudioAssetStore(
+            context as BaseAudioContext,
+            stage.budget,
+            () => false,
+            () => {
+              this.getResidency();
+            },
+          );
+        stage.stores.add(stagingStore);
         const decoded = await stagingStore.registerBuiltins();
+        this.assertCurrent(stage);
         for (const item of decoded)
           if (mint.includes(item.assetId)) {
             const ref: ProjectAsset = {
@@ -640,13 +980,20 @@ export class AssetHost {
               },
             };
             refs.push(ref);
-            additions.push(this.entry(ref, stagingStore.get(item.assetId)!.buffer));
+            additions.push(
+              this.entry(
+                ref,
+                this.retain(stage, stagingStore.get(item.assetId)!.buffer, contentKey(ref)),
+              ),
+            );
           }
       }
       const next = [...this.entries, ...additions];
       this.checkBank(next, stage.budget);
+      this.assertCurrent(stage);
       engine.replaceAssets(next);
       this.entries = next;
+      this.touch(refs.map((asset) => asset.assetId));
       this.projectAssets = [
         ...this.projectAssets.filter((asset) => !refs.some((ref) => ref.assetId === asset.assetId)),
         ...refs,

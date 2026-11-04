@@ -37,6 +37,9 @@ function snapshot(rule: BehaviorRuleView = original, revision = 4): LabViewModel
     simTimeSeconds: 0,
     runId: null,
     objects: [],
+    trajectoryStatus: {},
+    pathRuns: [],
+    paint: null,
     listener: {
       id: "listener",
       attachment: "independent",

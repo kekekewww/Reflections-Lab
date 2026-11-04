@@ -4,7 +4,7 @@ import { mkdtemp, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { loadMetaApiKey, parseMetaKeyFile } from "../../server/meta-key-loader.js";
-import { metaConfigFromEnv } from "../../server/meta-provider.js";
+import { getMetaProviderStatus, metaConfigFromEnv } from "../../server/meta-provider.js";
 
 // Deliberately fake values; never read the user's credential file in unit tests.
 const fakeA = "LLM_12345_fixture_not_a_real_key_A";
@@ -71,4 +71,47 @@ test("only an explicitly selected file is loaded, while errors and limits remain
   await assert.rejects(loadMetaApiKey({ env: {}, keyFile: join(directory, "missing.txt") }), {
     code: "KEY_FILE_UNAVAILABLE",
   });
+});
+
+test("metaConfigFromEnv takes the reviewed retry, timeout and reasoning settings; the gate blocks bad ones", () => {
+  const ready = {
+    META_MODEL_API_KEY: fakeB,
+    META_NETWORK_ENABLED: "true",
+    META_MODEL_ID: "muse-spark-1.3",
+    META_VERIFICATION_STATUS: "verified",
+    META_VERIFIED_AT: "2026-11-04T01:49:00.597Z",
+    META_VERIFICATION_ARTIFACT_ID: "artifact.fake-catalog",
+    META_MAX_SESSION_COST_USD: "1",
+    META_INPUT_USD_PER_MILLION_TOKENS: "1.25",
+    META_OUTPUT_USD_PER_MILLION_TOKENS: "4.25",
+    META_PRICING_SOURCE: "https://example.test/pricing",
+  };
+  const defaults = metaConfigFromEnv(ready);
+  assert.equal(defaults.maxRetries, 2);
+  assert.equal(defaults.timeoutMs, 20000);
+  assert.equal(defaults.reasoningEffort, undefined);
+  assert.equal(getMetaProviderStatus(defaults).state, "READY");
+
+  const reviewed = metaConfigFromEnv({
+    ...ready,
+    META_MAX_RETRIES: "0",
+    META_TIMEOUT_MS: "30000",
+    META_REASONING_EFFORT: "minimal",
+  });
+  assert.equal(reviewed.maxRetries, 0);
+  assert.equal(reviewed.timeoutMs, 30000);
+  assert.equal(reviewed.reasoningEffort, "minimal");
+  assert.equal(getMetaProviderStatus(reviewed).state, "READY");
+
+  for (const bad of [
+    { META_MAX_RETRIES: "9" },
+    { META_MAX_RETRIES: "many" },
+    { META_TIMEOUT_MS: "1" },
+    { META_REASONING_EFFORT: "high" },
+  ])
+    assert.equal(
+      getMetaProviderStatus(metaConfigFromEnv({ ...ready, ...bad })).reason,
+      "INVALID_HOST_BUDGET",
+      JSON.stringify(bad),
+    );
 });

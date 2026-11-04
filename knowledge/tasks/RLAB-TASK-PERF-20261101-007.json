@@ -1,0 +1,100 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-007",
+  "title": "在既有asset store內研究pinning、eviction與decode staging",
+  "description": "已有decoded buffer重用與decode預算；峰值可來自encoded／staging／decoded/native重疊，不應新增另一個cache。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "只在既有store新增政策，source of truth、hash/revision/license refs及decode concurrency/caps一致。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "active、retiring、pending arrivals與recording引用不能被evict；cancel／quota／decode failure不遺失有效資產。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "同負載列resident與stage峰值及reload延遲，沒有證明收益即保留原政策。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/assets.ts",
+    "src/app/asset-host.ts",
+    "src/persistence/blob-store.ts",
+    "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/history/assets.05d40fd2.3e5f7c7823b9.raw.txt",
+      "sha256": "3e5f7c7823b947c1271d0ddb1a3362d3824da74402003ac0dbbc016c8c0fc677",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:00:33.071Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "已有decoded buffer重用與decode預算；峰值可來自encoded／staging／decoded/native重疊，不應新增另一個cache。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/MEMORY_AND_RESOURCE_REVIEW.md",
+      "locator": "MEM-01、MEM-05",
+      "classification": "CONFIRMED BY CODE; NOT MEASURED peaks",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "e2242527a106809d242431f594af09612ea03be192bed6b10e52b1a351fdf723"
+    },
+    {
+      "path": "src/audio/assets.ts",
+      "locator": "decode reservation與concurrency",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "9174f0261564e4d49d2dce3c2809bc4577fb529ec6c147c712408dd70ccbdf2f"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/assets.ts",
+    "src/app/asset-host.ts",
+    "src/persistence/blob-store.ts"
+  ],
+  "proposed_solution": "建立既有store所有權／pin references與decode stage生命期，僅對無active/retiring/pending/recording引用的可重建resident資料研究eviction。",
+  "alternatives": [
+    "維持現有caps並明示拒絕。",
+    "只序列化decode或去可證冗餘copy。",
+    "新增全域cache：重複權威且增加memory，不作預設。"
+  ],
+  "expected_benefit": "可能降低decode峰值與無用resident資料，保留可重現資產；效果待測。",
+  "complexity": "中；引用、取消、hash與原生decode完成競爭。",
+  "performance_impact": "cold/warm decode p95、peak process/heap/PCM與reservation分開。",
+  "audio_quality_impact": "decoded rate/channels/hash與source phase不變；不偷偷有損轉碼／降採樣。",
+  "latency_impact": "eviction會增加下次load延遲，需另報cache miss／preload權衡。",
+  "compatibility_regression_risk": "刪除recording refs、未到達聲音或retiring資產可破壞重播；local disk caps不等於heap。",
+  "benchmark_plan": "同asset cold/warm、concurrent decode、cancel／dispose race、failed decode、active pin、recording保存／載入及memory fallback。",
+  "rollback_plan": "停止eviction，drain或取消decode stages，保留pins與immutable stored refs；回現有caps，必要時按hash重載但不刪使用者資產。",
+  "priority_rationale": "成本範圍較小且有既有權威可延伸；只有profile顯示asset壓力才投入。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Decode/stream capabilities and quotas differ; retain existing asset-format capability checks.",
+  "regression_risk": "Eviction must preserve active/retiring/pending/recording asset references and immutable pins.",
+  "candidate_commit": null
+}

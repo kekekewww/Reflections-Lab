@@ -5,6 +5,8 @@ import { PhysicsWorld } from "../../src/physics/index.js";
 import type { SceneSpec } from "../../src/scene/types.js";
 import type { LabAction } from "../../src/ui/contracts.js";
 import type { RecordedBehaviorSnapshot } from "../../src/app/recording-processor.js";
+import { recordedCursor } from "./fixtures/recorded-cursor.js";
+import type { AudioEngine } from "../../src/audio/index.js";
 import { FakeAudioContext } from "../audio-runtime/fake-context.js";
 import type { AssetStagingContext } from "../../src/app/asset-host.js";
 import { BlobStore } from "../../src/persistence/blob-store.js";
@@ -64,6 +66,7 @@ async function command(app: LabRuntime, action: LabAction) {
 async function steps(app: LabRuntime, count: number) {
   for (let index = 0; index < count; index++) {
     app.advance(STEP);
+    await app.flushRecordingEvaluation();
     // Allow actual asynchronous acoustic delivery; never fake a solved frame.
     await new Promise<void>((resolve) => setImmediate(resolve));
   }
@@ -716,8 +719,8 @@ test("integration control graph: stopping replay restores the suspended live ins
       const voice = original.runtimeSnapshot.state.instances.find(
         (instance) => instance.objectId === "speaker",
       )!;
-      const cursor = original.voiceCursors![voice.instanceId]!;
-      assert.ok(cursor, "capture must include the live AudioEngine source cursor");
+      // The source starts inside this take, so its native history is complete.
+      const cursor = recordedCursor(original, voice.instanceId, "complete");
       const liveTick = app.getSnapshot().tick;
       await command(app, { type: "replay" });
       for (let tick = 0; tick < 2; tick++) {
@@ -745,7 +748,8 @@ test("integration control graph: stopping replay restores the suspended live ins
         (value) => value.instanceId === voice.instanceId,
       )!;
       assert.equal(instance.startedAtTick, voice.startedAtTick);
-      const resumedCursor = resumed.voiceCursors![voice.instanceId]!;
+      // Run restores the suspended live source by restarting it at the saved cursor.
+      const resumedCursor = recordedCursor(resumed, voice.instanceId, "incomplete");
       assert.ok(resumedCursor.playheadSeconds >= cursor.playheadSeconds);
       assert.ok(
         resumedCursor.playheadSeconds <= cursor.playheadSeconds + 2 * STEP,
@@ -805,8 +809,11 @@ test("integration control graph: acoustic B preserves true AudioEngine cursor fi
         const instance = left.runtimeSnapshot.state.instances.find(
           (value) => value.objectId === "speaker",
         )!;
+        // Record froze and restarted the already playing source; B never promotes that audit.
+        assert.equal(right.voiceCursors?.[instance.instanceId], undefined);
         assert.ok(
-          left.voiceCursors![instance.instanceId]!.playheadSeconds > instance.playheadSeconds,
+          recordedCursor(left, instance.instanceId, "incomplete").playheadSeconds >
+            instance.playheadSeconds,
           "pitched source seconds must differ from the unpitched Behavior clock in this fixture",
         );
       }
@@ -1036,20 +1043,26 @@ test("integration control graph: gravity-only toggles preserve physical momentum
         contexts[0]!.currentTime += STEP;
         await steps(app, 1);
       }
-      const native = contexts[0]!
-        .sources()
-        .find(
-          (source) =>
-            source.kind === "oscillator" &&
-            source.frequency.value === 440 &&
-            source.starts.length > 0 &&
-            source.onended !== null,
-        )!;
+      const playingNative = () => {
+        const playing = contexts[0]!
+          .sources()
+          .filter(
+            (source) =>
+              source.kind === "oscillator" &&
+              source.frequency.value === 440 &&
+              source.starts.length > 0 &&
+              source.stops.length === 0 &&
+              source.onended !== null,
+          );
+        assert.equal(playing.length, 1, "exactly one AlwaysOn native source is playing");
+        return playing[0]!;
+      };
+      let native = playingNative();
       assert.ok(
         native,
         "AlwaysOn must be admitted before any impact one-shot can share its frequency",
       );
-      const nativeStarts = structuredClone(native.starts),
+      let nativeStarts = structuredClone(native.starts),
         nativeStopCount = native.stops.length;
       let movingAndSpinning = false;
       for (let tick = 0; tick < 90; tick++) {
@@ -1072,22 +1085,30 @@ test("integration control graph: gravity-only toggles preserve physical momentum
       contexts[0]!.currentTime += STEP;
       await steps(app, 1);
       await command(app, { type: "recordToggle" });
+      // Record froze the playing source and restarted it at its cursor; follow the new one.
+      native = playingNative();
+      nativeStarts = structuredClone(native.starts);
+      nativeStopCount = native.stops.length;
       let before = app.getRecordingArtifact()!.frames.at(-1)!
         .behaviorSnapshot as RecordedBehaviorSnapshot;
       let instance = before.runtimeSnapshot.state.instances.find(
         (value) => value.objectId === "ball" && value.ruleId === rule.id,
       )!;
       assert.ok(instance);
-      assert.ok(
-        before.voiceCursors![instance.instanceId],
-        "must capture the actual AudioEngine source cursor",
-      );
+      recordedCursor(before, instance.instanceId, "incomplete");
       for (const mode of ["dynamicNoGravity", "dynamicGravity"] as const) {
         const revision = app.getSceneDocument().sceneRevision;
         const tick = app.getSnapshot().tick;
         const object = app.getSnapshot().objects.find((value) => value.id === "ball")!;
         const linear = [...object.velocityMps!],
           angular = [...object.angularVelocityRadps!];
+        // Every take starts by freezing and restarting the source, so the mode transaction
+        // itself is measured on the live engine cursor rather than across two takes.
+        const audio = (app as unknown as { audio: AudioEngine }).audio;
+        const liveCursor = () =>
+          audio.getVoiceCursorState(instance.instanceId, app.getSnapshot().tick * STEP);
+        const cursorBeforeToggle = liveCursor();
+        assert.ok(cursorBeforeToggle);
         await command(app, { type: "patchObject", objectId: "ball", patch: { mode } });
         const changed = app.getSnapshot().objects.find((value) => value.id === "ball")!;
         assert.equal(changed.mode, mode);
@@ -1114,11 +1135,20 @@ test("integration control graph: gravity-only toggles preserve physical momentum
         );
         assert.deepEqual(native.starts, nativeStarts);
         assert.notEqual(native.onended, null);
+        assert.deepEqual(
+          liveCursor(),
+          cursorBeforeToggle,
+          "native content cursor does not restart or skip on gravity toggle",
+        );
         await command(app, { type: "run" });
         await command(app, { type: "recordToggle" });
         contexts[0]!.currentTime += STEP;
         await steps(app, 1);
         await command(app, { type: "recordToggle" });
+        // Record froze the playing source and restarted it at its cursor; follow the new one.
+        native = playingNative();
+        nativeStarts = structuredClone(native.starts);
+        nativeStopCount = native.stops.length;
         const after = app.getRecordingArtifact()!.frames.at(-1)!
           .behaviorSnapshot as RecordedBehaviorSnapshot;
         const update = after.voiceIntents.find(
@@ -1136,11 +1166,13 @@ test("integration control graph: gravity-only toggles preserve physical momentum
           STEP,
           "logical content advances by exactly the next fixed tick",
         );
-        close(
-          after.voiceCursors![instance.instanceId]!.playheadSeconds -
-            before.voiceCursors![instance.instanceId]!.playheadSeconds,
-          STEP,
-          "native content cursor does not restart or skip on gravity toggle",
+        // A take paused inside the restarted source onset lookahead keeps its startup cursor.
+        const advanced =
+          recordedCursor(after, instance.instanceId, "incomplete").playheadSeconds -
+          recordedCursor(before, instance.instanceId, "incomplete").playheadSeconds;
+        assert.ok(
+          advanced >= -1e-7 && advanced <= STEP + 1e-7,
+          "recorded native content cursor neither rewinds nor skips between takes: " + advanced,
         );
         before = after;
         instance = next;
@@ -1379,4 +1411,29 @@ test("integration: Replay ObjectView shows the captured Held state after the liv
     assert.equal(app.getSnapshot().objects.find((object) => object.id === "ball")!.held, false);
     assert.deepEqual(app.getPose("ball"), livePose);
   });
+});
+
+test("the product keeps HRTF on the direct path and pans other paths in stereo", async () => {
+  const contexts: FakeAudioContext[] = [];
+  const previous = globalThis.AudioContext;
+  class Context extends FakeAudioContext {
+    constructor() {
+      super();
+      contexts.push(this);
+    }
+  }
+  globalThis.AudioContext = Context as unknown as typeof AudioContext;
+  try {
+    await fixture(async (app) => {
+      await command(app, { type: "enableAudio" });
+      await command(app, { type: "run" });
+      await steps(app, 30);
+      const models = contexts[0]!.panners().map((node) => node.panningModel);
+      assert.ok(models.includes("HRTF"), `no direct path used HRTF: ${models.join(",")}`);
+      assert.ok(models.includes("equalpower"), `every path used HRTF: ${models.join(",")}`);
+    });
+  } finally {
+    if (previous) globalThis.AudioContext = previous;
+    else delete (globalThis as { AudioContext?: unknown }).AudioContext;
+  }
 });

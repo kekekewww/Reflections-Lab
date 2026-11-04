@@ -1,3 +1,4 @@
+import { acousticSceneSolverVersion } from "../../src/capabilities/acoustic-geometry.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import type {
@@ -154,7 +155,7 @@ function baselineConfiguration(scene: SceneSpec, doc = document(scene)): Recordi
     geometrySnapshot: {},
     physicsVersion: "test-reference",
     backendId: "custom-web-geometric",
-    backendVersion: "1.0.0",
+    backendVersion: acousticSceneSolverVersion(scene),
     fixedDtS: 1 / 60,
     sampleRateHz: 48000,
   };
@@ -927,7 +928,7 @@ test("shared acoustic input matches finite-plane geometry and independent pressu
   );
 });
 
-test("shared acoustic input excludes owner, preserves dynamic occlusion and does not invent curved reflectors or preview voices", () => {
+test("shared acoustic input excludes owner and supplies real curved snapshots and moving reflectors", () => {
   const initial = scene();
   initial.objects[0]!.acousticRole = "none";
   const blocker = {
@@ -955,13 +956,11 @@ test("shared acoustic input excludes owner, preserves dynamic occlusion and does
   initial.objects.push(blocker, sphere, capsule);
   const args = {
     scene: initial,
-    poses: [
-      {
-        objectId: "blocker",
-        positionM: blocker.positionM,
-        orientationQuaternion: blocker.orientationQuaternion,
-      },
-    ],
+    poses: [blocker, sphere, capsule].map((object) => ({
+      objectId: object.id,
+      positionM: object.positionM,
+      orientationQuaternion: object.orientationQuaternion,
+    })),
     listener: initial.listener,
     tick: 2,
     materials: materials(),
@@ -975,9 +974,14 @@ test("shared acoustic input excludes owner, preserves dynamic occlusion and does
   assert.equal(request.surfaces.length, 6);
   assert.ok(
     request.surfaces.every(
-      (surface) => surface.id.startsWith("blocker.") && surface.role === "dynamicOccluder",
+      (surface) => surface.id.startsWith("blocker.") && surface.role === "dynamicReflector",
     ),
   );
+  assert.deepEqual(
+    request.primitives?.map((primitive) => primitive.id),
+    ["capsule.body", "sphere.body"],
+  );
+  assert.ok(request.primitives?.every((primitive) => primitive.role === "dynamicOccluder"));
   const solution = solveAcoustics(request);
   assert.equal(solution.diagnostics.directOccluded, true);
   assert.equal(solution.frame.paths.length, 0);

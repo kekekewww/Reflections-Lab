@@ -4,7 +4,7 @@ title: Sound Behavior核心與產品前置
 type: feature
 status: ACCEPTED
 created_at: 2026-10-26T17:52:32.289Z
-updated_at: 2026-10-27T23:15:42.060Z
+updated_at: 2026-11-02T09:18:38.632Z
 sources:
   - SB-SRC-0001
   - SB-SRC-0002
@@ -38,9 +38,13 @@ sources:
   - V1-SRC-0031
   - V1-SRC-0038
   - V1-SRC-0039
+  - SB-ZONE-SCHEMA-20261102-V1
+  - SB-ZONE-TYPES-20261102-V1
 related_tasks:
   - RLAB-TASK-0010
   - RLAB-TASK-0016
+  - RLAB-TASK-0028
+  - RLAB-TASK-0029
 related_decisions:
   - ADR-013
   - ADR-014
@@ -49,6 +53,8 @@ tags:
   - P1
   - SoundBehavior
 ---
+
+
 
 # Sound Behavior已實作，整體驗收中
 
@@ -68,3 +74,10 @@ Task0012／0013仍待原完整垂直／接觸／重播與聽測criteria。Task00
 2026-10-28正式續報：[active-rule實作](../../../artifacts/v1/active-rule-production-20261028/implementation-summary.json)已接入publication，原完整snapshot保留，931項currentruntime及TSC／lint／formatPASS；當前browser／build／完整品質與正式性能仍另驗。Source36的unapplied候選屬前一截點，未將operationcount升格速度主張。
 
 2026-10-28 r12：[當前功能驗證](../../../artifacts/v1/active-rule-integration-20261028/current-functional-summary.json)已完成931runtime、26Vite與physics2/storage5/product4；UI27之相同12localbundle核對保留其截點。原完整snapshot不變；正式效能、原生與聽測未升格，詳見r12。
+
+
+## 2026-11-02：Zone資料與真producer已合入，整合驗收中
+
+最新使用者已要求實作可見unsupported選項；Task0029將optional Scene zones與明示OnEnterZone/OnExitZone.zoneId接入原子作者命令、真Rapier固定步body-center採樣、共用caps/AI/Host/Preview與錄放。無zones不注入[]，legacybytes/hash保持；數量/遲滯/事件容量與採樣限制見[Zone固定綜合](../../../docs/15-ui-parameter-audit/ZONE_IMPLEMENTATION_20261102.md)。Source12786已合入d9，作者Domain/schema與真producer基本條件已驗；真ZoneUI/WAV、Curves整合及全產品Task0028仍未結案。舊研究/原Node/真人/科學/性能/Meta live結果保留原scope，不能用本次能力擴張回寫舊PASS。
+
+聲音schema/types新增可選zoneId與真事件身分；產品zone trigger必須可信registry中的明示ID，legacy non-zone不注入欄位。新schema/types已用新source取代SB-SRC-0032/0034的current版本，舊exactbytes從pre-Zone Git保存於[原schema](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/3a6c6b052eb70f10b9814c11663b8103d4ac3ed7)與[原types](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/a10aebfbac503bf3b035556dc804d8581acdc593)，沒有覆寫歷史hash或宣稱新科學驗證。

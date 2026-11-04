@@ -1,6 +1,16 @@
+import type { LiveMonitorPorts } from "./live-monitor-contracts.js";
+import type { RecordingRecoveryEntryView } from "./recovery-contracts.js";
 /** Read models for the interface. Domain engines remain the authority for mutations. */
 import type { ParameterMapping, RuleOverride } from "../../schemas/sound-behavior/types.js";
 import type { StaticPreviewView } from "../app/static-preview.js";
+import type { RenderHost } from "../app/render-host.js";
+import type { MotionWorkspace } from "../motion/workspace.js";
+import type { MotionActionInput, MotionWorkspaceView } from "../motion/types.js";
+import type { AgentSession } from "../app/agent-session.js";
+import type { AudioDiagnosticsSnapshot } from "../audio/diagnostics.js";
+import type { ObjectTrajectory, SceneZone } from "../scene/types.js";
+import type { PathRunView } from "../motion/path-runner.js";
+import type { PathProblem } from "../motion/trajectory-path.js";
 export type SoundParameterMapping = ParameterMapping;
 export type SoundRuleOverride = Pick<RuleOverride, "enabled" | "gainLinear" | "pitchSemitones">;
 export type Vector3 = [number, number, number];
@@ -23,7 +33,8 @@ export interface PlacementGhostView extends PoseView {
   dimensionsM: Vector3;
   valid: boolean;
   reason?: string;
-  stage: "preview" | "staged";
+  stage: "preview" | "pending";
+  attachment?: "surface" | "air";
 }
 export interface ObjectView extends PoseView {
   id: string;
@@ -37,6 +48,9 @@ export interface ObjectView extends PoseView {
   physicsMaterialId: string;
   acousticMaterialId: string;
   acousticRole: "none" | "staticSurface" | "dynamicOccluder" | "dynamicReflector";
+  trajectory?: ObjectTrajectory;
+  /** An enabled sound behaviour binding or a sound source: the object can carry a path. */
+  audible: boolean;
   velocityMps?: Vector3;
   angularVelocityRadps?: Vector3;
   held?: boolean;
@@ -88,9 +102,9 @@ export interface NativeVoiceRejectionView {
   profileId: string;
   profileRevision: number;
   sourceId: string;
-  acousticRequestId: string;
-  acousticSceneRevision: number;
-  acousticPoseTick: number;
+  acousticRequestId: string | null;
+  acousticSceneRevision: number | null;
+  acousticPoseTick: number | null;
   attemptedAtTick: number;
 }
 export interface EventView {
@@ -117,6 +131,7 @@ export interface AssetView {
 export interface BehaviorRuleView {
   id: string;
   trigger: string;
+  zoneId?: string;
   enabled: boolean;
   assetId?: string;
   generator?: "sample" | "oscillator";
@@ -143,6 +158,15 @@ export interface BehaviorView {
   bindingEnabled?: boolean;
   documentRevision?: number;
 }
+/** A stored path measured against the scene's starting layout. */
+export interface TrajectoryStatusView {
+  lengthM: number;
+  durationS: number;
+  /** False when the path has a problem; a valid path on a non-audible object still never runs. */
+  valid: boolean;
+  problem?: PathProblem;
+}
+export type { PathProblem, PathRunView };
 export interface MetricView {
   label: string;
   value: number | null;
@@ -162,6 +186,9 @@ export interface LabViewModel {
     afterProfileRevision: number;
   };
   sceneRevision: number;
+  zones?: SceneZone[];
+  /** Published with the Scene read model so sidecar transactions appear atomically. */
+  motion?: MotionWorkspaceView;
   workspace: Workspace;
   simulationState: "ready" | "running" | "paused" | "error";
   interactionMode: InteractionMode;
@@ -171,6 +198,12 @@ export interface LabViewModel {
   simTimeSeconds: number;
   runId: string | null;
   objects: ObjectView[];
+  /** Keyed by object id, for every object with a stored path; recomputed per scene revision. */
+  trajectoryStatus: Record<string, TrajectoryStatusView>;
+  /** The current take's path runs; empty before the first Play or Record and after Reset. */
+  pathRuns: PathRunView[];
+  /** A first-person paint stroke in progress: world points, the object's start first. */
+  paint: { objectId: string; pointsM: Vector3[]; distanceM: number } | null;
   listener: PoseView & { id: string; attachment: "independent" | "fpsHead" };
   selectedObjectId: string | null;
   placementGhost?: PlacementGhostView | null;
@@ -182,6 +215,14 @@ export interface LabViewModel {
   assets: AssetView[];
   behaviors: BehaviorView[];
   monitor: {
+    bufferPreset?: import("../audio/buffer-preset.js").AudioBufferPreset;
+    rebuilding?: boolean;
+    outputLatencySeconds?: number | null;
+    outputUnderrunEvents?: number | null;
+    outputUnderrunSeconds?: number | null;
+    outputUnderrunStatus?: "AVAILABLE" | "NOT_AVAILABLE";
+    schedulingLookaheadSeconds?: number | null;
+    staleVoiceAdmissions?: number;
     state: "blocked" | "muted" | "audible" | "error";
     muted: boolean;
     gainLinear: number;
@@ -204,7 +245,10 @@ export interface LabViewModel {
     status: "idle" | "loading" | "preview" | "error";
     message: string;
     preview?: string;
+    /** Muse's own words. Untrusted text: display only. */
+    note?: string;
     canApply: boolean;
+    canUndo?: boolean;
     selectedProvider?: AgentProvider;
     providerStatus?: AgentProviderStatusView;
   };
@@ -246,8 +290,9 @@ export type ObjectPatch = Partial<
     | "acousticMaterialId"
     | "acousticRole"
   >
->;
+> & { trajectory?: ObjectTrajectory | null };
 export type LabAction =
+  | { type: "clearError" }
   | { type: "workspace"; workspace: Workspace }
   | { type: "selectObject"; objectId: string | null }
   | { type: "selectPath"; pathId: string | null }
@@ -255,11 +300,35 @@ export type LabAction =
   | { type: "run" | "pause" | "reset" | "undo" | "redo" | "save" | "export" | "load" }
   | { type: "importProject"; text: string }
   | { type: "exportRecording" }
+  | { type: "motionSave"; input: MotionActionInput; expectedRevision: number }
+  | { type: "motionRemove"; actionId: string; expectedRevision: number }
+  | { type: "motionStart"; actionId: string }
+  | { type: "motionCancel"; runId: string }
+  | { type: "motionUndo" | "motionRedo" | "motionRebase"; expectedRevision: number }
+  | { type: "exportMotion" }
+  | { type: "importMotion"; text: string; expectedRevision: number }
+  | { type: "runAgentExperiment"; durationS: number }
+  | { type: "compareAgentExperiment" }
+  | { type: "setAudioDiagnosticsEnabled"; enabled: boolean }
+  | {
+      type: "saveZone";
+      zone: SceneZone;
+      expectedSceneRevision: number;
+      expectedZoneRegistryPin: string;
+    }
+  | {
+      type: "removeZone";
+      zoneId: string;
+      expectedSceneRevision: number;
+      expectedZoneRegistryPin: string;
+    }
   | { type: "addObject"; shape: PrimitiveShape }
   | { type: "duplicateObject" | "removeObject" | "frameSelected"; objectId: string }
   | { type: "patchObject"; objectId: string; patch: ObjectPatch }
+  /** The only path write; `null` removes the path. */
+  | { type: "setTrajectory"; objectId: string; trajectory: ObjectTrajectory | null }
   | { type: "patchListener"; positionM: Vector3; orientationQuaternion?: Quaternion }
-  | { type: "addRule"; objectId: string; trigger: string }
+  | { type: "addRule"; objectId: string; trigger: string; zoneId?: string }
   | {
       type: "patchRule";
       objectId: string;
@@ -289,10 +358,11 @@ export type LabAction =
   | { type: "submitPrompt"; prompt: string }
   | { type: "setAgentMode"; mode: AgentProvider }
   | { type: "refreshAgentStatus" }
-  | { type: "applyAI" | "cancelAI" }
+  | { type: "applyAI" | "cancelAI" | "undoAI" }
   | { type: "enableAudio" | "toggleMute" }
   | { type: "setMonitorGain"; gainLinear: number }
   | { type: "setMonitorMode"; mode: "raw" | "simulated" }
+  | { type: "setAudioBufferPreset"; preset: import("../audio/buffer-preset.js").AudioBufferPreset }
   | { type: "setReverb"; enabled: boolean; decaySeconds?: number; wetGain?: number }
   | { type: "enterFPS" | "exitFPS" }
   | { type: "pointerLockChanged"; locked: boolean }
@@ -303,9 +373,12 @@ export type LabAction =
   | { type: "inputPointer"; button: number; pressed: boolean }
   | { type: "inputWheel"; deltaY: number }
   | { type: "inputBlur" }
-  | { type: "place" | "grab" | "drop" | "throw" | "enableStaged" | "cancelPlacement" }
+  /** Ctrl+left press on an aimed audible object, and its button release. */
+  | { type: "paintStart" }
+  | { type: "paintEnd" }
+  | { type: "place" | "grab" | "drop" | "throw" | "startPlacement" | "cancelPlacement" }
   | { type: "setAtmosphere"; medium: "air" | "vacuum"; temperatureC?: number };
-export interface LabController {
+export interface LabController extends LiveMonitorPorts {
   /** The same immutable object must be returned until subscribe notifies a change. */
   getSnapshot(): LabViewModel;
   subscribe(listener: () => void): () => void;
@@ -313,4 +386,13 @@ export interface LabController {
   /** Read interpolated physics poses without issuing a React update for every fixed step. */
   getPose(objectId: string): PoseView | undefined;
   getFPSCamera?(): PoseView | undefined;
+  /** Optional composition ports; legacy/read-only controllers remain valid. */
+  getRenderHost?(): RenderHost | null;
+  getMotionWorkspace?(): MotionWorkspace | null;
+  getAgentSession?(): AgentSession | null;
+  getAudioDiagnostics?(): AudioDiagnosticsSnapshot | null;
+  captureShortTake?(durationSeconds: number): Promise<void>;
+  listRecordingRecovery?(): Promise<readonly RecordingRecoveryEntryView[]>;
+  recoverRecording?(sessionId: string): Promise<void>;
+  discardRecordingRecovery?(sessionId: string): Promise<void>;
 }

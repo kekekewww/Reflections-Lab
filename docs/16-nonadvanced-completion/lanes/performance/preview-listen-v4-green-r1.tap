@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: V4 exposes a bounded actual TCP listener observation independently of child exit flags
+ok 1 - V4 exposes a bounded actual TCP listener observation independently of child exit flags
+  ---
+  duration_ms: 1.047
+  type: 'test'
+  ...
+# Subtest: a real connect event observes a listening owned endpoint and cleans the socket
+ok 2 - a real connect event observes a listening owned endpoint and cleans the socket
+  ---
+  duration_ms: 1.5191
+  type: 'test'
+  ...
+# Subtest: ECONNREFUSED alone proves no listener at the bounded observation instant
+ok 3 - ECONNREFUSED alone proves no listener at the bounded observation instant
+  ---
+  duration_ms: 0.2888
+  type: 'test'
+  ...
+# Subtest: TCP error EACCES keeps listening unknown rather than fabricating false
+ok 4 - TCP error EACCES keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.786
+  type: 'test'
+  ...
+# Subtest: TCP error ETIMEDOUT keeps listening unknown rather than fabricating false
+ok 5 - TCP error ETIMEDOUT keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.2395
+  type: 'test'
+  ...
+# Subtest: TCP error ECONNRESET keeps listening unknown rather than fabricating false
+ok 6 - TCP error ECONNRESET keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.1272
+  type: 'test'
+  ...
+# Subtest: TCP error undefined keeps listening unknown rather than fabricating false
+ok 7 - TCP error undefined keeps listening unknown rather than fabricating false
+  ---
+  duration_ms: 0.1955
+  type: 'test'
+  ...
+# Subtest: a bounded connect timeout remains null and destroys the socket without a fake refusal
+ok 8 - a bounded connect timeout remains null and destroys the socket without a fake refusal
+  ---
+  duration_ms: 0.2571
+  type: 'test'
+  ...
+# Subtest: listener observation rejects another host before any TCP side effect
+ok 9 - listener observation rejects another host before any TCP side effect
+  ---
+  duration_ms: 0.6181
+  type: 'test'
+  ...
+# Subtest: listener observation rejects a non-loopback address before any TCP side effect
+ok 10 - listener observation rejects a non-loopback address before any TCP side effect
+  ---
+  duration_ms: 0.5331
+  type: 'test'
+  ...
+# Subtest: listener observation rejects another port before any TCP side effect
+ok 11 - listener observation rejects another port before any TCP side effect
+  ---
+  duration_ms: 0.2456
+  type: 'test'
+  ...
+# Subtest: listener observation rejects a string port before any TCP side effect
+ok 12 - listener observation rejects a string port before any TCP side effect
+  ---
+  duration_ms: 0.1041
+  type: 'test'
+  ...
+# Subtest: listener observation rejects zero timeout before any TCP side effect
+ok 13 - listener observation rejects zero timeout before any TCP side effect
+  ---
+  duration_ms: 0.081
+  type: 'test'
+  ...
+# Subtest: listener observation rejects timeout above the 5000ms hard bound before any TCP side effect
+ok 14 - listener observation rejects timeout above the 5000ms hard bound before any TCP side effect
+  ---
+  duration_ms: 0.0691
+  type: 'test'
+  ...
+# Subtest: listener observation rejects nonfinite timeout before any TCP side effect
+ok 15 - listener observation rejects nonfinite timeout before any TCP side effect
+  ---
+  duration_ms: 0.0665
+  type: 'test'
+  ...
+# Subtest: listener observation rejects fractional timeout before any TCP side effect
+ok 16 - listener observation rejects fractional timeout before any TCP side effect
+  ---
+  duration_ms: 0.0642
+  type: 'test'
+  ...
+# Subtest: listener observation permits the exact 1ms finite bound
+ok 17 - listener observation permits the exact 1ms finite bound
+  ---
+  duration_ms: 0.1855
+  type: 'test'
+  ...
+# Subtest: listener observation permits the exact 5000ms finite bound
+ok 18 - listener observation permits the exact 5000ms finite bound
+  ---
+  duration_ms: 0.1751
+  type: 'test'
+  ...
+# Subtest: V4 wrapper releases known stopped processes only with an actual false preview listening observation
+ok 19 - V4 wrapper releases known stopped processes only with an actual false preview listening observation
+  ---
+  duration_ms: 0.2938
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus null listener evidence cannot release the machine
+ok 20 - stopped preview child plus null listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0888
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus missing listener evidence cannot release the machine
+ok 21 - stopped preview child plus missing listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0507
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus still listening listener evidence cannot release the machine
+ok 22 - stopped preview child plus still listening listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0437
+  type: 'test'
+  ...
+# Subtest: stopped preview child plus false string listener evidence cannot release the machine
+ok 23 - stopped preview child plus false string listener evidence cannot release the machine
+  ---
+  duration_ms: 0.0388
+  type: 'test'
+  ...
+# Subtest: an observed refusal cannot rescue a preview process that was not confirmed stopped
+ok 24 - an observed refusal cannot rescue a preview process that was not confirmed stopped
+  ---
+  duration_ms: 0.0613
+  type: 'test'
+  ...
+# Subtest: actual preview refusal cannot rescue an unknown browser close
+ok 25 - actual preview refusal cannot rescue an unknown browser close
+  ---
+  duration_ms: 0.0601
+  type: 'test'
+  ...
+# Subtest: actual no-listen evidence preserves the frozen forced-process-tree requirement
+ok 26 - actual no-listen evidence preserves the frozen forced-process-tree requirement
+  ---
+  duration_ms: 0.0759
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.8709

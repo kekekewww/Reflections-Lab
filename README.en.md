@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.md","sha256":"7be6b709d8a1781ad01e4aaecbdf489a1a8ddf2a02d362be3185928fe6a2b052","translated_at":"2026-10-29T05:29:36Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"README.md","sha256":"6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2","translated_at":"2026-10-29T05:29:36Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.md`](README.md). Source SHA-256: `7be6b709d8a1781ad01e4aaecbdf489a1a8ddf2a02d362be3185928fe6a2b052`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.md`](README.md). Source SHA-256: `6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- architecture-review-entry -->
@@ -8,6 +8,21 @@
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
 # Reflection Lab
+
+<!-- english-original-anchor --> <a id="最新muse-多步驟場景建構2026-11-04"></a>
+## Latest: Muse multi-step scene builder (2026-11-04)
+
+One instruction lets Muse, through the Meta Model API, plan a scene proposal of up to 32 steps that can add, move, resize and remove objects. The app first checks it against the same physics and scene rules as a manual edit. If a step fails, Muse reads the error and tries again. You then get a preview, nothing changes until you press Apply, and Undo takes it back if you press it straight after Apply. Muse can also change sound rules and write paths, and the surfaces it adds join the acoustic paths. Results and limits are in the [record](docs/00-project/MUSE_SCENE_BUILDER_20261104.md), and the scope of this public snapshot is in the [note](docs/00-project/PUBLIC_SNAPSHOT_20261104.md).
+
+This needs your own Meta Model API key, which stays on the local server:
+
+```powershell
+npm ci
+npm run build
+npm run demo:live -- --key-file "<path to the server-only key file>"
+```
+
+Then open `http://127.0.0.1:4173` and choose Meta Model API in the Meta experiment agent tab. This is a real-time approximation, not a measurement, and the full first version, performance and human listening gates are not complete.
 
 [English README](README.en.md) · [English user guide](docs/11-v1/USER_GUIDE.en.md)
 

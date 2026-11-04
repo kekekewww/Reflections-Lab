@@ -200,7 +200,7 @@ test("mismatched captured object, revision, acceptance, point, generator and sou
   }
 });
 
-test("missing mapping inputs, stale binding generation and unsupported zone anchors are explicit errors", () => {
+test("missing mapping inputs, stale binding generation and missing zone anchors are explicit errors", () => {
   const mapped = fixture();
   mapped.document.profiles[0]!.rules[0]!.mappings = structuredClone(
     mapped.document.profiles[1]!.rules[0]!.mappings,
@@ -212,7 +212,7 @@ test("missing mapping inputs, stale binding generation and unsupported zone anch
   );
   const zone = fixture();
   zone.document.profiles[0]!.rules[0]!.emitter = { attachment: "zone", zoneId: "zone.unknown" };
-  assert.throws(() => prepareStaticPreview(zone, "preview.zone"), /EMITTER_UNSUPPORTED/);
+  assert.throws(() => prepareStaticPreview(zone, "preview.zone"), /ZONE_REFERENCE_UNAVAILABLE/);
 });
 
 test("contact material pair selects its accepted captured generator and duration stays bounded", () => {

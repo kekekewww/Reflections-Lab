@@ -1,0 +1,675 @@
+{
+  "status": "PASS",
+  "sampleRate": 48000,
+  "scope": "Native OfflineAudioContext PCM; no physical output, hearing or long-run performance claim",
+  "controls": "Audio-clock suspend checkpoint quantized by the native render quantum",
+  "results": [
+    {
+      "name": "impulse-master",
+      "measured": {
+        "firstSample": 4080,
+        "energy": 0.0039062498662947587,
+        "channelEnergies": [
+          0.0019531249331473793,
+          0.0019531249331473793
+        ]
+      },
+      "expected": {
+        "firstSample": 4080,
+        "energy": 0.00390625
+      },
+      "pass": true,
+      "reference": "W3C Web Audio 2021 section4.4: speakers mono-to-stereo copies input to L and R; unity raw has total two-channel energy2, not equal-power panning",
+      "diagnostics": {
+        "enabled": true,
+        "model": "CONTROL_THREAD_OBSERVATIONS",
+        "sampleCapacity": 128,
+        "frameDecisions": {
+          "accepted": 1,
+          "stale": 0,
+          "unavailable": 0,
+          "source-budget": 0,
+          "restart-blocked": 0,
+          "invalid": 0,
+          "error": 0
+        },
+        "onsets": {
+          "count": 1,
+          "lateCount": 0,
+          "lateThresholdMs": 1,
+          "requestedAudioTimeS": 0.01,
+          "actualAudioTimeS": 0.01,
+          "latenessMs": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          }
+        },
+        "controlOperations": {
+          "scalarGainUpdates": 1,
+          "scalarGainSkips": 0,
+          "shapeBuilds": 1,
+          "shapeUploads": 1,
+          "shapeReuses": 0,
+          "shapeDeferred": 0,
+          "delayUpdates": 1,
+          "delaySkips": 0,
+          "directionUpdates": 3,
+          "directionSkips": 0,
+          "routeCreates": 1,
+          "routeRetires": 0,
+          "bankRetirements": 0
+        },
+        "timings": {
+          "frameConsumer": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0.6000000014901161,
+            "p95": 0.6000000014901161,
+            "p99": 0.6000000014901161,
+            "max": 0.6000000014901161,
+            "last": 0.6000000014901161
+          },
+          "routeControl": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0.29999999701976776,
+            "p95": 0.29999999701976776,
+            "p99": 0.29999999701976776,
+            "max": 0.29999999701976776,
+            "last": 0.29999999701976776
+          },
+          "listenerControl": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "delivery": {
+          "status": "NOT_OBSERVED",
+          "batches": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "frames": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "totalBatches": 0,
+          "totalFrames": 0,
+          "ageTicks": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          },
+          "elapsedMs": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "nativeOutput": {
+          "status": "UNSUPPORTED",
+          "contextGeneration": 1,
+          "polledAtMs": 1507.7999999970198,
+          "windowMs": null,
+          "cumulativeUnderrunEvents": null,
+          "cumulativeUnderrunSeconds": null,
+          "deltaUnderrunEvents": null,
+          "deltaUnderrunSeconds": null,
+          "outputLatencySeconds": null
+        },
+        "unmeasured": {
+          "pcmGapSeconds": null,
+          "nativeDspCpuMs": null,
+          "nativeMemoryBytes": null,
+          "calibratedSpl": null
+        },
+        "outputTap": "master",
+        "admissions": {
+          "droppedVoices": 0,
+          "droppedPaths": 0,
+          "staleVoiceAdmissions": 0
+        },
+        "updatePolicy": {
+          "scalarPressure": "exact",
+          "normalizedShape": "exactFloat64KeyAndFloat32Target",
+          "delayDeadbandSeconds": 0.000001,
+          "directionDeadbandMetres": 0.0001
+        }
+      }
+    },
+    {
+      "name": "impulse-simulatedMix",
+      "measured": {
+        "firstSample": 4080,
+        "energy": 0.24999999144286456,
+        "channelEnergies": [
+          0.12499999572143228,
+          0.12499999572143228
+        ]
+      },
+      "expected": {
+        "firstSample": 4080,
+        "energy": 0.25
+      },
+      "pass": true,
+      "reference": "W3C Web Audio 2021 section4.4: speakers mono-to-stereo copies input to L and R; unity raw has total two-channel energy2, not equal-power panning",
+      "diagnostics": {
+        "enabled": true,
+        "model": "CONTROL_THREAD_OBSERVATIONS",
+        "sampleCapacity": 128,
+        "frameDecisions": {
+          "accepted": 1,
+          "stale": 0,
+          "unavailable": 0,
+          "source-budget": 0,
+          "restart-blocked": 0,
+          "invalid": 0,
+          "error": 0
+        },
+        "onsets": {
+          "count": 1,
+          "lateCount": 0,
+          "lateThresholdMs": 1,
+          "requestedAudioTimeS": 0.01,
+          "actualAudioTimeS": 0.01,
+          "latenessMs": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          }
+        },
+        "controlOperations": {
+          "scalarGainUpdates": 1,
+          "scalarGainSkips": 0,
+          "shapeBuilds": 1,
+          "shapeUploads": 1,
+          "shapeReuses": 0,
+          "shapeDeferred": 0,
+          "delayUpdates": 1,
+          "delaySkips": 0,
+          "directionUpdates": 3,
+          "directionSkips": 0,
+          "routeCreates": 1,
+          "routeRetires": 0,
+          "bankRetirements": 0
+        },
+        "timings": {
+          "frameConsumer": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          },
+          "routeControl": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0.19999999552965164,
+            "p95": 0.19999999552965164,
+            "p99": 0.19999999552965164,
+            "max": 0.19999999552965164,
+            "last": 0.19999999552965164
+          },
+          "listenerControl": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "delivery": {
+          "status": "NOT_OBSERVED",
+          "batches": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "frames": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "totalBatches": 0,
+          "totalFrames": 0,
+          "ageTicks": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          },
+          "elapsedMs": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "nativeOutput": {
+          "status": "UNSUPPORTED",
+          "contextGeneration": 1,
+          "polledAtMs": 1511.7999999970198,
+          "windowMs": null,
+          "cumulativeUnderrunEvents": null,
+          "cumulativeUnderrunSeconds": null,
+          "deltaUnderrunEvents": null,
+          "deltaUnderrunSeconds": null,
+          "outputLatencySeconds": null
+        },
+        "unmeasured": {
+          "pcmGapSeconds": null,
+          "nativeDspCpuMs": null,
+          "nativeMemoryBytes": null,
+          "calibratedSpl": null
+        },
+        "outputTap": "simulatedMix",
+        "admissions": {
+          "droppedVoices": 0,
+          "droppedPaths": 0,
+          "staleVoiceAdmissions": 0
+        },
+        "updatePolicy": {
+          "scalarPressure": "exact",
+          "normalizedShape": "exactFloat64KeyAndFloat32Target",
+          "delayDeadbandSeconds": 0.000001,
+          "directionDeadbandMetres": 0.0001
+        }
+      }
+    },
+    {
+      "name": "impulse-dryContent",
+      "measured": {
+        "firstSample": 480,
+        "energy": 2,
+        "channelEnergies": [
+          1,
+          1
+        ]
+      },
+      "expected": {
+        "firstSample": 480,
+        "energy": 2
+      },
+      "pass": true,
+      "reference": "W3C Web Audio 2021 section4.4: speakers mono-to-stereo copies input to L and R; unity raw has total two-channel energy2, not equal-power panning",
+      "diagnostics": {
+        "enabled": true,
+        "model": "CONTROL_THREAD_OBSERVATIONS",
+        "sampleCapacity": 128,
+        "frameDecisions": {
+          "accepted": 1,
+          "stale": 0,
+          "unavailable": 0,
+          "source-budget": 0,
+          "restart-blocked": 0,
+          "invalid": 0,
+          "error": 0
+        },
+        "onsets": {
+          "count": 1,
+          "lateCount": 0,
+          "lateThresholdMs": 1,
+          "requestedAudioTimeS": 0.01,
+          "actualAudioTimeS": 0.01,
+          "latenessMs": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          }
+        },
+        "controlOperations": {
+          "scalarGainUpdates": 1,
+          "scalarGainSkips": 0,
+          "shapeBuilds": 1,
+          "shapeUploads": 1,
+          "shapeReuses": 0,
+          "shapeDeferred": 0,
+          "delayUpdates": 1,
+          "delaySkips": 0,
+          "directionUpdates": 3,
+          "directionSkips": 0,
+          "routeCreates": 1,
+          "routeRetires": 0,
+          "bankRetirements": 0
+        },
+        "timings": {
+          "frameConsumer": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          },
+          "routeControl": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          },
+          "listenerControl": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "delivery": {
+          "status": "NOT_OBSERVED",
+          "batches": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "frames": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "totalBatches": 0,
+          "totalFrames": 0,
+          "ageTicks": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          },
+          "elapsedMs": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "nativeOutput": {
+          "status": "UNSUPPORTED",
+          "contextGeneration": 1,
+          "polledAtMs": 1524.1999999955297,
+          "windowMs": null,
+          "cumulativeUnderrunEvents": null,
+          "cumulativeUnderrunSeconds": null,
+          "deltaUnderrunEvents": null,
+          "deltaUnderrunSeconds": null,
+          "outputLatencySeconds": null
+        },
+        "unmeasured": {
+          "pcmGapSeconds": null,
+          "nativeDspCpuMs": null,
+          "nativeMemoryBytes": null,
+          "calibratedSpl": null
+        },
+        "outputTap": "dryContent",
+        "admissions": {
+          "droppedVoices": 0,
+          "droppedPaths": 0,
+          "staleVoiceAdmissions": 0
+        },
+        "updatePolicy": {
+          "scalarPressure": "exact",
+          "normalizedShape": "exactFloat64KeyAndFloat32Target",
+          "delayDeadbandSeconds": 0.000001,
+          "directionDeadbandMetres": 0.0001
+        }
+      }
+    },
+    {
+      "name": "scalar-native-continuity",
+      "beforeRms": 0.012496513244966942,
+      "afterRms": 0.02499302666850565,
+      "ratio": 2.0000000142897276,
+      "actualControlSeconds": 0.2,
+      "desiredControlSeconds": 0.2,
+      "pass": true,
+      "diagnostics": {
+        "enabled": true,
+        "model": "CONTROL_THREAD_OBSERVATIONS",
+        "sampleCapacity": 128,
+        "frameDecisions": {
+          "accepted": 2,
+          "stale": 0,
+          "unavailable": 0,
+          "source-budget": 0,
+          "restart-blocked": 0,
+          "invalid": 0,
+          "error": 0
+        },
+        "onsets": {
+          "count": 1,
+          "lateCount": 0,
+          "lateThresholdMs": 1,
+          "requestedAudioTimeS": 0,
+          "actualAudioTimeS": 0,
+          "latenessMs": {
+            "count": 1,
+            "retained": 1,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0,
+            "last": 0
+          }
+        },
+        "controlOperations": {
+          "scalarGainUpdates": 2,
+          "scalarGainSkips": 0,
+          "shapeBuilds": 1,
+          "shapeUploads": 1,
+          "shapeReuses": 1,
+          "shapeDeferred": 0,
+          "delayUpdates": 1,
+          "delaySkips": 1,
+          "directionUpdates": 3,
+          "directionSkips": 3,
+          "routeCreates": 1,
+          "routeRetires": 0,
+          "bankRetirements": 0
+        },
+        "timings": {
+          "frameConsumer": {
+            "count": 2,
+            "retained": 2,
+            "p50": 0.20000000298023224,
+            "p95": 0.3999999985098839,
+            "p99": 0.3999999985098839,
+            "max": 0.3999999985098839,
+            "last": 0.3999999985098839
+          },
+          "routeControl": {
+            "count": 2,
+            "retained": 2,
+            "p50": 0.19999999552965164,
+            "p95": 6.199999995529652,
+            "p99": 6.199999995529652,
+            "max": 6.199999995529652,
+            "last": 0.19999999552965164
+          },
+          "listenerControl": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "delivery": {
+          "status": "NOT_OBSERVED",
+          "batches": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "frames": {
+            "accepted": 0,
+            "epoch-rejected": 0,
+            "revision-rejected": 0,
+            "age-rejected": 0,
+            "solver-rejected": 0
+          },
+          "totalBatches": 0,
+          "totalFrames": 0,
+          "ageTicks": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          },
+          "elapsedMs": {
+            "count": 0,
+            "retained": 0,
+            "p50": null,
+            "p95": null,
+            "p99": null,
+            "max": null,
+            "last": null
+          }
+        },
+        "nativeOutput": {
+          "status": "UNSUPPORTED",
+          "contextGeneration": 1,
+          "polledAtMs": 1542,
+          "windowMs": null,
+          "cumulativeUnderrunEvents": null,
+          "cumulativeUnderrunSeconds": null,
+          "deltaUnderrunEvents": null,
+          "deltaUnderrunSeconds": null,
+          "outputLatencySeconds": null
+        },
+        "unmeasured": {
+          "pcmGapSeconds": null,
+          "nativeDspCpuMs": null,
+          "nativeMemoryBytes": null,
+          "calibratedSpl": null
+        },
+        "outputTap": "simulatedMix",
+        "admissions": {
+          "droppedVoices": 0,
+          "droppedPaths": 0,
+          "staleVoiceAdmissions": 0
+        },
+        "updatePolicy": {
+          "scalarPressure": "exact",
+          "normalizedShape": "exactFloat64KeyAndFloat32Target",
+          "delayDeadbandSeconds": 0.000001,
+          "directionDeadbandMetres": 0.0001
+        }
+      }
+    }
+  ],
+  "recordedAt": "2026-11-02T05:23:18.991Z",
+  "browser": "156.0.8078.4",
+  "node": "v22.17.0",
+  "command": "node tests/browser/audio-update-core/run.mjs <summary.json>",
+  "pageErrors": [],
+  "files": [
+    {
+      "path": "src/audio/engine.ts",
+      "bytes": 76590,
+      "sha256": "92775af39335ffb37e760a657da79dd0bd03b69647815043c5b2d1ce4470491d"
+    },
+    {
+      "path": "src/audio/routes.ts",
+      "bytes": 12231,
+      "sha256": "5eb43069cee37d8ce0a1b8399a8790e016f30a6152d7a7715a4e1af1dc19f9d0"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "bytes": 3099,
+      "sha256": "dfef99a2635cbcc694bd43d4d04fdd5b2bd4fa23d266e907df077e6133c34798"
+    },
+    {
+      "path": "src/audio/route-response.ts",
+      "bytes": 2306,
+      "sha256": "59d25d3a0a39457dea501fd431ef7101e57f683c12f887ee4e1cb0cb95002093"
+    },
+    {
+      "path": "src/audio/diagnostics.ts",
+      "bytes": 13916,
+      "sha256": "e6080aa1478ab300cff11b8f568bef9468e02f94422aaab78003f50ed30c2951"
+    },
+    {
+      "path": "src/audio/types.ts",
+      "bytes": 5379,
+      "sha256": "ad97a6e5a4fe20c66cd90278fafea86e6f197535826b02dcf7a64d9e35b1ab82"
+    },
+    {
+      "path": "tests/browser/audio-update-core/fixture.ts",
+      "bytes": 7031,
+      "sha256": "073059eea20ab77bed0f761f28c8c5a2e678c525a03c69477fbf055e92ee9c9d"
+    },
+    {
+      "path": "tests/browser/audio-update-core/run.mjs",
+      "bytes": 2334,
+      "sha256": "9c1d0344f26d87ec80161dc1953c54d9d2d1db058f6cabcdbf61496435db11ad"
+    }
+  ]
+}

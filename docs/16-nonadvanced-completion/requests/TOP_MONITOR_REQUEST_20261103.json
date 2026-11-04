@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "USER_SCOPE_ADDITION_TOP_MONITOR_REQUEST_NOT_IMPLEMENTATION_EVIDENCE",
+  "recorded_at": "2026-11-02T20:15:12.006Z",
+  "recorded_local_date": "2026-11-03",
+  "observed_git_head": "187d6f7c978f8487c08367b06c57ede16fe6ffd9",
+  "prior_M2_memory_commit": "187d6f7c978f8487c08367b06c57ede16fe6ffd9",
+  "user_verbatim": "我想要調整一個東西，最上面的Build scene 02 Interactive experiment 03 Inspect & compare 切換起來其實沒有什麼意義，可不可以把這個刪除，然後換成multi track audio level meter、spectrum analyzer、waveform、或是處理器負載的資訊內容，而且可以切換?",
+  "task_id": "RLAB-TASK-0033",
+  "related_umbrella_task": "RLAB-TASK-0032",
+  "authority": {
+    "user_quote": "Parent forwarded latest user steering verbatim; requirement authority only.",
+    "implementation_projection": "Root dispatch/interpretation, not additional verbatim user wording."
+  },
+  "scope_projection": {
+    "replace": "Remove the top Build scene / Interactive experiment / Inspect & compare step navigation.",
+    "modes": [
+      "multi-track audio level meter",
+      "spectrum analyzer",
+      "waveform",
+      "processing load information"
+    ],
+    "switching": "Four switchable persistent top monitor modes using the existing design system; local view state only.",
+    "state_preservation": "View switching must preserve run/tick/recording/selection/drafts and source/AudioContext lifetime; not invoke run/reset/record commands.",
+    "data": "Use actual bounded audio observations; no simulated waveform or invented whole-CPU/DSP CPU percentage. Unmeasured/unsupported values are unavailable, not zero; dBFS is not SPL.",
+    "observation_lifecycle": "Audio owner supplies true lazy analysers and bounded observation/cleanup; implementation source and costs must be verified later."
+  },
+  "initial_validation": {
+    "all_task_acceptance_criteria_verified": false,
+    "product_implementation": "IN_PROGRESS_ROOT_DISPATCH_REPORTED_NOT_VERIFIED",
+    "Playwright_monitor_browser": "NOT_RUN",
+    "ComputerUse_monitor_parameters": "NOT_RUN",
+    "formal_performance": "NOT_RUN",
+    "scope_or_threshold_relaxation": false
+  },
+  "coordination_projection": {
+    "projection_only": true,
+    "shared_memory_writer": "/root/nonadvanced_memory",
+    "integration_runtime_App_ports_control_timing_owner": "/root",
+    "audio_owner": "/root/implement_audio",
+    "UI_owner": "/root/top_monitor_ui",
+    "UI_tree": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/top-monitor-ui",
+    "UI_branch": "codex/top-monitor-ui-20261103",
+    "UI_baseline_commit": "f13226d87dd0b07551078827358760c39db8ceb8",
+    "tree_ordinal": 10,
+    "Root_sole_integration_index": true,
+    "test_slots": "Ephemeral; requires Root current resource grant, not permanent permission."
+  },
+  "Root_reported_native_context": {
+    "authority": "Root tool-reported context only; raw payload not independently read by memory writer.",
+    "attempt": "Latest distinct f132 build/entry preflight",
+    "build_exit": 0,
+    "actual_URL": "http://127.0.0.1:4173",
+    "entry_SHA_identification": "Root reported successful; exact hash not supplied in this steering.",
+    "unique_Chrome_window_id": 11604120,
+    "observations": "get_window and activate succeeded; following state retrieval rejected for Windows browser URL confidence and the native turn stopped.",
+    "native_parameter_operations": 0,
+    "monitor_acceptance": "NOT_PASS_NOT_RUN",
+    "existing_preview_server": "Root reported PID21831 temporarily retained; not a process ownership or new server permission.",
+    "method_boundary": "Native URL policy does not block independent UI implementation or authorized real Playwright browser tests; do not retry through an alternate native surface to bypass policy."
+  },
+  "preserved_constraints": [
+    "M2 fixed receipts and original FAIL history remain unchanged.",
+    "Original PERF workload/tolerances/caps and original 51-row acceptance remain authoritative.",
+    "Task0032 remains ACTIVE; this addition does not complete original tasks or whole V1.",
+    "No new paid API, push, deploy, or invented processor/audio measurement.",
+    "Final English/source freeze and Claude then human verification order remain pending."
+  ]
+}

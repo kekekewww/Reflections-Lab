@@ -190,6 +190,8 @@ test("interrupt cancels pending candidate without publishing partial B", async (
 test("host replay seek returns recorded poses without emitting past collision", async () => {
   const host = new RecordingHost({ getConfig: config });
   await recorded(host);
+  const artifact = host.getArtifact()!;
+  const artifactHash = artifact.artifactSha256;
   await host.replay();
   assert.equal(host.nextReplay()!.tick, 0);
   const hit = host.nextReplay()!;
@@ -197,8 +199,14 @@ test("host replay seek returns recorded poses without emitting past collision", 
   const seek = host.seek(1);
   assert.equal(seek.emitEvents, false);
   assert.notEqual(seek.replayEpoch, hit.replayEpoch);
+  assert.deepEqual(seek.poses, artifact.frames[1]!.poses);
   assert.equal(host.nextReplay(), null);
+  // Runtime owns native drain and live restoration; an ended cursor remains
+  // a replay session until that owner explicitly releases it.
+  assert.equal(host.getView().recording.state, "replaying");
+  host.stopReplay();
   assert.equal(host.getView().recording.state, "finalized");
+  assert.equal(host.getArtifact()!.artifactSha256, artifactHash);
 });
 
 test("changed backend version cannot be relabeled as the baseline solver during B", async () => {

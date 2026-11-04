@@ -1,0 +1,239 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { LabRuntime } from "../../src/app/runtime.js";
+import { AudioEngine, type AudioEngineConfiguration } from "../../src/audio/engine.js";
+import { DEFAULT_NATIVE_VOICE_POLICY } from "../../src/audio/virtual-policy.js";
+import type { AssetStagingContext } from "../../src/app/asset-host.js";
+import { FakeAudioContext } from "../audio-runtime/fake-context.js";
+
+// Actual Runtime and AudioEngine configuration/control graph only. The fake
+// context does not render PCM, prove device output, or establish DSP costs.
+const originalBudget = {
+  maxVoices: 24, maxSources: 32, maxSourceFrames: 64, maxPathsPerVoice: 8, maxTotalPaths: 96,
+  maxDecodedBytes: 67108864, maxAssetDurationSeconds: 120, maxAssetChannels: 2,
+  maxPendingEvents: 256, maxAssets: 64, maxConcurrentDecodes: 2, maxLateSends: 16,
+  maxLateReverbBytes: 4194304,
+};
+const originalPolicy = {
+  maxNativeVoices: 24, maxNativeGraphs: 48, maxVirtualVoices: 32,
+  minResidenceSeconds: 0.2, priorityHysteresis: 0.1, fairnessSeconds: 1,
+};
+type RawOptions = Record<PropertyKey, unknown>;
+type RuntimeAudioObservation = { readonly audio: AudioEngine | null };
+type EngineConfigurationObservation = { readonly options: Readonly<AudioEngineConfiguration> };
+
+function engineOf(app: LabRuntime): AudioEngine {
+  // Read-only observation of the real allocated engine; never a replacement,
+  // factory injection, or mutation of the primary engine/private state.
+  const engine = (app as unknown as RuntimeAudioObservation).audio;
+  assert.ok(engine instanceof AudioEngine);
+  return engine;
+}
+function configurationOf(engine: AudioEngine): Readonly<AudioEngineConfiguration> {
+  // Only the real received options can distinguish an omitted property from
+  // explicit false. Public resource telemetry is asserted independently below.
+  return (engine as unknown as EngineConfigurationObservation).options;
+}
+async function enable(app: LabRuntime): Promise<AudioEngine> {
+  await app.dispatch({ type: "enableAudio" });
+  assert.equal(app.getSnapshot().error, "", "public audio enable must succeed");
+  return engineOf(app);
+}
+async function withRuntime(
+  extra: RawOptions,
+  run: (app: LabRuntime, contexts: FakeAudioContext[], options: RawOptions) => Promise<void>,
+): Promise<void> {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, "AudioContext");
+  const contexts: FakeAudioContext[] = [];
+  globalThis.AudioContext = class extends FakeAudioContext {
+    constructor() {
+      super();
+      contexts.push(this);
+    }
+  } as unknown as typeof AudioContext;
+  const options: RawOptions = {
+    useWorker: false,
+    assetStagingContext: (sampleRate: number): AssetStagingContext => {
+      const staging = new FakeAudioContext();
+      return {
+        sampleRate,
+        createBuffer: staging.createBuffer.bind(staging) as AssetStagingContext["createBuffer"],
+        decodeAudioData: async () => { throw new Error("No imported audio is decoded in this control test"); },
+      };
+    },
+  };
+  // Preserve descriptors so an unsafe caller getter reaches the production
+  // validation boundary; test setup must never invoke/normalize it first.
+  Object.defineProperties(options, Object.getOwnPropertyDescriptors(extra));
+  let app: LabRuntime | null = null;
+  try {
+    app = await LabRuntime.create(options as unknown as Parameters<typeof LabRuntime.create>[0]);
+    assert.equal(contexts.length, 0, "policy selection never activates an audio device");
+    await run(app, contexts, options);
+  } finally {
+    const engine = app ? (app as unknown as RuntimeAudioObservation).audio : null;
+    app?.dispose();
+    await engine?.disposeAsync();
+    if (previous) Object.defineProperty(globalThis, "AudioContext", previous);
+    else Reflect.deleteProperty(globalThis, "AudioContext");
+  }
+}
+function assertProductConfiguration(engine: AudioEngine, monitorGain = 1): void {
+  const config = configurationOf(engine);
+  assert.equal(config.bufferPreset, "interactive");
+  assert.equal(config.monitorGain, monitorGain);
+  assert.equal(config.headroomGain, 0.5);
+  assert.equal(config.outputSafetyClip, true);
+  for (const key of ["budget", "context", "oscillatorModel", "limiterEnabled", "offlineOutputTap"])
+    assert.equal(Object.hasOwn(config, key), false, `${key} is not injected by the resource policy`);
+  assert.deepEqual(engine.getTelemetry().budget, originalBudget);
+  assert.equal(engine.getNativeResourceSnapshot().sourceContentModel, "nativeReference");
+}
+
+test("omitting the runtime resource policy preserves the original undefined engine option", async () => {
+  await withRuntime({}, async (app, contexts) => {
+    const engine = await enable(app);
+    assert.equal(contexts.length, 1);
+    assert.equal(Object.hasOwn(configurationOf(engine), "virtualization"), false);
+    assertProductConfiguration(engine);
+    const resources = engine.getNativeResourceSnapshot();
+    assert.equal(resources.mode, "nativeReference");
+    assert.equal(resources.activeRenderedCap, 24);
+    assert.equal(resources.nativeGraphBudget, null);
+    assert.equal(resources.internalArrivalGraphBudget, 96);
+    assert.equal(resources.nativeGraphTotalBudget, 144);
+    assert.equal(resources.nativeCarrierBudget, 144);
+  });
+});
+
+test("explicit false is forwarded without changing the reference budget or source content", async () => {
+  await withRuntime({ audioResourcePolicy: false }, async (app) => {
+    const engine = await enable(app), config = configurationOf(engine);
+    assert.equal(Object.hasOwn(config, "virtualization"), true);
+    assert.equal(config.virtualization, false);
+    assertProductConfiguration(engine);
+    assert.equal(engine.getNativeResourceSnapshot().mode, "nativeReference");
+    assert.equal(engine.getTelemetry().virtualization.enabled, false);
+  });
+});
+
+test("the explicit default candidate reaches the actual engine with original primary capacity", async () => {
+  await withRuntime({ audioResourcePolicy: DEFAULT_NATIVE_VOICE_POLICY }, async (app, contexts) => {
+    const engine = await enable(app), config = configurationOf(engine);
+    assert.equal(contexts.length, 1);
+    assertProductConfiguration(engine);
+    assert.deepEqual(config.virtualization, originalPolicy);
+    assert.equal(Object.isFrozen(config.virtualization), true);
+    assert.deepEqual(engine.getTelemetry().virtualization.policy, originalPolicy);
+    const resources = engine.getNativeResourceSnapshot();
+    assert.equal(resources.mode, "nativeCarrierRoutes");
+    assert.equal(resources.activeRenderedCap, 24);
+    assert.equal(resources.nativeGraphBudget, 48);
+    assert.equal(resources.internalArrivalGraphBudget, 96);
+    assert.equal(resources.nativeGraphTotalBudget, 144);
+    assert.equal(resources.nativeCarrierBudget, 176);
+  });
+});
+
+test("runtime owns an immutable scalar copy before the caller mutates its policy or options", async () => {
+  const policy = { ...originalPolicy };
+  await withRuntime({ audioResourcePolicy: policy }, async (app, contexts, options) => {
+    assert.equal(contexts.length, 0);
+    policy.maxNativeVoices = 1;
+    policy.maxNativeGraphs = 1;
+    policy.maxVirtualVoices = 0;
+    options.audioResourcePolicy = false;
+    const engine = await enable(app), config = configurationOf(engine);
+    assert.notEqual(config.virtualization, policy);
+    assert.deepEqual(config.virtualization, originalPolicy);
+    assert.equal(Object.isFrozen(config.virtualization), true);
+    assert.deepEqual(engine.getTelemetry().virtualization.policy, originalPolicy);
+    assert.equal(engine.getNativeResourceSnapshot().nativeCarrierBudget, 176);
+    assertProductConfiguration(engine);
+  });
+});
+
+test("optional graph and carrier bounds stay omitted and derive from the unchanged budget", async () => {
+  const policy = { maxNativeVoices: 24, maxVirtualVoices: 32,
+    minResidenceSeconds: 0.2, priorityHysteresis: 0.1, fairnessSeconds: 1 };
+  await withRuntime({ audioResourcePolicy: policy }, async (app) => {
+    const engine = await enable(app), config = configurationOf(engine);
+    const configured = config.virtualization;
+    assert.ok(configured && typeof configured === "object");
+    assert.equal(Object.hasOwn(configured, "maxNativeGraphs"), false);
+    assert.equal(Object.hasOwn(configured, "maxNativeCarriers"), false);
+    assert.equal(engine.getNativeResourceSnapshot().nativeGraphBudget, 48);
+    assert.equal(engine.getNativeResourceSnapshot().nativeCarrierBudget, 176);
+    assertProductConfiguration(engine);
+  });
+});
+
+test("a null-prototype scalar policy is accepted without inheriting unrelated configuration", async () => {
+  const policy = Object.assign(Object.create(null) as Record<string, number>, originalPolicy);
+  await withRuntime({ audioResourcePolicy: policy }, async (app) => {
+    const engine = await enable(app);
+    assert.deepEqual(engine.getTelemetry().virtualization.policy, originalPolicy);
+    assert.equal(engine.getNativeResourceSnapshot().mode, "nativeCarrierRoutes");
+    assertProductConfiguration(engine);
+  });
+});
+
+const unsafePolicies: [string, () => unknown][] = [
+  ["true instead of an explicit policy", () => true],
+  ["null", () => null],
+  ["array", () => [originalPolicy]],
+  ["string", () => "nativeCarrierRoutes"],
+  ["custom prototype", () => Object.assign(Object.create({ inherited: true }), originalPolicy)],
+  ["missing required scalar", () => { const value: Partial<typeof originalPolicy> = { ...originalPolicy }; delete value.fairnessSeconds; return value; }],
+  ["NaN scalar", () => ({ ...originalPolicy, minResidenceSeconds: NaN })],
+  ["infinite scalar", () => ({ ...originalPolicy, fairnessSeconds: Infinity })],
+  ["numeric string", () => ({ ...originalPolicy, maxNativeVoices: "24" })],
+  ["unrelated engine budget", () => ({ ...originalPolicy, budget: { maxVoices: 1, maxTotalPaths: 1 } })],
+  ["hidden unknown configuration", () => Object.defineProperty({ ...originalPolicy }, "context", { value: {}, enumerable: false })],
+  ["symbol key", () => ({ ...originalPolicy, [Symbol("unexpected")]: 1 })],
+];
+for (const [name, makePolicy] of unsafePolicies) {
+  test(`runtime rejects unsafe resource policy before audio allocation: ${name}`, async () => {
+    await assert.rejects(async () => {
+      await withRuntime({ audioResourcePolicy: makePolicy() }, async () => {
+        // This callback completes normally on the old implementation, proving
+        // that ignoring an unsupported policy is a failure to reject it.
+      });
+    }, Error);
+  });
+}
+
+for (const field of ["maxNativeVoices", "maxNativeCarriers"] as const) {
+  test(`runtime rejects the ${field} policy accessor without invoking it`, async () => {
+    let reads = 0;
+    const policy = Object.defineProperty({ ...originalPolicy }, field, {
+      enumerable: true,
+      get() { reads++; return field === "maxNativeVoices" ? 24 : 176; },
+    });
+    await assert.rejects(async () => withRuntime({ audioResourcePolicy: policy }, async () => {}), Error);
+    assert.equal(reads, 0);
+  });
+}
+
+test("runtime rejects an outer audioResourcePolicy accessor without invoking it", async () => {
+  let reads = 0;
+  const options = Object.defineProperty({}, "audioResourcePolicy", {
+    enumerable: true,
+    get() { reads++; return originalPolicy; },
+  });
+  await assert.rejects(async () => withRuntime(options, async () => {}), Error);
+  assert.equal(reads, 0);
+});
+
+test("resource policy does not replace pre-enable monitor gain or routing choices", async () => {
+  await withRuntime({ audioResourcePolicy: originalPolicy }, async (app, contexts) => {
+    await app.dispatch({ type: "setMonitorGain", gainLinear: 0.25 });
+    await app.dispatch({ type: "setMonitorMode", mode: "raw" });
+    assert.equal(contexts.length, 0);
+    const engine = await enable(app);
+    assertProductConfiguration(engine, 0.25);
+    assert.equal(app.getSnapshot().monitor.gainLinear, 0.25);
+    assert.equal(app.getSnapshot().monitor.mode, "raw");
+    assert.equal(engine.getTelemetry().monitorMode, "raw");
+  });
+});

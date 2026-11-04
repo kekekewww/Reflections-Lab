@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: V4 exposes a separately testable owned preview readiness predicate
+ok 1 - V4 exposes a separately testable owned preview readiness predicate
+  ---
+  duration_ms: 0.8272
+  type: 'test'
+  ...
+# Subtest: only the expected ready URL from a still-live owned child is ready
+ok 2 - only the expected ready URL from a still-live owned child is ready
+  ---
+  duration_ms: 0.2911
+  type: 'test'
+  ...
+# Subtest: V4 does not treat EADDRINUSE containing the port as a ready owned server
+ok 3 - V4 does not treat EADDRINUSE containing the port as a ready owned server
+  ---
+  duration_ms: 0.4162
+  type: 'test'
+  ...
+# Subtest: V4 does not treat another host on the same port as a ready owned server
+ok 4 - V4 does not treat another host on the same port as a ready owned server
+  ---
+  duration_ms: 0.1652
+  type: 'test'
+  ...
+# Subtest: V4 does not treat a port with the same numeric prefix as a ready owned server
+ok 5 - V4 does not treat a port with the same numeric prefix as a ready owned server
+  ---
+  duration_ms: 0.0868
+  type: 'test'
+  ...
+# Subtest: V4 does not treat already exited owned child as a ready owned server
+ok 6 - V4 does not treat already exited owned child as a ready owned server
+  ---
+  duration_ms: 0.0685
+  type: 'test'
+  ...
+# Subtest: V4 does not treat terminated owned child as a ready owned server
+ok 7 - V4 does not treat terminated owned child as a ready owned server
+  ---
+  duration_ms: 0.1223
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown exit state as a ready owned server
+ok 8 - V4 does not treat unknown exit state as a ready owned server
+  ---
+  duration_ms: 0.0572
+  type: 'test'
+  ...
+# Subtest: V4 does not treat unknown signal state as a ready owned server
+ok 9 - V4 does not treat unknown signal state as a ready owned server
+  ---
+  duration_ms: 0.3083
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 861.2984

@@ -159,3 +159,65 @@ test("pause requested at a physics boundary stops catch-up and preserves pending
   assert.equal(clock.advance(0, () => {}).steps, 2);
   assert.equal(clock.tick, 3);
 });
+
+for (const fraction of [0, 1 / 240])
+  test("controlled ticks preserve whole and fractional wall-time debt: " + fraction, () => {
+    const clock = new FixedClock({ mode: "recording" });
+    let calls = 0;
+    clock.resume();
+    assert.equal(clock.advance(0.2 + fraction, () => calls++).steps, 4);
+    assert.equal(clock.paused, true);
+    const debt = clock.accumulatorSeconds;
+    const discarded = clock.totalDroppedWallTimeSeconds;
+    clock.resume();
+    const controlled = clock.advanceControlledStep(() => calls++);
+    assert.equal(controlled.steps, 1);
+    assert.equal(controlled.tick, 5);
+    assert.equal(controlled.overrun, false);
+    assert.equal(controlled.droppedWallTimeSeconds, 0);
+    assert.equal(clock.accumulatorSeconds, debt);
+    assert.equal(clock.totalDroppedWallTimeSeconds, discarded);
+    assert.equal(calls, 5);
+    assert.equal(clock.advance(0, () => calls++).steps, 4);
+    assert.equal(clock.paused, true, "wall-time recording overload policy is unchanged");
+    clock.resume();
+    assert.equal(clock.advance(0, () => calls++).steps, 4);
+    assert.equal(clock.paused, false);
+    assert.equal(clock.tick, 13, "12 owed wall-time ticks plus one explicit manual tick");
+    near(clock.accumulatorSeconds, fraction);
+    assert.equal(clock.totalDroppedWallTimeSeconds, 0);
+  });
+
+test("controlled ticks respect pause, recording-only use, callback failure and tick capacity", () => {
+  const clock = new FixedClock({ mode: "recording" });
+  let calls = 0;
+  assert.equal(clock.advanceControlledStep(() => calls++).steps, 0);
+  clock.resume();
+  clock.advance(1 / 240, () => calls++);
+  const debt = clock.accumulatorSeconds;
+  assert.throws(
+    () =>
+      clock.advanceControlledStep(() => {
+        throw new Error("solver failed");
+      }),
+    /solver failed/,
+  );
+  assert.equal(clock.tick, 0);
+  assert.equal(clock.accumulatorSeconds, debt);
+  assert.equal(clock.advanceControlledStep(() => calls++).tick, 1);
+  assert.equal(clock.accumulatorSeconds, debt);
+  assert.equal(calls, 1);
+  clock.pause();
+  clock.setMode("interactive");
+  clock.resume();
+  assert.throws(() => clock.advanceControlledStep(() => calls++), /RECORDING_MODE_REQUIRED/);
+  assert.equal(calls, 1);
+  clock.pause();
+  clock.setMode("recording");
+  clock.resume();
+  (clock as unknown as { currentTick: number }).currentTick = Number.MAX_SAFE_INTEGER;
+  assert.throws(() => clock.advanceControlledStep(() => calls++), RangeError);
+  assert.equal(clock.tick, Number.MAX_SAFE_INTEGER);
+  assert.equal(clock.accumulatorSeconds, debt);
+  assert.equal(calls, 1);
+});

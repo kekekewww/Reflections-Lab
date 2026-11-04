@@ -24,9 +24,61 @@ function compareReference(app: LabRuntime) {
   const actual = app.getSnapshot();
   originalPublish.call(app);
   const expected = app.getSnapshot();
-  assert.deepEqual(actual, expected);
+  // The frozen pre-R21 oracle covers the original model. New monitor diagnostics
+  // and pipeline fields have independent tests; keep every original field comparison.
+  const {
+    bufferPreset: _preset,
+    rebuilding: _rebuilding,
+    outputLatencySeconds: _latency,
+    outputUnderrunEvents: _events,
+    outputUnderrunSeconds: _seconds,
+    outputUnderrunStatus: _status,
+    schedulingLookaheadSeconds: _lookahead,
+    staleVoiceAdmissions: _stale,
+    ...legacyMonitor
+  } = actual.monitor;
+  const {
+    motion: _motion,
+    ai,
+    trajectoryStatus: _trajectoryStatus,
+    pathRuns: _pathRuns,
+    paint: _paint,
+    objects: actualObjects,
+    ...legacyActual
+  } = actual;
+  const { canUndo: _canUndo, ...legacyAi } = ai;
+  // Trajectory fields have their own tests in trajectory-runtime.test.ts.
+  const legacyObjects = actualObjects.map(({ audible: _audible, ...object }) => object);
+  assert.deepEqual(
+    { ...legacyActual, objects: legacyObjects, ai: legacyAi, monitor: legacyMonitor },
+    expected,
+  );
   internal(app).view = actual;
 }
+test("pipeline publication exposes initial motion and reversible AI state beside the legacy oracle", async () => {
+  const app = await LabRuntime.create({ useWorker: false });
+  try {
+    const initial = app.getSnapshot();
+    assert.ok(initial.motion, "the initial public model includes the motion sidecar");
+    assert.equal(initial.motion.document.revision, 0);
+    assert.deepEqual(initial.motion.document.actions, []);
+    assert.equal(initial.motion.stale, false);
+    assert.equal(initial.ai.canUndo, false);
+    compareReference(app);
+    await app.dispatch({ type: "submitPrompt", prompt: "ball 碰撞音效小聲" });
+    await app.dispatch({ type: "applyAI" });
+    assert.equal(app.getSnapshot().error, "");
+    assert.equal(app.getSnapshot().ai.canUndo, true);
+    compareReference(app);
+    await app.dispatch({ type: "undoAI" });
+    assert.equal(app.getSnapshot().error, "");
+    assert.equal(app.getSnapshot().ai.canUndo, false);
+    compareReference(app);
+  } finally {
+    app.dispose();
+  }
+});
+
 async function workload() {
   const app = await LabRuntime.create({ useWorker: false });
   const scene = createDefaultScene();

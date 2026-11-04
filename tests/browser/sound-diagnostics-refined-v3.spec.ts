@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/agent/propose**", (route) => route.abort("blockedbyclient"));
   await page.route("https://api.meta.ai/**", (route) => route.abort("blockedbyclient"));
   await page.goto("/");
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".viewport-canvas-wrap canvas")).toBeVisible();
   await expect.poll(() => page.evaluate(() => !!window.__reflectionLab)).toBe(true);
   await page.getByRole("combobox", { name: localeLabel, exact: true }).selectOption("en");
   await page.getByRole("tab", { name: /^Events/ }).click();
@@ -110,7 +110,10 @@ test("real Rapier cooldown keeps collision evidence and displays contact separat
     for (let tick = 0; tick < 230; tick++) app.advance(1 / 60);
     await app.dispatch({ type: "pause" });
     const view = app.getSnapshot();
-    const rejected = view.events.find((event) => event.decision?.reason === "COOLDOWN");
+    // The event table lists newest first; several real impacts may meet the 10 s cooldown.
+    const rejected = [...view.events]
+      .reverse()
+      .find((event) => event.decision?.reason === "COOLDOWN");
     return {
       tick: view.tick,
       recording: view.recording.state,

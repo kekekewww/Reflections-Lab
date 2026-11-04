@@ -8,6 +8,7 @@ import type {
   SoundGenerator,
   Vec3,
 } from "../../schemas/sound-behavior/types.js";
+import type { SoundBehaviorProducerCapabilities } from "../capabilities/sound-behavior.js";
 
 export type KnownState = boolean | null;
 export interface BehaviorObjectInput {
@@ -40,6 +41,7 @@ export interface NormalizedBehaviorEvent {
   source: "interaction" | "physics" | "state" | "zone";
   accepted: boolean;
   commandId?: string;
+  zoneId?: string;
   contact?: ContactData;
   metrics?: Partial<Record<MetricInput, number | null>>;
 }
@@ -68,6 +70,8 @@ export interface BehaviorContext {
   zoneIds: string[];
   colliders?: { colliderId: string; objectId: string }[];
   zonePositions?: Record<string, Vec3>;
+  /** Present for product hosts; absence preserves standalone evaluator/fixture semantics. */
+  producerCapabilities?: SoundBehaviorProducerCapabilities;
   assetRegistry: BehaviorAsset[];
   /** Explicitly enables descriptor fixtures; never use for product playback. */
   validationMode?: "product" | "offlineFixture";

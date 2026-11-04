@@ -1,7 +1,7 @@
-<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"67bc369a63cff48e333cd2934cae8d5c58af0168324ea9a39aa62139e14e2ccb","translated_at":"2026-10-29T15:32:51.541Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/research/architecture-review-20261029.md","sha256":"9684b9e404e7bc0eb79f59b5cba057ab32e22972da28ef184dc6b2826f86bd68","translated_at":"2026-10-29T21:31:14.000Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 ---
 id: RLAB-KB-ARCH-20261029
-title: Independent Worktree Architecture Research and Integration
+title: Architecture Research, Minimal Fixes, and Publication Results
 type: research
 status: ACCEPTED
 created_at: 2026-10-29T05:31:18.021Z
@@ -50,11 +50,11 @@ sources:
   - AR-WIKI-84a8e80c-77c7b483
   - AR-POSTMERGE-9acff2894b15
   - V1-USER-TEST-20261029-R18
-  - PUBLIC-LINKS-c1b420a1efe7da81
-  - AR-PUBLIC-VALIDATION-7b2bc593a36d
-  - AR-PUBLISHED-P1-82d18d43092f
+  - AR-FINAL-P2-f8d529191fa8
+  - V1-SRC-0082
 related_tasks:
   - RLAB-TASK-0021
+  - RLAB-TASK-0022
 related_decisions:
   - ADR-015
 supersedes: []
@@ -62,30 +62,20 @@ tags:
   - P1
   - architecture
   - worktree
-updated_at: 2026-10-29T15:31:18.987Z
+updated_at: 2026-10-29T21:29:13.841Z
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `67bc369a63cff48e333cd2934cae8d5c58af0168324ea9a39aa62139e14e2ccb`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/research/architecture-review-20261029.md`](../../../../../knowledge/wiki/research/architecture-review-20261029.md). Source SHA-256: `9684b9e404e7bc0eb79f59b5cba057ab32e22972da28ef184dc6b2826f86bd68`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
-<!-- english-original-anchor --> <a id="獨立-worktree-架構研究與整合"></a>
-# Independent Worktree Architecture Research and Integration
+<!-- english-original-anchor --> <a id="架構研究最小修正與公開結果"></a>
+# Architecture Research, Minimal Fixes, and Publication Results
 
-The [formal review](../../../12-architecture-review/ARCHITECTURE_REVIEW.md), [Gap Analysis](../../../12-architecture-review/ARCHITECTURE_GAP_ANALYSIS.md), and [ADR-015](../../../02-architecture/adr/015-client-first-and-render-contract.md) preserve each domain's sources, approximations, and unimplemented scope. Category A/B changes are limited to a shared 5-second propagation limit (default 2 seconds), types-only RenderBackend, and alignment of status / tools / CI. There is no Scene/Project/Recording migration, product UI pixel change, or new paid call. Native Web Audio is implemented; custom AudioWorklet / a complete renderer / stems / ADM are not.
+The [formal review](../../../12-architecture-review/ARCHITECTURE_REVIEW.md), [Gap Analysis](../../../12-architecture-review/ARCHITECTURE_GAP_ANALYSIS.md), and [ADR-015](../../../02-architecture/adr/015-client-first-and-render-contract.md) preserve research / approximation / unimplemented-status and source classifications. Changes include the shared 5-second propagation hard limit, 6 new boundary regressions, and types-only RenderBackend, with no Scene/Project/Recording migration or changes to UI pixels / original assertions. CI uses the existing maintained UI/linked suites; its browser matches installed Chromium, while local Chrome remains unchanged.
 
-Research b10b78a was safely merged with no-ff as 39f6c2b. The original workspace's full check and current UI28/linked8/product4/physics2/storage5 functional suites passed. See the [merge receipt](../../../../../artifacts/architecture-review-20261029/merge-commit.json), [quality receipts](../../../../../artifacts/architecture-review-20261029/post-merge/quality-receipts.json), and [browser receipts](../../../../../artifacts/architecture-review-20261029/post-merge/browser-receipts.json) for actual scope and hashes. Existing failures / interruptions remain preserved; this is not a long-run performance, human-testing, or listening-test pass.
+Research b10b78a→no-ff merge39f6c2b→source14da3d7; all original local history / branches / worktrees remain preserved. The separate clean public snapshot has been pushed as final [main879c2a75](https://github.com/kekekewww/Reflections-Lab/commit/879c2a75ae24c7286cd9051689a32887a2dd8bb4). There are zero differences across 2417 remote files, and both [CI jobs](https://github.com/kekekewww/Reflections-Lab/actions/runs/40905176310) succeeded. See the [final receipts](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/7b3a36b9543d6036edfc8189ae04bf69c506a4e5) for actual full-history scan / decoded-text / manifest / independent-review evidence and Git provenance. Direct public pushing of complete original history is prohibited; archive URIs still point to retained local data.
 
-New [R18 feedback](../../../../11-v1/USER_TEST_FEEDBACK_20261029-r18.json) from the original workspace is preserved: inability to operate in FPS is a user-reported failure, blocking downstream FPS operations. Materials / reflections were not tested; volume / direct manipulation have issues; the tested bundle / device are unknown. Diagnose the input blocker first, then continue the recording hot path / performance. This round does not expand into product repairs.
+Research / original / fresh-public quality checks and current UI28/linked8/product4/physics2/storage5 suites plus the analytical benchmark passed; these do not replace human tests / listening / performance. All original failures / interruptions remain preserved. R18 human FPS failure, blocked downstream operations, untested materials / reflections, default-volume and direct-manipulation issues, and tested bundle / device UNKNOWN must not be changed to PASS. Diagnose the input blocker first, then continue the recording hot path. This round neither repairs nor resumes the other product goal.
 
-Nine-scenario cloud estimates are not capacity or spending commitments. Original history contains oversized / prohibited artifacts and cannot be pushed; the user authorized preserving all local history and creating a separate clean public snapshot. An exact public manifest, full scan, fresh-copy validation, and remote / CI checks remain actual gates; unperformed work is not PASS. Use the sole task [0021](../../../../../knowledge/tasks/RLAB-TASK-0021.json); actual status is in [integration-state](../../../../12-architecture-review/integration-state.json). The complete V1 remains unfinished.
-
-<!-- english-original-anchor --> <a id="乾淨公開副本已實跑驗證"></a>
-## Clean public copy has completed actual validation
-
-Exported from 14da, public root commit a2e38d0 has no original ancestors. Fresh npm ci/check, 47 functional browser tests, and the analytical benchmark passed; see the [receipts](../../../../../artifacts/architecture-review-20261029/public-validation/receipts.json). Four historical small-receipt links were repaired against genuine copies / hashes; complete original artifacts remain local-only. The final exact payload / full reachable-history scan / push / remote CI remain unfinished. This section does not establish successful publication or completion of the full V1.
-
-<!-- english-original-anchor --> <a id="p1已公開並核對遠端"></a>
-## P1 published and checked against the remote
-
-GitHub main received aae67e77 from the 14da integration snapshot, with no original ancestors. The full scan and exact manifest passed; all 2396 remote files match with zero differences, and GitHub's validation / browser CI jobs actually succeeded. See the [publication receipts](../../../../../artifacts/architecture-review-20261029/publication/published-p1-receipts.json). Subsequent work only synchronizes completion metadata and rescans / verifies that new ref; P1 does not preapprove new code. All original local history remains preserved; the complete V1, human testing, and performance remain unfinished.
+The nine cloud scenarios are reproducible estimates, not capacity or spending commitments. A complete renderer / stems / ADM / custom AudioWorklet remain unimplemented. Completed source publication does not complete the full V1, model-live validation, device tests, terms, or root LICENSE decisions. Use the sole task [0021](../../../../../knowledge/tasks/RLAB-TASK-0021.json); complete machine-readable status is in [integration-state](../../../../12-architecture-review/integration-state.json).

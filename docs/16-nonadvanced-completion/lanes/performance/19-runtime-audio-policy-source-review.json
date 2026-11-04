@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "status": "NO_P1_P2_REMAINING_SOURCE_REVIEW_ONLY",
+  "reviewer": "runtime_audio_options_red",
+  "observedAtUtc": "2026-11-03T01:57:02.846908+00:00",
+  "observedHead": "eb45d19aee08a3b68a768c82af4fa192ea0b26fc",
+  "baselineCommit": "eb45d19aee08a3b68a768c82af4fa192ea0b26fc",
+  "reviewedWorkingRuntime": {
+    "path": "src/app/runtime.ts",
+    "bytes": 153551,
+    "sha256": "9eb40faa9072b4ca4b48ff1824ae1233ff63373e2fceb6a38c605be35a6b0193"
+  },
+  "baselineRuntimeSha256": "90decbfcf2d899e947a5b5f251044441136ce19c655e8637993bcd7d594c8c3e",
+  "allowedDiff": [
+    "AudioEngineResourcePolicy type and RuntimeOptions.audioResourcePolicy",
+    "own-data-descriptor finite scalar whitelist/copy/freeze helper",
+    "private readonly stored policy; constructor first statement",
+    "enableAudio original four options plus conditional virtualization key only",
+    "getAudioResourceObservation active shared endpoint",
+    "setAudioDiagnosticsEnabled boolean observer switch"
+  ],
+  "findings": [],
+  "sourceChecks": {
+    "ownOuterAccessorNotInvoked": true,
+    "policyAccessorsNotInvoked": true,
+    "symbolAndUnknownKeysRejected": true,
+    "classAndCustomPrototypeRejected": true,
+    "nullPrototypeAccepted": true,
+    "requiredNumericScalars": [
+      "maxNativeVoices",
+      "maxVirtualVoices",
+      "minResidenceSeconds",
+      "priorityHysteresis",
+      "fairnessSeconds"
+    ],
+    "optionalNumericScalars": [
+      "maxNativeGraphs",
+      "maxNativeCarriers"
+    ],
+    "allProvidedNumericValuesFiniteAndPolicyValidated": true,
+    "storedByValueFrozenBeforeOtherConstructorOwners": true,
+    "omittedUndefinedAddsNoVirtualizationKey": true,
+    "explicitFalseRetained": true,
+    "originalEngineBudgetAndContentNotSpreadOrOverridden": true,
+    "originalCreateCatchWorldCleanupRetained": true,
+    "disposedEndpointNoEngineOrNativeRead": true,
+    "getterReturnsStructuredCloneOfActualPublicEngineDtos": true,
+    "diagnosticsSetterTypeStrictBoolean": true
+  },
+  "activeEndpointSemantics": {
+    "runtimeGetter": "getAudioResourceObservation",
+    "passive": false,
+    "zeroCost": false,
+    "getTelemetryEffects": [
+      "iterates existing voices/routes and updates maximumFilterDelay history",
+      "calls AudioDiagnostics.snapshot and conditional pollNative",
+      "reads native context/latency/quantum values and constructs DTO"
+    ],
+    "resourceSnapshotEffects": [
+      "iterates bounded actual source owners/roles",
+      "reads native currentTime for pending flags",
+      "constructs source DTO"
+    ],
+    "diagnosticsSwitch": "strict boolean; changes observer state/reset baselines; no engine allocation or voice/route/policy rewrite",
+    "disabledDoesNotMakeGetterFree": "Disabling diagnostics stops diagnostic polling, but source traversal, native resource clock reads, history update and DTO copying remain active endpoint work.",
+    "driverRequirement": "Use only explicitly declared shared control/benchmark endpoints and account for them in on/off methodology; do not label as passive TopMonitor cache getter."
+  },
+  "fixtureVersions": {
+    "v1Original": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v1-original.test.txt",
+      "bytes": 12248,
+      "sha256": "4556f53f0a24941f9fd474f8a193ae8b4f888fe9545a197f252af8a53e7b40ea"
+    },
+    "v1WrongExpectedPreset": "interactive",
+    "v2CorrectedCopy": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-v2-before-endpoints.test.txt",
+      "bytes": 12245,
+      "sha256": "71a607e753d93c01d72d70ed11b8dd6153eb31a6eb3ab6e929307f8cad992845"
+    },
+    "v2CorrectPreset": "playback",
+    "v1ToV2OnlyExactAssertionReplacement": true,
+    "correctionReceipt": {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-options-fixture-correction-v2.json",
+      "bytes": 2389,
+      "sha256": "58def2d1f89a95428ddf230e343c49db17c014e0d0993ac6ef03a175c994135d"
+    },
+    "current25Spec": {
+      "path": "tests/app/runtime-performance-options.test.ts",
+      "bytes": 15096,
+      "sha256": "28976c82fe10e30562408f380d247caf6ce7f130c75795872d3901733b290694"
+    },
+    "historyScope": "Correction receipt preserves its authored-before-rerun pending status; later TAPs below establish actual corrected RED and 25-case GREEN. No old result or original spec bytes were replaced."
+  },
+  "existingValidationReadNotRerun": [
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-red-r1.tap",
+      "bytes": 23036,
+      "sha256": "601c46524b9b318959abe6ad277f4759989816227c3142a81fa0785390e1018a",
+      "tests": 22,
+      "pass": 0,
+      "fail": 22,
+      "durationMs": 5284.2133,
+      "executionBy": "parent; reviewer read existing TAP only"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-fixture-v2-red-r1.tap",
+      "bytes": 20865,
+      "sha256": "3d35629c9cfaf7fd727bb51ca513fd0d692849ed1f1af37c95ef2311d4402089",
+      "tests": 22,
+      "pass": 2,
+      "fail": 20,
+      "durationMs": 2507.0326,
+      "executionBy": "parent; reviewer read existing TAP only"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-endpoints-red-r1.tap",
+      "bytes": 24212,
+      "sha256": "aa6668ecceebadf53304af9ff9de9cf24f25a29ac227ca8d33e54b86329e2bf0",
+      "tests": 25,
+      "pass": 2,
+      "fail": 23,
+      "durationMs": 2165.5757,
+      "executionBy": "parent; reviewer read existing TAP only"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/runtime-performance-options-green-r1.tap",
+      "bytes": 6021,
+      "sha256": "3570a1a9380321f0c289fb2bde9755dbab3df1f6837f0eb890ed02ade7e4dd6e",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "durationMs": 1750.8608,
+      "executionBy": "parent; reviewer read existing TAP only"
+    }
+  ],
+  "unchangedAudioSource": [
+    {
+      "path": "src/audio/buffer-preset.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "d13bd3382644c55867f7d0139b73d45ce9be89115684b6620ac58b4b431780e4"
+    },
+    {
+      "path": "src/audio/monitor-level.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "659d80341a53a08ac93b05d08455496686455ef0a79b707aa263632e5ab72d5e"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "dfef99a2635cbcc694bd43d4d04fdd5b2bd4fa23d266e907df077e6133c34798"
+    },
+    {
+      "path": "src/audio/types.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "48e1020c36c0c001882ccb0f607f065f302f87457b2c2d858b0af9d140737a51"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "35f9f5d217523679f01b69445e94c6bce3d819f640f4278f0c640f92fcce12ce"
+    },
+    {
+      "path": "src/audio/diagnostics.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "e6080aa1478ab300cff11b8f568bef9468e02f94422aaab78003f50ed30c2951"
+    },
+    {
+      "path": "src/audio/virtual-policy.ts",
+      "matchesBaselineGitBytes": true,
+      "sha256": "8d839c4465113d89f97482c863a0ae4672e523af180f547174d2bf6ca1ef2cdc"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "src/app/runtime.ts",
+      "bytes": 153551,
+      "sha256": "9eb40faa9072b4ca4b48ff1824ae1233ff63373e2fceb6a38c605be35a6b0193"
+    },
+    {
+      "path": "src/audio/virtual-policy.ts",
+      "bytes": 4650,
+      "sha256": "8d839c4465113d89f97482c863a0ae4672e523af180f547174d2bf6ca1ef2cdc"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "bytes": 142605,
+      "sha256": "35f9f5d217523679f01b69445e94c6bce3d819f640f4278f0c640f92fcce12ce"
+    },
+    {
+      "path": "src/audio/diagnostics.ts",
+      "bytes": 13916,
+      "sha256": "e6080aa1478ab300cff11b8f568bef9468e02f94422aaab78003f50ed30c2951"
+    },
+    {
+      "path": "src/audio/control.ts",
+      "bytes": 3099,
+      "sha256": "dfef99a2635cbcc694bd43d4d04fdd5b2bd4fa23d266e907df077e6133c34798"
+    },
+    {
+      "path": "src/audio/types.ts",
+      "bytes": 6009,
+      "sha256": "48e1020c36c0c001882ccb0f607f065f302f87457b2c2d858b0af9d140737a51"
+    },
+    {
+      "path": "src/audio/buffer-preset.ts",
+      "bytes": 1302,
+      "sha256": "d13bd3382644c55867f7d0139b73d45ce9be89115684b6620ac58b4b431780e4"
+    },
+    {
+      "path": "src/audio/monitor-level.ts",
+      "bytes": 1710,
+      "sha256": "659d80341a53a08ac93b05d08455496686455ef0a79b707aa263632e5ab72d5e"
+    },
+    {
+      "path": "tests/audio-runtime/fake-context.ts",
+      "bytes": 9351,
+      "sha256": "3c479dec884d27a8ad59afe26a6493ab43c19b406509cf582e1774b0e99e81a6"
+    },
+    {
+      "path": "tests/app/runtime-performance-options.test.ts",
+      "bytes": 15096,
+      "sha256": "28976c82fe10e30562408f380d247caf6ce7f130c75795872d3901733b290694"
+    }
+  ],
+  "secondReader": {
+    "agent": "runtime_endpoint_review",
+    "status": "NO_P1_P2",
+    "scope": "two public endpoints and actual engine getter side effects",
+    "executedTests": false
+  },
+  "limits": {
+    "sourceOnly": true,
+    "testsExecutedByReviewer": false,
+    "nodeExecutedByReviewer": false,
+    "browserRunByReviewer": false,
+    "typecheckRunByReviewer": false,
+    "formatOrLintRunByReviewer": false,
+    "controlGraphMocksDoNotProvePcmOrHardware": true,
+    "source25TestsAreNotNativeSourceRenderingEvidence": true,
+    "nativeDspCpuMeasured": false,
+    "formal600Run": false,
+    "overallV1Complete": false,
+    "semantic03ScopeUnchanged": "The new RuntimeOptions and endpoints are not retroactively covered by native run source03d665 or its frozen44 semantic inputs."
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reflection Lab audio attribution diagnostics</title>
+  </head>
+  <body>
+    <main>
+      <h1>Audio attribution diagnostics</h1>
+      <p>
+        Dedicated test page. Digital PCM, control symptoms and native output statistics are separate
+        observations.
+      </p>
+      <label
+        >Case
+        <select id="case">
+          <option value="steady">Steady continuous source</option>
+          <option value="main-stall">Controlled main-thread stall</option>
+          <option value="late-onset">Backdated emission</option>
+          <option value="stale-frame">Stale frame rejection</option>
+          <option value="path-churn">Solver path birth and death</option>
+          <option value="voice-path-budget">Voice and path admission limits</option>
+          <option value="digital-gap">Injected digital output silence</option>
+        </select></label
+      >
+      <label
+        >Probes
+        <select id="probe-mode">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select></label
+      >
+      <label
+        >Source model
+        <select id="audio-model">
+          <option value="nativeReference">Native reference</option>
+          <option value="nativeCarrierRoutes">
+            Carrier candidate (requires current capability)
+          </option>
+        </select></label
+      >
+      <button id="start">Run case</button><button id="cancel" disabled>Cancel</button>
+      <button id="download" disabled>Download captured PCM WAV</button>
+      <button id="download-pcm" disabled>Download original PCM bytes</button>
+      <p id="status" data-state="ready">Ready</p>
+      <pre id="summary"></pre>
+    </main>
+    <script type="module" src="./performance-audio-attribution-v1.mjs"></script>
+  </body>
+</html>

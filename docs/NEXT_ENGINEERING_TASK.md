@@ -1,3 +1,85 @@
+## 2026-11-03 Claude 接手完成後的下一步
+
+產品來源凍結在 `544d8d9f`（之後只改測試與文件），本機 Main 已合併整合分支，沒有 push 或部署。完整結果與人工測試入口見[Claude 最後交接](16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md)，需求逐列判定見[對照表](16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.md)。這不是整個第一版完成的宣告。
+
+1. 使用者人工測試（交接內有步驟與 3 分鐘展示建議）。
+2. 逐一判定 S4 失敗路徑：產品回歸要修並重跑，舊腳本要依目前 UI 重新對位，不放寬斷言。
+3. 錄製開始的暫停：在不放大原上限的前提下找出第一個長幀或第一筆儲存延遲的來源。
+4. 使用者同意後再跑正式 600 秒 V4，並在凍結來源重跑長輸出。
+
+### M4 checkpoint之後的Root操作回報：英譯108與V4程式已整合
+
+
+## 2026-11-03 使用者轉交Claude：Codex開發暫停，整體尚未完成
+
+最新已提交整合基準為448a503f5373faccc19aa17c6789ffc01bc26017；主入口為[Claude接手報告](16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md)及其固定證據索引。本輪只整理交接與記憶，沒有恢復產品開發或重跑產品／browser／效能測試。
+
+Claude先保全並審查未合併提交／6檔startup WIP與raw；再依固定報告P0–P3順序處理：有界async commit觀測及錄製吞吐→長render六對原容差比較與真WAV parser→修效能CPU endpoint／漏pin並依原負載優化→真corpus／資產voice同條件驗證→同一fresh來源全22routes與Windows Computer Use、完整管線逐檔下載→最後全check／英文／驗收表／階段記憶／Main整合，最後才請使用者人工驗證。重負載串行排程，不縮門檻或用內部呼叫冒UI證據。
+
+Task0032／0033盤點時為IN_PROGRESS；本次交接正常release合作claim後，CLI依原規則轉READY供Claude認領。READY表示待接手，原criteria全文與真假不變，不是完成或驗收降級。預算0、no push／deploy及正常100%原生驗收規則維持。下方ACTIVE／正在實作等描述為各歷史截點，不代表Codex目標目前仍執行。
+
+
+Root回報英譯108 targets＋11 JSON proof（119files）已精確manifest/hash/readback並提交ba206589，範圍不是fullEnglish。V4 method79ef已normalmerge、新entry八spec提交b90228a7c1f04d7a9da7965dd3a092a15a0b8536；Root正式collector回報611/611、0skip、5.0900207s，舊964與舊44分scope保留、不加總或倒改。這是operatorreported後續狀態，完整sourceproof留M5；M4固定1f的registry空／未整合是歷史截點，最新Root已code整合，但真CPU/PCM/20s pilot/600仍未跑。原M4 stage/partialhandoff、Task旗標與驗收界線不變。
+
+### M4固定截點之後的Root回報：V3啟動錯誤，待M5封存
+
+較晚Root回報新V3為startupERROR／noDSP：globals尚未初始化、HTTP12pending，source0mismatch不等於數值驗證完成，無retry。程序內cleanup為ERROR；外部PID71356已gone／children0／5353無Listen／postqueryexit0只證終端後清理觀察。此新執行尚待M5固定收據，不當作既有六組PCM數值比較失敗，也不覆原V2 numeric FAIL。
+
+## M4：新整合與部分管線證據已固定，錄製／長輸出仍未完成
+
+[M4 stage](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/73953e8828395991c584e3a81d1022f465e134b1)與[Claude可讀部分交接](16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md)綁Root1f：globaltsc0、七檔118/118；83/77/64與118重疊，不相加。Worker22/63、Runtime25與Native03十對20份2秒PCM的phase/lifecycle均是有限證據，非fullnpmcheck或長錄製性能。prod05/e2e02為事後receipt、completedAt=logmtime，不冒prebuildcapture。
+
+Production03固定b7為4PASS/1FAIL；Zone草稿／選取跨四模式PASS、四load值有限，但recording fixed-step guard仍FAIL。diag02 headless固定步guard/pressure null/5frames封存；diag03 headed是storage guard，eval14/7/7、store8/8/0/8，WorkerACK531.8ms已await，storage create253.6ms未在start await，Store-ready gate正在做非已修；14frames58..71封存不是吞吐PASS。來源pins與index/entry HTTP分別核，不推CPU/GPU或唯一根因。
+
+V4僅Root採exactChrome semantic前置、window222.6ms；Root1f registry仍空，未新20s/600/DSPCPU。pairedV2 150sERROR/5false/第6缺結果/0WAV；snapshot已merge65component但realIDB/長WAV/parser/峰值未驗，V3pending。兩EN UX sourcehash相符、2PASS僅Rootreported，不冒fullEnglish。Task33 AC02/06/07仍false，Task32onlyAC01；全S4/CU/fullnpmcheck/fullEnglish/Mainmerge/最後Claude交接與其後人工未完成，原gate/FAIL保留。Root舊樹僅clean/Mainancestor兩個移除，其他dirty/raw/activeC/Claude全部保留。
+
+## M3：頂列四模式有有限UI與數值證據，完整工程仍未完成
+
+[固定M3收據](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/aac9048a20f8addd2cb72f1a92466b98c21c8eb9)保ac0b895 focused64/64、build01exit2與02/03/04exit0（僅04綁13來源/bundle）。Playwright02為3PASS/1FAIL、4/4source/HTTP、0pageerror/modelcall；四mode/keys/focus/L-R/ZH-EN、390/929/1440DPR1及真有限讀值有證據。新native02固定audio5b8ace componentPASS：9raw/53248B、同renderclock、波形差0、DFT誤差4.29683e-7dB在原0.3內、mute0/-Infinity與釋放；原native01FAIL/2of9仍保留。API耗時不是DSP/CPU，0ms指未觀察到timer跳動，不是零成本。
+
+錄製仍未完成：Pause早於首次Spectrum，1.42s是globaltick85/60非錄製長度，錄製UI0.12s非acceptedcount；共用guard不能判evaluation/storage，冷啟動／切圖因果未證。Task33 AC01/03/04/05由composite支持，02/06/07false/IN_PROGRESS；新未提交label/runtime不由ac0來源冒驗。Task32/PERF/16/20/51與原容差/cap/正式負載不改。ComputerUse無新featureinput/方法NOTPASS；fullcheck/完整PW/長管線/正式600/English/Claude/人工與完整V1仍待。
+
+# 2026-11-03 M2部分整合與真實驗證界線
+
+[M2固定里程碑](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/ac657109c4ae5a5390d9eecd2c1d425f2072e246)以3a251固定P1與先前41526時點分列。公開60秒是3600acceptedframes，3601inclusive是獨立容量fixture；[規格v3](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/f12c973679abfe1858d9d89f2e6cd1f491348b52)不加renderwindow一tick、不改原schema/hash/2e-6gate。以下為本輪進度，先前章節保留其日期與範圍。
+
+- Root原41526/32GREEN漏測evidenceClass；P1真capture RED1→3a251的32GREEN，恢復原cursorModel、描述移policy，原validator未改。expandedglobaltsc0在Blob4d之前，P1後未globaltsc，不冒最新完整check/build。
+- Storage4d有107Node及新7case真RED→GREEN；原9fe的真IDB9case只屬歷史來源，4d後browser未重跑。Long09實跑57/58，原whole63mastermax2.9802322387695312e-6、321over仍超原2e-6；14完整下載/15partial/16missing、90秒deadline FAIL。手動ownedPID/port0是terminal後核對，不倒改原finally未保存。
+- Perf047在reader415/3a時非Rootancestor，較晚writer677已normalmerge固定negative/methodcomponent但不當qualification；55秒只是45+10秒硬cap，實際程序4754.4203ms/native視窗396760us/DOM約396.7ms，strictschema拒收。V3launcher資格拒絕與V4NOTQUALIFIED/NOTAPPROVED分開，未跑新正式600秒；audio/device/DSPCPU等未請求或未量欄位保null。
+- Resourcecandidate仍defaultreference/off；audio-retirement105是controlscope，較新EOF226=224PASS/2previewFAIL和45focused只owner未凍結進度，不能當Root/global/nativePASS。新9樹owner與ephemeral slots以Root即時授權為準，不授永久執行權。
+- 原51草稿current均未裁決；Task16/20/PERF/AC02–09及完整V1不升級。ComputerUse仍URLpolicy阻擋/0本輪input，產品完整Playwright/長公開管線/新fullquality/正式性能、最後英文與Claude/其後人工仍待真證據；無新paid/push/deploy。Root仍繼續工程，非final或handoffcomplete。
+
+## 以下保留M1與先前歷史截點
+
+
+## 2026-11-03 本批較晚的native02補充
+
+[固定補充收據](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/c6a0d046f97f34e49eef67dc1658064857b6a6a2)更新較早M1截點：native02已實跑，exit1、2PASS/3FAIL；10份mono96,000frame PCM為實際非空且SHA相符，不再是未跑，但仍未滿原2e-6全案gate。這是短2秒數位DSP，不能替代62秒長音檔、全產品Playwright、ComputerUse或硬體聽測。Root選有界nativecontentcarriers只供下一輪驗證，保原a-rate/wave、所有carriers計成本/cap；未採納/未新proof。原native01五FAIL/10空PCM、M1時點文字保留為歷史。
+
+Root較晚回報recoveryports4RED→4GREEN、Runtime/CSS仍dirty/sourcehash待commit；storage9fe2caseGREEN不算原98後全量重跑，acoustic82bf固定88與舊79分開仍待review/採納。新globalcheck/真IDB/長PCM/正式600秒/雙方法全矩陣、原Task16/20/PERF與完整V1未完成。以下原M1段落的「native02未跑／未grant」是先前cutoff，不是現在狀態。
+
+# 2026-11-03 下一步：完成非進階完整scope，不提前交付
+
+目前[契約](16-nonadvanced-completion/CONTRACT.md)及[S2部分里程碑](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/7cee6ae1118139b2bfd78376a89e5bba3601f322)優先於下方前次「下一步Claude」截點。本輪完整非進階尚在實作與驗證，不因候選正常merge/focused GREEN或scope文件完成便停止。
+
+1. Root完成共享runtime/3recoveryports/AppCSS等實際接線，按各lane最新固定receipt與原criteria修復negativecases；source/epoch/所有權不因guard被繞過。原315與audio5FAIL保留，活動audio/acoustic只待其新固定結果，不預先採納。
+2. 在Root獨占lease下跑真IDB/cross-tabWebLocks、60秒capture與62秒nativeoutput、全部perownerstems/manifest/reference/cap/cancel/crash/recover/publicUI；Node元件與script authored不當browser/nativePASS。audio02目前只準備，須Root明確grant才啟動。
+3. 實作/修復後凍結source/bundle並完成原回歸、三次乾淨產品E2E、10次reset/import/dispose、數值/聲學/physics/audio與獨立review、原完整600秒負載/門檻。ComputerUse與Playwright完整模式/UI/參數/管線分別收證，外部URLpolicy不可繞過。
+4. 以[51列草稿](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/195b1de848ab3b5496a5a362d45bde0f8006cded)逐literal條件對帳，保持原Task/criteria/dependency與advanced/cloud排除。最終sourcefreeze後才集中全英文、正式status/limits、完整Claude交接；Claude獨立驗證/修改後由使用者最後人工觀察。無新paid/push/deploy授權。
+
+## 以下保留先前工程規劃截點
+
+# 2026-11-02 下一步：Claude獨立重驗與新增功能人工測試
+
+本輪六核心、Zone、球／膠囊與動態反射、Project環境、217有限UI與五WAV已實作驗證並正常整合至本機main `fe663ca9f384d247bcd89b331936f6be202c761f`。[完整check](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/2f387d58e834799d809cbbdaab03e2afd2cb4194)exit0，[實際Main收據](archive://f95431483db0bf48e7fc86fc630179a73ed810ff/529524649ac8b7fbff91d919bf6dcab6403b7865)保留原129untracked／4ba snapshot，產品仍同501。Task24..31含28有限DONE；Task23僅原生AC04被外部URLpolicy阻擋，真DOM數位產物另PASS。
+
+1. Claude依[完整交接](14-core-pipeline/CLAUDE_CODE_HANDOFF_20261102.md)、原taskcriteria、固定source／bundle／raw收據獨立重驗與調整；保留原FAIL、versionedbrowser／PCM與原2e-6stem容差，不用內部API假UI。
+2. Claude完成調整後由使用者人工觀察新增功能與音檔；原基本功能已確認，不索取R19／R21重測。Task22舊literalAC06只做歷史metadatareconcile，不借未知bundle回報冒逐項量測。
+3. 未來獲准run若native工具可可靠辨識URL，再完成字面native產品操作／匯出；或由使用者明確修訂方法後重判。此turn工具已停止，不能繞過；前三timeout與第四只CtrlN成功分開。
+4. 正式600秒性能、科學／裝置／聽測／Metalive等外部gates與14PERF候選／7PROPOSEDADR另處理，不自動全開。保留R21broker未知jobs與Cattachment，無push／部署／新付費；後續bookkeepingHEAD以實際Git為準，不猜自身commit。
+
+## 以下保留先前工程規劃截點
+
 # 2026-10-29 下一個工程切片：錄製聲學有界評估 lane
 
 ## 2026-10-29 整合後更新與真人回報

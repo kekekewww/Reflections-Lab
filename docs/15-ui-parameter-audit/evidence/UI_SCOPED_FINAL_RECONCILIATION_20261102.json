@@ -1,0 +1,1099 @@
+{
+  "schemaVersion": 1,
+  "kind": "MEMORY_READ_FIXED_UI_RECEIPTS_NOT_NEW_BROWSER_TEST",
+  "checkedAt": "2026-11-02T10:48:36.688Z",
+  "candidate": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+  "interaction": {
+    "summary": {
+      "families": 59,
+      "familiesWithPassEvidence": 59,
+      "unmappedFamilies": 0,
+      "distinctLatestCaseIds": 58,
+      "latestCasePass": 58,
+      "unresolvedLatestCaseFailures": 0
+    },
+    "versionPolicy": "這是多個明確source/bundle快照的組合證據，不是單一49 build完整重跑58組。歷史receipt原FAIL/console gate不更改；最後49只重驗兩項指定回歸。",
+    "finalSelected": {
+      "kind": "INTERACTION_FINAL_SELECTED_REGRESSIONS",
+      "status": "PASS",
+      "candidate": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+      "entry": "index-C4qRBPy8.js",
+      "browser": "Chrome 156.0.8078.75 headed",
+      "selectedCases": [
+        {
+          "caseId": "native-paused-click-resume",
+          "status": "PASS",
+          "receipt": "final-49bde82/receipt.json",
+          "receiptSha256": "7ab2102943a9cd3e72e624e717fb94d8fc14996f52099633ada89bd2ff5820e4",
+          "receiptOverallStatus": "FAIL",
+          "gitHead": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+          "bundles": [
+            "http://127.0.0.1:4173/assets/index-C4qRBPy8.js"
+          ],
+          "consoleErrorCount": 0
+        },
+        {
+          "caseId": "gizmo-group-lifecycle",
+          "status": "PASS",
+          "receipt": "final-49bde82-gizmo/receipt.json",
+          "receiptSha256": "e9daf371ce3e86a0b9d8a155a981c54fc57bba73d6f8a180f3d640cb1f917187",
+          "receiptOverallStatus": "PASS",
+          "gitHead": "49bde82be6f9def5058bc8f3076e105fcdfd535d",
+          "bundles": [
+            "http://127.0.0.1:4173/assets/index-C4qRBPy8.js"
+          ],
+          "consoleErrorCount": 0
+        }
+      ],
+      "selectedCaseCount": 2,
+      "selectedCasePassed": 2,
+      "unexpectedConsoleErrors": 0,
+      "chromeClosed": true,
+      "leaseReleased": true,
+      "firstAttemptFailure": "final-49bde82 gizmo-only FAIL is preserved: nonexistent DOM aria-label produced a null selector; corrected by obtaining stable new object IDs from UI export. No product source changed for that retry.",
+      "versionPolicy": "Both final selected cases use the same candidate/entry. The broader 58-case evidence spans separately pinned 253/d9/49 receipts and is indexed independently.",
+      "recordedAtUtc": "2026-11-02T10:15:08.909Z"
+    },
+    "caseProof": [
+      {
+        "caseId": "native-paused-click-resume",
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/final-49bde82/receipt.json",
+        "sha256": "7ab2102943a9cd3e72e624e717fb94d8fc14996f52099633ada89bd2ff5820e4",
+        "declaredReceiptHashMatches": true,
+        "actualOverallStatus": "FAIL",
+        "caseSummary": {
+          "passed": 1,
+          "failed": 1,
+          "total": 2
+        },
+        "rawKeys": [
+          "schemaVersion",
+          "kind",
+          "status",
+          "startedAtUtc",
+          "method",
+          "gitHead",
+          "checks",
+          "consoleErrors",
+          "expectedEnvironmentErrors",
+          "bundles",
+          "evidenceDirectory",
+          "browser",
+          "browserMode",
+          "finishedAtUtc",
+          "summary",
+          "source"
+        ],
+        "actualSelectedCheck": {
+          "id": "native-paused-click-resume",
+          "status": "PASS"
+        },
+        "actualConsoleErrors": []
+      },
+      {
+        "caseId": "gizmo-group-lifecycle",
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/interaction/final-49bde82-gizmo/receipt.json",
+        "sha256": "e9daf371ce3e86a0b9d8a155a981c54fc57bba73d6f8a180f3d640cb1f917187",
+        "declaredReceiptHashMatches": true,
+        "actualOverallStatus": "PASS",
+        "caseSummary": {
+          "passed": 1,
+          "failed": 0,
+          "total": 1
+        },
+        "rawKeys": [
+          "schemaVersion",
+          "kind",
+          "status",
+          "startedAtUtc",
+          "method",
+          "gitHead",
+          "checks",
+          "consoleErrors",
+          "expectedEnvironmentErrors",
+          "bundles",
+          "evidenceDirectory",
+          "browser",
+          "browserMode",
+          "finishedAtUtc",
+          "summary",
+          "source"
+        ],
+        "actualSelectedCheck": {
+          "id": "gizmo-group-lifecycle",
+          "status": "PASS"
+        },
+        "actualConsoleErrors": []
+      }
+    ],
+    "artifacts": {
+      "count": 305,
+      "allMatch": true
+    },
+    "traces": {
+      "count": 6,
+      "allMatch": true
+    },
+    "sourceSnapshot": [
+      {
+        "path": "tests/browser/parameter-audit/interaction-audit.mjs",
+        "sha256": "9a26852be32021fdf2bed248d377239f0e16b9543ad5c0c80c17f805a8040541",
+        "candidateGitObjectExists": false,
+        "candidateBlobMatches": null,
+        "currentMatches": true,
+        "scope": "WORKING_TEST_RUNNER_PIN_NOT_CANDIDATE_GIT_SOURCE"
+      },
+      {
+        "path": "tests/browser/parameter-audit/interaction-completion.mjs",
+        "sha256": "b999baf029bb872dc27ed8da3800ddb9e3a1c8128ca60bef70849968b4ab79f4",
+        "candidateGitObjectExists": false,
+        "candidateBlobMatches": null,
+        "currentMatches": true,
+        "scope": "WORKING_TEST_RUNNER_PIN_NOT_CANDIDATE_GIT_SOURCE"
+      },
+      {
+        "path": "tests/browser/parameter-audit/interaction-explore.mjs",
+        "sha256": "e43930be781fbc33207d86d9de56affda6911a0dc36214499b4b3e856855be01",
+        "candidateGitObjectExists": false,
+        "candidateBlobMatches": null,
+        "currentMatches": true,
+        "scope": "WORKING_TEST_RUNNER_PIN_NOT_CANDIDATE_GIT_SOURCE"
+      },
+      {
+        "path": "tests/browser/parameter-audit/interaction-priority.mjs",
+        "sha256": "fc5a9bd16421fa81a84fbe02b3ec6696d0c8cb9c6821167035c0dea176affb14",
+        "candidateGitObjectExists": false,
+        "candidateBlobMatches": null,
+        "currentMatches": true,
+        "scope": "WORKING_TEST_RUNNER_PIN_NOT_CANDIDATE_GIT_SOURCE"
+      },
+      {
+        "path": "src/ui/App.tsx",
+        "sha256": "9a9f12fecc23fd4d30c40d5a3ded84a6e11ba53b6af9dc46f70757a8b2a1d0c8",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/contracts.ts",
+        "sha256": "7329e95a9bcaf7b0b677868a7dbdd7733327e038db0d24a5a5cd455b6effb656",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/status-feedback.ts",
+        "sha256": "e6b565df26fb19645b14cec8a868fe4b770eaa1c36a92921f86c0af8adf63887",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/status-feedback.test.ts",
+        "sha256": "02453edc5903fa43ca5cb4cdd48e52f8af2e13240750d9c90166a40859d658f3",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/Viewport.tsx",
+        "sha256": "8f63f76549733579ede37bc48e08f3b146f20ac1745950f9e2d3d024952dea56",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/locales/viewport.ts",
+        "sha256": "f639b31ede00c156940a6701ee8bfe273f99133c380fcdbab65d8a36f1c12af4",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/CameraRig.tsx",
+        "sha256": "0a8c6705bdcc67b26ad5ba13737d712f4ab0eef209e24bdf56401986e83058f3",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/TransformGizmo.tsx",
+        "sha256": "0f33b9ad743a7f3ec2b177c3addf9b32a4b8d8a1d83db07d25d07f3d0d1da97d",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/SceneEntities.tsx",
+        "sha256": "11d0181e451786a49c67b4147175cb3922bc10cf00b305e37b111866ce351bdf",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/observer-gesture.ts",
+        "sha256": "7c739e4c0a38f13ec5b81170d11b4d07d4f49e0b9b44abfd8781e3eaab60a881",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/observer-gesture.test.ts",
+        "sha256": "e545417b3bd1d13fc5707f1af63fea320866e3c2eab774a7d410cdec36fff970",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport/gizmo-group-lifecycle.test.ts",
+        "sha256": "e2aad6452540d270dbe7c943f259b4c069a7c75a21a068368319fa3e46ae59a5",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/ui/viewport-gentle-placement.test.ts",
+        "sha256": "b011a1befa60f3ac6da4309d2c58ba35f5ef028fdfee78348343983075111394",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "src/app/runtime.ts",
+        "sha256": "7c6ffebe392dc252b14f507062257321bbea61927b0da531c9ce3ac6ce4d3111",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": false,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      },
+      {
+        "path": "tests/app/fps-review.test.ts",
+        "sha256": "35e0c069366ff6212f576515f8d6ee1922f48fcb456c212effcff09e8b56176c",
+        "candidateGitObjectExists": true,
+        "candidateBlobMatches": true,
+        "currentMatches": true,
+        "scope": "COMMITTED_CANDIDATE_SOURCE"
+      }
+    ]
+  },
+  "curves": {
+    "counts": {
+      "uniqueGroups": 8,
+      "firstRunPassed": 4,
+      "harnessOnlyRecheckPassed": 4,
+      "originalFailuresRetained": 4,
+      "productChangesForRecheck": 0
+    },
+    "interpretation": "All eight selected new-feature groups have a PASS on the same frozen product/bundle; this combines the four first-run passes and four narrowly rechecked harness failures, rather than claiming one original exit-0 run.",
+    "cases": [
+      {
+        "id": "curved.sphere.material-role-controls",
+        "status": "PASS",
+        "firstStatus": "FAIL",
+        "evidence": "curved-recheck-49bde82/summary.json"
+      },
+      {
+        "id": "curved.sphere.dimension-bounds-invalid",
+        "status": "PASS",
+        "firstStatus": "PASS",
+        "evidence": "curved-final-49bde82/summary.json"
+      },
+      {
+        "id": "curved.capsule.material-role-controls",
+        "status": "PASS",
+        "firstStatus": "FAIL",
+        "evidence": "curved-recheck-49bde82/summary.json"
+      },
+      {
+        "id": "curved.capsule.dimension-bounds-invalid",
+        "status": "PASS",
+        "firstStatus": "PASS",
+        "evidence": "curved-final-49bde82/summary.json"
+      },
+      {
+        "id": "curved.project-import-persists-controls",
+        "status": "PASS",
+        "firstStatus": "PASS",
+        "evidence": "curved-final-49bde82/summary.json"
+      },
+      {
+        "id": "curved.sphere.real-solver-material-effect",
+        "status": "PASS",
+        "firstStatus": "PASS",
+        "evidence": "curved-final-49bde82/summary.json"
+      },
+      {
+        "id": "curved.capsule.moving-dynamic-reflector",
+        "status": "PASS",
+        "firstStatus": "FAIL",
+        "evidence": "curved-recheck-49bde82/summary.json"
+      },
+      {
+        "id": "curved.box.moving-dynamic-reflector",
+        "status": "PASS",
+        "firstStatus": "FAIL",
+        "evidence": "curved-recheck-49bde82/summary.json"
+      }
+    ],
+    "productPins": [
+      {
+        "path": "src/ui/Inspector.tsx",
+        "gitBlob": "4581c3acb3c864b97740c4dce232bdcff7ac3efc",
+        "actualCandidateGitBlob": "4581c3acb3c864b97740c4dce232bdcff7ac3efc"
+      },
+      {
+        "path": "src/app/runtime.ts",
+        "gitBlob": "9f51c2fa21a47e9956eb45a054c0a6f4a606f7ca",
+        "actualCandidateGitBlob": "9f51c2fa21a47e9956eb45a054c0a6f4a606f7ca"
+      },
+      {
+        "path": "src/app/acoustic-input.ts",
+        "gitBlob": "0834a949abfc57af294bb4bc2ecd3db018f70e77",
+        "actualCandidateGitBlob": "0834a949abfc57af294bb4bc2ecd3db018f70e77"
+      },
+      {
+        "path": "src/acoustics/solver.ts",
+        "gitBlob": "e25cb6cbde9f03e2d59fd79163b9c90cc54214f2",
+        "actualCandidateGitBlob": "e25cb6cbde9f03e2d59fd79163b9c90cc54214f2"
+      },
+      {
+        "path": "src/acoustics/primitives.ts",
+        "gitBlob": "088f1b325c1d3d11bf9be73a737834d1559d8d7f",
+        "actualCandidateGitBlob": "088f1b325c1d3d11bf9be73a737834d1559d8d7f"
+      }
+    ],
+    "manifests": [
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/evidence-manifest.json",
+        "sha256": "0554f43b5948f6be219851b1d3168ba0a90efb24591c21eb617602a04ae9e282",
+        "entries": 55,
+        "declared": 55,
+        "bytes": 7485081,
+        "allMatch": true,
+        "files": [
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/browser-initial-output.txt",
+            "exists": true,
+            "bytes": 1245,
+            "sha256": "e18846a9615c0c69af5a258c498625f34fbd2b25d591197d1e4ddae30cd2f0c6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/curved.box.moving-dynamic-reflector-fail.png",
+            "exists": true,
+            "bytes": 229456,
+            "sha256": "78fe70207d109aeba9325a9b1ea40c438727f73b6c0f60886a474bc886a758c7",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/curved.capsule.material-role-controls-fail.png",
+            "exists": true,
+            "bytes": 236834,
+            "sha256": "28b54e4b2870db52b8ce465d19d6a5924a321ddc5a86fd71ae421739f3b9a2a3",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/curved.capsule.moving-dynamic-reflector-fail.png",
+            "exists": true,
+            "bytes": 263688,
+            "sha256": "b4b90f38110ed059e9ff7aef3a54b644454a14498e31b1a8de1976df235fbedd",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/curved.sphere.material-role-controls-fail.png",
+            "exists": true,
+            "bytes": 228888,
+            "sha256": "62818bbd652dce1de1755647a41fd2f25a3208aaa84cd755f78740d278753378",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/disabled-option-dom-probe.json",
+            "exists": true,
+            "bytes": 760,
+            "sha256": "0b19c225cfc3a13a0dcb52bc1a9ea4d16bd498d4d7f0f23ec82ed48970e2b8cc",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/disabled-option-probe.mjs",
+            "exists": true,
+            "bytes": 1465,
+            "sha256": "7b55764b15d6cfa98f0ebfa22f2718e763a958e8930c446f0ad47967d0f34d9f",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/001-base-default-project.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "bc6212e15f24428e1978e09c366e5feea05498142346dadb7129ebfa82394b32",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/002-sphere-material.soft.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "9d8e9a1aaca9ded4d3869dba6ba8b16e40e72b400caccf54af9e4d208a1ffe37",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/003-sphere-material.wood.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "7fe9e5a3d4d4385a777a8caa020fcf938ba465e545841d9fd9ef8c1034b07186",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/004-sphere-material.metal.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "8e2bfb67777b6f7af1ead6c317a1dde43e2e7b3a2db9bef73e6390b406a1a062",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/005-sphere-material.hard.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "b4a19f9ba72b0691e349ebd8c10083cf0312ef6c6ef5fe3ae53393c55b1e12f8",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/006-sphere-keyboard-material.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "e6bf5f8a52b89b497c74cc0fcb52d4b7c0d35a8b6c734c8b5a1f593ee5304b6d",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/007-sphere-none.json",
+            "exists": true,
+            "bytes": 10704,
+            "sha256": "0b218f914f08155f34c4b62ad2b0081aa3a0747f45b77821b2a1c7542800a7a3",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/008-sphere-dynamicOccluder.json",
+            "exists": true,
+            "bytes": 10715,
+            "sha256": "6690b18c61d0b993169391de1128565ed93e558f1e6a34c80129c1ff585f4176",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/009-sphere-dynamicReflector.json",
+            "exists": true,
+            "bytes": 10716,
+            "sha256": "52857a81e912a19ba03d4c6bdeb20b8960b8e8de88335e71d593a23b107663ae",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/010-sphere-staticSurface.json",
+            "exists": true,
+            "bytes": 10714,
+            "sha256": "e6bce02d63109029cd9604be2718be033f017def56782a84b45c48c85e4bbb91",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/011-sphere-keyboard-role.json",
+            "exists": true,
+            "bytes": 10717,
+            "sha256": "33e826550440a1d4ae793bb75079315cef04e0b7aa77e7b0ee91ba7dc26d901b",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/012-sphere-undo.json",
+            "exists": true,
+            "bytes": 10717,
+            "sha256": "ac31d7be733dd5ceee49d4bf6bebc0489398118f4c5d4e4f3c7a451bebd8773e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/013-sphere-redo.json",
+            "exists": true,
+            "bytes": 10716,
+            "sha256": "d0c5535ce21ee8a32395262e1b7906980923750a67fffe10d40f59736e01dd98",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/014-sphere-diameter-0.01.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "70dda716bf76dd9b21f8bfb421f87e18723daa9458456e90416e1e4ff3a4c0da",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/015-sphere-diameter-100.json",
+            "exists": true,
+            "bytes": 10720,
+            "sha256": "3057990d2f93b2978f315e958a9272d53f930fb8b130e09a0dfef46d64179db1",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/016-sphere-diameter-2.json",
+            "exists": true,
+            "bytes": 10714,
+            "sha256": "6f6ad9441b25bc963b236570007182cf2fb31b9c208e4a52513865153c826e8d",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/017-sphere-before-invalid.json",
+            "exists": true,
+            "bytes": 10714,
+            "sha256": "381abe0ca12193a44ebbfe35e1174dbd1adf9944f16856927d3ae0e1a5089ec1",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/018-sphere-after-invalid.json",
+            "exists": true,
+            "bytes": 10714,
+            "sha256": "7023019aec2b2ff504ce6bddd5e6eba927ece5fb0c1c02212049e6f7899443bb",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/019-capsule-added.json",
+            "exists": true,
+            "bytes": 11292,
+            "sha256": "5c26cb96b02dbe57b9e69fe9db387bf3675a988a7b448a14760db5aca09d1f3b",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/020-capsule-material.soft.json",
+            "exists": true,
+            "bytes": 11292,
+            "sha256": "b3dc92be00039f2e114b8ecbe0fa055a0399b3ac6650e67e24ab9e6218e71584",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/021-capsule-material.wood.json",
+            "exists": true,
+            "bytes": 11292,
+            "sha256": "02628bc00602948af311e5f4eac56b04e609751131130a190e0404b5aaa7cf85",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/022-capsule-material.metal.json",
+            "exists": true,
+            "bytes": 11293,
+            "sha256": "602541c815729d5d34afc1d6344abce1521a533ffe69a8fa7aa56512167ab976",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/023-capsule-material.hard.json",
+            "exists": true,
+            "bytes": 11292,
+            "sha256": "52276cb973c645e637dc1ae758c1d2a4d80a17af97e97ca220e8ec2e16c47c63",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/024-capsule-keyboard-material.json",
+            "exists": true,
+            "bytes": 11293,
+            "sha256": "560f6100e6ed8d52918367d9258d67b03ec77e9752f825bd6286493bf87b4d56",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/025-capsule-none.json",
+            "exists": true,
+            "bytes": 11273,
+            "sha256": "5a813f8e61562e2ba61435b69cfd030d7d3a8417bd20c950798920d74f77193b",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/026-capsule-dynamicOccluder.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "60ce3a0d8f62d456b23c388aecb333dc6d4a23d9461e53c97324d749ce798993",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/027-capsule-dynamicReflector.json",
+            "exists": true,
+            "bytes": 11285,
+            "sha256": "82e2341ba9af8e33cac0afd46e7fc15cc1cd9a7f7e37013bc2af4b2294b867d6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/028-capsule-staticSurface.json",
+            "exists": true,
+            "bytes": 11282,
+            "sha256": "84de1dd154ffdebd4493b7c3a81f8ca40b8bb4ab0764ddd5162acd6178e8faab",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/029-capsule-keyboard-role.json",
+            "exists": true,
+            "bytes": 11285,
+            "sha256": "f0968c4b9445306c26dd6aeb96af66bf6e4322c3a2cdbd5039d95a0d4d6cf982",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/030-capsule-undo.json",
+            "exists": true,
+            "bytes": 11285,
+            "sha256": "53a4f010de02961a255c85e1f5b02f63a57dbc64709f5db60b692500b5f99998",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/031-capsule-redo.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "b9f92a7085e4518f739f48f0f6109608466dd39e041bd7e1a8991f1180da0584",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/032-capsule-diameter-0.01.json",
+            "exists": true,
+            "bytes": 11292,
+            "sha256": "4e6007bc2a1f6a3cf0a6b4843e27e47164c4192978fc99fb0337518828003f8e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/033-capsule-diameter-100.json",
+            "exists": true,
+            "bytes": 11290,
+            "sha256": "0221004dea50e4dae8069c1ac2e6bc3af1bf7ec7e9a4df81c994f19e7ff659ba",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/034-capsule-diameter-1.json",
+            "exists": true,
+            "bytes": 11286,
+            "sha256": "17a387426dd03b8ed711ac6690cadaed347dc6da134de10f4df3920eba97e0e1",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/035-capsule-min-both.json",
+            "exists": true,
+            "bytes": 11293,
+            "sha256": "ecf4c0b46f7de65fa0e98f286577e2219f0674fb7dc0d2267c45551b91f35ed9",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/036-capsule-before-invalid.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "5b53d443bddf3d5653c864cb5475bb7e54e4d3010aa43e291ad4008fe1f6c551",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/037-capsule-after-invalid.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "5aaa6ada1bb5fdfb89629aaa2ab24986fcecf5c30f2cb933bb26ef2388853a95",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/038-curved-controls-roundtrip.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "fff078a86c3a4acf171e9d06db6cfa640cc31f33ed7de561e7d0231335b329c8",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/039-curved-controls-imported.json",
+            "exists": true,
+            "bytes": 11284,
+            "sha256": "599fd5bd7e0479c80b718d9488b3f6ddfcfd24445d5d62e2d1867b9d26f069a3",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/040-sphere-hard-recording.json",
+            "exists": true,
+            "bytes": 1501959,
+            "sha256": "f20540f0478de95a8da03498407358de931c196c64fe5e05554c095ca69fe4f1",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/041-sphere-soft-recording.json",
+            "exists": true,
+            "bytes": 1503409,
+            "sha256": "7728490607c1c4b78b5ac534d246eef074090fef5af473a74f3a3054088e6597",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/042-capsule-moving-recording.json",
+            "exists": true,
+            "bytes": 1539403,
+            "sha256": "1088b2ff909e36174bb61a3362616642ef76489d367fee6b81d43f4a8099263e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/downloads/043-box-moving-recording.json",
+            "exists": true,
+            "bytes": 1481833,
+            "sha256": "3a4b53564f1a1d9316ae919d8eb106a8189c09414451f40341fab8df1f192d4b",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/fixture-box-material.hard-moving.json",
+            "exists": true,
+            "bytes": 2786,
+            "sha256": "e6ef0a067495a6c773ce038de6cfae34933f0db4612ae8cc88e827374548c263",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/fixture-capsule-material.hard-moving.json",
+            "exists": true,
+            "bytes": 2806,
+            "sha256": "eee6eee27d74e67ecfc20e8fbcf5c25ef88cbc93033b03faa6adcd8c15dea8af",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/fixture-sphere-material.hard-static.json",
+            "exists": true,
+            "bytes": 2794,
+            "sha256": "1107dbf344a5875c3fcb3b29c98179b7d080967def097934d353c77125c7ecde",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/initial-runner.mjs",
+            "exists": true,
+            "bytes": 22771,
+            "sha256": "e1e33a98b8bf7876abe184b44a0d2d0993567cdfbc1b1746d6681637a5245102",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-final-49bde82/summary.json",
+            "exists": true,
+            "bytes": 35030,
+            "sha256": "ba0cc53b3f3e3573b1b3fa48b24bff8e88a2fca19ce5ceae29d9bbab0a757c0d",
+            "matches": true
+          }
+        ]
+      },
+      {
+        "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/evidence-manifest.json",
+        "sha256": "40ce708d53b383bfab93b032f5638c00fcfaf697c10116eebd49487d7bf347fa",
+        "entries": 39,
+        "declared": 39,
+        "bytes": 3872325,
+        "allMatch": true,
+        "files": [
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/box-dynamic-path.png",
+            "exists": true,
+            "bytes": 226318,
+            "sha256": "f4def64623c84dae77894cc15294321726ef9124a5c69d561cf28d1cbcf3758c",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/browser-recheck-output.txt",
+            "exists": true,
+            "bytes": 1006,
+            "sha256": "01022a39c893e0a62b02068a1ef0254b841d743fe08c0ef95e82f1fb4cc2f216",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/capsule-dynamic-path.png",
+            "exists": true,
+            "bytes": 245323,
+            "sha256": "51352dc8b2ba9832ce9a29ce2d0e3fd96edf47e44bffa66064e626eb1037b1b6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/001-base-default-project.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "40bb6bb3a82c6e0a79397a9f07d0a243c626ac5f6e20807a0977b13c8968ad90",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/002-sphere-material.soft.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "8add5c107892f0bb9d6cfacd2b8697baf344e672b2e6e4d4f11106db1b7a8fd4",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/003-sphere-material.wood.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "bafa3c399130d3734fd8dc3b9e79aa9d0ca787a97936d0c262bdb67bc71b0460",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/004-sphere-material.metal.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "4b08117af1cf97f12a7b9557d3e13fdb53370befed9abfa0c48a354c4d01f0c4",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/005-sphere-material.hard.json",
+            "exists": true,
+            "bytes": 10723,
+            "sha256": "af3961e501f58db91818ce5584104c6e8b497f54b283f30db36b5001d10953d6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/006-sphere-keyboard-material.json",
+            "exists": true,
+            "bytes": 10724,
+            "sha256": "b7d59b48042110cca077b2eabaaeef581b7ba13993a4cb757f711d8a539a79b2",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/007-sphere-none.json",
+            "exists": true,
+            "bytes": 10704,
+            "sha256": "9b8561c33b4d337cbe38cb2f9727b06519d0736c1ec2ebc547b016af7734ae52",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/008-sphere-dynamicOccluder.json",
+            "exists": true,
+            "bytes": 10715,
+            "sha256": "5c7d3a2256354ce0451f2e2e2815db8b00082a34c0111c70e9433aceb1e4bceb",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/009-sphere-dynamicReflector.json",
+            "exists": true,
+            "bytes": 10716,
+            "sha256": "a4b29a31ae4c51197aeafa6e5b44047859306b4c97679fa81fbccd8c7b8e164e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/010-sphere-staticSurface.json",
+            "exists": true,
+            "bytes": 10714,
+            "sha256": "cc6a71b2a1cf69c6a8004315b2c8655615f1abe7e9d28e6b7ebefb15025fccd2",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/011-sphere-keyboard-role.json",
+            "exists": true,
+            "bytes": 10717,
+            "sha256": "5b5fe526ec88b6057dc1f7d988172bad820f2e1bbb350f89cb287eade2d470aa",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/012-sphere-undo.json",
+            "exists": true,
+            "bytes": 10717,
+            "sha256": "349f210a6094cf4dff1414d78e0ebfbde2911bdc414e7e1bdc82ed4453ef8a34",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/013-sphere-redo.json",
+            "exists": true,
+            "bytes": 10716,
+            "sha256": "436692dcfb824f694059042037ae05f43b57ac5fe6554a9c4bf3a3ee84389506",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/014-sphere-kinematic-mode-proof.json",
+            "exists": true,
+            "bytes": 10720,
+            "sha256": "ab290ad93e24f5e6ed475de0272dcc466ba95af7ec4f4226cf3e6c077bdce5d0",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/015-sphere-kinematic-reflector.json",
+            "exists": true,
+            "bytes": 10720,
+            "sha256": "9363e9420e20dbe542fbfbf4126f446d2f062e2a115f9d7f19028dc8108ad32e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/016-capsule-added.json",
+            "exists": true,
+            "bytes": 11298,
+            "sha256": "7a814c4a633de266d856de39af0058dbe47a2bde2e312b89c949ab23b93f74f4",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/017-capsule-material.soft.json",
+            "exists": true,
+            "bytes": 11298,
+            "sha256": "0c38a11441fe6ff505d7d873883a95d47f8c2c61c1de7895886158519ca90e7c",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/018-capsule-material.wood.json",
+            "exists": true,
+            "bytes": 11298,
+            "sha256": "8043c393382497d89485fecb9bef4131ce1bbbab8d6c02ad1ea3f4b04dfc4381",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/019-capsule-material.metal.json",
+            "exists": true,
+            "bytes": 11299,
+            "sha256": "8f3f01a414dcb5d5889df66138460231cb93493b3408ff7c29b6140a4c96437e",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/020-capsule-material.hard.json",
+            "exists": true,
+            "bytes": 11298,
+            "sha256": "9ee0ee4d5ff4ab69487500e8b2558b635943755758f150344a33d7a0409e0c1b",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/021-capsule-keyboard-material.json",
+            "exists": true,
+            "bytes": 11299,
+            "sha256": "01e48c8038020aa8fb9620195fd4013e014d037316b3037b0e56e8fdf093bd2c",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/022-capsule-none.json",
+            "exists": true,
+            "bytes": 11279,
+            "sha256": "ee7905acb2200399e7aea0a48f044ba5ce740520400e5591bbbcb9fb2f3e3274",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/023-capsule-dynamicOccluder.json",
+            "exists": true,
+            "bytes": 11290,
+            "sha256": "ff12e966d5edd7fdebc3ac1e794ef66ef5104e8005ed13fa9d7374874b6dc620",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/024-capsule-dynamicReflector.json",
+            "exists": true,
+            "bytes": 11291,
+            "sha256": "97b92bcb4b10f8fea5f44344ee7d2ab5bbb4a2d563e7e7f5994ebebad9f8c045",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/025-capsule-staticSurface.json",
+            "exists": true,
+            "bytes": 11288,
+            "sha256": "4c7884de50a7d0f85b584f2bffd25f9295a5acf220882e844930b5739c96d8ba",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/026-capsule-keyboard-role.json",
+            "exists": true,
+            "bytes": 11291,
+            "sha256": "d5f0140319bef93e1517549b680829f94f513aa9851e95e453ff27bcd9cefd50",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/027-capsule-undo.json",
+            "exists": true,
+            "bytes": 11291,
+            "sha256": "e43100461114f6a12a1e3c548134b2dded44a810638c2894652e61152a8e1c37",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/028-capsule-redo.json",
+            "exists": true,
+            "bytes": 11290,
+            "sha256": "e0db30755171d388428087ce68c1c704adee4fd0a8914b8eb83a1653b0df1fcb",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/029-capsule-kinematic-mode-proof.json",
+            "exists": true,
+            "bytes": 11294,
+            "sha256": "b07ad8a14ec5b2834341f0f17cdd95e84fe53a2eff52260cf373126730c934e6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/030-capsule-kinematic-reflector.json",
+            "exists": true,
+            "bytes": 11294,
+            "sha256": "6dd3c6054302cb9009a851e97135677e247cd4b1bb197dfdbc0a79364d683b99",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/031-capsule-moving-recording.json",
+            "exists": true,
+            "bytes": 1539409,
+            "sha256": "32af65cdfca018f2cd24d92f17b787ae24f2e2fcf36f5e876a31ed8a473cf23a",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/downloads/032-box-moving-recording.json",
+            "exists": true,
+            "bytes": 1481932,
+            "sha256": "4c812560df0ecdb27ad8b9a3cb1c3e595db9ace1bfeb11d61bd71a596a721af6",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/fixture-box-material.hard-moving.json",
+            "exists": true,
+            "bytes": 2786,
+            "sha256": "96f57f2ecc2dbc543563df8749b12f872018706c721f3badc618b6cbc16d1f5a",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/fixture-capsule-material.hard-moving.json",
+            "exists": true,
+            "bytes": 2806,
+            "sha256": "17fa9537ca984bfd2aea3b371b50488cb790deab27542c04239164ac1ae31e97",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/runner.mjs",
+            "exists": true,
+            "bytes": 23495,
+            "sha256": "7a77758ca3006cc82b2d332ddb926786e07bdbcc0ca8371110ccdd11fdb2969f",
+            "matches": true
+          },
+          {
+            "path": "docs/14-core-pipeline/stages/11-ui-parameters/scene/curved-recheck-49bde82/summary.json",
+            "exists": true,
+            "bytes": 19072,
+            "sha256": "abf94021c2797cb9016e8f2bf31edcac479b6a0d657d15ac18ce20d41ba692eb",
+            "matches": true
+          }
+        ]
+      }
+    ]
+  },
+  "currentProductFinding": {
+    "path": "docs/14-core-pipeline/stages/11-ui-parameters/pipeline/motion/SHORT_TAKE_DEBT_CANDIDATE.json",
+    "sha256": "5b6a9f7bfc3f3f06cd26757a3e8d661fd1380138c3feada10ccc61cbcd49bd5d",
+    "originalClassification": "CONFIRMED_UI_REPRO_PRODUCT_CANDIDATE_OWNER_REVIEW_REQUIRED",
+    "before": {
+      "kind": "recording-prefix",
+      "tick": "tick 7",
+      "notice": "繼續運算\n重設\n已暫停\n0.12 s\ntick 7\n● 記錄中\n場景\n檢查器",
+      "method": "Respect explicit fixed-step overload pause; stop and retain the continuous prefix."
+    },
+    "after": {
+      "tick": 10,
+      "uiTimeS": 0.17,
+      "recordingDurationText": "0.03 s",
+      "status": "中斷紀錄已封存；不可重播",
+      "error": "SHORT_TAKE_INTERRUPTED: fixed step did not complete"
+    },
+    "ownerConclusion": "Root confirmed wall-time debt/controlled-step interaction as product issue; codefix9fcf3f0657813f5aa07bf936a1cb6a50f2628f30 reported, latest production UI retest still pending; no receipt result rewritten."
+  },
+  "r21Audit": {
+    "path": "docs/15-ui-parameter-audit/evidence/R21_ORPHAN_HELPER_AUDIT.json",
+    "sha256": "a72d6481da5f2779c7863e9cc0a78f0b0562d8cef8ee8889f81bfd2fffb576e7",
+    "decision": "RETAIN_OLD_R21_AND_C_PRIMARY",
+    "activeJobs": "NOT_INSPECTED",
+    "mutations": {
+      "oldWorktreeMoved": false,
+      "oldWorktreeDeleted": false,
+      "gitRegistrationChanged": false,
+      "processKilled": false,
+      "internalRpcSent": false,
+      "officialHookInvoked": false,
+      "receiptOnly": true
+    }
+  },
+  "limits": [
+    "Read existing receipts, hash fixed artifacts and compare available Git blobs only; no new browser/product/science/hearing tests. First writer read assumed all test runners committed and git show failed128; corrected to explicit working runner pins versus committed product pins, without rewriting receipts.",
+    "Interaction59family/58caseIDs uses multiple253/d9/49versions; final49retestedonlytwo.",
+    "Curves8groups combinefirst4PASS andnarrow4harnessrecheck; original4FAIL preserved.",
+    "49fullruntime1523PASS remains historical; newlyconfirmedshorttakeFAIL not closedbypriorPASS; fullpipeline/Mainpending."
+  ]
+}

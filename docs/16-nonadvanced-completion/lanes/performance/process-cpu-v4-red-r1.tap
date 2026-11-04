@@ -1,0 +1,480 @@
+TAP version 13
+# Subtest: process CPU method exposes the independent versioned summarizer
+not ok 1 - process CPU method exposes the independent versioned summarizer
+  ---
+  duration_ms: 12.8633
+  type: 'test'
+  location: 'D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\performance-v3\\process-cpu-v4.spec.mjs:38:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/Developing/Meta%20Hack/.worktrees/nonadvanced-20261103/baseline/tests/performance-v3/process-cpu-v4.spec.mjs:39:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: same complete PID/type sets use cumulative CPU seconds over the actual wall interval
+ok 2 - same complete PID/type sets use cumulative CPU seconds over the actual wall interval # SKIP
+  ---
+  duration_ms: 0.8139
+  type: 'test'
+  ...
+# Subtest: a measured positive cumulative counter that does not change preserves actual delta zero
+ok 3 - a measured positive cumulative counter that does not change preserves actual delta zero # SKIP
+  ---
+  duration_ms: 0.314
+  type: 'test'
+  ...
+# Subtest: subsecond wall duration is converted from milliseconds exactly once
+ok 4 - subsecond wall duration is converted from milliseconds exactly once # SKIP
+  ---
+  duration_ms: 0.2876
+  type: 'test'
+  ...
+# Subtest: a zero cumulative endpoint is ambiguous in the pinned producer and cannot become measured zero
+ok 5 - a zero cumulative endpoint is ambiguous in the pinned producer and cannot become measured zero # SKIP
+  ---
+  duration_ms: 0.2728
+  type: 'test'
+  ...
+# Subtest: a new process prevents a matched subset from being presented as whole-browser CPU
+ok 6 - a new process prevents a matched subset from being presented as whole-browser CPU # SKIP
+  ---
+  duration_ms: 0.3168
+  type: 'test'
+  ...
+# Subtest: a disappeared process prevents a smaller surviving total from being reported as complete
+ok 7 - a disappeared process prevents a smaller surviving total from being reported as complete # SKIP
+  ---
+  duration_ms: 0.2283
+  type: 'test'
+  ...
+# Subtest: a PID whose type changes cannot inherit the previous process counter
+ok 8 - a PID whose type changes cannot inherit the previous process counter # SKIP
+  ---
+  duration_ms: 0.5426
+  type: 'test'
+  ...
+# Subtest: a cumulative counter reset is unknown rather than a negative CPU measurement
+ok 9 - a cumulative counter reset is unknown rather than a negative CPU measurement # SKIP
+  ---
+  duration_ms: 1.1083
+  type: 'test'
+  ...
+# Subtest: two empty endpoints do not claim that the browser consumed zero CPU
+ok 10 - two empty endpoints do not claim that the browser consumed zero CPU # SKIP
+  ---
+  duration_ms: 1.3611
+  type: 'test'
+  ...
+# Subtest: invalid before missing response remains explicit unknown
+ok 11 - invalid before missing response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.5197
+  type: 'test'
+  ...
+# Subtest: invalid after missing response remains explicit unknown
+ok 12 - invalid after missing response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.3797
+  type: 'test'
+  ...
+# Subtest: invalid before null response remains explicit unknown
+ok 13 - invalid before null response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.251
+  type: 'test'
+  ...
+# Subtest: invalid after null response remains explicit unknown
+ok 14 - invalid after null response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.2665
+  type: 'test'
+  ...
+# Subtest: invalid before array instead of response remains explicit unknown
+ok 15 - invalid before array instead of response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.2172
+  type: 'test'
+  ...
+# Subtest: invalid after array instead of response remains explicit unknown
+ok 16 - invalid after array instead of response remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.2326
+  type: 'test'
+  ...
+# Subtest: invalid before missing processInfo remains explicit unknown
+ok 17 - invalid before missing processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.2182
+  type: 'test'
+  ...
+# Subtest: invalid after missing processInfo remains explicit unknown
+ok 18 - invalid after missing processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.2172
+  type: 'test'
+  ...
+# Subtest: invalid before null processInfo remains explicit unknown
+ok 19 - invalid before null processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.1962
+  type: 'test'
+  ...
+# Subtest: invalid after null processInfo remains explicit unknown
+ok 20 - invalid after null processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.1218
+  type: 'test'
+  ...
+# Subtest: invalid before object processInfo remains explicit unknown
+ok 21 - invalid before object processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.154
+  type: 'test'
+  ...
+# Subtest: invalid after object processInfo remains explicit unknown
+ok 22 - invalid after object processInfo remains explicit unknown # SKIP
+  ---
+  duration_ms: 0.1322
+  type: 'test'
+  ...
+# Subtest: before null row is not coerced or silently discarded
+ok 23 - before null row is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1178
+  type: 'test'
+  ...
+# Subtest: after null row is not coerced or silently discarded
+ok 24 - after null row is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1172
+  type: 'test'
+  ...
+# Subtest: before scalar row is not coerced or silently discarded
+ok 25 - before scalar row is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1268
+  type: 'test'
+  ...
+# Subtest: after scalar row is not coerced or silently discarded
+ok 26 - after scalar row is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1302
+  type: 'test'
+  ...
+# Subtest: before string PID is not coerced or silently discarded
+ok 27 - before string PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1184
+  type: 'test'
+  ...
+# Subtest: after string PID is not coerced or silently discarded
+ok 28 - after string PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.336
+  type: 'test'
+  ...
+# Subtest: before fractional PID is not coerced or silently discarded
+ok 29 - before fractional PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.2149
+  type: 'test'
+  ...
+# Subtest: after fractional PID is not coerced or silently discarded
+ok 30 - after fractional PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1495
+  type: 'test'
+  ...
+# Subtest: before zero PID is not coerced or silently discarded
+ok 31 - before zero PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1547
+  type: 'test'
+  ...
+# Subtest: after zero PID is not coerced or silently discarded
+ok 32 - after zero PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1213
+  type: 'test'
+  ...
+# Subtest: before negative PID is not coerced or silently discarded
+ok 33 - before negative PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1188
+  type: 'test'
+  ...
+# Subtest: after negative PID is not coerced or silently discarded
+ok 34 - after negative PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1171
+  type: 'test'
+  ...
+# Subtest: before missing PID is not coerced or silently discarded
+ok 35 - before missing PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1198
+  type: 'test'
+  ...
+# Subtest: after missing PID is not coerced or silently discarded
+ok 36 - after missing PID is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1162
+  type: 'test'
+  ...
+# Subtest: before empty process type is not coerced or silently discarded
+ok 37 - before empty process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.116
+  type: 'test'
+  ...
+# Subtest: after empty process type is not coerced or silently discarded
+ok 38 - after empty process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1517
+  type: 'test'
+  ...
+# Subtest: before nonstring process type is not coerced or silently discarded
+ok 39 - before nonstring process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1851
+  type: 'test'
+  ...
+# Subtest: after nonstring process type is not coerced or silently discarded
+ok 40 - after nonstring process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.5696
+  type: 'test'
+  ...
+# Subtest: before missing process type is not coerced or silently discarded
+ok 41 - before missing process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1844
+  type: 'test'
+  ...
+# Subtest: after missing process type is not coerced or silently discarded
+ok 42 - after missing process type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1326
+  type: 'test'
+  ...
+# Subtest: before missing CPU counter is not coerced or silently discarded
+ok 43 - before missing CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1296
+  type: 'test'
+  ...
+# Subtest: after missing CPU counter is not coerced or silently discarded
+ok 44 - after missing CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1303
+  type: 'test'
+  ...
+# Subtest: before null CPU counter is not coerced or silently discarded
+ok 45 - before null CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1802
+  type: 'test'
+  ...
+# Subtest: after null CPU counter is not coerced or silently discarded
+ok 46 - after null CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1444
+  type: 'test'
+  ...
+# Subtest: before string CPU counter is not coerced or silently discarded
+ok 47 - before string CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.2203
+  type: 'test'
+  ...
+# Subtest: after string CPU counter is not coerced or silently discarded
+ok 48 - after string CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1255
+  type: 'test'
+  ...
+# Subtest: before NaN CPU counter is not coerced or silently discarded
+ok 49 - before NaN CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1203
+  type: 'test'
+  ...
+# Subtest: after NaN CPU counter is not coerced or silently discarded
+ok 50 - after NaN CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1373
+  type: 'test'
+  ...
+# Subtest: before infinite CPU counter is not coerced or silently discarded
+ok 51 - before infinite CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1228
+  type: 'test'
+  ...
+# Subtest: after infinite CPU counter is not coerced or silently discarded
+ok 52 - after infinite CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1192
+  type: 'test'
+  ...
+# Subtest: before negative CPU counter is not coerced or silently discarded
+ok 53 - before negative CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1188
+  type: 'test'
+  ...
+# Subtest: after negative CPU counter is not coerced or silently discarded
+ok 54 - after negative CPU counter is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1195
+  type: 'test'
+  ...
+# Subtest: before duplicate PID/type is not coerced or silently discarded
+ok 55 - before duplicate PID/type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.118
+  type: 'test'
+  ...
+# Subtest: after duplicate PID/type is not coerced or silently discarded
+ok 56 - after duplicate PID/type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1887
+  type: 'test'
+  ...
+# Subtest: before same PID with another type is not coerced or silently discarded
+ok 57 - before same PID with another type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1257
+  type: 'test'
+  ...
+# Subtest: after same PID with another type is not coerced or silently discarded
+ok 58 - after same PID with another type is not coerced or silently discarded # SKIP
+  ---
+  duration_ms: 0.1203
+  type: 'test'
+  ...
+# Subtest: null options cannot substitute a fixed 600-second denominator or an advertised status
+ok 59 - null options cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1206
+  type: 'test'
+  ...
+# Subtest: non-object options cannot substitute a fixed 600-second denominator or an advertised status
+ok 60 - non-object options cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1216
+  type: 'test'
+  ...
+# Subtest: missing interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 61 - missing interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1209
+  type: 'test'
+  ...
+# Subtest: null interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 62 - null interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1239
+  type: 'test'
+  ...
+# Subtest: string interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 63 - string interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1206
+  type: 'test'
+  ...
+# Subtest: zero interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 64 - zero interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1226
+  type: 'test'
+  ...
+# Subtest: negative interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 65 - negative interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1279
+  type: 'test'
+  ...
+# Subtest: NaN interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 66 - NaN interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1302
+  type: 'test'
+  ...
+# Subtest: infinite interval cannot substitute a fixed 600-second denominator or an advertised status
+ok 67 - infinite interval cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1648
+  type: 'test'
+  ...
+# Subtest: missing scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 68 - missing scope cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.2044
+  type: 'test'
+  ...
+# Subtest: nonstring scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 69 - nonstring scope cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1921
+  type: 'test'
+  ...
+# Subtest: empty scope cannot substitute a fixed 600-second denominator or an advertised status
+ok 70 - empty scope cannot substitute a fixed 600-second denominator or an advertised status # SKIP
+  ---
+  duration_ms: 0.1327
+  type: 'test'
+  ...
+# Subtest: advertised totals and success flags cannot repair a missing raw counter
+ok 71 - advertised totals and success flags cannot repair a missing raw counter # SKIP
+  ---
+  duration_ms: 0.1361
+  type: 'test'
+  ...
+# Subtest: overflow of finite per-process deltas does not serialize Infinity as a valid total
+ok 72 - overflow of finite per-process deltas does not serialize Infinity as a valid total # SKIP
+  ---
+  duration_ms: 0.1413
+  type: 'test'
+  ...
+# Subtest: overflow of CPU/wall ratio leaves the derived canonical totals unknown
+ok 73 - overflow of CPU/wall ratio leaves the derived canonical totals unknown # SKIP
+  ---
+  duration_ms: 0.1211
+  type: 'test'
+  ...
+# Subtest: the maximum bounded process list is fully evaluated without truncation
+ok 74 - the maximum bounded process list is fully evaluated without truncation # SKIP
+  ---
+  duration_ms: 0.125
+  type: 'test'
+  ...
+# Subtest: one process beyond the observation cap fails closed rather than reporting a truncated total
+ok 75 - one process beyond the observation cap fails closed rather than reporting a truncated total # SKIP
+  ---
+  duration_ms: 0.1245
+  type: 'test'
+  ...
+1..75
+# tests 75
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 74
+# todo 0
+# duration_ms 345.6716

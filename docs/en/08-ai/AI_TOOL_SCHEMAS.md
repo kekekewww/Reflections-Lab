@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/08-ai/AI_TOOL_SCHEMAS.md","sha256":"48eb330d7c2f30dd544d61bd1dc75d0657569985696f1a0a9fd8db9c6340602f","translated_at":"2026-10-27T03:40:41Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/08-ai/AI_TOOL_SCHEMAS.md","sha256":"860b9b9338e7049612ded625c066b4f5fb4319db7ff397a49628cbc835001a4c","translated_at":"2026-11-04T10:11:36.889Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/08-ai/AI_TOOL_SCHEMAS.md`](../../08-ai/AI_TOOL_SCHEMAS.md). Source SHA-256: `48eb330d7c2f30dd544d61bd1dc75d0657569985696f1a0a9fd8db9c6340602f`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/08-ai/AI_TOOL_SCHEMAS.md`](../../08-ai/AI_TOOL_SCHEMAS.md). Source SHA-256: `860b9b9338e7049612ded625c066b4f5fb4319db7ff397a49628cbc835001a4c`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="ai-工具契約"></a>
@@ -13,7 +13,7 @@ Status: Draft 2020-12 JSON Schema is provided; tool executors and provider integ
 
 | File | What it validates |
 | --- | --- |
-| `schemas/ai-tool-request.schema.json` | Envelopes for 12 request types and `$defs/<ToolName>` parameters; mutations require non-null transactionId; execution/analysis tools require null. |
+| `schemas/ai-tool-request.schema.json` | Envelopes for 15 request types and `$defs/<ToolName>` parameters; mutations require non-null transactionId; execution/analysis tools require null. |
 | `schemas/ai-tool-result.schema.json` | Status, artifact IDs, metrics, errors, and usage returned by the host/solver. |
 | `schemas/ai-scene-change-set.schema.json` | Host-managed transaction records and preview/approval metadata. |
 | `schemas/ai-provider-config.schema.json` | Secret-free provider gates, capability verification, and cost/resource budgets. |
@@ -34,6 +34,9 @@ Common envelope: `schemaVersion:"1.0.0"`, `requestId`, `sceneId`, `expectedScene
 | ConfigureSoundSource | sourceId, objectId, signalId, mode, gainDbfs, referenceFrequencyHz | continuous/impact; −80 to −6dBFS, 20–20,000Hz; does not automatically start sound; stage. |
 | MoveListener | listenerId, positionM, orientationQuaternion | Production listener; separate from the editor camera; stage. |
 | SetTrajectory | objectId, interpolation, samples | linearSlerp/recordedTrace; 2–64 points, 0–30 seconds; ordered times, non-fixed body, source trace verification; stage. |
+| MoveObject | objectId, positionM, orientationQuaternion | Moves an existing object; rejected when the object doesn't exist; stage. |
+| ResizeObject | objectId, dimensionsM | Resizes an existing object and keeps its shape; its paths are rebound with it; stage. |
+| RemoveObject | objectId | Removes an object with its sound sources, sound bindings and paths; Undo can restore them; stage. |
 | RunSimulation | backendId, durationS, timeStepS, seed, replayTraceId, maxReflectionOrder, sampleRateHz | 0.1–30 seconds, steps of 1/60 or 1/120, order 0–2, 44.1/48kHz; execute only supported capabilities; return a run artifact. |
 | CaptureExperiment | runId, label | Completed runs only; save immutable snapshot/metadata references, without writing its own numerical values. |
 | AnalyzeAcousticResults | runId, metrics, bandCentersHz | At most 8 metrics and 6 specified bands; analyze only actual artifacts; return unavailable for missing data. |

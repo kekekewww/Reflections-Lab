@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-03T03:28:07.2038581+00:00",
+  "run": "perf-nonadvanced-20261103-v4-wiring-01",
+  "status": "NATIVE_ENDPOINTS_OBSERVED_TOTAL_CPU_UNVERIFIED_PARTIAL_PROCESS_COVERAGE",
+  "reviewScope": "Read-only CPU evidence review; no rerun or source implementation",
+  "reviewers": [
+    {
+      "agent": "formal_cpu_endpoint_tests",
+      "role": "Report assembler and independent PowerShell raw-data arithmetic; also original helper author, disclosed",
+      "executedNodeOrReaderOrBrowser": false
+    },
+    {
+      "agent": "formal_cpu_endpoint_tests/wiring01_cpu_raw_audit",
+      "role": "Fresh task independently parsed raw endpoints, exact creation strings, BigInt deltas, CDP deltas, timing equations and hashes",
+      "executedNodeOrReaderOrBrowser": false
+    }
+  ],
+  "runOutcome": {
+    "sourceHead": "6ba01b44b57a4741a7e58fb42718e71875b776f3",
+    "childResult": {
+      "exit_code": 0,
+      "signal": null,
+      "timed_out": false,
+      "cancelled": false,
+      "process_stopped": true,
+      "duration_ms": 164011.1264,
+      "output_limit": false,
+      "spawn_error": null,
+      "stop_scope": "direct_process",
+      "process_tree_stopped": null
+    },
+    "measuredStatus": "MEASURED_WITH_INCOMPLETE_ACOUSTIC_WORKLOAD",
+    "executionStatus": "MEASURED_WITH_INCOMPLETE_ACOUSTIC_WORKLOAD",
+    "requestedSeconds": 20,
+    "profileClass": "V4_SHORT_DIAGNOSTIC_ONLY",
+    "probeMode": "on",
+    "topMonitor": {
+      "mode": "levels",
+      "input": "master-left"
+    },
+    "audioPolicyArm": "reference",
+    "formalQualified": false,
+    "formalQualification": "NOT_APPROVED",
+    "formal600Run": false,
+    "overallV1Complete": false,
+    "meaning": "Child exit0 proves execution completion only. The unchanged measured incomplete-acoustic-workload result remains not qualified."
+  },
+  "cpuVerdict": {
+    "processCpuStatus": "ENDPOINTS_COLLECTED_NOT_CONTINUOUS_CPU_COVERAGE",
+    "beforeCount": 8,
+    "afterCount": 9,
+    "commonCount": 8,
+    "newProcesses": [
+      {
+        "id": 33516,
+        "type": "tracing.mojom.TracingService",
+        "status": "PROCESS_SET_CHANGED",
+        "beforeCreationTimeFileTimeTicks": null,
+        "afterCreationTimeFileTimeTicks": "134381491501101454",
+        "creationIdentityExactMatch": null,
+        "beforeKernelTimeTicks": null,
+        "beforeUserTimeTicks": null,
+        "afterKernelTimeTicks": "156250",
+        "afterUserTimeTicks": "0",
+        "recomputedDeltaUserTicks": null,
+        "recomputedDeltaKernelTicks": null,
+        "deltaCpuTicks": null,
+        "deltaCpuSeconds": null,
+        "independentIntegerDeltaMatches": null,
+        "cdpBeforeCpuSeconds": null,
+        "cdpAfterCpuSeconds": 0.052099,
+        "cdpDeltaCpuSeconds": null,
+        "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+      }
+    ],
+    "disappearedProcesses": [],
+    "osStatus": "PARTIAL_PROCESS_COVERAGE",
+    "osCompleteCoverage": false,
+    "osReasons": [
+      "PROCESS_SET_IDENTITY_OR_COUNTER_CHANGED"
+    ],
+    "osTotalCpuSeconds": null,
+    "osCpuToWallRatio": null,
+    "cdpStatus": "PARTIAL_PROCESS_COVERAGE",
+    "cdpCompleteCoverage": false,
+    "cdpReasons": [
+      "PROCESS_ENDPOINT_IDENTITY_SET_CHANGED"
+    ],
+    "cdpTotalCpuSeconds": null,
+    "cdpCpuToWallRatio": null,
+    "nativeDspCpuMs": null,
+    "hardwareUnderruns": null,
+    "subsetNotAggregated": true,
+    "meaning": "Both native helpers succeeded, but after introduced TracingService PID33516. Canonical whole-browser CPU and ratio remain null; do not sum a surviving subset as complete CPU."
+  },
+  "endpoints": [
+    {
+      "boundary": "before",
+      "endpointStatus": "OBSERVED",
+      "reasons": [],
+      "cdpPidCount": 8,
+      "requestPidCount": 8,
+      "replyPidCount": 8,
+      "typedOwners": [
+        {
+          "id": 85828,
+          "type": "browser"
+        },
+        {
+          "id": 74496,
+          "type": "renderer"
+        },
+        {
+          "id": 86724,
+          "type": "renderer"
+        },
+        {
+          "id": 69272,
+          "type": "renderer"
+        },
+        {
+          "id": 78244,
+          "type": "GPU"
+        },
+        {
+          "id": 78952,
+          "type": "network.mojom.NetworkService"
+        },
+        {
+          "id": 85208,
+          "type": "storage.mojom.StorageService"
+        },
+        {
+          "id": 54676,
+          "type": "audio.mojom.AudioService"
+        }
+      ],
+      "allWin32OpenQueryCloseStrictTrueWithNullErrors": true,
+      "failedRows": [],
+      "process": {
+        "exit_code": 0,
+        "signal": null,
+        "timed_out": false,
+        "cancelled": false,
+        "process_stopped": true,
+        "duration_ms": 804.4566999999806,
+        "output_limit": false,
+        "spawn_error": null,
+        "stop_scope": "direct_process",
+        "process_tree_stopped": null
+      },
+      "stderr": "",
+      "helperLeaseReleasable": true,
+      "timing": {
+        "startedMonotonicMs": 131304.9943,
+        "endedMonotonicMs": 132133.2853
+      },
+      "captureWallMilliseconds": 828.2909999999974,
+      "pins": {
+        "helper": {
+          "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\browser\\performance-process-times-v4.ps1",
+          "beforeSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+          "afterSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+          "beforeBytes": 7363,
+          "afterBytes": 7363
+        },
+        "powerShell": {
+          "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "beforeSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+          "afterSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+          "beforeBytes": 495616,
+          "afterBytes": 495616
+        }
+      },
+      "request": {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\artifacts\\v1\\perf-nonadvanced-20261103-v4-wiring-01\\native\\cpu\\before-20261103T031018487Z.before.process-times-request.json",
+        "sha256": "f2056cd7c389113dc0462229c98822d09e55d13f125bf127996b6506bab644bc",
+        "recordedBeforeSha256": "f2056cd7c389113dc0462229c98822d09e55d13f125bf127996b6506bab644bc",
+        "recordedAfterSha256": "f2056cd7c389113dc0462229c98822d09e55d13f125bf127996b6506bab644bc",
+        "textEqualsRecordedRequestJson": true,
+        "hashesAgree": true
+      },
+      "stdout": {
+        "storage": "native/verification.json#/processCpu/before/os/process/stdout",
+        "encoding": "UTF-8, original CRLF retained",
+        "sha256": "47b7a17641acc5df106999310f62b4c688e2b7c18b4fbecd272f2ce9ea7322fd",
+        "recordedSha256": "47b7a17641acc5df106999310f62b4c688e2b7c18b4fbecd272f2ce9ea7322fd",
+        "hashAgrees": true
+      }
+    },
+    {
+      "boundary": "after",
+      "endpointStatus": "OBSERVED",
+      "reasons": [],
+      "cdpPidCount": 9,
+      "requestPidCount": 9,
+      "replyPidCount": 9,
+      "typedOwners": [
+        {
+          "id": 85828,
+          "type": "browser"
+        },
+        {
+          "id": 74496,
+          "type": "renderer"
+        },
+        {
+          "id": 86724,
+          "type": "renderer"
+        },
+        {
+          "id": 69272,
+          "type": "renderer"
+        },
+        {
+          "id": 78244,
+          "type": "GPU"
+        },
+        {
+          "id": 78952,
+          "type": "network.mojom.NetworkService"
+        },
+        {
+          "id": 85208,
+          "type": "storage.mojom.StorageService"
+        },
+        {
+          "id": 54676,
+          "type": "audio.mojom.AudioService"
+        },
+        {
+          "id": 33516,
+          "type": "tracing.mojom.TracingService"
+        }
+      ],
+      "allWin32OpenQueryCloseStrictTrueWithNullErrors": true,
+      "failedRows": [],
+      "process": {
+        "exit_code": 0,
+        "signal": null,
+        "timed_out": false,
+        "cancelled": false,
+        "process_stopped": true,
+        "duration_ms": 1032.1988000000129,
+        "output_limit": false,
+        "spawn_error": null,
+        "stop_scope": "direct_process",
+        "process_tree_stopped": null
+      },
+      "stderr": "",
+      "helperLeaseReleasable": true,
+      "timing": {
+        "startedMonotonicMs": 154106.5247,
+        "endedMonotonicMs": 155168.1435
+      },
+      "captureWallMilliseconds": 1061.6187999999966,
+      "pins": {
+        "helper": {
+          "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\tests\\browser\\performance-process-times-v4.ps1",
+          "beforeSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+          "afterSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+          "beforeBytes": 7363,
+          "afterBytes": 7363
+        },
+        "powerShell": {
+          "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "beforeSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+          "afterSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+          "beforeBytes": 495616,
+          "afterBytes": 495616
+        }
+      },
+      "request": {
+        "path": "D:\\Developing\\Meta Hack\\.worktrees\\nonadvanced-20261103\\baseline\\artifacts\\v1\\perf-nonadvanced-20261103-v4-wiring-01\\native\\cpu\\after-20261103T031018487Z.after.process-times-request.json",
+        "sha256": "f5eca729f2fd78e711ee640f818f67ed40f0a03684e368c17662224769fc71d3",
+        "recordedBeforeSha256": "f5eca729f2fd78e711ee640f818f67ed40f0a03684e368c17662224769fc71d3",
+        "recordedAfterSha256": "f5eca729f2fd78e711ee640f818f67ed40f0a03684e368c17662224769fc71d3",
+        "textEqualsRecordedRequestJson": true,
+        "hashesAgree": true
+      },
+      "stdout": {
+        "storage": "native/verification.json#/processCpu/after/os/process/stdout",
+        "encoding": "UTF-8, original CRLF retained",
+        "sha256": "d8ba3b7214cdd560cfa70e846a67fc3deb399235c544efe240777701f0cf73b7",
+        "recordedSha256": "d8ba3b7214cdd560cfa70e846a67fc3deb399235c544efe240777701f0cf73b7",
+        "hashAgrees": true
+      }
+    }
+  ],
+  "perProcess": [
+    {
+      "id": 33516,
+      "type": "tracing.mojom.TracingService",
+      "status": "PROCESS_SET_CHANGED",
+      "beforeCreationTimeFileTimeTicks": null,
+      "afterCreationTimeFileTimeTicks": "134381491501101454",
+      "creationIdentityExactMatch": null,
+      "beforeKernelTimeTicks": null,
+      "beforeUserTimeTicks": null,
+      "afterKernelTimeTicks": "156250",
+      "afterUserTimeTicks": "0",
+      "recomputedDeltaUserTicks": null,
+      "recomputedDeltaKernelTicks": null,
+      "deltaCpuTicks": null,
+      "deltaCpuSeconds": null,
+      "independentIntegerDeltaMatches": null,
+      "cdpBeforeCpuSeconds": null,
+      "cdpAfterCpuSeconds": 0.052099,
+      "cdpDeltaCpuSeconds": null,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 54676,
+      "type": "audio.mojom.AudioService",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490641243149",
+      "afterCreationTimeFileTimeTicks": "134381490641243149",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "2656250",
+      "beforeUserTimeTicks": "2031250",
+      "afterKernelTimeTicks": "2968750",
+      "afterUserTimeTicks": "2343750",
+      "recomputedDeltaUserTicks": "312500",
+      "recomputedDeltaKernelTicks": "312500",
+      "deltaCpuTicks": "625000",
+      "deltaCpuSeconds": 0.0625,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 0.432668,
+      "cdpAfterCpuSeconds": 0.529953,
+      "cdpDeltaCpuSeconds": 0.09728500000000001,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 69272,
+      "type": "renderer",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490232459173",
+      "afterCreationTimeFileTimeTicks": "134381490232459173",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "2343750",
+      "beforeUserTimeTicks": "4062500",
+      "afterKernelTimeTicks": "2343750",
+      "afterUserTimeTicks": "4062500",
+      "recomputedDeltaUserTicks": "0",
+      "recomputedDeltaKernelTicks": "0",
+      "deltaCpuTicks": "0",
+      "deltaCpuSeconds": 0,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 0.570283,
+      "cdpAfterCpuSeconds": 0.571087,
+      "cdpDeltaCpuSeconds": 0.0008040000000000269,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 74496,
+      "type": "renderer",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490232958037",
+      "afterCreationTimeFileTimeTicks": "134381490232958037",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "468750",
+      "beforeUserTimeTicks": "156250",
+      "afterKernelTimeTicks": "468750",
+      "afterUserTimeTicks": "156250",
+      "recomputedDeltaUserTicks": "0",
+      "recomputedDeltaKernelTicks": "0",
+      "deltaCpuTicks": "0",
+      "deltaCpuSeconds": 0,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 0.070793,
+      "cdpAfterCpuSeconds": 0.071639,
+      "cdpDeltaCpuSeconds": 0.0008459999999999995,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 78244,
+      "type": "GPU",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490230644297",
+      "afterCreationTimeFileTimeTicks": "134381490230644297",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "16718750",
+      "beforeUserTimeTicks": "22343750",
+      "afterKernelTimeTicks": "31875000",
+      "afterUserTimeTicks": "53906250",
+      "recomputedDeltaUserTicks": "31562500",
+      "recomputedDeltaKernelTicks": "15156250",
+      "deltaCpuTicks": "46718750",
+      "deltaCpuSeconds": 4.671875,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 3.291878,
+      "cdpAfterCpuSeconds": 7.896301,
+      "cdpDeltaCpuSeconds": 4.604423000000001,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 78952,
+      "type": "network.mojom.NetworkService",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490230747646",
+      "afterCreationTimeFileTimeTicks": "134381490230747646",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "2812500",
+      "beforeUserTimeTicks": "1562500",
+      "afterKernelTimeTicks": "2812500",
+      "afterUserTimeTicks": "1562500",
+      "recomputedDeltaUserTicks": "0",
+      "recomputedDeltaKernelTicks": "0",
+      "deltaCpuTicks": "0",
+      "deltaCpuSeconds": 0,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 0.39096,
+      "cdpAfterCpuSeconds": 0.400927,
+      "cdpDeltaCpuSeconds": 0.009967000000000004,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 85208,
+      "type": "storage.mojom.StorageService",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490231157579",
+      "afterCreationTimeFileTimeTicks": "134381490231157579",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "312500",
+      "beforeUserTimeTicks": "312500",
+      "afterKernelTimeTicks": "312500",
+      "afterUserTimeTicks": "312500",
+      "recomputedDeltaUserTicks": "0",
+      "recomputedDeltaKernelTicks": "0",
+      "deltaCpuTicks": "0",
+      "deltaCpuSeconds": 0,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 0.075874,
+      "cdpAfterCpuSeconds": 0.076895,
+      "cdpDeltaCpuSeconds": 0.001021000000000008,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 85828,
+      "type": "browser",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490226938490",
+      "afterCreationTimeFileTimeTicks": "134381490226938490",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "23125000",
+      "beforeUserTimeTicks": "21093750",
+      "afterKernelTimeTicks": "24375000",
+      "afterUserTimeTicks": "23281250",
+      "recomputedDeltaUserTicks": "2187500",
+      "recomputedDeltaKernelTicks": "1250000",
+      "deltaCpuTicks": "3437500",
+      "deltaCpuSeconds": 0.34375,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 4.485567,
+      "cdpAfterCpuSeconds": 4.800854,
+      "cdpDeltaCpuSeconds": 0.31528700000000054,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    },
+    {
+      "id": 86724,
+      "type": "renderer",
+      "status": "OBSERVED",
+      "beforeCreationTimeFileTimeTicks": "134381490233047843",
+      "afterCreationTimeFileTimeTicks": "134381490233047843",
+      "creationIdentityExactMatch": true,
+      "beforeKernelTimeTicks": "84218750",
+      "beforeUserTimeTicks": "1286875000",
+      "afterKernelTimeTicks": "109375000",
+      "afterUserTimeTicks": "1550625000",
+      "recomputedDeltaUserTicks": "263750000",
+      "recomputedDeltaKernelTicks": "25156250",
+      "deltaCpuTicks": "288906250",
+      "deltaCpuSeconds": 28.890625,
+      "independentIntegerDeltaMatches": true,
+      "cdpBeforeCpuSeconds": 135.622522,
+      "cdpAfterCpuSeconds": 164.431886,
+      "cdpDeltaCpuSeconds": 28.809363999999988,
+      "attributionScope": "Whole typed process only; no per-thread or native audio graph attribution"
+    }
+  ],
+  "timing": {
+    "scope": "ORIGINAL_UI_WINDOW_PLUS_TRACING_CONTROL_AND_SHARED_ENDPOINT_OBSERVATION_NOT_DSP_CPU",
+    "clockScope": "NODE_MONOTONIC_BRACKETS_SEPARATE_FROM_BROWSER_PERFORMANCE_MARKS",
+    "endpointProtocol": [
+      "BEFORE_TRACING_START",
+      "AFTER_CLOSED_WINDOW_RPC_BEFORE_DISK_AND_TAIL"
+    ],
+    "denominatorBasis": "ACTUAL_CAPTURE_COMPLETION_TO_CAPTURE_COMPLETION_NOT_REQUESTED_SECONDS",
+    "browserWindowMilliseconds": 20179.099999999627,
+    "cdpWall": {
+      "completionToCompletionMilliseconds": 22809.280500000023,
+      "minimumSamplingIntervalMilliseconds": 22803.080000000016,
+      "maximumSamplingIntervalMilliseconds": 22811.597800000018
+    },
+    "osWall": {
+      "completionToCompletionMilliseconds": 23034.858200000017,
+      "minimumSamplingIntervalMilliseconds": 21973.23940000002,
+      "maximumSamplingIntervalMilliseconds": 23863.149200000014
+    },
+    "beginUIRpc": {
+      "startedMonotonicMs": 132202.8905,
+      "endedMonotonicMs": 132246.6445
+    },
+    "closeUIRpc": {
+      "startedMonotonicMs": 152331.3381,
+      "endedMonotonicMs": 154098.9449
+    },
+    "beforeOsEndsBeforeBeginRpc": true,
+    "afterCdpStartsAfterCloseRpc": true,
+    "afterOsStartsAfterCloseRpc": true,
+    "recomputedOsCompletionToCompletionMilliseconds": 23034.858200000017,
+    "recomputedOsMinimumMilliseconds": 21973.23940000002,
+    "recomputedOsMaximumMilliseconds": 23863.149200000014,
+    "recomputedCdpCompletionToCompletionMilliseconds": 22809.280500000023,
+    "cdpMinusBrowserWindowMilliseconds": 2630.180500000395,
+    "osMinusBrowserWindowMilliseconds": 2855.7582000003895,
+    "differenceScope": "DURATION_DIFFERENCE_ONLY_NOT_ABSOLUTE_CROSS_PROCESS_CLOCK_ALIGNMENT",
+    "includesTracingStartBeginAndCloseControlAndSharedEndpointCosts": true,
+    "excludesDiskCheckpointTailAndTraceFlush": true,
+    "meaning": "Different process counters and sequential sampling brackets are not the exact browser performance-mark window. Duration differences alone are not probe overhead or benefit."
+  },
+  "sourceIntegrity": {
+    "dispatchReceipt": "docs/16-nonadvanced-completion/lanes/performance/24-v4-wiring-01-source-pins.json",
+    "dispatchScope": "Driver declared literal dependencies + actual src/schemas/public files + approved44 + Root integration entry. Entry is an explicit additional pin outside runtime workload. Actual run wrapper/build repeats hashes.",
+    "dispatchCount": 375,
+    "dispatchUniqueCount": 375,
+    "nativeSourceCount": 374,
+    "nativeUniqueCount": 374,
+    "buildSourceCount": 374,
+    "wrapperBeforeCount": 59,
+    "wrapperAfterCount": 59,
+    "commandSourceCount": 59,
+    "dispatchOnly": [
+      {
+        "path": "tests/integration/performance-v4-method.test.mjs",
+        "sha256": "64ad8e3ab51b7b7957e7f79b7be4930be87a787b0df783e1fe35922073a472e7",
+        "bytes": 534
+      }
+    ],
+    "nativeOnly": [],
+    "sharedHashMismatches": [],
+    "buildExtraOrHashMismatches": [],
+    "nativeMissingFromBuild": [],
+    "wrapperBeforeOutsideOrHashMismatches": [],
+    "wrapperAfterOutsideOrHashMismatches": [],
+    "recordedSourceStableDuringRun": true,
+    "recordedSourceStableDuringBuild": true,
+    "recordedBundleStableDuringRun": true,
+    "recordedWrapperSourceStable": true,
+    "selectedCpuSourcesCurrentReadChecks": [
+      {
+        "path": "scripts/agents/process-runner.mjs",
+        "recordedSha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+        "currentSha256": "fd54362f1093632050f4125f7b542296aab8651b404cc8ee3256c2dc87419109",
+        "currentMatchesRunPin": true,
+        "bytes": 18201
+      },
+      {
+        "path": "tests/browser/performance-process-cpu-v4.mjs",
+        "recordedSha256": "82abea440a8fa34206f7ab0ad474844f6f7e1856c95c9f33ec168ff7f13a587e",
+        "currentSha256": "82abea440a8fa34206f7ab0ad474844f6f7e1856c95c9f33ec168ff7f13a587e",
+        "currentMatchesRunPin": true,
+        "bytes": 5234
+      },
+      {
+        "path": "tests/browser/performance-process-times-v4.mjs",
+        "recordedSha256": "bf9404f8b80177249f2e9f5e57e7090a9e22950eef5ebf8ff7af42a91858ccd9",
+        "currentSha256": "bf9404f8b80177249f2e9f5e57e7090a9e22950eef5ebf8ff7af42a91858ccd9",
+        "currentMatchesRunPin": true,
+        "bytes": 16214
+      },
+      {
+        "path": "tests/browser/performance-process-times-v4.ps1",
+        "recordedSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+        "currentSha256": "596679bd1aaccf9c6b839b9cead0ed4d83c3cde930b4e7c1e37d4ccf1e505784",
+        "currentMatchesRunPin": true,
+        "bytes": 7363
+      },
+      {
+        "path": "tests/browser/performance-profile-v4.mjs",
+        "recordedSha256": "41e9daf7cc1bfbb64b61ab65681efe5210b7f36cc186aa9c2431a16733d0cd2f",
+        "currentSha256": "41e9daf7cc1bfbb64b61ab65681efe5210b7f36cc186aa9c2431a16733d0cd2f",
+        "currentMatchesRunPin": true,
+        "bytes": 57638
+      }
+    ],
+    "selectedExecutableCurrentReadChecks": [
+      {
+        "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "beforeSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+        "afterSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+        "currentSha256": "60c9b29843624dd8af6b6a7b26147753be6aeef65098b9a503cc50850afe410f",
+        "currentMatchesBoth": true,
+        "bytes": 495616
+      },
+      {
+        "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "beforeSha256": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+        "afterSha256": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+        "currentSha256": "7c2fe7741b1bc13ca1565658557a15773f8ebbf0a66fb5448f0fdf67bccf50fa",
+        "currentMatchesBoth": true,
+        "bytes": 4525720
+      }
+    ],
+    "limit": "All pin-set differences/hashes were compared as stored. Current files were independently rehashed only for selected CPU producers and executables, not every one of the 375 files."
+  },
+  "environment": {
+    "node": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13980HX",
+    "logicalCpus": 32,
+    "browserVersion": "156.0.8078.75",
+    "browserVersionReceipt": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/156.0.8078.75",
+      "revision": "@861389936bf33ea77529ee5dcc0605e68f6bb620",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "jsVersion": "15.6.75.25"
+    },
+    "chromeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "powerShellExecutable": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "powerShellVersionMeasured": null,
+    "note": "Path v1.0 is not a version claim; executable hash/bytes are the recorded identity."
+  },
+  "cleanupEvidence": {
+    "wrapperOutcome": {
+      "machineLeaseReleasable": true,
+      "processTreeStopped": null,
+      "stopScope": "direct_process",
+      "formalQualified": false,
+      "overallV1Complete": false
+    },
+    "nativeCleanup": {
+      "browserConnected": false,
+      "cpuHelperLeaseReleasable": true,
+      "cpuHelperObservationScope": "ATTEMPTED_BOUNDED_HELPER_ENDPOINTS_ONLY",
+      "previewExitCode": null,
+      "previewSignalCode": "SIGTERM",
+      "previewPid": 72180,
+      "previewProcessStopped": true,
+      "previewListeningAfterCleanup": false,
+      "previewListenerObservation": {
+        "listening": false,
+        "observationScope": "BOUNDED_TCP_CONNECT_ONLY",
+        "host": "127.0.0.1",
+        "port": 5194,
+        "timeoutMs": 500,
+        "startedAtMonotonicMs": 163765.1244,
+        "endedAtMonotonicMs": 163768.1026,
+        "errorCode": "ECONNREFUSED"
+      },
+      "previewCleanupObservationScope": "OWNED_CHILD_EXIT_PLUS_SEPARATE_BOUNDED_TCP_CONNECT",
+      "errors": []
+    },
+    "reviewPerformedNewProcessOrPortQuery": false,
+    "scope": "Original artifact cleanup evidence and parent lease return only; this review did not query running OS processes or reopen the port."
+  },
+  "evidence": [
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/native/verification.json",
+      "sha256": "54bd0ad185a6be4f25acbccd4c8a2b6f7c4fc9268af4265205505ec8570bec7e",
+      "bytes": 524190
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/native/build-manifest.json",
+      "sha256": "73efe579b652a958e057cf908cf2d56166d7be366d057628d8afcc56c9763e56",
+      "bytes": 58535
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/command.json",
+      "sha256": "54474c5d1f8db43b39bd925e9d02a8e6c120f836435ac80760b4659d9b262694",
+      "bytes": 11872
+    },
+    {
+      "path": "artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/process.json",
+      "sha256": "3c36c2818c68d4f953aacfc8070627bf559eabbf517bb9565817fe39f6f46c3b",
+      "bytes": 28182
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/performance/24-v4-wiring-01-source-pins.json",
+      "sha256": "019997ad0578db5b3d3db627c21e25f5c7de6d87dd36fccebcbb4391269f8b10",
+      "bytes": 71340
+    },
+    {
+      "path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/native/cpu/before-20261103T031018487Z.before.process-times-request.json",
+      "sha256": "f2056cd7c389113dc0462229c98822d09e55d13f125bf127996b6506bab644bc",
+      "bytes": 524
+    },
+    {
+      "path": "D:/Developing/Meta Hack/.worktrees/nonadvanced-20261103/baseline/artifacts/v1/perf-nonadvanced-20261103-v4-wiring-01/native/cpu/after-20261103T031018487Z.after.process-times-request.json",
+      "sha256": "f5eca729f2fd78e711ee640f818f67ed40f0a03684e368c17662224769fc71d3",
+      "bytes": 573
+    }
+  ],
+  "limitations": [
+    "CPU values are whole typed processes across all threads. AudioService 0.0625s is not native graph DSP; renderer native-graph threads were not isolated.",
+    "Do not subtract AudioService CPU from renderer CPU to infer main-thread CPU.",
+    "No stable-subset aggregate or whole-browser ratio is reported while process coverage is partial.",
+    "CDP and Win32 use different counter implementations/resolutions and sequential sampling intervals; per-process differences are not forcibly reconciled or promoted to failure.",
+    "Successful native zero deltas on stable process identity remain actual zeros. The new TracingService has no before endpoint, so its interval delta remains null despite a successful after query.",
+    "This is a probe-on/reference/levels/master-left diagnostic only. There is no matched probe-off run and no overhead benefit result.",
+    "Endpoint matching cannot prove no transient process existed. New PID33516 is observed; no claim is made that it was the only lifecycle change between samples.",
+    "Dsp CPU, hardware underruns, actual hardware block/deadline, PCM continuity, calibrated acoustics and hearing are not measured by these CPU receipts.",
+    "The original acoustic workload rejection, formalQualified=false, original thresholds/source pins and prior failures remain unchanged.",
+    "No Node tests, Win32 query, helper execution, browser, native workload or source implementation was rerun for this report.",
+    "Original 18/22/24 reports and wiring raw artifacts were read only; only these 25 MD/JSON reports are written."
+  ],
+  "approval": {
+    "formal600Pass": false,
+    "cpuWholeBrowserCoveragePass": false,
+    "probeOverheadBenefitPass": false,
+    "dspPass": false,
+    "hardwarePass": false,
+    "overallV1Complete": false
+  }
+}

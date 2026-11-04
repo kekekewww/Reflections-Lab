@@ -1,0 +1,106 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-009",
+  "title": "隔離研究dedicated simulation worker",
+  "description": "main RAF供應physics/render/input，搬遷可能隔離長任務但也增加命令、snapshot與同步成本。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P2",
+  "owner": null,
+  "dependencies": [
+    "RLAB-TASK-PERF-20261101-001",
+    "RLAB-TASK-PERF-20261101-002",
+    "RLAB-TASK-PERF-20261101-004"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "stable domain IDs/generation、revision驗證、atomic command/undo、event去重／順序及cancel語義有獨立reference。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "render只讀last-complete snapshot與插值，不序列化Rapier objects/handles，recording debt pause及全tick保留。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "同負載全鏈成本/latency與資源支持收益，無收益可維持main adapter；Worker不宣稱背景SLA。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/app/bootstrap.ts",
+    "src/app/runtime.ts",
+    "src/physics/physics-world.ts",
+    "src/physics/fixed-clock.ts",
+    "src/scene/commands.ts",
+    "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "sha256": "a86516222eb39f8cf8e12be54cd54731a2524c07e6855ef86fab55387748969c",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/13-performance-review/evidence/r21-merge-reconciliation.json",
+      "sha256": "53ddeaea346b57ab14e218a8927bcb0861badd39eb404603ffa1d1ce97d8d32b",
+      "result": "Research basis src/app/bootstrap.ts is the 05d40fd version (sha256 2e4aba2f6e8fe08f139d92ef9d16431ca1504c6c0a88e9ad61e9c9dd2eef6124, git blob bbc2c6d9545db159f87c939d6ec3c2ed23978e12), kept in this record after R21 commit 38925e6 changed the file; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-02T03:28:49.784Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "main RAF供應physics/render/input，搬遷可能隔離長任務但也增加命令、snapshot與同步成本。",
+  "evidence_basis": [
+    {
+      "path": "docs/12-architecture-review/BROWSER_PERFORMANCE_RESEARCH.md",
+      "locator": "dedicated simulation worker為建議未實作",
+      "classification": "EXISTING RESEARCH",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "a86516222eb39f8cf8e12be54cd54731a2524c07e6855ef86fab55387748969c"
+    },
+    {
+      "path": "src/app/bootstrap.ts",
+      "locator": "RAF advance",
+      "classification": "CONFIRMED BY CODE at05d40",
+      "version": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "427e724bce6bcf8902234f1fd4f6ca9c75a89471b8872bf12efe301d39d63947"
+    }
+  ],
+  "affected_modules": [
+    "src/app/bootstrap.ts",
+    "src/app/runtime.ts",
+    "src/physics/physics-world.ts",
+    "src/physics/fixed-clock.ts",
+    "src/scene/commands.ts"
+  ],
+  "proposed_solution": "只有前序profile仍證main physics限制時，建立可替換adapter與單一simulation owner，帶sequence/tick/revision/epoch的命令與last-complete snapshots，render只讀插值。",
+  "alternatives": [
+    "保留main fixed-step並先窄化capture／view成本。",
+    "分批offline固定tick推進，不變interactive ownership。",
+    "新增main timer不能稱thread解耦。"
+  ],
+  "expected_benefit": "可能減少view對simulation排程的耦合；Worker無實時或背景完成保證。",
+  "complexity": "很高；命令原子性／undo／重置及全部host接線。",
+  "performance_impact": "end-to-end command latency、worker CPU/wall、snapshot delivery/copies與main尾端一併量。",
+  "audio_quality_impact": "physics trace、events及聲學source timing不可變成不同實驗。",
+  "latency_impact": "額外message hop需量；audio callback不能等待worker。",
+  "compatibility_regression_risk": "revision race、handle持久化、舊generation reply及render反寫pose破壞權威。",
+  "benchmark_plan": "固定step reference、catch-up/overload、grab throw contact、atomic command undo、reset/import/dispose/cancel、worker crash及同scene/render stall。",
+  "rollback_plan": "停止命令接納，drain或拒絕pending，固定完整snapshot並銷毀worker資源；僅在可驗state交接點切回main adapter，否則明示需reset，不能默換不同狀態。",
+  "priority_rationale": "架構及回歸成本高；P0/P1窄修後仍有證據才投入。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Worker/WASM/thread scheduling differs; no background realtime guarantee.",
+  "regression_risk": "Command ordering, undo, contact physics and recording determinism may regress.",
+  "candidate_commit": null
+}

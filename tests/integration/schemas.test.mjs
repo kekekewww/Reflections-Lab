@@ -50,6 +50,9 @@ const args = {
     scope: "both",
   },
   SetRigidBodyMode: { objectId: "ball", mode: "fixed", velocityPolicy: "zero" },
+  MoveObject: { objectId: "ball", positionM: [0, 1, 0], orientationQuaternion: [0, 0, 0, 1] },
+  ResizeObject: { objectId: "ball", dimensionsM: [1, 1, 1] },
+  RemoveObject: { objectId: "ball" },
   ConfigureSoundSource: {
     sourceId: "source",
     objectId: "ball",

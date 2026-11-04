@@ -1,0 +1,185 @@
+{
+  "startRequests": 63,
+  "nowRequests": 69,
+  "consumedEstimateUsd": 1.8399,
+  "results": [
+    {
+      "name": "1-recital",
+      "at": 38,
+      "prompt": "Turn this room into a small recital room: a raised wooden stage across the back wall, a grand-piano-sized box on the stage, and twelve chairs in three rows facing the stage.",
+      "seconds": 32.7,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Original technical detail: Meta提出受限工具，尚待本地預覽與人員套用。",
+        "Muse says: Building your recital room — stage, piano, and 12 chairs in three rows."
+      ],
+      "previewLines": 14,
+      "previewSample": [
+        "Add stage.01: box, fixed",
+        "Add piano.01: box, fixed",
+        "Add chair.row1-01: box, fixed",
+        "Add chair.row1-02: box, fixed"
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "undoAvailable": true,
+      "objectsBefore": 6,
+      "objectsAfter": 20
+    },
+    {
+      "name": "2-edit",
+      "at": 62,
+      "prompt": "Move the audience 0.5 m further from the stage, make the stage 1 m deeper, and remove the back row of chairs.",
+      "seconds": 21.4,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Original technical detail: Meta提出受限工具，尚待本地預覽與人員套用。",
+        "Muse says: Moving the seats back, deepening the stage, and clearing the last row."
+      ],
+      "previewLines": 14,
+      "previewSample": [
+        "Resize stage.01 to 5.8×0.3×3 m",
+        "Move stage.01 to [0, 0.15, -2.5]",
+        "Move chair.row1-01 to [-1.5, 0.45, -0.3]",
+        "Move chair.row1-02 to [-0.5, 0.45, -0.3]"
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "undoAvailable": true,
+      "objectsBefore": 20,
+      "objectsAfter": 16
+    },
+    {
+      "name": "2-undo",
+      "found": 1,
+      "enabled": true,
+      "message": "The proposal was undone and a new revision was created. Sounds that already played are not reversed.",
+      "objects": 20
+    },
+    {
+      "name": "3-orbit",
+      "at": 95,
+      "prompt": "Move the ball in a slow circle around the middle of the room at 1.5 m height, radius 2 m, over 8 seconds, ending where it started.",
+      "seconds": 27.4,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Original technical detail: Meta提出受限工具，尚待本地預覽與人員套用。",
+        "Muse says: Ball circle coming up — placing it on a 2 m loop at 1.5 m height."
+      ],
+      "previewLines": 4,
+      "previewSample": [
+        "Move ball to [2, 1.5, 0]",
+        "Set ball to kinematic, with velocity zero",
+        "Path trajectory.ball: 33 points over 8 s",
+        "The path is saved but not playing. Press play in the Motion tab to run it."
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "undoAvailable": true,
+      "objectsBefore": 20,
+      "objectsAfter": 20
+    },
+    {
+      "name": "3-orbit-run",
+      "tabFound": 1,
+      "actions": [
+        "trajectory.ball · ball\nRunRemove"
+      ],
+      "playEnabled": true,
+      "statusSoon": "s\nDynamic maximum acceleration\nm/s²\nMaximum impulse\nN·s\nTimeout\ns\nSave action\n\nPause the simulation and cancel active motion before editing.\n\nUndo motion editRedo motion editRebind to current sceneExport motionsImport motions\ntrajectory.ball · ball\nRunRemove\nrunningtrajectory.ball · 119 ticks Cancel",
+      "statusLater": "s\nDynamic maximum acceleration\nm/s²\nMaximum impulse\nN·s\nTimeout\ns\nSave action\n\nPause the simulation and cancel active motion before editing.\n\nUndo motion editRedo motion editRebind to current sceneExport motionsImport motions\ntrajectory.ball · ball\nRunRemove\nrunningtrajectory.ball · 305 ticks Cancel"
+    },
+    {
+      "name": "4-after-path",
+      "at": 118,
+      "prompt": "Add a small wooden box on the floor in the back right corner of the room.",
+      "seconds": 13.6,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Original technical detail: Meta提出受限工具，尚待本地預覽與人員套用。",
+        "Muse says: A small wooden box for the back-right corner — placing it clear of the stage."
+      ],
+      "previewLines": 1,
+      "previewSample": [
+        "Add box.back-right-01: box, fixed"
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "afterApply": "Original technical detail: MOTION_AUTHORING_BUSY：Pause the simulation and cancel active motion before editing actions.",
+      "undoAvailable": true,
+      "objectsBefore": 20,
+      "objectsAfter": 20
+    },
+    {
+      "name": "4-path-still-runs",
+      "tabFound": 1,
+      "actions": [
+        "trajectory.ball · ball\nRunRemove"
+      ],
+      "playEnabled": false
+    },
+    {
+      "name": "5-impossible",
+      "at": 153,
+      "prompt": "Cover the walls with velvet curtains and play a recording of a cello from the speaker.",
+      "seconds": 30.4,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Original technical detail: Meta提出受限工具，尚待本地預覽與人員套用。",
+        "Muse says: Velvet and cello aren't in your registry, so I'll hang absorbing curtains and keep the speaker playing with what's available."
+      ],
+      "previewLines": 4,
+      "previewSample": [
+        "Add curtain.back-01: box, fixed",
+        "Add curtain.left-01: box, fixed",
+        "Add curtain.right-01: box, fixed",
+        "Set sound source source.speaker on speaker: 220 Hz sine, continuous. This isn't measured vibration sound."
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "objectsBefore": 20,
+      "objectsAfter": 20
+    },
+    {
+      "name": "6-sound",
+      "at": 162,
+      "prompt": "Raise the pitch of the ball's impact sound by 7 semitones",
+      "seconds": 8.5,
+      "requestsUsed": 1,
+      "waitingMessage": "Muse is working on a proposal. This usually takes 10–60 seconds, and nothing has changed yet.",
+      "messages": [
+        "Meta Sound proposal: 2 bounded actions, waiting for local Host preview and Apply."
+      ],
+      "previewLines": 5,
+      "previewSample": [
+        "Sound settings are creative choices; they do not represent measured sound pressure or real object vibration.",
+        "Remove binding binding.interactive.ball",
+        "Bind ball to profile.interactive-tone@1",
+        "ball · rule.impact: pitch +7 semitones"
+      ],
+      "untranslated": [],
+      "canApply": true,
+      "applyVisible": true,
+      "objectsBefore": 20,
+      "objectsAfter": 20
+    },
+    {
+      "name": "browser-errors",
+      "errors": [],
+      "seconds": 162
+    }
+  ]
+}

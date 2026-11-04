@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "kind": "MEMORY_READ_CONTROLLED_CLOCK_REPAIR_NOT_NEW_PRODUCT_TEST",
+  "checkedAt": "2026-11-02T10:50:00.938Z",
+  "sourceCommit": "9fcf3f0657813f5aa07bf936a1cb6a50f2628f30",
+  "sourcePins": [
+    {
+      "path": "src/app/runtime.ts",
+      "sha256": "388a1fd1bc206d029783a2886064cee0fe09a30d42a0abd03196f017e2b78325",
+      "git9fcMatch": true,
+      "currentMatch": true
+    },
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "sha256": "68e5173a3fbbf96920dceb49282254fc04ccbc671410894c49b06619e4010a78",
+      "git9fcMatch": true,
+      "currentMatch": true
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "sha256": "119b9ed086525f216caea4b2f6510682339f224cd20edefc8e325f84a02b7690",
+      "git9fcMatch": true,
+      "currentMatch": true
+    },
+    {
+      "path": "tests/physics/fixed-clock.test.ts",
+      "sha256": "67ffc72fd13dd0c553c52f63c0b2c9389a1d778c693fe5c1504c64a077e9e899",
+      "git9fcMatch": true,
+      "currentMatch": true
+    },
+    {
+      "path": "tests/physics/controlled-step.test.ts",
+      "sha256": "c682b8f9a3fd1c7464d15f4bd84f7943eb5348f307c1870d8f86c6f1eae9274a",
+      "git9fcMatch": true,
+      "currentMatch": true
+    },
+    {
+      "path": "tests/app/pipeline-integration.test.ts",
+      "sha256": "5777f728e8ef2cd4021079038cea6ab2f5160f0e3b1da5345dcce985f2d922d3",
+      "git9fcMatch": true,
+      "currentMatch": true
+    }
+  ],
+  "proofFiles": [
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-final.txt",
+      "sha256": "66ea6759f7d8256983f95baafb64d2dc085785ba11cdd3e8cdb3b143a011b69e",
+      "bytes": 9468,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-first.txt",
+      "sha256": "e93afe3f2db13471f803d948871d0574a6550617fc1c181ee2995cfcc525b700",
+      "bytes": 4925,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/prettier.txt",
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "bytes": 68,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-first-green.txt",
+      "sha256": "c1728040f340768ad9627975491151a1d413aa5882a1ff1bb8f2214a849a9a19",
+      "bytes": 1314,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-original-red.txt",
+      "sha256": "8ccded6cb9009ac6b712963f0fd8f25e75fa00ddc0cf1c2092754690343ef481",
+      "bytes": 1039,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__app__runtime.ts.preimage.txt",
+      "sha256": "7c6ffebe392dc252b14f507062257321bbea61927b0da531c9ce3ac6ce4d3111",
+      "bytes": 134414,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__physics__fixed-clock.ts.preimage.txt",
+      "sha256": "064583c1b040a3243f95f562d95d3c90587c914b7b4e9d9278f36eb60e8d77a0",
+      "bytes": 5295,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/src__physics__physics-world.ts.preimage.txt",
+      "sha256": "da4c138029493d93a0dcc33459cdce75f97cc863000e77053883fe56b36b25e7",
+      "bytes": 54103,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/tests__app__pipeline-integration.test.ts.preimage.txt",
+      "sha256": "266ecba13d6282af9fececdeb7439a0847d9a61d1f040549c1c77323dc391a30",
+      "bytes": 2534,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/tests__physics__fixed-clock.test.ts.preimage.txt",
+      "sha256": "f70e33eae21b9b6b9095ddcb6398dc1efa8f819b667b30c844c8681bea3725fe",
+      "bytes": 5741,
+      "matches": true
+    },
+    {
+      "path": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/typecheck.txt",
+      "sha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "bytes": 68,
+      "matches": true
+    }
+  ],
+  "runs": [
+    {
+      "name": "true Runtime original RED",
+      "command": "node --import tsx --test --test-name-pattern 'after recording overload' tests/app/pipeline-integration.test.ts",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/runtime-original-red.txt",
+      "rawSha256": "8ccded6cb9009ac6b712963f0fd8f25e75fa00ddc0cf1c2092754690343ef481",
+      "observedTapCounts": [
+        "# tests 1",
+        "# pass 0",
+        "# fail 1",
+        "# skipped 0"
+      ]
+    },
+    {
+      "name": "focused final",
+      "command": "node --import tsx --test tests/physics/fixed-clock.test.ts tests/physics/controlled-step.test.ts tests/app/pipeline-integration.test.ts tests/app/replay-lifecycle.test.ts tests/app/recording-export-lifecycle.test.ts",
+      "exitCode": 0,
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "skip": 0,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/focused-final.txt",
+      "rawSha256": "66ea6759f7d8256983f95baafb64d2dc085785ba11cdd3e8cdb3b143a011b69e",
+      "observedTapCounts": [
+        "# tests 38",
+        "# pass 38",
+        "# fail 0",
+        "# skipped 0"
+      ]
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/typecheck.txt",
+      "rawSha256": "2c83257ba5a0d2ff7dce70f8c7139a383ff17a53abfeaa88cc33285f724453a4",
+      "observedTapCounts": null
+    },
+    {
+      "name": "scoped ESLint",
+      "exitCode": 0,
+      "paths": [
+        "src/app/runtime.ts",
+        "src/physics/fixed-clock.ts",
+        "src/physics/physics-world.ts",
+        "tests/physics/fixed-clock.test.ts",
+        "tests/physics/controlled-step.test.ts",
+        "tests/app/pipeline-integration.test.ts"
+      ],
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/eslint.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observedTapCounts": null
+    },
+    {
+      "name": "scoped Prettier",
+      "exitCode": 0,
+      "paths": [
+        "src/app/runtime.ts",
+        "src/physics/fixed-clock.ts",
+        "src/physics/physics-world.ts",
+        "tests/physics/fixed-clock.test.ts",
+        "tests/physics/controlled-step.test.ts",
+        "tests/app/pipeline-integration.test.ts"
+      ],
+      "raw": "docs/15-ui-parameter-audit/controlled-capture-clock/evidence/prettier.txt",
+      "rawSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "observedTapCounts": null
+    }
+  ],
+  "legacyBodies": [
+    {
+      "path": "src/physics/fixed-clock.ts",
+      "unchanged": true,
+      "sha256": "ef18334aba8f2f57e32676ea9f1888f5cea1622cffcd781768b61f2276880e6d"
+    },
+    {
+      "path": "src/physics/physics-world.ts",
+      "unchanged": true,
+      "sha256": "352de3faf10673aa0737cd35d84084bfb8bfb771c90ae85c0eb4a83669b015a3"
+    }
+  ],
+  "rootLatestRun": {
+    "raw": "docs/15-ui-parameter-audit/evidence/root-quality-attempts/runtime-build-candidate-9fcf3f0.txt",
+    "sha256": "adb68aef4a79ee742fee41486173befc4c936f90db86f51a32ced57594de14ee",
+    "observedTapCounts": [
+      "# tests 1532",
+      "# pass 1532",
+      "# fail 0",
+      "# skipped 0"
+    ],
+    "commandExitCode": 2,
+    "exitAuthority": "Rootexec56365report; originalruntimePASS thenformatparseFAIL",
+    "build": "NOT_RUN",
+    "formatFailureTail": " Subtest: zone schema rejects invalid shapes, unknown fields, bounds, sparse arrays and nonfinite data\r\nok 1522 - zone schema rejects invalid shapes, unknown fields, bounds, sparse arrays and nonfinite data\r\n  ---\r\n  duration_ms: 1444.3719\r\n  type: 'test'\r\n  ...\r\n# Subtest: hysteresis cannot eliminate the enter volume and dimensions obey the exact accepted boundary\r\nok 1523 - hysteresis cannot eliminate the enter volume and dimensions obey the exact accepted boundary\r\n  ---\r\n  duration_ms: 25.5127\r\n  type: 'test'\r\n  ...\r\n# Subtest: zone quota allows sixteen and rejects the seventeenth without partial transaction mutation\r\nok 1524 - zone quota allows sixteen and rejects the seventeenth without partial transaction mutation\r\n  ---\r\n  duration_ms: 36.972\r\n  type: 'test'\r\n  ...\r\n# Subtest: AddZone is isolated, advances revision once, and Undo restores legacy property absence\r\nok 1525 - AddZone is isolated, advances revision once, and Undo restores legacy property absence\r\n  ---\r\n  duration_ms: 6.4243\r\n  type: 'test'\r\n  ...\r\n# Subtest: AddZone Undo retains an explicitly empty array instead of converting it to absence\r\nok 1526 - AddZone Undo retains an explicitly empty array instead of converting it to absence\r\n  ---\r\n  duration_ms: 16.0816\r\n  type: 'test'\r\n  ...\r\n# Subtest: full zone update changes shape and enablement atomically, retains order, and is undoable\r\nok 1527 - full zone update changes shape and enablement atomically, retains order, and is undoable\r\n  ---\r\n  duration_ms: 35.3395\r\n  type: 'test'\r\n  ...\r\n# Subtest: RemoveZone preserves the remaining order, rejects unknown IDs, and restores exact authored data\r\nok 1528 - RemoveZone preserves the remaining order, rejects unknown IDs, and restores exact authored data\r\n  ---\r\n  duration_ms: 27.2912\r\n  type: 'test'\r\n  ...\r\n# Subtest: zone edits reject stale revisions and a later invalid operation rolls the entire transaction back\r\nok 1529 - zone edits reject stale revisions and a later invalid operation rolls the entire transaction back\r\n  ---\r\n  duration_ms: 19.192\r\n  type: 'test'\r\n  ...\r\n# Subtest: new objects and sources cannot collide with zone domain IDs\r\nok 1530 - new objects and sources cannot collide with zone domain IDs\r\n  ---\r\n  duration_ms: 20.1023\r\n  type: 'test'\r\n  ...\r\n# Subtest: SetZones null/array is reversible and malformed command forms are rejected\r\nok 1531 - SetZones null/array is reversible and malformed command forms are rejected\r\n  ---\r\n  duration_ms: 20.5476\r\n  type: 'test'\r\n  ...\r\n# Subtest: a maximum sixty-four-operation zone transaction has a bounded inverse that restores authored bytes\r\nok 1532 - a maximum sixty-four-operation zone transaction has a bounded inverse that restores authored bytes\r\n  ---\r\n  duration_ms: 325.1947\r\n  type: 'test'\r\n  ...\r\n1..1532\r\n# tests 1532\r\n# suites 0\r\n# pass 1532\r\n# fail 0\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 102262.5183\r\n\r\n> reflection-lab-preproduction@0.0.0 format:check\r\n> prettier --check package.json tsconfig.json eslint.config.mjs .prettierrc.json index.html vite.config.ts playwright.config.ts src server scripts/dev.mjs scripts/validation scripts/wiki scripts/agents schemas/agents schemas/sound-behavior examples/agents prompts scripts/setup/environment.mjs scripts/setup/datasets.mjs scripts/setup/emil-skills.mjs scripts/setup/dependency-inventory.mjs scripts/setup/favicon.mjs tests benchmarks/analytic benchmarks/fixtures benchmarks/muse/*.mjs benchmarks/muse/*.json experiments/dependency-smoke experiments/dataset-fetch-spike experiments/sound-behavior-spike/*.mjs research/datasets/acquisition-manifest.example.json docs/06-validation .github/workflows\r\n\r\nChecking formatting...\r\n[error] tests/browser/parameter-audit/pipeline-help-sweep-audit.spec.ts: SyntaxError: Declaration or statement expected. (694:8)\r\n[error]   692 |           await nativeCandidates.first().getByRole(\"button\").click();\r\n[error]   693 |         await naturalNativeCallers(\"real completed recording events\");\r\n[error] > 694 |       });\r\n[error]       |        ^\r\n[error]   695 |         observedSites.add(ids.recording);\r\n[error]   696 |       }\r\n[error]   697 |     });\r\nError occurred when checking code style in the above file.\r\n"
+  },
+  "status": "SOURCE_FIX_AND_1532_RUNTIME_PASS_BUILD_AND_ACTUAL_UI_PENDING",
+  "limits": [
+    "Read existing fixed raw/artifact/source only, no new product tests.",
+    "38focused andindependent9 haveoverlap; noadditivecount.",
+    "Original49UIFAILandNodeREDpreserved; latest1532runtimePASSnotlatestbuild/actualDOMPASS.",
+    "OldadvancealgorithmunchangedbodySHAobservedfromverification; fullrealtimeperformance/hearing/nativegatesnotproven."
+  ]
+}

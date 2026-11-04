@@ -1,0 +1,269 @@
+{
+  "startRequests": 89,
+  "nowRequests": 94,
+  "results": [
+    {
+      "name": "beat1-default",
+      "how": "Start simulation",
+      "objects": 6,
+      "level": "-40.4",
+      "paths": "5",
+      "stale": true,
+      "pending": false,
+      "surfaceError": false,
+      "running": true,
+      "tick": "384"
+    },
+    {
+      "name": "recital",
+      "seconds": 37.2,
+      "requestsUsed": 1,
+      "messages": [
+        "Muse's proposal is ready below. Nothing changes until you apply it.",
+        "Muse says: Building your recital room — stage, grand piano, and 12 chairs facing the back wall."
+      ],
+      "applyLabel": "Apply actions",
+      "canApply": true,
+      "tools": {
+        "AddObject": 14
+      },
+      "warnings": [],
+      "previewText": "Action preview Not applied Add stage.platform: box, fixed Add piano.grand: box, fixed Add chair.r1-01: box, fixed Add chair.r1-02: box, fixed Add chair.r1-03: box, fixed Add chair.r1-04: box, fixed Add chair.r2-01: box, fixed Add chair.r2-02: box, fixed Add chair.r2-03: box, fixed Add chair.r2-04: box, fixed Add chair.r3-01: box, fixed Add chair.r3-02: box, fixed Add chair.r3-03: box, fixed Add chair.r3-04: box, fixed Apply actions Cancel preview",
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "objects": 20
+    },
+    {
+      "name": "beat2-recital",
+      "how": "Start simulation",
+      "objects": 20,
+      "level": "-40.7",
+      "paths": "4",
+      "stale": true,
+      "pending": false,
+      "surfaceError": false,
+      "running": true,
+      "tick": "373"
+    },
+    {
+      "name": "hall",
+      "seconds": 51.9,
+      "requestsUsed": 1,
+      "messages": [
+        "Muse's proposal is ready below. Nothing changes until you apply it.",
+        "Muse says: Building your concert space — columns, wall panels, and stage stairs — without touching what's already there."
+      ],
+      "applyLabel": "Apply actions",
+      "canApply": true,
+      "tools": {
+        "AddObject": 14
+      },
+      "warnings": [],
+      "previewText": "Action preview Not applied Add column.l-01: box, fixed Add column.l-02: box, fixed Add column.l-03: box, fixed Add column.r-01: box, fixed Add column.r-02: box, fixed Add column.r-03: box, fixed Add panel.l-01: box, fixed Add panel.l-02: box, fixed Add panel.r-01: box, fixed Add panel.r-02: box, fixed Add stair.s1-01: box, fixed Add stair.s1-02: box, fixed Add stair.s1-03: box, fixed Add stair.s1-04: box, fixed Apply actions Cancel preview",
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "objects": 34
+    },
+    {
+      "name": "beat3-hall",
+      "how": "Start simulation",
+      "objects": 34,
+      "level": "-42.0",
+      "paths": "4",
+      "stale": true,
+      "pending": false,
+      "surfaceError": false,
+      "running": true,
+      "tick": "370"
+    },
+    {
+      "name": "beat4-undo",
+      "undoVisible": true,
+      "before": 34,
+      "afterUndo": 34,
+      "redoFound": 1,
+      "redoEnabled": false
+    },
+    {
+      "name": "beat4-reapply",
+      "reason": "redo did not restore the scene"
+    },
+    {
+      "name": "hall-again",
+      "seconds": 12.6,
+      "requestsUsed": 1,
+      "messages": [
+        "Muse didn't propose any changes, so the scene is unchanged.",
+        "Muse says: All requested concert-space features are already present in the scene, so no new calls were made: - 3 slim metal floor-to-ceiling columns per side (column.l-01 to 03, column.r-01 to 03) - 2 soft ear-height panels per side between the columns (panel.l-01/02, panel.r-01/02) - 4-step wooden staircase to the left end of the stage (stair.s1-01 to 04) Nothing existing was moved, resized, or removed."
+      ],
+      "applyLabel": null,
+      "canApply": false,
+      "tools": {},
+      "warnings": [],
+      "previewText": "",
+      "objects": 34
+    },
+    {
+      "name": "sound",
+      "seconds": 15.1,
+      "requestsUsed": 1,
+      "messages": [
+        "Meta Sound proposal: 2 bounded actions, waiting for local Host preview and Apply."
+      ],
+      "applyLabel": "Apply actions",
+      "canApply": true,
+      "tools": null,
+      "warnings": [
+        "Server驗證只涵蓋提供的snapshot；必須由本機Sound Host重新驗證並預覽。"
+      ],
+      "previewText": "Action preview Not applied Sound settings are creative choices; they do not represent measured sound pressure or real object vibration. Remove binding binding.interactive.ball Bind ball to profile.interactive-tone@1 ball · rule.impact: pitch +7 semitones The server check covers only the snapshot it received; the local Sound Host validates and previews it again. Apply actions Cancel preview",
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "objects": 34
+    },
+    {
+      "name": "beat5-sound",
+      "canApply": true,
+      "tools": null
+    },
+    {
+      "name": "beat5-after-sound",
+      "how": "Start simulation",
+      "objects": 34,
+      "level": "-42.0",
+      "paths": "4",
+      "stale": true,
+      "pending": false,
+      "surfaceError": false,
+      "running": true,
+      "tick": "374"
+    },
+    {
+      "name": "orbit",
+      "seconds": 30.8,
+      "requestsUsed": 1,
+      "messages": [
+        "Muse's proposal is ready below. Nothing changes until you apply it.",
+        "Muse says: Moving the ball in a slow 2 m circle — setting up the loop."
+      ],
+      "applyLabel": "Apply actions",
+      "canApply": true,
+      "tools": {
+        "SetRigidBodyMode": 1,
+        "MoveObject": 1,
+        "SetTrajectory": 1
+      },
+      "warnings": [],
+      "previewText": "Action preview Not applied Set ball to kinematic, with velocity zero Move ball to [2, 1.5, 0] Path trajectory.ball: 33 points over 8 s The path is saved but not playing. Press play in the Motion tab to run it. Apply actions Cancel preview",
+      "afterApply": "The Host applied the proposal and created a new revision; Undo is available.",
+      "objects": 34
+    },
+    {
+      "name": "beat6-motion",
+      "canApply": true,
+      "actions": [
+        "trajectory.ball · ball\nRunRemove"
+      ],
+      "panelButtons": [
+        "Save action",
+        "Undo motion edit",
+        "Redo motion edit",
+        "Rebind to current scene",
+        "Export motions",
+        "Run",
+        "Remove"
+      ],
+      "playEnabled": false
+    },
+    {
+      "name": "beat7-record",
+      "buttons": [
+        "● Start recording",
+        "▶ Replay recording",
+        "Export archived recording",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|preview.source.speaker|listener.main|direct",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|preview.source.speaker|listener.main|wall.back.pz",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|preview.source.speaker|listener.main|panel.r-01.nx",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|preview.source.speaker|listener.main|panel.l-02.px",
+        "Save snapshot A",
+        "Save snapshot B",
+        "Check and compare",
+        "Check server status again",
+        "Undo last AI apply",
+        "Generate action preview",
+        "Run baseline experiment",
+        "Compare current materials with matched motion",
+        "Save action",
+        "Undo motion edit",
+        "Redo motion edit",
+        "Rebind to current scene",
+        "Export motions",
+        "Run",
+        "Remove",
+        "Capture 3 seconds",
+        "Render audio files",
+        "Check and recover archive",
+        "Refresh recordings",
+        "ZonesDerivedDerived: crossings use the object's center after a fixed step, not whole-collider overlap. The first stable completed step after start or reset establishes a baseline. This is fixed-step sampling, not a continuous sweep; a fast passage whose sampled endpoints are both outside produces no crossing event. Wireframes show the nominal volume; actual entry uses a contracted boundary and exit uses an expanded boundary to avoid chatter. Disabling only stops occupancy detection; an explicitly authored zone-center anchor remains available. Zones neither collide nor change acoustic or rigid-body roles. Sound remains attached to the object unless the author explicitly selects the zone-center anchor.Add zoneUp to 16 static zones.No zones yet",
+        "Add zone",
+        "Audio performance observationsControl-thread observationsThese are JavaScript control updates and browser output counters, not DSP callback CPU, PCM continuity, device hearing or calibrated SPL. p95 describes only the most recent retained samples, up to 128.Enable cost observationsLate onsets / total onsets Onsets more than 1 ms later than requested, excluding propagation and device output latency.0 / 17Accepted / rejected audio frames Audio-engine frame consumers. Solver delivery is listed separately and uses different counting units.4,080 / 0Frame-consumer p950.1 msRoute-control p950.1 msNative browser outputNative counters compare adjacent observations in one AudioContext. Missing support, the first sample or a counter reset is not reported as zero.Native counters availableOutput underruns in window0Underrun duration in window0 msObservation window551.7 msDevice output latency48 msUpdate costs and countersObservationValueOnset-lateness p950 msListener-control p950.1 msSolver-delivery batches4,035Delivery-processing p95—IR frequency-shape builds37IR frequency-shape reuses2,005Scalar-gain updates / skips37 / 2,005Delay updates / skips49 / 1,993Direction updates / skips201 / 26,535Retained samples128 / 128AudioContext generation1"
+      ],
+      "recordFound": 1,
+      "recordEnabled": true,
+      "afterRecord": {
+        "objects": 34,
+        "level": null,
+        "paths": "4",
+        "stale": false,
+        "pending": true,
+        "surfaceError": false,
+        "running": true,
+        "tick": "38"
+      },
+      "playDuringRecord": false,
+      "stopFound": 1,
+      "afterStop": "■ Stop recording ▶ Replay recording Export archived recording Recording 3.82 s · 231 recorded events Filter events Event time, fixed step, type and source. Select an event to inspect its evidence. Time s Tick Event Object / rule Result 0.5 30 OnSleep ball Rapier / accepted interaction event 0.017 1 AlwaysOn speaker / rule.always Rule matched; logical sound instance created [RULE_MATCH]",
+      "replayFound": 1,
+      "replayEnabled": false
+    },
+    {
+      "name": "export-tab",
+      "buttons": [
+        "● Start recording",
+        "▶ Replay recording",
+        "▶ Replay recording",
+        "Export archived recording",
+        "Export archived recording",
+        "OnSleep",
+        "AlwaysOn",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|voice.32d33c2c6582f6a4|listener.main|direct",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|voice.32d33c2c6582f6a4|listener.main|wall.back.pz",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|voice.32d33c2c6582f6a4|listener.main|panel.r-01.nx",
+        "web-geometric-primitives-1.0.0|scene.reflection-lab|voice.32d33c2c6582f6a4|listener.main|panel.l-02.px",
+        "Save snapshot A",
+        "Save snapshot B",
+        "Check and compare",
+        "Check server status again",
+        "Undo last AI apply",
+        "Generate action preview",
+        "Run baseline experiment",
+        "Compare current materials with matched motion",
+        "Save action",
+        "Undo motion edit",
+        "Redo motion edit",
+        "Rebind to current scene",
+        "Export motions",
+        "Run",
+        "Remove",
+        "Capture 3 seconds",
+        "Render audio files",
+        "Add zone",
+        "Add zone"
+      ],
+      "text": "● Start recording● Start recording▶ Replay recording▶ Replay recordingExport archived recordingExport the archived raw recording JSON. Interrupted recordings retain their status and reason. Save separately from the project JSON.Recording saved3.82 s · 231 recorded eventsFilter eventsReplay time0 / 3.82 sEvent time, fixed step, type and source. Select an event to inspect its evidence.Time sTickEventObject / ruleResult0.530OnSleepballRapier / accepted interaction event0.0171AlwaysOnspeaker / rule."
+    },
+    {
+      "name": "browser-errors",
+      "errors": [],
+      "requestsNow": 94,
+      "start": 89
+    }
+  ]
+}

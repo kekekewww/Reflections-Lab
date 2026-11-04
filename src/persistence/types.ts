@@ -1,3 +1,4 @@
+import type { Atmosphere } from "../acoustics/types.js";
 import type { SceneSpec } from "../scene/types.js";
 import type { SoundBehaviorDocument } from "../../schemas/sound-behavior/types.js";
 
@@ -60,6 +61,8 @@ export interface ProjectDocument {
   /** Stable selected run. Legacy v1 files omit this; the importing host owns its explicit compatibility fallback. */
   activeRecordingId?: string;
   editorMetadata?: ProjectEditorMetadata;
+  /** Authored acoustic environment; legacy v1 files omit this optional field. */
+  atmosphere?: Atmosphere;
 }
 
 export interface StorageAdapter {

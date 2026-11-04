@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/05-ux/USER_FLOWS.md","sha256":"0e110f0877ce8962df9aa6c162f38e18d48172c7bf9ded44fcc7607f9a582ec0","translated_at":"2026-10-27T03:43:14.383Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/05-ux/USER_FLOWS.md","sha256":"9cde894131d3a7a30566f12cf2e8fda4b3b2cdcbc5a876c2244135bdf154030b","translated_at":"2026-11-02T09:37:09.083Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/05-ux/USER_FLOWS.md`](../../05-ux/USER_FLOWS.md). Source SHA-256: `0e110f0877ce8962df9aa6c162f38e18d48172c7bf9ded44fcc7607f9a582ec0`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/05-ux/USER_FLOWS.md`](../../05-ux/USER_FLOWS.md). Source SHA-256: `9cde894131d3a7a30566f12cf2e8fda4b3b2cdcbc5a876c2244135bdf154030b`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="核心操作流程與驗收情境"></a>
@@ -112,7 +112,7 @@ Raw is a **dry-signal reference mode**, distinct from “Experiment A/B.” The 
 
 | Trigger | Immediate Behavior | Recovery/Data Handling |
 | --- | --- | --- |
-| Esc, lock loss, blur | Clear inputs, safely pause, show reason; no additional throw/drop | Explicit reentry+Resume; preserve held snapshot/ghost |
+| Esc, lock loss, blur | Clear inputs, safely pause, show reason; preserve the held snapshot, cancel any uncommitted ghost without placing it; no additional throw/drop | Explicit reentry+Resume; restart preview when placement is needed |
 | Audio device/context error | Monitor stops, physics may continue; show “Silent, still recording” | User chooses recovery; record trace has a gap, with no claim of complete audio recording |
 | Acoustic worker timeout | Mark the last result stale and stop publishing new frames | Retry/reduce fidelity/switch fallback; switching backend produces new result metadata |
 | Document unsaved/disk failure | Show “Scene not saved” and retain in memory | Retry/save as/export; do not overwrite with an empty file |

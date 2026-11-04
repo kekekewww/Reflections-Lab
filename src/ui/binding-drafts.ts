@@ -68,7 +68,7 @@ function baseValuesEqual(
 }
 
 export function bindingMetadataProblem(
-  snapshot: LabViewModel,
+  snapshot: Pick<LabViewModel, "sceneRevision">,
   behavior: BehaviorView,
   rule: BehaviorRuleView,
 ): string | null {
@@ -101,7 +101,7 @@ export function bindingMetadataProblem(
 }
 
 export function createBindingDraft(
-  snapshot: LabViewModel,
+  snapshot: Pick<LabViewModel, "projectId" | "projectName" | "sceneRevision">,
   behavior: BehaviorView,
   rule: BehaviorRuleView,
 ): BindingDraftEntry {

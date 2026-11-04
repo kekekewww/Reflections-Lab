@@ -1,24 +1,17 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useFrame, type ThreeEvent } from "@react-three/fiber";
-import {
-  BoxGeometry,
-  BufferGeometry,
-  CapsuleGeometry,
-  Group,
-  Line,
-  LineBasicMaterial,
-  LineDashedMaterial,
-  SphereGeometry,
-  Vector3,
-} from "three";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
+import { BoxGeometry, CapsuleGeometry, Group, SphereGeometry } from "three";
 import type {
   LabController,
   LabViewModel,
   ObjectView,
   PathView,
   PlacementGhostView,
+  Vector3,
 } from "../contracts.js";
 import { canonicalTokens } from "../tokens.js";
+import { SolverPathLine } from "./solver-path-line.js";
+import { gizmoSuppressesSelection, updateGizmoGroup, type GizmoBridge } from "./TransformGizmo.js";
 
 const colors = canonicalTokens.color;
 
@@ -37,7 +30,7 @@ function PlacementGhost({ ghost }: { ghost: PlacementGhostView }) {
   const geometry = useMemo(() => geometryFor(ghost), [ghost.shape, x, y, z]);
   useEffect(() => () => geometry.dispose(), [geometry]);
   const color =
-    ghost.stage === "staged"
+    ghost.stage === "pending"
       ? colors.warning.$value
       : ghost.valid
         ? colors.success.$value
@@ -62,18 +55,44 @@ function PhysicalObject({
   selected,
   emitter,
   editor,
+  bridge,
+  pathEditing,
+  onSurfacePoint,
 }: {
   object: ObjectView;
   controller: LabController;
   selected: boolean;
   emitter: boolean;
   editor: boolean;
+  bridge: GizmoBridge;
+  /** While a trajectory editor is open a click adds a point instead of selecting. */
+  pathEditing: boolean;
+  onSurfacePoint: ((pointM: Vector3, normalM: Vector3) => void) | undefined;
 }) {
   const group = useRef<Group>(null);
+  const gl = useThree((state) => state.gl);
+  const setGroup = useCallback(
+    (node: Group | null) => {
+      updateGizmoGroup(bridge, object.id, group.current, node);
+      group.current = node;
+    },
+    [bridge, object.id],
+  );
+  const hovered = useRef(false);
+  const clearHover = () => {
+    if (!hovered.current) return;
+    hovered.current = false;
+    gl.domElement.style.cursor = "";
+  };
+  useEffect(() => {
+    if (!editor) clearHover();
+    return clearHover;
+  }, [editor, gl]);
   const [x, y, z] = object.dimensionsM;
   const geometry = useMemo(() => geometryFor(object), [object.shape, x, y, z]);
   useEffect(() => () => geometry.dispose(), [geometry]);
   useFrame(() => {
+    if (bridge.dragging === object.id) return;
     const pose = controller.getPose(object.id) ?? object;
     group.current?.position.fromArray(pose.positionM);
     group.current?.quaternion.fromArray(pose.orientationQuaternion);
@@ -89,11 +108,32 @@ function PhysicalObject({
   const select = (event: ThreeEvent<MouseEvent>) => {
     if (!editor || event.altKey) return;
     event.stopPropagation();
+    if (gizmoSuppressesSelection(bridge)) return;
+    if (pathEditing) {
+      // The face normal is in the mesh's local frame; the offset needs it in world space.
+      if (event.face && onSurfacePoint)
+        onSurfacePoint(
+          event.point.toArray(),
+          event.face.normal.clone().transformDirection(event.object.matrixWorld).toArray(),
+        );
+      return;
+    }
     void controller.dispatch({ type: "selectObject", objectId: object.id });
   };
   return (
-    <group ref={group} position={object.positionM} quaternion={object.orientationQuaternion}>
-      <mesh onClick={select} castShadow receiveShadow>
+    <group ref={setGroup} position={object.positionM} quaternion={object.orientationQuaternion}>
+      <mesh
+        onClick={select}
+        onPointerOver={(event) => {
+          if (!editor || bridge.dragging) return;
+          event.stopPropagation();
+          hovered.current = true;
+          gl.domElement.style.cursor = "pointer";
+        }}
+        onPointerOut={clearHover}
+        castShadow
+        receiveShadow
+      >
         <primitive object={geometry} attach="geometry" />
         <meshStandardMaterial
           color={color}
@@ -127,49 +167,37 @@ function SolverPath({
   path,
   controller,
   selected,
+  pickable,
 }: {
   path: PathView;
   controller: LabController;
   selected: boolean;
+  /** False while a trajectory editor is open, so its surface clicks are not taken by the line. */
+  pickable: boolean;
 }) {
-  const line = useMemo(() => {
-    const geometry = new BufferGeometry().setFromPoints(
-      path.points.map((point) => new Vector3(...point)),
-    );
-    const color = path.stale
-      ? colors.warning.$value
-      : path.kind === "direct"
-        ? colors.success.$value
-        : path.kind === "blocked"
-          ? colors.danger.$value
-          : path.kind === "transmission"
-            ? colors.textSecondary.$value
-            : colors.accent.$value;
-    const material =
-      path.kind === "blocked" || path.kind === "transmission"
-        ? new LineDashedMaterial({
-            color,
-            dashSize: 0.1,
-            gapSize: 0.07,
-            transparent: true,
-            opacity: path.stale ? 0.5 : 0.8,
-          })
-        : new LineBasicMaterial({ color, transparent: true, opacity: path.stale ? 0.5 : 0.9 });
-    const result = new Line(geometry, material);
-    result.computeLineDistances();
-    return result;
-  }, [path]);
-  useEffect(
-    () => () => {
-      line.geometry.dispose();
-      (line.material as LineBasicMaterial).dispose();
-    },
-    [line],
-  );
+  const lineGroup = useRef<Group>(null);
+  const resource = useRef<SolverPathLine | null>(null);
+  useLayoutEffect(() => {
+    // Acquire only on commit, so abandoned renders and StrictMode effect replay
+    // cannot leak a line or reuse resources already released by cleanup.
+    const mounted = new SolverPathLine();
+    const group = lineGroup.current!;
+    resource.current = mounted;
+    group.add(mounted.line);
+    return () => {
+      group.remove(mounted.line);
+      mounted.dispose();
+      resource.current = null;
+    };
+  }, []);
+  useLayoutEffect(() => {
+    resource.current?.update(path);
+    resource.current?.setPickable(pickable);
+  });
   return (
     <group>
-      <primitive
-        object={line}
+      <group
+        ref={lineGroup}
         onClick={(event: ThreeEvent<MouseEvent>) => {
           event.stopPropagation();
           void controller.dispatch({ type: "selectPath", pathId: path.id });
@@ -197,10 +225,17 @@ export function SceneEntities({
   controller,
   model,
   showBlocked,
+  bridge,
+  pathEditingId = null,
+  onSurfacePoint,
 }: {
   controller: LabController;
   model: LabViewModel;
   showBlocked: boolean;
+  bridge: GizmoBridge;
+  /** The object whose trajectory editor is open; clicking it adds no point. */
+  pathEditingId?: string | null;
+  onSurfacePoint?: (pointM: Vector3, normalM: Vector3) => void;
 }) {
   const emitters = useMemo(
     () =>
@@ -236,6 +271,9 @@ export function SceneEntities({
           selected={model.selectedObjectId === object.id}
           emitter={emitters.has(object.id)}
           editor={model.interactionMode === "editor"}
+          bridge={bridge}
+          pathEditing={pathEditingId !== null}
+          onSurfacePoint={object.id === pathEditingId ? undefined : onSurfacePoint}
         />
       ))}
       {model.placementGhost && <PlacementGhost ghost={model.placementGhost} />}
@@ -259,6 +297,7 @@ export function SceneEntities({
           path={path}
           controller={controller}
           selected={model.selectedPathId === path.id}
+          pickable={pathEditingId === null}
         />
       ))}
       {event?.positionM && (

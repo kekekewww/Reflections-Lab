@@ -1,0 +1,1046 @@
+{
+  "offlineFixture": false,
+  "prompt": "Move the ball in a slow circle around the listener at the ball's height, radius 2 m, over 8 seconds, ending where it started.",
+  "expect": {
+    "paths": 1,
+    "path": {
+      "objectId": "ball",
+      "minSamples": 25,
+      "centre": "listener",
+      "radiusM": 2,
+      "durationS": 8
+    }
+  },
+  "settings": {
+    "modelId": "muse-spark-1.3",
+    "authorizationId": "artifact.meta-limits-20261104",
+    "effort": "minimal",
+    "maxCompletionTokens": 16000,
+    "maxRounds": 3,
+    "stopAtUsd": 2,
+    "parallelToolCalls": true,
+    "maxInputBytes": 128000
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "responseId": "chatcmpl-01a1a5dd-d407-7066-a757-d35cb4ebbdc9",
+      "modelId": "muse-spark-1.3",
+      "finishReason": "tool_calls",
+      "calls": 4,
+      "toolCounts": {
+        "MoveListener": 1,
+        "MoveObject": 1,
+        "SetRigidBodyMode": 1,
+        "SetTrajectory": 1
+      },
+      "failures": [],
+      "usage": {
+        "promptTokens": 4199,
+        "completionTokens": 3208,
+        "reasoningTokens": 1066,
+        "cachedTokens": 4081
+      },
+      "elapsedMs": 19859,
+      "text": "Ball circle coming up — recentering for a clean 2 m loop that stays in the room."
+    }
+  ],
+  "stopReason": "accepted",
+  "accepted": true,
+  "finalRequests": [
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.request-1",
+      "transactionId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.transaction",
+      "tool": "MoveListener",
+      "arguments": {
+        "listenerId": "listener.main",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          0,
+          1.6,
+          0
+        ]
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.request-2",
+      "transactionId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.transaction",
+      "tool": "MoveObject",
+      "arguments": {
+        "objectId": "ball",
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "positionM": [
+          2,
+          2,
+          0
+        ]
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.request-3",
+      "transactionId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.transaction",
+      "tool": "SetRigidBodyMode",
+      "arguments": {
+        "mode": "kinematic",
+        "objectId": "ball",
+        "velocityPolicy": "zero"
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "requestId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.request-4",
+      "transactionId": "meta.plan-b07c85d6b997a8747cbb27fb10346dc0ec94af18.transaction",
+      "tool": "SetTrajectory",
+      "arguments": {
+        "interpolation": "linearSlerp",
+        "objectId": "ball",
+        "samples": [
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              2,
+              2,
+              0
+            ],
+            "timeS": 0
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.9615705608064609,
+              2,
+              0.3901806440322565
+            ],
+            "timeS": 0.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.8477590650225735,
+              2,
+              0.7653668647301795
+            ],
+            "timeS": 0.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.6629392246050907,
+              2,
+              1.1111404660392044
+            ],
+            "timeS": 0.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.4142135623730951,
+              2,
+              1.414213562373095
+            ],
+            "timeS": 1
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.1111404660392044,
+              2,
+              1.6629392246050907
+            ],
+            "timeS": 1.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              0.7653668647301796,
+              2,
+              1.8477590650225735
+            ],
+            "timeS": 1.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              0.39018064403225666,
+              2,
+              1.9615705608064609
+            ],
+            "timeS": 1.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.2246467991473532e-16,
+              2,
+              2
+            ],
+            "timeS": 2
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -0.39018064403225644,
+              2,
+              1.9615705608064609
+            ],
+            "timeS": 2.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -0.7653668647301793,
+              2,
+              1.8477590650225735
+            ],
+            "timeS": 2.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.111140466039204,
+              2,
+              1.662939224605091
+            ],
+            "timeS": 2.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.414213562373095,
+              2,
+              1.4142135623730951
+            ],
+            "timeS": 3
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.6629392246050907,
+              2,
+              1.1111404660392044
+            ],
+            "timeS": 3.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.8477590650225735,
+              2,
+              0.7653668647301798
+            ],
+            "timeS": 3.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.9615705608064609,
+              2,
+              0.39018064403225683
+            ],
+            "timeS": 3.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -2,
+              2,
+              2.4492935982947064e-16
+            ],
+            "timeS": 4
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.9615705608064609,
+              2,
+              -0.3901806440322564
+            ],
+            "timeS": 4.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.8477590650225737,
+              2,
+              -0.7653668647301795
+            ],
+            "timeS": 4.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.662939224605091,
+              2,
+              -1.111140466039204
+            ],
+            "timeS": 4.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.4142135623730954,
+              2,
+              -1.414213562373095
+            ],
+            "timeS": 5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -1.1111404660392046,
+              2,
+              -1.6629392246050905
+            ],
+            "timeS": 5.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -0.76536686473018,
+              2,
+              -1.8477590650225735
+            ],
+            "timeS": 5.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -0.39018064403225705,
+              2,
+              -1.9615705608064609
+            ],
+            "timeS": 5.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              -3.6739403974420594e-16,
+              2,
+              -2
+            ],
+            "timeS": 6
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              0.39018064403225633,
+              2,
+              -1.9615705608064609
+            ],
+            "timeS": 6.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              0.7653668647301792,
+              2,
+              -1.8477590650225737
+            ],
+            "timeS": 6.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.1111404660392037,
+              2,
+              -1.6629392246050911
+            ],
+            "timeS": 6.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.4142135623730947,
+              2,
+              -1.4142135623730954
+            ],
+            "timeS": 7
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.6629392246050905,
+              2,
+              -1.1111404660392046
+            ],
+            "timeS": 7.25
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.8477590650225733,
+              2,
+              -0.7653668647301805
+            ],
+            "timeS": 7.5
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              1.9615705608064609,
+              2,
+              -0.3901806440322573
+            ],
+            "timeS": 7.75
+          },
+          {
+            "orientationQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "positionM": [
+              2,
+              2,
+              -4.898587196589413e-16
+            ],
+            "timeS": 8
+          }
+        ]
+      },
+      "sceneId": "scene.reflection-lab",
+      "expectedSceneRevision": 0
+    }
+  ],
+  "beforeScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 0,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          -0.8,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "dynamicGravity",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        4
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "candidateScene": {
+    "schemaVersion": "1.0.0",
+    "sceneId": "scene.reflection-lab",
+    "sceneRevision": 1,
+    "units": "SI",
+    "coordinateSystem": "right-handed-y-up-minus-z-forward",
+    "seed": 1746,
+    "gravityMps2": [
+      0,
+      -9.81,
+      0
+    ],
+    "objects": [
+      {
+        "id": "floor",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          0.2,
+          8.4
+        ],
+        "positionM": [
+          0,
+          -0.1,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.wood",
+        "acousticMaterialId": "material.wood",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.back",
+        "shape": "box",
+        "dimensionsM": [
+          6.4,
+          4,
+          0.2
+        ],
+        "positionM": [
+          0,
+          2,
+          -4.1
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.left",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          -3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "wall.right",
+        "shape": "box",
+        "dimensionsM": [
+          0.2,
+          4,
+          8.4
+        ],
+        "positionM": [
+          3.1,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.hard",
+        "acousticRole": "staticSurface"
+      },
+      {
+        "id": "ball",
+        "shape": "sphere",
+        "dimensionsM": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "positionM": [
+          2,
+          2,
+          0
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "kinematic",
+        "massKg": 1,
+        "friction": 0.4,
+        "restitution": 0.55,
+        "physicsMaterialId": "material.metal",
+        "acousticMaterialId": "material.metal",
+        "acousticRole": "dynamicOccluder"
+      },
+      {
+        "id": "speaker",
+        "shape": "box",
+        "dimensionsM": [
+          0.45,
+          0.7,
+          0.35
+        ],
+        "positionM": [
+          1.5,
+          1.3,
+          -2
+        ],
+        "orientationQuaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "mode": "fixed",
+        "massKg": 100,
+        "friction": 0.6,
+        "restitution": 0.15,
+        "physicsMaterialId": "material.hard",
+        "acousticMaterialId": "material.soft",
+        "acousticRole": "none"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source.speaker",
+        "objectId": "speaker",
+        "signalId": "signal.tone-220",
+        "mode": "continuous",
+        "gainDbfs": -24,
+        "playing": true
+      }
+    ],
+    "listener": {
+      "id": "listener.main",
+      "positionM": [
+        0,
+        1.6,
+        0
+      ],
+      "orientationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "attachment": "independent"
+    }
+  },
+  "score": {
+    "addedObjects": 0,
+    "addedSources": 0,
+    "toolCounts": {
+      "MoveListener": 1,
+      "MoveObject": 1,
+      "SetRigidBodyMode": 1,
+      "SetTrajectory": 1
+    },
+    "outsideRoom": 0,
+    "intersectingPairs": 0,
+    "unsupported": 0,
+    "listenerMovedM": 4,
+    "listenerInside": 0,
+    "paths": [
+      {
+        "objectId": "ball",
+        "samples": 33,
+        "durationS": 8,
+        "peakSpeedMps": 1.5682742452729717,
+        "startDistanceM": 0,
+        "endDistanceM": 4.898587196589413e-16,
+        "outsideRoom": 0,
+        "meanRadiusM": 2,
+        "maxRadiusErrorM": 4.440892098500626e-16
+      }
+    ],
+    "listenerFacingErrorDeg": null,
+    "gridSpacingErrorM": null
+  },
+  "apply": {
+    "worked": true,
+    "error": null
+  },
+  "pathStarts": [
+    {
+      "objectId": "ball",
+      "started": true,
+      "error": null
+    }
+  ],
+  "followUp": null,
+  "undo": {
+    "worked": true,
+    "error": null
+  },
+  "error": null,
+  "estimatedCost": {
+    "label": "Estimated at list price; not actual billing",
+    "usd": 0.01888275,
+    "knownUsageUsd": 0.01888275,
+    "roundsWithUsage": 1,
+    "coverage": "Reported usage in finished planner rounds only; failed or uncertain attempts may consume additional reservations.",
+    "inputUsdPerMillionTokens": 1.25,
+    "outputUsdPerMillionTokens": 4.25,
+    "pricingSource": "https://dev.meta.ai/docs/pricing-rate-limits"
+  }
+}

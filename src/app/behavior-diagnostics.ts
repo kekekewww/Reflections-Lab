@@ -179,7 +179,7 @@ export class NativeAdmissionDiagnostics {
     intent: VoiceIntent;
     voiceInput: VoiceInput;
     admission: VoiceAdmission;
-    frame: AcousticFrame;
+    frame?: AcousticFrame;
     behaviorDocumentRevision: number;
     attemptedAtTick: number;
   }): void {
@@ -201,15 +201,15 @@ export class NativeAdmissionDiagnostics {
       profileId: event.profileId,
       profileRevision: event.profileRevision,
       sourceId: input.voiceInput.sourceId,
-      acousticRequestId: input.frame.requestId,
-      acousticSceneRevision: input.frame.sceneRevision,
-      acousticPoseTick: input.frame.poseTick,
+      acousticRequestId: input.frame?.requestId ?? null,
+      acousticSceneRevision: input.frame?.sceneRevision ?? null,
+      acousticPoseTick: input.frame?.poseTick ?? null,
       attemptedAtTick: input.attemptedAtTick,
     };
     const identity = JSON.stringify([
       event.eventId,
       event.instanceId,
-      input.frame.requestId,
+      input.frame?.requestId ?? null,
       input.admission.reason ?? null,
     ]);
     const id = `native-rejection.${event.runEpoch}.${stableHash(identity)}`;

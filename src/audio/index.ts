@@ -1,5 +1,6 @@
-export { AudioEngine } from "./engine.js";
+export { AudioEngine, DEFAULT_NATIVE_VOICE_POLICY } from "./engine.js";
 export { AudioEngineError } from "./types.js";
+export type { AudioDiagnosticsSnapshot, AcousticDeliveryObservation } from "./diagnostics.js";
 export type {
   RenderArtifactRef,
   RenderBackendIdentity,

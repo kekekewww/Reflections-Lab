@@ -1,6 +1,19 @@
-import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties } from "react";
-import type { LabAction, LabController, LabViewModel, Workspace } from "./contracts.js";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+} from "react";
+import { createReactViewStore } from "./view-stability.js";
+import { HelpTip } from "./HelpTip.js";
+import { statusFeedbackMessages } from "./status-feedback.js";
+import { createSafeController } from "./controller-ports.js";
+import type { LabAction, LabController, LabViewModel } from "./contracts.js";
 import { AnalysisDock } from "./AnalysisDock.js";
+import { TopMonitor } from "./TopMonitor.js";
 import { Inspector } from "./Inspector.js";
 import { SceneExplorer } from "./SceneExplorer.js";
 import { ProjectImportButton } from "./ProjectImport.js";
@@ -8,13 +21,25 @@ import { Viewport } from "./Viewport.js";
 import { Badge, Icon, NumberField } from "./components.js";
 import { canonicalTokens, designTokenStyle } from "./tokens.js";
 import { LocaleProvider, useLocale } from "./locale.js";
+import {
+  closedTrajectoryUi,
+  reconcileTrajectoryUi,
+  trajectoryDeleteKey,
+  trajectoryKeyAction,
+  trajectoryKeyNotice,
+  type TrajectoryNoticeKey,
+  type TrajectoryUiState,
+} from "./inspector-trajectory.js";
+import {
+  MONITOR_MAX_DB,
+  MONITOR_MIN_DB,
+  monitorControlDb,
+  monitorGainFromControl,
+} from "../audio/monitor-level.js";
 import "./styles.css";
+import "./recovery.css";
+import "./top-monitor.css";
 
-const workspaces: { id: Workspace; number: string }[] = [
-  { id: "scene", number: "01" },
-  { id: "simulation", number: "02" },
-  { id: "analysis", number: "03" },
-];
 function isTyping(target: EventTarget | null) {
   return (
     target instanceof HTMLElement &&
@@ -103,7 +128,13 @@ function PanelDivider({
 
 function MonitorStrip({ controller, model }: { controller: LabController; model: LabViewModel }) {
   const { t, n } = useLocale();
+  const [monitorDisclosure, setMonitorDisclosure] = useState<"metadata" | "reverb" | null>(null);
+  const toggleDisclosure = (section: "metadata" | "reverb", open: boolean) => {
+    setMonitorDisclosure((current) => (open ? section : current === section ? null : current));
+  };
   const blocked = model.monitor.state === "blocked";
+  const monitorDb = monitorControlDb(model.monitor.gainLinear);
+  const monitorLabel = `${n(monitorDb, { maximumFractionDigits: 0, signDisplay: "exceptZero" })} dB`;
   return (
     <footer className="monitor-strip" aria-label={t("shell.monitorRegion")}>
       <div className="monitor-controls">
@@ -124,26 +155,52 @@ function MonitorStrip({ controller, model }: { controller: LabController; model:
         </button>
         <label className="monitor-gain">
           <span>{t("shell.monitor")}</span>
+          {/* Perceptual dB control; the contract stays linear digital gain (not SPL). */}
           <input
             aria-label={t("shell.monitorGain")}
+            aria-valuetext={monitorLabel}
             type="range"
-            min={0}
-            max={1}
-            step={0.01}
-            value={model.monitor.gainLinear}
+            min={MONITOR_MIN_DB}
+            max={MONITOR_MAX_DB}
+            step={1}
+            value={monitorDb}
             onChange={(event) =>
               void controller.dispatch({
                 type: "setMonitorGain",
-                gainLinear: Number(event.target.value),
+                gainLinear: monitorGainFromControl(Number(event.target.value)),
               })
             }
           />
-          <output>
-            {n(Math.round(model.monitor.gainLinear * 100), { maximumFractionDigits: 0 })}%
-          </output>
+          <output>{monitorLabel}</output>
         </label>
       </div>
       <div className="monitor-route" role="group" aria-label={t("shell.monitorRoute")}>
+        <label className="monitor-buffer">
+          <span>{t("shell.audioBuffer")}</span>
+          <select
+            aria-label={t("shell.audioBuffer")}
+            value={model.monitor.bufferPreset ?? "playback"}
+            disabled={model.monitor.rebuilding}
+            onChange={(event) =>
+              void controller.dispatch({
+                type: "setAudioBufferPreset",
+                preset: event.target.value as "interactive" | "balanced" | "playback",
+              })
+            }
+          >
+            <option value="interactive">{t("shell.audioBufferInteractive")}</option>
+            <option value="balanced">{t("shell.audioBufferBalanced")}</option>
+            <option value="playback">{t("shell.audioBufferPlayback")}</option>
+          </select>
+          {typeof model.monitor.outputLatencySeconds === "number" && (
+            <output
+              aria-label={t("shell.audioOutputLatency")}
+              title={t("shell.audioOutputLatency")}
+            >
+              {n(model.monitor.outputLatencySeconds * 1000, { maximumFractionDigits: 1 })} ms
+            </output>
+          )}
+        </label>
         <button
           type="button"
           aria-pressed={model.monitor.mode === "simulated"}
@@ -152,24 +209,53 @@ function MonitorStrip({ controller, model }: { controller: LabController; model:
         >
           {t("shell.simulated")}
         </button>
-        <button
-          type="button"
-          aria-pressed={model.monitor.mode === "raw"}
-          className={model.monitor.mode === "raw" ? "selected" : ""}
-          title={t("shell.rawReferenceTitle")}
-          onClick={() => void controller.dispatch({ type: "setMonitorMode", mode: "raw" })}
+        <HelpTip
+          topic={t("shell.rawReference")}
+          content={t("shell.rawReferenceTitle") || t("inspector.runningEditGuard")}
         >
-          {t("shell.rawReference")}
-        </button>
+          <button
+            type="button"
+            aria-pressed={model.monitor.mode === "raw"}
+            className={model.monitor.mode === "raw" ? "selected" : ""}
+            onClick={() => void controller.dispatch({ type: "setMonitorMode", mode: "raw" })}
+          >
+            {t("shell.rawReference")}
+          </button>
+        </HelpTip>
       </div>
       {(model.acoustic.state === "stale" || model.acoustic.state === "pending") && (
         <span className="monitor-acoustic-warning" role="status">
           {model.acoustic.state === "stale" ? t("shell.acousticStale") : t("shell.acousticPending")}
         </span>
       )}
-      <details className="monitor-metadata">
+      <details
+        className="monitor-metadata"
+        open={monitorDisclosure === "metadata"}
+        onToggle={(event) => toggleDisclosure("metadata", event.currentTarget.open)}
+      >
         <summary>{t("shell.monitorDetails")}</summary>
         <div className="monitor-metadata-content">
+          <span className="mono">
+            {typeof model.monitor.outputUnderrunEvents !== "number"
+              ? t("shell.audioUnderrunsUnavailable")
+              : t("shell.audioUnderruns", {
+                  count: n(model.monitor.outputUnderrunEvents, { maximumFractionDigits: 0 }),
+                })}
+          </span>
+          {typeof model.monitor.schedulingLookaheadSeconds === "number" && (
+            <span>
+              {t("shell.audioLookahead", {
+                ms: n(model.monitor.schedulingLookaheadSeconds * 1000, {
+                  maximumFractionDigits: 0,
+                }),
+              })}
+            </span>
+          )}
+          <span>
+            {t("shell.audioStaleAdmissions", {
+              count: n(model.monitor.staleVoiceAdmissions ?? 0, { maximumFractionDigits: 0 }),
+            })}
+          </span>
           <span className="monitor-voice mono">
             {t("shell.voices")} {n(model.monitor.activeVoices, { maximumFractionDigits: 0 })}/
             {n(model.monitor.voiceLimit, { maximumFractionDigits: 0 })}
@@ -178,21 +264,32 @@ function MonitorStrip({ controller, model }: { controller: LabController; model:
             <span className={`status-dot ${model.acoustic.state}`} />
             <span>{model.acoustic.backend}</span>
             <span className="subtle">
-              rev{" "}
-              {model.acoustic.revision === null
-                ? "—"
-                : n(model.acoustic.revision, { maximumFractionDigits: 0 })}
+              {t("help.revision", {
+                revision:
+                  model.acoustic.revision === null
+                    ? "—"
+                    : n(model.acoustic.revision, { maximumFractionDigits: 0 }),
+              })}
             </span>
           </div>
           <span className="monitor-note">
-            {model.monitor.mode === "raw"
-              ? t("shell.rawRoutingNote")
-              : t("shell.simulatedRoutingNote")}{" "}
-            · dBFS ≠ dB SPL
+            {t("help.digitalLevel")}
+            <HelpTip
+              topic={t("shell.monitorRoute")}
+              content={
+                model.monitor.mode === "raw"
+                  ? t("shell.rawRoutingNote")
+                  : t("shell.simulatedRoutingNote")
+              }
+            />
           </span>
         </div>
       </details>
-      <details className="monitor-reverb">
+      <details
+        className="monitor-reverb"
+        open={monitorDisclosure === "reverb"}
+        onToggle={(event) => toggleDisclosure("reverb", event.currentTarget.open)}
+      >
         <summary>{t("shell.lateReverb")}</summary>
         <div className="monitor-reverb-settings">
           <label className="check-field">
@@ -207,7 +304,7 @@ function MonitorStrip({ controller, model }: { controller: LabController; model:
             />
             <span>{t("shell.lateReverbPerceptual")}</span>
           </label>
-          <p className="micro-copy">{t("shell.lateReverbExplanation")}</p>
+          <HelpTip topic={t("shell.lateReverb")} content={t("shell.lateReverbExplanation")} />
           {model.monitor.lateReverb && (
             <>
               <NumberField
@@ -231,7 +328,7 @@ function MonitorStrip({ controller, model }: { controller: LabController; model:
                 value={model.monitor.lateReverb.wetGain}
                 min={0}
                 max={1}
-                step={0.05}
+                step={0.01}
                 onCommit={(wetGain) =>
                   void controller.dispatch({
                     type: "setReverb",
@@ -258,21 +355,14 @@ export function App({ controller }: { controller: LabController }) {
 
 function LabApp({ controller }: { controller: LabController }) {
   const { locale, setLocale, t, n, message } = useLocale();
-  const workspaceNames = {
-    scene: t("shell.workspaceScene"),
-    simulation: t("shell.workspaceSimulation"),
-    analysis: t("shell.workspaceAnalysis"),
-  };
   const stateLabels = {
     ready: t("shell.ready"),
     running: t("shell.running"),
     paused: t("shell.paused"),
     error: t("shell.simulationError"),
   };
-  const model = useSyncExternalStore(
-    controller.subscribe.bind(controller),
-    controller.getSnapshot.bind(controller),
-  );
+  const viewStore = useMemo(() => createReactViewStore(controller), [controller]);
+  const model = useSyncExternalStore(viewStore.subscribe, viewStore.getSnapshot);
   const [localError, setLocalError] = useState("");
   const [workspaceWidth, setWorkspaceWidth] = useState(() => window.innerWidth);
   useEffect(() => {
@@ -289,32 +379,45 @@ function LabApp({ controller }: { controller: LabController }) {
   const [leftHidden, setLeftHidden] = useState(false),
     [rightHidden, setRightHidden] = useState(false);
   const safeController = useMemo<LabController>(
-    () => ({
-      getSnapshot: controller.getSnapshot.bind(controller),
-      subscribe: controller.subscribe.bind(controller),
-      getPose: controller.getPose.bind(controller),
-      ...(controller.getFPSCamera
-        ? { getFPSCamera: controller.getFPSCamera.bind(controller) }
-        : {}),
-      dispatch: (action: LabAction) => {
-        try {
-          return Promise.resolve(controller.dispatch(action)).catch((error) => {
-            setLocalError(error instanceof Error ? error.message : String(error));
-          });
-        } catch (error) {
-          setLocalError(error instanceof Error ? error.message : String(error));
-          return Promise.resolve();
-        }
-      },
-    }),
+    () => createSafeController(controller, setLocalError),
     [controller],
   );
+  const [trajectoryUi, setTrajectoryUi] = useState<TrajectoryUiState>(closedTrajectoryUi);
+  const [trajectoryNotice, setTrajectoryNotice] = useState<TrajectoryNoticeKey | null>(null);
+  // Deleting, silencing or deselecting the edited object closes its editor on this render.
+  const trajectory = reconcileTrajectoryUi(model, trajectoryUi);
+  useEffect(() => {
+    if (trajectory !== trajectoryUi) setTrajectoryUi(trajectory);
+  }, [trajectory, trajectoryUi]);
+  const trajectoryKeys = useRef({ model, trajectory });
+  trajectoryKeys.current = { model, trajectory };
   useEffect(() => {
     if (model.selectedObjectId) setShowListener(false);
+    setTrajectoryNotice(null);
   }, [model.selectedObjectId]);
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
-      if (event.isComposing || isTyping(event.target)) return;
+      const typing = isTyping(event.target);
+      const input = {
+        code: event.code,
+        shiftKey: event.shiftKey,
+        ctrlKey: event.ctrlKey,
+        metaKey: event.metaKey,
+        altKey: event.altKey,
+        typing,
+        composing: event.isComposing,
+      };
+      if (!event.repeat && (event.code === "KeyT" || event.code === "Escape")) {
+        const { model: current, trajectory: state } = trajectoryKeys.current;
+        const next = trajectoryKeyAction(input, current, state);
+        const notice = next ? null : trajectoryKeyNotice(input, current);
+        if (next) {
+          event.preventDefault();
+          setTrajectoryUi(next);
+          setTrajectoryNotice(null);
+        } else if (notice) setTrajectoryNotice(notice);
+      }
+      if (event.isComposing || typing) return;
       const modifier = event.ctrlKey || event.metaKey;
       if (modifier && event.code === "KeyZ") {
         event.preventDefault();
@@ -323,6 +426,37 @@ function LabApp({ controller }: { controller: LabController }) {
       if (modifier && event.code === "KeyS") {
         event.preventDefault();
         void safeController.dispatch({ type: "save" });
+      }
+      // While a path editor is open, Delete/Backspace act on its selected point, never the object.
+      const pathDelete = trajectoryDeleteKey(
+        input,
+        safeController.getSnapshot(),
+        trajectoryKeys.current.trajectory,
+      );
+      if (pathDelete) {
+        event.preventDefault();
+        // A held key removes one point, not one per repeat built on a not-yet-committed path.
+        const edit = event.repeat ? null : pathDelete.edit;
+        if (edit)
+          void Promise.resolve(
+            safeController.dispatch({
+              type: "setTrajectory",
+              objectId: edit.objectId,
+              trajectory: edit.trajectory,
+            }),
+          ).then(() => {
+            // The safe controller resolves on a refusal too; only a removal that landed moves it.
+            const landed = safeController
+              .getSnapshot()
+              .objects.find((object) => object.id === edit.objectId)?.trajectory;
+            if ((landed?.offsetsM.length ?? 0) !== (edit.trajectory?.offsetsM.length ?? 0)) return;
+            setTrajectoryUi((current) =>
+              current.editingObjectId === edit.objectId
+                ? { ...current, selectedPointIndex: edit.selectedPointIndex }
+                : current,
+            );
+          });
+        return;
       }
       if (
         event.code === "Delete" &&
@@ -337,8 +471,19 @@ function LabApp({ controller }: { controller: LabController }) {
     window.addEventListener("keydown", keydown);
     return () => window.removeEventListener("keydown", keydown);
   }, [safeController, model.interactionMode, model.selectedObjectId, model.simulationState]);
-  const emit = (action: LabAction) => void safeController.dispatch(action);
-  const statusMessage = model.pauseReason || model.notice;
+  const emit = useCallback(
+    (action: LabAction) => void safeController.dispatch(action),
+    [safeController],
+  );
+  const selectListener = useCallback(() => {
+    setShowListener(true);
+    emit({ type: "selectObject", objectId: null });
+    setMobilePane("inspector");
+  }, [emit]);
+  const statusMessages = [
+    ...(trajectoryNotice ? [t(trajectoryNotice)] : []),
+    ...statusFeedbackMessages(model, message),
+  ];
   // At desktop widths reserve at least 320px for the viewport and both dividers.
   const availablePanelWidth = Math.max(0, workspaceWidth - 320 - 8);
   const panelLimit = Math.floor(availablePanelWidth / (!leftHidden && !rightHidden ? 2 : 1));
@@ -367,26 +512,17 @@ function LabApp({ controller }: { controller: LabController }) {
             </span>
           </div>
           <div className="project-name">
-            <strong>{model.projectName}</strong>
+            <strong>
+              {model.projectName === "聲音行為實驗" ? t("shell.defaultProject") : model.projectName}
+            </strong>
             <span>
-              Scene rev {n(model.sceneRevision, { maximumFractionDigits: 0 })}{" "}
+              {t("help.sceneRevision", {
+                revision: n(model.sceneRevision, { maximumFractionDigits: 0 }),
+              })}{" "}
               <span className="separator-dot">·</span> {t("shell.localProject")}
             </span>
           </div>
-          <nav className="workspace-tabs" aria-label={t("shell.workspaceNavigation")}>
-            {workspaces.map((workspace) => (
-              <button
-                type="button"
-                key={workspace.id}
-                aria-current={model.workspace === workspace.id ? "page" : undefined}
-                className={model.workspace === workspace.id ? "selected" : ""}
-                onClick={() => emit({ type: "workspace", workspace: workspace.id })}
-              >
-                <small>{workspace.number}</small>
-                {workspaceNames[workspace.id]}
-              </button>
-            ))}
-          </nav>
+          <TopMonitor controller={controller} model={model} />
           <label className="locale-control" data-locale-control="true">
             <span>介面語言 / Interface language</span>
             <select
@@ -403,33 +539,45 @@ function LabApp({ controller }: { controller: LabController }) {
             </select>
           </label>
           <div className="project-actions">
-            <button
-              type="button"
-              className="icon-button"
-              title={t("shell.saveTitle")}
-              aria-label={t("shell.save")}
-              onClick={() => emit({ type: "save" })}
+            <HelpTip
+              topic={t("shell.save")}
+              content={t("shell.saveTitle") || t("inspector.runningEditGuard")}
             >
-              <Icon name="save" />
-            </button>
-            <button
-              type="button"
-              className="icon-button"
-              title={t("shell.exportTitle")}
-              aria-label={t("shell.export")}
-              onClick={() => emit({ type: "export" })}
+              <button
+                type="button"
+                className="icon-button"
+                aria-label={t("shell.save")}
+                onClick={() => emit({ type: "save" })}
+              >
+                <Icon name="save" />
+              </button>
+            </HelpTip>
+            <HelpTip
+              topic={t("shell.export")}
+              content={t("shell.exportTitle") || t("inspector.runningEditGuard")}
             >
-              <Icon name="download" />
-            </button>
-            <button
-              type="button"
-              className="icon-button"
-              title={t("shell.load")}
-              aria-label={t("shell.load")}
-              onClick={() => emit({ type: "load" })}
+              <button
+                type="button"
+                className="icon-button"
+                aria-label={t("shell.export")}
+                onClick={() => emit({ type: "export" })}
+              >
+                <Icon name="download" />
+              </button>
+            </HelpTip>
+            <HelpTip
+              topic={t("shell.load")}
+              content={t("shell.load") || t("inspector.runningEditGuard")}
             >
-              <Icon name="reset" />
-            </button>
+              <button
+                type="button"
+                className="icon-button"
+                aria-label={t("shell.load")}
+                onClick={() => emit({ type: "load" })}
+              >
+                <Icon name="reset" />
+              </button>
+            </HelpTip>
             <ProjectImportButton
               controller={controller}
               disabled={
@@ -453,37 +601,52 @@ function LabApp({ controller }: { controller: LabController }) {
                   ? t("shell.resume")
                   : t("shell.start")}
             </button>
-            <button
-              type="button"
-              className="outline-button"
-              title={t("shell.resetTitle", {
-                revision: n(model.sceneRevision, { maximumFractionDigits: 0 }),
-              })}
-              onClick={() => emit({ type: "reset" })}
+            <HelpTip
+              topic={t("shell.reset")}
+              content={
+                t("shell.resetTitle", {
+                  revision: n(model.sceneRevision, { maximumFractionDigits: 0 }),
+                }) || t("inspector.runningEditGuard")
+              }
             >
-              <Icon name="reset" />
-              {t("shell.reset")}
-            </button>
+              <button
+                type="button"
+                className="outline-button"
+                onClick={() => emit({ type: "reset" })}
+              >
+                <Icon name="reset" />
+                {t("shell.reset")}
+              </button>
+            </HelpTip>
             <span className="transport-divider" />
-            <button
-              type="button"
-              className="icon-button"
-              disabled={!model.canUndo}
-              aria-label={t("shell.undo")}
-              title={t("shell.undoTitle")}
-              onClick={() => emit({ type: "undo" })}
+            <HelpTip
+              topic={t("shell.undo")}
+              content={model.canUndo ? t("shell.undoTitle") : t("help.noUndo")}
             >
-              <Icon name="undo" />
-            </button>
-            <button
-              type="button"
-              className="icon-button"
-              disabled={!model.canRedo}
-              aria-label={t("shell.redo")}
-              onClick={() => emit({ type: "redo" })}
+              <button
+                type="button"
+                className="icon-button"
+                disabled={!model.canUndo}
+                aria-label={t("shell.undo")}
+                onClick={() => emit({ type: "undo" })}
+              >
+                <Icon name="undo" />
+              </button>
+            </HelpTip>
+            <HelpTip
+              topic={t("shell.redo")}
+              content={model.canRedo ? t("shell.redo") : t("help.noRedo")}
             >
-              <Icon name="redo" />
-            </button>
+              <button
+                type="button"
+                className="icon-button"
+                disabled={!model.canRedo}
+                aria-label={t("shell.redo")}
+                onClick={() => emit({ type: "redo" })}
+              >
+                <Icon name="redo" />
+              </button>
+            </HelpTip>
           </div>
           <div className="run-status">
             <Badge
@@ -535,22 +698,30 @@ function LabApp({ controller }: { controller: LabController }) {
           <div className="status-banner error-banner" role="alert">
             <Icon name="info" />
             <span>{message(localError || model.error)}</span>
-            {localError && (
-              <button
-                type="button"
-                className="icon-button"
-                aria-label={t("shell.dismissError")}
-                onClick={() => setLocalError("")}
-              >
-                <Icon name="close" />
-              </button>
-            )}
+            <button
+              type="button"
+              className="icon-button"
+              aria-label={t("shell.dismissError")}
+              onClick={() => {
+                setLocalError("");
+                if (model.error) emit({ type: "clearError" });
+              }}
+            >
+              <Icon name="close" />
+            </button>
           </div>
         )}
-        {statusMessage && (
+        {statusMessages.length > 0 && (
           <div className="status-banner" role="status">
             <Icon name="info" size={14} />
-            <span>{message(statusMessage)}</span>
+            <span>
+              {statusMessages.map((text, index) => (
+                <span key={text}>
+                  {index > 0 && <br />}
+                  {text}
+                </span>
+              ))}
+            </span>
           </div>
         )}
         <nav className="mobile-pane-tabs" aria-label={t("shell.mainPanels")}>
@@ -574,15 +745,7 @@ function LabApp({ controller }: { controller: LabController }) {
           id="main-workspace"
           className={`main-workspace mobile-${mobilePane} ${leftHidden ? "left-hidden" : ""} ${rightHidden ? "right-hidden" : ""}`}
         >
-          <SceneExplorer
-            controller={safeController}
-            model={model}
-            onListener={() => {
-              setShowListener(true);
-              emit({ type: "selectObject", objectId: null });
-              setMobilePane("inspector");
-            }}
-          />
+          <SceneExplorer controller={safeController} model={model} onListener={selectListener} />
           <PanelDivider
             side="left"
             width={effectiveLeftWidth}
@@ -590,7 +753,12 @@ function LabApp({ controller }: { controller: LabController }) {
             hidden={leftHidden}
             maxWidth={panelLimit}
           />
-          <Viewport controller={safeController} model={model} />
+          <Viewport
+            controller={safeController}
+            model={model}
+            trajectory={trajectory}
+            onTrajectoryChange={setTrajectoryUi}
+          />
           <PanelDivider
             side="right"
             width={effectiveRightWidth}
@@ -603,6 +771,8 @@ function LabApp({ controller }: { controller: LabController }) {
             transactionController={controller}
             model={model}
             showListener={showListener}
+            trajectory={trajectory}
+            onTrajectoryChange={setTrajectoryUi}
           />
         </main>
         <AnalysisDock controller={safeController} model={model} />

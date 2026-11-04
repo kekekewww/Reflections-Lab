@@ -1,8 +1,10 @@
+import type { Atmosphere } from "../acoustics/types.js";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import behaviorSchema from "../../schemas/sound-behavior/behavior-document.schema.json" with { type: "json" };
 import type { SoundBehaviorDocument, SoundGenerator } from "../../schemas/sound-behavior/types.js";
 import { createScene } from "../scene/validate-scene.js";
 import { validateBehaviorAuthoring } from "../audio-behavior/profile-registry.js";
+import { PRODUCT_SOUND_BEHAVIOR_PRODUCERS } from "../capabilities/sound-behavior.js";
 import { validateEditorMetadata } from "./editor-metadata.js";
 import {
   ProjectError,
@@ -294,6 +296,35 @@ function validateBehaviorReferences(
       fail("ASSET_MISSING", `Unknown source signal ${source.signalId}`);
 }
 
+/** Optional Project data. Absent legacy fields stay absent; hosts choose their documented defaults. */
+export function validateProjectAtmosphere(input: unknown): Atmosphere {
+  assertProjectJson(input);
+  const value = object(input, "atmosphere");
+  fields(
+    value,
+    ["medium", "speedOfSoundMps", "temperatureC", "bandAbsorptionDbPerM", "dataClass"],
+    "atmosphere",
+  );
+  if (value.medium !== "air" && value.medium !== "vacuum")
+    fail("ATMOSPHERE_INVALID", "Medium must explicitly be air or vacuum");
+  if (Object.hasOwn(value, "speedOfSoundMps"))
+    finite(value.speedOfSoundMps, 100, 1000, "atmosphere.speedOfSoundMps");
+  if (Object.hasOwn(value, "temperatureC"))
+    finite(value.temperatureC, -80, 100, "atmosphere.temperatureC");
+  if (Object.hasOwn(value, "bandAbsorptionDbPerM")) {
+    if (!Array.isArray(value.bandAbsorptionDbPerM) || value.bandAbsorptionDbPerM.length !== 7)
+      fail("ATMOSPHERE_INVALID", "Air loss must contain the seven product bands");
+    for (const loss of value.bandAbsorptionDbPerM)
+      finite(loss, 0, 10, "atmosphere.bandAbsorptionDbPerM");
+  }
+  if (
+    Object.hasOwn(value, "dataClass") &&
+    !["Measured", "Derived", "Tuned", "Synthetic"].includes(value.dataClass as string)
+  )
+    fail("ATMOSPHERE_INVALID", "Invalid atmosphere data class");
+  return structuredClone(value) as unknown as Atmosphere;
+}
+
 export function validateProject(input: unknown): ProjectDocument {
   assertProjectJson(input);
   const value = object(input, "project");
@@ -312,6 +343,7 @@ export function validateProject(input: unknown): ProjectDocument {
       "recordings",
       "activeRecordingId",
       "editorMetadata",
+      "atmosphere",
     ],
     "project",
   );
@@ -329,6 +361,9 @@ export function validateProject(input: unknown): ProjectDocument {
   } catch (error) {
     fail("SCENE_INVALID", error instanceof Error ? error.message : "Invalid scene");
   }
+  const atmosphere = Object.hasOwn(value, "atmosphere")
+    ? validateProjectAtmosphere(value.atmosphere)
+    : undefined;
   const editorMetadata = Object.hasOwn(value, "editorMetadata")
     ? validateEditorMetadata(value.editorMetadata, scene)
     : undefined;
@@ -358,6 +393,7 @@ export function validateProject(input: unknown): ProjectDocument {
     assets,
     recordings,
     ...(editorMetadata === undefined ? {} : { editorMetadata }),
+    ...(atmosphere === undefined ? {} : { atmosphere }),
   } as ProjectDocument;
   validateBehaviorReferences(project.soundBehaviors, project);
   try {
@@ -372,7 +408,8 @@ export function validateProject(input: unknown): ProjectDocument {
           ]),
         ),
       ],
-      zoneIds: [],
+      zoneIds: (project.scene.zones ?? []).map((zone) => zone.id),
+      producerCapabilities: { ...PRODUCT_SOUND_BEHAVIOR_PRODUCERS },
       assetRegistry: assets.map((asset) => ({
         assetId: asset.assetId,
         revision: asset.revision,

@@ -1,0 +1,312 @@
+{
+  "id": "RLAB-TASK-0033",
+  "title": "以四種可切換頂列監測取代三步導覽",
+  "description": "使用者2026-11-03新增UI需求：以音軌電平/頻譜/波形/處理負載的四mode常駐監測取代頂列三步導覽。Root已明確派工，與Task0032並行；本task驗收不縮原非進階完整scope，不改原性能門檻。",
+  "status": "READY",
+  "priority": "P1",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "指定頂列三步導覽已移除，依既有設計提供可切換的音軌電平、頻譜、波形與處理負載四種常駐監看；選取狀態、名稱、鍵盤與焦點可用。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Fixedac0publicUI:oldnavabsent;4namedmodes/pointer/keys/focus/pressedstate/L-R/ZH-EN;390/929/1440DPR1header/footer/viewport5controls+Frameclick."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Finite source-bound tested UI; not allparameters or movinguncommittedsource."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "Additional fixed M4 positive subset only; prior literalcomposite remains; no qualification of later Store-ready/V3/fullquality."
+        }
+      ],
+      "verified_scope": "Fixedac0publicUI:oldnavabsent;4namedmodes/pointer/keys/focus/pressedstate/L-R/ZH-EN;390/929/1440DPR1header/footer/viewport5controls+Frameclick. Finite source-bound tested UI; not allparameters or movinguncommittedsource."
+    },
+    {
+      "id": "AC-02",
+      "text": "模式切換僅改本機檢視，保留run/tick、錄製、選取、草稿及聲源與AudioContext生命期；不觸發reset/run/record或重啟來源。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Recording/finalize/sourceidentity/selection/draft/AudioContextmatrixincomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Partial evidence; criterion remains false: Recording/finalize/sourceidentity/selection/draft/AudioContextmatrixincomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4partial evidence only; criterion staysfalse:recordguard/fullpipeline/fullquality/finalEnglish/Main/finalhandoff incomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "text": "電平、頻譜與波形使用實際音訊資料，來源/音軌ID、單位與觀測窗可辨；靜音/零訊號、未就緒及不可取得分開表示，dBFS不冒SPL；固定訊號數值核對有證據。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Composite native02sameclock9PCM+handmath/DFT +actualPWIDs/taps/units/windows/dBFSnotSPL +UI24/fake17truezero/unknown/invalid/warming/blocked/unavailable."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/live-monitor-native-attempt02-reader.9e065d5f584c.json",
+          "sha256": "9e065d5f584cdb83dcd7d5d1deb95f1aae2d4686368fe9208c085c2734773cf3",
+          "result": "Fixed375Hz/48k/Q128componentandmeaningfulsemanticcases;notfullphase/longaudio/science/hearing."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/root-monitor-reader-20261103.cb4428655786.json",
+          "sha256": "cb44286557860e299d406adb97a7d0d7642d025894552084c9114214cdc51e07",
+          "result": "Fixed375Hz/48k/Q128componentandmeaningfulsemanticcases;notfullphase/longaudio/science/hearing."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Fixed375Hz/48k/Q128componentandmeaningfulsemanticcases;notfullphase/longaudio/science/hearing."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "Additional fixed M4 positive subset only; prior literalcomposite remains; no qualification of later Store-ready/V3/fullquality."
+        }
+      ],
+      "verified_scope": "Composite native02sameclock9PCM+handmath/DFT +actualPWIDs/taps/units/windows/dBFSnotSPL +UI24/fake17truezero/unknown/invalid/warming/blocked/unavailable. Fixed375Hz/48k/Q128componentandmeaningfulsemanticcases;notfullphase/longaudio/science/hearing."
+    },
+    {
+      "id": "AC-04",
+      "text": "處理負載資訊有量測定義與來源；control端耗時、程序CPU、native DSP CPU不混稱；未量測或不支援顯示unavailable，無虛構wholeCPU百分比或以0代缺值。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; ActualPWloadsummaryRAF/mainthreadphysics+control/Workersolverdefinition;UI24invalidtiming!=measured0/unavailable;no wholeCPU/nativeDSPpercentage."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/root-monitor-reader-20261103.cb4428655786.json",
+          "sha256": "cb44286557860e299d406adb97a7d0d7642d025894552084c9114214cdc51e07",
+          "result": "Information semantics only; CPU/DSP is unmeasured rather than a claimed measurement."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Information semantics only; CPU/DSP is unmeasured rather than a claimed measurement."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "Additional fixed M4 positive subset only; prior literalcomposite remains; no qualification of later Store-ready/V3/fullquality."
+        }
+      ],
+      "verified_scope": "ActualPWloadsummaryRAF/mainthreadphysics+control/Workersolverdefinition;UI24invalidtiming!=measured0/unavailable;no wholeCPU/nativeDSPpercentage. Information semantics only; CPU/DSP is unmeasured rather than a claimed measurement."
+    },
+    {
+      "id": "AC-05",
+      "text": "分析器按可見模式延遲建立、有限取樣，切換與dispose釋放自有觀測資源，保持原音訊路徑/預算；新增觀測成本有來源且不冒效能改善。",
+      "verified": true,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Composite fake17lazy/15Hz/6stable8channel50/58budget/branchoutputidentity +UI24loop/visibility/error/release +native023analyzers6tapnodes/release/dispose/clocked4modeinclusiveAPIcost."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/live-monitor-native-attempt02-reader.9e065d5f584c.json",
+          "sha256": "9e065d5f584cdb83dcd7d5d1deb95f1aae2d4686368fe9208c085c2734773cf3",
+          "result": "Nativeonesourcecase plus meaningfuloriginalcontrolbudgets;notnativeupperstress/DSPCPU/generalbenefit/formal600. load0ms is timerresolution,notzeroCost."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/root-monitor-reader-20261103.cb4428655786.json",
+          "sha256": "cb44286557860e299d406adb97a7d0d7642d025894552084c9114214cdc51e07",
+          "result": "Nativeonesourcecase plus meaningfuloriginalcontrolbudgets;notnativeupperstress/DSPCPU/generalbenefit/formal600. load0ms is timerresolution,notzeroCost."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "Additional fixed M4 positive subset only; prior literalcomposite remains; no qualification of later Store-ready/V3/fullquality."
+        }
+      ],
+      "verified_scope": "Composite fake17lazy/15Hz/6stable8channel50/58budget/branchoutputidentity +UI24loop/visibility/error/release +native023analyzers6tapnodes/release/dispose/clocked4modeinclusiveAPIcost. Nativeonesourcecase plus meaningfuloriginalcontrolbudgets;notnativeupperstress/DSPCPU/generalbenefit/formal600. load0ms is timerresolution,notzeroCost."
+    },
+    {
+      "id": "AC-06",
+      "text": "真Playwright瀏覽器驗四模式、雙語、鍵盤/焦點、資料狀態、切換期間錄製與來源連續性和清理；source/bundle/actual結果綁定。ComputerUse方法結果另列，URL policy不替代或阻斷可做的Playwright實測。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Playwright02exit1/3PASS1FAIL;requiredrecording/sourcecontinuity/fullpipelineincomplete;ComputerUsemethodseparate."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Partial evidence; criterion remains false: Playwright02exit1/3PASS1FAIL;requiredrecording/sourcecontinuity/fullpipelineincomplete;ComputerUsemethodseparate."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4partial evidence only; criterion staysfalse:recordguard/fullpipeline/fullquality/finalEnglish/Main/finalhandoff incomplete."
+        }
+      ]
+    },
+    {
+      "id": "AC-07",
+      "text": "獨立review與適當品質檢查完成並將來源/任務/Now/後續英文交接接回；原性能負載/容差/caps與既有FAIL保留，未完成完整V1/Claude/人工不得冒完成。",
+      "verified": false,
+      "evidence": [
+        {
+          "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+          "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+          "result": "Fixed M3 composite literal adjudication; Fullquality/finalEnglish/sourcefreeze/Claudehandoff/wholegoalnotcomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/evidence/milestone-03/readers/top-monitor-attempt02-reader.2a5a3a833360.json",
+          "sha256": "2a5a3a8333600747c1f72fd0bda8239906f8eda0f8b1005e5cf8a736985bc377",
+          "result": "Partial evidence; criterion remains false: Fullquality/finalEnglish/sourcefreeze/Claudehandoff/wholegoalnotcomplete."
+        },
+        {
+          "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+          "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+          "result": "M4partial evidence only; criterion staysfalse:recordguard/fullpipeline/fullquality/finalEnglish/Main/finalhandoff incomplete."
+        }
+      ]
+    }
+  ],
+  "relevant_files": [
+    "docs/16-nonadvanced-completion/requests/TOP_MONITOR_REQUEST_20261103.json",
+    "src/ui/App.tsx",
+    "src/audio/engine.ts",
+    "src/app/runtime.ts",
+    "knowledge/wiki/features/nonadvanced-completion-20261103.md",
+    "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+    "docs/05-ux/WORKSPACE_ARCHITECTURE.md",
+    "docs/05-ux/COMPONENT_SPEC.md",
+    "docs/16-nonadvanced-completion/evidence/milestone-03/SNAPSHOT_INDEX.json",
+    "docs/16-nonadvanced-completion/evidence/milestone-03/readers/live-monitor-native-attempt02-reader.9e065d5f584c.json",
+    "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+    "docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md",
+    "docs/16-nonadvanced-completion/evidence/milestone-04/SNAPSHOT_INDEX.json",
+    "docs/16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md",
+    "docs/16-nonadvanced-completion/handoffs/claude-20261103/EVIDENCE_INDEX.json"
+  ],
+  "evidence": [
+    {
+      "path": "docs/16-nonadvanced-completion/requests/TOP_MONITOR_REQUEST_20261103.json",
+      "sha256": "ef5ec791276d668aec3f29877cc77d532d5452e2ebcf614af1d8f9f3efc4b5f2",
+      "result": "User requirement and Root dispatch projection only; all product acceptance false/NOT_RUN."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/03-top-monitor-partial-20261103.json",
+      "sha256": "18b6f38b3282b3bf9daedd9a5bbb17035728f45d5fb360be9115c57036adeafe",
+      "result": "Partial fixed source milestone; AC01/03/04/05 compositeverified; AC02/06/07false; not moving label source/globalproductclosure."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/04-integrated-resource-recording-partial-20261103.json",
+      "sha256": "be1f5182d198fa4bbd001e041998bedc0a44d3d171b6050ab42e8ccc69dc9620",
+      "result": "M4partialsource/Root1f118globaltsc0/PW4of5FAIL/storageguard/nativephase20x2s/limitedV4/longV2FAIL/snapshot65/cleanup2;notwholegoalcompletion."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/M4_PARTIAL_CLAUDE_HANDOFF_20261103.md",
+      "sha256": "ba2803b99e2f775cce3cda9b47743718a188ac3104c82b4bbf90162a9c375ee9",
+      "result": "Claude-readablepartialhandoff withStore-ready/boundeddiagnostic/V3/formalV4/fullS4/CU/fullEnglish/fullnpmcheck/Mainmerge remaining;notfinal."
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/CLAUDE_CODE_HANDOFF_20261103.md",
+      "sha256": "52cb8b905f4a0851abfcdfc65e34a37b132b29066fb784e1994728dde217a3fc",
+      "result": "使用者指定Claude接手之完整文書交接；固定Git448/原證據核實/剩餘P0–P3；不是新產品測試或完整criterion通過。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/claude-20261103/EVIDENCE_INDEX.json",
+      "sha256": "a31e605d8929b9cd19dc97cb0fa12fdba0549bd658d9ed40df2638d52c9c1274",
+      "result": "固定42檔交接bundle與25evidence refs之路徑/bytes/hash索引；3大raw仍原位置，非全資料已入Git。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/handoffs/CLAUDE_FINAL_HANDOFF_20261103.md",
+      "sha256": "8a866cc91d8cc0da980df04e96ef7c1e036a84503bca3b7da9e084702aea3181",
+      "result": "最後交接：結果、限制、人工測試入口與 3 分鐘展示建議；不是第一版完成宣告。（加入人工測試前 CSS-only 介面整理段落與展示環境建議）（加入人工測試回報的三個修正）"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/stages/05-claude-continuation-final-20261103.json",
+      "sha256": "3b64ce322de59bb55215711e6ad4a82c9f75408727ff23487624282bb6051e0c",
+      "result": "M5 機讀紀錄：凍結來源 544d8d9f 與各證據 SHA-256。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/verification/claude-final-20261103/check-05-summary.txt",
+      "sha256": "73bfdfd29fa255b1ea22b029cb4c67577582b28121b88f1a52e2c52ad43d499d",
+      "result": "完整 npm run check：所有套件、build、授權通過，runtime 2270/2270；英文當時未完成。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/RUNTIME_FAILURES_20261103.md",
+      "sha256": "7f7f8d57963f4952fd453030637a2b403a1cf65c6b331e219ea3733c1107f682",
+      "result": "接手時 7 項 runtime 失敗的原因、修正與 RED/GREEN 證據。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/requirements/REQUIREMENT_CROSSWALK_20261103.json",
+      "sha256": "8be89c375210faa7367f81fc07b1f094fc2f21632518d39f954dbf165b9c6b4e",
+      "result": "51 列需求逐條判定（Codex 判定、Claude 抽查）。"
+    },
+    {
+      "path": "artifacts/v1/product-e2e-chrome-20261103T100747Z/verification.json",
+      "sha256": "b84b50ee83a2f24878356646cf6cf4db0610db3394edf50f11013f36186e1ffc",
+      "result": "refined v3 產品 E2E 4/4 通過，三次乾淨啟動＋重新連結，來源與 bundle 一致。"
+    },
+    {
+      "path": "artifacts/v1/physics-acceptance-20261103/browser-20261103100843747/browser-verification.json",
+      "sha256": "4521480ce3d274814d408a6e3bbe5a9c1fe30a7e36fbf117bc03dd2d5e4c34b3",
+      "result": "十次 reset/import 與 dispose 2/2 通過。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/top-monitor-browser/attempt09-evidence/results.json",
+      "sha256": "167f796ab93e164f6b36e267ae27732d48c08bbd13003105d4d0c69c707b9095",
+      "result": "production 頂列監測 4/5；錄製連續性案例在原固定步 guard 暫停。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/ui/s4/attempts/s4-final-01/run-receipt.json",
+      "sha256": "a48bb56c897c651855a86feb70ef4191280bfda23803941c95f6ffeb86293115",
+      "result": "S4 全 22 路徑 11 通過／11 失敗，失敗保留未修。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/computer-use/attempt-01/results.json",
+      "sha256": "234cccf6457eeca85da7fbc5756f3afdd9e0f7e46281e00307f2924125305323",
+      "result": "Computer Use BLOCKED（Windows 瀏覽器網址判定政策），0 個產品步驟。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/long-render/ATTEMPT05_RECEIPT.md",
+      "sha256": "d96f686c503468bcda0a12f2bf5936346848c585870c70d279827fcfb86292f0",
+      "result": "長輸出 whole63 原門檻 58/58 通過（在 89f65e4d）。"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/ui/readability-pass-20261103/README.md",
+      "sha256": "30bf960547332a215ca30714d1ccd257032f33230dbdf20ef54070120a0ca60a",
+      "result": "人工測試前 CSS-only 介面整理（1be15d5c）：範圍、驗證結果與 refined v3 改版前後 A/B；refined v3 未通過，判定環境"
+    },
+    {
+      "path": "docs/16-nonadvanced-completion/lanes/integration/USER_REPORTED_FIXES_20261103.md",
+      "sha256": "eb55030d6e3134d9d63d2818709e28e7f198ac574ccf3b1cd48fa9a6ca377949",
+      "result": "人工測試回報的三個問題（視角跳動、球偶爾無聲、抓取鬆脫）的原因、修正、驗證與使用者實測確認"
+    }
+  ],
+  "created_at": "2026-11-02T20:15:12.006Z",
+  "updated_at": "2026-11-03T15:11:02.505Z",
+  "related_tasks": [
+    "RLAB-TASK-0032"
+  ],
+  "dependency_note": "Independent newly authorized UI addition can proceed alongside unfinished umbrella; association is not a false DONE dependency.",
+  "creation_authority": "Root explicitly requested independent0033 or umbrella supplement; CLI has claim/update but no create command. Initial READY record created with absent-file check and exclusive write, then normal CLI claim/lease.",
+  "current_run_validation_status": "NOT_RUN",
+  "last_summary": "加入人工測試回報修正（c1002ac7、2f2aa2c7）與使用者實測確認；驗收條件未變"
+}

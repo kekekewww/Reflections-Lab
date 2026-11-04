@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/acceptance_audit",
+  "observedDate": "2026-11-02",
+  "status": "READY_NO_CONFIRMED_BLOCKER",
+  "scope": "Independent read-only review of the controlled short-take clock repair; existing accumulated wall-time debt, discard accounting, exact tick admission, pause and observer-error boundaries.",
+  "sourceRoot": "D:/Developing/Meta Hack/.worktrees/integration",
+  "sourcePins": {
+    "algorithm": "SHA-256",
+    "files": {
+      "src/physics/fixed-clock.ts": "68e5173a3fbbf96920dceb49282254fc04ccbc671410894c49b06619e4010a78",
+      "src/physics/physics-world.ts": "119b9ed086525f216caea4b2f6510682339f224cd20edefc8e325f84a02b7690",
+      "src/app/runtime.ts": "388a1fd1bc206d029783a2886064cee0fe09a30d42a0abd03196f017e2b78325"
+    },
+    "method": "Independently read all three files and executed Get-FileHash before the focused verification; all hashes matched the implementation owner's source freeze."
+  },
+  "executedChecks": [
+    {
+      "command": "node --import tsx --test --test-name-pattern 'controlled' tests/physics/fixed-clock.test.ts tests/physics/controlled-step.test.ts",
+      "workingDirectory": "D:/Developing/Meta Hack/.worktrees/integration",
+      "exitCode": 0,
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "rawStdout": "TAP version 13\n# Subtest: controlled physics advances exactly one real Rapier step without altering wall-time debt\nok 1 - controlled physics advances exactly one real Rapier step without altering wall-time debt\n  ---\n  duration_ms: 415.1093\n  type: 'test'\n  ...\n# Subtest: controlled physics preserves tick commits when the before observer throws\nok 2 - controlled physics preserves tick commits when the before observer throws\n  ---\n  duration_ms: 2.9252\n  type: 'test'\n  ...\n# Subtest: controlled physics preserves tick commits when the after observer throws\nok 3 - controlled physics preserves tick commits when the after observer throws\n  ---\n  duration_ms: 2.26\n  type: 'test'\n  ...\n# Subtest: controlled physics preserves tick commits when the external observer throws\nok 4 - controlled physics preserves tick commits when the external observer throws\n  ---\n  duration_ms: 1.4859\n  type: 'test'\n  ...\n# Subtest: controlled ticks preserve whole and fractional wall-time debt: 0\nok 5 - controlled ticks preserve whole and fractional wall-time debt: 0\n  ---\n  duration_ms: 6.5418\n  type: 'test'\n  ...\n# Subtest: controlled ticks preserve whole and fractional wall-time debt: 0.004166666666666667\nok 6 - controlled ticks preserve whole and fractional wall-time debt: 0.004166666666666667\n  ---\n  duration_ms: 0.8244\n  type: 'test'\n  ...\n# Subtest: controlled ticks respect pause, recording-only use, callback failure and tick capacity\nok 7 - controlled ticks respect pause, recording-only use, callback failure and tick capacity\n  ---\n  duration_ms: 2.299\n  type: 'test'\n  ...\n1..7\n# tests 7\n# suites 0\n# pass 7\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 2518.7315\n"
+    },
+    {
+      "command": "node --import tsx --test --test-name-pattern 'after recording overload|retained debt seals' tests/app/pipeline-integration.test.ts",
+      "workingDirectory": "D:/Developing/Meta Hack/.worktrees/integration",
+      "exitCode": 0,
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "rawStdout": "TAP version 13\n# Subtest: a controlled take after recording overload retains wall-time debt and captures exactly 180 new ticks\nok 1 - a controlled take after recording overload retains wall-time debt and captures exactly 180 new ticks\n  ---\n  duration_ms: 4626.3028\n  type: 'test'\n  ...\n# Subtest: a pause during a controlled take with retained debt seals a consecutive prefix without late ticks\nok 2 - a pause during a controlled take with retained debt seals a consecutive prefix without late ticks\n  ---\n  duration_ms: 79.5431\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 2\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 6203.2525\n"
+    }
+  ],
+  "additionalIndependentProbe": {
+    "method": "Reviewer-authored in-memory JavaScript piped through node --import tsx --input-type=module, without creating or changing a test file.",
+    "workingDirectory": "D:/Developing/Meta Hack/.worktrees/integration",
+    "exitCode": 0,
+    "purpose": "Exercise nonzero pre-existing interactive discard together with retained fractional recording debt. Check every one of 180 controlled steps against an independently constructed contiguous tick sequence, then request a pause inside a controlled callback and verify the following paused call performs no work.",
+    "script": "import assert from 'node:assert/strict';\nimport { FixedClock } from './src/physics/fixed-clock.ts';\nconst clock = new FixedClock();\nclock.resume();\nclock.advance(0.2 + 1/240,()=>{});\nconst discarded = clock.totalDroppedWallTimeSeconds;\nassert.ok(discarded > 0);\nclock.pause(); clock.setMode('recording'); clock.resume();\nclock.advance(0.2,()=>{});\nconst debt = clock.accumulatorSeconds;\nconst startTick = clock.tick;\nclock.resume();\nconst observed = [];\nfor(let i=1;i<=180;i++) {\n const result=clock.advanceControlledStep(()=>observed.push(clock.tick + 1));\n assert.equal(result.steps,1); assert.equal(result.tick,startTick+i);\n assert.equal(result.overrun,false); assert.equal(result.droppedWallTimeSeconds,0);\n assert.equal(clock.accumulatorSeconds,debt);\n assert.equal(clock.totalDroppedWallTimeSeconds,discarded);\n}\nassert.deepEqual(observed,Array.from({length:180},(_,i)=>startTick+i+1));\nconst boundary=clock.advanceControlledStep(()=>clock.pause());\nassert.equal(boundary.steps,1);\nassert.equal(clock.advanceControlledStep(()=>assert.fail('paused callback ran')).steps,0);\nassert.equal(clock.accumulatorSeconds,debt);\nassert.equal(clock.totalDroppedWallTimeSeconds,discarded);\nconsole.log(JSON.stringify({status:'PASS',controlledTicks:180,startTick,endTick:boundary.tick,debtPreserved:debt,priorDiscardPreserved:discarded,pauseBoundaryCommitted:true}));\n",
+    "rawStdout": "{\"status\":\"PASS\",\"controlledTicks\":180,\"startTick\":8,\"endTick\":189,\"debtPreserved\":0.13750000000000007,\"priorDiscardPreserved\":0.13333333333333333,\"pauseBoundaryCommitted\":true}\n",
+    "interpretation": "The 180 requested controlled ticks ended at tick 188; the deliberate pause-boundary callback committed one additional real tick, producing the reported final tick 189. The subsequent call while paused committed zero ticks."
+  },
+  "reviewFindings": [
+    "The runtime uses the new API only when controlledTake and shortTakeActive are both true; FixedClock additionally requires recording mode while running.",
+    "Controlled steps neither add nor consume accumulated wall time, neither reset the world nor rewrite accumulated discard, and do not invoke wall-time discard preview or audio epoch shift.",
+    "Existing advance(), recording-overrun pause/debt retention, interactive discard, backpressure pause and exact short-take tick guard remain in place.",
+    "A failure before the solver completes does not invent a clock tick; a failure after a completed solver tick pauses and commits that completed tick. This is safe-stop behavior, not a claim that every observer fault supports an immediate retry."
+  ],
+  "totals": { "focusedTests": 9, "pass": 9, "fail": 0, "cancelled": 0, "skipped": 0, "additionalIndependentProbe": "PASS" },
+  "limits": [
+    "No browser, native audio, broad runtime suite, performance profile or 600-second gate was executed by this reviewer for this repair.",
+    "The 9 focused tests were independently executed and reviewed; they were authored by the implementation owner. The additional in-memory probe was authored and executed by this reviewer.",
+    "Product files, tests and Git were not modified by this reviewer. This evidence file records already completed observations; no tests were repeated to prepare the receipt.",
+    "This scoped review is not a full V1 completion claim."
+  ]
+}

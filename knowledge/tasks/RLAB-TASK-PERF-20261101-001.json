@@ -1,0 +1,106 @@
+{
+  "id": "RLAB-TASK-PERF-20261101-001",
+  "title": "建立音訊斷續歸因與native output基準",
+  "description": "使用者回報音訊斷續；現有晚事件、stale frame與原R17 main／delivery數字不能分辨實際output underrun、onset延遲或graph不連續。 後續候選；本研究不實作、不啟動。",
+  "status": "BACKLOG",
+  "priority": "P0",
+  "owner": null,
+  "dependencies": [],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "text": "保存source／bundle／browser hash、硬體／裝置／實際rate與支援矩陣；沒有推定128-frame或固定硬體buffer。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-02",
+      "text": "late onset、snapshot拒收、voice/path拒絕、PCM gaps、native output統計與聽感各有定義與獨立欄位；unsupported/null不計為零。",
+      "verified": false,
+      "evidence": []
+    },
+    {
+      "id": "AC-03",
+      "text": "以受控stall／事件／path更新fixture檢驗歸因可分辨性，保存negative results、probe overhead與原R17 FAIL；不變更正式門檻。",
+      "verified": false,
+      "evidence": []
+    }
+  ],
+  "relevant_files": [
+    "src/audio/engine.ts",
+    "src/app/runtime.ts",
+    "tests/browser/performance-fixture-v3.mjs",
+    "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+    "docs/11-v1/BROWSER_PERFORMANCE.md",
+    "docs/13-performance-review/OPTIMIZATION_ROADMAP.md",
+    "docs/13-performance-review/RISK_REGISTER.md"
+  ],
+  "evidence": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    },
+    {
+      "path": "docs/11-v1/BROWSER_PERFORMANCE.md",
+      "sha256": "60af07044f8ddb23e0f4c1c3ce24625e080a810590d50158209a354c8eb257bd",
+      "result": "Reviewed research basis only; future optimization is not implemented or validated"
+    }
+  ],
+  "created_at": "2026-11-01T07:55:24.787Z",
+  "updated_at": "2026-11-01T08:34:22.898Z",
+  "proposal_status": "PROPOSED_NOT_ACTIVATED",
+  "activation_policy": "保持BACKLOG；owner=null；所有criteria=false。需後續明確啟動／採納及實際證據，研究結案不自動執行。",
+  "baseline_commit": "05d40fd2d52f4b737f6acac61fa00356403c0038",
+  "problem": "使用者回報音訊斷續；現有晚事件、stale frame與原R17 main／delivery數字不能分辨實際output underrun、onset延遲或graph不連續。",
+  "evidence_basis": [
+    {
+      "path": "docs/13-performance-review/AUDIO_GRAPH_DSP_REVIEW.md",
+      "locator": "§2、§7；R21初版／最後修補分離",
+      "classification": "USER REPORTED; HISTORICAL RECEIPT REVIEW",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "dac4f9a7f71e839e0b7d5bcb35c79f066e86f5c35959f38bb8826861213d4d81"
+    },
+    {
+      "path": "docs/11-v1/BROWSER_PERFORMANCE.md",
+      "locator": "R17 C4原FAIL及delivery缺口",
+      "classification": "CONFIRMED BY BROWSER PROFILE — historical",
+      "version": "以來源內版本／日期為準；不得合併R17、05d40與R21 dirty",
+      "sha256_status": "Bound to actual research-worktree bytes at registration; historical version scope retained",
+      "sha256": "60af07044f8ddb23e0f4c1c3ce24625e080a810590d50158209a354c8eb257bd"
+    }
+  ],
+  "affected_modules": [
+    "src/audio/engine.ts",
+    "src/app/runtime.ts",
+    "tests/browser/performance-fixture-v3.mjs"
+  ],
+  "proposed_solution": "先在隔離、來源綁定的診斷中建立event emission／native onset、request/reply／consumer、node更新、PCM或可用native output統計的共同時間對照與低頻有界telemetry。",
+  "alternatives": [
+    "只用lateEvents：不能識別actual underrun。",
+    "只聽測：可報症狀但不足以定位階段。",
+    "先換Worklet：缺乏證據且增加遷移風險。"
+  ],
+  "expected_benefit": "可選擇有證據的窄修，避免把buffer加大或換thread當成根因修復；收益大小未量。",
+  "complexity": "中；instrumentation、clock對齊與觀測擾動控制。",
+  "performance_impact": "診斷會增加負擔，必須記probe overhead與無probe對照。",
+  "audio_quality_impact": "只建立證據，不預先宣稱聲音改善；分開PCM gaps、clicks與聽感。",
+  "latency_impact": "分onset scheduling、control age、native/device latency及物理d/c，缺欄回null。",
+  "compatibility_regression_risk": "browser統計可能unsupported；錄音tap可改變圖或輸出；R21早期結果不能綁到最後修補。",
+  "benchmark_plan": "同source/bundle/browser/裝置，idle、editor、FPS、collision、capture、seal與穩定continuous source；低頻telemetry與無probe配對；p50/p95/p99/max與wall/sim時間分報。",
+  "rollback_plan": "移除或停用診斷tap／polling並drain其資源，恢復原native graph，核對來源及無probe輸出；原始負面收據保留。",
+  "priority_rationale": "使用者影響最高且根因不明；是其餘候選的證據前置，成本較全面遷移低且容易撤回。",
+  "validation_status": "NOT RUN — future implementation and candidate validation",
+  "candidate_dependencies_policy": null,
+  "compatibility_risk": "Experimental output APIs vary; preserve unsupported/null and probe-free reference.",
+  "regression_risk": "Diagnostic taps/polling may alter graph and load; compare without probes.",
+  "candidate_commit": null,
+  "provenance_corrections": [
+    {
+      "at": "2026-11-01T08:34:22.898Z",
+      "previousCommit": "56e266f9c00a15fa7551f9f93ede593688316006",
+      "reason": "Rebind authored review evidence after LF normalization only; task remains unclaimed BACKLOG, all acceptance false"
+    }
+  ]
+}

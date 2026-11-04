@@ -4,6 +4,8 @@ import type { BodyMode, Quaternion, SceneObject, SceneSpec, Vec3 } from "../scen
 import type { ContactData } from "../../schemas/sound-behavior/types.js";
 import { FixedClock } from "./fixed-clock.js";
 import { CharacterMotor } from "./character-motor.js";
+import { PhysicsBounceProducer } from "./bounce-producer.js";
+import { PhysicsZoneProducer } from "./zone-producer.js";
 import {
   add,
   sub,
@@ -48,6 +50,8 @@ interface Record extends PhysicsBodyRecord {
   body: RAPIER.RigidBody;
   collider: RAPIER.Collider;
   motion: MotionState;
+  /** Position resets only; velocity/type changes must not suppress true Zone crossings. */
+  zonePositionDiscontinuityUntilTick: number;
 }
 interface MotionState {
   moving: boolean;
@@ -65,12 +69,15 @@ interface PreSolve {
   velocity: Vec3;
   angular: Vec3;
 }
+const REARM_QUIET_TICKS = 3;
 interface Pair {
   a: string;
   b: string;
   episodeId: string;
   onsetTick: number;
   lastImpactTick: number;
+  /** Consecutive solved ticks without normal impulse: stable separation inside one episode. */
+  quietTicks: number;
   contact: ContactData | null;
 }
 type PendingEvent = Omit<
@@ -84,6 +91,16 @@ type PendingEvent = Omit<
   | "generation"
   | "positionMetres"
 > & { positionMetres?: Vec3 };
+// Held-object servo (Tuned demo bounds, PHYSICS_ARCHITECTURE 4.1; retuned 2026-11-03 at the
+// user's request so ordinary fast view turns keep the grip). wn=20 rad/s, zeta=1.
+const GRIP_TARGET_SPEED_MPS = 20;
+const GRIP_KP = 400;
+const GRIP_KD = 40;
+const GRIP_MAX_FORCE_N = 150;
+const GRIP_MAX_ACCEL_MPS2 = 150;
+const GRIP_LAG_METRES = 1.5;
+const GRIP_MAX_LAG_METRES = 3;
+const GRIP_LAG_SECONDS = 0.5;
 interface Grip {
   objectId: string;
   generation: number;
@@ -93,6 +110,12 @@ interface Grip {
   lastTarget: Vec3;
   age: number;
   blockedTime: number;
+  /** Seconds the object has trailed the requested hold point by more than GRIP_LAG_METRES. */
+  lagTime: number;
+}
+export interface PhysicsFixedStepObserver {
+  beforeStep?(): void;
+  afterStep?(snapshot: PhysicsSnapshot): void;
 }
 const zero: Vec3 = [0, 0, 0];
 // Tuned engineering gates, not measured material/physiological constants.
@@ -165,6 +188,7 @@ const colliderDesc = (o: SceneObject): RAPIER.ColliderDesc =>
 
 /** The sole Rapier owner. Exposes copied domain data, never persistent WASM handles. */
 export class PhysicsWorld {
+  private fixedStepObservers = new Set<PhysicsFixedStepObserver>();
   private world: RAPIER.World;
   private queue: RAPIER.EventQueue;
   private scene: SceneSpec;
@@ -176,6 +200,8 @@ export class PhysicsWorld {
   private lastImpactByPair = new Map<string, number>();
   private pending: PendingEvent[] = [];
   private events: PhysicsEvent[] = [];
+  private readonly bounceProducer = new PhysicsBounceProducer();
+  private readonly zoneProducer = new PhysicsZoneProducer();
   private previous: HistoryPose[] = [];
   private commandIds = new Set<string>();
   private grip: Grip | null = null;
@@ -227,8 +253,21 @@ export class PhysicsWorld {
   get tick(): number {
     return this.tickValue;
   }
+  get resetEpoch(): number {
+    return this.epoch;
+  }
   get fixedDtSeconds(): number {
     return this.clock.fixedDtSeconds;
+  }
+  /** Observers run exactly once around a real solver step, never from render/getters. */
+  observeFixedSteps(observer: PhysicsFixedStepObserver): () => void {
+    this.assertAlive();
+    if (this.fixedStepObservers.size >= 8)
+      fail("OBSERVER_BUDGET", "Fixed-step observer budget exceeded");
+    this.fixedStepObservers.add(observer);
+    return () => {
+      this.fixedStepObservers.delete(observer);
+    };
   }
   get sceneRevision(): number {
     return this.scene.sceneRevision;
@@ -278,6 +317,7 @@ export class PhysicsWorld {
       generation,
       enabled,
       discontinuityUntilTick: this.tick + 1,
+      zonePositionDiscontinuityUntilTick: this.tick + 1,
       motion: freshMotion(),
     };
     this.records.set(object.id, record);
@@ -317,6 +357,35 @@ export class PhysicsWorld {
     this.assertAlive();
     if (!this.paused) this.clock.advance(this.fixedDtSeconds, () => this.fixedStep());
     return this.snapshot();
+  }
+  /** A bounded author-requested tick; retained wall time is not admitted again. */
+  advanceControlledStep(onStep?: (snapshot: PhysicsSnapshot) => void) {
+    this.assertAlive();
+    let observerError: unknown;
+    let observerFailed = false;
+    const result = this.clock.advanceControlledStep(() => {
+      const beforeTick = this.tickValue;
+      try {
+        this.fixedStep();
+      } catch (error) {
+        // An after-step observer can fail after Rapier has completed the tick.
+        // Commit that tick in the clock, pause, then propagate the failure.
+        this.clock.pause();
+        if (this.tickValue === beforeTick) throw error;
+        observerFailed = true;
+        observerError = error;
+        return;
+      }
+      try {
+        onStep?.(this.snapshot());
+      } catch (error) {
+        observerFailed = true;
+        observerError = error;
+        this.clock.pause();
+      }
+    });
+    if (observerFailed) throw observerError;
+    return { ...result, tick: this.tickValue, snapshot: this.snapshot() };
   }
   advance(
     deltaSeconds: number,
@@ -618,21 +687,35 @@ export class PhysicsWorld {
     if (!dynamic(r.definition.mode)) fail("NOT_DYNAMIC", "Only dynamic objects accept velocity");
     const v = finiteVector(linear, "velocity", 100);
     const w = finiteVector(angular, "angular velocity", 100);
+    this.bounceProducer.invalidateObject(id);
     r.body.setLinvel(rv(v), true);
     r.body.setAngvel(rv(w), true);
   }
   applyImpulse(id: string, impulse: Vec3): void {
     const r = this.record(id);
     if (!dynamic(r.definition.mode)) return;
-    r.body.applyImpulse(rv(finiteVector(impulse, "impulse", 10000)), true);
+    const validated = finiteVector(impulse, "impulse", 10000);
+    this.bounceProducer.invalidateObject(id);
+    r.body.applyImpulse(rv(validated), true);
   }
-  setKinematicTarget(id: string, position: Vec3, rotation?: Quaternion): void {
+  /** Motion control uses bounded impulses, keeping the dynamic contact solver in charge. */
+  applyMotionImpulses(id: string, linear: Vec3, angular: Vec3): void {
+    const r = this.record(id);
+    if (!dynamic(r.definition.mode) || !r.enabled || this.heldObjectId === id)
+      fail("MOTION_CONTROL_CONFLICT", "Motion actuator requires an active, unheld dynamic body");
+    const impulse = finiteVector(linear, "motion impulse", 1000);
+    const torque = finiteVector(angular, "motion torque impulse", 100);
+    this.bounceProducer.invalidateObject(id);
+    r.body.applyImpulse(rv(impulse), true);
+    r.body.applyTorqueImpulse(rv(torque), true);
+  }
+  setKinematicTarget(id: string, position: Vec3, rotation?: Quaternion, maxSpeedMps = 3): void {
     const r = this.record(id);
     if (r.definition.mode !== "kinematic") fail("NOT_KINEMATIC", "Object is not kinematic");
     const target = finiteVector(position, "kinematic target", 200);
     const q = rotation ? finiteQuaternion(rotation) : undefined;
     const delta = sub(target, vector(r.body.translation()));
-    const bounded = clampNorm(delta, 3 * this.fixedDtSeconds);
+    const bounded = clampNorm(delta, maxSpeedMps * this.fixedDtSeconds);
     const hit = this.sweep(
       r.collider.shape,
       vector(r.body.translation()),
@@ -721,6 +804,7 @@ export class PhysicsWorld {
       rotation: quaternion(r.body.rotation()),
       age: 0,
       blockedTime: 0,
+      lagTime: 0,
     };
     this.enqueue({
       type: "OnGrab",
@@ -823,7 +907,7 @@ export class PhysicsWorld {
     const h = this.fixedDtSeconds,
       p = vector(r.body.translation());
     g.age += h;
-    const requestedStep = clampNorm(sub(g.requested, g.target), 3 * h);
+    const requestedStep = clampNorm(sub(g.requested, g.target), GRIP_TARGET_SPEED_MPS * h);
     let target = add(g.target, requestedStep);
     const travel = sub(target, p);
     const hit = this.sweep(
@@ -840,20 +924,22 @@ export class PhysicsWorld {
       target = [...p];
     const error = sub(target, p);
     const trackingError = length(sub(g.requested, p));
-    if (trackingError > 1.5) {
+    // A fast view turn may leave the object briefly behind; only sustained or extreme lag drops it.
+    g.lagTime = trackingError > GRIP_LAG_METRES ? g.lagTime + h : 0;
+    if (trackingError > GRIP_MAX_LAG_METRES || g.lagTime > GRIP_LAG_SECONDS) {
       this.releaseGrip("tracking-distance-limit");
       return;
     }
     g.blockedTime = blocked && trackingError > 0.75 ? g.blockedTime + h : 0;
     if (g.blockedTime > 0.25) g.requested = [...target];
-    const vt = clampNorm(scale(sub(target, g.lastTarget), 1 / h), 3),
+    const vt = clampNorm(scale(sub(target, g.lastTarget), 1 / h), GRIP_TARGET_SPEED_MPS),
       velocity = vector(r.body.linvel());
-    const kp = 100,
-      kd = 20,
+    const kp = GRIP_KP,
+      kd = GRIP_KD,
       denom = 1 + kd * h + kp * h * h;
     const dv = scale(add(scale(error, kp), scale(sub(vt, velocity), kd + kp * h)), h / denom);
     const ramp = Math.min(1, g.age / 0.15),
-      cap = Math.min(150 * h, r.body.mass() * 20 * h) * ramp;
+      cap = Math.min(GRIP_MAX_FORCE_N * h, r.body.mass() * GRIP_MAX_ACCEL_MPS2 * h) * ramp;
     const rawImpulse = scale(dv, r.body.mass()),
       impulse = clampNorm(rawImpulse, cap);
     r.body.applyImpulse(rv(impulse), true);
@@ -1022,6 +1108,83 @@ export class PhysicsWorld {
     }
     return [...new Set(overlaps)].sort();
   }
+  /** Enabled, non-sensor colliders of fixed bodies; dynamic, kinematic and player bodies never count. */
+  private fixedColliders(excludeId?: string): RAPIER.Collider[] {
+    this.world.propagateModifiedBodyPositionsToColliders();
+    return [...this.records]
+      .filter(
+        ([other, o]) =>
+          other !== excludeId &&
+          o.enabled &&
+          o.definition.mode === "fixed" &&
+          !o.collider.isSensor(),
+      )
+      .map(([, o]) => o.collider);
+  }
+  /** Index of the first segment whose swept shape meets a fixed collider; null when the path is clear. */
+  firstFixedHitAlong(id: string, pointsM: readonly Vec3[], rotation: Quaternion): number | null {
+    this.assertAlive();
+    const r = this.record(id),
+      q = finiteQuaternion(rotation),
+      points = pointsM.map((p) => finiteVector(p, "path point", 200));
+    const fixed = this.fixedColliders(id);
+    for (let i = 0; i + 1 < points.length; i++) {
+      const from = points[i]!,
+        travel = sub(points[i + 1]!, from);
+      const length = Math.hypot(travel[0], travel[1], travel[2]);
+      if (length < 1e-9) continue;
+      const dir: Vec3 = [travel[0] / length, travel[1] / length, travel[2] / length];
+      for (const collider of fixed) {
+        const hit = collider.castShape(
+          rv(zero),
+          r.collider.shape,
+          rv(from),
+          rq(q),
+          rv(travel),
+          0,
+          1,
+          false,
+        );
+        // Only a surface facing the motion blocks it; a shape resting on or grazing one (normal
+        // within ~0.6 degrees of perpendicular, as a floor-level path is) slides on.
+        if (hit && hit.normal1.x * dir[0] + hit.normal1.y * dir[1] + hit.normal1.z * dir[2] < -0.01)
+          return i;
+      }
+    }
+    return null;
+  }
+  /**
+   * Moves a point until it is at least `clearanceM` from every fixed collider except `excludeId`:
+   * a point too near a surface, or inside it, goes to the closest surface point plus `clearanceM`
+   * along the outward normal. Up to three passes let corners settle.
+   */
+  clearFromFixed(pointM: Vec3, clearanceM: number, excludeId?: string): Vec3 {
+    this.assertAlive();
+    let point = finiteVector(pointM, "clear point", 200);
+    if (!Number.isFinite(clearanceM) || clearanceM < 0 || clearanceM > 10)
+      fail("INVALID_CLEARANCE", "Clearance must be a finite distance in [0, 10] m");
+    const fixed = this.fixedColliders(excludeId);
+    for (let pass = 0; pass < 3; pass++) {
+      let moved = false;
+      for (const collider of fixed) {
+        const projection = collider.projectPoint(rv(point), false);
+        if (!projection) continue;
+        const surface = vector(projection.point),
+          offset = sub(point, surface),
+          gap = length(offset);
+        if (!projection.isInside && gap >= clearanceM - 1e-9) continue;
+        // Exactly on the surface the offset has no direction; leave from the collider's centre.
+        const outward =
+          gap > 1e-9
+            ? scale(offset, projection.isInside ? -1 / gap : 1 / gap)
+            : normalize(sub(point, vector(collider.translation())));
+        point = add(surface, scale(outward, clearanceM));
+        moved = true;
+      }
+      if (!moved) break;
+    }
+    return point;
+  }
   validatePlacement(object: SceneObject, excludeId?: string): PlacementResult {
     this.assertAlive();
     if (object.positionM.some((x) => !Number.isFinite(x) || Math.abs(x) > 200))
@@ -1055,7 +1218,27 @@ export class PhysicsWorld {
     r.body.setEnabled(enabled);
     r.motion = freshMotion();
     r.discontinuityUntilTick = this.tick + 1;
+    r.zonePositionDiscontinuityUntilTick = this.tick + 1;
     this.invalidateContacts(id, "enabled-change");
+  }
+  /** Dry projection of applyScene body identity; no Rapier state or counters are mutated. */
+  projectSceneGenerations(scene: SceneSpec): { [objectId: string]: number } {
+    this.assertAlive();
+    const next = createScene(scene);
+    return Object.fromEntries(
+      next.objects.map((object) => {
+        const current = this.records.get(object.id);
+        const geometryChanged =
+          current &&
+          (current.definition.shape !== object.shape ||
+            JSON.stringify(current.definition.dimensionsM) !== JSON.stringify(object.dimensionsM));
+        const generation =
+          !current || geometryChanged
+            ? (this.generations.get(object.id) ?? 0) + 1
+            : current.generation;
+        return [object.id, generation];
+      }),
+    );
   }
   /** Editor transactions only. Existing unedited bodies keep solver poses/velocities. */
   applyScene(scene: SceneSpec): void {
@@ -1100,6 +1283,7 @@ export class PhysicsWorld {
         r.body.setAngvel(rv(zero), true);
         r.motion = freshMotion();
         r.discontinuityUntilTick = this.tick + 1;
+        r.zonePositionDiscontinuityUntilTick = this.tick + 1;
         this.invalidateContacts(object.id, "editor-transform");
       }
       r.collider.setMass(object.massKg);
@@ -1136,6 +1320,8 @@ export class PhysicsWorld {
     this.pairs.clear();
     this.pairEpisodes.clear();
     this.lastImpactByPair.clear();
+    this.bounceProducer.reset();
+    this.zoneProducer.reset();
     this.pending = [];
     this.events = [];
     this.commandIds.clear();
@@ -1151,6 +1337,7 @@ export class PhysicsWorld {
   }
   dispose(): void {
     if (this.disposed) return;
+    this.fixedStepObservers.clear();
     this.player?.dispose();
     this.player = null;
     this.world.free();
@@ -1159,10 +1346,13 @@ export class PhysicsWorld {
     this.colliderIds.clear();
     this.pending = [];
     this.events = [];
+    this.bounceProducer.reset();
+    this.zoneProducer.reset();
     this.grip = null;
     this.disposed = true;
   }
   private invalidateContacts(id: string, reason: string): void {
+    this.bounceProducer.invalidateObject(id);
     for (const [key, pair] of this.pairs)
       if (pair.a === id || pair.b === id) this.pairs.delete(key);
     this.enqueue({
@@ -1176,6 +1366,7 @@ export class PhysicsWorld {
   private fixedStep(): void {
     const before = this.historyPoses();
     this.previous = before;
+    for (const observer of this.fixedStepObservers) observer.beforeStep?.();
     this.controlGrip();
     this.player?.step(this.playerInput, this.fixedDtSeconds);
     const pre = new Map<string, PreSolve>();
@@ -1202,6 +1393,7 @@ export class PhysicsWorld {
           episodeId: `${key}.e${n}`,
           onsetTick: this.tick,
           lastImpactTick: -1000000,
+          quietTicks: 0,
           contact: null,
         };
         this.pairs.set(key, pair);
@@ -1246,13 +1438,15 @@ export class PhysicsWorld {
               episodeId: `${key}.e${n}`,
               onsetTick: -1,
               lastImpactTick: this.lastImpactByPair.get(key) ?? -1000000,
+              quietTicks: 0,
               contact: null,
             });
           }
         });
     for (const [key, pair] of this.pairs) this.samplePair(key, pair, pre);
     const old = new Map(before.map((p) => [p.objectId, p]));
-    for (const pose of this.poses(true)) {
+    const completedPoses = this.poses(true);
+    for (const pose of completedPoses) {
       const prior = old.get(pose.objectId);
       if (!prior) continue;
       if (pose.moving !== prior.moving)
@@ -1286,6 +1480,36 @@ export class PhysicsWorld {
         positionMetres: event.positionMetres ?? (r ? vector(r.body.translation()) : [...zero]),
       };
     });
+    this.events.push(
+      ...this.bounceProducer.step({
+        tick: this.tick,
+        epoch: this.epoch,
+        sceneRevision: this.scene.sceneRevision,
+        fixedDtSeconds: this.fixedDtSeconds,
+        poses: completedPoses,
+        events: this.events,
+      }),
+    );
+    const positionDiscontinuities = new Set<string>();
+    for (const pose of completedPoses)
+      if (this.tick <= this.records.get(pose.objectId)!.zonePositionDiscontinuityUntilTick)
+        positionDiscontinuities.add(pose.objectId);
+    this.events.push(
+      ...this.zoneProducer.step({
+        tick: this.tick,
+        epoch: this.epoch,
+        sceneRevision: this.scene.sceneRevision,
+        fixedDtSeconds: this.fixedDtSeconds,
+        poses: completedPoses,
+        zones: this.scene.zones ?? [],
+        positionDiscontinuities,
+        events: this.events,
+      }),
+    );
+    if (this.fixedStepObservers.size) {
+      const snapshot = this.snapshot();
+      for (const observer of this.fixedStepObservers) observer.afterStep?.(snapshot);
+    }
   }
   private samplePair(key: string, pair: Pair, pre: Map<string, PreSolve>): void {
     const a = this.records.get(pair.a),
@@ -1300,14 +1524,17 @@ export class PhysicsWorld {
       const c1 = flipped ? b.collider : a.collider,
         c2 = flipped ? a.collider : b.collider;
       for (let i = 0; i < m.numContacts(); i++) {
-        if (m.contactDist(i) > 0.015) continue;
+        const j = Math.max(0, m.contactImpulse(i));
+        // A speculative point the solver pushed on is the actual hit even when its
+        // pre-step gap exceeds the geometric tolerance; whether a hit is penetrating
+        // or speculative depends only on the fixed-step phase.
+        if (m.contactDist(i) > 0.015 && j <= 0) continue;
         const p1 = m.localContactPoint1(i),
           p2 = m.localContactPoint2(i);
         if (!p1 || !p2) continue;
         const w1 = add(vector(c1.translation()), rotate(vector(p1), quaternion(c1.rotation()))),
           w2 = add(vector(c2.translation()), rotate(vector(p2), quaternion(c2.rotation())));
-        const j = Math.max(0, m.contactImpulse(i)),
-          w = Math.max(j, 1e-6);
+        const w = Math.max(j, 1e-6);
         total += j;
         weight += w;
         contactCount++;
@@ -1327,6 +1554,8 @@ export class PhysicsWorld {
         normal = add(normal, scale(vector(m.normal()), (flipped ? -1 : 1) * w));
       }
     });
+    const quietTicks = pair.quietTicks;
+    pair.quietTicks = total > 0 ? 0 : quietTicks + 1;
     if (!contactCount) {
       pair.contact = null;
       return;
@@ -1361,8 +1590,12 @@ export class PhysicsWorld {
     pair.contact = contact;
     const discontinuity =
       this.tick <= a.discontinuityUntilTick || this.tick <= b.discontinuityUntilTick;
+    // Rearm: a new strike inside a live episode after stable separation (no normal
+    // impulse for REARM_QUIET_TICKS), gated like an onset; resting or rolling contact
+    // keeps impulse every tick and never rearms.
+    const rearmed = pair.onsetTick !== this.tick && quietTicks >= REARM_QUIET_TICKS;
     if (
-      pair.onsetTick === this.tick &&
+      (pair.onsetTick === this.tick || rearmed) &&
       !discontinuity &&
       total >= this.impactMinImpulse &&
       closing >= this.impactMinSpeed &&
