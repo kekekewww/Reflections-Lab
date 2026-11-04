@@ -1,0 +1,255 @@
+[
+  {
+    "check": "the page is served with the network rules",
+    "ok": true,
+    "detail": "default-src 'self'; connect-src 'self' https://api.meta.ai; script-src 'self' 'unsafe-eval"
+  },
+  {
+    "check": "physics, the solver worker and audio run under the network rules",
+    "ok": true,
+    "detail": {
+      "level": "-40.4",
+      "paths": "5"
+    }
+  },
+  {
+    "check": "no key field or request while offline tools are selected",
+    "ok": true
+  },
+  {
+    "check": "offline status points to Muse",
+    "ok": true,
+    "detail": "Offline tools are selected. To use Muse, choose Meta Model API and use your own key."
+  },
+  {
+    "check": "no server status button on the hosted site",
+    "ok": true
+  },
+  {
+    "check": "the field hides what you type and isn't autofilled",
+    "ok": true
+  },
+  {
+    "check": "without a key, submitting is disabled",
+    "ok": true,
+    "detail": "Enter your own Meta API key to use Muse. Offline tools work without one."
+  },
+  {
+    "check": "the submit button stays off without a key",
+    "ok": true
+  },
+  {
+    "check": "the help text is shown",
+    "ok": true,
+    "detail": "Your key stays in this tab's memory and goes only to api.meta.ai. It's never saved, and a reload clears it. Requests are billed to your Meta account, usually a few cents per instruction and more for complex scenes."
+  },
+  {
+    "check": "a malformed key is refused with a message",
+    "ok": true,
+    "detail": "That doesn't look like an API key. Check for spaces or missing characters, then paste it again."
+  },
+  {
+    "check": "typing a key doesn't trigger app shortcuts",
+    "ok": true
+  },
+  {
+    "check": "using the key clears the field",
+    "ok": true
+  },
+  {
+    "check": "the panel shows the key is in use",
+    "ok": true,
+    "detail": "Muse is ready. A request is sent only when you submit an instruction."
+  },
+  {
+    "check": "focus moves to the instruction box",
+    "ok": true
+  },
+  {
+    "check": "no Meta request until an instruction is submitted",
+    "ok": true
+  },
+  {
+    "check": "the key isn't in the page, URL, cookies or browser storage",
+    "ok": true,
+    "detail": {
+      "found": {
+        "html": false,
+        "fields": false,
+        "url": false,
+        "cookie": false,
+        "localStorage": false,
+        "sessionStorage": false,
+        "indexedDB": false,
+        "caches": false
+      },
+      "indexedDBs": 0
+    }
+  },
+  {
+    "check": "a proposal comes back as a preview",
+    "ok": true
+  },
+  {
+    "check": "the request went to Meta with the visitor's key and no cookies or referrer",
+    "ok": true,
+    "detail": {
+      "url": "https://api.meta.ai/v1/chat/completions",
+      "method": "POST",
+      "authorization": "fixture as expected",
+      "origin": "http://127.0.0.1:8799",
+      "cookie": null,
+      "referer": null
+    }
+  },
+  {
+    "check": "the request uses the planned model settings",
+    "ok": true
+  },
+  {
+    "check": "Apply adds the object",
+    "ok": true,
+    "detail": {
+      "before": 6,
+      "after": 7
+    }
+  },
+  {
+    "check": "Undo takes it back",
+    "ok": true
+  },
+  {
+    "check": "a failed check goes back to Muse in the browser",
+    "ok": true,
+    "detail": {
+      "calls": 2
+    }
+  },
+  {
+    "check": "a refused key gets a plain English message",
+    "ok": true,
+    "detail": "Meta rejected this key. Check it and try again, or forget it and use another key. [AUTHENTICATION_ERROR]"
+  },
+  {
+    "check": "sound instructions go through the same browser path",
+    "ok": true
+  },
+  {
+    "check": "a blocked or failed connection gets a plain English message",
+    "ok": true,
+    "detail": "Couldn't confirm whether Meta replied. It wasn't retried, to avoid charging you twice. Check your connection and try again. [TIMEOUT]"
+  },
+  {
+    "check": "a request is running",
+    "ok": true
+  },
+  {
+    "check": "Forget key stops a running request",
+    "ok": true,
+    "detail": "The request was stopped. Meta may still charge for what was already sent. [CANCELED]"
+  },
+  {
+    "check": "Forget key returns to the empty field",
+    "ok": true,
+    "detail": "Enter your own Meta API key to use Muse. Offline tools work without one."
+  },
+  {
+    "check": "focus returns to the field",
+    "ok": true
+  },
+  {
+    "check": "submitting is off again",
+    "ok": true
+  },
+  {
+    "check": "forgetting mid-request raises no busy error",
+    "ok": true
+  },
+  {
+    "check": "no busy error appeared at any point before the reload",
+    "ok": true,
+    "detail": 0
+  },
+  {
+    "check": "a reload clears the key",
+    "ok": true,
+    "detail": "Enter your own Meta API key to use Muse. Offline tools work without one."
+  },
+  {
+    "check": "nothing about the key survives a reload",
+    "ok": true,
+    "detail": {
+      "found": {
+        "html": false,
+        "fields": false,
+        "url": false,
+        "cookie": false,
+        "localStorage": false,
+        "sessionStorage": false,
+        "indexedDB": false,
+        "caches": false
+      },
+      "indexedDBs": 0
+    }
+  },
+  {
+    "check": "the field reads in Traditional Chinese",
+    "ok": true,
+    "detail": "你的 Meta API 金鑰\n使用金鑰\n\n金鑰只保留在此分頁的記憶體，也只會傳送到 api.meta.ai；不會儲存，重新載入頁面就會清除。請求由你的 Meta 帳號計費，通常每個指令幾美分，複雜場景會更多。"
+  },
+  {
+    "check": "the field fits a smaller window",
+    "ok": true,
+    "detail": {
+      "scroll": 1061,
+      "client": 1061
+    }
+  },
+  {
+    "check": "source maps and _headers aren't served; notices are",
+    "ok": true,
+    "detail": {
+      "map": 404,
+      "headers": 404,
+      "notices": 200,
+      "api": 404
+    }
+  },
+  {
+    "check": "the page never asked for the local API by itself",
+    "ok": true
+  },
+  {
+    "check": "the network rules stop the page sending data anywhere else",
+    "ok": true
+  },
+  {
+    "check": "no other rule violations",
+    "ok": true,
+    "detail": {
+      "violationsBeforeReload": [],
+      "finalViolations": []
+    }
+  },
+  {
+    "check": "no busy error appeared after the reload",
+    "ok": true,
+    "detail": 0
+  },
+  {
+    "check": "the key never appeared in logs, the site server or a request body",
+    "ok": true,
+    "detail": []
+  },
+  {
+    "browserErrors": [
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "failedSiteRequests": [
+      "404 /assets/index-C5POr1mG.js.map",
+      "404 /_headers",
+      "404 /api/agent/status"
+    ],
+    "metaCalls": 7
+  }
+]

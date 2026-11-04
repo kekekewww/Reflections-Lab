@@ -8,7 +8,7 @@ The inventory includes all tracked and unignored project Markdown, including aut
 
 Each translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.
 
-Status: **STRUCTURAL_CHECKS_PASS**; 497/497 translated, 0 stale, 0 missing across 528 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
+Status: **STRUCTURAL_CHECKS_PASS**; 497/497 translated, 0 stale, 0 missing across 529 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
 
 ```powershell
 node scripts/validation/english-docs.mjs inventory
@@ -63,6 +63,7 @@ node scripts/validation/english-docs.mjs check
 | [`docs/00-project/ARCHITECTURE_REVIEW_REQUEST.md`](../00-project/ARCHITECTURE_REVIEW_REQUEST.md) | [English](00-project/ARCHITECTURE_REVIEW_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/AUDIO_PATH_CLICKS_20261104.md`](../00-project/AUDIO_PATH_CLICKS_20261104.md) | [English](../00-project/AUDIO_PATH_CLICKS_20261104.md) | Already English / companion |
 | [`docs/00-project/BOOTSTRAP_EXECUTION_PLAN.md`](../00-project/BOOTSTRAP_EXECUTION_PLAN.md) | [English](00-project/BOOTSTRAP_EXECUTION_PLAN.md) | Translated snapshot |
+| [`docs/00-project/BROWSER_KEY_SITE_20261105.md`](../00-project/BROWSER_KEY_SITE_20261105.md) | [English](../00-project/BROWSER_KEY_SITE_20261105.md) | Already English / companion |
 | [`docs/00-project/EXISTING_ASSETS_AUDIT.md`](../00-project/EXISTING_ASSETS_AUDIT.md) | [English](00-project/EXISTING_ASSETS_AUDIT.md) | Translated snapshot |
 | [`docs/00-project/FAILOVER_REQUEST.md`](../00-project/FAILOVER_REQUEST.md) | [English](00-project/FAILOVER_REQUEST.md) | Translated snapshot |
 | [`docs/00-project/FILE_MANIFEST.md`](../00-project/FILE_MANIFEST.md) | [English](00-project/FILE_MANIFEST.md) | Translated snapshot |

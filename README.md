@@ -18,6 +18,7 @@ Built for the Meta Global AI Developer Hackathon. This repository is a public so
 - [What you need](#what-you-need)
 - [Run it without a key](#run-it-without-a-key)
 - [Run it with Muse](#run-it-with-muse)
+- [Build the hosted version](#build-the-hosted-version)
 - [First steps](#first-steps)
 - [Build a room with Muse](#build-a-room-with-muse)
 - [Walk around in first person](#walk-around-in-first-person)
@@ -82,6 +83,22 @@ Open http://127.0.0.1:4173. Press Ctrl+C in the terminal to stop.
 - **Your key** stays on the local server and never reaches the browser.
 - **Spending** only happens when someone submits an instruction with Meta Model API selected. A typical proposal costs a few cents at list price.
 - **The budget record** is `research/v1/meta-live-budget-20261104-limits.json`. The launcher stops at US$5 or 200 requests, and that count already includes this project's bench and rehearsal requests.
+
+## Build the hosted version
+
+```powershell
+npm ci
+npm run build:site
+```
+
+This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It has no server, so a visitor uses Muse with their own Meta API key. Everything else works without one.
+
+- **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
+- **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it.
+- **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
+- **The network rules** in `dist-site/_headers` only let the page send data to itself and to Meta, so the host has to apply that file.
+
+It has been tested with a fixture key and a mocked Meta API, but not yet with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
 
 ## First steps
 
@@ -313,12 +330,14 @@ The [limits record](docs/en/KNOWN_LIMITATIONS.md) has the longer history.
 | `npm run dev` | Starts the web app on port 5173 and the local API on port 8787, with Meta requests off |
 | `npm run build` | Type-checks and builds to `dist` |
 | `npm run demo:live -- --key-file "<path>"` | Serves the build on port 4173 with Muse turned on |
+| `npm run build:site` | Builds the hosted version to `dist-site` |
 | `npm run check` | Runs research regressions, runtime tests, the build, the licence inventory and the English document check |
 | `npm test` | Runs the acoustic and integration tests |
 | `npm run test:runtime` | Runs the app's runtime tests |
 | `npm run test:browser:ui` | Runs the interface tests in a real browser |
 | `npm run test:browser:storage` | Runs the browser storage tests |
 | `npm run test:browser:physics` | Runs the browser physics lifecycle tests |
+| `npm run test:browser:site` | Builds the hosted version and tests the key field against a mocked Meta API |
 | `npm run benchmark` | Runs the offline analytic reference benchmarks |
 | `npm run lint`, `npm run typecheck`, `npm run format:check` | Runs the static checks |
 | `npm run wiki -- status` | Shows the state of the project notes |
@@ -381,6 +400,7 @@ Inside `src`:
 | Using the app | [User guide](docs/11-v1/USER_GUIDE.en.md), [parameter reference](docs/en/11-v1/PARAMETER_REFERENCE.md) |
 | System design | [Architecture](docs/en/02-architecture/ARCHITECTURE.md), [audio runtime](docs/en/02-architecture/AUDIO_RUNTIME.md), [data contracts](docs/en/02-architecture/DATA_CONTRACTS.md) |
 | Decisions | [Decision records](docs/en/02-architecture/ADR_INDEX.md) |
+| Hosted version | [Hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) |
 | Muse | [Scene builder record](docs/00-project/MUSE_SCENE_BUILDER_20261104.md), [agent tools](docs/en/08-ai/AI_TOOL_SCHEMAS.md), [scene control](docs/en/08-ai/AI_SCENE_CONTROL.md) |
 | Limits | [Known limitations](docs/en/KNOWN_LIMITATIONS.md) |
 | Licences | [Licence register](docs/en/01-compliance/LICENSE_REGISTER.md), [third-party notices](docs/en/01-compliance/V1_THIRD_PARTY_NOTICES.md) |

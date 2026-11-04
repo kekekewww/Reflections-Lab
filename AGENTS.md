@@ -55,6 +55,6 @@ Node/npm精確版本見`.node-version`、`package.json`；`npm ci`→`npm run ch
 
 ## 授權、安全與完成定義
 
-不大量複製論文／SDK docs／商業素材；每個依賴、資料集、音效與 HRTF 記 license／來源／版本／hash。SDK binary cache 不入 Git；本專案根 LICENSE 為使用者於2026-11-05選定的MIT，只涵蓋專案自有內容；第三方內容維持各自授權。禁止 secret 入庫；Meta key 只在 server，費用預設 0，未驗帳號不得稱 live integration。
+不大量複製論文／SDK docs／商業素材；每個依賴、資料集、音效與 HRTF 記 license／來源／版本／hash。SDK binary cache 不入 Git；本專案根 LICENSE 為使用者於2026-11-05選定的MIT，只涵蓋專案自有內容；第三方內容維持各自授權。禁止 secret 入庫；Meta key 只在 server（唯一例外：使用者於2026-11-05同意託管靜態版讓訪客在分頁記憶體使用自己的 key 並直連 Meta，見[紀錄](docs/00-project/BROWSER_KEY_SITE_20261105.md)；本機版與擁有者 key 不變），費用預設 0，未驗帳號不得稱 live integration。
 
 保留未提交變更；禁止 destructive reset/clean、擅自部署／推送。失敗保留錯誤，提供復原方式；一般可逆工程工作自主執行，不重複要求許可。完成前執行適當命令並讀結果、同步 ADR／status／limits；不可用 UI 看似合理取代 physics/acoustic 驗證。新增功能須有可重現證據、來源與下一步限制，不能只改狀態宣稱完成。
