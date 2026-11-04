@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-04T12:43:26.593Z",
+  "tested_public_commit": "613b2f977764b529e1fc2bd87f38baa99c2b37f5",
+  "source_commit": "f95431483db0bf48e7fc86fc630179a73ed810ff",
+  "environment": {
+    "os": "Windows 11",
+    "node": "v22.17.0",
+    "method": "Fresh git clone of the snapshot branch, then npm ci and npm ci --prefix experiments/physics-spike --ignore-scripts"
+  },
+  "quality": {
+    "command": "npm run check",
+    "exit_code": 0,
+    "node_test_totals_by_stage": [
+      {
+        "tests": 1889,
+        "pass": 1889,
+        "fail": 0
+      },
+      {
+        "tests": 82,
+        "pass": 82,
+        "fail": 0
+      },
+      {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      {
+        "tests": 54,
+        "pass": 54,
+        "fail": 0
+      },
+      {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0
+      },
+      {
+        "tests": 34,
+        "pass": 34,
+        "fail": 0
+      },
+      {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0
+      },
+      {
+        "tests": 2522,
+        "pass": 2522,
+        "fail": 0
+      }
+    ],
+    "check_log_sha256": "58946477863aae58c1d0ced8d8e003f56a68fcd08eb5b80060d6b6c12a5fc1ae",
+    "benchmark": "npm run benchmark, exit 0; offline analytic baseline only"
+  },
+  "browser": {
+    "note": "The commands in .github/workflows/validation.yml, run with CI=true on this machine's bundled Chromium, not on GitHub",
+    "ui_refined_v2": {
+      "passed": 42,
+      "failed": 5,
+      "failed_tests": [
+        "ui-locale-refined-v2.spec.ts:288:1 › EN-01 visible native choice defaults to zh-TW and persists English across reload",
+        "ui-locale-refined-v2.spec.ts:350:1 › EN-02 English controls, dialogs, known diagnostics and offline preview remain functional without model calls",
+        "ui-refined-v2.spec.ts:344:1 › native audio buffer restart restores live monitoring and refuses a recording restart",
+        "ui-refined-v2.spec.ts:470:1 › curved bodies state that they take no part in geometric acoustics; boxes stay editable",
+        "ui-refined-v2.spec.ts:933:1 › rule drafts survive selection and rejected transactions until actual acknowledgement"
+      ]
+    },
+    "linked_workflow_v2": {
+      "passed": 7,
+      "failed": 1,
+      "failed_tests": [
+        "linked-workflow-v2.spec.ts:166:1 › real unavailable propagation preserves path identity and null metrics with its actual reason"
+      ]
+    },
+    "storage": {
+      "passed": 5,
+      "failed": 0
+    },
+    "physics": {
+      "passed": 2,
+      "failed": 0
+    },
+    "failure_reading": "The product and test code in this snapshot match local commit fcf5056a, apart from a link in one test README, so these failures are not caused by leaving files out. Their causes have not been investigated, none is fixed, and no test was relaxed. At least one asserts behavior from before curved surfaces joined the acoustic solver."
+  },
+  "secret_scan": {
+    "command": "node scripts/validation/publication-audit.mjs --ref <tested commit> --since refs/remotes/publication/main",
+    "new_blobs": 2097,
+    "new_blob_bytes": 39309407,
+    "files_over_100_mib": 0,
+    "files_over_10_mib": 0,
+    "archive_members": 3,
+    "binary_payloads_skipped": 10,
+    "errors": 0,
+    "rule_hit_counts": {
+      "literal-secret-assignment": 14
+    },
+    "hit_reading": "All hits are in test files and were read with values masked: environment variable names, fixture strings and error codes. None is a credential."
+  },
+  "independent_review": {
+    "kind": "Read-only review by a separate agent of the newly exposed content",
+    "credentials": "None found",
+    "personal_data": "None found beyond the owner's existing public Git identity",
+    "third_party": "No audio, fonts, datasets, PDFs or SDK binaries found; text was not compared line by line for copying",
+    "corrections_applied": [
+      "The note's left-out list was overstated",
+      "The ledger figures were stale",
+      "The README overstated Undo"
+    ]
+  },
+  "limits": [
+    "Not run on GitHub Actions",
+    "Nobody has listened to the Muse-built scenes",
+    "Not a complete first version, performance pass or legal approval",
+    "This receipt's own commit changes only this file"
+  ]
+}
