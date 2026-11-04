@@ -1,6 +1,6 @@
 # Hosted build with a visitor's own Meta key (2026-11-05)
 
-This records the owner's decision, how the hosted build handles a key, how it was tested, and what's still open. The build has not been deployed.
+This records the owner's decision, how the hosted build handles a key, how it was tested, and what's still open. It went live on 2026-11-05 at https://reflection-lab-dmd.pages.dev.
 
 ## Decision
 
@@ -47,6 +47,7 @@ All results are in [artifacts/v1/browser-key-site-20261105](../../artifacts/v1/b
 | A fetch to another site | Blocked by the network rules in all three |
 | One small instruction with the owner's real key, in their usual browser, with this build served locally under its real `_headers` rules (2026-11-05) | The owner reported that it worked. It wasn't independently observed, and no log was kept |
 | Sound, offline tools, recording, replay and first person under the same rules | Passed in Brave. Not run in Firefox or WebKit |
+| The deployed site, checked from outside without typing into the key field | 15 of 15 in headless Chromium: headers, source maps and `_headers` hidden, sound and paths, the empty key field, other sites blocked, and Meta reachable with its 401 refusal of an invalid token |
 | Local bundle | `npm run build` scans it and fails if it contains Meta's request path |
 
 Firefox and WebKit ran headless without the sound, recording, replay and first-person steps. Apart from the owner's test, the tokens and keys were fixtures and spent nothing. Leaving the page was simulated with a page-cache event, not a real Back navigation.
@@ -67,16 +68,20 @@ node tests/browser/meta-browser-access.mjs
 3. **The network rules have limits.** They stop fetch-style requests to other sites, but not a script navigating the page away, and no current browser rule can. They protect against third-party scripts, not against code already running in the page.
 4. **Visitors have to trust the host and the bundled dependencies.** Whoever controls the deployed page could change it to read the key. A visitor should use a key they can revoke.
 5. **The page allows `unsafe-eval`.** The validator library, Ajv, compiles its schemas at runtime, and the app only compiles schemas in its own bundle. Precompiling them would remove this, but it means changing code the local app shares.
-6. **Meta's guidance points the other way.** Its [authentication docs](https://dev.meta.ai/docs/authentication) say to keep keys out of browser code, to proxy requests through a server you control, and to use a separate key for each app. They warn that a leaked key can use up rate limits, access uploaded files and send requests. A visitor typing their own key isn't the same as shipping a key in page code, but the key is still in the browser. A proxy would follow the guidance, but the proxy's owner could then see visitors' keys. The field's help text tells visitors to use a separate key they can delete. Meta's terms themselves weren't read, because `dev.meta.ai/terms` doesn't exist and no other terms page was found, so the owner should check them before deploying.
+6. **Meta's guidance points the other way.** Its [authentication docs](https://dev.meta.ai/docs/authentication) say to keep keys out of browser code, to proxy requests through a server you control, and to use a separate key for each app. They warn that a leaked key can use up rate limits, access uploaded files and send requests. A visitor typing their own key isn't the same as shipping a key in page code, but the key is still in the browser. A proxy would follow the guidance, but the proxy's owner could then see visitors' keys. The field's help text tells visitors to use a separate key they can delete. Meta's terms themselves weren't read, because `dev.meta.ai/terms` doesn't exist and no other terms page was found, so the owner should check them. The owner chose to publish after seeing this guidance.
 7. **Licence gaps remain.** Hosting a compiled bundle is distribution. `third-party-notices.txt` lists the 15 bundled packages, but the [third-party notices](../01-compliance/V1_THIRD_PARTY_NOTICES.md) still record six open gaps, including React Three Fiber's source lineage and Rapier's exact Rust and WASM dependencies.
 8. **The check on a copy of the scene runs on the main thread.** A large proposal could briefly hold up the page.
 9. **The network rules need a host that reads `_headers`,** such as Cloudflare Pages. On any other host, the key would have less protection.
 
-## Deploying
+## Deployment
 
-The owner hasn't approved a deployment. Once they do:
+The owner approved publishing on 2026-11-05. The site is the Cloudflare Pages project `reflection-lab` on the owner's account, at https://reflection-lab-dmd.pages.dev. Cloudflare added `-dmd` because the plain name was taken. The first deployment was built from commit `2034acce`, and the commits after it change documents only.
+
+To deploy again:
 
 ```powershell
 npm run build:site
-npx wrangler pages deploy dist-site --project-name reflection-lab
+npx wrangler pages deploy dist-site --project-name reflection-lab --branch main
 ```
+
+To take the site down, delete the project in the Cloudflare dashboard.

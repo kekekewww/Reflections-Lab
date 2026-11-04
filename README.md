@@ -6,7 +6,7 @@ It's for sound designers, game audio teams and architects who want to try a spac
 
 [![Reflection Lab demo video on YouTube](https://i.ytimg.com/vi/PHnT8HdyHCw/hqdefault.jpg)](https://youtu.be/PHnT8HdyHCw)
 
-**[Watch the demo video](https://youtu.be/PHnT8HdyHCw)**
+**[Watch the demo video](https://youtu.be/PHnT8HdyHCw)** · **[Try it online](https://reflection-lab-dmd.pages.dev)**
 
 [Traditional Chinese README](README.zh-TW.md) · [MIT License](LICENSE) · [User guide](docs/11-v1/USER_GUIDE.en.md)
 
@@ -15,6 +15,7 @@ Built for the Meta Global AI Developer Hackathon. This repository is a public so
 ## Contents
 
 - [What it does](#what-it-does)
+- [Try it online](#try-it-online)
 - [What you need](#what-you-need)
 - [Run it without a key](#run-it-without-a-key)
 - [Run it with Muse](#run-it-with-muse)
@@ -51,6 +52,12 @@ Built for the Meta Global AI Developer Hackathon. This repository is a public so
 | **A/B comparison** | Change one condition, then re-evaluate the same recorded motion against it |
 | **Audio export** | Render short takes to a WAV mix and stems |
 | **Two languages** | The interface runs in English and Traditional Chinese |
+
+## Try it online
+
+Open https://reflection-lab-dmd.pages.dev in a desktop Chromium browser, with headphones if you have them. Nothing needs installing, and everything except Muse works without a key. Start with [First steps](#first-steps).
+
+To use Muse there, choose **Meta Model API** in the **Meta experiment agent** tab and enter your own Meta API key. [Build the hosted version](#build-the-hosted-version) explains how the site handles it.
 
 ## What you need
 
@@ -91,7 +98,7 @@ npm ci
 npm run build:site
 ```
 
-This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It has no server, so a visitor uses Muse with their own Meta API key. Everything else works without one.
+This makes a static site in `dist-site` for hosts such as Cloudflare Pages, and it's what runs at https://reflection-lab-dmd.pages.dev. It has no server, so a visitor uses Muse with their own Meta API key. Everything else works without one.
 
 - **The key field** appears in the **Meta experiment agent** tab when **Meta Model API** is selected.
 - **The key** stays in the tab's memory and goes only to `api.meta.ai`. It's never saved, and a reload clears it. [Meta's docs](https://dev.meta.ai/docs/authentication) advise keeping keys out of browser code, so use a separate key you can delete afterwards.

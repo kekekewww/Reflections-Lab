@@ -3,7 +3,9 @@
 
 # Reflection Lab
 
-**[觀看示範影片](https://youtu.be/PHnT8HdyHCw)** · [MIT 授權](LICENSE) · [完整英文指南](README.md)
+**[觀看示範影片](https://youtu.be/PHnT8HdyHCw)** · **[線上試用](https://reflection-lab-dmd.pages.dev)** · [MIT 授權](LICENSE) · [完整英文指南](README.md)
+
+線上版不需安裝；使用 Muse 時須輸入你自己的 Meta API 金鑰，金鑰只保留在該分頁的記憶體並直接送到 Meta，詳見[紀錄](docs/00-project/BROWSER_KEY_SITE_20261105.md)。
 
 ## 最新：Muse 多步驟場景建構（2026-11-04）
 

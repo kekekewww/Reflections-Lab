@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.zh-TW.md","sha256":"ad539b178b26e8c9651e2b8aa91667f9605f93c817fb194ff9961c6c13d18044","translated_at":"2026-11-04T16:24:36.276Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
+<!-- english-source: {"path":"README.zh-TW.md","sha256":"1f92512858f664ffd6279a38daca8ed0675cb5bd43014fe0699fe010bc425b6f","translated_at":"2026-11-04T17:37:20.675Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.zh-TW.md`](../../README.zh-TW.md). Source SHA-256: `ad539b178b26e8c9651e2b8aa91667f9605f93c817fb194ff9961c6c13d18044`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.zh-TW.md`](../../README.zh-TW.md). Source SHA-256: `1f92512858f664ffd6279a38daca8ed0675cb5bd43014fe0699fe010bc425b6f`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- architecture-review-entry -->
@@ -9,7 +9,9 @@
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
 # Reflection Lab
 
-**[Watch the demo video](https://youtu.be/PHnT8HdyHCw)** · [MIT License](../../LICENSE) · [Full English guide](../../README.en.md)
+**[Watch the demo video](https://youtu.be/PHnT8HdyHCw)** · **[Try it online](https://reflection-lab-dmd.pages.dev)** · [MIT License](../../LICENSE) · [Full English guide](../../README.en.md)
+
+The online version needs no installation. To use Muse there, enter your own Meta API key, which stays in that tab's memory and goes straight to Meta; see the [record](../00-project/BROWSER_KEY_SITE_20261105.md).
 
 <!-- english-original-anchor --> <a id="最新muse-多步驟場景建構2026-11-04"></a>
 ## Latest: Muse multi-step scene builder (2026-11-04)
