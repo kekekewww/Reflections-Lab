@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.md","sha256":"6a0d33f66f4453c3ae2f39667b23f01bde9cfa76ee86ccb2463092f9ec3a7847","translated_at":"2026-11-04T17:06:46.002Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
+<!-- english-source: {"path":"README.md","sha256":"212e93d4567c42f8524205a7427fa57ac85aedb05e440c37e633e6baa93b14b9","translated_at":"2026-11-04T17:28:57.206Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.md`](README.md). Source SHA-256: `6a0d33f66f4453c3ae2f39667b23f01bde9cfa76ee86ccb2463092f9ec3a7847`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.md`](README.md). Source SHA-256: `212e93d4567c42f8524205a7427fa57ac85aedb05e440c37e633e6baa93b14b9`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
@@ -110,7 +110,7 @@ This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It h
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
 - **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 
-It has been tested with a fixture key and a mocked Meta API, but not yet with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
+It has been tested with a fixture key and a mocked Meta API in three browser engines, and the owner ran one small instruction successfully with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
 
 <!-- english-original-anchor --> <a id="first-steps"></a>
 ## First steps

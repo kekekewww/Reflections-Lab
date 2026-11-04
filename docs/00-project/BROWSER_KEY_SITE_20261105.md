@@ -33,6 +33,8 @@ The key field appears in the **Meta experiment agent** tab when **Meta Model API
 
 The visitor's Meta account pays. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, using list prices of US$1.25 per million input tokens and US$4.25 per million output tokens. It never retries on its own, so an unclear failure can't charge twice. These limits live in the tab and restart on a reload, so they prevent accidents rather than enforce a budget. Meta's own limits on the visitor's account still apply.
 
+The owner's test spent from their Meta account outside the project's budget ledger, because this build has no server. The amount wasn't measured. Similar small instructions cost a few cents.
+
 ## Evidence
 
 All results are in [artifacts/v1/browser-key-site-20261105](../../artifacts/v1/browser-key-site-20261105).
@@ -43,10 +45,11 @@ All results are in [artifacts/v1/browser-key-site-20261105](../../artifacts/v1/b
 | Key field against a mocked Meta API, with the real `_headers` rules applied | Brave 48 of 48, Firefox 43 of 43, WebKit 43 of 43 |
 | Key absent from the page, URL, cookies, both storages, IndexedDB, caches, logs and the site server | Passed in all three |
 | A fetch to another site | Blocked by the network rules in all three |
+| One small instruction with the owner's real key, in their usual browser, with this build served locally under its real `_headers` rules (2026-11-05) | The owner reported that it worked. It wasn't independently observed, and no log was kept |
 | Sound, offline tools, recording, replay and first person under the same rules | Passed in Brave. Not run in Firefox or WebKit |
 | Local bundle | `npm run build` scans it and fails if it contains Meta's request path |
 
-Firefox and WebKit ran headless without the sound, recording, replay and first-person steps. The token and key used were fixtures, and none of this spent anything. Leaving the page was simulated with a page-cache event, not a real Back navigation.
+Firefox and WebKit ran headless without the sound, recording, replay and first-person steps. Apart from the owner's test, the tokens and keys were fixtures and spent nothing. Leaving the page was simulated with a page-cache event, not a real Back navigation.
 
 To repeat the checks:
 
@@ -59,7 +62,7 @@ node tests/browser/meta-browser-access.mjs
 
 ## Still open
 
-1. **A real key hasn't been tried in a browser.** Meta's refusal was readable, but a successful reply hasn't been seen. The owner needs to type a real key on the page and run one instruction. It will spend a few cents.
+1. **A real key has only been tried once.** It hasn't been tried in every browser, on a deployed site, with a large scene or with a sound instruction.
 2. **Firefox warns this will stop working.** Meta answers with `Access-Control-Allow-Headers: *`, and Firefox 157 warns that this "soon" won't cover the `Authorization` header. If Firefox or another browser enforces that, the call will fail with a connection message until Meta names the header or a relay is added.
 3. **The network rules have limits.** They stop fetch-style requests to other sites, but not a script navigating the page away, and no current browser rule can. They protect against third-party scripts, not against code already running in the page.
 4. **Visitors have to trust the host and the bundled dependencies.** Whoever controls the deployed page could change it to read the key. A visitor should use a key they can revoke.

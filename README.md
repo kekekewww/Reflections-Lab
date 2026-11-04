@@ -98,7 +98,7 @@ This makes a static site in `dist-site` for hosts such as Cloudflare Pages. It h
 - **Spending** goes to the visitor's Meta account. Each time a key is entered, the page stops at 40 requests or about US$3 of estimated cost, and it never retries on its own.
 - **The network rules** in `dist-site/_headers` only let the page's network requests reach itself and Meta, so the host has to apply that file.
 
-It has been tested with a fixture key and a mocked Meta API, but not yet with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
+It has been tested with a fixture key and a mocked Meta API in three browser engines, and the owner ran one small instruction successfully with a real key. The [hosted build record](docs/00-project/BROWSER_KEY_SITE_20261105.md) has the tests and open risks.
 
 ## First steps
 
