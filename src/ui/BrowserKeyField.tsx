@@ -13,7 +13,7 @@ import { useLocale } from "./locale.js";
  */
 export function BrowserKeyField() {
   const { t } = useLocale();
-  const held = useSyncExternalStore(subscribeBrowserKey, hasBrowserKey);
+  const held = useSyncExternalStore(subscribeBrowserKey, hasBrowserKey, hasBrowserKey);
   const [invalid, setInvalid] = useState(false);
   const input = useRef<HTMLInputElement>(null);
   const refocusInput = useRef(false);

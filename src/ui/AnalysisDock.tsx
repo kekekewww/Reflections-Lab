@@ -892,7 +892,7 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
   const loading = model.ai.status === "loading";
   const selectedProvider = model.ai.selectedProvider ?? "offline";
   const providerStatus = model.ai.providerStatus;
-  const keyHeld = useSyncExternalStore(subscribeBrowserKey, hasBrowserKey);
+  const keyHeld = useSyncExternalStore(subscribeBrowserKey, hasBrowserKey, hasBrowserKey);
   const unavailable =
     selectedProvider === "meta" &&
     (providerStatus?.status !== "ready" || (BROWSER_AGENT_BUILD && !keyHeld));
