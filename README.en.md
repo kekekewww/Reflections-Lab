@@ -1,20 +1,41 @@
-<!-- english-source: {"path":"README.md","sha256":"6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2","translated_at":"2026-10-29T05:29:36Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"README.md","sha256":"8c43646d3e89075848fb7f09f159377eb31506a2b7a31ddfc54fd64d6dc27c42","translated_at":"2026-11-04T14:15:30.563Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.md`](README.md). Source SHA-256: `6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.md`](README.md). Source SHA-256: `8c43646d3e89075848fb7f09f159377eb31506a2b7a31ddfc54fd64d6dc27c42`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
-
-<!-- architecture-review-entry -->
-2026-10-29: [Comprehensive Architecture Research](docs/en/12-architecture-review/ARCHITECTURE_REVIEW.md), [Implementation Gaps](docs/en/12-architecture-review/ARCHITECTURE_GAP_ANALYSIS.md), and [Integration and Publication Status](docs/en/12-architecture-review/INTEGRATION_REPORT.md). This round preserves the existing V1, corrects the cross-layer propagation limit, and reserves RenderBackend. The complete product, performance, and human / external gates remain unfinished. The r11 counts below are historical; [R17](docs/11-v1/REQUIREMENT_EVIDENCE_20261029-r17.json) is the latest V1 baseline. Original Git history contains build / large artifacts prohibited from publication; public push must first pass the [complete-history audit](docs/en/12-architecture-review/PUBLICATION_AUDIT.md).
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
 # Reflection Lab
 
-<!-- english-original-anchor --> <a id="最新muse-多步驟場景建構2026-11-04"></a>
-## Latest: Muse multi-step scene builder (2026-11-04)
+Hear a room while you design it. Reflection Lab is a browser-based 3D room with real-time physics that traces how sound reflects off its surfaces. Describe a room in plain words and Muse, Meta's model, builds it: you get a preview, nothing changes until you press Apply, and the surfaces it adds change the sound.
 
-One instruction lets Muse, through the Meta Model API, plan a scene proposal of up to 32 steps that can add, move, resize and remove objects. The app first checks it against the same physics and scene rules as a manual edit. If a step fails, Muse reads the error and tries again. You then get a preview, nothing changes until you press Apply, and Undo takes it back if you press it straight after Apply. Muse can also change sound rules and write paths, and the surfaces it adds join the acoustic paths. Results and limits are in the [record](docs/00-project/MUSE_SCENE_BUILDER_20261104.md), and the scope of this public snapshot is in the [note](docs/00-project/PUBLIC_SNAPSHOT_20261104.md).
+It's for sound designers, game audio teams and architects who want to try a space early. The acoustics are a real-time approximation, not a measurement.
 
-This needs your own Meta Model API key, which stays on the local server:
+[Traditional Chinese README](docs/en/README.zh-TW.md)
+
+This repository is a public source snapshot. Its [note](docs/00-project/PUBLIC_SNAPSHOT_20261104.md) explains what's included.
+
+<!-- english-original-anchor --> <a id="what-you-need"></a>
+## What you need
+
+- **Node 22.17.0 and npm 11.4.2.** These exact versions are pinned in `package.json`.
+- **A desktop Chromium browser,** such as Chrome. This is what the project was tested in.
+- **Headphones,** so you can hear the direction of a sound.
+- **A Meta Model API key,** only for the Muse features. Everything else runs without one.
+
+<!-- english-original-anchor --> <a id="run-it-without-a-key"></a>
+## Run it without a key
+
+```powershell
+npm ci
+npm run dev
+```
+
+Open http://127.0.0.1:5173. Meta requests are off in this mode and nothing is spent. The agent panel only offers offline tools, which are not a language model. Run only one Reflection Lab server at a time, because this and the Muse launcher both use port 8787.
+
+<!-- english-original-anchor --> <a id="run-it-with-muse"></a>
+## Run it with Muse
+
+Put your key in a file outside the repository, then run:
 
 ```powershell
 npm ci
@@ -22,72 +43,151 @@ npm run build
 npm run demo:live -- --key-file "<path to the server-only key file>"
 ```
 
-Then open `http://127.0.0.1:4173` and choose Meta Model API in the Meta experiment agent tab. This is a real-time approximation, not a measurement, and the full first version, performance and human listening gates are not complete.
+Open http://127.0.0.1:4173. Press Ctrl+C in the terminal to stop.
 
-[English README](README.en.md) · [English user guide](docs/11-v1/USER_GUIDE.en.md)
+- **Your key** stays on the local server and never reaches the browser.
+- **Spending** only happens when someone submits an instruction with Meta Model API selected. A typical proposal costs a few cents at list price.
+- **The budget record** is `research/v1/meta-live-budget-20261104-limits.json`. The launcher stops at US$5 or 200 requests, and that count includes the project's earlier use.
 
-Use the language menu at the top to switch between Traditional Chinese and English. The language preference is stored locally; both languages share the same scene, sound, and acceptance data. The complete English documentation has source/translation hashes and current/stale mappings. The previous complete check confirmed that all 258 mirrors at that time were current, with 0 missing, 0 stale, and 0 errors; this change and subsequent changes still require synchronization according to the latest report. See the [supplementary English acceptance criteria](docs/en/11-v1/ENGLISH_ACCEPTANCE.md) for the scope.
+<!-- english-original-anchor --> <a id="first-steps"></a>
+## First steps
 
-Latest, 2026-10-28: UI27, physics2, storage5, the complete product4 suite, and the Chromium native-audio 25/IRv2 checks in the [current r11 checkpoint](docs/en/11-v1/SESSION_PROGRESS_20261028-r11.md) passed within their respective scopes. The current complete pinned check, including 917 runtime tests, and the offline prompt benchmark passed. Formal performance measurements did not pass; native desktop operation and actual-device listening still have unresolved gates. The complete first version is unfinished. The original [51 acceptance criteria](docs/en/11-v1/ACCEPTANCE.md) and 61 protected files remain intact, and [M0](docs/en/11-v1/M0_IMPLEMENTATION.md) retains its original scope. [ADR-013](docs/en/02-architecture/adr/013-codex-primary-development.md) establishes Codex as the lead developer; Muse Code and the older Harness are optional. [Development resources](docs/09-agents/RESOURCE_STATUS.json) and the product's Meta Model API have separate accounting. No additional Muse or paid Meta usage occurred.
+1. Set **Interface language** to English in the top bar.
+2. Click **Enable listening**. Start with your device volume low.
+3. Press **Start simulation**. The ball drops, the speaker plays a tone, and the lines in the room show the sound's paths.
+4. Move the camera: right-drag to orbit, middle-drag to pan, and scroll to zoom.
 
-Current entry point: [persistent Wiki](docs/en/knowledge/README.md) → [Index](docs/en/knowledge/wiki/index.md) → [Now](docs/en/knowledge/wiki/now.md). Phase 3's [Codex × Muse Harness](docs/en/09-agents/CODEX_MUSE_ORCHESTRATION.md) includes bounded failover and independent verification; see its [report](docs/en/09-agents/PHASE3_REPORT.md) for actual tests and live limitations. The Phase 2 [Wiki/design deliverables](docs/en/09-knowledge/PHASE2_REPORT.md) and Phase 1 evidence are retained. Historical counts below must not be treated as current totals.
+The room is open at one end. If a wall blocks your view, orbit until you can look in through the open end.
 
-An experimental platform combining interactive 3D physics, traceable acoustic models, and Meta AI. Product code lives in `src/` and `server/`. Research, the Harness, spikes, and each validation level retain their own provenance; they do not stand in for complete feature acceptance. This directory was initially empty and did not reuse the Echo Canvas/Reflections prototypes.
+<!-- english-original-anchor --> <a id="build-a-room-with-muse"></a>
+## Build a room with Muse
 
-Start with the [Bootstrap Report](docs/en/BOOTSTRAP_REPORT.md), then read the [architecture](docs/en/02-architecture/ARCHITECTURE.md), [ADR index](docs/en/02-architecture/ADR_INDEX.md), [implementation status](docs/en/IMPLEMENTATION_STATUS.md), [limitations](docs/en/KNOWN_LIMITATIONS.md), and [next task](docs/en/NEXT_ENGINEERING_TASK.md). Agents must read [AGENTS.md](docs/en/AGENTS.md) first.
+Open the **Meta experiment agent** tab and choose **Meta Model API**. Press **Pause** before each instruction. Paste an instruction, press **Generate action preview**, and wait. Most take under a minute. Check the preview, then press **Apply actions**.
 
-<!-- english-original-anchor --> <a id="本地驗證"></a>
-## Local validation
+These four worked in our rehearsals, in this order:
 
-Pinned versions: Node **22.17.0** and npm **11.4.2**; Python **3.12.11** was the version observed during this work. Actual dependency versions and integrity values are recorded in package-lock.json.
+**1. Build a recital room**
+
+```text
+Turn this room into a small recital room: a raised wooden stage across the back wall, a grand-piano-sized box on the stage, and twelve chairs in three rows facing the stage.
+```
+
+**2. Add to it.** Afterwards, press **Reset** and **Start simulation**, then open the **Acoustic paths** tab to find reflections off the new wall panels.
+
+```text
+Now make it feel like a real concert space: add three slim metal columns, floor to ceiling height, along each side wall, evenly spaced from the stage to the open end of the room. Add two soft wall panels at ear height on each side wall, between the columns. Add a 4-step wooden staircase leading up to the left end of the stage. Don't change anything that's already here.
+```
+
+**3. Change a sound.** Afterwards, press **Reset** and **Start simulation** to hear the ball's next impact.
+
+```text
+Raise the pitch of the ball's impact sound by 7 semitones.
+```
+
+**4. Move a sound around you.** Afterwards, press **Resume simulation**, open the **Motion** tab and press **Run**. Don't press Reset first.
+
+```text
+Move the listener to the middle of the room at ear height, then move the speaker in a slow circle around the listener at 1.5 m height, radius 2 m, over 8 seconds, ending where it started.
+```
+
+To take back a proposal, press **Undo last AI apply** straight after Apply, before you start or reset the simulation.
+
+<!-- english-original-anchor --> <a id="walk-around-in-first-person"></a>
+## Walk around in first person
+
+Press **Enter first person** and click the view.
+
+| Input | Action |
+| --- | --- |
+| W, A, S, D | Move |
+| Shift | Sprint |
+| Mouse | Look around |
+| Left click | Grab the object you're aiming at, then left click again to throw it |
+| Right button | Hold to preview a new object, release to place it. While holding an object, put it down |
+| Mouse wheel | Change the distance of a held object or preview |
+| R | Rotate a held object or preview |
+| L | Open the object library |
+| Enter | Pause or resume |
+| Esc | Release the mouse |
+
+Leaving first person resets the camera, so orbit back into the room afterwards.
+
+<!-- english-original-anchor --> <a id="draw-a-path-by-hand"></a>
+## Draw a path by hand
+
+Only objects with sound can have a path.
+
+- **In the editor:** select the object and press **T**. Click surfaces to add points, click a point to select it, then drag it. **Delete** removes the selected point. Press **T** or **Esc** to finish.
+- **In first person:** aim at the object, hold **Ctrl** and press the left mouse button, then drag through the room and release. Press **Enter** or click to start the take.
+
+Press **Shift+T** to show the path curves in the view.
+
+<!-- english-original-anchor --> <a id="what-the-tabs-do"></a>
+## What the tabs do
+
+| Tab | Use it to |
+| --- | --- |
+| Events & recording | See collisions and sound decisions, and record or replay a take |
+| Acoustic paths | List the direct path and reflections reaching the listener |
+| Experiment comparison | Compare two takes |
+| Meta experiment agent | Give Muse instructions, or use the offline tools |
+| Motion | Run, edit and remove object paths |
+| Audio export | Capture and render audio files |
+| Performance | Check timing and audio dropouts |
+| Zones | Add zones that trigger sound rules |
+
+The [user guide](docs/11-v1/USER_GUIDE.en.md) covers the rest of the app. Its agent section was written before the multi-step builder, so use this page for Muse.
+
+<!-- english-original-anchor --> <a id="how-muse-fits-in"></a>
+## How Muse fits in
+
+1. Muse Spark 1.3 gets your instruction, the current scene and a set of tools. It can create a scene, add, move, resize and remove objects, set materials and physics modes, configure sound sources, move the listener and write paths.
+2. The server tries the proposal on a copy of the scene, using the app's real scene rules, physics and motion code. If a step fails, Muse gets the error and tries again, up to three rounds.
+3. The browser checks the proposal again and shows a preview. Nothing changes until you press Apply.
+
+Sound rule changes, like prompt 3, go through a separate planner. Full results are in the [scene builder record](docs/00-project/MUSE_SCENE_BUILDER_20261104.md).
+
+<!-- english-original-anchor --> <a id="known-limits"></a>
+## Known limits
+
+- **Undo** only works straight after Apply, and it only goes back one proposal.
+- **Reset after a Muse path** greys out Run until you press **Rebind to current scene**.
+- **Recording** stalled in both of our tries with a Muse path in a 34-object scene. Screen-record large scenes instead.
+- **Proposal size** is capped at 32 steps. Very long paths can run out of model output.
+- **Sound stops above 256 acoustic surfaces per source.** A box counts as 6 and a sphere or capsule as 1. Muse sees this limit, and the app refuses proposals that go over it.
+- **Paths don't avoid objects.** The app refuses a path that runs through something.
+- **Scenes use simple shapes:** boxes, spheres and capsules.
+- **A path on the ball is silent.** Put the path on the speaker to hear it move.
+- **"Acoustics stale" or "Acoustics pending"** shows while things move. It means the screen shows the last finished calculation.
+- **Nobody has formally listened to the Muse-built scenes yet,** and this is not a complete first version. Full performance and listening checks are still open.
+
+<!-- english-original-anchor --> <a id="run-the-checks"></a>
+## Run the checks
 
 ```powershell
 npm ci
-npm ci --prefix experiments/physics-spike
+npm ci --prefix experiments/physics-spike --ignore-scripts
 npm run check
-npm run dev
-npm run build
-npm run test:runtime
 npm run benchmark
-node scripts/agents/cli.mjs help
-npm run test:agents
-npm run test:prompts
 ```
 
-The scope of `check` is defined by package.json: it retains research regressions and adds production-runtime tests, the build, and license checks. Native SDK, browser/audio, listening, and account API validation are separate. `dev` starts the local Web app and restricted API; the product's default Meta spending limit is 0. See the [Web toolchain](docs/en/03-sdk/V1_WEB_TOOLCHAIN.md) for production tooling, separate browser commands, and limitations, and the [validation plan](docs/en/06-validation/BENCHMARK_PLAN.md) for the research baseline. No deployment or submission has been performed.
+`npm run check` takes about 10 minutes. GitHub's browser job currently fails on 5 older tests, so the commit shows a red X. We haven't investigated all of them, and they're listed in the [validation record](artifacts/public-snapshot-20261104/verification.json).
 
-For first-time listening, you can remain paused and choose **Enable listening** in the bottom Monitor strip. Start at low device volume, then adjust **Monitor gain** and choose **Start simulation** or **Resume simulation**. Enabling listening does not automatically resume the simulation; muting the monitor does not pause physics. Simulated uses the unified acoustic chain; Raw reference provides centered dry audio. Finish by choosing Pause and muting the monitor. dBFS is not calibrated dB SPL.
+<!-- english-original-anchor --> <a id="project-layout"></a>
+## Project layout
 
-The saved [minimal real-Meta Sound slice](docs/en/server/META_LIVE_VALIDATION.md) includes the model response, Host Apply, and a local 180-tick run. Offline reuse of a recorded response is not new live-model output. Offline tools are explicitly identified as not a model. The product server defaults to network disabled and budget 0; all three request slots within this US$1 authorization have been used. Actual billing and remaining credit are unknown.
+| Folder | Contents |
+| --- | --- |
+| `src` | The web app: UI, physics, acoustics, audio and motion |
+| `server` | Local API server and Meta Model API integration |
+| `tests`, `benchmarks` | Automated tests and reference benchmarks |
+| `schemas` | Data and AI tool contracts |
+| `scripts` | Launchers, setup and validation tools |
+| `docs` | Architecture, design and validation documents, with English copies in `docs/en` |
+| `knowledge` | Project notes and task records |
+| `research` | Sources, formulas and evidence records |
 
-By default, `node scripts/setup/datasets.mjs` only performs a dry run. The example authorization and file pins are incomplete, so `BLOCKED`/exit 2 is expected; it is not a download failure. `npm run test:datasets` validates the acquisition tool using a local mock; no real datasets have been downloaded. See the [acquisition specification and limitations](docs/en/experiments/dataset-fetch-spike/README.md).
+<!-- english-original-anchor --> <a id="licence"></a>
+## Licence
 
-Windows SDK spike:
-
-```powershell
-./scripts/setup/steam-audio.ps1 -Download -Extract
-./experiments/sdk-smoke-tests/run.ps1
-```
-
-Versions, SHA256 values, compiler details, and individual results are recorded in [SDK_VALIDATION](docs/en/03-sdk/SDK_VALIDATION.md). SDK caches and node_modules are excluded from Git. The initial download needs network access; execution requires Windows x64 and the compiler specified in the documentation. Audio-device tests have not been run.
-
-<!-- english-original-anchor --> <a id="導覽"></a>
-## Navigation
-
-| Path | Contents |
-| ----------------------------------------- | -------------------------------------------------- |
-| docs/00-project | Original requirements, empty-directory baseline, assets, and provenance |
-| docs/01-compliance | Official competition rules, license register, and dependency inventory |
-| docs/02-architecture | Effective ADRs and history; data, timing, and backend contracts |
-| docs/03-sdk | Steam Audio versions, licensing, comparisons, and native tests |
-| docs/04-physics、05-ux | FPS/Grab/Build/states and UX research covering 8 tools |
-| docs/06-validation、07-experiments、08-ai | V0–V5, recording/replay/A/B, Meta models, and tools |
-| research | Literature, formulas, datasets, and the Evidence Ledger |
-| docs/09-agents、prompts | Harness, failover, quota, prompts, and model provenance |
-| schemas | Product/Wiki/agent contracts and synthetic examples |
-| .agents/skills | 15 project skills and 8 pinned Emil upstream skills |
-| tests、benchmarks、experiments | Isolated analytical, dependency, physics, and SDK validation |
-
-The competition submission time is currently **2026-11-05 10:00 Taipei**. Application/selection, pre-competition work, and complete submission fields still require the user's own verification. See [HACKATHON_RULES](docs/en/01-compliance/HACKATHON_RULES.md) for official sources and time-zone ambiguity. No terms have been accepted, and no application or submission has been made on the user's behalf.
-
-The project's own open-source LICENSE has not been selected; third parties retain their respective licenses. Measured/computed/estimated and unverified items are recorded separately. Uncalibrated dBFS is not treated as dB SPL. See [FILE_MANIFEST](docs/en/00-project/FILE_MANIFEST.md) for the complete list of added files.
+The project has no root licence yet, so no reuse rights are granted. Third-party licences are listed in the [licence register](docs/en/01-compliance/LICENSE_REGISTER.md).

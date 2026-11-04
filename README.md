@@ -1,13 +1,32 @@
-<!-- architecture-review-entry -->
-2026-10-29：[全面架構研究](docs/12-architecture-review/ARCHITECTURE_REVIEW.md)、[實作差異](docs/12-architecture-review/ARCHITECTURE_GAP_ANALYSIS.md)、[整合與公開狀態](docs/12-architecture-review/INTEGRATION_REPORT.md)。本輪保留既有V1，修正跨層傳播上限並預留RenderBackend；完整產品、性能與真人／外部門檻仍未完成。下方r11數量是歷史，最新V1基準為[R17](docs/11-v1/REQUIREMENT_EVIDENCE_20261029-r17.json)。原Git歷史包含禁止公開的建置／大型產物，公開push需先過[完整歷史審查](docs/12-architecture-review/PUBLICATION_AUDIT.md)。
-
 # Reflection Lab
 
-## 最新：Muse 多步驟場景建構（2026-11-04）
+Hear a room while you design it. Reflection Lab is a browser-based 3D room with real-time physics that traces how sound reflects off its surfaces. Describe a room in plain words and Muse, Meta's model, builds it: you get a preview, nothing changes until you press Apply, and the surfaces it adds change the sound.
 
-一句指令可讓 Muse（Meta Model API）規劃最多 32 步的場景提案，並可新增、移動、調整尺寸與移除物件。App 先以與手動編輯相同的物理與場景規則檢查；若有步驟失敗，Muse 會讀取錯誤並重試。通過後顯示預覽，按下 Apply 才生效；Apply 後立即按 Undo 可復原。Muse 也能改變聲音規則與寫入路徑，新增的表面會進入聲學路徑。結果與限制見[紀錄](docs/00-project/MUSE_SCENE_BUILDER_20261104.md)，此公開快照的範圍見[說明](docs/00-project/PUBLIC_SNAPSHOT_20261104.md)。
+It's for sound designers, game audio teams and architects who want to try a space early. The acoustics are a real-time approximation, not a measurement.
 
-需要自己的 Meta Model API 金鑰。金鑰只留在本機伺服器：
+[Traditional Chinese README](README.zh-TW.md)
+
+This repository is a public source snapshot. Its [note](docs/00-project/PUBLIC_SNAPSHOT_20261104.md) explains what's included.
+
+## What you need
+
+- **Node 22.17.0 and npm 11.4.2.** These exact versions are pinned in `package.json`.
+- **A desktop Chromium browser,** such as Chrome. This is what the project was tested in.
+- **Headphones,** so you can hear the direction of a sound.
+- **A Meta Model API key,** only for the Muse features. Everything else runs without one.
+
+## Run it without a key
+
+```powershell
+npm ci
+npm run dev
+```
+
+Open http://127.0.0.1:5173. Meta requests are off in this mode and nothing is spent. The agent panel only offers offline tools, which are not a language model. Run only one Reflection Lab server at a time, because this and the Muse launcher both use port 8787.
+
+## Run it with Muse
+
+Put your key in a file outside the repository, then run:
 
 ```powershell
 npm ci
@@ -15,70 +34,141 @@ npm run build
 npm run demo:live -- --key-file "<path to the server-only key file>"
 ```
 
-然後開啟 `http://127.0.0.1:4173`，在 Meta experiment agent 分頁選擇 Meta Model API。這是即時近似，不是量測；完整第一版、效能與真人聽測門檻尚未完成。
+Open http://127.0.0.1:4173. Press Ctrl+C in the terminal to stop.
 
-[English README](README.en.md) · [English user guide](docs/11-v1/USER_GUIDE.en.md)
+- **Your key** stays on the local server and never reaches the browser.
+- **Spending** only happens when someone submits an instruction with Meta Model API selected. A typical proposal costs a few cents at list price.
+- **The budget record** is `research/v1/meta-live-budget-20261104-limits.json`. The launcher stops at US$5 or 200 requests, and that count includes the project's earlier use.
 
-介面可透過上方語言選單切換繁體中文／English，語言偏好保存在本機；兩種語言共用場景、聲音與驗收資料。全套英文文件已建立原文／譯文hash與current／stale對照，前次完整檢查已確認當時258份鏡像全數current、0 missing／stale／errors；本次與後續變更仍依最新報告同步。範圍見[英文補充驗收](docs/11-v1/ENGLISH_ACCEPTANCE.md)。
+## First steps
 
-2026-10-28最新：[當前checkpoint r11](docs/11-v1/SESSION_PROGRESS_20261028-r11.md)的UI27、physics2、storage5、完整product4及Chromium原生音訊25／IRv2分項通過，當前完整pinned check（含917項runtime）與離線prompt benchmark通過；正式性能量測未通過，原生桌面操作與實際裝置聽測仍有未解門檻。完整第一版尚未完成，原[51項驗收](docs/11-v1/ACCEPTANCE.md)及61份保護檔案保留，[M0](docs/11-v1/M0_IMPLEMENTATION.md)維持其原範圍。依[ADR-013](docs/02-architecture/adr/013-codex-primary-development.md)由Codex主導，MuseCode與舊Harness為Optional；[開發資源](docs/09-agents/RESOURCE_STATUS.json)與產品Meta Model API分帳管理，未新增Muse或付費Meta使用。
+1. Set **Interface language** to English in the top bar.
+2. Click **Enable listening**. Start with your device volume low.
+3. Press **Start simulation**. The ball drops, the speaker plays a tone, and the lines in the room show the sound's paths.
+4. Move the camera: right-drag to orbit, middle-drag to pan, and scroll to zoom.
 
-最新入口：[持久 Wiki](knowledge/README.md) → [Index](knowledge/wiki/index.md) → [Now](knowledge/wiki/now.md)。Phase 3 的 [Codex × Muse Harness](docs/09-agents/CODEX_MUSE_ORCHESTRATION.md) 已加入有界接手與獨立驗收；實測與 Live 限制見 [報告](docs/09-agents/PHASE3_REPORT.md)。Phase2 [Wiki／設計成果](docs/09-knowledge/PHASE2_REPORT.md) 與 Phase1 證據保留，不把下方歷史數量視為現行總數。
+The room is open at one end. If a wall blocks your view, orbit until you can look in through the open end.
 
-結合三維物理互動、可追溯聲學模型與Meta AI的實驗平台。產品程式位於`src/`與`server/`；研究、Harness、spike與各層驗證各自保留來源，不冒充完整功能通過。本目錄起始為空，沒有沿用 Echo Canvas／Reflections 原型。
+## Build a room with Muse
 
-從 [Bootstrap Report](docs/BOOTSTRAP_REPORT.md) 開始，接著讀 [架構](docs/02-architecture/ARCHITECTURE.md)、[ADR 索引](docs/02-architecture/ADR_INDEX.md)、[實作狀態](docs/IMPLEMENTATION_STATUS.md)、[限制](docs/KNOWN_LIMITATIONS.md)、[下一任務](docs/NEXT_ENGINEERING_TASK.md)。Agents 先讀 [AGENTS.md](AGENTS.md)。
+Open the **Meta experiment agent** tab and choose **Meta Model API**. Press **Pause** before each instruction. Paste an instruction, press **Generate action preview**, and wait. Most take under a minute. Check the preview, then press **Apply actions**.
 
-## 本地驗證
+These four worked in our rehearsals, in this order:
 
-固定 Node **22.17.0**、npm **11.4.2**；Python **3.12.11** 是本次觀察版本。實際依賴版本與 integrity 在 package-lock.json。
+**1. Build a recital room**
+
+```text
+Turn this room into a small recital room: a raised wooden stage across the back wall, a grand-piano-sized box on the stage, and twelve chairs in three rows facing the stage.
+```
+
+**2. Add to it.** Afterwards, press **Reset** and **Start simulation**, then open the **Acoustic paths** tab to find reflections off the new wall panels.
+
+```text
+Now make it feel like a real concert space: add three slim metal columns, floor to ceiling height, along each side wall, evenly spaced from the stage to the open end of the room. Add two soft wall panels at ear height on each side wall, between the columns. Add a 4-step wooden staircase leading up to the left end of the stage. Don't change anything that's already here.
+```
+
+**3. Change a sound.** Afterwards, press **Reset** and **Start simulation** to hear the ball's next impact.
+
+```text
+Raise the pitch of the ball's impact sound by 7 semitones.
+```
+
+**4. Move a sound around you.** Afterwards, press **Resume simulation**, open the **Motion** tab and press **Run**. Don't press Reset first.
+
+```text
+Move the listener to the middle of the room at ear height, then move the speaker in a slow circle around the listener at 1.5 m height, radius 2 m, over 8 seconds, ending where it started.
+```
+
+To take back a proposal, press **Undo last AI apply** straight after Apply, before you start or reset the simulation.
+
+## Walk around in first person
+
+Press **Enter first person** and click the view.
+
+| Input | Action |
+| --- | --- |
+| W, A, S, D | Move |
+| Shift | Sprint |
+| Mouse | Look around |
+| Left click | Grab the object you're aiming at, then left click again to throw it |
+| Right button | Hold to preview a new object, release to place it. While holding an object, put it down |
+| Mouse wheel | Change the distance of a held object or preview |
+| R | Rotate a held object or preview |
+| L | Open the object library |
+| Enter | Pause or resume |
+| Esc | Release the mouse |
+
+Leaving first person resets the camera, so orbit back into the room afterwards.
+
+## Draw a path by hand
+
+Only objects with sound can have a path.
+
+- **In the editor:** select the object and press **T**. Click surfaces to add points, click a point to select it, then drag it. **Delete** removes the selected point. Press **T** or **Esc** to finish.
+- **In first person:** aim at the object, hold **Ctrl** and press the left mouse button, then drag through the room and release. Press **Enter** or click to start the take.
+
+Press **Shift+T** to show the path curves in the view.
+
+## What the tabs do
+
+| Tab | Use it to |
+| --- | --- |
+| Events & recording | See collisions and sound decisions, and record or replay a take |
+| Acoustic paths | List the direct path and reflections reaching the listener |
+| Experiment comparison | Compare two takes |
+| Meta experiment agent | Give Muse instructions, or use the offline tools |
+| Motion | Run, edit and remove object paths |
+| Audio export | Capture and render audio files |
+| Performance | Check timing and audio dropouts |
+| Zones | Add zones that trigger sound rules |
+
+The [user guide](docs/11-v1/USER_GUIDE.en.md) covers the rest of the app. Its agent section was written before the multi-step builder, so use this page for Muse.
+
+## How Muse fits in
+
+1. Muse Spark 1.3 gets your instruction, the current scene and a set of tools. It can create a scene, add, move, resize and remove objects, set materials and physics modes, configure sound sources, move the listener and write paths.
+2. The server tries the proposal on a copy of the scene, using the app's real scene rules, physics and motion code. If a step fails, Muse gets the error and tries again, up to three rounds.
+3. The browser checks the proposal again and shows a preview. Nothing changes until you press Apply.
+
+Sound rule changes, like prompt 3, go through a separate planner. Full results are in the [scene builder record](docs/00-project/MUSE_SCENE_BUILDER_20261104.md).
+
+## Known limits
+
+- **Undo** only works straight after Apply, and it only goes back one proposal.
+- **Reset after a Muse path** greys out Run until you press **Rebind to current scene**.
+- **Recording** stalled in both of our tries with a Muse path in a 34-object scene. Screen-record large scenes instead.
+- **Proposal size** is capped at 32 steps. Very long paths can run out of model output.
+- **Sound stops above 256 acoustic surfaces per source.** A box counts as 6 and a sphere or capsule as 1. Muse sees this limit, and the app refuses proposals that go over it.
+- **Paths don't avoid objects.** The app refuses a path that runs through something.
+- **Scenes use simple shapes:** boxes, spheres and capsules.
+- **A path on the ball is silent.** Put the path on the speaker to hear it move.
+- **"Acoustics stale" or "Acoustics pending"** shows while things move. It means the screen shows the last finished calculation.
+- **Nobody has formally listened to the Muse-built scenes yet,** and this is not a complete first version. Full performance and listening checks are still open.
+
+## Run the checks
 
 ```powershell
 npm ci
-npm ci --prefix experiments/physics-spike
+npm ci --prefix experiments/physics-spike --ignore-scripts
 npm run check
-npm run dev
-npm run build
-npm run test:runtime
 npm run benchmark
-node scripts/agents/cli.mjs help
-npm run test:agents
-npm run test:prompts
 ```
 
-`check`範圍以package.json為準，保留研究回歸並加入正式runtime、build及license檢查；native SDK、browser／audio、聽測與帳號API各自驗證。`dev`開啟本機Web與受限API，產品Meta預設支出上限0。正式工具鏈、獨立browser命令與限制見[Web工具鏈](docs/03-sdk/V1_WEB_TOOLCHAIN.md)；研究基線見[驗證計畫](docs/06-validation/BENCHMARK_PLAN.md)。尚未部署或提交。
+`npm run check` takes about 10 minutes. GitHub's browser job currently fails on 5 older tests, so the commit shows a red X. We haven't investigated all of them, and they're listed in the [validation record](artifacts/public-snapshot-20261104/verification.json).
 
-第一次聆聽可先維持暫停，在底部 Monitor 按 **啟用聆聽／Enable listening**，從低裝置音量開始，再調整 Monitor gain 並按 **開始運算／繼續運算（Start simulation／Resume simulation）**。啟用聆聽不會自動恢復模擬；靜音監聽也不會暫停物理。Simulated走統一聲學鏈，Raw reference是置中乾音；結束時按Pause並靜音。dBFS不是校準的dB SPL。
+## Project layout
 
-已保存的[最小真Meta Sound切片](server/META_LIVE_VALIDATION.md)包含模型回覆、Host Apply與本機180ticks證據；離線重用recorded response不是新的live模型輸出。Offline tools明示不是模型；產品server預設關閉網路／budget0，本次US$1授權的3請求slots已用完，實際帳單與剩餘credit未知。
+| Folder | Contents |
+| --- | --- |
+| `src` | The web app: UI, physics, acoustics, audio and motion |
+| `server` | Local API server and Meta Model API integration |
+| `tests`, `benchmarks` | Automated tests and reference benchmarks |
+| `schemas` | Data and AI tool contracts |
+| `scripts` | Launchers, setup and validation tools |
+| `docs` | Architecture, design and validation documents, with English copies in `docs/en` |
+| `knowledge` | Project notes and task records |
+| `research` | Sources, formulas and evidence records |
 
-資料集取得預設 `node scripts/setup/datasets.mjs` 僅 dry-run；範例授權與檔案 pins 未齊，預期回 `BLOCKED`／exit 2，不是下載失敗。`npm run test:datasets` 用本地 mock 驗證取得工具；沒有下載真實資料。詳 [取得規格與限制](experiments/dataset-fetch-spike/README.md)。
+## Licence
 
-Windows SDK spike：
-
-```powershell
-./scripts/setup/steam-audio.ps1 -Download -Extract
-./experiments/sdk-smoke-tests/run.ps1
-```
-
-版本／SHA256／compiler／逐項結果見 [SDK_VALIDATION](docs/03-sdk/SDK_VALIDATION.md)。SDK cache／node_modules 不入 Git；首次下載需要網路，run 需要 Windows x64 與文件指定 compiler。聲音裝置測試未執行。
-
-## 導覽
-
-| 路徑                                      | 內容                                               |
-| ----------------------------------------- | -------------------------------------------------- |
-| docs/00-project                           | 原始需求、空目錄基準、資產與來源                   |
-| docs/01-compliance                        | 官方競賽規則、授權登記、依賴清冊                   |
-| docs/02-architecture                      | 有效 ADR 與歷史、資料／時間／backend 契約          |
-| docs/03-sdk                               | Steam Audio 版本、授權、比較與 native 實測         |
-| docs/04-physics、05-ux                    | FPS／Grab／Build／狀態、8 套工具 UX 研究           |
-| docs/06-validation、07-experiments、08-ai | V0–V5、錄放／A/B、Meta 模型與工具                  |
-| research                                  | 文獻、公式、資料集、Evidence Ledger                |
-| docs/09-agents、prompts                   | Harness、failover、quota、prompt 與模型來源        |
-| schemas                                   | 產品／Wiki／agents contracts 與 synthetic examples |
-| .agents/skills                            | 15 個本專案技能與 8 個 pinned Emil upstream skills |
-| tests、benchmarks、experiments            | 隔離解析／依賴／物理／SDK 驗證                     |
-
-正式競賽提交時間目前為 **2026-11-05 10:00 台北**，申請／入選、賽前成果與完整提交欄位仍需本人核對；官方來源與時區歧義見 [HACKATHON_RULES](docs/01-compliance/HACKATHON_RULES.md)。沒有代替使用者接受條款、申請或提交。
-
-專案自身的開源 LICENSE 尚未選定；第三方各依其 license。所有 measured/computed/estimated／未驗證項目分開記錄，不將不具校準的 dBFS 當 dB SPL。完整新增檔案清單見 [FILE_MANIFEST](docs/00-project/FILE_MANIFEST.md)。
+The project has no root licence yet, so no reuse rights are granted. Third-party licences are listed in the [licence register](docs/01-compliance/LICENSE_REGISTER.md).

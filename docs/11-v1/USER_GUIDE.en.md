@@ -1,6 +1,6 @@
 # Reflection Lab user guide
 
-[English README](../../README.en.md) · [Traditional Chinese README](../../README.md)
+[English README](../../README.md) · [Traditional Chinese README](../../README.zh-TW.md)
 
 This original English guide covers the implemented local Web workflow; it is not a translation of a separate Chinese user guide. The first version is still under integration validation, not a completed or scientifically calibrated release. The interface is available in Traditional Chinese and English.
 

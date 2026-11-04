@@ -8,7 +8,7 @@ The inventory includes all tracked and unignored project Markdown, including aut
 
 Each translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.
 
-Status: **STRUCTURAL_CHECKS_PASS**; 496/496 translated, 0 stale, 0 missing across 527 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
+Status: **STRUCTURAL_CHECKS_PASS**; 497/497 translated, 0 stale, 0 missing across 528 originals, including 26 authored artifact documents. 9 verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.
 
 ```powershell
 node scripts/validation/english-docs.mjs inventory
@@ -682,6 +682,12 @@ node scripts/validation/english-docs.mjs check
 | Canonical document | English | State |
 | --- | --- | --- |
 | [`README.md`](../../README.md) | [English](../../README.en.md) | Already English / companion |
+
+## README.zh-TW.md
+
+| Canonical document | English | State |
+| --- | --- | --- |
+| [`README.zh-TW.md`](../../README.zh-TW.md) | [English](README.zh-TW.md) | Translated snapshot |
 
 ## research
 
