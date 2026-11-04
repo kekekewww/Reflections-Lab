@@ -5,6 +5,13 @@ export const META_EXTENDED_AUTHORIZATIONS = Object.freeze({
     maxCompletionTokens: 16000,
     maxInputBytes: 128000,
   }),
+  // A visitor's own key on the hosted site, spent from their own account. See browser-agent.ts.
+  "artifact.visitor-key-20261105": Object.freeze({
+    maxBudgetUsd: 3,
+    maxRequests: 40,
+    maxCompletionTokens: 16000,
+    maxInputBytes: 128000,
+  }),
 });
 
 export function metaExtendedAuthorization(id: string | null | undefined) {

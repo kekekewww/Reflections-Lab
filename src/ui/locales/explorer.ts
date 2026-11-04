@@ -842,6 +842,48 @@ export const explorerMessages = {
       "只有提交指令才會提出 Meta 模型請求；費用與存取 gate 由伺服器控制。模型只提出操作，實際計算由程式執行。",
     en: "A Meta model request is sent only when you submit an instruction. The server controls spending and access gates. The model proposes actions; the application performs the calculations.",
   },
+  "analysis.agent.keyMetaHelp": {
+    "zh-TW":
+      "只有提交指令才會提出 Meta 模型請求，並由此分頁以你的金鑰直接送到 Meta。此頁每次輸入金鑰最多 40 個請求或約 US$3 的估算費用。模型只提出操作，實際計算由程式執行。",
+    en: "A Meta model request is sent only when you submit an instruction, straight from this tab to Meta with your key. Each time you enter a key, this page stops at 40 requests or about US$3 of estimated cost. The model proposes actions; the application performs the calculations.",
+  },
+  "analysis.agent.keyLabel": {
+    "zh-TW": "你的 Meta API 金鑰",
+    en: "Your Meta API key",
+  },
+  "analysis.agent.keyUse": {
+    "zh-TW": "使用金鑰",
+    en: "Use key",
+  },
+  "analysis.agent.keyForget": {
+    "zh-TW": "清除金鑰",
+    en: "Forget key",
+  },
+  "analysis.agent.keyHelp": {
+    "zh-TW":
+      "金鑰只保留在此分頁的記憶體，也只會傳送到 api.meta.ai；不會儲存，重新載入頁面就會清除。請求由你的 Meta 帳號計費，通常每個指令幾美分，複雜場景會更多。",
+    en: "Your key stays in this tab's memory and goes only to api.meta.ai. It's never saved, and a reload clears it. Requests are billed to your Meta account, usually a few cents per instruction and more for complex scenes.",
+  },
+  "analysis.agent.keyHeld": {
+    "zh-TW": "此分頁正在使用你的金鑰。",
+    en: "This tab is using your key.",
+  },
+  "analysis.agent.keyNeeded": {
+    "zh-TW": "輸入你自己的 Meta API 金鑰即可使用 Muse；離線工具不需要金鑰。",
+    en: "Enter your own Meta API key to use Muse. Offline tools work without one.",
+  },
+  "analysis.agent.keyOffline": {
+    "zh-TW": "目前使用離線工具。若要使用 Muse，請選擇 Meta Model API 並使用你自己的金鑰。",
+    en: "Offline tools are selected. To use Muse, choose Meta Model API and use your own key.",
+  },
+  "analysis.agent.keyReady": {
+    "zh-TW": "Muse 已就緒；只有提交指令才會送出請求。",
+    en: "Muse is ready. A request is sent only when you submit an instruction.",
+  },
+  "analysis.agent.keyInvalid": {
+    "zh-TW": "這看起來不像 API 金鑰。請確認沒有空格或缺字後重新貼上。",
+    en: "That doesn't look like an API key. Check for spaces or missing characters, then paste it again.",
+  },
   "analysis.agent.shortcut": {
     "zh-TW": "Ctrl / ⌘ + Enter 送出；組字時不提交。",
     en: "Ctrl / ⌘ + Enter to submit. Composition input is not submitted.",

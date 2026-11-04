@@ -3,7 +3,12 @@ import { createSceneToolAdapter } from "../ai/scene-adapter.js";
 import { OfflinePlanner } from "../ai/offline-planner.js";
 import { OfflineSoundPlanner } from "../ai/offline-sound-planner.js";
 import { SoundProposalHost } from "../ai/sound-host.js";
-import { cancelAgentRequest, requestAgentPlan, requestSoundAgentPlan } from "../ai/client.js";
+import {
+  cancelAgentRequest,
+  requestAgentPlan,
+  requestSoundAgentPlan,
+  BROWSER_AGENT_BUILD,
+} from "../ai/client.js";
 import { TrustedExperimentWorkflow } from "./agent-experiment-workflow.js";
 import type {
   AgentExperimentSettings,
@@ -527,7 +532,9 @@ export class AgentSession {
         mode: this.view.mode,
         status: "idle",
         canApply: false,
-        message: "已停止接受此提案；已送出的請求結果與費用由伺服器紀錄，不推定取消或退款。",
+        message: BROWSER_AGENT_BUILD
+          ? "已停止接受此提案；已送出的請求仍可能由Meta計費。"
+          : "已停止接受此提案；已送出的請求結果與費用由伺服器紀錄，不推定取消或退款。",
       });
       return;
     }

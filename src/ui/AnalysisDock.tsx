@@ -1,7 +1,18 @@
 import { memoView } from "./view-stability.js";
 import { HelpTip } from "./HelpTip.js";
+import { BrowserKeyField } from "./BrowserKeyField.js";
+import { BROWSER_AGENT_BUILD } from "../ai/client.js";
+import { hasBrowserKey, subscribeBrowserKey } from "../ai/browser-key.js";
 import { ZonePanel } from "./ZonePanel.js";
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { FormEvent, KeyboardEvent } from "react";
 import type {
   EventView,
@@ -881,7 +892,18 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
   const loading = model.ai.status === "loading";
   const selectedProvider = model.ai.selectedProvider ?? "offline";
   const providerStatus = model.ai.providerStatus;
-  const unavailable = selectedProvider === "meta" && providerStatus?.status !== "ready";
+  const keyHeld = useSyncExternalStore(subscribeBrowserKey, hasBrowserKey);
+  const unavailable =
+    selectedProvider === "meta" &&
+    (providerStatus?.status !== "ready" || (BROWSER_AGENT_BUILD && !keyHeld));
+  const refreshStatus = () => send({ type: "refreshAgentStatus" });
+  useEffect(() => {
+    // The status follows the key and each finished request. A request's transaction ends just
+    // after its view update, and a refresh inside it would be refused as busy, so this waits a task.
+    if (!BROWSER_AGENT_BUILD || selectedProvider !== "meta" || loading) return;
+    const timer = setTimeout(() => send({ type: "refreshAgentStatus" }), 0);
+    return () => clearTimeout(timer);
+  }, [keyHeld, loading]);
   const providerLabels = {
     unknown: t("analysis.provider.unknown"),
     loading: t("analysis.provider.loading"),
@@ -903,7 +925,9 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
           content={
             selectedProvider === "offline"
               ? t("analysis.agent.offlineHelp")
-              : t("analysis.agent.metaHelp")
+              : BROWSER_AGENT_BUILD
+                ? t("analysis.agent.keyMetaHelp")
+                : t("analysis.agent.metaHelp")
           }
         />
         <span className={`badge ${model.ai.mode === "live" ? "badge-success" : "badge-warning"}`}>
@@ -932,13 +956,15 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
             <option value="meta">{t("analysis.agent.meta")}</option>
           </select>
         </label>
-        <button
-          type="button"
-          disabled={loading || providerStatus?.status === "loading"}
-          onClick={() => send({ type: "refreshAgentStatus" })}
-        >
-          {t("analysis.agent.refresh")}
-        </button>
+        {!BROWSER_AGENT_BUILD && (
+          <button
+            type="button"
+            disabled={loading || providerStatus?.status === "loading"}
+            onClick={refreshStatus}
+          >
+            {t("analysis.agent.refresh")}
+          </button>
+        )}
         <HelpTip topic={t("pipeline.agent.undo")} content={t("pipeline.agent.undoHelp")}>
           <button
             type="button"
@@ -949,17 +975,32 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
           </button>
         </HelpTip>
       </div>
+      {BROWSER_AGENT_BUILD && (selectedProvider === "meta" || keyHeld) && <BrowserKeyField />}
       <p
         className="field-help agent-provider-status"
         id="experiment-agent-provider-status"
         role="status"
       >
-        {t("analysis.agent.gate", {
-          status: providerLabels[providerStatus?.status ?? "unknown"],
-        })}
-        {providerStatus?.reason
-          ? message(providerStatus.reason)
-          : t("analysis.agent.noServerStatus")}
+        {BROWSER_AGENT_BUILD ? (
+          selectedProvider === "offline" ? (
+            t("analysis.agent.keyOffline")
+          ) : !keyHeld ? (
+            t("analysis.agent.keyNeeded")
+          ) : providerStatus?.status === "ready" ? (
+            t("analysis.agent.keyReady")
+          ) : (
+            message(providerStatus?.reason ?? "")
+          )
+        ) : (
+          <>
+            {t("analysis.agent.gate", {
+              status: providerLabels[providerStatus?.status ?? "unknown"],
+            })}
+            {providerStatus?.reason
+              ? message(providerStatus.reason)
+              : t("analysis.agent.noServerStatus")}
+          </>
+        )}
       </p>
       <form className="agent-form" onSubmit={submit}>
         <label className="field-label" htmlFor="experiment-agent-prompt">
@@ -1001,7 +1042,7 @@ function AgentPanelView({ model, send }: { model: LabViewModel; send: Send }) {
             {loading ? t("analysis.agent.preparing") : t("analysis.agent.previewAction")}
           </button>
         </div>
-        {unavailable && (
+        {unavailable && !BROWSER_AGENT_BUILD && (
           <p className="field-help" id="experiment-agent-mode">
             {t("analysis.agent.unavailableHelp")}
           </p>

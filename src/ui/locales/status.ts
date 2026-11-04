@@ -1361,6 +1361,54 @@ export const statusMessages = {
     "zh-TW": "手工設定的示範頻帶係數；非材質量測、非振動合成。A+R+T=1，零透射。",
     en: "Manually authored demonstration band coefficients; not material measurements or vibration synthesis. A+R+T=1, with zero transmission.",
   },
+  "status.site.keyMissing": {
+    "zh-TW": "尚未輸入Meta API金鑰；未送出請求。",
+    en: "Enter your Meta API key first. No request was sent.",
+  },
+  "status.site.stopped": {
+    "zh-TW": "已停止接受此提案；已送出的請求仍可能由Meta計費。",
+    en: "This proposal was stopped. Meta may still charge for a request that was already sent.",
+  },
+  "status.site.keyMissingCoded": {
+    "zh-TW": "KEY_NOT_ENTERED：尚未輸入Meta API金鑰；未送出請求。",
+    en: "Enter your Meta API key first. No request was sent.",
+  },
+  "status.site.AUTHENTICATION_ERROR": {
+    "zh-TW": "AUTHENTICATION_ERROR：Meta拒絕此金鑰；請檢查後重試，或清除後改用其他金鑰。",
+    en: "Meta rejected this key. Check it and try again, or forget it and use another key. [AUTHENTICATION_ERROR]",
+  },
+  "status.site.PERMISSION_DENIED": {
+    "zh-TW": "PERMISSION_DENIED：此金鑰沒有使用這個模型的權限。",
+    en: "This key doesn't have permission to use this model. [PERMISSION_DENIED]",
+  },
+  "status.site.QUOTA_EXCEEDED": {
+    "zh-TW": "QUOTA_EXCEEDED：此Meta帳號的額度不足。",
+    en: "This Meta account doesn't have enough credit. [QUOTA_EXCEEDED]",
+  },
+  "status.site.MODEL_UNAVAILABLE": {
+    "zh-TW": "MODEL_UNAVAILABLE：Meta目前未向此金鑰提供這個模型。",
+    en: "Meta isn't offering this model to this key right now. [MODEL_UNAVAILABLE]",
+  },
+  "status.site.RATE_LIMITED": {
+    "zh-TW": "RATE_LIMITED：Meta暫時限制此金鑰的請求；請稍後再試。",
+    en: "Meta is limiting requests from this key for now. Try again shortly. [RATE_LIMITED]",
+  },
+  "status.site.TIMEOUT": {
+    "zh-TW": "TIMEOUT：無法確認Meta是否已回覆；未自動重試以免重複計費。請檢查網路後再試。",
+    en: "Couldn't confirm whether Meta replied. It wasn't retried, to avoid charging you twice. Check your connection and try again. [TIMEOUT]",
+  },
+  "status.site.BUDGET_EXCEEDED": {
+    "zh-TW": "BUDGET_EXCEEDED：已達此頁的請求或費用上限；重新載入並再次輸入金鑰後可繼續。",
+    en: "This page reached its request or cost limit. Reload it and enter your key again to continue. [BUDGET_EXCEEDED]",
+  },
+  "status.site.CANCELED": {
+    "zh-TW": "CANCELED：請求已停止；已送出的內容仍可能由Meta計費。",
+    en: "The request was stopped. Meta may still charge for what was already sent. [CANCELED]",
+  },
+  "status.code.KEY_NOT_ENTERED": {
+    "zh-TW": "KEY_NOT_ENTERED",
+    en: "Enter your Meta API key first.",
+  },
   "status.server.requestActive": {
     "zh-TW": "已有Meta請求進行中，不能重複派送。",
     en: "A Meta request is already in progress; it cannot be dispatched again.",
@@ -2029,6 +2077,20 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
   "木質示範 · Synthetic": "status.material.wood",
   "金屬示範 · Synthetic": "status.material.metal",
   "手工設定的示範頻帶係數；非材質量測、非振動合成。A+R+T=1，零透射。": "status.material.conditions",
+  "尚未輸入Meta API金鑰；未送出請求。": "status.site.keyMissing",
+  "已停止接受此提案；已送出的請求仍可能由Meta計費。": "status.site.stopped",
+  "KEY_NOT_ENTERED：尚未輸入Meta API金鑰；未送出請求。": "status.site.keyMissingCoded",
+  "AUTHENTICATION_ERROR：Meta拒絕此金鑰；請檢查後重試，或清除後改用其他金鑰。":
+    "status.site.AUTHENTICATION_ERROR",
+  "PERMISSION_DENIED：此金鑰沒有使用這個模型的權限。": "status.site.PERMISSION_DENIED",
+  "QUOTA_EXCEEDED：此Meta帳號的額度不足。": "status.site.QUOTA_EXCEEDED",
+  "MODEL_UNAVAILABLE：Meta目前未向此金鑰提供這個模型。": "status.site.MODEL_UNAVAILABLE",
+  "RATE_LIMITED：Meta暫時限制此金鑰的請求；請稍後再試。": "status.site.RATE_LIMITED",
+  "TIMEOUT：無法確認Meta是否已回覆；未自動重試以免重複計費。請檢查網路後再試。":
+    "status.site.TIMEOUT",
+  "BUDGET_EXCEEDED：已達此頁的請求或費用上限；重新載入並再次輸入金鑰後可繼續。":
+    "status.site.BUDGET_EXCEEDED",
+  "CANCELED：請求已停止；已送出的內容仍可能由Meta計費。": "status.site.CANCELED",
   "已有Meta請求進行中，不能重複派送。": "status.server.requestActive",
   "READY_REQUIRES_EXPLICIT_REQUEST；只有提交指令才會呼叫模型；剩餘額度未知。":
     "status.provider.READY_REQUIRES_EXPLICIT_REQUEST",
@@ -2310,6 +2372,7 @@ export const exactStatusKeys: Readonly<Record<string, keyof typeof statusMessage
  * The renderer must keep the original code and diagnostic detail visible.
  */
 export const statusCodeKeys: Readonly<Record<string, keyof typeof statusMessages>> = {
+  KEY_NOT_ENTERED: "status.code.KEY_NOT_ENTERED",
   PLACEMENT_AUDIO_RESTART: "status.code.PLACEMENT_AUDIO_RESTART",
   PLACEMENT_TRANSPORT: "status.code.PLACEMENT_TRANSPORT",
   PLACEMENT_TIMEOUT: "status.code.PLACEMENT_TIMEOUT",

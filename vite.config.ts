@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  // Only vite.site.config.ts turns this on, so this build has no browser path to Meta.
+  define: { __BROWSER_AGENT__: "false" },
   // Keep caches local when worktrees share installed dependencies.
   cacheDir: ".cache/vite",
   // Browser evidence profiles may contain unrelated HTML; scan only the app entry.

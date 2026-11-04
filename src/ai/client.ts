@@ -4,6 +4,10 @@ import { assertBoundedJson } from "./validation.js";
 import type { SoundHostState } from "./sound-host.js";
 import type { SoundAgentPlan, SoundPlannerOptions } from "./sound-plan.js";
 
+/** True only in the hosted build, where the visitor's tab calls Meta with their own key. */
+export const BROWSER_AGENT_BUILD = typeof __BROWSER_AGENT__ !== "undefined" && __BROWSER_AGENT__;
+const siteAgent = async () => (await import("./browser-agent.js")).browserAgent();
+
 export interface AgentProviderStatus {
   offline: {
     state: "AVAILABLE";
@@ -51,6 +55,7 @@ async function readResponse<T>(response: Response): Promise<T> {
 
 /** Server status is a capability gate, never proof that a live model call has run. */
 export async function getProviderStatus(signal?: AbortSignal): Promise<AgentProviderStatus> {
+  if (BROWSER_AGENT_BUILD) return (await siteAgent()).status();
   const value = await readResponse<AgentProviderStatus>(
     await fetch("/api/agent/status", {
       credentials: "same-origin",
@@ -84,6 +89,8 @@ export async function requestSoundAgentPlan(
   signal?: AbortSignal,
   requestId = `request.${globalThis.crypto.randomUUID()}`,
 ): Promise<SoundAgentPlan> {
+  if (BROWSER_AGENT_BUILD)
+    return (await siteAgent()).proposeSound(prompt, state, options, signal, requestId);
   return readResponse<SoundAgentPlan>(
     await fetch("/api/agent/propose-sound", {
       method: "POST",
@@ -103,6 +110,8 @@ export async function requestAgentPlan(
   signal?: AbortSignal,
   requestId = `request.${globalThis.crypto.randomUUID()}`,
 ): Promise<AgentPlan> {
+  if (BROWSER_AGENT_BUILD)
+    return (await siteAgent()).propose(prompt, context, mode, signal, requestId);
   const response = await fetch("/api/agent/propose", {
     method: "POST",
     headers: { "Content-Type": "application/json", "X-Reflection-Request-ID": requestId },
@@ -118,6 +127,7 @@ export async function cancelAgentRequest(requestId: string): Promise<{
   state: "cancelRequested" | "completed" | "failed";
   outcomeConfirmed: boolean;
 }> {
+  if (BROWSER_AGENT_BUILD) return (await siteAgent()).cancel(requestId);
   if (!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$/.test(requestId))
     throw new AgentError("SCHEMA_INVALID", "Planner requestId格式無效。");
   return readResponse(
