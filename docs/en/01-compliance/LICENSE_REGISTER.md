@@ -1,10 +1,15 @@
-<!-- english-source: {"path":"docs/01-compliance/LICENSE_REGISTER.md","sha256":"4f5e4dd3268a342e084ada74d8816a16b075b2cda287d5c30d49e47b3cf1c1e8","translated_at":"2026-10-27T03:38:11Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/01-compliance/LICENSE_REGISTER.md","sha256":"566b6688813bee7c78cf3704a982a505333c7098c2fbf36cf1a75877ab3f7e1e","translated_at":"2026-11-04T16:24:36.276Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/01-compliance/LICENSE_REGISTER.md`](../../01-compliance/LICENSE_REGISTER.md). Source SHA-256: `4f5e4dd3268a342e084ada74d8816a16b075b2cda287d5c30d49e47b3cf1c1e8`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/01-compliance/LICENSE_REGISTER.md`](../../01-compliance/LICENSE_REGISTER.md). Source SHA-256: `566b6688813bee7c78cf3704a982a505333c7098c2fbf36cf1a75877ab3f7e1e`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="授權登錄表"></a>
 # License Register
+
+<!-- english-original-anchor --> <a id="專案自身授權"></a>
+## The Project's Own License
+
+On 2026-11-05 the user released the project's own content under the MIT License; see the root [LICENSE](../../../LICENSE). This license does not cover the third-party content below, which keeps its own terms.
 
 <!-- english-original-anchor --> <a id="第一版現行依賴補充"></a>
 ## Supplement for Current V1 Dependencies

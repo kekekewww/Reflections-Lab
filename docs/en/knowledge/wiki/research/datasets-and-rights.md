@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/research/datasets-and-rights.md","sha256":"8616288a1dc595059448bd2e00234ad694778e9398b9b7260085e14d533a2e5c","translated_at":"2026-10-27T03:44:07.128220Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/research/datasets-and-rights.md","sha256":"27b7e9ba693bdcc1e87e6f272c13243a86bf149a5ccefee7d8c07f4e1a077ab9","translated_at":"2026-10-27T03:44:07.128220Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0012
 title: Datasets and rights boundaries
@@ -10,7 +10,7 @@ sources:
   - RLAB-SRC-0011
   - RLAB-SRC-0037-V2
   - RLAB-SRC-0013
-  - V1-SRC-0008
+  - PUB-V1-SRC-0008-566b6688813b
 related_tasks: []
 related_decisions: []
 supersedes: []
@@ -21,7 +21,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/research/datasets-and-rights.md`](../../../../../knowledge/wiki/research/datasets-and-rights.md). Source SHA-256: `8616288a1dc595059448bd2e00234ad694778e9398b9b7260085e14d533a2e5c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/research/datasets-and-rights.md`](../../../../../knowledge/wiki/research/datasets-and-rights.md). Source SHA-256: `27b7e9ba693bdcc1e87e6f272c13243a86bf149a5ccefee7d8c07f4e1a077ab9`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="資料來源不等於可再散布"></a>

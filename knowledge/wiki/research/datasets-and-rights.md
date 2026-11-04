@@ -9,7 +9,7 @@ sources:
   - RLAB-SRC-0011
   - RLAB-SRC-0037-V2
   - RLAB-SRC-0013
-  - V1-SRC-0008
+  - PUB-V1-SRC-0008-566b6688813b
 related_tasks: []
 related_decisions: []
 supersedes: []

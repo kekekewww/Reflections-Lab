@@ -1,5 +1,9 @@
 # 授權登錄表
 
+## 專案自身授權
+
+使用者於2026-11-05將專案自有內容以 MIT 授權發布，見根目錄 [LICENSE](../../LICENSE)。此授權不涵蓋下列第三方內容，它們維持各自條款。
+
 ## 第一版現行依賴補充
 
 現行根 lockfile 的 20 個直接依賴及完整 199 個套件位置，見 [V1_DEPENDENCY_LICENSE_INVENTORY-r2.json](V1_DEPENDENCY_LICENSE_INVENTORY-r2.json)；Windows 本機已安裝 149 個、未安裝的 50 個全部是 optional 平台套件。安裝版本、integrity、manifest／LICENSE／NOTICE hash 已核對；缺根授權檔與內嵌歸屬另列於 [V1 第三方聲明索引](V1_THIRD_PARTY_NOTICES.md)。舊 Phase 1／2 清冊保留為歷史版本，不覆寫其 hash。

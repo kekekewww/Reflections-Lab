@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"595640f1e03bc125de1cd2af439749cd36f9acb30df7756b801d26e1e58f1448","translated_at":"2026-11-04T12:01:57.004Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/now.md","sha256":"c97e6a8a477e733b11d93f02cafd67c4cf6155539abc9f064bee895542a2d1d2","translated_at":"2026-11-04T12:01:57.004Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 ---
 id: RLAB-KB-0003
 title: "User transfer to Claude; Codex development paused, overall non-advanced work unfinished"
@@ -60,7 +60,7 @@ sources:
   - V1-SRC-0039
   - V1-SRC-0040
   - V1-SRC-0041
-  - V1-SRC-0042
+  - PUB-V1-SRC-0042-48c37021f6d4
   - V1-SRC-0043
   - V1-SRC-0044
   - V1-SRC-0045
@@ -218,7 +218,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `595640f1e03bc125de1cd2af439749cd36f9acb30df7756b801d26e1e58f1448`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/now.md`](../../../../knowledge/wiki/now.md). Source SHA-256: `c97e6a8a477e733b11d93f02cafd67c4cf6155539abc9f064bee895542a2d1d2`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="2026-11-04-muse-場景建構已合併到本機-main待拍攝與提交"></a>

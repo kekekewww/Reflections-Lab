@@ -17,7 +17,7 @@ This repository is an independent public source snapshot. Its history is separat
 | `knowledge/transactions/` | Recovery journals for local Wiki edits |
 | Audio captures, source maps, binaries and all other archives and traces | Not source, and not reviewed for redistribution |
 
-The exact file list, with sizes and hashes, is in the [manifest](PUBLIC_SNAPSHOT_MANIFEST_20261104.json). The project still has no root LICENSE, because the owner has not chosen one.
+The exact file list, with sizes and hashes, is in the [manifest](PUBLIC_SNAPSHOT_MANIFEST_20261104.json). When this snapshot was taken the project had no root LICENSE. On 2026-11-05 the owner chose MIT, and it's now in the root [LICENSE](../../LICENSE) file.
 
 ## What was changed from the local source
 

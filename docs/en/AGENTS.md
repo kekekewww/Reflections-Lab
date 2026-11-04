@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"AGENTS.md","sha256":"ca9a0bd5e0b830350bf2f13cb3d839b30a56ae50660d0583237ca5ecef9d9276","translated_at":"2026-10-27T06:02:15.2639025Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"AGENTS.md","sha256":"369ab0932a20226109aaf2a637eadb3839c207c3604cee10c358293c5d0c6df0","translated_at":"2026-11-04T16:24:36.276Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`AGENTS.md`](../../AGENTS.md). Source SHA-256: `ca9a0bd5e0b830350bf2f13cb3d839b30a56ae50660d0583237ca5ecef9d9276`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`AGENTS.md`](../../AGENTS.md). Source SHA-256: `369ab0932a20226109aaf2a637eadb3839c207c3604cee10c358293c5d0c6df0`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
@@ -69,6 +69,6 @@ Important mathematical models, scene boundaries, schema positive/negative cases,
 <!-- english-original-anchor --> <a id="授權安全與完成定義"></a>
 ## Authorization, Safety, and Definition of Completion
 
-Do not copy large amounts of papers/SDK documentation/commercial assets; record license/source/version/hash for every dependency, dataset, sound effect, and HRTF. SDK binary caches do not enter Git; the user has not decided the project's root LICENSE. Secrets must not enter the repository; Meta keys stay on the server, spending defaults to 0, and an unverified account must not be described as live integration.
+Do not copy large amounts of papers/SDK documentation/commercial assets; record license/source/version/hash for every dependency, dataset, sound effect, and HRTF. SDK binary caches do not enter Git; the project's root LICENSE is MIT, chosen by the user on 2026-11-05, and covers only the project's own content; third-party content keeps its own licenses. Secrets must not enter the repository; Meta keys stay on the server, spending defaults to 0, and an unverified account must not be described as live integration.
 
 Preserve uncommitted changes; destructive reset/clean and unauthorized deployment/push are prohibited. Preserve errors on failure and provide a recovery method; carry out ordinary reversible engineering work autonomously without repeatedly requesting permission. Before completion, execute appropriate commands and read the results, and synchronize ADRs/status/limits; a plausible-looking UI cannot replace physics/acoustic validation. New features require reproducible evidence, sources, and remaining limitations for the next step; changing status alone cannot establish completion.

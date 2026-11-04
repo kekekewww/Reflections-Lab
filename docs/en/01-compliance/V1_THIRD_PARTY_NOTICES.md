@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"docs/01-compliance/V1_THIRD_PARTY_NOTICES.md","sha256":"b7555bdf4d52f8d4d50182e5b8efd386d8b03e7890c67ba328acb69972c58bf6","translated_at":"2026-10-27T23:18:50.000436Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"docs/01-compliance/V1_THIRD_PARTY_NOTICES.md","sha256":"48c37021f6d411e3baeee74dca7842690631da30c298679cfb6048f152669b48","translated_at":"2026-11-04T16:24:36.276Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`docs/01-compliance/V1_THIRD_PARTY_NOTICES.md`](../../01-compliance/V1_THIRD_PARTY_NOTICES.md). Source SHA-256: `b7555bdf4d52f8d4d50182e5b8efd386d8b03e7890c67ba328acb69972c58bf6`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`docs/01-compliance/V1_THIRD_PARTY_NOTICES.md`](../../01-compliance/V1_THIRD_PARTY_NOTICES.md). Source SHA-256: `48c37021f6d411e3baeee74dca7842690631da30c298679cfb6048f152669b48`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="第一版第三方聲明索引"></a>
@@ -52,4 +52,4 @@ No root LICENSE / NOTICE was detected for `@esbuild/win32-x64`, `@humanfs/types`
 
 This engineering work has not distributed `node_modules`, browsers, the Steam Audio cache, third-party sound packs, or HRTF data. Inputs to the formal product build may still contain code from `devDependencies`; for example, Three, Rapier, and AJV are imported by `src` and should be checked separately against the actual bundle. Package classifications in source code cannot replace an inventory of distributed artifacts.
 
-The user has not yet chosen a root LICENSE for Reflection Lab. This work did not accept competition / model service terms or decide an external license on the user's behalf, and did not apply the same license to the project merely because third parties use MIT / Apache. The development license inventory, product API service rights, and competition compliance are separate evidence.
+Reflection Lab's root LICENSE is MIT, chosen by the user on 2026-11-05, and covers only the project's own content. This work did not accept competition / model service terms on the user's behalf, and third parties' MIT / Apache and other licenses are unchanged by it. The development license inventory, product API service rights, and competition compliance are separate evidence.

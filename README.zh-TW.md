@@ -3,6 +3,8 @@
 
 # Reflection Lab
 
+**[觀看示範影片](https://youtu.be/PHnT8HdyHCw)** · [MIT 授權](LICENSE) · [完整英文指南](README.md)
+
 ## 最新：Muse 多步驟場景建構（2026-11-04）
 
 一句指令可讓 Muse（Meta Model API）規劃最多 32 步的場景提案，並可新增、移動、調整尺寸與移除物件。App 先以與手動編輯相同的物理與場景規則檢查；若有步驟失敗，Muse 會讀取錯誤並重試。通過後顯示預覽，按下 Apply 才生效；Apply 後立即按 Undo 可復原。Muse 也能改變聲音規則與寫入路徑，新增的表面會進入聲學路徑。結果與限制見[紀錄](docs/00-project/MUSE_SCENE_BUILDER_20261104.md)，此公開快照的範圍見[說明](docs/00-project/PUBLIC_SNAPSHOT_20261104.md)。
@@ -81,4 +83,4 @@ Windows SDK spike：
 
 正式競賽提交時間目前為 **2026-11-05 10:00 台北**，申請／入選、賽前成果與完整提交欄位仍需本人核對；官方來源與時區歧義見 [HACKATHON_RULES](docs/01-compliance/HACKATHON_RULES.md)。沒有代替使用者接受條款、申請或提交。
 
-專案自身的開源 LICENSE 尚未選定；第三方各依其 license。所有 measured/computed/estimated／未驗證項目分開記錄，不將不具校準的 dBFS 當 dB SPL。完整新增檔案清單見 [FILE_MANIFEST](docs/00-project/FILE_MANIFEST.md)。
+專案自有內容以 [MIT 授權](LICENSE)發布；第三方各依其 license。所有 measured/computed/estimated／未驗證項目分開記錄，不將不具校準的 dBFS 當 dB SPL。完整新增檔案清單見 [FILE_MANIFEST](docs/00-project/FILE_MANIFEST.md)。

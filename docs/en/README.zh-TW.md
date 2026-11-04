@@ -1,6 +1,6 @@
-<!-- english-source: {"path":"README.zh-TW.md","sha256":"6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2","translated_at":"2026-10-29T05:29:36Z","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"README.zh-TW.md","sha256":"ad539b178b26e8c9651e2b8aa91667f9605f93c817fb194ff9961c6c13d18044","translated_at":"2026-11-04T16:24:36.276Z","executor":"Claude Code","model_id":"claude-opus-5-5","links":"english-relative"} -->
 <!-- english-notice:start -->
-> English translation of [`README.zh-TW.md`](../../README.zh-TW.md). Source SHA-256: `6d85fa0a715e0e7c3563f23cec0887fc6c012ab70e87ad914b5a988d230d88f2`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`README.zh-TW.md`](../../README.zh-TW.md). Source SHA-256: `ad539b178b26e8c9651e2b8aa91667f9605f93c817fb194ff9961c6c13d18044`. Executor: Claude Code; model ID claude-opus-5-5. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- architecture-review-entry -->
@@ -8,6 +8,8 @@
 
 <!-- english-original-anchor --> <a id="reflection-lab"></a>
 # Reflection Lab
+
+**[Watch the demo video](https://youtu.be/PHnT8HdyHCw)** · [MIT License](../../LICENSE) · [Full English guide](../../README.en.md)
 
 <!-- english-original-anchor --> <a id="最新muse-多步驟場景建構2026-11-04"></a>
 ## Latest: Muse multi-step scene builder (2026-11-04)
@@ -90,4 +92,4 @@ Versions, SHA256 values, compiler details, and individual results are recorded i
 
 The competition submission time is currently **2026-11-05 10:00 Taipei**. Application/selection, pre-competition work, and complete submission fields still require the user's own verification. See [HACKATHON_RULES](01-compliance/HACKATHON_RULES.md) for official sources and time-zone ambiguity. No terms have been accepted, and no application or submission has been made on the user's behalf.
 
-The project's own open-source LICENSE has not been selected; third parties retain their respective licenses. Measured/computed/estimated and unverified items are recorded separately. Uncalibrated dBFS is not treated as dB SPL. See [FILE_MANIFEST](00-project/FILE_MANIFEST.md) for the complete list of added files.
+The project's own content is released under the [MIT License](../../LICENSE); third parties retain their respective licenses. Measured/computed/estimated and unverified items are recorded separately. Uncalibrated dBFS is not treated as dB SPL. See [FILE_MANIFEST](00-project/FILE_MANIFEST.md) for the complete list of added files.

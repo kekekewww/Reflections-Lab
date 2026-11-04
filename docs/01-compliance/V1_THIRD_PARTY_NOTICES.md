@@ -41,4 +41,4 @@
 
 此工程工作尚未散布 `node_modules`、瀏覽器、Steam Audio cache、第三方音效包或 HRTF 資料。正式產品 build 的各個輸入仍可能包含 `devDependencies` 中的程式；例如 Three、Rapier、AJV 由 `src` 匯入，應按實際 bundle 另核對。源碼的 package 分類不能代替發行物清單。
 
-Reflection Lab 根 LICENSE 尚未由使用者選定。這次沒有代替使用者接受競賽／模型服務條款或決定對外授權，也沒有因第三方使用 MIT／Apache 就替專案套用相同 license。開發授權清冊、產品 API 服務權利與競賽合規是不同證據。
+Reflection Lab 根 LICENSE 為使用者於2026-11-05選定的 MIT，只涵蓋專案自有內容。這次沒有代替使用者接受競賽／模型服務條款，第三方的 MIT／Apache 等授權也不因此改變。開發授權清冊、產品 API 服務權利與競賽合規是不同證據。

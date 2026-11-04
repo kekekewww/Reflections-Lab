@@ -1,4 +1,4 @@
-<!-- english-source: {"path":"knowledge/wiki/architecture/runtime-and-contracts.md","sha256":"66dd1a1c5cbac16a89318c9769c720171836042bef96da37064890266054fade","translated_at":"2026-11-02T09:59:47.5353156+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
+<!-- english-source: {"path":"knowledge/wiki/architecture/runtime-and-contracts.md","sha256":"4af70e3d816ca2c8b3a3e91f138ec22df7d7cd2ee9366e77f84eb04a68a2cc9c","translated_at":"2026-11-02T09:59:47.5353156+00:00","executor":"Codex","model_id":null,"links":"english-relative"} -->
 ---
 id: RLAB-KB-0007
 title: Runtime architecture and data authority
@@ -16,7 +16,7 @@ sources:
   - V1-SRC-0004
   - V1-SRC-0001
   - V1-SRC-0007
-  - V1-SRC-0060
+  - PUB-V1-SRC-0060-369ab0932a20
   - V1-SRC-0015
   - AR-WIKI-bdabc250-7903063a
   - SB-ZONE-TYPES-20261102-V1
@@ -41,7 +41,7 @@ tags:
 ---
 
 <!-- english-notice:start -->
-> English translation of [`knowledge/wiki/architecture/runtime-and-contracts.md`](../../../../../knowledge/wiki/architecture/runtime-and-contracts.md). Source SHA-256: `66dd1a1c5cbac16a89318c9769c720171836042bef96da37064890266054fade`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
+> English translation of [`knowledge/wiki/architecture/runtime-and-contracts.md`](../../../../../knowledge/wiki/architecture/runtime-and-contracts.md). Source SHA-256: `4af70e3d816ca2c8b3a3e91f138ec22df7d7cd2ee9366e77f84eb04a68a2cc9c`. Executor: Codex; model ID unavailable. Translation is not new implementation or validation evidence. Canonical sources and shared task/contract/result files retain their authority. Verbatim technical examples may retain their original language.
 <!-- english-notice:end -->
 
 <!-- english-original-anchor --> <a id="runtime時鐘與資料權威"></a>

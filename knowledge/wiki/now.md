@@ -59,7 +59,7 @@ sources:
   - V1-SRC-0039
   - V1-SRC-0040
   - V1-SRC-0041
-  - V1-SRC-0042
+  - PUB-V1-SRC-0042-48c37021f6d4
   - V1-SRC-0043
   - V1-SRC-0044
   - V1-SRC-0045
