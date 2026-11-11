@@ -8,7 +8,7 @@
 
 ## 開發代理責任
 
-**Codex負責主要架構、實作、任務推進與品質驗證；Muse Code僅選用**，不必建立跨coding-agent流程。依 [ADR-013](docs/02-architecture/adr/013-codex-primary-development.md) 取代舊Muse優先政策；舊Harness／測試留為Optional。Muse最新可用性與來源看[資源狀態](docs/09-agents/RESOURCE_STATUS.json)，使用者回報credit不冒充billing查詢，也不自動改executor或支出上限。Meta Model API仍是作品內Muse Experiment Agent的目標，開發改用Codex不算產品Meta live證據。固定驗收、獨立程序／benchmark／reference／隔離review優先；不得僅自審宣告完成。沿用task／Git／provenance／budget規範；[驗收政策](docs/09-agents/VALIDATION_POLICY.md)仍適用，Optional Harness以其操作文件為準。
+**Claude Code負責主要架構、實作、任務推進與品質驗證；Codex可協作，Muse Code僅選用**，不必建立跨coding-agent流程。依 [ADR-013](docs/02-architecture/adr/013-codex-primary-development.md) 取代舊Muse優先政策；舊Harness／測試留為Optional。Muse最新可用性與來源看[資源狀態](docs/09-agents/RESOURCE_STATUS.json)，使用者回報credit不冒充billing查詢，也不自動改executor或支出上限。Meta Model API仍是作品內Muse Experiment Agent的目標，開發用Claude Code／Codex不算產品Meta live證據。固定驗收、獨立程序／benchmark／reference／隔離review優先；不得僅自審宣告完成。沿用task／Git／provenance／budget規範；[驗收政策](docs/09-agents/VALIDATION_POLICY.md)仍適用，Optional Harness以其操作文件為準。
 
 ## Session Startup 與持久記憶
 
@@ -31,7 +31,7 @@
 
 ## 工程規範
 
-正式文件保留繁體中文（台灣）canonical，依使用者需求提供英文介面與全套文件譯本；英文文件需有原文path/hash與current/stale狀態，任務及測試資料共用，不另建工作系統。code/API/path 英文。精簡模組、顯式錯誤、穩定 domain ID；不得用 array index／opaque Rapier handle 當持久 ID。每次 scene command 驗證 revision、原子套用、可 undo；不將 runtime engine object 序列化成 Scene。
+正式文件保留繁體中文（台灣）canonical，依使用者需求提供英文介面與對外發布文件譯本；英文文件需有原文path/hash與current/stale狀態，任務及測試資料共用，不另建工作系統。工作筆記（`knowledge/wiki/now.md`、`knowledge/wiki/handoffs/`、`knowledge/transactions/`）不建英文鏡像，checkpoint不重譯；範圍以`scripts/validation/english-docs.mjs`為準。code/API/path 英文。精簡模組、顯式錯誤、穩定 domain ID；不得用 array index／opaque Rapier handle 當持久 ID。每次 scene command 驗證 revision、原子套用、可 undo；不將 runtime engine object 序列化成 Scene。
 
 SI（m、kg、s、rad、Hz、Pa）；右手 +Y 上、-Z 前；quaternion `[x,y,z,w]`。physics 固定步、render 插值；gravity=0 仍是 dynamic，fixed 不受力。抓取保持接觸求解、有限 impulse，不 parent 到 camera。physics/renderer/solver/audio/AI 各自 clock；源發聲時間與傳播延遲只計一次。
 
@@ -41,7 +41,7 @@ audio callback 不等 AI、網路、geometry、physics；不在 callback 做無�
 
 ## Skills
 
-先依任務讀 `.agents/skills/<name>/SKILL.md`：`acoustic-research`、`acoustic-validation`、`steam-audio-integration`、`physics-interaction`、`spatial-audio-dsp`、`ux-engineering`、`experiment-validation`、`compliance-and-provenance`。研究全文／大文件留 docs/research，避免載入全部。
+先依任務讀 `.agents/skills/<name>/SKILL.md`：`acoustic-research`、`acoustic-validation`、`agent-orchestration`、`animate`、`animation-performance`、`break-ui`、`codex-verification`、`compliance-and-provenance`、`emil-design-eng`、`experiment-validation`、`improve-animations`、`meta-experiment-agent`、`muse-implementation`、`muse-prompt-optimization`、`persistent-project-memory`、`physics-interaction`、`pick-ui-library`、`prototype`、`reflection-lab-design-system`、`review-animations`、`spatial-audio-dsp`、`steam-audio-integration`、`ux-engineering`。研究全文／大文件留 docs/research，避免載入全部。
 
 Harness 任務使用 `agent-orchestration`、`muse-implementation`、`codex-verification`；prompt 評測用 `muse-prompt-optimization`，產品 Meta 工具用 `meta-experiment-agent`。不放寬固定驗收；保留 actual executor／model provenance，`agent_execution` 只是既有 Wiki task 的 run 投影。
 

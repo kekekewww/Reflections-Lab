@@ -160,6 +160,19 @@ test(
   },
 );
 
+test("nested worktrees are not scanned as this checkout's documents", { timeout: 30000 }, () => {
+  fixture(({ write, run }) => {
+    write("README.md", "# Root\n");
+    for (const name of [".worktrees", ".worktree-archives", ".claude/worktrees"])
+      write(`${name}/other/README.md`, "[Missing](missing.md)\n");
+    write("docs/.worktrees/README.md", "[Missing](missing.md)\n");
+    const result = run();
+    assert.equal(result.status, 1, result.output);
+    assert.match(result.output, /FAIL 1 missing/);
+    assert.match(result.output, /docs[\\/]\.worktrees[\\/]README\.md:1: missing\.md/);
+  });
+});
+
 test("SNAPSHOT_INDEX-registered copies are verified by SHA-256", { timeout: 30000 }, () => {
   fixture(({ write, run }) => {
     const copy = Buffer.from("[Request](REQUEST.json)\n");

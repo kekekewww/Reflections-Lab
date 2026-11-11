@@ -5,6 +5,9 @@ import { basename, dirname, relative, resolve, sep } from "node:path";
 // Static Markdown local-link check only. External reachability and anchor identity are not checked.
 const root = process.cwd();
 const ignored = new Set([".git", "node_modules", ".cache", "third_party"]);
+// Nested worktrees are other checkouts of this repository; scanning them took minutes and
+// reported their links as this checkout's. Paths are relative to the repository root.
+const ignoredPaths = new Set([".worktrees", ".worktree-archives", ".claude/worktrees"]);
 // Evidence copies preserve source bytes and source-relative links. Their run SHA proofs
 // remain separate from this maintained-document link check; artifact reports stay in scope.
 const rawSnapshotDirectories = new Set([
@@ -21,6 +24,7 @@ function walk(directory) {
     if (entry.isDirectory() && !ignored.has(entry.name)) {
       const target = resolve(directory, entry.name);
       const parts = relative(root, target).split(sep);
+      if (ignoredPaths.has(parts.join("/"))) continue;
       if (parts[0] === "artifacts" && rawSnapshotDirectories.has(entry.name))
         excludedRawSnapshots.push(parts.join("/"));
       else walk(target);
