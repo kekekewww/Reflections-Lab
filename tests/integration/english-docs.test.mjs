@@ -49,6 +49,24 @@ test("documentation inventory excludes generated mirrors and shared non-Markdown
     ["docs/topic.md"],
   );
 });
+test("working notes need no English mirror and leave the recorded manifest silently", () => {
+  const f = fixture();
+  f.write();
+  put(f.root, "knowledge/wiki/now.md", "# 現在\n");
+  put(f.root, "knowledge/wiki/handoffs/2026-11-11-x.md", "# 交接\n");
+  put(f.root, "knowledge/wiki/tasks.md", "# 任務\n");
+  assert.deepEqual(
+    inventory(f.root).map((e) => e.source),
+    ["docs/topic.md", "knowledge/wiki/tasks.md"],
+  );
+  fs.rmSync(path.join(f.root, "knowledge/wiki/tasks.md"));
+  validateEnglishDocs(f.root, { finalize: true });
+  const manifestPath = path.join(f.root, "docs/en/manifest.json");
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  manifest.entries.push({ ...manifest.entries[0], source: "knowledge/wiki/now.md" });
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+  assert.equal(validateEnglishDocs(f.root, { verifyRecorded: true }).status, "PASS");
+});
 test("missing and stale translations cannot pass coverage", () => {
   const f = fixture();
   assert.equal(validateEnglishDocs(f.root).entries[0].errors[0].code, "MISSING_TRANSLATION");

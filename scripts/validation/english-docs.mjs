@@ -15,6 +15,11 @@ const ignored = new Set([
   "playwright-report",
   ".playwright-mcp",
 ]);
+// Working notes change at every checkpoint and are not published documents, so they get no
+// English mirror (AGENTS.md). knowledge/transactions/ holds JSON journals, never Markdown.
+const workingNotes = ["knowledge/wiki/now.md", "knowledge/wiki/handoffs/"];
+export const isWorkingNote = (file) =>
+  workingNotes.some((note) => (note.endsWith("/") ? file.startsWith(note) : file === note));
 const sha = (data) => createHash("sha256").update(data).digest("hex");
 const slash = (value) => value.split(path.sep).join("/");
 const preparedSourcePins = [
@@ -55,7 +60,11 @@ export function listMarkdown(root, directory = "") {
     );
     return [...new Set(listed.split("\0").filter(Boolean))]
       .filter(
-        (file) => /\.md$/i.test(file) && file !== outputRoot && !file.startsWith(`${outputRoot}/`),
+        (file) =>
+          /\.md$/i.test(file) &&
+          file !== outputRoot &&
+          !file.startsWith(`${outputRoot}/`) &&
+          !isWorkingNote(file),
       )
       .filter((file) => {
         if (path.isAbsolute(file) || file.split("/").includes(".."))
@@ -75,7 +84,7 @@ export function listMarkdown(root, directory = "") {
       if (file === outputRoot || file.startsWith(`${outputRoot}/`)) return [];
       return entry.isDirectory()
         ? listMarkdown(root, file)
-        : entry.isFile() && /\.md$/i.test(file)
+        : entry.isFile() && /\.md$/i.test(file) && !isWorkingNote(file)
           ? [file]
           : [];
     })
@@ -719,7 +728,7 @@ function index(entries, counts, excludedSharedRaw) {
     groups.get(group).push(entry);
   }
   return (
-    `# Reflection Lab — English documentation\n\n[English README](../../README.en.md) · [User guide](../11-v1/USER_GUIDE.en.md) · [Canonical Traditional Chinese README](../../README.md)\n\nEnglish versions of the project's human-readable Markdown live here. They do not create another task registry, change accepted contracts, or convert historical research into current product claims. Original documents, source, immutable evidence and active task JSON remain authoritative. English Wiki pages are translated readable snapshots outside the active Wiki parser.\n\nThe inventory includes all tracked and unignored project Markdown, including authored reports under artifacts/. Exact captured source copies and generated browser failure contexts stay shared only after file-specific evidence checks; each exclusion is listed below. English mirrors are excluded from the source inventory to avoid recursive translation. Ignored private files and generated dependencies are outside the Git inventory.\n\nEach translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.\n\nStatus: **${counts.errors ? "IN_PROGRESS" : "STRUCTURAL_CHECKS_PASS"}**; ${counts.translated}/${counts.translations_required} translated, ${counts.stale} stale, ${counts.missing} missing across ${counts.originals} originals, including ${counts.authored_artifact_documents} authored artifact documents. ${counts.shared_raw_evidence} verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.\n\n\`\`\`powershell\nnode scripts/validation/english-docs.mjs inventory\nnode scripts/validation/english-docs.mjs check\n\`\`\`\n\n` +
+    `# Reflection Lab — English documentation\n\n[English README](../../README.en.md) · [User guide](../11-v1/USER_GUIDE.en.md) · [Canonical Traditional Chinese README](../../README.md)\n\nEnglish versions of the project's human-readable Markdown live here. They do not create another task registry, change accepted contracts, or convert historical research into current product claims. Original documents, source, immutable evidence and active task JSON remain authoritative. English Wiki pages are translated readable snapshots outside the active Wiki parser.\n\nThe inventory includes all tracked and unignored project Markdown except working notes (knowledge/wiki/now.md, knowledge/wiki/handoffs/), including authored reports under artifacts/. Exact captured source copies and generated browser failure contexts stay shared only after file-specific evidence checks; each exclusion is listed below. English mirrors are excluded from the source inventory to avoid recursive translation. Ignored private files and generated dependencies are outside the Git inventory.\n\nEach translated page identifies its exact source SHA-256. [The manifest](manifest.json) records coverage/currentness and English hashes. Already-English originals and maintained English companions are linked directly. Code, APIs, stable IDs, data, schemas, task JSON and raw test results remain shared. Source changes require a refresh.\n\nStatus: **${counts.errors ? "IN_PROGRESS" : "STRUCTURAL_CHECKS_PASS"}**; ${counts.translated}/${counts.translations_required} translated, ${counts.stale} stale, ${counts.missing} missing across ${counts.originals} originals, including ${counts.authored_artifact_documents} authored artifact documents. ${counts.shared_raw_evidence} verified raw evidence files remain shared. Structural checks cannot prove every sentence's meaning; independent sample review is recorded separately.\n\n\`\`\`powershell\nnode scripts/validation/english-docs.mjs inventory\nnode scripts/validation/english-docs.mjs check\n\`\`\`\n\n` +
     [...groups]
       .sort(([a], [b]) => a.localeCompare(b))
       .map(
@@ -895,6 +904,7 @@ export function validateEnglishDocs(
       for (const old of bySource.keys())
         if (
           (sourcePaths === null || sourcePaths.includes(old)) &&
+          !(sourcePaths === null && isWorkingNote(old)) &&
           !entries.some((e) => e.source === old)
         )
           globalErrors.push({ code: "MANIFEST_SOURCE_REMOVED", source: old });
@@ -926,7 +936,7 @@ export function validateEnglishDocs(
     global_errors: globalErrors,
     scope:
       sourcePaths === null
-        ? "All tracked and unignored project Markdown, including authored artifact narratives; verified per-file captured sources and generated failure contexts remain shared raw evidence. English mirrors are not source documents."
+        ? "All tracked and unignored project Markdown except working notes (knowledge/wiki/now.md, knowledge/wiki/handoffs/), including authored artifact narratives; verified per-file captured sources and generated failure contexts remain shared raw evidence. English mirrors are not source documents."
         : "Only the explicitly selected source paths; this result is not complete/current project-document coverage. Selected finalization never writes the corpus manifest, index or validation report.",
     scope_complete: sourcePaths === null,
     ...(sourcePaths === null ? {} : { selected_source_paths: [...sourcePaths] }),
